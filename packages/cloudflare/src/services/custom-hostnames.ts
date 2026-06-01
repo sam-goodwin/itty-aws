@@ -73,12 +73,13 @@ export interface PutCertificatePackCertificateResponse {
   } | null;
   ssl?: {
     id?: string | null;
-    bundleMethod?: "ubiquitous" | "optimal" | "force" | null;
+    bundleMethod?: "ubiquitous" | "optimal" | "force" | (string & {}) | null;
     certificateAuthority?:
       | "digicert"
       | "google"
       | "lets_encrypt"
       | "ssl_com"
+      | (string & {})
       | null;
     customCertificate?: string | null;
     customCsrId?: string | null;
@@ -98,14 +99,14 @@ export interface PutCertificatePackCertificateResponse {
     expiresOn?: string | null;
     hosts?: string[] | null;
     issuer?: string | null;
-    method?: "http" | "txt" | "email" | null;
+    method?: "http" | "txt" | "email" | (string & {}) | null;
     serialNumber?: string | null;
     settings?: {
       ciphers?: string[] | null;
-      earlyHints?: "on" | "off" | null;
-      http2?: "on" | "off" | null;
-      minTlsVersion?: "1.0" | "1.1" | "1.2" | "1.3" | null;
-      tls_1_3?: "on" | "off" | null;
+      earlyHints?: "on" | "off" | (string & {}) | null;
+      http2?: "on" | "off" | (string & {}) | null;
+      minTlsVersion?: "1.0" | "1.1" | "1.2" | "1.3" | (string & {}) | null;
+      tls_1_3?: "on" | "off" | (string & {}) | null;
     } | null;
     signature?: string | null;
     status?:
@@ -130,6 +131,7 @@ export interface PutCertificatePackCertificateResponse {
       | "inactive"
       | "backup_issued"
       | "holding_deployment"
+      | (string & {})
       | null;
     type?: "dv" | null;
     uploadedOn?: string | null;
@@ -166,6 +168,7 @@ export interface PutCertificatePackCertificateResponse {
     | "test_failed"
     | "provisioned"
     | "blocked"
+    | (string & {})
     | null;
   /** These are errors that were encountered while trying to activate a hostname. */
   verificationErrors?: string[] | null;
@@ -214,17 +217,23 @@ export const PutCertificatePackCertificateResponse =
           id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           bundleMethod: Schema.optional(
             Schema.Union([
-              Schema.Literals(["ubiquitous", "optimal", "force"]),
+              Schema.Union([
+                Schema.Literals(["ubiquitous", "optimal", "force"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
           certificateAuthority: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "digicert",
-                "google",
-                "lets_encrypt",
-                "ssl_com",
+              Schema.Union([
+                Schema.Literals([
+                  "digicert",
+                  "google",
+                  "lets_encrypt",
+                  "ssl_com",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -291,7 +300,10 @@ export const PutCertificatePackCertificateResponse =
           issuer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           method: Schema.optional(
             Schema.Union([
-              Schema.Literals(["http", "txt", "email"]),
+              Schema.Union([
+                Schema.Literals(["http", "txt", "email"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -305,19 +317,40 @@ export const PutCertificatePackCertificateResponse =
                   Schema.Union([Schema.Array(Schema.String), Schema.Null]),
                 ),
                 earlyHints: Schema.optional(
-                  Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Literals(["on", "off"]),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
                 ),
                 http2: Schema.optional(
-                  Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Literals(["on", "off"]),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
                 ),
                 minTlsVersion: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["1.0", "1.1", "1.2", "1.3"]),
+                    Schema.Union([
+                      Schema.Literals(["1.0", "1.1", "1.2", "1.3"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
                 tls_1_3: Schema.optional(
-                  Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Literals(["on", "off"]),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
                 ),
               }).pipe(
                 Schema.encodeKeys({
@@ -336,28 +369,31 @@ export const PutCertificatePackCertificateResponse =
           ),
           status: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "initializing",
-                "pending_validation",
-                "deleted",
-                "pending_issuance",
-                "pending_deployment",
-                "pending_deletion",
-                "pending_expiration",
-                "expired",
-                "active",
-                "initializing_timed_out",
-                "validation_timed_out",
-                "issuance_timed_out",
-                "deployment_timed_out",
-                "deletion_timed_out",
-                "pending_cleanup",
-                "staging_deployment",
-                "staging_active",
-                "deactivating",
-                "inactive",
-                "backup_issued",
-                "holding_deployment",
+              Schema.Union([
+                Schema.Literals([
+                  "initializing",
+                  "pending_validation",
+                  "deleted",
+                  "pending_issuance",
+                  "pending_deployment",
+                  "pending_deletion",
+                  "pending_expiration",
+                  "expired",
+                  "active",
+                  "initializing_timed_out",
+                  "validation_timed_out",
+                  "issuance_timed_out",
+                  "deployment_timed_out",
+                  "deletion_timed_out",
+                  "pending_cleanup",
+                  "staging_deployment",
+                  "staging_active",
+                  "deactivating",
+                  "inactive",
+                  "backup_issued",
+                  "holding_deployment",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -456,23 +492,26 @@ export const PutCertificatePackCertificateResponse =
     ),
     status: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "active",
-          "pending",
-          "active_redeploying",
-          "moved",
-          "pending_deletion",
-          "deleted",
-          "pending_blocked",
-          "pending_migration",
-          "pending_provisioned",
-          "test_pending",
-          "test_active",
-          "test_active_apex",
-          "test_blocked",
-          "test_failed",
-          "provisioned",
-          "blocked",
+        Schema.Union([
+          Schema.Literals([
+            "active",
+            "pending",
+            "active_redeploying",
+            "moved",
+            "pending_deletion",
+            "deleted",
+            "pending_blocked",
+            "pending_migration",
+            "pending_provisioned",
+            "test_pending",
+            "test_active",
+            "test_active_apex",
+            "test_blocked",
+            "test_failed",
+            "provisioned",
+            "blocked",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -604,12 +643,13 @@ export interface GetCustomHostnameResponse {
   } | null;
   ssl?: {
     id?: string | null;
-    bundleMethod?: "ubiquitous" | "optimal" | "force" | null;
+    bundleMethod?: "ubiquitous" | "optimal" | "force" | (string & {}) | null;
     certificateAuthority?:
       | "digicert"
       | "google"
       | "lets_encrypt"
       | "ssl_com"
+      | (string & {})
       | null;
     customCertificate?: string | null;
     customCsrId?: string | null;
@@ -629,14 +669,14 @@ export interface GetCustomHostnameResponse {
     expiresOn?: string | null;
     hosts?: string[] | null;
     issuer?: string | null;
-    method?: "http" | "txt" | "email" | null;
+    method?: "http" | "txt" | "email" | (string & {}) | null;
     serialNumber?: string | null;
     settings?: {
       ciphers?: string[] | null;
-      earlyHints?: "on" | "off" | null;
-      http2?: "on" | "off" | null;
-      minTlsVersion?: "1.0" | "1.1" | "1.2" | "1.3" | null;
-      tls_1_3?: "on" | "off" | null;
+      earlyHints?: "on" | "off" | (string & {}) | null;
+      http2?: "on" | "off" | (string & {}) | null;
+      minTlsVersion?: "1.0" | "1.1" | "1.2" | "1.3" | (string & {}) | null;
+      tls_1_3?: "on" | "off" | (string & {}) | null;
     } | null;
     signature?: string | null;
     status?:
@@ -661,6 +701,7 @@ export interface GetCustomHostnameResponse {
       | "inactive"
       | "backup_issued"
       | "holding_deployment"
+      | (string & {})
       | null;
     type?: "dv" | null;
     uploadedOn?: string | null;
@@ -697,6 +738,7 @@ export interface GetCustomHostnameResponse {
     | "test_failed"
     | "provisioned"
     | "blocked"
+    | (string & {})
     | null;
   /** These are errors that were encountered while trying to activate a hostname. */
   verificationErrors?: string[] | null;
@@ -745,17 +787,23 @@ export const GetCustomHostnameResponse =
           id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           bundleMethod: Schema.optional(
             Schema.Union([
-              Schema.Literals(["ubiquitous", "optimal", "force"]),
+              Schema.Union([
+                Schema.Literals(["ubiquitous", "optimal", "force"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
           certificateAuthority: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "digicert",
-                "google",
-                "lets_encrypt",
-                "ssl_com",
+              Schema.Union([
+                Schema.Literals([
+                  "digicert",
+                  "google",
+                  "lets_encrypt",
+                  "ssl_com",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -822,7 +870,10 @@ export const GetCustomHostnameResponse =
           issuer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           method: Schema.optional(
             Schema.Union([
-              Schema.Literals(["http", "txt", "email"]),
+              Schema.Union([
+                Schema.Literals(["http", "txt", "email"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -836,19 +887,40 @@ export const GetCustomHostnameResponse =
                   Schema.Union([Schema.Array(Schema.String), Schema.Null]),
                 ),
                 earlyHints: Schema.optional(
-                  Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Literals(["on", "off"]),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
                 ),
                 http2: Schema.optional(
-                  Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Literals(["on", "off"]),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
                 ),
                 minTlsVersion: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["1.0", "1.1", "1.2", "1.3"]),
+                    Schema.Union([
+                      Schema.Literals(["1.0", "1.1", "1.2", "1.3"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
                 tls_1_3: Schema.optional(
-                  Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Literals(["on", "off"]),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
                 ),
               }).pipe(
                 Schema.encodeKeys({
@@ -867,28 +939,31 @@ export const GetCustomHostnameResponse =
           ),
           status: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "initializing",
-                "pending_validation",
-                "deleted",
-                "pending_issuance",
-                "pending_deployment",
-                "pending_deletion",
-                "pending_expiration",
-                "expired",
-                "active",
-                "initializing_timed_out",
-                "validation_timed_out",
-                "issuance_timed_out",
-                "deployment_timed_out",
-                "deletion_timed_out",
-                "pending_cleanup",
-                "staging_deployment",
-                "staging_active",
-                "deactivating",
-                "inactive",
-                "backup_issued",
-                "holding_deployment",
+              Schema.Union([
+                Schema.Literals([
+                  "initializing",
+                  "pending_validation",
+                  "deleted",
+                  "pending_issuance",
+                  "pending_deployment",
+                  "pending_deletion",
+                  "pending_expiration",
+                  "expired",
+                  "active",
+                  "initializing_timed_out",
+                  "validation_timed_out",
+                  "issuance_timed_out",
+                  "deployment_timed_out",
+                  "deletion_timed_out",
+                  "pending_cleanup",
+                  "staging_deployment",
+                  "staging_active",
+                  "deactivating",
+                  "inactive",
+                  "backup_issued",
+                  "holding_deployment",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -987,23 +1062,26 @@ export const GetCustomHostnameResponse =
     ),
     status: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "active",
-          "pending",
-          "active_redeploying",
-          "moved",
-          "pending_deletion",
-          "deleted",
-          "pending_blocked",
-          "pending_migration",
-          "pending_provisioned",
-          "test_pending",
-          "test_active",
-          "test_active_apex",
-          "test_blocked",
-          "test_failed",
-          "provisioned",
-          "blocked",
+        Schema.Union([
+          Schema.Literals([
+            "active",
+            "pending",
+            "active_redeploying",
+            "moved",
+            "pending_deletion",
+            "deleted",
+            "pending_blocked",
+            "pending_migration",
+            "pending_provisioned",
+            "test_pending",
+            "test_active",
+            "test_active_apex",
+            "test_blocked",
+            "test_failed",
+            "provisioned",
+            "blocked",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -1052,11 +1130,11 @@ export interface ListCustomHostnamesRequest {
   /** Query param: Hostname ID to match against. This ID was generated and returned during the initial custom_hostname creation. This parameter cannot be used with the 'hostname' parameter. */
   id?: string;
   /** Query param: Filter by the certificate authority that issued the SSL certificate. */
-  certificateAuthority?: "google" | "lets_encrypt" | "ssl_com";
+  certificateAuthority?: "google" | "lets_encrypt" | "ssl_com" | (string & {});
   /** Query param: Filter by custom origin server name. */
   customOriginServer?: string;
   /** Query param: Direction to order hostnames. */
-  direction?: "asc" | "desc";
+  direction?: "asc" | "desc" | (string & {});
   /** Query param */
   hostname?: { contain?: string };
   /** Query param: Filter by the hostname's activation status. */
@@ -1076,11 +1154,12 @@ export interface ListCustomHostnamesRequest {
     | "test_blocked"
     | "test_failed"
     | "provisioned"
-    | "blocked";
+    | "blocked"
+    | (string & {});
   /** Query param: Field to order hostnames by. */
-  order?: "ssl" | "ssl_status";
+  order?: "ssl" | "ssl_status" | (string & {});
   /** Query param: Whether to filter hostnames based on if they have SSL enabled. */
-  ssl?: "0" | "1";
+  ssl?: "0" | "1" | (string & {});
   /** Query param: Filter by SSL certificate status. */
   sslStatus?:
     | "initializing"
@@ -1103,7 +1182,8 @@ export interface ListCustomHostnamesRequest {
     | "deactivating"
     | "inactive"
     | "backup_issued"
-    | "holding_deployment";
+    | "holding_deployment"
+    | (string & {});
   /** Query param: Filter by whether the custom hostname is a wildcard hostname. */
   wildcard?: boolean;
 }
@@ -1115,66 +1195,77 @@ export const ListCustomHostnamesRequest =
     perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
     certificateAuthority: Schema.optional(
-      Schema.Literals(["google", "lets_encrypt", "ssl_com"]),
+      Schema.Union([
+        Schema.Literals(["google", "lets_encrypt", "ssl_com"]),
+        Schema.String,
+      ]),
     ).pipe(T.HttpQuery("certificate_authority")),
     customOriginServer: Schema.optional(Schema.String).pipe(
       T.HttpQuery("custom_origin_server"),
     ),
-    direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-      T.HttpQuery("direction"),
-    ),
+    direction: Schema.optional(
+      Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+    ).pipe(T.HttpQuery("direction")),
     hostname: Schema.optional(
       Schema.Struct({
         contain: Schema.optional(Schema.String),
       }),
     ).pipe(T.HttpQuery("hostname")),
     hostnameStatus: Schema.optional(
-      Schema.Literals([
-        "active",
-        "pending",
-        "active_redeploying",
-        "moved",
-        "pending_deletion",
-        "deleted",
-        "pending_blocked",
-        "pending_migration",
-        "pending_provisioned",
-        "test_pending",
-        "test_active",
-        "test_active_apex",
-        "test_blocked",
-        "test_failed",
-        "provisioned",
-        "blocked",
+      Schema.Union([
+        Schema.Literals([
+          "active",
+          "pending",
+          "active_redeploying",
+          "moved",
+          "pending_deletion",
+          "deleted",
+          "pending_blocked",
+          "pending_migration",
+          "pending_provisioned",
+          "test_pending",
+          "test_active",
+          "test_active_apex",
+          "test_blocked",
+          "test_failed",
+          "provisioned",
+          "blocked",
+        ]),
+        Schema.String,
       ]),
     ).pipe(T.HttpQuery("hostname_status")),
-    order: Schema.optional(Schema.Literals(["ssl", "ssl_status"])).pipe(
-      T.HttpQuery("order"),
-    ),
-    ssl: Schema.optional(Schema.Literals(["0", "1"])).pipe(T.HttpQuery("ssl")),
+    order: Schema.optional(
+      Schema.Union([Schema.Literals(["ssl", "ssl_status"]), Schema.String]),
+    ).pipe(T.HttpQuery("order")),
+    ssl: Schema.optional(
+      Schema.Union([Schema.Literals(["0", "1"]), Schema.String]),
+    ).pipe(T.HttpQuery("ssl")),
     sslStatus: Schema.optional(
-      Schema.Literals([
-        "initializing",
-        "pending_validation",
-        "deleted",
-        "pending_issuance",
-        "pending_deployment",
-        "pending_deletion",
-        "pending_expiration",
-        "expired",
-        "active",
-        "initializing_timed_out",
-        "validation_timed_out",
-        "issuance_timed_out",
-        "deployment_timed_out",
-        "deletion_timed_out",
-        "pending_cleanup",
-        "staging_deployment",
-        "staging_active",
-        "deactivating",
-        "inactive",
-        "backup_issued",
-        "holding_deployment",
+      Schema.Union([
+        Schema.Literals([
+          "initializing",
+          "pending_validation",
+          "deleted",
+          "pending_issuance",
+          "pending_deployment",
+          "pending_deletion",
+          "pending_expiration",
+          "expired",
+          "active",
+          "initializing_timed_out",
+          "validation_timed_out",
+          "issuance_timed_out",
+          "deployment_timed_out",
+          "deletion_timed_out",
+          "pending_cleanup",
+          "staging_deployment",
+          "staging_active",
+          "deactivating",
+          "inactive",
+          "backup_issued",
+          "holding_deployment",
+        ]),
+        Schema.String,
       ]),
     ).pipe(T.HttpQuery("ssl_status")),
     wildcard: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("wildcard")),
@@ -1201,12 +1292,13 @@ export interface ListCustomHostnamesResponse {
     } | null;
     ssl?: {
       id?: string | null;
-      bundleMethod?: "ubiquitous" | "optimal" | "force" | null;
+      bundleMethod?: "ubiquitous" | "optimal" | "force" | (string & {}) | null;
       certificateAuthority?:
         | "digicert"
         | "google"
         | "lets_encrypt"
         | "ssl_com"
+        | (string & {})
         | null;
       customCertificate?: string | null;
       customCsrId?: string | null;
@@ -1226,14 +1318,14 @@ export interface ListCustomHostnamesResponse {
       expiresOn?: string | null;
       hosts?: string[] | null;
       issuer?: string | null;
-      method?: "http" | "txt" | "email" | null;
+      method?: "http" | "txt" | "email" | (string & {}) | null;
       serialNumber?: string | null;
       settings?: {
         ciphers?: string[] | null;
-        earlyHints?: "on" | "off" | null;
-        http2?: "on" | "off" | null;
-        minTlsVersion?: "1.0" | "1.1" | "1.2" | "1.3" | null;
-        tls_1_3?: "on" | "off" | null;
+        earlyHints?: "on" | "off" | (string & {}) | null;
+        http2?: "on" | "off" | (string & {}) | null;
+        minTlsVersion?: "1.0" | "1.1" | "1.2" | "1.3" | (string & {}) | null;
+        tls_1_3?: "on" | "off" | (string & {}) | null;
       } | null;
       signature?: string | null;
       status?:
@@ -1258,6 +1350,7 @@ export interface ListCustomHostnamesResponse {
         | "inactive"
         | "backup_issued"
         | "holding_deployment"
+        | (string & {})
         | null;
       type?: "dv" | null;
       uploadedOn?: string | null;
@@ -1293,6 +1386,7 @@ export interface ListCustomHostnamesResponse {
       | "test_failed"
       | "provisioned"
       | "blocked"
+      | (string & {})
       | null;
     verificationErrors?: string[] | null;
   }[];
@@ -1358,17 +1452,23 @@ export const ListCustomHostnamesResponse =
               id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
               bundleMethod: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["ubiquitous", "optimal", "force"]),
+                  Schema.Union([
+                    Schema.Literals(["ubiquitous", "optimal", "force"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
               certificateAuthority: Schema.optional(
                 Schema.Union([
-                  Schema.Literals([
-                    "digicert",
-                    "google",
-                    "lets_encrypt",
-                    "ssl_com",
+                  Schema.Union([
+                    Schema.Literals([
+                      "digicert",
+                      "google",
+                      "lets_encrypt",
+                      "ssl_com",
+                    ]),
+                    Schema.String,
                   ]),
                   Schema.Null,
                 ]),
@@ -1440,7 +1540,10 @@ export const ListCustomHostnamesResponse =
               ),
               method: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["http", "txt", "email"]),
+                  Schema.Union([
+                    Schema.Literals(["http", "txt", "email"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -1455,25 +1558,37 @@ export const ListCustomHostnamesResponse =
                     ),
                     earlyHints: Schema.optional(
                       Schema.Union([
-                        Schema.Literals(["on", "off"]),
+                        Schema.Union([
+                          Schema.Literals(["on", "off"]),
+                          Schema.String,
+                        ]),
                         Schema.Null,
                       ]),
                     ),
                     http2: Schema.optional(
                       Schema.Union([
-                        Schema.Literals(["on", "off"]),
+                        Schema.Union([
+                          Schema.Literals(["on", "off"]),
+                          Schema.String,
+                        ]),
                         Schema.Null,
                       ]),
                     ),
                     minTlsVersion: Schema.optional(
                       Schema.Union([
-                        Schema.Literals(["1.0", "1.1", "1.2", "1.3"]),
+                        Schema.Union([
+                          Schema.Literals(["1.0", "1.1", "1.2", "1.3"]),
+                          Schema.String,
+                        ]),
                         Schema.Null,
                       ]),
                     ),
                     tls_1_3: Schema.optional(
                       Schema.Union([
-                        Schema.Literals(["on", "off"]),
+                        Schema.Union([
+                          Schema.Literals(["on", "off"]),
+                          Schema.String,
+                        ]),
                         Schema.Null,
                       ]),
                     ),
@@ -1494,28 +1609,31 @@ export const ListCustomHostnamesResponse =
               ),
               status: Schema.optional(
                 Schema.Union([
-                  Schema.Literals([
-                    "initializing",
-                    "pending_validation",
-                    "deleted",
-                    "pending_issuance",
-                    "pending_deployment",
-                    "pending_deletion",
-                    "pending_expiration",
-                    "expired",
-                    "active",
-                    "initializing_timed_out",
-                    "validation_timed_out",
-                    "issuance_timed_out",
-                    "deployment_timed_out",
-                    "deletion_timed_out",
-                    "pending_cleanup",
-                    "staging_deployment",
-                    "staging_active",
-                    "deactivating",
-                    "inactive",
-                    "backup_issued",
-                    "holding_deployment",
+                  Schema.Union([
+                    Schema.Literals([
+                      "initializing",
+                      "pending_validation",
+                      "deleted",
+                      "pending_issuance",
+                      "pending_deployment",
+                      "pending_deletion",
+                      "pending_expiration",
+                      "expired",
+                      "active",
+                      "initializing_timed_out",
+                      "validation_timed_out",
+                      "issuance_timed_out",
+                      "deployment_timed_out",
+                      "deletion_timed_out",
+                      "pending_cleanup",
+                      "staging_deployment",
+                      "staging_active",
+                      "deactivating",
+                      "inactive",
+                      "backup_issued",
+                      "holding_deployment",
+                    ]),
+                    Schema.String,
                   ]),
                   Schema.Null,
                 ]),
@@ -1617,23 +1735,26 @@ export const ListCustomHostnamesResponse =
         ),
         status: Schema.optional(
           Schema.Union([
-            Schema.Literals([
-              "active",
-              "pending",
-              "active_redeploying",
-              "moved",
-              "pending_deletion",
-              "deleted",
-              "pending_blocked",
-              "pending_migration",
-              "pending_provisioned",
-              "test_pending",
-              "test_active",
-              "test_active_apex",
-              "test_blocked",
-              "test_failed",
-              "provisioned",
-              "blocked",
+            Schema.Union([
+              Schema.Literals([
+                "active",
+                "pending",
+                "active_redeploying",
+                "moved",
+                "pending_deletion",
+                "deleted",
+                "pending_blocked",
+                "pending_migration",
+                "pending_provisioned",
+                "test_pending",
+                "test_active",
+                "test_active_apex",
+                "test_blocked",
+                "test_failed",
+                "provisioned",
+                "blocked",
+              ]),
+              Schema.String,
             ]),
             Schema.Null,
           ]),
@@ -1710,20 +1831,25 @@ export interface CreateCustomHostnameRequest {
   customMetadata?: Record<string, unknown>;
   /** Body param: SSL properties used when creating the custom hostname. */
   ssl?: {
-    bundleMethod?: "ubiquitous" | "optimal" | "force";
-    certificateAuthority?: "digicert" | "google" | "lets_encrypt" | "ssl_com";
+    bundleMethod?: "ubiquitous" | "optimal" | "force" | (string & {});
+    certificateAuthority?:
+      | "digicert"
+      | "google"
+      | "lets_encrypt"
+      | "ssl_com"
+      | (string & {});
     cloudflareBranding?: boolean;
     customCertBundle?: { customCertificate: string; customKey: string }[];
     customCertificate?: string;
     customCsrId?: string;
     customKey?: string;
-    method?: "http" | "txt" | "email";
+    method?: "http" | "txt" | "email" | (string & {});
     settings?: {
       ciphers?: string[];
-      earlyHints?: "on" | "off";
-      http2?: "on" | "off";
-      minTlsVersion?: "1.0" | "1.1" | "1.2" | "1.3";
-      tls_1_3?: "on" | "off";
+      earlyHints?: "on" | "off" | (string & {});
+      http2?: "on" | "off" | (string & {});
+      minTlsVersion?: "1.0" | "1.1" | "1.2" | "1.3" | (string & {});
+      tls_1_3?: "on" | "off" | (string & {});
     };
     type?: "dv";
     wildcard?: boolean;
@@ -1740,10 +1866,16 @@ export const CreateCustomHostnameRequest =
     ssl: Schema.optional(
       Schema.Struct({
         bundleMethod: Schema.optional(
-          Schema.Literals(["ubiquitous", "optimal", "force"]),
+          Schema.Union([
+            Schema.Literals(["ubiquitous", "optimal", "force"]),
+            Schema.String,
+          ]),
         ),
         certificateAuthority: Schema.optional(
-          Schema.Literals(["digicert", "google", "lets_encrypt", "ssl_com"]),
+          Schema.Union([
+            Schema.Literals(["digicert", "google", "lets_encrypt", "ssl_com"]),
+            Schema.String,
+          ]),
         ),
         cloudflareBranding: Schema.optional(Schema.Boolean),
         customCertBundle: Schema.optional(
@@ -1762,16 +1894,30 @@ export const CreateCustomHostnameRequest =
         customCertificate: Schema.optional(Schema.String),
         customCsrId: Schema.optional(Schema.String),
         customKey: Schema.optional(Schema.String),
-        method: Schema.optional(Schema.Literals(["http", "txt", "email"])),
+        method: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["http", "txt", "email"]),
+            Schema.String,
+          ]),
+        ),
         settings: Schema.optional(
           Schema.Struct({
             ciphers: Schema.optional(Schema.Array(Schema.String)),
-            earlyHints: Schema.optional(Schema.Literals(["on", "off"])),
-            http2: Schema.optional(Schema.Literals(["on", "off"])),
-            minTlsVersion: Schema.optional(
-              Schema.Literals(["1.0", "1.1", "1.2", "1.3"]),
+            earlyHints: Schema.optional(
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
             ),
-            tls_1_3: Schema.optional(Schema.Literals(["on", "off"])),
+            http2: Schema.optional(
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            ),
+            minTlsVersion: Schema.optional(
+              Schema.Union([
+                Schema.Literals(["1.0", "1.1", "1.2", "1.3"]),
+                Schema.String,
+              ]),
+            ),
+            tls_1_3: Schema.optional(
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            ),
           }).pipe(
             Schema.encodeKeys({
               ciphers: "ciphers",
@@ -1835,12 +1981,13 @@ export interface CreateCustomHostnameResponse {
   } | null;
   ssl?: {
     id?: string | null;
-    bundleMethod?: "ubiquitous" | "optimal" | "force" | null;
+    bundleMethod?: "ubiquitous" | "optimal" | "force" | (string & {}) | null;
     certificateAuthority?:
       | "digicert"
       | "google"
       | "lets_encrypt"
       | "ssl_com"
+      | (string & {})
       | null;
     customCertificate?: string | null;
     customCsrId?: string | null;
@@ -1860,14 +2007,14 @@ export interface CreateCustomHostnameResponse {
     expiresOn?: string | null;
     hosts?: string[] | null;
     issuer?: string | null;
-    method?: "http" | "txt" | "email" | null;
+    method?: "http" | "txt" | "email" | (string & {}) | null;
     serialNumber?: string | null;
     settings?: {
       ciphers?: string[] | null;
-      earlyHints?: "on" | "off" | null;
-      http2?: "on" | "off" | null;
-      minTlsVersion?: "1.0" | "1.1" | "1.2" | "1.3" | null;
-      tls_1_3?: "on" | "off" | null;
+      earlyHints?: "on" | "off" | (string & {}) | null;
+      http2?: "on" | "off" | (string & {}) | null;
+      minTlsVersion?: "1.0" | "1.1" | "1.2" | "1.3" | (string & {}) | null;
+      tls_1_3?: "on" | "off" | (string & {}) | null;
     } | null;
     signature?: string | null;
     status?:
@@ -1892,6 +2039,7 @@ export interface CreateCustomHostnameResponse {
       | "inactive"
       | "backup_issued"
       | "holding_deployment"
+      | (string & {})
       | null;
     type?: "dv" | null;
     uploadedOn?: string | null;
@@ -1928,6 +2076,7 @@ export interface CreateCustomHostnameResponse {
     | "test_failed"
     | "provisioned"
     | "blocked"
+    | (string & {})
     | null;
   /** These are errors that were encountered while trying to activate a hostname. */
   verificationErrors?: string[] | null;
@@ -1976,17 +2125,23 @@ export const CreateCustomHostnameResponse =
           id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           bundleMethod: Schema.optional(
             Schema.Union([
-              Schema.Literals(["ubiquitous", "optimal", "force"]),
+              Schema.Union([
+                Schema.Literals(["ubiquitous", "optimal", "force"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
           certificateAuthority: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "digicert",
-                "google",
-                "lets_encrypt",
-                "ssl_com",
+              Schema.Union([
+                Schema.Literals([
+                  "digicert",
+                  "google",
+                  "lets_encrypt",
+                  "ssl_com",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -2053,7 +2208,10 @@ export const CreateCustomHostnameResponse =
           issuer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           method: Schema.optional(
             Schema.Union([
-              Schema.Literals(["http", "txt", "email"]),
+              Schema.Union([
+                Schema.Literals(["http", "txt", "email"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -2067,19 +2225,40 @@ export const CreateCustomHostnameResponse =
                   Schema.Union([Schema.Array(Schema.String), Schema.Null]),
                 ),
                 earlyHints: Schema.optional(
-                  Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Literals(["on", "off"]),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
                 ),
                 http2: Schema.optional(
-                  Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Literals(["on", "off"]),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
                 ),
                 minTlsVersion: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["1.0", "1.1", "1.2", "1.3"]),
+                    Schema.Union([
+                      Schema.Literals(["1.0", "1.1", "1.2", "1.3"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
                 tls_1_3: Schema.optional(
-                  Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Literals(["on", "off"]),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
                 ),
               }).pipe(
                 Schema.encodeKeys({
@@ -2098,28 +2277,31 @@ export const CreateCustomHostnameResponse =
           ),
           status: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "initializing",
-                "pending_validation",
-                "deleted",
-                "pending_issuance",
-                "pending_deployment",
-                "pending_deletion",
-                "pending_expiration",
-                "expired",
-                "active",
-                "initializing_timed_out",
-                "validation_timed_out",
-                "issuance_timed_out",
-                "deployment_timed_out",
-                "deletion_timed_out",
-                "pending_cleanup",
-                "staging_deployment",
-                "staging_active",
-                "deactivating",
-                "inactive",
-                "backup_issued",
-                "holding_deployment",
+              Schema.Union([
+                Schema.Literals([
+                  "initializing",
+                  "pending_validation",
+                  "deleted",
+                  "pending_issuance",
+                  "pending_deployment",
+                  "pending_deletion",
+                  "pending_expiration",
+                  "expired",
+                  "active",
+                  "initializing_timed_out",
+                  "validation_timed_out",
+                  "issuance_timed_out",
+                  "deployment_timed_out",
+                  "deletion_timed_out",
+                  "pending_cleanup",
+                  "staging_deployment",
+                  "staging_active",
+                  "deactivating",
+                  "inactive",
+                  "backup_issued",
+                  "holding_deployment",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -2218,23 +2400,26 @@ export const CreateCustomHostnameResponse =
     ),
     status: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "active",
-          "pending",
-          "active_redeploying",
-          "moved",
-          "pending_deletion",
-          "deleted",
-          "pending_blocked",
-          "pending_migration",
-          "pending_provisioned",
-          "test_pending",
-          "test_active",
-          "test_active_apex",
-          "test_blocked",
-          "test_failed",
-          "provisioned",
-          "blocked",
+        Schema.Union([
+          Schema.Literals([
+            "active",
+            "pending",
+            "active_redeploying",
+            "moved",
+            "pending_deletion",
+            "deleted",
+            "pending_blocked",
+            "pending_migration",
+            "pending_provisioned",
+            "test_pending",
+            "test_active",
+            "test_active_apex",
+            "test_blocked",
+            "test_failed",
+            "provisioned",
+            "blocked",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -2287,20 +2472,25 @@ export interface PatchCustomHostnameRequest {
   customOriginSni?: string;
   /** Body param: SSL properties used when creating the custom hostname. */
   ssl?: {
-    bundleMethod?: "ubiquitous" | "optimal" | "force";
-    certificateAuthority?: "digicert" | "google" | "lets_encrypt" | "ssl_com";
+    bundleMethod?: "ubiquitous" | "optimal" | "force" | (string & {});
+    certificateAuthority?:
+      | "digicert"
+      | "google"
+      | "lets_encrypt"
+      | "ssl_com"
+      | (string & {});
     cloudflareBranding?: boolean;
     customCertBundle?: { customCertificate: string; customKey: string }[];
     customCertificate?: string;
     customCsrId?: string;
     customKey?: string;
-    method?: "http" | "txt" | "email";
+    method?: "http" | "txt" | "email" | (string & {});
     settings?: {
       ciphers?: string[];
-      earlyHints?: "on" | "off";
-      http2?: "on" | "off";
-      minTlsVersion?: "1.0" | "1.1" | "1.2" | "1.3";
-      tls_1_3?: "on" | "off";
+      earlyHints?: "on" | "off" | (string & {});
+      http2?: "on" | "off" | (string & {});
+      minTlsVersion?: "1.0" | "1.1" | "1.2" | "1.3" | (string & {});
+      tls_1_3?: "on" | "off" | (string & {});
     };
     type?: "dv";
     wildcard?: boolean;
@@ -2319,10 +2509,16 @@ export const PatchCustomHostnameRequest =
     ssl: Schema.optional(
       Schema.Struct({
         bundleMethod: Schema.optional(
-          Schema.Literals(["ubiquitous", "optimal", "force"]),
+          Schema.Union([
+            Schema.Literals(["ubiquitous", "optimal", "force"]),
+            Schema.String,
+          ]),
         ),
         certificateAuthority: Schema.optional(
-          Schema.Literals(["digicert", "google", "lets_encrypt", "ssl_com"]),
+          Schema.Union([
+            Schema.Literals(["digicert", "google", "lets_encrypt", "ssl_com"]),
+            Schema.String,
+          ]),
         ),
         cloudflareBranding: Schema.optional(Schema.Boolean),
         customCertBundle: Schema.optional(
@@ -2341,16 +2537,30 @@ export const PatchCustomHostnameRequest =
         customCertificate: Schema.optional(Schema.String),
         customCsrId: Schema.optional(Schema.String),
         customKey: Schema.optional(Schema.String),
-        method: Schema.optional(Schema.Literals(["http", "txt", "email"])),
+        method: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["http", "txt", "email"]),
+            Schema.String,
+          ]),
+        ),
         settings: Schema.optional(
           Schema.Struct({
             ciphers: Schema.optional(Schema.Array(Schema.String)),
-            earlyHints: Schema.optional(Schema.Literals(["on", "off"])),
-            http2: Schema.optional(Schema.Literals(["on", "off"])),
-            minTlsVersion: Schema.optional(
-              Schema.Literals(["1.0", "1.1", "1.2", "1.3"]),
+            earlyHints: Schema.optional(
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
             ),
-            tls_1_3: Schema.optional(Schema.Literals(["on", "off"])),
+            http2: Schema.optional(
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            ),
+            minTlsVersion: Schema.optional(
+              Schema.Union([
+                Schema.Literals(["1.0", "1.1", "1.2", "1.3"]),
+                Schema.String,
+              ]),
+            ),
+            tls_1_3: Schema.optional(
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            ),
           }).pipe(
             Schema.encodeKeys({
               ciphers: "ciphers",
@@ -2418,12 +2628,13 @@ export interface PatchCustomHostnameResponse {
   } | null;
   ssl?: {
     id?: string | null;
-    bundleMethod?: "ubiquitous" | "optimal" | "force" | null;
+    bundleMethod?: "ubiquitous" | "optimal" | "force" | (string & {}) | null;
     certificateAuthority?:
       | "digicert"
       | "google"
       | "lets_encrypt"
       | "ssl_com"
+      | (string & {})
       | null;
     customCertificate?: string | null;
     customCsrId?: string | null;
@@ -2443,14 +2654,14 @@ export interface PatchCustomHostnameResponse {
     expiresOn?: string | null;
     hosts?: string[] | null;
     issuer?: string | null;
-    method?: "http" | "txt" | "email" | null;
+    method?: "http" | "txt" | "email" | (string & {}) | null;
     serialNumber?: string | null;
     settings?: {
       ciphers?: string[] | null;
-      earlyHints?: "on" | "off" | null;
-      http2?: "on" | "off" | null;
-      minTlsVersion?: "1.0" | "1.1" | "1.2" | "1.3" | null;
-      tls_1_3?: "on" | "off" | null;
+      earlyHints?: "on" | "off" | (string & {}) | null;
+      http2?: "on" | "off" | (string & {}) | null;
+      minTlsVersion?: "1.0" | "1.1" | "1.2" | "1.3" | (string & {}) | null;
+      tls_1_3?: "on" | "off" | (string & {}) | null;
     } | null;
     signature?: string | null;
     status?:
@@ -2475,6 +2686,7 @@ export interface PatchCustomHostnameResponse {
       | "inactive"
       | "backup_issued"
       | "holding_deployment"
+      | (string & {})
       | null;
     type?: "dv" | null;
     uploadedOn?: string | null;
@@ -2511,6 +2723,7 @@ export interface PatchCustomHostnameResponse {
     | "test_failed"
     | "provisioned"
     | "blocked"
+    | (string & {})
     | null;
   /** These are errors that were encountered while trying to activate a hostname. */
   verificationErrors?: string[] | null;
@@ -2559,17 +2772,23 @@ export const PatchCustomHostnameResponse =
           id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           bundleMethod: Schema.optional(
             Schema.Union([
-              Schema.Literals(["ubiquitous", "optimal", "force"]),
+              Schema.Union([
+                Schema.Literals(["ubiquitous", "optimal", "force"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
           certificateAuthority: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "digicert",
-                "google",
-                "lets_encrypt",
-                "ssl_com",
+              Schema.Union([
+                Schema.Literals([
+                  "digicert",
+                  "google",
+                  "lets_encrypt",
+                  "ssl_com",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -2636,7 +2855,10 @@ export const PatchCustomHostnameResponse =
           issuer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           method: Schema.optional(
             Schema.Union([
-              Schema.Literals(["http", "txt", "email"]),
+              Schema.Union([
+                Schema.Literals(["http", "txt", "email"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -2650,19 +2872,40 @@ export const PatchCustomHostnameResponse =
                   Schema.Union([Schema.Array(Schema.String), Schema.Null]),
                 ),
                 earlyHints: Schema.optional(
-                  Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Literals(["on", "off"]),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
                 ),
                 http2: Schema.optional(
-                  Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Literals(["on", "off"]),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
                 ),
                 minTlsVersion: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["1.0", "1.1", "1.2", "1.3"]),
+                    Schema.Union([
+                      Schema.Literals(["1.0", "1.1", "1.2", "1.3"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
                 tls_1_3: Schema.optional(
-                  Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Literals(["on", "off"]),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
                 ),
               }).pipe(
                 Schema.encodeKeys({
@@ -2681,28 +2924,31 @@ export const PatchCustomHostnameResponse =
           ),
           status: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "initializing",
-                "pending_validation",
-                "deleted",
-                "pending_issuance",
-                "pending_deployment",
-                "pending_deletion",
-                "pending_expiration",
-                "expired",
-                "active",
-                "initializing_timed_out",
-                "validation_timed_out",
-                "issuance_timed_out",
-                "deployment_timed_out",
-                "deletion_timed_out",
-                "pending_cleanup",
-                "staging_deployment",
-                "staging_active",
-                "deactivating",
-                "inactive",
-                "backup_issued",
-                "holding_deployment",
+              Schema.Union([
+                Schema.Literals([
+                  "initializing",
+                  "pending_validation",
+                  "deleted",
+                  "pending_issuance",
+                  "pending_deployment",
+                  "pending_deletion",
+                  "pending_expiration",
+                  "expired",
+                  "active",
+                  "initializing_timed_out",
+                  "validation_timed_out",
+                  "issuance_timed_out",
+                  "deployment_timed_out",
+                  "deletion_timed_out",
+                  "pending_cleanup",
+                  "staging_deployment",
+                  "staging_active",
+                  "deactivating",
+                  "inactive",
+                  "backup_issued",
+                  "holding_deployment",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -2801,23 +3047,26 @@ export const PatchCustomHostnameResponse =
     ),
     status: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "active",
-          "pending",
-          "active_redeploying",
-          "moved",
-          "pending_deletion",
-          "deleted",
-          "pending_blocked",
-          "pending_migration",
-          "pending_provisioned",
-          "test_pending",
-          "test_active",
-          "test_active_apex",
-          "test_blocked",
-          "test_failed",
-          "provisioned",
-          "blocked",
+        Schema.Union([
+          Schema.Literals([
+            "active",
+            "pending",
+            "active_redeploying",
+            "moved",
+            "pending_deletion",
+            "deleted",
+            "pending_blocked",
+            "pending_migration",
+            "pending_provisioned",
+            "test_pending",
+            "test_active",
+            "test_active_apex",
+            "test_blocked",
+            "test_failed",
+            "provisioned",
+            "blocked",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -2932,6 +3181,7 @@ export interface GetFallbackOriginResponse {
     | "active"
     | "deployment_timed_out"
     | "deletion_timed_out"
+    | (string & {})
     | null;
   /** This is the time the fallback origin was updated. */
   updatedAt?: string | null;
@@ -2946,13 +3196,16 @@ export const GetFallbackOriginResponse =
     origin: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     status: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "initializing",
-          "pending_deployment",
-          "pending_deletion",
-          "active",
-          "deployment_timed_out",
-          "deletion_timed_out",
+        Schema.Union([
+          Schema.Literals([
+            "initializing",
+            "pending_deployment",
+            "pending_deletion",
+            "active",
+            "deployment_timed_out",
+            "deletion_timed_out",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -3018,6 +3271,7 @@ export interface PutFallbackOriginResponse {
     | "active"
     | "deployment_timed_out"
     | "deletion_timed_out"
+    | (string & {})
     | null;
   /** This is the time the fallback origin was updated. */
   updatedAt?: string | null;
@@ -3032,13 +3286,16 @@ export const PutFallbackOriginResponse =
     origin: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     status: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "initializing",
-          "pending_deployment",
-          "pending_deletion",
-          "active",
-          "deployment_timed_out",
-          "deletion_timed_out",
+        Schema.Union([
+          Schema.Literals([
+            "initializing",
+            "pending_deployment",
+            "pending_deletion",
+            "active",
+            "deployment_timed_out",
+            "deletion_timed_out",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -3101,6 +3358,7 @@ export interface DeleteFallbackOriginResponse {
     | "active"
     | "deployment_timed_out"
     | "deletion_timed_out"
+    | (string & {})
     | null;
   /** This is the time the fallback origin was updated. */
   updatedAt?: string | null;
@@ -3115,13 +3373,16 @@ export const DeleteFallbackOriginResponse =
     origin: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     status: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "initializing",
-          "pending_deployment",
-          "pending_deletion",
-          "active",
-          "deployment_timed_out",
-          "deletion_timed_out",
+        Schema.Union([
+          Schema.Literals([
+            "initializing",
+            "pending_deployment",
+            "pending_deletion",
+            "active",
+            "deployment_timed_out",
+            "deletion_timed_out",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),

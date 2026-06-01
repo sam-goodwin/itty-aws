@@ -53,7 +53,7 @@ export interface GetKeylessCertificateResponse {
   /** The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server. */
   port: number;
   /** Status of the Keyless SSL. */
-  status: "active" | "deleted";
+  status: "active" | "deleted" | (string & {});
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel */
   tunnel?: { privateIp: string; vnetId: string } | null;
 }
@@ -68,7 +68,10 @@ export const GetKeylessCertificateResponse =
     name: Schema.String,
     permissions: Schema.Array(Schema.String),
     port: Schema.Number,
-    status: Schema.Literals(["active", "deleted"]),
+    status: Schema.Union([
+      Schema.Literals(["active", "deleted"]),
+      Schema.String,
+    ]),
     tunnel: Schema.optional(
       Schema.Union([
         Schema.Struct({
@@ -134,7 +137,7 @@ export interface ListKeylessCertificatesResponse {
     name: string;
     permissions: string[];
     port: number;
-    status: "active" | "deleted";
+    status: "active" | "deleted" | (string & {});
     tunnel?: { privateIp: string; vnetId: string } | null;
   }[];
 }
@@ -151,7 +154,10 @@ export const ListKeylessCertificatesResponse =
         name: Schema.String,
         permissions: Schema.Array(Schema.String),
         port: Schema.Number,
-        status: Schema.Literals(["active", "deleted"]),
+        status: Schema.Union([
+          Schema.Literals(["active", "deleted"]),
+          Schema.String,
+        ]),
         tunnel: Schema.optional(
           Schema.Union([
             Schema.Struct({
@@ -207,7 +213,7 @@ export interface CreateKeylessCertificateRequest {
   /** Body param: The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server. */
   port: number;
   /** Body param: A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest i */
-  bundleMethod?: "ubiquitous" | "optimal" | "force";
+  bundleMethod?: "ubiquitous" | "optimal" | "force" | (string & {});
   /** Body param: The keyless SSL name. */
   name?: string;
   /** Body param: Configuration for using Keyless SSL through a Cloudflare Tunnel */
@@ -221,7 +227,10 @@ export const CreateKeylessCertificateRequest =
     host: Schema.String,
     port: Schema.Number,
     bundleMethod: Schema.optional(
-      Schema.Literals(["ubiquitous", "optimal", "force"]),
+      Schema.Union([
+        Schema.Literals(["ubiquitous", "optimal", "force"]),
+        Schema.String,
+      ]),
     ),
     name: Schema.optional(Schema.String),
     tunnel: Schema.optional(
@@ -262,7 +271,7 @@ export interface CreateKeylessCertificateResponse {
   /** The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server. */
   port: number;
   /** Status of the Keyless SSL. */
-  status: "active" | "deleted";
+  status: "active" | "deleted" | (string & {});
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel */
   tunnel?: { privateIp: string; vnetId: string } | null;
 }
@@ -277,7 +286,10 @@ export const CreateKeylessCertificateResponse =
     name: Schema.String,
     permissions: Schema.Array(Schema.String),
     port: Schema.Number,
-    status: Schema.Literals(["active", "deleted"]),
+    status: Schema.Union([
+      Schema.Literals(["active", "deleted"]),
+      Schema.String,
+    ]),
     tunnel: Schema.optional(
       Schema.Union([
         Schema.Struct({
@@ -380,7 +392,7 @@ export interface PatchKeylessCertificateResponse {
   /** The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server. */
   port: number;
   /** Status of the Keyless SSL. */
-  status: "active" | "deleted";
+  status: "active" | "deleted" | (string & {});
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel */
   tunnel?: { privateIp: string; vnetId: string } | null;
 }
@@ -395,7 +407,10 @@ export const PatchKeylessCertificateResponse =
     name: Schema.String,
     permissions: Schema.Array(Schema.String),
     port: Schema.Number,
-    status: Schema.Literals(["active", "deleted"]),
+    status: Schema.Union([
+      Schema.Literals(["active", "deleted"]),
+      Schema.String,
+    ]),
     tunnel: Schema.optional(
       Schema.Union([
         Schema.Struct({

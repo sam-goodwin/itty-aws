@@ -65,7 +65,7 @@ export const GetConfigurationRequest =
 
 export interface GetConfigurationResponse {
   authIdCharacteristics: (
-    | { name: string; type: "header" | "cookie" }
+    | { name: string; type: "header" | "cookie" | (string & {}) }
     | { name: string; type: "jwt" }
   )[];
 }
@@ -76,7 +76,10 @@ export const GetConfigurationResponse =
       Schema.Union([
         Schema.Struct({
           name: Schema.String,
-          type: Schema.Literals(["header", "cookie"]),
+          type: Schema.Union([
+            Schema.Literals(["header", "cookie"]),
+            Schema.String,
+          ]),
         }),
         Schema.Struct({
           name: Schema.String,
@@ -115,7 +118,7 @@ export interface PutConfigurationRequest {
   normalize?: boolean;
   /** Body param */
   authIdCharacteristics: (
-    | { name: string; type: "header" | "cookie" }
+    | { name: string; type: "header" | "cookie" | (string & {}) }
     | { name: string; type: "jwt" }
   )[];
 }
@@ -128,7 +131,10 @@ export const PutConfigurationRequest =
       Schema.Union([
         Schema.Struct({
           name: Schema.String,
-          type: Schema.Literals(["header", "cookie"]),
+          type: Schema.Union([
+            Schema.Literals(["header", "cookie"]),
+            Schema.String,
+          ]),
         }),
         Schema.Struct({
           name: Schema.String,
@@ -146,7 +152,7 @@ export const PutConfigurationRequest =
 
 export interface PutConfigurationResponse {
   authIdCharacteristics: (
-    | { name: string; type: "header" | "cookie" }
+    | { name: string; type: "header" | "cookie" | (string & {}) }
     | { name: string; type: "jwt" }
   )[];
 }
@@ -157,7 +163,10 @@ export const PutConfigurationResponse =
       Schema.Union([
         Schema.Struct({
           name: Schema.String,
-          type: Schema.Literals(["header", "cookie"]),
+          type: Schema.Union([
+            Schema.Literals(["header", "cookie"]),
+            Schema.String,
+          ]),
         }),
         Schema.Struct({
           name: Schema.String,
@@ -244,7 +253,7 @@ export interface ListDiscoveryOperationsRequest {
   /** Query param: When `true`, only return API Discovery results that are not saved into API Shield Endpoint Management */
   diff?: boolean;
   /** Query param: Direction to order results. */
-  direction?: "asc" | "desc";
+  direction?: "asc" | "desc" | (string & {});
   /** Query param: Filter results to only include endpoints containing this pattern. */
   endpoint?: string;
   /** Query param: Filter results to only include the specified hosts. */
@@ -257,11 +266,12 @@ export interface ListDiscoveryOperationsRequest {
     | "method"
     | "endpoint"
     | "traffic_stats.requests"
-    | "traffic_stats.last_updated";
+    | "traffic_stats.last_updated"
+    | (string & {});
   /** Query param: Filter results to only include discovery results sourced from a particular discovery engine  - `ML` - Discovered operations that were sourced using ML API Discovery - `SessionIdentifier`  */
-  origin?: "ML" | "SessionIdentifier" | "LabelDiscovery";
+  origin?: "ML" | "SessionIdentifier" | "LabelDiscovery" | (string & {});
   /** Query param: Filter results to only include discovery results in a particular state. States are as follows  - `review` - Discovered operations that are not saved into API Shield Endpoint Management -  */
-  state?: "review" | "saved" | "ignored";
+  state?: "review" | "saved" | "ignored" | (string & {});
 }
 
 export const ListDiscoveryOperationsRequest =
@@ -270,9 +280,9 @@ export const ListDiscoveryOperationsRequest =
     page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
     perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     diff: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("diff")),
-    direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-      T.HttpQuery("direction"),
-    ),
+    direction: Schema.optional(
+      Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+    ).pipe(T.HttpQuery("direction")),
     endpoint: Schema.optional(Schema.String).pipe(T.HttpQuery("endpoint")),
     host: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("host"),
@@ -281,19 +291,28 @@ export const ListDiscoveryOperationsRequest =
       T.HttpQuery("method"),
     ),
     order: Schema.optional(
-      Schema.Literals([
-        "host",
-        "method",
-        "endpoint",
-        "traffic_stats.requests",
-        "traffic_stats.last_updated",
+      Schema.Union([
+        Schema.Literals([
+          "host",
+          "method",
+          "endpoint",
+          "traffic_stats.requests",
+          "traffic_stats.last_updated",
+        ]),
+        Schema.String,
       ]),
     ).pipe(T.HttpQuery("order")),
     origin: Schema.optional(
-      Schema.Literals(["ML", "SessionIdentifier", "LabelDiscovery"]),
+      Schema.Union([
+        Schema.Literals(["ML", "SessionIdentifier", "LabelDiscovery"]),
+        Schema.String,
+      ]),
     ).pipe(T.HttpQuery("origin")),
     state: Schema.optional(
-      Schema.Literals(["review", "saved", "ignored"]),
+      Schema.Union([
+        Schema.Literals(["review", "saved", "ignored"]),
+        Schema.String,
+      ]),
     ).pipe(T.HttpQuery("state")),
   }).pipe(
     T.Http({
@@ -317,9 +336,10 @@ export interface ListDiscoveryOperationsResponse {
       | "DELETE"
       | "CONNECT"
       | "PATCH"
-      | "TRACE";
-    origin: ("ML" | "SessionIdentifier" | "LabelDiscovery")[];
-    state: "review" | "saved" | "ignored";
+      | "TRACE"
+      | (string & {});
+    origin: ("ML" | "SessionIdentifier" | "LabelDiscovery" | (string & {}))[];
+    state: "review" | "saved" | "ignored" | (string & {});
     features?: {
       trafficStats?: {
         lastUpdated: string;
@@ -344,21 +364,30 @@ export const ListDiscoveryOperationsResponse =
         endpoint: Schema.String,
         host: Schema.String,
         lastUpdated: Schema.String,
-        method: Schema.Literals([
-          "GET",
-          "POST",
-          "HEAD",
-          "OPTIONS",
-          "PUT",
-          "DELETE",
-          "CONNECT",
-          "PATCH",
-          "TRACE",
+        method: Schema.Union([
+          Schema.Literals([
+            "GET",
+            "POST",
+            "HEAD",
+            "OPTIONS",
+            "PUT",
+            "DELETE",
+            "CONNECT",
+            "PATCH",
+            "TRACE",
+          ]),
+          Schema.String,
         ]),
         origin: Schema.Array(
-          Schema.Literals(["ML", "SessionIdentifier", "LabelDiscovery"]),
+          Schema.Union([
+            Schema.Literals(["ML", "SessionIdentifier", "LabelDiscovery"]),
+            Schema.String,
+          ]),
         ),
-        state: Schema.Literals(["review", "saved", "ignored"]),
+        state: Schema.Union([
+          Schema.Literals(["review", "saved", "ignored"]),
+          Schema.String,
+        ]),
         features: Schema.optional(
           Schema.Union([
             Schema.Struct({
@@ -444,14 +473,16 @@ export interface PatchDiscoveryOperationRequest {
   /** Path param: Identifier. */
   zoneId: string;
   /** Body param: Mark state of operation in API Discovery  - `review` - Mark operation as for review - `ignored` - Mark operation as ignored */
-  state?: "review" | "ignored";
+  state?: "review" | "ignored" | (string & {});
 }
 
 export const PatchDiscoveryOperationRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operationId: Schema.String.pipe(T.HttpPath("operationId")),
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    state: Schema.optional(Schema.Literals(["review", "ignored"])),
+    state: Schema.optional(
+      Schema.Union([Schema.Literals(["review", "ignored"]), Schema.String]),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -461,14 +492,17 @@ export const PatchDiscoveryOperationRequest =
 
 export interface PatchDiscoveryOperationResponse {
   /** State of operation in API Discovery  - `review` - Operation is not saved into API Shield Endpoint Management - `saved` - Operation is saved into API Shield Endpoint Management - `ignored` - Operation  */
-  state?: "review" | "saved" | "ignored" | null;
+  state?: "review" | "saved" | "ignored" | (string & {}) | null;
 }
 
 export const PatchDiscoveryOperationResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(
       Schema.Union([
-        Schema.Literals(["review", "saved", "ignored"]),
+        Schema.Union([
+          Schema.Literals(["review", "saved", "ignored"]),
+          Schema.String,
+        ]),
         Schema.Null,
       ]),
     ),
@@ -595,7 +629,7 @@ export interface ListLabelsRequest {
   page?: number;
   perPage?: number;
   /** Query param: Direction to order results. */
-  direction?: "asc" | "desc";
+  direction?: "asc" | "desc" | (string & {});
   /** Query param: Filter for labels where the name or description matches using substring match */
   filter?: string;
   /** Query param: Field to order by */
@@ -604,9 +638,10 @@ export interface ListLabelsRequest {
     | "description"
     | "created_at"
     | "last_updated"
-    | "mapped_resources.operations";
+    | "mapped_resources.operations"
+    | (string & {});
   /** Query param: Filter for labels with source */
-  source?: "user" | "managed";
+  source?: "user" | "managed" | (string & {});
   /** Query param: Include `mapped_resources` for each label */
   withMappedResourceCounts?: boolean;
 }
@@ -615,22 +650,25 @@ export const ListLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
   perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-  direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-    T.HttpQuery("direction"),
-  ),
+  direction: Schema.optional(
+    Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+  ).pipe(T.HttpQuery("direction")),
   filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   order: Schema.optional(
-    Schema.Literals([
-      "name",
-      "description",
-      "created_at",
-      "last_updated",
-      "mapped_resources.operations",
+    Schema.Union([
+      Schema.Literals([
+        "name",
+        "description",
+        "created_at",
+        "last_updated",
+        "mapped_resources.operations",
+      ]),
+      Schema.String,
     ]),
   ).pipe(T.HttpQuery("order")),
-  source: Schema.optional(Schema.Literals(["user", "managed"])).pipe(
-    T.HttpQuery("source"),
-  ),
+  source: Schema.optional(
+    Schema.Union([Schema.Literals(["user", "managed"]), Schema.String]),
+  ).pipe(T.HttpQuery("source")),
   withMappedResourceCounts: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("with_mapped_resource_counts"),
   ),
@@ -645,7 +683,7 @@ export interface ListLabelsResponse {
     lastUpdated: string;
     metadata: unknown;
     name: string;
-    source: "user" | "managed";
+    source: "user" | "managed" | (string & {});
     mappedResources?: unknown | null;
   }[];
   resultInfo?: {
@@ -664,7 +702,10 @@ export const ListLabelsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastUpdated: Schema.String,
       metadata: Schema.Unknown,
       name: Schema.String,
-      source: Schema.Literals(["user", "managed"]),
+      source: Schema.Union([
+        Schema.Literals(["user", "managed"]),
+        Schema.String,
+      ]),
       mappedResources: Schema.optional(
         Schema.Union([Schema.Unknown, Schema.Null]),
       ),
@@ -759,7 +800,7 @@ export interface GetLabelManagedResponse {
   /** The name of the label */
   name: string;
   /** - `user` - label is owned by the user - `managed` - label is owned by cloudflare */
-  source: "user" | "managed";
+  source: "user" | "managed" | (string & {});
   /** Provides counts of what resources are linked to this label */
   mappedResources?: unknown | null;
 }
@@ -771,7 +812,7 @@ export const GetLabelManagedResponse =
     lastUpdated: Schema.String,
     metadata: Schema.Unknown,
     name: Schema.String,
-    source: Schema.Literals(["user", "managed"]),
+    source: Schema.Union([Schema.Literals(["user", "managed"]), Schema.String]),
     mappedResources: Schema.optional(
       Schema.Union([Schema.Unknown, Schema.Null]),
     ),
@@ -842,7 +883,7 @@ export interface PutLabelManagedResourceOperationResponse {
   /** The name of the label */
   name: string;
   /** - `user` - label is owned by the user - `managed` - label is owned by cloudflare */
-  source: "user" | "managed";
+  source: "user" | "managed" | (string & {});
   /** Provides counts of what resources are linked to this label */
   mappedResources?: unknown | null;
 }
@@ -854,7 +895,7 @@ export const PutLabelManagedResourceOperationResponse =
     lastUpdated: Schema.String,
     metadata: Schema.Unknown,
     name: Schema.String,
-    source: Schema.Literals(["user", "managed"]),
+    source: Schema.Union([Schema.Literals(["user", "managed"]), Schema.String]),
     mappedResources: Schema.optional(
       Schema.Union([Schema.Unknown, Schema.Null]),
     ),
@@ -922,7 +963,7 @@ export interface GetLabelUserResponse {
   /** The name of the label */
   name: string;
   /** - `user` - label is owned by the user - `managed` - label is owned by cloudflare */
-  source: "user" | "managed";
+  source: "user" | "managed" | (string & {});
   /** Provides counts of what resources are linked to this label */
   mappedResources?: unknown | null;
 }
@@ -933,7 +974,7 @@ export const GetLabelUserResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   lastUpdated: Schema.String,
   metadata: Schema.Unknown,
   name: Schema.String,
-  source: Schema.Literals(["user", "managed"]),
+  source: Schema.Union([Schema.Literals(["user", "managed"]), Schema.String]),
   mappedResources: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
 })
   .pipe(
@@ -996,7 +1037,7 @@ export interface PutLabelUserResponse {
   /** The name of the label */
   name: string;
   /** - `user` - label is owned by the user - `managed` - label is owned by cloudflare */
-  source: "user" | "managed";
+  source: "user" | "managed" | (string & {});
 }
 
 export const PutLabelUserResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1005,7 +1046,7 @@ export const PutLabelUserResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   lastUpdated: Schema.String,
   metadata: Schema.Unknown,
   name: Schema.String,
-  source: Schema.Literals(["user", "managed"]),
+  source: Schema.Union([Schema.Literals(["user", "managed"]), Schema.String]),
 })
   .pipe(
     Schema.encodeKeys({
@@ -1066,7 +1107,7 @@ export interface PatchLabelUserResponse {
   /** The name of the label */
   name: string;
   /** - `user` - label is owned by the user - `managed` - label is owned by cloudflare */
-  source: "user" | "managed";
+  source: "user" | "managed" | (string & {});
 }
 
 export const PatchLabelUserResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -1076,7 +1117,7 @@ export const PatchLabelUserResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     lastUpdated: Schema.String,
     metadata: Schema.Unknown,
     name: Schema.String,
-    source: Schema.Literals(["user", "managed"]),
+    source: Schema.Union([Schema.Literals(["user", "managed"]), Schema.String]),
   },
 )
   .pipe(
@@ -1134,7 +1175,7 @@ export interface DeleteLabelUserResponse {
   /** The name of the label */
   name: string;
   /** - `user` - label is owned by the user - `managed` - label is owned by cloudflare */
-  source: "user" | "managed";
+  source: "user" | "managed" | (string & {});
 }
 
 export const DeleteLabelUserResponse =
@@ -1144,7 +1185,7 @@ export const DeleteLabelUserResponse =
     lastUpdated: Schema.String,
     metadata: Schema.Unknown,
     name: Schema.String,
-    source: Schema.Literals(["user", "managed"]),
+    source: Schema.Union([Schema.Literals(["user", "managed"]), Schema.String]),
   })
     .pipe(
       Schema.encodeKeys({
@@ -1204,7 +1245,7 @@ export interface BulkCreateLabelUsersResponse {
     lastUpdated: string;
     metadata: unknown;
     name: string;
-    source: "user" | "managed";
+    source: "user" | "managed" | (string & {});
   }[];
 }
 
@@ -1217,7 +1258,10 @@ export const BulkCreateLabelUsersResponse =
         lastUpdated: Schema.String,
         metadata: Schema.Unknown,
         name: Schema.String,
-        source: Schema.Literals(["user", "managed"]),
+        source: Schema.Union([
+          Schema.Literals(["user", "managed"]),
+          Schema.String,
+        ]),
       }).pipe(
         Schema.encodeKeys({
           createdAt: "created_at",
@@ -1270,7 +1314,7 @@ export interface BulkDeleteLabelUsersResponse {
     lastUpdated: string;
     metadata: unknown;
     name: string;
-    source: "user" | "managed";
+    source: "user" | "managed" | (string & {});
   }[];
 }
 
@@ -1283,7 +1327,10 @@ export const BulkDeleteLabelUsersResponse =
         lastUpdated: Schema.String,
         metadata: Schema.Unknown,
         name: Schema.String,
-        source: Schema.Literals(["user", "managed"]),
+        source: Schema.Union([
+          Schema.Literals(["user", "managed"]),
+          Schema.String,
+        ]),
       }).pipe(
         Schema.encodeKeys({
           createdAt: "created_at",
@@ -1352,7 +1399,7 @@ export interface PutLabelUserResourceOperationResponse {
   /** The name of the label */
   name: string;
   /** - `user` - label is owned by the user - `managed` - label is owned by cloudflare */
-  source: "user" | "managed";
+  source: "user" | "managed" | (string & {});
   /** Provides counts of what resources are linked to this label */
   mappedResources?: unknown | null;
 }
@@ -1364,7 +1411,7 @@ export const PutLabelUserResourceOperationResponse =
     lastUpdated: Schema.String,
     metadata: Schema.Unknown,
     name: Schema.String,
-    source: Schema.Literals(["user", "managed"]),
+    source: Schema.Union([Schema.Literals(["user", "managed"]), Schema.String]),
     mappedResources: Schema.optional(
       Schema.Union([Schema.Unknown, Schema.Null]),
     ),
@@ -1406,7 +1453,12 @@ export interface GetOperationRequest {
   /** Path param: Identifier. */
   zoneId: string;
   /** Query param: Add feature(s) to the results. The feature name that is given here corresponds to the resulting feature object. Have a look at the top-level object description for more details on the spe */
-  feature?: ("thresholds" | "parameter_schemas" | "schema_info")[];
+  feature?: (
+    | "thresholds"
+    | "parameter_schemas"
+    | "schema_info"
+    | (string & {})
+  )[];
   /** Query param: When true, includes OpenAPI schemas (both uploaded and learned) for the operation in the response. Due to the conversion overhead, this parameter is only supported on single-operation ret */
   withSchemas?: boolean;
 }
@@ -1416,7 +1468,10 @@ export const GetOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   feature: Schema.optional(
     Schema.Array(
-      Schema.Literals(["thresholds", "parameter_schemas", "schema_info"]),
+      Schema.Union([
+        Schema.Literals(["thresholds", "parameter_schemas", "schema_info"]),
+        Schema.String,
+      ]),
     ),
   ).pipe(T.HttpQuery("feature")),
   withSchemas: Schema.optional(Schema.Boolean).pipe(
@@ -1445,7 +1500,8 @@ export interface GetOperationResponse {
     | "DELETE"
     | "CONNECT"
     | "PATCH"
-    | "TRACE";
+    | "TRACE"
+    | (string & {});
   /** UUID. */
   operationId: string;
   features?:
@@ -1520,16 +1576,19 @@ export const GetOperationResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   endpoint: Schema.String,
   host: Schema.String,
   lastUpdated: Schema.String,
-  method: Schema.Literals([
-    "GET",
-    "POST",
-    "HEAD",
-    "OPTIONS",
-    "PUT",
-    "DELETE",
-    "CONNECT",
-    "PATCH",
-    "TRACE",
+  method: Schema.Union([
+    Schema.Literals([
+      "GET",
+      "POST",
+      "HEAD",
+      "OPTIONS",
+      "PUT",
+      "DELETE",
+      "CONNECT",
+      "PATCH",
+      "TRACE",
+    ]),
+    Schema.String,
   ]),
   operationId: Schema.String,
   features: Schema.optional(
@@ -1847,30 +1906,38 @@ export interface ListOperationsRequest {
   page?: number;
   perPage?: number;
   /** Query param: Direction to order results. */
-  direction?: "asc" | "desc";
+  direction?: "asc" | "desc" | (string & {});
   /** Query param: Filter results to only include endpoints containing this pattern. */
   endpoint?: string;
   /** Query param: Add feature(s) to the results. The feature name that is given here corresponds to the resulting feature object. Have a look at the top-level object description for more details on the spe */
-  feature?: ("thresholds" | "parameter_schemas" | "schema_info")[];
+  feature?: (
+    | "thresholds"
+    | "parameter_schemas"
+    | "schema_info"
+    | (string & {})
+  )[];
   /** Query param: Filter results to only include the specified hosts. */
   host?: string[];
   /** Query param: Filter results to only include the specified HTTP methods. */
   method?: string[];
   /** Query param: Field to order by. When requesting a feature, the feature keys are available for ordering as well, e.g., `thresholds.suggested_threshold`. */
-  order?: "method" | "host" | "endpoint" | "thresholds.$key";
+  order?: "method" | "host" | "endpoint" | "thresholds.$key" | (string & {});
 }
 
 export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
   perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-  direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-    T.HttpQuery("direction"),
-  ),
+  direction: Schema.optional(
+    Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+  ).pipe(T.HttpQuery("direction")),
   endpoint: Schema.optional(Schema.String).pipe(T.HttpQuery("endpoint")),
   feature: Schema.optional(
     Schema.Array(
-      Schema.Literals(["thresholds", "parameter_schemas", "schema_info"]),
+      Schema.Union([
+        Schema.Literals(["thresholds", "parameter_schemas", "schema_info"]),
+        Schema.String,
+      ]),
     ),
   ).pipe(T.HttpQuery("feature")),
   host: Schema.optional(Schema.Array(Schema.String)).pipe(T.HttpQuery("host")),
@@ -1878,7 +1945,10 @@ export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.HttpQuery("method"),
   ),
   order: Schema.optional(
-    Schema.Literals(["method", "host", "endpoint", "thresholds.$key"]),
+    Schema.Union([
+      Schema.Literals(["method", "host", "endpoint", "thresholds.$key"]),
+      Schema.String,
+    ]),
   ).pipe(T.HttpQuery("order")),
 }).pipe(
   T.Http({ method: "GET", path: "/zones/{zone_id}/api_gateway/operations" }),
@@ -1898,7 +1968,8 @@ export interface ListOperationsResponse {
       | "DELETE"
       | "CONNECT"
       | "PATCH"
-      | "TRACE";
+      | "TRACE"
+      | (string & {});
     operationId: string;
     features?:
       | {
@@ -1971,16 +2042,19 @@ export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         endpoint: Schema.String,
         host: Schema.String,
         lastUpdated: Schema.String,
-        method: Schema.Literals([
-          "GET",
-          "POST",
-          "HEAD",
-          "OPTIONS",
-          "PUT",
-          "DELETE",
-          "CONNECT",
-          "PATCH",
-          "TRACE",
+        method: Schema.Union([
+          Schema.Literals([
+            "GET",
+            "POST",
+            "HEAD",
+            "OPTIONS",
+            "PUT",
+            "DELETE",
+            "CONNECT",
+            "PATCH",
+            "TRACE",
+          ]),
+          Schema.String,
         ]),
         operationId: Schema.String,
         features: Schema.optional(
@@ -2313,7 +2387,8 @@ export interface CreateOperationRequest {
     | "DELETE"
     | "CONNECT"
     | "PATCH"
-    | "TRACE";
+    | "TRACE"
+    | (string & {});
 }
 
 export const CreateOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -2321,16 +2396,19 @@ export const CreateOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     endpoint: Schema.String,
     host: Schema.String,
-    method: Schema.Literals([
-      "GET",
-      "POST",
-      "HEAD",
-      "OPTIONS",
-      "PUT",
-      "DELETE",
-      "CONNECT",
-      "PATCH",
-      "TRACE",
+    method: Schema.Union([
+      Schema.Literals([
+        "GET",
+        "POST",
+        "HEAD",
+        "OPTIONS",
+        "PUT",
+        "DELETE",
+        "CONNECT",
+        "PATCH",
+        "TRACE",
+      ]),
+      Schema.String,
     ]),
   },
 ).pipe(
@@ -2356,7 +2434,8 @@ export interface CreateOperationResponse {
     | "DELETE"
     | "CONNECT"
     | "PATCH"
-    | "TRACE";
+    | "TRACE"
+    | (string & {});
   /** UUID. */
   operationId: string;
   features?:
@@ -2432,16 +2511,19 @@ export const CreateOperationResponse =
     endpoint: Schema.String,
     host: Schema.String,
     lastUpdated: Schema.String,
-    method: Schema.Literals([
-      "GET",
-      "POST",
-      "HEAD",
-      "OPTIONS",
-      "PUT",
-      "DELETE",
-      "CONNECT",
-      "PATCH",
-      "TRACE",
+    method: Schema.Union([
+      Schema.Literals([
+        "GET",
+        "POST",
+        "HEAD",
+        "OPTIONS",
+        "PUT",
+        "DELETE",
+        "CONNECT",
+        "PATCH",
+        "TRACE",
+      ]),
+      Schema.String,
     ]),
     operationId: Schema.String,
     features: Schema.optional(
@@ -2892,7 +2974,8 @@ export interface BulkCreateOperationsRequest {
       | "DELETE"
       | "CONNECT"
       | "PATCH"
-      | "TRACE";
+      | "TRACE"
+      | (string & {});
   }[];
 }
 
@@ -2903,16 +2986,19 @@ export const BulkCreateOperationsRequest =
       Schema.Struct({
         endpoint: Schema.String,
         host: Schema.String,
-        method: Schema.Literals([
-          "GET",
-          "POST",
-          "HEAD",
-          "OPTIONS",
-          "PUT",
-          "DELETE",
-          "CONNECT",
-          "PATCH",
-          "TRACE",
+        method: Schema.Union([
+          Schema.Literals([
+            "GET",
+            "POST",
+            "HEAD",
+            "OPTIONS",
+            "PUT",
+            "DELETE",
+            "CONNECT",
+            "PATCH",
+            "TRACE",
+          ]),
+          Schema.String,
         ]),
       }),
     ).pipe(T.HttpBody()),
@@ -2934,7 +3020,8 @@ export interface BulkCreateOperationsResponse {
       | "DELETE"
       | "CONNECT"
       | "PATCH"
-      | "TRACE";
+      | "TRACE"
+      | (string & {});
     operationId: string;
     features?:
       | {
@@ -3001,16 +3088,19 @@ export const BulkCreateOperationsResponse =
         endpoint: Schema.String,
         host: Schema.String,
         lastUpdated: Schema.String,
-        method: Schema.Literals([
-          "GET",
-          "POST",
-          "HEAD",
-          "OPTIONS",
-          "PUT",
-          "DELETE",
-          "CONNECT",
-          "PATCH",
-          "TRACE",
+        method: Schema.Union([
+          Schema.Literals([
+            "GET",
+            "POST",
+            "HEAD",
+            "OPTIONS",
+            "PUT",
+            "DELETE",
+            "CONNECT",
+            "PATCH",
+            "TRACE",
+          ]),
+          Schema.String,
         ]),
         operationId: Schema.String,
         features: Schema.optional(
@@ -3445,7 +3535,8 @@ export interface CreateOperationLabelResponse {
     | "DELETE"
     | "CONNECT"
     | "PATCH"
-    | "TRACE";
+    | "TRACE"
+    | (string & {});
   /** UUID. */
   operationId: string;
   labels?:
@@ -3455,7 +3546,7 @@ export interface CreateOperationLabelResponse {
         lastUpdated: string;
         metadata: unknown;
         name: string;
-        source: "user" | "managed";
+        source: "user" | "managed" | (string & {});
       }[]
     | null;
 }
@@ -3465,16 +3556,19 @@ export const CreateOperationLabelResponse =
     endpoint: Schema.String,
     host: Schema.String,
     lastUpdated: Schema.String,
-    method: Schema.Literals([
-      "GET",
-      "POST",
-      "HEAD",
-      "OPTIONS",
-      "PUT",
-      "DELETE",
-      "CONNECT",
-      "PATCH",
-      "TRACE",
+    method: Schema.Union([
+      Schema.Literals([
+        "GET",
+        "POST",
+        "HEAD",
+        "OPTIONS",
+        "PUT",
+        "DELETE",
+        "CONNECT",
+        "PATCH",
+        "TRACE",
+      ]),
+      Schema.String,
     ]),
     operationId: Schema.String,
     labels: Schema.optional(
@@ -3486,7 +3580,10 @@ export const CreateOperationLabelResponse =
             lastUpdated: Schema.String,
             metadata: Schema.Unknown,
             name: Schema.String,
-            source: Schema.Literals(["user", "managed"]),
+            source: Schema.Union([
+              Schema.Literals(["user", "managed"]),
+              Schema.String,
+            ]),
           }).pipe(
             Schema.encodeKeys({
               createdAt: "created_at",
@@ -3568,7 +3665,8 @@ export interface UpdateOperationLabelResponse {
     | "DELETE"
     | "CONNECT"
     | "PATCH"
-    | "TRACE";
+    | "TRACE"
+    | (string & {});
   /** UUID. */
   operationId: string;
   labels?:
@@ -3578,7 +3676,7 @@ export interface UpdateOperationLabelResponse {
         lastUpdated: string;
         metadata: unknown;
         name: string;
-        source: "user" | "managed";
+        source: "user" | "managed" | (string & {});
       }[]
     | null;
 }
@@ -3588,16 +3686,19 @@ export const UpdateOperationLabelResponse =
     endpoint: Schema.String,
     host: Schema.String,
     lastUpdated: Schema.String,
-    method: Schema.Literals([
-      "GET",
-      "POST",
-      "HEAD",
-      "OPTIONS",
-      "PUT",
-      "DELETE",
-      "CONNECT",
-      "PATCH",
-      "TRACE",
+    method: Schema.Union([
+      Schema.Literals([
+        "GET",
+        "POST",
+        "HEAD",
+        "OPTIONS",
+        "PUT",
+        "DELETE",
+        "CONNECT",
+        "PATCH",
+        "TRACE",
+      ]),
+      Schema.String,
     ]),
     operationId: Schema.String,
     labels: Schema.optional(
@@ -3609,7 +3710,10 @@ export const UpdateOperationLabelResponse =
             lastUpdated: Schema.String,
             metadata: Schema.Unknown,
             name: Schema.String,
-            source: Schema.Literals(["user", "managed"]),
+            source: Schema.Union([
+              Schema.Literals(["user", "managed"]),
+              Schema.String,
+            ]),
           }).pipe(
             Schema.encodeKeys({
               createdAt: "created_at",
@@ -3685,7 +3789,8 @@ export interface DeleteOperationLabelResponse {
     | "DELETE"
     | "CONNECT"
     | "PATCH"
-    | "TRACE";
+    | "TRACE"
+    | (string & {});
   /** UUID. */
   operationId: string;
   labels?:
@@ -3695,7 +3800,7 @@ export interface DeleteOperationLabelResponse {
         lastUpdated: string;
         metadata: unknown;
         name: string;
-        source: "user" | "managed";
+        source: "user" | "managed" | (string & {});
       }[]
     | null;
 }
@@ -3705,16 +3810,19 @@ export const DeleteOperationLabelResponse =
     endpoint: Schema.String,
     host: Schema.String,
     lastUpdated: Schema.String,
-    method: Schema.Literals([
-      "GET",
-      "POST",
-      "HEAD",
-      "OPTIONS",
-      "PUT",
-      "DELETE",
-      "CONNECT",
-      "PATCH",
-      "TRACE",
+    method: Schema.Union([
+      Schema.Literals([
+        "GET",
+        "POST",
+        "HEAD",
+        "OPTIONS",
+        "PUT",
+        "DELETE",
+        "CONNECT",
+        "PATCH",
+        "TRACE",
+      ]),
+      Schema.String,
     ]),
     operationId: Schema.String,
     labels: Schema.optional(
@@ -3726,7 +3834,10 @@ export const DeleteOperationLabelResponse =
             lastUpdated: Schema.String,
             metadata: Schema.Unknown,
             name: Schema.String,
-            source: Schema.Literals(["user", "managed"]),
+            source: Schema.Union([
+              Schema.Literals(["user", "managed"]),
+              Schema.String,
+            ]),
           }).pipe(
             Schema.encodeKeys({
               createdAt: "created_at",
@@ -3819,7 +3930,8 @@ export interface BulkCreateOperationLabelsResponse {
       | "DELETE"
       | "CONNECT"
       | "PATCH"
-      | "TRACE";
+      | "TRACE"
+      | (string & {});
     operationId: string;
     labels?:
       | {
@@ -3828,7 +3940,7 @@ export interface BulkCreateOperationLabelsResponse {
           lastUpdated: string;
           metadata: unknown;
           name: string;
-          source: "user" | "managed";
+          source: "user" | "managed" | (string & {});
         }[]
       | null;
   }[];
@@ -3841,16 +3953,19 @@ export const BulkCreateOperationLabelsResponse =
         endpoint: Schema.String,
         host: Schema.String,
         lastUpdated: Schema.String,
-        method: Schema.Literals([
-          "GET",
-          "POST",
-          "HEAD",
-          "OPTIONS",
-          "PUT",
-          "DELETE",
-          "CONNECT",
-          "PATCH",
-          "TRACE",
+        method: Schema.Union([
+          Schema.Literals([
+            "GET",
+            "POST",
+            "HEAD",
+            "OPTIONS",
+            "PUT",
+            "DELETE",
+            "CONNECT",
+            "PATCH",
+            "TRACE",
+          ]),
+          Schema.String,
         ]),
         operationId: Schema.String,
         labels: Schema.optional(
@@ -3862,7 +3977,10 @@ export const BulkCreateOperationLabelsResponse =
                 lastUpdated: Schema.String,
                 metadata: Schema.Unknown,
                 name: Schema.String,
-                source: Schema.Literals(["user", "managed"]),
+                source: Schema.Union([
+                  Schema.Literals(["user", "managed"]),
+                  Schema.String,
+                ]),
               }).pipe(
                 Schema.encodeKeys({
                   createdAt: "created_at",
@@ -3953,7 +4071,8 @@ export interface BulkUpdateOperationLabelsResponse {
       | "DELETE"
       | "CONNECT"
       | "PATCH"
-      | "TRACE";
+      | "TRACE"
+      | (string & {});
     operationId: string;
     labels?:
       | {
@@ -3962,7 +4081,7 @@ export interface BulkUpdateOperationLabelsResponse {
           lastUpdated: string;
           metadata: unknown;
           name: string;
-          source: "user" | "managed";
+          source: "user" | "managed" | (string & {});
         }[]
       | null;
   }[];
@@ -3975,16 +4094,19 @@ export const BulkUpdateOperationLabelsResponse =
         endpoint: Schema.String,
         host: Schema.String,
         lastUpdated: Schema.String,
-        method: Schema.Literals([
-          "GET",
-          "POST",
-          "HEAD",
-          "OPTIONS",
-          "PUT",
-          "DELETE",
-          "CONNECT",
-          "PATCH",
-          "TRACE",
+        method: Schema.Union([
+          Schema.Literals([
+            "GET",
+            "POST",
+            "HEAD",
+            "OPTIONS",
+            "PUT",
+            "DELETE",
+            "CONNECT",
+            "PATCH",
+            "TRACE",
+          ]),
+          Schema.String,
         ]),
         operationId: Schema.String,
         labels: Schema.optional(
@@ -3996,7 +4118,10 @@ export const BulkUpdateOperationLabelsResponse =
                 lastUpdated: Schema.String,
                 metadata: Schema.Unknown,
                 name: Schema.String,
-                source: Schema.Literals(["user", "managed"]),
+                source: Schema.Union([
+                  Schema.Literals(["user", "managed"]),
+                  Schema.String,
+                ]),
               }).pipe(
                 Schema.encodeKeys({
                   createdAt: "created_at",
@@ -4070,7 +4195,8 @@ export interface BulkDeleteOperationLabelsResponse {
       | "DELETE"
       | "CONNECT"
       | "PATCH"
-      | "TRACE";
+      | "TRACE"
+      | (string & {});
     operationId: string;
     labels?:
       | {
@@ -4079,7 +4205,7 @@ export interface BulkDeleteOperationLabelsResponse {
           lastUpdated: string;
           metadata: unknown;
           name: string;
-          source: "user" | "managed";
+          source: "user" | "managed" | (string & {});
         }[]
       | null;
   }[];
@@ -4092,16 +4218,19 @@ export const BulkDeleteOperationLabelsResponse =
         endpoint: Schema.String,
         host: Schema.String,
         lastUpdated: Schema.String,
-        method: Schema.Literals([
-          "GET",
-          "POST",
-          "HEAD",
-          "OPTIONS",
-          "PUT",
-          "DELETE",
-          "CONNECT",
-          "PATCH",
-          "TRACE",
+        method: Schema.Union([
+          Schema.Literals([
+            "GET",
+            "POST",
+            "HEAD",
+            "OPTIONS",
+            "PUT",
+            "DELETE",
+            "CONNECT",
+            "PATCH",
+            "TRACE",
+          ]),
+          Schema.String,
         ]),
         operationId: Schema.String,
         labels: Schema.optional(
@@ -4113,7 +4242,10 @@ export const BulkDeleteOperationLabelsResponse =
                 lastUpdated: Schema.String,
                 metadata: Schema.Unknown,
                 name: Schema.String,
-                source: Schema.Literals(["user", "managed"]),
+                source: Schema.Union([
+                  Schema.Literals(["user", "managed"]),
+                  Schema.String,
+                ]),
               }).pipe(
                 Schema.encodeKeys({
                   createdAt: "created_at",
@@ -4338,7 +4470,12 @@ export interface ListSchemasRequest {
   /** Path param: Identifier. */
   zoneId: string;
   /** Query param: Add feature(s) to the results. The feature name that is given here corresponds to the resulting feature object. Have a look at the top-level object description for more details on the spe */
-  feature?: ("thresholds" | "parameter_schemas" | "schema_info")[];
+  feature?: (
+    | "thresholds"
+    | "parameter_schemas"
+    | "schema_info"
+    | (string & {})
+  )[];
   /** Query param: Receive schema only for the given host(s). */
   host?: string[];
 }
@@ -4347,7 +4484,10 @@ export const ListSchemasRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   feature: Schema.optional(
     Schema.Array(
-      Schema.Literals(["thresholds", "parameter_schemas", "schema_info"]),
+      Schema.Union([
+        Schema.Literals(["thresholds", "parameter_schemas", "schema_info"]),
+        Schema.String,
+      ]),
     ),
   ).pipe(T.HttpQuery("feature")),
   host: Schema.optional(Schema.Array(Schema.String)).pipe(T.HttpQuery("host")),
@@ -4403,7 +4543,12 @@ export const GetSettingSchemaValidationRequest =
 
 export interface GetSettingSchemaValidationResponse {
   /** The default mitigation action used when there is no mitigation action defined on the operation  Mitigation actions are as follows:  - `log` - log request when request does not conform to schema - `blo */
-  validationDefaultMitigationAction?: "none" | "log" | "block" | null;
+  validationDefaultMitigationAction?:
+    | "none"
+    | "log"
+    | "block"
+    | (string & {})
+    | null;
   /** When set, this overrides both zone level and operation level mitigation actions.  - `none` will skip running schema validation entirely for the request - `null` indicates that no override is in place */
   validationOverrideMitigationAction?: "none" | null;
 }
@@ -4411,7 +4556,13 @@ export interface GetSettingSchemaValidationResponse {
 export const GetSettingSchemaValidationResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     validationDefaultMitigationAction: Schema.optional(
-      Schema.Union([Schema.Literals(["none", "log", "block"]), Schema.Null]),
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals(["none", "log", "block"]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
     ),
     validationOverrideMitigationAction: Schema.optional(
       Schema.Union([Schema.Literal("none"), Schema.Null]),
@@ -4443,7 +4594,7 @@ export interface PutSettingSchemaValidationRequest {
   /** Path param: Identifier. */
   zoneId: string;
   /** Body param: The default mitigation action used when there is no mitigation action defined on the operation  Mitigation actions are as follows:  - `log` - log request when request does not conform to s */
-  validationDefaultMitigationAction: "none" | "log" | "block";
+  validationDefaultMitigationAction: "none" | "log" | "block" | (string & {});
   /** Body param: When set, this overrides both zone level and operation level mitigation actions.  - `none` will skip running schema validation entirely for the request - `null` indicates that no override  */
   validationOverrideMitigationAction?: "none" | "disable_override" | null;
 }
@@ -4451,10 +4602,9 @@ export interface PutSettingSchemaValidationRequest {
 export const PutSettingSchemaValidationRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    validationDefaultMitigationAction: Schema.Literals([
-      "none",
-      "log",
-      "block",
+    validationDefaultMitigationAction: Schema.Union([
+      Schema.Literals(["none", "log", "block"]),
+      Schema.String,
     ]),
     validationOverrideMitigationAction: Schema.optional(
       Schema.Union([
@@ -4477,7 +4627,12 @@ export const PutSettingSchemaValidationRequest =
 
 export interface PutSettingSchemaValidationResponse {
   /** The default mitigation action used when there is no mitigation action defined on the operation  Mitigation actions are as follows:  - `log` - log request when request does not conform to schema - `blo */
-  validationDefaultMitigationAction?: "none" | "log" | "block" | null;
+  validationDefaultMitigationAction?:
+    | "none"
+    | "log"
+    | "block"
+    | (string & {})
+    | null;
   /** When set, this overrides both zone level and operation level mitigation actions.  - `none` will skip running schema validation entirely for the request - `null` indicates that no override is in place */
   validationOverrideMitigationAction?: "none" | null;
 }
@@ -4485,7 +4640,13 @@ export interface PutSettingSchemaValidationResponse {
 export const PutSettingSchemaValidationResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     validationDefaultMitigationAction: Schema.optional(
-      Schema.Union([Schema.Literals(["none", "log", "block"]), Schema.Null]),
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals(["none", "log", "block"]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
     ),
     validationOverrideMitigationAction: Schema.optional(
       Schema.Union([Schema.Literal("none"), Schema.Null]),
@@ -4554,7 +4715,12 @@ export const PatchSettingSchemaValidationRequest =
 
 export interface PatchSettingSchemaValidationResponse {
   /** The default mitigation action used when there is no mitigation action defined on the operation  Mitigation actions are as follows:  - `log` - log request when request does not conform to schema - `blo */
-  validationDefaultMitigationAction?: "none" | "log" | "block" | null;
+  validationDefaultMitigationAction?:
+    | "none"
+    | "log"
+    | "block"
+    | (string & {})
+    | null;
   /** When set, this overrides both zone level and operation level mitigation actions.  - `none` will skip running schema validation entirely for the request - `null` indicates that no override is in place */
   validationOverrideMitigationAction?: "none" | null;
 }
@@ -4562,7 +4728,13 @@ export interface PatchSettingSchemaValidationResponse {
 export const PatchSettingSchemaValidationResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     validationDefaultMitigationAction: Schema.optional(
-      Schema.Union([Schema.Literals(["none", "log", "block"]), Schema.Null]),
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals(["none", "log", "block"]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
     ),
     validationOverrideMitigationAction: Schema.optional(
       Schema.Union([Schema.Literal("none"), Schema.Null]),
@@ -5189,13 +5361,18 @@ export interface ListUserSchemaOperationsRequest {
   /** Query param: Filter results to only include endpoints containing this pattern. */
   endpoint?: string;
   /** Query param: Add feature(s) to the results. The feature name that is given here corresponds to the resulting feature object. Have a look at the top-level object description for more details on the spe */
-  feature?: ("thresholds" | "parameter_schemas" | "schema_info")[];
+  feature?: (
+    | "thresholds"
+    | "parameter_schemas"
+    | "schema_info"
+    | (string & {})
+  )[];
   /** Query param: Filter results to only include the specified hosts. */
   host?: string[];
   /** Query param: Filter results to only include the specified HTTP methods. */
   method?: string[];
   /** Query param: Filter results by whether operations exist in API Shield Endpoint Management or not. `new` will just return operations from the schema that do not exist in API Shield Endpoint Management. */
-  operationStatus?: "new" | "existing";
+  operationStatus?: "new" | "existing" | (string & {});
 }
 
 export const ListUserSchemaOperationsRequest =
@@ -5207,7 +5384,10 @@ export const ListUserSchemaOperationsRequest =
     endpoint: Schema.optional(Schema.String).pipe(T.HttpQuery("endpoint")),
     feature: Schema.optional(
       Schema.Array(
-        Schema.Literals(["thresholds", "parameter_schemas", "schema_info"]),
+        Schema.Union([
+          Schema.Literals(["thresholds", "parameter_schemas", "schema_info"]),
+          Schema.String,
+        ]),
       ),
     ).pipe(T.HttpQuery("feature")),
     host: Schema.optional(Schema.Array(Schema.String)).pipe(
@@ -5216,9 +5396,9 @@ export const ListUserSchemaOperationsRequest =
     method: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("method"),
     ),
-    operationStatus: Schema.optional(Schema.Literals(["new", "existing"])).pipe(
-      T.HttpQuery("operation_status"),
-    ),
+    operationStatus: Schema.optional(
+      Schema.Union([Schema.Literals(["new", "existing"]), Schema.String]),
+    ).pipe(T.HttpQuery("operation_status")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -5241,7 +5421,8 @@ export interface ListUserSchemaOperationsResponse {
           | "DELETE"
           | "CONNECT"
           | "PATCH"
-          | "TRACE";
+          | "TRACE"
+          | (string & {});
         operationId: string;
         features?:
           | {
@@ -5320,7 +5501,8 @@ export interface ListUserSchemaOperationsResponse {
           | "DELETE"
           | "CONNECT"
           | "PATCH"
-          | "TRACE";
+          | "TRACE"
+          | (string & {});
       }
   )[];
   resultInfo?: {
@@ -5339,16 +5521,19 @@ export const ListUserSchemaOperationsResponse =
           endpoint: Schema.String,
           host: Schema.String,
           lastUpdated: Schema.String,
-          method: Schema.Literals([
-            "GET",
-            "POST",
-            "HEAD",
-            "OPTIONS",
-            "PUT",
-            "DELETE",
-            "CONNECT",
-            "PATCH",
-            "TRACE",
+          method: Schema.Union([
+            Schema.Literals([
+              "GET",
+              "POST",
+              "HEAD",
+              "OPTIONS",
+              "PUT",
+              "DELETE",
+              "CONNECT",
+              "PATCH",
+              "TRACE",
+            ]),
+            Schema.String,
           ]),
           operationId: Schema.String,
           features: Schema.optional(
@@ -5621,16 +5806,19 @@ export const ListUserSchemaOperationsResponse =
         Schema.Struct({
           endpoint: Schema.String,
           host: Schema.String,
-          method: Schema.Literals([
-            "GET",
-            "POST",
-            "HEAD",
-            "OPTIONS",
-            "PUT",
-            "DELETE",
-            "CONNECT",
-            "PATCH",
-            "TRACE",
+          method: Schema.Union([
+            Schema.Literals([
+              "GET",
+              "POST",
+              "HEAD",
+              "OPTIONS",
+              "PUT",
+              "DELETE",
+              "CONNECT",
+              "PATCH",
+              "TRACE",
+            ]),
+            Schema.String,
           ]),
         }),
       ]),

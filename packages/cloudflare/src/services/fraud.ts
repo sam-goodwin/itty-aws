@@ -40,7 +40,7 @@ export interface GetFraudResponse {
     } | null;
   } | null;
   /** Whether Fraud User Profiles is enabled for the zone. */
-  userProfiles?: "enabled" | "disabled" | null;
+  userProfiles?: "enabled" | "disabled" | (string & {}) | null;
   /** List of expressions to detect usernames in write HTTP requests.  - Maximum of 10 expressions. - Omit or set to null to leave unchanged on update. - Provide an empty array `[]` to clear all expressions */
   usernameExpressions?: string[] | null;
 }
@@ -85,7 +85,10 @@ export const GetFraudResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ]),
   ),
   userProfiles: Schema.optional(
-    Schema.Union([Schema.Literals(["enabled", "disabled"]), Schema.Null]),
+    Schema.Union([
+      Schema.Union([Schema.Literals(["enabled", "disabled"]), Schema.String]),
+      Schema.Null,
+    ]),
   ),
   usernameExpressions: Schema.optional(
     Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -122,7 +125,7 @@ export interface PutFraudRequest {
     successCriteria?: { kind: "status_code"; statusCodes?: number[] };
   };
   /** Body param: Whether Fraud User Profiles is enabled for the zone. */
-  userProfiles?: "enabled" | "disabled";
+  userProfiles?: "enabled" | "disabled" | (string & {});
   /** Body param: List of expressions to detect usernames in write HTTP requests.  - Maximum of 10 expressions. - Omit or set to null to leave unchanged on update. - Provide an empty array `[]` to clear all */
   usernameExpressions?: string[];
 }
@@ -154,7 +157,9 @@ export const PutFraudRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-  userProfiles: Schema.optional(Schema.Literals(["enabled", "disabled"])),
+  userProfiles: Schema.optional(
+    Schema.Union([Schema.Literals(["enabled", "disabled"]), Schema.String]),
+  ),
   usernameExpressions: Schema.optional(Schema.Array(Schema.String)),
 }).pipe(
   Schema.encodeKeys({
@@ -178,7 +183,7 @@ export interface PutFraudResponse {
     } | null;
   } | null;
   /** Whether Fraud User Profiles is enabled for the zone. */
-  userProfiles?: "enabled" | "disabled" | null;
+  userProfiles?: "enabled" | "disabled" | (string & {}) | null;
   /** List of expressions to detect usernames in write HTTP requests.  - Maximum of 10 expressions. - Omit or set to null to leave unchanged on update. - Provide an empty array `[]` to clear all expressions */
   usernameExpressions?: string[] | null;
 }
@@ -223,7 +228,10 @@ export const PutFraudResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ]),
   ),
   userProfiles: Schema.optional(
-    Schema.Union([Schema.Literals(["enabled", "disabled"]), Schema.Null]),
+    Schema.Union([
+      Schema.Union([Schema.Literals(["enabled", "disabled"]), Schema.String]),
+      Schema.Null,
+    ]),
   ),
   usernameExpressions: Schema.optional(
     Schema.Union([Schema.Array(Schema.String), Schema.Null]),

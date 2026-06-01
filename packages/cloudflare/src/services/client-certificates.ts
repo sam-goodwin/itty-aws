@@ -72,6 +72,7 @@ export interface GetClientCertificateResponse {
     | "pending_reactivation"
     | "pending_revocation"
     | "revoked"
+    | (string & {})
     | null;
   /** The number of days the Client Certificate will be valid after the issued_on date */
   validityDays?: number | null;
@@ -109,11 +110,14 @@ export const GetClientCertificateResponse =
     state: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     status: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "active",
-          "pending_reactivation",
-          "pending_revocation",
-          "revoked",
+        Schema.Union([
+          Schema.Literals([
+            "active",
+            "pending_reactivation",
+            "pending_revocation",
+            "revoked",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -174,7 +178,8 @@ export interface ListClientCertificatesRequest {
     | "active"
     | "pending_reactivation"
     | "pending_revocation"
-    | "revoked";
+    | "revoked"
+    | (string & {});
 }
 
 export const ListClientCertificatesRequest =
@@ -185,12 +190,15 @@ export const ListClientCertificatesRequest =
     limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
     offset: Schema.optional(Schema.Number).pipe(T.HttpQuery("offset")),
     status: Schema.optional(
-      Schema.Literals([
-        "all",
-        "active",
-        "pending_reactivation",
-        "pending_revocation",
-        "revoked",
+      Schema.Union([
+        Schema.Literals([
+          "all",
+          "active",
+          "pending_reactivation",
+          "pending_revocation",
+          "revoked",
+        ]),
+        Schema.String,
       ]),
     ).pipe(T.HttpQuery("status")),
   }).pipe(
@@ -220,6 +228,7 @@ export interface ListClientCertificatesResponse {
       | "pending_reactivation"
       | "pending_revocation"
       | "revoked"
+      | (string & {})
       | null;
     validityDays?: number | null;
   }[];
@@ -271,11 +280,14 @@ export const ListClientCertificatesResponse =
         state: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         status: Schema.optional(
           Schema.Union([
-            Schema.Literals([
-              "active",
-              "pending_reactivation",
-              "pending_revocation",
-              "revoked",
+            Schema.Union([
+              Schema.Literals([
+                "active",
+                "pending_reactivation",
+                "pending_revocation",
+                "revoked",
+              ]),
+              Schema.String,
             ]),
             Schema.Null,
           ]),
@@ -408,6 +420,7 @@ export interface CreateClientCertificateResponse {
     | "pending_reactivation"
     | "pending_revocation"
     | "revoked"
+    | (string & {})
     | null;
   /** The number of days the Client Certificate will be valid after the issued_on date */
   validityDays?: number | null;
@@ -445,11 +458,14 @@ export const CreateClientCertificateResponse =
     state: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     status: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "active",
-          "pending_reactivation",
-          "pending_revocation",
-          "revoked",
+        Schema.Union([
+          Schema.Literals([
+            "active",
+            "pending_reactivation",
+            "pending_revocation",
+            "revoked",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -554,6 +570,7 @@ export interface PatchClientCertificateResponse {
     | "pending_reactivation"
     | "pending_revocation"
     | "revoked"
+    | (string & {})
     | null;
   /** The number of days the Client Certificate will be valid after the issued_on date */
   validityDays?: number | null;
@@ -591,11 +608,14 @@ export const PatchClientCertificateResponse =
     state: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     status: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "active",
-          "pending_reactivation",
-          "pending_revocation",
-          "revoked",
+        Schema.Union([
+          Schema.Literals([
+            "active",
+            "pending_reactivation",
+            "pending_revocation",
+            "revoked",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -697,6 +717,7 @@ export interface DeleteClientCertificateResponse {
     | "pending_reactivation"
     | "pending_revocation"
     | "revoked"
+    | (string & {})
     | null;
   /** The number of days the Client Certificate will be valid after the issued_on date */
   validityDays?: number | null;
@@ -734,11 +755,14 @@ export const DeleteClientCertificateResponse =
     state: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     status: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "active",
-          "pending_reactivation",
-          "pending_revocation",
-          "revoked",
+        Schema.Union([
+          Schema.Literals([
+            "active",
+            "pending_reactivation",
+            "pending_revocation",
+            "revoked",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),

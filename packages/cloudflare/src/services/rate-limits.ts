@@ -40,6 +40,7 @@ export interface GetRateLimitResponse {
       | "challenge"
       | "js_challenge"
       | "managed_challenge"
+      | (string & {})
       | null;
     response?: { body?: string | null; contentType?: string | null } | null;
     timeout?: number | null;
@@ -55,13 +56,22 @@ export interface GetRateLimitResponse {
     headers?:
       | {
           name?: string | null;
-          op?: "eq" | "ne" | null;
+          op?: "eq" | "ne" | (string & {}) | null;
           value?: string | null;
         }[]
       | null;
     request?: {
       methods?:
-        | ("GET" | "POST" | "PUT" | "DELETE" | "PATCH" | "HEAD" | "_ALL_")[]
+        | (
+            | "GET"
+            | "POST"
+            | "PUT"
+            | "DELETE"
+            | "PATCH"
+            | "HEAD"
+            | "_ALL_"
+            | (string & {})
+          )[]
         | null;
       schemes?: string[] | null;
       url?: string | null;
@@ -81,12 +91,15 @@ export const GetRateLimitResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Struct({
         mode: Schema.optional(
           Schema.Union([
-            Schema.Literals([
-              "simulate",
-              "ban",
-              "challenge",
-              "js_challenge",
-              "managed_challenge",
+            Schema.Union([
+              Schema.Literals([
+                "simulate",
+                "ban",
+                "challenge",
+                "js_challenge",
+                "managed_challenge",
+              ]),
+              Schema.String,
             ]),
             Schema.Null,
           ]),
@@ -135,7 +148,13 @@ export const GetRateLimitResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   Schema.Union([Schema.String, Schema.Null]),
                 ),
                 op: Schema.optional(
-                  Schema.Union([Schema.Literals(["eq", "ne"]), Schema.Null]),
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Literals(["eq", "ne"]),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
                 ),
                 value: Schema.optional(
                   Schema.Union([Schema.String, Schema.Null]),
@@ -151,14 +170,17 @@ export const GetRateLimitResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               methods: Schema.optional(
                 Schema.Union([
                   Schema.Array(
-                    Schema.Literals([
-                      "GET",
-                      "POST",
-                      "PUT",
-                      "DELETE",
-                      "PATCH",
-                      "HEAD",
-                      "_ALL_",
+                    Schema.Union([
+                      Schema.Literals([
+                        "GET",
+                        "POST",
+                        "PUT",
+                        "DELETE",
+                        "PATCH",
+                        "HEAD",
+                        "_ALL_",
+                      ]),
+                      Schema.String,
                     ]),
                   ),
                   Schema.Null,
@@ -230,6 +252,7 @@ export interface ListRateLimitsResponse {
         | "challenge"
         | "js_challenge"
         | "managed_challenge"
+        | (string & {})
         | null;
       response?: { body?: string | null; contentType?: string | null } | null;
       timeout?: number | null;
@@ -241,13 +264,22 @@ export interface ListRateLimitsResponse {
       headers?:
         | {
             name?: string | null;
-            op?: "eq" | "ne" | null;
+            op?: "eq" | "ne" | (string & {}) | null;
             value?: string | null;
           }[]
         | null;
       request?: {
         methods?:
-          | ("GET" | "POST" | "PUT" | "DELETE" | "PATCH" | "HEAD" | "_ALL_")[]
+          | (
+              | "GET"
+              | "POST"
+              | "PUT"
+              | "DELETE"
+              | "PATCH"
+              | "HEAD"
+              | "_ALL_"
+              | (string & {})
+            )[]
           | null;
         schemes?: string[] | null;
         url?: string | null;
@@ -275,12 +307,15 @@ export const ListRateLimitsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             Schema.Struct({
               mode: Schema.optional(
                 Schema.Union([
-                  Schema.Literals([
-                    "simulate",
-                    "ban",
-                    "challenge",
-                    "js_challenge",
-                    "managed_challenge",
+                  Schema.Union([
+                    Schema.Literals([
+                      "simulate",
+                      "ban",
+                      "challenge",
+                      "js_challenge",
+                      "managed_challenge",
+                    ]),
+                    Schema.String,
                   ]),
                   Schema.Null,
                 ]),
@@ -341,7 +376,10 @@ export const ListRateLimitsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                       ),
                       op: Schema.optional(
                         Schema.Union([
-                          Schema.Literals(["eq", "ne"]),
+                          Schema.Union([
+                            Schema.Literals(["eq", "ne"]),
+                            Schema.String,
+                          ]),
                           Schema.Null,
                         ]),
                       ),
@@ -359,14 +397,17 @@ export const ListRateLimitsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                     methods: Schema.optional(
                       Schema.Union([
                         Schema.Array(
-                          Schema.Literals([
-                            "GET",
-                            "POST",
-                            "PUT",
-                            "DELETE",
-                            "PATCH",
-                            "HEAD",
-                            "_ALL_",
+                          Schema.Union([
+                            Schema.Literals([
+                              "GET",
+                              "POST",
+                              "PUT",
+                              "DELETE",
+                              "PATCH",
+                              "HEAD",
+                              "_ALL_",
+                            ]),
+                            Schema.String,
                           ]),
                         ),
                         Schema.Null,
@@ -457,13 +498,18 @@ export interface CreateRateLimitRequest {
       | "ban"
       | "challenge"
       | "js_challenge"
-      | "managed_challenge";
+      | "managed_challenge"
+      | (string & {});
     response?: { body?: string; contentType?: string };
     timeout?: number;
   };
   /** Body param: Determines which traffic the rate limit counts towards the threshold. */
   match: {
-    headers?: { name?: string; op?: "eq" | "ne"; value?: string }[];
+    headers?: {
+      name?: string;
+      op?: "eq" | "ne" | (string & {});
+      value?: string;
+    }[];
     request?: {
       methods?: (
         | "GET"
@@ -473,6 +519,7 @@ export interface CreateRateLimitRequest {
         | "PATCH"
         | "HEAD"
         | "_ALL_"
+        | (string & {})
       )[];
       schemes?: string[];
       url?: string;
@@ -490,12 +537,15 @@ export const CreateRateLimitRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     action: Schema.Struct({
       mode: Schema.optional(
-        Schema.Literals([
-          "simulate",
-          "ban",
-          "challenge",
-          "js_challenge",
-          "managed_challenge",
+        Schema.Union([
+          Schema.Literals([
+            "simulate",
+            "ban",
+            "challenge",
+            "js_challenge",
+            "managed_challenge",
+          ]),
+          Schema.String,
         ]),
       ),
       response: Schema.optional(
@@ -513,7 +563,9 @@ export const CreateRateLimitRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         Schema.Array(
           Schema.Struct({
             name: Schema.optional(Schema.String),
-            op: Schema.optional(Schema.Literals(["eq", "ne"])),
+            op: Schema.optional(
+              Schema.Union([Schema.Literals(["eq", "ne"]), Schema.String]),
+            ),
             value: Schema.optional(Schema.String),
           }),
         ),
@@ -522,14 +574,17 @@ export const CreateRateLimitRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         Schema.Struct({
           methods: Schema.optional(
             Schema.Array(
-              Schema.Literals([
-                "GET",
-                "POST",
-                "PUT",
-                "DELETE",
-                "PATCH",
-                "HEAD",
-                "_ALL_",
+              Schema.Union([
+                Schema.Literals([
+                  "GET",
+                  "POST",
+                  "PUT",
+                  "DELETE",
+                  "PATCH",
+                  "HEAD",
+                  "_ALL_",
+                ]),
+                Schema.String,
               ]),
             ),
           ),
@@ -561,6 +616,7 @@ export interface CreateRateLimitResponse {
       | "challenge"
       | "js_challenge"
       | "managed_challenge"
+      | (string & {})
       | null;
     response?: { body?: string | null; contentType?: string | null } | null;
     timeout?: number | null;
@@ -576,13 +632,22 @@ export interface CreateRateLimitResponse {
     headers?:
       | {
           name?: string | null;
-          op?: "eq" | "ne" | null;
+          op?: "eq" | "ne" | (string & {}) | null;
           value?: string | null;
         }[]
       | null;
     request?: {
       methods?:
-        | ("GET" | "POST" | "PUT" | "DELETE" | "PATCH" | "HEAD" | "_ALL_")[]
+        | (
+            | "GET"
+            | "POST"
+            | "PUT"
+            | "DELETE"
+            | "PATCH"
+            | "HEAD"
+            | "_ALL_"
+            | (string & {})
+          )[]
         | null;
       schemes?: string[] | null;
       url?: string | null;
@@ -603,12 +668,15 @@ export const CreateRateLimitResponse =
         Schema.Struct({
           mode: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "simulate",
-                "ban",
-                "challenge",
-                "js_challenge",
-                "managed_challenge",
+              Schema.Union([
+                Schema.Literals([
+                  "simulate",
+                  "ban",
+                  "challenge",
+                  "js_challenge",
+                  "managed_challenge",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -662,7 +730,13 @@ export const CreateRateLimitResponse =
                     Schema.Union([Schema.String, Schema.Null]),
                   ),
                   op: Schema.optional(
-                    Schema.Union([Schema.Literals(["eq", "ne"]), Schema.Null]),
+                    Schema.Union([
+                      Schema.Union([
+                        Schema.Literals(["eq", "ne"]),
+                        Schema.String,
+                      ]),
+                      Schema.Null,
+                    ]),
                   ),
                   value: Schema.optional(
                     Schema.Union([Schema.String, Schema.Null]),
@@ -678,14 +752,17 @@ export const CreateRateLimitResponse =
                 methods: Schema.optional(
                   Schema.Union([
                     Schema.Array(
-                      Schema.Literals([
-                        "GET",
-                        "POST",
-                        "PUT",
-                        "DELETE",
-                        "PATCH",
-                        "HEAD",
-                        "_ALL_",
+                      Schema.Union([
+                        Schema.Literals([
+                          "GET",
+                          "POST",
+                          "PUT",
+                          "DELETE",
+                          "PATCH",
+                          "HEAD",
+                          "_ALL_",
+                        ]),
+                        Schema.String,
                       ]),
                     ),
                     Schema.Null,
@@ -763,6 +840,7 @@ export interface DeleteRateLimitResponse {
       | "challenge"
       | "js_challenge"
       | "managed_challenge"
+      | (string & {})
       | null;
     response?: { body?: string | null; contentType?: string | null } | null;
     timeout?: number | null;
@@ -778,13 +856,22 @@ export interface DeleteRateLimitResponse {
     headers?:
       | {
           name?: string | null;
-          op?: "eq" | "ne" | null;
+          op?: "eq" | "ne" | (string & {}) | null;
           value?: string | null;
         }[]
       | null;
     request?: {
       methods?:
-        | ("GET" | "POST" | "PUT" | "DELETE" | "PATCH" | "HEAD" | "_ALL_")[]
+        | (
+            | "GET"
+            | "POST"
+            | "PUT"
+            | "DELETE"
+            | "PATCH"
+            | "HEAD"
+            | "_ALL_"
+            | (string & {})
+          )[]
         | null;
       schemes?: string[] | null;
       url?: string | null;
@@ -805,12 +892,15 @@ export const DeleteRateLimitResponse =
         Schema.Struct({
           mode: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "simulate",
-                "ban",
-                "challenge",
-                "js_challenge",
-                "managed_challenge",
+              Schema.Union([
+                Schema.Literals([
+                  "simulate",
+                  "ban",
+                  "challenge",
+                  "js_challenge",
+                  "managed_challenge",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -864,7 +954,13 @@ export const DeleteRateLimitResponse =
                     Schema.Union([Schema.String, Schema.Null]),
                   ),
                   op: Schema.optional(
-                    Schema.Union([Schema.Literals(["eq", "ne"]), Schema.Null]),
+                    Schema.Union([
+                      Schema.Union([
+                        Schema.Literals(["eq", "ne"]),
+                        Schema.String,
+                      ]),
+                      Schema.Null,
+                    ]),
                   ),
                   value: Schema.optional(
                     Schema.Union([Schema.String, Schema.Null]),
@@ -880,14 +976,17 @@ export const DeleteRateLimitResponse =
                 methods: Schema.optional(
                   Schema.Union([
                     Schema.Array(
-                      Schema.Literals([
-                        "GET",
-                        "POST",
-                        "PUT",
-                        "DELETE",
-                        "PATCH",
-                        "HEAD",
-                        "_ALL_",
+                      Schema.Union([
+                        Schema.Literals([
+                          "GET",
+                          "POST",
+                          "PUT",
+                          "DELETE",
+                          "PATCH",
+                          "HEAD",
+                          "_ALL_",
+                        ]),
+                        Schema.String,
                       ]),
                     ),
                     Schema.Null,
@@ -947,13 +1046,18 @@ export interface EditRateLimitRequest {
       | "ban"
       | "challenge"
       | "js_challenge"
-      | "managed_challenge";
+      | "managed_challenge"
+      | (string & {});
     response?: { body?: string; contentType?: string };
     timeout?: number;
   };
   /** Body param: Determines which traffic the rate limit counts towards the threshold. */
   match: {
-    headers?: { name?: string; op?: "eq" | "ne"; value?: string }[];
+    headers?: {
+      name?: string;
+      op?: "eq" | "ne" | (string & {});
+      value?: string;
+    }[];
     request?: {
       methods?: (
         | "GET"
@@ -963,6 +1067,7 @@ export interface EditRateLimitRequest {
         | "PATCH"
         | "HEAD"
         | "_ALL_"
+        | (string & {})
       )[];
       schemes?: string[];
       url?: string;
@@ -980,12 +1085,15 @@ export const EditRateLimitRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   action: Schema.Struct({
     mode: Schema.optional(
-      Schema.Literals([
-        "simulate",
-        "ban",
-        "challenge",
-        "js_challenge",
-        "managed_challenge",
+      Schema.Union([
+        Schema.Literals([
+          "simulate",
+          "ban",
+          "challenge",
+          "js_challenge",
+          "managed_challenge",
+        ]),
+        Schema.String,
       ]),
     ),
     response: Schema.optional(
@@ -1001,7 +1109,9 @@ export const EditRateLimitRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Array(
         Schema.Struct({
           name: Schema.optional(Schema.String),
-          op: Schema.optional(Schema.Literals(["eq", "ne"])),
+          op: Schema.optional(
+            Schema.Union([Schema.Literals(["eq", "ne"]), Schema.String]),
+          ),
           value: Schema.optional(Schema.String),
         }),
       ),
@@ -1010,14 +1120,17 @@ export const EditRateLimitRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Struct({
         methods: Schema.optional(
           Schema.Array(
-            Schema.Literals([
-              "GET",
-              "POST",
-              "PUT",
-              "DELETE",
-              "PATCH",
-              "HEAD",
-              "_ALL_",
+            Schema.Union([
+              Schema.Literals([
+                "GET",
+                "POST",
+                "PUT",
+                "DELETE",
+                "PATCH",
+                "HEAD",
+                "_ALL_",
+              ]),
+              Schema.String,
             ]),
           ),
         ),
@@ -1048,6 +1161,7 @@ export interface EditRateLimitResponse {
       | "challenge"
       | "js_challenge"
       | "managed_challenge"
+      | (string & {})
       | null;
     response?: { body?: string | null; contentType?: string | null } | null;
     timeout?: number | null;
@@ -1063,13 +1177,22 @@ export interface EditRateLimitResponse {
     headers?:
       | {
           name?: string | null;
-          op?: "eq" | "ne" | null;
+          op?: "eq" | "ne" | (string & {}) | null;
           value?: string | null;
         }[]
       | null;
     request?: {
       methods?:
-        | ("GET" | "POST" | "PUT" | "DELETE" | "PATCH" | "HEAD" | "_ALL_")[]
+        | (
+            | "GET"
+            | "POST"
+            | "PUT"
+            | "DELETE"
+            | "PATCH"
+            | "HEAD"
+            | "_ALL_"
+            | (string & {})
+          )[]
         | null;
       schemes?: string[] | null;
       url?: string | null;
@@ -1089,12 +1212,15 @@ export const EditRateLimitResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Struct({
         mode: Schema.optional(
           Schema.Union([
-            Schema.Literals([
-              "simulate",
-              "ban",
-              "challenge",
-              "js_challenge",
-              "managed_challenge",
+            Schema.Union([
+              Schema.Literals([
+                "simulate",
+                "ban",
+                "challenge",
+                "js_challenge",
+                "managed_challenge",
+              ]),
+              Schema.String,
             ]),
             Schema.Null,
           ]),
@@ -1143,7 +1269,13 @@ export const EditRateLimitResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   Schema.Union([Schema.String, Schema.Null]),
                 ),
                 op: Schema.optional(
-                  Schema.Union([Schema.Literals(["eq", "ne"]), Schema.Null]),
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Literals(["eq", "ne"]),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
                 ),
                 value: Schema.optional(
                   Schema.Union([Schema.String, Schema.Null]),
@@ -1159,14 +1291,17 @@ export const EditRateLimitResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               methods: Schema.optional(
                 Schema.Union([
                   Schema.Array(
-                    Schema.Literals([
-                      "GET",
-                      "POST",
-                      "PUT",
-                      "DELETE",
-                      "PATCH",
-                      "HEAD",
-                      "_ALL_",
+                    Schema.Union([
+                      Schema.Literals([
+                        "GET",
+                        "POST",
+                        "PUT",
+                        "DELETE",
+                        "PATCH",
+                        "HEAD",
+                        "_ALL_",
+                      ]),
+                      Schema.String,
                     ]),
                   ),
                   Schema.Null,

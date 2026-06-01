@@ -112,7 +112,7 @@ export interface ListConnectionsRequest {
   /** Path param: Identifier */
   zoneId: string;
   /** Query param: The direction used to sort returned connections. */
-  direction?: "asc" | "desc";
+  direction?: "asc" | "desc" | (string & {});
   /** Query param: When true, excludes connections seen in a `/cdn-cgi` path from the returned connections. The default value is true. */
   excludeCdnCgi?: boolean;
   /** Query param: Excludes connections whose URL contains one of the URL-encoded URLs separated by commas. */
@@ -122,7 +122,7 @@ export interface ListConnectionsRequest {
   /** Query param: Includes connections that match one or more URL-encoded hostnames separated by commas.  Wildcards are supported at the start and end of each hostname to support starts with, ends with and */
   hosts?: string;
   /** Query param: The field used to sort returned connections. */
-  orderBy?: "first_seen_at" | "last_seen_at";
+  orderBy?: "first_seen_at" | "last_seen_at" | (string & {});
   /** Query param: The current page number of the paginated results.  We additionally support a special value "all". When "all" is used, the API will return all the connections with the applied filters in a */
   page?: string;
   /** Query param: Includes connections that match one or more page URLs (separated by commas) where they were last seen  Wildcards are supported at the start and end of each page URL to support starts with */
@@ -140,9 +140,9 @@ export interface ListConnectionsRequest {
 export const ListConnectionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-      T.HttpQuery("direction"),
-    ),
+    direction: Schema.optional(
+      Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+    ).pipe(T.HttpQuery("direction")),
     excludeCdnCgi: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("exclude_cdn_cgi"),
     ),
@@ -152,7 +152,10 @@ export const ListConnectionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     export: Schema.optional(Schema.Literal("csv")).pipe(T.HttpQuery("export")),
     hosts: Schema.optional(Schema.String).pipe(T.HttpQuery("hosts")),
     orderBy: Schema.optional(
-      Schema.Literals(["first_seen_at", "last_seen_at"]),
+      Schema.Union([
+        Schema.Literals(["first_seen_at", "last_seen_at"]),
+        Schema.String,
+      ]),
     ).pipe(T.HttpQuery("order_by")),
     page: Schema.optional(Schema.String).pipe(T.HttpQuery("page")),
     pageUrl: Schema.optional(Schema.String).pipe(T.HttpQuery("page_url")),
@@ -278,14 +281,14 @@ export interface GetCookyResponse {
   host: string;
   lastSeenAt: string;
   name: string;
-  type: "first_party" | "unknown";
+  type: "first_party" | "unknown" | (string & {});
   domainAttribute?: string | null;
   expiresAttribute?: string | null;
   httpOnlyAttribute?: boolean | null;
   maxAgeAttribute?: number | null;
   pageUrls?: string[] | null;
   pathAttribute?: string | null;
-  sameSiteAttribute?: "lax" | "strict" | "none" | null;
+  sameSiteAttribute?: "lax" | "strict" | "none" | (string & {}) | null;
   secureAttribute?: boolean | null;
 }
 
@@ -295,7 +298,10 @@ export const GetCookyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   host: Schema.String,
   lastSeenAt: Schema.String,
   name: Schema.String,
-  type: Schema.Literals(["first_party", "unknown"]),
+  type: Schema.Union([
+    Schema.Literals(["first_party", "unknown"]),
+    Schema.String,
+  ]),
   domainAttribute: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   expiresAttribute: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   httpOnlyAttribute: Schema.optional(
@@ -307,7 +313,10 @@ export const GetCookyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   pathAttribute: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   sameSiteAttribute: Schema.optional(
-    Schema.Union([Schema.Literals(["lax", "strict", "none"]), Schema.Null]),
+    Schema.Union([
+      Schema.Union([Schema.Literals(["lax", "strict", "none"]), Schema.String]),
+      Schema.Null,
+    ]),
   ),
   secureAttribute: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
 })
@@ -348,7 +357,7 @@ export interface ListCookiesRequest {
   /** Path param: Identifier */
   zoneId: string;
   /** Query param: The direction used to sort returned cookies.' */
-  direction?: "asc" | "desc";
+  direction?: "asc" | "desc" | (string & {});
   /** Query param: Filters the returned cookies that match the specified domain attribute */
   domain?: string;
   /** Query param: Export the list of cookies as a file, limited to 50000 entries. */
@@ -360,7 +369,7 @@ export interface ListCookiesRequest {
   /** Query param: Filters the returned cookies that match the specified name. Wildcards are supported at the start and end to support starts with, ends with and contains. e.g. session\ */
   name?: string;
   /** Query param: The field used to sort returned cookies. */
-  orderBy?: "first_seen_at" | "last_seen_at";
+  orderBy?: "first_seen_at" | "last_seen_at" | (string & {});
   /** Query param: The current page number of the paginated results.  We additionally support a special value "all". When "all" is used, the API will return all the cookies with the applied filters in a sin */
   page?: string;
   /** Query param: Includes connections that match one or more page URLs (separated by commas) where they were last seen  Wildcards are supported at the start and end of each page URL to support starts with */
@@ -370,37 +379,40 @@ export interface ListCookiesRequest {
   /** Query param: The number of results per page. */
   perPage?: number;
   /** Query param: Filters the returned cookies that match the specified same_site attribute */
-  sameSite?: "lax" | "strict" | "none";
+  sameSite?: "lax" | "strict" | "none" | (string & {});
   /** Query param: Filters the returned cookies that are set with Secure */
   secure?: boolean;
   /** Query param: Filters the returned cookies that match the specified type attribute */
-  type?: "first_party" | "unknown";
+  type?: "first_party" | "unknown" | (string & {});
 }
 
 export const ListCookiesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-    T.HttpQuery("direction"),
-  ),
+  direction: Schema.optional(
+    Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+  ).pipe(T.HttpQuery("direction")),
   domain: Schema.optional(Schema.String).pipe(T.HttpQuery("domain")),
   export: Schema.optional(Schema.Literal("csv")).pipe(T.HttpQuery("export")),
   hosts: Schema.optional(Schema.String).pipe(T.HttpQuery("hosts")),
   httpOnly: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("http_only")),
   name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
   orderBy: Schema.optional(
-    Schema.Literals(["first_seen_at", "last_seen_at"]),
+    Schema.Union([
+      Schema.Literals(["first_seen_at", "last_seen_at"]),
+      Schema.String,
+    ]),
   ).pipe(T.HttpQuery("order_by")),
   page: Schema.optional(Schema.String).pipe(T.HttpQuery("page")),
   pageUrl: Schema.optional(Schema.String).pipe(T.HttpQuery("page_url")),
   path: Schema.optional(Schema.String).pipe(T.HttpQuery("path")),
   perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-  sameSite: Schema.optional(Schema.Literals(["lax", "strict", "none"])).pipe(
-    T.HttpQuery("same_site"),
-  ),
+  sameSite: Schema.optional(
+    Schema.Union([Schema.Literals(["lax", "strict", "none"]), Schema.String]),
+  ).pipe(T.HttpQuery("same_site")),
   secure: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("secure")),
-  type: Schema.optional(Schema.Literals(["first_party", "unknown"])).pipe(
-    T.HttpQuery("type"),
-  ),
+  type: Schema.optional(
+    Schema.Union([Schema.Literals(["first_party", "unknown"]), Schema.String]),
+  ).pipe(T.HttpQuery("type")),
 }).pipe(
   T.Http({ method: "GET", path: "/zones/{zone_id}/page_shield/cookies" }),
 ) as unknown as Schema.Schema<ListCookiesRequest>;
@@ -412,14 +424,14 @@ export interface ListCookiesResponse {
     host: string;
     lastSeenAt: string;
     name: string;
-    type: "first_party" | "unknown";
+    type: "first_party" | "unknown" | (string & {});
     domainAttribute?: string | null;
     expiresAttribute?: string | null;
     httpOnlyAttribute?: boolean | null;
     maxAgeAttribute?: number | null;
     pageUrls?: string[] | null;
     pathAttribute?: string | null;
-    sameSiteAttribute?: "lax" | "strict" | "none" | null;
+    sameSiteAttribute?: "lax" | "strict" | "none" | (string & {}) | null;
     secureAttribute?: boolean | null;
   }[];
 }
@@ -432,7 +444,10 @@ export const ListCookiesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       host: Schema.String,
       lastSeenAt: Schema.String,
       name: Schema.String,
-      type: Schema.Literals(["first_party", "unknown"]),
+      type: Schema.Union([
+        Schema.Literals(["first_party", "unknown"]),
+        Schema.String,
+      ]),
       domainAttribute: Schema.optional(
         Schema.Union([Schema.String, Schema.Null]),
       ),
@@ -452,7 +467,13 @@ export const ListCookiesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Union([Schema.String, Schema.Null]),
       ),
       sameSiteAttribute: Schema.optional(
-        Schema.Union([Schema.Literals(["lax", "strict", "none"]), Schema.Null]),
+        Schema.Union([
+          Schema.Union([
+            Schema.Literals(["lax", "strict", "none"]),
+            Schema.String,
+          ]),
+          Schema.Null,
+        ]),
       ),
       secureAttribute: Schema.optional(
         Schema.Union([Schema.Boolean, Schema.Null]),
@@ -643,7 +664,7 @@ export interface GetPolicyResponse {
   /** Identifier */
   id: string;
   /** The action to take if the expression matches */
-  action: "allow" | "log" | "add_reporting_directives";
+  action: "allow" | "log" | "add_reporting_directives" | (string & {});
   /** A description for the policy */
   description: string;
   /** Whether the policy is enabled */
@@ -656,7 +677,10 @@ export interface GetPolicyResponse {
 
 export const GetPolicyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
-  action: Schema.Literals(["allow", "log", "add_reporting_directives"]),
+  action: Schema.Union([
+    Schema.Literals(["allow", "log", "add_reporting_directives"]),
+    Schema.String,
+  ]),
   description: Schema.String,
   enabled: Schema.Boolean,
   expression: Schema.String,
@@ -692,7 +716,7 @@ export const ListPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface ListPoliciesResponse {
   result: {
     id: string;
-    action: "allow" | "log" | "add_reporting_directives";
+    action: "allow" | "log" | "add_reporting_directives" | (string & {});
     description: string;
     enabled: boolean;
     expression: string;
@@ -704,7 +728,10 @@ export const ListPoliciesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       id: Schema.String,
-      action: Schema.Literals(["allow", "log", "add_reporting_directives"]),
+      action: Schema.Union([
+        Schema.Literals(["allow", "log", "add_reporting_directives"]),
+        Schema.String,
+      ]),
       description: Schema.String,
       enabled: Schema.Boolean,
       expression: Schema.String,
@@ -734,7 +761,7 @@ export interface CreatePolicyRequest {
   /** Path param: Identifier */
   zoneId: string;
   /** Body param: The action to take if the expression matches */
-  action: "allow" | "log" | "add_reporting_directives";
+  action: "allow" | "log" | "add_reporting_directives" | (string & {});
   /** Body param: A description for the policy */
   description: string;
   /** Body param: Whether the policy is enabled */
@@ -747,7 +774,10 @@ export interface CreatePolicyRequest {
 
 export const CreatePolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  action: Schema.Literals(["allow", "log", "add_reporting_directives"]),
+  action: Schema.Union([
+    Schema.Literals(["allow", "log", "add_reporting_directives"]),
+    Schema.String,
+  ]),
   description: Schema.String,
   enabled: Schema.Boolean,
   expression: Schema.String,
@@ -760,7 +790,7 @@ export interface CreatePolicyResponse {
   /** Identifier */
   id: string;
   /** The action to take if the expression matches */
-  action: "allow" | "log" | "add_reporting_directives";
+  action: "allow" | "log" | "add_reporting_directives" | (string & {});
   /** A description for the policy */
   description: string;
   /** Whether the policy is enabled */
@@ -773,7 +803,10 @@ export interface CreatePolicyResponse {
 
 export const CreatePolicyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
-  action: Schema.Literals(["allow", "log", "add_reporting_directives"]),
+  action: Schema.Union([
+    Schema.Literals(["allow", "log", "add_reporting_directives"]),
+    Schema.String,
+  ]),
   description: Schema.String,
   enabled: Schema.Boolean,
   expression: Schema.String,
@@ -800,7 +833,7 @@ export interface UpdatePolicyRequest {
   /** Path param: Identifier */
   zoneId: string;
   /** Body param: The action to take if the expression matches */
-  action?: "allow" | "log" | "add_reporting_directives";
+  action?: "allow" | "log" | "add_reporting_directives" | (string & {});
   /** Body param: A description for the policy */
   description?: string;
   /** Body param: Whether the policy is enabled */
@@ -815,7 +848,10 @@ export const UpdatePolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   policyId: Schema.String.pipe(T.HttpPath("policyId")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   action: Schema.optional(
-    Schema.Literals(["allow", "log", "add_reporting_directives"]),
+    Schema.Union([
+      Schema.Literals(["allow", "log", "add_reporting_directives"]),
+      Schema.String,
+    ]),
   ),
   description: Schema.optional(Schema.String),
   enabled: Schema.optional(Schema.Boolean),
@@ -832,7 +868,7 @@ export interface UpdatePolicyResponse {
   /** Identifier */
   id: string;
   /** The action to take if the expression matches */
-  action: "allow" | "log" | "add_reporting_directives";
+  action: "allow" | "log" | "add_reporting_directives" | (string & {});
   /** A description for the policy */
   description: string;
   /** Whether the policy is enabled */
@@ -845,7 +881,10 @@ export interface UpdatePolicyResponse {
 
 export const UpdatePolicyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
-  action: Schema.Literals(["allow", "log", "add_reporting_directives"]),
+  action: Schema.Union([
+    Schema.Literals(["allow", "log", "add_reporting_directives"]),
+    Schema.String,
+  ]),
   description: Schema.String,
   enabled: Schema.Boolean,
   expression: Schema.String,
@@ -1090,7 +1129,7 @@ export interface ListScriptsRequest {
   /** Path param: Identifier */
   zoneId: string;
   /** Query param: The direction used to sort returned scripts. */
-  direction?: "asc" | "desc";
+  direction?: "asc" | "desc" | (string & {});
   /** Query param: When true, excludes scripts seen in a `/cdn-cgi` path from the returned scripts. The default value is true. */
   excludeCdnCgi?: boolean;
   /** Query param: When true, excludes duplicate scripts. We consider a script duplicate of another if their javascript content matches and they share the same url host and zone hostname. In such case, we r */
@@ -1102,7 +1141,7 @@ export interface ListScriptsRequest {
   /** Query param: Includes scripts that match one or more URL-encoded hostnames separated by commas.  Wildcards are supported at the start and end of each hostname to support starts with, ends with and con */
   hosts?: string;
   /** Query param: The field used to sort returned scripts. */
-  orderBy?: "first_seen_at" | "last_seen_at";
+  orderBy?: "first_seen_at" | "last_seen_at" | (string & {});
   /** Query param: The current page number of the paginated results.  We additionally support a special value "all". When "all" is used, the API will return all the scripts with the applied filters in a sin */
   page?: string;
   /** Query param: Includes scripts that match one or more page URLs (separated by commas) where they were last seen  Wildcards are supported at the start and end of each page URL to support starts with, en */
@@ -1119,9 +1158,9 @@ export interface ListScriptsRequest {
 
 export const ListScriptsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-    T.HttpQuery("direction"),
-  ),
+  direction: Schema.optional(
+    Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+  ).pipe(T.HttpQuery("direction")),
   excludeCdnCgi: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("exclude_cdn_cgi"),
   ),
@@ -1132,7 +1171,10 @@ export const ListScriptsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   export: Schema.optional(Schema.Literal("csv")).pipe(T.HttpQuery("export")),
   hosts: Schema.optional(Schema.String).pipe(T.HttpQuery("hosts")),
   orderBy: Schema.optional(
-    Schema.Literals(["first_seen_at", "last_seen_at"]),
+    Schema.Union([
+      Schema.Literals(["first_seen_at", "last_seen_at"]),
+      Schema.String,
+    ]),
   ).pipe(T.HttpQuery("order_by")),
   page: Schema.optional(Schema.String).pipe(T.HttpQuery("page")),
   pageUrl: Schema.optional(Schema.String).pipe(T.HttpQuery("page_url")),

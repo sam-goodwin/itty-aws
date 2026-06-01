@@ -143,21 +143,21 @@ export interface ListNamespacesRequest {
   page?: number;
   perPage?: number;
   /** Query param: Direction to order namespaces. */
-  direction?: "asc" | "desc";
+  direction?: "asc" | "desc" | (string & {});
   /** Query param: Field to order results by. */
-  order?: "id" | "title";
+  order?: "id" | "title" | (string & {});
 }
 
 export const ListNamespacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
   perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-  direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-    T.HttpQuery("direction"),
-  ),
-  order: Schema.optional(Schema.Literals(["id", "title"])).pipe(
-    T.HttpQuery("order"),
-  ),
+  direction: Schema.optional(
+    Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+  ).pipe(T.HttpQuery("direction")),
+  order: Schema.optional(
+    Schema.Union([Schema.Literals(["id", "title"]), Schema.String]),
+  ).pipe(T.HttpQuery("order")),
 }).pipe(
   T.Http({
     method: "GET",
@@ -422,7 +422,7 @@ export interface BulkGetNamespacesRequest {
   /** Body param: Array of keys to retrieve (maximum of 100). */
   keys: string[];
   /** Body param: Whether to parse JSON values in the response. */
-  type?: "text" | "json";
+  type?: "text" | "json" | (string & {});
   /** Body param: Whether to include metadata in the response. */
   withMetadata?: boolean;
 }
@@ -432,7 +432,9 @@ export const BulkGetNamespacesRequest =
     namespaceId: Schema.String.pipe(T.HttpPath("namespaceId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     keys: Schema.Array(Schema.String),
-    type: Schema.optional(Schema.Literals(["text", "json"])),
+    type: Schema.optional(
+      Schema.Union([Schema.Literals(["text", "json"]), Schema.String]),
+    ),
     withMetadata: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
@@ -637,7 +639,7 @@ export interface BulkGetNamespaceKeysRequest {
   /** Body param: Array of keys to retrieve (maximum of 100). */
   keys: string[];
   /** Body param: Whether to parse JSON values in the response. */
-  type?: "text" | "json";
+  type?: "text" | "json" | (string & {});
   /** Body param: Whether to include metadata in the response. */
   withMetadata?: boolean;
 }
@@ -647,7 +649,9 @@ export const BulkGetNamespaceKeysRequest =
     namespaceId: Schema.String.pipe(T.HttpPath("namespaceId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     keys: Schema.Array(Schema.String),
-    type: Schema.optional(Schema.Literals(["text", "json"])),
+    type: Schema.optional(
+      Schema.Union([Schema.Literals(["text", "json"]), Schema.String]),
+    ),
     withMetadata: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({

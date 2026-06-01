@@ -201,20 +201,29 @@ export interface ListStoresRequest {
   page?: number;
   perPage?: number;
   /** Query param: Direction to sort objects */
-  direction?: "asc" | "desc";
+  direction?: "asc" | "desc" | (string & {});
   /** Query param: Order secrets by values in the given field */
-  order?: "name" | "comment" | "created" | "modified" | "status";
+  order?:
+    | "name"
+    | "comment"
+    | "created"
+    | "modified"
+    | "status"
+    | (string & {});
 }
 
 export const ListStoresRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
   perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-  direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-    T.HttpQuery("direction"),
-  ),
+  direction: Schema.optional(
+    Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+  ).pipe(T.HttpQuery("direction")),
   order: Schema.optional(
-    Schema.Literals(["name", "comment", "created", "modified", "status"]),
+    Schema.Union([
+      Schema.Literals(["name", "comment", "created", "modified", "status"]),
+      Schema.String,
+    ]),
   ).pipe(T.HttpQuery("order")),
 }).pipe(
   T.Http({
@@ -426,7 +435,7 @@ export interface GetStoreSecretResponse {
   modified: string;
   /** The name of the secret */
   name: string;
-  status: "pending" | "active" | "deleted";
+  status: "pending" | "active" | "deleted" | (string & {});
   /** Store Identifier */
   storeId: string;
   /** Freeform text describing the secret */
@@ -441,7 +450,10 @@ export const GetStoreSecretResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     created: Schema.String,
     modified: Schema.String,
     name: Schema.String,
-    status: Schema.Literals(["pending", "active", "deleted"]),
+    status: Schema.Union([
+      Schema.Literals(["pending", "active", "deleted"]),
+      Schema.String,
+    ]),
     storeId: Schema.String,
     comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     scopes: Schema.optional(
@@ -490,9 +502,15 @@ export interface ListStoreSecretsRequest {
   page?: number;
   perPage?: number;
   /** Query param: Direction to sort objects */
-  direction?: "asc" | "desc";
+  direction?: "asc" | "desc" | (string & {});
   /** Query param: Order secrets by values in the given field */
-  order?: "name" | "comment" | "created" | "modified" | "status";
+  order?:
+    | "name"
+    | "comment"
+    | "created"
+    | "modified"
+    | "status"
+    | (string & {});
   /** Query param: Only secrets with the given scopes will be returned */
   scopes?: string[][];
   /** Query param: Search secrets using a filter string, filtering across name and comment */
@@ -505,11 +523,14 @@ export const ListStoreSecretsRequest =
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
     perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-    direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-      T.HttpQuery("direction"),
-    ),
+    direction: Schema.optional(
+      Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+    ).pipe(T.HttpQuery("direction")),
     order: Schema.optional(
-      Schema.Literals(["name", "comment", "created", "modified", "status"]),
+      Schema.Union([
+        Schema.Literals(["name", "comment", "created", "modified", "status"]),
+        Schema.String,
+      ]),
     ).pipe(T.HttpQuery("order")),
     scopes: Schema.optional(Schema.Array(Schema.Array(Schema.String))).pipe(
       T.HttpQuery("scopes"),
@@ -528,7 +549,7 @@ export interface ListStoreSecretsResponse {
     created: string;
     modified: string;
     name: string;
-    status: "pending" | "active" | "deleted";
+    status: "pending" | "active" | "deleted" | (string & {});
     storeId: string;
     comment?: string | null;
     scopes?: string[] | null;
@@ -549,7 +570,10 @@ export const ListStoreSecretsResponse =
         created: Schema.String,
         modified: Schema.String,
         name: Schema.String,
-        status: Schema.Literals(["pending", "active", "deleted"]),
+        status: Schema.Union([
+          Schema.Literals(["pending", "active", "deleted"]),
+          Schema.String,
+        ]),
         storeId: Schema.String,
         comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         scopes: Schema.optional(
@@ -648,7 +672,7 @@ export interface CreateStoreSecretResponse {
     created: string;
     modified: string;
     name: string;
-    status: "pending" | "active" | "deleted";
+    status: "pending" | "active" | "deleted" | (string & {});
     storeId: string;
     comment?: string | null;
     scopes?: string[] | null;
@@ -663,7 +687,10 @@ export const CreateStoreSecretResponse =
         created: Schema.String,
         modified: Schema.String,
         name: Schema.String,
-        status: Schema.Literals(["pending", "active", "deleted"]),
+        status: Schema.Union([
+          Schema.Literals(["pending", "active", "deleted"]),
+          Schema.String,
+        ]),
         storeId: Schema.String,
         comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         scopes: Schema.optional(
@@ -750,7 +777,7 @@ export interface PatchStoreSecretResponse {
   modified: string;
   /** The name of the secret */
   name: string;
-  status: "pending" | "active" | "deleted";
+  status: "pending" | "active" | "deleted" | (string & {});
   /** Store Identifier */
   storeId: string;
   /** Freeform text describing the secret */
@@ -765,7 +792,10 @@ export const PatchStoreSecretResponse =
     created: Schema.String,
     modified: Schema.String,
     name: Schema.String,
-    status: Schema.Literals(["pending", "active", "deleted"]),
+    status: Schema.Union([
+      Schema.Literals(["pending", "active", "deleted"]),
+      Schema.String,
+    ]),
     storeId: Schema.String,
     comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     scopes: Schema.optional(
@@ -928,7 +958,7 @@ export interface DuplicateStoreSecretResponse {
   modified: string;
   /** The name of the secret */
   name: string;
-  status: "pending" | "active" | "deleted";
+  status: "pending" | "active" | "deleted" | (string & {});
   /** Store Identifier */
   storeId: string;
   /** Freeform text describing the secret */
@@ -943,7 +973,10 @@ export const DuplicateStoreSecretResponse =
     created: Schema.String,
     modified: Schema.String,
     name: Schema.String,
-    status: Schema.Literals(["pending", "active", "deleted"]),
+    status: Schema.Union([
+      Schema.Literals(["pending", "active", "deleted"]),
+      Schema.String,
+    ]),
     storeId: Schema.String,
     comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     scopes: Schema.optional(

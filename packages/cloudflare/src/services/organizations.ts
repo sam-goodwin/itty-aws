@@ -184,19 +184,30 @@ export interface ListLogAuditsRequest {
   /** Limits the returned results to logs newer than the specified date. This can be a date string 2019-04-30 (interpreted in UTC) or an absolute timestamp that conforms to RFC3339. */
   since: string;
   id?: { not?: string[] };
-  actionResult?: { not?: ("success" | "failure")[] };
-  actionType?: { not?: ("create" | "delete" | "view" | "update")[] };
+  actionResult?: { not?: ("success" | "failure" | (string & {}))[] };
+  actionType?: {
+    not?: ("create" | "delete" | "view" | "update" | (string & {}))[];
+  };
   actorContext?: {
-    not?: ("api_key" | "api_token" | "dash" | "oauth" | "origin_ca_key")[];
+    not?: (
+      | "api_key"
+      | "api_token"
+      | "dash"
+      | "oauth"
+      | "origin_ca_key"
+      | (string & {})
+    )[];
   };
   actorEmail?: { not?: string[] };
   actorId?: { not?: string[] };
   actorIpAddress?: { not?: string[] };
   actorTokenId?: { not?: string[] };
   actorTokenName?: { not?: string[] };
-  actorType?: { not?: ("cloudflare_admin" | "system" | "user")[] };
+  actorType?: {
+    not?: ("cloudflare_admin" | "system" | "user" | (string & {}))[];
+  };
   /** Sets sorting order. */
-  direction?: "desc" | "asc";
+  direction?: "desc" | "asc" | (string & {});
   /** The number limits the objects to return. The cursor attribute may be used to iterate over the next batch of objects if there are more than the limit. */
   limit?: number;
   rawCfRayId?: { not?: string[] };
@@ -222,14 +233,24 @@ export const ListLogAuditsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   actionResult: Schema.optional(
     Schema.Struct({
       not: Schema.optional(
-        Schema.Array(Schema.Literals(["success", "failure"])),
+        Schema.Array(
+          Schema.Union([
+            Schema.Literals(["success", "failure"]),
+            Schema.String,
+          ]),
+        ),
       ),
     }),
   ).pipe(T.HttpQuery("action_result")),
   actionType: Schema.optional(
     Schema.Struct({
       not: Schema.optional(
-        Schema.Array(Schema.Literals(["create", "delete", "view", "update"])),
+        Schema.Array(
+          Schema.Union([
+            Schema.Literals(["create", "delete", "view", "update"]),
+            Schema.String,
+          ]),
+        ),
       ),
     }),
   ).pipe(T.HttpQuery("action_type")),
@@ -237,12 +258,15 @@ export const ListLogAuditsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Struct({
       not: Schema.optional(
         Schema.Array(
-          Schema.Literals([
-            "api_key",
-            "api_token",
-            "dash",
-            "oauth",
-            "origin_ca_key",
+          Schema.Union([
+            Schema.Literals([
+              "api_key",
+              "api_token",
+              "dash",
+              "oauth",
+              "origin_ca_key",
+            ]),
+            Schema.String,
           ]),
         ),
       ),
@@ -276,13 +300,18 @@ export const ListLogAuditsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   actorType: Schema.optional(
     Schema.Struct({
       not: Schema.optional(
-        Schema.Array(Schema.Literals(["cloudflare_admin", "system", "user"])),
+        Schema.Array(
+          Schema.Union([
+            Schema.Literals(["cloudflare_admin", "system", "user"]),
+            Schema.String,
+          ]),
+        ),
       ),
     }),
   ).pipe(T.HttpQuery("actor_type")),
-  direction: Schema.optional(Schema.Literals(["desc", "asc"])).pipe(
-    T.HttpQuery("direction"),
-  ),
+  direction: Schema.optional(
+    Schema.Union([Schema.Literals(["desc", "asc"]), Schema.String]),
+  ).pipe(T.HttpQuery("direction")),
   limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
   rawCfRayId: Schema.optional(
     Schema.Struct({
@@ -345,12 +374,13 @@ export interface ListLogAuditsResponse {
         | "dash"
         | "oauth"
         | "origin_ca_key"
+        | (string & {})
         | null;
       email?: string | null;
       ipAddress?: string | null;
       tokenId?: string | null;
       tokenName?: string | null;
-      type?: "cloudflare_admin" | "system" | "user" | null;
+      type?: "cloudflare_admin" | "system" | "user" | (string & {}) | null;
     } | null;
     organization?: { id?: string | null } | null;
     raw?: {
@@ -395,12 +425,15 @@ export const ListLogAuditsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
             context: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "api_key",
-                  "api_token",
-                  "dash",
-                  "oauth",
-                  "origin_ca_key",
+                Schema.Union([
+                  Schema.Literals([
+                    "api_key",
+                    "api_token",
+                    "dash",
+                    "oauth",
+                    "origin_ca_key",
+                  ]),
+                  Schema.String,
                 ]),
                 Schema.Null,
               ]),
@@ -417,7 +450,10 @@ export const ListLogAuditsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             ),
             type: Schema.optional(
               Schema.Union([
-                Schema.Literals(["cloudflare_admin", "system", "user"]),
+                Schema.Union([
+                  Schema.Literals(["cloudflare_admin", "system", "user"]),
+                  Schema.String,
+                ]),
                 Schema.Null,
               ]),
             ),

@@ -39,6 +39,7 @@ export interface ListRulesResponse {
       | "cloudflare_r2"
       | "gcp_storage"
       | "azure_storage"
+      | (string & {})
       | null;
   }[];
 }
@@ -60,11 +61,14 @@ export const ListRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
       provider: Schema.optional(
         Schema.Union([
-          Schema.Literals([
-            "aws_s3",
-            "cloudflare_r2",
-            "gcp_storage",
-            "azure_storage",
+          Schema.Union([
+            Schema.Literals([
+              "aws_s3",
+              "cloudflare_r2",
+              "gcp_storage",
+              "azure_storage",
+            ]),
+            Schema.String,
           ]),
           Schema.Null,
         ]),
@@ -100,7 +104,12 @@ export interface PutRuleRequest {
     enabled?: boolean;
     expression?: string;
     parameters?: { host?: string };
-    provider?: "aws_s3" | "cloudflare_r2" | "gcp_storage" | "azure_storage";
+    provider?:
+      | "aws_s3"
+      | "cloudflare_r2"
+      | "gcp_storage"
+      | "azure_storage"
+      | (string & {});
   }[];
 }
 
@@ -119,11 +128,14 @@ export const PutRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           }),
         ),
         provider: Schema.optional(
-          Schema.Literals([
-            "aws_s3",
-            "cloudflare_r2",
-            "gcp_storage",
-            "azure_storage",
+          Schema.Union([
+            Schema.Literals([
+              "aws_s3",
+              "cloudflare_r2",
+              "gcp_storage",
+              "azure_storage",
+            ]),
+            Schema.String,
           ]),
         ),
       }),
@@ -145,6 +157,7 @@ export interface PutRuleResponse {
       | "cloudflare_r2"
       | "gcp_storage"
       | "azure_storage"
+      | (string & {})
       | null;
   }[];
 }
@@ -166,11 +179,14 @@ export const PutRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
       provider: Schema.optional(
         Schema.Union([
-          Schema.Literals([
-            "aws_s3",
-            "cloudflare_r2",
-            "gcp_storage",
-            "azure_storage",
+          Schema.Union([
+            Schema.Literals([
+              "aws_s3",
+              "cloudflare_r2",
+              "gcp_storage",
+              "azure_storage",
+            ]),
+            Schema.String,
           ]),
           Schema.Null,
         ]),

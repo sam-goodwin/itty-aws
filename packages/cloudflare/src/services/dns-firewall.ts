@@ -162,7 +162,8 @@ export interface GetAnalyticReportBytimeRequest {
     | "day"
     | "hour"
     | "dekaminute"
-    | "minute";
+    | "minute"
+    | (string & {});
   /** Query param: End date and time of requesting data period in ISO 8601 format. */
   until?: string;
 }
@@ -178,17 +179,20 @@ export const GetAnalyticReportBytimeRequest =
     since: Schema.optional(Schema.String).pipe(T.HttpQuery("since")),
     sort: Schema.optional(Schema.String).pipe(T.HttpQuery("sort")),
     timeDelta: Schema.optional(
-      Schema.Literals([
-        "all",
-        "auto",
-        "year",
-        "quarter",
-        "month",
-        "week",
-        "day",
-        "hour",
-        "dekaminute",
-        "minute",
+      Schema.Union([
+        Schema.Literals([
+          "all",
+          "auto",
+          "year",
+          "quarter",
+          "month",
+          "week",
+          "day",
+          "hour",
+          "dekaminute",
+          "minute",
+        ]),
+        Schema.String,
       ]),
     ).pipe(T.HttpQuery("time_delta")),
     until: Schema.optional(Schema.String).pipe(T.HttpQuery("until")),
@@ -223,7 +227,8 @@ export interface GetAnalyticReportBytimeResponse {
       | "day"
       | "hour"
       | "dekaminute"
-      | "minute";
+      | "minute"
+      | (string & {});
     until: string;
     filters?: string | null;
     sort?: string[] | null;
@@ -252,17 +257,20 @@ export const GetAnalyticReportBytimeResponse =
       limit: Schema.Number,
       metrics: Schema.Array(Schema.String),
       since: Schema.String,
-      timeDelta: Schema.Literals([
-        "all",
-        "auto",
-        "year",
-        "quarter",
-        "month",
-        "week",
-        "day",
-        "hour",
-        "dekaminute",
-        "minute",
+      timeDelta: Schema.Union([
+        Schema.Literals([
+          "all",
+          "auto",
+          "year",
+          "quarter",
+          "month",
+          "week",
+          "day",
+          "hour",
+          "dekaminute",
+          "minute",
+        ]),
+        Schema.String,
       ]),
       until: Schema.String,
       filters: Schema.optional(Schema.Union([Schema.String, Schema.Null])),

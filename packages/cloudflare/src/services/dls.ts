@@ -84,16 +84,16 @@ export interface ListRegionsRequest {
   perPage?: number;
   cursor?: string;
   /** Query param: Filter regions by type. Omit to return all regions. */
-  type?: "managed" | "custom";
+  type?: "managed" | "custom" | (string & {});
 }
 
 export const ListRegionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.Number.pipe(T.HttpPath("account_id")),
   perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
-  type: Schema.optional(Schema.Literals(["managed", "custom"])).pipe(
-    T.HttpQuery("type"),
-  ),
+  type: Schema.optional(
+    Schema.Union([Schema.Literals(["managed", "custom"]), Schema.String]),
+  ).pipe(T.HttpQuery("type")),
 }).pipe(
   T.Http({ method: "GET", path: "/accounts/{account_id}/dls/regions" }),
 ) as unknown as Schema.Schema<ListRegionsRequest>;

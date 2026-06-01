@@ -46,7 +46,7 @@ export interface GetActiveLivestreamsForLivestreamIdLivestreamResponse {
       meetingId?: string | null;
       name?: string | null;
       playbackUrl?: string | null;
-      status?: "LIVE" | "IDLE" | "ERRORED" | "INVOKED" | null;
+      status?: "LIVE" | "IDLE" | "ERRORED" | "INVOKED" | (string & {}) | null;
       streamKey?: string | null;
       updatedAt?: string | null;
     } | null;
@@ -95,7 +95,10 @@ export const GetActiveLivestreamsForLivestreamIdLivestreamResponse =
                 ),
                 status: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["LIVE", "IDLE", "ERRORED", "INVOKED"]),
+                    Schema.Union([
+                      Schema.Literals(["LIVE", "IDLE", "ERRORED", "INVOKED"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -231,7 +234,8 @@ export interface GetActiveRecordingsRecordingResponse {
       | "UPLOADING"
       | "UPLOADED"
       | "ERRORED"
-      | "PAUSED";
+      | "PAUSED"
+      | (string & {});
     stoppedTime: string | null;
     recordingDuration?: number | null;
   };
@@ -251,13 +255,16 @@ export const GetActiveRecordingsRecordingResponse =
       outputFileName: Schema.String,
       sessionId: Schema.Union([Schema.String, Schema.Null]),
       startedTime: Schema.Union([Schema.String, Schema.Null]),
-      status: Schema.Literals([
-        "INVOKED",
-        "RECORDING",
-        "UPLOADING",
-        "UPLOADED",
-        "ERRORED",
-        "PAUSED",
+      status: Schema.Union([
+        Schema.Literals([
+          "INVOKED",
+          "RECORDING",
+          "UPLOADING",
+          "UPLOADED",
+          "ERRORED",
+          "PAUSED",
+        ]),
+        Schema.String,
       ]),
       stoppedTime: Schema.Union([Schema.String, Schema.Null]),
       recordingDuration: Schema.optional(
@@ -329,8 +336,8 @@ export interface GetActiveSessionActiveSessionResponse {
     minutesConsumed: number;
     organizationId: string;
     startedAt: string;
-    status: "LIVE" | "ENDED";
-    type: "meeting" | "livestream" | "participant";
+    status: "LIVE" | "ENDED" | (string & {});
+    type: "meeting" | "livestream" | "participant" | (string & {});
     updatedAt: string;
     breakoutRooms?: unknown[] | null;
     endedAt?: string | null;
@@ -353,8 +360,14 @@ export const GetActiveSessionActiveSessionResponse =
           minutesConsumed: Schema.Number,
           organizationId: Schema.String,
           startedAt: Schema.String,
-          status: Schema.Literals(["LIVE", "ENDED"]),
-          type: Schema.Literals(["meeting", "livestream", "participant"]),
+          status: Schema.Union([
+            Schema.Literals(["LIVE", "ENDED"]),
+            Schema.String,
+          ]),
+          type: Schema.Union([
+            Schema.Literals(["meeting", "livestream", "participant"]),
+            Schema.String,
+          ]),
           updatedAt: Schema.String,
           breakoutRooms: Schema.optional(
             Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
@@ -416,11 +429,11 @@ export interface GetAllLivestreamsLivestreamRequest {
   /** Query param: Number of results per page. */
   perPage?: number;
   /** Query param: Specifies the sorting order for the results. */
-  sortOrder?: "ASC" | "DSC";
+  sortOrder?: "ASC" | "DSC" | (string & {});
   /** Query param: Specify the start time range in ISO format to access the live stream. */
   startTime?: string;
   /** Query param: Specifies the status of the operation. */
-  status?: "LIVE" | "IDLE" | "ERRORED" | "INVOKED";
+  status?: "LIVE" | "IDLE" | "ERRORED" | "INVOKED" | (string & {});
 }
 
 export const GetAllLivestreamsLivestreamRequest =
@@ -433,12 +446,15 @@ export const GetAllLivestreamsLivestreamRequest =
     ),
     pageNo: Schema.optional(Schema.Number).pipe(T.HttpQuery("page_no")),
     perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-    sortOrder: Schema.optional(Schema.Literals(["ASC", "DSC"])).pipe(
-      T.HttpQuery("sort_order"),
-    ),
+    sortOrder: Schema.optional(
+      Schema.Union([Schema.Literals(["ASC", "DSC"]), Schema.String]),
+    ).pipe(T.HttpQuery("sort_order")),
     startTime: Schema.optional(Schema.String).pipe(T.HttpQuery("start_time")),
     status: Schema.optional(
-      Schema.Literals(["LIVE", "IDLE", "ERRORED", "INVOKED"]),
+      Schema.Union([
+        Schema.Literals(["LIVE", "IDLE", "ERRORED", "INVOKED"]),
+        Schema.String,
+      ]),
     ).pipe(T.HttpQuery("status")),
   }).pipe(
     T.Http({
@@ -461,7 +477,7 @@ export interface GetAllLivestreamsLivestreamResponse {
       totalCount?: number | null;
     } | null;
     playbackUrl?: string | null;
-    status?: "LIVE" | "IDLE" | "ERRORED" | "INVOKED" | null;
+    status?: "LIVE" | "IDLE" | "ERRORED" | "INVOKED" | (string & {}) | null;
     streamKey?: string | null;
     updatedAt?: string | null;
   } | null;
@@ -512,7 +528,10 @@ export const GetAllLivestreamsLivestreamResponse =
           ),
           status: Schema.optional(
             Schema.Union([
-              Schema.Literals(["LIVE", "IDLE", "ERRORED", "INVOKED"]),
+              Schema.Union([
+                Schema.Literals(["LIVE", "IDLE", "ERRORED", "INVOKED"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -779,7 +798,7 @@ export interface CreateIndependentLivestreamLivestreamResponse {
     meetingId?: string | null;
     name?: string | null;
     playbackUrl?: string | null;
-    status?: "LIVE" | "IDLE" | "ERRORED" | "INVOKED" | null;
+    status?: "LIVE" | "IDLE" | "ERRORED" | "INVOKED" | (string & {}) | null;
     streamKey?: string | null;
   } | null;
   success?: boolean | null;
@@ -806,7 +825,10 @@ export const CreateIndependentLivestreamLivestreamResponse =
           ),
           status: Schema.optional(
             Schema.Union([
-              Schema.Literals(["LIVE", "IDLE", "ERRORED", "INVOKED"]),
+              Schema.Union([
+                Schema.Literals(["LIVE", "IDLE", "ERRORED", "INVOKED"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -958,7 +980,7 @@ export interface StartLivestreamingAMeetingLivestreamResponse {
     id?: string | null;
     ingestServer?: string | null;
     playbackUrl?: string | null;
-    status?: "LIVE" | "IDLE" | "ERRORED" | "INVOKED" | null;
+    status?: "LIVE" | "IDLE" | "ERRORED" | "INVOKED" | (string & {}) | null;
     streamKey?: string | null;
   } | null;
   success?: boolean | null;
@@ -978,7 +1000,10 @@ export const StartLivestreamingAMeetingLivestreamResponse =
           ),
           status: Schema.optional(
             Schema.Union([
-              Schema.Literals(["LIVE", "IDLE", "ERRORED", "INVOKED"]),
+              Schema.Union([
+                Schema.Literals(["LIVE", "IDLE", "ERRORED", "INVOKED"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -1203,7 +1228,7 @@ export interface GetLivestreamSessionForLivestreamIdLivestreamResponse {
       meetingId?: string | null;
       name?: string | null;
       playbackUrl?: string | null;
-      status?: "LIVE" | "IDLE" | "ERRORED" | "INVOKED" | null;
+      status?: "LIVE" | "IDLE" | "ERRORED" | "INVOKED" | (string & {}) | null;
       streamKey?: string | null;
       updatedAt?: string | null;
     } | null;
@@ -1257,7 +1282,10 @@ export const GetLivestreamSessionForLivestreamIdLivestreamResponse =
                 ),
                 status: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["LIVE", "IDLE", "ERRORED", "INVOKED"]),
+                    Schema.Union([
+                      Schema.Literals(["LIVE", "IDLE", "ERRORED", "INVOKED"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -1418,7 +1446,7 @@ export interface GetMeetingResponse {
     persistChat?: boolean | null;
     recordOnStart?: boolean | null;
     sessionKeepAliveTimeInSecs?: number | null;
-    status?: "ACTIVE" | "INACTIVE" | null;
+    status?: "ACTIVE" | "INACTIVE" | (string & {}) | null;
     summarizeOnEnd?: boolean | null;
     title?: string | null;
   }[];
@@ -1443,7 +1471,13 @@ export const GetMeetingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Union([Schema.Number, Schema.Null]),
       ),
       status: Schema.optional(
-        Schema.Union([Schema.Literals(["ACTIVE", "INACTIVE"]), Schema.Null]),
+        Schema.Union([
+          Schema.Union([
+            Schema.Literals(["ACTIVE", "INACTIVE"]),
+            Schema.String,
+          ]),
+          Schema.Null,
+        ]),
       ),
       summarizeOnEnd: Schema.optional(
         Schema.Union([Schema.Boolean, Schema.Null]),
@@ -1507,8 +1541,9 @@ export interface CreateMeetingRequest {
         | "daily_standup"
         | "one_on_one_meeting"
         | "lecture"
-        | "code_review";
-      textFormat?: "plain_text" | "markdown";
+        | "code_review"
+        | (string & {});
+      textFormat?: "plain_text" | "markdown" | (string & {});
       wordLimit?: number;
     };
     transcription?: {
@@ -1523,7 +1558,8 @@ export interface CreateMeetingRequest {
         | "pl"
         | "el"
         | "fr"
-        | "nl";
+        | "nl"
+        | (string & {});
       profanityFilter?: boolean;
     };
   };
@@ -1536,8 +1572,8 @@ export interface CreateMeetingRequest {
   /** Body param: Recording Configurations to be used for this meeting. This level of configs takes higher preference over App level configs on the RealtimeKit developer portal. */
   recordingConfig?: {
     audioConfig?: {
-      channel?: "mono" | "stereo";
-      codec?: "MP3" | "AAC";
+      channel?: "mono" | "stereo" | (string & {});
+      codec?: "MP3" | "AAC" | (string & {});
       exportFile?: boolean;
     };
     fileNamePrefix?: string;
@@ -1545,9 +1581,9 @@ export interface CreateMeetingRequest {
     maxSeconds?: number;
     realtimekitBucketConfig?: { enabled: boolean };
     storageConfig?: {
-      type: "aws" | "azure" | "digitalocean" | "gcs" | "sftp";
+      type: "aws" | "azure" | "digitalocean" | "gcs" | "sftp" | (string & {});
       accessKey?: string;
-      authMethod?: "KEY" | "PASSWORD";
+      authMethod?: "KEY" | "PASSWORD" | (string & {});
       bucket?: string;
       host?: string;
       password?: string;
@@ -1559,11 +1595,16 @@ export interface CreateMeetingRequest {
       username?: string;
     } | null;
     videoConfig?: {
-      codec?: "H264" | "VP8";
+      codec?: "H264" | "VP8" | (string & {});
       exportFile?: boolean;
       height?: number;
       watermark?: {
-        position?: "left top" | "right top" | "left bottom" | "right bottom";
+        position?:
+          | "left top"
+          | "right top"
+          | "left bottom"
+          | "right bottom"
+          | (string & {});
         size?: { height?: number; width?: number };
         url?: string;
       };
@@ -1586,20 +1627,26 @@ export const CreateMeetingRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       summarization: Schema.optional(
         Schema.Struct({
           summaryType: Schema.optional(
-            Schema.Literals([
-              "general",
-              "team_meeting",
-              "sales_call",
-              "client_check_in",
-              "interview",
-              "daily_standup",
-              "one_on_one_meeting",
-              "lecture",
-              "code_review",
+            Schema.Union([
+              Schema.Literals([
+                "general",
+                "team_meeting",
+                "sales_call",
+                "client_check_in",
+                "interview",
+                "daily_standup",
+                "one_on_one_meeting",
+                "lecture",
+                "code_review",
+              ]),
+              Schema.String,
             ]),
           ),
           textFormat: Schema.optional(
-            Schema.Literals(["plain_text", "markdown"]),
+            Schema.Union([
+              Schema.Literals(["plain_text", "markdown"]),
+              Schema.String,
+            ]),
           ),
           wordLimit: Schema.optional(Schema.Number),
         }).pipe(
@@ -1614,17 +1661,20 @@ export const CreateMeetingRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Struct({
           keywords: Schema.optional(Schema.Array(Schema.String)),
           language: Schema.optional(
-            Schema.Literals([
-              "en-US",
-              "en-IN",
-              "de",
-              "hi",
-              "sv",
-              "ru",
-              "pl",
-              "el",
-              "fr",
-              "nl",
+            Schema.Union([
+              Schema.Literals([
+                "en-US",
+                "en-IN",
+                "de",
+                "hi",
+                "sv",
+                "ru",
+                "pl",
+                "el",
+                "fr",
+                "nl",
+              ]),
+              Schema.String,
             ]),
           ),
           profanityFilter: Schema.optional(Schema.Boolean),
@@ -1647,8 +1697,12 @@ export const CreateMeetingRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Struct({
       audioConfig: Schema.optional(
         Schema.Struct({
-          channel: Schema.optional(Schema.Literals(["mono", "stereo"])),
-          codec: Schema.optional(Schema.Literals(["MP3", "AAC"])),
+          channel: Schema.optional(
+            Schema.Union([Schema.Literals(["mono", "stereo"]), Schema.String]),
+          ),
+          codec: Schema.optional(
+            Schema.Union([Schema.Literals(["MP3", "AAC"]), Schema.String]),
+          ),
           exportFile: Schema.optional(Schema.Boolean),
         }).pipe(
           Schema.encodeKeys({
@@ -1673,15 +1727,17 @@ export const CreateMeetingRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       storageConfig: Schema.optional(
         Schema.Union([
           Schema.Struct({
-            type: Schema.Literals([
-              "aws",
-              "azure",
-              "digitalocean",
-              "gcs",
-              "sftp",
+            type: Schema.Union([
+              Schema.Literals(["aws", "azure", "digitalocean", "gcs", "sftp"]),
+              Schema.String,
             ]),
             accessKey: Schema.optional(Schema.String),
-            authMethod: Schema.optional(Schema.Literals(["KEY", "PASSWORD"])),
+            authMethod: Schema.optional(
+              Schema.Union([
+                Schema.Literals(["KEY", "PASSWORD"]),
+                Schema.String,
+              ]),
+            ),
             bucket: Schema.optional(Schema.String),
             host: Schema.optional(Schema.String),
             password: Schema.optional(SensitiveString),
@@ -1712,17 +1768,22 @@ export const CreateMeetingRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
       videoConfig: Schema.optional(
         Schema.Struct({
-          codec: Schema.optional(Schema.Literals(["H264", "VP8"])),
+          codec: Schema.optional(
+            Schema.Union([Schema.Literals(["H264", "VP8"]), Schema.String]),
+          ),
           exportFile: Schema.optional(Schema.Boolean),
           height: Schema.optional(Schema.Number),
           watermark: Schema.optional(
             Schema.Struct({
               position: Schema.optional(
-                Schema.Literals([
-                  "left top",
-                  "right top",
-                  "left bottom",
-                  "right bottom",
+                Schema.Union([
+                  Schema.Literals([
+                    "left top",
+                    "right top",
+                    "left bottom",
+                    "right bottom",
+                  ]),
+                  Schema.String,
                 ]),
               ),
               size: Schema.optional(
@@ -1797,8 +1858,9 @@ export interface CreateMeetingResponse {
           | "one_on_one_meeting"
           | "lecture"
           | "code_review"
+          | (string & {})
           | null;
-        textFormat?: "plain_text" | "markdown" | null;
+        textFormat?: "plain_text" | "markdown" | (string & {}) | null;
         wordLimit?: number | null;
       } | null;
       transcription?: {
@@ -1814,6 +1876,7 @@ export interface CreateMeetingResponse {
           | "el"
           | "fr"
           | "nl"
+          | (string & {})
           | null;
         profanityFilter?: boolean | null;
       } | null;
@@ -1823,8 +1886,8 @@ export interface CreateMeetingResponse {
     recordOnStart?: boolean | null;
     recordingConfig?: {
       audioConfig?: {
-        channel?: "mono" | "stereo" | null;
-        codec?: "MP3" | "AAC" | null;
+        channel?: "mono" | "stereo" | (string & {}) | null;
+        codec?: "MP3" | "AAC" | (string & {}) | null;
         exportFile?: boolean | null;
       } | null;
       fileNamePrefix?: string | null;
@@ -1832,8 +1895,8 @@ export interface CreateMeetingResponse {
       maxSeconds?: number | null;
       realtimekitBucketConfig?: { enabled: boolean } | null;
       storageConfig?: {
-        type: "aws" | "azure" | "digitalocean" | "gcs" | "sftp";
-        authMethod?: "KEY" | "PASSWORD" | null;
+        type: "aws" | "azure" | "digitalocean" | "gcs" | "sftp" | (string & {});
+        authMethod?: "KEY" | "PASSWORD" | (string & {}) | null;
         bucket?: string | null;
         host?: string | null;
         password?: string | null;
@@ -1845,7 +1908,7 @@ export interface CreateMeetingResponse {
         username?: string | null;
       } | null;
       videoConfig?: {
-        codec?: "H264" | "VP8" | null;
+        codec?: "H264" | "VP8" | (string & {}) | null;
         exportFile?: boolean | null;
         height?: number | null;
         watermark?: {
@@ -1854,6 +1917,7 @@ export interface CreateMeetingResponse {
             | "right top"
             | "left bottom"
             | "right bottom"
+            | (string & {})
             | null;
           size?: { height?: number | null; width?: number | null } | null;
           url?: string | null;
@@ -1862,7 +1926,7 @@ export interface CreateMeetingResponse {
       } | null;
     } | null;
     sessionKeepAliveTimeInSecs?: number | null;
-    status?: "ACTIVE" | "INACTIVE" | null;
+    status?: "ACTIVE" | "INACTIVE" | (string & {}) | null;
     summarizeOnEnd?: boolean | null;
     title?: string | null;
   } | null;
@@ -1884,23 +1948,29 @@ export const CreateMeetingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   Schema.Struct({
                     summaryType: Schema.optional(
                       Schema.Union([
-                        Schema.Literals([
-                          "general",
-                          "team_meeting",
-                          "sales_call",
-                          "client_check_in",
-                          "interview",
-                          "daily_standup",
-                          "one_on_one_meeting",
-                          "lecture",
-                          "code_review",
+                        Schema.Union([
+                          Schema.Literals([
+                            "general",
+                            "team_meeting",
+                            "sales_call",
+                            "client_check_in",
+                            "interview",
+                            "daily_standup",
+                            "one_on_one_meeting",
+                            "lecture",
+                            "code_review",
+                          ]),
+                          Schema.String,
                         ]),
                         Schema.Null,
                       ]),
                     ),
                     textFormat: Schema.optional(
                       Schema.Union([
-                        Schema.Literals(["plain_text", "markdown"]),
+                        Schema.Union([
+                          Schema.Literals(["plain_text", "markdown"]),
+                          Schema.String,
+                        ]),
                         Schema.Null,
                       ]),
                     ),
@@ -1925,17 +1995,20 @@ export const CreateMeetingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     ),
                     language: Schema.optional(
                       Schema.Union([
-                        Schema.Literals([
-                          "en-US",
-                          "en-IN",
-                          "de",
-                          "hi",
-                          "sv",
-                          "ru",
-                          "pl",
-                          "el",
-                          "fr",
-                          "nl",
+                        Schema.Union([
+                          Schema.Literals([
+                            "en-US",
+                            "en-IN",
+                            "de",
+                            "hi",
+                            "sv",
+                            "ru",
+                            "pl",
+                            "el",
+                            "fr",
+                            "nl",
+                          ]),
+                          Schema.String,
                         ]),
                         Schema.Null,
                       ]),
@@ -1974,13 +2047,19 @@ export const CreateMeetingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   Schema.Struct({
                     channel: Schema.optional(
                       Schema.Union([
-                        Schema.Literals(["mono", "stereo"]),
+                        Schema.Union([
+                          Schema.Literals(["mono", "stereo"]),
+                          Schema.String,
+                        ]),
                         Schema.Null,
                       ]),
                     ),
                     codec: Schema.optional(
                       Schema.Union([
-                        Schema.Literals(["MP3", "AAC"]),
+                        Schema.Union([
+                          Schema.Literals(["MP3", "AAC"]),
+                          Schema.String,
+                        ]),
                         Schema.Null,
                       ]),
                     ),
@@ -2024,16 +2103,22 @@ export const CreateMeetingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               storageConfig: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    type: Schema.Literals([
-                      "aws",
-                      "azure",
-                      "digitalocean",
-                      "gcs",
-                      "sftp",
+                    type: Schema.Union([
+                      Schema.Literals([
+                        "aws",
+                        "azure",
+                        "digitalocean",
+                        "gcs",
+                        "sftp",
+                      ]),
+                      Schema.String,
                     ]),
                     authMethod: Schema.optional(
                       Schema.Union([
-                        Schema.Literals(["KEY", "PASSWORD"]),
+                        Schema.Union([
+                          Schema.Literals(["KEY", "PASSWORD"]),
+                          Schema.String,
+                        ]),
                         Schema.Null,
                       ]),
                     ),
@@ -2087,7 +2172,10 @@ export const CreateMeetingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   Schema.Struct({
                     codec: Schema.optional(
                       Schema.Union([
-                        Schema.Literals(["H264", "VP8"]),
+                        Schema.Union([
+                          Schema.Literals(["H264", "VP8"]),
+                          Schema.String,
+                        ]),
                         Schema.Null,
                       ]),
                     ),
@@ -2102,11 +2190,14 @@ export const CreateMeetingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                         Schema.Struct({
                           position: Schema.optional(
                             Schema.Union([
-                              Schema.Literals([
-                                "left top",
-                                "right top",
-                                "left bottom",
-                                "right bottom",
+                              Schema.Union([
+                                Schema.Literals([
+                                  "left top",
+                                  "right top",
+                                  "left bottom",
+                                  "right bottom",
+                                ]),
+                                Schema.String,
                               ]),
                               Schema.Null,
                             ]),
@@ -2164,7 +2255,13 @@ export const CreateMeetingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([Schema.Number, Schema.Null]),
         ),
         status: Schema.optional(
-          Schema.Union([Schema.Literals(["ACTIVE", "INACTIVE"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals(["ACTIVE", "INACTIVE"]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
         ),
         summarizeOnEnd: Schema.optional(
           Schema.Union([Schema.Boolean, Schema.Null]),
@@ -2236,7 +2333,7 @@ export interface GetMeetingActiveLivestreamsLivestreamResponse {
     meetingId?: string | null;
     name?: string | null;
     playbackUrl?: string | null;
-    status?: "LIVE" | "IDLE" | "ERRORED" | "INVOKED" | null;
+    status?: "LIVE" | "IDLE" | "ERRORED" | "INVOKED" | (string & {}) | null;
     streamKey?: string | null;
     updatedAt?: string | null;
   } | null;
@@ -2265,7 +2362,10 @@ export const GetMeetingActiveLivestreamsLivestreamResponse =
           ),
           status: Schema.optional(
             Schema.Union([
-              Schema.Literals(["LIVE", "IDLE", "ERRORED", "INVOKED"]),
+              Schema.Union([
+                Schema.Literals(["LIVE", "IDLE", "ERRORED", "INVOKED"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -2354,8 +2454,9 @@ export interface GetMeetingByIdMeetingResponse {
           | "one_on_one_meeting"
           | "lecture"
           | "code_review"
+          | (string & {})
           | null;
-        textFormat?: "plain_text" | "markdown" | null;
+        textFormat?: "plain_text" | "markdown" | (string & {}) | null;
         wordLimit?: number | null;
       } | null;
       transcription?: {
@@ -2371,6 +2472,7 @@ export interface GetMeetingByIdMeetingResponse {
           | "el"
           | "fr"
           | "nl"
+          | (string & {})
           | null;
         profanityFilter?: boolean | null;
       } | null;
@@ -2380,8 +2482,8 @@ export interface GetMeetingByIdMeetingResponse {
     recordOnStart?: boolean | null;
     recordingConfig?: {
       audioConfig?: {
-        channel?: "mono" | "stereo" | null;
-        codec?: "MP3" | "AAC" | null;
+        channel?: "mono" | "stereo" | (string & {}) | null;
+        codec?: "MP3" | "AAC" | (string & {}) | null;
         exportFile?: boolean | null;
       } | null;
       fileNamePrefix?: string | null;
@@ -2389,8 +2491,8 @@ export interface GetMeetingByIdMeetingResponse {
       maxSeconds?: number | null;
       realtimekitBucketConfig?: { enabled: boolean } | null;
       storageConfig?: {
-        type: "aws" | "azure" | "digitalocean" | "gcs" | "sftp";
-        authMethod?: "KEY" | "PASSWORD" | null;
+        type: "aws" | "azure" | "digitalocean" | "gcs" | "sftp" | (string & {});
+        authMethod?: "KEY" | "PASSWORD" | (string & {}) | null;
         bucket?: string | null;
         host?: string | null;
         password?: string | null;
@@ -2402,7 +2504,7 @@ export interface GetMeetingByIdMeetingResponse {
         username?: string | null;
       } | null;
       videoConfig?: {
-        codec?: "H264" | "VP8" | null;
+        codec?: "H264" | "VP8" | (string & {}) | null;
         exportFile?: boolean | null;
         height?: number | null;
         watermark?: {
@@ -2411,6 +2513,7 @@ export interface GetMeetingByIdMeetingResponse {
             | "right top"
             | "left bottom"
             | "right bottom"
+            | (string & {})
             | null;
           size?: { height?: number | null; width?: number | null } | null;
           url?: string | null;
@@ -2419,7 +2522,7 @@ export interface GetMeetingByIdMeetingResponse {
       } | null;
     } | null;
     sessionKeepAliveTimeInSecs?: number | null;
-    status?: "ACTIVE" | "INACTIVE" | null;
+    status?: "ACTIVE" | "INACTIVE" | (string & {}) | null;
     summarizeOnEnd?: boolean | null;
     title?: string | null;
   } | null;
@@ -2442,23 +2545,29 @@ export const GetMeetingByIdMeetingResponse =
                     Schema.Struct({
                       summaryType: Schema.optional(
                         Schema.Union([
-                          Schema.Literals([
-                            "general",
-                            "team_meeting",
-                            "sales_call",
-                            "client_check_in",
-                            "interview",
-                            "daily_standup",
-                            "one_on_one_meeting",
-                            "lecture",
-                            "code_review",
+                          Schema.Union([
+                            Schema.Literals([
+                              "general",
+                              "team_meeting",
+                              "sales_call",
+                              "client_check_in",
+                              "interview",
+                              "daily_standup",
+                              "one_on_one_meeting",
+                              "lecture",
+                              "code_review",
+                            ]),
+                            Schema.String,
                           ]),
                           Schema.Null,
                         ]),
                       ),
                       textFormat: Schema.optional(
                         Schema.Union([
-                          Schema.Literals(["plain_text", "markdown"]),
+                          Schema.Union([
+                            Schema.Literals(["plain_text", "markdown"]),
+                            Schema.String,
+                          ]),
                           Schema.Null,
                         ]),
                       ),
@@ -2486,17 +2595,20 @@ export const GetMeetingByIdMeetingResponse =
                       ),
                       language: Schema.optional(
                         Schema.Union([
-                          Schema.Literals([
-                            "en-US",
-                            "en-IN",
-                            "de",
-                            "hi",
-                            "sv",
-                            "ru",
-                            "pl",
-                            "el",
-                            "fr",
-                            "nl",
+                          Schema.Union([
+                            Schema.Literals([
+                              "en-US",
+                              "en-IN",
+                              "de",
+                              "hi",
+                              "sv",
+                              "ru",
+                              "pl",
+                              "el",
+                              "fr",
+                              "nl",
+                            ]),
+                            Schema.String,
                           ]),
                           Schema.Null,
                         ]),
@@ -2535,13 +2647,19 @@ export const GetMeetingByIdMeetingResponse =
                     Schema.Struct({
                       channel: Schema.optional(
                         Schema.Union([
-                          Schema.Literals(["mono", "stereo"]),
+                          Schema.Union([
+                            Schema.Literals(["mono", "stereo"]),
+                            Schema.String,
+                          ]),
                           Schema.Null,
                         ]),
                       ),
                       codec: Schema.optional(
                         Schema.Union([
-                          Schema.Literals(["MP3", "AAC"]),
+                          Schema.Union([
+                            Schema.Literals(["MP3", "AAC"]),
+                            Schema.String,
+                          ]),
                           Schema.Null,
                         ]),
                       ),
@@ -2585,16 +2703,22 @@ export const GetMeetingByIdMeetingResponse =
                 storageConfig: Schema.optional(
                   Schema.Union([
                     Schema.Struct({
-                      type: Schema.Literals([
-                        "aws",
-                        "azure",
-                        "digitalocean",
-                        "gcs",
-                        "sftp",
+                      type: Schema.Union([
+                        Schema.Literals([
+                          "aws",
+                          "azure",
+                          "digitalocean",
+                          "gcs",
+                          "sftp",
+                        ]),
+                        Schema.String,
                       ]),
                       authMethod: Schema.optional(
                         Schema.Union([
-                          Schema.Literals(["KEY", "PASSWORD"]),
+                          Schema.Union([
+                            Schema.Literals(["KEY", "PASSWORD"]),
+                            Schema.String,
+                          ]),
                           Schema.Null,
                         ]),
                       ),
@@ -2648,7 +2772,10 @@ export const GetMeetingByIdMeetingResponse =
                     Schema.Struct({
                       codec: Schema.optional(
                         Schema.Union([
-                          Schema.Literals(["H264", "VP8"]),
+                          Schema.Union([
+                            Schema.Literals(["H264", "VP8"]),
+                            Schema.String,
+                          ]),
                           Schema.Null,
                         ]),
                       ),
@@ -2663,11 +2790,14 @@ export const GetMeetingByIdMeetingResponse =
                           Schema.Struct({
                             position: Schema.optional(
                               Schema.Union([
-                                Schema.Literals([
-                                  "left top",
-                                  "right top",
-                                  "left bottom",
-                                  "right bottom",
+                                Schema.Union([
+                                  Schema.Literals([
+                                    "left top",
+                                    "right top",
+                                    "left bottom",
+                                    "right bottom",
+                                  ]),
+                                  Schema.String,
                                 ]),
                                 Schema.Null,
                               ]),
@@ -2726,7 +2856,10 @@ export const GetMeetingByIdMeetingResponse =
           ),
           status: Schema.optional(
             Schema.Union([
-              Schema.Literals(["ACTIVE", "INACTIVE"]),
+              Schema.Union([
+                Schema.Literals(["ACTIVE", "INACTIVE"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -2785,8 +2918,9 @@ export interface UpdateMeetingByIdMeetingRequest {
         | "daily_standup"
         | "one_on_one_meeting"
         | "lecture"
-        | "code_review";
-      textFormat?: "plain_text" | "markdown";
+        | "code_review"
+        | (string & {});
+      textFormat?: "plain_text" | "markdown" | (string & {});
       wordLimit?: number;
     };
     transcription?: {
@@ -2801,7 +2935,8 @@ export interface UpdateMeetingByIdMeetingRequest {
         | "pl"
         | "el"
         | "fr"
-        | "nl";
+        | "nl"
+        | (string & {});
       profanityFilter?: boolean;
     };
   };
@@ -2814,7 +2949,7 @@ export interface UpdateMeetingByIdMeetingRequest {
   /** Body param: Time in seconds, for which a session remains active, after the last participant has left the meeting. */
   sessionKeepAliveTimeInSecs?: number;
   /** Body param: Whether the meeting is `ACTIVE` or `INACTIVE`. Users will not be able to join an `INACTIVE` meeting. */
-  status?: "ACTIVE" | "INACTIVE";
+  status?: "ACTIVE" | "INACTIVE" | (string & {});
   /** Body param: Automatically generate summary of meetings using transcripts. Requires Transcriptions to be enabled, and can be retrieved via Webhooks or summary API. */
   summarizeOnEnd?: boolean;
   /** Body param: Title of the meeting */
@@ -2831,20 +2966,26 @@ export const UpdateMeetingByIdMeetingRequest =
         summarization: Schema.optional(
           Schema.Struct({
             summaryType: Schema.optional(
-              Schema.Literals([
-                "general",
-                "team_meeting",
-                "sales_call",
-                "client_check_in",
-                "interview",
-                "daily_standup",
-                "one_on_one_meeting",
-                "lecture",
-                "code_review",
+              Schema.Union([
+                Schema.Literals([
+                  "general",
+                  "team_meeting",
+                  "sales_call",
+                  "client_check_in",
+                  "interview",
+                  "daily_standup",
+                  "one_on_one_meeting",
+                  "lecture",
+                  "code_review",
+                ]),
+                Schema.String,
               ]),
             ),
             textFormat: Schema.optional(
-              Schema.Literals(["plain_text", "markdown"]),
+              Schema.Union([
+                Schema.Literals(["plain_text", "markdown"]),
+                Schema.String,
+              ]),
             ),
             wordLimit: Schema.optional(Schema.Number),
           }).pipe(
@@ -2859,17 +3000,20 @@ export const UpdateMeetingByIdMeetingRequest =
           Schema.Struct({
             keywords: Schema.optional(Schema.Array(Schema.String)),
             language: Schema.optional(
-              Schema.Literals([
-                "en-US",
-                "en-IN",
-                "de",
-                "hi",
-                "sv",
-                "ru",
-                "pl",
-                "el",
-                "fr",
-                "nl",
+              Schema.Union([
+                Schema.Literals([
+                  "en-US",
+                  "en-IN",
+                  "de",
+                  "hi",
+                  "sv",
+                  "ru",
+                  "pl",
+                  "el",
+                  "fr",
+                  "nl",
+                ]),
+                Schema.String,
               ]),
             ),
             profanityFilter: Schema.optional(Schema.Boolean),
@@ -2887,7 +3031,9 @@ export const UpdateMeetingByIdMeetingRequest =
     persistChat: Schema.optional(Schema.Boolean),
     recordOnStart: Schema.optional(Schema.Boolean),
     sessionKeepAliveTimeInSecs: Schema.optional(Schema.Number),
-    status: Schema.optional(Schema.Literals(["ACTIVE", "INACTIVE"])),
+    status: Schema.optional(
+      Schema.Union([Schema.Literals(["ACTIVE", "INACTIVE"]), Schema.String]),
+    ),
     summarizeOnEnd: Schema.optional(Schema.Boolean),
     title: Schema.optional(Schema.String),
   }).pipe(
@@ -2927,8 +3073,9 @@ export interface UpdateMeetingByIdMeetingResponse {
           | "one_on_one_meeting"
           | "lecture"
           | "code_review"
+          | (string & {})
           | null;
-        textFormat?: "plain_text" | "markdown" | null;
+        textFormat?: "plain_text" | "markdown" | (string & {}) | null;
         wordLimit?: number | null;
       } | null;
       transcription?: {
@@ -2944,6 +3091,7 @@ export interface UpdateMeetingByIdMeetingResponse {
           | "el"
           | "fr"
           | "nl"
+          | (string & {})
           | null;
         profanityFilter?: boolean | null;
       } | null;
@@ -2953,8 +3101,8 @@ export interface UpdateMeetingByIdMeetingResponse {
     recordOnStart?: boolean | null;
     recordingConfig?: {
       audioConfig?: {
-        channel?: "mono" | "stereo" | null;
-        codec?: "MP3" | "AAC" | null;
+        channel?: "mono" | "stereo" | (string & {}) | null;
+        codec?: "MP3" | "AAC" | (string & {}) | null;
         exportFile?: boolean | null;
       } | null;
       fileNamePrefix?: string | null;
@@ -2962,8 +3110,8 @@ export interface UpdateMeetingByIdMeetingResponse {
       maxSeconds?: number | null;
       realtimekitBucketConfig?: { enabled: boolean } | null;
       storageConfig?: {
-        type: "aws" | "azure" | "digitalocean" | "gcs" | "sftp";
-        authMethod?: "KEY" | "PASSWORD" | null;
+        type: "aws" | "azure" | "digitalocean" | "gcs" | "sftp" | (string & {});
+        authMethod?: "KEY" | "PASSWORD" | (string & {}) | null;
         bucket?: string | null;
         host?: string | null;
         password?: string | null;
@@ -2975,7 +3123,7 @@ export interface UpdateMeetingByIdMeetingResponse {
         username?: string | null;
       } | null;
       videoConfig?: {
-        codec?: "H264" | "VP8" | null;
+        codec?: "H264" | "VP8" | (string & {}) | null;
         exportFile?: boolean | null;
         height?: number | null;
         watermark?: {
@@ -2984,6 +3132,7 @@ export interface UpdateMeetingByIdMeetingResponse {
             | "right top"
             | "left bottom"
             | "right bottom"
+            | (string & {})
             | null;
           size?: { height?: number | null; width?: number | null } | null;
           url?: string | null;
@@ -2992,7 +3141,7 @@ export interface UpdateMeetingByIdMeetingResponse {
       } | null;
     } | null;
     sessionKeepAliveTimeInSecs?: number | null;
-    status?: "ACTIVE" | "INACTIVE" | null;
+    status?: "ACTIVE" | "INACTIVE" | (string & {}) | null;
     summarizeOnEnd?: boolean | null;
     title?: string | null;
   } | null;
@@ -3015,23 +3164,29 @@ export const UpdateMeetingByIdMeetingResponse =
                     Schema.Struct({
                       summaryType: Schema.optional(
                         Schema.Union([
-                          Schema.Literals([
-                            "general",
-                            "team_meeting",
-                            "sales_call",
-                            "client_check_in",
-                            "interview",
-                            "daily_standup",
-                            "one_on_one_meeting",
-                            "lecture",
-                            "code_review",
+                          Schema.Union([
+                            Schema.Literals([
+                              "general",
+                              "team_meeting",
+                              "sales_call",
+                              "client_check_in",
+                              "interview",
+                              "daily_standup",
+                              "one_on_one_meeting",
+                              "lecture",
+                              "code_review",
+                            ]),
+                            Schema.String,
                           ]),
                           Schema.Null,
                         ]),
                       ),
                       textFormat: Schema.optional(
                         Schema.Union([
-                          Schema.Literals(["plain_text", "markdown"]),
+                          Schema.Union([
+                            Schema.Literals(["plain_text", "markdown"]),
+                            Schema.String,
+                          ]),
                           Schema.Null,
                         ]),
                       ),
@@ -3059,17 +3214,20 @@ export const UpdateMeetingByIdMeetingResponse =
                       ),
                       language: Schema.optional(
                         Schema.Union([
-                          Schema.Literals([
-                            "en-US",
-                            "en-IN",
-                            "de",
-                            "hi",
-                            "sv",
-                            "ru",
-                            "pl",
-                            "el",
-                            "fr",
-                            "nl",
+                          Schema.Union([
+                            Schema.Literals([
+                              "en-US",
+                              "en-IN",
+                              "de",
+                              "hi",
+                              "sv",
+                              "ru",
+                              "pl",
+                              "el",
+                              "fr",
+                              "nl",
+                            ]),
+                            Schema.String,
                           ]),
                           Schema.Null,
                         ]),
@@ -3108,13 +3266,19 @@ export const UpdateMeetingByIdMeetingResponse =
                     Schema.Struct({
                       channel: Schema.optional(
                         Schema.Union([
-                          Schema.Literals(["mono", "stereo"]),
+                          Schema.Union([
+                            Schema.Literals(["mono", "stereo"]),
+                            Schema.String,
+                          ]),
                           Schema.Null,
                         ]),
                       ),
                       codec: Schema.optional(
                         Schema.Union([
-                          Schema.Literals(["MP3", "AAC"]),
+                          Schema.Union([
+                            Schema.Literals(["MP3", "AAC"]),
+                            Schema.String,
+                          ]),
                           Schema.Null,
                         ]),
                       ),
@@ -3158,16 +3322,22 @@ export const UpdateMeetingByIdMeetingResponse =
                 storageConfig: Schema.optional(
                   Schema.Union([
                     Schema.Struct({
-                      type: Schema.Literals([
-                        "aws",
-                        "azure",
-                        "digitalocean",
-                        "gcs",
-                        "sftp",
+                      type: Schema.Union([
+                        Schema.Literals([
+                          "aws",
+                          "azure",
+                          "digitalocean",
+                          "gcs",
+                          "sftp",
+                        ]),
+                        Schema.String,
                       ]),
                       authMethod: Schema.optional(
                         Schema.Union([
-                          Schema.Literals(["KEY", "PASSWORD"]),
+                          Schema.Union([
+                            Schema.Literals(["KEY", "PASSWORD"]),
+                            Schema.String,
+                          ]),
                           Schema.Null,
                         ]),
                       ),
@@ -3221,7 +3391,10 @@ export const UpdateMeetingByIdMeetingResponse =
                     Schema.Struct({
                       codec: Schema.optional(
                         Schema.Union([
-                          Schema.Literals(["H264", "VP8"]),
+                          Schema.Union([
+                            Schema.Literals(["H264", "VP8"]),
+                            Schema.String,
+                          ]),
                           Schema.Null,
                         ]),
                       ),
@@ -3236,11 +3409,14 @@ export const UpdateMeetingByIdMeetingResponse =
                           Schema.Struct({
                             position: Schema.optional(
                               Schema.Union([
-                                Schema.Literals([
-                                  "left top",
-                                  "right top",
-                                  "left bottom",
-                                  "right bottom",
+                                Schema.Union([
+                                  Schema.Literals([
+                                    "left top",
+                                    "right top",
+                                    "left bottom",
+                                    "right bottom",
+                                  ]),
+                                  Schema.String,
                                 ]),
                                 Schema.Null,
                               ]),
@@ -3299,7 +3475,10 @@ export const UpdateMeetingByIdMeetingResponse =
           ),
           status: Schema.optional(
             Schema.Union([
-              Schema.Literals(["ACTIVE", "INACTIVE"]),
+              Schema.Union([
+                Schema.Literals(["ACTIVE", "INACTIVE"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -3358,8 +3537,9 @@ export interface ReplaceMeetingByIdMeetingRequest {
         | "daily_standup"
         | "one_on_one_meeting"
         | "lecture"
-        | "code_review";
-      textFormat?: "plain_text" | "markdown";
+        | "code_review"
+        | (string & {});
+      textFormat?: "plain_text" | "markdown" | (string & {});
       wordLimit?: number;
     };
     transcription?: {
@@ -3374,7 +3554,8 @@ export interface ReplaceMeetingByIdMeetingRequest {
         | "pl"
         | "el"
         | "fr"
-        | "nl";
+        | "nl"
+        | (string & {});
       profanityFilter?: boolean;
     };
   };
@@ -3387,8 +3568,8 @@ export interface ReplaceMeetingByIdMeetingRequest {
   /** Body param: Recording Configurations to be used for this meeting. This level of configs takes higher preference over App level configs on the RealtimeKit developer portal. */
   recordingConfig?: {
     audioConfig?: {
-      channel?: "mono" | "stereo";
-      codec?: "MP3" | "AAC";
+      channel?: "mono" | "stereo" | (string & {});
+      codec?: "MP3" | "AAC" | (string & {});
       exportFile?: boolean;
     };
     fileNamePrefix?: string;
@@ -3396,9 +3577,9 @@ export interface ReplaceMeetingByIdMeetingRequest {
     maxSeconds?: number;
     realtimekitBucketConfig?: { enabled: boolean };
     storageConfig?: {
-      type: "aws" | "azure" | "digitalocean" | "gcs" | "sftp";
+      type: "aws" | "azure" | "digitalocean" | "gcs" | "sftp" | (string & {});
       accessKey?: string;
-      authMethod?: "KEY" | "PASSWORD";
+      authMethod?: "KEY" | "PASSWORD" | (string & {});
       bucket?: string;
       host?: string;
       password?: string;
@@ -3410,11 +3591,16 @@ export interface ReplaceMeetingByIdMeetingRequest {
       username?: string;
     } | null;
     videoConfig?: {
-      codec?: "H264" | "VP8";
+      codec?: "H264" | "VP8" | (string & {});
       exportFile?: boolean;
       height?: number;
       watermark?: {
-        position?: "left top" | "right top" | "left bottom" | "right bottom";
+        position?:
+          | "left top"
+          | "right top"
+          | "left bottom"
+          | "right bottom"
+          | (string & {});
         size?: { height?: number; width?: number };
         url?: string;
       };
@@ -3439,20 +3625,26 @@ export const ReplaceMeetingByIdMeetingRequest =
         summarization: Schema.optional(
           Schema.Struct({
             summaryType: Schema.optional(
-              Schema.Literals([
-                "general",
-                "team_meeting",
-                "sales_call",
-                "client_check_in",
-                "interview",
-                "daily_standup",
-                "one_on_one_meeting",
-                "lecture",
-                "code_review",
+              Schema.Union([
+                Schema.Literals([
+                  "general",
+                  "team_meeting",
+                  "sales_call",
+                  "client_check_in",
+                  "interview",
+                  "daily_standup",
+                  "one_on_one_meeting",
+                  "lecture",
+                  "code_review",
+                ]),
+                Schema.String,
               ]),
             ),
             textFormat: Schema.optional(
-              Schema.Literals(["plain_text", "markdown"]),
+              Schema.Union([
+                Schema.Literals(["plain_text", "markdown"]),
+                Schema.String,
+              ]),
             ),
             wordLimit: Schema.optional(Schema.Number),
           }).pipe(
@@ -3467,17 +3659,20 @@ export const ReplaceMeetingByIdMeetingRequest =
           Schema.Struct({
             keywords: Schema.optional(Schema.Array(Schema.String)),
             language: Schema.optional(
-              Schema.Literals([
-                "en-US",
-                "en-IN",
-                "de",
-                "hi",
-                "sv",
-                "ru",
-                "pl",
-                "el",
-                "fr",
-                "nl",
+              Schema.Union([
+                Schema.Literals([
+                  "en-US",
+                  "en-IN",
+                  "de",
+                  "hi",
+                  "sv",
+                  "ru",
+                  "pl",
+                  "el",
+                  "fr",
+                  "nl",
+                ]),
+                Schema.String,
               ]),
             ),
             profanityFilter: Schema.optional(Schema.Boolean),
@@ -3500,8 +3695,15 @@ export const ReplaceMeetingByIdMeetingRequest =
       Schema.Struct({
         audioConfig: Schema.optional(
           Schema.Struct({
-            channel: Schema.optional(Schema.Literals(["mono", "stereo"])),
-            codec: Schema.optional(Schema.Literals(["MP3", "AAC"])),
+            channel: Schema.optional(
+              Schema.Union([
+                Schema.Literals(["mono", "stereo"]),
+                Schema.String,
+              ]),
+            ),
+            codec: Schema.optional(
+              Schema.Union([Schema.Literals(["MP3", "AAC"]), Schema.String]),
+            ),
             exportFile: Schema.optional(Schema.Boolean),
           }).pipe(
             Schema.encodeKeys({
@@ -3526,15 +3728,23 @@ export const ReplaceMeetingByIdMeetingRequest =
         storageConfig: Schema.optional(
           Schema.Union([
             Schema.Struct({
-              type: Schema.Literals([
-                "aws",
-                "azure",
-                "digitalocean",
-                "gcs",
-                "sftp",
+              type: Schema.Union([
+                Schema.Literals([
+                  "aws",
+                  "azure",
+                  "digitalocean",
+                  "gcs",
+                  "sftp",
+                ]),
+                Schema.String,
               ]),
               accessKey: Schema.optional(Schema.String),
-              authMethod: Schema.optional(Schema.Literals(["KEY", "PASSWORD"])),
+              authMethod: Schema.optional(
+                Schema.Union([
+                  Schema.Literals(["KEY", "PASSWORD"]),
+                  Schema.String,
+                ]),
+              ),
               bucket: Schema.optional(Schema.String),
               host: Schema.optional(Schema.String),
               password: Schema.optional(SensitiveString),
@@ -3565,17 +3775,22 @@ export const ReplaceMeetingByIdMeetingRequest =
         ),
         videoConfig: Schema.optional(
           Schema.Struct({
-            codec: Schema.optional(Schema.Literals(["H264", "VP8"])),
+            codec: Schema.optional(
+              Schema.Union([Schema.Literals(["H264", "VP8"]), Schema.String]),
+            ),
             exportFile: Schema.optional(Schema.Boolean),
             height: Schema.optional(Schema.Number),
             watermark: Schema.optional(
               Schema.Struct({
                 position: Schema.optional(
-                  Schema.Literals([
-                    "left top",
-                    "right top",
-                    "left bottom",
-                    "right bottom",
+                  Schema.Union([
+                    Schema.Literals([
+                      "left top",
+                      "right top",
+                      "left bottom",
+                      "right bottom",
+                    ]),
+                    Schema.String,
                   ]),
                 ),
                 size: Schema.optional(
@@ -3650,8 +3865,9 @@ export interface ReplaceMeetingByIdMeetingResponse {
           | "one_on_one_meeting"
           | "lecture"
           | "code_review"
+          | (string & {})
           | null;
-        textFormat?: "plain_text" | "markdown" | null;
+        textFormat?: "plain_text" | "markdown" | (string & {}) | null;
         wordLimit?: number | null;
       } | null;
       transcription?: {
@@ -3667,6 +3883,7 @@ export interface ReplaceMeetingByIdMeetingResponse {
           | "el"
           | "fr"
           | "nl"
+          | (string & {})
           | null;
         profanityFilter?: boolean | null;
       } | null;
@@ -3676,8 +3893,8 @@ export interface ReplaceMeetingByIdMeetingResponse {
     recordOnStart?: boolean | null;
     recordingConfig?: {
       audioConfig?: {
-        channel?: "mono" | "stereo" | null;
-        codec?: "MP3" | "AAC" | null;
+        channel?: "mono" | "stereo" | (string & {}) | null;
+        codec?: "MP3" | "AAC" | (string & {}) | null;
         exportFile?: boolean | null;
       } | null;
       fileNamePrefix?: string | null;
@@ -3685,8 +3902,8 @@ export interface ReplaceMeetingByIdMeetingResponse {
       maxSeconds?: number | null;
       realtimekitBucketConfig?: { enabled: boolean } | null;
       storageConfig?: {
-        type: "aws" | "azure" | "digitalocean" | "gcs" | "sftp";
-        authMethod?: "KEY" | "PASSWORD" | null;
+        type: "aws" | "azure" | "digitalocean" | "gcs" | "sftp" | (string & {});
+        authMethod?: "KEY" | "PASSWORD" | (string & {}) | null;
         bucket?: string | null;
         host?: string | null;
         password?: string | null;
@@ -3698,7 +3915,7 @@ export interface ReplaceMeetingByIdMeetingResponse {
         username?: string | null;
       } | null;
       videoConfig?: {
-        codec?: "H264" | "VP8" | null;
+        codec?: "H264" | "VP8" | (string & {}) | null;
         exportFile?: boolean | null;
         height?: number | null;
         watermark?: {
@@ -3707,6 +3924,7 @@ export interface ReplaceMeetingByIdMeetingResponse {
             | "right top"
             | "left bottom"
             | "right bottom"
+            | (string & {})
             | null;
           size?: { height?: number | null; width?: number | null } | null;
           url?: string | null;
@@ -3715,7 +3933,7 @@ export interface ReplaceMeetingByIdMeetingResponse {
       } | null;
     } | null;
     sessionKeepAliveTimeInSecs?: number | null;
-    status?: "ACTIVE" | "INACTIVE" | null;
+    status?: "ACTIVE" | "INACTIVE" | (string & {}) | null;
     summarizeOnEnd?: boolean | null;
     title?: string | null;
   } | null;
@@ -3738,23 +3956,29 @@ export const ReplaceMeetingByIdMeetingResponse =
                     Schema.Struct({
                       summaryType: Schema.optional(
                         Schema.Union([
-                          Schema.Literals([
-                            "general",
-                            "team_meeting",
-                            "sales_call",
-                            "client_check_in",
-                            "interview",
-                            "daily_standup",
-                            "one_on_one_meeting",
-                            "lecture",
-                            "code_review",
+                          Schema.Union([
+                            Schema.Literals([
+                              "general",
+                              "team_meeting",
+                              "sales_call",
+                              "client_check_in",
+                              "interview",
+                              "daily_standup",
+                              "one_on_one_meeting",
+                              "lecture",
+                              "code_review",
+                            ]),
+                            Schema.String,
                           ]),
                           Schema.Null,
                         ]),
                       ),
                       textFormat: Schema.optional(
                         Schema.Union([
-                          Schema.Literals(["plain_text", "markdown"]),
+                          Schema.Union([
+                            Schema.Literals(["plain_text", "markdown"]),
+                            Schema.String,
+                          ]),
                           Schema.Null,
                         ]),
                       ),
@@ -3782,17 +4006,20 @@ export const ReplaceMeetingByIdMeetingResponse =
                       ),
                       language: Schema.optional(
                         Schema.Union([
-                          Schema.Literals([
-                            "en-US",
-                            "en-IN",
-                            "de",
-                            "hi",
-                            "sv",
-                            "ru",
-                            "pl",
-                            "el",
-                            "fr",
-                            "nl",
+                          Schema.Union([
+                            Schema.Literals([
+                              "en-US",
+                              "en-IN",
+                              "de",
+                              "hi",
+                              "sv",
+                              "ru",
+                              "pl",
+                              "el",
+                              "fr",
+                              "nl",
+                            ]),
+                            Schema.String,
                           ]),
                           Schema.Null,
                         ]),
@@ -3831,13 +4058,19 @@ export const ReplaceMeetingByIdMeetingResponse =
                     Schema.Struct({
                       channel: Schema.optional(
                         Schema.Union([
-                          Schema.Literals(["mono", "stereo"]),
+                          Schema.Union([
+                            Schema.Literals(["mono", "stereo"]),
+                            Schema.String,
+                          ]),
                           Schema.Null,
                         ]),
                       ),
                       codec: Schema.optional(
                         Schema.Union([
-                          Schema.Literals(["MP3", "AAC"]),
+                          Schema.Union([
+                            Schema.Literals(["MP3", "AAC"]),
+                            Schema.String,
+                          ]),
                           Schema.Null,
                         ]),
                       ),
@@ -3881,16 +4114,22 @@ export const ReplaceMeetingByIdMeetingResponse =
                 storageConfig: Schema.optional(
                   Schema.Union([
                     Schema.Struct({
-                      type: Schema.Literals([
-                        "aws",
-                        "azure",
-                        "digitalocean",
-                        "gcs",
-                        "sftp",
+                      type: Schema.Union([
+                        Schema.Literals([
+                          "aws",
+                          "azure",
+                          "digitalocean",
+                          "gcs",
+                          "sftp",
+                        ]),
+                        Schema.String,
                       ]),
                       authMethod: Schema.optional(
                         Schema.Union([
-                          Schema.Literals(["KEY", "PASSWORD"]),
+                          Schema.Union([
+                            Schema.Literals(["KEY", "PASSWORD"]),
+                            Schema.String,
+                          ]),
                           Schema.Null,
                         ]),
                       ),
@@ -3944,7 +4183,10 @@ export const ReplaceMeetingByIdMeetingResponse =
                     Schema.Struct({
                       codec: Schema.optional(
                         Schema.Union([
-                          Schema.Literals(["H264", "VP8"]),
+                          Schema.Union([
+                            Schema.Literals(["H264", "VP8"]),
+                            Schema.String,
+                          ]),
                           Schema.Null,
                         ]),
                       ),
@@ -3959,11 +4201,14 @@ export const ReplaceMeetingByIdMeetingResponse =
                           Schema.Struct({
                             position: Schema.optional(
                               Schema.Union([
-                                Schema.Literals([
-                                  "left top",
-                                  "right top",
-                                  "left bottom",
-                                  "right bottom",
+                                Schema.Union([
+                                  Schema.Literals([
+                                    "left top",
+                                    "right top",
+                                    "left bottom",
+                                    "right bottom",
+                                  ]),
+                                  Schema.String,
                                 ]),
                                 Schema.Null,
                               ]),
@@ -4022,7 +4267,10 @@ export const ReplaceMeetingByIdMeetingResponse =
           ),
           status: Schema.optional(
             Schema.Union([
-              Schema.Literals(["ACTIVE", "INACTIVE"]),
+              Schema.Union([
+                Schema.Literals(["ACTIVE", "INACTIVE"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -4346,28 +4594,34 @@ export interface GetOneRecordingRecordingResponse {
       | "UPLOADING"
       | "UPLOADED"
       | "ERRORED"
-      | "PAUSED";
+      | "PAUSED"
+      | (string & {});
     stoppedTime: string | null;
     recordingDuration?: number | null;
     startReason?: {
       caller?: {
         name?: string | null;
-        type?: "ORGANIZATION" | "USER" | null;
+        type?: "ORGANIZATION" | "USER" | (string & {}) | null;
         userId?: string | null;
       } | null;
-      reason?: "API_CALL" | "RECORD_ON_START" | null;
+      reason?: "API_CALL" | "RECORD_ON_START" | (string & {}) | null;
     } | null;
     stopReason?: {
       caller?: {
         name?: string | null;
-        type?: "ORGANIZATION" | "USER" | null;
+        type?: "ORGANIZATION" | "USER" | (string & {}) | null;
         userId?: string | null;
       } | null;
-      reason?: "API_CALL" | "INTERNAL_ERROR" | "ALL_PEERS_LEFT" | null;
+      reason?:
+        | "API_CALL"
+        | "INTERNAL_ERROR"
+        | "ALL_PEERS_LEFT"
+        | (string & {})
+        | null;
     } | null;
     storageConfig?: {
-      type: "aws" | "azure" | "digitalocean" | "gcs" | "sftp";
-      authMethod?: "KEY" | "PASSWORD" | null;
+      type: "aws" | "azure" | "digitalocean" | "gcs" | "sftp" | (string & {});
+      authMethod?: "KEY" | "PASSWORD" | (string & {}) | null;
       bucket?: string | null;
       host?: string | null;
       password?: string | null;
@@ -4396,13 +4650,16 @@ export const GetOneRecordingRecordingResponse =
           outputFileName: Schema.String,
           sessionId: Schema.Union([Schema.String, Schema.Null]),
           startedTime: Schema.Union([Schema.String, Schema.Null]),
-          status: Schema.Literals([
-            "INVOKED",
-            "RECORDING",
-            "UPLOADING",
-            "UPLOADED",
-            "ERRORED",
-            "PAUSED",
+          status: Schema.Union([
+            Schema.Literals([
+              "INVOKED",
+              "RECORDING",
+              "UPLOADING",
+              "UPLOADED",
+              "ERRORED",
+              "PAUSED",
+            ]),
+            Schema.String,
           ]),
           stoppedTime: Schema.Union([Schema.String, Schema.Null]),
           recordingDuration: Schema.optional(
@@ -4419,7 +4676,10 @@ export const GetOneRecordingRecordingResponse =
                       ),
                       type: Schema.optional(
                         Schema.Union([
-                          Schema.Literals(["ORGANIZATION", "USER"]),
+                          Schema.Union([
+                            Schema.Literals(["ORGANIZATION", "USER"]),
+                            Schema.String,
+                          ]),
                           Schema.Null,
                         ]),
                       ),
@@ -4438,7 +4698,10 @@ export const GetOneRecordingRecordingResponse =
                 ),
                 reason: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["API_CALL", "RECORD_ON_START"]),
+                    Schema.Union([
+                      Schema.Literals(["API_CALL", "RECORD_ON_START"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -4457,7 +4720,10 @@ export const GetOneRecordingRecordingResponse =
                       ),
                       type: Schema.optional(
                         Schema.Union([
-                          Schema.Literals(["ORGANIZATION", "USER"]),
+                          Schema.Union([
+                            Schema.Literals(["ORGANIZATION", "USER"]),
+                            Schema.String,
+                          ]),
                           Schema.Null,
                         ]),
                       ),
@@ -4476,10 +4742,13 @@ export const GetOneRecordingRecordingResponse =
                 ),
                 reason: Schema.optional(
                   Schema.Union([
-                    Schema.Literals([
-                      "API_CALL",
-                      "INTERNAL_ERROR",
-                      "ALL_PEERS_LEFT",
+                    Schema.Union([
+                      Schema.Literals([
+                        "API_CALL",
+                        "INTERNAL_ERROR",
+                        "ALL_PEERS_LEFT",
+                      ]),
+                      Schema.String,
                     ]),
                     Schema.Null,
                   ]),
@@ -4491,16 +4760,22 @@ export const GetOneRecordingRecordingResponse =
           storageConfig: Schema.optional(
             Schema.Union([
               Schema.Struct({
-                type: Schema.Literals([
-                  "aws",
-                  "azure",
-                  "digitalocean",
-                  "gcs",
-                  "sftp",
+                type: Schema.Union([
+                  Schema.Literals([
+                    "aws",
+                    "azure",
+                    "digitalocean",
+                    "gcs",
+                    "sftp",
+                  ]),
+                  Schema.String,
                 ]),
                 authMethod: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["KEY", "PASSWORD"]),
+                    Schema.Union([
+                      Schema.Literals(["KEY", "PASSWORD"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -4943,7 +5218,8 @@ export interface GetParticipantDataFromPeerIdSessionRequest {
     | "ip_information"
     | "precall_network_information"
     | "events"
-    | "quality_stats";
+    | "quality_stats"
+    | (string & {});
 }
 
 export const GetParticipantDataFromPeerIdSessionRequest =
@@ -4952,12 +5228,15 @@ export const GetParticipantDataFromPeerIdSessionRequest =
     peerId: Schema.String.pipe(T.HttpPath("peerId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     filters: Schema.optional(
-      Schema.Literals([
-        "device_info",
-        "ip_information",
-        "precall_network_information",
-        "events",
-        "quality_stats",
+      Schema.Union([
+        Schema.Literals([
+          "device_info",
+          "ip_information",
+          "precall_network_information",
+          "events",
+          "quality_stats",
+        ]),
+        Schema.String,
       ]),
     ).pipe(T.HttpQuery("filters")),
   }).pipe(
@@ -7087,11 +7366,17 @@ export interface CreatePresetRequest {
     maxScreenshareCount: number;
     maxVideoStreams: { desktop: number; mobile: number };
     media: {
-      screenshare: { frameRate: number; quality: "hd" | "vga" | "qvga" };
-      video: { frameRate: number; quality: "hd" | "vga" | "qvga" };
+      screenshare: {
+        frameRate: number;
+        quality: "hd" | "vga" | "qvga" | (string & {});
+      };
+      video: {
+        frameRate: number;
+        quality: "hd" | "vga" | "qvga" | (string & {});
+      };
       audio?: { enableHighBitrate?: boolean; enableStereo?: boolean };
     };
-    viewType: "GROUP_CALL" | "WEBINAR" | "AUDIO_ROOM";
+    viewType: "GROUP_CALL" | "WEBINAR" | "AUDIO_ROOM" | (string & {});
   };
   /** Body param: Name of the preset */
   name: string;
@@ -7157,9 +7442,15 @@ export interface CreatePresetRequest {
     hiddenParticipant: boolean;
     kickParticipant: boolean;
     media: {
-      audio: { canProduce: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" };
-      screenshare: { canProduce: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" };
-      video: { canProduce: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" };
+      audio: {
+        canProduce: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" | (string & {});
+      };
+      screenshare: {
+        canProduce: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" | (string & {});
+      };
+      video: {
+        canProduce: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" | (string & {});
+      };
     };
     pinParticipant: boolean;
     plugins: {
@@ -7169,14 +7460,18 @@ export interface CreatePresetRequest {
       config:
         | string
         | {
-            accessControl: "FULL_ACCESS" | "VIEW_ONLY";
+            accessControl: "FULL_ACCESS" | "VIEW_ONLY" | (string & {});
             handlesViewOnly: boolean;
           };
     };
     polls: { canCreate: boolean; canView: boolean; canVote: boolean };
-    recorderType: "RECORDER" | "LIVESTREAMER" | "NONE";
+    recorderType: "RECORDER" | "LIVESTREAMER" | "NONE" | (string & {});
     showParticipantList: boolean;
-    waitingRoomType: "SKIP" | "ON_PRIVILEGED_USER_ENTRY" | "SKIP_ON_ACCEPT";
+    waitingRoomType:
+      | "SKIP"
+      | "ON_PRIVILEGED_USER_ENTRY"
+      | "SKIP_ON_ACCEPT"
+      | (string & {});
     isRecorder?: boolean;
   };
 }
@@ -7193,13 +7488,19 @@ export const CreatePresetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     media: Schema.Struct({
       screenshare: Schema.Struct({
         frameRate: Schema.Number,
-        quality: Schema.Literals(["hd", "vga", "qvga"]),
+        quality: Schema.Union([
+          Schema.Literals(["hd", "vga", "qvga"]),
+          Schema.String,
+        ]),
       }).pipe(
         Schema.encodeKeys({ frameRate: "frame_rate", quality: "quality" }),
       ),
       video: Schema.Struct({
         frameRate: Schema.Number,
-        quality: Schema.Literals(["hd", "vga", "qvga"]),
+        quality: Schema.Union([
+          Schema.Literals(["hd", "vga", "qvga"]),
+          Schema.String,
+        ]),
       }).pipe(
         Schema.encodeKeys({ frameRate: "frame_rate", quality: "quality" }),
       ),
@@ -7215,7 +7516,10 @@ export const CreatePresetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ),
       ),
     }),
-    viewType: Schema.Literals(["GROUP_CALL", "WEBINAR", "AUDIO_ROOM"]),
+    viewType: Schema.Union([
+      Schema.Literals(["GROUP_CALL", "WEBINAR", "AUDIO_ROOM"]),
+      Schema.String,
+    ]),
   }).pipe(
     Schema.encodeKeys({
       maxScreenshareCount: "max_screenshare_count",
@@ -7335,24 +7639,21 @@ export const CreatePresetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       kickParticipant: Schema.Boolean,
       media: Schema.Struct({
         audio: Schema.Struct({
-          canProduce: Schema.Literals([
-            "ALLOWED",
-            "NOT_ALLOWED",
-            "CAN_REQUEST",
+          canProduce: Schema.Union([
+            Schema.Literals(["ALLOWED", "NOT_ALLOWED", "CAN_REQUEST"]),
+            Schema.String,
           ]),
         }).pipe(Schema.encodeKeys({ canProduce: "can_produce" })),
         screenshare: Schema.Struct({
-          canProduce: Schema.Literals([
-            "ALLOWED",
-            "NOT_ALLOWED",
-            "CAN_REQUEST",
+          canProduce: Schema.Union([
+            Schema.Literals(["ALLOWED", "NOT_ALLOWED", "CAN_REQUEST"]),
+            Schema.String,
           ]),
         }).pipe(Schema.encodeKeys({ canProduce: "can_produce" })),
         video: Schema.Struct({
-          canProduce: Schema.Literals([
-            "ALLOWED",
-            "NOT_ALLOWED",
-            "CAN_REQUEST",
+          canProduce: Schema.Union([
+            Schema.Literals(["ALLOWED", "NOT_ALLOWED", "CAN_REQUEST"]),
+            Schema.String,
           ]),
         }).pipe(Schema.encodeKeys({ canProduce: "can_produce" })),
       }),
@@ -7363,7 +7664,10 @@ export const CreatePresetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         canStart: Schema.Boolean,
         config: Schema.Union([
           Schema.Struct({
-            accessControl: Schema.Literals(["FULL_ACCESS", "VIEW_ONLY"]),
+            accessControl: Schema.Union([
+              Schema.Literals(["FULL_ACCESS", "VIEW_ONLY"]),
+              Schema.String,
+            ]),
             handlesViewOnly: Schema.Boolean,
           }).pipe(
             Schema.encodeKeys({
@@ -7392,12 +7696,14 @@ export const CreatePresetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           canVote: "can_vote",
         }),
       ),
-      recorderType: Schema.Literals(["RECORDER", "LIVESTREAMER", "NONE"]),
+      recorderType: Schema.Union([
+        Schema.Literals(["RECORDER", "LIVESTREAMER", "NONE"]),
+        Schema.String,
+      ]),
       showParticipantList: Schema.Boolean,
-      waitingRoomType: Schema.Literals([
-        "SKIP",
-        "ON_PRIVILEGED_USER_ENTRY",
-        "SKIP_ON_ACCEPT",
+      waitingRoomType: Schema.Union([
+        Schema.Literals(["SKIP", "ON_PRIVILEGED_USER_ENTRY", "SKIP_ON_ACCEPT"]),
+        Schema.String,
       ]),
       isRecorder: Schema.optional(Schema.Boolean),
     }).pipe(
@@ -7442,14 +7748,20 @@ export interface CreatePresetResponse {
       maxScreenshareCount: number;
       maxVideoStreams: { desktop: number; mobile: number };
       media: {
-        screenshare: { frameRate: number; quality: "hd" | "vga" | "qvga" };
-        video: { frameRate: number; quality: "hd" | "vga" | "qvga" };
+        screenshare: {
+          frameRate: number;
+          quality: "hd" | "vga" | "qvga" | (string & {});
+        };
+        video: {
+          frameRate: number;
+          quality: "hd" | "vga" | "qvga" | (string & {});
+        };
         audio?: {
           enableHighBitrate?: boolean | null;
           enableStereo?: boolean | null;
         } | null;
       };
-      viewType: "GROUP_CALL" | "WEBINAR" | "AUDIO_ROOM";
+      viewType: "GROUP_CALL" | "WEBINAR" | "AUDIO_ROOM" | (string & {});
     };
     name: string;
     ui: {
@@ -7512,9 +7824,15 @@ export interface CreatePresetResponse {
       hiddenParticipant: boolean;
       kickParticipant: boolean;
       media: {
-        audio: { canProduce: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" };
-        screenshare: { canProduce: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" };
-        video: { canProduce: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" };
+        audio: {
+          canProduce: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" | (string & {});
+        };
+        screenshare: {
+          canProduce: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" | (string & {});
+        };
+        video: {
+          canProduce: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" | (string & {});
+        };
       };
       pinParticipant: boolean;
       plugins: {
@@ -7524,14 +7842,18 @@ export interface CreatePresetResponse {
         config:
           | string
           | {
-              accessControl: "FULL_ACCESS" | "VIEW_ONLY";
+              accessControl: "FULL_ACCESS" | "VIEW_ONLY" | (string & {});
               handlesViewOnly: boolean;
             };
       };
       polls: { canCreate: boolean; canView: boolean; canVote: boolean };
-      recorderType: "RECORDER" | "LIVESTREAMER" | "NONE";
+      recorderType: "RECORDER" | "LIVESTREAMER" | "NONE" | (string & {});
       showParticipantList: boolean;
-      waitingRoomType: "SKIP" | "ON_PRIVILEGED_USER_ENTRY" | "SKIP_ON_ACCEPT";
+      waitingRoomType:
+        | "SKIP"
+        | "ON_PRIVILEGED_USER_ENTRY"
+        | "SKIP_ON_ACCEPT"
+        | (string & {});
       isRecorder?: boolean | null;
     } | null;
   };
@@ -7551,13 +7873,19 @@ export const CreatePresetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       media: Schema.Struct({
         screenshare: Schema.Struct({
           frameRate: Schema.Number,
-          quality: Schema.Literals(["hd", "vga", "qvga"]),
+          quality: Schema.Union([
+            Schema.Literals(["hd", "vga", "qvga"]),
+            Schema.String,
+          ]),
         }).pipe(
           Schema.encodeKeys({ frameRate: "frame_rate", quality: "quality" }),
         ),
         video: Schema.Struct({
           frameRate: Schema.Number,
-          quality: Schema.Literals(["hd", "vga", "qvga"]),
+          quality: Schema.Union([
+            Schema.Literals(["hd", "vga", "qvga"]),
+            Schema.String,
+          ]),
         }).pipe(
           Schema.encodeKeys({ frameRate: "frame_rate", quality: "quality" }),
         ),
@@ -7580,7 +7908,10 @@ export const CreatePresetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ]),
         ),
       }),
-      viewType: Schema.Literals(["GROUP_CALL", "WEBINAR", "AUDIO_ROOM"]),
+      viewType: Schema.Union([
+        Schema.Literals(["GROUP_CALL", "WEBINAR", "AUDIO_ROOM"]),
+        Schema.String,
+      ]),
     }).pipe(
       Schema.encodeKeys({
         maxScreenshareCount: "max_screenshare_count",
@@ -7701,24 +8032,21 @@ export const CreatePresetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           kickParticipant: Schema.Boolean,
           media: Schema.Struct({
             audio: Schema.Struct({
-              canProduce: Schema.Literals([
-                "ALLOWED",
-                "NOT_ALLOWED",
-                "CAN_REQUEST",
+              canProduce: Schema.Union([
+                Schema.Literals(["ALLOWED", "NOT_ALLOWED", "CAN_REQUEST"]),
+                Schema.String,
               ]),
             }).pipe(Schema.encodeKeys({ canProduce: "can_produce" })),
             screenshare: Schema.Struct({
-              canProduce: Schema.Literals([
-                "ALLOWED",
-                "NOT_ALLOWED",
-                "CAN_REQUEST",
+              canProduce: Schema.Union([
+                Schema.Literals(["ALLOWED", "NOT_ALLOWED", "CAN_REQUEST"]),
+                Schema.String,
               ]),
             }).pipe(Schema.encodeKeys({ canProduce: "can_produce" })),
             video: Schema.Struct({
-              canProduce: Schema.Literals([
-                "ALLOWED",
-                "NOT_ALLOWED",
-                "CAN_REQUEST",
+              canProduce: Schema.Union([
+                Schema.Literals(["ALLOWED", "NOT_ALLOWED", "CAN_REQUEST"]),
+                Schema.String,
               ]),
             }).pipe(Schema.encodeKeys({ canProduce: "can_produce" })),
           }),
@@ -7729,7 +8057,10 @@ export const CreatePresetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             canStart: Schema.Boolean,
             config: Schema.Union([
               Schema.Struct({
-                accessControl: Schema.Literals(["FULL_ACCESS", "VIEW_ONLY"]),
+                accessControl: Schema.Union([
+                  Schema.Literals(["FULL_ACCESS", "VIEW_ONLY"]),
+                  Schema.String,
+                ]),
                 handlesViewOnly: Schema.Boolean,
               }).pipe(
                 Schema.encodeKeys({
@@ -7758,12 +8089,18 @@ export const CreatePresetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               canVote: "can_vote",
             }),
           ),
-          recorderType: Schema.Literals(["RECORDER", "LIVESTREAMER", "NONE"]),
+          recorderType: Schema.Union([
+            Schema.Literals(["RECORDER", "LIVESTREAMER", "NONE"]),
+            Schema.String,
+          ]),
           showParticipantList: Schema.Boolean,
-          waitingRoomType: Schema.Literals([
-            "SKIP",
-            "ON_PRIVILEGED_USER_ENTRY",
-            "SKIP_ON_ACCEPT",
+          waitingRoomType: Schema.Union([
+            Schema.Literals([
+              "SKIP",
+              "ON_PRIVILEGED_USER_ENTRY",
+              "SKIP_ON_ACCEPT",
+            ]),
+            Schema.String,
           ]),
           isRecorder: Schema.optional(
             Schema.Union([Schema.Boolean, Schema.Null]),
@@ -7826,10 +8163,16 @@ export interface PatchPresetRequest {
     maxScreenshareCount?: number;
     maxVideoStreams?: { desktop?: number; mobile?: number };
     media?: {
-      screenshare?: { frameRate?: number; quality?: "hd" | "vga" | "qvga" };
-      video?: { frameRate?: number; quality?: "hd" | "vga" | "qvga" };
+      screenshare?: {
+        frameRate?: number;
+        quality?: "hd" | "vga" | "qvga" | (string & {});
+      };
+      video?: {
+        frameRate?: number;
+        quality?: "hd" | "vga" | "qvga" | (string & {});
+      };
     };
-    viewType?: "GROUP_CALL" | "WEBINAR" | "AUDIO_ROOM";
+    viewType?: "GROUP_CALL" | "WEBINAR" | "AUDIO_ROOM" | (string & {});
   };
   /** Body param: Name of the preset */
   name?: string;
@@ -7863,9 +8206,15 @@ export interface PatchPresetRequest {
     isRecorder?: boolean;
     kickParticipant?: boolean;
     media?: {
-      audio?: { canProduce?: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" };
-      screenshare?: { canProduce?: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" };
-      video?: { canProduce?: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" };
+      audio?: {
+        canProduce?: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" | (string & {});
+      };
+      screenshare?: {
+        canProduce?: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" | (string & {});
+      };
+      video?: {
+        canProduce?: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" | (string & {});
+      };
     };
     pinParticipant?: boolean;
     plugins?: {
@@ -7875,14 +8224,18 @@ export interface PatchPresetRequest {
       config?:
         | string
         | {
-            accessControl?: "FULL_ACCESS" | "VIEW_ONLY";
+            accessControl?: "FULL_ACCESS" | "VIEW_ONLY" | (string & {});
             handlesViewOnly?: boolean;
           };
     };
     polls?: { canCreate?: boolean; canView?: boolean; canVote?: boolean };
-    recorderType?: "RECORDER" | "LIVESTREAMER" | "NONE";
+    recorderType?: "RECORDER" | "LIVESTREAMER" | "NONE" | (string & {});
     showParticipantList?: boolean;
-    waitingRoomType?: "SKIP" | "ON_PRIVILEGED_USER_ENTRY" | "SKIP_ON_ACCEPT";
+    waitingRoomType?:
+      | "SKIP"
+      | "ON_PRIVILEGED_USER_ENTRY"
+      | "SKIP_ON_ACCEPT"
+      | (string & {});
   };
   /** Body param */
   ui?: {
@@ -7937,7 +8290,12 @@ export const PatchPresetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           screenshare: Schema.optional(
             Schema.Struct({
               frameRate: Schema.optional(Schema.Number),
-              quality: Schema.optional(Schema.Literals(["hd", "vga", "qvga"])),
+              quality: Schema.optional(
+                Schema.Union([
+                  Schema.Literals(["hd", "vga", "qvga"]),
+                  Schema.String,
+                ]),
+              ),
             }).pipe(
               Schema.encodeKeys({
                 frameRate: "frame_rate",
@@ -7948,7 +8306,12 @@ export const PatchPresetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           video: Schema.optional(
             Schema.Struct({
               frameRate: Schema.optional(Schema.Number),
-              quality: Schema.optional(Schema.Literals(["hd", "vga", "qvga"])),
+              quality: Schema.optional(
+                Schema.Union([
+                  Schema.Literals(["hd", "vga", "qvga"]),
+                  Schema.String,
+                ]),
+              ),
             }).pipe(
               Schema.encodeKeys({
                 frameRate: "frame_rate",
@@ -7959,7 +8322,10 @@ export const PatchPresetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         }),
       ),
       viewType: Schema.optional(
-        Schema.Literals(["GROUP_CALL", "WEBINAR", "AUDIO_ROOM"]),
+        Schema.Union([
+          Schema.Literals(["GROUP_CALL", "WEBINAR", "AUDIO_ROOM"]),
+          Schema.String,
+        ]),
       ),
     }).pipe(
       Schema.encodeKeys({
@@ -8036,21 +8402,30 @@ export const PatchPresetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           audio: Schema.optional(
             Schema.Struct({
               canProduce: Schema.optional(
-                Schema.Literals(["ALLOWED", "NOT_ALLOWED", "CAN_REQUEST"]),
+                Schema.Union([
+                  Schema.Literals(["ALLOWED", "NOT_ALLOWED", "CAN_REQUEST"]),
+                  Schema.String,
+                ]),
               ),
             }).pipe(Schema.encodeKeys({ canProduce: "can_produce" })),
           ),
           screenshare: Schema.optional(
             Schema.Struct({
               canProduce: Schema.optional(
-                Schema.Literals(["ALLOWED", "NOT_ALLOWED", "CAN_REQUEST"]),
+                Schema.Union([
+                  Schema.Literals(["ALLOWED", "NOT_ALLOWED", "CAN_REQUEST"]),
+                  Schema.String,
+                ]),
               ),
             }).pipe(Schema.encodeKeys({ canProduce: "can_produce" })),
           ),
           video: Schema.optional(
             Schema.Struct({
               canProduce: Schema.optional(
-                Schema.Literals(["ALLOWED", "NOT_ALLOWED", "CAN_REQUEST"]),
+                Schema.Union([
+                  Schema.Literals(["ALLOWED", "NOT_ALLOWED", "CAN_REQUEST"]),
+                  Schema.String,
+                ]),
               ),
             }).pipe(Schema.encodeKeys({ canProduce: "can_produce" })),
           ),
@@ -8067,7 +8442,10 @@ export const PatchPresetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               Schema.String,
               Schema.Struct({
                 accessControl: Schema.optional(
-                  Schema.Literals(["FULL_ACCESS", "VIEW_ONLY"]),
+                  Schema.Union([
+                    Schema.Literals(["FULL_ACCESS", "VIEW_ONLY"]),
+                    Schema.String,
+                  ]),
                 ),
                 handlesViewOnly: Schema.optional(Schema.Boolean),
               }).pipe(
@@ -8101,11 +8479,21 @@ export const PatchPresetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ),
       ),
       recorderType: Schema.optional(
-        Schema.Literals(["RECORDER", "LIVESTREAMER", "NONE"]),
+        Schema.Union([
+          Schema.Literals(["RECORDER", "LIVESTREAMER", "NONE"]),
+          Schema.String,
+        ]),
       ),
       showParticipantList: Schema.optional(Schema.Boolean),
       waitingRoomType: Schema.optional(
-        Schema.Literals(["SKIP", "ON_PRIVILEGED_USER_ENTRY", "SKIP_ON_ACCEPT"]),
+        Schema.Union([
+          Schema.Literals([
+            "SKIP",
+            "ON_PRIVILEGED_USER_ENTRY",
+            "SKIP_ON_ACCEPT",
+          ]),
+          Schema.String,
+        ]),
       ),
     }).pipe(
       Schema.encodeKeys({
@@ -8216,14 +8604,20 @@ export interface PatchPresetResponse {
       maxScreenshareCount: number;
       maxVideoStreams: { desktop: number; mobile: number };
       media: {
-        screenshare: { frameRate: number; quality: "hd" | "vga" | "qvga" };
-        video: { frameRate: number; quality: "hd" | "vga" | "qvga" };
+        screenshare: {
+          frameRate: number;
+          quality: "hd" | "vga" | "qvga" | (string & {});
+        };
+        video: {
+          frameRate: number;
+          quality: "hd" | "vga" | "qvga" | (string & {});
+        };
         audio?: {
           enableHighBitrate?: boolean | null;
           enableStereo?: boolean | null;
         } | null;
       };
-      viewType: "GROUP_CALL" | "WEBINAR" | "AUDIO_ROOM";
+      viewType: "GROUP_CALL" | "WEBINAR" | "AUDIO_ROOM" | (string & {});
     };
     name: string;
     ui: {
@@ -8286,9 +8680,15 @@ export interface PatchPresetResponse {
       hiddenParticipant: boolean;
       kickParticipant: boolean;
       media: {
-        audio: { canProduce: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" };
-        screenshare: { canProduce: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" };
-        video: { canProduce: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" };
+        audio: {
+          canProduce: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" | (string & {});
+        };
+        screenshare: {
+          canProduce: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" | (string & {});
+        };
+        video: {
+          canProduce: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" | (string & {});
+        };
       };
       pinParticipant: boolean;
       plugins: {
@@ -8298,14 +8698,18 @@ export interface PatchPresetResponse {
         config:
           | string
           | {
-              accessControl: "FULL_ACCESS" | "VIEW_ONLY";
+              accessControl: "FULL_ACCESS" | "VIEW_ONLY" | (string & {});
               handlesViewOnly: boolean;
             };
       };
       polls: { canCreate: boolean; canView: boolean; canVote: boolean };
-      recorderType: "RECORDER" | "LIVESTREAMER" | "NONE";
+      recorderType: "RECORDER" | "LIVESTREAMER" | "NONE" | (string & {});
       showParticipantList: boolean;
-      waitingRoomType: "SKIP" | "ON_PRIVILEGED_USER_ENTRY" | "SKIP_ON_ACCEPT";
+      waitingRoomType:
+        | "SKIP"
+        | "ON_PRIVILEGED_USER_ENTRY"
+        | "SKIP_ON_ACCEPT"
+        | (string & {});
       isRecorder?: boolean | null;
     } | null;
   };
@@ -8325,13 +8729,19 @@ export const PatchPresetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       media: Schema.Struct({
         screenshare: Schema.Struct({
           frameRate: Schema.Number,
-          quality: Schema.Literals(["hd", "vga", "qvga"]),
+          quality: Schema.Union([
+            Schema.Literals(["hd", "vga", "qvga"]),
+            Schema.String,
+          ]),
         }).pipe(
           Schema.encodeKeys({ frameRate: "frame_rate", quality: "quality" }),
         ),
         video: Schema.Struct({
           frameRate: Schema.Number,
-          quality: Schema.Literals(["hd", "vga", "qvga"]),
+          quality: Schema.Union([
+            Schema.Literals(["hd", "vga", "qvga"]),
+            Schema.String,
+          ]),
         }).pipe(
           Schema.encodeKeys({ frameRate: "frame_rate", quality: "quality" }),
         ),
@@ -8354,7 +8764,10 @@ export const PatchPresetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ]),
         ),
       }),
-      viewType: Schema.Literals(["GROUP_CALL", "WEBINAR", "AUDIO_ROOM"]),
+      viewType: Schema.Union([
+        Schema.Literals(["GROUP_CALL", "WEBINAR", "AUDIO_ROOM"]),
+        Schema.String,
+      ]),
     }).pipe(
       Schema.encodeKeys({
         maxScreenshareCount: "max_screenshare_count",
@@ -8475,24 +8888,21 @@ export const PatchPresetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           kickParticipant: Schema.Boolean,
           media: Schema.Struct({
             audio: Schema.Struct({
-              canProduce: Schema.Literals([
-                "ALLOWED",
-                "NOT_ALLOWED",
-                "CAN_REQUEST",
+              canProduce: Schema.Union([
+                Schema.Literals(["ALLOWED", "NOT_ALLOWED", "CAN_REQUEST"]),
+                Schema.String,
               ]),
             }).pipe(Schema.encodeKeys({ canProduce: "can_produce" })),
             screenshare: Schema.Struct({
-              canProduce: Schema.Literals([
-                "ALLOWED",
-                "NOT_ALLOWED",
-                "CAN_REQUEST",
+              canProduce: Schema.Union([
+                Schema.Literals(["ALLOWED", "NOT_ALLOWED", "CAN_REQUEST"]),
+                Schema.String,
               ]),
             }).pipe(Schema.encodeKeys({ canProduce: "can_produce" })),
             video: Schema.Struct({
-              canProduce: Schema.Literals([
-                "ALLOWED",
-                "NOT_ALLOWED",
-                "CAN_REQUEST",
+              canProduce: Schema.Union([
+                Schema.Literals(["ALLOWED", "NOT_ALLOWED", "CAN_REQUEST"]),
+                Schema.String,
               ]),
             }).pipe(Schema.encodeKeys({ canProduce: "can_produce" })),
           }),
@@ -8503,7 +8913,10 @@ export const PatchPresetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             canStart: Schema.Boolean,
             config: Schema.Union([
               Schema.Struct({
-                accessControl: Schema.Literals(["FULL_ACCESS", "VIEW_ONLY"]),
+                accessControl: Schema.Union([
+                  Schema.Literals(["FULL_ACCESS", "VIEW_ONLY"]),
+                  Schema.String,
+                ]),
                 handlesViewOnly: Schema.Boolean,
               }).pipe(
                 Schema.encodeKeys({
@@ -8532,12 +8945,18 @@ export const PatchPresetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               canVote: "can_vote",
             }),
           ),
-          recorderType: Schema.Literals(["RECORDER", "LIVESTREAMER", "NONE"]),
+          recorderType: Schema.Union([
+            Schema.Literals(["RECORDER", "LIVESTREAMER", "NONE"]),
+            Schema.String,
+          ]),
           showParticipantList: Schema.Boolean,
-          waitingRoomType: Schema.Literals([
-            "SKIP",
-            "ON_PRIVILEGED_USER_ENTRY",
-            "SKIP_ON_ACCEPT",
+          waitingRoomType: Schema.Union([
+            Schema.Literals([
+              "SKIP",
+              "ON_PRIVILEGED_USER_ENTRY",
+              "SKIP_ON_ACCEPT",
+            ]),
+            Schema.String,
           ]),
           isRecorder: Schema.optional(
             Schema.Union([Schema.Boolean, Schema.Null]),
@@ -8616,14 +9035,20 @@ export interface DeletePresetResponse {
       maxScreenshareCount: number;
       maxVideoStreams: { desktop: number; mobile: number };
       media: {
-        screenshare: { frameRate: number; quality: "hd" | "vga" | "qvga" };
-        video: { frameRate: number; quality: "hd" | "vga" | "qvga" };
+        screenshare: {
+          frameRate: number;
+          quality: "hd" | "vga" | "qvga" | (string & {});
+        };
+        video: {
+          frameRate: number;
+          quality: "hd" | "vga" | "qvga" | (string & {});
+        };
         audio?: {
           enableHighBitrate?: boolean | null;
           enableStereo?: boolean | null;
         } | null;
       };
-      viewType: "GROUP_CALL" | "WEBINAR" | "AUDIO_ROOM";
+      viewType: "GROUP_CALL" | "WEBINAR" | "AUDIO_ROOM" | (string & {});
     };
     name: string;
     ui: {
@@ -8686,9 +9111,15 @@ export interface DeletePresetResponse {
       hiddenParticipant: boolean;
       kickParticipant: boolean;
       media: {
-        audio: { canProduce: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" };
-        screenshare: { canProduce: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" };
-        video: { canProduce: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" };
+        audio: {
+          canProduce: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" | (string & {});
+        };
+        screenshare: {
+          canProduce: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" | (string & {});
+        };
+        video: {
+          canProduce: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" | (string & {});
+        };
       };
       pinParticipant: boolean;
       plugins: {
@@ -8698,14 +9129,18 @@ export interface DeletePresetResponse {
         config:
           | string
           | {
-              accessControl: "FULL_ACCESS" | "VIEW_ONLY";
+              accessControl: "FULL_ACCESS" | "VIEW_ONLY" | (string & {});
               handlesViewOnly: boolean;
             };
       };
       polls: { canCreate: boolean; canView: boolean; canVote: boolean };
-      recorderType: "RECORDER" | "LIVESTREAMER" | "NONE";
+      recorderType: "RECORDER" | "LIVESTREAMER" | "NONE" | (string & {});
       showParticipantList: boolean;
-      waitingRoomType: "SKIP" | "ON_PRIVILEGED_USER_ENTRY" | "SKIP_ON_ACCEPT";
+      waitingRoomType:
+        | "SKIP"
+        | "ON_PRIVILEGED_USER_ENTRY"
+        | "SKIP_ON_ACCEPT"
+        | (string & {});
       isRecorder?: boolean | null;
     } | null;
   };
@@ -8725,13 +9160,19 @@ export const DeletePresetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       media: Schema.Struct({
         screenshare: Schema.Struct({
           frameRate: Schema.Number,
-          quality: Schema.Literals(["hd", "vga", "qvga"]),
+          quality: Schema.Union([
+            Schema.Literals(["hd", "vga", "qvga"]),
+            Schema.String,
+          ]),
         }).pipe(
           Schema.encodeKeys({ frameRate: "frame_rate", quality: "quality" }),
         ),
         video: Schema.Struct({
           frameRate: Schema.Number,
-          quality: Schema.Literals(["hd", "vga", "qvga"]),
+          quality: Schema.Union([
+            Schema.Literals(["hd", "vga", "qvga"]),
+            Schema.String,
+          ]),
         }).pipe(
           Schema.encodeKeys({ frameRate: "frame_rate", quality: "quality" }),
         ),
@@ -8754,7 +9195,10 @@ export const DeletePresetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ]),
         ),
       }),
-      viewType: Schema.Literals(["GROUP_CALL", "WEBINAR", "AUDIO_ROOM"]),
+      viewType: Schema.Union([
+        Schema.Literals(["GROUP_CALL", "WEBINAR", "AUDIO_ROOM"]),
+        Schema.String,
+      ]),
     }).pipe(
       Schema.encodeKeys({
         maxScreenshareCount: "max_screenshare_count",
@@ -8875,24 +9319,21 @@ export const DeletePresetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           kickParticipant: Schema.Boolean,
           media: Schema.Struct({
             audio: Schema.Struct({
-              canProduce: Schema.Literals([
-                "ALLOWED",
-                "NOT_ALLOWED",
-                "CAN_REQUEST",
+              canProduce: Schema.Union([
+                Schema.Literals(["ALLOWED", "NOT_ALLOWED", "CAN_REQUEST"]),
+                Schema.String,
               ]),
             }).pipe(Schema.encodeKeys({ canProduce: "can_produce" })),
             screenshare: Schema.Struct({
-              canProduce: Schema.Literals([
-                "ALLOWED",
-                "NOT_ALLOWED",
-                "CAN_REQUEST",
+              canProduce: Schema.Union([
+                Schema.Literals(["ALLOWED", "NOT_ALLOWED", "CAN_REQUEST"]),
+                Schema.String,
               ]),
             }).pipe(Schema.encodeKeys({ canProduce: "can_produce" })),
             video: Schema.Struct({
-              canProduce: Schema.Literals([
-                "ALLOWED",
-                "NOT_ALLOWED",
-                "CAN_REQUEST",
+              canProduce: Schema.Union([
+                Schema.Literals(["ALLOWED", "NOT_ALLOWED", "CAN_REQUEST"]),
+                Schema.String,
               ]),
             }).pipe(Schema.encodeKeys({ canProduce: "can_produce" })),
           }),
@@ -8903,7 +9344,10 @@ export const DeletePresetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             canStart: Schema.Boolean,
             config: Schema.Union([
               Schema.Struct({
-                accessControl: Schema.Literals(["FULL_ACCESS", "VIEW_ONLY"]),
+                accessControl: Schema.Union([
+                  Schema.Literals(["FULL_ACCESS", "VIEW_ONLY"]),
+                  Schema.String,
+                ]),
                 handlesViewOnly: Schema.Boolean,
               }).pipe(
                 Schema.encodeKeys({
@@ -8932,12 +9376,18 @@ export const DeletePresetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               canVote: "can_vote",
             }),
           ),
-          recorderType: Schema.Literals(["RECORDER", "LIVESTREAMER", "NONE"]),
+          recorderType: Schema.Union([
+            Schema.Literals(["RECORDER", "LIVESTREAMER", "NONE"]),
+            Schema.String,
+          ]),
           showParticipantList: Schema.Boolean,
-          waitingRoomType: Schema.Literals([
-            "SKIP",
-            "ON_PRIVILEGED_USER_ENTRY",
-            "SKIP_ON_ACCEPT",
+          waitingRoomType: Schema.Union([
+            Schema.Literals([
+              "SKIP",
+              "ON_PRIVILEGED_USER_ENTRY",
+              "SKIP_ON_ACCEPT",
+            ]),
+            Schema.String,
           ]),
           isRecorder: Schema.optional(
             Schema.Union([Schema.Boolean, Schema.Null]),
@@ -9021,14 +9471,20 @@ export interface GetPresetByIdPresetResponse {
       maxScreenshareCount: number;
       maxVideoStreams: { desktop: number; mobile: number };
       media: {
-        screenshare: { frameRate: number; quality: "hd" | "vga" | "qvga" };
-        video: { frameRate: number; quality: "hd" | "vga" | "qvga" };
+        screenshare: {
+          frameRate: number;
+          quality: "hd" | "vga" | "qvga" | (string & {});
+        };
+        video: {
+          frameRate: number;
+          quality: "hd" | "vga" | "qvga" | (string & {});
+        };
         audio?: {
           enableHighBitrate?: boolean | null;
           enableStereo?: boolean | null;
         } | null;
       };
-      viewType: "GROUP_CALL" | "WEBINAR" | "AUDIO_ROOM";
+      viewType: "GROUP_CALL" | "WEBINAR" | "AUDIO_ROOM" | (string & {});
     };
     name: string;
     ui: {
@@ -9091,9 +9547,15 @@ export interface GetPresetByIdPresetResponse {
       hiddenParticipant: boolean;
       kickParticipant: boolean;
       media: {
-        audio: { canProduce: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" };
-        screenshare: { canProduce: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" };
-        video: { canProduce: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" };
+        audio: {
+          canProduce: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" | (string & {});
+        };
+        screenshare: {
+          canProduce: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" | (string & {});
+        };
+        video: {
+          canProduce: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" | (string & {});
+        };
       };
       pinParticipant: boolean;
       plugins: {
@@ -9103,14 +9565,18 @@ export interface GetPresetByIdPresetResponse {
         config:
           | string
           | {
-              accessControl: "FULL_ACCESS" | "VIEW_ONLY";
+              accessControl: "FULL_ACCESS" | "VIEW_ONLY" | (string & {});
               handlesViewOnly: boolean;
             };
       };
       polls: { canCreate: boolean; canView: boolean; canVote: boolean };
-      recorderType: "RECORDER" | "LIVESTREAMER" | "NONE";
+      recorderType: "RECORDER" | "LIVESTREAMER" | "NONE" | (string & {});
       showParticipantList: boolean;
-      waitingRoomType: "SKIP" | "ON_PRIVILEGED_USER_ENTRY" | "SKIP_ON_ACCEPT";
+      waitingRoomType:
+        | "SKIP"
+        | "ON_PRIVILEGED_USER_ENTRY"
+        | "SKIP_ON_ACCEPT"
+        | (string & {});
       isRecorder?: boolean | null;
     } | null;
   };
@@ -9131,13 +9597,19 @@ export const GetPresetByIdPresetResponse =
         media: Schema.Struct({
           screenshare: Schema.Struct({
             frameRate: Schema.Number,
-            quality: Schema.Literals(["hd", "vga", "qvga"]),
+            quality: Schema.Union([
+              Schema.Literals(["hd", "vga", "qvga"]),
+              Schema.String,
+            ]),
           }).pipe(
             Schema.encodeKeys({ frameRate: "frame_rate", quality: "quality" }),
           ),
           video: Schema.Struct({
             frameRate: Schema.Number,
-            quality: Schema.Literals(["hd", "vga", "qvga"]),
+            quality: Schema.Union([
+              Schema.Literals(["hd", "vga", "qvga"]),
+              Schema.String,
+            ]),
           }).pipe(
             Schema.encodeKeys({ frameRate: "frame_rate", quality: "quality" }),
           ),
@@ -9160,7 +9632,10 @@ export const GetPresetByIdPresetResponse =
             ]),
           ),
         }),
-        viewType: Schema.Literals(["GROUP_CALL", "WEBINAR", "AUDIO_ROOM"]),
+        viewType: Schema.Union([
+          Schema.Literals(["GROUP_CALL", "WEBINAR", "AUDIO_ROOM"]),
+          Schema.String,
+        ]),
       }).pipe(
         Schema.encodeKeys({
           maxScreenshareCount: "max_screenshare_count",
@@ -9283,24 +9758,21 @@ export const GetPresetByIdPresetResponse =
             kickParticipant: Schema.Boolean,
             media: Schema.Struct({
               audio: Schema.Struct({
-                canProduce: Schema.Literals([
-                  "ALLOWED",
-                  "NOT_ALLOWED",
-                  "CAN_REQUEST",
+                canProduce: Schema.Union([
+                  Schema.Literals(["ALLOWED", "NOT_ALLOWED", "CAN_REQUEST"]),
+                  Schema.String,
                 ]),
               }).pipe(Schema.encodeKeys({ canProduce: "can_produce" })),
               screenshare: Schema.Struct({
-                canProduce: Schema.Literals([
-                  "ALLOWED",
-                  "NOT_ALLOWED",
-                  "CAN_REQUEST",
+                canProduce: Schema.Union([
+                  Schema.Literals(["ALLOWED", "NOT_ALLOWED", "CAN_REQUEST"]),
+                  Schema.String,
                 ]),
               }).pipe(Schema.encodeKeys({ canProduce: "can_produce" })),
               video: Schema.Struct({
-                canProduce: Schema.Literals([
-                  "ALLOWED",
-                  "NOT_ALLOWED",
-                  "CAN_REQUEST",
+                canProduce: Schema.Union([
+                  Schema.Literals(["ALLOWED", "NOT_ALLOWED", "CAN_REQUEST"]),
+                  Schema.String,
                 ]),
               }).pipe(Schema.encodeKeys({ canProduce: "can_produce" })),
             }),
@@ -9311,7 +9783,10 @@ export const GetPresetByIdPresetResponse =
               canStart: Schema.Boolean,
               config: Schema.Union([
                 Schema.Struct({
-                  accessControl: Schema.Literals(["FULL_ACCESS", "VIEW_ONLY"]),
+                  accessControl: Schema.Union([
+                    Schema.Literals(["FULL_ACCESS", "VIEW_ONLY"]),
+                    Schema.String,
+                  ]),
                   handlesViewOnly: Schema.Boolean,
                 }).pipe(
                   Schema.encodeKeys({
@@ -9340,12 +9815,18 @@ export const GetPresetByIdPresetResponse =
                 canVote: "can_vote",
               }),
             ),
-            recorderType: Schema.Literals(["RECORDER", "LIVESTREAMER", "NONE"]),
+            recorderType: Schema.Union([
+              Schema.Literals(["RECORDER", "LIVESTREAMER", "NONE"]),
+              Schema.String,
+            ]),
             showParticipantList: Schema.Boolean,
-            waitingRoomType: Schema.Literals([
-              "SKIP",
-              "ON_PRIVILEGED_USER_ENTRY",
-              "SKIP_ON_ACCEPT",
+            waitingRoomType: Schema.Union([
+              Schema.Literals([
+                "SKIP",
+                "ON_PRIVILEGED_USER_ENTRY",
+                "SKIP_ON_ACCEPT",
+              ]),
+              Schema.String,
             ]),
             isRecorder: Schema.optional(
               Schema.Union([Schema.Boolean, Schema.Null]),
@@ -9421,11 +9902,17 @@ export interface GetRecordingsRecordingRequest {
   /** Query param */
   sortBy?: "invokedTime";
   /** Query param */
-  sortOrder?: "ASC" | "DESC";
+  sortOrder?: "ASC" | "DESC" | (string & {});
   /** Query param: The start time range for which you want to retrieve the meetings. The time must be specified in ISO format. */
   startTime?: string;
   /** Query param: Filter by one or more recording status */
-  status?: ("INVOKED" | "RECORDING" | "UPLOADING" | "UPLOADED")[];
+  status?: (
+    | "INVOKED"
+    | "RECORDING"
+    | "UPLOADING"
+    | "UPLOADED"
+    | (string & {})
+  )[];
 }
 
 export const GetRecordingsRecordingRequest =
@@ -9441,13 +9928,16 @@ export const GetRecordingsRecordingRequest =
     sortBy: Schema.optional(Schema.Literal("invokedTime")).pipe(
       T.HttpQuery("sort_by"),
     ),
-    sortOrder: Schema.optional(Schema.Literals(["ASC", "DESC"])).pipe(
-      T.HttpQuery("sort_order"),
-    ),
+    sortOrder: Schema.optional(
+      Schema.Union([Schema.Literals(["ASC", "DESC"]), Schema.String]),
+    ).pipe(T.HttpQuery("sort_order")),
     startTime: Schema.optional(Schema.String).pipe(T.HttpQuery("start_time")),
     status: Schema.optional(
       Schema.Array(
-        Schema.Literals(["INVOKED", "RECORDING", "UPLOADING", "UPLOADED"]),
+        Schema.Union([
+          Schema.Literals(["INVOKED", "RECORDING", "UPLOADING", "UPLOADED"]),
+          Schema.String,
+        ]),
       ),
     ).pipe(T.HttpQuery("status")),
   }).pipe(
@@ -9474,7 +9964,8 @@ export interface GetRecordingsRecordingResponse {
       | "UPLOADING"
       | "UPLOADED"
       | "ERRORED"
-      | "PAUSED";
+      | "PAUSED"
+      | (string & {});
     stoppedTime: string | null;
     meeting?: {
       id: string;
@@ -9484,14 +9975,14 @@ export interface GetRecordingsRecordingResponse {
       persistChat?: boolean | null;
       recordOnStart?: boolean | null;
       sessionKeepAliveTimeInSecs?: number | null;
-      status?: "ACTIVE" | "INACTIVE" | null;
+      status?: "ACTIVE" | "INACTIVE" | (string & {}) | null;
       summarizeOnEnd?: boolean | null;
       title?: string | null;
     } | null;
     recordingDuration?: number | null;
     storageConfig?: {
-      type: "aws" | "azure" | "digitalocean" | "gcs" | "sftp";
-      authMethod?: "KEY" | "PASSWORD" | null;
+      type: "aws" | "azure" | "digitalocean" | "gcs" | "sftp" | (string & {});
+      authMethod?: "KEY" | "PASSWORD" | (string & {}) | null;
       bucket?: string | null;
       host?: string | null;
       password?: string | null;
@@ -9520,13 +10011,16 @@ export const GetRecordingsRecordingResponse =
         outputFileName: Schema.String,
         sessionId: Schema.Union([Schema.String, Schema.Null]),
         startedTime: Schema.Union([Schema.String, Schema.Null]),
-        status: Schema.Literals([
-          "INVOKED",
-          "RECORDING",
-          "UPLOADING",
-          "UPLOADED",
-          "ERRORED",
-          "PAUSED",
+        status: Schema.Union([
+          Schema.Literals([
+            "INVOKED",
+            "RECORDING",
+            "UPLOADING",
+            "UPLOADED",
+            "ERRORED",
+            "PAUSED",
+          ]),
+          Schema.String,
         ]),
         stoppedTime: Schema.Union([Schema.String, Schema.Null]),
         meeting: Schema.optional(
@@ -9549,7 +10043,10 @@ export const GetRecordingsRecordingResponse =
               ),
               status: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["ACTIVE", "INACTIVE"]),
+                  Schema.Union([
+                    Schema.Literals(["ACTIVE", "INACTIVE"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -9582,16 +10079,22 @@ export const GetRecordingsRecordingResponse =
         storageConfig: Schema.optional(
           Schema.Union([
             Schema.Struct({
-              type: Schema.Literals([
-                "aws",
-                "azure",
-                "digitalocean",
-                "gcs",
-                "sftp",
+              type: Schema.Union([
+                Schema.Literals([
+                  "aws",
+                  "azure",
+                  "digitalocean",
+                  "gcs",
+                  "sftp",
+                ]),
+                Schema.String,
               ]),
               authMethod: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["KEY", "PASSWORD"]),
+                  Schema.Union([
+                    Schema.Literals(["KEY", "PASSWORD"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -9688,8 +10191,8 @@ export interface StartRecordingsRecordingRequest {
   allowMultipleRecordings?: boolean;
   /** Body param: Object containing configuration regarding the audio that is being recorded. */
   audioConfig?: {
-    channel?: "mono" | "stereo";
-    codec?: "MP3" | "AAC";
+    channel?: "mono" | "stereo" | (string & {});
+    codec?: "MP3" | "AAC" | (string & {});
     exportFile?: boolean;
   };
   /** Body param: Update the recording file name. */
@@ -9706,9 +10209,9 @@ export interface StartRecordingsRecordingRequest {
   rtmpOutConfig?: { rtmpUrl?: string };
   /** Body param */
   storageConfig?: {
-    type: "aws" | "azure" | "digitalocean" | "gcs" | "sftp";
+    type: "aws" | "azure" | "digitalocean" | "gcs" | "sftp" | (string & {});
     accessKey?: string;
-    authMethod?: "KEY" | "PASSWORD";
+    authMethod?: "KEY" | "PASSWORD" | (string & {});
     bucket?: string;
     host?: string;
     password?: string;
@@ -9723,11 +10226,16 @@ export interface StartRecordingsRecordingRequest {
   url?: string;
   /** Body param */
   videoConfig?: {
-    codec?: "H264" | "VP8";
+    codec?: "H264" | "VP8" | (string & {});
     exportFile?: boolean;
     height?: number;
     watermark?: {
-      position?: "left top" | "right top" | "left bottom" | "right bottom";
+      position?:
+        | "left top"
+        | "right top"
+        | "left bottom"
+        | "right bottom"
+        | (string & {});
       size?: { height?: number; width?: number };
       url?: string;
     };
@@ -9742,8 +10250,12 @@ export const StartRecordingsRecordingRequest =
     allowMultipleRecordings: Schema.optional(Schema.Boolean),
     audioConfig: Schema.optional(
       Schema.Struct({
-        channel: Schema.optional(Schema.Literals(["mono", "stereo"])),
-        codec: Schema.optional(Schema.Literals(["MP3", "AAC"])),
+        channel: Schema.optional(
+          Schema.Union([Schema.Literals(["mono", "stereo"]), Schema.String]),
+        ),
+        codec: Schema.optional(
+          Schema.Union([Schema.Literals(["MP3", "AAC"]), Schema.String]),
+        ),
         exportFile: Schema.optional(Schema.Boolean),
       }).pipe(
         Schema.encodeKeys({
@@ -9774,15 +10286,14 @@ export const StartRecordingsRecordingRequest =
     storageConfig: Schema.optional(
       Schema.Union([
         Schema.Struct({
-          type: Schema.Literals([
-            "aws",
-            "azure",
-            "digitalocean",
-            "gcs",
-            "sftp",
+          type: Schema.Union([
+            Schema.Literals(["aws", "azure", "digitalocean", "gcs", "sftp"]),
+            Schema.String,
           ]),
           accessKey: Schema.optional(Schema.String),
-          authMethod: Schema.optional(Schema.Literals(["KEY", "PASSWORD"])),
+          authMethod: Schema.optional(
+            Schema.Union([Schema.Literals(["KEY", "PASSWORD"]), Schema.String]),
+          ),
           bucket: Schema.optional(Schema.String),
           host: Schema.optional(Schema.String),
           password: Schema.optional(SensitiveString),
@@ -9814,17 +10325,22 @@ export const StartRecordingsRecordingRequest =
     url: Schema.optional(Schema.String),
     videoConfig: Schema.optional(
       Schema.Struct({
-        codec: Schema.optional(Schema.Literals(["H264", "VP8"])),
+        codec: Schema.optional(
+          Schema.Union([Schema.Literals(["H264", "VP8"]), Schema.String]),
+        ),
         exportFile: Schema.optional(Schema.Boolean),
         height: Schema.optional(Schema.Number),
         watermark: Schema.optional(
           Schema.Struct({
             position: Schema.optional(
-              Schema.Literals([
-                "left top",
-                "right top",
-                "left bottom",
-                "right bottom",
+              Schema.Union([
+                Schema.Literals([
+                  "left top",
+                  "right top",
+                  "left bottom",
+                  "right bottom",
+                ]),
+                Schema.String,
               ]),
             ),
             size: Schema.optional(
@@ -9887,28 +10403,34 @@ export interface StartRecordingsRecordingResponse {
       | "UPLOADING"
       | "UPLOADED"
       | "ERRORED"
-      | "PAUSED";
+      | "PAUSED"
+      | (string & {});
     stoppedTime: string | null;
     recordingDuration?: number | null;
     startReason?: {
       caller?: {
         name?: string | null;
-        type?: "ORGANIZATION" | "USER" | null;
+        type?: "ORGANIZATION" | "USER" | (string & {}) | null;
         userId?: string | null;
       } | null;
-      reason?: "API_CALL" | "RECORD_ON_START" | null;
+      reason?: "API_CALL" | "RECORD_ON_START" | (string & {}) | null;
     } | null;
     stopReason?: {
       caller?: {
         name?: string | null;
-        type?: "ORGANIZATION" | "USER" | null;
+        type?: "ORGANIZATION" | "USER" | (string & {}) | null;
         userId?: string | null;
       } | null;
-      reason?: "API_CALL" | "INTERNAL_ERROR" | "ALL_PEERS_LEFT" | null;
+      reason?:
+        | "API_CALL"
+        | "INTERNAL_ERROR"
+        | "ALL_PEERS_LEFT"
+        | (string & {})
+        | null;
     } | null;
     storageConfig?: {
-      type: "aws" | "azure" | "digitalocean" | "gcs" | "sftp";
-      authMethod?: "KEY" | "PASSWORD" | null;
+      type: "aws" | "azure" | "digitalocean" | "gcs" | "sftp" | (string & {});
+      authMethod?: "KEY" | "PASSWORD" | (string & {}) | null;
       bucket?: string | null;
       host?: string | null;
       password?: string | null;
@@ -9937,13 +10459,16 @@ export const StartRecordingsRecordingResponse =
           outputFileName: Schema.String,
           sessionId: Schema.Union([Schema.String, Schema.Null]),
           startedTime: Schema.Union([Schema.String, Schema.Null]),
-          status: Schema.Literals([
-            "INVOKED",
-            "RECORDING",
-            "UPLOADING",
-            "UPLOADED",
-            "ERRORED",
-            "PAUSED",
+          status: Schema.Union([
+            Schema.Literals([
+              "INVOKED",
+              "RECORDING",
+              "UPLOADING",
+              "UPLOADED",
+              "ERRORED",
+              "PAUSED",
+            ]),
+            Schema.String,
           ]),
           stoppedTime: Schema.Union([Schema.String, Schema.Null]),
           recordingDuration: Schema.optional(
@@ -9960,7 +10485,10 @@ export const StartRecordingsRecordingResponse =
                       ),
                       type: Schema.optional(
                         Schema.Union([
-                          Schema.Literals(["ORGANIZATION", "USER"]),
+                          Schema.Union([
+                            Schema.Literals(["ORGANIZATION", "USER"]),
+                            Schema.String,
+                          ]),
                           Schema.Null,
                         ]),
                       ),
@@ -9979,7 +10507,10 @@ export const StartRecordingsRecordingResponse =
                 ),
                 reason: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["API_CALL", "RECORD_ON_START"]),
+                    Schema.Union([
+                      Schema.Literals(["API_CALL", "RECORD_ON_START"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -9998,7 +10529,10 @@ export const StartRecordingsRecordingResponse =
                       ),
                       type: Schema.optional(
                         Schema.Union([
-                          Schema.Literals(["ORGANIZATION", "USER"]),
+                          Schema.Union([
+                            Schema.Literals(["ORGANIZATION", "USER"]),
+                            Schema.String,
+                          ]),
                           Schema.Null,
                         ]),
                       ),
@@ -10017,10 +10551,13 @@ export const StartRecordingsRecordingResponse =
                 ),
                 reason: Schema.optional(
                   Schema.Union([
-                    Schema.Literals([
-                      "API_CALL",
-                      "INTERNAL_ERROR",
-                      "ALL_PEERS_LEFT",
+                    Schema.Union([
+                      Schema.Literals([
+                        "API_CALL",
+                        "INTERNAL_ERROR",
+                        "ALL_PEERS_LEFT",
+                      ]),
+                      Schema.String,
                     ]),
                     Schema.Null,
                   ]),
@@ -10032,16 +10569,22 @@ export const StartRecordingsRecordingResponse =
           storageConfig: Schema.optional(
             Schema.Union([
               Schema.Struct({
-                type: Schema.Literals([
-                  "aws",
-                  "azure",
-                  "digitalocean",
-                  "gcs",
-                  "sftp",
+                type: Schema.Union([
+                  Schema.Literals([
+                    "aws",
+                    "azure",
+                    "digitalocean",
+                    "gcs",
+                    "sftp",
+                  ]),
+                  Schema.String,
                 ]),
                 authMethod: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["KEY", "PASSWORD"]),
+                    Schema.Union([
+                      Schema.Literals(["KEY", "PASSWORD"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -10137,7 +10680,7 @@ export interface PauseResumeStopRecordingRecordingRequest {
   /** Path param: The account identifier tag. */
   accountId: string;
   /** Body param */
-  action: "stop" | "pause" | "resume";
+  action: "stop" | "pause" | "resume" | (string & {});
 }
 
 export const PauseResumeStopRecordingRecordingRequest =
@@ -10145,7 +10688,10 @@ export const PauseResumeStopRecordingRecordingRequest =
     appId: Schema.String.pipe(T.HttpPath("appId")),
     recordingId: Schema.String.pipe(T.HttpPath("recordingId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    action: Schema.Literals(["stop", "pause", "resume"]),
+    action: Schema.Union([
+      Schema.Literals(["stop", "pause", "resume"]),
+      Schema.String,
+    ]),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -10173,28 +10719,34 @@ export interface PauseResumeStopRecordingRecordingResponse {
       | "UPLOADING"
       | "UPLOADED"
       | "ERRORED"
-      | "PAUSED";
+      | "PAUSED"
+      | (string & {});
     stoppedTime: string | null;
     recordingDuration?: number | null;
     startReason?: {
       caller?: {
         name?: string | null;
-        type?: "ORGANIZATION" | "USER" | null;
+        type?: "ORGANIZATION" | "USER" | (string & {}) | null;
         userId?: string | null;
       } | null;
-      reason?: "API_CALL" | "RECORD_ON_START" | null;
+      reason?: "API_CALL" | "RECORD_ON_START" | (string & {}) | null;
     } | null;
     stopReason?: {
       caller?: {
         name?: string | null;
-        type?: "ORGANIZATION" | "USER" | null;
+        type?: "ORGANIZATION" | "USER" | (string & {}) | null;
         userId?: string | null;
       } | null;
-      reason?: "API_CALL" | "INTERNAL_ERROR" | "ALL_PEERS_LEFT" | null;
+      reason?:
+        | "API_CALL"
+        | "INTERNAL_ERROR"
+        | "ALL_PEERS_LEFT"
+        | (string & {})
+        | null;
     } | null;
     storageConfig?: {
-      type: "aws" | "azure" | "digitalocean" | "gcs" | "sftp";
-      authMethod?: "KEY" | "PASSWORD" | null;
+      type: "aws" | "azure" | "digitalocean" | "gcs" | "sftp" | (string & {});
+      authMethod?: "KEY" | "PASSWORD" | (string & {}) | null;
       bucket?: string | null;
       host?: string | null;
       password?: string | null;
@@ -10223,13 +10775,16 @@ export const PauseResumeStopRecordingRecordingResponse =
           outputFileName: Schema.String,
           sessionId: Schema.Union([Schema.String, Schema.Null]),
           startedTime: Schema.Union([Schema.String, Schema.Null]),
-          status: Schema.Literals([
-            "INVOKED",
-            "RECORDING",
-            "UPLOADING",
-            "UPLOADED",
-            "ERRORED",
-            "PAUSED",
+          status: Schema.Union([
+            Schema.Literals([
+              "INVOKED",
+              "RECORDING",
+              "UPLOADING",
+              "UPLOADED",
+              "ERRORED",
+              "PAUSED",
+            ]),
+            Schema.String,
           ]),
           stoppedTime: Schema.Union([Schema.String, Schema.Null]),
           recordingDuration: Schema.optional(
@@ -10246,7 +10801,10 @@ export const PauseResumeStopRecordingRecordingResponse =
                       ),
                       type: Schema.optional(
                         Schema.Union([
-                          Schema.Literals(["ORGANIZATION", "USER"]),
+                          Schema.Union([
+                            Schema.Literals(["ORGANIZATION", "USER"]),
+                            Schema.String,
+                          ]),
                           Schema.Null,
                         ]),
                       ),
@@ -10265,7 +10823,10 @@ export const PauseResumeStopRecordingRecordingResponse =
                 ),
                 reason: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["API_CALL", "RECORD_ON_START"]),
+                    Schema.Union([
+                      Schema.Literals(["API_CALL", "RECORD_ON_START"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -10284,7 +10845,10 @@ export const PauseResumeStopRecordingRecordingResponse =
                       ),
                       type: Schema.optional(
                         Schema.Union([
-                          Schema.Literals(["ORGANIZATION", "USER"]),
+                          Schema.Union([
+                            Schema.Literals(["ORGANIZATION", "USER"]),
+                            Schema.String,
+                          ]),
                           Schema.Null,
                         ]),
                       ),
@@ -10303,10 +10867,13 @@ export const PauseResumeStopRecordingRecordingResponse =
                 ),
                 reason: Schema.optional(
                   Schema.Union([
-                    Schema.Literals([
-                      "API_CALL",
-                      "INTERNAL_ERROR",
-                      "ALL_PEERS_LEFT",
+                    Schema.Union([
+                      Schema.Literals([
+                        "API_CALL",
+                        "INTERNAL_ERROR",
+                        "ALL_PEERS_LEFT",
+                      ]),
+                      Schema.String,
                     ]),
                     Schema.Null,
                   ]),
@@ -10318,16 +10885,22 @@ export const PauseResumeStopRecordingRecordingResponse =
           storageConfig: Schema.optional(
             Schema.Union([
               Schema.Struct({
-                type: Schema.Literals([
-                  "aws",
-                  "azure",
-                  "digitalocean",
-                  "gcs",
-                  "sftp",
+                type: Schema.Union([
+                  Schema.Literals([
+                    "aws",
+                    "azure",
+                    "digitalocean",
+                    "gcs",
+                    "sftp",
+                  ]),
+                  Schema.String,
                 ]),
                 authMethod: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["KEY", "PASSWORD"]),
+                    Schema.Union([
+                      Schema.Literals(["KEY", "PASSWORD"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -10513,8 +11086,8 @@ export interface GetSessionDetailsSessionResponse {
       minutesConsumed: number;
       organizationId: string;
       startedAt: string;
-      status: "LIVE" | "ENDED";
-      type: "meeting" | "livestream" | "participant";
+      status: "LIVE" | "ENDED" | (string & {});
+      type: "meeting" | "livestream" | "participant" | (string & {});
       updatedAt: string;
       breakoutRooms?: unknown[] | null;
       endedAt?: string | null;
@@ -10541,8 +11114,14 @@ export const GetSessionDetailsSessionResponse =
                 minutesConsumed: Schema.Number,
                 organizationId: Schema.String,
                 startedAt: Schema.String,
-                status: Schema.Literals(["LIVE", "ENDED"]),
-                type: Schema.Literals(["meeting", "livestream", "participant"]),
+                status: Schema.Union([
+                  Schema.Literals(["LIVE", "ENDED"]),
+                  Schema.String,
+                ]),
+                type: Schema.Union([
+                  Schema.Literals(["meeting", "livestream", "participant"]),
+                  Schema.String,
+                ]),
                 updatedAt: Schema.String,
                 breakoutRooms: Schema.optional(
                   Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
@@ -10611,7 +11190,8 @@ export interface GetSessionParticipantDetailsSessionRequest {
     | "ip_information"
     | "precall_network_information"
     | "events"
-    | "quality_stats";
+    | "quality_stats"
+    | (string & {});
   /** Query param: if true, response includes all the peer events of participant. */
   includePeerEvents?: boolean;
 }
@@ -10623,12 +11203,15 @@ export const GetSessionParticipantDetailsSessionRequest =
     participantId: Schema.String.pipe(T.HttpPath("participantId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     filters: Schema.optional(
-      Schema.Literals([
-        "device_info",
-        "ip_information",
-        "precall_network_information",
-        "events",
-        "quality_stats",
+      Schema.Union([
+        Schema.Literals([
+          "device_info",
+          "ip_information",
+          "precall_network_information",
+          "events",
+          "quality_stats",
+        ]),
+        Schema.String,
       ]),
     ).pipe(T.HttpQuery("filters")),
     includePeerEvents: Schema.optional(Schema.Boolean).pipe(
@@ -11131,11 +11714,11 @@ export interface GetSessionParticipantsSessionRequest {
   /** Query param: The search query string. You can search using the meeting ID or title. */
   search?: string;
   /** Query param */
-  sortBy?: "joinedAt" | "duration";
+  sortBy?: "joinedAt" | "duration" | (string & {});
   /** Query param */
-  sortOrder?: "ASC" | "DESC";
+  sortOrder?: "ASC" | "DESC" | (string & {});
   /** Query param: In breakout room sessions, the view parameter can be set to `raw` for session specific duration for participants or `consolidated` to accumulate breakout room durations. */
-  view?: "raw" | "consolidated";
+  view?: "raw" | "consolidated" | (string & {});
 }
 
 export const GetSessionParticipantsSessionRequest =
@@ -11149,15 +11732,15 @@ export const GetSessionParticipantsSessionRequest =
     pageNo: Schema.optional(Schema.Number).pipe(T.HttpQuery("page_no")),
     perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
-    sortBy: Schema.optional(Schema.Literals(["joinedAt", "duration"])).pipe(
-      T.HttpQuery("sort_by"),
-    ),
-    sortOrder: Schema.optional(Schema.Literals(["ASC", "DESC"])).pipe(
-      T.HttpQuery("sort_order"),
-    ),
-    view: Schema.optional(Schema.Literals(["raw", "consolidated"])).pipe(
-      T.HttpQuery("view"),
-    ),
+    sortBy: Schema.optional(
+      Schema.Union([Schema.Literals(["joinedAt", "duration"]), Schema.String]),
+    ).pipe(T.HttpQuery("sort_by")),
+    sortOrder: Schema.optional(
+      Schema.Union([Schema.Literals(["ASC", "DESC"]), Schema.String]),
+    ).pipe(T.HttpQuery("sort_order")),
+    view: Schema.optional(
+      Schema.Union([Schema.Literals(["raw", "consolidated"]), Schema.String]),
+    ).pipe(T.HttpQuery("view")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -11283,13 +11866,13 @@ export interface GetSessionsSessionRequest {
   /** Query param: Search string that matches sessions based on meeting title, meeting ID, and session ID */
   search?: string;
   /** Query param */
-  sortBy?: "minutesConsumed" | "createdAt";
+  sortBy?: "minutesConsumed" | "createdAt" | (string & {});
   /** Query param */
-  sortOrder?: "ASC" | "DESC";
+  sortOrder?: "ASC" | "DESC" | (string & {});
   /** Query param: The start time range for which you want to retrieve the meetings. The time must be specified in ISO format. */
   startTime?: string;
   /** Query param */
-  status?: "LIVE" | "ENDED";
+  status?: "LIVE" | "ENDED" | (string & {});
 }
 
 export const GetSessionsSessionRequest =
@@ -11307,15 +11890,18 @@ export const GetSessionsSessionRequest =
     perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
     sortBy: Schema.optional(
-      Schema.Literals(["minutesConsumed", "createdAt"]),
+      Schema.Union([
+        Schema.Literals(["minutesConsumed", "createdAt"]),
+        Schema.String,
+      ]),
     ).pipe(T.HttpQuery("sort_by")),
-    sortOrder: Schema.optional(Schema.Literals(["ASC", "DESC"])).pipe(
-      T.HttpQuery("sort_order"),
-    ),
+    sortOrder: Schema.optional(
+      Schema.Union([Schema.Literals(["ASC", "DESC"]), Schema.String]),
+    ).pipe(T.HttpQuery("sort_order")),
     startTime: Schema.optional(Schema.String).pipe(T.HttpQuery("start_time")),
-    status: Schema.optional(Schema.Literals(["LIVE", "ENDED"])).pipe(
-      T.HttpQuery("status"),
-    ),
+    status: Schema.optional(
+      Schema.Union([Schema.Literals(["LIVE", "ENDED"]), Schema.String]),
+    ).pipe(T.HttpQuery("status")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -11336,8 +11922,8 @@ export interface GetSessionsSessionResponse {
           minutesConsumed: number;
           organizationId: string;
           startedAt: string;
-          status: "LIVE" | "ENDED";
-          type: "meeting" | "livestream" | "participant";
+          status: "LIVE" | "ENDED" | (string & {});
+          type: "meeting" | "livestream" | "participant" | (string & {});
           updatedAt: string;
           breakoutRooms?: unknown[] | null;
           endedAt?: string | null;
@@ -11366,11 +11952,13 @@ export const GetSessionsSessionResponse =
                   minutesConsumed: Schema.Number,
                   organizationId: Schema.String,
                   startedAt: Schema.String,
-                  status: Schema.Literals(["LIVE", "ENDED"]),
-                  type: Schema.Literals([
-                    "meeting",
-                    "livestream",
-                    "participant",
+                  status: Schema.Union([
+                    Schema.Literals(["LIVE", "ENDED"]),
+                    Schema.String,
+                  ]),
+                  type: Schema.Union([
+                    Schema.Literals(["meeting", "livestream", "participant"]),
+                    Schema.String,
                   ]),
                   updatedAt: Schema.String,
                   breakoutRooms: Schema.optional(
@@ -11683,6 +12271,7 @@ export interface GetWebhookByIdWebhookResponse {
       | "livestreaming.statusUpdate"
       | "meeting.transcript"
       | "meeting.summary"
+      | (string & {})
     )[];
     name: string;
     updatedAt: string;
@@ -11698,16 +12287,19 @@ export const GetWebhookByIdWebhookResponse =
       createdAt: Schema.String,
       enabled: Schema.Boolean,
       events: Schema.Array(
-        Schema.Literals([
-          "meeting.started",
-          "meeting.ended",
-          "meeting.participantJoined",
-          "meeting.participantLeft",
-          "meeting.chatSynced",
-          "recording.statusUpdate",
-          "livestreaming.statusUpdate",
-          "meeting.transcript",
-          "meeting.summary",
+        Schema.Union([
+          Schema.Literals([
+            "meeting.started",
+            "meeting.ended",
+            "meeting.participantJoined",
+            "meeting.participantLeft",
+            "meeting.chatSynced",
+            "recording.statusUpdate",
+            "livestreaming.statusUpdate",
+            "meeting.transcript",
+            "meeting.summary",
+          ]),
+          Schema.String,
         ]),
       ),
       name: Schema.String,
@@ -11776,6 +12368,7 @@ export interface GetWebhooksWebhookResponse {
       | "livestreaming.statusUpdate"
       | "meeting.transcript"
       | "meeting.summary"
+      | (string & {})
     )[];
     name: string;
     updatedAt: string;
@@ -11792,16 +12385,19 @@ export const GetWebhooksWebhookResponse =
         createdAt: Schema.String,
         enabled: Schema.Boolean,
         events: Schema.Array(
-          Schema.Literals([
-            "meeting.started",
-            "meeting.ended",
-            "meeting.participantJoined",
-            "meeting.participantLeft",
-            "meeting.chatSynced",
-            "recording.statusUpdate",
-            "livestreaming.statusUpdate",
-            "meeting.transcript",
-            "meeting.summary",
+          Schema.Union([
+            Schema.Literals([
+              "meeting.started",
+              "meeting.ended",
+              "meeting.participantJoined",
+              "meeting.participantLeft",
+              "meeting.chatSynced",
+              "recording.statusUpdate",
+              "livestreaming.statusUpdate",
+              "meeting.transcript",
+              "meeting.summary",
+            ]),
+            Schema.String,
           ]),
         ),
         name: Schema.String,
@@ -11854,6 +12450,7 @@ export interface CreateWebhookWebhookRequest {
     | "livestreaming.statusUpdate"
     | "meeting.transcript"
     | "meeting.summary"
+    | (string & {})
   )[];
   /** Body param: Name of the webhook */
   name: string;
@@ -11868,16 +12465,19 @@ export const CreateWebhookWebhookRequest =
     appId: Schema.String.pipe(T.HttpPath("appId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     events: Schema.Array(
-      Schema.Literals([
-        "meeting.started",
-        "meeting.ended",
-        "meeting.participantJoined",
-        "meeting.participantLeft",
-        "meeting.chatSynced",
-        "recording.statusUpdate",
-        "livestreaming.statusUpdate",
-        "meeting.transcript",
-        "meeting.summary",
+      Schema.Union([
+        Schema.Literals([
+          "meeting.started",
+          "meeting.ended",
+          "meeting.participantJoined",
+          "meeting.participantLeft",
+          "meeting.chatSynced",
+          "recording.statusUpdate",
+          "livestreaming.statusUpdate",
+          "meeting.transcript",
+          "meeting.summary",
+        ]),
+        Schema.String,
       ]),
     ),
     name: Schema.String,
@@ -11905,6 +12505,7 @@ export interface CreateWebhookWebhookResponse {
       | "livestreaming.statusUpdate"
       | "meeting.transcript"
       | "meeting.summary"
+      | (string & {})
     )[];
     name: string;
     updatedAt: string;
@@ -11920,16 +12521,19 @@ export const CreateWebhookWebhookResponse =
       createdAt: Schema.String,
       enabled: Schema.Boolean,
       events: Schema.Array(
-        Schema.Literals([
-          "meeting.started",
-          "meeting.ended",
-          "meeting.participantJoined",
-          "meeting.participantLeft",
-          "meeting.chatSynced",
-          "recording.statusUpdate",
-          "livestreaming.statusUpdate",
-          "meeting.transcript",
-          "meeting.summary",
+        Schema.Union([
+          Schema.Literals([
+            "meeting.started",
+            "meeting.ended",
+            "meeting.participantJoined",
+            "meeting.participantLeft",
+            "meeting.chatSynced",
+            "recording.statusUpdate",
+            "livestreaming.statusUpdate",
+            "meeting.transcript",
+            "meeting.summary",
+          ]),
+          Schema.String,
         ]),
       ),
       name: Schema.String,
@@ -11996,6 +12600,7 @@ export interface DeleteWebhookWebhookResponse {
       | "livestreaming.statusUpdate"
       | "meeting.transcript"
       | "meeting.summary"
+      | (string & {})
     )[];
     name: string;
     updatedAt: string;
@@ -12011,16 +12616,19 @@ export const DeleteWebhookWebhookResponse =
       createdAt: Schema.String,
       enabled: Schema.Boolean,
       events: Schema.Array(
-        Schema.Literals([
-          "meeting.started",
-          "meeting.ended",
-          "meeting.participantJoined",
-          "meeting.participantLeft",
-          "meeting.chatSynced",
-          "recording.statusUpdate",
-          "livestreaming.statusUpdate",
-          "meeting.transcript",
-          "meeting.summary",
+        Schema.Union([
+          Schema.Literals([
+            "meeting.started",
+            "meeting.ended",
+            "meeting.participantJoined",
+            "meeting.participantLeft",
+            "meeting.chatSynced",
+            "recording.statusUpdate",
+            "livestreaming.statusUpdate",
+            "meeting.transcript",
+            "meeting.summary",
+          ]),
+          Schema.String,
         ]),
       ),
       name: Schema.String,
@@ -12071,6 +12679,7 @@ export interface EditWebhookWebhookRequest {
     | "meeting.chatSynced"
     | "meeting.transcript"
     | "meeting.summary"
+    | (string & {})
   )[];
   /** Body param: Name of the webhook */
   name?: string;
@@ -12086,16 +12695,19 @@ export const EditWebhookWebhookRequest =
     enabled: Schema.optional(Schema.Boolean),
     events: Schema.optional(
       Schema.Array(
-        Schema.Literals([
-          "meeting.started",
-          "meeting.ended",
-          "meeting.participantJoined",
-          "meeting.participantLeft",
-          "recording.statusUpdate",
-          "livestreaming.statusUpdate",
-          "meeting.chatSynced",
-          "meeting.transcript",
-          "meeting.summary",
+        Schema.Union([
+          Schema.Literals([
+            "meeting.started",
+            "meeting.ended",
+            "meeting.participantJoined",
+            "meeting.participantLeft",
+            "recording.statusUpdate",
+            "livestreaming.statusUpdate",
+            "meeting.chatSynced",
+            "meeting.transcript",
+            "meeting.summary",
+          ]),
+          Schema.String,
         ]),
       ),
     ),
@@ -12123,6 +12735,7 @@ export interface EditWebhookWebhookResponse {
       | "livestreaming.statusUpdate"
       | "meeting.transcript"
       | "meeting.summary"
+      | (string & {})
     )[];
     name: string;
     updatedAt: string;
@@ -12138,16 +12751,19 @@ export const EditWebhookWebhookResponse =
       createdAt: Schema.String,
       enabled: Schema.Boolean,
       events: Schema.Array(
-        Schema.Literals([
-          "meeting.started",
-          "meeting.ended",
-          "meeting.participantJoined",
-          "meeting.participantLeft",
-          "meeting.chatSynced",
-          "recording.statusUpdate",
-          "livestreaming.statusUpdate",
-          "meeting.transcript",
-          "meeting.summary",
+        Schema.Union([
+          Schema.Literals([
+            "meeting.started",
+            "meeting.ended",
+            "meeting.participantJoined",
+            "meeting.participantLeft",
+            "meeting.chatSynced",
+            "recording.statusUpdate",
+            "livestreaming.statusUpdate",
+            "meeting.transcript",
+            "meeting.summary",
+          ]),
+          Schema.String,
         ]),
       ),
       name: Schema.String,
@@ -12196,6 +12812,7 @@ export interface ReplaceWebhookWebhookRequest {
     | "livestreaming.statusUpdate"
     | "meeting.transcript"
     | "meeting.summary"
+    | (string & {})
   )[];
   /** Body param: Name of the webhook */
   name: string;
@@ -12211,16 +12828,19 @@ export const ReplaceWebhookWebhookRequest =
     webhookId: Schema.String.pipe(T.HttpPath("webhookId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     events: Schema.Array(
-      Schema.Literals([
-        "meeting.started",
-        "meeting.ended",
-        "meeting.participantJoined",
-        "meeting.participantLeft",
-        "meeting.chatSynced",
-        "recording.statusUpdate",
-        "livestreaming.statusUpdate",
-        "meeting.transcript",
-        "meeting.summary",
+      Schema.Union([
+        Schema.Literals([
+          "meeting.started",
+          "meeting.ended",
+          "meeting.participantJoined",
+          "meeting.participantLeft",
+          "meeting.chatSynced",
+          "recording.statusUpdate",
+          "livestreaming.statusUpdate",
+          "meeting.transcript",
+          "meeting.summary",
+        ]),
+        Schema.String,
       ]),
     ),
     name: Schema.String,
@@ -12248,6 +12868,7 @@ export interface ReplaceWebhookWebhookResponse {
       | "livestreaming.statusUpdate"
       | "meeting.transcript"
       | "meeting.summary"
+      | (string & {})
     )[];
     name: string;
     updatedAt: string;
@@ -12263,16 +12884,19 @@ export const ReplaceWebhookWebhookResponse =
       createdAt: Schema.String,
       enabled: Schema.Boolean,
       events: Schema.Array(
-        Schema.Literals([
-          "meeting.started",
-          "meeting.ended",
-          "meeting.participantJoined",
-          "meeting.participantLeft",
-          "meeting.chatSynced",
-          "recording.statusUpdate",
-          "livestreaming.statusUpdate",
-          "meeting.transcript",
-          "meeting.summary",
+        Schema.Union([
+          Schema.Literals([
+            "meeting.started",
+            "meeting.ended",
+            "meeting.participantJoined",
+            "meeting.participantLeft",
+            "meeting.chatSynced",
+            "recording.statusUpdate",
+            "livestreaming.statusUpdate",
+            "meeting.transcript",
+            "meeting.summary",
+          ]),
+          Schema.String,
         ]),
       ),
       name: Schema.String,

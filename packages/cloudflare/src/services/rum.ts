@@ -625,16 +625,16 @@ export interface ListSiteInfosRequest {
   page?: number;
   perPage?: number;
   /** Query param: The property used to sort the list of results. */
-  orderBy?: "host" | "created";
+  orderBy?: "host" | "created" | (string & {});
 }
 
 export const ListSiteInfosRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
   perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-  orderBy: Schema.optional(Schema.Literals(["host", "created"])).pipe(
-    T.HttpQuery("order_by"),
-  ),
+  orderBy: Schema.optional(
+    Schema.Union([Schema.Literals(["host", "created"]), Schema.String]),
+  ).pipe(T.HttpQuery("order_by")),
 }).pipe(
   T.Http({ method: "GET", path: "/accounts/{account_id}/rum/site_info/list" }),
 ) as unknown as Schema.Schema<ListSiteInfosRequest>;

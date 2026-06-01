@@ -987,9 +987,15 @@ export interface ListHistoriesRequest {
   /** Query param: Ordinal number to start listing the results with. Default value is 0. */
   offset?: number;
   /** Query param: The field to sort by. Default is updated_at. */
-  sortField?: "id" | "user_id" | "description" | "created_at" | "updated_at";
+  sortField?:
+    | "id"
+    | "user_id"
+    | "description"
+    | "created_at"
+    | "updated_at"
+    | (string & {});
   /** Query param: Sorting order. Default is DESC. */
-  sortOrder?: "DESC" | "ASC";
+  sortOrder?: "DESC" | "ASC" | (string & {});
 }
 
 export const ListHistoriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -997,17 +1003,20 @@ export const ListHistoriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
   offset: Schema.optional(Schema.Number).pipe(T.HttpQuery("offset")),
   sortField: Schema.optional(
-    Schema.Literals([
-      "id",
-      "user_id",
-      "description",
-      "created_at",
-      "updated_at",
+    Schema.Union([
+      Schema.Literals([
+        "id",
+        "user_id",
+        "description",
+        "created_at",
+        "updated_at",
+      ]),
+      Schema.String,
     ]),
   ).pipe(T.HttpQuery("sortField")),
-  sortOrder: Schema.optional(Schema.Literals(["DESC", "ASC"])).pipe(
-    T.HttpQuery("sortOrder"),
-  ),
+  sortOrder: Schema.optional(
+    Schema.Union([Schema.Literals(["DESC", "ASC"]), Schema.String]),
+  ).pipe(T.HttpQuery("sortOrder")),
 }).pipe(
   T.Http({ method: "GET", path: "/zones/{zone_id}/settings/zaraz/history" }),
 ) as unknown as Schema.Schema<ListHistoriesRequest>;
@@ -1355,11 +1364,11 @@ export const GetWorkflowRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({ method: "GET", path: "/zones/{zone_id}/settings/zaraz/workflow" }),
 ) as unknown as Schema.Schema<GetWorkflowRequest>;
 
-export type GetWorkflowResponse = "realtime" | "preview";
+export type GetWorkflowResponse = "realtime" | "preview" | (string & {});
 
-export const GetWorkflowResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
-  "realtime",
-  "preview",
+export const GetWorkflowResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+  Schema.Literals(["realtime", "preview"]),
+  Schema.String,
 ]).pipe(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<GetWorkflowResponse>;
@@ -1385,12 +1394,15 @@ export interface PutZarazRequest {
   /** Path param: Identifier. */
   zoneId: string;
   /** Body param: Zaraz workflow. */
-  workflow: "realtime" | "preview";
+  workflow: "realtime" | "preview" | (string & {});
 }
 
 export const PutZarazRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  workflow: Schema.Literals(["realtime", "preview"]).pipe(T.HttpBody()),
+  workflow: Schema.Union([
+    Schema.Literals(["realtime", "preview"]),
+    Schema.String,
+  ]).pipe(T.HttpBody()),
 }).pipe(
   T.Http({
     method: "PUT",
@@ -1399,11 +1411,11 @@ export const PutZarazRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   }),
 ) as unknown as Schema.Schema<PutZarazRequest>;
 
-export type PutZarazResponse = "realtime" | "preview";
+export type PutZarazResponse = "realtime" | "preview" | (string & {});
 
-export const PutZarazResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
-  "realtime",
-  "preview",
+export const PutZarazResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+  Schema.Literals(["realtime", "preview"]),
+  Schema.String,
 ]).pipe(T.ResponsePath("result")) as unknown as Schema.Schema<PutZarazResponse>;
 
 export type PutZarazError = DefaultErrors;

@@ -58,7 +58,13 @@ export interface ChatCompletionsInstanceRequest {
   /** Body param */
   messages: {
     content: string | null;
-    role: "system" | "developer" | "user" | "assistant" | "tool";
+    role:
+      | "system"
+      | "developer"
+      | "user"
+      | "assistant"
+      | "tool"
+      | (string & {});
   }[];
   /** Body param */
   aiSearchOptions?: {
@@ -67,7 +73,8 @@ export interface ChatCompletionsInstanceRequest {
         | "super_strict_match"
         | "close_enough"
         | "flexible_friend"
-        | "anything_goes";
+        | "anything_goes"
+        | (string & {});
       enabled?: boolean;
     };
     queryRewrite?: {
@@ -102,26 +109,27 @@ export interface ChatCompletionsInstanceRequest {
         | "openai/gpt-5"
         | "openai/gpt-5-mini"
         | "openai/gpt-5-nano"
-        | "";
+        | ""
+        | (string & {});
       rewritePrompt?: string;
     };
     reranking?: {
       enabled?: boolean;
       matchThreshold?: number;
-      model?: "@cf/baai/bge-reranker-base" | "";
+      model?: "@cf/baai/bge-reranker-base" | "" | (string & {});
     };
     retrieval?: {
       boostBy?: {
         field: string;
-        direction?: "asc" | "desc" | "exists" | "not_exists";
+        direction?: "asc" | "desc" | "exists" | "not_exists" | (string & {});
       }[];
       contextExpansion?: number;
       filters?: Record<string, unknown>;
-      fusionMethod?: "max" | "rrf";
-      keywordMatchMode?: "and" | "or";
+      fusionMethod?: "max" | "rrf" | (string & {});
+      keywordMatchMode?: "and" | "or" | (string & {});
       matchThreshold?: number;
       maxNumResults?: number;
-      retrievalType?: "vector" | "keyword" | "hybrid";
+      retrievalType?: "vector" | "keyword" | "hybrid" | (string & {});
       returnOnFailure?: boolean;
     };
   };
@@ -156,7 +164,8 @@ export interface ChatCompletionsInstanceRequest {
     | "openai/gpt-5"
     | "openai/gpt-5-mini"
     | "openai/gpt-5-nano"
-    | "";
+    | ""
+    | (string & {});
   /** Body param */
   stream?: boolean;
 }
@@ -168,12 +177,9 @@ export const ChatCompletionsInstanceRequest =
     messages: Schema.Array(
       Schema.Struct({
         content: Schema.Union([Schema.String, Schema.Null]),
-        role: Schema.Literals([
-          "system",
-          "developer",
-          "user",
-          "assistant",
-          "tool",
+        role: Schema.Union([
+          Schema.Literals(["system", "developer", "user", "assistant", "tool"]),
+          Schema.String,
         ]),
       }),
     ),
@@ -182,11 +188,14 @@ export const ChatCompletionsInstanceRequest =
         cache: Schema.optional(
           Schema.Struct({
             cacheThreshold: Schema.optional(
-              Schema.Literals([
-                "super_strict_match",
-                "close_enough",
-                "flexible_friend",
-                "anything_goes",
+              Schema.Union([
+                Schema.Literals([
+                  "super_strict_match",
+                  "close_enough",
+                  "flexible_friend",
+                  "anything_goes",
+                ]),
+                Schema.String,
               ]),
             ),
             enabled: Schema.optional(Schema.Boolean),
@@ -201,37 +210,40 @@ export const ChatCompletionsInstanceRequest =
           Schema.Struct({
             enabled: Schema.optional(Schema.Boolean),
             model: Schema.optional(
-              Schema.Literals([
-                "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-                "@cf/zai-org/glm-4.7-flash",
-                "@cf/meta/llama-3.1-8b-instruct-fast",
-                "@cf/meta/llama-3.1-8b-instruct-fp8",
-                "@cf/meta/llama-4-scout-17b-16e-instruct",
-                "@cf/qwen/qwen3-30b-a3b-fp8",
-                "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
-                "@cf/moonshotai/kimi-k2-instruct",
-                "@cf/google/gemma-3-12b-it",
-                "@cf/google/gemma-4-26b-a4b-it",
-                "@cf/moonshotai/kimi-k2.5",
-                "anthropic/claude-3-7-sonnet",
-                "anthropic/claude-sonnet-4",
-                "anthropic/claude-opus-4",
-                "anthropic/claude-3-5-haiku",
-                "cerebras/qwen-3-235b-a22b-instruct",
-                "cerebras/qwen-3-235b-a22b-thinking",
-                "cerebras/llama-3.3-70b",
-                "cerebras/llama-4-maverick-17b-128e-instruct",
-                "cerebras/llama-4-scout-17b-16e-instruct",
-                "cerebras/gpt-oss-120b",
-                "google-ai-studio/gemini-2.5-flash",
-                "google-ai-studio/gemini-2.5-pro",
-                "grok/grok-4",
-                "groq/llama-3.3-70b-versatile",
-                "groq/llama-3.1-8b-instant",
-                "openai/gpt-5",
-                "openai/gpt-5-mini",
-                "openai/gpt-5-nano",
-                "",
+              Schema.Union([
+                Schema.Literals([
+                  "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+                  "@cf/zai-org/glm-4.7-flash",
+                  "@cf/meta/llama-3.1-8b-instruct-fast",
+                  "@cf/meta/llama-3.1-8b-instruct-fp8",
+                  "@cf/meta/llama-4-scout-17b-16e-instruct",
+                  "@cf/qwen/qwen3-30b-a3b-fp8",
+                  "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+                  "@cf/moonshotai/kimi-k2-instruct",
+                  "@cf/google/gemma-3-12b-it",
+                  "@cf/google/gemma-4-26b-a4b-it",
+                  "@cf/moonshotai/kimi-k2.5",
+                  "anthropic/claude-3-7-sonnet",
+                  "anthropic/claude-sonnet-4",
+                  "anthropic/claude-opus-4",
+                  "anthropic/claude-3-5-haiku",
+                  "cerebras/qwen-3-235b-a22b-instruct",
+                  "cerebras/qwen-3-235b-a22b-thinking",
+                  "cerebras/llama-3.3-70b",
+                  "cerebras/llama-4-maverick-17b-128e-instruct",
+                  "cerebras/llama-4-scout-17b-16e-instruct",
+                  "cerebras/gpt-oss-120b",
+                  "google-ai-studio/gemini-2.5-flash",
+                  "google-ai-studio/gemini-2.5-pro",
+                  "grok/grok-4",
+                  "groq/llama-3.3-70b-versatile",
+                  "groq/llama-3.1-8b-instant",
+                  "openai/gpt-5",
+                  "openai/gpt-5-mini",
+                  "openai/gpt-5-nano",
+                  "",
+                ]),
+                Schema.String,
               ]),
             ),
             rewritePrompt: Schema.optional(Schema.String),
@@ -248,7 +260,10 @@ export const ChatCompletionsInstanceRequest =
             enabled: Schema.optional(Schema.Boolean),
             matchThreshold: Schema.optional(Schema.Number),
             model: Schema.optional(
-              Schema.Literals(["@cf/baai/bge-reranker-base", ""]),
+              Schema.Union([
+                Schema.Literals(["@cf/baai/bge-reranker-base", ""]),
+                Schema.String,
+              ]),
             ),
           }).pipe(
             Schema.encodeKeys({
@@ -265,7 +280,10 @@ export const ChatCompletionsInstanceRequest =
                 Schema.Struct({
                   field: Schema.String,
                   direction: Schema.optional(
-                    Schema.Literals(["asc", "desc", "exists", "not_exists"]),
+                    Schema.Union([
+                      Schema.Literals(["asc", "desc", "exists", "not_exists"]),
+                      Schema.String,
+                    ]),
                   ),
                 }),
               ),
@@ -274,12 +292,19 @@ export const ChatCompletionsInstanceRequest =
             filters: Schema.optional(
               Schema.Record(Schema.String, Schema.Unknown),
             ),
-            fusionMethod: Schema.optional(Schema.Literals(["max", "rrf"])),
-            keywordMatchMode: Schema.optional(Schema.Literals(["and", "or"])),
+            fusionMethod: Schema.optional(
+              Schema.Union([Schema.Literals(["max", "rrf"]), Schema.String]),
+            ),
+            keywordMatchMode: Schema.optional(
+              Schema.Union([Schema.Literals(["and", "or"]), Schema.String]),
+            ),
             matchThreshold: Schema.optional(Schema.Number),
             maxNumResults: Schema.optional(Schema.Number),
             retrievalType: Schema.optional(
-              Schema.Literals(["vector", "keyword", "hybrid"]),
+              Schema.Union([
+                Schema.Literals(["vector", "keyword", "hybrid"]),
+                Schema.String,
+              ]),
             ),
             returnOnFailure: Schema.optional(Schema.Boolean),
           }).pipe(
@@ -306,37 +331,40 @@ export const ChatCompletionsInstanceRequest =
       ),
     ),
     model: Schema.optional(
-      Schema.Literals([
-        "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-        "@cf/zai-org/glm-4.7-flash",
-        "@cf/meta/llama-3.1-8b-instruct-fast",
-        "@cf/meta/llama-3.1-8b-instruct-fp8",
-        "@cf/meta/llama-4-scout-17b-16e-instruct",
-        "@cf/qwen/qwen3-30b-a3b-fp8",
-        "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
-        "@cf/moonshotai/kimi-k2-instruct",
-        "@cf/google/gemma-3-12b-it",
-        "@cf/google/gemma-4-26b-a4b-it",
-        "@cf/moonshotai/kimi-k2.5",
-        "anthropic/claude-3-7-sonnet",
-        "anthropic/claude-sonnet-4",
-        "anthropic/claude-opus-4",
-        "anthropic/claude-3-5-haiku",
-        "cerebras/qwen-3-235b-a22b-instruct",
-        "cerebras/qwen-3-235b-a22b-thinking",
-        "cerebras/llama-3.3-70b",
-        "cerebras/llama-4-maverick-17b-128e-instruct",
-        "cerebras/llama-4-scout-17b-16e-instruct",
-        "cerebras/gpt-oss-120b",
-        "google-ai-studio/gemini-2.5-flash",
-        "google-ai-studio/gemini-2.5-pro",
-        "grok/grok-4",
-        "groq/llama-3.3-70b-versatile",
-        "groq/llama-3.1-8b-instant",
-        "openai/gpt-5",
-        "openai/gpt-5-mini",
-        "openai/gpt-5-nano",
-        "",
+      Schema.Union([
+        Schema.Literals([
+          "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+          "@cf/zai-org/glm-4.7-flash",
+          "@cf/meta/llama-3.1-8b-instruct-fast",
+          "@cf/meta/llama-3.1-8b-instruct-fp8",
+          "@cf/meta/llama-4-scout-17b-16e-instruct",
+          "@cf/qwen/qwen3-30b-a3b-fp8",
+          "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+          "@cf/moonshotai/kimi-k2-instruct",
+          "@cf/google/gemma-3-12b-it",
+          "@cf/google/gemma-4-26b-a4b-it",
+          "@cf/moonshotai/kimi-k2.5",
+          "anthropic/claude-3-7-sonnet",
+          "anthropic/claude-sonnet-4",
+          "anthropic/claude-opus-4",
+          "anthropic/claude-3-5-haiku",
+          "cerebras/qwen-3-235b-a22b-instruct",
+          "cerebras/qwen-3-235b-a22b-thinking",
+          "cerebras/llama-3.3-70b",
+          "cerebras/llama-4-maverick-17b-128e-instruct",
+          "cerebras/llama-4-scout-17b-16e-instruct",
+          "cerebras/gpt-oss-120b",
+          "google-ai-studio/gemini-2.5-flash",
+          "google-ai-studio/gemini-2.5-pro",
+          "grok/grok-4",
+          "groq/llama-3.3-70b-versatile",
+          "groq/llama-3.1-8b-instant",
+          "openai/gpt-5",
+          "openai/gpt-5-mini",
+          "openai/gpt-5-nano",
+          "",
+        ]),
+        Schema.String,
       ]),
     ),
     stream: Schema.optional(Schema.Boolean),
@@ -357,7 +385,13 @@ export interface ChatCompletionsInstanceResponse {
   choices: {
     message: {
       content: string | null;
-      role: "system" | "developer" | "user" | "assistant" | "tool";
+      role:
+        | "system"
+        | "developer"
+        | "user"
+        | "assistant"
+        | "tool"
+        | (string & {});
     };
     index?: number | null;
   }[];
@@ -372,7 +406,7 @@ export interface ChatCompletionsInstanceResponse {
       timestamp?: number | null;
     } | null;
     scoringDetails?: {
-      fusionMethod?: "rrf" | "max" | null;
+      fusionMethod?: "rrf" | "max" | (string & {}) | null;
       keywordRank?: number | null;
       keywordScore?: number | null;
       rerankingScore?: number | null;
@@ -391,12 +425,15 @@ export const ChatCompletionsInstanceResponse =
       Schema.Struct({
         message: Schema.Struct({
           content: Schema.Union([Schema.String, Schema.Null]),
-          role: Schema.Literals([
-            "system",
-            "developer",
-            "user",
-            "assistant",
-            "tool",
+          role: Schema.Union([
+            Schema.Literals([
+              "system",
+              "developer",
+              "user",
+              "assistant",
+              "tool",
+            ]),
+            Schema.String,
           ]),
         }),
         index: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -429,7 +466,13 @@ export const ChatCompletionsInstanceResponse =
           Schema.Union([
             Schema.Struct({
               fusionMethod: Schema.optional(
-                Schema.Union([Schema.Literals(["rrf", "max"]), Schema.Null]),
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["rrf", "max"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
               ),
               keywordRank: Schema.optional(
                 Schema.Union([Schema.Number, Schema.Null]),
@@ -504,7 +547,8 @@ export interface ChatCompletionsNamespaceRequest {
         | "super_strict_match"
         | "close_enough"
         | "flexible_friend"
-        | "anything_goes";
+        | "anything_goes"
+        | (string & {});
       enabled?: boolean;
     };
     queryRewrite?: {
@@ -539,33 +583,40 @@ export interface ChatCompletionsNamespaceRequest {
         | "openai/gpt-5"
         | "openai/gpt-5-mini"
         | "openai/gpt-5-nano"
-        | "";
+        | ""
+        | (string & {});
       rewritePrompt?: string;
     };
     reranking?: {
       enabled?: boolean;
       matchThreshold?: number;
-      model?: "@cf/baai/bge-reranker-base" | "";
+      model?: "@cf/baai/bge-reranker-base" | "" | (string & {});
     };
     retrieval?: {
       boostBy?: {
         field: string;
-        direction?: "asc" | "desc" | "exists" | "not_exists";
+        direction?: "asc" | "desc" | "exists" | "not_exists" | (string & {});
       }[];
       contextExpansion?: number;
       filters?: Record<string, unknown>;
-      fusionMethod?: "max" | "rrf";
-      keywordMatchMode?: "and" | "or";
+      fusionMethod?: "max" | "rrf" | (string & {});
+      keywordMatchMode?: "and" | "or" | (string & {});
       matchThreshold?: number;
       maxNumResults?: number;
-      retrievalType?: "vector" | "keyword" | "hybrid";
+      retrievalType?: "vector" | "keyword" | "hybrid" | (string & {});
       returnOnFailure?: boolean;
     };
   };
   /** Body param */
   messages: {
     content: string | null;
-    role: "system" | "developer" | "user" | "assistant" | "tool";
+    role:
+      | "system"
+      | "developer"
+      | "user"
+      | "assistant"
+      | "tool"
+      | (string & {});
   }[];
   /** Body param */
   model?:
@@ -598,7 +649,8 @@ export interface ChatCompletionsNamespaceRequest {
     | "openai/gpt-5"
     | "openai/gpt-5-mini"
     | "openai/gpt-5-nano"
-    | "";
+    | ""
+    | (string & {});
   /** Body param */
   stream?: boolean;
 }
@@ -612,11 +664,14 @@ export const ChatCompletionsNamespaceRequest =
       cache: Schema.optional(
         Schema.Struct({
           cacheThreshold: Schema.optional(
-            Schema.Literals([
-              "super_strict_match",
-              "close_enough",
-              "flexible_friend",
-              "anything_goes",
+            Schema.Union([
+              Schema.Literals([
+                "super_strict_match",
+                "close_enough",
+                "flexible_friend",
+                "anything_goes",
+              ]),
+              Schema.String,
             ]),
           ),
           enabled: Schema.optional(Schema.Boolean),
@@ -631,37 +686,40 @@ export const ChatCompletionsNamespaceRequest =
         Schema.Struct({
           enabled: Schema.optional(Schema.Boolean),
           model: Schema.optional(
-            Schema.Literals([
-              "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-              "@cf/zai-org/glm-4.7-flash",
-              "@cf/meta/llama-3.1-8b-instruct-fast",
-              "@cf/meta/llama-3.1-8b-instruct-fp8",
-              "@cf/meta/llama-4-scout-17b-16e-instruct",
-              "@cf/qwen/qwen3-30b-a3b-fp8",
-              "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
-              "@cf/moonshotai/kimi-k2-instruct",
-              "@cf/google/gemma-3-12b-it",
-              "@cf/google/gemma-4-26b-a4b-it",
-              "@cf/moonshotai/kimi-k2.5",
-              "anthropic/claude-3-7-sonnet",
-              "anthropic/claude-sonnet-4",
-              "anthropic/claude-opus-4",
-              "anthropic/claude-3-5-haiku",
-              "cerebras/qwen-3-235b-a22b-instruct",
-              "cerebras/qwen-3-235b-a22b-thinking",
-              "cerebras/llama-3.3-70b",
-              "cerebras/llama-4-maverick-17b-128e-instruct",
-              "cerebras/llama-4-scout-17b-16e-instruct",
-              "cerebras/gpt-oss-120b",
-              "google-ai-studio/gemini-2.5-flash",
-              "google-ai-studio/gemini-2.5-pro",
-              "grok/grok-4",
-              "groq/llama-3.3-70b-versatile",
-              "groq/llama-3.1-8b-instant",
-              "openai/gpt-5",
-              "openai/gpt-5-mini",
-              "openai/gpt-5-nano",
-              "",
+            Schema.Union([
+              Schema.Literals([
+                "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+                "@cf/zai-org/glm-4.7-flash",
+                "@cf/meta/llama-3.1-8b-instruct-fast",
+                "@cf/meta/llama-3.1-8b-instruct-fp8",
+                "@cf/meta/llama-4-scout-17b-16e-instruct",
+                "@cf/qwen/qwen3-30b-a3b-fp8",
+                "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+                "@cf/moonshotai/kimi-k2-instruct",
+                "@cf/google/gemma-3-12b-it",
+                "@cf/google/gemma-4-26b-a4b-it",
+                "@cf/moonshotai/kimi-k2.5",
+                "anthropic/claude-3-7-sonnet",
+                "anthropic/claude-sonnet-4",
+                "anthropic/claude-opus-4",
+                "anthropic/claude-3-5-haiku",
+                "cerebras/qwen-3-235b-a22b-instruct",
+                "cerebras/qwen-3-235b-a22b-thinking",
+                "cerebras/llama-3.3-70b",
+                "cerebras/llama-4-maverick-17b-128e-instruct",
+                "cerebras/llama-4-scout-17b-16e-instruct",
+                "cerebras/gpt-oss-120b",
+                "google-ai-studio/gemini-2.5-flash",
+                "google-ai-studio/gemini-2.5-pro",
+                "grok/grok-4",
+                "groq/llama-3.3-70b-versatile",
+                "groq/llama-3.1-8b-instant",
+                "openai/gpt-5",
+                "openai/gpt-5-mini",
+                "openai/gpt-5-nano",
+                "",
+              ]),
+              Schema.String,
             ]),
           ),
           rewritePrompt: Schema.optional(Schema.String),
@@ -678,7 +736,10 @@ export const ChatCompletionsNamespaceRequest =
           enabled: Schema.optional(Schema.Boolean),
           matchThreshold: Schema.optional(Schema.Number),
           model: Schema.optional(
-            Schema.Literals(["@cf/baai/bge-reranker-base", ""]),
+            Schema.Union([
+              Schema.Literals(["@cf/baai/bge-reranker-base", ""]),
+              Schema.String,
+            ]),
           ),
         }).pipe(
           Schema.encodeKeys({
@@ -695,7 +756,10 @@ export const ChatCompletionsNamespaceRequest =
               Schema.Struct({
                 field: Schema.String,
                 direction: Schema.optional(
-                  Schema.Literals(["asc", "desc", "exists", "not_exists"]),
+                  Schema.Union([
+                    Schema.Literals(["asc", "desc", "exists", "not_exists"]),
+                    Schema.String,
+                  ]),
                 ),
               }),
             ),
@@ -704,12 +768,19 @@ export const ChatCompletionsNamespaceRequest =
           filters: Schema.optional(
             Schema.Record(Schema.String, Schema.Unknown),
           ),
-          fusionMethod: Schema.optional(Schema.Literals(["max", "rrf"])),
-          keywordMatchMode: Schema.optional(Schema.Literals(["and", "or"])),
+          fusionMethod: Schema.optional(
+            Schema.Union([Schema.Literals(["max", "rrf"]), Schema.String]),
+          ),
+          keywordMatchMode: Schema.optional(
+            Schema.Union([Schema.Literals(["and", "or"]), Schema.String]),
+          ),
           matchThreshold: Schema.optional(Schema.Number),
           maxNumResults: Schema.optional(Schema.Number),
           retrievalType: Schema.optional(
-            Schema.Literals(["vector", "keyword", "hybrid"]),
+            Schema.Union([
+              Schema.Literals(["vector", "keyword", "hybrid"]),
+              Schema.String,
+            ]),
           ),
           returnOnFailure: Schema.optional(Schema.Boolean),
         }).pipe(
@@ -738,47 +809,47 @@ export const ChatCompletionsNamespaceRequest =
     messages: Schema.Array(
       Schema.Struct({
         content: Schema.Union([Schema.String, Schema.Null]),
-        role: Schema.Literals([
-          "system",
-          "developer",
-          "user",
-          "assistant",
-          "tool",
+        role: Schema.Union([
+          Schema.Literals(["system", "developer", "user", "assistant", "tool"]),
+          Schema.String,
         ]),
       }),
     ),
     model: Schema.optional(
-      Schema.Literals([
-        "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-        "@cf/zai-org/glm-4.7-flash",
-        "@cf/meta/llama-3.1-8b-instruct-fast",
-        "@cf/meta/llama-3.1-8b-instruct-fp8",
-        "@cf/meta/llama-4-scout-17b-16e-instruct",
-        "@cf/qwen/qwen3-30b-a3b-fp8",
-        "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
-        "@cf/moonshotai/kimi-k2-instruct",
-        "@cf/google/gemma-3-12b-it",
-        "@cf/google/gemma-4-26b-a4b-it",
-        "@cf/moonshotai/kimi-k2.5",
-        "anthropic/claude-3-7-sonnet",
-        "anthropic/claude-sonnet-4",
-        "anthropic/claude-opus-4",
-        "anthropic/claude-3-5-haiku",
-        "cerebras/qwen-3-235b-a22b-instruct",
-        "cerebras/qwen-3-235b-a22b-thinking",
-        "cerebras/llama-3.3-70b",
-        "cerebras/llama-4-maverick-17b-128e-instruct",
-        "cerebras/llama-4-scout-17b-16e-instruct",
-        "cerebras/gpt-oss-120b",
-        "google-ai-studio/gemini-2.5-flash",
-        "google-ai-studio/gemini-2.5-pro",
-        "grok/grok-4",
-        "groq/llama-3.3-70b-versatile",
-        "groq/llama-3.1-8b-instant",
-        "openai/gpt-5",
-        "openai/gpt-5-mini",
-        "openai/gpt-5-nano",
-        "",
+      Schema.Union([
+        Schema.Literals([
+          "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+          "@cf/zai-org/glm-4.7-flash",
+          "@cf/meta/llama-3.1-8b-instruct-fast",
+          "@cf/meta/llama-3.1-8b-instruct-fp8",
+          "@cf/meta/llama-4-scout-17b-16e-instruct",
+          "@cf/qwen/qwen3-30b-a3b-fp8",
+          "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+          "@cf/moonshotai/kimi-k2-instruct",
+          "@cf/google/gemma-3-12b-it",
+          "@cf/google/gemma-4-26b-a4b-it",
+          "@cf/moonshotai/kimi-k2.5",
+          "anthropic/claude-3-7-sonnet",
+          "anthropic/claude-sonnet-4",
+          "anthropic/claude-opus-4",
+          "anthropic/claude-3-5-haiku",
+          "cerebras/qwen-3-235b-a22b-instruct",
+          "cerebras/qwen-3-235b-a22b-thinking",
+          "cerebras/llama-3.3-70b",
+          "cerebras/llama-4-maverick-17b-128e-instruct",
+          "cerebras/llama-4-scout-17b-16e-instruct",
+          "cerebras/gpt-oss-120b",
+          "google-ai-studio/gemini-2.5-flash",
+          "google-ai-studio/gemini-2.5-pro",
+          "grok/grok-4",
+          "groq/llama-3.3-70b-versatile",
+          "groq/llama-3.1-8b-instant",
+          "openai/gpt-5",
+          "openai/gpt-5-mini",
+          "openai/gpt-5-nano",
+          "",
+        ]),
+        Schema.String,
       ]),
     ),
     stream: Schema.optional(Schema.Boolean),
@@ -799,7 +870,13 @@ export interface ChatCompletionsNamespaceResponse {
   choices: {
     message: {
       content: string | null;
-      role: "system" | "developer" | "user" | "assistant" | "tool";
+      role:
+        | "system"
+        | "developer"
+        | "user"
+        | "assistant"
+        | "tool"
+        | (string & {});
     };
     index?: number | null;
   }[];
@@ -815,7 +892,7 @@ export interface ChatCompletionsNamespaceResponse {
       timestamp?: number | null;
     } | null;
     scoringDetails?: {
-      fusionMethod?: "rrf" | "max" | null;
+      fusionMethod?: "rrf" | "max" | (string & {}) | null;
       keywordRank?: number | null;
       keywordScore?: number | null;
       rerankingScore?: number | null;
@@ -835,12 +912,15 @@ export const ChatCompletionsNamespaceResponse =
       Schema.Struct({
         message: Schema.Struct({
           content: Schema.Union([Schema.String, Schema.Null]),
-          role: Schema.Literals([
-            "system",
-            "developer",
-            "user",
-            "assistant",
-            "tool",
+          role: Schema.Union([
+            Schema.Literals([
+              "system",
+              "developer",
+              "user",
+              "assistant",
+              "tool",
+            ]),
+            Schema.String,
           ]),
         }),
         index: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -874,7 +954,13 @@ export const ChatCompletionsNamespaceResponse =
           Schema.Union([
             Schema.Struct({
               fusionMethod: Schema.optional(
-                Schema.Union([Schema.Literals(["rrf", "max"]), Schema.Null]),
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["rrf", "max"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
               ),
               keywordRank: Schema.optional(
                 Schema.Union([Schema.Number, Schema.Null]),
@@ -962,7 +1048,13 @@ export interface ChatCompletionsNamespaceInstanceRequest {
   /** Body param */
   messages: {
     content: string | null;
-    role: "system" | "developer" | "user" | "assistant" | "tool";
+    role:
+      | "system"
+      | "developer"
+      | "user"
+      | "assistant"
+      | "tool"
+      | (string & {});
   }[];
   /** Body param */
   aiSearchOptions?: {
@@ -971,7 +1063,8 @@ export interface ChatCompletionsNamespaceInstanceRequest {
         | "super_strict_match"
         | "close_enough"
         | "flexible_friend"
-        | "anything_goes";
+        | "anything_goes"
+        | (string & {});
       enabled?: boolean;
     };
     queryRewrite?: {
@@ -1006,26 +1099,27 @@ export interface ChatCompletionsNamespaceInstanceRequest {
         | "openai/gpt-5"
         | "openai/gpt-5-mini"
         | "openai/gpt-5-nano"
-        | "";
+        | ""
+        | (string & {});
       rewritePrompt?: string;
     };
     reranking?: {
       enabled?: boolean;
       matchThreshold?: number;
-      model?: "@cf/baai/bge-reranker-base" | "";
+      model?: "@cf/baai/bge-reranker-base" | "" | (string & {});
     };
     retrieval?: {
       boostBy?: {
         field: string;
-        direction?: "asc" | "desc" | "exists" | "not_exists";
+        direction?: "asc" | "desc" | "exists" | "not_exists" | (string & {});
       }[];
       contextExpansion?: number;
       filters?: Record<string, unknown>;
-      fusionMethod?: "max" | "rrf";
-      keywordMatchMode?: "and" | "or";
+      fusionMethod?: "max" | "rrf" | (string & {});
+      keywordMatchMode?: "and" | "or" | (string & {});
       matchThreshold?: number;
       maxNumResults?: number;
-      retrievalType?: "vector" | "keyword" | "hybrid";
+      retrievalType?: "vector" | "keyword" | "hybrid" | (string & {});
       returnOnFailure?: boolean;
     };
   };
@@ -1060,7 +1154,8 @@ export interface ChatCompletionsNamespaceInstanceRequest {
     | "openai/gpt-5"
     | "openai/gpt-5-mini"
     | "openai/gpt-5-nano"
-    | "";
+    | ""
+    | (string & {});
   /** Body param */
   stream?: boolean;
 }
@@ -1073,12 +1168,9 @@ export const ChatCompletionsNamespaceInstanceRequest =
     messages: Schema.Array(
       Schema.Struct({
         content: Schema.Union([Schema.String, Schema.Null]),
-        role: Schema.Literals([
-          "system",
-          "developer",
-          "user",
-          "assistant",
-          "tool",
+        role: Schema.Union([
+          Schema.Literals(["system", "developer", "user", "assistant", "tool"]),
+          Schema.String,
         ]),
       }),
     ),
@@ -1087,11 +1179,14 @@ export const ChatCompletionsNamespaceInstanceRequest =
         cache: Schema.optional(
           Schema.Struct({
             cacheThreshold: Schema.optional(
-              Schema.Literals([
-                "super_strict_match",
-                "close_enough",
-                "flexible_friend",
-                "anything_goes",
+              Schema.Union([
+                Schema.Literals([
+                  "super_strict_match",
+                  "close_enough",
+                  "flexible_friend",
+                  "anything_goes",
+                ]),
+                Schema.String,
               ]),
             ),
             enabled: Schema.optional(Schema.Boolean),
@@ -1106,37 +1201,40 @@ export const ChatCompletionsNamespaceInstanceRequest =
           Schema.Struct({
             enabled: Schema.optional(Schema.Boolean),
             model: Schema.optional(
-              Schema.Literals([
-                "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-                "@cf/zai-org/glm-4.7-flash",
-                "@cf/meta/llama-3.1-8b-instruct-fast",
-                "@cf/meta/llama-3.1-8b-instruct-fp8",
-                "@cf/meta/llama-4-scout-17b-16e-instruct",
-                "@cf/qwen/qwen3-30b-a3b-fp8",
-                "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
-                "@cf/moonshotai/kimi-k2-instruct",
-                "@cf/google/gemma-3-12b-it",
-                "@cf/google/gemma-4-26b-a4b-it",
-                "@cf/moonshotai/kimi-k2.5",
-                "anthropic/claude-3-7-sonnet",
-                "anthropic/claude-sonnet-4",
-                "anthropic/claude-opus-4",
-                "anthropic/claude-3-5-haiku",
-                "cerebras/qwen-3-235b-a22b-instruct",
-                "cerebras/qwen-3-235b-a22b-thinking",
-                "cerebras/llama-3.3-70b",
-                "cerebras/llama-4-maverick-17b-128e-instruct",
-                "cerebras/llama-4-scout-17b-16e-instruct",
-                "cerebras/gpt-oss-120b",
-                "google-ai-studio/gemini-2.5-flash",
-                "google-ai-studio/gemini-2.5-pro",
-                "grok/grok-4",
-                "groq/llama-3.3-70b-versatile",
-                "groq/llama-3.1-8b-instant",
-                "openai/gpt-5",
-                "openai/gpt-5-mini",
-                "openai/gpt-5-nano",
-                "",
+              Schema.Union([
+                Schema.Literals([
+                  "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+                  "@cf/zai-org/glm-4.7-flash",
+                  "@cf/meta/llama-3.1-8b-instruct-fast",
+                  "@cf/meta/llama-3.1-8b-instruct-fp8",
+                  "@cf/meta/llama-4-scout-17b-16e-instruct",
+                  "@cf/qwen/qwen3-30b-a3b-fp8",
+                  "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+                  "@cf/moonshotai/kimi-k2-instruct",
+                  "@cf/google/gemma-3-12b-it",
+                  "@cf/google/gemma-4-26b-a4b-it",
+                  "@cf/moonshotai/kimi-k2.5",
+                  "anthropic/claude-3-7-sonnet",
+                  "anthropic/claude-sonnet-4",
+                  "anthropic/claude-opus-4",
+                  "anthropic/claude-3-5-haiku",
+                  "cerebras/qwen-3-235b-a22b-instruct",
+                  "cerebras/qwen-3-235b-a22b-thinking",
+                  "cerebras/llama-3.3-70b",
+                  "cerebras/llama-4-maverick-17b-128e-instruct",
+                  "cerebras/llama-4-scout-17b-16e-instruct",
+                  "cerebras/gpt-oss-120b",
+                  "google-ai-studio/gemini-2.5-flash",
+                  "google-ai-studio/gemini-2.5-pro",
+                  "grok/grok-4",
+                  "groq/llama-3.3-70b-versatile",
+                  "groq/llama-3.1-8b-instant",
+                  "openai/gpt-5",
+                  "openai/gpt-5-mini",
+                  "openai/gpt-5-nano",
+                  "",
+                ]),
+                Schema.String,
               ]),
             ),
             rewritePrompt: Schema.optional(Schema.String),
@@ -1153,7 +1251,10 @@ export const ChatCompletionsNamespaceInstanceRequest =
             enabled: Schema.optional(Schema.Boolean),
             matchThreshold: Schema.optional(Schema.Number),
             model: Schema.optional(
-              Schema.Literals(["@cf/baai/bge-reranker-base", ""]),
+              Schema.Union([
+                Schema.Literals(["@cf/baai/bge-reranker-base", ""]),
+                Schema.String,
+              ]),
             ),
           }).pipe(
             Schema.encodeKeys({
@@ -1170,7 +1271,10 @@ export const ChatCompletionsNamespaceInstanceRequest =
                 Schema.Struct({
                   field: Schema.String,
                   direction: Schema.optional(
-                    Schema.Literals(["asc", "desc", "exists", "not_exists"]),
+                    Schema.Union([
+                      Schema.Literals(["asc", "desc", "exists", "not_exists"]),
+                      Schema.String,
+                    ]),
                   ),
                 }),
               ),
@@ -1179,12 +1283,19 @@ export const ChatCompletionsNamespaceInstanceRequest =
             filters: Schema.optional(
               Schema.Record(Schema.String, Schema.Unknown),
             ),
-            fusionMethod: Schema.optional(Schema.Literals(["max", "rrf"])),
-            keywordMatchMode: Schema.optional(Schema.Literals(["and", "or"])),
+            fusionMethod: Schema.optional(
+              Schema.Union([Schema.Literals(["max", "rrf"]), Schema.String]),
+            ),
+            keywordMatchMode: Schema.optional(
+              Schema.Union([Schema.Literals(["and", "or"]), Schema.String]),
+            ),
             matchThreshold: Schema.optional(Schema.Number),
             maxNumResults: Schema.optional(Schema.Number),
             retrievalType: Schema.optional(
-              Schema.Literals(["vector", "keyword", "hybrid"]),
+              Schema.Union([
+                Schema.Literals(["vector", "keyword", "hybrid"]),
+                Schema.String,
+              ]),
             ),
             returnOnFailure: Schema.optional(Schema.Boolean),
           }).pipe(
@@ -1211,37 +1322,40 @@ export const ChatCompletionsNamespaceInstanceRequest =
       ),
     ),
     model: Schema.optional(
-      Schema.Literals([
-        "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-        "@cf/zai-org/glm-4.7-flash",
-        "@cf/meta/llama-3.1-8b-instruct-fast",
-        "@cf/meta/llama-3.1-8b-instruct-fp8",
-        "@cf/meta/llama-4-scout-17b-16e-instruct",
-        "@cf/qwen/qwen3-30b-a3b-fp8",
-        "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
-        "@cf/moonshotai/kimi-k2-instruct",
-        "@cf/google/gemma-3-12b-it",
-        "@cf/google/gemma-4-26b-a4b-it",
-        "@cf/moonshotai/kimi-k2.5",
-        "anthropic/claude-3-7-sonnet",
-        "anthropic/claude-sonnet-4",
-        "anthropic/claude-opus-4",
-        "anthropic/claude-3-5-haiku",
-        "cerebras/qwen-3-235b-a22b-instruct",
-        "cerebras/qwen-3-235b-a22b-thinking",
-        "cerebras/llama-3.3-70b",
-        "cerebras/llama-4-maverick-17b-128e-instruct",
-        "cerebras/llama-4-scout-17b-16e-instruct",
-        "cerebras/gpt-oss-120b",
-        "google-ai-studio/gemini-2.5-flash",
-        "google-ai-studio/gemini-2.5-pro",
-        "grok/grok-4",
-        "groq/llama-3.3-70b-versatile",
-        "groq/llama-3.1-8b-instant",
-        "openai/gpt-5",
-        "openai/gpt-5-mini",
-        "openai/gpt-5-nano",
-        "",
+      Schema.Union([
+        Schema.Literals([
+          "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+          "@cf/zai-org/glm-4.7-flash",
+          "@cf/meta/llama-3.1-8b-instruct-fast",
+          "@cf/meta/llama-3.1-8b-instruct-fp8",
+          "@cf/meta/llama-4-scout-17b-16e-instruct",
+          "@cf/qwen/qwen3-30b-a3b-fp8",
+          "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+          "@cf/moonshotai/kimi-k2-instruct",
+          "@cf/google/gemma-3-12b-it",
+          "@cf/google/gemma-4-26b-a4b-it",
+          "@cf/moonshotai/kimi-k2.5",
+          "anthropic/claude-3-7-sonnet",
+          "anthropic/claude-sonnet-4",
+          "anthropic/claude-opus-4",
+          "anthropic/claude-3-5-haiku",
+          "cerebras/qwen-3-235b-a22b-instruct",
+          "cerebras/qwen-3-235b-a22b-thinking",
+          "cerebras/llama-3.3-70b",
+          "cerebras/llama-4-maverick-17b-128e-instruct",
+          "cerebras/llama-4-scout-17b-16e-instruct",
+          "cerebras/gpt-oss-120b",
+          "google-ai-studio/gemini-2.5-flash",
+          "google-ai-studio/gemini-2.5-pro",
+          "grok/grok-4",
+          "groq/llama-3.3-70b-versatile",
+          "groq/llama-3.1-8b-instant",
+          "openai/gpt-5",
+          "openai/gpt-5-mini",
+          "openai/gpt-5-nano",
+          "",
+        ]),
+        Schema.String,
       ]),
     ),
     stream: Schema.optional(Schema.Boolean),
@@ -1262,7 +1376,13 @@ export interface ChatCompletionsNamespaceInstanceResponse {
   choices: {
     message: {
       content: string | null;
-      role: "system" | "developer" | "user" | "assistant" | "tool";
+      role:
+        | "system"
+        | "developer"
+        | "user"
+        | "assistant"
+        | "tool"
+        | (string & {});
     };
     index?: number | null;
   }[];
@@ -1277,7 +1397,7 @@ export interface ChatCompletionsNamespaceInstanceResponse {
       timestamp?: number | null;
     } | null;
     scoringDetails?: {
-      fusionMethod?: "rrf" | "max" | null;
+      fusionMethod?: "rrf" | "max" | (string & {}) | null;
       keywordRank?: number | null;
       keywordScore?: number | null;
       rerankingScore?: number | null;
@@ -1296,12 +1416,15 @@ export const ChatCompletionsNamespaceInstanceResponse =
       Schema.Struct({
         message: Schema.Struct({
           content: Schema.Union([Schema.String, Schema.Null]),
-          role: Schema.Literals([
-            "system",
-            "developer",
-            "user",
-            "assistant",
-            "tool",
+          role: Schema.Union([
+            Schema.Literals([
+              "system",
+              "developer",
+              "user",
+              "assistant",
+              "tool",
+            ]),
+            Schema.String,
           ]),
         }),
         index: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -1334,7 +1457,13 @@ export const ChatCompletionsNamespaceInstanceResponse =
           Schema.Union([
             Schema.Struct({
               fusionMethod: Schema.optional(
-                Schema.Union([Schema.Literals(["rrf", "max"]), Schema.Null]),
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["rrf", "max"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
               ),
               keywordRank: Schema.optional(
                 Schema.Union([Schema.Number, Schema.Null]),
@@ -1407,7 +1536,7 @@ export interface ListInstancesRequest {
   /** Query param: Field to order results by. */
   orderBy?: "created_at";
   /** Query param: Order direction. */
-  orderByDirection?: "asc" | "desc";
+  orderByDirection?: "asc" | "desc" | (string & {});
   /** Query param: Filter instances whose id contains this string (case-insensitive). */
   search?: string;
 }
@@ -1420,9 +1549,9 @@ export const ListInstancesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   orderBy: Schema.optional(Schema.Literal("created_at")).pipe(
     T.HttpQuery("order_by"),
   ),
-  orderByDirection: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-    T.HttpQuery("order_by_direction"),
-  ),
+  orderByDirection: Schema.optional(
+    Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+  ).pipe(T.HttpQuery("order_by_direction")),
   search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
 }).pipe(
   T.Http({ method: "GET", path: "/accounts/{account_id}/ai-search/instances" }),
@@ -1484,13 +1613,14 @@ export interface ListInstancesResponse {
       | "172800"
       | "259200"
       | "518400"
+      | (string & {})
       | null;
     chunkOverlap?: number | null;
     chunkSize?: number | null;
     createdBy?: string | null;
     customMetadata?:
       | {
-          dataType: "text" | "number" | "boolean" | "datetime";
+          dataType: "text" | "number" | "boolean" | "datetime" | (string & {});
           fieldName: string;
         }[]
       | null;
@@ -1507,10 +1637,12 @@ export interface ListInstancesResponse {
       | null;
     enable?: boolean | null;
     engineVersion?: number | null;
-    fusionMethod?: "max" | "rrf" | null;
+    fusionMethod?: "max" | "rrf" | (string & {}) | null;
     hybridSearchEnabled?: boolean | null;
     indexMethod?: { keyword: boolean; vector: boolean } | null;
-    indexingOptions?: { keywordTokenizer?: "porter" | "trigram" | null } | null;
+    indexingOptions?: {
+      keywordTokenizer?: "porter" | "trigram" | (string & {}) | null;
+    } | null;
     lastActivity?: string | null;
     maxNumResults?: number | null;
     metadata?: {
@@ -1529,7 +1661,7 @@ export interface ListInstancesResponse {
       rateLimit?: {
         periodMs?: number | null;
         requests?: number | null;
-        technique?: "fixed" | "sliding" | null;
+        technique?: "fixed" | "sliding" | (string & {}) | null;
       } | null;
       searchEndpoint?: { disabled?: boolean | null } | null;
     } | null;
@@ -1539,10 +1671,16 @@ export interface ListInstancesResponse {
       boostBy?:
         | {
             field: string;
-            direction?: "asc" | "desc" | "exists" | "not_exists" | null;
+            direction?:
+              | "asc"
+              | "desc"
+              | "exists"
+              | "not_exists"
+              | (string & {})
+              | null;
           }[]
         | null;
-      keywordMatchMode?: "and" | "or" | null;
+      keywordMatchMode?: "and" | "or" | (string & {}) | null;
     } | null;
     rewriteModel?:
       | "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
@@ -1590,7 +1728,7 @@ export interface ListInstancesResponse {
           includeExternalLinks?: boolean | null;
           includeSubdomains?: boolean | null;
           maxAge?: number | null;
-          source?: "all" | "sitemaps" | "links" | null;
+          source?: "all" | "sitemaps" | "links" | (string & {}) | null;
         } | null;
         parseOptions?: {
           contentSelector?: { path: string; selector: string }[] | null;
@@ -1599,7 +1737,7 @@ export interface ListInstancesResponse {
           specificSitemaps?: string[] | null;
           useBrowserRendering?: boolean | null;
         } | null;
-        parseType?: "sitemap" | "feed-rss" | "crawl" | null;
+        parseType?: "sitemap" | "feed-rss" | "crawl" | (string & {}) | null;
         storeOptions?: {
           storageId: string;
           r2Jurisdiction?: string | null;
@@ -1617,6 +1755,7 @@ export interface ListInstancesResponse {
       | "21600"
       | "43200"
       | "86400"
+      | (string & {})
       | null;
     tokenId?: string | null;
     type?: "r2" | "web-crawler" | null;
@@ -1683,17 +1822,20 @@ export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
       cacheTtl: Schema.optional(
         Schema.Union([
-          Schema.Literals([
-            "600",
-            "1800",
-            "3600",
-            "7200",
-            "21600",
-            "43200",
-            "86400",
-            "172800",
-            "259200",
-            "518400",
+          Schema.Union([
+            Schema.Literals([
+              "600",
+              "1800",
+              "3600",
+              "7200",
+              "21600",
+              "43200",
+              "86400",
+              "172800",
+              "259200",
+              "518400",
+            ]),
+            Schema.String,
           ]),
           Schema.Null,
         ]),
@@ -1705,11 +1847,9 @@ export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Union([
           Schema.Array(
             Schema.Struct({
-              dataType: Schema.Literals([
-                "text",
-                "number",
-                "boolean",
-                "datetime",
+              dataType: Schema.Union([
+                Schema.Literals(["text", "number", "boolean", "datetime"]),
+                Schema.String,
               ]),
               fieldName: Schema.String,
             }).pipe(
@@ -1741,7 +1881,10 @@ export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Union([Schema.Number, Schema.Null]),
       ),
       fusionMethod: Schema.optional(
-        Schema.Union([Schema.Literals(["max", "rrf"]), Schema.Null]),
+        Schema.Union([
+          Schema.Union([Schema.Literals(["max", "rrf"]), Schema.String]),
+          Schema.Null,
+        ]),
       ),
       hybridSearchEnabled: Schema.optional(
         Schema.Union([Schema.Boolean, Schema.Null]),
@@ -1760,7 +1903,10 @@ export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Struct({
             keywordTokenizer: Schema.optional(
               Schema.Union([
-                Schema.Literals(["porter", "trigram"]),
+                Schema.Union([
+                  Schema.Literals(["porter", "trigram"]),
+                  Schema.String,
+                ]),
                 Schema.Null,
               ]),
             ),
@@ -1839,7 +1985,10 @@ export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   ),
                   technique: Schema.optional(
                     Schema.Union([
-                      Schema.Literals(["fixed", "sliding"]),
+                      Schema.Union([
+                        Schema.Literals(["fixed", "sliding"]),
+                        Schema.String,
+                      ]),
                       Schema.Null,
                     ]),
                   ),
@@ -1894,11 +2043,14 @@ export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     field: Schema.String,
                     direction: Schema.optional(
                       Schema.Union([
-                        Schema.Literals([
-                          "asc",
-                          "desc",
-                          "exists",
-                          "not_exists",
+                        Schema.Union([
+                          Schema.Literals([
+                            "asc",
+                            "desc",
+                            "exists",
+                            "not_exists",
+                          ]),
+                          Schema.String,
                         ]),
                         Schema.Null,
                       ]),
@@ -1909,7 +2061,10 @@ export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ]),
             ),
             keywordMatchMode: Schema.optional(
-              Schema.Union([Schema.Literals(["and", "or"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([Schema.Literals(["and", "or"]), Schema.String]),
+                Schema.Null,
+              ]),
             ),
           }).pipe(
             Schema.encodeKeys({
@@ -1995,7 +2150,10 @@ export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                         ),
                         source: Schema.optional(
                           Schema.Union([
-                            Schema.Literals(["all", "sitemaps", "links"]),
+                            Schema.Union([
+                              Schema.Literals(["all", "sitemaps", "links"]),
+                              Schema.String,
+                            ]),
                             Schema.Null,
                           ]),
                         ),
@@ -2057,7 +2215,10 @@ export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   ),
                   parseType: Schema.optional(
                     Schema.Union([
-                      Schema.Literals(["sitemap", "feed-rss", "crawl"]),
+                      Schema.Union([
+                        Schema.Literals(["sitemap", "feed-rss", "crawl"]),
+                        Schema.String,
+                      ]),
                       Schema.Null,
                     ]),
                   ),
@@ -2107,15 +2268,18 @@ export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       syncInterval: Schema.optional(
         Schema.Union([
-          Schema.Literals([
-            "900",
-            "1800",
-            "3600",
-            "7200",
-            "14400",
-            "21600",
-            "43200",
-            "86400",
+          Schema.Union([
+            Schema.Literals([
+              "900",
+              "1800",
+              "3600",
+              "7200",
+              "14400",
+              "21600",
+              "43200",
+              "86400",
+            ]),
+            Schema.String,
           ]),
           Schema.Null,
         ]),
@@ -2261,7 +2425,8 @@ export interface CreateInstanceRequest {
     | "super_strict_match"
     | "close_enough"
     | "flexible_friend"
-    | "anything_goes";
+    | "anything_goes"
+    | (string & {});
   /** Body param: Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d). */
   cacheTtl?:
     | "600"
@@ -2273,7 +2438,8 @@ export interface CreateInstanceRequest {
     | "86400"
     | "172800"
     | "259200"
-    | "518400";
+    | "518400"
+    | (string & {});
   /** Body param */
   chunk?: boolean;
   /** Body param */
@@ -2282,7 +2448,7 @@ export interface CreateInstanceRequest {
   chunkSize?: number;
   /** Body param */
   customMetadata?: {
-    dataType: "text" | "number" | "boolean" | "datetime";
+    dataType: "text" | "number" | "boolean" | "datetime" | (string & {});
     fieldName: string;
   }[];
   /** Body param */
@@ -2298,13 +2464,15 @@ export interface CreateInstanceRequest {
     | ""
     | null;
   /** Body param */
-  fusionMethod?: "max" | "rrf";
+  fusionMethod?: "max" | "rrf" | (string & {});
   /** @deprecated Body param: Deprecated — use index_method instead. */
   hybridSearchEnabled?: boolean;
   /** Body param: Controls which storage backends are used during indexing. Defaults to vector-only. */
   indexMethod?: { keyword: boolean; vector: boolean };
   /** Body param */
-  indexingOptions?: { keywordTokenizer?: "porter" | "trigram" } | null;
+  indexingOptions?: {
+    keywordTokenizer?: "porter" | "trigram" | (string & {});
+  } | null;
   /** Body param */
   maxNumResults?: number;
   /** Body param */
@@ -2318,7 +2486,7 @@ export interface CreateInstanceRequest {
     rateLimit?: {
       periodMs?: number;
       requests?: number;
-      technique?: "fixed" | "sliding";
+      technique?: "fixed" | "sliding" | (string & {});
     };
     searchEndpoint?: { disabled?: boolean };
   };
@@ -2330,9 +2498,9 @@ export interface CreateInstanceRequest {
   retrievalOptions?: {
     boostBy?: {
       field: string;
-      direction?: "asc" | "desc" | "exists" | "not_exists";
+      direction?: "asc" | "desc" | "exists" | "not_exists" | (string & {});
     }[];
-    keywordMatchMode?: "and" | "or";
+    keywordMatchMode?: "and" | "or" | (string & {});
   } | null;
   /** Body param */
   rewriteModel?:
@@ -2385,7 +2553,7 @@ export interface CreateInstanceRequest {
         includeExternalLinks?: boolean;
         includeSubdomains?: boolean;
         maxAge?: number;
-        source?: "all" | "sitemaps" | "links";
+        source?: "all" | "sitemaps" | "links" | (string & {});
       };
       parseOptions?: {
         contentSelector?: { path: string; selector: string }[];
@@ -2394,7 +2562,7 @@ export interface CreateInstanceRequest {
         specificSitemaps?: string[];
         useBrowserRendering?: boolean;
       };
-      parseType?: "sitemap" | "feed-rss" | "crawl";
+      parseType?: "sitemap" | "feed-rss" | "crawl" | (string & {});
       storeOptions?: {
         storageId: string;
         r2Jurisdiction?: string;
@@ -2411,7 +2579,8 @@ export interface CreateInstanceRequest {
     | "14400"
     | "21600"
     | "43200"
-    | "86400";
+    | "86400"
+    | (string & {});
   /** Body param */
   tokenId?: string;
   /** Body param */
@@ -2459,25 +2628,31 @@ export const CreateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   cache: Schema.optional(Schema.Boolean),
   cacheThreshold: Schema.optional(
-    Schema.Literals([
-      "super_strict_match",
-      "close_enough",
-      "flexible_friend",
-      "anything_goes",
+    Schema.Union([
+      Schema.Literals([
+        "super_strict_match",
+        "close_enough",
+        "flexible_friend",
+        "anything_goes",
+      ]),
+      Schema.String,
     ]),
   ),
   cacheTtl: Schema.optional(
-    Schema.Literals([
-      "600",
-      "1800",
-      "3600",
-      "7200",
-      "21600",
-      "43200",
-      "86400",
-      "172800",
-      "259200",
-      "518400",
+    Schema.Union([
+      Schema.Literals([
+        "600",
+        "1800",
+        "3600",
+        "7200",
+        "21600",
+        "43200",
+        "86400",
+        "172800",
+        "259200",
+        "518400",
+      ]),
+      Schema.String,
     ]),
   ),
   chunk: Schema.optional(Schema.Boolean),
@@ -2486,7 +2661,10 @@ export const CreateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   customMetadata: Schema.optional(
     Schema.Array(
       Schema.Struct({
-        dataType: Schema.Literals(["text", "number", "boolean", "datetime"]),
+        dataType: Schema.Union([
+          Schema.Literals(["text", "number", "boolean", "datetime"]),
+          Schema.String,
+        ]),
         fieldName: Schema.String,
       }).pipe(
         Schema.encodeKeys({ dataType: "data_type", fieldName: "field_name" }),
@@ -2507,7 +2685,9 @@ export const CreateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Null,
     ]),
   ),
-  fusionMethod: Schema.optional(Schema.Literals(["max", "rrf"])),
+  fusionMethod: Schema.optional(
+    Schema.Union([Schema.Literals(["max", "rrf"]), Schema.String]),
+  ),
   hybridSearchEnabled: Schema.optional(Schema.Boolean),
   indexMethod: Schema.optional(
     Schema.Struct({
@@ -2519,7 +2699,7 @@ export const CreateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Union([
       Schema.Struct({
         keywordTokenizer: Schema.optional(
-          Schema.Literals(["porter", "trigram"]),
+          Schema.Union([Schema.Literals(["porter", "trigram"]), Schema.String]),
         ),
       }).pipe(Schema.encodeKeys({ keywordTokenizer: "keyword_tokenizer" })),
       Schema.Null,
@@ -2556,7 +2736,12 @@ export const CreateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Struct({
           periodMs: Schema.optional(Schema.Number),
           requests: Schema.optional(Schema.Number),
-          technique: Schema.optional(Schema.Literals(["fixed", "sliding"])),
+          technique: Schema.optional(
+            Schema.Union([
+              Schema.Literals(["fixed", "sliding"]),
+              Schema.String,
+            ]),
+          ),
         }).pipe(
           Schema.encodeKeys({
             periodMs: "period_ms",
@@ -2597,12 +2782,17 @@ export const CreateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.Struct({
               field: Schema.String,
               direction: Schema.optional(
-                Schema.Literals(["asc", "desc", "exists", "not_exists"]),
+                Schema.Union([
+                  Schema.Literals(["asc", "desc", "exists", "not_exists"]),
+                  Schema.String,
+                ]),
               ),
             }),
           ),
         ),
-        keywordMatchMode: Schema.optional(Schema.Literals(["and", "or"])),
+        keywordMatchMode: Schema.optional(
+          Schema.Union([Schema.Literals(["and", "or"]), Schema.String]),
+        ),
       }).pipe(
         Schema.encodeKeys({
           boostBy: "boost_by",
@@ -2666,7 +2856,10 @@ export const CreateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 includeSubdomains: Schema.optional(Schema.Boolean),
                 maxAge: Schema.optional(Schema.Number),
                 source: Schema.optional(
-                  Schema.Literals(["all", "sitemaps", "links"]),
+                  Schema.Union([
+                    Schema.Literals(["all", "sitemaps", "links"]),
+                    Schema.String,
+                  ]),
                 ),
               }).pipe(
                 Schema.encodeKeys({
@@ -2705,7 +2898,10 @@ export const CreateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
             ),
             parseType: Schema.optional(
-              Schema.Literals(["sitemap", "feed-rss", "crawl"]),
+              Schema.Union([
+                Schema.Literals(["sitemap", "feed-rss", "crawl"]),
+                Schema.String,
+              ]),
             ),
             storeOptions: Schema.optional(
               Schema.Struct({
@@ -2742,15 +2938,18 @@ export const CreateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ]),
   ),
   syncInterval: Schema.optional(
-    Schema.Literals([
-      "900",
-      "1800",
-      "3600",
-      "7200",
-      "14400",
-      "21600",
-      "43200",
-      "86400",
+    Schema.Union([
+      Schema.Literals([
+        "900",
+        "1800",
+        "3600",
+        "7200",
+        "14400",
+        "21600",
+        "43200",
+        "86400",
+      ]),
+      Schema.String,
     ]),
   ),
   tokenId: Schema.optional(Schema.String),
@@ -2856,13 +3055,14 @@ export interface CreateInstanceResponse {
     | "172800"
     | "259200"
     | "518400"
+    | (string & {})
     | null;
   chunkOverlap?: number | null;
   chunkSize?: number | null;
   createdBy?: string | null;
   customMetadata?:
     | {
-        dataType: "text" | "number" | "boolean" | "datetime";
+        dataType: "text" | "number" | "boolean" | "datetime" | (string & {});
         fieldName: string;
       }[]
     | null;
@@ -2879,12 +3079,14 @@ export interface CreateInstanceResponse {
     | null;
   enable?: boolean | null;
   engineVersion?: number | null;
-  fusionMethod?: "max" | "rrf" | null;
+  fusionMethod?: "max" | "rrf" | (string & {}) | null;
   /** @deprecated Deprecated — use index_method instead. */
   hybridSearchEnabled?: boolean | null;
   /** Controls which storage backends are used during indexing. Defaults to vector-only. */
   indexMethod?: { keyword: boolean; vector: boolean } | null;
-  indexingOptions?: { keywordTokenizer?: "porter" | "trigram" | null } | null;
+  indexingOptions?: {
+    keywordTokenizer?: "porter" | "trigram" | (string & {}) | null;
+  } | null;
   lastActivity?: string | null;
   maxNumResults?: number | null;
   metadata?: {
@@ -2903,7 +3105,7 @@ export interface CreateInstanceResponse {
     rateLimit?: {
       periodMs?: number | null;
       requests?: number | null;
-      technique?: "fixed" | "sliding" | null;
+      technique?: "fixed" | "sliding" | (string & {}) | null;
     } | null;
     searchEndpoint?: { disabled?: boolean | null } | null;
   } | null;
@@ -2913,10 +3115,16 @@ export interface CreateInstanceResponse {
     boostBy?:
       | {
           field: string;
-          direction?: "asc" | "desc" | "exists" | "not_exists" | null;
+          direction?:
+            | "asc"
+            | "desc"
+            | "exists"
+            | "not_exists"
+            | (string & {})
+            | null;
         }[]
       | null;
-    keywordMatchMode?: "and" | "or" | null;
+    keywordMatchMode?: "and" | "or" | (string & {}) | null;
   } | null;
   rewriteModel?:
     | "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
@@ -2964,7 +3172,7 @@ export interface CreateInstanceResponse {
         includeExternalLinks?: boolean | null;
         includeSubdomains?: boolean | null;
         maxAge?: number | null;
-        source?: "all" | "sitemaps" | "links" | null;
+        source?: "all" | "sitemaps" | "links" | (string & {}) | null;
       } | null;
       parseOptions?: {
         contentSelector?: { path: string; selector: string }[] | null;
@@ -2973,7 +3181,7 @@ export interface CreateInstanceResponse {
         specificSitemaps?: string[] | null;
         useBrowserRendering?: boolean | null;
       } | null;
-      parseType?: "sitemap" | "feed-rss" | "crawl" | null;
+      parseType?: "sitemap" | "feed-rss" | "crawl" | (string & {}) | null;
       storeOptions?: {
         storageId: string;
         r2Jurisdiction?: string | null;
@@ -2992,6 +3200,7 @@ export interface CreateInstanceResponse {
     | "21600"
     | "43200"
     | "86400"
+    | (string & {})
     | null;
   tokenId?: string | null;
   type?: "r2" | "web-crawler" | null;
@@ -3050,17 +3259,20 @@ export const CreateInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     cacheTtl: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "600",
-          "1800",
-          "3600",
-          "7200",
-          "21600",
-          "43200",
-          "86400",
-          "172800",
-          "259200",
-          "518400",
+        Schema.Union([
+          Schema.Literals([
+            "600",
+            "1800",
+            "3600",
+            "7200",
+            "21600",
+            "43200",
+            "86400",
+            "172800",
+            "259200",
+            "518400",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -3072,11 +3284,9 @@ export const CreateInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       Schema.Union([
         Schema.Array(
           Schema.Struct({
-            dataType: Schema.Literals([
-              "text",
-              "number",
-              "boolean",
-              "datetime",
+            dataType: Schema.Union([
+              Schema.Literals(["text", "number", "boolean", "datetime"]),
+              Schema.String,
             ]),
             fieldName: Schema.String,
           }).pipe(
@@ -3106,7 +3316,10 @@ export const CreateInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     enable: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     engineVersion: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     fusionMethod: Schema.optional(
-      Schema.Union([Schema.Literals(["max", "rrf"]), Schema.Null]),
+      Schema.Union([
+        Schema.Union([Schema.Literals(["max", "rrf"]), Schema.String]),
+        Schema.Null,
+      ]),
     ),
     hybridSearchEnabled: Schema.optional(
       Schema.Union([Schema.Boolean, Schema.Null]),
@@ -3124,7 +3337,13 @@ export const CreateInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       Schema.Union([
         Schema.Struct({
           keywordTokenizer: Schema.optional(
-            Schema.Union([Schema.Literals(["porter", "trigram"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([
+                Schema.Literals(["porter", "trigram"]),
+                Schema.String,
+              ]),
+              Schema.Null,
+            ]),
           ),
         }).pipe(Schema.encodeKeys({ keywordTokenizer: "keyword_tokenizer" })),
         Schema.Null,
@@ -3197,7 +3416,10 @@ export const CreateInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 ),
                 technique: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["fixed", "sliding"]),
+                    Schema.Union([
+                      Schema.Literals(["fixed", "sliding"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -3252,7 +3474,15 @@ export const CreateInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                   field: Schema.String,
                   direction: Schema.optional(
                     Schema.Union([
-                      Schema.Literals(["asc", "desc", "exists", "not_exists"]),
+                      Schema.Union([
+                        Schema.Literals([
+                          "asc",
+                          "desc",
+                          "exists",
+                          "not_exists",
+                        ]),
+                        Schema.String,
+                      ]),
                       Schema.Null,
                     ]),
                   ),
@@ -3262,7 +3492,10 @@ export const CreateInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             ]),
           ),
           keywordMatchMode: Schema.optional(
-            Schema.Union([Schema.Literals(["and", "or"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["and", "or"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }).pipe(
           Schema.encodeKeys({
@@ -3344,7 +3577,10 @@ export const CreateInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                       ),
                       source: Schema.optional(
                         Schema.Union([
-                          Schema.Literals(["all", "sitemaps", "links"]),
+                          Schema.Union([
+                            Schema.Literals(["all", "sitemaps", "links"]),
+                            Schema.String,
+                          ]),
                           Schema.Null,
                         ]),
                       ),
@@ -3406,7 +3642,10 @@ export const CreateInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 ),
                 parseType: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["sitemap", "feed-rss", "crawl"]),
+                    Schema.Union([
+                      Schema.Literals(["sitemap", "feed-rss", "crawl"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -3456,15 +3695,18 @@ export const CreateInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     syncInterval: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "900",
-          "1800",
-          "3600",
-          "7200",
-          "14400",
-          "21600",
-          "43200",
-          "86400",
+        Schema.Union([
+          Schema.Literals([
+            "900",
+            "1800",
+            "3600",
+            "7200",
+            "14400",
+            "21600",
+            "43200",
+            "86400",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -3589,7 +3831,8 @@ export interface UpdateInstanceRequest {
     | "super_strict_match"
     | "close_enough"
     | "flexible_friend"
-    | "anything_goes";
+    | "anything_goes"
+    | (string & {});
   /** Body param: Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d). */
   cacheTtl?:
     | "600"
@@ -3601,7 +3844,8 @@ export interface UpdateInstanceRequest {
     | "86400"
     | "172800"
     | "259200"
-    | "518400";
+    | "518400"
+    | (string & {});
   /** Body param */
   chunk?: boolean;
   /** Body param */
@@ -3610,7 +3854,7 @@ export interface UpdateInstanceRequest {
   chunkSize?: number;
   /** Body param */
   customMetadata?: {
-    dataType: "text" | "number" | "boolean" | "datetime";
+    dataType: "text" | "number" | "boolean" | "datetime" | (string & {});
     fieldName: string;
   }[];
   /** Body param */
@@ -3626,11 +3870,13 @@ export interface UpdateInstanceRequest {
     | ""
     | null;
   /** Body param */
-  fusionMethod?: "max" | "rrf";
+  fusionMethod?: "max" | "rrf" | (string & {});
   /** Body param: Controls which storage backends are used during indexing. Defaults to vector-only. */
   indexMethod?: { keyword: boolean; vector: boolean };
   /** Body param */
-  indexingOptions?: { keywordTokenizer?: "porter" | "trigram" } | null;
+  indexingOptions?: {
+    keywordTokenizer?: "porter" | "trigram" | (string & {});
+  } | null;
   /** Body param */
   maxNumResults?: number;
   /** Body param */
@@ -3646,7 +3892,7 @@ export interface UpdateInstanceRequest {
     rateLimit?: {
       periodMs?: number;
       requests?: number;
-      technique?: "fixed" | "sliding";
+      technique?: "fixed" | "sliding" | (string & {});
     };
     searchEndpoint?: { disabled?: boolean };
   };
@@ -3658,9 +3904,9 @@ export interface UpdateInstanceRequest {
   retrievalOptions?: {
     boostBy?: {
       field: string;
-      direction?: "asc" | "desc" | "exists" | "not_exists";
+      direction?: "asc" | "desc" | "exists" | "not_exists" | (string & {});
     }[];
-    keywordMatchMode?: "and" | "or";
+    keywordMatchMode?: "and" | "or" | (string & {});
   } | null;
   /** Body param */
   rewriteModel?:
@@ -3711,7 +3957,7 @@ export interface UpdateInstanceRequest {
         includeExternalLinks?: boolean;
         includeSubdomains?: boolean;
         maxAge?: number;
-        source?: "all" | "sitemaps" | "links";
+        source?: "all" | "sitemaps" | "links" | (string & {});
       };
       parseOptions?: {
         contentSelector?: { path: string; selector: string }[];
@@ -3720,7 +3966,7 @@ export interface UpdateInstanceRequest {
         specificSitemaps?: string[];
         useBrowserRendering?: boolean;
       };
-      parseType?: "sitemap" | "feed-rss" | "crawl";
+      parseType?: "sitemap" | "feed-rss" | "crawl" | (string & {});
       storeOptions?: {
         storageId: string;
         r2Jurisdiction?: string;
@@ -3772,7 +4018,8 @@ export interface UpdateInstanceRequest {
     | "14400"
     | "21600"
     | "43200"
-    | "86400";
+    | "86400"
+    | (string & {});
   /** Body param */
   systemPromptAiSearch?: string | null;
   /** Body param */
@@ -3824,25 +4071,31 @@ export const UpdateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   cache: Schema.optional(Schema.Boolean),
   cacheThreshold: Schema.optional(
-    Schema.Literals([
-      "super_strict_match",
-      "close_enough",
-      "flexible_friend",
-      "anything_goes",
+    Schema.Union([
+      Schema.Literals([
+        "super_strict_match",
+        "close_enough",
+        "flexible_friend",
+        "anything_goes",
+      ]),
+      Schema.String,
     ]),
   ),
   cacheTtl: Schema.optional(
-    Schema.Literals([
-      "600",
-      "1800",
-      "3600",
-      "7200",
-      "21600",
-      "43200",
-      "86400",
-      "172800",
-      "259200",
-      "518400",
+    Schema.Union([
+      Schema.Literals([
+        "600",
+        "1800",
+        "3600",
+        "7200",
+        "21600",
+        "43200",
+        "86400",
+        "172800",
+        "259200",
+        "518400",
+      ]),
+      Schema.String,
     ]),
   ),
   chunk: Schema.optional(Schema.Boolean),
@@ -3851,7 +4104,10 @@ export const UpdateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   customMetadata: Schema.optional(
     Schema.Array(
       Schema.Struct({
-        dataType: Schema.Literals(["text", "number", "boolean", "datetime"]),
+        dataType: Schema.Union([
+          Schema.Literals(["text", "number", "boolean", "datetime"]),
+          Schema.String,
+        ]),
         fieldName: Schema.String,
       }).pipe(
         Schema.encodeKeys({ dataType: "data_type", fieldName: "field_name" }),
@@ -3872,7 +4128,9 @@ export const UpdateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Null,
     ]),
   ),
-  fusionMethod: Schema.optional(Schema.Literals(["max", "rrf"])),
+  fusionMethod: Schema.optional(
+    Schema.Union([Schema.Literals(["max", "rrf"]), Schema.String]),
+  ),
   indexMethod: Schema.optional(
     Schema.Struct({
       keyword: Schema.Boolean,
@@ -3883,7 +4141,7 @@ export const UpdateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Union([
       Schema.Struct({
         keywordTokenizer: Schema.optional(
-          Schema.Literals(["porter", "trigram"]),
+          Schema.Union([Schema.Literals(["porter", "trigram"]), Schema.String]),
         ),
       }).pipe(Schema.encodeKeys({ keywordTokenizer: "keyword_tokenizer" })),
       Schema.Null,
@@ -3921,7 +4179,12 @@ export const UpdateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Struct({
           periodMs: Schema.optional(Schema.Number),
           requests: Schema.optional(Schema.Number),
-          technique: Schema.optional(Schema.Literals(["fixed", "sliding"])),
+          technique: Schema.optional(
+            Schema.Union([
+              Schema.Literals(["fixed", "sliding"]),
+              Schema.String,
+            ]),
+          ),
         }).pipe(
           Schema.encodeKeys({
             periodMs: "period_ms",
@@ -3962,12 +4225,17 @@ export const UpdateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.Struct({
               field: Schema.String,
               direction: Schema.optional(
-                Schema.Literals(["asc", "desc", "exists", "not_exists"]),
+                Schema.Union([
+                  Schema.Literals(["asc", "desc", "exists", "not_exists"]),
+                  Schema.String,
+                ]),
               ),
             }),
           ),
         ),
-        keywordMatchMode: Schema.optional(Schema.Literals(["and", "or"])),
+        keywordMatchMode: Schema.optional(
+          Schema.Union([Schema.Literals(["and", "or"]), Schema.String]),
+        ),
       }).pipe(
         Schema.encodeKeys({
           boostBy: "boost_by",
@@ -4030,7 +4298,10 @@ export const UpdateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 includeSubdomains: Schema.optional(Schema.Boolean),
                 maxAge: Schema.optional(Schema.Number),
                 source: Schema.optional(
-                  Schema.Literals(["all", "sitemaps", "links"]),
+                  Schema.Union([
+                    Schema.Literals(["all", "sitemaps", "links"]),
+                    Schema.String,
+                  ]),
                 ),
               }).pipe(
                 Schema.encodeKeys({
@@ -4069,7 +4340,10 @@ export const UpdateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
             ),
             parseType: Schema.optional(
-              Schema.Literals(["sitemap", "feed-rss", "crawl"]),
+              Schema.Union([
+                Schema.Literals(["sitemap", "feed-rss", "crawl"]),
+                Schema.String,
+              ]),
             ),
             storeOptions: Schema.optional(
               Schema.Struct({
@@ -4142,15 +4416,18 @@ export const UpdateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ]),
   ),
   syncInterval: Schema.optional(
-    Schema.Literals([
-      "900",
-      "1800",
-      "3600",
-      "7200",
-      "14400",
-      "21600",
-      "43200",
-      "86400",
+    Schema.Union([
+      Schema.Literals([
+        "900",
+        "1800",
+        "3600",
+        "7200",
+        "14400",
+        "21600",
+        "43200",
+        "86400",
+      ]),
+      Schema.String,
     ]),
   ),
   systemPromptAiSearch: Schema.optional(
@@ -4260,13 +4537,14 @@ export interface UpdateInstanceResponse {
     | "172800"
     | "259200"
     | "518400"
+    | (string & {})
     | null;
   chunkOverlap?: number | null;
   chunkSize?: number | null;
   createdBy?: string | null;
   customMetadata?:
     | {
-        dataType: "text" | "number" | "boolean" | "datetime";
+        dataType: "text" | "number" | "boolean" | "datetime" | (string & {});
         fieldName: string;
       }[]
     | null;
@@ -4283,12 +4561,14 @@ export interface UpdateInstanceResponse {
     | null;
   enable?: boolean | null;
   engineVersion?: number | null;
-  fusionMethod?: "max" | "rrf" | null;
+  fusionMethod?: "max" | "rrf" | (string & {}) | null;
   /** @deprecated Deprecated — use index_method instead. */
   hybridSearchEnabled?: boolean | null;
   /** Controls which storage backends are used during indexing. Defaults to vector-only. */
   indexMethod?: { keyword: boolean; vector: boolean } | null;
-  indexingOptions?: { keywordTokenizer?: "porter" | "trigram" | null } | null;
+  indexingOptions?: {
+    keywordTokenizer?: "porter" | "trigram" | (string & {}) | null;
+  } | null;
   lastActivity?: string | null;
   maxNumResults?: number | null;
   metadata?: {
@@ -4307,7 +4587,7 @@ export interface UpdateInstanceResponse {
     rateLimit?: {
       periodMs?: number | null;
       requests?: number | null;
-      technique?: "fixed" | "sliding" | null;
+      technique?: "fixed" | "sliding" | (string & {}) | null;
     } | null;
     searchEndpoint?: { disabled?: boolean | null } | null;
   } | null;
@@ -4317,10 +4597,16 @@ export interface UpdateInstanceResponse {
     boostBy?:
       | {
           field: string;
-          direction?: "asc" | "desc" | "exists" | "not_exists" | null;
+          direction?:
+            | "asc"
+            | "desc"
+            | "exists"
+            | "not_exists"
+            | (string & {})
+            | null;
         }[]
       | null;
-    keywordMatchMode?: "and" | "or" | null;
+    keywordMatchMode?: "and" | "or" | (string & {}) | null;
   } | null;
   rewriteModel?:
     | "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
@@ -4368,7 +4654,7 @@ export interface UpdateInstanceResponse {
         includeExternalLinks?: boolean | null;
         includeSubdomains?: boolean | null;
         maxAge?: number | null;
-        source?: "all" | "sitemaps" | "links" | null;
+        source?: "all" | "sitemaps" | "links" | (string & {}) | null;
       } | null;
       parseOptions?: {
         contentSelector?: { path: string; selector: string }[] | null;
@@ -4377,7 +4663,7 @@ export interface UpdateInstanceResponse {
         specificSitemaps?: string[] | null;
         useBrowserRendering?: boolean | null;
       } | null;
-      parseType?: "sitemap" | "feed-rss" | "crawl" | null;
+      parseType?: "sitemap" | "feed-rss" | "crawl" | (string & {}) | null;
       storeOptions?: {
         storageId: string;
         r2Jurisdiction?: string | null;
@@ -4396,6 +4682,7 @@ export interface UpdateInstanceResponse {
     | "21600"
     | "43200"
     | "86400"
+    | (string & {})
     | null;
   tokenId?: string | null;
   type?: "r2" | "web-crawler" | null;
@@ -4454,17 +4741,20 @@ export const UpdateInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     cacheTtl: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "600",
-          "1800",
-          "3600",
-          "7200",
-          "21600",
-          "43200",
-          "86400",
-          "172800",
-          "259200",
-          "518400",
+        Schema.Union([
+          Schema.Literals([
+            "600",
+            "1800",
+            "3600",
+            "7200",
+            "21600",
+            "43200",
+            "86400",
+            "172800",
+            "259200",
+            "518400",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -4476,11 +4766,9 @@ export const UpdateInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       Schema.Union([
         Schema.Array(
           Schema.Struct({
-            dataType: Schema.Literals([
-              "text",
-              "number",
-              "boolean",
-              "datetime",
+            dataType: Schema.Union([
+              Schema.Literals(["text", "number", "boolean", "datetime"]),
+              Schema.String,
             ]),
             fieldName: Schema.String,
           }).pipe(
@@ -4510,7 +4798,10 @@ export const UpdateInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     enable: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     engineVersion: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     fusionMethod: Schema.optional(
-      Schema.Union([Schema.Literals(["max", "rrf"]), Schema.Null]),
+      Schema.Union([
+        Schema.Union([Schema.Literals(["max", "rrf"]), Schema.String]),
+        Schema.Null,
+      ]),
     ),
     hybridSearchEnabled: Schema.optional(
       Schema.Union([Schema.Boolean, Schema.Null]),
@@ -4528,7 +4819,13 @@ export const UpdateInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       Schema.Union([
         Schema.Struct({
           keywordTokenizer: Schema.optional(
-            Schema.Union([Schema.Literals(["porter", "trigram"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([
+                Schema.Literals(["porter", "trigram"]),
+                Schema.String,
+              ]),
+              Schema.Null,
+            ]),
           ),
         }).pipe(Schema.encodeKeys({ keywordTokenizer: "keyword_tokenizer" })),
         Schema.Null,
@@ -4601,7 +4898,10 @@ export const UpdateInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 ),
                 technique: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["fixed", "sliding"]),
+                    Schema.Union([
+                      Schema.Literals(["fixed", "sliding"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -4656,7 +4956,15 @@ export const UpdateInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                   field: Schema.String,
                   direction: Schema.optional(
                     Schema.Union([
-                      Schema.Literals(["asc", "desc", "exists", "not_exists"]),
+                      Schema.Union([
+                        Schema.Literals([
+                          "asc",
+                          "desc",
+                          "exists",
+                          "not_exists",
+                        ]),
+                        Schema.String,
+                      ]),
                       Schema.Null,
                     ]),
                   ),
@@ -4666,7 +4974,10 @@ export const UpdateInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             ]),
           ),
           keywordMatchMode: Schema.optional(
-            Schema.Union([Schema.Literals(["and", "or"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["and", "or"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }).pipe(
           Schema.encodeKeys({
@@ -4748,7 +5059,10 @@ export const UpdateInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                       ),
                       source: Schema.optional(
                         Schema.Union([
-                          Schema.Literals(["all", "sitemaps", "links"]),
+                          Schema.Union([
+                            Schema.Literals(["all", "sitemaps", "links"]),
+                            Schema.String,
+                          ]),
                           Schema.Null,
                         ]),
                       ),
@@ -4810,7 +5124,10 @@ export const UpdateInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 ),
                 parseType: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["sitemap", "feed-rss", "crawl"]),
+                    Schema.Union([
+                      Schema.Literals(["sitemap", "feed-rss", "crawl"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -4860,15 +5177,18 @@ export const UpdateInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     syncInterval: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "900",
-          "1800",
-          "3600",
-          "7200",
-          "14400",
-          "21600",
-          "43200",
-          "86400",
+        Schema.Union([
+          Schema.Literals([
+            "900",
+            "1800",
+            "3600",
+            "7200",
+            "14400",
+            "21600",
+            "43200",
+            "86400",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -5019,13 +5339,14 @@ export interface DeleteInstanceResponse {
     | "172800"
     | "259200"
     | "518400"
+    | (string & {})
     | null;
   chunkOverlap?: number | null;
   chunkSize?: number | null;
   createdBy?: string | null;
   customMetadata?:
     | {
-        dataType: "text" | "number" | "boolean" | "datetime";
+        dataType: "text" | "number" | "boolean" | "datetime" | (string & {});
         fieldName: string;
       }[]
     | null;
@@ -5042,12 +5363,14 @@ export interface DeleteInstanceResponse {
     | null;
   enable?: boolean | null;
   engineVersion?: number | null;
-  fusionMethod?: "max" | "rrf" | null;
+  fusionMethod?: "max" | "rrf" | (string & {}) | null;
   /** @deprecated Deprecated — use index_method instead. */
   hybridSearchEnabled?: boolean | null;
   /** Controls which storage backends are used during indexing. Defaults to vector-only. */
   indexMethod?: { keyword: boolean; vector: boolean } | null;
-  indexingOptions?: { keywordTokenizer?: "porter" | "trigram" | null } | null;
+  indexingOptions?: {
+    keywordTokenizer?: "porter" | "trigram" | (string & {}) | null;
+  } | null;
   lastActivity?: string | null;
   maxNumResults?: number | null;
   metadata?: {
@@ -5066,7 +5389,7 @@ export interface DeleteInstanceResponse {
     rateLimit?: {
       periodMs?: number | null;
       requests?: number | null;
-      technique?: "fixed" | "sliding" | null;
+      technique?: "fixed" | "sliding" | (string & {}) | null;
     } | null;
     searchEndpoint?: { disabled?: boolean | null } | null;
   } | null;
@@ -5076,10 +5399,16 @@ export interface DeleteInstanceResponse {
     boostBy?:
       | {
           field: string;
-          direction?: "asc" | "desc" | "exists" | "not_exists" | null;
+          direction?:
+            | "asc"
+            | "desc"
+            | "exists"
+            | "not_exists"
+            | (string & {})
+            | null;
         }[]
       | null;
-    keywordMatchMode?: "and" | "or" | null;
+    keywordMatchMode?: "and" | "or" | (string & {}) | null;
   } | null;
   rewriteModel?:
     | "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
@@ -5127,7 +5456,7 @@ export interface DeleteInstanceResponse {
         includeExternalLinks?: boolean | null;
         includeSubdomains?: boolean | null;
         maxAge?: number | null;
-        source?: "all" | "sitemaps" | "links" | null;
+        source?: "all" | "sitemaps" | "links" | (string & {}) | null;
       } | null;
       parseOptions?: {
         contentSelector?: { path: string; selector: string }[] | null;
@@ -5136,7 +5465,7 @@ export interface DeleteInstanceResponse {
         specificSitemaps?: string[] | null;
         useBrowserRendering?: boolean | null;
       } | null;
-      parseType?: "sitemap" | "feed-rss" | "crawl" | null;
+      parseType?: "sitemap" | "feed-rss" | "crawl" | (string & {}) | null;
       storeOptions?: {
         storageId: string;
         r2Jurisdiction?: string | null;
@@ -5155,6 +5484,7 @@ export interface DeleteInstanceResponse {
     | "21600"
     | "43200"
     | "86400"
+    | (string & {})
     | null;
   tokenId?: string | null;
   type?: "r2" | "web-crawler" | null;
@@ -5213,17 +5543,20 @@ export const DeleteInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     cacheTtl: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "600",
-          "1800",
-          "3600",
-          "7200",
-          "21600",
-          "43200",
-          "86400",
-          "172800",
-          "259200",
-          "518400",
+        Schema.Union([
+          Schema.Literals([
+            "600",
+            "1800",
+            "3600",
+            "7200",
+            "21600",
+            "43200",
+            "86400",
+            "172800",
+            "259200",
+            "518400",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -5235,11 +5568,9 @@ export const DeleteInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       Schema.Union([
         Schema.Array(
           Schema.Struct({
-            dataType: Schema.Literals([
-              "text",
-              "number",
-              "boolean",
-              "datetime",
+            dataType: Schema.Union([
+              Schema.Literals(["text", "number", "boolean", "datetime"]),
+              Schema.String,
             ]),
             fieldName: Schema.String,
           }).pipe(
@@ -5269,7 +5600,10 @@ export const DeleteInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     enable: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     engineVersion: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     fusionMethod: Schema.optional(
-      Schema.Union([Schema.Literals(["max", "rrf"]), Schema.Null]),
+      Schema.Union([
+        Schema.Union([Schema.Literals(["max", "rrf"]), Schema.String]),
+        Schema.Null,
+      ]),
     ),
     hybridSearchEnabled: Schema.optional(
       Schema.Union([Schema.Boolean, Schema.Null]),
@@ -5287,7 +5621,13 @@ export const DeleteInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       Schema.Union([
         Schema.Struct({
           keywordTokenizer: Schema.optional(
-            Schema.Union([Schema.Literals(["porter", "trigram"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([
+                Schema.Literals(["porter", "trigram"]),
+                Schema.String,
+              ]),
+              Schema.Null,
+            ]),
           ),
         }).pipe(Schema.encodeKeys({ keywordTokenizer: "keyword_tokenizer" })),
         Schema.Null,
@@ -5360,7 +5700,10 @@ export const DeleteInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 ),
                 technique: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["fixed", "sliding"]),
+                    Schema.Union([
+                      Schema.Literals(["fixed", "sliding"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -5415,7 +5758,15 @@ export const DeleteInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                   field: Schema.String,
                   direction: Schema.optional(
                     Schema.Union([
-                      Schema.Literals(["asc", "desc", "exists", "not_exists"]),
+                      Schema.Union([
+                        Schema.Literals([
+                          "asc",
+                          "desc",
+                          "exists",
+                          "not_exists",
+                        ]),
+                        Schema.String,
+                      ]),
                       Schema.Null,
                     ]),
                   ),
@@ -5425,7 +5776,10 @@ export const DeleteInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             ]),
           ),
           keywordMatchMode: Schema.optional(
-            Schema.Union([Schema.Literals(["and", "or"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["and", "or"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }).pipe(
           Schema.encodeKeys({
@@ -5507,7 +5861,10 @@ export const DeleteInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                       ),
                       source: Schema.optional(
                         Schema.Union([
-                          Schema.Literals(["all", "sitemaps", "links"]),
+                          Schema.Union([
+                            Schema.Literals(["all", "sitemaps", "links"]),
+                            Schema.String,
+                          ]),
                           Schema.Null,
                         ]),
                       ),
@@ -5569,7 +5926,10 @@ export const DeleteInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 ),
                 parseType: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["sitemap", "feed-rss", "crawl"]),
+                    Schema.Union([
+                      Schema.Literals(["sitemap", "feed-rss", "crawl"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -5619,15 +5979,18 @@ export const DeleteInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     syncInterval: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "900",
-          "1800",
-          "3600",
-          "7200",
-          "14400",
-          "21600",
-          "43200",
-          "86400",
+        Schema.Union([
+          Schema.Literals([
+            "900",
+            "1800",
+            "3600",
+            "7200",
+            "14400",
+            "21600",
+            "43200",
+            "86400",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -5778,13 +6141,14 @@ export interface ReadInstanceResponse {
     | "172800"
     | "259200"
     | "518400"
+    | (string & {})
     | null;
   chunkOverlap?: number | null;
   chunkSize?: number | null;
   createdBy?: string | null;
   customMetadata?:
     | {
-        dataType: "text" | "number" | "boolean" | "datetime";
+        dataType: "text" | "number" | "boolean" | "datetime" | (string & {});
         fieldName: string;
       }[]
     | null;
@@ -5801,12 +6165,14 @@ export interface ReadInstanceResponse {
     | null;
   enable?: boolean | null;
   engineVersion?: number | null;
-  fusionMethod?: "max" | "rrf" | null;
+  fusionMethod?: "max" | "rrf" | (string & {}) | null;
   /** @deprecated Deprecated — use index_method instead. */
   hybridSearchEnabled?: boolean | null;
   /** Controls which storage backends are used during indexing. Defaults to vector-only. */
   indexMethod?: { keyword: boolean; vector: boolean } | null;
-  indexingOptions?: { keywordTokenizer?: "porter" | "trigram" | null } | null;
+  indexingOptions?: {
+    keywordTokenizer?: "porter" | "trigram" | (string & {}) | null;
+  } | null;
   lastActivity?: string | null;
   maxNumResults?: number | null;
   metadata?: {
@@ -5825,7 +6191,7 @@ export interface ReadInstanceResponse {
     rateLimit?: {
       periodMs?: number | null;
       requests?: number | null;
-      technique?: "fixed" | "sliding" | null;
+      technique?: "fixed" | "sliding" | (string & {}) | null;
     } | null;
     searchEndpoint?: { disabled?: boolean | null } | null;
   } | null;
@@ -5835,10 +6201,16 @@ export interface ReadInstanceResponse {
     boostBy?:
       | {
           field: string;
-          direction?: "asc" | "desc" | "exists" | "not_exists" | null;
+          direction?:
+            | "asc"
+            | "desc"
+            | "exists"
+            | "not_exists"
+            | (string & {})
+            | null;
         }[]
       | null;
-    keywordMatchMode?: "and" | "or" | null;
+    keywordMatchMode?: "and" | "or" | (string & {}) | null;
   } | null;
   rewriteModel?:
     | "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
@@ -5886,7 +6258,7 @@ export interface ReadInstanceResponse {
         includeExternalLinks?: boolean | null;
         includeSubdomains?: boolean | null;
         maxAge?: number | null;
-        source?: "all" | "sitemaps" | "links" | null;
+        source?: "all" | "sitemaps" | "links" | (string & {}) | null;
       } | null;
       parseOptions?: {
         contentSelector?: { path: string; selector: string }[] | null;
@@ -5895,7 +6267,7 @@ export interface ReadInstanceResponse {
         specificSitemaps?: string[] | null;
         useBrowserRendering?: boolean | null;
       } | null;
-      parseType?: "sitemap" | "feed-rss" | "crawl" | null;
+      parseType?: "sitemap" | "feed-rss" | "crawl" | (string & {}) | null;
       storeOptions?: {
         storageId: string;
         r2Jurisdiction?: string | null;
@@ -5914,6 +6286,7 @@ export interface ReadInstanceResponse {
     | "21600"
     | "43200"
     | "86400"
+    | (string & {})
     | null;
   tokenId?: string | null;
   type?: "r2" | "web-crawler" | null;
@@ -5971,17 +6344,20 @@ export const ReadInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   cacheTtl: Schema.optional(
     Schema.Union([
-      Schema.Literals([
-        "600",
-        "1800",
-        "3600",
-        "7200",
-        "21600",
-        "43200",
-        "86400",
-        "172800",
-        "259200",
-        "518400",
+      Schema.Union([
+        Schema.Literals([
+          "600",
+          "1800",
+          "3600",
+          "7200",
+          "21600",
+          "43200",
+          "86400",
+          "172800",
+          "259200",
+          "518400",
+        ]),
+        Schema.String,
       ]),
       Schema.Null,
     ]),
@@ -5993,7 +6369,10 @@ export const ReadInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Union([
       Schema.Array(
         Schema.Struct({
-          dataType: Schema.Literals(["text", "number", "boolean", "datetime"]),
+          dataType: Schema.Union([
+            Schema.Literals(["text", "number", "boolean", "datetime"]),
+            Schema.String,
+          ]),
           fieldName: Schema.String,
         }).pipe(
           Schema.encodeKeys({ dataType: "data_type", fieldName: "field_name" }),
@@ -6019,7 +6398,10 @@ export const ReadInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   enable: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
   engineVersion: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   fusionMethod: Schema.optional(
-    Schema.Union([Schema.Literals(["max", "rrf"]), Schema.Null]),
+    Schema.Union([
+      Schema.Union([Schema.Literals(["max", "rrf"]), Schema.String]),
+      Schema.Null,
+    ]),
   ),
   hybridSearchEnabled: Schema.optional(
     Schema.Union([Schema.Boolean, Schema.Null]),
@@ -6037,7 +6419,13 @@ export const ReadInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Union([
       Schema.Struct({
         keywordTokenizer: Schema.optional(
-          Schema.Union([Schema.Literals(["porter", "trigram"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals(["porter", "trigram"]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
         ),
       }).pipe(Schema.encodeKeys({ keywordTokenizer: "keyword_tokenizer" })),
       Schema.Null,
@@ -6108,7 +6496,10 @@ export const ReadInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               technique: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["fixed", "sliding"]),
+                  Schema.Union([
+                    Schema.Literals(["fixed", "sliding"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -6163,7 +6554,10 @@ export const ReadInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 field: Schema.String,
                 direction: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["asc", "desc", "exists", "not_exists"]),
+                    Schema.Union([
+                      Schema.Literals(["asc", "desc", "exists", "not_exists"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -6173,7 +6567,10 @@ export const ReadInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ]),
         ),
         keywordMatchMode: Schema.optional(
-          Schema.Union([Schema.Literals(["and", "or"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["and", "or"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
       }).pipe(
         Schema.encodeKeys({
@@ -6255,7 +6652,10 @@ export const ReadInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     ),
                     source: Schema.optional(
                       Schema.Union([
-                        Schema.Literals(["all", "sitemaps", "links"]),
+                        Schema.Union([
+                          Schema.Literals(["all", "sitemaps", "links"]),
+                          Schema.String,
+                        ]),
                         Schema.Null,
                       ]),
                     ),
@@ -6314,7 +6714,10 @@ export const ReadInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               parseType: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["sitemap", "feed-rss", "crawl"]),
+                  Schema.Union([
+                    Schema.Literals(["sitemap", "feed-rss", "crawl"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -6364,15 +6767,18 @@ export const ReadInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   syncInterval: Schema.optional(
     Schema.Union([
-      Schema.Literals([
-        "900",
-        "1800",
-        "3600",
-        "7200",
-        "14400",
-        "21600",
-        "43200",
-        "86400",
+      Schema.Union([
+        Schema.Literals([
+          "900",
+          "1800",
+          "3600",
+          "7200",
+          "14400",
+          "21600",
+          "43200",
+          "86400",
+        ]),
+        Schema.String,
       ]),
       Schema.Null,
     ]),
@@ -6461,7 +6867,8 @@ export interface SearchInstanceRequest {
         | "super_strict_match"
         | "close_enough"
         | "flexible_friend"
-        | "anything_goes";
+        | "anything_goes"
+        | (string & {});
       enabled?: boolean;
     };
     queryRewrite?: {
@@ -6496,33 +6903,40 @@ export interface SearchInstanceRequest {
         | "openai/gpt-5"
         | "openai/gpt-5-mini"
         | "openai/gpt-5-nano"
-        | "";
+        | ""
+        | (string & {});
       rewritePrompt?: string;
     };
     reranking?: {
       enabled?: boolean;
       matchThreshold?: number;
-      model?: "@cf/baai/bge-reranker-base" | "";
+      model?: "@cf/baai/bge-reranker-base" | "" | (string & {});
     };
     retrieval?: {
       boostBy?: {
         field: string;
-        direction?: "asc" | "desc" | "exists" | "not_exists";
+        direction?: "asc" | "desc" | "exists" | "not_exists" | (string & {});
       }[];
       contextExpansion?: number;
       filters?: Record<string, unknown>;
-      fusionMethod?: "max" | "rrf";
-      keywordMatchMode?: "and" | "or";
+      fusionMethod?: "max" | "rrf" | (string & {});
+      keywordMatchMode?: "and" | "or" | (string & {});
       matchThreshold?: number;
       maxNumResults?: number;
-      retrievalType?: "vector" | "keyword" | "hybrid";
+      retrievalType?: "vector" | "keyword" | "hybrid" | (string & {});
       returnOnFailure?: boolean;
     };
   };
   /** Body param */
   messages?: {
     content: string | null;
-    role: "system" | "developer" | "user" | "assistant" | "tool";
+    role:
+      | "system"
+      | "developer"
+      | "user"
+      | "assistant"
+      | "tool"
+      | (string & {});
   }[];
   /** Body param: A simple text query string. Alternative to 'messages' — provide either this or 'messages', not both. */
   query?: string;
@@ -6536,11 +6950,14 @@ export const SearchInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       cache: Schema.optional(
         Schema.Struct({
           cacheThreshold: Schema.optional(
-            Schema.Literals([
-              "super_strict_match",
-              "close_enough",
-              "flexible_friend",
-              "anything_goes",
+            Schema.Union([
+              Schema.Literals([
+                "super_strict_match",
+                "close_enough",
+                "flexible_friend",
+                "anything_goes",
+              ]),
+              Schema.String,
             ]),
           ),
           enabled: Schema.optional(Schema.Boolean),
@@ -6555,37 +6972,40 @@ export const SearchInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Struct({
           enabled: Schema.optional(Schema.Boolean),
           model: Schema.optional(
-            Schema.Literals([
-              "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-              "@cf/zai-org/glm-4.7-flash",
-              "@cf/meta/llama-3.1-8b-instruct-fast",
-              "@cf/meta/llama-3.1-8b-instruct-fp8",
-              "@cf/meta/llama-4-scout-17b-16e-instruct",
-              "@cf/qwen/qwen3-30b-a3b-fp8",
-              "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
-              "@cf/moonshotai/kimi-k2-instruct",
-              "@cf/google/gemma-3-12b-it",
-              "@cf/google/gemma-4-26b-a4b-it",
-              "@cf/moonshotai/kimi-k2.5",
-              "anthropic/claude-3-7-sonnet",
-              "anthropic/claude-sonnet-4",
-              "anthropic/claude-opus-4",
-              "anthropic/claude-3-5-haiku",
-              "cerebras/qwen-3-235b-a22b-instruct",
-              "cerebras/qwen-3-235b-a22b-thinking",
-              "cerebras/llama-3.3-70b",
-              "cerebras/llama-4-maverick-17b-128e-instruct",
-              "cerebras/llama-4-scout-17b-16e-instruct",
-              "cerebras/gpt-oss-120b",
-              "google-ai-studio/gemini-2.5-flash",
-              "google-ai-studio/gemini-2.5-pro",
-              "grok/grok-4",
-              "groq/llama-3.3-70b-versatile",
-              "groq/llama-3.1-8b-instant",
-              "openai/gpt-5",
-              "openai/gpt-5-mini",
-              "openai/gpt-5-nano",
-              "",
+            Schema.Union([
+              Schema.Literals([
+                "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+                "@cf/zai-org/glm-4.7-flash",
+                "@cf/meta/llama-3.1-8b-instruct-fast",
+                "@cf/meta/llama-3.1-8b-instruct-fp8",
+                "@cf/meta/llama-4-scout-17b-16e-instruct",
+                "@cf/qwen/qwen3-30b-a3b-fp8",
+                "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+                "@cf/moonshotai/kimi-k2-instruct",
+                "@cf/google/gemma-3-12b-it",
+                "@cf/google/gemma-4-26b-a4b-it",
+                "@cf/moonshotai/kimi-k2.5",
+                "anthropic/claude-3-7-sonnet",
+                "anthropic/claude-sonnet-4",
+                "anthropic/claude-opus-4",
+                "anthropic/claude-3-5-haiku",
+                "cerebras/qwen-3-235b-a22b-instruct",
+                "cerebras/qwen-3-235b-a22b-thinking",
+                "cerebras/llama-3.3-70b",
+                "cerebras/llama-4-maverick-17b-128e-instruct",
+                "cerebras/llama-4-scout-17b-16e-instruct",
+                "cerebras/gpt-oss-120b",
+                "google-ai-studio/gemini-2.5-flash",
+                "google-ai-studio/gemini-2.5-pro",
+                "grok/grok-4",
+                "groq/llama-3.3-70b-versatile",
+                "groq/llama-3.1-8b-instant",
+                "openai/gpt-5",
+                "openai/gpt-5-mini",
+                "openai/gpt-5-nano",
+                "",
+              ]),
+              Schema.String,
             ]),
           ),
           rewritePrompt: Schema.optional(Schema.String),
@@ -6602,7 +7022,10 @@ export const SearchInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           enabled: Schema.optional(Schema.Boolean),
           matchThreshold: Schema.optional(Schema.Number),
           model: Schema.optional(
-            Schema.Literals(["@cf/baai/bge-reranker-base", ""]),
+            Schema.Union([
+              Schema.Literals(["@cf/baai/bge-reranker-base", ""]),
+              Schema.String,
+            ]),
           ),
         }).pipe(
           Schema.encodeKeys({
@@ -6619,7 +7042,10 @@ export const SearchInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               Schema.Struct({
                 field: Schema.String,
                 direction: Schema.optional(
-                  Schema.Literals(["asc", "desc", "exists", "not_exists"]),
+                  Schema.Union([
+                    Schema.Literals(["asc", "desc", "exists", "not_exists"]),
+                    Schema.String,
+                  ]),
                 ),
               }),
             ),
@@ -6628,12 +7054,19 @@ export const SearchInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           filters: Schema.optional(
             Schema.Record(Schema.String, Schema.Unknown),
           ),
-          fusionMethod: Schema.optional(Schema.Literals(["max", "rrf"])),
-          keywordMatchMode: Schema.optional(Schema.Literals(["and", "or"])),
+          fusionMethod: Schema.optional(
+            Schema.Union([Schema.Literals(["max", "rrf"]), Schema.String]),
+          ),
+          keywordMatchMode: Schema.optional(
+            Schema.Union([Schema.Literals(["and", "or"]), Schema.String]),
+          ),
           matchThreshold: Schema.optional(Schema.Number),
           maxNumResults: Schema.optional(Schema.Number),
           retrievalType: Schema.optional(
-            Schema.Literals(["vector", "keyword", "hybrid"]),
+            Schema.Union([
+              Schema.Literals(["vector", "keyword", "hybrid"]),
+              Schema.String,
+            ]),
           ),
           returnOnFailure: Schema.optional(Schema.Boolean),
         }).pipe(
@@ -6663,12 +7096,9 @@ export const SearchInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Array(
       Schema.Struct({
         content: Schema.Union([Schema.String, Schema.Null]),
-        role: Schema.Literals([
-          "system",
-          "developer",
-          "user",
-          "assistant",
-          "tool",
+        role: Schema.Union([
+          Schema.Literals(["system", "developer", "user", "assistant", "tool"]),
+          Schema.String,
         ]),
       }),
     ),
@@ -6698,7 +7128,7 @@ export interface SearchInstanceResponse {
       timestamp?: number | null;
     } | null;
     scoringDetails?: {
-      fusionMethod?: "rrf" | "max" | null;
+      fusionMethod?: "rrf" | "max" | (string & {}) | null;
       keywordRank?: number | null;
       keywordScore?: number | null;
       rerankingScore?: number | null;
@@ -6738,7 +7168,13 @@ export const SearchInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           Schema.Union([
             Schema.Struct({
               fusionMethod: Schema.optional(
-                Schema.Union([Schema.Literals(["rrf", "max"]), Schema.Null]),
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["rrf", "max"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
               ),
               keywordRank: Schema.optional(
                 Schema.Union([Schema.Number, Schema.Null]),
@@ -6939,7 +7375,7 @@ export const GetInstanceJobRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GetInstanceJobResponse {
   id: string;
-  source: "user" | "schedule";
+  source: "user" | "schedule" | (string & {});
   description?: string | null;
   endReason?: string | null;
   endedAt?: string | null;
@@ -6950,7 +7386,10 @@ export interface GetInstanceJobResponse {
 export const GetInstanceJobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.String,
-    source: Schema.Literals(["user", "schedule"]),
+    source: Schema.Union([
+      Schema.Literals(["user", "schedule"]),
+      Schema.String,
+    ]),
     description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     endReason: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     endedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -7014,7 +7453,7 @@ export const ListInstanceJobsRequest =
 export interface ListInstanceJobsResponse {
   result: {
     id: string;
-    source: "user" | "schedule";
+    source: "user" | "schedule" | (string & {});
     description?: string | null;
     endReason?: string | null;
     endedAt?: string | null;
@@ -7034,7 +7473,10 @@ export const ListInstanceJobsResponse =
     result: Schema.Array(
       Schema.Struct({
         id: Schema.String,
-        source: Schema.Literals(["user", "schedule"]),
+        source: Schema.Union([
+          Schema.Literals(["user", "schedule"]),
+          Schema.String,
+        ]),
         description: Schema.optional(
           Schema.Union([Schema.String, Schema.Null]),
         ),
@@ -7120,7 +7562,7 @@ export const CreateInstanceJobRequest =
 
 export interface CreateInstanceJobResponse {
   id: string;
-  source?: "user" | "schedule" | null;
+  source?: "user" | "schedule" | (string & {}) | null;
   description?: string | null;
   endReason?: string | null;
   endedAt?: string | null;
@@ -7132,7 +7574,10 @@ export const CreateInstanceJobResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
     source: Schema.optional(
-      Schema.Union([Schema.Literals(["user", "schedule"]), Schema.Null]),
+      Schema.Union([
+        Schema.Union([Schema.Literals(["user", "schedule"]), Schema.String]),
+        Schema.Null,
+      ]),
     ),
     description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     endReason: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -7562,7 +8007,8 @@ export interface SearchNamespaceRequest {
         | "super_strict_match"
         | "close_enough"
         | "flexible_friend"
-        | "anything_goes";
+        | "anything_goes"
+        | (string & {});
       enabled?: boolean;
     };
     queryRewrite?: {
@@ -7597,33 +8043,40 @@ export interface SearchNamespaceRequest {
         | "openai/gpt-5"
         | "openai/gpt-5-mini"
         | "openai/gpt-5-nano"
-        | "";
+        | ""
+        | (string & {});
       rewritePrompt?: string;
     };
     reranking?: {
       enabled?: boolean;
       matchThreshold?: number;
-      model?: "@cf/baai/bge-reranker-base" | "";
+      model?: "@cf/baai/bge-reranker-base" | "" | (string & {});
     };
     retrieval?: {
       boostBy?: {
         field: string;
-        direction?: "asc" | "desc" | "exists" | "not_exists";
+        direction?: "asc" | "desc" | "exists" | "not_exists" | (string & {});
       }[];
       contextExpansion?: number;
       filters?: Record<string, unknown>;
-      fusionMethod?: "max" | "rrf";
-      keywordMatchMode?: "and" | "or";
+      fusionMethod?: "max" | "rrf" | (string & {});
+      keywordMatchMode?: "and" | "or" | (string & {});
       matchThreshold?: number;
       maxNumResults?: number;
-      retrievalType?: "vector" | "keyword" | "hybrid";
+      retrievalType?: "vector" | "keyword" | "hybrid" | (string & {});
       returnOnFailure?: boolean;
     };
   };
   /** Body param */
   messages?: {
     content: string | null;
-    role: "system" | "developer" | "user" | "assistant" | "tool";
+    role:
+      | "system"
+      | "developer"
+      | "user"
+      | "assistant"
+      | "tool"
+      | (string & {});
   }[];
   /** Body param: A simple text query string. Alternative to 'messages' — provide either this or 'messages', not both. */
   query?: string;
@@ -7638,11 +8091,14 @@ export const SearchNamespaceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       cache: Schema.optional(
         Schema.Struct({
           cacheThreshold: Schema.optional(
-            Schema.Literals([
-              "super_strict_match",
-              "close_enough",
-              "flexible_friend",
-              "anything_goes",
+            Schema.Union([
+              Schema.Literals([
+                "super_strict_match",
+                "close_enough",
+                "flexible_friend",
+                "anything_goes",
+              ]),
+              Schema.String,
             ]),
           ),
           enabled: Schema.optional(Schema.Boolean),
@@ -7657,37 +8113,40 @@ export const SearchNamespaceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         Schema.Struct({
           enabled: Schema.optional(Schema.Boolean),
           model: Schema.optional(
-            Schema.Literals([
-              "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-              "@cf/zai-org/glm-4.7-flash",
-              "@cf/meta/llama-3.1-8b-instruct-fast",
-              "@cf/meta/llama-3.1-8b-instruct-fp8",
-              "@cf/meta/llama-4-scout-17b-16e-instruct",
-              "@cf/qwen/qwen3-30b-a3b-fp8",
-              "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
-              "@cf/moonshotai/kimi-k2-instruct",
-              "@cf/google/gemma-3-12b-it",
-              "@cf/google/gemma-4-26b-a4b-it",
-              "@cf/moonshotai/kimi-k2.5",
-              "anthropic/claude-3-7-sonnet",
-              "anthropic/claude-sonnet-4",
-              "anthropic/claude-opus-4",
-              "anthropic/claude-3-5-haiku",
-              "cerebras/qwen-3-235b-a22b-instruct",
-              "cerebras/qwen-3-235b-a22b-thinking",
-              "cerebras/llama-3.3-70b",
-              "cerebras/llama-4-maverick-17b-128e-instruct",
-              "cerebras/llama-4-scout-17b-16e-instruct",
-              "cerebras/gpt-oss-120b",
-              "google-ai-studio/gemini-2.5-flash",
-              "google-ai-studio/gemini-2.5-pro",
-              "grok/grok-4",
-              "groq/llama-3.3-70b-versatile",
-              "groq/llama-3.1-8b-instant",
-              "openai/gpt-5",
-              "openai/gpt-5-mini",
-              "openai/gpt-5-nano",
-              "",
+            Schema.Union([
+              Schema.Literals([
+                "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+                "@cf/zai-org/glm-4.7-flash",
+                "@cf/meta/llama-3.1-8b-instruct-fast",
+                "@cf/meta/llama-3.1-8b-instruct-fp8",
+                "@cf/meta/llama-4-scout-17b-16e-instruct",
+                "@cf/qwen/qwen3-30b-a3b-fp8",
+                "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+                "@cf/moonshotai/kimi-k2-instruct",
+                "@cf/google/gemma-3-12b-it",
+                "@cf/google/gemma-4-26b-a4b-it",
+                "@cf/moonshotai/kimi-k2.5",
+                "anthropic/claude-3-7-sonnet",
+                "anthropic/claude-sonnet-4",
+                "anthropic/claude-opus-4",
+                "anthropic/claude-3-5-haiku",
+                "cerebras/qwen-3-235b-a22b-instruct",
+                "cerebras/qwen-3-235b-a22b-thinking",
+                "cerebras/llama-3.3-70b",
+                "cerebras/llama-4-maverick-17b-128e-instruct",
+                "cerebras/llama-4-scout-17b-16e-instruct",
+                "cerebras/gpt-oss-120b",
+                "google-ai-studio/gemini-2.5-flash",
+                "google-ai-studio/gemini-2.5-pro",
+                "grok/grok-4",
+                "groq/llama-3.3-70b-versatile",
+                "groq/llama-3.1-8b-instant",
+                "openai/gpt-5",
+                "openai/gpt-5-mini",
+                "openai/gpt-5-nano",
+                "",
+              ]),
+              Schema.String,
             ]),
           ),
           rewritePrompt: Schema.optional(Schema.String),
@@ -7704,7 +8163,10 @@ export const SearchNamespaceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           enabled: Schema.optional(Schema.Boolean),
           matchThreshold: Schema.optional(Schema.Number),
           model: Schema.optional(
-            Schema.Literals(["@cf/baai/bge-reranker-base", ""]),
+            Schema.Union([
+              Schema.Literals(["@cf/baai/bge-reranker-base", ""]),
+              Schema.String,
+            ]),
           ),
         }).pipe(
           Schema.encodeKeys({
@@ -7721,7 +8183,10 @@ export const SearchNamespaceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
               Schema.Struct({
                 field: Schema.String,
                 direction: Schema.optional(
-                  Schema.Literals(["asc", "desc", "exists", "not_exists"]),
+                  Schema.Union([
+                    Schema.Literals(["asc", "desc", "exists", "not_exists"]),
+                    Schema.String,
+                  ]),
                 ),
               }),
             ),
@@ -7730,12 +8195,19 @@ export const SearchNamespaceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           filters: Schema.optional(
             Schema.Record(Schema.String, Schema.Unknown),
           ),
-          fusionMethod: Schema.optional(Schema.Literals(["max", "rrf"])),
-          keywordMatchMode: Schema.optional(Schema.Literals(["and", "or"])),
+          fusionMethod: Schema.optional(
+            Schema.Union([Schema.Literals(["max", "rrf"]), Schema.String]),
+          ),
+          keywordMatchMode: Schema.optional(
+            Schema.Union([Schema.Literals(["and", "or"]), Schema.String]),
+          ),
           matchThreshold: Schema.optional(Schema.Number),
           maxNumResults: Schema.optional(Schema.Number),
           retrievalType: Schema.optional(
-            Schema.Literals(["vector", "keyword", "hybrid"]),
+            Schema.Union([
+              Schema.Literals(["vector", "keyword", "hybrid"]),
+              Schema.String,
+            ]),
           ),
           returnOnFailure: Schema.optional(Schema.Boolean),
         }).pipe(
@@ -7765,12 +8237,15 @@ export const SearchNamespaceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       Schema.Array(
         Schema.Struct({
           content: Schema.Union([Schema.String, Schema.Null]),
-          role: Schema.Literals([
-            "system",
-            "developer",
-            "user",
-            "assistant",
-            "tool",
+          role: Schema.Union([
+            Schema.Literals([
+              "system",
+              "developer",
+              "user",
+              "assistant",
+              "tool",
+            ]),
+            Schema.String,
           ]),
         }),
       ),
@@ -7802,7 +8277,7 @@ export interface SearchNamespaceResponse {
       timestamp?: number | null;
     } | null;
     scoringDetails?: {
-      fusionMethod?: "rrf" | "max" | null;
+      fusionMethod?: "rrf" | "max" | (string & {}) | null;
       keywordRank?: number | null;
       keywordScore?: number | null;
       rerankingScore?: number | null;
@@ -7844,7 +8319,13 @@ export const SearchNamespaceResponse =
           Schema.Union([
             Schema.Struct({
               fusionMethod: Schema.optional(
-                Schema.Union([Schema.Literals(["rrf", "max"]), Schema.Null]),
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["rrf", "max"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
               ),
               keywordRank: Schema.optional(
                 Schema.Union([Schema.Number, Schema.Null]),
@@ -7943,7 +8424,7 @@ export interface ListNamespaceInstancesRequest {
   /** Query param: Field to order results by. */
   orderBy?: "created_at";
   /** Query param: Order direction. */
-  orderByDirection?: "asc" | "desc";
+  orderByDirection?: "asc" | "desc" | (string & {});
   /** Query param: Filter instances whose id contains this string (case-insensitive). */
   search?: string;
 }
@@ -7958,9 +8439,9 @@ export const ListNamespaceInstancesRequest =
     orderBy: Schema.optional(Schema.Literal("created_at")).pipe(
       T.HttpQuery("order_by"),
     ),
-    orderByDirection: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-      T.HttpQuery("order_by_direction"),
-    ),
+    orderByDirection: Schema.optional(
+      Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+    ).pipe(T.HttpQuery("order_by_direction")),
     search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
   }).pipe(
     T.Http({
@@ -8013,6 +8494,7 @@ export interface ListNamespaceInstancesResponse {
       | "close_enough"
       | "flexible_friend"
       | "anything_goes"
+      | (string & {})
       | null;
     cacheTtl?:
       | "600"
@@ -8025,13 +8507,14 @@ export interface ListNamespaceInstancesResponse {
       | "172800"
       | "259200"
       | "518400"
+      | (string & {})
       | null;
     chunkOverlap?: number | null;
     chunkSize?: number | null;
     createdBy?: string | null;
     customMetadata?:
       | {
-          dataType: "text" | "number" | "boolean" | "datetime";
+          dataType: "text" | "number" | "boolean" | "datetime" | (string & {});
           fieldName: string;
         }[]
       | null;
@@ -8048,10 +8531,12 @@ export interface ListNamespaceInstancesResponse {
       | null;
     enable?: boolean | null;
     engineVersion?: number | null;
-    fusionMethod?: "max" | "rrf" | null;
+    fusionMethod?: "max" | "rrf" | (string & {}) | null;
     hybridSearchEnabled?: boolean | null;
     indexMethod?: { keyword: boolean; vector: boolean } | null;
-    indexingOptions?: { keywordTokenizer?: "porter" | "trigram" | null } | null;
+    indexingOptions?: {
+      keywordTokenizer?: "porter" | "trigram" | (string & {}) | null;
+    } | null;
     lastActivity?: string | null;
     maxNumResults?: number | null;
     metadata?: {
@@ -8070,7 +8555,7 @@ export interface ListNamespaceInstancesResponse {
       rateLimit?: {
         periodMs?: number | null;
         requests?: number | null;
-        technique?: "fixed" | "sliding" | null;
+        technique?: "fixed" | "sliding" | (string & {}) | null;
       } | null;
       searchEndpoint?: { disabled?: boolean | null } | null;
     } | null;
@@ -8080,10 +8565,16 @@ export interface ListNamespaceInstancesResponse {
       boostBy?:
         | {
             field: string;
-            direction?: "asc" | "desc" | "exists" | "not_exists" | null;
+            direction?:
+              | "asc"
+              | "desc"
+              | "exists"
+              | "not_exists"
+              | (string & {})
+              | null;
           }[]
         | null;
-      keywordMatchMode?: "and" | "or" | null;
+      keywordMatchMode?: "and" | "or" | (string & {}) | null;
     } | null;
     rewriteModel?:
       | "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
@@ -8131,7 +8622,7 @@ export interface ListNamespaceInstancesResponse {
           includeExternalLinks?: boolean | null;
           includeSubdomains?: boolean | null;
           maxAge?: number | null;
-          source?: "all" | "sitemaps" | "links" | null;
+          source?: "all" | "sitemaps" | "links" | (string & {}) | null;
         } | null;
         parseOptions?: {
           contentSelector?: { path: string; selector: string }[] | null;
@@ -8140,7 +8631,7 @@ export interface ListNamespaceInstancesResponse {
           specificSitemaps?: string[] | null;
           useBrowserRendering?: boolean | null;
         } | null;
-        parseType?: "sitemap" | "feed-rss" | "crawl" | null;
+        parseType?: "sitemap" | "feed-rss" | "crawl" | (string & {}) | null;
         storeOptions?: {
           storageId: string;
           r2Jurisdiction?: string | null;
@@ -8158,6 +8649,7 @@ export interface ListNamespaceInstancesResponse {
       | "21600"
       | "43200"
       | "86400"
+      | (string & {})
       | null;
     tokenId?: string | null;
     type?: "r2" | "web-crawler" | null;
@@ -8218,28 +8710,34 @@ export const ListNamespaceInstancesResponse =
         cache: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
         cacheThreshold: Schema.optional(
           Schema.Union([
-            Schema.Literals([
-              "super_strict_match",
-              "close_enough",
-              "flexible_friend",
-              "anything_goes",
+            Schema.Union([
+              Schema.Literals([
+                "super_strict_match",
+                "close_enough",
+                "flexible_friend",
+                "anything_goes",
+              ]),
+              Schema.String,
             ]),
             Schema.Null,
           ]),
         ),
         cacheTtl: Schema.optional(
           Schema.Union([
-            Schema.Literals([
-              "600",
-              "1800",
-              "3600",
-              "7200",
-              "21600",
-              "43200",
-              "86400",
-              "172800",
-              "259200",
-              "518400",
+            Schema.Union([
+              Schema.Literals([
+                "600",
+                "1800",
+                "3600",
+                "7200",
+                "21600",
+                "43200",
+                "86400",
+                "172800",
+                "259200",
+                "518400",
+              ]),
+              Schema.String,
             ]),
             Schema.Null,
           ]),
@@ -8253,11 +8751,9 @@ export const ListNamespaceInstancesResponse =
           Schema.Union([
             Schema.Array(
               Schema.Struct({
-                dataType: Schema.Literals([
-                  "text",
-                  "number",
-                  "boolean",
-                  "datetime",
+                dataType: Schema.Union([
+                  Schema.Literals(["text", "number", "boolean", "datetime"]),
+                  Schema.String,
                 ]),
                 fieldName: Schema.String,
               }).pipe(
@@ -8289,7 +8785,10 @@ export const ListNamespaceInstancesResponse =
           Schema.Union([Schema.Number, Schema.Null]),
         ),
         fusionMethod: Schema.optional(
-          Schema.Union([Schema.Literals(["max", "rrf"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["max", "rrf"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
         hybridSearchEnabled: Schema.optional(
           Schema.Union([Schema.Boolean, Schema.Null]),
@@ -8308,7 +8807,10 @@ export const ListNamespaceInstancesResponse =
             Schema.Struct({
               keywordTokenizer: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["porter", "trigram"]),
+                  Schema.Union([
+                    Schema.Literals(["porter", "trigram"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -8391,7 +8893,10 @@ export const ListNamespaceInstancesResponse =
                     ),
                     technique: Schema.optional(
                       Schema.Union([
-                        Schema.Literals(["fixed", "sliding"]),
+                        Schema.Union([
+                          Schema.Literals(["fixed", "sliding"]),
+                          Schema.String,
+                        ]),
                         Schema.Null,
                       ]),
                     ),
@@ -8446,11 +8951,14 @@ export const ListNamespaceInstancesResponse =
                       field: Schema.String,
                       direction: Schema.optional(
                         Schema.Union([
-                          Schema.Literals([
-                            "asc",
-                            "desc",
-                            "exists",
-                            "not_exists",
+                          Schema.Union([
+                            Schema.Literals([
+                              "asc",
+                              "desc",
+                              "exists",
+                              "not_exists",
+                            ]),
+                            Schema.String,
                           ]),
                           Schema.Null,
                         ]),
@@ -8461,7 +8969,10 @@ export const ListNamespaceInstancesResponse =
                 ]),
               ),
               keywordMatchMode: Schema.optional(
-                Schema.Union([Schema.Literals(["and", "or"]), Schema.Null]),
+                Schema.Union([
+                  Schema.Union([Schema.Literals(["and", "or"]), Schema.String]),
+                  Schema.Null,
+                ]),
               ),
             }).pipe(
               Schema.encodeKeys({
@@ -8549,7 +9060,10 @@ export const ListNamespaceInstancesResponse =
                           ),
                           source: Schema.optional(
                             Schema.Union([
-                              Schema.Literals(["all", "sitemaps", "links"]),
+                              Schema.Union([
+                                Schema.Literals(["all", "sitemaps", "links"]),
+                                Schema.String,
+                              ]),
                               Schema.Null,
                             ]),
                           ),
@@ -8611,7 +9125,10 @@ export const ListNamespaceInstancesResponse =
                     ),
                     parseType: Schema.optional(
                       Schema.Union([
-                        Schema.Literals(["sitemap", "feed-rss", "crawl"]),
+                        Schema.Union([
+                          Schema.Literals(["sitemap", "feed-rss", "crawl"]),
+                          Schema.String,
+                        ]),
                         Schema.Null,
                       ]),
                     ),
@@ -8661,15 +9178,18 @@ export const ListNamespaceInstancesResponse =
         status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         syncInterval: Schema.optional(
           Schema.Union([
-            Schema.Literals([
-              "900",
-              "1800",
-              "3600",
-              "7200",
-              "14400",
-              "21600",
-              "43200",
-              "86400",
+            Schema.Union([
+              Schema.Literals([
+                "900",
+                "1800",
+                "3600",
+                "7200",
+                "14400",
+                "21600",
+                "43200",
+                "86400",
+              ]),
+              Schema.String,
             ]),
             Schema.Null,
           ]),
@@ -8818,7 +9338,8 @@ export interface CreateNamespaceInstanceRequest {
     | "super_strict_match"
     | "close_enough"
     | "flexible_friend"
-    | "anything_goes";
+    | "anything_goes"
+    | (string & {});
   /** Body param: Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d). */
   cacheTtl?:
     | "600"
@@ -8830,7 +9351,8 @@ export interface CreateNamespaceInstanceRequest {
     | "86400"
     | "172800"
     | "259200"
-    | "518400";
+    | "518400"
+    | (string & {});
   /** Body param */
   chunk?: boolean;
   /** Body param */
@@ -8839,7 +9361,7 @@ export interface CreateNamespaceInstanceRequest {
   chunkSize?: number;
   /** Body param */
   customMetadata?: {
-    dataType: "text" | "number" | "boolean" | "datetime";
+    dataType: "text" | "number" | "boolean" | "datetime" | (string & {});
     fieldName: string;
   }[];
   /** Body param */
@@ -8855,13 +9377,15 @@ export interface CreateNamespaceInstanceRequest {
     | ""
     | null;
   /** Body param */
-  fusionMethod?: "max" | "rrf";
+  fusionMethod?: "max" | "rrf" | (string & {});
   /** @deprecated Body param: Deprecated — use index_method instead. */
   hybridSearchEnabled?: boolean;
   /** Body param: Controls which storage backends are used during indexing. Defaults to vector-only. */
   indexMethod?: { keyword: boolean; vector: boolean };
   /** Body param */
-  indexingOptions?: { keywordTokenizer?: "porter" | "trigram" } | null;
+  indexingOptions?: {
+    keywordTokenizer?: "porter" | "trigram" | (string & {});
+  } | null;
   /** Body param */
   maxNumResults?: number;
   /** Body param */
@@ -8875,7 +9399,7 @@ export interface CreateNamespaceInstanceRequest {
     rateLimit?: {
       periodMs?: number;
       requests?: number;
-      technique?: "fixed" | "sliding";
+      technique?: "fixed" | "sliding" | (string & {});
     };
     searchEndpoint?: { disabled?: boolean };
   };
@@ -8887,9 +9411,9 @@ export interface CreateNamespaceInstanceRequest {
   retrievalOptions?: {
     boostBy?: {
       field: string;
-      direction?: "asc" | "desc" | "exists" | "not_exists";
+      direction?: "asc" | "desc" | "exists" | "not_exists" | (string & {});
     }[];
-    keywordMatchMode?: "and" | "or";
+    keywordMatchMode?: "and" | "or" | (string & {});
   } | null;
   /** Body param */
   rewriteModel?:
@@ -8942,7 +9466,7 @@ export interface CreateNamespaceInstanceRequest {
         includeExternalLinks?: boolean;
         includeSubdomains?: boolean;
         maxAge?: number;
-        source?: "all" | "sitemaps" | "links";
+        source?: "all" | "sitemaps" | "links" | (string & {});
       };
       parseOptions?: {
         contentSelector?: { path: string; selector: string }[];
@@ -8951,7 +9475,7 @@ export interface CreateNamespaceInstanceRequest {
         specificSitemaps?: string[];
         useBrowserRendering?: boolean;
       };
-      parseType?: "sitemap" | "feed-rss" | "crawl";
+      parseType?: "sitemap" | "feed-rss" | "crawl" | (string & {});
       storeOptions?: {
         storageId: string;
         r2Jurisdiction?: string;
@@ -8968,7 +9492,8 @@ export interface CreateNamespaceInstanceRequest {
     | "14400"
     | "21600"
     | "43200"
-    | "86400";
+    | "86400"
+    | (string & {});
   /** Body param */
   tokenId?: string;
   /** Body param */
@@ -9018,25 +9543,31 @@ export const CreateNamespaceInstanceRequest =
     ),
     cache: Schema.optional(Schema.Boolean),
     cacheThreshold: Schema.optional(
-      Schema.Literals([
-        "super_strict_match",
-        "close_enough",
-        "flexible_friend",
-        "anything_goes",
+      Schema.Union([
+        Schema.Literals([
+          "super_strict_match",
+          "close_enough",
+          "flexible_friend",
+          "anything_goes",
+        ]),
+        Schema.String,
       ]),
     ),
     cacheTtl: Schema.optional(
-      Schema.Literals([
-        "600",
-        "1800",
-        "3600",
-        "7200",
-        "21600",
-        "43200",
-        "86400",
-        "172800",
-        "259200",
-        "518400",
+      Schema.Union([
+        Schema.Literals([
+          "600",
+          "1800",
+          "3600",
+          "7200",
+          "21600",
+          "43200",
+          "86400",
+          "172800",
+          "259200",
+          "518400",
+        ]),
+        Schema.String,
       ]),
     ),
     chunk: Schema.optional(Schema.Boolean),
@@ -9045,7 +9576,10 @@ export const CreateNamespaceInstanceRequest =
     customMetadata: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          dataType: Schema.Literals(["text", "number", "boolean", "datetime"]),
+          dataType: Schema.Union([
+            Schema.Literals(["text", "number", "boolean", "datetime"]),
+            Schema.String,
+          ]),
           fieldName: Schema.String,
         }).pipe(
           Schema.encodeKeys({ dataType: "data_type", fieldName: "field_name" }),
@@ -9066,7 +9600,9 @@ export const CreateNamespaceInstanceRequest =
         Schema.Null,
       ]),
     ),
-    fusionMethod: Schema.optional(Schema.Literals(["max", "rrf"])),
+    fusionMethod: Schema.optional(
+      Schema.Union([Schema.Literals(["max", "rrf"]), Schema.String]),
+    ),
     hybridSearchEnabled: Schema.optional(Schema.Boolean),
     indexMethod: Schema.optional(
       Schema.Struct({
@@ -9078,7 +9614,10 @@ export const CreateNamespaceInstanceRequest =
       Schema.Union([
         Schema.Struct({
           keywordTokenizer: Schema.optional(
-            Schema.Literals(["porter", "trigram"]),
+            Schema.Union([
+              Schema.Literals(["porter", "trigram"]),
+              Schema.String,
+            ]),
           ),
         }).pipe(Schema.encodeKeys({ keywordTokenizer: "keyword_tokenizer" })),
         Schema.Null,
@@ -9115,7 +9654,12 @@ export const CreateNamespaceInstanceRequest =
           Schema.Struct({
             periodMs: Schema.optional(Schema.Number),
             requests: Schema.optional(Schema.Number),
-            technique: Schema.optional(Schema.Literals(["fixed", "sliding"])),
+            technique: Schema.optional(
+              Schema.Union([
+                Schema.Literals(["fixed", "sliding"]),
+                Schema.String,
+              ]),
+            ),
           }).pipe(
             Schema.encodeKeys({
               periodMs: "period_ms",
@@ -9156,12 +9700,17 @@ export const CreateNamespaceInstanceRequest =
               Schema.Struct({
                 field: Schema.String,
                 direction: Schema.optional(
-                  Schema.Literals(["asc", "desc", "exists", "not_exists"]),
+                  Schema.Union([
+                    Schema.Literals(["asc", "desc", "exists", "not_exists"]),
+                    Schema.String,
+                  ]),
                 ),
               }),
             ),
           ),
-          keywordMatchMode: Schema.optional(Schema.Literals(["and", "or"])),
+          keywordMatchMode: Schema.optional(
+            Schema.Union([Schema.Literals(["and", "or"]), Schema.String]),
+          ),
         }).pipe(
           Schema.encodeKeys({
             boostBy: "boost_by",
@@ -9225,7 +9774,10 @@ export const CreateNamespaceInstanceRequest =
                   includeSubdomains: Schema.optional(Schema.Boolean),
                   maxAge: Schema.optional(Schema.Number),
                   source: Schema.optional(
-                    Schema.Literals(["all", "sitemaps", "links"]),
+                    Schema.Union([
+                      Schema.Literals(["all", "sitemaps", "links"]),
+                      Schema.String,
+                    ]),
                   ),
                 }).pipe(
                   Schema.encodeKeys({
@@ -9266,7 +9818,10 @@ export const CreateNamespaceInstanceRequest =
                 ),
               ),
               parseType: Schema.optional(
-                Schema.Literals(["sitemap", "feed-rss", "crawl"]),
+                Schema.Union([
+                  Schema.Literals(["sitemap", "feed-rss", "crawl"]),
+                  Schema.String,
+                ]),
               ),
               storeOptions: Schema.optional(
                 Schema.Struct({
@@ -9303,15 +9858,18 @@ export const CreateNamespaceInstanceRequest =
       ]),
     ),
     syncInterval: Schema.optional(
-      Schema.Literals([
-        "900",
-        "1800",
-        "3600",
-        "7200",
-        "14400",
-        "21600",
-        "43200",
-        "86400",
+      Schema.Union([
+        Schema.Literals([
+          "900",
+          "1800",
+          "3600",
+          "7200",
+          "14400",
+          "21600",
+          "43200",
+          "86400",
+        ]),
+        Schema.String,
       ]),
     ),
     tokenId: Schema.optional(Schema.String),
@@ -9404,6 +9962,7 @@ export interface CreateNamespaceInstanceResponse {
     | "close_enough"
     | "flexible_friend"
     | "anything_goes"
+    | (string & {})
     | null;
   /** Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d). */
   cacheTtl?:
@@ -9417,13 +9976,14 @@ export interface CreateNamespaceInstanceResponse {
     | "172800"
     | "259200"
     | "518400"
+    | (string & {})
     | null;
   chunkOverlap?: number | null;
   chunkSize?: number | null;
   createdBy?: string | null;
   customMetadata?:
     | {
-        dataType: "text" | "number" | "boolean" | "datetime";
+        dataType: "text" | "number" | "boolean" | "datetime" | (string & {});
         fieldName: string;
       }[]
     | null;
@@ -9440,12 +10000,14 @@ export interface CreateNamespaceInstanceResponse {
     | null;
   enable?: boolean | null;
   engineVersion?: number | null;
-  fusionMethod?: "max" | "rrf" | null;
+  fusionMethod?: "max" | "rrf" | (string & {}) | null;
   /** @deprecated Deprecated — use index_method instead. */
   hybridSearchEnabled?: boolean | null;
   /** Controls which storage backends are used during indexing. Defaults to vector-only. */
   indexMethod?: { keyword: boolean; vector: boolean } | null;
-  indexingOptions?: { keywordTokenizer?: "porter" | "trigram" | null } | null;
+  indexingOptions?: {
+    keywordTokenizer?: "porter" | "trigram" | (string & {}) | null;
+  } | null;
   lastActivity?: string | null;
   maxNumResults?: number | null;
   metadata?: {
@@ -9464,7 +10026,7 @@ export interface CreateNamespaceInstanceResponse {
     rateLimit?: {
       periodMs?: number | null;
       requests?: number | null;
-      technique?: "fixed" | "sliding" | null;
+      technique?: "fixed" | "sliding" | (string & {}) | null;
     } | null;
     searchEndpoint?: { disabled?: boolean | null } | null;
   } | null;
@@ -9474,10 +10036,16 @@ export interface CreateNamespaceInstanceResponse {
     boostBy?:
       | {
           field: string;
-          direction?: "asc" | "desc" | "exists" | "not_exists" | null;
+          direction?:
+            | "asc"
+            | "desc"
+            | "exists"
+            | "not_exists"
+            | (string & {})
+            | null;
         }[]
       | null;
-    keywordMatchMode?: "and" | "or" | null;
+    keywordMatchMode?: "and" | "or" | (string & {}) | null;
   } | null;
   rewriteModel?:
     | "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
@@ -9525,7 +10093,7 @@ export interface CreateNamespaceInstanceResponse {
         includeExternalLinks?: boolean | null;
         includeSubdomains?: boolean | null;
         maxAge?: number | null;
-        source?: "all" | "sitemaps" | "links" | null;
+        source?: "all" | "sitemaps" | "links" | (string & {}) | null;
       } | null;
       parseOptions?: {
         contentSelector?: { path: string; selector: string }[] | null;
@@ -9534,7 +10102,7 @@ export interface CreateNamespaceInstanceResponse {
         specificSitemaps?: string[] | null;
         useBrowserRendering?: boolean | null;
       } | null;
-      parseType?: "sitemap" | "feed-rss" | "crawl" | null;
+      parseType?: "sitemap" | "feed-rss" | "crawl" | (string & {}) | null;
       storeOptions?: {
         storageId: string;
         r2Jurisdiction?: string | null;
@@ -9553,6 +10121,7 @@ export interface CreateNamespaceInstanceResponse {
     | "21600"
     | "43200"
     | "86400"
+    | (string & {})
     | null;
   tokenId?: string | null;
   type?: "r2" | "web-crawler" | null;
@@ -9602,28 +10171,34 @@ export const CreateNamespaceInstanceResponse =
     cache: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     cacheThreshold: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "super_strict_match",
-          "close_enough",
-          "flexible_friend",
-          "anything_goes",
+        Schema.Union([
+          Schema.Literals([
+            "super_strict_match",
+            "close_enough",
+            "flexible_friend",
+            "anything_goes",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
     ),
     cacheTtl: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "600",
-          "1800",
-          "3600",
-          "7200",
-          "21600",
-          "43200",
-          "86400",
-          "172800",
-          "259200",
-          "518400",
+        Schema.Union([
+          Schema.Literals([
+            "600",
+            "1800",
+            "3600",
+            "7200",
+            "21600",
+            "43200",
+            "86400",
+            "172800",
+            "259200",
+            "518400",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -9635,11 +10210,9 @@ export const CreateNamespaceInstanceResponse =
       Schema.Union([
         Schema.Array(
           Schema.Struct({
-            dataType: Schema.Literals([
-              "text",
-              "number",
-              "boolean",
-              "datetime",
+            dataType: Schema.Union([
+              Schema.Literals(["text", "number", "boolean", "datetime"]),
+              Schema.String,
             ]),
             fieldName: Schema.String,
           }).pipe(
@@ -9669,7 +10242,10 @@ export const CreateNamespaceInstanceResponse =
     enable: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     engineVersion: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     fusionMethod: Schema.optional(
-      Schema.Union([Schema.Literals(["max", "rrf"]), Schema.Null]),
+      Schema.Union([
+        Schema.Union([Schema.Literals(["max", "rrf"]), Schema.String]),
+        Schema.Null,
+      ]),
     ),
     hybridSearchEnabled: Schema.optional(
       Schema.Union([Schema.Boolean, Schema.Null]),
@@ -9687,7 +10263,13 @@ export const CreateNamespaceInstanceResponse =
       Schema.Union([
         Schema.Struct({
           keywordTokenizer: Schema.optional(
-            Schema.Union([Schema.Literals(["porter", "trigram"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([
+                Schema.Literals(["porter", "trigram"]),
+                Schema.String,
+              ]),
+              Schema.Null,
+            ]),
           ),
         }).pipe(Schema.encodeKeys({ keywordTokenizer: "keyword_tokenizer" })),
         Schema.Null,
@@ -9760,7 +10342,10 @@ export const CreateNamespaceInstanceResponse =
                 ),
                 technique: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["fixed", "sliding"]),
+                    Schema.Union([
+                      Schema.Literals(["fixed", "sliding"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -9815,7 +10400,15 @@ export const CreateNamespaceInstanceResponse =
                   field: Schema.String,
                   direction: Schema.optional(
                     Schema.Union([
-                      Schema.Literals(["asc", "desc", "exists", "not_exists"]),
+                      Schema.Union([
+                        Schema.Literals([
+                          "asc",
+                          "desc",
+                          "exists",
+                          "not_exists",
+                        ]),
+                        Schema.String,
+                      ]),
                       Schema.Null,
                     ]),
                   ),
@@ -9825,7 +10418,10 @@ export const CreateNamespaceInstanceResponse =
             ]),
           ),
           keywordMatchMode: Schema.optional(
-            Schema.Union([Schema.Literals(["and", "or"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["and", "or"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }).pipe(
           Schema.encodeKeys({
@@ -9907,7 +10503,10 @@ export const CreateNamespaceInstanceResponse =
                       ),
                       source: Schema.optional(
                         Schema.Union([
-                          Schema.Literals(["all", "sitemaps", "links"]),
+                          Schema.Union([
+                            Schema.Literals(["all", "sitemaps", "links"]),
+                            Schema.String,
+                          ]),
                           Schema.Null,
                         ]),
                       ),
@@ -9969,7 +10568,10 @@ export const CreateNamespaceInstanceResponse =
                 ),
                 parseType: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["sitemap", "feed-rss", "crawl"]),
+                    Schema.Union([
+                      Schema.Literals(["sitemap", "feed-rss", "crawl"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -10019,15 +10621,18 @@ export const CreateNamespaceInstanceResponse =
     status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     syncInterval: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "900",
-          "1800",
-          "3600",
-          "7200",
-          "14400",
-          "21600",
-          "43200",
-          "86400",
+        Schema.Union([
+          Schema.Literals([
+            "900",
+            "1800",
+            "3600",
+            "7200",
+            "14400",
+            "21600",
+            "43200",
+            "86400",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -10148,7 +10753,8 @@ export interface UpdateNamespaceInstanceRequest {
     | "super_strict_match"
     | "close_enough"
     | "flexible_friend"
-    | "anything_goes";
+    | "anything_goes"
+    | (string & {});
   /** Body param: Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d). */
   cacheTtl?:
     | "600"
@@ -10160,7 +10766,8 @@ export interface UpdateNamespaceInstanceRequest {
     | "86400"
     | "172800"
     | "259200"
-    | "518400";
+    | "518400"
+    | (string & {});
   /** Body param */
   chunk?: boolean;
   /** Body param */
@@ -10169,7 +10776,7 @@ export interface UpdateNamespaceInstanceRequest {
   chunkSize?: number;
   /** Body param */
   customMetadata?: {
-    dataType: "text" | "number" | "boolean" | "datetime";
+    dataType: "text" | "number" | "boolean" | "datetime" | (string & {});
     fieldName: string;
   }[];
   /** Body param */
@@ -10185,11 +10792,13 @@ export interface UpdateNamespaceInstanceRequest {
     | ""
     | null;
   /** Body param */
-  fusionMethod?: "max" | "rrf";
+  fusionMethod?: "max" | "rrf" | (string & {});
   /** Body param: Controls which storage backends are used during indexing. Defaults to vector-only. */
   indexMethod?: { keyword: boolean; vector: boolean };
   /** Body param */
-  indexingOptions?: { keywordTokenizer?: "porter" | "trigram" } | null;
+  indexingOptions?: {
+    keywordTokenizer?: "porter" | "trigram" | (string & {});
+  } | null;
   /** Body param */
   maxNumResults?: number;
   /** Body param */
@@ -10205,7 +10814,7 @@ export interface UpdateNamespaceInstanceRequest {
     rateLimit?: {
       periodMs?: number;
       requests?: number;
-      technique?: "fixed" | "sliding";
+      technique?: "fixed" | "sliding" | (string & {});
     };
     searchEndpoint?: { disabled?: boolean };
   };
@@ -10217,9 +10826,9 @@ export interface UpdateNamespaceInstanceRequest {
   retrievalOptions?: {
     boostBy?: {
       field: string;
-      direction?: "asc" | "desc" | "exists" | "not_exists";
+      direction?: "asc" | "desc" | "exists" | "not_exists" | (string & {});
     }[];
-    keywordMatchMode?: "and" | "or";
+    keywordMatchMode?: "and" | "or" | (string & {});
   } | null;
   /** Body param */
   rewriteModel?:
@@ -10270,7 +10879,7 @@ export interface UpdateNamespaceInstanceRequest {
         includeExternalLinks?: boolean;
         includeSubdomains?: boolean;
         maxAge?: number;
-        source?: "all" | "sitemaps" | "links";
+        source?: "all" | "sitemaps" | "links" | (string & {});
       };
       parseOptions?: {
         contentSelector?: { path: string; selector: string }[];
@@ -10279,7 +10888,7 @@ export interface UpdateNamespaceInstanceRequest {
         specificSitemaps?: string[];
         useBrowserRendering?: boolean;
       };
-      parseType?: "sitemap" | "feed-rss" | "crawl";
+      parseType?: "sitemap" | "feed-rss" | "crawl" | (string & {});
       storeOptions?: {
         storageId: string;
         r2Jurisdiction?: string;
@@ -10331,7 +10940,8 @@ export interface UpdateNamespaceInstanceRequest {
     | "14400"
     | "21600"
     | "43200"
-    | "86400";
+    | "86400"
+    | (string & {});
   /** Body param */
   systemPromptAiSearch?: string | null;
   /** Body param */
@@ -10385,25 +10995,31 @@ export const UpdateNamespaceInstanceRequest =
     ),
     cache: Schema.optional(Schema.Boolean),
     cacheThreshold: Schema.optional(
-      Schema.Literals([
-        "super_strict_match",
-        "close_enough",
-        "flexible_friend",
-        "anything_goes",
+      Schema.Union([
+        Schema.Literals([
+          "super_strict_match",
+          "close_enough",
+          "flexible_friend",
+          "anything_goes",
+        ]),
+        Schema.String,
       ]),
     ),
     cacheTtl: Schema.optional(
-      Schema.Literals([
-        "600",
-        "1800",
-        "3600",
-        "7200",
-        "21600",
-        "43200",
-        "86400",
-        "172800",
-        "259200",
-        "518400",
+      Schema.Union([
+        Schema.Literals([
+          "600",
+          "1800",
+          "3600",
+          "7200",
+          "21600",
+          "43200",
+          "86400",
+          "172800",
+          "259200",
+          "518400",
+        ]),
+        Schema.String,
       ]),
     ),
     chunk: Schema.optional(Schema.Boolean),
@@ -10412,7 +11028,10 @@ export const UpdateNamespaceInstanceRequest =
     customMetadata: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          dataType: Schema.Literals(["text", "number", "boolean", "datetime"]),
+          dataType: Schema.Union([
+            Schema.Literals(["text", "number", "boolean", "datetime"]),
+            Schema.String,
+          ]),
           fieldName: Schema.String,
         }).pipe(
           Schema.encodeKeys({ dataType: "data_type", fieldName: "field_name" }),
@@ -10433,7 +11052,9 @@ export const UpdateNamespaceInstanceRequest =
         Schema.Null,
       ]),
     ),
-    fusionMethod: Schema.optional(Schema.Literals(["max", "rrf"])),
+    fusionMethod: Schema.optional(
+      Schema.Union([Schema.Literals(["max", "rrf"]), Schema.String]),
+    ),
     indexMethod: Schema.optional(
       Schema.Struct({
         keyword: Schema.Boolean,
@@ -10444,7 +11065,10 @@ export const UpdateNamespaceInstanceRequest =
       Schema.Union([
         Schema.Struct({
           keywordTokenizer: Schema.optional(
-            Schema.Literals(["porter", "trigram"]),
+            Schema.Union([
+              Schema.Literals(["porter", "trigram"]),
+              Schema.String,
+            ]),
           ),
         }).pipe(Schema.encodeKeys({ keywordTokenizer: "keyword_tokenizer" })),
         Schema.Null,
@@ -10482,7 +11106,12 @@ export const UpdateNamespaceInstanceRequest =
           Schema.Struct({
             periodMs: Schema.optional(Schema.Number),
             requests: Schema.optional(Schema.Number),
-            technique: Schema.optional(Schema.Literals(["fixed", "sliding"])),
+            technique: Schema.optional(
+              Schema.Union([
+                Schema.Literals(["fixed", "sliding"]),
+                Schema.String,
+              ]),
+            ),
           }).pipe(
             Schema.encodeKeys({
               periodMs: "period_ms",
@@ -10523,12 +11152,17 @@ export const UpdateNamespaceInstanceRequest =
               Schema.Struct({
                 field: Schema.String,
                 direction: Schema.optional(
-                  Schema.Literals(["asc", "desc", "exists", "not_exists"]),
+                  Schema.Union([
+                    Schema.Literals(["asc", "desc", "exists", "not_exists"]),
+                    Schema.String,
+                  ]),
                 ),
               }),
             ),
           ),
-          keywordMatchMode: Schema.optional(Schema.Literals(["and", "or"])),
+          keywordMatchMode: Schema.optional(
+            Schema.Union([Schema.Literals(["and", "or"]), Schema.String]),
+          ),
         }).pipe(
           Schema.encodeKeys({
             boostBy: "boost_by",
@@ -10591,7 +11225,10 @@ export const UpdateNamespaceInstanceRequest =
                   includeSubdomains: Schema.optional(Schema.Boolean),
                   maxAge: Schema.optional(Schema.Number),
                   source: Schema.optional(
-                    Schema.Literals(["all", "sitemaps", "links"]),
+                    Schema.Union([
+                      Schema.Literals(["all", "sitemaps", "links"]),
+                      Schema.String,
+                    ]),
                   ),
                 }).pipe(
                   Schema.encodeKeys({
@@ -10632,7 +11269,10 @@ export const UpdateNamespaceInstanceRequest =
                 ),
               ),
               parseType: Schema.optional(
-                Schema.Literals(["sitemap", "feed-rss", "crawl"]),
+                Schema.Union([
+                  Schema.Literals(["sitemap", "feed-rss", "crawl"]),
+                  Schema.String,
+                ]),
               ),
               storeOptions: Schema.optional(
                 Schema.Struct({
@@ -10705,15 +11345,18 @@ export const UpdateNamespaceInstanceRequest =
       ]),
     ),
     syncInterval: Schema.optional(
-      Schema.Literals([
-        "900",
-        "1800",
-        "3600",
-        "7200",
-        "14400",
-        "21600",
-        "43200",
-        "86400",
+      Schema.Union([
+        Schema.Literals([
+          "900",
+          "1800",
+          "3600",
+          "7200",
+          "14400",
+          "21600",
+          "43200",
+          "86400",
+        ]),
+        Schema.String,
       ]),
     ),
     systemPromptAiSearch: Schema.optional(
@@ -10810,6 +11453,7 @@ export interface UpdateNamespaceInstanceResponse {
     | "close_enough"
     | "flexible_friend"
     | "anything_goes"
+    | (string & {})
     | null;
   /** Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d). */
   cacheTtl?:
@@ -10823,13 +11467,14 @@ export interface UpdateNamespaceInstanceResponse {
     | "172800"
     | "259200"
     | "518400"
+    | (string & {})
     | null;
   chunkOverlap?: number | null;
   chunkSize?: number | null;
   createdBy?: string | null;
   customMetadata?:
     | {
-        dataType: "text" | "number" | "boolean" | "datetime";
+        dataType: "text" | "number" | "boolean" | "datetime" | (string & {});
         fieldName: string;
       }[]
     | null;
@@ -10846,12 +11491,14 @@ export interface UpdateNamespaceInstanceResponse {
     | null;
   enable?: boolean | null;
   engineVersion?: number | null;
-  fusionMethod?: "max" | "rrf" | null;
+  fusionMethod?: "max" | "rrf" | (string & {}) | null;
   /** @deprecated Deprecated — use index_method instead. */
   hybridSearchEnabled?: boolean | null;
   /** Controls which storage backends are used during indexing. Defaults to vector-only. */
   indexMethod?: { keyword: boolean; vector: boolean } | null;
-  indexingOptions?: { keywordTokenizer?: "porter" | "trigram" | null } | null;
+  indexingOptions?: {
+    keywordTokenizer?: "porter" | "trigram" | (string & {}) | null;
+  } | null;
   lastActivity?: string | null;
   maxNumResults?: number | null;
   metadata?: {
@@ -10870,7 +11517,7 @@ export interface UpdateNamespaceInstanceResponse {
     rateLimit?: {
       periodMs?: number | null;
       requests?: number | null;
-      technique?: "fixed" | "sliding" | null;
+      technique?: "fixed" | "sliding" | (string & {}) | null;
     } | null;
     searchEndpoint?: { disabled?: boolean | null } | null;
   } | null;
@@ -10880,10 +11527,16 @@ export interface UpdateNamespaceInstanceResponse {
     boostBy?:
       | {
           field: string;
-          direction?: "asc" | "desc" | "exists" | "not_exists" | null;
+          direction?:
+            | "asc"
+            | "desc"
+            | "exists"
+            | "not_exists"
+            | (string & {})
+            | null;
         }[]
       | null;
-    keywordMatchMode?: "and" | "or" | null;
+    keywordMatchMode?: "and" | "or" | (string & {}) | null;
   } | null;
   rewriteModel?:
     | "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
@@ -10931,7 +11584,7 @@ export interface UpdateNamespaceInstanceResponse {
         includeExternalLinks?: boolean | null;
         includeSubdomains?: boolean | null;
         maxAge?: number | null;
-        source?: "all" | "sitemaps" | "links" | null;
+        source?: "all" | "sitemaps" | "links" | (string & {}) | null;
       } | null;
       parseOptions?: {
         contentSelector?: { path: string; selector: string }[] | null;
@@ -10940,7 +11593,7 @@ export interface UpdateNamespaceInstanceResponse {
         specificSitemaps?: string[] | null;
         useBrowserRendering?: boolean | null;
       } | null;
-      parseType?: "sitemap" | "feed-rss" | "crawl" | null;
+      parseType?: "sitemap" | "feed-rss" | "crawl" | (string & {}) | null;
       storeOptions?: {
         storageId: string;
         r2Jurisdiction?: string | null;
@@ -10959,6 +11612,7 @@ export interface UpdateNamespaceInstanceResponse {
     | "21600"
     | "43200"
     | "86400"
+    | (string & {})
     | null;
   tokenId?: string | null;
   type?: "r2" | "web-crawler" | null;
@@ -11008,28 +11662,34 @@ export const UpdateNamespaceInstanceResponse =
     cache: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     cacheThreshold: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "super_strict_match",
-          "close_enough",
-          "flexible_friend",
-          "anything_goes",
+        Schema.Union([
+          Schema.Literals([
+            "super_strict_match",
+            "close_enough",
+            "flexible_friend",
+            "anything_goes",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
     ),
     cacheTtl: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "600",
-          "1800",
-          "3600",
-          "7200",
-          "21600",
-          "43200",
-          "86400",
-          "172800",
-          "259200",
-          "518400",
+        Schema.Union([
+          Schema.Literals([
+            "600",
+            "1800",
+            "3600",
+            "7200",
+            "21600",
+            "43200",
+            "86400",
+            "172800",
+            "259200",
+            "518400",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -11041,11 +11701,9 @@ export const UpdateNamespaceInstanceResponse =
       Schema.Union([
         Schema.Array(
           Schema.Struct({
-            dataType: Schema.Literals([
-              "text",
-              "number",
-              "boolean",
-              "datetime",
+            dataType: Schema.Union([
+              Schema.Literals(["text", "number", "boolean", "datetime"]),
+              Schema.String,
             ]),
             fieldName: Schema.String,
           }).pipe(
@@ -11075,7 +11733,10 @@ export const UpdateNamespaceInstanceResponse =
     enable: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     engineVersion: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     fusionMethod: Schema.optional(
-      Schema.Union([Schema.Literals(["max", "rrf"]), Schema.Null]),
+      Schema.Union([
+        Schema.Union([Schema.Literals(["max", "rrf"]), Schema.String]),
+        Schema.Null,
+      ]),
     ),
     hybridSearchEnabled: Schema.optional(
       Schema.Union([Schema.Boolean, Schema.Null]),
@@ -11093,7 +11754,13 @@ export const UpdateNamespaceInstanceResponse =
       Schema.Union([
         Schema.Struct({
           keywordTokenizer: Schema.optional(
-            Schema.Union([Schema.Literals(["porter", "trigram"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([
+                Schema.Literals(["porter", "trigram"]),
+                Schema.String,
+              ]),
+              Schema.Null,
+            ]),
           ),
         }).pipe(Schema.encodeKeys({ keywordTokenizer: "keyword_tokenizer" })),
         Schema.Null,
@@ -11166,7 +11833,10 @@ export const UpdateNamespaceInstanceResponse =
                 ),
                 technique: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["fixed", "sliding"]),
+                    Schema.Union([
+                      Schema.Literals(["fixed", "sliding"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -11221,7 +11891,15 @@ export const UpdateNamespaceInstanceResponse =
                   field: Schema.String,
                   direction: Schema.optional(
                     Schema.Union([
-                      Schema.Literals(["asc", "desc", "exists", "not_exists"]),
+                      Schema.Union([
+                        Schema.Literals([
+                          "asc",
+                          "desc",
+                          "exists",
+                          "not_exists",
+                        ]),
+                        Schema.String,
+                      ]),
                       Schema.Null,
                     ]),
                   ),
@@ -11231,7 +11909,10 @@ export const UpdateNamespaceInstanceResponse =
             ]),
           ),
           keywordMatchMode: Schema.optional(
-            Schema.Union([Schema.Literals(["and", "or"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["and", "or"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }).pipe(
           Schema.encodeKeys({
@@ -11313,7 +11994,10 @@ export const UpdateNamespaceInstanceResponse =
                       ),
                       source: Schema.optional(
                         Schema.Union([
-                          Schema.Literals(["all", "sitemaps", "links"]),
+                          Schema.Union([
+                            Schema.Literals(["all", "sitemaps", "links"]),
+                            Schema.String,
+                          ]),
                           Schema.Null,
                         ]),
                       ),
@@ -11375,7 +12059,10 @@ export const UpdateNamespaceInstanceResponse =
                 ),
                 parseType: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["sitemap", "feed-rss", "crawl"]),
+                    Schema.Union([
+                      Schema.Literals(["sitemap", "feed-rss", "crawl"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -11425,15 +12112,18 @@ export const UpdateNamespaceInstanceResponse =
     status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     syncInterval: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "900",
-          "1800",
-          "3600",
-          "7200",
-          "14400",
-          "21600",
-          "43200",
-          "86400",
+        Schema.Union([
+          Schema.Literals([
+            "900",
+            "1800",
+            "3600",
+            "7200",
+            "14400",
+            "21600",
+            "43200",
+            "86400",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -11569,6 +12259,7 @@ export interface DeleteNamespaceInstanceResponse {
     | "close_enough"
     | "flexible_friend"
     | "anything_goes"
+    | (string & {})
     | null;
   /** Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d). */
   cacheTtl?:
@@ -11582,13 +12273,14 @@ export interface DeleteNamespaceInstanceResponse {
     | "172800"
     | "259200"
     | "518400"
+    | (string & {})
     | null;
   chunkOverlap?: number | null;
   chunkSize?: number | null;
   createdBy?: string | null;
   customMetadata?:
     | {
-        dataType: "text" | "number" | "boolean" | "datetime";
+        dataType: "text" | "number" | "boolean" | "datetime" | (string & {});
         fieldName: string;
       }[]
     | null;
@@ -11605,12 +12297,14 @@ export interface DeleteNamespaceInstanceResponse {
     | null;
   enable?: boolean | null;
   engineVersion?: number | null;
-  fusionMethod?: "max" | "rrf" | null;
+  fusionMethod?: "max" | "rrf" | (string & {}) | null;
   /** @deprecated Deprecated — use index_method instead. */
   hybridSearchEnabled?: boolean | null;
   /** Controls which storage backends are used during indexing. Defaults to vector-only. */
   indexMethod?: { keyword: boolean; vector: boolean } | null;
-  indexingOptions?: { keywordTokenizer?: "porter" | "trigram" | null } | null;
+  indexingOptions?: {
+    keywordTokenizer?: "porter" | "trigram" | (string & {}) | null;
+  } | null;
   lastActivity?: string | null;
   maxNumResults?: number | null;
   metadata?: {
@@ -11629,7 +12323,7 @@ export interface DeleteNamespaceInstanceResponse {
     rateLimit?: {
       periodMs?: number | null;
       requests?: number | null;
-      technique?: "fixed" | "sliding" | null;
+      technique?: "fixed" | "sliding" | (string & {}) | null;
     } | null;
     searchEndpoint?: { disabled?: boolean | null } | null;
   } | null;
@@ -11639,10 +12333,16 @@ export interface DeleteNamespaceInstanceResponse {
     boostBy?:
       | {
           field: string;
-          direction?: "asc" | "desc" | "exists" | "not_exists" | null;
+          direction?:
+            | "asc"
+            | "desc"
+            | "exists"
+            | "not_exists"
+            | (string & {})
+            | null;
         }[]
       | null;
-    keywordMatchMode?: "and" | "or" | null;
+    keywordMatchMode?: "and" | "or" | (string & {}) | null;
   } | null;
   rewriteModel?:
     | "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
@@ -11690,7 +12390,7 @@ export interface DeleteNamespaceInstanceResponse {
         includeExternalLinks?: boolean | null;
         includeSubdomains?: boolean | null;
         maxAge?: number | null;
-        source?: "all" | "sitemaps" | "links" | null;
+        source?: "all" | "sitemaps" | "links" | (string & {}) | null;
       } | null;
       parseOptions?: {
         contentSelector?: { path: string; selector: string }[] | null;
@@ -11699,7 +12399,7 @@ export interface DeleteNamespaceInstanceResponse {
         specificSitemaps?: string[] | null;
         useBrowserRendering?: boolean | null;
       } | null;
-      parseType?: "sitemap" | "feed-rss" | "crawl" | null;
+      parseType?: "sitemap" | "feed-rss" | "crawl" | (string & {}) | null;
       storeOptions?: {
         storageId: string;
         r2Jurisdiction?: string | null;
@@ -11718,6 +12418,7 @@ export interface DeleteNamespaceInstanceResponse {
     | "21600"
     | "43200"
     | "86400"
+    | (string & {})
     | null;
   tokenId?: string | null;
   type?: "r2" | "web-crawler" | null;
@@ -11767,28 +12468,34 @@ export const DeleteNamespaceInstanceResponse =
     cache: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     cacheThreshold: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "super_strict_match",
-          "close_enough",
-          "flexible_friend",
-          "anything_goes",
+        Schema.Union([
+          Schema.Literals([
+            "super_strict_match",
+            "close_enough",
+            "flexible_friend",
+            "anything_goes",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
     ),
     cacheTtl: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "600",
-          "1800",
-          "3600",
-          "7200",
-          "21600",
-          "43200",
-          "86400",
-          "172800",
-          "259200",
-          "518400",
+        Schema.Union([
+          Schema.Literals([
+            "600",
+            "1800",
+            "3600",
+            "7200",
+            "21600",
+            "43200",
+            "86400",
+            "172800",
+            "259200",
+            "518400",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -11800,11 +12507,9 @@ export const DeleteNamespaceInstanceResponse =
       Schema.Union([
         Schema.Array(
           Schema.Struct({
-            dataType: Schema.Literals([
-              "text",
-              "number",
-              "boolean",
-              "datetime",
+            dataType: Schema.Union([
+              Schema.Literals(["text", "number", "boolean", "datetime"]),
+              Schema.String,
             ]),
             fieldName: Schema.String,
           }).pipe(
@@ -11834,7 +12539,10 @@ export const DeleteNamespaceInstanceResponse =
     enable: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     engineVersion: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     fusionMethod: Schema.optional(
-      Schema.Union([Schema.Literals(["max", "rrf"]), Schema.Null]),
+      Schema.Union([
+        Schema.Union([Schema.Literals(["max", "rrf"]), Schema.String]),
+        Schema.Null,
+      ]),
     ),
     hybridSearchEnabled: Schema.optional(
       Schema.Union([Schema.Boolean, Schema.Null]),
@@ -11852,7 +12560,13 @@ export const DeleteNamespaceInstanceResponse =
       Schema.Union([
         Schema.Struct({
           keywordTokenizer: Schema.optional(
-            Schema.Union([Schema.Literals(["porter", "trigram"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([
+                Schema.Literals(["porter", "trigram"]),
+                Schema.String,
+              ]),
+              Schema.Null,
+            ]),
           ),
         }).pipe(Schema.encodeKeys({ keywordTokenizer: "keyword_tokenizer" })),
         Schema.Null,
@@ -11925,7 +12639,10 @@ export const DeleteNamespaceInstanceResponse =
                 ),
                 technique: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["fixed", "sliding"]),
+                    Schema.Union([
+                      Schema.Literals(["fixed", "sliding"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -11980,7 +12697,15 @@ export const DeleteNamespaceInstanceResponse =
                   field: Schema.String,
                   direction: Schema.optional(
                     Schema.Union([
-                      Schema.Literals(["asc", "desc", "exists", "not_exists"]),
+                      Schema.Union([
+                        Schema.Literals([
+                          "asc",
+                          "desc",
+                          "exists",
+                          "not_exists",
+                        ]),
+                        Schema.String,
+                      ]),
                       Schema.Null,
                     ]),
                   ),
@@ -11990,7 +12715,10 @@ export const DeleteNamespaceInstanceResponse =
             ]),
           ),
           keywordMatchMode: Schema.optional(
-            Schema.Union([Schema.Literals(["and", "or"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["and", "or"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }).pipe(
           Schema.encodeKeys({
@@ -12072,7 +12800,10 @@ export const DeleteNamespaceInstanceResponse =
                       ),
                       source: Schema.optional(
                         Schema.Union([
-                          Schema.Literals(["all", "sitemaps", "links"]),
+                          Schema.Union([
+                            Schema.Literals(["all", "sitemaps", "links"]),
+                            Schema.String,
+                          ]),
                           Schema.Null,
                         ]),
                       ),
@@ -12134,7 +12865,10 @@ export const DeleteNamespaceInstanceResponse =
                 ),
                 parseType: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["sitemap", "feed-rss", "crawl"]),
+                    Schema.Union([
+                      Schema.Literals(["sitemap", "feed-rss", "crawl"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -12184,15 +12918,18 @@ export const DeleteNamespaceInstanceResponse =
     status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     syncInterval: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "900",
-          "1800",
-          "3600",
-          "7200",
-          "14400",
-          "21600",
-          "43200",
-          "86400",
+        Schema.Union([
+          Schema.Literals([
+            "900",
+            "1800",
+            "3600",
+            "7200",
+            "14400",
+            "21600",
+            "43200",
+            "86400",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -12328,6 +13065,7 @@ export interface ReadNamespaceInstanceResponse {
     | "close_enough"
     | "flexible_friend"
     | "anything_goes"
+    | (string & {})
     | null;
   /** Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d). */
   cacheTtl?:
@@ -12341,13 +13079,14 @@ export interface ReadNamespaceInstanceResponse {
     | "172800"
     | "259200"
     | "518400"
+    | (string & {})
     | null;
   chunkOverlap?: number | null;
   chunkSize?: number | null;
   createdBy?: string | null;
   customMetadata?:
     | {
-        dataType: "text" | "number" | "boolean" | "datetime";
+        dataType: "text" | "number" | "boolean" | "datetime" | (string & {});
         fieldName: string;
       }[]
     | null;
@@ -12364,12 +13103,14 @@ export interface ReadNamespaceInstanceResponse {
     | null;
   enable?: boolean | null;
   engineVersion?: number | null;
-  fusionMethod?: "max" | "rrf" | null;
+  fusionMethod?: "max" | "rrf" | (string & {}) | null;
   /** @deprecated Deprecated — use index_method instead. */
   hybridSearchEnabled?: boolean | null;
   /** Controls which storage backends are used during indexing. Defaults to vector-only. */
   indexMethod?: { keyword: boolean; vector: boolean } | null;
-  indexingOptions?: { keywordTokenizer?: "porter" | "trigram" | null } | null;
+  indexingOptions?: {
+    keywordTokenizer?: "porter" | "trigram" | (string & {}) | null;
+  } | null;
   lastActivity?: string | null;
   maxNumResults?: number | null;
   metadata?: {
@@ -12388,7 +13129,7 @@ export interface ReadNamespaceInstanceResponse {
     rateLimit?: {
       periodMs?: number | null;
       requests?: number | null;
-      technique?: "fixed" | "sliding" | null;
+      technique?: "fixed" | "sliding" | (string & {}) | null;
     } | null;
     searchEndpoint?: { disabled?: boolean | null } | null;
   } | null;
@@ -12398,10 +13139,16 @@ export interface ReadNamespaceInstanceResponse {
     boostBy?:
       | {
           field: string;
-          direction?: "asc" | "desc" | "exists" | "not_exists" | null;
+          direction?:
+            | "asc"
+            | "desc"
+            | "exists"
+            | "not_exists"
+            | (string & {})
+            | null;
         }[]
       | null;
-    keywordMatchMode?: "and" | "or" | null;
+    keywordMatchMode?: "and" | "or" | (string & {}) | null;
   } | null;
   rewriteModel?:
     | "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
@@ -12449,7 +13196,7 @@ export interface ReadNamespaceInstanceResponse {
         includeExternalLinks?: boolean | null;
         includeSubdomains?: boolean | null;
         maxAge?: number | null;
-        source?: "all" | "sitemaps" | "links" | null;
+        source?: "all" | "sitemaps" | "links" | (string & {}) | null;
       } | null;
       parseOptions?: {
         contentSelector?: { path: string; selector: string }[] | null;
@@ -12458,7 +13205,7 @@ export interface ReadNamespaceInstanceResponse {
         specificSitemaps?: string[] | null;
         useBrowserRendering?: boolean | null;
       } | null;
-      parseType?: "sitemap" | "feed-rss" | "crawl" | null;
+      parseType?: "sitemap" | "feed-rss" | "crawl" | (string & {}) | null;
       storeOptions?: {
         storageId: string;
         r2Jurisdiction?: string | null;
@@ -12477,6 +13224,7 @@ export interface ReadNamespaceInstanceResponse {
     | "21600"
     | "43200"
     | "86400"
+    | (string & {})
     | null;
   tokenId?: string | null;
   type?: "r2" | "web-crawler" | null;
@@ -12526,28 +13274,34 @@ export const ReadNamespaceInstanceResponse =
     cache: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     cacheThreshold: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "super_strict_match",
-          "close_enough",
-          "flexible_friend",
-          "anything_goes",
+        Schema.Union([
+          Schema.Literals([
+            "super_strict_match",
+            "close_enough",
+            "flexible_friend",
+            "anything_goes",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
     ),
     cacheTtl: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "600",
-          "1800",
-          "3600",
-          "7200",
-          "21600",
-          "43200",
-          "86400",
-          "172800",
-          "259200",
-          "518400",
+        Schema.Union([
+          Schema.Literals([
+            "600",
+            "1800",
+            "3600",
+            "7200",
+            "21600",
+            "43200",
+            "86400",
+            "172800",
+            "259200",
+            "518400",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -12559,11 +13313,9 @@ export const ReadNamespaceInstanceResponse =
       Schema.Union([
         Schema.Array(
           Schema.Struct({
-            dataType: Schema.Literals([
-              "text",
-              "number",
-              "boolean",
-              "datetime",
+            dataType: Schema.Union([
+              Schema.Literals(["text", "number", "boolean", "datetime"]),
+              Schema.String,
             ]),
             fieldName: Schema.String,
           }).pipe(
@@ -12593,7 +13345,10 @@ export const ReadNamespaceInstanceResponse =
     enable: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     engineVersion: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     fusionMethod: Schema.optional(
-      Schema.Union([Schema.Literals(["max", "rrf"]), Schema.Null]),
+      Schema.Union([
+        Schema.Union([Schema.Literals(["max", "rrf"]), Schema.String]),
+        Schema.Null,
+      ]),
     ),
     hybridSearchEnabled: Schema.optional(
       Schema.Union([Schema.Boolean, Schema.Null]),
@@ -12611,7 +13366,13 @@ export const ReadNamespaceInstanceResponse =
       Schema.Union([
         Schema.Struct({
           keywordTokenizer: Schema.optional(
-            Schema.Union([Schema.Literals(["porter", "trigram"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([
+                Schema.Literals(["porter", "trigram"]),
+                Schema.String,
+              ]),
+              Schema.Null,
+            ]),
           ),
         }).pipe(Schema.encodeKeys({ keywordTokenizer: "keyword_tokenizer" })),
         Schema.Null,
@@ -12684,7 +13445,10 @@ export const ReadNamespaceInstanceResponse =
                 ),
                 technique: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["fixed", "sliding"]),
+                    Schema.Union([
+                      Schema.Literals(["fixed", "sliding"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -12739,7 +13503,15 @@ export const ReadNamespaceInstanceResponse =
                   field: Schema.String,
                   direction: Schema.optional(
                     Schema.Union([
-                      Schema.Literals(["asc", "desc", "exists", "not_exists"]),
+                      Schema.Union([
+                        Schema.Literals([
+                          "asc",
+                          "desc",
+                          "exists",
+                          "not_exists",
+                        ]),
+                        Schema.String,
+                      ]),
                       Schema.Null,
                     ]),
                   ),
@@ -12749,7 +13521,10 @@ export const ReadNamespaceInstanceResponse =
             ]),
           ),
           keywordMatchMode: Schema.optional(
-            Schema.Union([Schema.Literals(["and", "or"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["and", "or"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }).pipe(
           Schema.encodeKeys({
@@ -12831,7 +13606,10 @@ export const ReadNamespaceInstanceResponse =
                       ),
                       source: Schema.optional(
                         Schema.Union([
-                          Schema.Literals(["all", "sitemaps", "links"]),
+                          Schema.Union([
+                            Schema.Literals(["all", "sitemaps", "links"]),
+                            Schema.String,
+                          ]),
                           Schema.Null,
                         ]),
                       ),
@@ -12893,7 +13671,10 @@ export const ReadNamespaceInstanceResponse =
                 ),
                 parseType: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["sitemap", "feed-rss", "crawl"]),
+                    Schema.Union([
+                      Schema.Literals(["sitemap", "feed-rss", "crawl"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -12943,15 +13724,18 @@ export const ReadNamespaceInstanceResponse =
     status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     syncInterval: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "900",
-          "1800",
-          "3600",
-          "7200",
-          "14400",
-          "21600",
-          "43200",
-          "86400",
+        Schema.Union([
+          Schema.Literals([
+            "900",
+            "1800",
+            "3600",
+            "7200",
+            "14400",
+            "21600",
+            "43200",
+            "86400",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -13037,7 +13821,8 @@ export interface SearchNamespaceInstanceRequest {
         | "super_strict_match"
         | "close_enough"
         | "flexible_friend"
-        | "anything_goes";
+        | "anything_goes"
+        | (string & {});
       enabled?: boolean;
     };
     queryRewrite?: {
@@ -13072,33 +13857,40 @@ export interface SearchNamespaceInstanceRequest {
         | "openai/gpt-5"
         | "openai/gpt-5-mini"
         | "openai/gpt-5-nano"
-        | "";
+        | ""
+        | (string & {});
       rewritePrompt?: string;
     };
     reranking?: {
       enabled?: boolean;
       matchThreshold?: number;
-      model?: "@cf/baai/bge-reranker-base" | "";
+      model?: "@cf/baai/bge-reranker-base" | "" | (string & {});
     };
     retrieval?: {
       boostBy?: {
         field: string;
-        direction?: "asc" | "desc" | "exists" | "not_exists";
+        direction?: "asc" | "desc" | "exists" | "not_exists" | (string & {});
       }[];
       contextExpansion?: number;
       filters?: Record<string, unknown>;
-      fusionMethod?: "max" | "rrf";
-      keywordMatchMode?: "and" | "or";
+      fusionMethod?: "max" | "rrf" | (string & {});
+      keywordMatchMode?: "and" | "or" | (string & {});
       matchThreshold?: number;
       maxNumResults?: number;
-      retrievalType?: "vector" | "keyword" | "hybrid";
+      retrievalType?: "vector" | "keyword" | "hybrid" | (string & {});
       returnOnFailure?: boolean;
     };
   };
   /** Body param */
   messages?: {
     content: string | null;
-    role: "system" | "developer" | "user" | "assistant" | "tool";
+    role:
+      | "system"
+      | "developer"
+      | "user"
+      | "assistant"
+      | "tool"
+      | (string & {});
   }[];
   /** Body param: A simple text query string. Alternative to 'messages' — provide either this or 'messages', not both. */
   query?: string;
@@ -13114,11 +13906,14 @@ export const SearchNamespaceInstanceRequest =
         cache: Schema.optional(
           Schema.Struct({
             cacheThreshold: Schema.optional(
-              Schema.Literals([
-                "super_strict_match",
-                "close_enough",
-                "flexible_friend",
-                "anything_goes",
+              Schema.Union([
+                Schema.Literals([
+                  "super_strict_match",
+                  "close_enough",
+                  "flexible_friend",
+                  "anything_goes",
+                ]),
+                Schema.String,
               ]),
             ),
             enabled: Schema.optional(Schema.Boolean),
@@ -13133,37 +13928,40 @@ export const SearchNamespaceInstanceRequest =
           Schema.Struct({
             enabled: Schema.optional(Schema.Boolean),
             model: Schema.optional(
-              Schema.Literals([
-                "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-                "@cf/zai-org/glm-4.7-flash",
-                "@cf/meta/llama-3.1-8b-instruct-fast",
-                "@cf/meta/llama-3.1-8b-instruct-fp8",
-                "@cf/meta/llama-4-scout-17b-16e-instruct",
-                "@cf/qwen/qwen3-30b-a3b-fp8",
-                "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
-                "@cf/moonshotai/kimi-k2-instruct",
-                "@cf/google/gemma-3-12b-it",
-                "@cf/google/gemma-4-26b-a4b-it",
-                "@cf/moonshotai/kimi-k2.5",
-                "anthropic/claude-3-7-sonnet",
-                "anthropic/claude-sonnet-4",
-                "anthropic/claude-opus-4",
-                "anthropic/claude-3-5-haiku",
-                "cerebras/qwen-3-235b-a22b-instruct",
-                "cerebras/qwen-3-235b-a22b-thinking",
-                "cerebras/llama-3.3-70b",
-                "cerebras/llama-4-maverick-17b-128e-instruct",
-                "cerebras/llama-4-scout-17b-16e-instruct",
-                "cerebras/gpt-oss-120b",
-                "google-ai-studio/gemini-2.5-flash",
-                "google-ai-studio/gemini-2.5-pro",
-                "grok/grok-4",
-                "groq/llama-3.3-70b-versatile",
-                "groq/llama-3.1-8b-instant",
-                "openai/gpt-5",
-                "openai/gpt-5-mini",
-                "openai/gpt-5-nano",
-                "",
+              Schema.Union([
+                Schema.Literals([
+                  "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+                  "@cf/zai-org/glm-4.7-flash",
+                  "@cf/meta/llama-3.1-8b-instruct-fast",
+                  "@cf/meta/llama-3.1-8b-instruct-fp8",
+                  "@cf/meta/llama-4-scout-17b-16e-instruct",
+                  "@cf/qwen/qwen3-30b-a3b-fp8",
+                  "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+                  "@cf/moonshotai/kimi-k2-instruct",
+                  "@cf/google/gemma-3-12b-it",
+                  "@cf/google/gemma-4-26b-a4b-it",
+                  "@cf/moonshotai/kimi-k2.5",
+                  "anthropic/claude-3-7-sonnet",
+                  "anthropic/claude-sonnet-4",
+                  "anthropic/claude-opus-4",
+                  "anthropic/claude-3-5-haiku",
+                  "cerebras/qwen-3-235b-a22b-instruct",
+                  "cerebras/qwen-3-235b-a22b-thinking",
+                  "cerebras/llama-3.3-70b",
+                  "cerebras/llama-4-maverick-17b-128e-instruct",
+                  "cerebras/llama-4-scout-17b-16e-instruct",
+                  "cerebras/gpt-oss-120b",
+                  "google-ai-studio/gemini-2.5-flash",
+                  "google-ai-studio/gemini-2.5-pro",
+                  "grok/grok-4",
+                  "groq/llama-3.3-70b-versatile",
+                  "groq/llama-3.1-8b-instant",
+                  "openai/gpt-5",
+                  "openai/gpt-5-mini",
+                  "openai/gpt-5-nano",
+                  "",
+                ]),
+                Schema.String,
               ]),
             ),
             rewritePrompt: Schema.optional(Schema.String),
@@ -13180,7 +13978,10 @@ export const SearchNamespaceInstanceRequest =
             enabled: Schema.optional(Schema.Boolean),
             matchThreshold: Schema.optional(Schema.Number),
             model: Schema.optional(
-              Schema.Literals(["@cf/baai/bge-reranker-base", ""]),
+              Schema.Union([
+                Schema.Literals(["@cf/baai/bge-reranker-base", ""]),
+                Schema.String,
+              ]),
             ),
           }).pipe(
             Schema.encodeKeys({
@@ -13197,7 +13998,10 @@ export const SearchNamespaceInstanceRequest =
                 Schema.Struct({
                   field: Schema.String,
                   direction: Schema.optional(
-                    Schema.Literals(["asc", "desc", "exists", "not_exists"]),
+                    Schema.Union([
+                      Schema.Literals(["asc", "desc", "exists", "not_exists"]),
+                      Schema.String,
+                    ]),
                   ),
                 }),
               ),
@@ -13206,12 +14010,19 @@ export const SearchNamespaceInstanceRequest =
             filters: Schema.optional(
               Schema.Record(Schema.String, Schema.Unknown),
             ),
-            fusionMethod: Schema.optional(Schema.Literals(["max", "rrf"])),
-            keywordMatchMode: Schema.optional(Schema.Literals(["and", "or"])),
+            fusionMethod: Schema.optional(
+              Schema.Union([Schema.Literals(["max", "rrf"]), Schema.String]),
+            ),
+            keywordMatchMode: Schema.optional(
+              Schema.Union([Schema.Literals(["and", "or"]), Schema.String]),
+            ),
             matchThreshold: Schema.optional(Schema.Number),
             maxNumResults: Schema.optional(Schema.Number),
             retrievalType: Schema.optional(
-              Schema.Literals(["vector", "keyword", "hybrid"]),
+              Schema.Union([
+                Schema.Literals(["vector", "keyword", "hybrid"]),
+                Schema.String,
+              ]),
             ),
             returnOnFailure: Schema.optional(Schema.Boolean),
           }).pipe(
@@ -13241,12 +14052,15 @@ export const SearchNamespaceInstanceRequest =
       Schema.Array(
         Schema.Struct({
           content: Schema.Union([Schema.String, Schema.Null]),
-          role: Schema.Literals([
-            "system",
-            "developer",
-            "user",
-            "assistant",
-            "tool",
+          role: Schema.Union([
+            Schema.Literals([
+              "system",
+              "developer",
+              "user",
+              "assistant",
+              "tool",
+            ]),
+            Schema.String,
           ]),
         }),
       ),
@@ -13276,7 +14090,7 @@ export interface SearchNamespaceInstanceResponse {
       timestamp?: number | null;
     } | null;
     scoringDetails?: {
-      fusionMethod?: "rrf" | "max" | null;
+      fusionMethod?: "rrf" | "max" | (string & {}) | null;
       keywordRank?: number | null;
       keywordScore?: number | null;
       rerankingScore?: number | null;
@@ -13316,7 +14130,13 @@ export const SearchNamespaceInstanceResponse =
           Schema.Union([
             Schema.Struct({
               fusionMethod: Schema.optional(
-                Schema.Union([Schema.Literals(["rrf", "max"]), Schema.Null]),
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["rrf", "max"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
               ),
               keywordRank: Schema.optional(
                 Schema.Union([Schema.Number, Schema.Null]),
@@ -13529,7 +14349,14 @@ export interface GetNamespaceInstanceItemResponse {
   nextAction: "INDEX" | "DELETE" | null;
   /** Identifies which data source this item belongs to. "builtin" for uploaded files, "{type}:{source}" for external sources, null for legacy items. */
   sourceId: string | null;
-  status: "queued" | "running" | "completed" | "error" | "skipped" | "outdated";
+  status:
+    | "queued"
+    | "running"
+    | "completed"
+    | "error"
+    | "skipped"
+    | "outdated"
+    | (string & {});
   error?: string | null;
 }
 
@@ -13549,13 +14376,16 @@ export const GetNamespaceInstanceItemResponse =
       Schema.Null,
     ]),
     sourceId: Schema.Union([Schema.String, Schema.Null]),
-    status: Schema.Literals([
-      "queued",
-      "running",
-      "completed",
-      "error",
-      "skipped",
-      "outdated",
+    status: Schema.Union([
+      Schema.Literals([
+        "queued",
+        "running",
+        "completed",
+        "error",
+        "skipped",
+        "outdated",
+      ]),
+      Schema.String,
     ]),
     error: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
@@ -13606,7 +14436,7 @@ export interface ListNamespaceInstanceItemsRequest {
   /** Query param */
   search?: string;
   /** Query param: Sort order for items. "status" (default) sorts by status priority then last_seen_at. "modified_at" sorts by file modification time (most recent first), falling back to created_at. */
-  sortBy?: "status" | "modified_at";
+  sortBy?: "status" | "modified_at" | (string & {});
   /** Query param: Filter items by source_id. Use "builtin" for uploaded files, or a source identifier like "web-crawler:https://example.com". */
   source?: string;
   /** Query param */
@@ -13616,7 +14446,8 @@ export interface ListNamespaceInstanceItemsRequest {
     | "completed"
     | "error"
     | "skipped"
-    | "outdated";
+    | "outdated"
+    | (string & {});
 }
 
 export const ListNamespaceInstanceItemsRequest =
@@ -13631,18 +14462,21 @@ export const ListNamespaceInstanceItemsRequest =
       T.HttpQuery("metadata_filter"),
     ),
     search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
-    sortBy: Schema.optional(Schema.Literals(["status", "modified_at"])).pipe(
-      T.HttpQuery("sort_by"),
-    ),
+    sortBy: Schema.optional(
+      Schema.Union([Schema.Literals(["status", "modified_at"]), Schema.String]),
+    ).pipe(T.HttpQuery("sort_by")),
     source: Schema.optional(Schema.String).pipe(T.HttpQuery("source")),
     status: Schema.optional(
-      Schema.Literals([
-        "queued",
-        "running",
-        "completed",
-        "error",
-        "skipped",
-        "outdated",
+      Schema.Union([
+        Schema.Literals([
+          "queued",
+          "running",
+          "completed",
+          "error",
+          "skipped",
+          "outdated",
+        ]),
+        Schema.String,
       ]),
     ).pipe(T.HttpQuery("status")),
   }).pipe(
@@ -13670,7 +14504,8 @@ export interface ListNamespaceInstanceItemsResponse {
       | "completed"
       | "error"
       | "skipped"
-      | "outdated";
+      | "outdated"
+      | (string & {});
     error?: string | null;
   }[];
   resultInfo?: {
@@ -13699,13 +14534,16 @@ export const ListNamespaceInstanceItemsResponse =
           Schema.Null,
         ]),
         sourceId: Schema.Union([Schema.String, Schema.Null]),
-        status: Schema.Literals([
-          "queued",
-          "running",
-          "completed",
-          "error",
-          "skipped",
-          "outdated",
+        status: Schema.Union([
+          Schema.Literals([
+            "queued",
+            "running",
+            "completed",
+            "error",
+            "skipped",
+            "outdated",
+          ]),
+          Schema.String,
         ]),
         error: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       }).pipe(
@@ -13896,7 +14734,14 @@ export interface UploadNamespaceInstanceItemResponse {
   nextAction: "INDEX" | "DELETE" | null;
   /** Identifies which data source this item belongs to. "builtin" for uploaded files, "{type}:{source}" for external sources, null for legacy items. */
   sourceId: string | null;
-  status: "queued" | "running" | "completed" | "error" | "skipped" | "outdated";
+  status:
+    | "queued"
+    | "running"
+    | "completed"
+    | "error"
+    | "skipped"
+    | "outdated"
+    | (string & {});
   error?: string | null;
 }
 
@@ -13916,13 +14761,16 @@ export const UploadNamespaceInstanceItemResponse =
       Schema.Null,
     ]),
     sourceId: Schema.Union([Schema.String, Schema.Null]),
-    status: Schema.Literals([
-      "queued",
-      "running",
-      "completed",
-      "error",
-      "skipped",
-      "outdated",
+    status: Schema.Union([
+      Schema.Literals([
+        "queued",
+        "running",
+        "completed",
+        "error",
+        "skipped",
+        "outdated",
+      ]),
+      Schema.String,
     ]),
     error: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
@@ -14149,7 +14997,14 @@ export interface SyncNamespaceInstanceItemResponse {
   nextAction: "INDEX" | "DELETE" | null;
   /** Identifies which data source this item belongs to. "builtin" for uploaded files, "{type}:{source}" for external sources, null for legacy items. */
   sourceId: string | null;
-  status: "queued" | "running" | "completed" | "error" | "skipped" | "outdated";
+  status:
+    | "queued"
+    | "running"
+    | "completed"
+    | "error"
+    | "skipped"
+    | "outdated"
+    | (string & {});
   error?: string | null;
 }
 
@@ -14169,13 +15024,16 @@ export const SyncNamespaceInstanceItemResponse =
       Schema.Null,
     ]),
     sourceId: Schema.Union([Schema.String, Schema.Null]),
-    status: Schema.Literals([
-      "queued",
-      "running",
-      "completed",
-      "error",
-      "skipped",
-      "outdated",
+    status: Schema.Union([
+      Schema.Literals([
+        "queued",
+        "running",
+        "completed",
+        "error",
+        "skipped",
+        "outdated",
+      ]),
+      Schema.String,
     ]),
     error: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
@@ -14238,7 +15096,7 @@ export const GetNamespaceInstanceJobRequest =
 
 export interface GetNamespaceInstanceJobResponse {
   id: string;
-  source: "user" | "schedule";
+  source: "user" | "schedule" | (string & {});
   description?: string | null;
   endReason?: string | null;
   endedAt?: string | null;
@@ -14249,7 +15107,10 @@ export interface GetNamespaceInstanceJobResponse {
 export const GetNamespaceInstanceJobResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
-    source: Schema.Literals(["user", "schedule"]),
+    source: Schema.Union([
+      Schema.Literals(["user", "schedule"]),
+      Schema.String,
+    ]),
     description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     endReason: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     endedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -14310,7 +15171,7 @@ export const ListNamespaceInstanceJobsRequest =
 export interface ListNamespaceInstanceJobsResponse {
   result: {
     id: string;
-    source: "user" | "schedule";
+    source: "user" | "schedule" | (string & {});
     description?: string | null;
     endReason?: string | null;
     endedAt?: string | null;
@@ -14330,7 +15191,10 @@ export const ListNamespaceInstanceJobsResponse =
     result: Schema.Array(
       Schema.Struct({
         id: Schema.String,
-        source: Schema.Literals(["user", "schedule"]),
+        source: Schema.Union([
+          Schema.Literals(["user", "schedule"]),
+          Schema.String,
+        ]),
         description: Schema.optional(
           Schema.Union([Schema.String, Schema.Null]),
         ),
@@ -14418,7 +15282,7 @@ export const CreateNamespaceInstanceJobRequest =
 
 export interface CreateNamespaceInstanceJobResponse {
   id: string;
-  source: "user" | "schedule";
+  source: "user" | "schedule" | (string & {});
   description?: string | null;
   endReason?: string | null;
   endedAt?: string | null;
@@ -14429,7 +15293,10 @@ export interface CreateNamespaceInstanceJobResponse {
 export const CreateNamespaceInstanceJobResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
-    source: Schema.Literals(["user", "schedule"]),
+    source: Schema.Union([
+      Schema.Literals(["user", "schedule"]),
+      Schema.String,
+    ]),
     description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     endReason: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     endedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -14490,7 +15357,7 @@ export const PatchNamespaceInstanceJobRequest =
 
 export interface PatchNamespaceInstanceJobResponse {
   id: string;
-  source: "user" | "schedule";
+  source: "user" | "schedule" | (string & {});
   description?: string | null;
   endReason?: string | null;
   endedAt?: string | null;
@@ -14501,7 +15368,10 @@ export interface PatchNamespaceInstanceJobResponse {
 export const PatchNamespaceInstanceJobResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
-    source: Schema.Literals(["user", "schedule"]),
+    source: Schema.Union([
+      Schema.Literals(["user", "schedule"]),
+      Schema.String,
+    ]),
     description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     endReason: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     endedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -14651,7 +15521,14 @@ export interface CreateOrUpdateNamespaceInstanceItemResponse {
   nextAction: "INDEX" | "DELETE" | null;
   /** Identifies which data source this item belongs to. "builtin" for uploaded files, "{type}:{source}" for external sources, null for legacy items. */
   sourceId: string | null;
-  status: "queued" | "running" | "completed" | "error" | "skipped" | "outdated";
+  status:
+    | "queued"
+    | "running"
+    | "completed"
+    | "error"
+    | "skipped"
+    | "outdated"
+    | (string & {});
   error?: string | null;
 }
 
@@ -14671,13 +15548,16 @@ export const CreateOrUpdateNamespaceInstanceItemResponse =
       Schema.Null,
     ]),
     sourceId: Schema.Union([Schema.String, Schema.Null]),
-    status: Schema.Literals([
-      "queued",
-      "running",
-      "completed",
-      "error",
-      "skipped",
-      "outdated",
+    status: Schema.Union([
+      Schema.Literals([
+        "queued",
+        "running",
+        "completed",
+        "error",
+        "skipped",
+        "outdated",
+      ]),
+      Schema.String,
     ]),
     error: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })

@@ -611,6 +611,7 @@ export interface GetSubdomainDnsResponse {
       | "SVCB"
       | "TLSA"
       | "URI"
+      | (string & {})
       | null;
   }[];
 }
@@ -630,25 +631,28 @@ export const GetSubdomainDnsResponse =
         ),
         type: Schema.optional(
           Schema.Union([
-            Schema.Literals([
-              "A",
-              "AAAA",
-              "CNAME",
-              "HTTPS",
-              "TXT",
-              "SRV",
-              "LOC",
-              "MX",
-              "NS",
-              "CERT",
-              "DNSKEY",
-              "DS",
-              "NAPTR",
-              "SMIMEA",
-              "SSHFP",
-              "SVCB",
-              "TLSA",
-              "URI",
+            Schema.Union([
+              Schema.Literals([
+                "A",
+                "AAAA",
+                "CNAME",
+                "HTTPS",
+                "TXT",
+                "SRV",
+                "LOC",
+                "MX",
+                "NS",
+                "CERT",
+                "DNSKEY",
+                "DS",
+                "NAPTR",
+                "SMIMEA",
+                "SSHFP",
+                "SVCB",
+                "TLSA",
+                "URI",
+              ]),
+              Schema.String,
             ]),
             Schema.Null,
           ]),

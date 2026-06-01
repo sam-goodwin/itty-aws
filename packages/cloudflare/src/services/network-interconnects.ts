@@ -569,6 +569,7 @@ export type GetInterconnectResponse =
         | "10G"
         | "20G"
         | "50G"
+        | (string & {})
         | null;
     };
 
@@ -606,19 +607,22 @@ export const GetInterconnectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union(
       owner: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       speed: Schema.optional(
         Schema.Union([
-          Schema.Literals([
-            "50M",
-            "100M",
-            "200M",
-            "300M",
-            "400M",
-            "500M",
-            "1G",
-            "2G",
-            "5G",
-            "10G",
-            "20G",
-            "50G",
+          Schema.Union([
+            Schema.Literals([
+              "50M",
+              "100M",
+              "200M",
+              "300M",
+              "400M",
+              "500M",
+              "1G",
+              "2G",
+              "5G",
+              "10G",
+              "20G",
+              "50G",
+            ]),
+            Schema.String,
           ]),
           Schema.Null,
         ]),
@@ -703,6 +707,7 @@ export interface ListInterconnectsResponse {
           | "10G"
           | "20G"
           | "50G"
+          | (string & {})
           | null;
       }
   )[];
@@ -745,19 +750,22 @@ export const ListInterconnectsResponse =
           owner: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           speed: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "50M",
-                "100M",
-                "200M",
-                "300M",
-                "400M",
-                "500M",
-                "1G",
-                "2G",
-                "5G",
-                "10G",
-                "20G",
-                "50G",
+              Schema.Union([
+                Schema.Literals([
+                  "50M",
+                  "100M",
+                  "200M",
+                  "300M",
+                  "400M",
+                  "500M",
+                  "1G",
+                  "2G",
+                  "5G",
+                  "10G",
+                  "20G",
+                  "50G",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -844,6 +852,7 @@ export type CreateInterconnectResponse =
         | "10G"
         | "20G"
         | "50G"
+        | (string & {})
         | null;
     };
 
@@ -881,19 +890,22 @@ export const CreateInterconnectResponse =
       owner: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       speed: Schema.optional(
         Schema.Union([
-          Schema.Literals([
-            "50M",
-            "100M",
-            "200M",
-            "300M",
-            "400M",
-            "500M",
-            "1G",
-            "2G",
-            "5G",
-            "10G",
-            "20G",
-            "50G",
+          Schema.Union([
+            Schema.Literals([
+              "50M",
+              "100M",
+              "200M",
+              "300M",
+              "400M",
+              "500M",
+              "1G",
+              "2G",
+              "5G",
+              "10G",
+              "20G",
+              "50G",
+            ]),
+            Schema.String,
           ]),
           Schema.Null,
         ]),

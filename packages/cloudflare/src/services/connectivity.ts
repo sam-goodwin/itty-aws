@@ -72,7 +72,7 @@ export type GetDirectoryServiceResponse =
             };
           };
       name: string;
-      type: "tcp" | "http";
+      type: "tcp" | "http" | (string & {});
       createdAt?: string | null;
       httpPort?: number | null;
       httpsPort?: number | null;
@@ -93,7 +93,7 @@ export type GetDirectoryServiceResponse =
             };
           };
       name: string;
-      type: "tcp" | "http";
+      type: "tcp" | "http" | (string & {});
       appProtocol?: "postgresql" | "mysql" | null;
       createdAt?: string | null;
       serviceId?: string | null;
@@ -146,7 +146,7 @@ export const GetDirectoryServiceResponse =
         ),
       ]),
       name: Schema.String,
-      type: Schema.Literals(["tcp", "http"]),
+      type: Schema.Union([Schema.Literals(["tcp", "http"]), Schema.String]),
       createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       httpPort: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       httpsPort: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -219,7 +219,7 @@ export const GetDirectoryServiceResponse =
         ),
       ]),
       name: Schema.String,
-      type: Schema.Literals(["tcp", "http"]),
+      type: Schema.Union([Schema.Literals(["tcp", "http"]), Schema.String]),
       appProtocol: Schema.optional(
         Schema.Union([
           Schema.Literal("postgresql"),
@@ -316,7 +316,7 @@ export interface ListDirectoryServicesResponse {
               };
             };
         name: string;
-        type: "tcp" | "http";
+        type: "tcp" | "http" | (string & {});
         createdAt?: string | null;
         httpPort?: number | null;
         httpsPort?: number | null;
@@ -337,7 +337,7 @@ export interface ListDirectoryServicesResponse {
               };
             };
         name: string;
-        type: "tcp" | "http";
+        type: "tcp" | "http" | (string & {});
         appProtocol?: "postgresql" | "mysql" | null;
         createdAt?: string | null;
         serviceId?: string | null;
@@ -400,7 +400,7 @@ export const ListDirectoryServicesResponse =
             ),
           ]),
           name: Schema.String,
-          type: Schema.Literals(["tcp", "http"]),
+          type: Schema.Union([Schema.Literals(["tcp", "http"]), Schema.String]),
           createdAt: Schema.optional(
             Schema.Union([Schema.String, Schema.Null]),
           ),
@@ -481,7 +481,7 @@ export const ListDirectoryServicesResponse =
             ),
           ]),
           name: Schema.String,
-          type: Schema.Literals(["tcp", "http"]),
+          type: Schema.Union([Schema.Literals(["tcp", "http"]), Schema.String]),
           appProtocol: Schema.optional(
             Schema.Union([
               Schema.Literal("postgresql"),
@@ -585,7 +585,7 @@ export interface CreateDirectoryServiceRequest {
   /** Body param */
   name: string;
   /** Body param */
-  type: "tcp" | "http";
+  type: "tcp" | "http" | (string & {});
   /** Body param */
   httpPort?: number | null;
   /** Body param */
@@ -638,7 +638,7 @@ export const CreateDirectoryServiceRequest =
       ),
     ]),
     name: Schema.String,
-    type: Schema.Literals(["tcp", "http"]),
+    type: Schema.Union([Schema.Literals(["tcp", "http"]), Schema.String]),
     httpPort: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     httpsPort: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     tlsSettings: Schema.optional(
@@ -680,7 +680,7 @@ export type CreateDirectoryServiceResponse =
             };
           };
       name: string;
-      type: "tcp" | "http";
+      type: "tcp" | "http" | (string & {});
       createdAt?: string | null;
       httpPort?: number | null;
       httpsPort?: number | null;
@@ -701,7 +701,7 @@ export type CreateDirectoryServiceResponse =
             };
           };
       name: string;
-      type: "tcp" | "http";
+      type: "tcp" | "http" | (string & {});
       appProtocol?: "postgresql" | "mysql" | null;
       createdAt?: string | null;
       serviceId?: string | null;
@@ -754,7 +754,7 @@ export const CreateDirectoryServiceResponse =
         ),
       ]),
       name: Schema.String,
-      type: Schema.Literals(["tcp", "http"]),
+      type: Schema.Union([Schema.Literals(["tcp", "http"]), Schema.String]),
       createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       httpPort: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       httpsPort: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -827,7 +827,7 @@ export const CreateDirectoryServiceResponse =
         ),
       ]),
       name: Schema.String,
-      type: Schema.Literals(["tcp", "http"]),
+      type: Schema.Union([Schema.Literals(["tcp", "http"]), Schema.String]),
       appProtocol: Schema.optional(
         Schema.Union([
           Schema.Literal("postgresql"),
@@ -900,7 +900,7 @@ export interface UpdateDirectoryServiceRequest {
   /** Body param */
   name: string;
   /** Body param */
-  type: "tcp" | "http";
+  type: "tcp" | "http" | (string & {});
   /** Body param */
   httpPort?: number | null;
   /** Body param */
@@ -954,7 +954,7 @@ export const UpdateDirectoryServiceRequest =
       ),
     ]),
     name: Schema.String,
-    type: Schema.Literals(["tcp", "http"]),
+    type: Schema.Union([Schema.Literals(["tcp", "http"]), Schema.String]),
     httpPort: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     httpsPort: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     tlsSettings: Schema.optional(
@@ -996,7 +996,7 @@ export type UpdateDirectoryServiceResponse =
             };
           };
       name: string;
-      type: "tcp" | "http";
+      type: "tcp" | "http" | (string & {});
       createdAt?: string | null;
       httpPort?: number | null;
       httpsPort?: number | null;
@@ -1017,7 +1017,7 @@ export type UpdateDirectoryServiceResponse =
             };
           };
       name: string;
-      type: "tcp" | "http";
+      type: "tcp" | "http" | (string & {});
       appProtocol?: "postgresql" | "mysql" | null;
       createdAt?: string | null;
       serviceId?: string | null;
@@ -1070,7 +1070,7 @@ export const UpdateDirectoryServiceResponse =
         ),
       ]),
       name: Schema.String,
-      type: Schema.Literals(["tcp", "http"]),
+      type: Schema.Union([Schema.Literals(["tcp", "http"]), Schema.String]),
       createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       httpPort: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       httpsPort: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -1143,7 +1143,7 @@ export const UpdateDirectoryServiceResponse =
         ),
       ]),
       name: Schema.String,
-      type: Schema.Literals(["tcp", "http"]),
+      type: Schema.Union([Schema.Literals(["tcp", "http"]), Schema.String]),
       appProtocol: Schema.optional(
         Schema.Union([
           Schema.Literal("postgresql"),

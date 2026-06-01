@@ -1086,14 +1086,26 @@ function typeInfoToSchema(
       const allLiterals = type.values.every((v) => v.kind === "literal");
       if (allLiterals) {
         const literalSet = new Set<string>();
+        let allStringLiterals = true;
         for (const v of type.values) {
           if (v.value === "true" || v.value === "false") {
             literalSet.add(v.value);
+            allStringLiterals = false;
           } else {
             literalSet.add(`"${v.value}"`);
           }
         }
-        return `Schema.Literals([${[...literalSet].join(", ")}])`;
+        const literals = `Schema.Literals([${[...literalSet].join(", ")}])`;
+        // Cloudflare's string enums are OPEN: the API regularly returns values
+        // the SDK's union doesn't yet list (e.g. new permission-group scopes
+        // like `com.cloudflare.edge.worker.script`). A bare `Schema.Literals`
+        // rejects those and fails to decode the whole response. Union with
+        // `Schema.String` so decoding/encoding stays forward-compatible —
+        // mirroring the SDK's own `"a" | "b" | (string & {})` convention (see
+        // `typeInfoToTsType`). Boolean-literal unions stay strict.
+        return allStringLiterals
+          ? `Schema.Union([${literals}, Schema.String])`
+          : literals;
       }
       // General union - de-duplicate and filter unknowns.
       // Sort object variants by required-property count (descending) so that
@@ -1252,6 +1264,22 @@ function typeInfoToTsType(
         tsTypeSet.add(t);
       }
       const uniqueTsTypes = [...tsTypeSet];
+      // Cloudflare's string enums are OPEN (see `typeInfoToSchema`): keep the
+      // literal members for autocomplete but widen with `(string & {})` so
+      // newer server-side values still type-check. Boolean-literal unions and
+      // unions containing non-literals (e.g. `... | null`, object variants)
+      // stay closed.
+      const allStringLiterals =
+        values.length > 0 &&
+        values.every(
+          (v) =>
+            v.kind === "literal" &&
+            v.value !== "true" &&
+            v.value !== "false",
+        );
+      if (allStringLiterals) {
+        uniqueTsTypes.push("(string & {})");
+      }
       if (uniqueTsTypes.length === 1) {
         return uniqueTsTypes[0];
       }

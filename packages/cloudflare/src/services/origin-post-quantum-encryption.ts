@@ -37,7 +37,7 @@ export interface GetOriginPostQuantumEncryptionResponse {
   /** Whether the setting is editable. */
   editable: boolean;
   /** Value of the Origin Post Quantum Encryption Setting. */
-  value: "preferred" | "supported" | "off";
+  value: "preferred" | "supported" | "off" | (string & {});
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
@@ -46,7 +46,10 @@ export const GetOriginPostQuantumEncryptionResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Literal("origin_pqe"),
     editable: Schema.Boolean,
-    value: Schema.Literals(["preferred", "supported", "off"]),
+    value: Schema.Union([
+      Schema.Literals(["preferred", "supported", "off"]),
+      Schema.String,
+    ]),
     modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
     .pipe(
@@ -78,13 +81,16 @@ export interface PutOriginPostQuantumEncryptionRequest {
   /** Path param: Identifier. */
   zoneId: string;
   /** Body param: Value of the Origin Post Quantum Encryption Setting. */
-  value: "preferred" | "supported" | "off";
+  value: "preferred" | "supported" | "off" | (string & {});
 }
 
 export const PutOriginPostQuantumEncryptionRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    value: Schema.Literals(["preferred", "supported", "off"]),
+    value: Schema.Union([
+      Schema.Literals(["preferred", "supported", "off"]),
+      Schema.String,
+    ]),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -98,7 +104,7 @@ export interface PutOriginPostQuantumEncryptionResponse {
   /** Whether the setting is editable. */
   editable: boolean;
   /** Value of the Origin Post Quantum Encryption Setting. */
-  value: "preferred" | "supported" | "off";
+  value: "preferred" | "supported" | "off" | (string & {});
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
@@ -107,7 +113,10 @@ export const PutOriginPostQuantumEncryptionResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Literal("origin_pqe"),
     editable: Schema.Boolean,
-    value: Schema.Literals(["preferred", "supported", "off"]),
+    value: Schema.Union([
+      Schema.Literals(["preferred", "supported", "off"]),
+      Schema.String,
+    ]),
     modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
     .pipe(

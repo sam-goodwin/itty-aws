@@ -77,7 +77,13 @@ export interface GetContainerApplicationResponse {
   id: string;
   accountId: string;
   name: string;
-  schedulingPolicy: "moon" | "gpu" | "regional" | "fill_metals" | "default";
+  schedulingPolicy:
+    | "moon"
+    | "gpu"
+    | "regional"
+    | "fill_metals"
+    | "default"
+    | (string & {});
   instances: number;
   maxInstances: number;
   constraints?: { tier?: number | null } | null;
@@ -93,6 +99,7 @@ export interface GetContainerApplicationResponse {
       | "standard-2"
       | "standard-3"
       | "standard-4"
+      | (string & {})
       | null;
     observability?: { logs?: { enabled: boolean } | null } | null;
     sshPublicKeyIds?: string[] | null;
@@ -103,9 +110,9 @@ export interface GetContainerApplicationResponse {
     environmentVariables?: { name: string; value: string }[] | null;
     labels?: { name: string; value: string }[] | null;
     network?: {
-      assignIpv4?: "none" | "predefined" | "account" | null;
-      assignIpv6?: "none" | "predefined" | "account" | null;
-      mode?: "public" | "private" | null;
+      assignIpv4?: "none" | "predefined" | "account" | (string & {}) | null;
+      assignIpv6?: "none" | "predefined" | "account" | (string & {}) | null;
+      mode?: "public" | "private" | (string & {}) | null;
     } | null;
     command?: string[] | null;
     entrypoint?: string[] | null;
@@ -114,7 +121,7 @@ export interface GetContainerApplicationResponse {
     checks?:
       | {
           name?: string | null;
-          type: "http" | "tcp";
+          type: "http" | "tcp" | (string & {});
           tls?: boolean | null;
           port: string;
           http?: {
@@ -126,6 +133,7 @@ export interface GetContainerApplicationResponse {
               | "DELETE"
               | "OPTIONS"
               | "HEAD"
+              | (string & {})
               | null;
             body?: string | null;
             path?: string | null;
@@ -134,7 +142,7 @@ export interface GetContainerApplicationResponse {
           interval: string;
           timeout: string;
           retries?: number | null;
-          kind: "health" | "ready";
+          kind: "health" | "ready" | (string & {});
         }[]
       | null;
   };
@@ -150,12 +158,9 @@ export const GetContainerApplicationResponse =
     id: Schema.String,
     accountId: Schema.String,
     name: Schema.String,
-    schedulingPolicy: Schema.Literals([
-      "moon",
-      "gpu",
-      "regional",
-      "fill_metals",
-      "default",
+    schedulingPolicy: Schema.Union([
+      Schema.Literals(["moon", "gpu", "regional", "fill_metals", "default"]),
+      Schema.String,
     ]),
     instances: Schema.Number,
     maxInstances: Schema.Number,
@@ -181,15 +186,18 @@ export const GetContainerApplicationResponse =
       image: Schema.String,
       instanceType: Schema.optional(
         Schema.Union([
-          Schema.Literals([
-            "lite",
-            "dev",
-            "basic",
-            "standard",
-            "standard-1",
-            "standard-2",
-            "standard-3",
-            "standard-4",
+          Schema.Union([
+            Schema.Literals([
+              "lite",
+              "dev",
+              "basic",
+              "standard",
+              "standard-1",
+              "standard-2",
+              "standard-3",
+              "standard-4",
+            ]),
+            Schema.String,
           ]),
           Schema.Null,
         ]),
@@ -261,19 +269,28 @@ export const GetContainerApplicationResponse =
           Schema.Struct({
             assignIpv4: Schema.optional(
               Schema.Union([
-                Schema.Literals(["none", "predefined", "account"]),
+                Schema.Union([
+                  Schema.Literals(["none", "predefined", "account"]),
+                  Schema.String,
+                ]),
                 Schema.Null,
               ]),
             ),
             assignIpv6: Schema.optional(
               Schema.Union([
-                Schema.Literals(["none", "predefined", "account"]),
+                Schema.Union([
+                  Schema.Literals(["none", "predefined", "account"]),
+                  Schema.String,
+                ]),
                 Schema.Null,
               ]),
             ),
             mode: Schema.optional(
               Schema.Union([
-                Schema.Literals(["public", "private"]),
+                Schema.Union([
+                  Schema.Literals(["public", "private"]),
+                  Schema.String,
+                ]),
                 Schema.Null,
               ]),
             ),
@@ -322,7 +339,10 @@ export const GetContainerApplicationResponse =
           Schema.Array(
             Schema.Struct({
               name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              type: Schema.Literals(["http", "tcp"]),
+              type: Schema.Union([
+                Schema.Literals(["http", "tcp"]),
+                Schema.String,
+              ]),
               tls: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
               port: Schema.String,
               http: Schema.optional(
@@ -330,14 +350,17 @@ export const GetContainerApplicationResponse =
                   Schema.Struct({
                     method: Schema.optional(
                       Schema.Union([
-                        Schema.Literals([
-                          "GET",
-                          "POST",
-                          "PUT",
-                          "PATCH",
-                          "DELETE",
-                          "OPTIONS",
-                          "HEAD",
+                        Schema.Union([
+                          Schema.Literals([
+                            "GET",
+                            "POST",
+                            "PUT",
+                            "PATCH",
+                            "DELETE",
+                            "OPTIONS",
+                            "HEAD",
+                          ]),
+                          Schema.String,
                         ]),
                         Schema.Null,
                       ]),
@@ -360,7 +383,10 @@ export const GetContainerApplicationResponse =
               retries: Schema.optional(
                 Schema.Union([Schema.Number, Schema.Null]),
               ),
-              kind: Schema.Literals(["health", "ready"]),
+              kind: Schema.Union([
+                Schema.Literals(["health", "ready"]),
+                Schema.String,
+              ]),
             }),
           ),
           Schema.Null,
@@ -459,7 +485,13 @@ export type ListContainerApplicationsResponse = {
   id: string;
   accountId: string;
   name: string;
-  schedulingPolicy: "moon" | "gpu" | "regional" | "fill_metals" | "default";
+  schedulingPolicy:
+    | "moon"
+    | "gpu"
+    | "regional"
+    | "fill_metals"
+    | "default"
+    | (string & {});
   instances: number;
   maxInstances: number;
   constraints?: { tier?: number | null } | null;
@@ -475,6 +507,7 @@ export type ListContainerApplicationsResponse = {
       | "standard-2"
       | "standard-3"
       | "standard-4"
+      | (string & {})
       | null;
     observability?: { logs?: { enabled: boolean } | null } | null;
     sshPublicKeyIds?: string[] | null;
@@ -485,9 +518,9 @@ export type ListContainerApplicationsResponse = {
     environmentVariables?: { name: string; value: string }[] | null;
     labels?: { name: string; value: string }[] | null;
     network?: {
-      assignIpv4?: "none" | "predefined" | "account" | null;
-      assignIpv6?: "none" | "predefined" | "account" | null;
-      mode?: "public" | "private" | null;
+      assignIpv4?: "none" | "predefined" | "account" | (string & {}) | null;
+      assignIpv6?: "none" | "predefined" | "account" | (string & {}) | null;
+      mode?: "public" | "private" | (string & {}) | null;
     } | null;
     command?: string[] | null;
     entrypoint?: string[] | null;
@@ -496,7 +529,7 @@ export type ListContainerApplicationsResponse = {
     checks?:
       | {
           name?: string | null;
-          type: "http" | "tcp";
+          type: "http" | "tcp" | (string & {});
           tls?: boolean | null;
           port: string;
           http?: {
@@ -508,6 +541,7 @@ export type ListContainerApplicationsResponse = {
               | "DELETE"
               | "OPTIONS"
               | "HEAD"
+              | (string & {})
               | null;
             body?: string | null;
             path?: string | null;
@@ -516,7 +550,7 @@ export type ListContainerApplicationsResponse = {
           interval: string;
           timeout: string;
           retries?: number | null;
-          kind: "health" | "ready";
+          kind: "health" | "ready" | (string & {});
         }[]
       | null;
   };
@@ -533,12 +567,9 @@ export const ListContainerApplicationsResponse =
       id: Schema.String,
       accountId: Schema.String,
       name: Schema.String,
-      schedulingPolicy: Schema.Literals([
-        "moon",
-        "gpu",
-        "regional",
-        "fill_metals",
-        "default",
+      schedulingPolicy: Schema.Union([
+        Schema.Literals(["moon", "gpu", "regional", "fill_metals", "default"]),
+        Schema.String,
       ]),
       instances: Schema.Number,
       maxInstances: Schema.Number,
@@ -564,15 +595,18 @@ export const ListContainerApplicationsResponse =
         image: Schema.String,
         instanceType: Schema.optional(
           Schema.Union([
-            Schema.Literals([
-              "lite",
-              "dev",
-              "basic",
-              "standard",
-              "standard-1",
-              "standard-2",
-              "standard-3",
-              "standard-4",
+            Schema.Union([
+              Schema.Literals([
+                "lite",
+                "dev",
+                "basic",
+                "standard",
+                "standard-1",
+                "standard-2",
+                "standard-3",
+                "standard-4",
+              ]),
+              Schema.String,
             ]),
             Schema.Null,
           ]),
@@ -644,19 +678,28 @@ export const ListContainerApplicationsResponse =
             Schema.Struct({
               assignIpv4: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["none", "predefined", "account"]),
+                  Schema.Union([
+                    Schema.Literals(["none", "predefined", "account"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
               assignIpv6: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["none", "predefined", "account"]),
+                  Schema.Union([
+                    Schema.Literals(["none", "predefined", "account"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
               mode: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["public", "private"]),
+                  Schema.Union([
+                    Schema.Literals(["public", "private"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -709,7 +752,10 @@ export const ListContainerApplicationsResponse =
                 name: Schema.optional(
                   Schema.Union([Schema.String, Schema.Null]),
                 ),
-                type: Schema.Literals(["http", "tcp"]),
+                type: Schema.Union([
+                  Schema.Literals(["http", "tcp"]),
+                  Schema.String,
+                ]),
                 tls: Schema.optional(
                   Schema.Union([Schema.Boolean, Schema.Null]),
                 ),
@@ -719,14 +765,17 @@ export const ListContainerApplicationsResponse =
                     Schema.Struct({
                       method: Schema.optional(
                         Schema.Union([
-                          Schema.Literals([
-                            "GET",
-                            "POST",
-                            "PUT",
-                            "PATCH",
-                            "DELETE",
-                            "OPTIONS",
-                            "HEAD",
+                          Schema.Union([
+                            Schema.Literals([
+                              "GET",
+                              "POST",
+                              "PUT",
+                              "PATCH",
+                              "DELETE",
+                              "OPTIONS",
+                              "HEAD",
+                            ]),
+                            Schema.String,
                           ]),
                           Schema.Null,
                         ]),
@@ -749,7 +798,10 @@ export const ListContainerApplicationsResponse =
                 retries: Schema.optional(
                   Schema.Union([Schema.Number, Schema.Null]),
                 ),
-                kind: Schema.Literals(["health", "ready"]),
+                kind: Schema.Union([
+                  Schema.Literals(["health", "ready"]),
+                  Schema.String,
+                ]),
               }),
             ),
             Schema.Null,
@@ -840,7 +892,8 @@ export interface CreateContainerApplicationRequest {
       | "standard-1"
       | "standard-2"
       | "standard-3"
-      | "standard-4";
+      | "standard-4"
+      | (string & {});
     observability?: { logs?: { enabled: boolean } };
     sshPublicKeyIds?: string[];
     secrets?: { name: string; type: "env"; secret: string }[];
@@ -850,9 +903,9 @@ export interface CreateContainerApplicationRequest {
     environmentVariables?: { name: string; value: string }[];
     labels?: { name: string; value: string }[];
     network?: {
-      assignIpv4?: "none" | "predefined" | "account";
-      assignIpv6?: "none" | "predefined" | "account";
-      mode?: "public" | "private";
+      assignIpv4?: "none" | "predefined" | "account" | (string & {});
+      assignIpv6?: "none" | "predefined" | "account" | (string & {});
+      mode?: "public" | "private" | (string & {});
     };
     command?: string[];
     entrypoint?: string[];
@@ -860,7 +913,7 @@ export interface CreateContainerApplicationRequest {
     ports?: { name: string; port?: number }[];
     checks?: {
       name?: string;
-      type: "http" | "tcp";
+      type: "http" | "tcp" | (string & {});
       tls?: boolean;
       port: string;
       http?: {
@@ -871,7 +924,8 @@ export interface CreateContainerApplicationRequest {
           | "PATCH"
           | "DELETE"
           | "OPTIONS"
-          | "HEAD";
+          | "HEAD"
+          | (string & {});
         body?: string;
         path?: string;
         headers?: unknown;
@@ -879,12 +933,18 @@ export interface CreateContainerApplicationRequest {
       interval: string;
       timeout: string;
       retries?: number;
-      kind: "health" | "ready";
+      kind: "health" | "ready" | (string & {});
     }[];
   };
   durableObjects?: { namespaceId: string };
   instances?: number;
-  schedulingPolicy?: "moon" | "gpu" | "regional" | "fill_metals" | "default";
+  schedulingPolicy?:
+    | "moon"
+    | "gpu"
+    | "regional"
+    | "fill_metals"
+    | "default"
+    | (string & {});
   constraints?: { tier?: number };
   affinities?: { colocation?: "datacenter" };
 }
@@ -897,15 +957,18 @@ export const CreateContainerApplicationRequest =
     configuration: Schema.Struct({
       image: Schema.String,
       instanceType: Schema.optional(
-        Schema.Literals([
-          "lite",
-          "dev",
-          "basic",
-          "standard",
-          "standard-1",
-          "standard-2",
-          "standard-3",
-          "standard-4",
+        Schema.Union([
+          Schema.Literals([
+            "lite",
+            "dev",
+            "basic",
+            "standard",
+            "standard-1",
+            "standard-2",
+            "standard-3",
+            "standard-4",
+          ]),
+          Schema.String,
         ]),
       ),
       observability: Schema.optional(
@@ -953,12 +1016,23 @@ export const CreateContainerApplicationRequest =
       network: Schema.optional(
         Schema.Struct({
           assignIpv4: Schema.optional(
-            Schema.Literals(["none", "predefined", "account"]),
+            Schema.Union([
+              Schema.Literals(["none", "predefined", "account"]),
+              Schema.String,
+            ]),
           ),
           assignIpv6: Schema.optional(
-            Schema.Literals(["none", "predefined", "account"]),
+            Schema.Union([
+              Schema.Literals(["none", "predefined", "account"]),
+              Schema.String,
+            ]),
           ),
-          mode: Schema.optional(Schema.Literals(["public", "private"])),
+          mode: Schema.optional(
+            Schema.Union([
+              Schema.Literals(["public", "private"]),
+              Schema.String,
+            ]),
+          ),
         }).pipe(
           Schema.encodeKeys({
             assignIpv4: "assign_ipv4",
@@ -987,20 +1061,26 @@ export const CreateContainerApplicationRequest =
         Schema.Array(
           Schema.Struct({
             name: Schema.optional(Schema.String),
-            type: Schema.Literals(["http", "tcp"]),
+            type: Schema.Union([
+              Schema.Literals(["http", "tcp"]),
+              Schema.String,
+            ]),
             tls: Schema.optional(Schema.Boolean),
             port: Schema.String,
             http: Schema.optional(
               Schema.Struct({
                 method: Schema.optional(
-                  Schema.Literals([
-                    "GET",
-                    "POST",
-                    "PUT",
-                    "PATCH",
-                    "DELETE",
-                    "OPTIONS",
-                    "HEAD",
+                  Schema.Union([
+                    Schema.Literals([
+                      "GET",
+                      "POST",
+                      "PUT",
+                      "PATCH",
+                      "DELETE",
+                      "OPTIONS",
+                      "HEAD",
+                    ]),
+                    Schema.String,
                   ]),
                 ),
                 body: Schema.optional(Schema.String),
@@ -1011,7 +1091,10 @@ export const CreateContainerApplicationRequest =
             interval: Schema.String,
             timeout: Schema.String,
             retries: Schema.optional(Schema.Number),
-            kind: Schema.Literals(["health", "ready"]),
+            kind: Schema.Union([
+              Schema.Literals(["health", "ready"]),
+              Schema.String,
+            ]),
           }),
         ),
       ),
@@ -1042,7 +1125,10 @@ export const CreateContainerApplicationRequest =
     ),
     instances: Schema.optional(Schema.Number),
     schedulingPolicy: Schema.optional(
-      Schema.Literals(["moon", "gpu", "regional", "fill_metals", "default"]),
+      Schema.Union([
+        Schema.Literals(["moon", "gpu", "regional", "fill_metals", "default"]),
+        Schema.String,
+      ]),
     ),
     constraints: Schema.optional(
       Schema.Struct({
@@ -1075,7 +1161,13 @@ export interface CreateContainerApplicationResponse {
   id: string;
   accountId: string;
   name: string;
-  schedulingPolicy: "moon" | "gpu" | "regional" | "fill_metals" | "default";
+  schedulingPolicy:
+    | "moon"
+    | "gpu"
+    | "regional"
+    | "fill_metals"
+    | "default"
+    | (string & {});
   instances: number;
   maxInstances: number;
   constraints?: { tier?: number | null } | null;
@@ -1091,6 +1183,7 @@ export interface CreateContainerApplicationResponse {
       | "standard-2"
       | "standard-3"
       | "standard-4"
+      | (string & {})
       | null;
     observability?: { logs?: { enabled: boolean } | null } | null;
     sshPublicKeyIds?: string[] | null;
@@ -1101,9 +1194,9 @@ export interface CreateContainerApplicationResponse {
     environmentVariables?: { name: string; value: string }[] | null;
     labels?: { name: string; value: string }[] | null;
     network?: {
-      assignIpv4?: "none" | "predefined" | "account" | null;
-      assignIpv6?: "none" | "predefined" | "account" | null;
-      mode?: "public" | "private" | null;
+      assignIpv4?: "none" | "predefined" | "account" | (string & {}) | null;
+      assignIpv6?: "none" | "predefined" | "account" | (string & {}) | null;
+      mode?: "public" | "private" | (string & {}) | null;
     } | null;
     command?: string[] | null;
     entrypoint?: string[] | null;
@@ -1112,7 +1205,7 @@ export interface CreateContainerApplicationResponse {
     checks?:
       | {
           name?: string | null;
-          type: "http" | "tcp";
+          type: "http" | "tcp" | (string & {});
           tls?: boolean | null;
           port: string;
           http?: {
@@ -1124,6 +1217,7 @@ export interface CreateContainerApplicationResponse {
               | "DELETE"
               | "OPTIONS"
               | "HEAD"
+              | (string & {})
               | null;
             body?: string | null;
             path?: string | null;
@@ -1132,7 +1226,7 @@ export interface CreateContainerApplicationResponse {
           interval: string;
           timeout: string;
           retries?: number | null;
-          kind: "health" | "ready";
+          kind: "health" | "ready" | (string & {});
         }[]
       | null;
   };
@@ -1148,12 +1242,9 @@ export const CreateContainerApplicationResponse =
     id: Schema.String,
     accountId: Schema.String,
     name: Schema.String,
-    schedulingPolicy: Schema.Literals([
-      "moon",
-      "gpu",
-      "regional",
-      "fill_metals",
-      "default",
+    schedulingPolicy: Schema.Union([
+      Schema.Literals(["moon", "gpu", "regional", "fill_metals", "default"]),
+      Schema.String,
     ]),
     instances: Schema.Number,
     maxInstances: Schema.Number,
@@ -1179,15 +1270,18 @@ export const CreateContainerApplicationResponse =
       image: Schema.String,
       instanceType: Schema.optional(
         Schema.Union([
-          Schema.Literals([
-            "lite",
-            "dev",
-            "basic",
-            "standard",
-            "standard-1",
-            "standard-2",
-            "standard-3",
-            "standard-4",
+          Schema.Union([
+            Schema.Literals([
+              "lite",
+              "dev",
+              "basic",
+              "standard",
+              "standard-1",
+              "standard-2",
+              "standard-3",
+              "standard-4",
+            ]),
+            Schema.String,
           ]),
           Schema.Null,
         ]),
@@ -1259,19 +1353,28 @@ export const CreateContainerApplicationResponse =
           Schema.Struct({
             assignIpv4: Schema.optional(
               Schema.Union([
-                Schema.Literals(["none", "predefined", "account"]),
+                Schema.Union([
+                  Schema.Literals(["none", "predefined", "account"]),
+                  Schema.String,
+                ]),
                 Schema.Null,
               ]),
             ),
             assignIpv6: Schema.optional(
               Schema.Union([
-                Schema.Literals(["none", "predefined", "account"]),
+                Schema.Union([
+                  Schema.Literals(["none", "predefined", "account"]),
+                  Schema.String,
+                ]),
                 Schema.Null,
               ]),
             ),
             mode: Schema.optional(
               Schema.Union([
-                Schema.Literals(["public", "private"]),
+                Schema.Union([
+                  Schema.Literals(["public", "private"]),
+                  Schema.String,
+                ]),
                 Schema.Null,
               ]),
             ),
@@ -1320,7 +1423,10 @@ export const CreateContainerApplicationResponse =
           Schema.Array(
             Schema.Struct({
               name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              type: Schema.Literals(["http", "tcp"]),
+              type: Schema.Union([
+                Schema.Literals(["http", "tcp"]),
+                Schema.String,
+              ]),
               tls: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
               port: Schema.String,
               http: Schema.optional(
@@ -1328,14 +1434,17 @@ export const CreateContainerApplicationResponse =
                   Schema.Struct({
                     method: Schema.optional(
                       Schema.Union([
-                        Schema.Literals([
-                          "GET",
-                          "POST",
-                          "PUT",
-                          "PATCH",
-                          "DELETE",
-                          "OPTIONS",
-                          "HEAD",
+                        Schema.Union([
+                          Schema.Literals([
+                            "GET",
+                            "POST",
+                            "PUT",
+                            "PATCH",
+                            "DELETE",
+                            "OPTIONS",
+                            "HEAD",
+                          ]),
+                          Schema.String,
                         ]),
                         Schema.Null,
                       ]),
@@ -1358,7 +1467,10 @@ export const CreateContainerApplicationResponse =
               retries: Schema.optional(
                 Schema.Union([Schema.Number, Schema.Null]),
               ),
-              kind: Schema.Literals(["health", "ready"]),
+              kind: Schema.Union([
+                Schema.Literals(["health", "ready"]),
+                Schema.String,
+              ]),
             }),
           ),
           Schema.Null,
@@ -1450,7 +1562,13 @@ export interface UpdateContainerApplicationRequest {
   instances?: number;
   maxInstances?: number;
   affinities?: { colocation?: "datacenter" };
-  schedulingPolicy?: "moon" | "gpu" | "regional" | "fill_metals" | "default";
+  schedulingPolicy?:
+    | "moon"
+    | "gpu"
+    | "regional"
+    | "fill_metals"
+    | "default"
+    | (string & {});
   constraints?: {
     tier?: number;
     region?:
@@ -1462,7 +1580,8 @@ export interface UpdateContainerApplicationRequest {
       | "ME"
       | "OC"
       | "SAM"
-      | "WEUR";
+      | "WEUR"
+      | (string & {});
     regions?: (
       | "AFR"
       | "APAC"
@@ -1473,6 +1592,7 @@ export interface UpdateContainerApplicationRequest {
       | "OC"
       | "SAM"
       | "WEUR"
+      | (string & {})
     )[];
     cities?: (
       | "AFR"
@@ -1484,6 +1604,7 @@ export interface UpdateContainerApplicationRequest {
       | "OC"
       | "SAM"
       | "WEUR"
+      | (string & {})
     )[];
   };
   configuration?: {
@@ -1496,7 +1617,8 @@ export interface UpdateContainerApplicationRequest {
       | "standard-1"
       | "standard-2"
       | "standard-3"
-      | "standard-4";
+      | "standard-4"
+      | (string & {});
     observability?: { logs?: { enabled: boolean } };
     sshPublicKeyIds?: string[];
     secrets?: { name: string; type: "env"; secret: string }[];
@@ -1506,9 +1628,9 @@ export interface UpdateContainerApplicationRequest {
     environmentVariables?: { name: string; value: string }[];
     labels?: { name: string; value: string }[];
     network?: {
-      assignIpv4?: "none" | "predefined" | "account";
-      assignIpv6?: "none" | "predefined" | "account";
-      mode?: "public" | "private";
+      assignIpv4?: "none" | "predefined" | "account" | (string & {});
+      assignIpv6?: "none" | "predefined" | "account" | (string & {});
+      mode?: "public" | "private" | (string & {});
     };
     command?: string[];
     entrypoint?: string[];
@@ -1516,7 +1638,7 @@ export interface UpdateContainerApplicationRequest {
     ports?: { name: string; port?: number }[];
     checks?: {
       name?: string;
-      type: "http" | "tcp";
+      type: "http" | "tcp" | (string & {});
       tls?: boolean;
       port: string;
       http?: {
@@ -1527,7 +1649,8 @@ export interface UpdateContainerApplicationRequest {
           | "PATCH"
           | "DELETE"
           | "OPTIONS"
-          | "HEAD";
+          | "HEAD"
+          | (string & {});
         body?: string;
         path?: string;
         headers?: unknown;
@@ -1535,7 +1658,7 @@ export interface UpdateContainerApplicationRequest {
       interval: string;
       timeout: string;
       retries?: number;
-      kind: "health" | "ready";
+      kind: "health" | "ready" | (string & {});
     }[];
   };
 }
@@ -1552,26 +1675,16 @@ export const UpdateContainerApplicationRequest =
       }),
     ),
     schedulingPolicy: Schema.optional(
-      Schema.Literals(["moon", "gpu", "regional", "fill_metals", "default"]),
+      Schema.Union([
+        Schema.Literals(["moon", "gpu", "regional", "fill_metals", "default"]),
+        Schema.String,
+      ]),
     ),
     constraints: Schema.optional(
       Schema.Struct({
         tier: Schema.optional(Schema.Number),
         region: Schema.optional(
-          Schema.Literals([
-            "AFR",
-            "APAC",
-            "EEUR",
-            "ENAM",
-            "WNAM",
-            "ME",
-            "OC",
-            "SAM",
-            "WEUR",
-          ]),
-        ),
-        regions: Schema.optional(
-          Schema.Array(
+          Schema.Union([
             Schema.Literals([
               "AFR",
               "APAC",
@@ -1583,20 +1696,42 @@ export const UpdateContainerApplicationRequest =
               "SAM",
               "WEUR",
             ]),
+            Schema.String,
+          ]),
+        ),
+        regions: Schema.optional(
+          Schema.Array(
+            Schema.Union([
+              Schema.Literals([
+                "AFR",
+                "APAC",
+                "EEUR",
+                "ENAM",
+                "WNAM",
+                "ME",
+                "OC",
+                "SAM",
+                "WEUR",
+              ]),
+              Schema.String,
+            ]),
           ),
         ),
         cities: Schema.optional(
           Schema.Array(
-            Schema.Literals([
-              "AFR",
-              "APAC",
-              "EEUR",
-              "ENAM",
-              "WNAM",
-              "ME",
-              "OC",
-              "SAM",
-              "WEUR",
+            Schema.Union([
+              Schema.Literals([
+                "AFR",
+                "APAC",
+                "EEUR",
+                "ENAM",
+                "WNAM",
+                "ME",
+                "OC",
+                "SAM",
+                "WEUR",
+              ]),
+              Schema.String,
             ]),
           ),
         ),
@@ -1606,15 +1741,18 @@ export const UpdateContainerApplicationRequest =
       Schema.Struct({
         image: Schema.String,
         instanceType: Schema.optional(
-          Schema.Literals([
-            "lite",
-            "dev",
-            "basic",
-            "standard",
-            "standard-1",
-            "standard-2",
-            "standard-3",
-            "standard-4",
+          Schema.Union([
+            Schema.Literals([
+              "lite",
+              "dev",
+              "basic",
+              "standard",
+              "standard-1",
+              "standard-2",
+              "standard-3",
+              "standard-4",
+            ]),
+            Schema.String,
           ]),
         ),
         observability: Schema.optional(
@@ -1662,12 +1800,23 @@ export const UpdateContainerApplicationRequest =
         network: Schema.optional(
           Schema.Struct({
             assignIpv4: Schema.optional(
-              Schema.Literals(["none", "predefined", "account"]),
+              Schema.Union([
+                Schema.Literals(["none", "predefined", "account"]),
+                Schema.String,
+              ]),
             ),
             assignIpv6: Schema.optional(
-              Schema.Literals(["none", "predefined", "account"]),
+              Schema.Union([
+                Schema.Literals(["none", "predefined", "account"]),
+                Schema.String,
+              ]),
             ),
-            mode: Schema.optional(Schema.Literals(["public", "private"])),
+            mode: Schema.optional(
+              Schema.Union([
+                Schema.Literals(["public", "private"]),
+                Schema.String,
+              ]),
+            ),
           }).pipe(
             Schema.encodeKeys({
               assignIpv4: "assign_ipv4",
@@ -1696,20 +1845,26 @@ export const UpdateContainerApplicationRequest =
           Schema.Array(
             Schema.Struct({
               name: Schema.optional(Schema.String),
-              type: Schema.Literals(["http", "tcp"]),
+              type: Schema.Union([
+                Schema.Literals(["http", "tcp"]),
+                Schema.String,
+              ]),
               tls: Schema.optional(Schema.Boolean),
               port: Schema.String,
               http: Schema.optional(
                 Schema.Struct({
                   method: Schema.optional(
-                    Schema.Literals([
-                      "GET",
-                      "POST",
-                      "PUT",
-                      "PATCH",
-                      "DELETE",
-                      "OPTIONS",
-                      "HEAD",
+                    Schema.Union([
+                      Schema.Literals([
+                        "GET",
+                        "POST",
+                        "PUT",
+                        "PATCH",
+                        "DELETE",
+                        "OPTIONS",
+                        "HEAD",
+                      ]),
+                      Schema.String,
                     ]),
                   ),
                   body: Schema.optional(Schema.String),
@@ -1720,7 +1875,10 @@ export const UpdateContainerApplicationRequest =
               interval: Schema.String,
               timeout: Schema.String,
               retries: Schema.optional(Schema.Number),
-              kind: Schema.Literals(["health", "ready"]),
+              kind: Schema.Union([
+                Schema.Literals(["health", "ready"]),
+                Schema.String,
+              ]),
             }),
           ),
         ),
@@ -1764,7 +1922,13 @@ export interface UpdateContainerApplicationResponse {
   id: string;
   accountId: string;
   name: string;
-  schedulingPolicy: "moon" | "gpu" | "regional" | "fill_metals" | "default";
+  schedulingPolicy:
+    | "moon"
+    | "gpu"
+    | "regional"
+    | "fill_metals"
+    | "default"
+    | (string & {});
   instances: number;
   maxInstances: number;
   constraints?: { tier?: number | null } | null;
@@ -1780,6 +1944,7 @@ export interface UpdateContainerApplicationResponse {
       | "standard-2"
       | "standard-3"
       | "standard-4"
+      | (string & {})
       | null;
     observability?: { logs?: { enabled: boolean } | null } | null;
     sshPublicKeyIds?: string[] | null;
@@ -1790,9 +1955,9 @@ export interface UpdateContainerApplicationResponse {
     environmentVariables?: { name: string; value: string }[] | null;
     labels?: { name: string; value: string }[] | null;
     network?: {
-      assignIpv4?: "none" | "predefined" | "account" | null;
-      assignIpv6?: "none" | "predefined" | "account" | null;
-      mode?: "public" | "private" | null;
+      assignIpv4?: "none" | "predefined" | "account" | (string & {}) | null;
+      assignIpv6?: "none" | "predefined" | "account" | (string & {}) | null;
+      mode?: "public" | "private" | (string & {}) | null;
     } | null;
     command?: string[] | null;
     entrypoint?: string[] | null;
@@ -1801,7 +1966,7 @@ export interface UpdateContainerApplicationResponse {
     checks?:
       | {
           name?: string | null;
-          type: "http" | "tcp";
+          type: "http" | "tcp" | (string & {});
           tls?: boolean | null;
           port: string;
           http?: {
@@ -1813,6 +1978,7 @@ export interface UpdateContainerApplicationResponse {
               | "DELETE"
               | "OPTIONS"
               | "HEAD"
+              | (string & {})
               | null;
             body?: string | null;
             path?: string | null;
@@ -1821,7 +1987,7 @@ export interface UpdateContainerApplicationResponse {
           interval: string;
           timeout: string;
           retries?: number | null;
-          kind: "health" | "ready";
+          kind: "health" | "ready" | (string & {});
         }[]
       | null;
   };
@@ -1837,12 +2003,9 @@ export const UpdateContainerApplicationResponse =
     id: Schema.String,
     accountId: Schema.String,
     name: Schema.String,
-    schedulingPolicy: Schema.Literals([
-      "moon",
-      "gpu",
-      "regional",
-      "fill_metals",
-      "default",
+    schedulingPolicy: Schema.Union([
+      Schema.Literals(["moon", "gpu", "regional", "fill_metals", "default"]),
+      Schema.String,
     ]),
     instances: Schema.Number,
     maxInstances: Schema.Number,
@@ -1868,15 +2031,18 @@ export const UpdateContainerApplicationResponse =
       image: Schema.String,
       instanceType: Schema.optional(
         Schema.Union([
-          Schema.Literals([
-            "lite",
-            "dev",
-            "basic",
-            "standard",
-            "standard-1",
-            "standard-2",
-            "standard-3",
-            "standard-4",
+          Schema.Union([
+            Schema.Literals([
+              "lite",
+              "dev",
+              "basic",
+              "standard",
+              "standard-1",
+              "standard-2",
+              "standard-3",
+              "standard-4",
+            ]),
+            Schema.String,
           ]),
           Schema.Null,
         ]),
@@ -1948,19 +2114,28 @@ export const UpdateContainerApplicationResponse =
           Schema.Struct({
             assignIpv4: Schema.optional(
               Schema.Union([
-                Schema.Literals(["none", "predefined", "account"]),
+                Schema.Union([
+                  Schema.Literals(["none", "predefined", "account"]),
+                  Schema.String,
+                ]),
                 Schema.Null,
               ]),
             ),
             assignIpv6: Schema.optional(
               Schema.Union([
-                Schema.Literals(["none", "predefined", "account"]),
+                Schema.Union([
+                  Schema.Literals(["none", "predefined", "account"]),
+                  Schema.String,
+                ]),
                 Schema.Null,
               ]),
             ),
             mode: Schema.optional(
               Schema.Union([
-                Schema.Literals(["public", "private"]),
+                Schema.Union([
+                  Schema.Literals(["public", "private"]),
+                  Schema.String,
+                ]),
                 Schema.Null,
               ]),
             ),
@@ -2009,7 +2184,10 @@ export const UpdateContainerApplicationResponse =
           Schema.Array(
             Schema.Struct({
               name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              type: Schema.Literals(["http", "tcp"]),
+              type: Schema.Union([
+                Schema.Literals(["http", "tcp"]),
+                Schema.String,
+              ]),
               tls: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
               port: Schema.String,
               http: Schema.optional(
@@ -2017,14 +2195,17 @@ export const UpdateContainerApplicationResponse =
                   Schema.Struct({
                     method: Schema.optional(
                       Schema.Union([
-                        Schema.Literals([
-                          "GET",
-                          "POST",
-                          "PUT",
-                          "PATCH",
-                          "DELETE",
-                          "OPTIONS",
-                          "HEAD",
+                        Schema.Union([
+                          Schema.Literals([
+                            "GET",
+                            "POST",
+                            "PUT",
+                            "PATCH",
+                            "DELETE",
+                            "OPTIONS",
+                            "HEAD",
+                          ]),
+                          Schema.String,
                         ]),
                         Schema.Null,
                       ]),
@@ -2047,7 +2228,10 @@ export const UpdateContainerApplicationResponse =
               retries: Schema.optional(
                 Schema.Union([Schema.Number, Schema.Null]),
               ),
-              kind: Schema.Literals(["health", "ready"]),
+              kind: Schema.Union([
+                Schema.Literals(["health", "ready"]),
+                Schema.String,
+              ]),
             }),
           ),
           Schema.Null,
@@ -2188,7 +2372,8 @@ export interface CreateContainerApplicationRolloutRequest {
       | "standard-1"
       | "standard-2"
       | "standard-3"
-      | "standard-4";
+      | "standard-4"
+      | (string & {});
     observability?: { logs?: { enabled: boolean } };
     sshPublicKeyIds?: string[];
     secrets?: { name: string; type: "env"; secret: string }[];
@@ -2198,9 +2383,9 @@ export interface CreateContainerApplicationRolloutRequest {
     environmentVariables?: { name: string; value: string }[];
     labels?: { name: string; value: string }[];
     network?: {
-      assignIpv4?: "none" | "predefined" | "account";
-      assignIpv6?: "none" | "predefined" | "account";
-      mode?: "public" | "private";
+      assignIpv4?: "none" | "predefined" | "account" | (string & {});
+      assignIpv6?: "none" | "predefined" | "account" | (string & {});
+      mode?: "public" | "private" | (string & {});
     };
     command?: string[];
     entrypoint?: string[];
@@ -2208,7 +2393,7 @@ export interface CreateContainerApplicationRolloutRequest {
     ports?: { name: string; port?: number }[];
     checks?: {
       name?: string;
-      type: "http" | "tcp";
+      type: "http" | "tcp" | (string & {});
       tls?: boolean;
       port: string;
       http?: {
@@ -2219,7 +2404,8 @@ export interface CreateContainerApplicationRolloutRequest {
           | "PATCH"
           | "DELETE"
           | "OPTIONS"
-          | "HEAD";
+          | "HEAD"
+          | (string & {});
         body?: string;
         path?: string;
         headers?: unknown;
@@ -2227,7 +2413,7 @@ export interface CreateContainerApplicationRolloutRequest {
       interval: string;
       timeout: string;
       retries?: number;
-      kind: "health" | "ready";
+      kind: "health" | "ready" | (string & {});
     }[];
   };
 }
@@ -2243,15 +2429,18 @@ export const CreateContainerApplicationRolloutRequest =
     targetConfiguration: Schema.Struct({
       image: Schema.String,
       instanceType: Schema.optional(
-        Schema.Literals([
-          "lite",
-          "dev",
-          "basic",
-          "standard",
-          "standard-1",
-          "standard-2",
-          "standard-3",
-          "standard-4",
+        Schema.Union([
+          Schema.Literals([
+            "lite",
+            "dev",
+            "basic",
+            "standard",
+            "standard-1",
+            "standard-2",
+            "standard-3",
+            "standard-4",
+          ]),
+          Schema.String,
         ]),
       ),
       observability: Schema.optional(
@@ -2299,12 +2488,23 @@ export const CreateContainerApplicationRolloutRequest =
       network: Schema.optional(
         Schema.Struct({
           assignIpv4: Schema.optional(
-            Schema.Literals(["none", "predefined", "account"]),
+            Schema.Union([
+              Schema.Literals(["none", "predefined", "account"]),
+              Schema.String,
+            ]),
           ),
           assignIpv6: Schema.optional(
-            Schema.Literals(["none", "predefined", "account"]),
+            Schema.Union([
+              Schema.Literals(["none", "predefined", "account"]),
+              Schema.String,
+            ]),
           ),
-          mode: Schema.optional(Schema.Literals(["public", "private"])),
+          mode: Schema.optional(
+            Schema.Union([
+              Schema.Literals(["public", "private"]),
+              Schema.String,
+            ]),
+          ),
         }).pipe(
           Schema.encodeKeys({
             assignIpv4: "assign_ipv4",
@@ -2333,20 +2533,26 @@ export const CreateContainerApplicationRolloutRequest =
         Schema.Array(
           Schema.Struct({
             name: Schema.optional(Schema.String),
-            type: Schema.Literals(["http", "tcp"]),
+            type: Schema.Union([
+              Schema.Literals(["http", "tcp"]),
+              Schema.String,
+            ]),
             tls: Schema.optional(Schema.Boolean),
             port: Schema.String,
             http: Schema.optional(
               Schema.Struct({
                 method: Schema.optional(
-                  Schema.Literals([
-                    "GET",
-                    "POST",
-                    "PUT",
-                    "PATCH",
-                    "DELETE",
-                    "OPTIONS",
-                    "HEAD",
+                  Schema.Union([
+                    Schema.Literals([
+                      "GET",
+                      "POST",
+                      "PUT",
+                      "PATCH",
+                      "DELETE",
+                      "OPTIONS",
+                      "HEAD",
+                    ]),
+                    Schema.String,
                   ]),
                 ),
                 body: Schema.optional(Schema.String),
@@ -2357,7 +2563,10 @@ export const CreateContainerApplicationRolloutRequest =
             interval: Schema.String,
             timeout: Schema.String,
             retries: Schema.optional(Schema.Number),
-            kind: Schema.Literals(["health", "ready"]),
+            kind: Schema.Union([
+              Schema.Literals(["health", "ready"]),
+              Schema.String,
+            ]),
           }),
         ),
       ),
@@ -2400,7 +2609,7 @@ export interface CreateContainerApplicationRolloutResponse {
   createdAt: string;
   lastUpdatedAt: string;
   description: string;
-  status: "progressing" | "completed" | "failed";
+  status: "progressing" | "completed" | "failed" | (string & {});
   health: {
     instances: {
       healthy: number;
@@ -2426,6 +2635,7 @@ export interface CreateContainerApplicationRolloutResponse {
       | "standard-2"
       | "standard-3"
       | "standard-4"
+      | (string & {})
       | null;
     observability?: { logs?: { enabled: boolean } | null } | null;
     sshPublicKeyIds?: string[] | null;
@@ -2436,9 +2646,9 @@ export interface CreateContainerApplicationRolloutResponse {
     environmentVariables?: { name: string; value: string }[] | null;
     labels?: { name: string; value: string }[] | null;
     network?: {
-      assignIpv4?: "none" | "predefined" | "account" | null;
-      assignIpv6?: "none" | "predefined" | "account" | null;
-      mode?: "public" | "private" | null;
+      assignIpv4?: "none" | "predefined" | "account" | (string & {}) | null;
+      assignIpv6?: "none" | "predefined" | "account" | (string & {}) | null;
+      mode?: "public" | "private" | (string & {}) | null;
     } | null;
     command?: string[] | null;
     entrypoint?: string[] | null;
@@ -2447,7 +2657,7 @@ export interface CreateContainerApplicationRolloutResponse {
     checks?:
       | {
           name?: string | null;
-          type: "http" | "tcp";
+          type: "http" | "tcp" | (string & {});
           tls?: boolean | null;
           port: string;
           http?: {
@@ -2459,6 +2669,7 @@ export interface CreateContainerApplicationRolloutResponse {
               | "DELETE"
               | "OPTIONS"
               | "HEAD"
+              | (string & {})
               | null;
             body?: string | null;
             path?: string | null;
@@ -2467,7 +2678,7 @@ export interface CreateContainerApplicationRolloutResponse {
           interval: string;
           timeout: string;
           retries?: number | null;
-          kind: "health" | "ready";
+          kind: "health" | "ready" | (string & {});
         }[]
       | null;
   };
@@ -2475,7 +2686,7 @@ export interface CreateContainerApplicationRolloutResponse {
   targetVersion: number;
   steps: {
     id: number;
-    status: "progressing" | "pending" | "completed" | "failed";
+    status: "progressing" | "pending" | "completed" | "failed" | (string & {});
     stepSize: { percentage: number };
     description: string;
     startedAt?: string | null;
@@ -2494,7 +2705,10 @@ export const CreateContainerApplicationRolloutResponse =
     createdAt: Schema.String,
     lastUpdatedAt: Schema.String,
     description: Schema.String,
-    status: Schema.Literals(["progressing", "completed", "failed"]),
+    status: Schema.Union([
+      Schema.Literals(["progressing", "completed", "failed"]),
+      Schema.String,
+    ]),
     health: Schema.Struct({
       instances: Schema.Struct({
         healthy: Schema.Number,
@@ -2527,15 +2741,18 @@ export const CreateContainerApplicationRolloutResponse =
       image: Schema.String,
       instanceType: Schema.optional(
         Schema.Union([
-          Schema.Literals([
-            "lite",
-            "dev",
-            "basic",
-            "standard",
-            "standard-1",
-            "standard-2",
-            "standard-3",
-            "standard-4",
+          Schema.Union([
+            Schema.Literals([
+              "lite",
+              "dev",
+              "basic",
+              "standard",
+              "standard-1",
+              "standard-2",
+              "standard-3",
+              "standard-4",
+            ]),
+            Schema.String,
           ]),
           Schema.Null,
         ]),
@@ -2607,19 +2824,28 @@ export const CreateContainerApplicationRolloutResponse =
           Schema.Struct({
             assignIpv4: Schema.optional(
               Schema.Union([
-                Schema.Literals(["none", "predefined", "account"]),
+                Schema.Union([
+                  Schema.Literals(["none", "predefined", "account"]),
+                  Schema.String,
+                ]),
                 Schema.Null,
               ]),
             ),
             assignIpv6: Schema.optional(
               Schema.Union([
-                Schema.Literals(["none", "predefined", "account"]),
+                Schema.Union([
+                  Schema.Literals(["none", "predefined", "account"]),
+                  Schema.String,
+                ]),
                 Schema.Null,
               ]),
             ),
             mode: Schema.optional(
               Schema.Union([
-                Schema.Literals(["public", "private"]),
+                Schema.Union([
+                  Schema.Literals(["public", "private"]),
+                  Schema.String,
+                ]),
                 Schema.Null,
               ]),
             ),
@@ -2668,7 +2894,10 @@ export const CreateContainerApplicationRolloutResponse =
           Schema.Array(
             Schema.Struct({
               name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              type: Schema.Literals(["http", "tcp"]),
+              type: Schema.Union([
+                Schema.Literals(["http", "tcp"]),
+                Schema.String,
+              ]),
               tls: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
               port: Schema.String,
               http: Schema.optional(
@@ -2676,14 +2905,17 @@ export const CreateContainerApplicationRolloutResponse =
                   Schema.Struct({
                     method: Schema.optional(
                       Schema.Union([
-                        Schema.Literals([
-                          "GET",
-                          "POST",
-                          "PUT",
-                          "PATCH",
-                          "DELETE",
-                          "OPTIONS",
-                          "HEAD",
+                        Schema.Union([
+                          Schema.Literals([
+                            "GET",
+                            "POST",
+                            "PUT",
+                            "PATCH",
+                            "DELETE",
+                            "OPTIONS",
+                            "HEAD",
+                          ]),
+                          Schema.String,
                         ]),
                         Schema.Null,
                       ]),
@@ -2706,7 +2938,10 @@ export const CreateContainerApplicationRolloutResponse =
               retries: Schema.optional(
                 Schema.Union([Schema.Number, Schema.Null]),
               ),
-              kind: Schema.Literals(["health", "ready"]),
+              kind: Schema.Union([
+                Schema.Literals(["health", "ready"]),
+                Schema.String,
+              ]),
             }),
           ),
           Schema.Null,
@@ -2737,11 +2972,9 @@ export const CreateContainerApplicationRolloutResponse =
     steps: Schema.Array(
       Schema.Struct({
         id: Schema.Number,
-        status: Schema.Literals([
-          "progressing",
-          "pending",
-          "completed",
-          "failed",
+        status: Schema.Union([
+          Schema.Literals(["progressing", "pending", "completed", "failed"]),
+          Schema.String,
         ]),
         stepSize: Schema.Struct({
           percentage: Schema.Number,
@@ -2943,7 +3176,7 @@ export const getContainerIdentity: API.OperationMethod<
 export interface CreateContainerRegistryCredentialsRequest {
   accountId: string;
   registryId: string;
-  permissions: ("pull" | "push")[];
+  permissions: ("pull" | "push" | (string & {}))[];
   expirationMinutes: number;
 }
 
@@ -2951,7 +3184,9 @@ export const CreateContainerRegistryCredentialsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     registryId: Schema.String.pipe(T.HttpPath("registry_id")),
-    permissions: Schema.Array(Schema.Literals(["pull", "push"])),
+    permissions: Schema.Array(
+      Schema.Union([Schema.Literals(["pull", "push"]), Schema.String]),
+    ),
     expirationMinutes: Schema.Number,
   }).pipe(
     Schema.encodeKeys({

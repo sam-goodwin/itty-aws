@@ -69,7 +69,8 @@ export interface GetCustomTrustStoreResponse {
     | "active"
     | "pending_deletion"
     | "deleted"
-    | "expired";
+    | "expired"
+    | (string & {});
   /** When the certificate was last modified. */
   updatedAt: string;
   /** When the certificate was uploaded to Cloudflare. */
@@ -83,13 +84,16 @@ export const GetCustomTrustStoreResponse =
     expiresOn: Schema.String,
     issuer: Schema.String,
     signature: Schema.String,
-    status: Schema.Literals([
-      "initializing",
-      "pending_deployment",
-      "active",
-      "pending_deletion",
-      "deleted",
-      "expired",
+    status: Schema.Union([
+      Schema.Literals([
+        "initializing",
+        "pending_deployment",
+        "active",
+        "pending_deletion",
+        "deleted",
+        "expired",
+      ]),
+      Schema.String,
     ]),
     updatedAt: Schema.String,
     uploadedOn: Schema.String,
@@ -158,7 +162,8 @@ export interface ListCustomTrustStoresResponse {
       | "active"
       | "pending_deletion"
       | "deleted"
-      | "expired";
+      | "expired"
+      | (string & {});
     updatedAt: string;
     uploadedOn: string;
   }[];
@@ -179,13 +184,16 @@ export const ListCustomTrustStoresResponse =
         expiresOn: Schema.String,
         issuer: Schema.String,
         signature: Schema.String,
-        status: Schema.Literals([
-          "initializing",
-          "pending_deployment",
-          "active",
-          "pending_deletion",
-          "deleted",
-          "expired",
+        status: Schema.Union([
+          Schema.Literals([
+            "initializing",
+            "pending_deployment",
+            "active",
+            "pending_deletion",
+            "deleted",
+            "expired",
+          ]),
+          Schema.String,
         ]),
         updatedAt: Schema.String,
         uploadedOn: Schema.String,
@@ -279,7 +287,8 @@ export interface CreateCustomTrustStoreResponse {
     | "active"
     | "pending_deletion"
     | "deleted"
-    | "expired";
+    | "expired"
+    | (string & {});
   /** When the certificate was last modified. */
   updatedAt: string;
   /** When the certificate was uploaded to Cloudflare. */
@@ -293,13 +302,16 @@ export const CreateCustomTrustStoreResponse =
     expiresOn: Schema.String,
     issuer: Schema.String,
     signature: Schema.String,
-    status: Schema.Literals([
-      "initializing",
-      "pending_deployment",
-      "active",
-      "pending_deletion",
-      "deleted",
-      "expired",
+    status: Schema.Union([
+      Schema.Literals([
+        "initializing",
+        "pending_deployment",
+        "active",
+        "pending_deletion",
+        "deleted",
+        "expired",
+      ]),
+      Schema.String,
     ]),
     updatedAt: Schema.String,
     uploadedOn: Schema.String,
@@ -394,7 +406,12 @@ export const GetTotalTlRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GetTotalTlResponse {
   /** The Certificate Authority that Total TLS certificates will be issued through. */
-  certificateAuthority?: "google" | "lets_encrypt" | "ssl_com" | null;
+  certificateAuthority?:
+    | "google"
+    | "lets_encrypt"
+    | "ssl_com"
+    | (string & {})
+    | null;
   /** If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone. */
   enabled?: boolean | null;
   /** The validity period in days for the certificates ordered via Total TLS. */
@@ -404,7 +421,10 @@ export interface GetTotalTlResponse {
 export const GetTotalTlResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   certificateAuthority: Schema.optional(
     Schema.Union([
-      Schema.Literals(["google", "lets_encrypt", "ssl_com"]),
+      Schema.Union([
+        Schema.Literals(["google", "lets_encrypt", "ssl_com"]),
+        Schema.String,
+      ]),
       Schema.Null,
     ]),
   ),
@@ -444,14 +464,17 @@ export interface UpdateTotalTlRequest {
   /** Body param: If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone. */
   enabled: boolean;
   /** Body param: The Certificate Authority that Total TLS certificates will be issued through. */
-  certificateAuthority?: "google" | "lets_encrypt" | "ssl_com";
+  certificateAuthority?: "google" | "lets_encrypt" | "ssl_com" | (string & {});
 }
 
 export const UpdateTotalTlRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   enabled: Schema.Boolean,
   certificateAuthority: Schema.optional(
-    Schema.Literals(["google", "lets_encrypt", "ssl_com"]),
+    Schema.Union([
+      Schema.Literals(["google", "lets_encrypt", "ssl_com"]),
+      Schema.String,
+    ]),
   ),
 }).pipe(
   Schema.encodeKeys({
@@ -463,7 +486,12 @@ export const UpdateTotalTlRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface UpdateTotalTlResponse {
   /** The Certificate Authority that Total TLS certificates will be issued through. */
-  certificateAuthority?: "google" | "lets_encrypt" | "ssl_com" | null;
+  certificateAuthority?:
+    | "google"
+    | "lets_encrypt"
+    | "ssl_com"
+    | (string & {})
+    | null;
   /** If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone. */
   enabled?: boolean | null;
   /** The validity period in days for the certificates ordered via Total TLS. */
@@ -473,7 +501,10 @@ export interface UpdateTotalTlResponse {
 export const UpdateTotalTlResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   certificateAuthority: Schema.optional(
     Schema.Union([
-      Schema.Literals(["google", "lets_encrypt", "ssl_com"]),
+      Schema.Union([
+        Schema.Literals(["google", "lets_encrypt", "ssl_com"]),
+        Schema.String,
+      ]),
       Schema.Null,
     ]),
   ),
@@ -512,14 +543,17 @@ export interface EditTotalTlRequest {
   /** Body param: If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone. */
   enabled: boolean;
   /** Body param: The Certificate Authority that Total TLS certificates will be issued through. */
-  certificateAuthority?: "google" | "lets_encrypt" | "ssl_com";
+  certificateAuthority?: "google" | "lets_encrypt" | "ssl_com" | (string & {});
 }
 
 export const EditTotalTlRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   enabled: Schema.Boolean,
   certificateAuthority: Schema.optional(
-    Schema.Literals(["google", "lets_encrypt", "ssl_com"]),
+    Schema.Union([
+      Schema.Literals(["google", "lets_encrypt", "ssl_com"]),
+      Schema.String,
+    ]),
   ),
 }).pipe(
   Schema.encodeKeys({
@@ -531,7 +565,12 @@ export const EditTotalTlRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface EditTotalTlResponse {
   /** The Certificate Authority that Total TLS certificates will be issued through. */
-  certificateAuthority?: "google" | "lets_encrypt" | "ssl_com" | null;
+  certificateAuthority?:
+    | "google"
+    | "lets_encrypt"
+    | "ssl_com"
+    | (string & {})
+    | null;
   /** If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone. */
   enabled?: boolean | null;
   /** The validity period in days for the certificates ordered via Total TLS. */
@@ -541,7 +580,10 @@ export interface EditTotalTlResponse {
 export const EditTotalTlResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   certificateAuthority: Schema.optional(
     Schema.Union([
-      Schema.Literals(["google", "lets_encrypt", "ssl_com"]),
+      Schema.Union([
+        Schema.Literals(["google", "lets_encrypt", "ssl_com"]),
+        Schema.String,
+      ]),
       Schema.Null,
     ]),
   ),

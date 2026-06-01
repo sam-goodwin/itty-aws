@@ -1795,6 +1795,7 @@ export interface GetStatusResponse {
     | "not_queueing"
     | "queueing"
     | "suspended"
+    | (string & {})
     | null;
 }
 
@@ -1811,11 +1812,14 @@ export const GetStatusResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   status: Schema.optional(
     Schema.Union([
-      Schema.Literals([
-        "event_prequeueing",
-        "not_queueing",
-        "queueing",
-        "suspended",
+      Schema.Union([
+        Schema.Literals([
+          "event_prequeueing",
+          "not_queueing",
+          "queueing",
+          "suspended",
+        ]),
+        Schema.String,
       ]),
       Schema.Null,
     ]),
@@ -1873,8 +1877,8 @@ export interface GetWaitingRoomResponse {
   additionalRoutes?: { host?: string | null; path?: string | null }[] | null;
   /** Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position. */
   cookieAttributes?: {
-    samesite?: "auto" | "lax" | "none" | "strict" | null;
-    secure?: "auto" | "always" | "never" | null;
+    samesite?: "auto" | "lax" | "none" | "strict" | (string & {}) | null;
+    secure?: "auto" | "always" | "never" | (string & {}) | null;
   } | null;
   /** Appends a '\_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(  cf_waitingroom). If `cookie_suffix` is "abcd", the cookie name will be `  cf_waitingroom_abcd`. This field is req */
   cookieSuffix?: string | null;
@@ -1921,6 +1925,7 @@ export interface GetWaitingRoomResponse {
     | "th-TH"
     | "uk-UA"
     | "vi-VN"
+    | (string & {})
     | null;
   /** A note that you can use to add more details about the waiting room. */
   description?: string | null;
@@ -1946,9 +1951,15 @@ export interface GetWaitingRoomResponse {
   /** If queue_all is `true`, all the traffic that is coming to a route will be sent to the waiting room. No new traffic can get to the route once this field is set and estimated time will become unavailabl */
   queueAll?: boolean | null;
   /** Sets the queueing method used by the waiting room. Changing this parameter from the  default  queueing method is only available for the Waiting Room Advanced subscription. Regardless of the queueing m */
-  queueingMethod?: "fifo" | "random" | "passthrough" | "reject" | null;
+  queueingMethod?:
+    | "fifo"
+    | "random"
+    | "passthrough"
+    | "reject"
+    | (string & {})
+    | null;
   /** HTTP status code returned to a user while in the queue. */
-  queueingStatusCode?: "200" | "202" | "429" | null;
+  queueingStatusCode?: "200" | "202" | "429" | (string & {}) | null;
   /** Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by Cloudflare again in that time period, they will be treated as a new user that visits */
   sessionDuration?: number | null;
   /** Suspends or allows traffic going to the waiting room. If set to `true`, the traffic will not go to the waiting room. */
@@ -1956,13 +1967,14 @@ export interface GetWaitingRoomResponse {
   /** Sets the total number of active user sessions on the route at a point in time. A route is a combination of host and path on which a waiting room is available. This value is used as a baseline for the  */
   totalActiveUsers?: number | null;
   /** Which action to take when a bot is detected using Turnstile. `log` will have no impact on queueing behavior, simply keeping track of how many bots are detected in Waiting Room Analytics. `infinite_que */
-  turnstileAction?: "log" | "infinite_queue" | null;
+  turnstileAction?: "log" | "infinite_queue" | (string & {}) | null;
   /** Which Turnstile widget type to use for detecting bot traffic. See [the Turnstile documentation](https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types) for the definitions of these  */
   turnstileMode?:
     | "off"
     | "invisible"
     | "visible_non_interactive"
     | "visible_managed"
+    | (string & {})
     | null;
 }
 
@@ -1985,13 +1997,19 @@ export const GetWaitingRoomResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         Schema.Struct({
           samesite: Schema.optional(
             Schema.Union([
-              Schema.Literals(["auto", "lax", "none", "strict"]),
+              Schema.Union([
+                Schema.Literals(["auto", "lax", "none", "strict"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
           secure: Schema.optional(
             Schema.Union([
-              Schema.Literals(["auto", "always", "never"]),
+              Schema.Union([
+                Schema.Literals(["auto", "always", "never"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -2004,45 +2022,48 @@ export const GetWaitingRoomResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     customPageHtml: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     defaultTemplateLanguage: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "en-US",
-          "es-ES",
-          "de-DE",
-          "fr-FR",
-          "it-IT",
-          "ja-JP",
-          "ko-KR",
-          "pt-BR",
-          "zh-CN",
-          "zh-TW",
-          "nl-NL",
-          "pl-PL",
-          "id-ID",
-          "tr-TR",
-          "ar-EG",
-          "ru-RU",
-          "fa-IR",
-          "bg-BG",
-          "hr-HR",
-          "cs-CZ",
-          "da-DK",
-          "fi-FI",
-          "lt-LT",
-          "ms-MY",
-          "nb-NO",
-          "ro-RO",
-          "el-GR",
-          "he-IL",
-          "hi-IN",
-          "hu-HU",
-          "sr-BA",
-          "sk-SK",
-          "sl-SI",
-          "sv-SE",
-          "tl-PH",
-          "th-TH",
-          "uk-UA",
-          "vi-VN",
+        Schema.Union([
+          Schema.Literals([
+            "en-US",
+            "es-ES",
+            "de-DE",
+            "fr-FR",
+            "it-IT",
+            "ja-JP",
+            "ko-KR",
+            "pt-BR",
+            "zh-CN",
+            "zh-TW",
+            "nl-NL",
+            "pl-PL",
+            "id-ID",
+            "tr-TR",
+            "ar-EG",
+            "ru-RU",
+            "fa-IR",
+            "bg-BG",
+            "hr-HR",
+            "cs-CZ",
+            "da-DK",
+            "fi-FI",
+            "lt-LT",
+            "ms-MY",
+            "nb-NO",
+            "ro-RO",
+            "el-GR",
+            "he-IL",
+            "hi-IN",
+            "hu-HU",
+            "sr-BA",
+            "sk-SK",
+            "sl-SI",
+            "sv-SE",
+            "tl-PH",
+            "th-TH",
+            "uk-UA",
+            "vi-VN",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -2073,12 +2094,18 @@ export const GetWaitingRoomResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     queueAll: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     queueingMethod: Schema.optional(
       Schema.Union([
-        Schema.Literals(["fifo", "random", "passthrough", "reject"]),
+        Schema.Union([
+          Schema.Literals(["fifo", "random", "passthrough", "reject"]),
+          Schema.String,
+        ]),
         Schema.Null,
       ]),
     ),
     queueingStatusCode: Schema.optional(
-      Schema.Union([Schema.Literals(["200", "202", "429"]), Schema.Null]),
+      Schema.Union([
+        Schema.Union([Schema.Literals(["200", "202", "429"]), Schema.String]),
+        Schema.Null,
+      ]),
     ),
     sessionDuration: Schema.optional(
       Schema.Union([Schema.Number, Schema.Null]),
@@ -2088,15 +2115,24 @@ export const GetWaitingRoomResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       Schema.Union([Schema.Number, Schema.Null]),
     ),
     turnstileAction: Schema.optional(
-      Schema.Union([Schema.Literals(["log", "infinite_queue"]), Schema.Null]),
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals(["log", "infinite_queue"]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
     ),
     turnstileMode: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "off",
-          "invisible",
-          "visible_non_interactive",
-          "visible_managed",
+        Schema.Union([
+          Schema.Literals([
+            "off",
+            "invisible",
+            "visible_non_interactive",
+            "visible_managed",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -2185,8 +2221,8 @@ export interface ListWaitingRoomsResponse {
     id?: string | null;
     additionalRoutes?: { host?: string | null; path?: string | null }[] | null;
     cookieAttributes?: {
-      samesite?: "auto" | "lax" | "none" | "strict" | null;
-      secure?: "auto" | "always" | "never" | null;
+      samesite?: "auto" | "lax" | "none" | "strict" | (string & {}) | null;
+      secure?: "auto" | "always" | "never" | (string & {}) | null;
     } | null;
     cookieSuffix?: string | null;
     createdOn?: string | null;
@@ -2230,6 +2266,7 @@ export interface ListWaitingRoomsResponse {
       | "th-TH"
       | "uk-UA"
       | "vi-VN"
+      | (string & {})
       | null;
     description?: string | null;
     disableSessionRenewal?: boolean | null;
@@ -2243,17 +2280,24 @@ export interface ListWaitingRoomsResponse {
     nextEventStartTime?: string | null;
     path?: string | null;
     queueAll?: boolean | null;
-    queueingMethod?: "fifo" | "random" | "passthrough" | "reject" | null;
-    queueingStatusCode?: "200" | "202" | "429" | null;
+    queueingMethod?:
+      | "fifo"
+      | "random"
+      | "passthrough"
+      | "reject"
+      | (string & {})
+      | null;
+    queueingStatusCode?: "200" | "202" | "429" | (string & {}) | null;
     sessionDuration?: number | null;
     suspended?: boolean | null;
     totalActiveUsers?: number | null;
-    turnstileAction?: "log" | "infinite_queue" | null;
+    turnstileAction?: "log" | "infinite_queue" | (string & {}) | null;
     turnstileMode?:
       | "off"
       | "invisible"
       | "visible_non_interactive"
       | "visible_managed"
+      | (string & {})
       | null;
   }[];
   resultInfo?: {
@@ -2289,13 +2333,19 @@ export const ListWaitingRoomsResponse =
             Schema.Struct({
               samesite: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["auto", "lax", "none", "strict"]),
+                  Schema.Union([
+                    Schema.Literals(["auto", "lax", "none", "strict"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
               secure: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["auto", "always", "never"]),
+                  Schema.Union([
+                    Schema.Literals(["auto", "always", "never"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -2312,45 +2362,48 @@ export const ListWaitingRoomsResponse =
         ),
         defaultTemplateLanguage: Schema.optional(
           Schema.Union([
-            Schema.Literals([
-              "en-US",
-              "es-ES",
-              "de-DE",
-              "fr-FR",
-              "it-IT",
-              "ja-JP",
-              "ko-KR",
-              "pt-BR",
-              "zh-CN",
-              "zh-TW",
-              "nl-NL",
-              "pl-PL",
-              "id-ID",
-              "tr-TR",
-              "ar-EG",
-              "ru-RU",
-              "fa-IR",
-              "bg-BG",
-              "hr-HR",
-              "cs-CZ",
-              "da-DK",
-              "fi-FI",
-              "lt-LT",
-              "ms-MY",
-              "nb-NO",
-              "ro-RO",
-              "el-GR",
-              "he-IL",
-              "hi-IN",
-              "hu-HU",
-              "sr-BA",
-              "sk-SK",
-              "sl-SI",
-              "sv-SE",
-              "tl-PH",
-              "th-TH",
-              "uk-UA",
-              "vi-VN",
+            Schema.Union([
+              Schema.Literals([
+                "en-US",
+                "es-ES",
+                "de-DE",
+                "fr-FR",
+                "it-IT",
+                "ja-JP",
+                "ko-KR",
+                "pt-BR",
+                "zh-CN",
+                "zh-TW",
+                "nl-NL",
+                "pl-PL",
+                "id-ID",
+                "tr-TR",
+                "ar-EG",
+                "ru-RU",
+                "fa-IR",
+                "bg-BG",
+                "hr-HR",
+                "cs-CZ",
+                "da-DK",
+                "fi-FI",
+                "lt-LT",
+                "ms-MY",
+                "nb-NO",
+                "ro-RO",
+                "el-GR",
+                "he-IL",
+                "hi-IN",
+                "hu-HU",
+                "sr-BA",
+                "sk-SK",
+                "sl-SI",
+                "sv-SE",
+                "tl-PH",
+                "th-TH",
+                "uk-UA",
+                "vi-VN",
+              ]),
+              Schema.String,
             ]),
             Schema.Null,
           ]),
@@ -2383,12 +2436,21 @@ export const ListWaitingRoomsResponse =
         queueAll: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
         queueingMethod: Schema.optional(
           Schema.Union([
-            Schema.Literals(["fifo", "random", "passthrough", "reject"]),
+            Schema.Union([
+              Schema.Literals(["fifo", "random", "passthrough", "reject"]),
+              Schema.String,
+            ]),
             Schema.Null,
           ]),
         ),
         queueingStatusCode: Schema.optional(
-          Schema.Union([Schema.Literals(["200", "202", "429"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals(["200", "202", "429"]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
         ),
         sessionDuration: Schema.optional(
           Schema.Union([Schema.Number, Schema.Null]),
@@ -2399,17 +2461,23 @@ export const ListWaitingRoomsResponse =
         ),
         turnstileAction: Schema.optional(
           Schema.Union([
-            Schema.Literals(["log", "infinite_queue"]),
+            Schema.Union([
+              Schema.Literals(["log", "infinite_queue"]),
+              Schema.String,
+            ]),
             Schema.Null,
           ]),
         ),
         turnstileMode: Schema.optional(
           Schema.Union([
-            Schema.Literals([
-              "off",
-              "invisible",
-              "visible_non_interactive",
-              "visible_managed",
+            Schema.Union([
+              Schema.Literals([
+                "off",
+                "invisible",
+                "visible_non_interactive",
+                "visible_managed",
+              ]),
+              Schema.String,
             ]),
             Schema.Null,
           ]),
@@ -2522,8 +2590,8 @@ export interface CreateWaitingRoomRequest {
   additionalRoutes?: { host?: string; path?: string }[];
   /** Body param: Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position. */
   cookieAttributes?: {
-    samesite?: "auto" | "lax" | "none" | "strict";
-    secure?: "auto" | "always" | "never";
+    samesite?: "auto" | "lax" | "none" | "strict" | (string & {});
+    secure?: "auto" | "always" | "never" | (string & {});
   };
   /** Body param: Appends a '\_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(  cf_waitingroom). If `cookie_suffix` is "abcd", the cookie name will be `  cf_waitingroom_abcd`. This  */
   cookieSuffix?: string;
@@ -2568,7 +2636,8 @@ export interface CreateWaitingRoomRequest {
     | "tl-PH"
     | "th-TH"
     | "uk-UA"
-    | "vi-VN";
+    | "vi-VN"
+    | (string & {});
   /** Body param: A note that you can use to add more details about the waiting room. */
   description?: string;
   /** Body param: Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an accepted user will have session_duration minutes to browse the site. */
@@ -2582,21 +2651,22 @@ export interface CreateWaitingRoomRequest {
   /** Body param: If queue_all is `true`, all the traffic that is coming to a route will be sent to the waiting room. No new traffic can get to the route once this field is set and estimated time will becom */
   queueAll?: boolean;
   /** Body param: Sets the queueing method used by the waiting room. Changing this parameter from the  default  queueing method is only available for the Waiting Room Advanced subscription. Regardless of th */
-  queueingMethod?: "fifo" | "random" | "passthrough" | "reject";
+  queueingMethod?: "fifo" | "random" | "passthrough" | "reject" | (string & {});
   /** Body param: HTTP status code returned to a user while in the queue. */
-  queueingStatusCode?: "200" | "202" | "429";
+  queueingStatusCode?: "200" | "202" | "429" | (string & {});
   /** Body param: Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by Cloudflare again in that time period, they will be treated as a new user */
   sessionDuration?: number;
   /** Body param: Suspends or allows traffic going to the waiting room. If set to `true`, the traffic will not go to the waiting room. */
   suspended?: boolean;
   /** Body param: Which action to take when a bot is detected using Turnstile. `log` will have no impact on queueing behavior, simply keeping track of how many bots are detected in Waiting Room Analytics. ` */
-  turnstileAction?: "log" | "infinite_queue";
+  turnstileAction?: "log" | "infinite_queue" | (string & {});
   /** Body param: Which Turnstile widget type to use for detecting bot traffic. See [the Turnstile documentation](https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types) for the definitio */
   turnstileMode?:
     | "off"
     | "invisible"
     | "visible_non_interactive"
-    | "visible_managed";
+    | "visible_managed"
+    | (string & {});
 }
 
 export const CreateWaitingRoomRequest =
@@ -2617,53 +2687,64 @@ export const CreateWaitingRoomRequest =
     cookieAttributes: Schema.optional(
       Schema.Struct({
         samesite: Schema.optional(
-          Schema.Literals(["auto", "lax", "none", "strict"]),
+          Schema.Union([
+            Schema.Literals(["auto", "lax", "none", "strict"]),
+            Schema.String,
+          ]),
         ),
-        secure: Schema.optional(Schema.Literals(["auto", "always", "never"])),
+        secure: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["auto", "always", "never"]),
+            Schema.String,
+          ]),
+        ),
       }),
     ),
     cookieSuffix: Schema.optional(Schema.String),
     customPageHtml: Schema.optional(Schema.String),
     defaultTemplateLanguage: Schema.optional(
-      Schema.Literals([
-        "en-US",
-        "es-ES",
-        "de-DE",
-        "fr-FR",
-        "it-IT",
-        "ja-JP",
-        "ko-KR",
-        "pt-BR",
-        "zh-CN",
-        "zh-TW",
-        "nl-NL",
-        "pl-PL",
-        "id-ID",
-        "tr-TR",
-        "ar-EG",
-        "ru-RU",
-        "fa-IR",
-        "bg-BG",
-        "hr-HR",
-        "cs-CZ",
-        "da-DK",
-        "fi-FI",
-        "lt-LT",
-        "ms-MY",
-        "nb-NO",
-        "ro-RO",
-        "el-GR",
-        "he-IL",
-        "hi-IN",
-        "hu-HU",
-        "sr-BA",
-        "sk-SK",
-        "sl-SI",
-        "sv-SE",
-        "tl-PH",
-        "th-TH",
-        "uk-UA",
-        "vi-VN",
+      Schema.Union([
+        Schema.Literals([
+          "en-US",
+          "es-ES",
+          "de-DE",
+          "fr-FR",
+          "it-IT",
+          "ja-JP",
+          "ko-KR",
+          "pt-BR",
+          "zh-CN",
+          "zh-TW",
+          "nl-NL",
+          "pl-PL",
+          "id-ID",
+          "tr-TR",
+          "ar-EG",
+          "ru-RU",
+          "fa-IR",
+          "bg-BG",
+          "hr-HR",
+          "cs-CZ",
+          "da-DK",
+          "fi-FI",
+          "lt-LT",
+          "ms-MY",
+          "nb-NO",
+          "ro-RO",
+          "el-GR",
+          "he-IL",
+          "hi-IN",
+          "hu-HU",
+          "sr-BA",
+          "sk-SK",
+          "sl-SI",
+          "sv-SE",
+          "tl-PH",
+          "th-TH",
+          "uk-UA",
+          "vi-VN",
+        ]),
+        Schema.String,
       ]),
     ),
     description: Schema.optional(Schema.String),
@@ -2675,20 +2756,28 @@ export const CreateWaitingRoomRequest =
     path: Schema.optional(Schema.String),
     queueAll: Schema.optional(Schema.Boolean),
     queueingMethod: Schema.optional(
-      Schema.Literals(["fifo", "random", "passthrough", "reject"]),
+      Schema.Union([
+        Schema.Literals(["fifo", "random", "passthrough", "reject"]),
+        Schema.String,
+      ]),
     ),
-    queueingStatusCode: Schema.optional(Schema.Literals(["200", "202", "429"])),
+    queueingStatusCode: Schema.optional(
+      Schema.Union([Schema.Literals(["200", "202", "429"]), Schema.String]),
+    ),
     sessionDuration: Schema.optional(Schema.Number),
     suspended: Schema.optional(Schema.Boolean),
     turnstileAction: Schema.optional(
-      Schema.Literals(["log", "infinite_queue"]),
+      Schema.Union([Schema.Literals(["log", "infinite_queue"]), Schema.String]),
     ),
     turnstileMode: Schema.optional(
-      Schema.Literals([
-        "off",
-        "invisible",
-        "visible_non_interactive",
-        "visible_managed",
+      Schema.Union([
+        Schema.Literals([
+          "off",
+          "invisible",
+          "visible_non_interactive",
+          "visible_managed",
+        ]),
+        Schema.String,
       ]),
     ),
   }).pipe(
@@ -2724,8 +2813,8 @@ export interface CreateWaitingRoomResponse {
   additionalRoutes?: { host?: string | null; path?: string | null }[] | null;
   /** Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position. */
   cookieAttributes?: {
-    samesite?: "auto" | "lax" | "none" | "strict" | null;
-    secure?: "auto" | "always" | "never" | null;
+    samesite?: "auto" | "lax" | "none" | "strict" | (string & {}) | null;
+    secure?: "auto" | "always" | "never" | (string & {}) | null;
   } | null;
   /** Appends a '\_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(  cf_waitingroom). If `cookie_suffix` is "abcd", the cookie name will be `  cf_waitingroom_abcd`. This field is req */
   cookieSuffix?: string | null;
@@ -2772,6 +2861,7 @@ export interface CreateWaitingRoomResponse {
     | "th-TH"
     | "uk-UA"
     | "vi-VN"
+    | (string & {})
     | null;
   /** A note that you can use to add more details about the waiting room. */
   description?: string | null;
@@ -2797,9 +2887,15 @@ export interface CreateWaitingRoomResponse {
   /** If queue_all is `true`, all the traffic that is coming to a route will be sent to the waiting room. No new traffic can get to the route once this field is set and estimated time will become unavailabl */
   queueAll?: boolean | null;
   /** Sets the queueing method used by the waiting room. Changing this parameter from the  default  queueing method is only available for the Waiting Room Advanced subscription. Regardless of the queueing m */
-  queueingMethod?: "fifo" | "random" | "passthrough" | "reject" | null;
+  queueingMethod?:
+    | "fifo"
+    | "random"
+    | "passthrough"
+    | "reject"
+    | (string & {})
+    | null;
   /** HTTP status code returned to a user while in the queue. */
-  queueingStatusCode?: "200" | "202" | "429" | null;
+  queueingStatusCode?: "200" | "202" | "429" | (string & {}) | null;
   /** Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by Cloudflare again in that time period, they will be treated as a new user that visits */
   sessionDuration?: number | null;
   /** Suspends or allows traffic going to the waiting room. If set to `true`, the traffic will not go to the waiting room. */
@@ -2807,13 +2903,14 @@ export interface CreateWaitingRoomResponse {
   /** Sets the total number of active user sessions on the route at a point in time. A route is a combination of host and path on which a waiting room is available. This value is used as a baseline for the  */
   totalActiveUsers?: number | null;
   /** Which action to take when a bot is detected using Turnstile. `log` will have no impact on queueing behavior, simply keeping track of how many bots are detected in Waiting Room Analytics. `infinite_que */
-  turnstileAction?: "log" | "infinite_queue" | null;
+  turnstileAction?: "log" | "infinite_queue" | (string & {}) | null;
   /** Which Turnstile widget type to use for detecting bot traffic. See [the Turnstile documentation](https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types) for the definitions of these  */
   turnstileMode?:
     | "off"
     | "invisible"
     | "visible_non_interactive"
     | "visible_managed"
+    | (string & {})
     | null;
 }
 
@@ -2836,13 +2933,19 @@ export const CreateWaitingRoomResponse =
         Schema.Struct({
           samesite: Schema.optional(
             Schema.Union([
-              Schema.Literals(["auto", "lax", "none", "strict"]),
+              Schema.Union([
+                Schema.Literals(["auto", "lax", "none", "strict"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
           secure: Schema.optional(
             Schema.Union([
-              Schema.Literals(["auto", "always", "never"]),
+              Schema.Union([
+                Schema.Literals(["auto", "always", "never"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -2855,45 +2958,48 @@ export const CreateWaitingRoomResponse =
     customPageHtml: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     defaultTemplateLanguage: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "en-US",
-          "es-ES",
-          "de-DE",
-          "fr-FR",
-          "it-IT",
-          "ja-JP",
-          "ko-KR",
-          "pt-BR",
-          "zh-CN",
-          "zh-TW",
-          "nl-NL",
-          "pl-PL",
-          "id-ID",
-          "tr-TR",
-          "ar-EG",
-          "ru-RU",
-          "fa-IR",
-          "bg-BG",
-          "hr-HR",
-          "cs-CZ",
-          "da-DK",
-          "fi-FI",
-          "lt-LT",
-          "ms-MY",
-          "nb-NO",
-          "ro-RO",
-          "el-GR",
-          "he-IL",
-          "hi-IN",
-          "hu-HU",
-          "sr-BA",
-          "sk-SK",
-          "sl-SI",
-          "sv-SE",
-          "tl-PH",
-          "th-TH",
-          "uk-UA",
-          "vi-VN",
+        Schema.Union([
+          Schema.Literals([
+            "en-US",
+            "es-ES",
+            "de-DE",
+            "fr-FR",
+            "it-IT",
+            "ja-JP",
+            "ko-KR",
+            "pt-BR",
+            "zh-CN",
+            "zh-TW",
+            "nl-NL",
+            "pl-PL",
+            "id-ID",
+            "tr-TR",
+            "ar-EG",
+            "ru-RU",
+            "fa-IR",
+            "bg-BG",
+            "hr-HR",
+            "cs-CZ",
+            "da-DK",
+            "fi-FI",
+            "lt-LT",
+            "ms-MY",
+            "nb-NO",
+            "ro-RO",
+            "el-GR",
+            "he-IL",
+            "hi-IN",
+            "hu-HU",
+            "sr-BA",
+            "sk-SK",
+            "sl-SI",
+            "sv-SE",
+            "tl-PH",
+            "th-TH",
+            "uk-UA",
+            "vi-VN",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -2924,12 +3030,18 @@ export const CreateWaitingRoomResponse =
     queueAll: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     queueingMethod: Schema.optional(
       Schema.Union([
-        Schema.Literals(["fifo", "random", "passthrough", "reject"]),
+        Schema.Union([
+          Schema.Literals(["fifo", "random", "passthrough", "reject"]),
+          Schema.String,
+        ]),
         Schema.Null,
       ]),
     ),
     queueingStatusCode: Schema.optional(
-      Schema.Union([Schema.Literals(["200", "202", "429"]), Schema.Null]),
+      Schema.Union([
+        Schema.Union([Schema.Literals(["200", "202", "429"]), Schema.String]),
+        Schema.Null,
+      ]),
     ),
     sessionDuration: Schema.optional(
       Schema.Union([Schema.Number, Schema.Null]),
@@ -2939,15 +3051,24 @@ export const CreateWaitingRoomResponse =
       Schema.Union([Schema.Number, Schema.Null]),
     ),
     turnstileAction: Schema.optional(
-      Schema.Union([Schema.Literals(["log", "infinite_queue"]), Schema.Null]),
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals(["log", "infinite_queue"]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
     ),
     turnstileMode: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "off",
-          "invisible",
-          "visible_non_interactive",
-          "visible_managed",
+        Schema.Union([
+          Schema.Literals([
+            "off",
+            "invisible",
+            "visible_non_interactive",
+            "visible_managed",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -3016,8 +3137,8 @@ export interface UpdateWaitingRoomRequest {
   additionalRoutes?: { host?: string; path?: string }[];
   /** Body param: Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position. */
   cookieAttributes?: {
-    samesite?: "auto" | "lax" | "none" | "strict";
-    secure?: "auto" | "always" | "never";
+    samesite?: "auto" | "lax" | "none" | "strict" | (string & {});
+    secure?: "auto" | "always" | "never" | (string & {});
   };
   /** Body param: Appends a '\_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(  cf_waitingroom). If `cookie_suffix` is "abcd", the cookie name will be `  cf_waitingroom_abcd`. This  */
   cookieSuffix?: string;
@@ -3062,7 +3183,8 @@ export interface UpdateWaitingRoomRequest {
     | "tl-PH"
     | "th-TH"
     | "uk-UA"
-    | "vi-VN";
+    | "vi-VN"
+    | (string & {});
   /** Body param: A note that you can use to add more details about the waiting room. */
   description?: string;
   /** Body param: Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an accepted user will have session_duration minutes to browse the site. */
@@ -3076,21 +3198,22 @@ export interface UpdateWaitingRoomRequest {
   /** Body param: If queue_all is `true`, all the traffic that is coming to a route will be sent to the waiting room. No new traffic can get to the route once this field is set and estimated time will becom */
   queueAll?: boolean;
   /** Body param: Sets the queueing method used by the waiting room. Changing this parameter from the  default  queueing method is only available for the Waiting Room Advanced subscription. Regardless of th */
-  queueingMethod?: "fifo" | "random" | "passthrough" | "reject";
+  queueingMethod?: "fifo" | "random" | "passthrough" | "reject" | (string & {});
   /** Body param: HTTP status code returned to a user while in the queue. */
-  queueingStatusCode?: "200" | "202" | "429";
+  queueingStatusCode?: "200" | "202" | "429" | (string & {});
   /** Body param: Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by Cloudflare again in that time period, they will be treated as a new user */
   sessionDuration?: number;
   /** Body param: Suspends or allows traffic going to the waiting room. If set to `true`, the traffic will not go to the waiting room. */
   suspended?: boolean;
   /** Body param: Which action to take when a bot is detected using Turnstile. `log` will have no impact on queueing behavior, simply keeping track of how many bots are detected in Waiting Room Analytics. ` */
-  turnstileAction?: "log" | "infinite_queue";
+  turnstileAction?: "log" | "infinite_queue" | (string & {});
   /** Body param: Which Turnstile widget type to use for detecting bot traffic. See [the Turnstile documentation](https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types) for the definitio */
   turnstileMode?:
     | "off"
     | "invisible"
     | "visible_non_interactive"
-    | "visible_managed";
+    | "visible_managed"
+    | (string & {});
 }
 
 export const UpdateWaitingRoomRequest =
@@ -3112,53 +3235,64 @@ export const UpdateWaitingRoomRequest =
     cookieAttributes: Schema.optional(
       Schema.Struct({
         samesite: Schema.optional(
-          Schema.Literals(["auto", "lax", "none", "strict"]),
+          Schema.Union([
+            Schema.Literals(["auto", "lax", "none", "strict"]),
+            Schema.String,
+          ]),
         ),
-        secure: Schema.optional(Schema.Literals(["auto", "always", "never"])),
+        secure: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["auto", "always", "never"]),
+            Schema.String,
+          ]),
+        ),
       }),
     ),
     cookieSuffix: Schema.optional(Schema.String),
     customPageHtml: Schema.optional(Schema.String),
     defaultTemplateLanguage: Schema.optional(
-      Schema.Literals([
-        "en-US",
-        "es-ES",
-        "de-DE",
-        "fr-FR",
-        "it-IT",
-        "ja-JP",
-        "ko-KR",
-        "pt-BR",
-        "zh-CN",
-        "zh-TW",
-        "nl-NL",
-        "pl-PL",
-        "id-ID",
-        "tr-TR",
-        "ar-EG",
-        "ru-RU",
-        "fa-IR",
-        "bg-BG",
-        "hr-HR",
-        "cs-CZ",
-        "da-DK",
-        "fi-FI",
-        "lt-LT",
-        "ms-MY",
-        "nb-NO",
-        "ro-RO",
-        "el-GR",
-        "he-IL",
-        "hi-IN",
-        "hu-HU",
-        "sr-BA",
-        "sk-SK",
-        "sl-SI",
-        "sv-SE",
-        "tl-PH",
-        "th-TH",
-        "uk-UA",
-        "vi-VN",
+      Schema.Union([
+        Schema.Literals([
+          "en-US",
+          "es-ES",
+          "de-DE",
+          "fr-FR",
+          "it-IT",
+          "ja-JP",
+          "ko-KR",
+          "pt-BR",
+          "zh-CN",
+          "zh-TW",
+          "nl-NL",
+          "pl-PL",
+          "id-ID",
+          "tr-TR",
+          "ar-EG",
+          "ru-RU",
+          "fa-IR",
+          "bg-BG",
+          "hr-HR",
+          "cs-CZ",
+          "da-DK",
+          "fi-FI",
+          "lt-LT",
+          "ms-MY",
+          "nb-NO",
+          "ro-RO",
+          "el-GR",
+          "he-IL",
+          "hi-IN",
+          "hu-HU",
+          "sr-BA",
+          "sk-SK",
+          "sl-SI",
+          "sv-SE",
+          "tl-PH",
+          "th-TH",
+          "uk-UA",
+          "vi-VN",
+        ]),
+        Schema.String,
       ]),
     ),
     description: Schema.optional(Schema.String),
@@ -3170,20 +3304,28 @@ export const UpdateWaitingRoomRequest =
     path: Schema.optional(Schema.String),
     queueAll: Schema.optional(Schema.Boolean),
     queueingMethod: Schema.optional(
-      Schema.Literals(["fifo", "random", "passthrough", "reject"]),
+      Schema.Union([
+        Schema.Literals(["fifo", "random", "passthrough", "reject"]),
+        Schema.String,
+      ]),
     ),
-    queueingStatusCode: Schema.optional(Schema.Literals(["200", "202", "429"])),
+    queueingStatusCode: Schema.optional(
+      Schema.Union([Schema.Literals(["200", "202", "429"]), Schema.String]),
+    ),
     sessionDuration: Schema.optional(Schema.Number),
     suspended: Schema.optional(Schema.Boolean),
     turnstileAction: Schema.optional(
-      Schema.Literals(["log", "infinite_queue"]),
+      Schema.Union([Schema.Literals(["log", "infinite_queue"]), Schema.String]),
     ),
     turnstileMode: Schema.optional(
-      Schema.Literals([
-        "off",
-        "invisible",
-        "visible_non_interactive",
-        "visible_managed",
+      Schema.Union([
+        Schema.Literals([
+          "off",
+          "invisible",
+          "visible_non_interactive",
+          "visible_managed",
+        ]),
+        Schema.String,
       ]),
     ),
   }).pipe(
@@ -3222,8 +3364,8 @@ export interface UpdateWaitingRoomResponse {
   additionalRoutes?: { host?: string | null; path?: string | null }[] | null;
   /** Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position. */
   cookieAttributes?: {
-    samesite?: "auto" | "lax" | "none" | "strict" | null;
-    secure?: "auto" | "always" | "never" | null;
+    samesite?: "auto" | "lax" | "none" | "strict" | (string & {}) | null;
+    secure?: "auto" | "always" | "never" | (string & {}) | null;
   } | null;
   /** Appends a '\_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(  cf_waitingroom). If `cookie_suffix` is "abcd", the cookie name will be `  cf_waitingroom_abcd`. This field is req */
   cookieSuffix?: string | null;
@@ -3270,6 +3412,7 @@ export interface UpdateWaitingRoomResponse {
     | "th-TH"
     | "uk-UA"
     | "vi-VN"
+    | (string & {})
     | null;
   /** A note that you can use to add more details about the waiting room. */
   description?: string | null;
@@ -3295,9 +3438,15 @@ export interface UpdateWaitingRoomResponse {
   /** If queue_all is `true`, all the traffic that is coming to a route will be sent to the waiting room. No new traffic can get to the route once this field is set and estimated time will become unavailabl */
   queueAll?: boolean | null;
   /** Sets the queueing method used by the waiting room. Changing this parameter from the  default  queueing method is only available for the Waiting Room Advanced subscription. Regardless of the queueing m */
-  queueingMethod?: "fifo" | "random" | "passthrough" | "reject" | null;
+  queueingMethod?:
+    | "fifo"
+    | "random"
+    | "passthrough"
+    | "reject"
+    | (string & {})
+    | null;
   /** HTTP status code returned to a user while in the queue. */
-  queueingStatusCode?: "200" | "202" | "429" | null;
+  queueingStatusCode?: "200" | "202" | "429" | (string & {}) | null;
   /** Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by Cloudflare again in that time period, they will be treated as a new user that visits */
   sessionDuration?: number | null;
   /** Suspends or allows traffic going to the waiting room. If set to `true`, the traffic will not go to the waiting room. */
@@ -3305,13 +3454,14 @@ export interface UpdateWaitingRoomResponse {
   /** Sets the total number of active user sessions on the route at a point in time. A route is a combination of host and path on which a waiting room is available. This value is used as a baseline for the  */
   totalActiveUsers?: number | null;
   /** Which action to take when a bot is detected using Turnstile. `log` will have no impact on queueing behavior, simply keeping track of how many bots are detected in Waiting Room Analytics. `infinite_que */
-  turnstileAction?: "log" | "infinite_queue" | null;
+  turnstileAction?: "log" | "infinite_queue" | (string & {}) | null;
   /** Which Turnstile widget type to use for detecting bot traffic. See [the Turnstile documentation](https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types) for the definitions of these  */
   turnstileMode?:
     | "off"
     | "invisible"
     | "visible_non_interactive"
     | "visible_managed"
+    | (string & {})
     | null;
 }
 
@@ -3334,13 +3484,19 @@ export const UpdateWaitingRoomResponse =
         Schema.Struct({
           samesite: Schema.optional(
             Schema.Union([
-              Schema.Literals(["auto", "lax", "none", "strict"]),
+              Schema.Union([
+                Schema.Literals(["auto", "lax", "none", "strict"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
           secure: Schema.optional(
             Schema.Union([
-              Schema.Literals(["auto", "always", "never"]),
+              Schema.Union([
+                Schema.Literals(["auto", "always", "never"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -3353,45 +3509,48 @@ export const UpdateWaitingRoomResponse =
     customPageHtml: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     defaultTemplateLanguage: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "en-US",
-          "es-ES",
-          "de-DE",
-          "fr-FR",
-          "it-IT",
-          "ja-JP",
-          "ko-KR",
-          "pt-BR",
-          "zh-CN",
-          "zh-TW",
-          "nl-NL",
-          "pl-PL",
-          "id-ID",
-          "tr-TR",
-          "ar-EG",
-          "ru-RU",
-          "fa-IR",
-          "bg-BG",
-          "hr-HR",
-          "cs-CZ",
-          "da-DK",
-          "fi-FI",
-          "lt-LT",
-          "ms-MY",
-          "nb-NO",
-          "ro-RO",
-          "el-GR",
-          "he-IL",
-          "hi-IN",
-          "hu-HU",
-          "sr-BA",
-          "sk-SK",
-          "sl-SI",
-          "sv-SE",
-          "tl-PH",
-          "th-TH",
-          "uk-UA",
-          "vi-VN",
+        Schema.Union([
+          Schema.Literals([
+            "en-US",
+            "es-ES",
+            "de-DE",
+            "fr-FR",
+            "it-IT",
+            "ja-JP",
+            "ko-KR",
+            "pt-BR",
+            "zh-CN",
+            "zh-TW",
+            "nl-NL",
+            "pl-PL",
+            "id-ID",
+            "tr-TR",
+            "ar-EG",
+            "ru-RU",
+            "fa-IR",
+            "bg-BG",
+            "hr-HR",
+            "cs-CZ",
+            "da-DK",
+            "fi-FI",
+            "lt-LT",
+            "ms-MY",
+            "nb-NO",
+            "ro-RO",
+            "el-GR",
+            "he-IL",
+            "hi-IN",
+            "hu-HU",
+            "sr-BA",
+            "sk-SK",
+            "sl-SI",
+            "sv-SE",
+            "tl-PH",
+            "th-TH",
+            "uk-UA",
+            "vi-VN",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -3422,12 +3581,18 @@ export const UpdateWaitingRoomResponse =
     queueAll: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     queueingMethod: Schema.optional(
       Schema.Union([
-        Schema.Literals(["fifo", "random", "passthrough", "reject"]),
+        Schema.Union([
+          Schema.Literals(["fifo", "random", "passthrough", "reject"]),
+          Schema.String,
+        ]),
         Schema.Null,
       ]),
     ),
     queueingStatusCode: Schema.optional(
-      Schema.Union([Schema.Literals(["200", "202", "429"]), Schema.Null]),
+      Schema.Union([
+        Schema.Union([Schema.Literals(["200", "202", "429"]), Schema.String]),
+        Schema.Null,
+      ]),
     ),
     sessionDuration: Schema.optional(
       Schema.Union([Schema.Number, Schema.Null]),
@@ -3437,15 +3602,24 @@ export const UpdateWaitingRoomResponse =
       Schema.Union([Schema.Number, Schema.Null]),
     ),
     turnstileAction: Schema.optional(
-      Schema.Union([Schema.Literals(["log", "infinite_queue"]), Schema.Null]),
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals(["log", "infinite_queue"]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
     ),
     turnstileMode: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "off",
-          "invisible",
-          "visible_non_interactive",
-          "visible_managed",
+        Schema.Union([
+          Schema.Literals([
+            "off",
+            "invisible",
+            "visible_non_interactive",
+            "visible_managed",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -3514,8 +3688,8 @@ export interface PatchWaitingRoomRequest {
   additionalRoutes?: { host?: string; path?: string }[];
   /** Body param: Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position. */
   cookieAttributes?: {
-    samesite?: "auto" | "lax" | "none" | "strict";
-    secure?: "auto" | "always" | "never";
+    samesite?: "auto" | "lax" | "none" | "strict" | (string & {});
+    secure?: "auto" | "always" | "never" | (string & {});
   };
   /** Body param: Appends a '\_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(  cf_waitingroom). If `cookie_suffix` is "abcd", the cookie name will be `  cf_waitingroom_abcd`. This  */
   cookieSuffix?: string;
@@ -3560,7 +3734,8 @@ export interface PatchWaitingRoomRequest {
     | "tl-PH"
     | "th-TH"
     | "uk-UA"
-    | "vi-VN";
+    | "vi-VN"
+    | (string & {});
   /** Body param: A note that you can use to add more details about the waiting room. */
   description?: string;
   /** Body param: Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an accepted user will have session_duration minutes to browse the site. */
@@ -3574,21 +3749,22 @@ export interface PatchWaitingRoomRequest {
   /** Body param: If queue_all is `true`, all the traffic that is coming to a route will be sent to the waiting room. No new traffic can get to the route once this field is set and estimated time will becom */
   queueAll?: boolean;
   /** Body param: Sets the queueing method used by the waiting room. Changing this parameter from the  default  queueing method is only available for the Waiting Room Advanced subscription. Regardless of th */
-  queueingMethod?: "fifo" | "random" | "passthrough" | "reject";
+  queueingMethod?: "fifo" | "random" | "passthrough" | "reject" | (string & {});
   /** Body param: HTTP status code returned to a user while in the queue. */
-  queueingStatusCode?: "200" | "202" | "429";
+  queueingStatusCode?: "200" | "202" | "429" | (string & {});
   /** Body param: Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by Cloudflare again in that time period, they will be treated as a new user */
   sessionDuration?: number;
   /** Body param: Suspends or allows traffic going to the waiting room. If set to `true`, the traffic will not go to the waiting room. */
   suspended?: boolean;
   /** Body param: Which action to take when a bot is detected using Turnstile. `log` will have no impact on queueing behavior, simply keeping track of how many bots are detected in Waiting Room Analytics. ` */
-  turnstileAction?: "log" | "infinite_queue";
+  turnstileAction?: "log" | "infinite_queue" | (string & {});
   /** Body param: Which Turnstile widget type to use for detecting bot traffic. See [the Turnstile documentation](https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types) for the definitio */
   turnstileMode?:
     | "off"
     | "invisible"
     | "visible_non_interactive"
-    | "visible_managed";
+    | "visible_managed"
+    | (string & {});
 }
 
 export const PatchWaitingRoomRequest =
@@ -3610,53 +3786,64 @@ export const PatchWaitingRoomRequest =
     cookieAttributes: Schema.optional(
       Schema.Struct({
         samesite: Schema.optional(
-          Schema.Literals(["auto", "lax", "none", "strict"]),
+          Schema.Union([
+            Schema.Literals(["auto", "lax", "none", "strict"]),
+            Schema.String,
+          ]),
         ),
-        secure: Schema.optional(Schema.Literals(["auto", "always", "never"])),
+        secure: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["auto", "always", "never"]),
+            Schema.String,
+          ]),
+        ),
       }),
     ),
     cookieSuffix: Schema.optional(Schema.String),
     customPageHtml: Schema.optional(Schema.String),
     defaultTemplateLanguage: Schema.optional(
-      Schema.Literals([
-        "en-US",
-        "es-ES",
-        "de-DE",
-        "fr-FR",
-        "it-IT",
-        "ja-JP",
-        "ko-KR",
-        "pt-BR",
-        "zh-CN",
-        "zh-TW",
-        "nl-NL",
-        "pl-PL",
-        "id-ID",
-        "tr-TR",
-        "ar-EG",
-        "ru-RU",
-        "fa-IR",
-        "bg-BG",
-        "hr-HR",
-        "cs-CZ",
-        "da-DK",
-        "fi-FI",
-        "lt-LT",
-        "ms-MY",
-        "nb-NO",
-        "ro-RO",
-        "el-GR",
-        "he-IL",
-        "hi-IN",
-        "hu-HU",
-        "sr-BA",
-        "sk-SK",
-        "sl-SI",
-        "sv-SE",
-        "tl-PH",
-        "th-TH",
-        "uk-UA",
-        "vi-VN",
+      Schema.Union([
+        Schema.Literals([
+          "en-US",
+          "es-ES",
+          "de-DE",
+          "fr-FR",
+          "it-IT",
+          "ja-JP",
+          "ko-KR",
+          "pt-BR",
+          "zh-CN",
+          "zh-TW",
+          "nl-NL",
+          "pl-PL",
+          "id-ID",
+          "tr-TR",
+          "ar-EG",
+          "ru-RU",
+          "fa-IR",
+          "bg-BG",
+          "hr-HR",
+          "cs-CZ",
+          "da-DK",
+          "fi-FI",
+          "lt-LT",
+          "ms-MY",
+          "nb-NO",
+          "ro-RO",
+          "el-GR",
+          "he-IL",
+          "hi-IN",
+          "hu-HU",
+          "sr-BA",
+          "sk-SK",
+          "sl-SI",
+          "sv-SE",
+          "tl-PH",
+          "th-TH",
+          "uk-UA",
+          "vi-VN",
+        ]),
+        Schema.String,
       ]),
     ),
     description: Schema.optional(Schema.String),
@@ -3668,20 +3855,28 @@ export const PatchWaitingRoomRequest =
     path: Schema.optional(Schema.String),
     queueAll: Schema.optional(Schema.Boolean),
     queueingMethod: Schema.optional(
-      Schema.Literals(["fifo", "random", "passthrough", "reject"]),
+      Schema.Union([
+        Schema.Literals(["fifo", "random", "passthrough", "reject"]),
+        Schema.String,
+      ]),
     ),
-    queueingStatusCode: Schema.optional(Schema.Literals(["200", "202", "429"])),
+    queueingStatusCode: Schema.optional(
+      Schema.Union([Schema.Literals(["200", "202", "429"]), Schema.String]),
+    ),
     sessionDuration: Schema.optional(Schema.Number),
     suspended: Schema.optional(Schema.Boolean),
     turnstileAction: Schema.optional(
-      Schema.Literals(["log", "infinite_queue"]),
+      Schema.Union([Schema.Literals(["log", "infinite_queue"]), Schema.String]),
     ),
     turnstileMode: Schema.optional(
-      Schema.Literals([
-        "off",
-        "invisible",
-        "visible_non_interactive",
-        "visible_managed",
+      Schema.Union([
+        Schema.Literals([
+          "off",
+          "invisible",
+          "visible_non_interactive",
+          "visible_managed",
+        ]),
+        Schema.String,
       ]),
     ),
   }).pipe(
@@ -3720,8 +3915,8 @@ export interface PatchWaitingRoomResponse {
   additionalRoutes?: { host?: string | null; path?: string | null }[] | null;
   /** Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position. */
   cookieAttributes?: {
-    samesite?: "auto" | "lax" | "none" | "strict" | null;
-    secure?: "auto" | "always" | "never" | null;
+    samesite?: "auto" | "lax" | "none" | "strict" | (string & {}) | null;
+    secure?: "auto" | "always" | "never" | (string & {}) | null;
   } | null;
   /** Appends a '\_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(  cf_waitingroom). If `cookie_suffix` is "abcd", the cookie name will be `  cf_waitingroom_abcd`. This field is req */
   cookieSuffix?: string | null;
@@ -3768,6 +3963,7 @@ export interface PatchWaitingRoomResponse {
     | "th-TH"
     | "uk-UA"
     | "vi-VN"
+    | (string & {})
     | null;
   /** A note that you can use to add more details about the waiting room. */
   description?: string | null;
@@ -3793,9 +3989,15 @@ export interface PatchWaitingRoomResponse {
   /** If queue_all is `true`, all the traffic that is coming to a route will be sent to the waiting room. No new traffic can get to the route once this field is set and estimated time will become unavailabl */
   queueAll?: boolean | null;
   /** Sets the queueing method used by the waiting room. Changing this parameter from the  default  queueing method is only available for the Waiting Room Advanced subscription. Regardless of the queueing m */
-  queueingMethod?: "fifo" | "random" | "passthrough" | "reject" | null;
+  queueingMethod?:
+    | "fifo"
+    | "random"
+    | "passthrough"
+    | "reject"
+    | (string & {})
+    | null;
   /** HTTP status code returned to a user while in the queue. */
-  queueingStatusCode?: "200" | "202" | "429" | null;
+  queueingStatusCode?: "200" | "202" | "429" | (string & {}) | null;
   /** Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by Cloudflare again in that time period, they will be treated as a new user that visits */
   sessionDuration?: number | null;
   /** Suspends or allows traffic going to the waiting room. If set to `true`, the traffic will not go to the waiting room. */
@@ -3803,13 +4005,14 @@ export interface PatchWaitingRoomResponse {
   /** Sets the total number of active user sessions on the route at a point in time. A route is a combination of host and path on which a waiting room is available. This value is used as a baseline for the  */
   totalActiveUsers?: number | null;
   /** Which action to take when a bot is detected using Turnstile. `log` will have no impact on queueing behavior, simply keeping track of how many bots are detected in Waiting Room Analytics. `infinite_que */
-  turnstileAction?: "log" | "infinite_queue" | null;
+  turnstileAction?: "log" | "infinite_queue" | (string & {}) | null;
   /** Which Turnstile widget type to use for detecting bot traffic. See [the Turnstile documentation](https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types) for the definitions of these  */
   turnstileMode?:
     | "off"
     | "invisible"
     | "visible_non_interactive"
     | "visible_managed"
+    | (string & {})
     | null;
 }
 
@@ -3832,13 +4035,19 @@ export const PatchWaitingRoomResponse =
         Schema.Struct({
           samesite: Schema.optional(
             Schema.Union([
-              Schema.Literals(["auto", "lax", "none", "strict"]),
+              Schema.Union([
+                Schema.Literals(["auto", "lax", "none", "strict"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
           secure: Schema.optional(
             Schema.Union([
-              Schema.Literals(["auto", "always", "never"]),
+              Schema.Union([
+                Schema.Literals(["auto", "always", "never"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -3851,45 +4060,48 @@ export const PatchWaitingRoomResponse =
     customPageHtml: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     defaultTemplateLanguage: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "en-US",
-          "es-ES",
-          "de-DE",
-          "fr-FR",
-          "it-IT",
-          "ja-JP",
-          "ko-KR",
-          "pt-BR",
-          "zh-CN",
-          "zh-TW",
-          "nl-NL",
-          "pl-PL",
-          "id-ID",
-          "tr-TR",
-          "ar-EG",
-          "ru-RU",
-          "fa-IR",
-          "bg-BG",
-          "hr-HR",
-          "cs-CZ",
-          "da-DK",
-          "fi-FI",
-          "lt-LT",
-          "ms-MY",
-          "nb-NO",
-          "ro-RO",
-          "el-GR",
-          "he-IL",
-          "hi-IN",
-          "hu-HU",
-          "sr-BA",
-          "sk-SK",
-          "sl-SI",
-          "sv-SE",
-          "tl-PH",
-          "th-TH",
-          "uk-UA",
-          "vi-VN",
+        Schema.Union([
+          Schema.Literals([
+            "en-US",
+            "es-ES",
+            "de-DE",
+            "fr-FR",
+            "it-IT",
+            "ja-JP",
+            "ko-KR",
+            "pt-BR",
+            "zh-CN",
+            "zh-TW",
+            "nl-NL",
+            "pl-PL",
+            "id-ID",
+            "tr-TR",
+            "ar-EG",
+            "ru-RU",
+            "fa-IR",
+            "bg-BG",
+            "hr-HR",
+            "cs-CZ",
+            "da-DK",
+            "fi-FI",
+            "lt-LT",
+            "ms-MY",
+            "nb-NO",
+            "ro-RO",
+            "el-GR",
+            "he-IL",
+            "hi-IN",
+            "hu-HU",
+            "sr-BA",
+            "sk-SK",
+            "sl-SI",
+            "sv-SE",
+            "tl-PH",
+            "th-TH",
+            "uk-UA",
+            "vi-VN",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -3920,12 +4132,18 @@ export const PatchWaitingRoomResponse =
     queueAll: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     queueingMethod: Schema.optional(
       Schema.Union([
-        Schema.Literals(["fifo", "random", "passthrough", "reject"]),
+        Schema.Union([
+          Schema.Literals(["fifo", "random", "passthrough", "reject"]),
+          Schema.String,
+        ]),
         Schema.Null,
       ]),
     ),
     queueingStatusCode: Schema.optional(
-      Schema.Union([Schema.Literals(["200", "202", "429"]), Schema.Null]),
+      Schema.Union([
+        Schema.Union([Schema.Literals(["200", "202", "429"]), Schema.String]),
+        Schema.Null,
+      ]),
     ),
     sessionDuration: Schema.optional(
       Schema.Union([Schema.Number, Schema.Null]),
@@ -3935,15 +4153,24 @@ export const PatchWaitingRoomResponse =
       Schema.Union([Schema.Number, Schema.Null]),
     ),
     turnstileAction: Schema.optional(
-      Schema.Union([Schema.Literals(["log", "infinite_queue"]), Schema.Null]),
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals(["log", "infinite_queue"]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
     ),
     turnstileMode: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "off",
-          "invisible",
-          "visible_non_interactive",
-          "visible_managed",
+        Schema.Union([
+          Schema.Literals([
+            "off",
+            "invisible",
+            "visible_non_interactive",
+            "visible_managed",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),

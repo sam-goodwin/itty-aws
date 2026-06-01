@@ -70,7 +70,7 @@ export interface GetAbuseReportResponse {
     pendingCount: number;
   };
   /** An enum value that represents the status of an abuse record */
-  status: "accepted" | "in_review";
+  status: "accepted" | "in_review" | (string & {});
   /** The abuse report type */
   type:
     | "PHISH"
@@ -81,7 +81,8 @@ export interface GetAbuseReportResponse {
     | "TM"
     | "REG_WHO"
     | "NCSEI"
-    | "NETWORK";
+    | "NETWORK"
+    | (string & {});
   /** Justification for the report. */
   justification?: string | null;
   /** Original work / Targeted brand in the alleged abuse. */
@@ -116,17 +117,23 @@ export const GetAbuseReportResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         pendingCount: "pending_count",
       }),
     ),
-    status: Schema.Literals(["accepted", "in_review"]),
-    type: Schema.Literals([
-      "PHISH",
-      "GEN",
-      "THREAT",
-      "DMCA",
-      "EMER",
-      "TM",
-      "REG_WHO",
-      "NCSEI",
-      "NETWORK",
+    status: Schema.Union([
+      Schema.Literals(["accepted", "in_review"]),
+      Schema.String,
+    ]),
+    type: Schema.Union([
+      Schema.Literals([
+        "PHISH",
+        "GEN",
+        "THREAT",
+        "DMCA",
+        "EMER",
+        "TM",
+        "REG_WHO",
+        "NCSEI",
+        "NETWORK",
+      ]),
+      Schema.String,
     ]),
     justification: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     originalWork: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -199,11 +206,12 @@ export interface ListAbuseReportsRequest {
     | "active"
     | "in_review"
     | "cancelled"
-    | "removed";
+    | "removed"
+    | (string & {});
   /** Query param: A property to sort by, followed by the order (id, cdate, domain, type, status) */
   sort?: string;
   /** Query param: Filter by the status of the report. */
-  status?: "accepted" | "in_review";
+  status?: "accepted" | "in_review" | (string & {});
   /** Query param: Filter by the type of the report. */
   type?:
     | "PHISH"
@@ -214,7 +222,8 @@ export interface ListAbuseReportsRequest {
     | "TM"
     | "REG_WHO"
     | "NCSEI"
-    | "NETWORK";
+    | "NETWORK"
+    | (string & {});
 }
 
 export const ListAbuseReportsRequest =
@@ -230,29 +239,35 @@ export const ListAbuseReportsRequest =
     ),
     domain: Schema.optional(Schema.String).pipe(T.HttpQuery("domain")),
     mitigationStatus: Schema.optional(
-      Schema.Literals([
-        "pending",
-        "active",
-        "in_review",
-        "cancelled",
-        "removed",
+      Schema.Union([
+        Schema.Literals([
+          "pending",
+          "active",
+          "in_review",
+          "cancelled",
+          "removed",
+        ]),
+        Schema.String,
       ]),
     ).pipe(T.HttpQuery("mitigation_status")),
     sort: Schema.optional(Schema.String).pipe(T.HttpQuery("sort")),
-    status: Schema.optional(Schema.Literals(["accepted", "in_review"])).pipe(
-      T.HttpQuery("status"),
-    ),
+    status: Schema.optional(
+      Schema.Union([Schema.Literals(["accepted", "in_review"]), Schema.String]),
+    ).pipe(T.HttpQuery("status")),
     type: Schema.optional(
-      Schema.Literals([
-        "PHISH",
-        "GEN",
-        "THREAT",
-        "DMCA",
-        "EMER",
-        "TM",
-        "REG_WHO",
-        "NCSEI",
-        "NETWORK",
+      Schema.Union([
+        Schema.Literals([
+          "PHISH",
+          "GEN",
+          "THREAT",
+          "DMCA",
+          "EMER",
+          "TM",
+          "REG_WHO",
+          "NCSEI",
+          "NETWORK",
+        ]),
+        Schema.String,
       ]),
     ).pipe(T.HttpQuery("type")),
   }).pipe(
@@ -274,7 +289,7 @@ export interface ListAbuseReportsResponse {
               inReviewCount: number;
               pendingCount: number;
             };
-            status: "accepted" | "in_review";
+            status: "accepted" | "in_review" | (string & {});
             type:
               | "PHISH"
               | "GEN"
@@ -284,7 +299,8 @@ export interface ListAbuseReportsResponse {
               | "TM"
               | "REG_WHO"
               | "NCSEI"
-              | "NETWORK";
+              | "NETWORK"
+              | (string & {});
             justification?: string | null;
             originalWork?: string | null;
             submitter?: {
@@ -333,17 +349,23 @@ export const ListAbuseReportsResponse =
                       pendingCount: "pending_count",
                     }),
                   ),
-                  status: Schema.Literals(["accepted", "in_review"]),
-                  type: Schema.Literals([
-                    "PHISH",
-                    "GEN",
-                    "THREAT",
-                    "DMCA",
-                    "EMER",
-                    "TM",
-                    "REG_WHO",
-                    "NCSEI",
-                    "NETWORK",
+                  status: Schema.Union([
+                    Schema.Literals(["accepted", "in_review"]),
+                    Schema.String,
+                  ]),
+                  type: Schema.Union([
+                    Schema.Literals([
+                      "PHISH",
+                      "GEN",
+                      "THREAT",
+                      "DMCA",
+                      "EMER",
+                      "TM",
+                      "REG_WHO",
+                      "NCSEI",
+                      "NETWORK",
+                    ]),
+                    Schema.String,
                   ]),
                   justification: Schema.optional(
                     Schema.Union([Schema.String, Schema.Null]),
@@ -576,7 +598,7 @@ export interface ListMitigationsRequest {
   /** Query param: Returns mitigations that were dispatched before the given date */
   effectiveBefore?: string;
   /** Query param: Filter by the type of entity the mitigation impacts. */
-  entityType?: "url_pattern" | "account" | "zone";
+  entityType?: "url_pattern" | "account" | "zone" | (string & {});
   /** Query param: A property to sort by, followed by the order */
   sort?:
     | "type,asc"
@@ -586,9 +608,16 @@ export interface ListMitigationsRequest {
     | "status,asc"
     | "status,desc"
     | "entity_type,asc"
-    | "entity_type,desc";
+    | "entity_type,desc"
+    | (string & {});
   /** Query param: Filter by the status of the mitigation. */
-  status?: "pending" | "active" | "in_review" | "cancelled" | "removed";
+  status?:
+    | "pending"
+    | "active"
+    | "in_review"
+    | "cancelled"
+    | "removed"
+    | (string & {});
   /** Query param: Filter by the type of mitigation. This filter parameter can be specified multiple times to include multiple types of mitigations in the result set, e.g. ?type=rate_limit_cache&type=legal_ */
   type?:
     | "legal_block"
@@ -597,7 +626,8 @@ export interface ListMitigationsRequest {
     | "network_block"
     | "rate_limit_cache"
     | "account_suspend"
-    | "redirect_video_stream";
+    | "redirect_video_stream"
+    | (string & {});
 }
 
 export const ListMitigationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -613,38 +643,50 @@ export const ListMitigationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       T.HttpQuery("effective_before"),
     ),
     entityType: Schema.optional(
-      Schema.Literals(["url_pattern", "account", "zone"]),
+      Schema.Union([
+        Schema.Literals(["url_pattern", "account", "zone"]),
+        Schema.String,
+      ]),
     ).pipe(T.HttpQuery("entity_type")),
     sort: Schema.optional(
-      Schema.Literals([
-        "type,asc",
-        "type,desc",
-        "effective_date,asc",
-        "effective_date,desc",
-        "status,asc",
-        "status,desc",
-        "entity_type,asc",
-        "entity_type,desc",
+      Schema.Union([
+        Schema.Literals([
+          "type,asc",
+          "type,desc",
+          "effective_date,asc",
+          "effective_date,desc",
+          "status,asc",
+          "status,desc",
+          "entity_type,asc",
+          "entity_type,desc",
+        ]),
+        Schema.String,
       ]),
     ).pipe(T.HttpQuery("sort")),
     status: Schema.optional(
-      Schema.Literals([
-        "pending",
-        "active",
-        "in_review",
-        "cancelled",
-        "removed",
+      Schema.Union([
+        Schema.Literals([
+          "pending",
+          "active",
+          "in_review",
+          "cancelled",
+          "removed",
+        ]),
+        Schema.String,
       ]),
     ).pipe(T.HttpQuery("status")),
     type: Schema.optional(
-      Schema.Literals([
-        "legal_block",
-        "misleading_interstitial",
-        "phishing_interstitial",
-        "network_block",
-        "rate_limit_cache",
-        "account_suspend",
-        "redirect_video_stream",
+      Schema.Union([
+        Schema.Literals([
+          "legal_block",
+          "misleading_interstitial",
+          "phishing_interstitial",
+          "network_block",
+          "rate_limit_cache",
+          "account_suspend",
+          "redirect_video_stream",
+        ]),
+        Schema.String,
       ]),
     ).pipe(T.HttpQuery("type")),
   },
@@ -663,13 +705,14 @@ export interface ListMitigationsResponse {
             id: string;
             effectiveDate: string;
             entityId: string;
-            entityType: "url_pattern" | "account" | "zone";
+            entityType: "url_pattern" | "account" | "zone" | (string & {});
             status:
               | "pending"
               | "active"
               | "in_review"
               | "cancelled"
-              | "removed";
+              | "removed"
+              | (string & {});
             type:
               | "legal_block"
               | "misleading_interstitial"
@@ -677,7 +720,8 @@ export interface ListMitigationsResponse {
               | "network_block"
               | "rate_limit_cache"
               | "account_suspend"
-              | "redirect_video_stream";
+              | "redirect_video_stream"
+              | (string & {});
           }[];
         }[]
       | null;
@@ -702,26 +746,31 @@ export const ListMitigationsResponse =
                   id: Schema.String,
                   effectiveDate: Schema.String,
                   entityId: Schema.String,
-                  entityType: Schema.Literals([
-                    "url_pattern",
-                    "account",
-                    "zone",
+                  entityType: Schema.Union([
+                    Schema.Literals(["url_pattern", "account", "zone"]),
+                    Schema.String,
                   ]),
-                  status: Schema.Literals([
-                    "pending",
-                    "active",
-                    "in_review",
-                    "cancelled",
-                    "removed",
+                  status: Schema.Union([
+                    Schema.Literals([
+                      "pending",
+                      "active",
+                      "in_review",
+                      "cancelled",
+                      "removed",
+                    ]),
+                    Schema.String,
                   ]),
-                  type: Schema.Literals([
-                    "legal_block",
-                    "misleading_interstitial",
-                    "phishing_interstitial",
-                    "network_block",
-                    "rate_limit_cache",
-                    "account_suspend",
-                    "redirect_video_stream",
+                  type: Schema.Union([
+                    Schema.Literals([
+                      "legal_block",
+                      "misleading_interstitial",
+                      "phishing_interstitial",
+                      "network_block",
+                      "rate_limit_cache",
+                      "account_suspend",
+                      "redirect_video_stream",
+                    ]),
+                    Schema.String,
                   ]),
                 }).pipe(
                   Schema.encodeKeys({
@@ -789,7 +838,10 @@ export interface ReviewMitigationRequest {
   /** Path param: Cloudflare Account ID */
   accountId: string;
   /** Body param: List of mitigations to appeal. */
-  appeals: { id: string; reason: "removed" | "misclassified" }[];
+  appeals: {
+    id: string;
+    reason: "removed" | "misclassified" | (string & {});
+  }[];
 }
 
 export const ReviewMitigationRequest =
@@ -799,7 +851,10 @@ export const ReviewMitigationRequest =
     appeals: Schema.Array(
       Schema.Struct({
         id: Schema.String,
-        reason: Schema.Literals(["removed", "misclassified"]),
+        reason: Schema.Union([
+          Schema.Literals(["removed", "misclassified"]),
+          Schema.String,
+        ]),
       }),
     ),
   }).pipe(
@@ -814,8 +869,14 @@ export interface ReviewMitigationResponse {
     id: string;
     effectiveDate: string;
     entityId: string;
-    entityType: "url_pattern" | "account" | "zone";
-    status: "pending" | "active" | "in_review" | "cancelled" | "removed";
+    entityType: "url_pattern" | "account" | "zone" | (string & {});
+    status:
+      | "pending"
+      | "active"
+      | "in_review"
+      | "cancelled"
+      | "removed"
+      | (string & {});
     type:
       | "legal_block"
       | "misleading_interstitial"
@@ -823,7 +884,8 @@ export interface ReviewMitigationResponse {
       | "network_block"
       | "rate_limit_cache"
       | "account_suspend"
-      | "redirect_video_stream";
+      | "redirect_video_stream"
+      | (string & {});
   }[];
 }
 
@@ -834,22 +896,31 @@ export const ReviewMitigationResponse =
         id: Schema.String,
         effectiveDate: Schema.String,
         entityId: Schema.String,
-        entityType: Schema.Literals(["url_pattern", "account", "zone"]),
-        status: Schema.Literals([
-          "pending",
-          "active",
-          "in_review",
-          "cancelled",
-          "removed",
+        entityType: Schema.Union([
+          Schema.Literals(["url_pattern", "account", "zone"]),
+          Schema.String,
         ]),
-        type: Schema.Literals([
-          "legal_block",
-          "misleading_interstitial",
-          "phishing_interstitial",
-          "network_block",
-          "rate_limit_cache",
-          "account_suspend",
-          "redirect_video_stream",
+        status: Schema.Union([
+          Schema.Literals([
+            "pending",
+            "active",
+            "in_review",
+            "cancelled",
+            "removed",
+          ]),
+          Schema.String,
+        ]),
+        type: Schema.Union([
+          Schema.Literals([
+            "legal_block",
+            "misleading_interstitial",
+            "phishing_interstitial",
+            "network_block",
+            "rate_limit_cache",
+            "account_suspend",
+            "redirect_video_stream",
+          ]),
+          Schema.String,
         ]),
       }).pipe(
         Schema.encodeKeys({

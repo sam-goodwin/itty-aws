@@ -42,7 +42,8 @@ export interface GetAccountTagRequest {
     | "stream_live_input"
     | "stream_video"
     | "worker"
-    | "worker_version";
+    | "worker_version"
+    | (string & {});
   /** Query param: Worker identifier. Required for worker_version resources. */
   workerId?: string;
 }
@@ -50,27 +51,30 @@ export interface GetAccountTagRequest {
 export const GetAccountTagRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   resourceId: Schema.String.pipe(T.HttpQuery("resource_id")),
-  resourceType: Schema.Literals([
-    "access_application",
-    "access_group",
-    "account",
-    "ai_gateway",
-    "alerting_policy",
-    "alerting_webhook",
-    "cloudflared_tunnel",
-    "d1_database",
-    "durable_object_namespace",
-    "gateway_list",
-    "gateway_rule",
-    "image",
-    "kv_namespace",
-    "queue",
-    "r2_bucket",
-    "resource_share",
-    "stream_live_input",
-    "stream_video",
-    "worker",
-    "worker_version",
+  resourceType: Schema.Union([
+    Schema.Literals([
+      "access_application",
+      "access_group",
+      "account",
+      "ai_gateway",
+      "alerting_policy",
+      "alerting_webhook",
+      "cloudflared_tunnel",
+      "d1_database",
+      "durable_object_namespace",
+      "gateway_list",
+      "gateway_rule",
+      "image",
+      "kv_namespace",
+      "queue",
+      "r2_bucket",
+      "resource_share",
+      "stream_live_input",
+      "stream_video",
+      "worker",
+      "worker_version",
+    ]),
+    Schema.String,
   ]).pipe(T.HttpQuery("resource_type")),
   workerId: Schema.optional(Schema.String).pipe(T.HttpQuery("worker_id")),
 }).pipe(
@@ -594,7 +598,8 @@ export interface PutAccountTagRequest {
     | "stream_live_input"
     | "stream_video"
     | "worker"
-    | "worker_version";
+    | "worker_version"
+    | (string & {});
   /** Body param: Worker ID is required only for worker_version resources */
   workerId: string;
   /** Body param: Contains key-value pairs of tags. */
@@ -605,27 +610,30 @@ export const PutAccountTagRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   ifMatch: Schema.optional(Schema.String).pipe(T.HttpHeader("If-Match")),
   resourceId: Schema.String,
-  resourceType: Schema.Literals([
-    "access_application",
-    "access_group",
-    "account",
-    "ai_gateway",
-    "alerting_policy",
-    "alerting_webhook",
-    "cloudflared_tunnel",
-    "d1_database",
-    "durable_object_namespace",
-    "gateway_list",
-    "gateway_rule",
-    "image",
-    "kv_namespace",
-    "queue",
-    "r2_bucket",
-    "resource_share",
-    "stream_live_input",
-    "stream_video",
-    "worker",
-    "worker_version",
+  resourceType: Schema.Union([
+    Schema.Literals([
+      "access_application",
+      "access_group",
+      "account",
+      "ai_gateway",
+      "alerting_policy",
+      "alerting_webhook",
+      "cloudflared_tunnel",
+      "d1_database",
+      "durable_object_namespace",
+      "gateway_list",
+      "gateway_rule",
+      "image",
+      "kv_namespace",
+      "queue",
+      "r2_bucket",
+      "resource_share",
+      "stream_live_input",
+      "stream_video",
+      "worker",
+      "worker_version",
+    ]),
+    Schema.String,
   ]),
   workerId: Schema.String,
   tags: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -1264,6 +1272,7 @@ export interface ListResourceTaggingsRequest {
     | "worker"
     | "worker_version"
     | "zone"
+    | (string & {})
   )[];
 }
 
@@ -1274,34 +1283,37 @@ export const ListResourceTaggingsRequest =
     tag: Schema.optional(Schema.Array(Schema.String)).pipe(T.HttpQuery("tag")),
     type: Schema.optional(
       Schema.Array(
-        Schema.Literals([
-          "access_application",
-          "access_application_policy",
-          "access_group",
-          "account",
-          "ai_gateway",
-          "alerting_policy",
-          "alerting_webhook",
-          "api_gateway_operation",
-          "cloudflared_tunnel",
-          "custom_certificate",
-          "custom_hostname",
-          "d1_database",
-          "dns_record",
-          "durable_object_namespace",
-          "gateway_list",
-          "gateway_rule",
-          "image",
-          "kv_namespace",
-          "managed_client_certificate",
-          "queue",
-          "r2_bucket",
-          "resource_share",
-          "stream_live_input",
-          "stream_video",
-          "worker",
-          "worker_version",
-          "zone",
+        Schema.Union([
+          Schema.Literals([
+            "access_application",
+            "access_application_policy",
+            "access_group",
+            "account",
+            "ai_gateway",
+            "alerting_policy",
+            "alerting_webhook",
+            "api_gateway_operation",
+            "cloudflared_tunnel",
+            "custom_certificate",
+            "custom_hostname",
+            "d1_database",
+            "dns_record",
+            "durable_object_namespace",
+            "gateway_list",
+            "gateway_rule",
+            "image",
+            "kv_namespace",
+            "managed_client_certificate",
+            "queue",
+            "r2_bucket",
+            "resource_share",
+            "stream_live_input",
+            "stream_video",
+            "worker",
+            "worker_version",
+            "zone",
+          ]),
+          Schema.String,
         ]),
       ),
     ).pipe(T.HttpQuery("type")),
@@ -1867,7 +1879,8 @@ export interface ListValuesRequest {
     | "stream_video"
     | "worker"
     | "worker_version"
-    | "zone";
+    | "zone"
+    | (string & {});
 }
 
 export const ListValuesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1875,34 +1888,37 @@ export const ListValuesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
   type: Schema.optional(
-    Schema.Literals([
-      "access_application",
-      "access_application_policy",
-      "access_group",
-      "account",
-      "ai_gateway",
-      "alerting_policy",
-      "alerting_webhook",
-      "api_gateway_operation",
-      "cloudflared_tunnel",
-      "custom_certificate",
-      "custom_hostname",
-      "d1_database",
-      "dns_record",
-      "durable_object_namespace",
-      "gateway_list",
-      "gateway_rule",
-      "image",
-      "kv_namespace",
-      "managed_client_certificate",
-      "queue",
-      "r2_bucket",
-      "resource_share",
-      "stream_live_input",
-      "stream_video",
-      "worker",
-      "worker_version",
-      "zone",
+    Schema.Union([
+      Schema.Literals([
+        "access_application",
+        "access_application_policy",
+        "access_group",
+        "account",
+        "ai_gateway",
+        "alerting_policy",
+        "alerting_webhook",
+        "api_gateway_operation",
+        "cloudflared_tunnel",
+        "custom_certificate",
+        "custom_hostname",
+        "d1_database",
+        "dns_record",
+        "durable_object_namespace",
+        "gateway_list",
+        "gateway_rule",
+        "image",
+        "kv_namespace",
+        "managed_client_certificate",
+        "queue",
+        "r2_bucket",
+        "resource_share",
+        "stream_live_input",
+        "stream_video",
+        "worker",
+        "worker_version",
+        "zone",
+      ]),
+      Schema.String,
     ]),
   ).pipe(T.HttpQuery("type")),
 }).pipe(
@@ -1976,7 +1992,8 @@ export interface GetZoneTagRequest {
     | "custom_hostname"
     | "dns_record"
     | "managed_client_certificate"
-    | "zone";
+    | "zone"
+    | (string & {});
   /** Query param: Access application ID identifier. Required for access_application_policy resources. */
   accessApplicationId?: string;
 }
@@ -1984,14 +2001,17 @@ export interface GetZoneTagRequest {
 export const GetZoneTagRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   resourceId: Schema.String.pipe(T.HttpQuery("resource_id")),
-  resourceType: Schema.Literals([
-    "access_application_policy",
-    "api_gateway_operation",
-    "custom_certificate",
-    "custom_hostname",
-    "dns_record",
-    "managed_client_certificate",
-    "zone",
+  resourceType: Schema.Union([
+    Schema.Literals([
+      "access_application_policy",
+      "api_gateway_operation",
+      "custom_certificate",
+      "custom_hostname",
+      "dns_record",
+      "managed_client_certificate",
+      "zone",
+    ]),
+    Schema.String,
   ]).pipe(T.HttpQuery("resource_type")),
   accessApplicationId: Schema.optional(Schema.String).pipe(
     T.HttpQuery("access_application_id"),
@@ -2503,7 +2523,8 @@ export interface PutZoneTagRequest {
     | "custom_hostname"
     | "dns_record"
     | "managed_client_certificate"
-    | "zone";
+    | "zone"
+    | (string & {});
   /** Body param: Contains key-value pairs of tags. */
   tags?: Record<string, unknown>;
 }
@@ -2512,13 +2533,16 @@ export const PutZoneTagRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   ifMatch: Schema.optional(Schema.String).pipe(T.HttpHeader("If-Match")),
   resourceId: Schema.String,
-  resourceType: Schema.Literals([
-    "api_gateway_operation",
-    "custom_certificate",
-    "custom_hostname",
-    "dns_record",
-    "managed_client_certificate",
-    "zone",
+  resourceType: Schema.Union([
+    Schema.Literals([
+      "api_gateway_operation",
+      "custom_certificate",
+      "custom_hostname",
+      "dns_record",
+      "managed_client_certificate",
+      "zone",
+    ]),
+    Schema.String,
   ]),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
 }).pipe(

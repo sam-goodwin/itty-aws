@@ -370,9 +370,14 @@ export interface ListBetaWorkersRequest {
   page?: number;
   perPage?: number;
   /** Query param: Sort direction. */
-  order?: "asc" | "desc";
+  order?: "asc" | "desc" | (string & {});
   /** Query param: Property to sort results by. */
-  orderBy?: "deployed_on" | "updated_on" | "created_on" | "name";
+  orderBy?:
+    | "deployed_on"
+    | "updated_on"
+    | "created_on"
+    | "name"
+    | (string & {});
 }
 
 export const ListBetaWorkersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -380,11 +385,14 @@ export const ListBetaWorkersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
     perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-    order: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-      T.HttpQuery("order"),
-    ),
+    order: Schema.optional(
+      Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+    ).pipe(T.HttpQuery("order")),
     orderBy: Schema.optional(
-      Schema.Literals(["deployed_on", "updated_on", "created_on", "name"]),
+      Schema.Union([
+        Schema.Literals(["deployed_on", "updated_on", "created_on", "name"]),
+        Schema.String,
+      ]),
     ).pipe(T.HttpQuery("order_by")),
   },
 ).pipe(
@@ -476,7 +484,7 @@ export interface CreateBetaWorkerRequest {
       enabled?: boolean;
       headSamplingRate?: number;
       persist?: boolean;
-      propagationPolicy?: "authenticated" | "accept";
+      propagationPolicy?: "authenticated" | "accept" | (string & {});
     };
   };
   /** Body param: Subdomain settings for the Worker. */
@@ -520,7 +528,10 @@ export const CreateBetaWorkerRequest =
             headSamplingRate: Schema.optional(Schema.Number),
             persist: Schema.optional(Schema.Boolean),
             propagationPolicy: Schema.optional(
-              Schema.Literals(["authenticated", "accept"]),
+              Schema.Union([
+                Schema.Literals(["authenticated", "accept"]),
+                Schema.String,
+              ]),
             ),
           }).pipe(
             Schema.encodeKeys({
@@ -624,7 +635,7 @@ export interface UpdateBetaWorkerRequest {
       enabled?: boolean;
       headSamplingRate?: number;
       persist?: boolean;
-      propagationPolicy?: "authenticated" | "accept";
+      propagationPolicy?: "authenticated" | "accept" | (string & {});
     };
   };
   /** Body param: Subdomain settings for the Worker. */
@@ -669,7 +680,10 @@ export const UpdateBetaWorkerRequest =
             headSamplingRate: Schema.optional(Schema.Number),
             persist: Schema.optional(Schema.Boolean),
             propagationPolicy: Schema.optional(
-              Schema.Literals(["authenticated", "accept"]),
+              Schema.Union([
+                Schema.Literals(["authenticated", "accept"]),
+                Schema.String,
+              ]),
             ),
           }).pipe(
             Schema.encodeKeys({
@@ -776,7 +790,7 @@ export interface PatchBetaWorkerRequest {
       enabled?: boolean;
       headSamplingRate?: number;
       persist?: boolean;
-      propagationPolicy?: "authenticated" | "accept";
+      propagationPolicy?: "authenticated" | "accept" | (string & {});
     };
   };
   /** Body param: Subdomain settings for the Worker. */
@@ -820,7 +834,10 @@ export const PatchBetaWorkerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           headSamplingRate: Schema.optional(Schema.Number),
           persist: Schema.optional(Schema.Boolean),
           propagationPolicy: Schema.optional(
-            Schema.Literals(["authenticated", "accept"]),
+            Schema.Union([
+              Schema.Literals(["authenticated", "accept"]),
+              Schema.String,
+            ]),
           ),
         }).pipe(
           Schema.encodeKeys({
@@ -1054,8 +1071,14 @@ export interface GetBetaWorkerVersionResponse {
         | "force-trailing-slash"
         | "drop-trailing-slash"
         | "none"
+        | (string & {})
         | null;
-      notFoundHandling?: "none" | "404-page" | "single-page-application" | null;
+      notFoundHandling?:
+        | "none"
+        | "404-page"
+        | "single-page-application"
+        | (string & {})
+        | null;
       runWorkerFirst?: string[] | boolean | null;
     } | null;
     jwt?: string | null;
@@ -1127,7 +1150,12 @@ export interface GetBetaWorkerVersionResponse {
             bucketName: string;
             name: string;
             type: "r2_bucket";
-            jurisdiction?: "eu" | "fedramp" | "fedramp-high" | null;
+            jurisdiction?:
+              | "eu"
+              | "fedramp"
+              | "fedramp-high"
+              | (string & {})
+              | null;
           }
         | { name: string; type: "secret_text" }
         | {
@@ -1156,7 +1184,7 @@ export interface GetBetaWorkerVersionResponse {
         | { appId: string; name: string; type: "flagship" }
         | {
             algorithm: unknown;
-            format: "raw" | "pkcs8" | "spki" | "jwk";
+            format: "raw" | "pkcs8" | "spki" | "jwk" | (string & {});
             name: string;
             type: "secret_key";
             usages: (
@@ -1168,6 +1196,7 @@ export interface GetBetaWorkerVersionResponse {
               | "deriveBits"
               | "wrapKey"
               | "unwrapKey"
+              | (string & {})
             )[];
           }
         | {
@@ -1253,7 +1282,7 @@ export interface GetBetaWorkerVersionResponse {
   /** Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time). */
   startupTimeMs?: number | null;
   /** @deprecated Usage model for the version. */
-  usageModel?: "standard" | "bundled" | "unbound" | null;
+  usageModel?: "standard" | "bundled" | "unbound" | (string & {}) | null;
 }
 
 export const GetBetaWorkerVersionResponse =
@@ -1292,21 +1321,27 @@ export const GetBetaWorkerVersionResponse =
               Schema.Struct({
                 htmlHandling: Schema.optional(
                   Schema.Union([
-                    Schema.Literals([
-                      "auto-trailing-slash",
-                      "force-trailing-slash",
-                      "drop-trailing-slash",
-                      "none",
+                    Schema.Union([
+                      Schema.Literals([
+                        "auto-trailing-slash",
+                        "force-trailing-slash",
+                        "drop-trailing-slash",
+                        "none",
+                      ]),
+                      Schema.String,
                     ]),
                     Schema.Null,
                   ]),
                 ),
                 notFoundHandling: Schema.optional(
                   Schema.Union([
-                    Schema.Literals([
-                      "none",
-                      "404-page",
-                      "single-page-application",
+                    Schema.Union([
+                      Schema.Literals([
+                        "none",
+                        "404-page",
+                        "single-page-application",
+                      ]),
+                      Schema.String,
                     ]),
                     Schema.Null,
                   ]),
@@ -1338,19 +1373,25 @@ export const GetBetaWorkerVersionResponse =
           Schema.Union([
             Schema.Struct({
               algorithm: Schema.Unknown,
-              format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+              format: Schema.Union([
+                Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+                Schema.String,
+              ]),
               name: Schema.String,
               type: Schema.Literal("secret_key"),
               usages: Schema.Array(
-                Schema.Literals([
-                  "encrypt",
-                  "decrypt",
-                  "sign",
-                  "verify",
-                  "deriveKey",
-                  "deriveBits",
-                  "wrapKey",
-                  "unwrapKey",
+                Schema.Union([
+                  Schema.Literals([
+                    "encrypt",
+                    "decrypt",
+                    "sign",
+                    "verify",
+                    "deriveKey",
+                    "deriveBits",
+                    "wrapKey",
+                    "unwrapKey",
+                  ]),
+                  Schema.String,
                 ]),
               ),
             }),
@@ -1532,7 +1573,10 @@ export const GetBetaWorkerVersionResponse =
               type: Schema.Literal("r2_bucket"),
               jurisdiction: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["eu", "fedramp", "fedramp-high"]),
+                  Schema.Union([
+                    Schema.Literals(["eu", "fedramp", "fedramp-high"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -1926,7 +1970,10 @@ export const GetBetaWorkerVersionResponse =
     startupTimeMs: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     usageModel: Schema.optional(
       Schema.Union([
-        Schema.Literals(["standard", "bundled", "unbound"]),
+        Schema.Union([
+          Schema.Literals(["standard", "bundled", "unbound"]),
+          Schema.String,
+        ]),
         Schema.Null,
       ]),
     ),
@@ -2013,11 +2060,13 @@ export interface ListBetaWorkerVersionsResponse {
           | "force-trailing-slash"
           | "drop-trailing-slash"
           | "none"
+          | (string & {})
           | null;
         notFoundHandling?:
           | "none"
           | "404-page"
           | "single-page-application"
+          | (string & {})
           | null;
         runWorkerFirst?: string[] | boolean | null;
       } | null;
@@ -2089,7 +2138,12 @@ export interface ListBetaWorkerVersionsResponse {
               bucketName: string;
               name: string;
               type: "r2_bucket";
-              jurisdiction?: "eu" | "fedramp" | "fedramp-high" | null;
+              jurisdiction?:
+                | "eu"
+                | "fedramp"
+                | "fedramp-high"
+                | (string & {})
+                | null;
             }
           | { name: string; type: "secret_text" }
           | {
@@ -2118,7 +2172,7 @@ export interface ListBetaWorkerVersionsResponse {
           | { appId: string; name: string; type: "flagship" }
           | {
               algorithm: unknown;
-              format: "raw" | "pkcs8" | "spki" | "jwk";
+              format: "raw" | "pkcs8" | "spki" | "jwk" | (string & {});
               name: string;
               type: "secret_key";
               usages: (
@@ -2130,6 +2184,7 @@ export interface ListBetaWorkerVersionsResponse {
                 | "deriveBits"
                 | "wrapKey"
                 | "unwrapKey"
+                | (string & {})
               )[];
             }
           | {
@@ -2203,7 +2258,7 @@ export interface ListBetaWorkerVersionsResponse {
       | null;
     source?: string | null;
     startupTimeMs?: number | null;
-    usageModel?: "standard" | "bundled" | "unbound" | null;
+    usageModel?: "standard" | "bundled" | "unbound" | (string & {}) | null;
   }[];
   resultInfo?: {
     count?: number | null;
@@ -2251,21 +2306,27 @@ export const ListBetaWorkerVersionsResponse =
                   Schema.Struct({
                     htmlHandling: Schema.optional(
                       Schema.Union([
-                        Schema.Literals([
-                          "auto-trailing-slash",
-                          "force-trailing-slash",
-                          "drop-trailing-slash",
-                          "none",
+                        Schema.Union([
+                          Schema.Literals([
+                            "auto-trailing-slash",
+                            "force-trailing-slash",
+                            "drop-trailing-slash",
+                            "none",
+                          ]),
+                          Schema.String,
                         ]),
                         Schema.Null,
                       ]),
                     ),
                     notFoundHandling: Schema.optional(
                       Schema.Union([
-                        Schema.Literals([
-                          "none",
-                          "404-page",
-                          "single-page-application",
+                        Schema.Union([
+                          Schema.Literals([
+                            "none",
+                            "404-page",
+                            "single-page-application",
+                          ]),
+                          Schema.String,
                         ]),
                         Schema.Null,
                       ]),
@@ -2300,19 +2361,25 @@ export const ListBetaWorkerVersionsResponse =
               Schema.Union([
                 Schema.Struct({
                   algorithm: Schema.Unknown,
-                  format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+                  format: Schema.Union([
+                    Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+                    Schema.String,
+                  ]),
                   name: Schema.String,
                   type: Schema.Literal("secret_key"),
                   usages: Schema.Array(
-                    Schema.Literals([
-                      "encrypt",
-                      "decrypt",
-                      "sign",
-                      "verify",
-                      "deriveKey",
-                      "deriveBits",
-                      "wrapKey",
-                      "unwrapKey",
+                    Schema.Union([
+                      Schema.Literals([
+                        "encrypt",
+                        "decrypt",
+                        "sign",
+                        "verify",
+                        "deriveKey",
+                        "deriveBits",
+                        "wrapKey",
+                        "unwrapKey",
+                      ]),
+                      Schema.String,
                     ]),
                   ),
                 }),
@@ -2496,7 +2563,10 @@ export const ListBetaWorkerVersionsResponse =
                   type: Schema.Literal("r2_bucket"),
                   jurisdiction: Schema.optional(
                     Schema.Union([
-                      Schema.Literals(["eu", "fedramp", "fedramp-high"]),
+                      Schema.Union([
+                        Schema.Literals(["eu", "fedramp", "fedramp-high"]),
+                        Schema.String,
+                      ]),
                       Schema.Null,
                     ]),
                   ),
@@ -2913,7 +2983,10 @@ export const ListBetaWorkerVersionsResponse =
         ),
         usageModel: Schema.optional(
           Schema.Union([
-            Schema.Literals(["standard", "bundled", "unbound"]),
+            Schema.Union([
+              Schema.Literals(["standard", "bundled", "unbound"]),
+              Schema.String,
+            ]),
             Schema.Null,
           ]),
         ),
@@ -3000,8 +3073,13 @@ export interface CreateBetaWorkerVersionRequest {
         | "auto-trailing-slash"
         | "force-trailing-slash"
         | "drop-trailing-slash"
-        | "none";
-      notFoundHandling?: "none" | "404-page" | "single-page-application";
+        | "none"
+        | (string & {});
+      notFoundHandling?:
+        | "none"
+        | "404-page"
+        | "single-page-application"
+        | (string & {});
       runWorkerFirst?: string[] | boolean;
     };
     jwt?: string;
@@ -3063,7 +3141,7 @@ export interface CreateBetaWorkerVersionRequest {
         bucketName: string;
         name: string;
         type: "r2_bucket";
-        jurisdiction?: "eu" | "fedramp" | "fedramp-high";
+        jurisdiction?: "eu" | "fedramp" | "fedramp-high" | (string & {});
       }
     | { name: string; text: string; type: "secret_text" }
     | {
@@ -3092,7 +3170,7 @@ export interface CreateBetaWorkerVersionRequest {
     | { appId: string; name: string; type: "flagship" }
     | {
         algorithm: unknown;
-        format: "raw" | "pkcs8" | "spki" | "jwk";
+        format: "raw" | "pkcs8" | "spki" | "jwk" | (string & {});
         name: string;
         type: "secret_key";
         usages: (
@@ -3104,6 +3182,7 @@ export interface CreateBetaWorkerVersionRequest {
           | "deriveBits"
           | "wrapKey"
           | "unwrapKey"
+          | (string & {})
         )[];
         keyBase64?: string;
         keyJwk?: unknown;
@@ -3186,7 +3265,7 @@ export interface CreateBetaWorkerVersionRequest {
         )[];
       };
   /** @deprecated Body param: Usage model for the version. */
-  usageModel?: "standard" | "bundled" | "unbound";
+  usageModel?: "standard" | "bundled" | "unbound" | (string & {});
 }
 
 export const CreateBetaWorkerVersionRequest =
@@ -3210,15 +3289,25 @@ export const CreateBetaWorkerVersionRequest =
         config: Schema.optional(
           Schema.Struct({
             htmlHandling: Schema.optional(
-              Schema.Literals([
-                "auto-trailing-slash",
-                "force-trailing-slash",
-                "drop-trailing-slash",
-                "none",
+              Schema.Union([
+                Schema.Literals([
+                  "auto-trailing-slash",
+                  "force-trailing-slash",
+                  "drop-trailing-slash",
+                  "none",
+                ]),
+                Schema.String,
               ]),
             ),
             notFoundHandling: Schema.optional(
-              Schema.Literals(["none", "404-page", "single-page-application"]),
+              Schema.Union([
+                Schema.Literals([
+                  "none",
+                  "404-page",
+                  "single-page-application",
+                ]),
+                Schema.String,
+              ]),
             ),
             runWorkerFirst: Schema.optional(
               Schema.Union([Schema.Array(Schema.String), Schema.Boolean]),
@@ -3239,19 +3328,25 @@ export const CreateBetaWorkerVersionRequest =
         Schema.Union([
           Schema.Struct({
             algorithm: Schema.Unknown,
-            format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+            format: Schema.Union([
+              Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+              Schema.String,
+            ]),
             name: Schema.String,
             type: Schema.Literal("secret_key"),
             usages: Schema.Array(
-              Schema.Literals([
-                "encrypt",
-                "decrypt",
-                "sign",
-                "verify",
-                "deriveKey",
-                "deriveBits",
-                "wrapKey",
-                "unwrapKey",
+              Schema.Union([
+                Schema.Literals([
+                  "encrypt",
+                  "decrypt",
+                  "sign",
+                  "verify",
+                  "deriveKey",
+                  "deriveBits",
+                  "wrapKey",
+                  "unwrapKey",
+                ]),
+                Schema.String,
               ]),
             ),
             keyBase64: Schema.optional(Schema.String),
@@ -3459,7 +3554,10 @@ export const CreateBetaWorkerVersionRequest =
             name: Schema.String,
             type: Schema.Literal("r2_bucket"),
             jurisdiction: Schema.optional(
-              Schema.Literals(["eu", "fedramp", "fedramp-high"]),
+              Schema.Union([
+                Schema.Literals(["eu", "fedramp", "fedramp-high"]),
+                Schema.String,
+              ]),
             ),
           }).pipe(
             Schema.encodeKeys({
@@ -3773,7 +3871,10 @@ export const CreateBetaWorkerVersionRequest =
       ]),
     ),
     usageModel: Schema.optional(
-      Schema.Literals(["standard", "bundled", "unbound"]),
+      Schema.Union([
+        Schema.Literals(["standard", "bundled", "unbound"]),
+        Schema.String,
+      ]),
     ),
   }).pipe(
     Schema.encodeKeys({
@@ -3819,8 +3920,14 @@ export interface CreateBetaWorkerVersionResponse {
         | "force-trailing-slash"
         | "drop-trailing-slash"
         | "none"
+        | (string & {})
         | null;
-      notFoundHandling?: "none" | "404-page" | "single-page-application" | null;
+      notFoundHandling?:
+        | "none"
+        | "404-page"
+        | "single-page-application"
+        | (string & {})
+        | null;
       runWorkerFirst?: string[] | boolean | null;
     } | null;
     jwt?: string | null;
@@ -3892,7 +3999,12 @@ export interface CreateBetaWorkerVersionResponse {
             bucketName: string;
             name: string;
             type: "r2_bucket";
-            jurisdiction?: "eu" | "fedramp" | "fedramp-high" | null;
+            jurisdiction?:
+              | "eu"
+              | "fedramp"
+              | "fedramp-high"
+              | (string & {})
+              | null;
           }
         | { name: string; type: "secret_text" }
         | {
@@ -3921,7 +4033,7 @@ export interface CreateBetaWorkerVersionResponse {
         | { appId: string; name: string; type: "flagship" }
         | {
             algorithm: unknown;
-            format: "raw" | "pkcs8" | "spki" | "jwk";
+            format: "raw" | "pkcs8" | "spki" | "jwk" | (string & {});
             name: string;
             type: "secret_key";
             usages: (
@@ -3933,6 +4045,7 @@ export interface CreateBetaWorkerVersionResponse {
               | "deriveBits"
               | "wrapKey"
               | "unwrapKey"
+              | (string & {})
             )[];
           }
         | {
@@ -4018,7 +4131,7 @@ export interface CreateBetaWorkerVersionResponse {
   /** Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time). */
   startupTimeMs?: number | null;
   /** @deprecated Usage model for the version. */
-  usageModel?: "standard" | "bundled" | "unbound" | null;
+  usageModel?: "standard" | "bundled" | "unbound" | (string & {}) | null;
 }
 
 export const CreateBetaWorkerVersionResponse =
@@ -4057,21 +4170,27 @@ export const CreateBetaWorkerVersionResponse =
               Schema.Struct({
                 htmlHandling: Schema.optional(
                   Schema.Union([
-                    Schema.Literals([
-                      "auto-trailing-slash",
-                      "force-trailing-slash",
-                      "drop-trailing-slash",
-                      "none",
+                    Schema.Union([
+                      Schema.Literals([
+                        "auto-trailing-slash",
+                        "force-trailing-slash",
+                        "drop-trailing-slash",
+                        "none",
+                      ]),
+                      Schema.String,
                     ]),
                     Schema.Null,
                   ]),
                 ),
                 notFoundHandling: Schema.optional(
                   Schema.Union([
-                    Schema.Literals([
-                      "none",
-                      "404-page",
-                      "single-page-application",
+                    Schema.Union([
+                      Schema.Literals([
+                        "none",
+                        "404-page",
+                        "single-page-application",
+                      ]),
+                      Schema.String,
                     ]),
                     Schema.Null,
                   ]),
@@ -4103,19 +4222,25 @@ export const CreateBetaWorkerVersionResponse =
           Schema.Union([
             Schema.Struct({
               algorithm: Schema.Unknown,
-              format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+              format: Schema.Union([
+                Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+                Schema.String,
+              ]),
               name: Schema.String,
               type: Schema.Literal("secret_key"),
               usages: Schema.Array(
-                Schema.Literals([
-                  "encrypt",
-                  "decrypt",
-                  "sign",
-                  "verify",
-                  "deriveKey",
-                  "deriveBits",
-                  "wrapKey",
-                  "unwrapKey",
+                Schema.Union([
+                  Schema.Literals([
+                    "encrypt",
+                    "decrypt",
+                    "sign",
+                    "verify",
+                    "deriveKey",
+                    "deriveBits",
+                    "wrapKey",
+                    "unwrapKey",
+                  ]),
+                  Schema.String,
                 ]),
               ),
             }),
@@ -4297,7 +4422,10 @@ export const CreateBetaWorkerVersionResponse =
               type: Schema.Literal("r2_bucket"),
               jurisdiction: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["eu", "fedramp", "fedramp-high"]),
+                  Schema.Union([
+                    Schema.Literals(["eu", "fedramp", "fedramp-high"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -4691,7 +4819,10 @@ export const CreateBetaWorkerVersionResponse =
     startupTimeMs: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     usageModel: Schema.optional(
       Schema.Union([
-        Schema.Literals(["standard", "bundled", "unbound"]),
+        Schema.Union([
+          Schema.Literals(["standard", "bundled", "unbound"]),
+          Schema.String,
+        ]),
         Schema.Null,
       ]),
     ),
@@ -5199,9 +5330,9 @@ export interface ListObservabilityDestinationsRequest {
   /** Path param: Your Cloudflare account ID. */
   accountId: string;
   /** Query param */
-  order?: "asc" | "desc";
+  order?: "asc" | "desc" | (string & {});
   /** Query param */
-  orderBy?: "created" | "updated";
+  orderBy?: "created" | "updated" | (string & {});
   /** Query param */
   page?: number;
   /** Query param */
@@ -5211,12 +5342,12 @@ export interface ListObservabilityDestinationsRequest {
 export const ListObservabilityDestinationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    order: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-      T.HttpQuery("order"),
-    ),
-    orderBy: Schema.optional(Schema.Literals(["created", "updated"])).pipe(
-      T.HttpQuery("orderBy"),
-    ),
+    order: Schema.optional(
+      Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+    ).pipe(T.HttpQuery("order")),
+    orderBy: Schema.optional(
+      Schema.Union([Schema.Literals(["created", "updated"]), Schema.String]),
+    ).pipe(T.HttpQuery("orderBy")),
     page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
     perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("perPage")),
   }).pipe(
@@ -5239,7 +5370,8 @@ export interface ListObservabilityDestinationsResponse {
       logpushDataset:
         | "opentelemetry-traces"
         | "opentelemetry-logs"
-        | "opentelemetry-metrics";
+        | "opentelemetry-metrics"
+        | (string & {});
       type: "logpush";
       url: string;
     };
@@ -5268,10 +5400,13 @@ export const ListObservabilityDestinationsResponse =
               lastError: "last_error",
             }),
           ),
-          logpushDataset: Schema.Literals([
-            "opentelemetry-traces",
-            "opentelemetry-logs",
-            "opentelemetry-metrics",
+          logpushDataset: Schema.Union([
+            Schema.Literals([
+              "opentelemetry-traces",
+              "opentelemetry-logs",
+              "opentelemetry-metrics",
+            ]),
+            Schema.String,
           ]),
           type: Schema.Literal("logpush"),
           url: Schema.String,
@@ -5319,7 +5454,8 @@ export interface CreateObservabilityDestinationRequest {
     logpushDataset:
       | "opentelemetry-traces"
       | "opentelemetry-logs"
-      | "opentelemetry-metrics";
+      | "opentelemetry-metrics"
+      | (string & {});
     type: "logpush";
     url: string;
   };
@@ -5336,10 +5472,13 @@ export const CreateObservabilityDestinationRequest =
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     configuration: Schema.Struct({
       headers: Schema.Record(Schema.String, Schema.Unknown),
-      logpushDataset: Schema.Literals([
-        "opentelemetry-traces",
-        "opentelemetry-logs",
-        "opentelemetry-metrics",
+      logpushDataset: Schema.Union([
+        Schema.Literals([
+          "opentelemetry-traces",
+          "opentelemetry-logs",
+          "opentelemetry-metrics",
+        ]),
+        Schema.String,
       ]),
       type: Schema.Literal("logpush"),
       url: Schema.String,
@@ -5360,7 +5499,8 @@ export interface CreateObservabilityDestinationResponse {
     logpushDataset:
       | "opentelemetry-traces"
       | "opentelemetry-logs"
-      | "opentelemetry-metrics";
+      | "opentelemetry-metrics"
+      | (string & {});
     logpushJob: number;
     type: "logpush";
     url: string;
@@ -5375,10 +5515,13 @@ export const CreateObservabilityDestinationResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configuration: Schema.Struct({
       destinationConf: Schema.String,
-      logpushDataset: Schema.Literals([
-        "opentelemetry-traces",
-        "opentelemetry-logs",
-        "opentelemetry-metrics",
+      logpushDataset: Schema.Union([
+        Schema.Literals([
+          "opentelemetry-traces",
+          "opentelemetry-logs",
+          "opentelemetry-metrics",
+        ]),
+        Schema.String,
       ]),
       logpushJob: Schema.Number,
       type: Schema.Literal("logpush"),
@@ -5450,7 +5593,8 @@ export interface PatchObservabilityDestinationResponse {
     logpushDataset:
       | "opentelemetry-traces"
       | "opentelemetry-logs"
-      | "opentelemetry-metrics";
+      | "opentelemetry-metrics"
+      | (string & {});
     logpushJob: number;
     type: "logpush";
     url: string;
@@ -5465,10 +5609,13 @@ export const PatchObservabilityDestinationResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configuration: Schema.Struct({
       destinationConf: Schema.String,
-      logpushDataset: Schema.Literals([
-        "opentelemetry-traces",
-        "opentelemetry-logs",
-        "opentelemetry-metrics",
+      logpushDataset: Schema.Union([
+        Schema.Literals([
+          "opentelemetry-traces",
+          "opentelemetry-logs",
+          "opentelemetry-metrics",
+        ]),
+        Schema.String,
       ]),
       logpushJob: Schema.Number,
       type: Schema.Literal("logpush"),
@@ -5526,7 +5673,8 @@ export interface DeleteObservabilityDestinationResponse {
     logpushDataset:
       | "opentelemetry-traces"
       | "opentelemetry-logs"
-      | "opentelemetry-metrics";
+      | "opentelemetry-metrics"
+      | (string & {});
     logpushJob: number;
     type: "logpush";
     url: string;
@@ -5541,10 +5689,13 @@ export const DeleteObservabilityDestinationResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configuration: Schema.Struct({
       destinationConf: Schema.String,
-      logpushDataset: Schema.Literals([
-        "opentelemetry-traces",
-        "opentelemetry-logs",
-        "opentelemetry-metrics",
+      logpushDataset: Schema.Union([
+        Schema.Literals([
+          "opentelemetry-traces",
+          "opentelemetry-logs",
+          "opentelemetry-metrics",
+        ]),
+        Schema.String,
       ]),
       logpushJob: Schema.Number,
       type: Schema.Literal("logpush"),
@@ -5587,9 +5738,9 @@ export interface ListObservabilityQueriesRequest {
   /** Path param: Your Cloudflare account ID. */
   accountId: string;
   /** Query param */
-  order?: "asc" | "desc";
+  order?: "asc" | "desc" | (string & {});
   /** Query param */
-  orderBy?: "created" | "updated";
+  orderBy?: "created" | "updated" | (string & {});
   /** Query param */
   page?: number;
   /** Query param */
@@ -5599,12 +5750,12 @@ export interface ListObservabilityQueriesRequest {
 export const ListObservabilityQueriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    order: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-      T.HttpQuery("order"),
-    ),
-    orderBy: Schema.optional(Schema.Literals(["created", "updated"])).pipe(
-      T.HttpQuery("orderBy"),
-    ),
+    order: Schema.optional(
+      Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+    ).pipe(T.HttpQuery("order")),
+    orderBy: Schema.optional(
+      Schema.Union([Schema.Literals(["created", "updated"]), Schema.String]),
+    ).pipe(T.HttpQuery("orderBy")),
     page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
     perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("perPage")),
   }).pipe(
@@ -5663,18 +5814,19 @@ export interface ListObservabilityQueriesResponse {
               | "P99"
               | "P999"
               | "STDDEV"
-              | "VARIANCE";
+              | "VARIANCE"
+              | (string & {});
             alias?: string | null;
             key?: string | null;
-            keyType?: "string" | "number" | "boolean" | null;
+            keyType?: "string" | "number" | "boolean" | (string & {}) | null;
           }[]
         | null;
       datasets?: string[] | null;
-      filterCombination?: "and" | "or" | "AND" | "OR" | null;
+      filterCombination?: "and" | "or" | "AND" | "OR" | (string & {}) | null;
       filters?:
         | (
             | {
-                filterCombination: "and" | "or" | "AND" | "OR";
+                filterCombination: "and" | "or" | "AND" | "OR" | (string & {});
                 filters: unknown[];
                 kind: "group";
               }
@@ -5710,20 +5862,31 @@ export interface ListObservabilityQueriesResponse {
                   | "IN"
                   | "NOT_IN"
                   | "STARTS_WITH"
-                  | "ENDS_WITH";
-                type: "string" | "number" | "boolean";
+                  | "ENDS_WITH"
+                  | (string & {});
+                type: "string" | "number" | "boolean" | (string & {});
                 kind?: "filter" | null;
                 value?: string | number | boolean | null;
               }
           )[]
         | null;
       groupBys?:
-        | { type: "string" | "number" | "boolean"; value: string }[]
+        | {
+            type: "string" | "number" | "boolean" | (string & {});
+            value: string;
+          }[]
         | null;
       havings?:
         | {
             key: string;
-            operation: "eq" | "neq" | "gt" | "gte" | "lt" | "lte";
+            operation:
+              | "eq"
+              | "neq"
+              | "gt"
+              | "gte"
+              | "lt"
+              | "lte"
+              | (string & {});
             value: number;
           }[]
         | null;
@@ -5733,7 +5896,10 @@ export interface ListObservabilityQueriesResponse {
         isRegex?: boolean | null;
         matchCase?: boolean | null;
       } | null;
-      orderBy?: { value: string; order?: "asc" | "desc" | null } | null;
+      orderBy?: {
+        value: string;
+        order?: "asc" | "desc" | (string & {}) | null;
+      } | null;
     };
     updated: string;
     updatedBy: string;
@@ -5755,45 +5921,48 @@ export const ListObservabilityQueriesResponse =
             Schema.Union([
               Schema.Array(
                 Schema.Struct({
-                  operator: Schema.Literals([
-                    "uniq",
-                    "count",
-                    "max",
-                    "min",
-                    "sum",
-                    "avg",
-                    "median",
-                    "p001",
-                    "p01",
-                    "p05",
-                    "p10",
-                    "p25",
-                    "p75",
-                    "p90",
-                    "p95",
-                    "p99",
-                    "p999",
-                    "stddev",
-                    "variance",
-                    "COUNT_DISTINCT",
-                    "COUNT",
-                    "MAX",
-                    "MIN",
-                    "SUM",
-                    "AVG",
-                    "MEDIAN",
-                    "P001",
-                    "P01",
-                    "P05",
-                    "P10",
-                    "P25",
-                    "P75",
-                    "P90",
-                    "P95",
-                    "P99",
-                    "P999",
-                    "STDDEV",
-                    "VARIANCE",
+                  operator: Schema.Union([
+                    Schema.Literals([
+                      "uniq",
+                      "count",
+                      "max",
+                      "min",
+                      "sum",
+                      "avg",
+                      "median",
+                      "p001",
+                      "p01",
+                      "p05",
+                      "p10",
+                      "p25",
+                      "p75",
+                      "p90",
+                      "p95",
+                      "p99",
+                      "p999",
+                      "stddev",
+                      "variance",
+                      "COUNT_DISTINCT",
+                      "COUNT",
+                      "MAX",
+                      "MIN",
+                      "SUM",
+                      "AVG",
+                      "MEDIAN",
+                      "P001",
+                      "P01",
+                      "P05",
+                      "P10",
+                      "P25",
+                      "P75",
+                      "P90",
+                      "P95",
+                      "P99",
+                      "P999",
+                      "STDDEV",
+                      "VARIANCE",
+                    ]),
+                    Schema.String,
                   ]),
                   alias: Schema.optional(
                     Schema.Union([Schema.String, Schema.Null]),
@@ -5803,7 +5972,10 @@ export const ListObservabilityQueriesResponse =
                   ),
                   keyType: Schema.optional(
                     Schema.Union([
-                      Schema.Literals(["string", "number", "boolean"]),
+                      Schema.Union([
+                        Schema.Literals(["string", "number", "boolean"]),
+                        Schema.String,
+                      ]),
                       Schema.Null,
                     ]),
                   ),
@@ -5817,7 +5989,10 @@ export const ListObservabilityQueriesResponse =
           ),
           filterCombination: Schema.optional(
             Schema.Union([
-              Schema.Literals(["and", "or", "AND", "OR"]),
+              Schema.Union([
+                Schema.Literals(["and", "or", "AND", "OR"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -5826,50 +6001,54 @@ export const ListObservabilityQueriesResponse =
               Schema.Array(
                 Schema.Union([
                   Schema.Struct({
-                    filterCombination: Schema.Literals([
-                      "and",
-                      "or",
-                      "AND",
-                      "OR",
+                    filterCombination: Schema.Union([
+                      Schema.Literals(["and", "or", "AND", "OR"]),
+                      Schema.String,
                     ]),
                     filters: Schema.Array(Schema.Unknown),
                     kind: Schema.Literal("group"),
                   }),
                   Schema.Struct({
                     key: Schema.String,
-                    operation: Schema.Literals([
-                      "includes",
-                      "not_includes",
-                      "starts_with",
-                      "ends_with",
-                      "regex",
-                      "exists",
-                      "is_null",
-                      "in",
-                      "not_in",
-                      "eq",
-                      "neq",
-                      "gt",
-                      "gte",
-                      "lt",
-                      "lte",
-                      "=",
-                      "!=",
-                      ">",
-                      ">=",
-                      "<",
-                      "<=",
-                      "INCLUDES",
-                      "DOES_NOT_INCLUDE",
-                      "MATCH_REGEX",
-                      "EXISTS",
-                      "DOES_NOT_EXIST",
-                      "IN",
-                      "NOT_IN",
-                      "STARTS_WITH",
-                      "ENDS_WITH",
+                    operation: Schema.Union([
+                      Schema.Literals([
+                        "includes",
+                        "not_includes",
+                        "starts_with",
+                        "ends_with",
+                        "regex",
+                        "exists",
+                        "is_null",
+                        "in",
+                        "not_in",
+                        "eq",
+                        "neq",
+                        "gt",
+                        "gte",
+                        "lt",
+                        "lte",
+                        "=",
+                        "!=",
+                        ">",
+                        ">=",
+                        "<",
+                        "<=",
+                        "INCLUDES",
+                        "DOES_NOT_INCLUDE",
+                        "MATCH_REGEX",
+                        "EXISTS",
+                        "DOES_NOT_EXIST",
+                        "IN",
+                        "NOT_IN",
+                        "STARTS_WITH",
+                        "ENDS_WITH",
+                      ]),
+                      Schema.String,
                     ]),
-                    type: Schema.Literals(["string", "number", "boolean"]),
+                    type: Schema.Union([
+                      Schema.Literals(["string", "number", "boolean"]),
+                      Schema.String,
+                    ]),
                     kind: Schema.optional(
                       Schema.Union([Schema.Literal("filter"), Schema.Null]),
                     ),
@@ -5893,7 +6072,10 @@ export const ListObservabilityQueriesResponse =
             Schema.Union([
               Schema.Array(
                 Schema.Struct({
-                  type: Schema.Literals(["string", "number", "boolean"]),
+                  type: Schema.Union([
+                    Schema.Literals(["string", "number", "boolean"]),
+                    Schema.String,
+                  ]),
                   value: Schema.String,
                 }),
               ),
@@ -5905,13 +6087,9 @@ export const ListObservabilityQueriesResponse =
               Schema.Array(
                 Schema.Struct({
                   key: Schema.String,
-                  operation: Schema.Literals([
-                    "eq",
-                    "neq",
-                    "gt",
-                    "gte",
-                    "lt",
-                    "lte",
+                  operation: Schema.Union([
+                    Schema.Literals(["eq", "neq", "gt", "gte", "lt", "lte"]),
+                    Schema.String,
                   ]),
                   value: Schema.Number,
                 }),
@@ -5943,7 +6121,13 @@ export const ListObservabilityQueriesResponse =
               Schema.Struct({
                 value: Schema.String,
                 order: Schema.optional(
-                  Schema.Union([Schema.Literals(["asc", "desc"]), Schema.Null]),
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Literals(["asc", "desc"]),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
                 ),
               }),
               Schema.Null,
@@ -6021,16 +6205,17 @@ export interface CreateObservabilityQueryRequest {
         | "P99"
         | "P999"
         | "STDDEV"
-        | "VARIANCE";
+        | "VARIANCE"
+        | (string & {});
       alias?: string;
       key?: string;
-      keyType?: "string" | "number" | "boolean";
+      keyType?: "string" | "number" | "boolean" | (string & {});
     }[];
     datasets?: string[];
-    filterCombination?: "and" | "or" | "AND" | "OR";
+    filterCombination?: "and" | "or" | "AND" | "OR" | (string & {});
     filters?: (
       | {
-          filterCombination: "and" | "or" | "AND" | "OR";
+          filterCombination: "and" | "or" | "AND" | "OR" | (string & {});
           filters: unknown[];
           kind: "group";
         }
@@ -6066,16 +6251,20 @@ export interface CreateObservabilityQueryRequest {
             | "IN"
             | "NOT_IN"
             | "STARTS_WITH"
-            | "ENDS_WITH";
-          type: "string" | "number" | "boolean";
+            | "ENDS_WITH"
+            | (string & {});
+          type: "string" | "number" | "boolean" | (string & {});
           kind?: "filter";
           value?: string | number | boolean;
         }
     )[];
-    groupBys?: { type: "string" | "number" | "boolean"; value: string }[];
+    groupBys?: {
+      type: "string" | "number" | "boolean" | (string & {});
+      value: string;
+    }[];
     havings?: {
       key: string;
-      operation: "eq" | "neq" | "gt" | "gte" | "lt" | "lte";
+      operation: "eq" | "neq" | "gt" | "gte" | "lt" | "lte" | (string & {});
       value: number;
     }[];
     limit?: number;
@@ -6084,7 +6273,7 @@ export interface CreateObservabilityQueryRequest {
       isRegex?: boolean;
       matchCase?: boolean;
     };
-    orderBy?: { value: string; order?: "asc" | "desc" };
+    orderBy?: { value: string; order?: "asc" | "desc" | (string & {}) };
   };
 }
 
@@ -6097,101 +6286,119 @@ export const CreateObservabilityQueryRequest =
       calculations: Schema.optional(
         Schema.Array(
           Schema.Struct({
-            operator: Schema.Literals([
-              "uniq",
-              "count",
-              "max",
-              "min",
-              "sum",
-              "avg",
-              "median",
-              "p001",
-              "p01",
-              "p05",
-              "p10",
-              "p25",
-              "p75",
-              "p90",
-              "p95",
-              "p99",
-              "p999",
-              "stddev",
-              "variance",
-              "COUNT_DISTINCT",
-              "COUNT",
-              "MAX",
-              "MIN",
-              "SUM",
-              "AVG",
-              "MEDIAN",
-              "P001",
-              "P01",
-              "P05",
-              "P10",
-              "P25",
-              "P75",
-              "P90",
-              "P95",
-              "P99",
-              "P999",
-              "STDDEV",
-              "VARIANCE",
+            operator: Schema.Union([
+              Schema.Literals([
+                "uniq",
+                "count",
+                "max",
+                "min",
+                "sum",
+                "avg",
+                "median",
+                "p001",
+                "p01",
+                "p05",
+                "p10",
+                "p25",
+                "p75",
+                "p90",
+                "p95",
+                "p99",
+                "p999",
+                "stddev",
+                "variance",
+                "COUNT_DISTINCT",
+                "COUNT",
+                "MAX",
+                "MIN",
+                "SUM",
+                "AVG",
+                "MEDIAN",
+                "P001",
+                "P01",
+                "P05",
+                "P10",
+                "P25",
+                "P75",
+                "P90",
+                "P95",
+                "P99",
+                "P999",
+                "STDDEV",
+                "VARIANCE",
+              ]),
+              Schema.String,
             ]),
             alias: Schema.optional(Schema.String),
             key: Schema.optional(Schema.String),
             keyType: Schema.optional(
-              Schema.Literals(["string", "number", "boolean"]),
+              Schema.Union([
+                Schema.Literals(["string", "number", "boolean"]),
+                Schema.String,
+              ]),
             ),
           }),
         ),
       ),
       datasets: Schema.optional(Schema.Array(Schema.String)),
       filterCombination: Schema.optional(
-        Schema.Literals(["and", "or", "AND", "OR"]),
+        Schema.Union([
+          Schema.Literals(["and", "or", "AND", "OR"]),
+          Schema.String,
+        ]),
       ),
       filters: Schema.optional(
         Schema.Array(
           Schema.Union([
             Schema.Struct({
-              filterCombination: Schema.Literals(["and", "or", "AND", "OR"]),
+              filterCombination: Schema.Union([
+                Schema.Literals(["and", "or", "AND", "OR"]),
+                Schema.String,
+              ]),
               filters: Schema.Array(Schema.Unknown),
               kind: Schema.Literal("group"),
             }),
             Schema.Struct({
               key: Schema.String,
-              operation: Schema.Literals([
-                "includes",
-                "not_includes",
-                "starts_with",
-                "ends_with",
-                "regex",
-                "exists",
-                "is_null",
-                "in",
-                "not_in",
-                "eq",
-                "neq",
-                "gt",
-                "gte",
-                "lt",
-                "lte",
-                "=",
-                "!=",
-                ">",
-                ">=",
-                "<",
-                "<=",
-                "INCLUDES",
-                "DOES_NOT_INCLUDE",
-                "MATCH_REGEX",
-                "EXISTS",
-                "DOES_NOT_EXIST",
-                "IN",
-                "NOT_IN",
-                "STARTS_WITH",
-                "ENDS_WITH",
+              operation: Schema.Union([
+                Schema.Literals([
+                  "includes",
+                  "not_includes",
+                  "starts_with",
+                  "ends_with",
+                  "regex",
+                  "exists",
+                  "is_null",
+                  "in",
+                  "not_in",
+                  "eq",
+                  "neq",
+                  "gt",
+                  "gte",
+                  "lt",
+                  "lte",
+                  "=",
+                  "!=",
+                  ">",
+                  ">=",
+                  "<",
+                  "<=",
+                  "INCLUDES",
+                  "DOES_NOT_INCLUDE",
+                  "MATCH_REGEX",
+                  "EXISTS",
+                  "DOES_NOT_EXIST",
+                  "IN",
+                  "NOT_IN",
+                  "STARTS_WITH",
+                  "ENDS_WITH",
+                ]),
+                Schema.String,
               ]),
-              type: Schema.Literals(["string", "number", "boolean"]),
+              type: Schema.Union([
+                Schema.Literals(["string", "number", "boolean"]),
+                Schema.String,
+              ]),
               kind: Schema.optional(Schema.Literal("filter")),
               value: Schema.optional(
                 Schema.Union([Schema.String, Schema.Number, Schema.Boolean]),
@@ -6203,7 +6410,10 @@ export const CreateObservabilityQueryRequest =
       groupBys: Schema.optional(
         Schema.Array(
           Schema.Struct({
-            type: Schema.Literals(["string", "number", "boolean"]),
+            type: Schema.Union([
+              Schema.Literals(["string", "number", "boolean"]),
+              Schema.String,
+            ]),
             value: Schema.String,
           }),
         ),
@@ -6212,7 +6422,10 @@ export const CreateObservabilityQueryRequest =
         Schema.Array(
           Schema.Struct({
             key: Schema.String,
-            operation: Schema.Literals(["eq", "neq", "gt", "gte", "lt", "lte"]),
+            operation: Schema.Union([
+              Schema.Literals(["eq", "neq", "gt", "gte", "lt", "lte"]),
+              Schema.String,
+            ]),
             value: Schema.Number,
           }),
         ),
@@ -6228,7 +6441,9 @@ export const CreateObservabilityQueryRequest =
       orderBy: Schema.optional(
         Schema.Struct({
           value: Schema.String,
-          order: Schema.optional(Schema.Literals(["asc", "desc"])),
+          order: Schema.optional(
+            Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+          ),
         }),
       ),
     }),
@@ -6289,18 +6504,19 @@ export interface CreateObservabilityQueryResponse {
             | "P99"
             | "P999"
             | "STDDEV"
-            | "VARIANCE";
+            | "VARIANCE"
+            | (string & {});
           alias?: string | null;
           key?: string | null;
-          keyType?: "string" | "number" | "boolean" | null;
+          keyType?: "string" | "number" | "boolean" | (string & {}) | null;
         }[]
       | null;
     datasets?: string[] | null;
-    filterCombination?: "and" | "or" | "AND" | "OR" | null;
+    filterCombination?: "and" | "or" | "AND" | "OR" | (string & {}) | null;
     filters?:
       | (
           | {
-              filterCombination: "and" | "or" | "AND" | "OR";
+              filterCombination: "and" | "or" | "AND" | "OR" | (string & {});
               filters: unknown[];
               kind: "group";
             }
@@ -6336,20 +6552,24 @@ export interface CreateObservabilityQueryResponse {
                 | "IN"
                 | "NOT_IN"
                 | "STARTS_WITH"
-                | "ENDS_WITH";
-              type: "string" | "number" | "boolean";
+                | "ENDS_WITH"
+                | (string & {});
+              type: "string" | "number" | "boolean" | (string & {});
               kind?: "filter" | null;
               value?: string | number | boolean | null;
             }
         )[]
       | null;
     groupBys?:
-      | { type: "string" | "number" | "boolean"; value: string }[]
+      | {
+          type: "string" | "number" | "boolean" | (string & {});
+          value: string;
+        }[]
       | null;
     havings?:
       | {
           key: string;
-          operation: "eq" | "neq" | "gt" | "gte" | "lt" | "lte";
+          operation: "eq" | "neq" | "gt" | "gte" | "lt" | "lte" | (string & {});
           value: number;
         }[]
       | null;
@@ -6359,7 +6579,10 @@ export interface CreateObservabilityQueryResponse {
       isRegex?: boolean | null;
       matchCase?: boolean | null;
     } | null;
-    orderBy?: { value: string; order?: "asc" | "desc" | null } | null;
+    orderBy?: {
+      value: string;
+      order?: "asc" | "desc" | (string & {}) | null;
+    } | null;
   };
   updated: string;
   updatedBy: string;
@@ -6378,45 +6601,48 @@ export const CreateObservabilityQueryResponse =
         Schema.Union([
           Schema.Array(
             Schema.Struct({
-              operator: Schema.Literals([
-                "uniq",
-                "count",
-                "max",
-                "min",
-                "sum",
-                "avg",
-                "median",
-                "p001",
-                "p01",
-                "p05",
-                "p10",
-                "p25",
-                "p75",
-                "p90",
-                "p95",
-                "p99",
-                "p999",
-                "stddev",
-                "variance",
-                "COUNT_DISTINCT",
-                "COUNT",
-                "MAX",
-                "MIN",
-                "SUM",
-                "AVG",
-                "MEDIAN",
-                "P001",
-                "P01",
-                "P05",
-                "P10",
-                "P25",
-                "P75",
-                "P90",
-                "P95",
-                "P99",
-                "P999",
-                "STDDEV",
-                "VARIANCE",
+              operator: Schema.Union([
+                Schema.Literals([
+                  "uniq",
+                  "count",
+                  "max",
+                  "min",
+                  "sum",
+                  "avg",
+                  "median",
+                  "p001",
+                  "p01",
+                  "p05",
+                  "p10",
+                  "p25",
+                  "p75",
+                  "p90",
+                  "p95",
+                  "p99",
+                  "p999",
+                  "stddev",
+                  "variance",
+                  "COUNT_DISTINCT",
+                  "COUNT",
+                  "MAX",
+                  "MIN",
+                  "SUM",
+                  "AVG",
+                  "MEDIAN",
+                  "P001",
+                  "P01",
+                  "P05",
+                  "P10",
+                  "P25",
+                  "P75",
+                  "P90",
+                  "P95",
+                  "P99",
+                  "P999",
+                  "STDDEV",
+                  "VARIANCE",
+                ]),
+                Schema.String,
               ]),
               alias: Schema.optional(
                 Schema.Union([Schema.String, Schema.Null]),
@@ -6424,7 +6650,10 @@ export const CreateObservabilityQueryResponse =
               key: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
               keyType: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["string", "number", "boolean"]),
+                  Schema.Union([
+                    Schema.Literals(["string", "number", "boolean"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -6438,7 +6667,10 @@ export const CreateObservabilityQueryResponse =
       ),
       filterCombination: Schema.optional(
         Schema.Union([
-          Schema.Literals(["and", "or", "AND", "OR"]),
+          Schema.Union([
+            Schema.Literals(["and", "or", "AND", "OR"]),
+            Schema.String,
+          ]),
           Schema.Null,
         ]),
       ),
@@ -6447,45 +6679,54 @@ export const CreateObservabilityQueryResponse =
           Schema.Array(
             Schema.Union([
               Schema.Struct({
-                filterCombination: Schema.Literals(["and", "or", "AND", "OR"]),
+                filterCombination: Schema.Union([
+                  Schema.Literals(["and", "or", "AND", "OR"]),
+                  Schema.String,
+                ]),
                 filters: Schema.Array(Schema.Unknown),
                 kind: Schema.Literal("group"),
               }),
               Schema.Struct({
                 key: Schema.String,
-                operation: Schema.Literals([
-                  "includes",
-                  "not_includes",
-                  "starts_with",
-                  "ends_with",
-                  "regex",
-                  "exists",
-                  "is_null",
-                  "in",
-                  "not_in",
-                  "eq",
-                  "neq",
-                  "gt",
-                  "gte",
-                  "lt",
-                  "lte",
-                  "=",
-                  "!=",
-                  ">",
-                  ">=",
-                  "<",
-                  "<=",
-                  "INCLUDES",
-                  "DOES_NOT_INCLUDE",
-                  "MATCH_REGEX",
-                  "EXISTS",
-                  "DOES_NOT_EXIST",
-                  "IN",
-                  "NOT_IN",
-                  "STARTS_WITH",
-                  "ENDS_WITH",
+                operation: Schema.Union([
+                  Schema.Literals([
+                    "includes",
+                    "not_includes",
+                    "starts_with",
+                    "ends_with",
+                    "regex",
+                    "exists",
+                    "is_null",
+                    "in",
+                    "not_in",
+                    "eq",
+                    "neq",
+                    "gt",
+                    "gte",
+                    "lt",
+                    "lte",
+                    "=",
+                    "!=",
+                    ">",
+                    ">=",
+                    "<",
+                    "<=",
+                    "INCLUDES",
+                    "DOES_NOT_INCLUDE",
+                    "MATCH_REGEX",
+                    "EXISTS",
+                    "DOES_NOT_EXIST",
+                    "IN",
+                    "NOT_IN",
+                    "STARTS_WITH",
+                    "ENDS_WITH",
+                  ]),
+                  Schema.String,
                 ]),
-                type: Schema.Literals(["string", "number", "boolean"]),
+                type: Schema.Union([
+                  Schema.Literals(["string", "number", "boolean"]),
+                  Schema.String,
+                ]),
                 kind: Schema.optional(
                   Schema.Union([Schema.Literal("filter"), Schema.Null]),
                 ),
@@ -6509,7 +6750,10 @@ export const CreateObservabilityQueryResponse =
         Schema.Union([
           Schema.Array(
             Schema.Struct({
-              type: Schema.Literals(["string", "number", "boolean"]),
+              type: Schema.Union([
+                Schema.Literals(["string", "number", "boolean"]),
+                Schema.String,
+              ]),
               value: Schema.String,
             }),
           ),
@@ -6521,13 +6765,9 @@ export const CreateObservabilityQueryResponse =
           Schema.Array(
             Schema.Struct({
               key: Schema.String,
-              operation: Schema.Literals([
-                "eq",
-                "neq",
-                "gt",
-                "gte",
-                "lt",
-                "lte",
+              operation: Schema.Union([
+                Schema.Literals(["eq", "neq", "gt", "gte", "lt", "lte"]),
+                Schema.String,
               ]),
               value: Schema.Number,
             }),
@@ -6555,7 +6795,10 @@ export const CreateObservabilityQueryResponse =
           Schema.Struct({
             value: Schema.String,
             order: Schema.optional(
-              Schema.Union([Schema.Literals(["asc", "desc"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+                Schema.Null,
+              ]),
             ),
           }),
           Schema.Null,
@@ -6593,10 +6836,10 @@ export interface KeysObservabilityTelemetryRequest {
   /** Body param: Apply filters to narrow key discovery. Supports nested groups via kind: 'group'. Maximum nesting depth is 4. */
   filters?: (
     | {
-        filterCombination: "and" | "or" | "AND" | "OR";
+        filterCombination: "and" | "or" | "AND" | "OR" | (string & {});
         filters: (
           | {
-              filterCombination: "and" | "or" | "AND" | "OR";
+              filterCombination: "and" | "or" | "AND" | "OR" | (string & {});
               filters: unknown[];
               kind: "group";
             }
@@ -6632,8 +6875,9 @@ export interface KeysObservabilityTelemetryRequest {
                 | "IN"
                 | "NOT_IN"
                 | "STARTS_WITH"
-                | "ENDS_WITH";
-              type: "string" | "number" | "boolean";
+                | "ENDS_WITH"
+                | (string & {});
+              type: "string" | "number" | "boolean" | (string & {});
               kind?: "filter";
               value?: string | number | boolean;
             }
@@ -6672,8 +6916,9 @@ export interface KeysObservabilityTelemetryRequest {
           | "IN"
           | "NOT_IN"
           | "STARTS_WITH"
-          | "ENDS_WITH";
-        type: "string" | "number" | "boolean";
+          | "ENDS_WITH"
+          | (string & {});
+        type: "string" | "number" | "boolean" | (string & {});
         kind?: "filter";
         value?: string | number | boolean;
       }
@@ -6706,54 +6951,61 @@ export const KeysObservabilityTelemetryRequest =
       Schema.Array(
         Schema.Union([
           Schema.Struct({
-            filterCombination: Schema.Literals(["and", "or", "AND", "OR"]),
+            filterCombination: Schema.Union([
+              Schema.Literals(["and", "or", "AND", "OR"]),
+              Schema.String,
+            ]),
             filters: Schema.Array(
               Schema.Union([
                 Schema.Struct({
-                  filterCombination: Schema.Literals([
-                    "and",
-                    "or",
-                    "AND",
-                    "OR",
+                  filterCombination: Schema.Union([
+                    Schema.Literals(["and", "or", "AND", "OR"]),
+                    Schema.String,
                   ]),
                   filters: Schema.Array(Schema.Unknown),
                   kind: Schema.Literal("group"),
                 }),
                 Schema.Struct({
                   key: Schema.String,
-                  operation: Schema.Literals([
-                    "includes",
-                    "not_includes",
-                    "starts_with",
-                    "ends_with",
-                    "regex",
-                    "exists",
-                    "is_null",
-                    "in",
-                    "not_in",
-                    "eq",
-                    "neq",
-                    "gt",
-                    "gte",
-                    "lt",
-                    "lte",
-                    "=",
-                    "!=",
-                    ">",
-                    ">=",
-                    "<",
-                    "<=",
-                    "INCLUDES",
-                    "DOES_NOT_INCLUDE",
-                    "MATCH_REGEX",
-                    "EXISTS",
-                    "DOES_NOT_EXIST",
-                    "IN",
-                    "NOT_IN",
-                    "STARTS_WITH",
-                    "ENDS_WITH",
+                  operation: Schema.Union([
+                    Schema.Literals([
+                      "includes",
+                      "not_includes",
+                      "starts_with",
+                      "ends_with",
+                      "regex",
+                      "exists",
+                      "is_null",
+                      "in",
+                      "not_in",
+                      "eq",
+                      "neq",
+                      "gt",
+                      "gte",
+                      "lt",
+                      "lte",
+                      "=",
+                      "!=",
+                      ">",
+                      ">=",
+                      "<",
+                      "<=",
+                      "INCLUDES",
+                      "DOES_NOT_INCLUDE",
+                      "MATCH_REGEX",
+                      "EXISTS",
+                      "DOES_NOT_EXIST",
+                      "IN",
+                      "NOT_IN",
+                      "STARTS_WITH",
+                      "ENDS_WITH",
+                    ]),
+                    Schema.String,
                   ]),
-                  type: Schema.Literals(["string", "number", "boolean"]),
+                  type: Schema.Union([
+                    Schema.Literals(["string", "number", "boolean"]),
+                    Schema.String,
+                  ]),
                   kind: Schema.optional(Schema.Literal("filter")),
                   value: Schema.optional(
                     Schema.Union([
@@ -6769,39 +7021,45 @@ export const KeysObservabilityTelemetryRequest =
           }),
           Schema.Struct({
             key: Schema.String,
-            operation: Schema.Literals([
-              "includes",
-              "not_includes",
-              "starts_with",
-              "ends_with",
-              "regex",
-              "exists",
-              "is_null",
-              "in",
-              "not_in",
-              "eq",
-              "neq",
-              "gt",
-              "gte",
-              "lt",
-              "lte",
-              "=",
-              "!=",
-              ">",
-              ">=",
-              "<",
-              "<=",
-              "INCLUDES",
-              "DOES_NOT_INCLUDE",
-              "MATCH_REGEX",
-              "EXISTS",
-              "DOES_NOT_EXIST",
-              "IN",
-              "NOT_IN",
-              "STARTS_WITH",
-              "ENDS_WITH",
+            operation: Schema.Union([
+              Schema.Literals([
+                "includes",
+                "not_includes",
+                "starts_with",
+                "ends_with",
+                "regex",
+                "exists",
+                "is_null",
+                "in",
+                "not_in",
+                "eq",
+                "neq",
+                "gt",
+                "gte",
+                "lt",
+                "lte",
+                "=",
+                "!=",
+                ">",
+                ">=",
+                "<",
+                "<=",
+                "INCLUDES",
+                "DOES_NOT_INCLUDE",
+                "MATCH_REGEX",
+                "EXISTS",
+                "DOES_NOT_EXIST",
+                "IN",
+                "NOT_IN",
+                "STARTS_WITH",
+                "ENDS_WITH",
+              ]),
+              Schema.String,
             ]),
-            type: Schema.Literals(["string", "number", "boolean"]),
+            type: Schema.Union([
+              Schema.Literals(["string", "number", "boolean"]),
+              Schema.String,
+            ]),
             kind: Schema.optional(Schema.Literal("filter")),
             value: Schema.optional(
               Schema.Union([Schema.String, Schema.Number, Schema.Boolean]),
@@ -6838,7 +7096,7 @@ export interface KeysObservabilityTelemetryResponse {
   result: {
     key: string;
     lastSeenAt: number;
-    type: "string" | "boolean" | "number";
+    type: "string" | "boolean" | "number" | (string & {});
   }[];
 }
 
@@ -6848,7 +7106,10 @@ export const KeysObservabilityTelemetryResponse =
       Schema.Struct({
         key: Schema.String,
         lastSeenAt: Schema.Number,
-        type: Schema.Literals(["string", "boolean", "number"]),
+        type: Schema.Union([
+          Schema.Literals(["string", "boolean", "number"]),
+          Schema.String,
+        ]),
       }),
     ),
   }) as unknown as Schema.Schema<KeysObservabilityTelemetryResponse>;
@@ -6936,19 +7197,20 @@ export interface QueryObservabilityTelemetryRequest {
         | "P99"
         | "P999"
         | "STDDEV"
-        | "VARIANCE";
+        | "VARIANCE"
+        | (string & {});
       alias?: string;
       key?: string;
-      keyType?: "string" | "number" | "boolean";
+      keyType?: "string" | "number" | "boolean" | (string & {});
     }[];
     datasets?: string[];
-    filterCombination?: "and" | "or" | "AND" | "OR";
+    filterCombination?: "and" | "or" | "AND" | "OR" | (string & {});
     filters?: (
       | {
-          filterCombination: "and" | "or" | "AND" | "OR";
+          filterCombination: "and" | "or" | "AND" | "OR" | (string & {});
           filters: (
             | {
-                filterCombination: "and" | "or" | "AND" | "OR";
+                filterCombination: "and" | "or" | "AND" | "OR" | (string & {});
                 filters: unknown[];
                 kind: "group";
               }
@@ -6984,8 +7246,9 @@ export interface QueryObservabilityTelemetryRequest {
                   | "IN"
                   | "NOT_IN"
                   | "STARTS_WITH"
-                  | "ENDS_WITH";
-                type: "string" | "number" | "boolean";
+                  | "ENDS_WITH"
+                  | (string & {});
+                type: "string" | "number" | "boolean" | (string & {});
                 kind?: "filter";
                 value?: string | number | boolean;
               }
@@ -7024,16 +7287,20 @@ export interface QueryObservabilityTelemetryRequest {
             | "IN"
             | "NOT_IN"
             | "STARTS_WITH"
-            | "ENDS_WITH";
-          type: "string" | "number" | "boolean";
+            | "ENDS_WITH"
+            | (string & {});
+          type: "string" | "number" | "boolean" | (string & {});
           kind?: "filter";
           value?: string | number | boolean;
         }
     )[];
-    groupBys?: { type: "string" | "number" | "boolean"; value: string }[];
+    groupBys?: {
+      type: "string" | "number" | "boolean" | (string & {});
+      value: string;
+    }[];
     havings?: {
       key: string;
-      operation: "eq" | "neq" | "gt" | "gte" | "lt" | "lte";
+      operation: "eq" | "neq" | "gt" | "gte" | "lt" | "lte" | (string & {});
       value: number;
     }[];
     limit?: number;
@@ -7042,7 +7309,7 @@ export interface QueryObservabilityTelemetryRequest {
       isRegex?: boolean;
       matchCase?: boolean;
     };
-    orderBy?: { value: string; order?: "asc" | "desc" };
+    orderBy?: { value: string; order?: "asc" | "desc" | (string & {}) };
   };
   /** Body param: Controls the shape of the response. 'events': individual log lines matching the query. 'calculations': aggregated metrics (count, avg, p99, etc.) with optional group-by breakdowns and time */
   view?:
@@ -7051,7 +7318,8 @@ export interface QueryObservabilityTelemetryRequest {
     | "calculations"
     | "invocations"
     | "requests"
-    | "agents";
+    | "agents"
+    | (string & {});
 }
 
 export const QueryObservabilityTelemetryRequest =
@@ -7076,110 +7344,126 @@ export const QueryObservabilityTelemetryRequest =
         calculations: Schema.optional(
           Schema.Array(
             Schema.Struct({
-              operator: Schema.Literals([
-                "uniq",
-                "count",
-                "max",
-                "min",
-                "sum",
-                "avg",
-                "median",
-                "p001",
-                "p01",
-                "p05",
-                "p10",
-                "p25",
-                "p75",
-                "p90",
-                "p95",
-                "p99",
-                "p999",
-                "stddev",
-                "variance",
-                "COUNT_DISTINCT",
-                "COUNT",
-                "MAX",
-                "MIN",
-                "SUM",
-                "AVG",
-                "MEDIAN",
-                "P001",
-                "P01",
-                "P05",
-                "P10",
-                "P25",
-                "P75",
-                "P90",
-                "P95",
-                "P99",
-                "P999",
-                "STDDEV",
-                "VARIANCE",
+              operator: Schema.Union([
+                Schema.Literals([
+                  "uniq",
+                  "count",
+                  "max",
+                  "min",
+                  "sum",
+                  "avg",
+                  "median",
+                  "p001",
+                  "p01",
+                  "p05",
+                  "p10",
+                  "p25",
+                  "p75",
+                  "p90",
+                  "p95",
+                  "p99",
+                  "p999",
+                  "stddev",
+                  "variance",
+                  "COUNT_DISTINCT",
+                  "COUNT",
+                  "MAX",
+                  "MIN",
+                  "SUM",
+                  "AVG",
+                  "MEDIAN",
+                  "P001",
+                  "P01",
+                  "P05",
+                  "P10",
+                  "P25",
+                  "P75",
+                  "P90",
+                  "P95",
+                  "P99",
+                  "P999",
+                  "STDDEV",
+                  "VARIANCE",
+                ]),
+                Schema.String,
               ]),
               alias: Schema.optional(Schema.String),
               key: Schema.optional(Schema.String),
               keyType: Schema.optional(
-                Schema.Literals(["string", "number", "boolean"]),
+                Schema.Union([
+                  Schema.Literals(["string", "number", "boolean"]),
+                  Schema.String,
+                ]),
               ),
             }),
           ),
         ),
         datasets: Schema.optional(Schema.Array(Schema.String)),
         filterCombination: Schema.optional(
-          Schema.Literals(["and", "or", "AND", "OR"]),
+          Schema.Union([
+            Schema.Literals(["and", "or", "AND", "OR"]),
+            Schema.String,
+          ]),
         ),
         filters: Schema.optional(
           Schema.Array(
             Schema.Union([
               Schema.Struct({
-                filterCombination: Schema.Literals(["and", "or", "AND", "OR"]),
+                filterCombination: Schema.Union([
+                  Schema.Literals(["and", "or", "AND", "OR"]),
+                  Schema.String,
+                ]),
                 filters: Schema.Array(
                   Schema.Union([
                     Schema.Struct({
-                      filterCombination: Schema.Literals([
-                        "and",
-                        "or",
-                        "AND",
-                        "OR",
+                      filterCombination: Schema.Union([
+                        Schema.Literals(["and", "or", "AND", "OR"]),
+                        Schema.String,
                       ]),
                       filters: Schema.Array(Schema.Unknown),
                       kind: Schema.Literal("group"),
                     }),
                     Schema.Struct({
                       key: Schema.String,
-                      operation: Schema.Literals([
-                        "includes",
-                        "not_includes",
-                        "starts_with",
-                        "ends_with",
-                        "regex",
-                        "exists",
-                        "is_null",
-                        "in",
-                        "not_in",
-                        "eq",
-                        "neq",
-                        "gt",
-                        "gte",
-                        "lt",
-                        "lte",
-                        "=",
-                        "!=",
-                        ">",
-                        ">=",
-                        "<",
-                        "<=",
-                        "INCLUDES",
-                        "DOES_NOT_INCLUDE",
-                        "MATCH_REGEX",
-                        "EXISTS",
-                        "DOES_NOT_EXIST",
-                        "IN",
-                        "NOT_IN",
-                        "STARTS_WITH",
-                        "ENDS_WITH",
+                      operation: Schema.Union([
+                        Schema.Literals([
+                          "includes",
+                          "not_includes",
+                          "starts_with",
+                          "ends_with",
+                          "regex",
+                          "exists",
+                          "is_null",
+                          "in",
+                          "not_in",
+                          "eq",
+                          "neq",
+                          "gt",
+                          "gte",
+                          "lt",
+                          "lte",
+                          "=",
+                          "!=",
+                          ">",
+                          ">=",
+                          "<",
+                          "<=",
+                          "INCLUDES",
+                          "DOES_NOT_INCLUDE",
+                          "MATCH_REGEX",
+                          "EXISTS",
+                          "DOES_NOT_EXIST",
+                          "IN",
+                          "NOT_IN",
+                          "STARTS_WITH",
+                          "ENDS_WITH",
+                        ]),
+                        Schema.String,
                       ]),
-                      type: Schema.Literals(["string", "number", "boolean"]),
+                      type: Schema.Union([
+                        Schema.Literals(["string", "number", "boolean"]),
+                        Schema.String,
+                      ]),
                       kind: Schema.optional(Schema.Literal("filter")),
                       value: Schema.optional(
                         Schema.Union([
@@ -7195,39 +7479,45 @@ export const QueryObservabilityTelemetryRequest =
               }),
               Schema.Struct({
                 key: Schema.String,
-                operation: Schema.Literals([
-                  "includes",
-                  "not_includes",
-                  "starts_with",
-                  "ends_with",
-                  "regex",
-                  "exists",
-                  "is_null",
-                  "in",
-                  "not_in",
-                  "eq",
-                  "neq",
-                  "gt",
-                  "gte",
-                  "lt",
-                  "lte",
-                  "=",
-                  "!=",
-                  ">",
-                  ">=",
-                  "<",
-                  "<=",
-                  "INCLUDES",
-                  "DOES_NOT_INCLUDE",
-                  "MATCH_REGEX",
-                  "EXISTS",
-                  "DOES_NOT_EXIST",
-                  "IN",
-                  "NOT_IN",
-                  "STARTS_WITH",
-                  "ENDS_WITH",
+                operation: Schema.Union([
+                  Schema.Literals([
+                    "includes",
+                    "not_includes",
+                    "starts_with",
+                    "ends_with",
+                    "regex",
+                    "exists",
+                    "is_null",
+                    "in",
+                    "not_in",
+                    "eq",
+                    "neq",
+                    "gt",
+                    "gte",
+                    "lt",
+                    "lte",
+                    "=",
+                    "!=",
+                    ">",
+                    ">=",
+                    "<",
+                    "<=",
+                    "INCLUDES",
+                    "DOES_NOT_INCLUDE",
+                    "MATCH_REGEX",
+                    "EXISTS",
+                    "DOES_NOT_EXIST",
+                    "IN",
+                    "NOT_IN",
+                    "STARTS_WITH",
+                    "ENDS_WITH",
+                  ]),
+                  Schema.String,
                 ]),
-                type: Schema.Literals(["string", "number", "boolean"]),
+                type: Schema.Union([
+                  Schema.Literals(["string", "number", "boolean"]),
+                  Schema.String,
+                ]),
                 kind: Schema.optional(Schema.Literal("filter")),
                 value: Schema.optional(
                   Schema.Union([Schema.String, Schema.Number, Schema.Boolean]),
@@ -7239,7 +7529,10 @@ export const QueryObservabilityTelemetryRequest =
         groupBys: Schema.optional(
           Schema.Array(
             Schema.Struct({
-              type: Schema.Literals(["string", "number", "boolean"]),
+              type: Schema.Union([
+                Schema.Literals(["string", "number", "boolean"]),
+                Schema.String,
+              ]),
               value: Schema.String,
             }),
           ),
@@ -7248,13 +7541,9 @@ export const QueryObservabilityTelemetryRequest =
           Schema.Array(
             Schema.Struct({
               key: Schema.String,
-              operation: Schema.Literals([
-                "eq",
-                "neq",
-                "gt",
-                "gte",
-                "lt",
-                "lte",
+              operation: Schema.Union([
+                Schema.Literals(["eq", "neq", "gt", "gte", "lt", "lte"]),
+                Schema.String,
               ]),
               value: Schema.Number,
             }),
@@ -7271,19 +7560,24 @@ export const QueryObservabilityTelemetryRequest =
         orderBy: Schema.optional(
           Schema.Struct({
             value: Schema.String,
-            order: Schema.optional(Schema.Literals(["asc", "desc"])),
+            order: Schema.optional(
+              Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+            ),
           }),
         ),
       }),
     ),
     view: Schema.optional(
-      Schema.Literals([
-        "traces",
-        "events",
-        "calculations",
-        "invocations",
-        "requests",
-        "agents",
+      Schema.Union([
+        Schema.Literals([
+          "traces",
+          "events",
+          "calculations",
+          "invocations",
+          "requests",
+          "agents",
+        ]),
+        Schema.String,
       ]),
     ),
   }).pipe(
@@ -7348,18 +7642,24 @@ export interface QueryObservabilityTelemetryResponse {
                 | "P99"
                 | "P999"
                 | "STDDEV"
-                | "VARIANCE";
+                | "VARIANCE"
+                | (string & {});
               alias?: string | null;
               key?: string | null;
-              keyType?: "string" | "number" | "boolean" | null;
+              keyType?: "string" | "number" | "boolean" | (string & {}) | null;
             }[]
           | null;
         datasets?: string[] | null;
-        filterCombination?: "and" | "or" | "AND" | "OR" | null;
+        filterCombination?: "and" | "or" | "AND" | "OR" | (string & {}) | null;
         filters?:
           | (
               | {
-                  filterCombination: "and" | "or" | "AND" | "OR";
+                  filterCombination:
+                    | "and"
+                    | "or"
+                    | "AND"
+                    | "OR"
+                    | (string & {});
                   filters: unknown[];
                   kind: "group";
                 }
@@ -7395,20 +7695,31 @@ export interface QueryObservabilityTelemetryResponse {
                     | "IN"
                     | "NOT_IN"
                     | "STARTS_WITH"
-                    | "ENDS_WITH";
-                  type: "string" | "number" | "boolean";
+                    | "ENDS_WITH"
+                    | (string & {});
+                  type: "string" | "number" | "boolean" | (string & {});
                   kind?: "filter" | null;
                   value?: string | number | boolean | null;
                 }
             )[]
           | null;
         groupBys?:
-          | { type: "string" | "number" | "boolean"; value: string }[]
+          | {
+              type: "string" | "number" | "boolean" | (string & {});
+              value: string;
+            }[]
           | null;
         havings?:
           | {
               key: string;
-              operation: "eq" | "neq" | "gt" | "gte" | "lt" | "lte";
+              operation:
+                | "eq"
+                | "neq"
+                | "gt"
+                | "gte"
+                | "lt"
+                | "lte"
+                | (string & {});
               value: number;
             }[]
           | null;
@@ -7418,12 +7729,15 @@ export interface QueryObservabilityTelemetryResponse {
           isRegex?: boolean | null;
           matchCase?: boolean | null;
         } | null;
-        orderBy?: { value: string; order?: "asc" | "desc" | null } | null;
+        orderBy?: {
+          value: string;
+          order?: "asc" | "desc" | (string & {}) | null;
+        } | null;
       };
       updated: string;
       updatedBy: string;
     };
-    status: "STARTED" | "COMPLETED";
+    status: "STARTED" | "COMPLETED" | (string & {});
     timeframe: { from: number; to: number };
     userId: string;
     created?: string | null;
@@ -7562,13 +7876,18 @@ export interface QueryObservabilityTelemetryResponse {
                   | "rpc"
                   | "websocket"
                   | "workflow"
-                  | "unknown";
+                  | "unknown"
+                  | (string & {});
                 requestId: string;
                 scriptName: string;
                 durableObjectId?: string | null;
                 entrypoint?: string | null;
                 event?: Record<string, unknown> | null;
-                executionModel?: "durableObject" | "stateless" | null;
+                executionModel?:
+                  | "durableObject"
+                  | "stateless"
+                  | (string & {})
+                  | null;
                 outcome?: string | null;
                 preview?: {
                   id?: string | null;
@@ -7597,7 +7916,8 @@ export interface QueryObservabilityTelemetryResponse {
                   | "rpc"
                   | "websocket"
                   | "workflow"
-                  | "unknown";
+                  | "unknown"
+                  | (string & {});
                 outcome: string;
                 requestId: string;
                 scriptName: string;
@@ -7609,7 +7929,11 @@ export interface QueryObservabilityTelemetryResponse {
                 durableObjectId?: string | null;
                 entrypoint?: string | null;
                 event?: Record<string, unknown> | null;
-                executionModel?: "durableObject" | "stateless" | null;
+                executionModel?:
+                  | "durableObject"
+                  | "stateless"
+                  | (string & {})
+                  | null;
                 preview?: {
                   id?: string | null;
                   name?: string | null;
@@ -7687,45 +8011,48 @@ export const QueryObservabilityTelemetryResponse =
             Schema.Union([
               Schema.Array(
                 Schema.Struct({
-                  operator: Schema.Literals([
-                    "uniq",
-                    "count",
-                    "max",
-                    "min",
-                    "sum",
-                    "avg",
-                    "median",
-                    "p001",
-                    "p01",
-                    "p05",
-                    "p10",
-                    "p25",
-                    "p75",
-                    "p90",
-                    "p95",
-                    "p99",
-                    "p999",
-                    "stddev",
-                    "variance",
-                    "COUNT_DISTINCT",
-                    "COUNT",
-                    "MAX",
-                    "MIN",
-                    "SUM",
-                    "AVG",
-                    "MEDIAN",
-                    "P001",
-                    "P01",
-                    "P05",
-                    "P10",
-                    "P25",
-                    "P75",
-                    "P90",
-                    "P95",
-                    "P99",
-                    "P999",
-                    "STDDEV",
-                    "VARIANCE",
+                  operator: Schema.Union([
+                    Schema.Literals([
+                      "uniq",
+                      "count",
+                      "max",
+                      "min",
+                      "sum",
+                      "avg",
+                      "median",
+                      "p001",
+                      "p01",
+                      "p05",
+                      "p10",
+                      "p25",
+                      "p75",
+                      "p90",
+                      "p95",
+                      "p99",
+                      "p999",
+                      "stddev",
+                      "variance",
+                      "COUNT_DISTINCT",
+                      "COUNT",
+                      "MAX",
+                      "MIN",
+                      "SUM",
+                      "AVG",
+                      "MEDIAN",
+                      "P001",
+                      "P01",
+                      "P05",
+                      "P10",
+                      "P25",
+                      "P75",
+                      "P90",
+                      "P95",
+                      "P99",
+                      "P999",
+                      "STDDEV",
+                      "VARIANCE",
+                    ]),
+                    Schema.String,
                   ]),
                   alias: Schema.optional(
                     Schema.Union([Schema.String, Schema.Null]),
@@ -7735,7 +8062,10 @@ export const QueryObservabilityTelemetryResponse =
                   ),
                   keyType: Schema.optional(
                     Schema.Union([
-                      Schema.Literals(["string", "number", "boolean"]),
+                      Schema.Union([
+                        Schema.Literals(["string", "number", "boolean"]),
+                        Schema.String,
+                      ]),
                       Schema.Null,
                     ]),
                   ),
@@ -7749,7 +8079,10 @@ export const QueryObservabilityTelemetryResponse =
           ),
           filterCombination: Schema.optional(
             Schema.Union([
-              Schema.Literals(["and", "or", "AND", "OR"]),
+              Schema.Union([
+                Schema.Literals(["and", "or", "AND", "OR"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -7758,50 +8091,54 @@ export const QueryObservabilityTelemetryResponse =
               Schema.Array(
                 Schema.Union([
                   Schema.Struct({
-                    filterCombination: Schema.Literals([
-                      "and",
-                      "or",
-                      "AND",
-                      "OR",
+                    filterCombination: Schema.Union([
+                      Schema.Literals(["and", "or", "AND", "OR"]),
+                      Schema.String,
                     ]),
                     filters: Schema.Array(Schema.Unknown),
                     kind: Schema.Literal("group"),
                   }),
                   Schema.Struct({
                     key: Schema.String,
-                    operation: Schema.Literals([
-                      "includes",
-                      "not_includes",
-                      "starts_with",
-                      "ends_with",
-                      "regex",
-                      "exists",
-                      "is_null",
-                      "in",
-                      "not_in",
-                      "eq",
-                      "neq",
-                      "gt",
-                      "gte",
-                      "lt",
-                      "lte",
-                      "=",
-                      "!=",
-                      ">",
-                      ">=",
-                      "<",
-                      "<=",
-                      "INCLUDES",
-                      "DOES_NOT_INCLUDE",
-                      "MATCH_REGEX",
-                      "EXISTS",
-                      "DOES_NOT_EXIST",
-                      "IN",
-                      "NOT_IN",
-                      "STARTS_WITH",
-                      "ENDS_WITH",
+                    operation: Schema.Union([
+                      Schema.Literals([
+                        "includes",
+                        "not_includes",
+                        "starts_with",
+                        "ends_with",
+                        "regex",
+                        "exists",
+                        "is_null",
+                        "in",
+                        "not_in",
+                        "eq",
+                        "neq",
+                        "gt",
+                        "gte",
+                        "lt",
+                        "lte",
+                        "=",
+                        "!=",
+                        ">",
+                        ">=",
+                        "<",
+                        "<=",
+                        "INCLUDES",
+                        "DOES_NOT_INCLUDE",
+                        "MATCH_REGEX",
+                        "EXISTS",
+                        "DOES_NOT_EXIST",
+                        "IN",
+                        "NOT_IN",
+                        "STARTS_WITH",
+                        "ENDS_WITH",
+                      ]),
+                      Schema.String,
                     ]),
-                    type: Schema.Literals(["string", "number", "boolean"]),
+                    type: Schema.Union([
+                      Schema.Literals(["string", "number", "boolean"]),
+                      Schema.String,
+                    ]),
                     kind: Schema.optional(
                       Schema.Union([Schema.Literal("filter"), Schema.Null]),
                     ),
@@ -7825,7 +8162,10 @@ export const QueryObservabilityTelemetryResponse =
             Schema.Union([
               Schema.Array(
                 Schema.Struct({
-                  type: Schema.Literals(["string", "number", "boolean"]),
+                  type: Schema.Union([
+                    Schema.Literals(["string", "number", "boolean"]),
+                    Schema.String,
+                  ]),
                   value: Schema.String,
                 }),
               ),
@@ -7837,13 +8177,9 @@ export const QueryObservabilityTelemetryResponse =
               Schema.Array(
                 Schema.Struct({
                   key: Schema.String,
-                  operation: Schema.Literals([
-                    "eq",
-                    "neq",
-                    "gt",
-                    "gte",
-                    "lt",
-                    "lte",
+                  operation: Schema.Union([
+                    Schema.Literals(["eq", "neq", "gt", "gte", "lt", "lte"]),
+                    Schema.String,
                   ]),
                   value: Schema.Number,
                 }),
@@ -7871,7 +8207,13 @@ export const QueryObservabilityTelemetryResponse =
               Schema.Struct({
                 value: Schema.String,
                 order: Schema.optional(
-                  Schema.Union([Schema.Literals(["asc", "desc"]), Schema.Null]),
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Literals(["asc", "desc"]),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
                 ),
               }),
               Schema.Null,
@@ -7881,7 +8223,10 @@ export const QueryObservabilityTelemetryResponse =
         updated: Schema.String,
         updatedBy: Schema.String,
       }),
-      status: Schema.Literals(["STARTED", "COMPLETED"]),
+      status: Schema.Union([
+        Schema.Literals(["STARTED", "COMPLETED"]),
+        Schema.String,
+      ]),
       timeframe: Schema.Struct({
         from: Schema.Number,
         to: Schema.Number,
@@ -8191,18 +8536,21 @@ export const QueryObservabilityTelemetryResponse =
                       Schema.Union([
                         Schema.Struct({
                           cpuTimeMs: Schema.Number,
-                          eventType: Schema.Literals([
-                            "fetch",
-                            "scheduled",
-                            "alarm",
-                            "cron",
-                            "queue",
-                            "email",
-                            "tail",
-                            "rpc",
-                            "websocket",
-                            "workflow",
-                            "unknown",
+                          eventType: Schema.Union([
+                            Schema.Literals([
+                              "fetch",
+                              "scheduled",
+                              "alarm",
+                              "cron",
+                              "queue",
+                              "email",
+                              "tail",
+                              "rpc",
+                              "websocket",
+                              "workflow",
+                              "unknown",
+                            ]),
+                            Schema.String,
                           ]),
                           outcome: Schema.String,
                           requestId: Schema.String,
@@ -8237,7 +8585,10 @@ export const QueryObservabilityTelemetryResponse =
                           ),
                           executionModel: Schema.optional(
                             Schema.Union([
-                              Schema.Literals(["durableObject", "stateless"]),
+                              Schema.Union([
+                                Schema.Literals(["durableObject", "stateless"]),
+                                Schema.String,
+                              ]),
                               Schema.Null,
                             ]),
                           ),
@@ -8284,18 +8635,21 @@ export const QueryObservabilityTelemetryResponse =
                           ),
                         }),
                         Schema.Struct({
-                          eventType: Schema.Literals([
-                            "fetch",
-                            "scheduled",
-                            "alarm",
-                            "cron",
-                            "queue",
-                            "email",
-                            "tail",
-                            "rpc",
-                            "websocket",
-                            "workflow",
-                            "unknown",
+                          eventType: Schema.Union([
+                            Schema.Literals([
+                              "fetch",
+                              "scheduled",
+                              "alarm",
+                              "cron",
+                              "queue",
+                              "email",
+                              "tail",
+                              "rpc",
+                              "websocket",
+                              "workflow",
+                              "unknown",
+                            ]),
+                            Schema.String,
                           ]),
                           requestId: Schema.String,
                           scriptName: Schema.String,
@@ -8313,7 +8667,10 @@ export const QueryObservabilityTelemetryResponse =
                           ),
                           executionModel: Schema.optional(
                             Schema.Union([
-                              Schema.Literals(["durableObject", "stateless"]),
+                              Schema.Union([
+                                Schema.Literals(["durableObject", "stateless"]),
+                                Schema.String,
+                              ]),
                               Schema.Null,
                             ]),
                           ),
@@ -8488,14 +8845,14 @@ export interface ValuesObservabilityTelemetryRequest {
   /** Body param */
   timeframe: { from: number; to: number };
   /** Body param */
-  type: "string" | "boolean" | "number";
+  type: "string" | "boolean" | "number" | (string & {});
   /** Body param: Apply filters before listing values. Supports nested groups via kind: 'group'. Maximum nesting depth is 4. */
   filters?: (
     | {
-        filterCombination: "and" | "or" | "AND" | "OR";
+        filterCombination: "and" | "or" | "AND" | "OR" | (string & {});
         filters: (
           | {
-              filterCombination: "and" | "or" | "AND" | "OR";
+              filterCombination: "and" | "or" | "AND" | "OR" | (string & {});
               filters: unknown[];
               kind: "group";
             }
@@ -8531,8 +8888,9 @@ export interface ValuesObservabilityTelemetryRequest {
                 | "IN"
                 | "NOT_IN"
                 | "STARTS_WITH"
-                | "ENDS_WITH";
-              type: "string" | "number" | "boolean";
+                | "ENDS_WITH"
+                | (string & {});
+              type: "string" | "number" | "boolean" | (string & {});
               kind?: "filter";
               value?: string | number | boolean;
             }
@@ -8571,8 +8929,9 @@ export interface ValuesObservabilityTelemetryRequest {
           | "IN"
           | "NOT_IN"
           | "STARTS_WITH"
-          | "ENDS_WITH";
-        type: "string" | "number" | "boolean";
+          | "ENDS_WITH"
+          | (string & {});
+        type: "string" | "number" | "boolean" | (string & {});
         kind?: "filter";
         value?: string | number | boolean;
       }
@@ -8596,59 +8955,69 @@ export const ValuesObservabilityTelemetryRequest =
       from: Schema.Number,
       to: Schema.Number,
     }),
-    type: Schema.Literals(["string", "boolean", "number"]),
+    type: Schema.Union([
+      Schema.Literals(["string", "boolean", "number"]),
+      Schema.String,
+    ]),
     filters: Schema.optional(
       Schema.Array(
         Schema.Union([
           Schema.Struct({
-            filterCombination: Schema.Literals(["and", "or", "AND", "OR"]),
+            filterCombination: Schema.Union([
+              Schema.Literals(["and", "or", "AND", "OR"]),
+              Schema.String,
+            ]),
             filters: Schema.Array(
               Schema.Union([
                 Schema.Struct({
-                  filterCombination: Schema.Literals([
-                    "and",
-                    "or",
-                    "AND",
-                    "OR",
+                  filterCombination: Schema.Union([
+                    Schema.Literals(["and", "or", "AND", "OR"]),
+                    Schema.String,
                   ]),
                   filters: Schema.Array(Schema.Unknown),
                   kind: Schema.Literal("group"),
                 }),
                 Schema.Struct({
                   key: Schema.String,
-                  operation: Schema.Literals([
-                    "includes",
-                    "not_includes",
-                    "starts_with",
-                    "ends_with",
-                    "regex",
-                    "exists",
-                    "is_null",
-                    "in",
-                    "not_in",
-                    "eq",
-                    "neq",
-                    "gt",
-                    "gte",
-                    "lt",
-                    "lte",
-                    "=",
-                    "!=",
-                    ">",
-                    ">=",
-                    "<",
-                    "<=",
-                    "INCLUDES",
-                    "DOES_NOT_INCLUDE",
-                    "MATCH_REGEX",
-                    "EXISTS",
-                    "DOES_NOT_EXIST",
-                    "IN",
-                    "NOT_IN",
-                    "STARTS_WITH",
-                    "ENDS_WITH",
+                  operation: Schema.Union([
+                    Schema.Literals([
+                      "includes",
+                      "not_includes",
+                      "starts_with",
+                      "ends_with",
+                      "regex",
+                      "exists",
+                      "is_null",
+                      "in",
+                      "not_in",
+                      "eq",
+                      "neq",
+                      "gt",
+                      "gte",
+                      "lt",
+                      "lte",
+                      "=",
+                      "!=",
+                      ">",
+                      ">=",
+                      "<",
+                      "<=",
+                      "INCLUDES",
+                      "DOES_NOT_INCLUDE",
+                      "MATCH_REGEX",
+                      "EXISTS",
+                      "DOES_NOT_EXIST",
+                      "IN",
+                      "NOT_IN",
+                      "STARTS_WITH",
+                      "ENDS_WITH",
+                    ]),
+                    Schema.String,
                   ]),
-                  type: Schema.Literals(["string", "number", "boolean"]),
+                  type: Schema.Union([
+                    Schema.Literals(["string", "number", "boolean"]),
+                    Schema.String,
+                  ]),
                   kind: Schema.optional(Schema.Literal("filter")),
                   value: Schema.optional(
                     Schema.Union([
@@ -8664,39 +9033,45 @@ export const ValuesObservabilityTelemetryRequest =
           }),
           Schema.Struct({
             key: Schema.String,
-            operation: Schema.Literals([
-              "includes",
-              "not_includes",
-              "starts_with",
-              "ends_with",
-              "regex",
-              "exists",
-              "is_null",
-              "in",
-              "not_in",
-              "eq",
-              "neq",
-              "gt",
-              "gte",
-              "lt",
-              "lte",
-              "=",
-              "!=",
-              ">",
-              ">=",
-              "<",
-              "<=",
-              "INCLUDES",
-              "DOES_NOT_INCLUDE",
-              "MATCH_REGEX",
-              "EXISTS",
-              "DOES_NOT_EXIST",
-              "IN",
-              "NOT_IN",
-              "STARTS_WITH",
-              "ENDS_WITH",
+            operation: Schema.Union([
+              Schema.Literals([
+                "includes",
+                "not_includes",
+                "starts_with",
+                "ends_with",
+                "regex",
+                "exists",
+                "is_null",
+                "in",
+                "not_in",
+                "eq",
+                "neq",
+                "gt",
+                "gte",
+                "lt",
+                "lte",
+                "=",
+                "!=",
+                ">",
+                ">=",
+                "<",
+                "<=",
+                "INCLUDES",
+                "DOES_NOT_INCLUDE",
+                "MATCH_REGEX",
+                "EXISTS",
+                "DOES_NOT_EXIST",
+                "IN",
+                "NOT_IN",
+                "STARTS_WITH",
+                "ENDS_WITH",
+              ]),
+              Schema.String,
             ]),
-            type: Schema.Literals(["string", "number", "boolean"]),
+            type: Schema.Union([
+              Schema.Literals(["string", "number", "boolean"]),
+              Schema.String,
+            ]),
             kind: Schema.optional(Schema.Literal("filter")),
             value: Schema.optional(
               Schema.Union([Schema.String, Schema.Number, Schema.Boolean]),
@@ -8724,7 +9099,7 @@ export interface ValuesObservabilityTelemetryResponse {
   result: {
     dataset: string;
     key: string;
-    type: "string" | "boolean" | "number";
+    type: "string" | "boolean" | "number" | (string & {});
     value: string | number | boolean;
   }[];
 }
@@ -8735,7 +9110,10 @@ export const ValuesObservabilityTelemetryResponse =
       Schema.Struct({
         dataset: Schema.String,
         key: Schema.String,
-        type: Schema.Literals(["string", "boolean", "number"]),
+        type: Schema.Union([
+          Schema.Literals(["string", "boolean", "number"]),
+          Schema.String,
+        ]),
         value: Schema.Union([Schema.String, Schema.Number, Schema.Boolean]),
       }),
     ),
@@ -9071,7 +9449,7 @@ export interface ListScriptsResponse {
         enabled?: boolean | null;
         headSamplingRate?: number | null;
         persist?: boolean | null;
-        propagationPolicy?: "authenticated" | "accept" | null;
+        propagationPolicy?: "authenticated" | "accept" | (string & {}) | null;
       } | null;
     } | null;
     placement?:
@@ -9082,6 +9460,7 @@ export interface ListScriptsResponse {
             | "SUCCESS"
             | "UNSUPPORTED_APPLICATION"
             | "INSUFFICIENT_INVOCATIONS"
+            | (string & {})
             | null;
         }
       | {
@@ -9091,6 +9470,7 @@ export interface ListScriptsResponse {
             | "SUCCESS"
             | "UNSUPPORTED_APPLICATION"
             | "INSUFFICIENT_INVOCATIONS"
+            | (string & {})
             | null;
         }
       | {
@@ -9100,6 +9480,7 @@ export interface ListScriptsResponse {
             | "SUCCESS"
             | "UNSUPPORTED_APPLICATION"
             | "INSUFFICIENT_INVOCATIONS"
+            | (string & {})
             | null;
         }
       | {
@@ -9109,6 +9490,7 @@ export interface ListScriptsResponse {
             | "SUCCESS"
             | "UNSUPPORTED_APPLICATION"
             | "INSUFFICIENT_INVOCATIONS"
+            | (string & {})
             | null;
         }
       | {
@@ -9119,6 +9501,7 @@ export interface ListScriptsResponse {
             | "SUCCESS"
             | "UNSUPPORTED_APPLICATION"
             | "INSUFFICIENT_INVOCATIONS"
+            | (string & {})
             | null;
         }
       | {
@@ -9129,6 +9512,7 @@ export interface ListScriptsResponse {
             | "SUCCESS"
             | "UNSUPPORTED_APPLICATION"
             | "INSUFFICIENT_INVOCATIONS"
+            | (string & {})
             | null;
         }
       | {
@@ -9139,6 +9523,7 @@ export interface ListScriptsResponse {
             | "SUCCESS"
             | "UNSUPPORTED_APPLICATION"
             | "INSUFFICIENT_INVOCATIONS"
+            | (string & {})
             | null;
         }
       | {
@@ -9153,14 +9538,16 @@ export interface ListScriptsResponse {
             | "SUCCESS"
             | "UNSUPPORTED_APPLICATION"
             | "INSUFFICIENT_INVOCATIONS"
+            | (string & {})
             | null;
         }
       | null;
-    placementMode?: "smart" | "targeted" | null;
+    placementMode?: "smart" | "targeted" | (string & {}) | null;
     placementStatus?:
       | "SUCCESS"
       | "UNSUPPORTED_APPLICATION"
       | "INSUFFICIENT_INVOCATIONS"
+      | (string & {})
       | null;
     routes?: { id: string; pattern: string; script?: string | null }[] | null;
     tag?: string | null;
@@ -9172,7 +9559,7 @@ export interface ListScriptsResponse {
           namespace?: string | null;
         }[]
       | null;
-    usageModel?: "standard" | "bundled" | "unbound" | null;
+    usageModel?: "standard" | "bundled" | "unbound" | (string & {}) | null;
   }[];
 }
 
@@ -9262,7 +9649,10 @@ export const ListScriptsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   ),
                   propagationPolicy: Schema.optional(
                     Schema.Union([
-                      Schema.Literals(["authenticated", "accept"]),
+                      Schema.Union([
+                        Schema.Literals(["authenticated", "accept"]),
+                        Schema.String,
+                      ]),
                       Schema.Null,
                     ]),
                   ),
@@ -9300,10 +9690,13 @@ export const ListScriptsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               status: Schema.optional(
                 Schema.Union([
-                  Schema.Literals([
-                    "SUCCESS",
-                    "UNSUPPORTED_APPLICATION",
-                    "INSUFFICIENT_INVOCATIONS",
+                  Schema.Union([
+                    Schema.Literals([
+                      "SUCCESS",
+                      "UNSUPPORTED_APPLICATION",
+                      "INSUFFICIENT_INVOCATIONS",
+                    ]),
+                    Schema.String,
                   ]),
                   Schema.Null,
                 ]),
@@ -9324,10 +9717,13 @@ export const ListScriptsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               status: Schema.optional(
                 Schema.Union([
-                  Schema.Literals([
-                    "SUCCESS",
-                    "UNSUPPORTED_APPLICATION",
-                    "INSUFFICIENT_INVOCATIONS",
+                  Schema.Union([
+                    Schema.Literals([
+                      "SUCCESS",
+                      "UNSUPPORTED_APPLICATION",
+                      "INSUFFICIENT_INVOCATIONS",
+                    ]),
+                    Schema.String,
                   ]),
                   Schema.Null,
                 ]),
@@ -9348,10 +9744,13 @@ export const ListScriptsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               status: Schema.optional(
                 Schema.Union([
-                  Schema.Literals([
-                    "SUCCESS",
-                    "UNSUPPORTED_APPLICATION",
-                    "INSUFFICIENT_INVOCATIONS",
+                  Schema.Union([
+                    Schema.Literals([
+                      "SUCCESS",
+                      "UNSUPPORTED_APPLICATION",
+                      "INSUFFICIENT_INVOCATIONS",
+                    ]),
+                    Schema.String,
                   ]),
                   Schema.Null,
                 ]),
@@ -9384,10 +9783,13 @@ export const ListScriptsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               status: Schema.optional(
                 Schema.Union([
-                  Schema.Literals([
-                    "SUCCESS",
-                    "UNSUPPORTED_APPLICATION",
-                    "INSUFFICIENT_INVOCATIONS",
+                  Schema.Union([
+                    Schema.Literals([
+                      "SUCCESS",
+                      "UNSUPPORTED_APPLICATION",
+                      "INSUFFICIENT_INVOCATIONS",
+                    ]),
+                    Schema.String,
                   ]),
                   Schema.Null,
                 ]),
@@ -9407,10 +9809,13 @@ export const ListScriptsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               status: Schema.optional(
                 Schema.Union([
-                  Schema.Literals([
-                    "SUCCESS",
-                    "UNSUPPORTED_APPLICATION",
-                    "INSUFFICIENT_INVOCATIONS",
+                  Schema.Union([
+                    Schema.Literals([
+                      "SUCCESS",
+                      "UNSUPPORTED_APPLICATION",
+                      "INSUFFICIENT_INVOCATIONS",
+                    ]),
+                    Schema.String,
                   ]),
                   Schema.Null,
                 ]),
@@ -9429,10 +9834,13 @@ export const ListScriptsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               status: Schema.optional(
                 Schema.Union([
-                  Schema.Literals([
-                    "SUCCESS",
-                    "UNSUPPORTED_APPLICATION",
-                    "INSUFFICIENT_INVOCATIONS",
+                  Schema.Union([
+                    Schema.Literals([
+                      "SUCCESS",
+                      "UNSUPPORTED_APPLICATION",
+                      "INSUFFICIENT_INVOCATIONS",
+                    ]),
+                    Schema.String,
                   ]),
                   Schema.Null,
                 ]),
@@ -9451,10 +9859,13 @@ export const ListScriptsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               status: Schema.optional(
                 Schema.Union([
-                  Schema.Literals([
-                    "SUCCESS",
-                    "UNSUPPORTED_APPLICATION",
-                    "INSUFFICIENT_INVOCATIONS",
+                  Schema.Union([
+                    Schema.Literals([
+                      "SUCCESS",
+                      "UNSUPPORTED_APPLICATION",
+                      "INSUFFICIENT_INVOCATIONS",
+                    ]),
+                    Schema.String,
                   ]),
                   Schema.Null,
                 ]),
@@ -9473,10 +9884,13 @@ export const ListScriptsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               status: Schema.optional(
                 Schema.Union([
-                  Schema.Literals([
-                    "SUCCESS",
-                    "UNSUPPORTED_APPLICATION",
-                    "INSUFFICIENT_INVOCATIONS",
+                  Schema.Union([
+                    Schema.Literals([
+                      "SUCCESS",
+                      "UNSUPPORTED_APPLICATION",
+                      "INSUFFICIENT_INVOCATIONS",
+                    ]),
+                    Schema.String,
                   ]),
                   Schema.Null,
                 ]),
@@ -9493,14 +9907,20 @@ export const ListScriptsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ]),
       ),
       placementMode: Schema.optional(
-        Schema.Union([Schema.Literals(["smart", "targeted"]), Schema.Null]),
+        Schema.Union([
+          Schema.Union([Schema.Literals(["smart", "targeted"]), Schema.String]),
+          Schema.Null,
+        ]),
       ),
       placementStatus: Schema.optional(
         Schema.Union([
-          Schema.Literals([
-            "SUCCESS",
-            "UNSUPPORTED_APPLICATION",
-            "INSUFFICIENT_INVOCATIONS",
+          Schema.Union([
+            Schema.Literals([
+              "SUCCESS",
+              "UNSUPPORTED_APPLICATION",
+              "INSUFFICIENT_INVOCATIONS",
+            ]),
+            Schema.String,
           ]),
           Schema.Null,
         ]),
@@ -9541,7 +9961,10 @@ export const ListScriptsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
       usageModel: Schema.optional(
         Schema.Union([
-          Schema.Literals(["standard", "bundled", "unbound"]),
+          Schema.Union([
+            Schema.Literals(["standard", "bundled", "unbound"]),
+            Schema.String,
+          ]),
           Schema.Null,
         ]),
       ),
@@ -9608,8 +10031,13 @@ export interface PutScriptRequest {
           | "auto-trailing-slash"
           | "force-trailing-slash"
           | "drop-trailing-slash"
-          | "none";
-        notFoundHandling?: "none" | "404-page" | "single-page-application";
+          | "none"
+          | (string & {});
+        notFoundHandling?:
+          | "none"
+          | "404-page"
+          | "single-page-application"
+          | (string & {});
         runWorkerFirst?: string[] | boolean;
         serveDirectly?: boolean;
       };
@@ -9671,7 +10099,7 @@ export interface PutScriptRequest {
           bucketName: string;
           name: string;
           type: "r2_bucket";
-          jurisdiction?: "eu" | "fedramp" | "fedramp-high";
+          jurisdiction?: "eu" | "fedramp" | "fedramp-high" | (string & {});
         }
       | { name: string; text: string; type: "secret_text" }
       | {
@@ -9700,7 +10128,7 @@ export interface PutScriptRequest {
       | { appId: string; name: string; type: "flagship" }
       | {
           algorithm: unknown;
-          format: "raw" | "pkcs8" | "spki" | "jwk";
+          format: "raw" | "pkcs8" | "spki" | "jwk" | (string & {});
           name: string;
           type: "secret_key";
           usages: (
@@ -9712,6 +10140,7 @@ export interface PutScriptRequest {
             | "deriveBits"
             | "wrapKey"
             | "unwrapKey"
+            | (string & {})
           )[];
           keyBase64?: string;
           keyJwk?: unknown;
@@ -9792,7 +10221,7 @@ export interface PutScriptRequest {
         enabled?: boolean;
         headSamplingRate?: number | null;
         persist?: boolean;
-        propagationPolicy?: "authenticated" | "accept";
+        propagationPolicy?: "authenticated" | "accept" | (string & {});
       } | null;
     };
     placement?:
@@ -9815,7 +10244,7 @@ export interface PutScriptRequest {
     tailConsumers?:
       | { service: string; environment?: string; namespace?: string }[]
       | null;
-    usageModel?: "standard" | "bundled" | "unbound";
+    usageModel?: "standard" | "bundled" | "unbound" | (string & {});
     containers?: { className: string }[];
   };
   /** Body param: An array of modules (often JavaScript files) comprising a Worker script. At least one module must be present and referenced in the metadata as `main_module` or `body_part` by filename.<br/ */
@@ -9847,15 +10276,25 @@ export const PutScriptRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             headers: Schema.optional(Schema.String),
             redirects: Schema.optional(Schema.String),
             htmlHandling: Schema.optional(
-              Schema.Literals([
-                "auto-trailing-slash",
-                "force-trailing-slash",
-                "drop-trailing-slash",
-                "none",
+              Schema.Union([
+                Schema.Literals([
+                  "auto-trailing-slash",
+                  "force-trailing-slash",
+                  "drop-trailing-slash",
+                  "none",
+                ]),
+                Schema.String,
               ]),
             ),
             notFoundHandling: Schema.optional(
-              Schema.Literals(["none", "404-page", "single-page-application"]),
+              Schema.Union([
+                Schema.Literals([
+                  "none",
+                  "404-page",
+                  "single-page-application",
+                ]),
+                Schema.String,
+              ]),
             ),
             runWorkerFirst: Schema.optional(
               Schema.Union([Schema.Array(Schema.String), Schema.Boolean]),
@@ -9880,19 +10319,25 @@ export const PutScriptRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Union([
           Schema.Struct({
             algorithm: Schema.Unknown,
-            format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+            format: Schema.Union([
+              Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+              Schema.String,
+            ]),
             name: Schema.String,
             type: Schema.Literal("secret_key"),
             usages: Schema.Array(
-              Schema.Literals([
-                "encrypt",
-                "decrypt",
-                "sign",
-                "verify",
-                "deriveKey",
-                "deriveBits",
-                "wrapKey",
-                "unwrapKey",
+              Schema.Union([
+                Schema.Literals([
+                  "encrypt",
+                  "decrypt",
+                  "sign",
+                  "verify",
+                  "deriveKey",
+                  "deriveBits",
+                  "wrapKey",
+                  "unwrapKey",
+                ]),
+                Schema.String,
               ]),
             ),
             keyBase64: Schema.optional(Schema.String),
@@ -10116,7 +10561,10 @@ export const PutScriptRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             name: Schema.String,
             type: Schema.Literal("r2_bucket"),
             jurisdiction: Schema.optional(
-              Schema.Literals(["eu", "fedramp", "fedramp-high"]),
+              Schema.Union([
+                Schema.Literals(["eu", "fedramp", "fedramp-high"]),
+                Schema.String,
+              ]),
             ),
           }).pipe(
             Schema.encodeKeys({
@@ -10405,7 +10853,10 @@ export const PutScriptRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               persist: Schema.optional(Schema.Boolean),
               propagationPolicy: Schema.optional(
-                Schema.Literals(["authenticated", "accept"]),
+                Schema.Union([
+                  Schema.Literals(["authenticated", "accept"]),
+                  Schema.String,
+                ]),
               ),
             }).pipe(
               Schema.encodeKeys({
@@ -10486,7 +10937,10 @@ export const PutScriptRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ]),
     ),
     usageModel: Schema.optional(
-      Schema.Literals(["standard", "bundled", "unbound"]),
+      Schema.Union([
+        Schema.Literals(["standard", "bundled", "unbound"]),
+        Schema.String,
+      ]),
     ),
     containers: Schema.optional(
       Schema.Array(
@@ -10574,7 +11028,7 @@ export interface PutScriptResponse {
       enabled?: boolean | null;
       headSamplingRate?: number | null;
       persist?: boolean | null;
-      propagationPolicy?: "authenticated" | "accept" | null;
+      propagationPolicy?: "authenticated" | "accept" | (string & {}) | null;
     } | null;
   } | null;
   /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
@@ -10586,6 +11040,7 @@ export interface PutScriptResponse {
           | "SUCCESS"
           | "UNSUPPORTED_APPLICATION"
           | "INSUFFICIENT_INVOCATIONS"
+          | (string & {})
           | null;
       }
     | {
@@ -10595,6 +11050,7 @@ export interface PutScriptResponse {
           | "SUCCESS"
           | "UNSUPPORTED_APPLICATION"
           | "INSUFFICIENT_INVOCATIONS"
+          | (string & {})
           | null;
       }
     | {
@@ -10604,6 +11060,7 @@ export interface PutScriptResponse {
           | "SUCCESS"
           | "UNSUPPORTED_APPLICATION"
           | "INSUFFICIENT_INVOCATIONS"
+          | (string & {})
           | null;
       }
     | {
@@ -10613,6 +11070,7 @@ export interface PutScriptResponse {
           | "SUCCESS"
           | "UNSUPPORTED_APPLICATION"
           | "INSUFFICIENT_INVOCATIONS"
+          | (string & {})
           | null;
       }
     | {
@@ -10623,6 +11081,7 @@ export interface PutScriptResponse {
           | "SUCCESS"
           | "UNSUPPORTED_APPLICATION"
           | "INSUFFICIENT_INVOCATIONS"
+          | (string & {})
           | null;
       }
     | {
@@ -10633,6 +11092,7 @@ export interface PutScriptResponse {
           | "SUCCESS"
           | "UNSUPPORTED_APPLICATION"
           | "INSUFFICIENT_INVOCATIONS"
+          | (string & {})
           | null;
       }
     | {
@@ -10643,6 +11103,7 @@ export interface PutScriptResponse {
           | "SUCCESS"
           | "UNSUPPORTED_APPLICATION"
           | "INSUFFICIENT_INVOCATIONS"
+          | (string & {})
           | null;
       }
     | {
@@ -10657,16 +11118,18 @@ export interface PutScriptResponse {
           | "SUCCESS"
           | "UNSUPPORTED_APPLICATION"
           | "INSUFFICIENT_INVOCATIONS"
+          | (string & {})
           | null;
       }
     | null;
   /** @deprecated */
-  placementMode?: "smart" | "targeted" | null;
+  placementMode?: "smart" | "targeted" | (string & {}) | null;
   /** @deprecated */
   placementStatus?:
     | "SUCCESS"
     | "UNSUPPORTED_APPLICATION"
     | "INSUFFICIENT_INVOCATIONS"
+    | (string & {})
     | null;
   /** The immutable ID of the script. */
   tag?: string | null;
@@ -10681,7 +11144,7 @@ export interface PutScriptResponse {
       }[]
     | null;
   /** Usage model for the Worker invocations. */
-  usageModel?: "standard" | "bundled" | "unbound" | null;
+  usageModel?: "standard" | "bundled" | "unbound" | (string & {}) | null;
 }
 
 export const PutScriptResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -10768,7 +11231,10 @@ export const PutScriptResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               propagationPolicy: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["authenticated", "accept"]),
+                  Schema.Union([
+                    Schema.Literals(["authenticated", "accept"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -10806,10 +11272,13 @@ export const PutScriptResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ),
           status: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "SUCCESS",
-                "UNSUPPORTED_APPLICATION",
-                "INSUFFICIENT_INVOCATIONS",
+              Schema.Union([
+                Schema.Literals([
+                  "SUCCESS",
+                  "UNSUPPORTED_APPLICATION",
+                  "INSUFFICIENT_INVOCATIONS",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -10830,10 +11299,13 @@ export const PutScriptResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ),
           status: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "SUCCESS",
-                "UNSUPPORTED_APPLICATION",
-                "INSUFFICIENT_INVOCATIONS",
+              Schema.Union([
+                Schema.Literals([
+                  "SUCCESS",
+                  "UNSUPPORTED_APPLICATION",
+                  "INSUFFICIENT_INVOCATIONS",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -10854,10 +11326,13 @@ export const PutScriptResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ),
           status: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "SUCCESS",
-                "UNSUPPORTED_APPLICATION",
-                "INSUFFICIENT_INVOCATIONS",
+              Schema.Union([
+                Schema.Literals([
+                  "SUCCESS",
+                  "UNSUPPORTED_APPLICATION",
+                  "INSUFFICIENT_INVOCATIONS",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -10890,10 +11365,13 @@ export const PutScriptResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ),
           status: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "SUCCESS",
-                "UNSUPPORTED_APPLICATION",
-                "INSUFFICIENT_INVOCATIONS",
+              Schema.Union([
+                Schema.Literals([
+                  "SUCCESS",
+                  "UNSUPPORTED_APPLICATION",
+                  "INSUFFICIENT_INVOCATIONS",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -10913,10 +11391,13 @@ export const PutScriptResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ),
           status: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "SUCCESS",
-                "UNSUPPORTED_APPLICATION",
-                "INSUFFICIENT_INVOCATIONS",
+              Schema.Union([
+                Schema.Literals([
+                  "SUCCESS",
+                  "UNSUPPORTED_APPLICATION",
+                  "INSUFFICIENT_INVOCATIONS",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -10935,10 +11416,13 @@ export const PutScriptResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ),
           status: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "SUCCESS",
-                "UNSUPPORTED_APPLICATION",
-                "INSUFFICIENT_INVOCATIONS",
+              Schema.Union([
+                Schema.Literals([
+                  "SUCCESS",
+                  "UNSUPPORTED_APPLICATION",
+                  "INSUFFICIENT_INVOCATIONS",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -10957,10 +11441,13 @@ export const PutScriptResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ),
           status: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "SUCCESS",
-                "UNSUPPORTED_APPLICATION",
-                "INSUFFICIENT_INVOCATIONS",
+              Schema.Union([
+                Schema.Literals([
+                  "SUCCESS",
+                  "UNSUPPORTED_APPLICATION",
+                  "INSUFFICIENT_INVOCATIONS",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -10979,10 +11466,13 @@ export const PutScriptResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ),
           status: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "SUCCESS",
-                "UNSUPPORTED_APPLICATION",
-                "INSUFFICIENT_INVOCATIONS",
+              Schema.Union([
+                Schema.Literals([
+                  "SUCCESS",
+                  "UNSUPPORTED_APPLICATION",
+                  "INSUFFICIENT_INVOCATIONS",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -10999,14 +11489,20 @@ export const PutScriptResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ]),
   ),
   placementMode: Schema.optional(
-    Schema.Union([Schema.Literals(["smart", "targeted"]), Schema.Null]),
+    Schema.Union([
+      Schema.Union([Schema.Literals(["smart", "targeted"]), Schema.String]),
+      Schema.Null,
+    ]),
   ),
   placementStatus: Schema.optional(
     Schema.Union([
-      Schema.Literals([
-        "SUCCESS",
-        "UNSUPPORTED_APPLICATION",
-        "INSUFFICIENT_INVOCATIONS",
+      Schema.Union([
+        Schema.Literals([
+          "SUCCESS",
+          "UNSUPPORTED_APPLICATION",
+          "INSUFFICIENT_INVOCATIONS",
+        ]),
+        Schema.String,
       ]),
       Schema.Null,
     ]),
@@ -11033,7 +11529,10 @@ export const PutScriptResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   usageModel: Schema.optional(
     Schema.Union([
-      Schema.Literals(["standard", "bundled", "unbound"]),
+      Schema.Union([
+        Schema.Literals(["standard", "bundled", "unbound"]),
+        Schema.String,
+      ]),
       Schema.Null,
     ]),
   ),
@@ -11149,7 +11648,7 @@ export interface SearchScriptRequest {
   /** Query param: Worker name to search for. Both exact and partial matches are returned. */
   name?: string;
   /** Query param: Property to sort results by. Results are sorted in ascending order. */
-  orderBy?: "created_on" | "modified_on" | "name";
+  orderBy?: "created_on" | "modified_on" | "name" | (string & {});
   /** Query param: Current page. */
   page?: number;
   /** Query param: Items per page. */
@@ -11161,7 +11660,10 @@ export const SearchScriptRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
   name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
   orderBy: Schema.optional(
-    Schema.Literals(["created_on", "modified_on", "name"]),
+    Schema.Union([
+      Schema.Literals(["created_on", "modified_on", "name"]),
+      Schema.String,
+    ]),
   ).pipe(T.HttpQuery("order_by")),
   page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
   perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
@@ -11400,7 +11902,7 @@ export interface PutScriptContentResponse {
       enabled?: boolean | null;
       headSamplingRate?: number | null;
       persist?: boolean | null;
-      propagationPolicy?: "authenticated" | "accept" | null;
+      propagationPolicy?: "authenticated" | "accept" | (string & {}) | null;
     } | null;
   } | null;
   /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
@@ -11412,6 +11914,7 @@ export interface PutScriptContentResponse {
           | "SUCCESS"
           | "UNSUPPORTED_APPLICATION"
           | "INSUFFICIENT_INVOCATIONS"
+          | (string & {})
           | null;
       }
     | {
@@ -11421,6 +11924,7 @@ export interface PutScriptContentResponse {
           | "SUCCESS"
           | "UNSUPPORTED_APPLICATION"
           | "INSUFFICIENT_INVOCATIONS"
+          | (string & {})
           | null;
       }
     | {
@@ -11430,6 +11934,7 @@ export interface PutScriptContentResponse {
           | "SUCCESS"
           | "UNSUPPORTED_APPLICATION"
           | "INSUFFICIENT_INVOCATIONS"
+          | (string & {})
           | null;
       }
     | {
@@ -11439,6 +11944,7 @@ export interface PutScriptContentResponse {
           | "SUCCESS"
           | "UNSUPPORTED_APPLICATION"
           | "INSUFFICIENT_INVOCATIONS"
+          | (string & {})
           | null;
       }
     | {
@@ -11449,6 +11955,7 @@ export interface PutScriptContentResponse {
           | "SUCCESS"
           | "UNSUPPORTED_APPLICATION"
           | "INSUFFICIENT_INVOCATIONS"
+          | (string & {})
           | null;
       }
     | {
@@ -11459,6 +11966,7 @@ export interface PutScriptContentResponse {
           | "SUCCESS"
           | "UNSUPPORTED_APPLICATION"
           | "INSUFFICIENT_INVOCATIONS"
+          | (string & {})
           | null;
       }
     | {
@@ -11469,6 +11977,7 @@ export interface PutScriptContentResponse {
           | "SUCCESS"
           | "UNSUPPORTED_APPLICATION"
           | "INSUFFICIENT_INVOCATIONS"
+          | (string & {})
           | null;
       }
     | {
@@ -11483,16 +11992,18 @@ export interface PutScriptContentResponse {
           | "SUCCESS"
           | "UNSUPPORTED_APPLICATION"
           | "INSUFFICIENT_INVOCATIONS"
+          | (string & {})
           | null;
       }
     | null;
   /** @deprecated Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
-  placementMode?: "smart" | "targeted" | null;
+  placementMode?: "smart" | "targeted" | (string & {}) | null;
   /** @deprecated Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   placementStatus?:
     | "SUCCESS"
     | "UNSUPPORTED_APPLICATION"
     | "INSUFFICIENT_INVOCATIONS"
+    | (string & {})
     | null;
   /** The immutable ID of the script. */
   tag?: string | null;
@@ -11507,7 +12018,7 @@ export interface PutScriptContentResponse {
       }[]
     | null;
   /** Usage model for the Worker invocations. */
-  usageModel?: "standard" | "bundled" | "unbound" | null;
+  usageModel?: "standard" | "bundled" | "unbound" | (string & {}) | null;
 }
 
 export const PutScriptContentResponse =
@@ -11595,7 +12106,10 @@ export const PutScriptContentResponse =
                 ),
                 propagationPolicy: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["authenticated", "accept"]),
+                    Schema.Union([
+                      Schema.Literals(["authenticated", "accept"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -11633,10 +12147,13 @@ export const PutScriptContentResponse =
             ),
             status: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "SUCCESS",
-                  "UNSUPPORTED_APPLICATION",
-                  "INSUFFICIENT_INVOCATIONS",
+                Schema.Union([
+                  Schema.Literals([
+                    "SUCCESS",
+                    "UNSUPPORTED_APPLICATION",
+                    "INSUFFICIENT_INVOCATIONS",
+                  ]),
+                  Schema.String,
                 ]),
                 Schema.Null,
               ]),
@@ -11657,10 +12174,13 @@ export const PutScriptContentResponse =
             ),
             status: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "SUCCESS",
-                  "UNSUPPORTED_APPLICATION",
-                  "INSUFFICIENT_INVOCATIONS",
+                Schema.Union([
+                  Schema.Literals([
+                    "SUCCESS",
+                    "UNSUPPORTED_APPLICATION",
+                    "INSUFFICIENT_INVOCATIONS",
+                  ]),
+                  Schema.String,
                 ]),
                 Schema.Null,
               ]),
@@ -11681,10 +12201,13 @@ export const PutScriptContentResponse =
             ),
             status: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "SUCCESS",
-                  "UNSUPPORTED_APPLICATION",
-                  "INSUFFICIENT_INVOCATIONS",
+                Schema.Union([
+                  Schema.Literals([
+                    "SUCCESS",
+                    "UNSUPPORTED_APPLICATION",
+                    "INSUFFICIENT_INVOCATIONS",
+                  ]),
+                  Schema.String,
                 ]),
                 Schema.Null,
               ]),
@@ -11717,10 +12240,13 @@ export const PutScriptContentResponse =
             ),
             status: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "SUCCESS",
-                  "UNSUPPORTED_APPLICATION",
-                  "INSUFFICIENT_INVOCATIONS",
+                Schema.Union([
+                  Schema.Literals([
+                    "SUCCESS",
+                    "UNSUPPORTED_APPLICATION",
+                    "INSUFFICIENT_INVOCATIONS",
+                  ]),
+                  Schema.String,
                 ]),
                 Schema.Null,
               ]),
@@ -11740,10 +12266,13 @@ export const PutScriptContentResponse =
             ),
             status: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "SUCCESS",
-                  "UNSUPPORTED_APPLICATION",
-                  "INSUFFICIENT_INVOCATIONS",
+                Schema.Union([
+                  Schema.Literals([
+                    "SUCCESS",
+                    "UNSUPPORTED_APPLICATION",
+                    "INSUFFICIENT_INVOCATIONS",
+                  ]),
+                  Schema.String,
                 ]),
                 Schema.Null,
               ]),
@@ -11762,10 +12291,13 @@ export const PutScriptContentResponse =
             ),
             status: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "SUCCESS",
-                  "UNSUPPORTED_APPLICATION",
-                  "INSUFFICIENT_INVOCATIONS",
+                Schema.Union([
+                  Schema.Literals([
+                    "SUCCESS",
+                    "UNSUPPORTED_APPLICATION",
+                    "INSUFFICIENT_INVOCATIONS",
+                  ]),
+                  Schema.String,
                 ]),
                 Schema.Null,
               ]),
@@ -11784,10 +12316,13 @@ export const PutScriptContentResponse =
             ),
             status: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "SUCCESS",
-                  "UNSUPPORTED_APPLICATION",
-                  "INSUFFICIENT_INVOCATIONS",
+                Schema.Union([
+                  Schema.Literals([
+                    "SUCCESS",
+                    "UNSUPPORTED_APPLICATION",
+                    "INSUFFICIENT_INVOCATIONS",
+                  ]),
+                  Schema.String,
                 ]),
                 Schema.Null,
               ]),
@@ -11806,10 +12341,13 @@ export const PutScriptContentResponse =
             ),
             status: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "SUCCESS",
-                  "UNSUPPORTED_APPLICATION",
-                  "INSUFFICIENT_INVOCATIONS",
+                Schema.Union([
+                  Schema.Literals([
+                    "SUCCESS",
+                    "UNSUPPORTED_APPLICATION",
+                    "INSUFFICIENT_INVOCATIONS",
+                  ]),
+                  Schema.String,
                 ]),
                 Schema.Null,
               ]),
@@ -11826,14 +12364,20 @@ export const PutScriptContentResponse =
       ]),
     ),
     placementMode: Schema.optional(
-      Schema.Union([Schema.Literals(["smart", "targeted"]), Schema.Null]),
+      Schema.Union([
+        Schema.Union([Schema.Literals(["smart", "targeted"]), Schema.String]),
+        Schema.Null,
+      ]),
     ),
     placementStatus: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "SUCCESS",
-          "UNSUPPORTED_APPLICATION",
-          "INSUFFICIENT_INVOCATIONS",
+        Schema.Union([
+          Schema.Literals([
+            "SUCCESS",
+            "UNSUPPORTED_APPLICATION",
+            "INSUFFICIENT_INVOCATIONS",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -11860,7 +12404,10 @@ export const PutScriptContentResponse =
     ),
     usageModel: Schema.optional(
       Schema.Union([
-        Schema.Literals(["standard", "bundled", "unbound"]),
+        Schema.Union([
+          Schema.Literals(["standard", "bundled", "unbound"]),
+          Schema.String,
+        ]),
         Schema.Null,
       ]),
     ),
@@ -12373,7 +12920,7 @@ export interface CreateScriptEdgePreviewRequest {
     bodyPart?: string;
     compatibilityDate?: string;
     compatibilityFlags?: string[];
-    usageModel?: "bundled" | "unbound" | "standard";
+    usageModel?: "bundled" | "unbound" | "standard" | (string & {});
     bindings?: (
       | { type: "plain_text"; name: string; text: string }
       | { type: "secret_text"; name: string; text: string }
@@ -12480,7 +13027,7 @@ export interface CreateScriptEdgePreviewRequest {
           type: "ratelimit";
           name: string;
           namespaceId: string;
-          simple: { limit: number; period: "10" | "60" };
+          simple: { limit: number; period: "10" | "60" | (string & {}) };
         }
       | { type: "artifacts"; name: string; namespace: string }
       | { type: "unsafe_hello_world"; name: string; enableTimer?: boolean }
@@ -12522,8 +13069,13 @@ export interface CreateScriptEdgePreviewRequest {
           | "auto-trailing-slash"
           | "force-trailing-slash"
           | "drop-trailing-slash"
-          | "none";
-        notFoundHandling?: "single-page-application" | "404-page" | "none";
+          | "none"
+          | (string & {});
+        notFoundHandling?:
+          | "single-page-application"
+          | "404-page"
+          | "none"
+          | (string & {});
         runWorkerFirst?: boolean | string[];
         redirects?: string;
         headers?: string;
@@ -12572,7 +13124,10 @@ export const CreateScriptEdgePreviewRequest =
         compatibilityDate: Schema.optional(Schema.String),
         compatibilityFlags: Schema.optional(Schema.Array(Schema.String)),
         usageModel: Schema.optional(
-          Schema.Literals(["bundled", "unbound", "standard"]),
+          Schema.Union([
+            Schema.Literals(["bundled", "unbound", "standard"]),
+            Schema.String,
+          ]),
         ),
         bindings: Schema.optional(
           Schema.Array(
@@ -12613,7 +13168,10 @@ export const CreateScriptEdgePreviewRequest =
                 namespaceId: Schema.String,
                 simple: Schema.Struct({
                   limit: Schema.Number,
-                  period: Schema.Literals(["10", "60"]),
+                  period: Schema.Union([
+                    Schema.Literals(["10", "60"]),
+                    Schema.String,
+                  ]),
                 }),
               }).pipe(
                 Schema.encodeKeys({
@@ -13022,18 +13580,24 @@ export const CreateScriptEdgePreviewRequest =
             config: Schema.optional(
               Schema.Struct({
                 htmlHandling: Schema.optional(
-                  Schema.Literals([
-                    "auto-trailing-slash",
-                    "force-trailing-slash",
-                    "drop-trailing-slash",
-                    "none",
+                  Schema.Union([
+                    Schema.Literals([
+                      "auto-trailing-slash",
+                      "force-trailing-slash",
+                      "drop-trailing-slash",
+                      "none",
+                    ]),
+                    Schema.String,
                   ]),
                 ),
                 notFoundHandling: Schema.optional(
-                  Schema.Literals([
-                    "single-page-application",
-                    "404-page",
-                    "none",
+                  Schema.Union([
+                    Schema.Literals([
+                      "single-page-application",
+                      "404-page",
+                      "none",
+                    ]),
+                    Schema.String,
                   ]),
                 ),
                 runWorkerFirst: Schema.optional(
@@ -13420,7 +13984,12 @@ export interface GetScriptScriptAndVersionSettingResponse {
             bucketName: string;
             name: string;
             type: "r2_bucket";
-            jurisdiction?: "eu" | "fedramp" | "fedramp-high" | null;
+            jurisdiction?:
+              | "eu"
+              | "fedramp"
+              | "fedramp-high"
+              | (string & {})
+              | null;
           }
         | { name: string; type: "secret_text" }
         | {
@@ -13449,7 +14018,7 @@ export interface GetScriptScriptAndVersionSettingResponse {
         | { appId: string; name: string; type: "flagship" }
         | {
             algorithm: unknown;
-            format: "raw" | "pkcs8" | "spki" | "jwk";
+            format: "raw" | "pkcs8" | "spki" | "jwk" | (string & {});
             name: string;
             type: "secret_key";
             usages: (
@@ -13461,6 +14030,7 @@ export interface GetScriptScriptAndVersionSettingResponse {
               | "deriveBits"
               | "wrapKey"
               | "unwrapKey"
+              | (string & {})
             )[];
           }
         | {
@@ -13506,7 +14076,7 @@ export interface GetScriptScriptAndVersionSettingResponse {
       enabled?: boolean | null;
       headSamplingRate?: number | null;
       persist?: boolean | null;
-      propagationPolicy?: "authenticated" | "accept" | null;
+      propagationPolicy?: "authenticated" | "accept" | (string & {}) | null;
     } | null;
   } | null;
   /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
@@ -13522,7 +14092,7 @@ export interface GetScriptScriptAndVersionSettingResponse {
       }[]
     | null;
   /** Usage model for the Worker invocations. */
-  usageModel?: "standard" | "bundled" | "unbound" | null;
+  usageModel?: "standard" | "bundled" | "unbound" | (string & {}) | null;
 }
 
 export const GetScriptScriptAndVersionSettingResponse =
@@ -13555,19 +14125,25 @@ export const GetScriptScriptAndVersionSettingResponse =
           Schema.Union([
             Schema.Struct({
               algorithm: Schema.Unknown,
-              format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+              format: Schema.Union([
+                Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+                Schema.String,
+              ]),
               name: Schema.String,
               type: Schema.Literal("secret_key"),
               usages: Schema.Array(
-                Schema.Literals([
-                  "encrypt",
-                  "decrypt",
-                  "sign",
-                  "verify",
-                  "deriveKey",
-                  "deriveBits",
-                  "wrapKey",
-                  "unwrapKey",
+                Schema.Union([
+                  Schema.Literals([
+                    "encrypt",
+                    "decrypt",
+                    "sign",
+                    "verify",
+                    "deriveKey",
+                    "deriveBits",
+                    "wrapKey",
+                    "unwrapKey",
+                  ]),
+                  Schema.String,
                 ]),
               ),
             }),
@@ -13749,7 +14325,10 @@ export const GetScriptScriptAndVersionSettingResponse =
               type: Schema.Literal("r2_bucket"),
               jurisdiction: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["eu", "fedramp", "fedramp-high"]),
+                  Schema.Union([
+                    Schema.Literals(["eu", "fedramp", "fedramp-high"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -14030,7 +14609,10 @@ export const GetScriptScriptAndVersionSettingResponse =
                 ),
                 propagationPolicy: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["authenticated", "accept"]),
+                    Schema.Union([
+                      Schema.Literals(["authenticated", "accept"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -14079,7 +14661,10 @@ export const GetScriptScriptAndVersionSettingResponse =
     ),
     usageModel: Schema.optional(
       Schema.Union([
-        Schema.Literals(["standard", "bundled", "unbound"]),
+        Schema.Union([
+          Schema.Literals(["standard", "bundled", "unbound"]),
+          Schema.String,
+        ]),
         Schema.Null,
       ]),
     ),
@@ -14181,7 +14766,7 @@ export interface PatchScriptScriptAndVersionSettingRequest {
           bucketName: string;
           name: string;
           type: "r2_bucket";
-          jurisdiction?: "eu" | "fedramp" | "fedramp-high";
+          jurisdiction?: "eu" | "fedramp" | "fedramp-high" | (string & {});
         }
       | { name: string; text: string; type: "secret_text" }
       | {
@@ -14210,7 +14795,7 @@ export interface PatchScriptScriptAndVersionSettingRequest {
       | { appId: string; name: string; type: "flagship" }
       | {
           algorithm: unknown;
-          format: "raw" | "pkcs8" | "spki" | "jwk";
+          format: "raw" | "pkcs8" | "spki" | "jwk" | (string & {});
           name: string;
           type: "secret_key";
           usages: (
@@ -14222,6 +14807,7 @@ export interface PatchScriptScriptAndVersionSettingRequest {
             | "deriveBits"
             | "wrapKey"
             | "unwrapKey"
+            | (string & {})
           )[];
           keyBase64?: string;
           keyJwk?: unknown;
@@ -14292,7 +14878,7 @@ export interface PatchScriptScriptAndVersionSettingRequest {
         enabled?: boolean;
         headSamplingRate?: number | null;
         persist?: boolean;
-        propagationPolicy?: "authenticated" | "accept";
+        propagationPolicy?: "authenticated" | "accept" | (string & {});
       } | null;
     };
     placement?:
@@ -14315,7 +14901,7 @@ export interface PatchScriptScriptAndVersionSettingRequest {
     tailConsumers?:
       | { service: string; environment?: string; namespace?: string }[]
       | null;
-    usageModel?: "standard" | "bundled" | "unbound";
+    usageModel?: "standard" | "bundled" | "unbound" | (string & {});
   };
 }
 
@@ -14341,19 +14927,25 @@ export const PatchScriptScriptAndVersionSettingRequest =
             Schema.Union([
               Schema.Struct({
                 algorithm: Schema.Unknown,
-                format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+                format: Schema.Union([
+                  Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+                  Schema.String,
+                ]),
                 name: Schema.String,
                 type: Schema.Literal("secret_key"),
                 usages: Schema.Array(
-                  Schema.Literals([
-                    "encrypt",
-                    "decrypt",
-                    "sign",
-                    "verify",
-                    "deriveKey",
-                    "deriveBits",
-                    "wrapKey",
-                    "unwrapKey",
+                  Schema.Union([
+                    Schema.Literals([
+                      "encrypt",
+                      "decrypt",
+                      "sign",
+                      "verify",
+                      "deriveKey",
+                      "deriveBits",
+                      "wrapKey",
+                      "unwrapKey",
+                    ]),
+                    Schema.String,
                   ]),
                 ),
                 keyBase64: Schema.optional(Schema.String),
@@ -14561,7 +15153,10 @@ export const PatchScriptScriptAndVersionSettingRequest =
                 name: Schema.String,
                 type: Schema.Literal("r2_bucket"),
                 jurisdiction: Schema.optional(
-                  Schema.Literals(["eu", "fedramp", "fedramp-high"]),
+                  Schema.Union([
+                    Schema.Literals(["eu", "fedramp", "fedramp-high"]),
+                    Schema.String,
+                  ]),
                 ),
               }).pipe(
                 Schema.encodeKeys({
@@ -14854,7 +15449,10 @@ export const PatchScriptScriptAndVersionSettingRequest =
                   ),
                   persist: Schema.optional(Schema.Boolean),
                   propagationPolicy: Schema.optional(
-                    Schema.Literals(["authenticated", "accept"]),
+                    Schema.Union([
+                      Schema.Literals(["authenticated", "accept"]),
+                      Schema.String,
+                    ]),
                   ),
                 }).pipe(
                   Schema.encodeKeys({
@@ -14937,7 +15535,10 @@ export const PatchScriptScriptAndVersionSettingRequest =
           ]),
         ),
         usageModel: Schema.optional(
-          Schema.Literals(["standard", "bundled", "unbound"]),
+          Schema.Union([
+            Schema.Literals(["standard", "bundled", "unbound"]),
+            Schema.String,
+          ]),
         ),
       }).pipe(
         Schema.encodeKeys({
@@ -15038,7 +15639,12 @@ export interface PatchScriptScriptAndVersionSettingResponse {
             bucketName: string;
             name: string;
             type: "r2_bucket";
-            jurisdiction?: "eu" | "fedramp" | "fedramp-high" | null;
+            jurisdiction?:
+              | "eu"
+              | "fedramp"
+              | "fedramp-high"
+              | (string & {})
+              | null;
           }
         | { name: string; type: "secret_text" }
         | {
@@ -15067,7 +15673,7 @@ export interface PatchScriptScriptAndVersionSettingResponse {
         | { appId: string; name: string; type: "flagship" }
         | {
             algorithm: unknown;
-            format: "raw" | "pkcs8" | "spki" | "jwk";
+            format: "raw" | "pkcs8" | "spki" | "jwk" | (string & {});
             name: string;
             type: "secret_key";
             usages: (
@@ -15079,6 +15685,7 @@ export interface PatchScriptScriptAndVersionSettingResponse {
               | "deriveBits"
               | "wrapKey"
               | "unwrapKey"
+              | (string & {})
             )[];
           }
         | {
@@ -15124,7 +15731,7 @@ export interface PatchScriptScriptAndVersionSettingResponse {
       enabled?: boolean | null;
       headSamplingRate?: number | null;
       persist?: boolean | null;
-      propagationPolicy?: "authenticated" | "accept" | null;
+      propagationPolicy?: "authenticated" | "accept" | (string & {}) | null;
     } | null;
   } | null;
   /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
@@ -15140,7 +15747,7 @@ export interface PatchScriptScriptAndVersionSettingResponse {
       }[]
     | null;
   /** Usage model for the Worker invocations. */
-  usageModel?: "standard" | "bundled" | "unbound" | null;
+  usageModel?: "standard" | "bundled" | "unbound" | (string & {}) | null;
 }
 
 export const PatchScriptScriptAndVersionSettingResponse =
@@ -15173,19 +15780,25 @@ export const PatchScriptScriptAndVersionSettingResponse =
           Schema.Union([
             Schema.Struct({
               algorithm: Schema.Unknown,
-              format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+              format: Schema.Union([
+                Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+                Schema.String,
+              ]),
               name: Schema.String,
               type: Schema.Literal("secret_key"),
               usages: Schema.Array(
-                Schema.Literals([
-                  "encrypt",
-                  "decrypt",
-                  "sign",
-                  "verify",
-                  "deriveKey",
-                  "deriveBits",
-                  "wrapKey",
-                  "unwrapKey",
+                Schema.Union([
+                  Schema.Literals([
+                    "encrypt",
+                    "decrypt",
+                    "sign",
+                    "verify",
+                    "deriveKey",
+                    "deriveBits",
+                    "wrapKey",
+                    "unwrapKey",
+                  ]),
+                  Schema.String,
                 ]),
               ),
             }),
@@ -15367,7 +15980,10 @@ export const PatchScriptScriptAndVersionSettingResponse =
               type: Schema.Literal("r2_bucket"),
               jurisdiction: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["eu", "fedramp", "fedramp-high"]),
+                  Schema.Union([
+                    Schema.Literals(["eu", "fedramp", "fedramp-high"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -15648,7 +16264,10 @@ export const PatchScriptScriptAndVersionSettingResponse =
                 ),
                 propagationPolicy: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["authenticated", "accept"]),
+                    Schema.Union([
+                      Schema.Literals(["authenticated", "accept"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -15697,7 +16316,10 @@ export const PatchScriptScriptAndVersionSettingResponse =
     ),
     usageModel: Schema.optional(
       Schema.Union([
-        Schema.Literals(["standard", "bundled", "unbound"]),
+        Schema.Union([
+          Schema.Literals(["standard", "bundled", "unbound"]),
+          Schema.String,
+        ]),
         Schema.Null,
       ]),
     ),
@@ -15770,7 +16392,7 @@ export type GetScriptSecretResponse =
   | { name: string; type: "secret_text" }
   | {
       algorithm: unknown;
-      format: "raw" | "pkcs8" | "spki" | "jwk";
+      format: "raw" | "pkcs8" | "spki" | "jwk" | (string & {});
       name: string;
       type: "secret_key";
       usages: (
@@ -15782,6 +16404,7 @@ export type GetScriptSecretResponse =
         | "deriveBits"
         | "wrapKey"
         | "unwrapKey"
+        | (string & {})
       )[];
     };
 
@@ -15789,19 +16412,25 @@ export const GetScriptSecretResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union(
   [
     Schema.Struct({
       algorithm: Schema.Unknown,
-      format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+      format: Schema.Union([
+        Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+        Schema.String,
+      ]),
       name: Schema.String,
       type: Schema.Literal("secret_key"),
       usages: Schema.Array(
-        Schema.Literals([
-          "encrypt",
-          "decrypt",
-          "sign",
-          "verify",
-          "deriveKey",
-          "deriveBits",
-          "wrapKey",
-          "unwrapKey",
+        Schema.Union([
+          Schema.Literals([
+            "encrypt",
+            "decrypt",
+            "sign",
+            "verify",
+            "deriveKey",
+            "deriveBits",
+            "wrapKey",
+            "unwrapKey",
+          ]),
+          Schema.String,
         ]),
       ),
     }),
@@ -15852,7 +16481,7 @@ export interface ListScriptSecretsResponse {
     | { name: string; type: "secret_text" }
     | {
         algorithm: unknown;
-        format: "raw" | "pkcs8" | "spki" | "jwk";
+        format: "raw" | "pkcs8" | "spki" | "jwk" | (string & {});
         name: string;
         type: "secret_key";
         usages: (
@@ -15864,6 +16493,7 @@ export interface ListScriptSecretsResponse {
           | "deriveBits"
           | "wrapKey"
           | "unwrapKey"
+          | (string & {})
         )[];
       }
   )[];
@@ -15875,19 +16505,25 @@ export const ListScriptSecretsResponse =
       Schema.Union([
         Schema.Struct({
           algorithm: Schema.Unknown,
-          format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+          format: Schema.Union([
+            Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+            Schema.String,
+          ]),
           name: Schema.String,
           type: Schema.Literal("secret_key"),
           usages: Schema.Array(
-            Schema.Literals([
-              "encrypt",
-              "decrypt",
-              "sign",
-              "verify",
-              "deriveKey",
-              "deriveBits",
-              "wrapKey",
-              "unwrapKey",
+            Schema.Union([
+              Schema.Literals([
+                "encrypt",
+                "decrypt",
+                "sign",
+                "verify",
+                "deriveKey",
+                "deriveBits",
+                "wrapKey",
+                "unwrapKey",
+              ]),
+              Schema.String,
             ]),
           ),
         }),
@@ -15947,7 +16583,7 @@ export type PutScriptSecretResponse =
   | { name: string; type: "secret_text" }
   | {
       algorithm: unknown;
-      format: "raw" | "pkcs8" | "spki" | "jwk";
+      format: "raw" | "pkcs8" | "spki" | "jwk" | (string & {});
       name: string;
       type: "secret_key";
       usages: (
@@ -15959,6 +16595,7 @@ export type PutScriptSecretResponse =
         | "deriveBits"
         | "wrapKey"
         | "unwrapKey"
+        | (string & {})
       )[];
     };
 
@@ -15966,19 +16603,25 @@ export const PutScriptSecretResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union(
   [
     Schema.Struct({
       algorithm: Schema.Unknown,
-      format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+      format: Schema.Union([
+        Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+        Schema.String,
+      ]),
       name: Schema.String,
       type: Schema.Literal("secret_key"),
       usages: Schema.Array(
-        Schema.Literals([
-          "encrypt",
-          "decrypt",
-          "sign",
-          "verify",
-          "deriveKey",
-          "deriveBits",
-          "wrapKey",
-          "unwrapKey",
+        Schema.Union([
+          Schema.Literals([
+            "encrypt",
+            "decrypt",
+            "sign",
+            "verify",
+            "deriveKey",
+            "deriveBits",
+            "wrapKey",
+            "unwrapKey",
+          ]),
+          Schema.String,
         ]),
       ),
     }),
@@ -16135,7 +16778,7 @@ export interface GetScriptSettingResponse {
       enabled?: boolean | null;
       headSamplingRate?: number | null;
       persist?: boolean | null;
-      propagationPolicy?: "authenticated" | "accept" | null;
+      propagationPolicy?: "authenticated" | "accept" | (string & {}) | null;
     } | null;
   } | null;
   /** Tags associated with the Worker. */
@@ -16203,7 +16846,10 @@ export const GetScriptSettingResponse =
                 ),
                 propagationPolicy: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["authenticated", "accept"]),
+                    Schema.Union([
+                      Schema.Literals(["authenticated", "accept"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -16297,7 +16943,7 @@ export interface PatchScriptSettingRequest {
       enabled?: boolean;
       headSamplingRate?: number | null;
       persist?: boolean;
-      propagationPolicy?: "authenticated" | "accept";
+      propagationPolicy?: "authenticated" | "accept" | (string & {});
     } | null;
   } | null;
   /** Body param: Tags associated with the Worker. */
@@ -16352,7 +16998,10 @@ export const PatchScriptSettingRequest =
                 ),
                 persist: Schema.optional(Schema.Boolean),
                 propagationPolicy: Schema.optional(
-                  Schema.Literals(["authenticated", "accept"]),
+                  Schema.Union([
+                    Schema.Literals(["authenticated", "accept"]),
+                    Schema.String,
+                  ]),
                 ),
               }).pipe(
                 Schema.encodeKeys({
@@ -16424,7 +17073,7 @@ export interface PatchScriptSettingResponse {
       enabled?: boolean | null;
       headSamplingRate?: number | null;
       persist?: boolean | null;
-      propagationPolicy?: "authenticated" | "accept" | null;
+      propagationPolicy?: "authenticated" | "accept" | (string & {}) | null;
     } | null;
   } | null;
   /** Tags associated with the Worker. */
@@ -16492,7 +17141,10 @@ export const PatchScriptSettingResponse =
                 ),
                 propagationPolicy: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["authenticated", "accept"]),
+                    Schema.Union([
+                      Schema.Literals(["authenticated", "accept"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -17032,7 +17684,12 @@ export interface GetScriptVersionResponse {
               bucketName: string;
               name: string;
               type: "r2_bucket";
-              jurisdiction?: "eu" | "fedramp" | "fedramp-high" | null;
+              jurisdiction?:
+                | "eu"
+                | "fedramp"
+                | "fedramp-high"
+                | (string & {})
+                | null;
             }
           | { name: string; type: "secret_text" }
           | {
@@ -17061,7 +17718,7 @@ export interface GetScriptVersionResponse {
           | { appId: string; name: string; type: "flagship" }
           | {
               algorithm: unknown;
-              format: "raw" | "pkcs8" | "spki" | "jwk";
+              format: "raw" | "pkcs8" | "spki" | "jwk" | (string & {});
               name: string;
               type: "secret_key";
               usages: (
@@ -17073,6 +17730,7 @@ export interface GetScriptVersionResponse {
                 | "deriveBits"
                 | "wrapKey"
                 | "unwrapKey"
+                | (string & {})
               )[];
             }
           | {
@@ -17107,7 +17765,7 @@ export interface GetScriptVersionResponse {
       compatibilityFlags?: string[] | null;
       limits?: { cpuMs?: number | null } | null;
       migrationTag?: string | null;
-      usageModel?: "bundled" | "unbound" | "standard" | null;
+      usageModel?: "bundled" | "unbound" | "standard" | (string & {}) | null;
     } | null;
   };
   /** Unique identifier for the version. */
@@ -17129,6 +17787,7 @@ export interface GetScriptVersionResponse {
       | "quick_editor"
       | "playground"
       | "workersci"
+      | (string & {})
       | null;
   } | null;
   /** Sequential version number. */
@@ -17144,19 +17803,25 @@ export const GetScriptVersionResponse =
             Schema.Union([
               Schema.Struct({
                 algorithm: Schema.Unknown,
-                format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+                format: Schema.Union([
+                  Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+                  Schema.String,
+                ]),
                 name: Schema.String,
                 type: Schema.Literal("secret_key"),
                 usages: Schema.Array(
-                  Schema.Literals([
-                    "encrypt",
-                    "decrypt",
-                    "sign",
-                    "verify",
-                    "deriveKey",
-                    "deriveBits",
-                    "wrapKey",
-                    "unwrapKey",
+                  Schema.Union([
+                    Schema.Literals([
+                      "encrypt",
+                      "decrypt",
+                      "sign",
+                      "verify",
+                      "deriveKey",
+                      "deriveBits",
+                      "wrapKey",
+                      "unwrapKey",
+                    ]),
+                    Schema.String,
                   ]),
                 ),
               }),
@@ -17338,7 +18003,10 @@ export const GetScriptVersionResponse =
                 type: Schema.Literal("r2_bucket"),
                 jurisdiction: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["eu", "fedramp", "fedramp-high"]),
+                    Schema.Union([
+                      Schema.Literals(["eu", "fedramp", "fedramp-high"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -17609,7 +18277,10 @@ export const GetScriptVersionResponse =
             ),
             usageModel: Schema.optional(
               Schema.Union([
-                Schema.Literals(["bundled", "unbound", "standard"]),
+                Schema.Union([
+                  Schema.Literals(["bundled", "unbound", "standard"]),
+                  Schema.String,
+                ]),
                 Schema.Null,
               ]),
             ),
@@ -17651,17 +18322,20 @@ export const GetScriptVersionResponse =
           ),
           source: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "unknown",
-                "api",
-                "wrangler",
-                "terraform",
-                "dash",
-                "dash_template",
-                "integration",
-                "quick_editor",
-                "playground",
-                "workersci",
+              Schema.Union([
+                Schema.Literals([
+                  "unknown",
+                  "api",
+                  "wrangler",
+                  "terraform",
+                  "dash",
+                  "dash_template",
+                  "integration",
+                  "quick_editor",
+                  "playground",
+                  "workersci",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -17746,6 +18420,7 @@ export interface ListScriptVersionsResponse {
               | "quick_editor"
               | "playground"
               | "workersci"
+              | (string & {})
               | null;
           } | null;
           number?: number | null;
@@ -17788,17 +18463,20 @@ export const ListScriptVersionsResponse =
                     ),
                     source: Schema.optional(
                       Schema.Union([
-                        Schema.Literals([
-                          "unknown",
-                          "api",
-                          "wrangler",
-                          "terraform",
-                          "dash",
-                          "dash_template",
-                          "integration",
-                          "quick_editor",
-                          "playground",
-                          "workersci",
+                        Schema.Union([
+                          Schema.Literals([
+                            "unknown",
+                            "api",
+                            "wrangler",
+                            "terraform",
+                            "dash",
+                            "dash_template",
+                            "integration",
+                            "quick_editor",
+                            "playground",
+                            "workersci",
+                          ]),
+                          Schema.String,
                         ]),
                         Schema.Null,
                       ]),
@@ -17939,7 +18617,7 @@ export interface CreateScriptVersionRequest {
           bucketName: string;
           name: string;
           type: "r2_bucket";
-          jurisdiction?: "eu" | "fedramp" | "fedramp-high";
+          jurisdiction?: "eu" | "fedramp" | "fedramp-high" | (string & {});
         }
       | { name: string; text: string; type: "secret_text" }
       | {
@@ -17968,7 +18646,7 @@ export interface CreateScriptVersionRequest {
       | { appId: string; name: string; type: "flagship" }
       | {
           algorithm: unknown;
-          format: "raw" | "pkcs8" | "spki" | "jwk";
+          format: "raw" | "pkcs8" | "spki" | "jwk" | (string & {});
           name: string;
           type: "secret_key";
           usages: (
@@ -17980,6 +18658,7 @@ export interface CreateScriptVersionRequest {
             | "deriveBits"
             | "wrapKey"
             | "unwrapKey"
+            | (string & {})
           )[];
           keyBase64?: string;
           keyJwk?: unknown;
@@ -18005,7 +18684,7 @@ export interface CreateScriptVersionRequest {
     compatibilityDate?: string;
     compatibilityFlags?: string[];
     keepBindings?: string[];
-    usageModel?: "standard" | "bundled" | "unbound";
+    usageModel?: "standard" | "bundled" | "unbound" | (string & {});
   };
   /** Body param: An array of modules (often JavaScript files) comprising a Worker script. At least one module must be present and referenced in the metadata as `main_module` or `body_part` by filename.<br/ */
   files?: (File | Blob)[];
@@ -18038,19 +18717,25 @@ export const CreateScriptVersionRequest =
           Schema.Union([
             Schema.Struct({
               algorithm: Schema.Unknown,
-              format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+              format: Schema.Union([
+                Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+                Schema.String,
+              ]),
               name: Schema.String,
               type: Schema.Literal("secret_key"),
               usages: Schema.Array(
-                Schema.Literals([
-                  "encrypt",
-                  "decrypt",
-                  "sign",
-                  "verify",
-                  "deriveKey",
-                  "deriveBits",
-                  "wrapKey",
-                  "unwrapKey",
+                Schema.Union([
+                  Schema.Literals([
+                    "encrypt",
+                    "decrypt",
+                    "sign",
+                    "verify",
+                    "deriveKey",
+                    "deriveBits",
+                    "wrapKey",
+                    "unwrapKey",
+                  ]),
+                  Schema.String,
                 ]),
               ),
               keyBase64: Schema.optional(Schema.String),
@@ -18258,7 +18943,10 @@ export const CreateScriptVersionRequest =
               name: Schema.String,
               type: Schema.Literal("r2_bucket"),
               jurisdiction: Schema.optional(
-                Schema.Literals(["eu", "fedramp", "fedramp-high"]),
+                Schema.Union([
+                  Schema.Literals(["eu", "fedramp", "fedramp-high"]),
+                  Schema.String,
+                ]),
               ),
             }).pipe(
               Schema.encodeKeys({
@@ -18408,7 +19096,10 @@ export const CreateScriptVersionRequest =
       compatibilityFlags: Schema.optional(Schema.Array(Schema.String)),
       keepBindings: Schema.optional(Schema.Array(Schema.String)),
       usageModel: Schema.optional(
-        Schema.Literals(["standard", "bundled", "unbound"]),
+        Schema.Union([
+          Schema.Literals(["standard", "bundled", "unbound"]),
+          Schema.String,
+        ]),
       ),
     }).pipe(
       Schema.encodeKeys({
@@ -18500,7 +19191,12 @@ export interface CreateScriptVersionResponse {
               bucketName: string;
               name: string;
               type: "r2_bucket";
-              jurisdiction?: "eu" | "fedramp" | "fedramp-high" | null;
+              jurisdiction?:
+                | "eu"
+                | "fedramp"
+                | "fedramp-high"
+                | (string & {})
+                | null;
             }
           | { name: string; type: "secret_text" }
           | {
@@ -18529,7 +19225,7 @@ export interface CreateScriptVersionResponse {
           | { appId: string; name: string; type: "flagship" }
           | {
               algorithm: unknown;
-              format: "raw" | "pkcs8" | "spki" | "jwk";
+              format: "raw" | "pkcs8" | "spki" | "jwk" | (string & {});
               name: string;
               type: "secret_key";
               usages: (
@@ -18541,6 +19237,7 @@ export interface CreateScriptVersionResponse {
                 | "deriveBits"
                 | "wrapKey"
                 | "unwrapKey"
+                | (string & {})
               )[];
             }
           | {
@@ -18575,7 +19272,7 @@ export interface CreateScriptVersionResponse {
       compatibilityFlags?: string[] | null;
       limits?: { cpuMs?: number | null } | null;
       migrationTag?: string | null;
-      usageModel?: "bundled" | "unbound" | "standard" | null;
+      usageModel?: "bundled" | "unbound" | "standard" | (string & {}) | null;
     } | null;
   };
   /** Unique identifier for the version. */
@@ -18597,6 +19294,7 @@ export interface CreateScriptVersionResponse {
       | "quick_editor"
       | "playground"
       | "workersci"
+      | (string & {})
       | null;
   } | null;
   /** Sequential version number. */
@@ -18614,19 +19312,25 @@ export const CreateScriptVersionResponse =
             Schema.Union([
               Schema.Struct({
                 algorithm: Schema.Unknown,
-                format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+                format: Schema.Union([
+                  Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+                  Schema.String,
+                ]),
                 name: Schema.String,
                 type: Schema.Literal("secret_key"),
                 usages: Schema.Array(
-                  Schema.Literals([
-                    "encrypt",
-                    "decrypt",
-                    "sign",
-                    "verify",
-                    "deriveKey",
-                    "deriveBits",
-                    "wrapKey",
-                    "unwrapKey",
+                  Schema.Union([
+                    Schema.Literals([
+                      "encrypt",
+                      "decrypt",
+                      "sign",
+                      "verify",
+                      "deriveKey",
+                      "deriveBits",
+                      "wrapKey",
+                      "unwrapKey",
+                    ]),
+                    Schema.String,
                   ]),
                 ),
               }),
@@ -18808,7 +19512,10 @@ export const CreateScriptVersionResponse =
                 type: Schema.Literal("r2_bucket"),
                 jurisdiction: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["eu", "fedramp", "fedramp-high"]),
+                    Schema.Union([
+                      Schema.Literals(["eu", "fedramp", "fedramp-high"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -19079,7 +19786,10 @@ export const CreateScriptVersionResponse =
             ),
             usageModel: Schema.optional(
               Schema.Union([
-                Schema.Literals(["bundled", "unbound", "standard"]),
+                Schema.Union([
+                  Schema.Literals(["bundled", "unbound", "standard"]),
+                  Schema.String,
+                ]),
                 Schema.Null,
               ]),
             ),
@@ -19121,17 +19831,20 @@ export const CreateScriptVersionResponse =
           ),
           source: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "unknown",
-                "api",
-                "wrangler",
-                "terraform",
-                "dash",
-                "dash_template",
-                "integration",
-                "quick_editor",
-                "playground",
-                "workersci",
+              Schema.Union([
+                Schema.Literals([
+                  "unknown",
+                  "api",
+                  "wrangler",
+                  "terraform",
+                  "dash",
+                  "dash_template",
+                  "integration",
+                  "quick_editor",
+                  "playground",
+                  "workersci",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -19193,7 +19906,7 @@ export interface CreateServiceEdgePreviewRequest {
     bodyPart?: string;
     compatibilityDate?: string;
     compatibilityFlags?: string[];
-    usageModel?: "bundled" | "unbound" | "standard";
+    usageModel?: "bundled" | "unbound" | "standard" | (string & {});
     bindings?: (
       | { type: "plain_text"; name: string; text: string }
       | { type: "secret_text"; name: string; text: string }
@@ -19300,7 +20013,7 @@ export interface CreateServiceEdgePreviewRequest {
           type: "ratelimit";
           name: string;
           namespaceId: string;
-          simple: { limit: number; period: "10" | "60" };
+          simple: { limit: number; period: "10" | "60" | (string & {}) };
         }
       | { type: "artifacts"; name: string; namespace: string }
       | { type: "unsafe_hello_world"; name: string; enableTimer?: boolean }
@@ -19342,8 +20055,13 @@ export interface CreateServiceEdgePreviewRequest {
           | "auto-trailing-slash"
           | "force-trailing-slash"
           | "drop-trailing-slash"
-          | "none";
-        notFoundHandling?: "single-page-application" | "404-page" | "none";
+          | "none"
+          | (string & {});
+        notFoundHandling?:
+          | "single-page-application"
+          | "404-page"
+          | "none"
+          | (string & {});
         runWorkerFirst?: boolean | string[];
         redirects?: string;
         headers?: string;
@@ -19393,7 +20111,10 @@ export const CreateServiceEdgePreviewRequest =
         compatibilityDate: Schema.optional(Schema.String),
         compatibilityFlags: Schema.optional(Schema.Array(Schema.String)),
         usageModel: Schema.optional(
-          Schema.Literals(["bundled", "unbound", "standard"]),
+          Schema.Union([
+            Schema.Literals(["bundled", "unbound", "standard"]),
+            Schema.String,
+          ]),
         ),
         bindings: Schema.optional(
           Schema.Array(
@@ -19434,7 +20155,10 @@ export const CreateServiceEdgePreviewRequest =
                 namespaceId: Schema.String,
                 simple: Schema.Struct({
                   limit: Schema.Number,
-                  period: Schema.Literals(["10", "60"]),
+                  period: Schema.Union([
+                    Schema.Literals(["10", "60"]),
+                    Schema.String,
+                  ]),
                 }),
               }).pipe(
                 Schema.encodeKeys({
@@ -19843,18 +20567,24 @@ export const CreateServiceEdgePreviewRequest =
             config: Schema.optional(
               Schema.Struct({
                 htmlHandling: Schema.optional(
-                  Schema.Literals([
-                    "auto-trailing-slash",
-                    "force-trailing-slash",
-                    "drop-trailing-slash",
-                    "none",
+                  Schema.Union([
+                    Schema.Literals([
+                      "auto-trailing-slash",
+                      "force-trailing-slash",
+                      "drop-trailing-slash",
+                      "none",
+                    ]),
+                    Schema.String,
                   ]),
                 ),
                 notFoundHandling: Schema.optional(
-                  Schema.Literals([
-                    "single-page-application",
-                    "404-page",
-                    "none",
+                  Schema.Union([
+                    Schema.Literals([
+                      "single-page-application",
+                      "404-page",
+                      "none",
+                    ]),
+                    Schema.String,
                   ]),
                 ),
                 runWorkerFirst: Schema.optional(

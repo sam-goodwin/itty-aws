@@ -45,6 +45,7 @@ export interface GetHostnameResponse {
     | "deleted"
     | "deployment_timed_out"
     | "deletion_timed_out"
+    | (string & {})
     | null;
   /** The time when the certificate was updated. */
   certUpdatedAt?: string | null;
@@ -75,6 +76,7 @@ export interface GetHostnameResponse {
     | "deleted"
     | "deployment_timed_out"
     | "deletion_timed_out"
+    | (string & {})
     | null;
   /** The time when the certificate was updated. */
   updatedAt?: string | null;
@@ -84,14 +86,17 @@ export const GetHostnameResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   certId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   certStatus: Schema.optional(
     Schema.Union([
-      Schema.Literals([
-        "initializing",
-        "pending_deployment",
-        "pending_deletion",
-        "active",
-        "deleted",
-        "deployment_timed_out",
-        "deletion_timed_out",
+      Schema.Union([
+        Schema.Literals([
+          "initializing",
+          "pending_deployment",
+          "pending_deletion",
+          "active",
+          "deleted",
+          "deployment_timed_out",
+          "deletion_timed_out",
+        ]),
+        Schema.String,
       ]),
       Schema.Null,
     ]),
@@ -108,14 +113,17 @@ export const GetHostnameResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   status: Schema.optional(
     Schema.Union([
-      Schema.Literals([
-        "initializing",
-        "pending_deployment",
-        "pending_deletion",
-        "active",
-        "deleted",
-        "deployment_timed_out",
-        "deletion_timed_out",
+      Schema.Union([
+        Schema.Literals([
+          "initializing",
+          "pending_deployment",
+          "pending_deletion",
+          "active",
+          "deleted",
+          "deployment_timed_out",
+          "deletion_timed_out",
+        ]),
+        Schema.String,
       ]),
       Schema.Null,
     ]),
@@ -197,6 +205,7 @@ export interface PutHostnameResponse {
       | "deleted"
       | "deployment_timed_out"
       | "deletion_timed_out"
+      | (string & {})
       | null;
     certUpdatedAt?: string | null;
     certUploadedOn?: string | null;
@@ -216,6 +225,7 @@ export interface PutHostnameResponse {
       | "deleted"
       | "deployment_timed_out"
       | "deletion_timed_out"
+      | (string & {})
       | null;
     updatedAt?: string | null;
     id?: string | null;
@@ -229,14 +239,17 @@ export const PutHostnameResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       certId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       certStatus: Schema.optional(
         Schema.Union([
-          Schema.Literals([
-            "initializing",
-            "pending_deployment",
-            "pending_deletion",
-            "active",
-            "deleted",
-            "deployment_timed_out",
-            "deletion_timed_out",
+          Schema.Union([
+            Schema.Literals([
+              "initializing",
+              "pending_deployment",
+              "pending_deletion",
+              "active",
+              "deleted",
+              "deployment_timed_out",
+              "deletion_timed_out",
+            ]),
+            Schema.String,
           ]),
           Schema.Null,
         ]),
@@ -257,14 +270,17 @@ export const PutHostnameResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       status: Schema.optional(
         Schema.Union([
-          Schema.Literals([
-            "initializing",
-            "pending_deployment",
-            "pending_deletion",
-            "active",
-            "deleted",
-            "deployment_timed_out",
-            "deletion_timed_out",
+          Schema.Union([
+            Schema.Literals([
+              "initializing",
+              "pending_deployment",
+              "pending_deletion",
+              "active",
+              "deleted",
+              "deployment_timed_out",
+              "deletion_timed_out",
+            ]),
+            Schema.String,
           ]),
           Schema.Null,
         ]),
@@ -355,6 +371,7 @@ export interface GetHostnameCertificateResponse {
     | "deleted"
     | "deployment_timed_out"
     | "deletion_timed_out"
+    | (string & {})
     | null;
   /** The time when the certificate was uploaded. */
   uploadedOn?: string | null;
@@ -370,14 +387,17 @@ export const GetHostnameCertificateResponse =
     signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     status: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "initializing",
-          "pending_deployment",
-          "pending_deletion",
-          "active",
-          "deleted",
-          "deployment_timed_out",
-          "deletion_timed_out",
+        Schema.Union([
+          Schema.Literals([
+            "initializing",
+            "pending_deployment",
+            "pending_deletion",
+            "active",
+            "deleted",
+            "deployment_timed_out",
+            "deletion_timed_out",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -444,6 +464,7 @@ export interface ListHostnameCertificatesResponse {
       | "deleted"
       | "deployment_timed_out"
       | "deletion_timed_out"
+      | (string & {})
       | null;
     uploadedOn?: string | null;
   }[];
@@ -465,14 +486,17 @@ export const ListHostnameCertificatesResponse =
         signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         status: Schema.optional(
           Schema.Union([
-            Schema.Literals([
-              "initializing",
-              "pending_deployment",
-              "pending_deletion",
-              "active",
-              "deleted",
-              "deployment_timed_out",
-              "deletion_timed_out",
+            Schema.Union([
+              Schema.Literals([
+                "initializing",
+                "pending_deployment",
+                "pending_deletion",
+                "active",
+                "deleted",
+                "deployment_timed_out",
+                "deletion_timed_out",
+              ]),
+              Schema.String,
             ]),
             Schema.Null,
           ]),
@@ -557,6 +581,7 @@ export interface CreateHostnameCertificateResponse {
     | "deleted"
     | "deployment_timed_out"
     | "deletion_timed_out"
+    | (string & {})
     | null;
   /** The time when the certificate was uploaded. */
   uploadedOn?: string | null;
@@ -572,14 +597,17 @@ export const CreateHostnameCertificateResponse =
     signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     status: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "initializing",
-          "pending_deployment",
-          "pending_deletion",
-          "active",
-          "deleted",
-          "deployment_timed_out",
-          "deletion_timed_out",
+        Schema.Union([
+          Schema.Literals([
+            "initializing",
+            "pending_deployment",
+            "pending_deletion",
+            "active",
+            "deleted",
+            "deployment_timed_out",
+            "deletion_timed_out",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -654,6 +682,7 @@ export interface DeleteHostnameCertificateResponse {
     | "deleted"
     | "deployment_timed_out"
     | "deletion_timed_out"
+    | (string & {})
     | null;
   /** The time when the certificate was uploaded. */
   uploadedOn?: string | null;
@@ -669,14 +698,17 @@ export const DeleteHostnameCertificateResponse =
     signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     status: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "initializing",
-          "pending_deployment",
-          "pending_deletion",
-          "active",
-          "deleted",
-          "deployment_timed_out",
-          "deletion_timed_out",
+        Schema.Union([
+          Schema.Literals([
+            "initializing",
+            "pending_deployment",
+            "pending_deletion",
+            "active",
+            "deleted",
+            "deployment_timed_out",
+            "deletion_timed_out",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -753,6 +785,7 @@ export interface GetOriginTlsClientAuthResponse {
     | "deleted"
     | "deployment_timed_out"
     | "deletion_timed_out"
+    | (string & {})
     | null;
   /** This is the time the certificate was uploaded. */
   uploadedOn?: string | null;
@@ -771,14 +804,17 @@ export const GetOriginTlsClientAuthResponse =
     signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     status: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "initializing",
-          "pending_deployment",
-          "pending_deletion",
-          "active",
-          "deleted",
-          "deployment_timed_out",
-          "deletion_timed_out",
+        Schema.Union([
+          Schema.Literals([
+            "initializing",
+            "pending_deployment",
+            "pending_deletion",
+            "active",
+            "deleted",
+            "deployment_timed_out",
+            "deletion_timed_out",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -844,6 +880,7 @@ export interface ListOriginTlsClientAuthsResponse {
       | "deleted"
       | "deployment_timed_out"
       | "deletion_timed_out"
+      | (string & {})
       | null;
     uploadedOn?: string | null;
     enabled?: boolean | null;
@@ -864,14 +901,17 @@ export const ListOriginTlsClientAuthsResponse =
         signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         status: Schema.optional(
           Schema.Union([
-            Schema.Literals([
-              "initializing",
-              "pending_deployment",
-              "pending_deletion",
-              "active",
-              "deleted",
-              "deployment_timed_out",
-              "deletion_timed_out",
+            Schema.Union([
+              Schema.Literals([
+                "initializing",
+                "pending_deployment",
+                "pending_deletion",
+                "active",
+                "deleted",
+                "deployment_timed_out",
+                "deletion_timed_out",
+              ]),
+              Schema.String,
             ]),
             Schema.Null,
           ]),
@@ -956,6 +996,7 @@ export interface CreateOriginTlsClientAuthResponse {
     | "deleted"
     | "deployment_timed_out"
     | "deletion_timed_out"
+    | (string & {})
     | null;
   /** This is the time the certificate was uploaded. */
   uploadedOn?: string | null;
@@ -974,14 +1015,17 @@ export const CreateOriginTlsClientAuthResponse =
     signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     status: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "initializing",
-          "pending_deployment",
-          "pending_deletion",
-          "active",
-          "deleted",
-          "deployment_timed_out",
-          "deletion_timed_out",
+        Schema.Union([
+          Schema.Literals([
+            "initializing",
+            "pending_deployment",
+            "pending_deletion",
+            "active",
+            "deleted",
+            "deployment_timed_out",
+            "deletion_timed_out",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -1057,6 +1101,7 @@ export interface DeleteOriginTlsClientAuthResponse {
     | "deleted"
     | "deployment_timed_out"
     | "deletion_timed_out"
+    | (string & {})
     | null;
   /** This is the time the certificate was uploaded. */
   uploadedOn?: string | null;
@@ -1075,14 +1120,17 @@ export const DeleteOriginTlsClientAuthResponse =
     signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     status: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "initializing",
-          "pending_deployment",
-          "pending_deletion",
-          "active",
-          "deleted",
-          "deployment_timed_out",
-          "deletion_timed_out",
+        Schema.Union([
+          Schema.Literals([
+            "initializing",
+            "pending_deployment",
+            "pending_deletion",
+            "active",
+            "deleted",
+            "deployment_timed_out",
+            "deletion_timed_out",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -1245,6 +1293,7 @@ export interface GetZoneCertificateResponse {
     | "deleted"
     | "deployment_timed_out"
     | "deletion_timed_out"
+    | (string & {})
     | null;
   /** This is the time the certificate was uploaded. */
   uploadedOn?: string | null;
@@ -1263,14 +1312,17 @@ export const GetZoneCertificateResponse =
     signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     status: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "initializing",
-          "pending_deployment",
-          "pending_deletion",
-          "active",
-          "deleted",
-          "deployment_timed_out",
-          "deletion_timed_out",
+        Schema.Union([
+          Schema.Literals([
+            "initializing",
+            "pending_deployment",
+            "pending_deletion",
+            "active",
+            "deleted",
+            "deployment_timed_out",
+            "deletion_timed_out",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -1336,6 +1388,7 @@ export interface ListZoneCertificatesResponse {
       | "deleted"
       | "deployment_timed_out"
       | "deletion_timed_out"
+      | (string & {})
       | null;
     uploadedOn?: string | null;
     enabled?: boolean | null;
@@ -1356,14 +1409,17 @@ export const ListZoneCertificatesResponse =
         signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         status: Schema.optional(
           Schema.Union([
-            Schema.Literals([
-              "initializing",
-              "pending_deployment",
-              "pending_deletion",
-              "active",
-              "deleted",
-              "deployment_timed_out",
-              "deletion_timed_out",
+            Schema.Union([
+              Schema.Literals([
+                "initializing",
+                "pending_deployment",
+                "pending_deletion",
+                "active",
+                "deleted",
+                "deployment_timed_out",
+                "deletion_timed_out",
+              ]),
+              Schema.String,
             ]),
             Schema.Null,
           ]),
@@ -1448,6 +1504,7 @@ export interface CreateZoneCertificateResponse {
     | "deleted"
     | "deployment_timed_out"
     | "deletion_timed_out"
+    | (string & {})
     | null;
   /** This is the time the certificate was uploaded. */
   uploadedOn?: string | null;
@@ -1466,14 +1523,17 @@ export const CreateZoneCertificateResponse =
     signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     status: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "initializing",
-          "pending_deployment",
-          "pending_deletion",
-          "active",
-          "deleted",
-          "deployment_timed_out",
-          "deletion_timed_out",
+        Schema.Union([
+          Schema.Literals([
+            "initializing",
+            "pending_deployment",
+            "pending_deletion",
+            "active",
+            "deleted",
+            "deployment_timed_out",
+            "deletion_timed_out",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -1549,6 +1609,7 @@ export interface DeleteZoneCertificateResponse {
     | "deleted"
     | "deployment_timed_out"
     | "deletion_timed_out"
+    | (string & {})
     | null;
   /** This is the time the certificate was uploaded. */
   uploadedOn?: string | null;
@@ -1567,14 +1628,17 @@ export const DeleteZoneCertificateResponse =
     signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     status: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "initializing",
-          "pending_deployment",
-          "pending_deletion",
-          "active",
-          "deleted",
-          "deployment_timed_out",
-          "deletion_timed_out",
+        Schema.Union([
+          Schema.Literals([
+            "initializing",
+            "pending_deployment",
+            "pending_deletion",
+            "active",
+            "deleted",
+            "deployment_timed_out",
+            "deletion_timed_out",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),

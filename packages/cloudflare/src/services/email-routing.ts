@@ -79,7 +79,7 @@ export interface ListAddressesRequest {
   page?: number;
   perPage?: number;
   /** Query param: Sorts results in an ascending or descending order. */
-  direction?: "asc" | "desc";
+  direction?: "asc" | "desc" | (string & {});
   /** Query param: Filter by verified destination addresses. */
   verified?: true | false;
 }
@@ -88,9 +88,9 @@ export const ListAddressesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
   perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-  direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-    T.HttpQuery("direction"),
-  ),
+  direction: Schema.optional(
+    Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+  ).pipe(T.HttpQuery("direction")),
   verified: Schema.optional(Schema.Literals([true, false])).pipe(
     T.HttpQuery("verified"),
   ),
@@ -345,6 +345,7 @@ export type GetDnsResponse =
                   | "SVCB"
                   | "TLSA"
                   | "URI"
+                  | (string & {})
                   | null;
               } | null;
             }[]
@@ -374,6 +375,7 @@ export type GetDnsResponse =
                 | "SVCB"
                 | "TLSA"
                 | "URI"
+                | (string & {})
                 | null;
             }[]
           | null;
@@ -425,6 +427,7 @@ export type GetDnsResponse =
               | "SVCB"
               | "TLSA"
               | "URI"
+              | (string & {})
               | null;
           }[]
         | null;
@@ -522,25 +525,28 @@ export const GetDnsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
                         ),
                         type: Schema.optional(
                           Schema.Union([
-                            Schema.Literals([
-                              "A",
-                              "AAAA",
-                              "CNAME",
-                              "HTTPS",
-                              "TXT",
-                              "SRV",
-                              "LOC",
-                              "MX",
-                              "NS",
-                              "CERT",
-                              "DNSKEY",
-                              "DS",
-                              "NAPTR",
-                              "SMIMEA",
-                              "SSHFP",
-                              "SVCB",
-                              "TLSA",
-                              "URI",
+                            Schema.Union([
+                              Schema.Literals([
+                                "A",
+                                "AAAA",
+                                "CNAME",
+                                "HTTPS",
+                                "TXT",
+                                "SRV",
+                                "LOC",
+                                "MX",
+                                "NS",
+                                "CERT",
+                                "DNSKEY",
+                                "DS",
+                                "NAPTR",
+                                "SMIMEA",
+                                "SSHFP",
+                                "SVCB",
+                                "TLSA",
+                                "URI",
+                              ]),
+                              Schema.String,
                             ]),
                             Schema.Null,
                           ]),
@@ -575,25 +581,28 @@ export const GetDnsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
                   ),
                   type: Schema.optional(
                     Schema.Union([
-                      Schema.Literals([
-                        "A",
-                        "AAAA",
-                        "CNAME",
-                        "HTTPS",
-                        "TXT",
-                        "SRV",
-                        "LOC",
-                        "MX",
-                        "NS",
-                        "CERT",
-                        "DNSKEY",
-                        "DS",
-                        "NAPTR",
-                        "SMIMEA",
-                        "SSHFP",
-                        "SVCB",
-                        "TLSA",
-                        "URI",
+                      Schema.Union([
+                        Schema.Literals([
+                          "A",
+                          "AAAA",
+                          "CNAME",
+                          "HTTPS",
+                          "TXT",
+                          "SRV",
+                          "LOC",
+                          "MX",
+                          "NS",
+                          "CERT",
+                          "DNSKEY",
+                          "DS",
+                          "NAPTR",
+                          "SMIMEA",
+                          "SSHFP",
+                          "SVCB",
+                          "TLSA",
+                          "URI",
+                        ]),
+                        Schema.String,
                       ]),
                       Schema.Null,
                     ]),
@@ -713,25 +722,28 @@ export const GetDnsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
             ),
             type: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "A",
-                  "AAAA",
-                  "CNAME",
-                  "HTTPS",
-                  "TXT",
-                  "SRV",
-                  "LOC",
-                  "MX",
-                  "NS",
-                  "CERT",
-                  "DNSKEY",
-                  "DS",
-                  "NAPTR",
-                  "SMIMEA",
-                  "SSHFP",
-                  "SVCB",
-                  "TLSA",
-                  "URI",
+                Schema.Union([
+                  Schema.Literals([
+                    "A",
+                    "AAAA",
+                    "CNAME",
+                    "HTTPS",
+                    "TXT",
+                    "SRV",
+                    "LOC",
+                    "MX",
+                    "NS",
+                    "CERT",
+                    "DNSKEY",
+                    "DS",
+                    "NAPTR",
+                    "SMIMEA",
+                    "SSHFP",
+                    "SVCB",
+                    "TLSA",
+                    "URI",
+                  ]),
+                  Schema.String,
                 ]),
                 Schema.Null,
               ]),
@@ -823,6 +835,7 @@ export interface CreateDnsResponse {
     | "misconfigured"
     | "misconfigured/locked"
     | "unlocked"
+    | (string & {})
     | null;
   /** @deprecated Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
   tag?: string | null;
@@ -839,12 +852,15 @@ export const CreateDnsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   status: Schema.optional(
     Schema.Union([
-      Schema.Literals([
-        "ready",
-        "unconfigured",
-        "misconfigured",
-        "misconfigured/locked",
-        "unlocked",
+      Schema.Union([
+        Schema.Literals([
+          "ready",
+          "unconfigured",
+          "misconfigured",
+          "misconfigured/locked",
+          "unlocked",
+        ]),
+        Schema.String,
       ]),
       Schema.Null,
     ]),
@@ -914,6 +930,7 @@ export interface PatchDnsResponse {
     | "misconfigured"
     | "misconfigured/locked"
     | "unlocked"
+    | (string & {})
     | null;
   /** @deprecated Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
   tag?: string | null;
@@ -930,12 +947,15 @@ export const PatchDnsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   status: Schema.optional(
     Schema.Union([
-      Schema.Literals([
-        "ready",
-        "unconfigured",
-        "misconfigured",
-        "misconfigured/locked",
-        "unlocked",
+      Schema.Union([
+        Schema.Literals([
+          "ready",
+          "unconfigured",
+          "misconfigured",
+          "misconfigured/locked",
+          "unlocked",
+        ]),
+        Schema.String,
       ]),
       Schema.Null,
     ]),
@@ -1005,6 +1025,7 @@ export interface DeleteDnsResponse {
       | "SVCB"
       | "TLSA"
       | "URI"
+      | (string & {})
       | null;
   }[];
 }
@@ -1023,25 +1044,28 @@ export const DeleteDnsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
       type: Schema.optional(
         Schema.Union([
-          Schema.Literals([
-            "A",
-            "AAAA",
-            "CNAME",
-            "HTTPS",
-            "TXT",
-            "SRV",
-            "LOC",
-            "MX",
-            "NS",
-            "CERT",
-            "DNSKEY",
-            "DS",
-            "NAPTR",
-            "SMIMEA",
-            "SSHFP",
-            "SVCB",
-            "TLSA",
-            "URI",
+          Schema.Union([
+            Schema.Literals([
+              "A",
+              "AAAA",
+              "CNAME",
+              "HTTPS",
+              "TXT",
+              "SRV",
+              "LOC",
+              "MX",
+              "NS",
+              "CERT",
+              "DNSKEY",
+              "DS",
+              "NAPTR",
+              "SMIMEA",
+              "SSHFP",
+              "SVCB",
+              "TLSA",
+              "URI",
+            ]),
+            Schema.String,
           ]),
           Schema.Null,
         ]),
@@ -1104,6 +1128,7 @@ export interface GetEmailRoutingResponse {
     | "misconfigured"
     | "misconfigured/locked"
     | "unlocked"
+    | (string & {})
     | null;
   /** @deprecated Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
   tag?: string | null;
@@ -1121,12 +1146,15 @@ export const GetEmailRoutingResponse =
     ),
     status: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "ready",
-          "unconfigured",
-          "misconfigured",
-          "misconfigured/locked",
-          "unlocked",
+        Schema.Union([
+          Schema.Literals([
+            "ready",
+            "unconfigured",
+            "misconfigured",
+            "misconfigured/locked",
+            "unlocked",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -1197,6 +1225,7 @@ export interface EnableEmailRoutingResponse {
     | "misconfigured"
     | "misconfigured/locked"
     | "unlocked"
+    | (string & {})
     | null;
   /** @deprecated Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
   tag?: string | null;
@@ -1214,12 +1243,15 @@ export const EnableEmailRoutingResponse =
     ),
     status: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "ready",
-          "unconfigured",
-          "misconfigured",
-          "misconfigured/locked",
-          "unlocked",
+        Schema.Union([
+          Schema.Literals([
+            "ready",
+            "unconfigured",
+            "misconfigured",
+            "misconfigured/locked",
+            "unlocked",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -1290,6 +1322,7 @@ export interface DisableEmailRoutingResponse {
     | "misconfigured"
     | "misconfigured/locked"
     | "unlocked"
+    | (string & {})
     | null;
   /** @deprecated Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
   tag?: string | null;
@@ -1307,12 +1340,15 @@ export const DisableEmailRoutingResponse =
     ),
     status: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "ready",
-          "unconfigured",
-          "misconfigured",
-          "misconfigured/locked",
-          "unlocked",
+        Schema.Union([
+          Schema.Literals([
+            "ready",
+            "unconfigured",
+            "misconfigured",
+            "misconfigured/locked",
+            "unlocked",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -1373,13 +1409,20 @@ export interface GetRuleResponse {
   id?: string | null;
   /** List actions patterns. */
   actions?:
-    | { type: "drop" | "forward" | "worker"; value?: string[] | null }[]
+    | {
+        type: "drop" | "forward" | "worker" | (string & {});
+        value?: string[] | null;
+      }[]
     | null;
   /** Routing rule status. */
   enabled?: true | false | null;
   /** Matching patterns to forward to your actions. */
   matchers?:
-    | { type: "all" | "literal"; field?: "to" | null; value?: string | null }[]
+    | {
+        type: "all" | "literal" | (string & {});
+        field?: "to" | null;
+        value?: string | null;
+      }[]
     | null;
   /** Routing rule name. */
   name?: string | null;
@@ -1395,7 +1438,10 @@ export const GetRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Union([
       Schema.Array(
         Schema.Struct({
-          type: Schema.Literals(["drop", "forward", "worker"]),
+          type: Schema.Union([
+            Schema.Literals(["drop", "forward", "worker"]),
+            Schema.String,
+          ]),
           value: Schema.optional(
             Schema.Union([Schema.Array(Schema.String), Schema.Null]),
           ),
@@ -1411,7 +1457,10 @@ export const GetRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Union([
       Schema.Array(
         Schema.Struct({
-          type: Schema.Literals(["all", "literal"]),
+          type: Schema.Union([
+            Schema.Literals(["all", "literal"]),
+            Schema.String,
+          ]),
           field: Schema.optional(
             Schema.Union([Schema.Literal("to"), Schema.Null]),
           ),
@@ -1463,12 +1512,15 @@ export interface ListRulesResponse {
   result: {
     id?: string | null;
     actions?:
-      | { type: "drop" | "forward" | "worker"; value?: string[] | null }[]
+      | {
+          type: "drop" | "forward" | "worker" | (string & {});
+          value?: string[] | null;
+        }[]
       | null;
     enabled?: true | false | null;
     matchers?:
       | {
-          type: "all" | "literal";
+          type: "all" | "literal" | (string & {});
           field?: "to" | null;
           value?: string | null;
         }[]
@@ -1493,7 +1545,10 @@ export const ListRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Union([
           Schema.Array(
             Schema.Struct({
-              type: Schema.Literals(["drop", "forward", "worker"]),
+              type: Schema.Union([
+                Schema.Literals(["drop", "forward", "worker"]),
+                Schema.String,
+              ]),
               value: Schema.optional(
                 Schema.Union([Schema.Array(Schema.String), Schema.Null]),
               ),
@@ -1509,7 +1564,10 @@ export const ListRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Union([
           Schema.Array(
             Schema.Struct({
-              type: Schema.Literals(["all", "literal"]),
+              type: Schema.Union([
+                Schema.Literals(["all", "literal"]),
+                Schema.String,
+              ]),
               field: Schema.optional(
                 Schema.Union([Schema.Literal("to"), Schema.Null]),
               ),
@@ -1572,9 +1630,16 @@ export interface CreateRuleRequest {
   /** Path param: Identifier. */
   zoneId: string;
   /** Body param: List actions patterns. */
-  actions: { type: "drop" | "forward" | "worker"; value?: string[] }[];
+  actions: {
+    type: "drop" | "forward" | "worker" | (string & {});
+    value?: string[];
+  }[];
   /** Body param: Matching patterns to forward to your actions. */
-  matchers: { type: "all" | "literal"; field?: "to"; value?: string }[];
+  matchers: {
+    type: "all" | "literal" | (string & {});
+    field?: "to";
+    value?: string;
+  }[];
   /** Body param: Routing rule status. */
   enabled?: true | false;
   /** Body param: Routing rule name. */
@@ -1587,13 +1652,16 @@ export const CreateRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   actions: Schema.Array(
     Schema.Struct({
-      type: Schema.Literals(["drop", "forward", "worker"]),
+      type: Schema.Union([
+        Schema.Literals(["drop", "forward", "worker"]),
+        Schema.String,
+      ]),
       value: Schema.optional(Schema.Array(Schema.String)),
     }),
   ),
   matchers: Schema.Array(
     Schema.Struct({
-      type: Schema.Literals(["all", "literal"]),
+      type: Schema.Union([Schema.Literals(["all", "literal"]), Schema.String]),
       field: Schema.optional(Schema.Literal("to")),
       value: Schema.optional(Schema.String),
     }),
@@ -1610,13 +1678,20 @@ export interface CreateRuleResponse {
   id?: string | null;
   /** List actions patterns. */
   actions?:
-    | { type: "drop" | "forward" | "worker"; value?: string[] | null }[]
+    | {
+        type: "drop" | "forward" | "worker" | (string & {});
+        value?: string[] | null;
+      }[]
     | null;
   /** Routing rule status. */
   enabled?: true | false | null;
   /** Matching patterns to forward to your actions. */
   matchers?:
-    | { type: "all" | "literal"; field?: "to" | null; value?: string | null }[]
+    | {
+        type: "all" | "literal" | (string & {});
+        field?: "to" | null;
+        value?: string | null;
+      }[]
     | null;
   /** Routing rule name. */
   name?: string | null;
@@ -1632,7 +1707,10 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Union([
       Schema.Array(
         Schema.Struct({
-          type: Schema.Literals(["drop", "forward", "worker"]),
+          type: Schema.Union([
+            Schema.Literals(["drop", "forward", "worker"]),
+            Schema.String,
+          ]),
           value: Schema.optional(
             Schema.Union([Schema.Array(Schema.String), Schema.Null]),
           ),
@@ -1648,7 +1726,10 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Union([
       Schema.Array(
         Schema.Struct({
-          type: Schema.Literals(["all", "literal"]),
+          type: Schema.Union([
+            Schema.Literals(["all", "literal"]),
+            Schema.String,
+          ]),
           field: Schema.optional(
             Schema.Union([Schema.Literal("to"), Schema.Null]),
           ),
@@ -1683,9 +1764,16 @@ export interface UpdateRuleRequest {
   /** Path param: Identifier. */
   zoneId: string;
   /** Body param: List actions patterns. */
-  actions: { type: "drop" | "forward" | "worker"; value?: string[] }[];
+  actions: {
+    type: "drop" | "forward" | "worker" | (string & {});
+    value?: string[];
+  }[];
   /** Body param: Matching patterns to forward to your actions. */
-  matchers: { type: "all" | "literal"; field?: "to"; value?: string }[];
+  matchers: {
+    type: "all" | "literal" | (string & {});
+    field?: "to";
+    value?: string;
+  }[];
   /** Body param: Routing rule status. */
   enabled?: true | false;
   /** Body param: Routing rule name. */
@@ -1699,13 +1787,16 @@ export const UpdateRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   actions: Schema.Array(
     Schema.Struct({
-      type: Schema.Literals(["drop", "forward", "worker"]),
+      type: Schema.Union([
+        Schema.Literals(["drop", "forward", "worker"]),
+        Schema.String,
+      ]),
       value: Schema.optional(Schema.Array(Schema.String)),
     }),
   ),
   matchers: Schema.Array(
     Schema.Struct({
-      type: Schema.Literals(["all", "literal"]),
+      type: Schema.Union([Schema.Literals(["all", "literal"]), Schema.String]),
       field: Schema.optional(Schema.Literal("to")),
       value: Schema.optional(Schema.String),
     }),
@@ -1725,13 +1816,20 @@ export interface UpdateRuleResponse {
   id?: string | null;
   /** List actions patterns. */
   actions?:
-    | { type: "drop" | "forward" | "worker"; value?: string[] | null }[]
+    | {
+        type: "drop" | "forward" | "worker" | (string & {});
+        value?: string[] | null;
+      }[]
     | null;
   /** Routing rule status. */
   enabled?: true | false | null;
   /** Matching patterns to forward to your actions. */
   matchers?:
-    | { type: "all" | "literal"; field?: "to" | null; value?: string | null }[]
+    | {
+        type: "all" | "literal" | (string & {});
+        field?: "to" | null;
+        value?: string | null;
+      }[]
     | null;
   /** Routing rule name. */
   name?: string | null;
@@ -1747,7 +1845,10 @@ export const UpdateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Union([
       Schema.Array(
         Schema.Struct({
-          type: Schema.Literals(["drop", "forward", "worker"]),
+          type: Schema.Union([
+            Schema.Literals(["drop", "forward", "worker"]),
+            Schema.String,
+          ]),
           value: Schema.optional(
             Schema.Union([Schema.Array(Schema.String), Schema.Null]),
           ),
@@ -1763,7 +1864,10 @@ export const UpdateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Union([
       Schema.Array(
         Schema.Struct({
-          type: Schema.Literals(["all", "literal"]),
+          type: Schema.Union([
+            Schema.Literals(["all", "literal"]),
+            Schema.String,
+          ]),
           field: Schema.optional(
             Schema.Union([Schema.Literal("to"), Schema.Null]),
           ),
@@ -1814,13 +1918,20 @@ export interface DeleteRuleResponse {
   id?: string | null;
   /** List actions patterns. */
   actions?:
-    | { type: "drop" | "forward" | "worker"; value?: string[] | null }[]
+    | {
+        type: "drop" | "forward" | "worker" | (string & {});
+        value?: string[] | null;
+      }[]
     | null;
   /** Routing rule status. */
   enabled?: true | false | null;
   /** Matching patterns to forward to your actions. */
   matchers?:
-    | { type: "all" | "literal"; field?: "to" | null; value?: string | null }[]
+    | {
+        type: "all" | "literal" | (string & {});
+        field?: "to" | null;
+        value?: string | null;
+      }[]
     | null;
   /** Routing rule name. */
   name?: string | null;
@@ -1836,7 +1947,10 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Union([
       Schema.Array(
         Schema.Struct({
-          type: Schema.Literals(["drop", "forward", "worker"]),
+          type: Schema.Union([
+            Schema.Literals(["drop", "forward", "worker"]),
+            Schema.String,
+          ]),
           value: Schema.optional(
             Schema.Union([Schema.Array(Schema.String), Schema.Null]),
           ),
@@ -1852,7 +1966,10 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Union([
       Schema.Array(
         Schema.Struct({
-          type: Schema.Literals(["all", "literal"]),
+          type: Schema.Union([
+            Schema.Literals(["all", "literal"]),
+            Schema.String,
+          ]),
           field: Schema.optional(
             Schema.Union([Schema.Literal("to"), Schema.Null]),
           ),
@@ -1907,7 +2024,10 @@ export interface GetRuleCatchAllResponse {
   id?: string | null;
   /** List actions for the catch-all routing rule. */
   actions?:
-    | { type: "drop" | "forward" | "worker"; value?: string[] | null }[]
+    | {
+        type: "drop" | "forward" | "worker" | (string & {});
+        value?: string[] | null;
+      }[]
     | null;
   /** Routing rule status. */
   enabled?: true | false | null;
@@ -1926,7 +2046,10 @@ export const GetRuleCatchAllResponse =
       Schema.Union([
         Schema.Array(
           Schema.Struct({
-            type: Schema.Literals(["drop", "forward", "worker"]),
+            type: Schema.Union([
+              Schema.Literals(["drop", "forward", "worker"]),
+              Schema.String,
+            ]),
             value: Schema.optional(
               Schema.Union([Schema.Array(Schema.String), Schema.Null]),
             ),
@@ -1971,7 +2094,10 @@ export interface PutRuleCatchAllRequest {
   /** Path param: Identifier. */
   zoneId: string;
   /** Body param: List actions for the catch-all routing rule. */
-  actions: { type: "drop" | "forward" | "worker"; value?: string[] }[];
+  actions: {
+    type: "drop" | "forward" | "worker" | (string & {});
+    value?: string[];
+  }[];
   /** Body param: List of matchers for the catch-all routing rule. */
   matchers: { type: "all" }[];
   /** Body param: Routing rule status. */
@@ -1985,7 +2111,10 @@ export const PutRuleCatchAllRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     actions: Schema.Array(
       Schema.Struct({
-        type: Schema.Literals(["drop", "forward", "worker"]),
+        type: Schema.Union([
+          Schema.Literals(["drop", "forward", "worker"]),
+          Schema.String,
+        ]),
         value: Schema.optional(Schema.Array(Schema.String)),
       }),
     ),
@@ -2009,7 +2138,10 @@ export interface PutRuleCatchAllResponse {
   id?: string | null;
   /** List actions for the catch-all routing rule. */
   actions?:
-    | { type: "drop" | "forward" | "worker"; value?: string[] | null }[]
+    | {
+        type: "drop" | "forward" | "worker" | (string & {});
+        value?: string[] | null;
+      }[]
     | null;
   /** Routing rule status. */
   enabled?: true | false | null;
@@ -2028,7 +2160,10 @@ export const PutRuleCatchAllResponse =
       Schema.Union([
         Schema.Array(
           Schema.Struct({
-            type: Schema.Literals(["drop", "forward", "worker"]),
+            type: Schema.Union([
+              Schema.Literals(["drop", "forward", "worker"]),
+              Schema.String,
+            ]),
             value: Schema.optional(
               Schema.Union([Schema.Array(Schema.String), Schema.Null]),
             ),

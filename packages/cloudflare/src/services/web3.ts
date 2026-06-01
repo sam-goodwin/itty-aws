@@ -44,9 +44,9 @@ export interface GetHostnameResponse {
   /** Specify the hostname that points to the target gateway via CNAME. */
   name?: string | null;
   /** Specifies the status of the hostname's activation. */
-  status?: "active" | "pending" | "deleting" | "error" | null;
+  status?: "active" | "pending" | "deleting" | "error" | (string & {}) | null;
   /** Specify the target gateway of the hostname. */
-  target?: "ethereum" | "ipfs" | "ipfs_universal_path" | null;
+  target?: "ethereum" | "ipfs" | "ipfs_universal_path" | (string & {}) | null;
 }
 
 export const GetHostnameResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -58,13 +58,19 @@ export const GetHostnameResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   status: Schema.optional(
     Schema.Union([
-      Schema.Literals(["active", "pending", "deleting", "error"]),
+      Schema.Union([
+        Schema.Literals(["active", "pending", "deleting", "error"]),
+        Schema.String,
+      ]),
       Schema.Null,
     ]),
   ),
   target: Schema.optional(
     Schema.Union([
-      Schema.Literals(["ethereum", "ipfs", "ipfs_universal_path"]),
+      Schema.Union([
+        Schema.Literals(["ethereum", "ipfs", "ipfs_universal_path"]),
+        Schema.String,
+      ]),
       Schema.Null,
     ]),
   ),
@@ -117,8 +123,8 @@ export interface ListHostnamesResponse {
     dnslink?: string | null;
     modifiedOn?: string | null;
     name?: string | null;
-    status?: "active" | "pending" | "deleting" | "error" | null;
-    target?: "ethereum" | "ipfs" | "ipfs_universal_path" | null;
+    status?: "active" | "pending" | "deleting" | "error" | (string & {}) | null;
+    target?: "ethereum" | "ipfs" | "ipfs_universal_path" | (string & {}) | null;
   }[];
 }
 
@@ -133,13 +139,19 @@ export const ListHostnamesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       status: Schema.optional(
         Schema.Union([
-          Schema.Literals(["active", "pending", "deleting", "error"]),
+          Schema.Union([
+            Schema.Literals(["active", "pending", "deleting", "error"]),
+            Schema.String,
+          ]),
           Schema.Null,
         ]),
       ),
       target: Schema.optional(
         Schema.Union([
-          Schema.Literals(["ethereum", "ipfs", "ipfs_universal_path"]),
+          Schema.Union([
+            Schema.Literals(["ethereum", "ipfs", "ipfs_universal_path"]),
+            Schema.String,
+          ]),
           Schema.Null,
         ]),
       ),
@@ -181,7 +193,7 @@ export interface CreateHostnameRequest {
   /** Body param: Specify the hostname that points to the target gateway via CNAME. */
   name: string;
   /** Body param: Specify the target gateway of the hostname. */
-  target: "ethereum" | "ipfs" | "ipfs_universal_path";
+  target: "ethereum" | "ipfs" | "ipfs_universal_path" | (string & {});
   /** Body param: Specify an optional description of the hostname. */
   description?: string;
   /** Body param: Specify the DNSLink value used if the target is ipfs. */
@@ -191,7 +203,10 @@ export interface CreateHostnameRequest {
 export const CreateHostnameRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   name: Schema.String,
-  target: Schema.Literals(["ethereum", "ipfs", "ipfs_universal_path"]),
+  target: Schema.Union([
+    Schema.Literals(["ethereum", "ipfs", "ipfs_universal_path"]),
+    Schema.String,
+  ]),
   description: Schema.optional(Schema.String),
   dnslink: Schema.optional(Schema.String),
 }).pipe(
@@ -210,9 +225,9 @@ export interface CreateHostnameResponse {
   /** Specify the hostname that points to the target gateway via CNAME. */
   name?: string | null;
   /** Specifies the status of the hostname's activation. */
-  status?: "active" | "pending" | "deleting" | "error" | null;
+  status?: "active" | "pending" | "deleting" | "error" | (string & {}) | null;
   /** Specify the target gateway of the hostname. */
-  target?: "ethereum" | "ipfs" | "ipfs_universal_path" | null;
+  target?: "ethereum" | "ipfs" | "ipfs_universal_path" | (string & {}) | null;
 }
 
 export const CreateHostnameResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -225,13 +240,19 @@ export const CreateHostnameResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     status: Schema.optional(
       Schema.Union([
-        Schema.Literals(["active", "pending", "deleting", "error"]),
+        Schema.Union([
+          Schema.Literals(["active", "pending", "deleting", "error"]),
+          Schema.String,
+        ]),
         Schema.Null,
       ]),
     ),
     target: Schema.optional(
       Schema.Union([
-        Schema.Literals(["ethereum", "ipfs", "ipfs_universal_path"]),
+        Schema.Union([
+          Schema.Literals(["ethereum", "ipfs", "ipfs_universal_path"]),
+          Schema.String,
+        ]),
         Schema.Null,
       ]),
     ),
@@ -300,9 +321,9 @@ export interface PatchHostnameResponse {
   /** Specify the hostname that points to the target gateway via CNAME. */
   name?: string | null;
   /** Specifies the status of the hostname's activation. */
-  status?: "active" | "pending" | "deleting" | "error" | null;
+  status?: "active" | "pending" | "deleting" | "error" | (string & {}) | null;
   /** Specify the target gateway of the hostname. */
-  target?: "ethereum" | "ipfs" | "ipfs_universal_path" | null;
+  target?: "ethereum" | "ipfs" | "ipfs_universal_path" | (string & {}) | null;
 }
 
 export const PatchHostnameResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -314,13 +335,19 @@ export const PatchHostnameResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   status: Schema.optional(
     Schema.Union([
-      Schema.Literals(["active", "pending", "deleting", "error"]),
+      Schema.Union([
+        Schema.Literals(["active", "pending", "deleting", "error"]),
+        Schema.String,
+      ]),
       Schema.Null,
     ]),
   ),
   target: Schema.optional(
     Schema.Union([
-      Schema.Literals(["ethereum", "ipfs", "ipfs_universal_path"]),
+      Schema.Union([
+        Schema.Literals(["ethereum", "ipfs", "ipfs_universal_path"]),
+        Schema.String,
+      ]),
       Schema.Null,
     ]),
   ),
@@ -454,7 +481,7 @@ export interface PutHostnameIpfsUniversalPathContentListRequest {
   entries: {
     content?: string;
     description?: string;
-    type?: "cid" | "content_path";
+    type?: "cid" | "content_path" | (string & {});
   }[];
 }
 
@@ -467,7 +494,12 @@ export const PutHostnameIpfsUniversalPathContentListRequest =
       Schema.Struct({
         content: Schema.optional(Schema.String),
         description: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.Literals(["cid", "content_path"])),
+        type: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["cid", "content_path"]),
+            Schema.String,
+          ]),
+        ),
       }),
     ),
   }).pipe(
@@ -539,7 +571,7 @@ export interface GetHostnameIpfsUniversalPathContentListEntryResponse {
   description?: string | null;
   modifiedOn?: string | null;
   /** Specify the type of content list entry to block. */
-  type?: "cid" | "content_path" | null;
+  type?: "cid" | "content_path" | (string & {}) | null;
 }
 
 export const GetHostnameIpfsUniversalPathContentListEntryResponse =
@@ -550,7 +582,10 @@ export const GetHostnameIpfsUniversalPathContentListEntryResponse =
     description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     type: Schema.optional(
-      Schema.Union([Schema.Literals(["cid", "content_path"]), Schema.Null]),
+      Schema.Union([
+        Schema.Union([Schema.Literals(["cid", "content_path"]), Schema.String]),
+        Schema.Null,
+      ]),
     ),
   })
     .pipe(
@@ -606,7 +641,7 @@ export interface ListHostnameIpfsUniversalPathContentListEntriesResponse {
         createdOn?: string | null;
         description?: string | null;
         modifiedOn?: string | null;
-        type?: "cid" | "content_path" | null;
+        type?: "cid" | "content_path" | (string & {}) | null;
       }[]
     | null;
 }
@@ -632,7 +667,10 @@ export const ListHostnameIpfsUniversalPathContentListEntriesResponse =
             ),
             type: Schema.optional(
               Schema.Union([
-                Schema.Literals(["cid", "content_path"]),
+                Schema.Union([
+                  Schema.Literals(["cid", "content_path"]),
+                  Schema.String,
+                ]),
                 Schema.Null,
               ]),
             ),
@@ -675,7 +713,7 @@ export interface CreateHostnameIpfsUniversalPathContentListEntryRequest {
   /** Body param: Specify the CID or content path of content to block. */
   content: string;
   /** Body param: Specify the type of content list entry to block. */
-  type: "cid" | "content_path";
+  type: "cid" | "content_path" | (string & {});
   /** Body param: Specify an optional description of the content list entry. */
   description?: string;
 }
@@ -685,7 +723,10 @@ export const CreateHostnameIpfsUniversalPathContentListEntryRequest =
     identifier: Schema.String.pipe(T.HttpPath("identifier")),
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     content: Schema.String,
-    type: Schema.Literals(["cid", "content_path"]),
+    type: Schema.Union([
+      Schema.Literals(["cid", "content_path"]),
+      Schema.String,
+    ]),
     description: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -704,7 +745,7 @@ export interface CreateHostnameIpfsUniversalPathContentListEntryResponse {
   description?: string | null;
   modifiedOn?: string | null;
   /** Specify the type of content list entry to block. */
-  type?: "cid" | "content_path" | null;
+  type?: "cid" | "content_path" | (string & {}) | null;
 }
 
 export const CreateHostnameIpfsUniversalPathContentListEntryResponse =
@@ -715,7 +756,10 @@ export const CreateHostnameIpfsUniversalPathContentListEntryResponse =
     description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     type: Schema.optional(
-      Schema.Union([Schema.Literals(["cid", "content_path"]), Schema.Null]),
+      Schema.Union([
+        Schema.Union([Schema.Literals(["cid", "content_path"]), Schema.String]),
+        Schema.Null,
+      ]),
     ),
   })
     .pipe(
@@ -754,7 +798,7 @@ export interface UpdateHostnameIpfsUniversalPathContentListEntryRequest {
   /** Body param: Specify the CID or content path of content to block. */
   content: string;
   /** Body param: Specify the type of content list entry to block. */
-  type: "cid" | "content_path";
+  type: "cid" | "content_path" | (string & {});
   /** Body param: Specify an optional description of the content list entry. */
   description?: string;
 }
@@ -767,7 +811,10 @@ export const UpdateHostnameIpfsUniversalPathContentListEntryRequest =
     ),
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     content: Schema.String,
-    type: Schema.Literals(["cid", "content_path"]),
+    type: Schema.Union([
+      Schema.Literals(["cid", "content_path"]),
+      Schema.String,
+    ]),
     description: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -786,7 +833,7 @@ export interface UpdateHostnameIpfsUniversalPathContentListEntryResponse {
   description?: string | null;
   modifiedOn?: string | null;
   /** Specify the type of content list entry to block. */
-  type?: "cid" | "content_path" | null;
+  type?: "cid" | "content_path" | (string & {}) | null;
 }
 
 export const UpdateHostnameIpfsUniversalPathContentListEntryResponse =
@@ -797,7 +844,10 @@ export const UpdateHostnameIpfsUniversalPathContentListEntryResponse =
     description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     type: Schema.optional(
-      Schema.Union([Schema.Literals(["cid", "content_path"]), Schema.Null]),
+      Schema.Union([
+        Schema.Union([Schema.Literals(["cid", "content_path"]), Schema.String]),
+        Schema.Null,
+      ]),
     ),
   })
     .pipe(

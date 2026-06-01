@@ -50,8 +50,8 @@ export interface GetLoadBalancerResponse {
   fallbackPool?: string | null;
   /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
   locationStrategy?: {
-    mode?: "pop" | "resolver_ip" | null;
-    preferEcs?: "always" | "never" | "proximity" | "geo" | null;
+    mode?: "pop" | "resolver_ip" | (string & {}) | null;
+    preferEcs?: "always" | "never" | "proximity" | "geo" | (string & {}) | null;
   } | null;
   modifiedOn?: string | null;
   /** The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used. */
@@ -87,8 +87,14 @@ export interface GetLoadBalancerResponse {
           defaultPools?: string[] | null;
           fallbackPool?: string | null;
           locationStrategy?: {
-            mode?: "pop" | "resolver_ip" | null;
-            preferEcs?: "always" | "never" | "proximity" | "geo" | null;
+            mode?: "pop" | "resolver_ip" | (string & {}) | null;
+            preferEcs?:
+              | "always"
+              | "never"
+              | "proximity"
+              | "geo"
+              | (string & {})
+              | null;
           } | null;
           popPools?: Record<string, unknown> | null;
           randomSteering?: {
@@ -96,14 +102,31 @@ export interface GetLoadBalancerResponse {
             poolWeights?: Record<string, unknown> | null;
           } | null;
           regionPools?: Record<string, unknown> | null;
-          sessionAffinity?: "none" | "cookie" | "ip_cookie" | "header" | null;
+          sessionAffinity?:
+            | "none"
+            | "cookie"
+            | "ip_cookie"
+            | "header"
+            | (string & {})
+            | null;
           sessionAffinityAttributes?: {
             drainDuration?: number | null;
             headers?: string[] | null;
             requireAllHeaders?: boolean | null;
-            samesite?: "Auto" | "Lax" | "None" | "Strict" | null;
-            secure?: "Auto" | "Always" | "Never" | null;
-            zeroDowntimeFailover?: "none" | "temporary" | "sticky" | null;
+            samesite?:
+              | "Auto"
+              | "Lax"
+              | "None"
+              | "Strict"
+              | (string & {})
+              | null;
+            secure?: "Auto" | "Always" | "Never" | (string & {}) | null;
+            zeroDowntimeFailover?:
+              | "none"
+              | "temporary"
+              | "sticky"
+              | (string & {})
+              | null;
           } | null;
           sessionAffinityTtl?: number | null;
           steeringPolicy?:
@@ -115,6 +138,7 @@ export interface GetLoadBalancerResponse {
             | "least_outstanding_requests"
             | "least_connections"
             | ""
+            | (string & {})
             | null;
           ttl?: number | null;
         } | null;
@@ -123,15 +147,26 @@ export interface GetLoadBalancerResponse {
       }[]
     | null;
   /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is ge */
-  sessionAffinity?: "none" | "cookie" | "ip_cookie" | "header" | null;
+  sessionAffinity?:
+    | "none"
+    | "cookie"
+    | "ip_cookie"
+    | "header"
+    | (string & {})
+    | null;
   /** Configures attributes for session affinity. */
   sessionAffinityAttributes?: {
     drainDuration?: number | null;
     headers?: string[] | null;
     requireAllHeaders?: boolean | null;
-    samesite?: "Auto" | "Lax" | "None" | "Strict" | null;
-    secure?: "Auto" | "Always" | "Never" | null;
-    zeroDowntimeFailover?: "none" | "temporary" | "sticky" | null;
+    samesite?: "Auto" | "Lax" | "None" | "Strict" | (string & {}) | null;
+    secure?: "Auto" | "Always" | "Never" | (string & {}) | null;
+    zeroDowntimeFailover?:
+      | "none"
+      | "temporary"
+      | "sticky"
+      | (string & {})
+      | null;
   } | null;
   /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `s */
   sessionAffinityTtl?: number | null;
@@ -145,6 +180,7 @@ export interface GetLoadBalancerResponse {
     | "least_outstanding_requests"
     | "least_connections"
     | ""
+    | (string & {})
     | null;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
   ttl?: number | null;
@@ -181,13 +217,19 @@ export const GetLoadBalancerResponse =
         Schema.Struct({
           mode: Schema.optional(
             Schema.Union([
-              Schema.Literals(["pop", "resolver_ip"]),
+              Schema.Union([
+                Schema.Literals(["pop", "resolver_ip"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
           preferEcs: Schema.optional(
             Schema.Union([
-              Schema.Literals(["always", "never", "proximity", "geo"]),
+              Schema.Union([
+                Schema.Literals(["always", "never", "proximity", "geo"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -299,17 +341,23 @@ export const GetLoadBalancerResponse =
                       Schema.Struct({
                         mode: Schema.optional(
                           Schema.Union([
-                            Schema.Literals(["pop", "resolver_ip"]),
+                            Schema.Union([
+                              Schema.Literals(["pop", "resolver_ip"]),
+                              Schema.String,
+                            ]),
                             Schema.Null,
                           ]),
                         ),
                         preferEcs: Schema.optional(
                           Schema.Union([
-                            Schema.Literals([
-                              "always",
-                              "never",
-                              "proximity",
-                              "geo",
+                            Schema.Union([
+                              Schema.Literals([
+                                "always",
+                                "never",
+                                "proximity",
+                                "geo",
+                              ]),
+                              Schema.String,
                             ]),
                             Schema.Null,
                           ]),
@@ -358,11 +406,14 @@ export const GetLoadBalancerResponse =
                   ),
                   sessionAffinity: Schema.optional(
                     Schema.Union([
-                      Schema.Literals([
-                        "none",
-                        "cookie",
-                        "ip_cookie",
-                        "header",
+                      Schema.Union([
+                        Schema.Literals([
+                          "none",
+                          "cookie",
+                          "ip_cookie",
+                          "header",
+                        ]),
+                        Schema.String,
                       ]),
                       Schema.Null,
                     ]),
@@ -384,19 +435,33 @@ export const GetLoadBalancerResponse =
                         ),
                         samesite: Schema.optional(
                           Schema.Union([
-                            Schema.Literals(["Auto", "Lax", "None", "Strict"]),
+                            Schema.Union([
+                              Schema.Literals([
+                                "Auto",
+                                "Lax",
+                                "None",
+                                "Strict",
+                              ]),
+                              Schema.String,
+                            ]),
                             Schema.Null,
                           ]),
                         ),
                         secure: Schema.optional(
                           Schema.Union([
-                            Schema.Literals(["Auto", "Always", "Never"]),
+                            Schema.Union([
+                              Schema.Literals(["Auto", "Always", "Never"]),
+                              Schema.String,
+                            ]),
                             Schema.Null,
                           ]),
                         ),
                         zeroDowntimeFailover: Schema.optional(
                           Schema.Union([
-                            Schema.Literals(["none", "temporary", "sticky"]),
+                            Schema.Union([
+                              Schema.Literals(["none", "temporary", "sticky"]),
+                              Schema.String,
+                            ]),
                             Schema.Null,
                           ]),
                         ),
@@ -418,15 +483,18 @@ export const GetLoadBalancerResponse =
                   ),
                   steeringPolicy: Schema.optional(
                     Schema.Union([
-                      Schema.Literals([
-                        "off",
-                        "geo",
-                        "random",
-                        "dynamic_latency",
-                        "proximity",
-                        "least_outstanding_requests",
-                        "least_connections",
-                        "",
+                      Schema.Union([
+                        Schema.Literals([
+                          "off",
+                          "geo",
+                          "random",
+                          "dynamic_latency",
+                          "proximity",
+                          "least_outstanding_requests",
+                          "least_connections",
+                          "",
+                        ]),
+                        Schema.String,
                       ]),
                       Schema.Null,
                     ]),
@@ -477,7 +545,10 @@ export const GetLoadBalancerResponse =
     ),
     sessionAffinity: Schema.optional(
       Schema.Union([
-        Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
+        Schema.Union([
+          Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
+          Schema.String,
+        ]),
         Schema.Null,
       ]),
     ),
@@ -495,19 +566,28 @@ export const GetLoadBalancerResponse =
           ),
           samesite: Schema.optional(
             Schema.Union([
-              Schema.Literals(["Auto", "Lax", "None", "Strict"]),
+              Schema.Union([
+                Schema.Literals(["Auto", "Lax", "None", "Strict"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
           secure: Schema.optional(
             Schema.Union([
-              Schema.Literals(["Auto", "Always", "Never"]),
+              Schema.Union([
+                Schema.Literals(["Auto", "Always", "Never"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
           zeroDowntimeFailover: Schema.optional(
             Schema.Union([
-              Schema.Literals(["none", "temporary", "sticky"]),
+              Schema.Union([
+                Schema.Literals(["none", "temporary", "sticky"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -529,15 +609,18 @@ export const GetLoadBalancerResponse =
     ),
     steeringPolicy: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "off",
-          "geo",
-          "random",
-          "dynamic_latency",
-          "proximity",
-          "least_outstanding_requests",
-          "least_connections",
-          "",
+        Schema.Union([
+          Schema.Literals([
+            "off",
+            "geo",
+            "random",
+            "dynamic_latency",
+            "proximity",
+            "least_outstanding_requests",
+            "least_connections",
+            "",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -611,8 +694,14 @@ export interface ListLoadBalancersResponse {
     enabled?: boolean | null;
     fallbackPool?: string | null;
     locationStrategy?: {
-      mode?: "pop" | "resolver_ip" | null;
-      preferEcs?: "always" | "never" | "proximity" | "geo" | null;
+      mode?: "pop" | "resolver_ip" | (string & {}) | null;
+      preferEcs?:
+        | "always"
+        | "never"
+        | "proximity"
+        | "geo"
+        | (string & {})
+        | null;
     } | null;
     modifiedOn?: string | null;
     name?: string | null;
@@ -641,8 +730,14 @@ export interface ListLoadBalancersResponse {
             defaultPools?: string[] | null;
             fallbackPool?: string | null;
             locationStrategy?: {
-              mode?: "pop" | "resolver_ip" | null;
-              preferEcs?: "always" | "never" | "proximity" | "geo" | null;
+              mode?: "pop" | "resolver_ip" | (string & {}) | null;
+              preferEcs?:
+                | "always"
+                | "never"
+                | "proximity"
+                | "geo"
+                | (string & {})
+                | null;
             } | null;
             popPools?: Record<string, unknown> | null;
             randomSteering?: {
@@ -650,14 +745,31 @@ export interface ListLoadBalancersResponse {
               poolWeights?: Record<string, unknown> | null;
             } | null;
             regionPools?: Record<string, unknown> | null;
-            sessionAffinity?: "none" | "cookie" | "ip_cookie" | "header" | null;
+            sessionAffinity?:
+              | "none"
+              | "cookie"
+              | "ip_cookie"
+              | "header"
+              | (string & {})
+              | null;
             sessionAffinityAttributes?: {
               drainDuration?: number | null;
               headers?: string[] | null;
               requireAllHeaders?: boolean | null;
-              samesite?: "Auto" | "Lax" | "None" | "Strict" | null;
-              secure?: "Auto" | "Always" | "Never" | null;
-              zeroDowntimeFailover?: "none" | "temporary" | "sticky" | null;
+              samesite?:
+                | "Auto"
+                | "Lax"
+                | "None"
+                | "Strict"
+                | (string & {})
+                | null;
+              secure?: "Auto" | "Always" | "Never" | (string & {}) | null;
+              zeroDowntimeFailover?:
+                | "none"
+                | "temporary"
+                | "sticky"
+                | (string & {})
+                | null;
             } | null;
             sessionAffinityTtl?: number | null;
             steeringPolicy?:
@@ -669,6 +781,7 @@ export interface ListLoadBalancersResponse {
               | "least_outstanding_requests"
               | "least_connections"
               | ""
+              | (string & {})
               | null;
             ttl?: number | null;
           } | null;
@@ -676,14 +789,25 @@ export interface ListLoadBalancersResponse {
           terminates?: boolean | null;
         }[]
       | null;
-    sessionAffinity?: "none" | "cookie" | "ip_cookie" | "header" | null;
+    sessionAffinity?:
+      | "none"
+      | "cookie"
+      | "ip_cookie"
+      | "header"
+      | (string & {})
+      | null;
     sessionAffinityAttributes?: {
       drainDuration?: number | null;
       headers?: string[] | null;
       requireAllHeaders?: boolean | null;
-      samesite?: "Auto" | "Lax" | "None" | "Strict" | null;
-      secure?: "Auto" | "Always" | "Never" | null;
-      zeroDowntimeFailover?: "none" | "temporary" | "sticky" | null;
+      samesite?: "Auto" | "Lax" | "None" | "Strict" | (string & {}) | null;
+      secure?: "Auto" | "Always" | "Never" | (string & {}) | null;
+      zeroDowntimeFailover?:
+        | "none"
+        | "temporary"
+        | "sticky"
+        | (string & {})
+        | null;
     } | null;
     sessionAffinityTtl?: number | null;
     steeringPolicy?:
@@ -695,6 +819,7 @@ export interface ListLoadBalancersResponse {
       | "least_outstanding_requests"
       | "least_connections"
       | ""
+      | (string & {})
       | null;
     ttl?: number | null;
     zoneName?: string | null;
@@ -742,13 +867,19 @@ export const ListLoadBalancersResponse =
             Schema.Struct({
               mode: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["pop", "resolver_ip"]),
+                  Schema.Union([
+                    Schema.Literals(["pop", "resolver_ip"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
               preferEcs: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["always", "never", "proximity", "geo"]),
+                  Schema.Union([
+                    Schema.Literals(["always", "never", "proximity", "geo"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -873,17 +1004,23 @@ export const ListLoadBalancersResponse =
                           Schema.Struct({
                             mode: Schema.optional(
                               Schema.Union([
-                                Schema.Literals(["pop", "resolver_ip"]),
+                                Schema.Union([
+                                  Schema.Literals(["pop", "resolver_ip"]),
+                                  Schema.String,
+                                ]),
                                 Schema.Null,
                               ]),
                             ),
                             preferEcs: Schema.optional(
                               Schema.Union([
-                                Schema.Literals([
-                                  "always",
-                                  "never",
-                                  "proximity",
-                                  "geo",
+                                Schema.Union([
+                                  Schema.Literals([
+                                    "always",
+                                    "never",
+                                    "proximity",
+                                    "geo",
+                                  ]),
+                                  Schema.String,
                                 ]),
                                 Schema.Null,
                               ]),
@@ -932,11 +1069,14 @@ export const ListLoadBalancersResponse =
                       ),
                       sessionAffinity: Schema.optional(
                         Schema.Union([
-                          Schema.Literals([
-                            "none",
-                            "cookie",
-                            "ip_cookie",
-                            "header",
+                          Schema.Union([
+                            Schema.Literals([
+                              "none",
+                              "cookie",
+                              "ip_cookie",
+                              "header",
+                            ]),
+                            Schema.String,
                           ]),
                           Schema.Null,
                         ]),
@@ -958,27 +1098,36 @@ export const ListLoadBalancersResponse =
                             ),
                             samesite: Schema.optional(
                               Schema.Union([
-                                Schema.Literals([
-                                  "Auto",
-                                  "Lax",
-                                  "None",
-                                  "Strict",
+                                Schema.Union([
+                                  Schema.Literals([
+                                    "Auto",
+                                    "Lax",
+                                    "None",
+                                    "Strict",
+                                  ]),
+                                  Schema.String,
                                 ]),
                                 Schema.Null,
                               ]),
                             ),
                             secure: Schema.optional(
                               Schema.Union([
-                                Schema.Literals(["Auto", "Always", "Never"]),
+                                Schema.Union([
+                                  Schema.Literals(["Auto", "Always", "Never"]),
+                                  Schema.String,
+                                ]),
                                 Schema.Null,
                               ]),
                             ),
                             zeroDowntimeFailover: Schema.optional(
                               Schema.Union([
-                                Schema.Literals([
-                                  "none",
-                                  "temporary",
-                                  "sticky",
+                                Schema.Union([
+                                  Schema.Literals([
+                                    "none",
+                                    "temporary",
+                                    "sticky",
+                                  ]),
+                                  Schema.String,
                                 ]),
                                 Schema.Null,
                               ]),
@@ -1001,15 +1150,18 @@ export const ListLoadBalancersResponse =
                       ),
                       steeringPolicy: Schema.optional(
                         Schema.Union([
-                          Schema.Literals([
-                            "off",
-                            "geo",
-                            "random",
-                            "dynamic_latency",
-                            "proximity",
-                            "least_outstanding_requests",
-                            "least_connections",
-                            "",
+                          Schema.Union([
+                            Schema.Literals([
+                              "off",
+                              "geo",
+                              "random",
+                              "dynamic_latency",
+                              "proximity",
+                              "least_outstanding_requests",
+                              "least_connections",
+                              "",
+                            ]),
+                            Schema.String,
                           ]),
                           Schema.Null,
                         ]),
@@ -1061,7 +1213,10 @@ export const ListLoadBalancersResponse =
         ),
         sessionAffinity: Schema.optional(
           Schema.Union([
-            Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
+            Schema.Union([
+              Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
+              Schema.String,
+            ]),
             Schema.Null,
           ]),
         ),
@@ -1079,19 +1234,28 @@ export const ListLoadBalancersResponse =
               ),
               samesite: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["Auto", "Lax", "None", "Strict"]),
+                  Schema.Union([
+                    Schema.Literals(["Auto", "Lax", "None", "Strict"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
               secure: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["Auto", "Always", "Never"]),
+                  Schema.Union([
+                    Schema.Literals(["Auto", "Always", "Never"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
               zeroDowntimeFailover: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["none", "temporary", "sticky"]),
+                  Schema.Union([
+                    Schema.Literals(["none", "temporary", "sticky"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -1113,15 +1277,18 @@ export const ListLoadBalancersResponse =
         ),
         steeringPolicy: Schema.optional(
           Schema.Union([
-            Schema.Literals([
-              "off",
-              "geo",
-              "random",
-              "dynamic_latency",
-              "proximity",
-              "least_outstanding_requests",
-              "least_connections",
-              "",
+            Schema.Union([
+              Schema.Literals([
+                "off",
+                "geo",
+                "random",
+                "dynamic_latency",
+                "proximity",
+                "least_outstanding_requests",
+                "least_connections",
+                "",
+              ]),
+              Schema.String,
             ]),
             Schema.Null,
           ]),
@@ -1192,8 +1359,8 @@ export interface CreateLoadBalancerRequest {
   description?: string;
   /** Body param: Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
   locationStrategy?: {
-    mode?: "pop" | "resolver_ip";
-    preferEcs?: "always" | "never" | "proximity" | "geo";
+    mode?: "pop" | "resolver_ip" | (string & {});
+    preferEcs?: "always" | "never" | "proximity" | "geo" | (string & {});
   };
   /** Body param: List of networks where Load Balancer or Pool is enabled. */
   networks?: string[];
@@ -1225,8 +1392,8 @@ export interface CreateLoadBalancerRequest {
       defaultPools?: string[];
       fallbackPool?: string;
       locationStrategy?: {
-        mode?: "pop" | "resolver_ip";
-        preferEcs?: "always" | "never" | "proximity" | "geo";
+        mode?: "pop" | "resolver_ip" | (string & {});
+        preferEcs?: "always" | "never" | "proximity" | "geo" | (string & {});
       };
       popPools?: Record<string, unknown>;
       randomSteering?: {
@@ -1234,14 +1401,19 @@ export interface CreateLoadBalancerRequest {
         poolWeights?: Record<string, unknown>;
       };
       regionPools?: Record<string, unknown>;
-      sessionAffinity?: "none" | "cookie" | "ip_cookie" | "header";
+      sessionAffinity?:
+        | "none"
+        | "cookie"
+        | "ip_cookie"
+        | "header"
+        | (string & {});
       sessionAffinityAttributes?: {
         drainDuration?: number;
         headers?: string[];
         requireAllHeaders?: boolean;
-        samesite?: "Auto" | "Lax" | "None" | "Strict";
-        secure?: "Auto" | "Always" | "Never";
-        zeroDowntimeFailover?: "none" | "temporary" | "sticky";
+        samesite?: "Auto" | "Lax" | "None" | "Strict" | (string & {});
+        secure?: "Auto" | "Always" | "Never" | (string & {});
+        zeroDowntimeFailover?: "none" | "temporary" | "sticky" | (string & {});
       };
       sessionAffinityTtl?: number;
       steeringPolicy?:
@@ -1252,22 +1424,23 @@ export interface CreateLoadBalancerRequest {
         | "proximity"
         | "least_outstanding_requests"
         | "least_connections"
-        | "";
+        | ""
+        | (string & {});
       ttl?: number;
     };
     priority?: number;
     terminates?: boolean;
   }[];
   /** Body param: Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a  */
-  sessionAffinity?: "none" | "cookie" | "ip_cookie" | "header";
+  sessionAffinity?: "none" | "cookie" | "ip_cookie" | "header" | (string & {});
   /** Body param: Configures attributes for session affinity. */
   sessionAffinityAttributes?: {
     drainDuration?: number;
     headers?: string[];
     requireAllHeaders?: boolean;
-    samesite?: "Auto" | "Lax" | "None" | "Strict";
-    secure?: "Auto" | "Always" | "Never";
-    zeroDowntimeFailover?: "none" | "temporary" | "sticky";
+    samesite?: "Auto" | "Lax" | "None" | "Strict" | (string & {});
+    secure?: "Auto" | "Always" | "Never" | (string & {});
+    zeroDowntimeFailover?: "none" | "temporary" | "sticky" | (string & {});
   };
   /** Body param: Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted r */
   sessionAffinityTtl?: number;
@@ -1280,7 +1453,8 @@ export interface CreateLoadBalancerRequest {
     | "proximity"
     | "least_outstanding_requests"
     | "least_connections"
-    | "";
+    | ""
+    | (string & {});
   /** Body param: Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
   ttl?: number;
 }
@@ -1302,9 +1476,17 @@ export const CreateLoadBalancerRequest =
     description: Schema.optional(Schema.String),
     locationStrategy: Schema.optional(
       Schema.Struct({
-        mode: Schema.optional(Schema.Literals(["pop", "resolver_ip"])),
+        mode: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["pop", "resolver_ip"]),
+            Schema.String,
+          ]),
+        ),
         preferEcs: Schema.optional(
-          Schema.Literals(["always", "never", "proximity", "geo"]),
+          Schema.Union([
+            Schema.Literals(["always", "never", "proximity", "geo"]),
+            Schema.String,
+          ]),
         ),
       }).pipe(Schema.encodeKeys({ mode: "mode", preferEcs: "prefer_ecs" })),
     ),
@@ -1365,10 +1547,16 @@ export const CreateLoadBalancerRequest =
               locationStrategy: Schema.optional(
                 Schema.Struct({
                   mode: Schema.optional(
-                    Schema.Literals(["pop", "resolver_ip"]),
+                    Schema.Union([
+                      Schema.Literals(["pop", "resolver_ip"]),
+                      Schema.String,
+                    ]),
                   ),
                   preferEcs: Schema.optional(
-                    Schema.Literals(["always", "never", "proximity", "geo"]),
+                    Schema.Union([
+                      Schema.Literals(["always", "never", "proximity", "geo"]),
+                      Schema.String,
+                    ]),
                   ),
                 }).pipe(
                   Schema.encodeKeys({ mode: "mode", preferEcs: "prefer_ecs" }),
@@ -1394,7 +1582,10 @@ export const CreateLoadBalancerRequest =
                 Schema.Record(Schema.String, Schema.Unknown),
               ),
               sessionAffinity: Schema.optional(
-                Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
+                Schema.Union([
+                  Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
+                  Schema.String,
+                ]),
               ),
               sessionAffinityAttributes: Schema.optional(
                 Schema.Struct({
@@ -1402,13 +1593,22 @@ export const CreateLoadBalancerRequest =
                   headers: Schema.optional(Schema.Array(Schema.String)),
                   requireAllHeaders: Schema.optional(Schema.Boolean),
                   samesite: Schema.optional(
-                    Schema.Literals(["Auto", "Lax", "None", "Strict"]),
+                    Schema.Union([
+                      Schema.Literals(["Auto", "Lax", "None", "Strict"]),
+                      Schema.String,
+                    ]),
                   ),
                   secure: Schema.optional(
-                    Schema.Literals(["Auto", "Always", "Never"]),
+                    Schema.Union([
+                      Schema.Literals(["Auto", "Always", "Never"]),
+                      Schema.String,
+                    ]),
                   ),
                   zeroDowntimeFailover: Schema.optional(
-                    Schema.Literals(["none", "temporary", "sticky"]),
+                    Schema.Union([
+                      Schema.Literals(["none", "temporary", "sticky"]),
+                      Schema.String,
+                    ]),
                   ),
                 }).pipe(
                   Schema.encodeKeys({
@@ -1423,15 +1623,18 @@ export const CreateLoadBalancerRequest =
               ),
               sessionAffinityTtl: Schema.optional(Schema.Number),
               steeringPolicy: Schema.optional(
-                Schema.Literals([
-                  "off",
-                  "geo",
-                  "random",
-                  "dynamic_latency",
-                  "proximity",
-                  "least_outstanding_requests",
-                  "least_connections",
-                  "",
+                Schema.Union([
+                  Schema.Literals([
+                    "off",
+                    "geo",
+                    "random",
+                    "dynamic_latency",
+                    "proximity",
+                    "least_outstanding_requests",
+                    "least_connections",
+                    "",
+                  ]),
+                  Schema.String,
                 ]),
               ),
               ttl: Schema.optional(Schema.Number),
@@ -1469,7 +1672,10 @@ export const CreateLoadBalancerRequest =
       ),
     ),
     sessionAffinity: Schema.optional(
-      Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
+      Schema.Union([
+        Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
+        Schema.String,
+      ]),
     ),
     sessionAffinityAttributes: Schema.optional(
       Schema.Struct({
@@ -1477,11 +1683,22 @@ export const CreateLoadBalancerRequest =
         headers: Schema.optional(Schema.Array(Schema.String)),
         requireAllHeaders: Schema.optional(Schema.Boolean),
         samesite: Schema.optional(
-          Schema.Literals(["Auto", "Lax", "None", "Strict"]),
+          Schema.Union([
+            Schema.Literals(["Auto", "Lax", "None", "Strict"]),
+            Schema.String,
+          ]),
         ),
-        secure: Schema.optional(Schema.Literals(["Auto", "Always", "Never"])),
+        secure: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["Auto", "Always", "Never"]),
+            Schema.String,
+          ]),
+        ),
         zeroDowntimeFailover: Schema.optional(
-          Schema.Literals(["none", "temporary", "sticky"]),
+          Schema.Union([
+            Schema.Literals(["none", "temporary", "sticky"]),
+            Schema.String,
+          ]),
         ),
       }).pipe(
         Schema.encodeKeys({
@@ -1496,15 +1713,18 @@ export const CreateLoadBalancerRequest =
     ),
     sessionAffinityTtl: Schema.optional(Schema.Number),
     steeringPolicy: Schema.optional(
-      Schema.Literals([
-        "off",
-        "geo",
-        "random",
-        "dynamic_latency",
-        "proximity",
-        "least_outstanding_requests",
-        "least_connections",
-        "",
+      Schema.Union([
+        Schema.Literals([
+          "off",
+          "geo",
+          "random",
+          "dynamic_latency",
+          "proximity",
+          "least_outstanding_requests",
+          "least_connections",
+          "",
+        ]),
+        Schema.String,
       ]),
     ),
     ttl: Schema.optional(Schema.Number),
@@ -1549,8 +1769,8 @@ export interface CreateLoadBalancerResponse {
   fallbackPool?: string | null;
   /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
   locationStrategy?: {
-    mode?: "pop" | "resolver_ip" | null;
-    preferEcs?: "always" | "never" | "proximity" | "geo" | null;
+    mode?: "pop" | "resolver_ip" | (string & {}) | null;
+    preferEcs?: "always" | "never" | "proximity" | "geo" | (string & {}) | null;
   } | null;
   modifiedOn?: string | null;
   /** The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used. */
@@ -1586,8 +1806,14 @@ export interface CreateLoadBalancerResponse {
           defaultPools?: string[] | null;
           fallbackPool?: string | null;
           locationStrategy?: {
-            mode?: "pop" | "resolver_ip" | null;
-            preferEcs?: "always" | "never" | "proximity" | "geo" | null;
+            mode?: "pop" | "resolver_ip" | (string & {}) | null;
+            preferEcs?:
+              | "always"
+              | "never"
+              | "proximity"
+              | "geo"
+              | (string & {})
+              | null;
           } | null;
           popPools?: Record<string, unknown> | null;
           randomSteering?: {
@@ -1595,14 +1821,31 @@ export interface CreateLoadBalancerResponse {
             poolWeights?: Record<string, unknown> | null;
           } | null;
           regionPools?: Record<string, unknown> | null;
-          sessionAffinity?: "none" | "cookie" | "ip_cookie" | "header" | null;
+          sessionAffinity?:
+            | "none"
+            | "cookie"
+            | "ip_cookie"
+            | "header"
+            | (string & {})
+            | null;
           sessionAffinityAttributes?: {
             drainDuration?: number | null;
             headers?: string[] | null;
             requireAllHeaders?: boolean | null;
-            samesite?: "Auto" | "Lax" | "None" | "Strict" | null;
-            secure?: "Auto" | "Always" | "Never" | null;
-            zeroDowntimeFailover?: "none" | "temporary" | "sticky" | null;
+            samesite?:
+              | "Auto"
+              | "Lax"
+              | "None"
+              | "Strict"
+              | (string & {})
+              | null;
+            secure?: "Auto" | "Always" | "Never" | (string & {}) | null;
+            zeroDowntimeFailover?:
+              | "none"
+              | "temporary"
+              | "sticky"
+              | (string & {})
+              | null;
           } | null;
           sessionAffinityTtl?: number | null;
           steeringPolicy?:
@@ -1614,6 +1857,7 @@ export interface CreateLoadBalancerResponse {
             | "least_outstanding_requests"
             | "least_connections"
             | ""
+            | (string & {})
             | null;
           ttl?: number | null;
         } | null;
@@ -1622,15 +1866,26 @@ export interface CreateLoadBalancerResponse {
       }[]
     | null;
   /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is ge */
-  sessionAffinity?: "none" | "cookie" | "ip_cookie" | "header" | null;
+  sessionAffinity?:
+    | "none"
+    | "cookie"
+    | "ip_cookie"
+    | "header"
+    | (string & {})
+    | null;
   /** Configures attributes for session affinity. */
   sessionAffinityAttributes?: {
     drainDuration?: number | null;
     headers?: string[] | null;
     requireAllHeaders?: boolean | null;
-    samesite?: "Auto" | "Lax" | "None" | "Strict" | null;
-    secure?: "Auto" | "Always" | "Never" | null;
-    zeroDowntimeFailover?: "none" | "temporary" | "sticky" | null;
+    samesite?: "Auto" | "Lax" | "None" | "Strict" | (string & {}) | null;
+    secure?: "Auto" | "Always" | "Never" | (string & {}) | null;
+    zeroDowntimeFailover?:
+      | "none"
+      | "temporary"
+      | "sticky"
+      | (string & {})
+      | null;
   } | null;
   /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `s */
   sessionAffinityTtl?: number | null;
@@ -1644,6 +1899,7 @@ export interface CreateLoadBalancerResponse {
     | "least_outstanding_requests"
     | "least_connections"
     | ""
+    | (string & {})
     | null;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
   ttl?: number | null;
@@ -1680,13 +1936,19 @@ export const CreateLoadBalancerResponse =
         Schema.Struct({
           mode: Schema.optional(
             Schema.Union([
-              Schema.Literals(["pop", "resolver_ip"]),
+              Schema.Union([
+                Schema.Literals(["pop", "resolver_ip"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
           preferEcs: Schema.optional(
             Schema.Union([
-              Schema.Literals(["always", "never", "proximity", "geo"]),
+              Schema.Union([
+                Schema.Literals(["always", "never", "proximity", "geo"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -1798,17 +2060,23 @@ export const CreateLoadBalancerResponse =
                       Schema.Struct({
                         mode: Schema.optional(
                           Schema.Union([
-                            Schema.Literals(["pop", "resolver_ip"]),
+                            Schema.Union([
+                              Schema.Literals(["pop", "resolver_ip"]),
+                              Schema.String,
+                            ]),
                             Schema.Null,
                           ]),
                         ),
                         preferEcs: Schema.optional(
                           Schema.Union([
-                            Schema.Literals([
-                              "always",
-                              "never",
-                              "proximity",
-                              "geo",
+                            Schema.Union([
+                              Schema.Literals([
+                                "always",
+                                "never",
+                                "proximity",
+                                "geo",
+                              ]),
+                              Schema.String,
                             ]),
                             Schema.Null,
                           ]),
@@ -1857,11 +2125,14 @@ export const CreateLoadBalancerResponse =
                   ),
                   sessionAffinity: Schema.optional(
                     Schema.Union([
-                      Schema.Literals([
-                        "none",
-                        "cookie",
-                        "ip_cookie",
-                        "header",
+                      Schema.Union([
+                        Schema.Literals([
+                          "none",
+                          "cookie",
+                          "ip_cookie",
+                          "header",
+                        ]),
+                        Schema.String,
                       ]),
                       Schema.Null,
                     ]),
@@ -1883,19 +2154,33 @@ export const CreateLoadBalancerResponse =
                         ),
                         samesite: Schema.optional(
                           Schema.Union([
-                            Schema.Literals(["Auto", "Lax", "None", "Strict"]),
+                            Schema.Union([
+                              Schema.Literals([
+                                "Auto",
+                                "Lax",
+                                "None",
+                                "Strict",
+                              ]),
+                              Schema.String,
+                            ]),
                             Schema.Null,
                           ]),
                         ),
                         secure: Schema.optional(
                           Schema.Union([
-                            Schema.Literals(["Auto", "Always", "Never"]),
+                            Schema.Union([
+                              Schema.Literals(["Auto", "Always", "Never"]),
+                              Schema.String,
+                            ]),
                             Schema.Null,
                           ]),
                         ),
                         zeroDowntimeFailover: Schema.optional(
                           Schema.Union([
-                            Schema.Literals(["none", "temporary", "sticky"]),
+                            Schema.Union([
+                              Schema.Literals(["none", "temporary", "sticky"]),
+                              Schema.String,
+                            ]),
                             Schema.Null,
                           ]),
                         ),
@@ -1917,15 +2202,18 @@ export const CreateLoadBalancerResponse =
                   ),
                   steeringPolicy: Schema.optional(
                     Schema.Union([
-                      Schema.Literals([
-                        "off",
-                        "geo",
-                        "random",
-                        "dynamic_latency",
-                        "proximity",
-                        "least_outstanding_requests",
-                        "least_connections",
-                        "",
+                      Schema.Union([
+                        Schema.Literals([
+                          "off",
+                          "geo",
+                          "random",
+                          "dynamic_latency",
+                          "proximity",
+                          "least_outstanding_requests",
+                          "least_connections",
+                          "",
+                        ]),
+                        Schema.String,
                       ]),
                       Schema.Null,
                     ]),
@@ -1976,7 +2264,10 @@ export const CreateLoadBalancerResponse =
     ),
     sessionAffinity: Schema.optional(
       Schema.Union([
-        Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
+        Schema.Union([
+          Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
+          Schema.String,
+        ]),
         Schema.Null,
       ]),
     ),
@@ -1994,19 +2285,28 @@ export const CreateLoadBalancerResponse =
           ),
           samesite: Schema.optional(
             Schema.Union([
-              Schema.Literals(["Auto", "Lax", "None", "Strict"]),
+              Schema.Union([
+                Schema.Literals(["Auto", "Lax", "None", "Strict"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
           secure: Schema.optional(
             Schema.Union([
-              Schema.Literals(["Auto", "Always", "Never"]),
+              Schema.Union([
+                Schema.Literals(["Auto", "Always", "Never"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
           zeroDowntimeFailover: Schema.optional(
             Schema.Union([
-              Schema.Literals(["none", "temporary", "sticky"]),
+              Schema.Union([
+                Schema.Literals(["none", "temporary", "sticky"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -2028,15 +2328,18 @@ export const CreateLoadBalancerResponse =
     ),
     steeringPolicy: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "off",
-          "geo",
-          "random",
-          "dynamic_latency",
-          "proximity",
-          "least_outstanding_requests",
-          "least_connections",
-          "",
+        Schema.Union([
+          Schema.Literals([
+            "off",
+            "geo",
+            "random",
+            "dynamic_latency",
+            "proximity",
+            "least_outstanding_requests",
+            "least_connections",
+            "",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -2108,8 +2411,8 @@ export interface UpdateLoadBalancerRequest {
   enabled?: boolean;
   /** Body param: Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
   locationStrategy?: {
-    mode?: "pop" | "resolver_ip";
-    preferEcs?: "always" | "never" | "proximity" | "geo";
+    mode?: "pop" | "resolver_ip" | (string & {});
+    preferEcs?: "always" | "never" | "proximity" | "geo" | (string & {});
   };
   /** Body param: List of networks where Load Balancer or Pool is enabled. */
   networks?: string[];
@@ -2141,8 +2444,8 @@ export interface UpdateLoadBalancerRequest {
       defaultPools?: string[];
       fallbackPool?: string;
       locationStrategy?: {
-        mode?: "pop" | "resolver_ip";
-        preferEcs?: "always" | "never" | "proximity" | "geo";
+        mode?: "pop" | "resolver_ip" | (string & {});
+        preferEcs?: "always" | "never" | "proximity" | "geo" | (string & {});
       };
       popPools?: Record<string, unknown>;
       randomSteering?: {
@@ -2150,14 +2453,19 @@ export interface UpdateLoadBalancerRequest {
         poolWeights?: Record<string, unknown>;
       };
       regionPools?: Record<string, unknown>;
-      sessionAffinity?: "none" | "cookie" | "ip_cookie" | "header";
+      sessionAffinity?:
+        | "none"
+        | "cookie"
+        | "ip_cookie"
+        | "header"
+        | (string & {});
       sessionAffinityAttributes?: {
         drainDuration?: number;
         headers?: string[];
         requireAllHeaders?: boolean;
-        samesite?: "Auto" | "Lax" | "None" | "Strict";
-        secure?: "Auto" | "Always" | "Never";
-        zeroDowntimeFailover?: "none" | "temporary" | "sticky";
+        samesite?: "Auto" | "Lax" | "None" | "Strict" | (string & {});
+        secure?: "Auto" | "Always" | "Never" | (string & {});
+        zeroDowntimeFailover?: "none" | "temporary" | "sticky" | (string & {});
       };
       sessionAffinityTtl?: number;
       steeringPolicy?:
@@ -2168,22 +2476,23 @@ export interface UpdateLoadBalancerRequest {
         | "proximity"
         | "least_outstanding_requests"
         | "least_connections"
-        | "";
+        | ""
+        | (string & {});
       ttl?: number;
     };
     priority?: number;
     terminates?: boolean;
   }[];
   /** Body param: Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a  */
-  sessionAffinity?: "none" | "cookie" | "ip_cookie" | "header";
+  sessionAffinity?: "none" | "cookie" | "ip_cookie" | "header" | (string & {});
   /** Body param: Configures attributes for session affinity. */
   sessionAffinityAttributes?: {
     drainDuration?: number;
     headers?: string[];
     requireAllHeaders?: boolean;
-    samesite?: "Auto" | "Lax" | "None" | "Strict";
-    secure?: "Auto" | "Always" | "Never";
-    zeroDowntimeFailover?: "none" | "temporary" | "sticky";
+    samesite?: "Auto" | "Lax" | "None" | "Strict" | (string & {});
+    secure?: "Auto" | "Always" | "Never" | (string & {});
+    zeroDowntimeFailover?: "none" | "temporary" | "sticky" | (string & {});
   };
   /** Body param: Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted r */
   sessionAffinityTtl?: number;
@@ -2196,7 +2505,8 @@ export interface UpdateLoadBalancerRequest {
     | "proximity"
     | "least_outstanding_requests"
     | "least_connections"
-    | "";
+    | ""
+    | (string & {});
   /** Body param: Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
   ttl?: number;
 }
@@ -2220,9 +2530,17 @@ export const UpdateLoadBalancerRequest =
     enabled: Schema.optional(Schema.Boolean),
     locationStrategy: Schema.optional(
       Schema.Struct({
-        mode: Schema.optional(Schema.Literals(["pop", "resolver_ip"])),
+        mode: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["pop", "resolver_ip"]),
+            Schema.String,
+          ]),
+        ),
         preferEcs: Schema.optional(
-          Schema.Literals(["always", "never", "proximity", "geo"]),
+          Schema.Union([
+            Schema.Literals(["always", "never", "proximity", "geo"]),
+            Schema.String,
+          ]),
         ),
       }).pipe(Schema.encodeKeys({ mode: "mode", preferEcs: "prefer_ecs" })),
     ),
@@ -2283,10 +2601,16 @@ export const UpdateLoadBalancerRequest =
               locationStrategy: Schema.optional(
                 Schema.Struct({
                   mode: Schema.optional(
-                    Schema.Literals(["pop", "resolver_ip"]),
+                    Schema.Union([
+                      Schema.Literals(["pop", "resolver_ip"]),
+                      Schema.String,
+                    ]),
                   ),
                   preferEcs: Schema.optional(
-                    Schema.Literals(["always", "never", "proximity", "geo"]),
+                    Schema.Union([
+                      Schema.Literals(["always", "never", "proximity", "geo"]),
+                      Schema.String,
+                    ]),
                   ),
                 }).pipe(
                   Schema.encodeKeys({ mode: "mode", preferEcs: "prefer_ecs" }),
@@ -2312,7 +2636,10 @@ export const UpdateLoadBalancerRequest =
                 Schema.Record(Schema.String, Schema.Unknown),
               ),
               sessionAffinity: Schema.optional(
-                Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
+                Schema.Union([
+                  Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
+                  Schema.String,
+                ]),
               ),
               sessionAffinityAttributes: Schema.optional(
                 Schema.Struct({
@@ -2320,13 +2647,22 @@ export const UpdateLoadBalancerRequest =
                   headers: Schema.optional(Schema.Array(Schema.String)),
                   requireAllHeaders: Schema.optional(Schema.Boolean),
                   samesite: Schema.optional(
-                    Schema.Literals(["Auto", "Lax", "None", "Strict"]),
+                    Schema.Union([
+                      Schema.Literals(["Auto", "Lax", "None", "Strict"]),
+                      Schema.String,
+                    ]),
                   ),
                   secure: Schema.optional(
-                    Schema.Literals(["Auto", "Always", "Never"]),
+                    Schema.Union([
+                      Schema.Literals(["Auto", "Always", "Never"]),
+                      Schema.String,
+                    ]),
                   ),
                   zeroDowntimeFailover: Schema.optional(
-                    Schema.Literals(["none", "temporary", "sticky"]),
+                    Schema.Union([
+                      Schema.Literals(["none", "temporary", "sticky"]),
+                      Schema.String,
+                    ]),
                   ),
                 }).pipe(
                   Schema.encodeKeys({
@@ -2341,15 +2677,18 @@ export const UpdateLoadBalancerRequest =
               ),
               sessionAffinityTtl: Schema.optional(Schema.Number),
               steeringPolicy: Schema.optional(
-                Schema.Literals([
-                  "off",
-                  "geo",
-                  "random",
-                  "dynamic_latency",
-                  "proximity",
-                  "least_outstanding_requests",
-                  "least_connections",
-                  "",
+                Schema.Union([
+                  Schema.Literals([
+                    "off",
+                    "geo",
+                    "random",
+                    "dynamic_latency",
+                    "proximity",
+                    "least_outstanding_requests",
+                    "least_connections",
+                    "",
+                  ]),
+                  Schema.String,
                 ]),
               ),
               ttl: Schema.optional(Schema.Number),
@@ -2387,7 +2726,10 @@ export const UpdateLoadBalancerRequest =
       ),
     ),
     sessionAffinity: Schema.optional(
-      Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
+      Schema.Union([
+        Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
+        Schema.String,
+      ]),
     ),
     sessionAffinityAttributes: Schema.optional(
       Schema.Struct({
@@ -2395,11 +2737,22 @@ export const UpdateLoadBalancerRequest =
         headers: Schema.optional(Schema.Array(Schema.String)),
         requireAllHeaders: Schema.optional(Schema.Boolean),
         samesite: Schema.optional(
-          Schema.Literals(["Auto", "Lax", "None", "Strict"]),
+          Schema.Union([
+            Schema.Literals(["Auto", "Lax", "None", "Strict"]),
+            Schema.String,
+          ]),
         ),
-        secure: Schema.optional(Schema.Literals(["Auto", "Always", "Never"])),
+        secure: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["Auto", "Always", "Never"]),
+            Schema.String,
+          ]),
+        ),
         zeroDowntimeFailover: Schema.optional(
-          Schema.Literals(["none", "temporary", "sticky"]),
+          Schema.Union([
+            Schema.Literals(["none", "temporary", "sticky"]),
+            Schema.String,
+          ]),
         ),
       }).pipe(
         Schema.encodeKeys({
@@ -2414,15 +2767,18 @@ export const UpdateLoadBalancerRequest =
     ),
     sessionAffinityTtl: Schema.optional(Schema.Number),
     steeringPolicy: Schema.optional(
-      Schema.Literals([
-        "off",
-        "geo",
-        "random",
-        "dynamic_latency",
-        "proximity",
-        "least_outstanding_requests",
-        "least_connections",
-        "",
+      Schema.Union([
+        Schema.Literals([
+          "off",
+          "geo",
+          "random",
+          "dynamic_latency",
+          "proximity",
+          "least_outstanding_requests",
+          "least_connections",
+          "",
+        ]),
+        Schema.String,
       ]),
     ),
     ttl: Schema.optional(Schema.Number),
@@ -2471,8 +2827,8 @@ export interface UpdateLoadBalancerResponse {
   fallbackPool?: string | null;
   /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
   locationStrategy?: {
-    mode?: "pop" | "resolver_ip" | null;
-    preferEcs?: "always" | "never" | "proximity" | "geo" | null;
+    mode?: "pop" | "resolver_ip" | (string & {}) | null;
+    preferEcs?: "always" | "never" | "proximity" | "geo" | (string & {}) | null;
   } | null;
   modifiedOn?: string | null;
   /** The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used. */
@@ -2508,8 +2864,14 @@ export interface UpdateLoadBalancerResponse {
           defaultPools?: string[] | null;
           fallbackPool?: string | null;
           locationStrategy?: {
-            mode?: "pop" | "resolver_ip" | null;
-            preferEcs?: "always" | "never" | "proximity" | "geo" | null;
+            mode?: "pop" | "resolver_ip" | (string & {}) | null;
+            preferEcs?:
+              | "always"
+              | "never"
+              | "proximity"
+              | "geo"
+              | (string & {})
+              | null;
           } | null;
           popPools?: Record<string, unknown> | null;
           randomSteering?: {
@@ -2517,14 +2879,31 @@ export interface UpdateLoadBalancerResponse {
             poolWeights?: Record<string, unknown> | null;
           } | null;
           regionPools?: Record<string, unknown> | null;
-          sessionAffinity?: "none" | "cookie" | "ip_cookie" | "header" | null;
+          sessionAffinity?:
+            | "none"
+            | "cookie"
+            | "ip_cookie"
+            | "header"
+            | (string & {})
+            | null;
           sessionAffinityAttributes?: {
             drainDuration?: number | null;
             headers?: string[] | null;
             requireAllHeaders?: boolean | null;
-            samesite?: "Auto" | "Lax" | "None" | "Strict" | null;
-            secure?: "Auto" | "Always" | "Never" | null;
-            zeroDowntimeFailover?: "none" | "temporary" | "sticky" | null;
+            samesite?:
+              | "Auto"
+              | "Lax"
+              | "None"
+              | "Strict"
+              | (string & {})
+              | null;
+            secure?: "Auto" | "Always" | "Never" | (string & {}) | null;
+            zeroDowntimeFailover?:
+              | "none"
+              | "temporary"
+              | "sticky"
+              | (string & {})
+              | null;
           } | null;
           sessionAffinityTtl?: number | null;
           steeringPolicy?:
@@ -2536,6 +2915,7 @@ export interface UpdateLoadBalancerResponse {
             | "least_outstanding_requests"
             | "least_connections"
             | ""
+            | (string & {})
             | null;
           ttl?: number | null;
         } | null;
@@ -2544,15 +2924,26 @@ export interface UpdateLoadBalancerResponse {
       }[]
     | null;
   /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is ge */
-  sessionAffinity?: "none" | "cookie" | "ip_cookie" | "header" | null;
+  sessionAffinity?:
+    | "none"
+    | "cookie"
+    | "ip_cookie"
+    | "header"
+    | (string & {})
+    | null;
   /** Configures attributes for session affinity. */
   sessionAffinityAttributes?: {
     drainDuration?: number | null;
     headers?: string[] | null;
     requireAllHeaders?: boolean | null;
-    samesite?: "Auto" | "Lax" | "None" | "Strict" | null;
-    secure?: "Auto" | "Always" | "Never" | null;
-    zeroDowntimeFailover?: "none" | "temporary" | "sticky" | null;
+    samesite?: "Auto" | "Lax" | "None" | "Strict" | (string & {}) | null;
+    secure?: "Auto" | "Always" | "Never" | (string & {}) | null;
+    zeroDowntimeFailover?:
+      | "none"
+      | "temporary"
+      | "sticky"
+      | (string & {})
+      | null;
   } | null;
   /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `s */
   sessionAffinityTtl?: number | null;
@@ -2566,6 +2957,7 @@ export interface UpdateLoadBalancerResponse {
     | "least_outstanding_requests"
     | "least_connections"
     | ""
+    | (string & {})
     | null;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
   ttl?: number | null;
@@ -2602,13 +2994,19 @@ export const UpdateLoadBalancerResponse =
         Schema.Struct({
           mode: Schema.optional(
             Schema.Union([
-              Schema.Literals(["pop", "resolver_ip"]),
+              Schema.Union([
+                Schema.Literals(["pop", "resolver_ip"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
           preferEcs: Schema.optional(
             Schema.Union([
-              Schema.Literals(["always", "never", "proximity", "geo"]),
+              Schema.Union([
+                Schema.Literals(["always", "never", "proximity", "geo"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -2720,17 +3118,23 @@ export const UpdateLoadBalancerResponse =
                       Schema.Struct({
                         mode: Schema.optional(
                           Schema.Union([
-                            Schema.Literals(["pop", "resolver_ip"]),
+                            Schema.Union([
+                              Schema.Literals(["pop", "resolver_ip"]),
+                              Schema.String,
+                            ]),
                             Schema.Null,
                           ]),
                         ),
                         preferEcs: Schema.optional(
                           Schema.Union([
-                            Schema.Literals([
-                              "always",
-                              "never",
-                              "proximity",
-                              "geo",
+                            Schema.Union([
+                              Schema.Literals([
+                                "always",
+                                "never",
+                                "proximity",
+                                "geo",
+                              ]),
+                              Schema.String,
                             ]),
                             Schema.Null,
                           ]),
@@ -2779,11 +3183,14 @@ export const UpdateLoadBalancerResponse =
                   ),
                   sessionAffinity: Schema.optional(
                     Schema.Union([
-                      Schema.Literals([
-                        "none",
-                        "cookie",
-                        "ip_cookie",
-                        "header",
+                      Schema.Union([
+                        Schema.Literals([
+                          "none",
+                          "cookie",
+                          "ip_cookie",
+                          "header",
+                        ]),
+                        Schema.String,
                       ]),
                       Schema.Null,
                     ]),
@@ -2805,19 +3212,33 @@ export const UpdateLoadBalancerResponse =
                         ),
                         samesite: Schema.optional(
                           Schema.Union([
-                            Schema.Literals(["Auto", "Lax", "None", "Strict"]),
+                            Schema.Union([
+                              Schema.Literals([
+                                "Auto",
+                                "Lax",
+                                "None",
+                                "Strict",
+                              ]),
+                              Schema.String,
+                            ]),
                             Schema.Null,
                           ]),
                         ),
                         secure: Schema.optional(
                           Schema.Union([
-                            Schema.Literals(["Auto", "Always", "Never"]),
+                            Schema.Union([
+                              Schema.Literals(["Auto", "Always", "Never"]),
+                              Schema.String,
+                            ]),
                             Schema.Null,
                           ]),
                         ),
                         zeroDowntimeFailover: Schema.optional(
                           Schema.Union([
-                            Schema.Literals(["none", "temporary", "sticky"]),
+                            Schema.Union([
+                              Schema.Literals(["none", "temporary", "sticky"]),
+                              Schema.String,
+                            ]),
                             Schema.Null,
                           ]),
                         ),
@@ -2839,15 +3260,18 @@ export const UpdateLoadBalancerResponse =
                   ),
                   steeringPolicy: Schema.optional(
                     Schema.Union([
-                      Schema.Literals([
-                        "off",
-                        "geo",
-                        "random",
-                        "dynamic_latency",
-                        "proximity",
-                        "least_outstanding_requests",
-                        "least_connections",
-                        "",
+                      Schema.Union([
+                        Schema.Literals([
+                          "off",
+                          "geo",
+                          "random",
+                          "dynamic_latency",
+                          "proximity",
+                          "least_outstanding_requests",
+                          "least_connections",
+                          "",
+                        ]),
+                        Schema.String,
                       ]),
                       Schema.Null,
                     ]),
@@ -2898,7 +3322,10 @@ export const UpdateLoadBalancerResponse =
     ),
     sessionAffinity: Schema.optional(
       Schema.Union([
-        Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
+        Schema.Union([
+          Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
+          Schema.String,
+        ]),
         Schema.Null,
       ]),
     ),
@@ -2916,19 +3343,28 @@ export const UpdateLoadBalancerResponse =
           ),
           samesite: Schema.optional(
             Schema.Union([
-              Schema.Literals(["Auto", "Lax", "None", "Strict"]),
+              Schema.Union([
+                Schema.Literals(["Auto", "Lax", "None", "Strict"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
           secure: Schema.optional(
             Schema.Union([
-              Schema.Literals(["Auto", "Always", "Never"]),
+              Schema.Union([
+                Schema.Literals(["Auto", "Always", "Never"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
           zeroDowntimeFailover: Schema.optional(
             Schema.Union([
-              Schema.Literals(["none", "temporary", "sticky"]),
+              Schema.Union([
+                Schema.Literals(["none", "temporary", "sticky"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -2950,15 +3386,18 @@ export const UpdateLoadBalancerResponse =
     ),
     steeringPolicy: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "off",
-          "geo",
-          "random",
-          "dynamic_latency",
-          "proximity",
-          "least_outstanding_requests",
-          "least_connections",
-          "",
+        Schema.Union([
+          Schema.Literals([
+            "off",
+            "geo",
+            "random",
+            "dynamic_latency",
+            "proximity",
+            "least_outstanding_requests",
+            "least_connections",
+            "",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -3028,8 +3467,8 @@ export interface PatchLoadBalancerRequest {
   fallbackPool?: string;
   /** Body param: Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
   locationStrategy?: {
-    mode?: "pop" | "resolver_ip";
-    preferEcs?: "always" | "never" | "proximity" | "geo";
+    mode?: "pop" | "resolver_ip" | (string & {});
+    preferEcs?: "always" | "never" | "proximity" | "geo" | (string & {});
   };
   /** Body param: The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will n */
   name?: string;
@@ -3061,8 +3500,8 @@ export interface PatchLoadBalancerRequest {
       defaultPools?: string[];
       fallbackPool?: string;
       locationStrategy?: {
-        mode?: "pop" | "resolver_ip";
-        preferEcs?: "always" | "never" | "proximity" | "geo";
+        mode?: "pop" | "resolver_ip" | (string & {});
+        preferEcs?: "always" | "never" | "proximity" | "geo" | (string & {});
       };
       popPools?: Record<string, unknown>;
       randomSteering?: {
@@ -3070,14 +3509,19 @@ export interface PatchLoadBalancerRequest {
         poolWeights?: Record<string, unknown>;
       };
       regionPools?: Record<string, unknown>;
-      sessionAffinity?: "none" | "cookie" | "ip_cookie" | "header";
+      sessionAffinity?:
+        | "none"
+        | "cookie"
+        | "ip_cookie"
+        | "header"
+        | (string & {});
       sessionAffinityAttributes?: {
         drainDuration?: number;
         headers?: string[];
         requireAllHeaders?: boolean;
-        samesite?: "Auto" | "Lax" | "None" | "Strict";
-        secure?: "Auto" | "Always" | "Never";
-        zeroDowntimeFailover?: "none" | "temporary" | "sticky";
+        samesite?: "Auto" | "Lax" | "None" | "Strict" | (string & {});
+        secure?: "Auto" | "Always" | "Never" | (string & {});
+        zeroDowntimeFailover?: "none" | "temporary" | "sticky" | (string & {});
       };
       sessionAffinityTtl?: number;
       steeringPolicy?:
@@ -3088,22 +3532,23 @@ export interface PatchLoadBalancerRequest {
         | "proximity"
         | "least_outstanding_requests"
         | "least_connections"
-        | "";
+        | ""
+        | (string & {});
       ttl?: number;
     };
     priority?: number;
     terminates?: boolean;
   }[];
   /** Body param: Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a  */
-  sessionAffinity?: "none" | "cookie" | "ip_cookie" | "header";
+  sessionAffinity?: "none" | "cookie" | "ip_cookie" | "header" | (string & {});
   /** Body param: Configures attributes for session affinity. */
   sessionAffinityAttributes?: {
     drainDuration?: number;
     headers?: string[];
     requireAllHeaders?: boolean;
-    samesite?: "Auto" | "Lax" | "None" | "Strict";
-    secure?: "Auto" | "Always" | "Never";
-    zeroDowntimeFailover?: "none" | "temporary" | "sticky";
+    samesite?: "Auto" | "Lax" | "None" | "Strict" | (string & {});
+    secure?: "Auto" | "Always" | "Never" | (string & {});
+    zeroDowntimeFailover?: "none" | "temporary" | "sticky" | (string & {});
   };
   /** Body param: Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted r */
   sessionAffinityTtl?: number;
@@ -3116,7 +3561,8 @@ export interface PatchLoadBalancerRequest {
     | "proximity"
     | "least_outstanding_requests"
     | "least_connections"
-    | "";
+    | ""
+    | (string & {});
   /** Body param: Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
   ttl?: number;
 }
@@ -3139,9 +3585,17 @@ export const PatchLoadBalancerRequest =
     fallbackPool: Schema.optional(Schema.String),
     locationStrategy: Schema.optional(
       Schema.Struct({
-        mode: Schema.optional(Schema.Literals(["pop", "resolver_ip"])),
+        mode: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["pop", "resolver_ip"]),
+            Schema.String,
+          ]),
+        ),
         preferEcs: Schema.optional(
-          Schema.Literals(["always", "never", "proximity", "geo"]),
+          Schema.Union([
+            Schema.Literals(["always", "never", "proximity", "geo"]),
+            Schema.String,
+          ]),
         ),
       }).pipe(Schema.encodeKeys({ mode: "mode", preferEcs: "prefer_ecs" })),
     ),
@@ -3202,10 +3656,16 @@ export const PatchLoadBalancerRequest =
               locationStrategy: Schema.optional(
                 Schema.Struct({
                   mode: Schema.optional(
-                    Schema.Literals(["pop", "resolver_ip"]),
+                    Schema.Union([
+                      Schema.Literals(["pop", "resolver_ip"]),
+                      Schema.String,
+                    ]),
                   ),
                   preferEcs: Schema.optional(
-                    Schema.Literals(["always", "never", "proximity", "geo"]),
+                    Schema.Union([
+                      Schema.Literals(["always", "never", "proximity", "geo"]),
+                      Schema.String,
+                    ]),
                   ),
                 }).pipe(
                   Schema.encodeKeys({ mode: "mode", preferEcs: "prefer_ecs" }),
@@ -3231,7 +3691,10 @@ export const PatchLoadBalancerRequest =
                 Schema.Record(Schema.String, Schema.Unknown),
               ),
               sessionAffinity: Schema.optional(
-                Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
+                Schema.Union([
+                  Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
+                  Schema.String,
+                ]),
               ),
               sessionAffinityAttributes: Schema.optional(
                 Schema.Struct({
@@ -3239,13 +3702,22 @@ export const PatchLoadBalancerRequest =
                   headers: Schema.optional(Schema.Array(Schema.String)),
                   requireAllHeaders: Schema.optional(Schema.Boolean),
                   samesite: Schema.optional(
-                    Schema.Literals(["Auto", "Lax", "None", "Strict"]),
+                    Schema.Union([
+                      Schema.Literals(["Auto", "Lax", "None", "Strict"]),
+                      Schema.String,
+                    ]),
                   ),
                   secure: Schema.optional(
-                    Schema.Literals(["Auto", "Always", "Never"]),
+                    Schema.Union([
+                      Schema.Literals(["Auto", "Always", "Never"]),
+                      Schema.String,
+                    ]),
                   ),
                   zeroDowntimeFailover: Schema.optional(
-                    Schema.Literals(["none", "temporary", "sticky"]),
+                    Schema.Union([
+                      Schema.Literals(["none", "temporary", "sticky"]),
+                      Schema.String,
+                    ]),
                   ),
                 }).pipe(
                   Schema.encodeKeys({
@@ -3260,15 +3732,18 @@ export const PatchLoadBalancerRequest =
               ),
               sessionAffinityTtl: Schema.optional(Schema.Number),
               steeringPolicy: Schema.optional(
-                Schema.Literals([
-                  "off",
-                  "geo",
-                  "random",
-                  "dynamic_latency",
-                  "proximity",
-                  "least_outstanding_requests",
-                  "least_connections",
-                  "",
+                Schema.Union([
+                  Schema.Literals([
+                    "off",
+                    "geo",
+                    "random",
+                    "dynamic_latency",
+                    "proximity",
+                    "least_outstanding_requests",
+                    "least_connections",
+                    "",
+                  ]),
+                  Schema.String,
                 ]),
               ),
               ttl: Schema.optional(Schema.Number),
@@ -3306,7 +3781,10 @@ export const PatchLoadBalancerRequest =
       ),
     ),
     sessionAffinity: Schema.optional(
-      Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
+      Schema.Union([
+        Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
+        Schema.String,
+      ]),
     ),
     sessionAffinityAttributes: Schema.optional(
       Schema.Struct({
@@ -3314,11 +3792,22 @@ export const PatchLoadBalancerRequest =
         headers: Schema.optional(Schema.Array(Schema.String)),
         requireAllHeaders: Schema.optional(Schema.Boolean),
         samesite: Schema.optional(
-          Schema.Literals(["Auto", "Lax", "None", "Strict"]),
+          Schema.Union([
+            Schema.Literals(["Auto", "Lax", "None", "Strict"]),
+            Schema.String,
+          ]),
         ),
-        secure: Schema.optional(Schema.Literals(["Auto", "Always", "Never"])),
+        secure: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["Auto", "Always", "Never"]),
+            Schema.String,
+          ]),
+        ),
         zeroDowntimeFailover: Schema.optional(
-          Schema.Literals(["none", "temporary", "sticky"]),
+          Schema.Union([
+            Schema.Literals(["none", "temporary", "sticky"]),
+            Schema.String,
+          ]),
         ),
       }).pipe(
         Schema.encodeKeys({
@@ -3333,15 +3822,18 @@ export const PatchLoadBalancerRequest =
     ),
     sessionAffinityTtl: Schema.optional(Schema.Number),
     steeringPolicy: Schema.optional(
-      Schema.Literals([
-        "off",
-        "geo",
-        "random",
-        "dynamic_latency",
-        "proximity",
-        "least_outstanding_requests",
-        "least_connections",
-        "",
+      Schema.Union([
+        Schema.Literals([
+          "off",
+          "geo",
+          "random",
+          "dynamic_latency",
+          "proximity",
+          "least_outstanding_requests",
+          "least_connections",
+          "",
+        ]),
+        Schema.String,
       ]),
     ),
     ttl: Schema.optional(Schema.Number),
@@ -3389,8 +3881,8 @@ export interface PatchLoadBalancerResponse {
   fallbackPool?: string | null;
   /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
   locationStrategy?: {
-    mode?: "pop" | "resolver_ip" | null;
-    preferEcs?: "always" | "never" | "proximity" | "geo" | null;
+    mode?: "pop" | "resolver_ip" | (string & {}) | null;
+    preferEcs?: "always" | "never" | "proximity" | "geo" | (string & {}) | null;
   } | null;
   modifiedOn?: string | null;
   /** The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used. */
@@ -3426,8 +3918,14 @@ export interface PatchLoadBalancerResponse {
           defaultPools?: string[] | null;
           fallbackPool?: string | null;
           locationStrategy?: {
-            mode?: "pop" | "resolver_ip" | null;
-            preferEcs?: "always" | "never" | "proximity" | "geo" | null;
+            mode?: "pop" | "resolver_ip" | (string & {}) | null;
+            preferEcs?:
+              | "always"
+              | "never"
+              | "proximity"
+              | "geo"
+              | (string & {})
+              | null;
           } | null;
           popPools?: Record<string, unknown> | null;
           randomSteering?: {
@@ -3435,14 +3933,31 @@ export interface PatchLoadBalancerResponse {
             poolWeights?: Record<string, unknown> | null;
           } | null;
           regionPools?: Record<string, unknown> | null;
-          sessionAffinity?: "none" | "cookie" | "ip_cookie" | "header" | null;
+          sessionAffinity?:
+            | "none"
+            | "cookie"
+            | "ip_cookie"
+            | "header"
+            | (string & {})
+            | null;
           sessionAffinityAttributes?: {
             drainDuration?: number | null;
             headers?: string[] | null;
             requireAllHeaders?: boolean | null;
-            samesite?: "Auto" | "Lax" | "None" | "Strict" | null;
-            secure?: "Auto" | "Always" | "Never" | null;
-            zeroDowntimeFailover?: "none" | "temporary" | "sticky" | null;
+            samesite?:
+              | "Auto"
+              | "Lax"
+              | "None"
+              | "Strict"
+              | (string & {})
+              | null;
+            secure?: "Auto" | "Always" | "Never" | (string & {}) | null;
+            zeroDowntimeFailover?:
+              | "none"
+              | "temporary"
+              | "sticky"
+              | (string & {})
+              | null;
           } | null;
           sessionAffinityTtl?: number | null;
           steeringPolicy?:
@@ -3454,6 +3969,7 @@ export interface PatchLoadBalancerResponse {
             | "least_outstanding_requests"
             | "least_connections"
             | ""
+            | (string & {})
             | null;
           ttl?: number | null;
         } | null;
@@ -3462,15 +3978,26 @@ export interface PatchLoadBalancerResponse {
       }[]
     | null;
   /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is ge */
-  sessionAffinity?: "none" | "cookie" | "ip_cookie" | "header" | null;
+  sessionAffinity?:
+    | "none"
+    | "cookie"
+    | "ip_cookie"
+    | "header"
+    | (string & {})
+    | null;
   /** Configures attributes for session affinity. */
   sessionAffinityAttributes?: {
     drainDuration?: number | null;
     headers?: string[] | null;
     requireAllHeaders?: boolean | null;
-    samesite?: "Auto" | "Lax" | "None" | "Strict" | null;
-    secure?: "Auto" | "Always" | "Never" | null;
-    zeroDowntimeFailover?: "none" | "temporary" | "sticky" | null;
+    samesite?: "Auto" | "Lax" | "None" | "Strict" | (string & {}) | null;
+    secure?: "Auto" | "Always" | "Never" | (string & {}) | null;
+    zeroDowntimeFailover?:
+      | "none"
+      | "temporary"
+      | "sticky"
+      | (string & {})
+      | null;
   } | null;
   /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `s */
   sessionAffinityTtl?: number | null;
@@ -3484,6 +4011,7 @@ export interface PatchLoadBalancerResponse {
     | "least_outstanding_requests"
     | "least_connections"
     | ""
+    | (string & {})
     | null;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
   ttl?: number | null;
@@ -3520,13 +4048,19 @@ export const PatchLoadBalancerResponse =
         Schema.Struct({
           mode: Schema.optional(
             Schema.Union([
-              Schema.Literals(["pop", "resolver_ip"]),
+              Schema.Union([
+                Schema.Literals(["pop", "resolver_ip"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
           preferEcs: Schema.optional(
             Schema.Union([
-              Schema.Literals(["always", "never", "proximity", "geo"]),
+              Schema.Union([
+                Schema.Literals(["always", "never", "proximity", "geo"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -3638,17 +4172,23 @@ export const PatchLoadBalancerResponse =
                       Schema.Struct({
                         mode: Schema.optional(
                           Schema.Union([
-                            Schema.Literals(["pop", "resolver_ip"]),
+                            Schema.Union([
+                              Schema.Literals(["pop", "resolver_ip"]),
+                              Schema.String,
+                            ]),
                             Schema.Null,
                           ]),
                         ),
                         preferEcs: Schema.optional(
                           Schema.Union([
-                            Schema.Literals([
-                              "always",
-                              "never",
-                              "proximity",
-                              "geo",
+                            Schema.Union([
+                              Schema.Literals([
+                                "always",
+                                "never",
+                                "proximity",
+                                "geo",
+                              ]),
+                              Schema.String,
                             ]),
                             Schema.Null,
                           ]),
@@ -3697,11 +4237,14 @@ export const PatchLoadBalancerResponse =
                   ),
                   sessionAffinity: Schema.optional(
                     Schema.Union([
-                      Schema.Literals([
-                        "none",
-                        "cookie",
-                        "ip_cookie",
-                        "header",
+                      Schema.Union([
+                        Schema.Literals([
+                          "none",
+                          "cookie",
+                          "ip_cookie",
+                          "header",
+                        ]),
+                        Schema.String,
                       ]),
                       Schema.Null,
                     ]),
@@ -3723,19 +4266,33 @@ export const PatchLoadBalancerResponse =
                         ),
                         samesite: Schema.optional(
                           Schema.Union([
-                            Schema.Literals(["Auto", "Lax", "None", "Strict"]),
+                            Schema.Union([
+                              Schema.Literals([
+                                "Auto",
+                                "Lax",
+                                "None",
+                                "Strict",
+                              ]),
+                              Schema.String,
+                            ]),
                             Schema.Null,
                           ]),
                         ),
                         secure: Schema.optional(
                           Schema.Union([
-                            Schema.Literals(["Auto", "Always", "Never"]),
+                            Schema.Union([
+                              Schema.Literals(["Auto", "Always", "Never"]),
+                              Schema.String,
+                            ]),
                             Schema.Null,
                           ]),
                         ),
                         zeroDowntimeFailover: Schema.optional(
                           Schema.Union([
-                            Schema.Literals(["none", "temporary", "sticky"]),
+                            Schema.Union([
+                              Schema.Literals(["none", "temporary", "sticky"]),
+                              Schema.String,
+                            ]),
                             Schema.Null,
                           ]),
                         ),
@@ -3757,15 +4314,18 @@ export const PatchLoadBalancerResponse =
                   ),
                   steeringPolicy: Schema.optional(
                     Schema.Union([
-                      Schema.Literals([
-                        "off",
-                        "geo",
-                        "random",
-                        "dynamic_latency",
-                        "proximity",
-                        "least_outstanding_requests",
-                        "least_connections",
-                        "",
+                      Schema.Union([
+                        Schema.Literals([
+                          "off",
+                          "geo",
+                          "random",
+                          "dynamic_latency",
+                          "proximity",
+                          "least_outstanding_requests",
+                          "least_connections",
+                          "",
+                        ]),
+                        Schema.String,
                       ]),
                       Schema.Null,
                     ]),
@@ -3816,7 +4376,10 @@ export const PatchLoadBalancerResponse =
     ),
     sessionAffinity: Schema.optional(
       Schema.Union([
-        Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
+        Schema.Union([
+          Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
+          Schema.String,
+        ]),
         Schema.Null,
       ]),
     ),
@@ -3834,19 +4397,28 @@ export const PatchLoadBalancerResponse =
           ),
           samesite: Schema.optional(
             Schema.Union([
-              Schema.Literals(["Auto", "Lax", "None", "Strict"]),
+              Schema.Union([
+                Schema.Literals(["Auto", "Lax", "None", "Strict"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
           secure: Schema.optional(
             Schema.Union([
-              Schema.Literals(["Auto", "Always", "Never"]),
+              Schema.Union([
+                Schema.Literals(["Auto", "Always", "Never"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
           zeroDowntimeFailover: Schema.optional(
             Schema.Union([
-              Schema.Literals(["none", "temporary", "sticky"]),
+              Schema.Union([
+                Schema.Literals(["none", "temporary", "sticky"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -3868,15 +4440,18 @@ export const PatchLoadBalancerResponse =
     ),
     steeringPolicy: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "off",
-          "geo",
-          "random",
-          "dynamic_latency",
-          "proximity",
-          "least_outstanding_requests",
-          "least_connections",
-          "",
+        Schema.Union([
+          Schema.Literals([
+            "off",
+            "geo",
+            "random",
+            "dynamic_latency",
+            "proximity",
+            "least_outstanding_requests",
+            "least_connections",
+            "",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -4023,7 +4598,15 @@ export interface GetMonitorResponse {
   /** The timeout (in seconds) before marking the health check as failed. */
   timeout?: number | null;
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
-  type?: "http" | "https" | "tcp" | "udp_icmp" | "icmp_ping" | "smtp" | null;
+  type?:
+    | "http"
+    | "https"
+    | "tcp"
+    | "udp_icmp"
+    | "icmp_ping"
+    | "smtp"
+    | (string & {})
+    | null;
 }
 
 export const GetMonitorResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4049,13 +4632,16 @@ export const GetMonitorResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   timeout: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   type: Schema.optional(
     Schema.Union([
-      Schema.Literals([
-        "http",
-        "https",
-        "tcp",
-        "udp_icmp",
-        "icmp_ping",
-        "smtp",
+      Schema.Union([
+        Schema.Literals([
+          "http",
+          "https",
+          "tcp",
+          "udp_icmp",
+          "icmp_ping",
+          "smtp",
+        ]),
+        Schema.String,
       ]),
       Schema.Null,
     ]),
@@ -4135,7 +4721,15 @@ export interface ListMonitorsResponse {
     probeZone?: string | null;
     retries?: number | null;
     timeout?: number | null;
-    type?: "http" | "https" | "tcp" | "udp_icmp" | "icmp_ping" | "smtp" | null;
+    type?:
+      | "http"
+      | "https"
+      | "tcp"
+      | "udp_icmp"
+      | "icmp_ping"
+      | "smtp"
+      | (string & {})
+      | null;
   }[];
 }
 
@@ -4177,13 +4771,16 @@ export const ListMonitorsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       timeout: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       type: Schema.optional(
         Schema.Union([
-          Schema.Literals([
-            "http",
-            "https",
-            "tcp",
-            "udp_icmp",
-            "icmp_ping",
-            "smtp",
+          Schema.Union([
+            Schema.Literals([
+              "http",
+              "https",
+              "tcp",
+              "udp_icmp",
+              "icmp_ping",
+              "smtp",
+            ]),
+            Schema.String,
           ]),
           Schema.Null,
         ]),
@@ -4265,7 +4862,14 @@ export interface CreateMonitorRequest {
   /** Body param: The timeout (in seconds) before marking the health check as failed. */
   timeout?: number;
   /** Body param: The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
-  type?: "http" | "https" | "tcp" | "udp_icmp" | "icmp_ping" | "smtp";
+  type?:
+    | "http"
+    | "https"
+    | "tcp"
+    | "udp_icmp"
+    | "icmp_ping"
+    | "smtp"
+    | (string & {});
 }
 
 export const CreateMonitorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4286,7 +4890,17 @@ export const CreateMonitorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   retries: Schema.optional(Schema.Number),
   timeout: Schema.optional(Schema.Number),
   type: Schema.optional(
-    Schema.Literals(["http", "https", "tcp", "udp_icmp", "icmp_ping", "smtp"]),
+    Schema.Union([
+      Schema.Literals([
+        "http",
+        "https",
+        "tcp",
+        "udp_icmp",
+        "icmp_ping",
+        "smtp",
+      ]),
+      Schema.String,
+    ]),
   ),
 }).pipe(
   Schema.encodeKeys({
@@ -4348,7 +4962,15 @@ export interface CreateMonitorResponse {
   /** The timeout (in seconds) before marking the health check as failed. */
   timeout?: number | null;
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
-  type?: "http" | "https" | "tcp" | "udp_icmp" | "icmp_ping" | "smtp" | null;
+  type?:
+    | "http"
+    | "https"
+    | "tcp"
+    | "udp_icmp"
+    | "icmp_ping"
+    | "smtp"
+    | (string & {})
+    | null;
 }
 
 export const CreateMonitorResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4374,13 +4996,16 @@ export const CreateMonitorResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   timeout: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   type: Schema.optional(
     Schema.Union([
-      Schema.Literals([
-        "http",
-        "https",
-        "tcp",
-        "udp_icmp",
-        "icmp_ping",
-        "smtp",
+      Schema.Union([
+        Schema.Literals([
+          "http",
+          "https",
+          "tcp",
+          "udp_icmp",
+          "icmp_ping",
+          "smtp",
+        ]),
+        Schema.String,
       ]),
       Schema.Null,
     ]),
@@ -4461,7 +5086,14 @@ export interface UpdateMonitorRequest {
   /** Body param: The timeout (in seconds) before marking the health check as failed. */
   timeout?: number;
   /** Body param: The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
-  type?: "http" | "https" | "tcp" | "udp_icmp" | "icmp_ping" | "smtp";
+  type?:
+    | "http"
+    | "https"
+    | "tcp"
+    | "udp_icmp"
+    | "icmp_ping"
+    | "smtp"
+    | (string & {});
 }
 
 export const UpdateMonitorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4483,7 +5115,17 @@ export const UpdateMonitorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   retries: Schema.optional(Schema.Number),
   timeout: Schema.optional(Schema.Number),
   type: Schema.optional(
-    Schema.Literals(["http", "https", "tcp", "udp_icmp", "icmp_ping", "smtp"]),
+    Schema.Union([
+      Schema.Literals([
+        "http",
+        "https",
+        "tcp",
+        "udp_icmp",
+        "icmp_ping",
+        "smtp",
+      ]),
+      Schema.String,
+    ]),
   ),
 }).pipe(
   Schema.encodeKeys({
@@ -4545,7 +5187,15 @@ export interface UpdateMonitorResponse {
   /** The timeout (in seconds) before marking the health check as failed. */
   timeout?: number | null;
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
-  type?: "http" | "https" | "tcp" | "udp_icmp" | "icmp_ping" | "smtp" | null;
+  type?:
+    | "http"
+    | "https"
+    | "tcp"
+    | "udp_icmp"
+    | "icmp_ping"
+    | "smtp"
+    | (string & {})
+    | null;
 }
 
 export const UpdateMonitorResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4571,13 +5221,16 @@ export const UpdateMonitorResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   timeout: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   type: Schema.optional(
     Schema.Union([
-      Schema.Literals([
-        "http",
-        "https",
-        "tcp",
-        "udp_icmp",
-        "icmp_ping",
-        "smtp",
+      Schema.Union([
+        Schema.Literals([
+          "http",
+          "https",
+          "tcp",
+          "udp_icmp",
+          "icmp_ping",
+          "smtp",
+        ]),
+        Schema.String,
       ]),
       Schema.Null,
     ]),
@@ -4658,7 +5311,14 @@ export interface PatchMonitorRequest {
   /** Body param: The timeout (in seconds) before marking the health check as failed. */
   timeout?: number;
   /** Body param: The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
-  type?: "http" | "https" | "tcp" | "udp_icmp" | "icmp_ping" | "smtp";
+  type?:
+    | "http"
+    | "https"
+    | "tcp"
+    | "udp_icmp"
+    | "icmp_ping"
+    | "smtp"
+    | (string & {});
 }
 
 export const PatchMonitorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4680,7 +5340,17 @@ export const PatchMonitorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   retries: Schema.optional(Schema.Number),
   timeout: Schema.optional(Schema.Number),
   type: Schema.optional(
-    Schema.Literals(["http", "https", "tcp", "udp_icmp", "icmp_ping", "smtp"]),
+    Schema.Union([
+      Schema.Literals([
+        "http",
+        "https",
+        "tcp",
+        "udp_icmp",
+        "icmp_ping",
+        "smtp",
+      ]),
+      Schema.String,
+    ]),
   ),
 }).pipe(
   Schema.encodeKeys({
@@ -4742,7 +5412,15 @@ export interface PatchMonitorResponse {
   /** The timeout (in seconds) before marking the health check as failed. */
   timeout?: number | null;
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
-  type?: "http" | "https" | "tcp" | "udp_icmp" | "icmp_ping" | "smtp" | null;
+  type?:
+    | "http"
+    | "https"
+    | "tcp"
+    | "udp_icmp"
+    | "icmp_ping"
+    | "smtp"
+    | (string & {})
+    | null;
 }
 
 export const PatchMonitorResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4768,13 +5446,16 @@ export const PatchMonitorResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   timeout: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   type: Schema.optional(
     Schema.Union([
-      Schema.Literals([
-        "http",
-        "https",
-        "tcp",
-        "udp_icmp",
-        "icmp_ping",
-        "smtp",
+      Schema.Union([
+        Schema.Literals([
+          "http",
+          "https",
+          "tcp",
+          "udp_icmp",
+          "icmp_ping",
+          "smtp",
+        ]),
+        Schema.String,
       ]),
       Schema.Null,
     ]),
@@ -5497,7 +6178,7 @@ export const GetMonitorGroupReferenceRequest =
 
 export interface GetMonitorGroupReferenceResponse {
   result: {
-    referenceType?: "*" | "referral" | "referrer" | null;
+    referenceType?: "*" | "referral" | "referrer" | (string & {}) | null;
     resourceId?: string | null;
     resourceName?: string | null;
     resourceType?: string | null;
@@ -5510,7 +6191,10 @@ export const GetMonitorGroupReferenceResponse =
       Schema.Struct({
         referenceType: Schema.optional(
           Schema.Union([
-            Schema.Literals(["*", "referral", "referrer"]),
+            Schema.Union([
+              Schema.Literals(["*", "referral", "referrer"]),
+              Schema.String,
+            ]),
             Schema.Null,
           ]),
         ),
@@ -5588,7 +6272,14 @@ export interface CreateMonitorPreviewRequest {
   /** Body param: The timeout (in seconds) before marking the health check as failed. */
   timeout?: number;
   /** Body param: The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
-  type?: "http" | "https" | "tcp" | "udp_icmp" | "icmp_ping" | "smtp";
+  type?:
+    | "http"
+    | "https"
+    | "tcp"
+    | "udp_icmp"
+    | "icmp_ping"
+    | "smtp"
+    | (string & {});
 }
 
 export const CreateMonitorPreviewRequest =
@@ -5611,13 +6302,16 @@ export const CreateMonitorPreviewRequest =
     retries: Schema.optional(Schema.Number),
     timeout: Schema.optional(Schema.Number),
     type: Schema.optional(
-      Schema.Literals([
-        "http",
-        "https",
-        "tcp",
-        "udp_icmp",
-        "icmp_ping",
-        "smtp",
+      Schema.Union([
+        Schema.Literals([
+          "http",
+          "https",
+          "tcp",
+          "udp_icmp",
+          "icmp_ping",
+          "smtp",
+        ]),
+        Schema.String,
       ]),
     ),
   }).pipe(
@@ -5699,7 +6393,7 @@ export const GetMonitorReferenceRequest =
 
 export interface GetMonitorReferenceResponse {
   result: {
-    referenceType?: "*" | "referral" | "referrer" | null;
+    referenceType?: "*" | "referral" | "referrer" | (string & {}) | null;
     resourceId?: string | null;
     resourceName?: string | null;
     resourceType?: string | null;
@@ -5712,7 +6406,10 @@ export const GetMonitorReferenceResponse =
       Schema.Struct({
         referenceType: Schema.optional(
           Schema.Union([
-            Schema.Literals(["*", "referral", "referrer"]),
+            Schema.Union([
+              Schema.Literals(["*", "referral", "referrer"]),
+              Schema.String,
+            ]),
             Schema.Null,
           ]),
         ),
@@ -5790,6 +6487,7 @@ export interface GetPoolResponse {
         | "SEAS"
         | "NEAS"
         | "ALL_REGIONS"
+        | (string & {})
       )[]
     | null;
   createdOn?: string | null;
@@ -5804,7 +6502,7 @@ export interface GetPoolResponse {
   /** Configures load shedding policies and percentages for the pool. */
   loadShedding?: {
     defaultPercent?: number | null;
-    defaultPolicy?: "random" | "hash" | null;
+    defaultPolicy?: "random" | "hash" | (string & {}) | null;
     sessionPercent?: number | null;
     sessionPolicy?: "hash" | null;
   } | null;
@@ -5835,6 +6533,7 @@ export interface GetPoolResponse {
       | "hash"
       | "least_outstanding_requests"
       | "least_connections"
+      | (string & {})
       | null;
   } | null;
   /** The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. */
@@ -5858,21 +6557,24 @@ export const GetPoolResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   checkRegions: Schema.optional(
     Schema.Union([
       Schema.Array(
-        Schema.Literals([
-          "WNAM",
-          "ENAM",
-          "WEU",
-          "EEU",
-          "NSAM",
-          "SSAM",
-          "OC",
-          "ME",
-          "NAF",
-          "SAF",
-          "SAS",
-          "SEAS",
-          "NEAS",
-          "ALL_REGIONS",
+        Schema.Union([
+          Schema.Literals([
+            "WNAM",
+            "ENAM",
+            "WEU",
+            "EEU",
+            "NSAM",
+            "SSAM",
+            "OC",
+            "ME",
+            "NAF",
+            "SAF",
+            "SAS",
+            "SEAS",
+            "NEAS",
+            "ALL_REGIONS",
+          ]),
+          Schema.String,
         ]),
       ),
       Schema.Null,
@@ -5890,7 +6592,10 @@ export const GetPoolResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([Schema.Number, Schema.Null]),
         ),
         defaultPolicy: Schema.optional(
-          Schema.Union([Schema.Literals(["random", "hash"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["random", "hash"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
         sessionPercent: Schema.optional(
           Schema.Union([Schema.Number, Schema.Null]),
@@ -5959,11 +6664,14 @@ export const GetPoolResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Struct({
         policy: Schema.optional(
           Schema.Union([
-            Schema.Literals([
-              "random",
-              "hash",
-              "least_outstanding_requests",
-              "least_connections",
+            Schema.Union([
+              Schema.Literals([
+                "random",
+                "hash",
+                "least_outstanding_requests",
+                "least_connections",
+              ]),
+              Schema.String,
             ]),
             Schema.Null,
           ]),
@@ -6092,6 +6800,7 @@ export interface ListPoolsResponse {
           | "SEAS"
           | "NEAS"
           | "ALL_REGIONS"
+          | (string & {})
         )[]
       | null;
     createdOn?: string | null;
@@ -6101,7 +6810,7 @@ export interface ListPoolsResponse {
     latitude?: number | null;
     loadShedding?: {
       defaultPercent?: number | null;
-      defaultPolicy?: "random" | "hash" | null;
+      defaultPolicy?: "random" | "hash" | (string & {}) | null;
       sessionPercent?: number | null;
       sessionPolicy?: "hash" | null;
     } | null;
@@ -6123,6 +6832,7 @@ export interface ListPoolsResponse {
         | "hash"
         | "least_outstanding_requests"
         | "least_connections"
+        | (string & {})
         | null;
     } | null;
     origins?:
@@ -6148,21 +6858,24 @@ export const ListPoolsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       checkRegions: Schema.optional(
         Schema.Union([
           Schema.Array(
-            Schema.Literals([
-              "WNAM",
-              "ENAM",
-              "WEU",
-              "EEU",
-              "NSAM",
-              "SSAM",
-              "OC",
-              "ME",
-              "NAF",
-              "SAF",
-              "SAS",
-              "SEAS",
-              "NEAS",
-              "ALL_REGIONS",
+            Schema.Union([
+              Schema.Literals([
+                "WNAM",
+                "ENAM",
+                "WEU",
+                "EEU",
+                "NSAM",
+                "SSAM",
+                "OC",
+                "ME",
+                "NAF",
+                "SAF",
+                "SAS",
+                "SEAS",
+                "NEAS",
+                "ALL_REGIONS",
+              ]),
+              Schema.String,
             ]),
           ),
           Schema.Null,
@@ -6180,7 +6893,13 @@ export const ListPoolsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               Schema.Union([Schema.Number, Schema.Null]),
             ),
             defaultPolicy: Schema.optional(
-              Schema.Union([Schema.Literals(["random", "hash"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["random", "hash"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             sessionPercent: Schema.optional(
               Schema.Union([Schema.Number, Schema.Null]),
@@ -6251,11 +6970,14 @@ export const ListPoolsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Struct({
             policy: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "random",
-                  "hash",
-                  "least_outstanding_requests",
-                  "least_connections",
+                Schema.Union([
+                  Schema.Literals([
+                    "random",
+                    "hash",
+                    "least_outstanding_requests",
+                    "least_connections",
+                  ]),
+                  Schema.String,
                 ]),
                 Schema.Null,
               ]),
@@ -6383,7 +7105,7 @@ export interface CreatePoolRequest {
   /** Body param: Configures load shedding policies and percentages for the pool. */
   loadShedding?: {
     defaultPercent?: number;
-    defaultPolicy?: "random" | "hash";
+    defaultPolicy?: "random" | "hash" | (string & {});
     sessionPercent?: number;
     sessionPolicy?: "hash";
   } | null;
@@ -6408,7 +7130,8 @@ export interface CreatePoolRequest {
       | "random"
       | "hash"
       | "least_outstanding_requests"
-      | "least_connections";
+      | "least_connections"
+      | (string & {});
   } | null;
 }
 
@@ -6449,7 +7172,9 @@ export const CreatePoolRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Union([
       Schema.Struct({
         defaultPercent: Schema.optional(Schema.Number),
-        defaultPolicy: Schema.optional(Schema.Literals(["random", "hash"])),
+        defaultPolicy: Schema.optional(
+          Schema.Union([Schema.Literals(["random", "hash"]), Schema.String]),
+        ),
         sessionPercent: Schema.optional(Schema.Number),
         sessionPolicy: Schema.optional(Schema.Literal("hash")),
       }).pipe(
@@ -6505,11 +7230,14 @@ export const CreatePoolRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Union([
       Schema.Struct({
         policy: Schema.optional(
-          Schema.Literals([
-            "random",
-            "hash",
-            "least_outstanding_requests",
-            "least_connections",
+          Schema.Union([
+            Schema.Literals([
+              "random",
+              "hash",
+              "least_outstanding_requests",
+              "least_connections",
+            ]),
+            Schema.String,
           ]),
         ),
       }),
@@ -6557,6 +7285,7 @@ export interface CreatePoolResponse {
         | "SEAS"
         | "NEAS"
         | "ALL_REGIONS"
+        | (string & {})
       )[]
     | null;
   createdOn?: string | null;
@@ -6571,7 +7300,7 @@ export interface CreatePoolResponse {
   /** Configures load shedding policies and percentages for the pool. */
   loadShedding?: {
     defaultPercent?: number | null;
-    defaultPolicy?: "random" | "hash" | null;
+    defaultPolicy?: "random" | "hash" | (string & {}) | null;
     sessionPercent?: number | null;
     sessionPolicy?: "hash" | null;
   } | null;
@@ -6602,6 +7331,7 @@ export interface CreatePoolResponse {
       | "hash"
       | "least_outstanding_requests"
       | "least_connections"
+      | (string & {})
       | null;
   } | null;
   /** The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. */
@@ -6625,21 +7355,24 @@ export const CreatePoolResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   checkRegions: Schema.optional(
     Schema.Union([
       Schema.Array(
-        Schema.Literals([
-          "WNAM",
-          "ENAM",
-          "WEU",
-          "EEU",
-          "NSAM",
-          "SSAM",
-          "OC",
-          "ME",
-          "NAF",
-          "SAF",
-          "SAS",
-          "SEAS",
-          "NEAS",
-          "ALL_REGIONS",
+        Schema.Union([
+          Schema.Literals([
+            "WNAM",
+            "ENAM",
+            "WEU",
+            "EEU",
+            "NSAM",
+            "SSAM",
+            "OC",
+            "ME",
+            "NAF",
+            "SAF",
+            "SAS",
+            "SEAS",
+            "NEAS",
+            "ALL_REGIONS",
+          ]),
+          Schema.String,
         ]),
       ),
       Schema.Null,
@@ -6657,7 +7390,10 @@ export const CreatePoolResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([Schema.Number, Schema.Null]),
         ),
         defaultPolicy: Schema.optional(
-          Schema.Union([Schema.Literals(["random", "hash"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["random", "hash"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
         sessionPercent: Schema.optional(
           Schema.Union([Schema.Number, Schema.Null]),
@@ -6726,11 +7462,14 @@ export const CreatePoolResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Struct({
         policy: Schema.optional(
           Schema.Union([
-            Schema.Literals([
-              "random",
-              "hash",
-              "least_outstanding_requests",
-              "least_connections",
+            Schema.Union([
+              Schema.Literals([
+                "random",
+                "hash",
+                "least_outstanding_requests",
+                "least_connections",
+              ]),
+              Schema.String,
             ]),
             Schema.Null,
           ]),
@@ -6859,6 +7598,7 @@ export interface UpdatePoolRequest {
         | "SEAS"
         | "NEAS"
         | "ALL_REGIONS"
+        | (string & {})
       )[]
     | null;
   /** Body param: A human-readable description of the pool. */
@@ -6870,7 +7610,7 @@ export interface UpdatePoolRequest {
   /** Body param: Configures load shedding policies and percentages for the pool. */
   loadShedding?: {
     defaultPercent?: number;
-    defaultPolicy?: "random" | "hash";
+    defaultPolicy?: "random" | "hash" | (string & {});
     sessionPercent?: number;
     sessionPolicy?: "hash";
   } | null;
@@ -6895,7 +7635,8 @@ export interface UpdatePoolRequest {
       | "random"
       | "hash"
       | "least_outstanding_requests"
-      | "least_connections";
+      | "least_connections"
+      | (string & {});
   } | null;
 }
 
@@ -6933,21 +7674,24 @@ export const UpdatePoolRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   checkRegions: Schema.optional(
     Schema.Union([
       Schema.Array(
-        Schema.Literals([
-          "WNAM",
-          "ENAM",
-          "WEU",
-          "EEU",
-          "NSAM",
-          "SSAM",
-          "OC",
-          "ME",
-          "NAF",
-          "SAF",
-          "SAS",
-          "SEAS",
-          "NEAS",
-          "ALL_REGIONS",
+        Schema.Union([
+          Schema.Literals([
+            "WNAM",
+            "ENAM",
+            "WEU",
+            "EEU",
+            "NSAM",
+            "SSAM",
+            "OC",
+            "ME",
+            "NAF",
+            "SAF",
+            "SAS",
+            "SEAS",
+            "NEAS",
+            "ALL_REGIONS",
+          ]),
+          Schema.String,
         ]),
       ),
       Schema.Null,
@@ -6960,7 +7704,9 @@ export const UpdatePoolRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Union([
       Schema.Struct({
         defaultPercent: Schema.optional(Schema.Number),
-        defaultPolicy: Schema.optional(Schema.Literals(["random", "hash"])),
+        defaultPolicy: Schema.optional(
+          Schema.Union([Schema.Literals(["random", "hash"]), Schema.String]),
+        ),
         sessionPercent: Schema.optional(Schema.Number),
         sessionPolicy: Schema.optional(Schema.Literal("hash")),
       }).pipe(
@@ -7016,11 +7762,14 @@ export const UpdatePoolRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Union([
       Schema.Struct({
         policy: Schema.optional(
-          Schema.Literals([
-            "random",
-            "hash",
-            "least_outstanding_requests",
-            "least_connections",
+          Schema.Union([
+            Schema.Literals([
+              "random",
+              "hash",
+              "least_outstanding_requests",
+              "least_connections",
+            ]),
+            Schema.String,
           ]),
         ),
       }),
@@ -7069,6 +7818,7 @@ export interface UpdatePoolResponse {
         | "SEAS"
         | "NEAS"
         | "ALL_REGIONS"
+        | (string & {})
       )[]
     | null;
   createdOn?: string | null;
@@ -7083,7 +7833,7 @@ export interface UpdatePoolResponse {
   /** Configures load shedding policies and percentages for the pool. */
   loadShedding?: {
     defaultPercent?: number | null;
-    defaultPolicy?: "random" | "hash" | null;
+    defaultPolicy?: "random" | "hash" | (string & {}) | null;
     sessionPercent?: number | null;
     sessionPolicy?: "hash" | null;
   } | null;
@@ -7114,6 +7864,7 @@ export interface UpdatePoolResponse {
       | "hash"
       | "least_outstanding_requests"
       | "least_connections"
+      | (string & {})
       | null;
   } | null;
   /** The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. */
@@ -7137,21 +7888,24 @@ export const UpdatePoolResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   checkRegions: Schema.optional(
     Schema.Union([
       Schema.Array(
-        Schema.Literals([
-          "WNAM",
-          "ENAM",
-          "WEU",
-          "EEU",
-          "NSAM",
-          "SSAM",
-          "OC",
-          "ME",
-          "NAF",
-          "SAF",
-          "SAS",
-          "SEAS",
-          "NEAS",
-          "ALL_REGIONS",
+        Schema.Union([
+          Schema.Literals([
+            "WNAM",
+            "ENAM",
+            "WEU",
+            "EEU",
+            "NSAM",
+            "SSAM",
+            "OC",
+            "ME",
+            "NAF",
+            "SAF",
+            "SAS",
+            "SEAS",
+            "NEAS",
+            "ALL_REGIONS",
+          ]),
+          Schema.String,
         ]),
       ),
       Schema.Null,
@@ -7169,7 +7923,10 @@ export const UpdatePoolResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([Schema.Number, Schema.Null]),
         ),
         defaultPolicy: Schema.optional(
-          Schema.Union([Schema.Literals(["random", "hash"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["random", "hash"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
         sessionPercent: Schema.optional(
           Schema.Union([Schema.Number, Schema.Null]),
@@ -7238,11 +7995,14 @@ export const UpdatePoolResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Struct({
         policy: Schema.optional(
           Schema.Union([
-            Schema.Literals([
-              "random",
-              "hash",
-              "least_outstanding_requests",
-              "least_connections",
+            Schema.Union([
+              Schema.Literals([
+                "random",
+                "hash",
+                "least_outstanding_requests",
+                "least_connections",
+              ]),
+              Schema.String,
             ]),
             Schema.Null,
           ]),
@@ -7358,6 +8118,7 @@ export interface PatchPoolRequest {
         | "SEAS"
         | "NEAS"
         | "ALL_REGIONS"
+        | (string & {})
       )[]
     | null;
   /** Body param: A human-readable description of the pool. */
@@ -7369,7 +8130,7 @@ export interface PatchPoolRequest {
   /** Body param: Configures load shedding policies and percentages for the pool. */
   loadShedding?: {
     defaultPercent?: number;
-    defaultPolicy?: "random" | "hash";
+    defaultPolicy?: "random" | "hash" | (string & {});
     sessionPercent?: number;
     sessionPolicy?: "hash";
   } | null;
@@ -7396,7 +8157,8 @@ export interface PatchPoolRequest {
       | "random"
       | "hash"
       | "least_outstanding_requests"
-      | "least_connections";
+      | "least_connections"
+      | (string & {});
   } | null;
   /** Body param: The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. */
   origins?: {
@@ -7417,21 +8179,24 @@ export const PatchPoolRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   checkRegions: Schema.optional(
     Schema.Union([
       Schema.Array(
-        Schema.Literals([
-          "WNAM",
-          "ENAM",
-          "WEU",
-          "EEU",
-          "NSAM",
-          "SSAM",
-          "OC",
-          "ME",
-          "NAF",
-          "SAF",
-          "SAS",
-          "SEAS",
-          "NEAS",
-          "ALL_REGIONS",
+        Schema.Union([
+          Schema.Literals([
+            "WNAM",
+            "ENAM",
+            "WEU",
+            "EEU",
+            "NSAM",
+            "SSAM",
+            "OC",
+            "ME",
+            "NAF",
+            "SAF",
+            "SAS",
+            "SEAS",
+            "NEAS",
+            "ALL_REGIONS",
+          ]),
+          Schema.String,
         ]),
       ),
       Schema.Null,
@@ -7444,7 +8209,9 @@ export const PatchPoolRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Union([
       Schema.Struct({
         defaultPercent: Schema.optional(Schema.Number),
-        defaultPolicy: Schema.optional(Schema.Literals(["random", "hash"])),
+        defaultPolicy: Schema.optional(
+          Schema.Union([Schema.Literals(["random", "hash"]), Schema.String]),
+        ),
         sessionPercent: Schema.optional(Schema.Number),
         sessionPolicy: Schema.optional(Schema.Literal("hash")),
       }).pipe(
@@ -7501,11 +8268,14 @@ export const PatchPoolRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Union([
       Schema.Struct({
         policy: Schema.optional(
-          Schema.Literals([
-            "random",
-            "hash",
-            "least_outstanding_requests",
-            "least_connections",
+          Schema.Union([
+            Schema.Literals([
+              "random",
+              "hash",
+              "least_outstanding_requests",
+              "least_connections",
+            ]),
+            Schema.String,
           ]),
         ),
       }),
@@ -7583,6 +8353,7 @@ export interface PatchPoolResponse {
         | "SEAS"
         | "NEAS"
         | "ALL_REGIONS"
+        | (string & {})
       )[]
     | null;
   createdOn?: string | null;
@@ -7597,7 +8368,7 @@ export interface PatchPoolResponse {
   /** Configures load shedding policies and percentages for the pool. */
   loadShedding?: {
     defaultPercent?: number | null;
-    defaultPolicy?: "random" | "hash" | null;
+    defaultPolicy?: "random" | "hash" | (string & {}) | null;
     sessionPercent?: number | null;
     sessionPolicy?: "hash" | null;
   } | null;
@@ -7628,6 +8399,7 @@ export interface PatchPoolResponse {
       | "hash"
       | "least_outstanding_requests"
       | "least_connections"
+      | (string & {})
       | null;
   } | null;
   /** The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. */
@@ -7651,21 +8423,24 @@ export const PatchPoolResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   checkRegions: Schema.optional(
     Schema.Union([
       Schema.Array(
-        Schema.Literals([
-          "WNAM",
-          "ENAM",
-          "WEU",
-          "EEU",
-          "NSAM",
-          "SSAM",
-          "OC",
-          "ME",
-          "NAF",
-          "SAF",
-          "SAS",
-          "SEAS",
-          "NEAS",
-          "ALL_REGIONS",
+        Schema.Union([
+          Schema.Literals([
+            "WNAM",
+            "ENAM",
+            "WEU",
+            "EEU",
+            "NSAM",
+            "SSAM",
+            "OC",
+            "ME",
+            "NAF",
+            "SAF",
+            "SAS",
+            "SEAS",
+            "NEAS",
+            "ALL_REGIONS",
+          ]),
+          Schema.String,
         ]),
       ),
       Schema.Null,
@@ -7683,7 +8458,10 @@ export const PatchPoolResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([Schema.Number, Schema.Null]),
         ),
         defaultPolicy: Schema.optional(
-          Schema.Union([Schema.Literals(["random", "hash"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["random", "hash"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
         sessionPercent: Schema.optional(
           Schema.Union([Schema.Number, Schema.Null]),
@@ -7752,11 +8530,14 @@ export const PatchPoolResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Struct({
         policy: Schema.optional(
           Schema.Union([
-            Schema.Literals([
-              "random",
-              "hash",
-              "least_outstanding_requests",
-              "least_connections",
+            Schema.Union([
+              Schema.Literals([
+                "random",
+                "hash",
+                "least_outstanding_requests",
+                "least_connections",
+              ]),
+              Schema.String,
             ]),
             Schema.Null,
           ]),
@@ -7927,6 +8708,7 @@ export interface BulkPatchPoolsResponse {
           | "SEAS"
           | "NEAS"
           | "ALL_REGIONS"
+          | (string & {})
         )[]
       | null;
     createdOn?: string | null;
@@ -7936,7 +8718,7 @@ export interface BulkPatchPoolsResponse {
     latitude?: number | null;
     loadShedding?: {
       defaultPercent?: number | null;
-      defaultPolicy?: "random" | "hash" | null;
+      defaultPolicy?: "random" | "hash" | (string & {}) | null;
       sessionPercent?: number | null;
       sessionPolicy?: "hash" | null;
     } | null;
@@ -7958,6 +8740,7 @@ export interface BulkPatchPoolsResponse {
         | "hash"
         | "least_outstanding_requests"
         | "least_connections"
+        | (string & {})
         | null;
     } | null;
     origins?:
@@ -7984,21 +8767,24 @@ export const BulkPatchPoolsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         checkRegions: Schema.optional(
           Schema.Union([
             Schema.Array(
-              Schema.Literals([
-                "WNAM",
-                "ENAM",
-                "WEU",
-                "EEU",
-                "NSAM",
-                "SSAM",
-                "OC",
-                "ME",
-                "NAF",
-                "SAF",
-                "SAS",
-                "SEAS",
-                "NEAS",
-                "ALL_REGIONS",
+              Schema.Union([
+                Schema.Literals([
+                  "WNAM",
+                  "ENAM",
+                  "WEU",
+                  "EEU",
+                  "NSAM",
+                  "SSAM",
+                  "OC",
+                  "ME",
+                  "NAF",
+                  "SAF",
+                  "SAS",
+                  "SEAS",
+                  "NEAS",
+                  "ALL_REGIONS",
+                ]),
+                Schema.String,
               ]),
             ),
             Schema.Null,
@@ -8019,7 +8805,10 @@ export const BulkPatchPoolsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
               ),
               defaultPolicy: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["random", "hash"]),
+                  Schema.Union([
+                    Schema.Literals(["random", "hash"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -8094,11 +8883,14 @@ export const BulkPatchPoolsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             Schema.Struct({
               policy: Schema.optional(
                 Schema.Union([
-                  Schema.Literals([
-                    "random",
-                    "hash",
-                    "least_outstanding_requests",
-                    "least_connections",
+                  Schema.Union([
+                    Schema.Literals([
+                      "random",
+                      "hash",
+                      "least_outstanding_requests",
+                      "least_connections",
+                    ]),
+                    Schema.String,
                   ]),
                   Schema.Null,
                 ]),
@@ -8347,7 +9139,14 @@ export interface CreatePoolHealthRequest {
   /** Body param: The timeout (in seconds) before marking the health check as failed. */
   timeout?: number;
   /** Body param: The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
-  type?: "http" | "https" | "tcp" | "udp_icmp" | "icmp_ping" | "smtp";
+  type?:
+    | "http"
+    | "https"
+    | "tcp"
+    | "udp_icmp"
+    | "icmp_ping"
+    | "smtp"
+    | (string & {});
 }
 
 export const CreatePoolHealthRequest =
@@ -8370,13 +9169,16 @@ export const CreatePoolHealthRequest =
     retries: Schema.optional(Schema.Number),
     timeout: Schema.optional(Schema.Number),
     type: Schema.optional(
-      Schema.Literals([
-        "http",
-        "https",
-        "tcp",
-        "udp_icmp",
-        "icmp_ping",
-        "smtp",
+      Schema.Union([
+        Schema.Literals([
+          "http",
+          "https",
+          "tcp",
+          "udp_icmp",
+          "icmp_ping",
+          "smtp",
+        ]),
+        Schema.String,
       ]),
     ),
   }).pipe(
@@ -8458,7 +9260,7 @@ export const GetPoolReferenceRequest =
 
 export interface GetPoolReferenceResponse {
   result: {
-    referenceType?: "*" | "referral" | "referrer" | null;
+    referenceType?: "*" | "referral" | "referrer" | (string & {}) | null;
     resourceId?: string | null;
     resourceName?: string | null;
     resourceType?: string | null;
@@ -8471,7 +9273,10 @@ export const GetPoolReferenceResponse =
       Schema.Struct({
         referenceType: Schema.optional(
           Schema.Union([
-            Schema.Literals(["*", "referral", "referrer"]),
+            Schema.Union([
+              Schema.Literals(["*", "referral", "referrer"]),
+              Schema.String,
+            ]),
             Schema.Null,
           ]),
         ),
@@ -8570,26 +9375,30 @@ export interface GetRegionRequest {
     | "SAF"
     | "SAS"
     | "SEAS"
-    | "NEAS";
+    | "NEAS"
+    | (string & {});
   /** Identifier. */
   accountId: string;
 }
 
 export const GetRegionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  regionId: Schema.Literals([
-    "WNAM",
-    "ENAM",
-    "WEU",
-    "EEU",
-    "NSAM",
-    "SSAM",
-    "OC",
-    "ME",
-    "NAF",
-    "SAF",
-    "SAS",
-    "SEAS",
-    "NEAS",
+  regionId: Schema.Union([
+    Schema.Literals([
+      "WNAM",
+      "ENAM",
+      "WEU",
+      "EEU",
+      "NSAM",
+      "SSAM",
+      "OC",
+      "ME",
+      "NAF",
+      "SAF",
+      "SAS",
+      "SEAS",
+      "NEAS",
+    ]),
+    Schema.String,
   ]).pipe(T.HttpPath("regionId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -8680,7 +9489,7 @@ export interface ListSearchesRequest {
   /** Query param: Search query term. */
   query?: string;
   /** Query param: The type of references to include. "\ " to include both referral and referrer references. "" to not include any reference information. */
-  references?: "" | "*" | "referral" | "referrer";
+  references?: "" | "*" | "referral" | "referrer" | (string & {});
 }
 
 export const ListSearchesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -8689,7 +9498,10 @@ export const ListSearchesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   query: Schema.optional(Schema.String).pipe(T.HttpQuery("query")),
   references: Schema.optional(
-    Schema.Literals(["", "*", "referral", "referrer"]),
+    Schema.Union([
+      Schema.Literals(["", "*", "referral", "referrer"]),
+      Schema.String,
+    ]),
   ).pipe(T.HttpQuery("references")),
 }).pipe(
   T.Http({
@@ -8704,11 +9516,16 @@ export interface ListSearchesResponse {
       | {
           resources?:
             | {
-                referenceType?: "referral" | "referrer" | null;
+                referenceType?: "referral" | "referrer" | (string & {}) | null;
                 references?: unknown[] | null;
                 resourceId?: string | null;
                 resourceName?: string | null;
-                resourceType?: "load_balancer" | "monitor" | "pool" | null;
+                resourceType?:
+                  | "load_balancer"
+                  | "monitor"
+                  | "pool"
+                  | (string & {})
+                  | null;
               }[]
             | null;
         }[]
@@ -8734,7 +9551,10 @@ export const ListSearchesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   Schema.Struct({
                     referenceType: Schema.optional(
                       Schema.Union([
-                        Schema.Literals(["referral", "referrer"]),
+                        Schema.Union([
+                          Schema.Literals(["referral", "referrer"]),
+                          Schema.String,
+                        ]),
                         Schema.Null,
                       ]),
                     ),
@@ -8749,7 +9569,10 @@ export const ListSearchesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     ),
                     resourceType: Schema.optional(
                       Schema.Union([
-                        Schema.Literals(["load_balancer", "monitor", "pool"]),
+                        Schema.Union([
+                          Schema.Literals(["load_balancer", "monitor", "pool"]),
+                          Schema.String,
+                        ]),
                         Schema.Null,
                       ]),
                     ),

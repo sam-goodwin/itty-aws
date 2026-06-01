@@ -30,7 +30,7 @@ export interface ListAuditLogsRequest {
   /** Query param: Limits the returned results to logs older than the specified date. A `full-date` that conforms to RFC3339. */
   before?: unknown;
   /** Query param: Changes the direction of the chronological sorting. */
-  direction?: "desc" | "asc";
+  direction?: "desc" | "asc" | (string & {});
   /** Query param: Indicates that this request is an export of logs in CSV format. */
   export?: boolean;
   /** Query param: Indicates whether or not to hide user level audit logs. */
@@ -58,9 +58,9 @@ export const ListAuditLogsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ).pipe(T.HttpQuery("actor")),
   before: Schema.optional(Schema.Unknown).pipe(T.HttpQuery("before")),
-  direction: Schema.optional(Schema.Literals(["desc", "asc"])).pipe(
-    T.HttpQuery("direction"),
-  ),
+  direction: Schema.optional(
+    Schema.Union([Schema.Literals(["desc", "asc"]), Schema.String]),
+  ).pipe(T.HttpQuery("direction")),
   export: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("export")),
   hideUserLogs: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("hide_user_logs"),
@@ -83,7 +83,7 @@ export interface ListAuditLogsResponse {
       id?: string | null;
       email?: string | null;
       ip?: string | null;
-      type?: "user" | "admin" | "Cloudflare" | null;
+      type?: "user" | "admin" | "Cloudflare" | (string & {}) | null;
     } | null;
     interface?: string | null;
     metadata?: unknown | null;
@@ -124,7 +124,10 @@ export const ListAuditLogsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             ip: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
             type: Schema.optional(
               Schema.Union([
-                Schema.Literals(["user", "admin", "Cloudflare"]),
+                Schema.Union([
+                  Schema.Literals(["user", "admin", "Cloudflare"]),
+                  Schema.String,
+                ]),
                 Schema.Null,
               ]),
             ),

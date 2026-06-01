@@ -60,7 +60,7 @@ export interface GetPhasResponse {
   /** The unique ID of the ruleset. */
   id: string;
   /** The kind of the ruleset. */
-  kind: "managed" | "custom" | "root" | "zone";
+  kind: "managed" | "custom" | "root" | "zone" | (string & {});
   /** The timestamp of when the ruleset was last modified. */
   lastUpdated: string;
   /** The human-readable name of the ruleset. */
@@ -90,7 +90,8 @@ export interface GetPhasResponse {
     | "magic_transit"
     | "magic_transit_ids_managed"
     | "magic_transit_managed"
-    | "magic_transit_ratelimit";
+    | "magic_transit_ratelimit"
+    | (string & {});
   /** The list of rules in the ruleset. */
   rules?:
     | (
@@ -168,6 +169,7 @@ export interface GetPhasResponse {
                   | "gzip"
                   | "brotli"
                   | "zstd"
+                  | (string & {})
                   | null;
               }[];
             } | null;
@@ -239,6 +241,7 @@ export interface GetPhasResponse {
                         | "medium"
                         | "low"
                         | "eoff"
+                        | (string & {})
                         | null;
                     }[]
                   | null;
@@ -254,10 +257,17 @@ export interface GetPhasResponse {
                         | "medium"
                         | "low"
                         | "eoff"
+                        | (string & {})
                         | null;
                     }[]
                   | null;
-                sensitivityLevel?: "default" | "medium" | "low" | "eoff" | null;
+                sensitivityLevel?:
+                  | "default"
+                  | "medium"
+                  | "low"
+                  | "eoff"
+                  | (string & {})
+                  | null;
               } | null;
             } | null;
             categories?: string[] | null;
@@ -439,7 +449,14 @@ export interface GetPhasResponse {
                   value?: string | null;
                 };
                 preserveQueryString?: boolean | null;
-                statusCode?: "301" | "302" | "303" | "307" | "308" | null;
+                statusCode?:
+                  | "301"
+                  | "302"
+                  | "303"
+                  | "307"
+                  | "308"
+                  | (string & {})
+                  | null;
               } | null;
             } | null;
             categories?: string[] | null;
@@ -576,6 +593,7 @@ export interface GetPhasResponse {
                     | "text/html"
                     | "text/plain"
                     | "text/xml"
+                    | (string & {})
                     | null;
                   statusCode?: number | null;
                 }
@@ -586,6 +604,7 @@ export interface GetPhasResponse {
                     | "text/html"
                     | "text/plain"
                     | "text/xml"
+                    | (string & {})
                     | null;
                   statusCode?: number | null;
                 }
@@ -618,55 +637,55 @@ export interface GetPhasResponse {
             action?: "set_cache_control" | null;
             actionParameters?: {
               immutable?: {
-                operation: "set" | "remove";
+                operation: "set" | "remove" | (string & {});
                 cloudflareOnly?: boolean | null;
               } | null;
               maxAge?: {
-                operation: "set" | "remove";
+                operation: "set" | "remove" | (string & {});
                 cloudflareOnly?: boolean | null;
               } | null;
               mustRevalidate?: {
-                operation: "set" | "remove";
+                operation: "set" | "remove" | (string & {});
                 cloudflareOnly?: boolean | null;
               } | null;
               mustUnderstand?: {
-                operation: "set" | "remove";
+                operation: "set" | "remove" | (string & {});
                 cloudflareOnly?: boolean | null;
               } | null;
               noCache?: {
-                operation: "set" | "remove";
+                operation: "set" | "remove" | (string & {});
                 cloudflareOnly?: boolean | null;
               } | null;
               noStore?: {
-                operation: "set" | "remove";
+                operation: "set" | "remove" | (string & {});
                 cloudflareOnly?: boolean | null;
               } | null;
               noTransform?: {
-                operation: "set" | "remove";
+                operation: "set" | "remove" | (string & {});
                 cloudflareOnly?: boolean | null;
               } | null;
               private?: {
-                operation: "set" | "remove";
+                operation: "set" | "remove" | (string & {});
                 cloudflareOnly?: boolean | null;
               } | null;
               proxyRevalidate?: {
-                operation: "set" | "remove";
+                operation: "set" | "remove" | (string & {});
                 cloudflareOnly?: boolean | null;
               } | null;
               public?: {
-                operation: "set" | "remove";
+                operation: "set" | "remove" | (string & {});
                 cloudflareOnly?: boolean | null;
               } | null;
               sMaxage?: {
-                operation: "set" | "remove";
+                operation: "set" | "remove" | (string & {});
                 cloudflareOnly?: boolean | null;
               } | null;
               staleIfError?: {
-                operation: "set" | "remove";
+                operation: "set" | "remove" | (string & {});
                 cloudflareOnly?: boolean | null;
               } | null;
               staleWhileRevalidate?: {
-                operation: "set" | "remove";
+                operation: "set" | "remove" | (string & {});
                 cloudflareOnly?: boolean | null;
               } | null;
             } | null;
@@ -703,7 +722,8 @@ export interface GetPhasResponse {
                   | "respect_origin"
                   | "bypass_by_default"
                   | "override_origin"
-                  | "bypass";
+                  | "bypass"
+                  | (string & {});
                 default?: number | null;
               } | null;
               cache?: boolean | null;
@@ -748,7 +768,8 @@ export interface GetPhasResponse {
                 mode:
                   | "respect_origin"
                   | "bypass_by_default"
-                  | "override_origin";
+                  | "override_origin"
+                  | (string & {});
                 default?: number | null;
                 statusCodeTtl?:
                   | {
@@ -800,8 +821,14 @@ export interface GetPhasResponse {
             id?: string | null;
             action?: "set_cache_tags" | null;
             actionParameters?:
-              | { operation: "add" | "remove" | "set"; values: string[] }
-              | { expression: string; operation: "add" | "remove" | "set" }
+              | {
+                  operation: "add" | "remove" | "set" | (string & {});
+                  values: string[];
+                }
+              | {
+                  expression: string;
+                  operation: "add" | "remove" | "set" | (string & {});
+                }
               | null;
             categories?: string[] | null;
             description?: string | null;
@@ -847,10 +874,25 @@ export interface GetPhasResponse {
               hotlinkProtection?: boolean | null;
               mirage?: boolean | null;
               opportunisticEncryption?: boolean | null;
-              polish?: "off" | "lossless" | "lossy" | "webp" | null;
+              polish?:
+                | "off"
+                | "lossless"
+                | "lossy"
+                | "webp"
+                | (string & {})
+                | null;
               redirectsForAiTraining?: boolean | null;
-              requestBodyBuffering?: "none" | "standard" | "full" | null;
-              responseBodyBuffering?: "none" | "standard" | null;
+              requestBodyBuffering?:
+                | "none"
+                | "standard"
+                | "full"
+                | (string & {})
+                | null;
+              responseBodyBuffering?:
+                | "none"
+                | "standard"
+                | (string & {})
+                | null;
               rocketLoader?: boolean | null;
               securityLevel?:
                 | "off"
@@ -859,6 +901,7 @@ export interface GetPhasResponse {
                 | "medium"
                 | "high"
                 | "under_attack"
+                | (string & {})
                 | null;
               serverSideExcludes?: boolean | null;
               ssl?:
@@ -867,6 +910,7 @@ export interface GetPhasResponse {
                 | "full"
                 | "strict"
                 | "origin_pull"
+                | (string & {})
                 | null;
               sxg?: boolean | null;
             } | null;
@@ -924,6 +968,7 @@ export interface GetPhasResponse {
                     | "magic_transit_ids_managed"
                     | "magic_transit_managed"
                     | "magic_transit_ratelimit"
+                    | (string & {})
                   )[]
                 | null;
               products?:
@@ -935,6 +980,7 @@ export interface GetPhasResponse {
                     | "uaBlock"
                     | "waf"
                     | "zoneLockdown"
+                    | (string & {})
                   )[]
                 | null;
               rules?: Record<string, unknown> | null;
@@ -972,34 +1018,40 @@ export interface GetPhasResponse {
 
 export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
-  kind: Schema.Literals(["managed", "custom", "root", "zone"]),
+  kind: Schema.Union([
+    Schema.Literals(["managed", "custom", "root", "zone"]),
+    Schema.String,
+  ]),
   lastUpdated: Schema.String,
   name: Schema.String,
-  phase: Schema.Literals([
-    "ddos_l4",
-    "ddos_l7",
-    "http_config_settings",
-    "http_custom_errors",
-    "http_log_custom_fields",
-    "http_ratelimit",
-    "http_request_cache_settings",
-    "http_request_dynamic_redirect",
-    "http_request_firewall_custom",
-    "http_request_firewall_managed",
-    "http_request_late_transform",
-    "http_request_origin",
-    "http_request_redirect",
-    "http_request_sanitize",
-    "http_request_sbfm",
-    "http_request_transform",
-    "http_response_cache_settings",
-    "http_response_compression",
-    "http_response_firewall_managed",
-    "http_response_headers_transform",
-    "magic_transit",
-    "magic_transit_ids_managed",
-    "magic_transit_managed",
-    "magic_transit_ratelimit",
+  phase: Schema.Union([
+    Schema.Literals([
+      "ddos_l4",
+      "ddos_l7",
+      "http_config_settings",
+      "http_custom_errors",
+      "http_log_custom_fields",
+      "http_ratelimit",
+      "http_request_cache_settings",
+      "http_request_dynamic_redirect",
+      "http_request_firewall_custom",
+      "http_request_firewall_managed",
+      "http_request_late_transform",
+      "http_request_origin",
+      "http_request_redirect",
+      "http_request_sanitize",
+      "http_request_sbfm",
+      "http_request_transform",
+      "http_response_cache_settings",
+      "http_response_compression",
+      "http_response_firewall_managed",
+      "http_response_headers_transform",
+      "magic_transit",
+      "magic_transit_ids_managed",
+      "magic_transit_managed",
+      "magic_transit_ratelimit",
+    ]),
+    Schema.String,
   ]),
   rules: Schema.optional(
     Schema.Union([
@@ -1239,13 +1291,16 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     Schema.Struct({
                       name: Schema.optional(
                         Schema.Union([
-                          Schema.Literals([
-                            "none",
-                            "auto",
-                            "default",
-                            "gzip",
-                            "brotli",
-                            "zstd",
+                          Schema.Union([
+                            Schema.Literals([
+                              "none",
+                              "auto",
+                              "default",
+                              "gzip",
+                              "brotli",
+                              "zstd",
+                            ]),
+                            Schema.String,
                           ]),
                           Schema.Null,
                         ]),
@@ -1484,11 +1539,14 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                                 ),
                                 sensitivityLevel: Schema.optional(
                                   Schema.Union([
-                                    Schema.Literals([
-                                      "default",
-                                      "medium",
-                                      "low",
-                                      "eoff",
+                                    Schema.Union([
+                                      Schema.Literals([
+                                        "default",
+                                        "medium",
+                                        "low",
+                                        "eoff",
+                                      ]),
+                                      Schema.String,
                                     ]),
                                     Schema.Null,
                                   ]),
@@ -1524,11 +1582,14 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                                 ),
                                 sensitivityLevel: Schema.optional(
                                   Schema.Union([
-                                    Schema.Literals([
-                                      "default",
-                                      "medium",
-                                      "low",
-                                      "eoff",
+                                    Schema.Union([
+                                      Schema.Literals([
+                                        "default",
+                                        "medium",
+                                        "low",
+                                        "eoff",
+                                      ]),
+                                      Schema.String,
                                     ]),
                                     Schema.Null,
                                   ]),
@@ -1548,11 +1609,14 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                         ),
                         sensitivityLevel: Schema.optional(
                           Schema.Union([
-                            Schema.Literals([
-                              "default",
-                              "medium",
-                              "low",
-                              "eoff",
+                            Schema.Union([
+                              Schema.Literals([
+                                "default",
+                                "medium",
+                                "low",
+                                "eoff",
+                              ]),
+                              Schema.String,
                             ]),
                             Schema.Null,
                           ]),
@@ -2285,12 +2349,15 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                         ),
                         statusCode: Schema.optional(
                           Schema.Union([
-                            Schema.Literals([
-                              "301",
-                              "302",
-                              "303",
-                              "307",
-                              "308",
+                            Schema.Union([
+                              Schema.Literals([
+                                "301",
+                                "302",
+                                "303",
+                                "307",
+                                "308",
+                              ]),
+                              Schema.String,
                             ]),
                             Schema.Null,
                           ]),
@@ -2800,11 +2867,14 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     content: Schema.String,
                     contentType: Schema.optional(
                       Schema.Union([
-                        Schema.Literals([
-                          "application/json",
-                          "text/html",
-                          "text/plain",
-                          "text/xml",
+                        Schema.Union([
+                          Schema.Literals([
+                            "application/json",
+                            "text/html",
+                            "text/plain",
+                            "text/xml",
+                          ]),
+                          Schema.String,
                         ]),
                         Schema.Null,
                       ]),
@@ -2823,11 +2893,14 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     assetName: Schema.String,
                     contentType: Schema.optional(
                       Schema.Union([
-                        Schema.Literals([
-                          "application/json",
-                          "text/html",
-                          "text/plain",
-                          "text/xml",
+                        Schema.Union([
+                          Schema.Literals([
+                            "application/json",
+                            "text/html",
+                            "text/plain",
+                            "text/xml",
+                          ]),
+                          Schema.String,
                         ]),
                         Schema.Null,
                       ]),
@@ -2949,7 +3022,10 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   immutable: Schema.optional(
                     Schema.Union([
                       Schema.Struct({
-                        operation: Schema.Literals(["set", "remove"]),
+                        operation: Schema.Union([
+                          Schema.Literals(["set", "remove"]),
+                          Schema.String,
+                        ]),
                         cloudflareOnly: Schema.optional(
                           Schema.Union([Schema.Boolean, Schema.Null]),
                         ),
@@ -2965,7 +3041,10 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   maxAge: Schema.optional(
                     Schema.Union([
                       Schema.Struct({
-                        operation: Schema.Literals(["set", "remove"]),
+                        operation: Schema.Union([
+                          Schema.Literals(["set", "remove"]),
+                          Schema.String,
+                        ]),
                         cloudflareOnly: Schema.optional(
                           Schema.Union([Schema.Boolean, Schema.Null]),
                         ),
@@ -2981,7 +3060,10 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   mustRevalidate: Schema.optional(
                     Schema.Union([
                       Schema.Struct({
-                        operation: Schema.Literals(["set", "remove"]),
+                        operation: Schema.Union([
+                          Schema.Literals(["set", "remove"]),
+                          Schema.String,
+                        ]),
                         cloudflareOnly: Schema.optional(
                           Schema.Union([Schema.Boolean, Schema.Null]),
                         ),
@@ -2997,7 +3079,10 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   mustUnderstand: Schema.optional(
                     Schema.Union([
                       Schema.Struct({
-                        operation: Schema.Literals(["set", "remove"]),
+                        operation: Schema.Union([
+                          Schema.Literals(["set", "remove"]),
+                          Schema.String,
+                        ]),
                         cloudflareOnly: Schema.optional(
                           Schema.Union([Schema.Boolean, Schema.Null]),
                         ),
@@ -3013,7 +3098,10 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   noCache: Schema.optional(
                     Schema.Union([
                       Schema.Struct({
-                        operation: Schema.Literals(["set", "remove"]),
+                        operation: Schema.Union([
+                          Schema.Literals(["set", "remove"]),
+                          Schema.String,
+                        ]),
                         cloudflareOnly: Schema.optional(
                           Schema.Union([Schema.Boolean, Schema.Null]),
                         ),
@@ -3029,7 +3117,10 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   noStore: Schema.optional(
                     Schema.Union([
                       Schema.Struct({
-                        operation: Schema.Literals(["set", "remove"]),
+                        operation: Schema.Union([
+                          Schema.Literals(["set", "remove"]),
+                          Schema.String,
+                        ]),
                         cloudflareOnly: Schema.optional(
                           Schema.Union([Schema.Boolean, Schema.Null]),
                         ),
@@ -3045,7 +3136,10 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   noTransform: Schema.optional(
                     Schema.Union([
                       Schema.Struct({
-                        operation: Schema.Literals(["set", "remove"]),
+                        operation: Schema.Union([
+                          Schema.Literals(["set", "remove"]),
+                          Schema.String,
+                        ]),
                         cloudflareOnly: Schema.optional(
                           Schema.Union([Schema.Boolean, Schema.Null]),
                         ),
@@ -3061,7 +3155,10 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   private: Schema.optional(
                     Schema.Union([
                       Schema.Struct({
-                        operation: Schema.Literals(["set", "remove"]),
+                        operation: Schema.Union([
+                          Schema.Literals(["set", "remove"]),
+                          Schema.String,
+                        ]),
                         cloudflareOnly: Schema.optional(
                           Schema.Union([Schema.Boolean, Schema.Null]),
                         ),
@@ -3077,7 +3174,10 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   proxyRevalidate: Schema.optional(
                     Schema.Union([
                       Schema.Struct({
-                        operation: Schema.Literals(["set", "remove"]),
+                        operation: Schema.Union([
+                          Schema.Literals(["set", "remove"]),
+                          Schema.String,
+                        ]),
                         cloudflareOnly: Schema.optional(
                           Schema.Union([Schema.Boolean, Schema.Null]),
                         ),
@@ -3093,7 +3193,10 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   public: Schema.optional(
                     Schema.Union([
                       Schema.Struct({
-                        operation: Schema.Literals(["set", "remove"]),
+                        operation: Schema.Union([
+                          Schema.Literals(["set", "remove"]),
+                          Schema.String,
+                        ]),
                         cloudflareOnly: Schema.optional(
                           Schema.Union([Schema.Boolean, Schema.Null]),
                         ),
@@ -3109,7 +3212,10 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   sMaxage: Schema.optional(
                     Schema.Union([
                       Schema.Struct({
-                        operation: Schema.Literals(["set", "remove"]),
+                        operation: Schema.Union([
+                          Schema.Literals(["set", "remove"]),
+                          Schema.String,
+                        ]),
                         cloudflareOnly: Schema.optional(
                           Schema.Union([Schema.Boolean, Schema.Null]),
                         ),
@@ -3125,7 +3231,10 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   staleIfError: Schema.optional(
                     Schema.Union([
                       Schema.Struct({
-                        operation: Schema.Literals(["set", "remove"]),
+                        operation: Schema.Union([
+                          Schema.Literals(["set", "remove"]),
+                          Schema.String,
+                        ]),
                         cloudflareOnly: Schema.optional(
                           Schema.Union([Schema.Boolean, Schema.Null]),
                         ),
@@ -3141,7 +3250,10 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   staleWhileRevalidate: Schema.optional(
                     Schema.Union([
                       Schema.Struct({
-                        operation: Schema.Literals(["set", "remove"]),
+                        operation: Schema.Union([
+                          Schema.Literals(["set", "remove"]),
+                          Schema.String,
+                        ]),
                         cloudflareOnly: Schema.optional(
                           Schema.Union([Schema.Boolean, Schema.Null]),
                         ),
@@ -3280,11 +3392,14 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   browserTtl: Schema.optional(
                     Schema.Union([
                       Schema.Struct({
-                        mode: Schema.Literals([
-                          "respect_origin",
-                          "bypass_by_default",
-                          "override_origin",
-                          "bypass",
+                        mode: Schema.Union([
+                          Schema.Literals([
+                            "respect_origin",
+                            "bypass_by_default",
+                            "override_origin",
+                            "bypass",
+                          ]),
+                          Schema.String,
                         ]),
                         default: Schema.optional(
                           Schema.Union([Schema.Number, Schema.Null]),
@@ -3507,10 +3622,13 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   edgeTtl: Schema.optional(
                     Schema.Union([
                       Schema.Struct({
-                        mode: Schema.Literals([
-                          "respect_origin",
-                          "bypass_by_default",
-                          "override_origin",
+                        mode: Schema.Union([
+                          Schema.Literals([
+                            "respect_origin",
+                            "bypass_by_default",
+                            "override_origin",
+                          ]),
+                          Schema.String,
                         ]),
                         default: Schema.optional(
                           Schema.Union([Schema.Number, Schema.Null]),
@@ -3732,12 +3850,18 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               Schema.Union([
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["add", "remove", "set"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["add", "remove", "set"]),
+                      Schema.String,
+                    ]),
                     values: Schema.Array(Schema.String),
                   }),
                   Schema.Struct({
                     expression: Schema.String,
-                    operation: Schema.Literals(["add", "remove", "set"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["add", "remove", "set"]),
+                      Schema.String,
+                    ]),
                   }),
                 ]),
                 Schema.Null,
@@ -3897,7 +4021,10 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   ),
                   polish: Schema.optional(
                     Schema.Union([
-                      Schema.Literals(["off", "lossless", "lossy", "webp"]),
+                      Schema.Union([
+                        Schema.Literals(["off", "lossless", "lossy", "webp"]),
+                        Schema.String,
+                      ]),
                       Schema.Null,
                     ]),
                   ),
@@ -3906,13 +4033,19 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   ),
                   requestBodyBuffering: Schema.optional(
                     Schema.Union([
-                      Schema.Literals(["none", "standard", "full"]),
+                      Schema.Union([
+                        Schema.Literals(["none", "standard", "full"]),
+                        Schema.String,
+                      ]),
                       Schema.Null,
                     ]),
                   ),
                   responseBodyBuffering: Schema.optional(
                     Schema.Union([
-                      Schema.Literals(["none", "standard"]),
+                      Schema.Union([
+                        Schema.Literals(["none", "standard"]),
+                        Schema.String,
+                      ]),
                       Schema.Null,
                     ]),
                   ),
@@ -3921,13 +4054,16 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   ),
                   securityLevel: Schema.optional(
                     Schema.Union([
-                      Schema.Literals([
-                        "off",
-                        "essentially_off",
-                        "low",
-                        "medium",
-                        "high",
-                        "under_attack",
+                      Schema.Union([
+                        Schema.Literals([
+                          "off",
+                          "essentially_off",
+                          "low",
+                          "medium",
+                          "high",
+                          "under_attack",
+                        ]),
+                        Schema.String,
                       ]),
                       Schema.Null,
                     ]),
@@ -3937,12 +4073,15 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   ),
                   ssl: Schema.optional(
                     Schema.Union([
-                      Schema.Literals([
-                        "off",
-                        "flexible",
-                        "full",
-                        "strict",
-                        "origin_pull",
+                      Schema.Union([
+                        Schema.Literals([
+                          "off",
+                          "flexible",
+                          "full",
+                          "strict",
+                          "origin_pull",
+                        ]),
+                        Schema.String,
                       ]),
                       Schema.Null,
                     ]),
@@ -4085,31 +4224,34 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   phases: Schema.optional(
                     Schema.Union([
                       Schema.Array(
-                        Schema.Literals([
-                          "ddos_l4",
-                          "ddos_l7",
-                          "http_config_settings",
-                          "http_custom_errors",
-                          "http_log_custom_fields",
-                          "http_ratelimit",
-                          "http_request_cache_settings",
-                          "http_request_dynamic_redirect",
-                          "http_request_firewall_custom",
-                          "http_request_firewall_managed",
-                          "http_request_late_transform",
-                          "http_request_origin",
-                          "http_request_redirect",
-                          "http_request_sanitize",
-                          "http_request_sbfm",
-                          "http_request_transform",
-                          "http_response_cache_settings",
-                          "http_response_compression",
-                          "http_response_firewall_managed",
-                          "http_response_headers_transform",
-                          "magic_transit",
-                          "magic_transit_ids_managed",
-                          "magic_transit_managed",
-                          "magic_transit_ratelimit",
+                        Schema.Union([
+                          Schema.Literals([
+                            "ddos_l4",
+                            "ddos_l7",
+                            "http_config_settings",
+                            "http_custom_errors",
+                            "http_log_custom_fields",
+                            "http_ratelimit",
+                            "http_request_cache_settings",
+                            "http_request_dynamic_redirect",
+                            "http_request_firewall_custom",
+                            "http_request_firewall_managed",
+                            "http_request_late_transform",
+                            "http_request_origin",
+                            "http_request_redirect",
+                            "http_request_sanitize",
+                            "http_request_sbfm",
+                            "http_request_transform",
+                            "http_response_cache_settings",
+                            "http_response_compression",
+                            "http_response_firewall_managed",
+                            "http_response_headers_transform",
+                            "magic_transit",
+                            "magic_transit_ids_managed",
+                            "magic_transit_managed",
+                            "magic_transit_ratelimit",
+                          ]),
+                          Schema.String,
                         ]),
                       ),
                       Schema.Null,
@@ -4118,14 +4260,17 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   products: Schema.optional(
                     Schema.Union([
                       Schema.Array(
-                        Schema.Literals([
-                          "bic",
-                          "hot",
-                          "rateLimit",
-                          "securityLevel",
-                          "uaBlock",
-                          "waf",
-                          "zoneLockdown",
+                        Schema.Union([
+                          Schema.Literals([
+                            "bic",
+                            "hot",
+                            "rateLimit",
+                            "securityLevel",
+                            "uaBlock",
+                            "waf",
+                            "zoneLockdown",
+                          ]),
+                          Schema.String,
                         ]),
                       ),
                       Schema.Null,
@@ -4436,13 +4581,16 @@ const PutPhasBaseFields = {
               algorithms: Schema.Array(
                 Schema.Struct({
                   name: Schema.optional(
-                    Schema.Literals([
-                      "none",
-                      "auto",
-                      "default",
-                      "gzip",
-                      "brotli",
-                      "zstd",
+                    Schema.Union([
+                      Schema.Literals([
+                        "none",
+                        "auto",
+                        "default",
+                        "gzip",
+                        "brotli",
+                        "zstd",
+                      ]),
+                      Schema.String,
                     ]),
                   ),
                 }),
@@ -4588,7 +4736,15 @@ const PutPhasBaseFields = {
                         action: Schema.optional(Schema.String),
                         enabled: Schema.optional(Schema.Boolean),
                         sensitivityLevel: Schema.optional(
-                          Schema.Literals(["default", "medium", "low", "eoff"]),
+                          Schema.Union([
+                            Schema.Literals([
+                              "default",
+                              "medium",
+                              "low",
+                              "eoff",
+                            ]),
+                            Schema.String,
+                          ]),
                         ),
                       }).pipe(
                         Schema.encodeKeys({
@@ -4609,7 +4765,15 @@ const PutPhasBaseFields = {
                         enabled: Schema.optional(Schema.Boolean),
                         scoreThreshold: Schema.optional(Schema.Number),
                         sensitivityLevel: Schema.optional(
-                          Schema.Literals(["default", "medium", "low", "eoff"]),
+                          Schema.Union([
+                            Schema.Literals([
+                              "default",
+                              "medium",
+                              "low",
+                              "eoff",
+                            ]),
+                            Schema.String,
+                          ]),
                         ),
                       }).pipe(
                         Schema.encodeKeys({
@@ -4623,7 +4787,10 @@ const PutPhasBaseFields = {
                     ),
                   ),
                   sensitivityLevel: Schema.optional(
-                    Schema.Literals(["default", "medium", "low", "eoff"]),
+                    Schema.Union([
+                      Schema.Literals(["default", "medium", "low", "eoff"]),
+                      Schema.String,
+                    ]),
                   ),
                 }).pipe(
                   Schema.encodeKeys({
@@ -5082,7 +5249,10 @@ const PutPhasBaseFields = {
                   }),
                   preserveQueryString: Schema.optional(Schema.Boolean),
                   statusCode: Schema.optional(
-                    Schema.Literals(["301", "302", "303", "307", "308"]),
+                    Schema.Union([
+                      Schema.Literals(["301", "302", "303", "307", "308"]),
+                      Schema.String,
+                    ]),
                   ),
                 }).pipe(
                   Schema.encodeKeys({
@@ -5394,11 +5564,14 @@ const PutPhasBaseFields = {
               Schema.Struct({
                 content: Schema.String,
                 contentType: Schema.optional(
-                  Schema.Literals([
-                    "application/json",
-                    "text/html",
-                    "text/plain",
-                    "text/xml",
+                  Schema.Union([
+                    Schema.Literals([
+                      "application/json",
+                      "text/html",
+                      "text/plain",
+                      "text/xml",
+                    ]),
+                    Schema.String,
                   ]),
                 ),
                 statusCode: Schema.optional(Schema.Number),
@@ -5412,11 +5585,14 @@ const PutPhasBaseFields = {
               Schema.Struct({
                 assetName: Schema.String,
                 contentType: Schema.optional(
-                  Schema.Literals([
-                    "application/json",
-                    "text/html",
-                    "text/plain",
-                    "text/xml",
+                  Schema.Union([
+                    Schema.Literals([
+                      "application/json",
+                      "text/html",
+                      "text/plain",
+                      "text/xml",
+                    ]),
+                    Schema.String,
                   ]),
                 ),
                 statusCode: Schema.optional(Schema.Number),
@@ -5493,7 +5669,10 @@ const PutPhasBaseFields = {
             Schema.Struct({
               immutable: Schema.optional(
                 Schema.Struct({
-                  operation: Schema.Literals(["set", "remove"]),
+                  operation: Schema.Union([
+                    Schema.Literals(["set", "remove"]),
+                    Schema.String,
+                  ]),
                   cloudflareOnly: Schema.optional(Schema.Boolean),
                 }).pipe(
                   Schema.encodeKeys({
@@ -5504,7 +5683,10 @@ const PutPhasBaseFields = {
               ),
               maxAge: Schema.optional(
                 Schema.Struct({
-                  operation: Schema.Literals(["set", "remove"]),
+                  operation: Schema.Union([
+                    Schema.Literals(["set", "remove"]),
+                    Schema.String,
+                  ]),
                   cloudflareOnly: Schema.optional(Schema.Boolean),
                 }).pipe(
                   Schema.encodeKeys({
@@ -5515,7 +5697,10 @@ const PutPhasBaseFields = {
               ),
               mustRevalidate: Schema.optional(
                 Schema.Struct({
-                  operation: Schema.Literals(["set", "remove"]),
+                  operation: Schema.Union([
+                    Schema.Literals(["set", "remove"]),
+                    Schema.String,
+                  ]),
                   cloudflareOnly: Schema.optional(Schema.Boolean),
                 }).pipe(
                   Schema.encodeKeys({
@@ -5526,7 +5711,10 @@ const PutPhasBaseFields = {
               ),
               mustUnderstand: Schema.optional(
                 Schema.Struct({
-                  operation: Schema.Literals(["set", "remove"]),
+                  operation: Schema.Union([
+                    Schema.Literals(["set", "remove"]),
+                    Schema.String,
+                  ]),
                   cloudflareOnly: Schema.optional(Schema.Boolean),
                 }).pipe(
                   Schema.encodeKeys({
@@ -5537,7 +5725,10 @@ const PutPhasBaseFields = {
               ),
               noCache: Schema.optional(
                 Schema.Struct({
-                  operation: Schema.Literals(["set", "remove"]),
+                  operation: Schema.Union([
+                    Schema.Literals(["set", "remove"]),
+                    Schema.String,
+                  ]),
                   cloudflareOnly: Schema.optional(Schema.Boolean),
                 }).pipe(
                   Schema.encodeKeys({
@@ -5548,7 +5739,10 @@ const PutPhasBaseFields = {
               ),
               noStore: Schema.optional(
                 Schema.Struct({
-                  operation: Schema.Literals(["set", "remove"]),
+                  operation: Schema.Union([
+                    Schema.Literals(["set", "remove"]),
+                    Schema.String,
+                  ]),
                   cloudflareOnly: Schema.optional(Schema.Boolean),
                 }).pipe(
                   Schema.encodeKeys({
@@ -5559,7 +5753,10 @@ const PutPhasBaseFields = {
               ),
               noTransform: Schema.optional(
                 Schema.Struct({
-                  operation: Schema.Literals(["set", "remove"]),
+                  operation: Schema.Union([
+                    Schema.Literals(["set", "remove"]),
+                    Schema.String,
+                  ]),
                   cloudflareOnly: Schema.optional(Schema.Boolean),
                 }).pipe(
                   Schema.encodeKeys({
@@ -5570,7 +5767,10 @@ const PutPhasBaseFields = {
               ),
               private: Schema.optional(
                 Schema.Struct({
-                  operation: Schema.Literals(["set", "remove"]),
+                  operation: Schema.Union([
+                    Schema.Literals(["set", "remove"]),
+                    Schema.String,
+                  ]),
                   cloudflareOnly: Schema.optional(Schema.Boolean),
                 }).pipe(
                   Schema.encodeKeys({
@@ -5581,7 +5781,10 @@ const PutPhasBaseFields = {
               ),
               proxyRevalidate: Schema.optional(
                 Schema.Struct({
-                  operation: Schema.Literals(["set", "remove"]),
+                  operation: Schema.Union([
+                    Schema.Literals(["set", "remove"]),
+                    Schema.String,
+                  ]),
                   cloudflareOnly: Schema.optional(Schema.Boolean),
                 }).pipe(
                   Schema.encodeKeys({
@@ -5592,7 +5795,10 @@ const PutPhasBaseFields = {
               ),
               public: Schema.optional(
                 Schema.Struct({
-                  operation: Schema.Literals(["set", "remove"]),
+                  operation: Schema.Union([
+                    Schema.Literals(["set", "remove"]),
+                    Schema.String,
+                  ]),
                   cloudflareOnly: Schema.optional(Schema.Boolean),
                 }).pipe(
                   Schema.encodeKeys({
@@ -5603,7 +5809,10 @@ const PutPhasBaseFields = {
               ),
               sMaxage: Schema.optional(
                 Schema.Struct({
-                  operation: Schema.Literals(["set", "remove"]),
+                  operation: Schema.Union([
+                    Schema.Literals(["set", "remove"]),
+                    Schema.String,
+                  ]),
                   cloudflareOnly: Schema.optional(Schema.Boolean),
                 }).pipe(
                   Schema.encodeKeys({
@@ -5614,7 +5823,10 @@ const PutPhasBaseFields = {
               ),
               staleIfError: Schema.optional(
                 Schema.Struct({
-                  operation: Schema.Literals(["set", "remove"]),
+                  operation: Schema.Union([
+                    Schema.Literals(["set", "remove"]),
+                    Schema.String,
+                  ]),
                   cloudflareOnly: Schema.optional(Schema.Boolean),
                 }).pipe(
                   Schema.encodeKeys({
@@ -5625,7 +5837,10 @@ const PutPhasBaseFields = {
               ),
               staleWhileRevalidate: Schema.optional(
                 Schema.Struct({
-                  operation: Schema.Literals(["set", "remove"]),
+                  operation: Schema.Union([
+                    Schema.Literals(["set", "remove"]),
+                    Schema.String,
+                  ]),
                   cloudflareOnly: Schema.optional(Schema.Boolean),
                 }).pipe(
                   Schema.encodeKeys({
@@ -5719,11 +5934,14 @@ const PutPhasBaseFields = {
               ),
               browserTtl: Schema.optional(
                 Schema.Struct({
-                  mode: Schema.Literals([
-                    "respect_origin",
-                    "bypass_by_default",
-                    "override_origin",
-                    "bypass",
+                  mode: Schema.Union([
+                    Schema.Literals([
+                      "respect_origin",
+                      "bypass_by_default",
+                      "override_origin",
+                      "bypass",
+                    ]),
+                    Schema.String,
                   ]),
                   default: Schema.optional(Schema.Number),
                 }),
@@ -5838,10 +6056,13 @@ const PutPhasBaseFields = {
               ),
               edgeTtl: Schema.optional(
                 Schema.Struct({
-                  mode: Schema.Literals([
-                    "respect_origin",
-                    "bypass_by_default",
-                    "override_origin",
+                  mode: Schema.Union([
+                    Schema.Literals([
+                      "respect_origin",
+                      "bypass_by_default",
+                      "override_origin",
+                    ]),
+                    Schema.String,
                   ]),
                   default: Schema.optional(Schema.Number),
                   statusCodeTtl: Schema.optional(
@@ -5976,12 +6197,18 @@ const PutPhasBaseFields = {
           actionParameters: Schema.optional(
             Schema.Union([
               Schema.Struct({
-                operation: Schema.Literals(["add", "remove", "set"]),
+                operation: Schema.Union([
+                  Schema.Literals(["add", "remove", "set"]),
+                  Schema.String,
+                ]),
                 values: Schema.Array(Schema.String),
               }),
               Schema.Struct({
                 expression: Schema.String,
-                operation: Schema.Literals(["add", "remove", "set"]),
+                operation: Schema.Union([
+                  Schema.Literals(["add", "remove", "set"]),
+                  Schema.String,
+                ]),
               }),
             ]),
           ),
@@ -6067,34 +6294,49 @@ const PutPhasBaseFields = {
               mirage: Schema.optional(Schema.Boolean),
               opportunisticEncryption: Schema.optional(Schema.Boolean),
               polish: Schema.optional(
-                Schema.Literals(["off", "lossless", "lossy", "webp"]),
+                Schema.Union([
+                  Schema.Literals(["off", "lossless", "lossy", "webp"]),
+                  Schema.String,
+                ]),
               ),
               redirectsForAiTraining: Schema.optional(Schema.Boolean),
               requestBodyBuffering: Schema.optional(
-                Schema.Literals(["none", "standard", "full"]),
+                Schema.Union([
+                  Schema.Literals(["none", "standard", "full"]),
+                  Schema.String,
+                ]),
               ),
               responseBodyBuffering: Schema.optional(
-                Schema.Literals(["none", "standard"]),
+                Schema.Union([
+                  Schema.Literals(["none", "standard"]),
+                  Schema.String,
+                ]),
               ),
               rocketLoader: Schema.optional(Schema.Boolean),
               securityLevel: Schema.optional(
-                Schema.Literals([
-                  "off",
-                  "essentially_off",
-                  "low",
-                  "medium",
-                  "high",
-                  "under_attack",
+                Schema.Union([
+                  Schema.Literals([
+                    "off",
+                    "essentially_off",
+                    "low",
+                    "medium",
+                    "high",
+                    "under_attack",
+                  ]),
+                  Schema.String,
                 ]),
               ),
               serverSideExcludes: Schema.optional(Schema.Boolean),
               ssl: Schema.optional(
-                Schema.Literals([
-                  "off",
-                  "flexible",
-                  "full",
-                  "strict",
-                  "origin_pull",
+                Schema.Union([
+                  Schema.Literals([
+                    "off",
+                    "flexible",
+                    "full",
+                    "strict",
+                    "origin_pull",
+                  ]),
+                  Schema.String,
                 ]),
               ),
               sxg: Schema.optional(Schema.Boolean),
@@ -6190,44 +6432,50 @@ const PutPhasBaseFields = {
               phase: Schema.optional(Schema.Literal("current")),
               phases: Schema.optional(
                 Schema.Array(
-                  Schema.Literals([
-                    "ddos_l4",
-                    "ddos_l7",
-                    "http_config_settings",
-                    "http_custom_errors",
-                    "http_log_custom_fields",
-                    "http_ratelimit",
-                    "http_request_cache_settings",
-                    "http_request_dynamic_redirect",
-                    "http_request_firewall_custom",
-                    "http_request_firewall_managed",
-                    "http_request_late_transform",
-                    "http_request_origin",
-                    "http_request_redirect",
-                    "http_request_sanitize",
-                    "http_request_sbfm",
-                    "http_request_transform",
-                    "http_response_cache_settings",
-                    "http_response_compression",
-                    "http_response_firewall_managed",
-                    "http_response_headers_transform",
-                    "magic_transit",
-                    "magic_transit_ids_managed",
-                    "magic_transit_managed",
-                    "magic_transit_ratelimit",
+                  Schema.Union([
+                    Schema.Literals([
+                      "ddos_l4",
+                      "ddos_l7",
+                      "http_config_settings",
+                      "http_custom_errors",
+                      "http_log_custom_fields",
+                      "http_ratelimit",
+                      "http_request_cache_settings",
+                      "http_request_dynamic_redirect",
+                      "http_request_firewall_custom",
+                      "http_request_firewall_managed",
+                      "http_request_late_transform",
+                      "http_request_origin",
+                      "http_request_redirect",
+                      "http_request_sanitize",
+                      "http_request_sbfm",
+                      "http_request_transform",
+                      "http_response_cache_settings",
+                      "http_response_compression",
+                      "http_response_firewall_managed",
+                      "http_response_headers_transform",
+                      "magic_transit",
+                      "magic_transit_ids_managed",
+                      "magic_transit_managed",
+                      "magic_transit_ratelimit",
+                    ]),
+                    Schema.String,
                   ]),
                 ),
               ),
               products: Schema.optional(
                 Schema.Array(
-                  Schema.Literals([
-                    "bic",
-                    "hot",
-                    "rateLimit",
-                    "securityLevel",
-                    "uaBlock",
-                    "waf",
-                    "zoneLockdown",
+                  Schema.Union([
+                    Schema.Literals([
+                      "bic",
+                      "hot",
+                      "rateLimit",
+                      "securityLevel",
+                      "uaBlock",
+                      "waf",
+                      "zoneLockdown",
+                    ]),
+                    Schema.String,
                   ]),
                 ),
               ),
@@ -6367,7 +6615,14 @@ interface PutPhasBaseRequest {
         action?: "compress_response";
         actionParameters?: {
           algorithms: {
-            name?: "none" | "auto" | "default" | "gzip" | "brotli" | "zstd";
+            name?:
+              | "none"
+              | "auto"
+              | "default"
+              | "gzip"
+              | "brotli"
+              | "zstd"
+              | (string & {});
           }[];
         };
         description?: string;
@@ -6426,7 +6681,12 @@ interface PutPhasBaseRequest {
               category: string;
               action?: string;
               enabled?: boolean;
-              sensitivityLevel?: "default" | "medium" | "low" | "eoff";
+              sensitivityLevel?:
+                | "default"
+                | "medium"
+                | "low"
+                | "eoff"
+                | (string & {});
             }[];
             enabled?: boolean;
             rules?: {
@@ -6434,9 +6694,19 @@ interface PutPhasBaseRequest {
               action?: string;
               enabled?: boolean;
               scoreThreshold?: number;
-              sensitivityLevel?: "default" | "medium" | "low" | "eoff";
+              sensitivityLevel?:
+                | "default"
+                | "medium"
+                | "low"
+                | "eoff"
+                | (string & {});
             }[];
-            sensitivityLevel?: "default" | "medium" | "low" | "eoff";
+            sensitivityLevel?:
+              | "default"
+              | "medium"
+              | "low"
+              | "eoff"
+              | (string & {});
           };
         };
         description?: string;
@@ -6593,7 +6863,7 @@ interface PutPhasBaseRequest {
           fromValue?: {
             targetUrl: { expression?: string; value?: string };
             preserveQueryString?: boolean;
-            statusCode?: "301" | "302" | "303" | "307" | "308";
+            statusCode?: "301" | "302" | "303" | "307" | "308" | (string & {});
           };
         };
         description?: string;
@@ -6707,7 +6977,8 @@ interface PutPhasBaseRequest {
                 | "application/json"
                 | "text/html"
                 | "text/plain"
-                | "text/xml";
+                | "text/xml"
+                | (string & {});
               statusCode?: number;
             }
           | {
@@ -6716,7 +6987,8 @@ interface PutPhasBaseRequest {
                 | "application/json"
                 | "text/html"
                 | "text/plain"
-                | "text/xml";
+                | "text/xml"
+                | (string & {});
               statusCode?: number;
             };
         description?: string;
@@ -6743,35 +7015,56 @@ interface PutPhasBaseRequest {
         id?: string;
         action?: "set_cache_control";
         actionParameters?: {
-          immutable?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
-          maxAge?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+          immutable?: {
+            operation: "set" | "remove" | (string & {});
+            cloudflareOnly?: boolean;
+          };
+          maxAge?: {
+            operation: "set" | "remove" | (string & {});
+            cloudflareOnly?: boolean;
+          };
           mustRevalidate?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean;
           };
           mustUnderstand?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean;
           };
-          noCache?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
-          noStore?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+          noCache?: {
+            operation: "set" | "remove" | (string & {});
+            cloudflareOnly?: boolean;
+          };
+          noStore?: {
+            operation: "set" | "remove" | (string & {});
+            cloudflareOnly?: boolean;
+          };
           noTransform?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean;
           };
-          private?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+          private?: {
+            operation: "set" | "remove" | (string & {});
+            cloudflareOnly?: boolean;
+          };
           proxyRevalidate?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean;
           };
-          public?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
-          sMaxage?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+          public?: {
+            operation: "set" | "remove" | (string & {});
+            cloudflareOnly?: boolean;
+          };
+          sMaxage?: {
+            operation: "set" | "remove" | (string & {});
+            cloudflareOnly?: boolean;
+          };
           staleIfError?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean;
           };
           staleWhileRevalidate?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean;
           };
         };
@@ -6805,7 +7098,8 @@ interface PutPhasBaseRequest {
               | "respect_origin"
               | "bypass_by_default"
               | "override_origin"
-              | "bypass";
+              | "bypass"
+              | (string & {});
             default?: number;
           };
           cache?: boolean;
@@ -6831,7 +7125,11 @@ interface PutPhasBaseRequest {
           };
           cacheReserve?: { eligible: boolean; minimumFileSize?: number };
           edgeTtl?: {
-            mode: "respect_origin" | "bypass_by_default" | "override_origin";
+            mode:
+              | "respect_origin"
+              | "bypass_by_default"
+              | "override_origin"
+              | (string & {});
             default?: number;
             statusCodeTtl?: {
               value: number;
@@ -6873,8 +7171,14 @@ interface PutPhasBaseRequest {
         id?: string;
         action?: "set_cache_tags";
         actionParameters?:
-          | { operation: "add" | "remove" | "set"; values: string[] }
-          | { expression: string; operation: "add" | "remove" | "set" };
+          | {
+              operation: "add" | "remove" | "set" | (string & {});
+              values: string[];
+            }
+          | {
+              expression: string;
+              operation: "add" | "remove" | "set" | (string & {});
+            };
         description?: string;
         enabled?: boolean;
         exposedCredentialCheck?: {
@@ -6912,10 +7216,10 @@ interface PutPhasBaseRequest {
           hotlinkProtection?: boolean;
           mirage?: boolean;
           opportunisticEncryption?: boolean;
-          polish?: "off" | "lossless" | "lossy" | "webp";
+          polish?: "off" | "lossless" | "lossy" | "webp" | (string & {});
           redirectsForAiTraining?: boolean;
-          requestBodyBuffering?: "none" | "standard" | "full";
-          responseBodyBuffering?: "none" | "standard";
+          requestBodyBuffering?: "none" | "standard" | "full" | (string & {});
+          responseBodyBuffering?: "none" | "standard" | (string & {});
           rocketLoader?: boolean;
           securityLevel?:
             | "off"
@@ -6923,9 +7227,16 @@ interface PutPhasBaseRequest {
             | "low"
             | "medium"
             | "high"
-            | "under_attack";
+            | "under_attack"
+            | (string & {});
           serverSideExcludes?: boolean;
-          ssl?: "off" | "flexible" | "full" | "strict" | "origin_pull";
+          ssl?:
+            | "off"
+            | "flexible"
+            | "full"
+            | "strict"
+            | "origin_pull"
+            | (string & {});
           sxg?: boolean;
         };
         description?: string;
@@ -6978,6 +7289,7 @@ interface PutPhasBaseRequest {
             | "magic_transit_ids_managed"
             | "magic_transit_managed"
             | "magic_transit_ratelimit"
+            | (string & {})
           )[];
           products?: (
             | "bic"
@@ -6987,6 +7299,7 @@ interface PutPhasBaseRequest {
             | "uaBlock"
             | "waf"
             | "zoneLockdown"
+            | (string & {})
           )[];
           rules?: Record<string, unknown>;
           ruleset?: "current";
@@ -7050,7 +7363,7 @@ export interface PutPhasResponse {
   /** The unique ID of the ruleset. */
   id: string;
   /** The kind of the ruleset. */
-  kind: "managed" | "custom" | "root" | "zone";
+  kind: "managed" | "custom" | "root" | "zone" | (string & {});
   /** The timestamp of when the ruleset was last modified. */
   lastUpdated: string;
   /** The human-readable name of the ruleset. */
@@ -7080,7 +7393,8 @@ export interface PutPhasResponse {
     | "magic_transit"
     | "magic_transit_ids_managed"
     | "magic_transit_managed"
-    | "magic_transit_ratelimit";
+    | "magic_transit_ratelimit"
+    | (string & {});
   /** The list of rules in the ruleset. */
   rules?:
     | (
@@ -7158,6 +7472,7 @@ export interface PutPhasResponse {
                   | "gzip"
                   | "brotli"
                   | "zstd"
+                  | (string & {})
                   | null;
               }[];
             } | null;
@@ -7229,6 +7544,7 @@ export interface PutPhasResponse {
                         | "medium"
                         | "low"
                         | "eoff"
+                        | (string & {})
                         | null;
                     }[]
                   | null;
@@ -7244,10 +7560,17 @@ export interface PutPhasResponse {
                         | "medium"
                         | "low"
                         | "eoff"
+                        | (string & {})
                         | null;
                     }[]
                   | null;
-                sensitivityLevel?: "default" | "medium" | "low" | "eoff" | null;
+                sensitivityLevel?:
+                  | "default"
+                  | "medium"
+                  | "low"
+                  | "eoff"
+                  | (string & {})
+                  | null;
               } | null;
             } | null;
             categories?: string[] | null;
@@ -7429,7 +7752,14 @@ export interface PutPhasResponse {
                   value?: string | null;
                 };
                 preserveQueryString?: boolean | null;
-                statusCode?: "301" | "302" | "303" | "307" | "308" | null;
+                statusCode?:
+                  | "301"
+                  | "302"
+                  | "303"
+                  | "307"
+                  | "308"
+                  | (string & {})
+                  | null;
               } | null;
             } | null;
             categories?: string[] | null;
@@ -7566,6 +7896,7 @@ export interface PutPhasResponse {
                     | "text/html"
                     | "text/plain"
                     | "text/xml"
+                    | (string & {})
                     | null;
                   statusCode?: number | null;
                 }
@@ -7576,6 +7907,7 @@ export interface PutPhasResponse {
                     | "text/html"
                     | "text/plain"
                     | "text/xml"
+                    | (string & {})
                     | null;
                   statusCode?: number | null;
                 }
@@ -7608,55 +7940,55 @@ export interface PutPhasResponse {
             action?: "set_cache_control" | null;
             actionParameters?: {
               immutable?: {
-                operation: "set" | "remove";
+                operation: "set" | "remove" | (string & {});
                 cloudflareOnly?: boolean | null;
               } | null;
               maxAge?: {
-                operation: "set" | "remove";
+                operation: "set" | "remove" | (string & {});
                 cloudflareOnly?: boolean | null;
               } | null;
               mustRevalidate?: {
-                operation: "set" | "remove";
+                operation: "set" | "remove" | (string & {});
                 cloudflareOnly?: boolean | null;
               } | null;
               mustUnderstand?: {
-                operation: "set" | "remove";
+                operation: "set" | "remove" | (string & {});
                 cloudflareOnly?: boolean | null;
               } | null;
               noCache?: {
-                operation: "set" | "remove";
+                operation: "set" | "remove" | (string & {});
                 cloudflareOnly?: boolean | null;
               } | null;
               noStore?: {
-                operation: "set" | "remove";
+                operation: "set" | "remove" | (string & {});
                 cloudflareOnly?: boolean | null;
               } | null;
               noTransform?: {
-                operation: "set" | "remove";
+                operation: "set" | "remove" | (string & {});
                 cloudflareOnly?: boolean | null;
               } | null;
               private?: {
-                operation: "set" | "remove";
+                operation: "set" | "remove" | (string & {});
                 cloudflareOnly?: boolean | null;
               } | null;
               proxyRevalidate?: {
-                operation: "set" | "remove";
+                operation: "set" | "remove" | (string & {});
                 cloudflareOnly?: boolean | null;
               } | null;
               public?: {
-                operation: "set" | "remove";
+                operation: "set" | "remove" | (string & {});
                 cloudflareOnly?: boolean | null;
               } | null;
               sMaxage?: {
-                operation: "set" | "remove";
+                operation: "set" | "remove" | (string & {});
                 cloudflareOnly?: boolean | null;
               } | null;
               staleIfError?: {
-                operation: "set" | "remove";
+                operation: "set" | "remove" | (string & {});
                 cloudflareOnly?: boolean | null;
               } | null;
               staleWhileRevalidate?: {
-                operation: "set" | "remove";
+                operation: "set" | "remove" | (string & {});
                 cloudflareOnly?: boolean | null;
               } | null;
             } | null;
@@ -7693,7 +8025,8 @@ export interface PutPhasResponse {
                   | "respect_origin"
                   | "bypass_by_default"
                   | "override_origin"
-                  | "bypass";
+                  | "bypass"
+                  | (string & {});
                 default?: number | null;
               } | null;
               cache?: boolean | null;
@@ -7738,7 +8071,8 @@ export interface PutPhasResponse {
                 mode:
                   | "respect_origin"
                   | "bypass_by_default"
-                  | "override_origin";
+                  | "override_origin"
+                  | (string & {});
                 default?: number | null;
                 statusCodeTtl?:
                   | {
@@ -7790,8 +8124,14 @@ export interface PutPhasResponse {
             id?: string | null;
             action?: "set_cache_tags" | null;
             actionParameters?:
-              | { operation: "add" | "remove" | "set"; values: string[] }
-              | { expression: string; operation: "add" | "remove" | "set" }
+              | {
+                  operation: "add" | "remove" | "set" | (string & {});
+                  values: string[];
+                }
+              | {
+                  expression: string;
+                  operation: "add" | "remove" | "set" | (string & {});
+                }
               | null;
             categories?: string[] | null;
             description?: string | null;
@@ -7837,10 +8177,25 @@ export interface PutPhasResponse {
               hotlinkProtection?: boolean | null;
               mirage?: boolean | null;
               opportunisticEncryption?: boolean | null;
-              polish?: "off" | "lossless" | "lossy" | "webp" | null;
+              polish?:
+                | "off"
+                | "lossless"
+                | "lossy"
+                | "webp"
+                | (string & {})
+                | null;
               redirectsForAiTraining?: boolean | null;
-              requestBodyBuffering?: "none" | "standard" | "full" | null;
-              responseBodyBuffering?: "none" | "standard" | null;
+              requestBodyBuffering?:
+                | "none"
+                | "standard"
+                | "full"
+                | (string & {})
+                | null;
+              responseBodyBuffering?:
+                | "none"
+                | "standard"
+                | (string & {})
+                | null;
               rocketLoader?: boolean | null;
               securityLevel?:
                 | "off"
@@ -7849,6 +8204,7 @@ export interface PutPhasResponse {
                 | "medium"
                 | "high"
                 | "under_attack"
+                | (string & {})
                 | null;
               serverSideExcludes?: boolean | null;
               ssl?:
@@ -7857,6 +8213,7 @@ export interface PutPhasResponse {
                 | "full"
                 | "strict"
                 | "origin_pull"
+                | (string & {})
                 | null;
               sxg?: boolean | null;
             } | null;
@@ -7914,6 +8271,7 @@ export interface PutPhasResponse {
                     | "magic_transit_ids_managed"
                     | "magic_transit_managed"
                     | "magic_transit_ratelimit"
+                    | (string & {})
                   )[]
                 | null;
               products?:
@@ -7925,6 +8283,7 @@ export interface PutPhasResponse {
                     | "uaBlock"
                     | "waf"
                     | "zoneLockdown"
+                    | (string & {})
                   )[]
                 | null;
               rules?: Record<string, unknown> | null;
@@ -7962,34 +8321,40 @@ export interface PutPhasResponse {
 
 export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
-  kind: Schema.Literals(["managed", "custom", "root", "zone"]),
+  kind: Schema.Union([
+    Schema.Literals(["managed", "custom", "root", "zone"]),
+    Schema.String,
+  ]),
   lastUpdated: Schema.String,
   name: Schema.String,
-  phase: Schema.Literals([
-    "ddos_l4",
-    "ddos_l7",
-    "http_config_settings",
-    "http_custom_errors",
-    "http_log_custom_fields",
-    "http_ratelimit",
-    "http_request_cache_settings",
-    "http_request_dynamic_redirect",
-    "http_request_firewall_custom",
-    "http_request_firewall_managed",
-    "http_request_late_transform",
-    "http_request_origin",
-    "http_request_redirect",
-    "http_request_sanitize",
-    "http_request_sbfm",
-    "http_request_transform",
-    "http_response_cache_settings",
-    "http_response_compression",
-    "http_response_firewall_managed",
-    "http_response_headers_transform",
-    "magic_transit",
-    "magic_transit_ids_managed",
-    "magic_transit_managed",
-    "magic_transit_ratelimit",
+  phase: Schema.Union([
+    Schema.Literals([
+      "ddos_l4",
+      "ddos_l7",
+      "http_config_settings",
+      "http_custom_errors",
+      "http_log_custom_fields",
+      "http_ratelimit",
+      "http_request_cache_settings",
+      "http_request_dynamic_redirect",
+      "http_request_firewall_custom",
+      "http_request_firewall_managed",
+      "http_request_late_transform",
+      "http_request_origin",
+      "http_request_redirect",
+      "http_request_sanitize",
+      "http_request_sbfm",
+      "http_request_transform",
+      "http_response_cache_settings",
+      "http_response_compression",
+      "http_response_firewall_managed",
+      "http_response_headers_transform",
+      "magic_transit",
+      "magic_transit_ids_managed",
+      "magic_transit_managed",
+      "magic_transit_ratelimit",
+    ]),
+    Schema.String,
   ]),
   rules: Schema.optional(
     Schema.Union([
@@ -8229,13 +8594,16 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     Schema.Struct({
                       name: Schema.optional(
                         Schema.Union([
-                          Schema.Literals([
-                            "none",
-                            "auto",
-                            "default",
-                            "gzip",
-                            "brotli",
-                            "zstd",
+                          Schema.Union([
+                            Schema.Literals([
+                              "none",
+                              "auto",
+                              "default",
+                              "gzip",
+                              "brotli",
+                              "zstd",
+                            ]),
+                            Schema.String,
                           ]),
                           Schema.Null,
                         ]),
@@ -8474,11 +8842,14 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                                 ),
                                 sensitivityLevel: Schema.optional(
                                   Schema.Union([
-                                    Schema.Literals([
-                                      "default",
-                                      "medium",
-                                      "low",
-                                      "eoff",
+                                    Schema.Union([
+                                      Schema.Literals([
+                                        "default",
+                                        "medium",
+                                        "low",
+                                        "eoff",
+                                      ]),
+                                      Schema.String,
                                     ]),
                                     Schema.Null,
                                   ]),
@@ -8514,11 +8885,14 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                                 ),
                                 sensitivityLevel: Schema.optional(
                                   Schema.Union([
-                                    Schema.Literals([
-                                      "default",
-                                      "medium",
-                                      "low",
-                                      "eoff",
+                                    Schema.Union([
+                                      Schema.Literals([
+                                        "default",
+                                        "medium",
+                                        "low",
+                                        "eoff",
+                                      ]),
+                                      Schema.String,
                                     ]),
                                     Schema.Null,
                                   ]),
@@ -8538,11 +8912,14 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                         ),
                         sensitivityLevel: Schema.optional(
                           Schema.Union([
-                            Schema.Literals([
-                              "default",
-                              "medium",
-                              "low",
-                              "eoff",
+                            Schema.Union([
+                              Schema.Literals([
+                                "default",
+                                "medium",
+                                "low",
+                                "eoff",
+                              ]),
+                              Schema.String,
                             ]),
                             Schema.Null,
                           ]),
@@ -9275,12 +9652,15 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                         ),
                         statusCode: Schema.optional(
                           Schema.Union([
-                            Schema.Literals([
-                              "301",
-                              "302",
-                              "303",
-                              "307",
-                              "308",
+                            Schema.Union([
+                              Schema.Literals([
+                                "301",
+                                "302",
+                                "303",
+                                "307",
+                                "308",
+                              ]),
+                              Schema.String,
                             ]),
                             Schema.Null,
                           ]),
@@ -9790,11 +10170,14 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     content: Schema.String,
                     contentType: Schema.optional(
                       Schema.Union([
-                        Schema.Literals([
-                          "application/json",
-                          "text/html",
-                          "text/plain",
-                          "text/xml",
+                        Schema.Union([
+                          Schema.Literals([
+                            "application/json",
+                            "text/html",
+                            "text/plain",
+                            "text/xml",
+                          ]),
+                          Schema.String,
                         ]),
                         Schema.Null,
                       ]),
@@ -9813,11 +10196,14 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     assetName: Schema.String,
                     contentType: Schema.optional(
                       Schema.Union([
-                        Schema.Literals([
-                          "application/json",
-                          "text/html",
-                          "text/plain",
-                          "text/xml",
+                        Schema.Union([
+                          Schema.Literals([
+                            "application/json",
+                            "text/html",
+                            "text/plain",
+                            "text/xml",
+                          ]),
+                          Schema.String,
                         ]),
                         Schema.Null,
                       ]),
@@ -9939,7 +10325,10 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   immutable: Schema.optional(
                     Schema.Union([
                       Schema.Struct({
-                        operation: Schema.Literals(["set", "remove"]),
+                        operation: Schema.Union([
+                          Schema.Literals(["set", "remove"]),
+                          Schema.String,
+                        ]),
                         cloudflareOnly: Schema.optional(
                           Schema.Union([Schema.Boolean, Schema.Null]),
                         ),
@@ -9955,7 +10344,10 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   maxAge: Schema.optional(
                     Schema.Union([
                       Schema.Struct({
-                        operation: Schema.Literals(["set", "remove"]),
+                        operation: Schema.Union([
+                          Schema.Literals(["set", "remove"]),
+                          Schema.String,
+                        ]),
                         cloudflareOnly: Schema.optional(
                           Schema.Union([Schema.Boolean, Schema.Null]),
                         ),
@@ -9971,7 +10363,10 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   mustRevalidate: Schema.optional(
                     Schema.Union([
                       Schema.Struct({
-                        operation: Schema.Literals(["set", "remove"]),
+                        operation: Schema.Union([
+                          Schema.Literals(["set", "remove"]),
+                          Schema.String,
+                        ]),
                         cloudflareOnly: Schema.optional(
                           Schema.Union([Schema.Boolean, Schema.Null]),
                         ),
@@ -9987,7 +10382,10 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   mustUnderstand: Schema.optional(
                     Schema.Union([
                       Schema.Struct({
-                        operation: Schema.Literals(["set", "remove"]),
+                        operation: Schema.Union([
+                          Schema.Literals(["set", "remove"]),
+                          Schema.String,
+                        ]),
                         cloudflareOnly: Schema.optional(
                           Schema.Union([Schema.Boolean, Schema.Null]),
                         ),
@@ -10003,7 +10401,10 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   noCache: Schema.optional(
                     Schema.Union([
                       Schema.Struct({
-                        operation: Schema.Literals(["set", "remove"]),
+                        operation: Schema.Union([
+                          Schema.Literals(["set", "remove"]),
+                          Schema.String,
+                        ]),
                         cloudflareOnly: Schema.optional(
                           Schema.Union([Schema.Boolean, Schema.Null]),
                         ),
@@ -10019,7 +10420,10 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   noStore: Schema.optional(
                     Schema.Union([
                       Schema.Struct({
-                        operation: Schema.Literals(["set", "remove"]),
+                        operation: Schema.Union([
+                          Schema.Literals(["set", "remove"]),
+                          Schema.String,
+                        ]),
                         cloudflareOnly: Schema.optional(
                           Schema.Union([Schema.Boolean, Schema.Null]),
                         ),
@@ -10035,7 +10439,10 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   noTransform: Schema.optional(
                     Schema.Union([
                       Schema.Struct({
-                        operation: Schema.Literals(["set", "remove"]),
+                        operation: Schema.Union([
+                          Schema.Literals(["set", "remove"]),
+                          Schema.String,
+                        ]),
                         cloudflareOnly: Schema.optional(
                           Schema.Union([Schema.Boolean, Schema.Null]),
                         ),
@@ -10051,7 +10458,10 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   private: Schema.optional(
                     Schema.Union([
                       Schema.Struct({
-                        operation: Schema.Literals(["set", "remove"]),
+                        operation: Schema.Union([
+                          Schema.Literals(["set", "remove"]),
+                          Schema.String,
+                        ]),
                         cloudflareOnly: Schema.optional(
                           Schema.Union([Schema.Boolean, Schema.Null]),
                         ),
@@ -10067,7 +10477,10 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   proxyRevalidate: Schema.optional(
                     Schema.Union([
                       Schema.Struct({
-                        operation: Schema.Literals(["set", "remove"]),
+                        operation: Schema.Union([
+                          Schema.Literals(["set", "remove"]),
+                          Schema.String,
+                        ]),
                         cloudflareOnly: Schema.optional(
                           Schema.Union([Schema.Boolean, Schema.Null]),
                         ),
@@ -10083,7 +10496,10 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   public: Schema.optional(
                     Schema.Union([
                       Schema.Struct({
-                        operation: Schema.Literals(["set", "remove"]),
+                        operation: Schema.Union([
+                          Schema.Literals(["set", "remove"]),
+                          Schema.String,
+                        ]),
                         cloudflareOnly: Schema.optional(
                           Schema.Union([Schema.Boolean, Schema.Null]),
                         ),
@@ -10099,7 +10515,10 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   sMaxage: Schema.optional(
                     Schema.Union([
                       Schema.Struct({
-                        operation: Schema.Literals(["set", "remove"]),
+                        operation: Schema.Union([
+                          Schema.Literals(["set", "remove"]),
+                          Schema.String,
+                        ]),
                         cloudflareOnly: Schema.optional(
                           Schema.Union([Schema.Boolean, Schema.Null]),
                         ),
@@ -10115,7 +10534,10 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   staleIfError: Schema.optional(
                     Schema.Union([
                       Schema.Struct({
-                        operation: Schema.Literals(["set", "remove"]),
+                        operation: Schema.Union([
+                          Schema.Literals(["set", "remove"]),
+                          Schema.String,
+                        ]),
                         cloudflareOnly: Schema.optional(
                           Schema.Union([Schema.Boolean, Schema.Null]),
                         ),
@@ -10131,7 +10553,10 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   staleWhileRevalidate: Schema.optional(
                     Schema.Union([
                       Schema.Struct({
-                        operation: Schema.Literals(["set", "remove"]),
+                        operation: Schema.Union([
+                          Schema.Literals(["set", "remove"]),
+                          Schema.String,
+                        ]),
                         cloudflareOnly: Schema.optional(
                           Schema.Union([Schema.Boolean, Schema.Null]),
                         ),
@@ -10270,11 +10695,14 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   browserTtl: Schema.optional(
                     Schema.Union([
                       Schema.Struct({
-                        mode: Schema.Literals([
-                          "respect_origin",
-                          "bypass_by_default",
-                          "override_origin",
-                          "bypass",
+                        mode: Schema.Union([
+                          Schema.Literals([
+                            "respect_origin",
+                            "bypass_by_default",
+                            "override_origin",
+                            "bypass",
+                          ]),
+                          Schema.String,
                         ]),
                         default: Schema.optional(
                           Schema.Union([Schema.Number, Schema.Null]),
@@ -10497,10 +10925,13 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   edgeTtl: Schema.optional(
                     Schema.Union([
                       Schema.Struct({
-                        mode: Schema.Literals([
-                          "respect_origin",
-                          "bypass_by_default",
-                          "override_origin",
+                        mode: Schema.Union([
+                          Schema.Literals([
+                            "respect_origin",
+                            "bypass_by_default",
+                            "override_origin",
+                          ]),
+                          Schema.String,
                         ]),
                         default: Schema.optional(
                           Schema.Union([Schema.Number, Schema.Null]),
@@ -10722,12 +11153,18 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               Schema.Union([
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["add", "remove", "set"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["add", "remove", "set"]),
+                      Schema.String,
+                    ]),
                     values: Schema.Array(Schema.String),
                   }),
                   Schema.Struct({
                     expression: Schema.String,
-                    operation: Schema.Literals(["add", "remove", "set"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["add", "remove", "set"]),
+                      Schema.String,
+                    ]),
                   }),
                 ]),
                 Schema.Null,
@@ -10887,7 +11324,10 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   ),
                   polish: Schema.optional(
                     Schema.Union([
-                      Schema.Literals(["off", "lossless", "lossy", "webp"]),
+                      Schema.Union([
+                        Schema.Literals(["off", "lossless", "lossy", "webp"]),
+                        Schema.String,
+                      ]),
                       Schema.Null,
                     ]),
                   ),
@@ -10896,13 +11336,19 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   ),
                   requestBodyBuffering: Schema.optional(
                     Schema.Union([
-                      Schema.Literals(["none", "standard", "full"]),
+                      Schema.Union([
+                        Schema.Literals(["none", "standard", "full"]),
+                        Schema.String,
+                      ]),
                       Schema.Null,
                     ]),
                   ),
                   responseBodyBuffering: Schema.optional(
                     Schema.Union([
-                      Schema.Literals(["none", "standard"]),
+                      Schema.Union([
+                        Schema.Literals(["none", "standard"]),
+                        Schema.String,
+                      ]),
                       Schema.Null,
                     ]),
                   ),
@@ -10911,13 +11357,16 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   ),
                   securityLevel: Schema.optional(
                     Schema.Union([
-                      Schema.Literals([
-                        "off",
-                        "essentially_off",
-                        "low",
-                        "medium",
-                        "high",
-                        "under_attack",
+                      Schema.Union([
+                        Schema.Literals([
+                          "off",
+                          "essentially_off",
+                          "low",
+                          "medium",
+                          "high",
+                          "under_attack",
+                        ]),
+                        Schema.String,
                       ]),
                       Schema.Null,
                     ]),
@@ -10927,12 +11376,15 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   ),
                   ssl: Schema.optional(
                     Schema.Union([
-                      Schema.Literals([
-                        "off",
-                        "flexible",
-                        "full",
-                        "strict",
-                        "origin_pull",
+                      Schema.Union([
+                        Schema.Literals([
+                          "off",
+                          "flexible",
+                          "full",
+                          "strict",
+                          "origin_pull",
+                        ]),
+                        Schema.String,
                       ]),
                       Schema.Null,
                     ]),
@@ -11075,31 +11527,34 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   phases: Schema.optional(
                     Schema.Union([
                       Schema.Array(
-                        Schema.Literals([
-                          "ddos_l4",
-                          "ddos_l7",
-                          "http_config_settings",
-                          "http_custom_errors",
-                          "http_log_custom_fields",
-                          "http_ratelimit",
-                          "http_request_cache_settings",
-                          "http_request_dynamic_redirect",
-                          "http_request_firewall_custom",
-                          "http_request_firewall_managed",
-                          "http_request_late_transform",
-                          "http_request_origin",
-                          "http_request_redirect",
-                          "http_request_sanitize",
-                          "http_request_sbfm",
-                          "http_request_transform",
-                          "http_response_cache_settings",
-                          "http_response_compression",
-                          "http_response_firewall_managed",
-                          "http_response_headers_transform",
-                          "magic_transit",
-                          "magic_transit_ids_managed",
-                          "magic_transit_managed",
-                          "magic_transit_ratelimit",
+                        Schema.Union([
+                          Schema.Literals([
+                            "ddos_l4",
+                            "ddos_l7",
+                            "http_config_settings",
+                            "http_custom_errors",
+                            "http_log_custom_fields",
+                            "http_ratelimit",
+                            "http_request_cache_settings",
+                            "http_request_dynamic_redirect",
+                            "http_request_firewall_custom",
+                            "http_request_firewall_managed",
+                            "http_request_late_transform",
+                            "http_request_origin",
+                            "http_request_redirect",
+                            "http_request_sanitize",
+                            "http_request_sbfm",
+                            "http_request_transform",
+                            "http_response_cache_settings",
+                            "http_response_compression",
+                            "http_response_firewall_managed",
+                            "http_response_headers_transform",
+                            "magic_transit",
+                            "magic_transit_ids_managed",
+                            "magic_transit_managed",
+                            "magic_transit_ratelimit",
+                          ]),
+                          Schema.String,
                         ]),
                       ),
                       Schema.Null,
@@ -11108,14 +11563,17 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   products: Schema.optional(
                     Schema.Union([
                       Schema.Array(
-                        Schema.Literals([
-                          "bic",
-                          "hot",
-                          "rateLimit",
-                          "securityLevel",
-                          "uaBlock",
-                          "waf",
-                          "zoneLockdown",
+                        Schema.Union([
+                          Schema.Literals([
+                            "bic",
+                            "hot",
+                            "rateLimit",
+                            "securityLevel",
+                            "uaBlock",
+                            "waf",
+                            "zoneLockdown",
+                          ]),
+                          Schema.String,
                         ]),
                       ),
                       Schema.Null,
@@ -11323,7 +11781,7 @@ export interface GetPhasVersionResponse {
   /** The unique ID of the ruleset. */
   id: string;
   /** The kind of the ruleset. */
-  kind: "managed" | "custom" | "root" | "zone";
+  kind: "managed" | "custom" | "root" | "zone" | (string & {});
   /** The timestamp of when the ruleset was last modified. */
   lastUpdated: string;
   /** The human-readable name of the ruleset. */
@@ -11353,7 +11811,8 @@ export interface GetPhasVersionResponse {
     | "magic_transit"
     | "magic_transit_ids_managed"
     | "magic_transit_managed"
-    | "magic_transit_ratelimit";
+    | "magic_transit_ratelimit"
+    | (string & {});
   /** The list of rules in the ruleset. */
   rules: (
     | {
@@ -11430,6 +11889,7 @@ export interface GetPhasVersionResponse {
               | "gzip"
               | "brotli"
               | "zstd"
+              | (string & {})
               | null;
           }[];
         } | null;
@@ -11501,6 +11961,7 @@ export interface GetPhasVersionResponse {
                     | "medium"
                     | "low"
                     | "eoff"
+                    | (string & {})
                     | null;
                 }[]
               | null;
@@ -11516,10 +11977,17 @@ export interface GetPhasVersionResponse {
                     | "medium"
                     | "low"
                     | "eoff"
+                    | (string & {})
                     | null;
                 }[]
               | null;
-            sensitivityLevel?: "default" | "medium" | "low" | "eoff" | null;
+            sensitivityLevel?:
+              | "default"
+              | "medium"
+              | "low"
+              | "eoff"
+              | (string & {})
+              | null;
           } | null;
         } | null;
         categories?: string[] | null;
@@ -11698,7 +12166,14 @@ export interface GetPhasVersionResponse {
           fromValue?: {
             targetUrl: { expression?: string | null; value?: string | null };
             preserveQueryString?: boolean | null;
-            statusCode?: "301" | "302" | "303" | "307" | "308" | null;
+            statusCode?:
+              | "301"
+              | "302"
+              | "303"
+              | "307"
+              | "308"
+              | (string & {})
+              | null;
           } | null;
         } | null;
         categories?: string[] | null;
@@ -11832,6 +12307,7 @@ export interface GetPhasVersionResponse {
                 | "text/html"
                 | "text/plain"
                 | "text/xml"
+                | (string & {})
                 | null;
               statusCode?: number | null;
             }
@@ -11842,6 +12318,7 @@ export interface GetPhasVersionResponse {
                 | "text/html"
                 | "text/plain"
                 | "text/xml"
+                | (string & {})
                 | null;
               statusCode?: number | null;
             }
@@ -11874,55 +12351,55 @@ export interface GetPhasVersionResponse {
         action?: "set_cache_control" | null;
         actionParameters?: {
           immutable?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           maxAge?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           mustRevalidate?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           mustUnderstand?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           noCache?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           noStore?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           noTransform?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           private?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           proxyRevalidate?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           public?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           sMaxage?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           staleIfError?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           staleWhileRevalidate?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
         } | null;
@@ -11959,7 +12436,8 @@ export interface GetPhasVersionResponse {
               | "respect_origin"
               | "bypass_by_default"
               | "override_origin"
-              | "bypass";
+              | "bypass"
+              | (string & {});
             default?: number | null;
           } | null;
           cache?: boolean | null;
@@ -11995,7 +12473,11 @@ export interface GetPhasVersionResponse {
             minimumFileSize?: number | null;
           } | null;
           edgeTtl?: {
-            mode: "respect_origin" | "bypass_by_default" | "override_origin";
+            mode:
+              | "respect_origin"
+              | "bypass_by_default"
+              | "override_origin"
+              | (string & {});
             default?: number | null;
             statusCodeTtl?:
               | {
@@ -12045,8 +12527,14 @@ export interface GetPhasVersionResponse {
         id?: string | null;
         action?: "set_cache_tags" | null;
         actionParameters?:
-          | { operation: "add" | "remove" | "set"; values: string[] }
-          | { expression: string; operation: "add" | "remove" | "set" }
+          | {
+              operation: "add" | "remove" | "set" | (string & {});
+              values: string[];
+            }
+          | {
+              expression: string;
+              operation: "add" | "remove" | "set" | (string & {});
+            }
           | null;
         categories?: string[] | null;
         description?: string | null;
@@ -12092,10 +12580,15 @@ export interface GetPhasVersionResponse {
           hotlinkProtection?: boolean | null;
           mirage?: boolean | null;
           opportunisticEncryption?: boolean | null;
-          polish?: "off" | "lossless" | "lossy" | "webp" | null;
+          polish?: "off" | "lossless" | "lossy" | "webp" | (string & {}) | null;
           redirectsForAiTraining?: boolean | null;
-          requestBodyBuffering?: "none" | "standard" | "full" | null;
-          responseBodyBuffering?: "none" | "standard" | null;
+          requestBodyBuffering?:
+            | "none"
+            | "standard"
+            | "full"
+            | (string & {})
+            | null;
+          responseBodyBuffering?: "none" | "standard" | (string & {}) | null;
           rocketLoader?: boolean | null;
           securityLevel?:
             | "off"
@@ -12104,9 +12597,17 @@ export interface GetPhasVersionResponse {
             | "medium"
             | "high"
             | "under_attack"
+            | (string & {})
             | null;
           serverSideExcludes?: boolean | null;
-          ssl?: "off" | "flexible" | "full" | "strict" | "origin_pull" | null;
+          ssl?:
+            | "off"
+            | "flexible"
+            | "full"
+            | "strict"
+            | "origin_pull"
+            | (string & {})
+            | null;
           sxg?: boolean | null;
         } | null;
         categories?: string[] | null;
@@ -12163,6 +12664,7 @@ export interface GetPhasVersionResponse {
                 | "magic_transit_ids_managed"
                 | "magic_transit_managed"
                 | "magic_transit_ratelimit"
+                | (string & {})
               )[]
             | null;
           products?:
@@ -12174,6 +12676,7 @@ export interface GetPhasVersionResponse {
                 | "uaBlock"
                 | "waf"
                 | "zoneLockdown"
+                | (string & {})
               )[]
             | null;
           rules?: Record<string, unknown> | null;
@@ -12211,34 +12714,40 @@ export interface GetPhasVersionResponse {
 export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.String,
-    kind: Schema.Literals(["managed", "custom", "root", "zone"]),
+    kind: Schema.Union([
+      Schema.Literals(["managed", "custom", "root", "zone"]),
+      Schema.String,
+    ]),
     lastUpdated: Schema.String,
     name: Schema.String,
-    phase: Schema.Literals([
-      "ddos_l4",
-      "ddos_l7",
-      "http_config_settings",
-      "http_custom_errors",
-      "http_log_custom_fields",
-      "http_ratelimit",
-      "http_request_cache_settings",
-      "http_request_dynamic_redirect",
-      "http_request_firewall_custom",
-      "http_request_firewall_managed",
-      "http_request_late_transform",
-      "http_request_origin",
-      "http_request_redirect",
-      "http_request_sanitize",
-      "http_request_sbfm",
-      "http_request_transform",
-      "http_response_cache_settings",
-      "http_response_compression",
-      "http_response_firewall_managed",
-      "http_response_headers_transform",
-      "magic_transit",
-      "magic_transit_ids_managed",
-      "magic_transit_managed",
-      "magic_transit_ratelimit",
+    phase: Schema.Union([
+      Schema.Literals([
+        "ddos_l4",
+        "ddos_l7",
+        "http_config_settings",
+        "http_custom_errors",
+        "http_log_custom_fields",
+        "http_ratelimit",
+        "http_request_cache_settings",
+        "http_request_dynamic_redirect",
+        "http_request_firewall_custom",
+        "http_request_firewall_managed",
+        "http_request_late_transform",
+        "http_request_origin",
+        "http_request_redirect",
+        "http_request_sanitize",
+        "http_request_sbfm",
+        "http_request_transform",
+        "http_response_cache_settings",
+        "http_response_compression",
+        "http_response_firewall_managed",
+        "http_response_headers_transform",
+        "magic_transit",
+        "magic_transit_ids_managed",
+        "magic_transit_managed",
+        "magic_transit_ratelimit",
+      ]),
+      Schema.String,
     ]),
     rules: Schema.Array(
       Schema.Union([
@@ -12472,13 +12981,16 @@ export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                   Schema.Struct({
                     name: Schema.optional(
                       Schema.Union([
-                        Schema.Literals([
-                          "none",
-                          "auto",
-                          "default",
-                          "gzip",
-                          "brotli",
-                          "zstd",
+                        Schema.Union([
+                          Schema.Literals([
+                            "none",
+                            "auto",
+                            "default",
+                            "gzip",
+                            "brotli",
+                            "zstd",
+                          ]),
+                          Schema.String,
                         ]),
                         Schema.Null,
                       ]),
@@ -12713,11 +13225,14 @@ export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                               ),
                               sensitivityLevel: Schema.optional(
                                 Schema.Union([
-                                  Schema.Literals([
-                                    "default",
-                                    "medium",
-                                    "low",
-                                    "eoff",
+                                  Schema.Union([
+                                    Schema.Literals([
+                                      "default",
+                                      "medium",
+                                      "low",
+                                      "eoff",
+                                    ]),
+                                    Schema.String,
                                   ]),
                                   Schema.Null,
                                 ]),
@@ -12753,11 +13268,14 @@ export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                               ),
                               sensitivityLevel: Schema.optional(
                                 Schema.Union([
-                                  Schema.Literals([
-                                    "default",
-                                    "medium",
-                                    "low",
-                                    "eoff",
+                                  Schema.Union([
+                                    Schema.Literals([
+                                      "default",
+                                      "medium",
+                                      "low",
+                                      "eoff",
+                                    ]),
+                                    Schema.String,
                                   ]),
                                   Schema.Null,
                                 ]),
@@ -12777,7 +13295,15 @@ export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                       ),
                       sensitivityLevel: Schema.optional(
                         Schema.Union([
-                          Schema.Literals(["default", "medium", "low", "eoff"]),
+                          Schema.Union([
+                            Schema.Literals([
+                              "default",
+                              "medium",
+                              "low",
+                              "eoff",
+                            ]),
+                            Schema.String,
+                          ]),
                           Schema.Null,
                         ]),
                       ),
@@ -13497,7 +14023,16 @@ export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                       ),
                       statusCode: Schema.optional(
                         Schema.Union([
-                          Schema.Literals(["301", "302", "303", "307", "308"]),
+                          Schema.Union([
+                            Schema.Literals([
+                              "301",
+                              "302",
+                              "303",
+                              "307",
+                              "308",
+                            ]),
+                            Schema.String,
+                          ]),
                           Schema.Null,
                         ]),
                       ),
@@ -13998,11 +14533,14 @@ export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                   content: Schema.String,
                   contentType: Schema.optional(
                     Schema.Union([
-                      Schema.Literals([
-                        "application/json",
-                        "text/html",
-                        "text/plain",
-                        "text/xml",
+                      Schema.Union([
+                        Schema.Literals([
+                          "application/json",
+                          "text/html",
+                          "text/plain",
+                          "text/xml",
+                        ]),
+                        Schema.String,
                       ]),
                       Schema.Null,
                     ]),
@@ -14021,11 +14559,14 @@ export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                   assetName: Schema.String,
                   contentType: Schema.optional(
                     Schema.Union([
-                      Schema.Literals([
-                        "application/json",
-                        "text/html",
-                        "text/plain",
-                        "text/xml",
+                      Schema.Union([
+                        Schema.Literals([
+                          "application/json",
+                          "text/html",
+                          "text/plain",
+                          "text/xml",
+                        ]),
+                        Schema.String,
                       ]),
                       Schema.Null,
                     ]),
@@ -14145,7 +14686,10 @@ export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 immutable: Schema.optional(
                   Schema.Union([
                     Schema.Struct({
-                      operation: Schema.Literals(["set", "remove"]),
+                      operation: Schema.Union([
+                        Schema.Literals(["set", "remove"]),
+                        Schema.String,
+                      ]),
                       cloudflareOnly: Schema.optional(
                         Schema.Union([Schema.Boolean, Schema.Null]),
                       ),
@@ -14161,7 +14705,10 @@ export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 maxAge: Schema.optional(
                   Schema.Union([
                     Schema.Struct({
-                      operation: Schema.Literals(["set", "remove"]),
+                      operation: Schema.Union([
+                        Schema.Literals(["set", "remove"]),
+                        Schema.String,
+                      ]),
                       cloudflareOnly: Schema.optional(
                         Schema.Union([Schema.Boolean, Schema.Null]),
                       ),
@@ -14177,7 +14724,10 @@ export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 mustRevalidate: Schema.optional(
                   Schema.Union([
                     Schema.Struct({
-                      operation: Schema.Literals(["set", "remove"]),
+                      operation: Schema.Union([
+                        Schema.Literals(["set", "remove"]),
+                        Schema.String,
+                      ]),
                       cloudflareOnly: Schema.optional(
                         Schema.Union([Schema.Boolean, Schema.Null]),
                       ),
@@ -14193,7 +14743,10 @@ export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 mustUnderstand: Schema.optional(
                   Schema.Union([
                     Schema.Struct({
-                      operation: Schema.Literals(["set", "remove"]),
+                      operation: Schema.Union([
+                        Schema.Literals(["set", "remove"]),
+                        Schema.String,
+                      ]),
                       cloudflareOnly: Schema.optional(
                         Schema.Union([Schema.Boolean, Schema.Null]),
                       ),
@@ -14209,7 +14762,10 @@ export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 noCache: Schema.optional(
                   Schema.Union([
                     Schema.Struct({
-                      operation: Schema.Literals(["set", "remove"]),
+                      operation: Schema.Union([
+                        Schema.Literals(["set", "remove"]),
+                        Schema.String,
+                      ]),
                       cloudflareOnly: Schema.optional(
                         Schema.Union([Schema.Boolean, Schema.Null]),
                       ),
@@ -14225,7 +14781,10 @@ export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 noStore: Schema.optional(
                   Schema.Union([
                     Schema.Struct({
-                      operation: Schema.Literals(["set", "remove"]),
+                      operation: Schema.Union([
+                        Schema.Literals(["set", "remove"]),
+                        Schema.String,
+                      ]),
                       cloudflareOnly: Schema.optional(
                         Schema.Union([Schema.Boolean, Schema.Null]),
                       ),
@@ -14241,7 +14800,10 @@ export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 noTransform: Schema.optional(
                   Schema.Union([
                     Schema.Struct({
-                      operation: Schema.Literals(["set", "remove"]),
+                      operation: Schema.Union([
+                        Schema.Literals(["set", "remove"]),
+                        Schema.String,
+                      ]),
                       cloudflareOnly: Schema.optional(
                         Schema.Union([Schema.Boolean, Schema.Null]),
                       ),
@@ -14257,7 +14819,10 @@ export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 private: Schema.optional(
                   Schema.Union([
                     Schema.Struct({
-                      operation: Schema.Literals(["set", "remove"]),
+                      operation: Schema.Union([
+                        Schema.Literals(["set", "remove"]),
+                        Schema.String,
+                      ]),
                       cloudflareOnly: Schema.optional(
                         Schema.Union([Schema.Boolean, Schema.Null]),
                       ),
@@ -14273,7 +14838,10 @@ export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 proxyRevalidate: Schema.optional(
                   Schema.Union([
                     Schema.Struct({
-                      operation: Schema.Literals(["set", "remove"]),
+                      operation: Schema.Union([
+                        Schema.Literals(["set", "remove"]),
+                        Schema.String,
+                      ]),
                       cloudflareOnly: Schema.optional(
                         Schema.Union([Schema.Boolean, Schema.Null]),
                       ),
@@ -14289,7 +14857,10 @@ export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 public: Schema.optional(
                   Schema.Union([
                     Schema.Struct({
-                      operation: Schema.Literals(["set", "remove"]),
+                      operation: Schema.Union([
+                        Schema.Literals(["set", "remove"]),
+                        Schema.String,
+                      ]),
                       cloudflareOnly: Schema.optional(
                         Schema.Union([Schema.Boolean, Schema.Null]),
                       ),
@@ -14305,7 +14876,10 @@ export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 sMaxage: Schema.optional(
                   Schema.Union([
                     Schema.Struct({
-                      operation: Schema.Literals(["set", "remove"]),
+                      operation: Schema.Union([
+                        Schema.Literals(["set", "remove"]),
+                        Schema.String,
+                      ]),
                       cloudflareOnly: Schema.optional(
                         Schema.Union([Schema.Boolean, Schema.Null]),
                       ),
@@ -14321,7 +14895,10 @@ export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 staleIfError: Schema.optional(
                   Schema.Union([
                     Schema.Struct({
-                      operation: Schema.Literals(["set", "remove"]),
+                      operation: Schema.Union([
+                        Schema.Literals(["set", "remove"]),
+                        Schema.String,
+                      ]),
                       cloudflareOnly: Schema.optional(
                         Schema.Union([Schema.Boolean, Schema.Null]),
                       ),
@@ -14337,7 +14914,10 @@ export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 staleWhileRevalidate: Schema.optional(
                   Schema.Union([
                     Schema.Struct({
-                      operation: Schema.Literals(["set", "remove"]),
+                      operation: Schema.Union([
+                        Schema.Literals(["set", "remove"]),
+                        Schema.String,
+                      ]),
                       cloudflareOnly: Schema.optional(
                         Schema.Union([Schema.Boolean, Schema.Null]),
                       ),
@@ -14474,11 +15054,14 @@ export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 browserTtl: Schema.optional(
                   Schema.Union([
                     Schema.Struct({
-                      mode: Schema.Literals([
-                        "respect_origin",
-                        "bypass_by_default",
-                        "override_origin",
-                        "bypass",
+                      mode: Schema.Union([
+                        Schema.Literals([
+                          "respect_origin",
+                          "bypass_by_default",
+                          "override_origin",
+                          "bypass",
+                        ]),
+                        Schema.String,
                       ]),
                       default: Schema.optional(
                         Schema.Union([Schema.Number, Schema.Null]),
@@ -14686,10 +15269,13 @@ export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 edgeTtl: Schema.optional(
                   Schema.Union([
                     Schema.Struct({
-                      mode: Schema.Literals([
-                        "respect_origin",
-                        "bypass_by_default",
-                        "override_origin",
+                      mode: Schema.Union([
+                        Schema.Literals([
+                          "respect_origin",
+                          "bypass_by_default",
+                          "override_origin",
+                        ]),
+                        Schema.String,
                       ]),
                       default: Schema.optional(
                         Schema.Union([Schema.Number, Schema.Null]),
@@ -14909,12 +15495,18 @@ export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             Schema.Union([
               Schema.Union([
                 Schema.Struct({
-                  operation: Schema.Literals(["add", "remove", "set"]),
+                  operation: Schema.Union([
+                    Schema.Literals(["add", "remove", "set"]),
+                    Schema.String,
+                  ]),
                   values: Schema.Array(Schema.String),
                 }),
                 Schema.Struct({
                   expression: Schema.String,
-                  operation: Schema.Literals(["add", "remove", "set"]),
+                  operation: Schema.Union([
+                    Schema.Literals(["add", "remove", "set"]),
+                    Schema.String,
+                  ]),
                 }),
               ]),
               Schema.Null,
@@ -15072,7 +15664,10 @@ export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 ),
                 polish: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["off", "lossless", "lossy", "webp"]),
+                    Schema.Union([
+                      Schema.Literals(["off", "lossless", "lossy", "webp"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -15081,13 +15676,19 @@ export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 ),
                 requestBodyBuffering: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["none", "standard", "full"]),
+                    Schema.Union([
+                      Schema.Literals(["none", "standard", "full"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
                 responseBodyBuffering: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["none", "standard"]),
+                    Schema.Union([
+                      Schema.Literals(["none", "standard"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -15096,13 +15697,16 @@ export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 ),
                 securityLevel: Schema.optional(
                   Schema.Union([
-                    Schema.Literals([
-                      "off",
-                      "essentially_off",
-                      "low",
-                      "medium",
-                      "high",
-                      "under_attack",
+                    Schema.Union([
+                      Schema.Literals([
+                        "off",
+                        "essentially_off",
+                        "low",
+                        "medium",
+                        "high",
+                        "under_attack",
+                      ]),
+                      Schema.String,
                     ]),
                     Schema.Null,
                   ]),
@@ -15112,12 +15716,15 @@ export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 ),
                 ssl: Schema.optional(
                   Schema.Union([
-                    Schema.Literals([
-                      "off",
-                      "flexible",
-                      "full",
-                      "strict",
-                      "origin_pull",
+                    Schema.Union([
+                      Schema.Literals([
+                        "off",
+                        "flexible",
+                        "full",
+                        "strict",
+                        "origin_pull",
+                      ]),
+                      Schema.String,
                     ]),
                     Schema.Null,
                   ]),
@@ -15258,31 +15865,34 @@ export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 phases: Schema.optional(
                   Schema.Union([
                     Schema.Array(
-                      Schema.Literals([
-                        "ddos_l4",
-                        "ddos_l7",
-                        "http_config_settings",
-                        "http_custom_errors",
-                        "http_log_custom_fields",
-                        "http_ratelimit",
-                        "http_request_cache_settings",
-                        "http_request_dynamic_redirect",
-                        "http_request_firewall_custom",
-                        "http_request_firewall_managed",
-                        "http_request_late_transform",
-                        "http_request_origin",
-                        "http_request_redirect",
-                        "http_request_sanitize",
-                        "http_request_sbfm",
-                        "http_request_transform",
-                        "http_response_cache_settings",
-                        "http_response_compression",
-                        "http_response_firewall_managed",
-                        "http_response_headers_transform",
-                        "magic_transit",
-                        "magic_transit_ids_managed",
-                        "magic_transit_managed",
-                        "magic_transit_ratelimit",
+                      Schema.Union([
+                        Schema.Literals([
+                          "ddos_l4",
+                          "ddos_l7",
+                          "http_config_settings",
+                          "http_custom_errors",
+                          "http_log_custom_fields",
+                          "http_ratelimit",
+                          "http_request_cache_settings",
+                          "http_request_dynamic_redirect",
+                          "http_request_firewall_custom",
+                          "http_request_firewall_managed",
+                          "http_request_late_transform",
+                          "http_request_origin",
+                          "http_request_redirect",
+                          "http_request_sanitize",
+                          "http_request_sbfm",
+                          "http_request_transform",
+                          "http_response_cache_settings",
+                          "http_response_compression",
+                          "http_response_firewall_managed",
+                          "http_response_headers_transform",
+                          "magic_transit",
+                          "magic_transit_ids_managed",
+                          "magic_transit_managed",
+                          "magic_transit_ratelimit",
+                        ]),
+                        Schema.String,
                       ]),
                     ),
                     Schema.Null,
@@ -15291,14 +15901,17 @@ export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 products: Schema.optional(
                   Schema.Union([
                     Schema.Array(
-                      Schema.Literals([
-                        "bic",
-                        "hot",
-                        "rateLimit",
-                        "securityLevel",
-                        "uaBlock",
-                        "waf",
-                        "zoneLockdown",
+                      Schema.Union([
+                        Schema.Literals([
+                          "bic",
+                          "hot",
+                          "rateLimit",
+                          "securityLevel",
+                          "uaBlock",
+                          "waf",
+                          "zoneLockdown",
+                        ]),
+                        Schema.String,
                       ]),
                     ),
                     Schema.Null,
@@ -15497,7 +16110,7 @@ export const ListPhasVersionsForZoneRequest =
 export interface ListPhasVersionsResponse {
   result: {
     id: string;
-    kind: "managed" | "custom" | "root" | "zone";
+    kind: "managed" | "custom" | "root" | "zone" | (string & {});
     lastUpdated: string;
     name: string;
     phase:
@@ -15524,7 +16137,8 @@ export interface ListPhasVersionsResponse {
       | "magic_transit"
       | "magic_transit_ids_managed"
       | "magic_transit_managed"
-      | "magic_transit_ratelimit";
+      | "magic_transit_ratelimit"
+      | (string & {});
     version: string;
     description?: string | null;
   }[];
@@ -15535,34 +16149,40 @@ export const ListPhasVersionsResponse =
     result: Schema.Array(
       Schema.Struct({
         id: Schema.String,
-        kind: Schema.Literals(["managed", "custom", "root", "zone"]),
+        kind: Schema.Union([
+          Schema.Literals(["managed", "custom", "root", "zone"]),
+          Schema.String,
+        ]),
         lastUpdated: Schema.String,
         name: Schema.String,
-        phase: Schema.Literals([
-          "ddos_l4",
-          "ddos_l7",
-          "http_config_settings",
-          "http_custom_errors",
-          "http_log_custom_fields",
-          "http_ratelimit",
-          "http_request_cache_settings",
-          "http_request_dynamic_redirect",
-          "http_request_firewall_custom",
-          "http_request_firewall_managed",
-          "http_request_late_transform",
-          "http_request_origin",
-          "http_request_redirect",
-          "http_request_sanitize",
-          "http_request_sbfm",
-          "http_request_transform",
-          "http_response_cache_settings",
-          "http_response_compression",
-          "http_response_firewall_managed",
-          "http_response_headers_transform",
-          "magic_transit",
-          "magic_transit_ids_managed",
-          "magic_transit_managed",
-          "magic_transit_ratelimit",
+        phase: Schema.Union([
+          Schema.Literals([
+            "ddos_l4",
+            "ddos_l7",
+            "http_config_settings",
+            "http_custom_errors",
+            "http_log_custom_fields",
+            "http_ratelimit",
+            "http_request_cache_settings",
+            "http_request_dynamic_redirect",
+            "http_request_firewall_custom",
+            "http_request_firewall_managed",
+            "http_request_late_transform",
+            "http_request_origin",
+            "http_request_redirect",
+            "http_request_sanitize",
+            "http_request_sbfm",
+            "http_request_transform",
+            "http_response_cache_settings",
+            "http_response_compression",
+            "http_response_firewall_managed",
+            "http_response_headers_transform",
+            "magic_transit",
+            "magic_transit_ids_managed",
+            "magic_transit_managed",
+            "magic_transit_ratelimit",
+          ]),
+          Schema.String,
         ]),
         version: Schema.String,
         description: Schema.optional(
@@ -15799,7 +16419,7 @@ export interface CreateRuleResponse {
   /** The unique ID of the ruleset. */
   id: string;
   /** The kind of the ruleset. */
-  kind: "managed" | "custom" | "root" | "zone";
+  kind: "managed" | "custom" | "root" | "zone" | (string & {});
   /** The timestamp of when the ruleset was last modified. */
   lastUpdated: string;
   /** The human-readable name of the ruleset. */
@@ -15829,7 +16449,8 @@ export interface CreateRuleResponse {
     | "magic_transit"
     | "magic_transit_ids_managed"
     | "magic_transit_managed"
-    | "magic_transit_ratelimit";
+    | "magic_transit_ratelimit"
+    | (string & {});
   /** The list of rules in the ruleset. */
   rules: (
     | {
@@ -15906,6 +16527,7 @@ export interface CreateRuleResponse {
               | "gzip"
               | "brotli"
               | "zstd"
+              | (string & {})
               | null;
           }[];
         } | null;
@@ -15977,6 +16599,7 @@ export interface CreateRuleResponse {
                     | "medium"
                     | "low"
                     | "eoff"
+                    | (string & {})
                     | null;
                 }[]
               | null;
@@ -15992,10 +16615,17 @@ export interface CreateRuleResponse {
                     | "medium"
                     | "low"
                     | "eoff"
+                    | (string & {})
                     | null;
                 }[]
               | null;
-            sensitivityLevel?: "default" | "medium" | "low" | "eoff" | null;
+            sensitivityLevel?:
+              | "default"
+              | "medium"
+              | "low"
+              | "eoff"
+              | (string & {})
+              | null;
           } | null;
         } | null;
         categories?: string[] | null;
@@ -16174,7 +16804,14 @@ export interface CreateRuleResponse {
           fromValue?: {
             targetUrl: { expression?: string | null; value?: string | null };
             preserveQueryString?: boolean | null;
-            statusCode?: "301" | "302" | "303" | "307" | "308" | null;
+            statusCode?:
+              | "301"
+              | "302"
+              | "303"
+              | "307"
+              | "308"
+              | (string & {})
+              | null;
           } | null;
         } | null;
         categories?: string[] | null;
@@ -16308,6 +16945,7 @@ export interface CreateRuleResponse {
                 | "text/html"
                 | "text/plain"
                 | "text/xml"
+                | (string & {})
                 | null;
               statusCode?: number | null;
             }
@@ -16318,6 +16956,7 @@ export interface CreateRuleResponse {
                 | "text/html"
                 | "text/plain"
                 | "text/xml"
+                | (string & {})
                 | null;
               statusCode?: number | null;
             }
@@ -16350,55 +16989,55 @@ export interface CreateRuleResponse {
         action?: "set_cache_control" | null;
         actionParameters?: {
           immutable?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           maxAge?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           mustRevalidate?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           mustUnderstand?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           noCache?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           noStore?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           noTransform?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           private?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           proxyRevalidate?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           public?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           sMaxage?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           staleIfError?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           staleWhileRevalidate?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
         } | null;
@@ -16435,7 +17074,8 @@ export interface CreateRuleResponse {
               | "respect_origin"
               | "bypass_by_default"
               | "override_origin"
-              | "bypass";
+              | "bypass"
+              | (string & {});
             default?: number | null;
           } | null;
           cache?: boolean | null;
@@ -16471,7 +17111,11 @@ export interface CreateRuleResponse {
             minimumFileSize?: number | null;
           } | null;
           edgeTtl?: {
-            mode: "respect_origin" | "bypass_by_default" | "override_origin";
+            mode:
+              | "respect_origin"
+              | "bypass_by_default"
+              | "override_origin"
+              | (string & {});
             default?: number | null;
             statusCodeTtl?:
               | {
@@ -16521,8 +17165,14 @@ export interface CreateRuleResponse {
         id?: string | null;
         action?: "set_cache_tags" | null;
         actionParameters?:
-          | { operation: "add" | "remove" | "set"; values: string[] }
-          | { expression: string; operation: "add" | "remove" | "set" }
+          | {
+              operation: "add" | "remove" | "set" | (string & {});
+              values: string[];
+            }
+          | {
+              expression: string;
+              operation: "add" | "remove" | "set" | (string & {});
+            }
           | null;
         categories?: string[] | null;
         description?: string | null;
@@ -16568,10 +17218,15 @@ export interface CreateRuleResponse {
           hotlinkProtection?: boolean | null;
           mirage?: boolean | null;
           opportunisticEncryption?: boolean | null;
-          polish?: "off" | "lossless" | "lossy" | "webp" | null;
+          polish?: "off" | "lossless" | "lossy" | "webp" | (string & {}) | null;
           redirectsForAiTraining?: boolean | null;
-          requestBodyBuffering?: "none" | "standard" | "full" | null;
-          responseBodyBuffering?: "none" | "standard" | null;
+          requestBodyBuffering?:
+            | "none"
+            | "standard"
+            | "full"
+            | (string & {})
+            | null;
+          responseBodyBuffering?: "none" | "standard" | (string & {}) | null;
           rocketLoader?: boolean | null;
           securityLevel?:
             | "off"
@@ -16580,9 +17235,17 @@ export interface CreateRuleResponse {
             | "medium"
             | "high"
             | "under_attack"
+            | (string & {})
             | null;
           serverSideExcludes?: boolean | null;
-          ssl?: "off" | "flexible" | "full" | "strict" | "origin_pull" | null;
+          ssl?:
+            | "off"
+            | "flexible"
+            | "full"
+            | "strict"
+            | "origin_pull"
+            | (string & {})
+            | null;
           sxg?: boolean | null;
         } | null;
         categories?: string[] | null;
@@ -16639,6 +17302,7 @@ export interface CreateRuleResponse {
                 | "magic_transit_ids_managed"
                 | "magic_transit_managed"
                 | "magic_transit_ratelimit"
+                | (string & {})
               )[]
             | null;
           products?:
@@ -16650,6 +17314,7 @@ export interface CreateRuleResponse {
                 | "uaBlock"
                 | "waf"
                 | "zoneLockdown"
+                | (string & {})
               )[]
             | null;
           rules?: Record<string, unknown> | null;
@@ -16686,34 +17351,40 @@ export interface CreateRuleResponse {
 
 export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
-  kind: Schema.Literals(["managed", "custom", "root", "zone"]),
+  kind: Schema.Union([
+    Schema.Literals(["managed", "custom", "root", "zone"]),
+    Schema.String,
+  ]),
   lastUpdated: Schema.String,
   name: Schema.String,
-  phase: Schema.Literals([
-    "ddos_l4",
-    "ddos_l7",
-    "http_config_settings",
-    "http_custom_errors",
-    "http_log_custom_fields",
-    "http_ratelimit",
-    "http_request_cache_settings",
-    "http_request_dynamic_redirect",
-    "http_request_firewall_custom",
-    "http_request_firewall_managed",
-    "http_request_late_transform",
-    "http_request_origin",
-    "http_request_redirect",
-    "http_request_sanitize",
-    "http_request_sbfm",
-    "http_request_transform",
-    "http_response_cache_settings",
-    "http_response_compression",
-    "http_response_firewall_managed",
-    "http_response_headers_transform",
-    "magic_transit",
-    "magic_transit_ids_managed",
-    "magic_transit_managed",
-    "magic_transit_ratelimit",
+  phase: Schema.Union([
+    Schema.Literals([
+      "ddos_l4",
+      "ddos_l7",
+      "http_config_settings",
+      "http_custom_errors",
+      "http_log_custom_fields",
+      "http_ratelimit",
+      "http_request_cache_settings",
+      "http_request_dynamic_redirect",
+      "http_request_firewall_custom",
+      "http_request_firewall_managed",
+      "http_request_late_transform",
+      "http_request_origin",
+      "http_request_redirect",
+      "http_request_sanitize",
+      "http_request_sbfm",
+      "http_request_transform",
+      "http_response_cache_settings",
+      "http_response_compression",
+      "http_response_firewall_managed",
+      "http_response_headers_transform",
+      "magic_transit",
+      "magic_transit_ids_managed",
+      "magic_transit_managed",
+      "magic_transit_ratelimit",
+    ]),
+    Schema.String,
   ]),
   rules: Schema.Array(
     Schema.Union([
@@ -16943,13 +17614,16 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 Schema.Struct({
                   name: Schema.optional(
                     Schema.Union([
-                      Schema.Literals([
-                        "none",
-                        "auto",
-                        "default",
-                        "gzip",
-                        "brotli",
-                        "zstd",
+                      Schema.Union([
+                        Schema.Literals([
+                          "none",
+                          "auto",
+                          "default",
+                          "gzip",
+                          "brotli",
+                          "zstd",
+                        ]),
+                        Schema.String,
                       ]),
                       Schema.Null,
                     ]),
@@ -17180,11 +17854,14 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                             ),
                             sensitivityLevel: Schema.optional(
                               Schema.Union([
-                                Schema.Literals([
-                                  "default",
-                                  "medium",
-                                  "low",
-                                  "eoff",
+                                Schema.Union([
+                                  Schema.Literals([
+                                    "default",
+                                    "medium",
+                                    "low",
+                                    "eoff",
+                                  ]),
+                                  Schema.String,
                                 ]),
                                 Schema.Null,
                               ]),
@@ -17220,11 +17897,14 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                             ),
                             sensitivityLevel: Schema.optional(
                               Schema.Union([
-                                Schema.Literals([
-                                  "default",
-                                  "medium",
-                                  "low",
-                                  "eoff",
+                                Schema.Union([
+                                  Schema.Literals([
+                                    "default",
+                                    "medium",
+                                    "low",
+                                    "eoff",
+                                  ]),
+                                  Schema.String,
                                 ]),
                                 Schema.Null,
                               ]),
@@ -17244,7 +17924,10 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     ),
                     sensitivityLevel: Schema.optional(
                       Schema.Union([
-                        Schema.Literals(["default", "medium", "low", "eoff"]),
+                        Schema.Union([
+                          Schema.Literals(["default", "medium", "low", "eoff"]),
+                          Schema.String,
+                        ]),
                         Schema.Null,
                       ]),
                     ),
@@ -17949,7 +18632,10 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     ),
                     statusCode: Schema.optional(
                       Schema.Union([
-                        Schema.Literals(["301", "302", "303", "307", "308"]),
+                        Schema.Union([
+                          Schema.Literals(["301", "302", "303", "307", "308"]),
+                          Schema.String,
+                        ]),
                         Schema.Null,
                       ]),
                     ),
@@ -18442,11 +19128,14 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 content: Schema.String,
                 contentType: Schema.optional(
                   Schema.Union([
-                    Schema.Literals([
-                      "application/json",
-                      "text/html",
-                      "text/plain",
-                      "text/xml",
+                    Schema.Union([
+                      Schema.Literals([
+                        "application/json",
+                        "text/html",
+                        "text/plain",
+                        "text/xml",
+                      ]),
+                      Schema.String,
                     ]),
                     Schema.Null,
                   ]),
@@ -18465,11 +19154,14 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 assetName: Schema.String,
                 contentType: Schema.optional(
                   Schema.Union([
-                    Schema.Literals([
-                      "application/json",
-                      "text/html",
-                      "text/plain",
-                      "text/xml",
+                    Schema.Union([
+                      Schema.Literals([
+                        "application/json",
+                        "text/html",
+                        "text/plain",
+                        "text/xml",
+                      ]),
+                      Schema.String,
                     ]),
                     Schema.Null,
                   ]),
@@ -18587,7 +19279,10 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               immutable: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -18603,7 +19298,10 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               maxAge: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -18619,7 +19317,10 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               mustRevalidate: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -18635,7 +19336,10 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               mustUnderstand: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -18651,7 +19355,10 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               noCache: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -18667,7 +19374,10 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               noStore: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -18683,7 +19393,10 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               noTransform: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -18699,7 +19412,10 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               private: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -18715,7 +19431,10 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               proxyRevalidate: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -18731,7 +19450,10 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               public: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -18747,7 +19469,10 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               sMaxage: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -18763,7 +19488,10 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               staleIfError: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -18779,7 +19507,10 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               staleWhileRevalidate: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -18914,11 +19645,14 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               browserTtl: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    mode: Schema.Literals([
-                      "respect_origin",
-                      "bypass_by_default",
-                      "override_origin",
-                      "bypass",
+                    mode: Schema.Union([
+                      Schema.Literals([
+                        "respect_origin",
+                        "bypass_by_default",
+                        "override_origin",
+                        "bypass",
+                      ]),
+                      Schema.String,
                     ]),
                     default: Schema.optional(
                       Schema.Union([Schema.Number, Schema.Null]),
@@ -19126,10 +19860,13 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               edgeTtl: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    mode: Schema.Literals([
-                      "respect_origin",
-                      "bypass_by_default",
-                      "override_origin",
+                    mode: Schema.Union([
+                      Schema.Literals([
+                        "respect_origin",
+                        "bypass_by_default",
+                        "override_origin",
+                      ]),
+                      Schema.String,
                     ]),
                     default: Schema.optional(
                       Schema.Union([Schema.Number, Schema.Null]),
@@ -19338,12 +20075,18 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([
             Schema.Union([
               Schema.Struct({
-                operation: Schema.Literals(["add", "remove", "set"]),
+                operation: Schema.Union([
+                  Schema.Literals(["add", "remove", "set"]),
+                  Schema.String,
+                ]),
                 values: Schema.Array(Schema.String),
               }),
               Schema.Struct({
                 expression: Schema.String,
-                operation: Schema.Literals(["add", "remove", "set"]),
+                operation: Schema.Union([
+                  Schema.Literals(["add", "remove", "set"]),
+                  Schema.String,
+                ]),
               }),
             ]),
             Schema.Null,
@@ -19497,7 +20240,10 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               polish: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["off", "lossless", "lossy", "webp"]),
+                  Schema.Union([
+                    Schema.Literals(["off", "lossless", "lossy", "webp"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -19506,13 +20252,19 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               requestBodyBuffering: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["none", "standard", "full"]),
+                  Schema.Union([
+                    Schema.Literals(["none", "standard", "full"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
               responseBodyBuffering: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["none", "standard"]),
+                  Schema.Union([
+                    Schema.Literals(["none", "standard"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -19521,13 +20273,16 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               securityLevel: Schema.optional(
                 Schema.Union([
-                  Schema.Literals([
-                    "off",
-                    "essentially_off",
-                    "low",
-                    "medium",
-                    "high",
-                    "under_attack",
+                  Schema.Union([
+                    Schema.Literals([
+                      "off",
+                      "essentially_off",
+                      "low",
+                      "medium",
+                      "high",
+                      "under_attack",
+                    ]),
+                    Schema.String,
                   ]),
                   Schema.Null,
                 ]),
@@ -19537,12 +20292,15 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               ssl: Schema.optional(
                 Schema.Union([
-                  Schema.Literals([
-                    "off",
-                    "flexible",
-                    "full",
-                    "strict",
-                    "origin_pull",
+                  Schema.Union([
+                    Schema.Literals([
+                      "off",
+                      "flexible",
+                      "full",
+                      "strict",
+                      "origin_pull",
+                    ]),
+                    Schema.String,
                   ]),
                   Schema.Null,
                 ]),
@@ -19679,31 +20437,34 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               phases: Schema.optional(
                 Schema.Union([
                   Schema.Array(
-                    Schema.Literals([
-                      "ddos_l4",
-                      "ddos_l7",
-                      "http_config_settings",
-                      "http_custom_errors",
-                      "http_log_custom_fields",
-                      "http_ratelimit",
-                      "http_request_cache_settings",
-                      "http_request_dynamic_redirect",
-                      "http_request_firewall_custom",
-                      "http_request_firewall_managed",
-                      "http_request_late_transform",
-                      "http_request_origin",
-                      "http_request_redirect",
-                      "http_request_sanitize",
-                      "http_request_sbfm",
-                      "http_request_transform",
-                      "http_response_cache_settings",
-                      "http_response_compression",
-                      "http_response_firewall_managed",
-                      "http_response_headers_transform",
-                      "magic_transit",
-                      "magic_transit_ids_managed",
-                      "magic_transit_managed",
-                      "magic_transit_ratelimit",
+                    Schema.Union([
+                      Schema.Literals([
+                        "ddos_l4",
+                        "ddos_l7",
+                        "http_config_settings",
+                        "http_custom_errors",
+                        "http_log_custom_fields",
+                        "http_ratelimit",
+                        "http_request_cache_settings",
+                        "http_request_dynamic_redirect",
+                        "http_request_firewall_custom",
+                        "http_request_firewall_managed",
+                        "http_request_late_transform",
+                        "http_request_origin",
+                        "http_request_redirect",
+                        "http_request_sanitize",
+                        "http_request_sbfm",
+                        "http_request_transform",
+                        "http_response_cache_settings",
+                        "http_response_compression",
+                        "http_response_firewall_managed",
+                        "http_response_headers_transform",
+                        "magic_transit",
+                        "magic_transit_ids_managed",
+                        "magic_transit_managed",
+                        "magic_transit_ratelimit",
+                      ]),
+                      Schema.String,
                     ]),
                   ),
                   Schema.Null,
@@ -19712,14 +20473,17 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               products: Schema.optional(
                 Schema.Union([
                   Schema.Array(
-                    Schema.Literals([
-                      "bic",
-                      "hot",
-                      "rateLimit",
-                      "securityLevel",
-                      "uaBlock",
-                      "waf",
-                      "zoneLockdown",
+                    Schema.Union([
+                      Schema.Literals([
+                        "bic",
+                        "hot",
+                        "rateLimit",
+                        "securityLevel",
+                        "uaBlock",
+                        "waf",
+                        "zoneLockdown",
+                      ]),
+                      Schema.String,
                     ]),
                   ),
                   Schema.Null,
@@ -20055,7 +20819,7 @@ export interface PatchRuleResponse {
   /** The unique ID of the ruleset. */
   id: string;
   /** The kind of the ruleset. */
-  kind: "managed" | "custom" | "root" | "zone";
+  kind: "managed" | "custom" | "root" | "zone" | (string & {});
   /** The timestamp of when the ruleset was last modified. */
   lastUpdated: string;
   /** The human-readable name of the ruleset. */
@@ -20085,7 +20849,8 @@ export interface PatchRuleResponse {
     | "magic_transit"
     | "magic_transit_ids_managed"
     | "magic_transit_managed"
-    | "magic_transit_ratelimit";
+    | "magic_transit_ratelimit"
+    | (string & {});
   /** The list of rules in the ruleset. */
   rules: (
     | {
@@ -20162,6 +20927,7 @@ export interface PatchRuleResponse {
               | "gzip"
               | "brotli"
               | "zstd"
+              | (string & {})
               | null;
           }[];
         } | null;
@@ -20233,6 +20999,7 @@ export interface PatchRuleResponse {
                     | "medium"
                     | "low"
                     | "eoff"
+                    | (string & {})
                     | null;
                 }[]
               | null;
@@ -20248,10 +21015,17 @@ export interface PatchRuleResponse {
                     | "medium"
                     | "low"
                     | "eoff"
+                    | (string & {})
                     | null;
                 }[]
               | null;
-            sensitivityLevel?: "default" | "medium" | "low" | "eoff" | null;
+            sensitivityLevel?:
+              | "default"
+              | "medium"
+              | "low"
+              | "eoff"
+              | (string & {})
+              | null;
           } | null;
         } | null;
         categories?: string[] | null;
@@ -20430,7 +21204,14 @@ export interface PatchRuleResponse {
           fromValue?: {
             targetUrl: { expression?: string | null; value?: string | null };
             preserveQueryString?: boolean | null;
-            statusCode?: "301" | "302" | "303" | "307" | "308" | null;
+            statusCode?:
+              | "301"
+              | "302"
+              | "303"
+              | "307"
+              | "308"
+              | (string & {})
+              | null;
           } | null;
         } | null;
         categories?: string[] | null;
@@ -20564,6 +21345,7 @@ export interface PatchRuleResponse {
                 | "text/html"
                 | "text/plain"
                 | "text/xml"
+                | (string & {})
                 | null;
               statusCode?: number | null;
             }
@@ -20574,6 +21356,7 @@ export interface PatchRuleResponse {
                 | "text/html"
                 | "text/plain"
                 | "text/xml"
+                | (string & {})
                 | null;
               statusCode?: number | null;
             }
@@ -20606,55 +21389,55 @@ export interface PatchRuleResponse {
         action?: "set_cache_control" | null;
         actionParameters?: {
           immutable?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           maxAge?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           mustRevalidate?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           mustUnderstand?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           noCache?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           noStore?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           noTransform?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           private?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           proxyRevalidate?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           public?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           sMaxage?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           staleIfError?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           staleWhileRevalidate?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
         } | null;
@@ -20691,7 +21474,8 @@ export interface PatchRuleResponse {
               | "respect_origin"
               | "bypass_by_default"
               | "override_origin"
-              | "bypass";
+              | "bypass"
+              | (string & {});
             default?: number | null;
           } | null;
           cache?: boolean | null;
@@ -20727,7 +21511,11 @@ export interface PatchRuleResponse {
             minimumFileSize?: number | null;
           } | null;
           edgeTtl?: {
-            mode: "respect_origin" | "bypass_by_default" | "override_origin";
+            mode:
+              | "respect_origin"
+              | "bypass_by_default"
+              | "override_origin"
+              | (string & {});
             default?: number | null;
             statusCodeTtl?:
               | {
@@ -20777,8 +21565,14 @@ export interface PatchRuleResponse {
         id?: string | null;
         action?: "set_cache_tags" | null;
         actionParameters?:
-          | { operation: "add" | "remove" | "set"; values: string[] }
-          | { expression: string; operation: "add" | "remove" | "set" }
+          | {
+              operation: "add" | "remove" | "set" | (string & {});
+              values: string[];
+            }
+          | {
+              expression: string;
+              operation: "add" | "remove" | "set" | (string & {});
+            }
           | null;
         categories?: string[] | null;
         description?: string | null;
@@ -20824,10 +21618,15 @@ export interface PatchRuleResponse {
           hotlinkProtection?: boolean | null;
           mirage?: boolean | null;
           opportunisticEncryption?: boolean | null;
-          polish?: "off" | "lossless" | "lossy" | "webp" | null;
+          polish?: "off" | "lossless" | "lossy" | "webp" | (string & {}) | null;
           redirectsForAiTraining?: boolean | null;
-          requestBodyBuffering?: "none" | "standard" | "full" | null;
-          responseBodyBuffering?: "none" | "standard" | null;
+          requestBodyBuffering?:
+            | "none"
+            | "standard"
+            | "full"
+            | (string & {})
+            | null;
+          responseBodyBuffering?: "none" | "standard" | (string & {}) | null;
           rocketLoader?: boolean | null;
           securityLevel?:
             | "off"
@@ -20836,9 +21635,17 @@ export interface PatchRuleResponse {
             | "medium"
             | "high"
             | "under_attack"
+            | (string & {})
             | null;
           serverSideExcludes?: boolean | null;
-          ssl?: "off" | "flexible" | "full" | "strict" | "origin_pull" | null;
+          ssl?:
+            | "off"
+            | "flexible"
+            | "full"
+            | "strict"
+            | "origin_pull"
+            | (string & {})
+            | null;
           sxg?: boolean | null;
         } | null;
         categories?: string[] | null;
@@ -20895,6 +21702,7 @@ export interface PatchRuleResponse {
                 | "magic_transit_ids_managed"
                 | "magic_transit_managed"
                 | "magic_transit_ratelimit"
+                | (string & {})
               )[]
             | null;
           products?:
@@ -20906,6 +21714,7 @@ export interface PatchRuleResponse {
                 | "uaBlock"
                 | "waf"
                 | "zoneLockdown"
+                | (string & {})
               )[]
             | null;
           rules?: Record<string, unknown> | null;
@@ -20942,34 +21751,40 @@ export interface PatchRuleResponse {
 
 export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
-  kind: Schema.Literals(["managed", "custom", "root", "zone"]),
+  kind: Schema.Union([
+    Schema.Literals(["managed", "custom", "root", "zone"]),
+    Schema.String,
+  ]),
   lastUpdated: Schema.String,
   name: Schema.String,
-  phase: Schema.Literals([
-    "ddos_l4",
-    "ddos_l7",
-    "http_config_settings",
-    "http_custom_errors",
-    "http_log_custom_fields",
-    "http_ratelimit",
-    "http_request_cache_settings",
-    "http_request_dynamic_redirect",
-    "http_request_firewall_custom",
-    "http_request_firewall_managed",
-    "http_request_late_transform",
-    "http_request_origin",
-    "http_request_redirect",
-    "http_request_sanitize",
-    "http_request_sbfm",
-    "http_request_transform",
-    "http_response_cache_settings",
-    "http_response_compression",
-    "http_response_firewall_managed",
-    "http_response_headers_transform",
-    "magic_transit",
-    "magic_transit_ids_managed",
-    "magic_transit_managed",
-    "magic_transit_ratelimit",
+  phase: Schema.Union([
+    Schema.Literals([
+      "ddos_l4",
+      "ddos_l7",
+      "http_config_settings",
+      "http_custom_errors",
+      "http_log_custom_fields",
+      "http_ratelimit",
+      "http_request_cache_settings",
+      "http_request_dynamic_redirect",
+      "http_request_firewall_custom",
+      "http_request_firewall_managed",
+      "http_request_late_transform",
+      "http_request_origin",
+      "http_request_redirect",
+      "http_request_sanitize",
+      "http_request_sbfm",
+      "http_request_transform",
+      "http_response_cache_settings",
+      "http_response_compression",
+      "http_response_firewall_managed",
+      "http_response_headers_transform",
+      "magic_transit",
+      "magic_transit_ids_managed",
+      "magic_transit_managed",
+      "magic_transit_ratelimit",
+    ]),
+    Schema.String,
   ]),
   rules: Schema.Array(
     Schema.Union([
@@ -21199,13 +22014,16 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 Schema.Struct({
                   name: Schema.optional(
                     Schema.Union([
-                      Schema.Literals([
-                        "none",
-                        "auto",
-                        "default",
-                        "gzip",
-                        "brotli",
-                        "zstd",
+                      Schema.Union([
+                        Schema.Literals([
+                          "none",
+                          "auto",
+                          "default",
+                          "gzip",
+                          "brotli",
+                          "zstd",
+                        ]),
+                        Schema.String,
                       ]),
                       Schema.Null,
                     ]),
@@ -21436,11 +22254,14 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                             ),
                             sensitivityLevel: Schema.optional(
                               Schema.Union([
-                                Schema.Literals([
-                                  "default",
-                                  "medium",
-                                  "low",
-                                  "eoff",
+                                Schema.Union([
+                                  Schema.Literals([
+                                    "default",
+                                    "medium",
+                                    "low",
+                                    "eoff",
+                                  ]),
+                                  Schema.String,
                                 ]),
                                 Schema.Null,
                               ]),
@@ -21476,11 +22297,14 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                             ),
                             sensitivityLevel: Schema.optional(
                               Schema.Union([
-                                Schema.Literals([
-                                  "default",
-                                  "medium",
-                                  "low",
-                                  "eoff",
+                                Schema.Union([
+                                  Schema.Literals([
+                                    "default",
+                                    "medium",
+                                    "low",
+                                    "eoff",
+                                  ]),
+                                  Schema.String,
                                 ]),
                                 Schema.Null,
                               ]),
@@ -21500,7 +22324,10 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     ),
                     sensitivityLevel: Schema.optional(
                       Schema.Union([
-                        Schema.Literals(["default", "medium", "low", "eoff"]),
+                        Schema.Union([
+                          Schema.Literals(["default", "medium", "low", "eoff"]),
+                          Schema.String,
+                        ]),
                         Schema.Null,
                       ]),
                     ),
@@ -22205,7 +23032,10 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     ),
                     statusCode: Schema.optional(
                       Schema.Union([
-                        Schema.Literals(["301", "302", "303", "307", "308"]),
+                        Schema.Union([
+                          Schema.Literals(["301", "302", "303", "307", "308"]),
+                          Schema.String,
+                        ]),
                         Schema.Null,
                       ]),
                     ),
@@ -22698,11 +23528,14 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 content: Schema.String,
                 contentType: Schema.optional(
                   Schema.Union([
-                    Schema.Literals([
-                      "application/json",
-                      "text/html",
-                      "text/plain",
-                      "text/xml",
+                    Schema.Union([
+                      Schema.Literals([
+                        "application/json",
+                        "text/html",
+                        "text/plain",
+                        "text/xml",
+                      ]),
+                      Schema.String,
                     ]),
                     Schema.Null,
                   ]),
@@ -22721,11 +23554,14 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 assetName: Schema.String,
                 contentType: Schema.optional(
                   Schema.Union([
-                    Schema.Literals([
-                      "application/json",
-                      "text/html",
-                      "text/plain",
-                      "text/xml",
+                    Schema.Union([
+                      Schema.Literals([
+                        "application/json",
+                        "text/html",
+                        "text/plain",
+                        "text/xml",
+                      ]),
+                      Schema.String,
                     ]),
                     Schema.Null,
                   ]),
@@ -22843,7 +23679,10 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               immutable: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -22859,7 +23698,10 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               maxAge: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -22875,7 +23717,10 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               mustRevalidate: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -22891,7 +23736,10 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               mustUnderstand: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -22907,7 +23755,10 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               noCache: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -22923,7 +23774,10 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               noStore: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -22939,7 +23793,10 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               noTransform: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -22955,7 +23812,10 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               private: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -22971,7 +23831,10 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               proxyRevalidate: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -22987,7 +23850,10 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               public: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -23003,7 +23869,10 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               sMaxage: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -23019,7 +23888,10 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               staleIfError: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -23035,7 +23907,10 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               staleWhileRevalidate: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -23170,11 +24045,14 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               browserTtl: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    mode: Schema.Literals([
-                      "respect_origin",
-                      "bypass_by_default",
-                      "override_origin",
-                      "bypass",
+                    mode: Schema.Union([
+                      Schema.Literals([
+                        "respect_origin",
+                        "bypass_by_default",
+                        "override_origin",
+                        "bypass",
+                      ]),
+                      Schema.String,
                     ]),
                     default: Schema.optional(
                       Schema.Union([Schema.Number, Schema.Null]),
@@ -23382,10 +24260,13 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               edgeTtl: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    mode: Schema.Literals([
-                      "respect_origin",
-                      "bypass_by_default",
-                      "override_origin",
+                    mode: Schema.Union([
+                      Schema.Literals([
+                        "respect_origin",
+                        "bypass_by_default",
+                        "override_origin",
+                      ]),
+                      Schema.String,
                     ]),
                     default: Schema.optional(
                       Schema.Union([Schema.Number, Schema.Null]),
@@ -23594,12 +24475,18 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([
             Schema.Union([
               Schema.Struct({
-                operation: Schema.Literals(["add", "remove", "set"]),
+                operation: Schema.Union([
+                  Schema.Literals(["add", "remove", "set"]),
+                  Schema.String,
+                ]),
                 values: Schema.Array(Schema.String),
               }),
               Schema.Struct({
                 expression: Schema.String,
-                operation: Schema.Literals(["add", "remove", "set"]),
+                operation: Schema.Union([
+                  Schema.Literals(["add", "remove", "set"]),
+                  Schema.String,
+                ]),
               }),
             ]),
             Schema.Null,
@@ -23753,7 +24640,10 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               polish: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["off", "lossless", "lossy", "webp"]),
+                  Schema.Union([
+                    Schema.Literals(["off", "lossless", "lossy", "webp"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -23762,13 +24652,19 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               requestBodyBuffering: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["none", "standard", "full"]),
+                  Schema.Union([
+                    Schema.Literals(["none", "standard", "full"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
               responseBodyBuffering: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["none", "standard"]),
+                  Schema.Union([
+                    Schema.Literals(["none", "standard"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -23777,13 +24673,16 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               securityLevel: Schema.optional(
                 Schema.Union([
-                  Schema.Literals([
-                    "off",
-                    "essentially_off",
-                    "low",
-                    "medium",
-                    "high",
-                    "under_attack",
+                  Schema.Union([
+                    Schema.Literals([
+                      "off",
+                      "essentially_off",
+                      "low",
+                      "medium",
+                      "high",
+                      "under_attack",
+                    ]),
+                    Schema.String,
                   ]),
                   Schema.Null,
                 ]),
@@ -23793,12 +24692,15 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               ssl: Schema.optional(
                 Schema.Union([
-                  Schema.Literals([
-                    "off",
-                    "flexible",
-                    "full",
-                    "strict",
-                    "origin_pull",
+                  Schema.Union([
+                    Schema.Literals([
+                      "off",
+                      "flexible",
+                      "full",
+                      "strict",
+                      "origin_pull",
+                    ]),
+                    Schema.String,
                   ]),
                   Schema.Null,
                 ]),
@@ -23935,31 +24837,34 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               phases: Schema.optional(
                 Schema.Union([
                   Schema.Array(
-                    Schema.Literals([
-                      "ddos_l4",
-                      "ddos_l7",
-                      "http_config_settings",
-                      "http_custom_errors",
-                      "http_log_custom_fields",
-                      "http_ratelimit",
-                      "http_request_cache_settings",
-                      "http_request_dynamic_redirect",
-                      "http_request_firewall_custom",
-                      "http_request_firewall_managed",
-                      "http_request_late_transform",
-                      "http_request_origin",
-                      "http_request_redirect",
-                      "http_request_sanitize",
-                      "http_request_sbfm",
-                      "http_request_transform",
-                      "http_response_cache_settings",
-                      "http_response_compression",
-                      "http_response_firewall_managed",
-                      "http_response_headers_transform",
-                      "magic_transit",
-                      "magic_transit_ids_managed",
-                      "magic_transit_managed",
-                      "magic_transit_ratelimit",
+                    Schema.Union([
+                      Schema.Literals([
+                        "ddos_l4",
+                        "ddos_l7",
+                        "http_config_settings",
+                        "http_custom_errors",
+                        "http_log_custom_fields",
+                        "http_ratelimit",
+                        "http_request_cache_settings",
+                        "http_request_dynamic_redirect",
+                        "http_request_firewall_custom",
+                        "http_request_firewall_managed",
+                        "http_request_late_transform",
+                        "http_request_origin",
+                        "http_request_redirect",
+                        "http_request_sanitize",
+                        "http_request_sbfm",
+                        "http_request_transform",
+                        "http_response_cache_settings",
+                        "http_response_compression",
+                        "http_response_firewall_managed",
+                        "http_response_headers_transform",
+                        "magic_transit",
+                        "magic_transit_ids_managed",
+                        "magic_transit_managed",
+                        "magic_transit_ratelimit",
+                      ]),
+                      Schema.String,
                     ]),
                   ),
                   Schema.Null,
@@ -23968,14 +24873,17 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               products: Schema.optional(
                 Schema.Union([
                   Schema.Array(
-                    Schema.Literals([
-                      "bic",
-                      "hot",
-                      "rateLimit",
-                      "securityLevel",
-                      "uaBlock",
-                      "waf",
-                      "zoneLockdown",
+                    Schema.Union([
+                      Schema.Literals([
+                        "bic",
+                        "hot",
+                        "rateLimit",
+                        "securityLevel",
+                        "uaBlock",
+                        "waf",
+                        "zoneLockdown",
+                      ]),
+                      Schema.String,
                     ]),
                   ),
                   Schema.Null,
@@ -24174,7 +25082,7 @@ export interface DeleteRuleResponse {
   /** The unique ID of the ruleset. */
   id: string;
   /** The kind of the ruleset. */
-  kind: "managed" | "custom" | "root" | "zone";
+  kind: "managed" | "custom" | "root" | "zone" | (string & {});
   /** The timestamp of when the ruleset was last modified. */
   lastUpdated: string;
   /** The human-readable name of the ruleset. */
@@ -24204,7 +25112,8 @@ export interface DeleteRuleResponse {
     | "magic_transit"
     | "magic_transit_ids_managed"
     | "magic_transit_managed"
-    | "magic_transit_ratelimit";
+    | "magic_transit_ratelimit"
+    | (string & {});
   /** The list of rules in the ruleset. */
   rules: (
     | {
@@ -24281,6 +25190,7 @@ export interface DeleteRuleResponse {
               | "gzip"
               | "brotli"
               | "zstd"
+              | (string & {})
               | null;
           }[];
         } | null;
@@ -24352,6 +25262,7 @@ export interface DeleteRuleResponse {
                     | "medium"
                     | "low"
                     | "eoff"
+                    | (string & {})
                     | null;
                 }[]
               | null;
@@ -24367,10 +25278,17 @@ export interface DeleteRuleResponse {
                     | "medium"
                     | "low"
                     | "eoff"
+                    | (string & {})
                     | null;
                 }[]
               | null;
-            sensitivityLevel?: "default" | "medium" | "low" | "eoff" | null;
+            sensitivityLevel?:
+              | "default"
+              | "medium"
+              | "low"
+              | "eoff"
+              | (string & {})
+              | null;
           } | null;
         } | null;
         categories?: string[] | null;
@@ -24549,7 +25467,14 @@ export interface DeleteRuleResponse {
           fromValue?: {
             targetUrl: { expression?: string | null; value?: string | null };
             preserveQueryString?: boolean | null;
-            statusCode?: "301" | "302" | "303" | "307" | "308" | null;
+            statusCode?:
+              | "301"
+              | "302"
+              | "303"
+              | "307"
+              | "308"
+              | (string & {})
+              | null;
           } | null;
         } | null;
         categories?: string[] | null;
@@ -24683,6 +25608,7 @@ export interface DeleteRuleResponse {
                 | "text/html"
                 | "text/plain"
                 | "text/xml"
+                | (string & {})
                 | null;
               statusCode?: number | null;
             }
@@ -24693,6 +25619,7 @@ export interface DeleteRuleResponse {
                 | "text/html"
                 | "text/plain"
                 | "text/xml"
+                | (string & {})
                 | null;
               statusCode?: number | null;
             }
@@ -24725,55 +25652,55 @@ export interface DeleteRuleResponse {
         action?: "set_cache_control" | null;
         actionParameters?: {
           immutable?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           maxAge?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           mustRevalidate?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           mustUnderstand?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           noCache?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           noStore?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           noTransform?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           private?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           proxyRevalidate?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           public?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           sMaxage?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           staleIfError?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           staleWhileRevalidate?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
         } | null;
@@ -24810,7 +25737,8 @@ export interface DeleteRuleResponse {
               | "respect_origin"
               | "bypass_by_default"
               | "override_origin"
-              | "bypass";
+              | "bypass"
+              | (string & {});
             default?: number | null;
           } | null;
           cache?: boolean | null;
@@ -24846,7 +25774,11 @@ export interface DeleteRuleResponse {
             minimumFileSize?: number | null;
           } | null;
           edgeTtl?: {
-            mode: "respect_origin" | "bypass_by_default" | "override_origin";
+            mode:
+              | "respect_origin"
+              | "bypass_by_default"
+              | "override_origin"
+              | (string & {});
             default?: number | null;
             statusCodeTtl?:
               | {
@@ -24896,8 +25828,14 @@ export interface DeleteRuleResponse {
         id?: string | null;
         action?: "set_cache_tags" | null;
         actionParameters?:
-          | { operation: "add" | "remove" | "set"; values: string[] }
-          | { expression: string; operation: "add" | "remove" | "set" }
+          | {
+              operation: "add" | "remove" | "set" | (string & {});
+              values: string[];
+            }
+          | {
+              expression: string;
+              operation: "add" | "remove" | "set" | (string & {});
+            }
           | null;
         categories?: string[] | null;
         description?: string | null;
@@ -24943,10 +25881,15 @@ export interface DeleteRuleResponse {
           hotlinkProtection?: boolean | null;
           mirage?: boolean | null;
           opportunisticEncryption?: boolean | null;
-          polish?: "off" | "lossless" | "lossy" | "webp" | null;
+          polish?: "off" | "lossless" | "lossy" | "webp" | (string & {}) | null;
           redirectsForAiTraining?: boolean | null;
-          requestBodyBuffering?: "none" | "standard" | "full" | null;
-          responseBodyBuffering?: "none" | "standard" | null;
+          requestBodyBuffering?:
+            | "none"
+            | "standard"
+            | "full"
+            | (string & {})
+            | null;
+          responseBodyBuffering?: "none" | "standard" | (string & {}) | null;
           rocketLoader?: boolean | null;
           securityLevel?:
             | "off"
@@ -24955,9 +25898,17 @@ export interface DeleteRuleResponse {
             | "medium"
             | "high"
             | "under_attack"
+            | (string & {})
             | null;
           serverSideExcludes?: boolean | null;
-          ssl?: "off" | "flexible" | "full" | "strict" | "origin_pull" | null;
+          ssl?:
+            | "off"
+            | "flexible"
+            | "full"
+            | "strict"
+            | "origin_pull"
+            | (string & {})
+            | null;
           sxg?: boolean | null;
         } | null;
         categories?: string[] | null;
@@ -25014,6 +25965,7 @@ export interface DeleteRuleResponse {
                 | "magic_transit_ids_managed"
                 | "magic_transit_managed"
                 | "magic_transit_ratelimit"
+                | (string & {})
               )[]
             | null;
           products?:
@@ -25025,6 +25977,7 @@ export interface DeleteRuleResponse {
                 | "uaBlock"
                 | "waf"
                 | "zoneLockdown"
+                | (string & {})
               )[]
             | null;
           rules?: Record<string, unknown> | null;
@@ -25061,34 +26014,40 @@ export interface DeleteRuleResponse {
 
 export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
-  kind: Schema.Literals(["managed", "custom", "root", "zone"]),
+  kind: Schema.Union([
+    Schema.Literals(["managed", "custom", "root", "zone"]),
+    Schema.String,
+  ]),
   lastUpdated: Schema.String,
   name: Schema.String,
-  phase: Schema.Literals([
-    "ddos_l4",
-    "ddos_l7",
-    "http_config_settings",
-    "http_custom_errors",
-    "http_log_custom_fields",
-    "http_ratelimit",
-    "http_request_cache_settings",
-    "http_request_dynamic_redirect",
-    "http_request_firewall_custom",
-    "http_request_firewall_managed",
-    "http_request_late_transform",
-    "http_request_origin",
-    "http_request_redirect",
-    "http_request_sanitize",
-    "http_request_sbfm",
-    "http_request_transform",
-    "http_response_cache_settings",
-    "http_response_compression",
-    "http_response_firewall_managed",
-    "http_response_headers_transform",
-    "magic_transit",
-    "magic_transit_ids_managed",
-    "magic_transit_managed",
-    "magic_transit_ratelimit",
+  phase: Schema.Union([
+    Schema.Literals([
+      "ddos_l4",
+      "ddos_l7",
+      "http_config_settings",
+      "http_custom_errors",
+      "http_log_custom_fields",
+      "http_ratelimit",
+      "http_request_cache_settings",
+      "http_request_dynamic_redirect",
+      "http_request_firewall_custom",
+      "http_request_firewall_managed",
+      "http_request_late_transform",
+      "http_request_origin",
+      "http_request_redirect",
+      "http_request_sanitize",
+      "http_request_sbfm",
+      "http_request_transform",
+      "http_response_cache_settings",
+      "http_response_compression",
+      "http_response_firewall_managed",
+      "http_response_headers_transform",
+      "magic_transit",
+      "magic_transit_ids_managed",
+      "magic_transit_managed",
+      "magic_transit_ratelimit",
+    ]),
+    Schema.String,
   ]),
   rules: Schema.Array(
     Schema.Union([
@@ -25318,13 +26277,16 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 Schema.Struct({
                   name: Schema.optional(
                     Schema.Union([
-                      Schema.Literals([
-                        "none",
-                        "auto",
-                        "default",
-                        "gzip",
-                        "brotli",
-                        "zstd",
+                      Schema.Union([
+                        Schema.Literals([
+                          "none",
+                          "auto",
+                          "default",
+                          "gzip",
+                          "brotli",
+                          "zstd",
+                        ]),
+                        Schema.String,
                       ]),
                       Schema.Null,
                     ]),
@@ -25555,11 +26517,14 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                             ),
                             sensitivityLevel: Schema.optional(
                               Schema.Union([
-                                Schema.Literals([
-                                  "default",
-                                  "medium",
-                                  "low",
-                                  "eoff",
+                                Schema.Union([
+                                  Schema.Literals([
+                                    "default",
+                                    "medium",
+                                    "low",
+                                    "eoff",
+                                  ]),
+                                  Schema.String,
                                 ]),
                                 Schema.Null,
                               ]),
@@ -25595,11 +26560,14 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                             ),
                             sensitivityLevel: Schema.optional(
                               Schema.Union([
-                                Schema.Literals([
-                                  "default",
-                                  "medium",
-                                  "low",
-                                  "eoff",
+                                Schema.Union([
+                                  Schema.Literals([
+                                    "default",
+                                    "medium",
+                                    "low",
+                                    "eoff",
+                                  ]),
+                                  Schema.String,
                                 ]),
                                 Schema.Null,
                               ]),
@@ -25619,7 +26587,10 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     ),
                     sensitivityLevel: Schema.optional(
                       Schema.Union([
-                        Schema.Literals(["default", "medium", "low", "eoff"]),
+                        Schema.Union([
+                          Schema.Literals(["default", "medium", "low", "eoff"]),
+                          Schema.String,
+                        ]),
                         Schema.Null,
                       ]),
                     ),
@@ -26324,7 +27295,10 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     ),
                     statusCode: Schema.optional(
                       Schema.Union([
-                        Schema.Literals(["301", "302", "303", "307", "308"]),
+                        Schema.Union([
+                          Schema.Literals(["301", "302", "303", "307", "308"]),
+                          Schema.String,
+                        ]),
                         Schema.Null,
                       ]),
                     ),
@@ -26817,11 +27791,14 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 content: Schema.String,
                 contentType: Schema.optional(
                   Schema.Union([
-                    Schema.Literals([
-                      "application/json",
-                      "text/html",
-                      "text/plain",
-                      "text/xml",
+                    Schema.Union([
+                      Schema.Literals([
+                        "application/json",
+                        "text/html",
+                        "text/plain",
+                        "text/xml",
+                      ]),
+                      Schema.String,
                     ]),
                     Schema.Null,
                   ]),
@@ -26840,11 +27817,14 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 assetName: Schema.String,
                 contentType: Schema.optional(
                   Schema.Union([
-                    Schema.Literals([
-                      "application/json",
-                      "text/html",
-                      "text/plain",
-                      "text/xml",
+                    Schema.Union([
+                      Schema.Literals([
+                        "application/json",
+                        "text/html",
+                        "text/plain",
+                        "text/xml",
+                      ]),
+                      Schema.String,
                     ]),
                     Schema.Null,
                   ]),
@@ -26962,7 +27942,10 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               immutable: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -26978,7 +27961,10 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               maxAge: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -26994,7 +27980,10 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               mustRevalidate: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -27010,7 +27999,10 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               mustUnderstand: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -27026,7 +28018,10 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               noCache: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -27042,7 +28037,10 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               noStore: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -27058,7 +28056,10 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               noTransform: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -27074,7 +28075,10 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               private: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -27090,7 +28094,10 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               proxyRevalidate: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -27106,7 +28113,10 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               public: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -27122,7 +28132,10 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               sMaxage: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -27138,7 +28151,10 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               staleIfError: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -27154,7 +28170,10 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               staleWhileRevalidate: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -27289,11 +28308,14 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               browserTtl: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    mode: Schema.Literals([
-                      "respect_origin",
-                      "bypass_by_default",
-                      "override_origin",
-                      "bypass",
+                    mode: Schema.Union([
+                      Schema.Literals([
+                        "respect_origin",
+                        "bypass_by_default",
+                        "override_origin",
+                        "bypass",
+                      ]),
+                      Schema.String,
                     ]),
                     default: Schema.optional(
                       Schema.Union([Schema.Number, Schema.Null]),
@@ -27501,10 +28523,13 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               edgeTtl: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    mode: Schema.Literals([
-                      "respect_origin",
-                      "bypass_by_default",
-                      "override_origin",
+                    mode: Schema.Union([
+                      Schema.Literals([
+                        "respect_origin",
+                        "bypass_by_default",
+                        "override_origin",
+                      ]),
+                      Schema.String,
                     ]),
                     default: Schema.optional(
                       Schema.Union([Schema.Number, Schema.Null]),
@@ -27713,12 +28738,18 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([
             Schema.Union([
               Schema.Struct({
-                operation: Schema.Literals(["add", "remove", "set"]),
+                operation: Schema.Union([
+                  Schema.Literals(["add", "remove", "set"]),
+                  Schema.String,
+                ]),
                 values: Schema.Array(Schema.String),
               }),
               Schema.Struct({
                 expression: Schema.String,
-                operation: Schema.Literals(["add", "remove", "set"]),
+                operation: Schema.Union([
+                  Schema.Literals(["add", "remove", "set"]),
+                  Schema.String,
+                ]),
               }),
             ]),
             Schema.Null,
@@ -27872,7 +28903,10 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               polish: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["off", "lossless", "lossy", "webp"]),
+                  Schema.Union([
+                    Schema.Literals(["off", "lossless", "lossy", "webp"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -27881,13 +28915,19 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               requestBodyBuffering: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["none", "standard", "full"]),
+                  Schema.Union([
+                    Schema.Literals(["none", "standard", "full"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
               responseBodyBuffering: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["none", "standard"]),
+                  Schema.Union([
+                    Schema.Literals(["none", "standard"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -27896,13 +28936,16 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               securityLevel: Schema.optional(
                 Schema.Union([
-                  Schema.Literals([
-                    "off",
-                    "essentially_off",
-                    "low",
-                    "medium",
-                    "high",
-                    "under_attack",
+                  Schema.Union([
+                    Schema.Literals([
+                      "off",
+                      "essentially_off",
+                      "low",
+                      "medium",
+                      "high",
+                      "under_attack",
+                    ]),
+                    Schema.String,
                   ]),
                   Schema.Null,
                 ]),
@@ -27912,12 +28955,15 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               ssl: Schema.optional(
                 Schema.Union([
-                  Schema.Literals([
-                    "off",
-                    "flexible",
-                    "full",
-                    "strict",
-                    "origin_pull",
+                  Schema.Union([
+                    Schema.Literals([
+                      "off",
+                      "flexible",
+                      "full",
+                      "strict",
+                      "origin_pull",
+                    ]),
+                    Schema.String,
                   ]),
                   Schema.Null,
                 ]),
@@ -28054,31 +29100,34 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               phases: Schema.optional(
                 Schema.Union([
                   Schema.Array(
-                    Schema.Literals([
-                      "ddos_l4",
-                      "ddos_l7",
-                      "http_config_settings",
-                      "http_custom_errors",
-                      "http_log_custom_fields",
-                      "http_ratelimit",
-                      "http_request_cache_settings",
-                      "http_request_dynamic_redirect",
-                      "http_request_firewall_custom",
-                      "http_request_firewall_managed",
-                      "http_request_late_transform",
-                      "http_request_origin",
-                      "http_request_redirect",
-                      "http_request_sanitize",
-                      "http_request_sbfm",
-                      "http_request_transform",
-                      "http_response_cache_settings",
-                      "http_response_compression",
-                      "http_response_firewall_managed",
-                      "http_response_headers_transform",
-                      "magic_transit",
-                      "magic_transit_ids_managed",
-                      "magic_transit_managed",
-                      "magic_transit_ratelimit",
+                    Schema.Union([
+                      Schema.Literals([
+                        "ddos_l4",
+                        "ddos_l7",
+                        "http_config_settings",
+                        "http_custom_errors",
+                        "http_log_custom_fields",
+                        "http_ratelimit",
+                        "http_request_cache_settings",
+                        "http_request_dynamic_redirect",
+                        "http_request_firewall_custom",
+                        "http_request_firewall_managed",
+                        "http_request_late_transform",
+                        "http_request_origin",
+                        "http_request_redirect",
+                        "http_request_sanitize",
+                        "http_request_sbfm",
+                        "http_request_transform",
+                        "http_response_cache_settings",
+                        "http_response_compression",
+                        "http_response_firewall_managed",
+                        "http_response_headers_transform",
+                        "magic_transit",
+                        "magic_transit_ids_managed",
+                        "magic_transit_managed",
+                        "magic_transit_ratelimit",
+                      ]),
+                      Schema.String,
                     ]),
                   ),
                   Schema.Null,
@@ -28087,14 +29136,17 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               products: Schema.optional(
                 Schema.Union([
                   Schema.Array(
-                    Schema.Literals([
-                      "bic",
-                      "hot",
-                      "rateLimit",
-                      "securityLevel",
-                      "uaBlock",
-                      "waf",
-                      "zoneLockdown",
+                    Schema.Union([
+                      Schema.Literals([
+                        "bic",
+                        "hot",
+                        "rateLimit",
+                        "securityLevel",
+                        "uaBlock",
+                        "waf",
+                        "zoneLockdown",
+                      ]),
+                      Schema.String,
                     ]),
                   ),
                   Schema.Null,
@@ -28292,7 +29344,7 @@ export interface GetRulesetResponse {
   /** The unique ID of the ruleset. */
   id: string;
   /** The kind of the ruleset. */
-  kind: "managed" | "custom" | "root" | "zone";
+  kind: "managed" | "custom" | "root" | "zone" | (string & {});
   /** The timestamp of when the ruleset was last modified. */
   lastUpdated: string;
   /** The human-readable name of the ruleset. */
@@ -28322,7 +29374,8 @@ export interface GetRulesetResponse {
     | "magic_transit"
     | "magic_transit_ids_managed"
     | "magic_transit_managed"
-    | "magic_transit_ratelimit";
+    | "magic_transit_ratelimit"
+    | (string & {});
   /** The list of rules in the ruleset. */
   rules: (
     | {
@@ -28399,6 +29452,7 @@ export interface GetRulesetResponse {
               | "gzip"
               | "brotli"
               | "zstd"
+              | (string & {})
               | null;
           }[];
         } | null;
@@ -28470,6 +29524,7 @@ export interface GetRulesetResponse {
                     | "medium"
                     | "low"
                     | "eoff"
+                    | (string & {})
                     | null;
                 }[]
               | null;
@@ -28485,10 +29540,17 @@ export interface GetRulesetResponse {
                     | "medium"
                     | "low"
                     | "eoff"
+                    | (string & {})
                     | null;
                 }[]
               | null;
-            sensitivityLevel?: "default" | "medium" | "low" | "eoff" | null;
+            sensitivityLevel?:
+              | "default"
+              | "medium"
+              | "low"
+              | "eoff"
+              | (string & {})
+              | null;
           } | null;
         } | null;
         categories?: string[] | null;
@@ -28667,7 +29729,14 @@ export interface GetRulesetResponse {
           fromValue?: {
             targetUrl: { expression?: string | null; value?: string | null };
             preserveQueryString?: boolean | null;
-            statusCode?: "301" | "302" | "303" | "307" | "308" | null;
+            statusCode?:
+              | "301"
+              | "302"
+              | "303"
+              | "307"
+              | "308"
+              | (string & {})
+              | null;
           } | null;
         } | null;
         categories?: string[] | null;
@@ -28801,6 +29870,7 @@ export interface GetRulesetResponse {
                 | "text/html"
                 | "text/plain"
                 | "text/xml"
+                | (string & {})
                 | null;
               statusCode?: number | null;
             }
@@ -28811,6 +29881,7 @@ export interface GetRulesetResponse {
                 | "text/html"
                 | "text/plain"
                 | "text/xml"
+                | (string & {})
                 | null;
               statusCode?: number | null;
             }
@@ -28843,55 +29914,55 @@ export interface GetRulesetResponse {
         action?: "set_cache_control" | null;
         actionParameters?: {
           immutable?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           maxAge?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           mustRevalidate?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           mustUnderstand?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           noCache?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           noStore?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           noTransform?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           private?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           proxyRevalidate?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           public?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           sMaxage?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           staleIfError?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           staleWhileRevalidate?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
         } | null;
@@ -28928,7 +29999,8 @@ export interface GetRulesetResponse {
               | "respect_origin"
               | "bypass_by_default"
               | "override_origin"
-              | "bypass";
+              | "bypass"
+              | (string & {});
             default?: number | null;
           } | null;
           cache?: boolean | null;
@@ -28964,7 +30036,11 @@ export interface GetRulesetResponse {
             minimumFileSize?: number | null;
           } | null;
           edgeTtl?: {
-            mode: "respect_origin" | "bypass_by_default" | "override_origin";
+            mode:
+              | "respect_origin"
+              | "bypass_by_default"
+              | "override_origin"
+              | (string & {});
             default?: number | null;
             statusCodeTtl?:
               | {
@@ -29014,8 +30090,14 @@ export interface GetRulesetResponse {
         id?: string | null;
         action?: "set_cache_tags" | null;
         actionParameters?:
-          | { operation: "add" | "remove" | "set"; values: string[] }
-          | { expression: string; operation: "add" | "remove" | "set" }
+          | {
+              operation: "add" | "remove" | "set" | (string & {});
+              values: string[];
+            }
+          | {
+              expression: string;
+              operation: "add" | "remove" | "set" | (string & {});
+            }
           | null;
         categories?: string[] | null;
         description?: string | null;
@@ -29061,10 +30143,15 @@ export interface GetRulesetResponse {
           hotlinkProtection?: boolean | null;
           mirage?: boolean | null;
           opportunisticEncryption?: boolean | null;
-          polish?: "off" | "lossless" | "lossy" | "webp" | null;
+          polish?: "off" | "lossless" | "lossy" | "webp" | (string & {}) | null;
           redirectsForAiTraining?: boolean | null;
-          requestBodyBuffering?: "none" | "standard" | "full" | null;
-          responseBodyBuffering?: "none" | "standard" | null;
+          requestBodyBuffering?:
+            | "none"
+            | "standard"
+            | "full"
+            | (string & {})
+            | null;
+          responseBodyBuffering?: "none" | "standard" | (string & {}) | null;
           rocketLoader?: boolean | null;
           securityLevel?:
             | "off"
@@ -29073,9 +30160,17 @@ export interface GetRulesetResponse {
             | "medium"
             | "high"
             | "under_attack"
+            | (string & {})
             | null;
           serverSideExcludes?: boolean | null;
-          ssl?: "off" | "flexible" | "full" | "strict" | "origin_pull" | null;
+          ssl?:
+            | "off"
+            | "flexible"
+            | "full"
+            | "strict"
+            | "origin_pull"
+            | (string & {})
+            | null;
           sxg?: boolean | null;
         } | null;
         categories?: string[] | null;
@@ -29132,6 +30227,7 @@ export interface GetRulesetResponse {
                 | "magic_transit_ids_managed"
                 | "magic_transit_managed"
                 | "magic_transit_ratelimit"
+                | (string & {})
               )[]
             | null;
           products?:
@@ -29143,6 +30239,7 @@ export interface GetRulesetResponse {
                 | "uaBlock"
                 | "waf"
                 | "zoneLockdown"
+                | (string & {})
               )[]
             | null;
           rules?: Record<string, unknown> | null;
@@ -29179,34 +30276,40 @@ export interface GetRulesetResponse {
 
 export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
-  kind: Schema.Literals(["managed", "custom", "root", "zone"]),
+  kind: Schema.Union([
+    Schema.Literals(["managed", "custom", "root", "zone"]),
+    Schema.String,
+  ]),
   lastUpdated: Schema.String,
   name: Schema.String,
-  phase: Schema.Literals([
-    "ddos_l4",
-    "ddos_l7",
-    "http_config_settings",
-    "http_custom_errors",
-    "http_log_custom_fields",
-    "http_ratelimit",
-    "http_request_cache_settings",
-    "http_request_dynamic_redirect",
-    "http_request_firewall_custom",
-    "http_request_firewall_managed",
-    "http_request_late_transform",
-    "http_request_origin",
-    "http_request_redirect",
-    "http_request_sanitize",
-    "http_request_sbfm",
-    "http_request_transform",
-    "http_response_cache_settings",
-    "http_response_compression",
-    "http_response_firewall_managed",
-    "http_response_headers_transform",
-    "magic_transit",
-    "magic_transit_ids_managed",
-    "magic_transit_managed",
-    "magic_transit_ratelimit",
+  phase: Schema.Union([
+    Schema.Literals([
+      "ddos_l4",
+      "ddos_l7",
+      "http_config_settings",
+      "http_custom_errors",
+      "http_log_custom_fields",
+      "http_ratelimit",
+      "http_request_cache_settings",
+      "http_request_dynamic_redirect",
+      "http_request_firewall_custom",
+      "http_request_firewall_managed",
+      "http_request_late_transform",
+      "http_request_origin",
+      "http_request_redirect",
+      "http_request_sanitize",
+      "http_request_sbfm",
+      "http_request_transform",
+      "http_response_cache_settings",
+      "http_response_compression",
+      "http_response_firewall_managed",
+      "http_response_headers_transform",
+      "magic_transit",
+      "magic_transit_ids_managed",
+      "magic_transit_managed",
+      "magic_transit_ratelimit",
+    ]),
+    Schema.String,
   ]),
   rules: Schema.Array(
     Schema.Union([
@@ -29436,13 +30539,16 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 Schema.Struct({
                   name: Schema.optional(
                     Schema.Union([
-                      Schema.Literals([
-                        "none",
-                        "auto",
-                        "default",
-                        "gzip",
-                        "brotli",
-                        "zstd",
+                      Schema.Union([
+                        Schema.Literals([
+                          "none",
+                          "auto",
+                          "default",
+                          "gzip",
+                          "brotli",
+                          "zstd",
+                        ]),
+                        Schema.String,
                       ]),
                       Schema.Null,
                     ]),
@@ -29673,11 +30779,14 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                             ),
                             sensitivityLevel: Schema.optional(
                               Schema.Union([
-                                Schema.Literals([
-                                  "default",
-                                  "medium",
-                                  "low",
-                                  "eoff",
+                                Schema.Union([
+                                  Schema.Literals([
+                                    "default",
+                                    "medium",
+                                    "low",
+                                    "eoff",
+                                  ]),
+                                  Schema.String,
                                 ]),
                                 Schema.Null,
                               ]),
@@ -29713,11 +30822,14 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                             ),
                             sensitivityLevel: Schema.optional(
                               Schema.Union([
-                                Schema.Literals([
-                                  "default",
-                                  "medium",
-                                  "low",
-                                  "eoff",
+                                Schema.Union([
+                                  Schema.Literals([
+                                    "default",
+                                    "medium",
+                                    "low",
+                                    "eoff",
+                                  ]),
+                                  Schema.String,
                                 ]),
                                 Schema.Null,
                               ]),
@@ -29737,7 +30849,10 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     ),
                     sensitivityLevel: Schema.optional(
                       Schema.Union([
-                        Schema.Literals(["default", "medium", "low", "eoff"]),
+                        Schema.Union([
+                          Schema.Literals(["default", "medium", "low", "eoff"]),
+                          Schema.String,
+                        ]),
                         Schema.Null,
                       ]),
                     ),
@@ -30442,7 +31557,10 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     ),
                     statusCode: Schema.optional(
                       Schema.Union([
-                        Schema.Literals(["301", "302", "303", "307", "308"]),
+                        Schema.Union([
+                          Schema.Literals(["301", "302", "303", "307", "308"]),
+                          Schema.String,
+                        ]),
                         Schema.Null,
                       ]),
                     ),
@@ -30935,11 +32053,14 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 content: Schema.String,
                 contentType: Schema.optional(
                   Schema.Union([
-                    Schema.Literals([
-                      "application/json",
-                      "text/html",
-                      "text/plain",
-                      "text/xml",
+                    Schema.Union([
+                      Schema.Literals([
+                        "application/json",
+                        "text/html",
+                        "text/plain",
+                        "text/xml",
+                      ]),
+                      Schema.String,
                     ]),
                     Schema.Null,
                   ]),
@@ -30958,11 +32079,14 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 assetName: Schema.String,
                 contentType: Schema.optional(
                   Schema.Union([
-                    Schema.Literals([
-                      "application/json",
-                      "text/html",
-                      "text/plain",
-                      "text/xml",
+                    Schema.Union([
+                      Schema.Literals([
+                        "application/json",
+                        "text/html",
+                        "text/plain",
+                        "text/xml",
+                      ]),
+                      Schema.String,
                     ]),
                     Schema.Null,
                   ]),
@@ -31080,7 +32204,10 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               immutable: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -31096,7 +32223,10 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               maxAge: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -31112,7 +32242,10 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               mustRevalidate: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -31128,7 +32261,10 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               mustUnderstand: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -31144,7 +32280,10 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               noCache: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -31160,7 +32299,10 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               noStore: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -31176,7 +32318,10 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               noTransform: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -31192,7 +32337,10 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               private: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -31208,7 +32356,10 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               proxyRevalidate: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -31224,7 +32375,10 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               public: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -31240,7 +32394,10 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               sMaxage: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -31256,7 +32413,10 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               staleIfError: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -31272,7 +32432,10 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               staleWhileRevalidate: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -31407,11 +32570,14 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               browserTtl: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    mode: Schema.Literals([
-                      "respect_origin",
-                      "bypass_by_default",
-                      "override_origin",
-                      "bypass",
+                    mode: Schema.Union([
+                      Schema.Literals([
+                        "respect_origin",
+                        "bypass_by_default",
+                        "override_origin",
+                        "bypass",
+                      ]),
+                      Schema.String,
                     ]),
                     default: Schema.optional(
                       Schema.Union([Schema.Number, Schema.Null]),
@@ -31619,10 +32785,13 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               edgeTtl: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    mode: Schema.Literals([
-                      "respect_origin",
-                      "bypass_by_default",
-                      "override_origin",
+                    mode: Schema.Union([
+                      Schema.Literals([
+                        "respect_origin",
+                        "bypass_by_default",
+                        "override_origin",
+                      ]),
+                      Schema.String,
                     ]),
                     default: Schema.optional(
                       Schema.Union([Schema.Number, Schema.Null]),
@@ -31831,12 +33000,18 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([
             Schema.Union([
               Schema.Struct({
-                operation: Schema.Literals(["add", "remove", "set"]),
+                operation: Schema.Union([
+                  Schema.Literals(["add", "remove", "set"]),
+                  Schema.String,
+                ]),
                 values: Schema.Array(Schema.String),
               }),
               Schema.Struct({
                 expression: Schema.String,
-                operation: Schema.Literals(["add", "remove", "set"]),
+                operation: Schema.Union([
+                  Schema.Literals(["add", "remove", "set"]),
+                  Schema.String,
+                ]),
               }),
             ]),
             Schema.Null,
@@ -31990,7 +33165,10 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               polish: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["off", "lossless", "lossy", "webp"]),
+                  Schema.Union([
+                    Schema.Literals(["off", "lossless", "lossy", "webp"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -31999,13 +33177,19 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               requestBodyBuffering: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["none", "standard", "full"]),
+                  Schema.Union([
+                    Schema.Literals(["none", "standard", "full"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
               responseBodyBuffering: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["none", "standard"]),
+                  Schema.Union([
+                    Schema.Literals(["none", "standard"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -32014,13 +33198,16 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               securityLevel: Schema.optional(
                 Schema.Union([
-                  Schema.Literals([
-                    "off",
-                    "essentially_off",
-                    "low",
-                    "medium",
-                    "high",
-                    "under_attack",
+                  Schema.Union([
+                    Schema.Literals([
+                      "off",
+                      "essentially_off",
+                      "low",
+                      "medium",
+                      "high",
+                      "under_attack",
+                    ]),
+                    Schema.String,
                   ]),
                   Schema.Null,
                 ]),
@@ -32030,12 +33217,15 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               ssl: Schema.optional(
                 Schema.Union([
-                  Schema.Literals([
-                    "off",
-                    "flexible",
-                    "full",
-                    "strict",
-                    "origin_pull",
+                  Schema.Union([
+                    Schema.Literals([
+                      "off",
+                      "flexible",
+                      "full",
+                      "strict",
+                      "origin_pull",
+                    ]),
+                    Schema.String,
                   ]),
                   Schema.Null,
                 ]),
@@ -32172,31 +33362,34 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               phases: Schema.optional(
                 Schema.Union([
                   Schema.Array(
-                    Schema.Literals([
-                      "ddos_l4",
-                      "ddos_l7",
-                      "http_config_settings",
-                      "http_custom_errors",
-                      "http_log_custom_fields",
-                      "http_ratelimit",
-                      "http_request_cache_settings",
-                      "http_request_dynamic_redirect",
-                      "http_request_firewall_custom",
-                      "http_request_firewall_managed",
-                      "http_request_late_transform",
-                      "http_request_origin",
-                      "http_request_redirect",
-                      "http_request_sanitize",
-                      "http_request_sbfm",
-                      "http_request_transform",
-                      "http_response_cache_settings",
-                      "http_response_compression",
-                      "http_response_firewall_managed",
-                      "http_response_headers_transform",
-                      "magic_transit",
-                      "magic_transit_ids_managed",
-                      "magic_transit_managed",
-                      "magic_transit_ratelimit",
+                    Schema.Union([
+                      Schema.Literals([
+                        "ddos_l4",
+                        "ddos_l7",
+                        "http_config_settings",
+                        "http_custom_errors",
+                        "http_log_custom_fields",
+                        "http_ratelimit",
+                        "http_request_cache_settings",
+                        "http_request_dynamic_redirect",
+                        "http_request_firewall_custom",
+                        "http_request_firewall_managed",
+                        "http_request_late_transform",
+                        "http_request_origin",
+                        "http_request_redirect",
+                        "http_request_sanitize",
+                        "http_request_sbfm",
+                        "http_request_transform",
+                        "http_response_cache_settings",
+                        "http_response_compression",
+                        "http_response_firewall_managed",
+                        "http_response_headers_transform",
+                        "magic_transit",
+                        "magic_transit_ids_managed",
+                        "magic_transit_managed",
+                        "magic_transit_ratelimit",
+                      ]),
+                      Schema.String,
                     ]),
                   ),
                   Schema.Null,
@@ -32205,14 +33398,17 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               products: Schema.optional(
                 Schema.Union([
                   Schema.Array(
-                    Schema.Literals([
-                      "bic",
-                      "hot",
-                      "rateLimit",
-                      "securityLevel",
-                      "uaBlock",
-                      "waf",
-                      "zoneLockdown",
+                    Schema.Union([
+                      Schema.Literals([
+                        "bic",
+                        "hot",
+                        "rateLimit",
+                        "securityLevel",
+                        "uaBlock",
+                        "waf",
+                        "zoneLockdown",
+                      ]),
+                      Schema.String,
                     ]),
                   ),
                   Schema.Null,
@@ -32398,7 +33594,7 @@ export const ListRulesetsForZoneRequest =
 export interface ListRulesetsResponse {
   result: {
     id: string;
-    kind: "managed" | "custom" | "root" | "zone";
+    kind: "managed" | "custom" | "root" | "zone" | (string & {});
     lastUpdated: string;
     name: string;
     phase:
@@ -32425,7 +33621,8 @@ export interface ListRulesetsResponse {
       | "magic_transit"
       | "magic_transit_ids_managed"
       | "magic_transit_managed"
-      | "magic_transit_ratelimit";
+      | "magic_transit_ratelimit"
+      | (string & {});
     version: string;
     description?: string | null;
   }[];
@@ -32440,34 +33637,40 @@ export const ListRulesetsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       id: Schema.String,
-      kind: Schema.Literals(["managed", "custom", "root", "zone"]),
+      kind: Schema.Union([
+        Schema.Literals(["managed", "custom", "root", "zone"]),
+        Schema.String,
+      ]),
       lastUpdated: Schema.String,
       name: Schema.String,
-      phase: Schema.Literals([
-        "ddos_l4",
-        "ddos_l7",
-        "http_config_settings",
-        "http_custom_errors",
-        "http_log_custom_fields",
-        "http_ratelimit",
-        "http_request_cache_settings",
-        "http_request_dynamic_redirect",
-        "http_request_firewall_custom",
-        "http_request_firewall_managed",
-        "http_request_late_transform",
-        "http_request_origin",
-        "http_request_redirect",
-        "http_request_sanitize",
-        "http_request_sbfm",
-        "http_request_transform",
-        "http_response_cache_settings",
-        "http_response_compression",
-        "http_response_firewall_managed",
-        "http_response_headers_transform",
-        "magic_transit",
-        "magic_transit_ids_managed",
-        "magic_transit_managed",
-        "magic_transit_ratelimit",
+      phase: Schema.Union([
+        Schema.Literals([
+          "ddos_l4",
+          "ddos_l7",
+          "http_config_settings",
+          "http_custom_errors",
+          "http_log_custom_fields",
+          "http_ratelimit",
+          "http_request_cache_settings",
+          "http_request_dynamic_redirect",
+          "http_request_firewall_custom",
+          "http_request_firewall_managed",
+          "http_request_late_transform",
+          "http_request_origin",
+          "http_request_redirect",
+          "http_request_sanitize",
+          "http_request_sbfm",
+          "http_request_transform",
+          "http_response_cache_settings",
+          "http_response_compression",
+          "http_response_firewall_managed",
+          "http_response_headers_transform",
+          "magic_transit",
+          "magic_transit_ids_managed",
+          "magic_transit_managed",
+          "magic_transit_ratelimit",
+        ]),
+        Schema.String,
       ]),
       version: Schema.String,
       description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -32542,33 +33745,39 @@ export const listRulesetsForZone: API.PaginatedOperationMethod<
 }));
 
 const CreateRulesetBaseFields = {
-  kind: Schema.Literals(["managed", "custom", "root", "zone"]),
+  kind: Schema.Union([
+    Schema.Literals(["managed", "custom", "root", "zone"]),
+    Schema.String,
+  ]),
   name: Schema.String,
-  phase: Schema.Literals([
-    "ddos_l4",
-    "ddos_l7",
-    "http_config_settings",
-    "http_custom_errors",
-    "http_log_custom_fields",
-    "http_ratelimit",
-    "http_request_cache_settings",
-    "http_request_dynamic_redirect",
-    "http_request_firewall_custom",
-    "http_request_firewall_managed",
-    "http_request_late_transform",
-    "http_request_origin",
-    "http_request_redirect",
-    "http_request_sanitize",
-    "http_request_sbfm",
-    "http_request_transform",
-    "http_response_cache_settings",
-    "http_response_compression",
-    "http_response_firewall_managed",
-    "http_response_headers_transform",
-    "magic_transit",
-    "magic_transit_ids_managed",
-    "magic_transit_managed",
-    "magic_transit_ratelimit",
+  phase: Schema.Union([
+    Schema.Literals([
+      "ddos_l4",
+      "ddos_l7",
+      "http_config_settings",
+      "http_custom_errors",
+      "http_log_custom_fields",
+      "http_ratelimit",
+      "http_request_cache_settings",
+      "http_request_dynamic_redirect",
+      "http_request_firewall_custom",
+      "http_request_firewall_managed",
+      "http_request_late_transform",
+      "http_request_origin",
+      "http_request_redirect",
+      "http_request_sanitize",
+      "http_request_sbfm",
+      "http_request_transform",
+      "http_response_cache_settings",
+      "http_response_compression",
+      "http_response_firewall_managed",
+      "http_response_headers_transform",
+      "magic_transit",
+      "magic_transit_ids_managed",
+      "magic_transit_managed",
+      "magic_transit_ratelimit",
+    ]),
+    Schema.String,
   ]),
   description: Schema.optional(Schema.String),
   rules: Schema.optional(
@@ -32720,13 +33929,16 @@ const CreateRulesetBaseFields = {
               algorithms: Schema.Array(
                 Schema.Struct({
                   name: Schema.optional(
-                    Schema.Literals([
-                      "none",
-                      "auto",
-                      "default",
-                      "gzip",
-                      "brotli",
-                      "zstd",
+                    Schema.Union([
+                      Schema.Literals([
+                        "none",
+                        "auto",
+                        "default",
+                        "gzip",
+                        "brotli",
+                        "zstd",
+                      ]),
+                      Schema.String,
                     ]),
                   ),
                 }),
@@ -32872,7 +34084,15 @@ const CreateRulesetBaseFields = {
                         action: Schema.optional(Schema.String),
                         enabled: Schema.optional(Schema.Boolean),
                         sensitivityLevel: Schema.optional(
-                          Schema.Literals(["default", "medium", "low", "eoff"]),
+                          Schema.Union([
+                            Schema.Literals([
+                              "default",
+                              "medium",
+                              "low",
+                              "eoff",
+                            ]),
+                            Schema.String,
+                          ]),
                         ),
                       }).pipe(
                         Schema.encodeKeys({
@@ -32893,7 +34113,15 @@ const CreateRulesetBaseFields = {
                         enabled: Schema.optional(Schema.Boolean),
                         scoreThreshold: Schema.optional(Schema.Number),
                         sensitivityLevel: Schema.optional(
-                          Schema.Literals(["default", "medium", "low", "eoff"]),
+                          Schema.Union([
+                            Schema.Literals([
+                              "default",
+                              "medium",
+                              "low",
+                              "eoff",
+                            ]),
+                            Schema.String,
+                          ]),
                         ),
                       }).pipe(
                         Schema.encodeKeys({
@@ -32907,7 +34135,10 @@ const CreateRulesetBaseFields = {
                     ),
                   ),
                   sensitivityLevel: Schema.optional(
-                    Schema.Literals(["default", "medium", "low", "eoff"]),
+                    Schema.Union([
+                      Schema.Literals(["default", "medium", "low", "eoff"]),
+                      Schema.String,
+                    ]),
                   ),
                 }).pipe(
                   Schema.encodeKeys({
@@ -33366,7 +34597,10 @@ const CreateRulesetBaseFields = {
                   }),
                   preserveQueryString: Schema.optional(Schema.Boolean),
                   statusCode: Schema.optional(
-                    Schema.Literals(["301", "302", "303", "307", "308"]),
+                    Schema.Union([
+                      Schema.Literals(["301", "302", "303", "307", "308"]),
+                      Schema.String,
+                    ]),
                   ),
                 }).pipe(
                   Schema.encodeKeys({
@@ -33678,11 +34912,14 @@ const CreateRulesetBaseFields = {
               Schema.Struct({
                 content: Schema.String,
                 contentType: Schema.optional(
-                  Schema.Literals([
-                    "application/json",
-                    "text/html",
-                    "text/plain",
-                    "text/xml",
+                  Schema.Union([
+                    Schema.Literals([
+                      "application/json",
+                      "text/html",
+                      "text/plain",
+                      "text/xml",
+                    ]),
+                    Schema.String,
                   ]),
                 ),
                 statusCode: Schema.optional(Schema.Number),
@@ -33696,11 +34933,14 @@ const CreateRulesetBaseFields = {
               Schema.Struct({
                 assetName: Schema.String,
                 contentType: Schema.optional(
-                  Schema.Literals([
-                    "application/json",
-                    "text/html",
-                    "text/plain",
-                    "text/xml",
+                  Schema.Union([
+                    Schema.Literals([
+                      "application/json",
+                      "text/html",
+                      "text/plain",
+                      "text/xml",
+                    ]),
+                    Schema.String,
                   ]),
                 ),
                 statusCode: Schema.optional(Schema.Number),
@@ -33777,7 +35017,10 @@ const CreateRulesetBaseFields = {
             Schema.Struct({
               immutable: Schema.optional(
                 Schema.Struct({
-                  operation: Schema.Literals(["set", "remove"]),
+                  operation: Schema.Union([
+                    Schema.Literals(["set", "remove"]),
+                    Schema.String,
+                  ]),
                   cloudflareOnly: Schema.optional(Schema.Boolean),
                 }).pipe(
                   Schema.encodeKeys({
@@ -33788,7 +35031,10 @@ const CreateRulesetBaseFields = {
               ),
               maxAge: Schema.optional(
                 Schema.Struct({
-                  operation: Schema.Literals(["set", "remove"]),
+                  operation: Schema.Union([
+                    Schema.Literals(["set", "remove"]),
+                    Schema.String,
+                  ]),
                   cloudflareOnly: Schema.optional(Schema.Boolean),
                 }).pipe(
                   Schema.encodeKeys({
@@ -33799,7 +35045,10 @@ const CreateRulesetBaseFields = {
               ),
               mustRevalidate: Schema.optional(
                 Schema.Struct({
-                  operation: Schema.Literals(["set", "remove"]),
+                  operation: Schema.Union([
+                    Schema.Literals(["set", "remove"]),
+                    Schema.String,
+                  ]),
                   cloudflareOnly: Schema.optional(Schema.Boolean),
                 }).pipe(
                   Schema.encodeKeys({
@@ -33810,7 +35059,10 @@ const CreateRulesetBaseFields = {
               ),
               mustUnderstand: Schema.optional(
                 Schema.Struct({
-                  operation: Schema.Literals(["set", "remove"]),
+                  operation: Schema.Union([
+                    Schema.Literals(["set", "remove"]),
+                    Schema.String,
+                  ]),
                   cloudflareOnly: Schema.optional(Schema.Boolean),
                 }).pipe(
                   Schema.encodeKeys({
@@ -33821,7 +35073,10 @@ const CreateRulesetBaseFields = {
               ),
               noCache: Schema.optional(
                 Schema.Struct({
-                  operation: Schema.Literals(["set", "remove"]),
+                  operation: Schema.Union([
+                    Schema.Literals(["set", "remove"]),
+                    Schema.String,
+                  ]),
                   cloudflareOnly: Schema.optional(Schema.Boolean),
                 }).pipe(
                   Schema.encodeKeys({
@@ -33832,7 +35087,10 @@ const CreateRulesetBaseFields = {
               ),
               noStore: Schema.optional(
                 Schema.Struct({
-                  operation: Schema.Literals(["set", "remove"]),
+                  operation: Schema.Union([
+                    Schema.Literals(["set", "remove"]),
+                    Schema.String,
+                  ]),
                   cloudflareOnly: Schema.optional(Schema.Boolean),
                 }).pipe(
                   Schema.encodeKeys({
@@ -33843,7 +35101,10 @@ const CreateRulesetBaseFields = {
               ),
               noTransform: Schema.optional(
                 Schema.Struct({
-                  operation: Schema.Literals(["set", "remove"]),
+                  operation: Schema.Union([
+                    Schema.Literals(["set", "remove"]),
+                    Schema.String,
+                  ]),
                   cloudflareOnly: Schema.optional(Schema.Boolean),
                 }).pipe(
                   Schema.encodeKeys({
@@ -33854,7 +35115,10 @@ const CreateRulesetBaseFields = {
               ),
               private: Schema.optional(
                 Schema.Struct({
-                  operation: Schema.Literals(["set", "remove"]),
+                  operation: Schema.Union([
+                    Schema.Literals(["set", "remove"]),
+                    Schema.String,
+                  ]),
                   cloudflareOnly: Schema.optional(Schema.Boolean),
                 }).pipe(
                   Schema.encodeKeys({
@@ -33865,7 +35129,10 @@ const CreateRulesetBaseFields = {
               ),
               proxyRevalidate: Schema.optional(
                 Schema.Struct({
-                  operation: Schema.Literals(["set", "remove"]),
+                  operation: Schema.Union([
+                    Schema.Literals(["set", "remove"]),
+                    Schema.String,
+                  ]),
                   cloudflareOnly: Schema.optional(Schema.Boolean),
                 }).pipe(
                   Schema.encodeKeys({
@@ -33876,7 +35143,10 @@ const CreateRulesetBaseFields = {
               ),
               public: Schema.optional(
                 Schema.Struct({
-                  operation: Schema.Literals(["set", "remove"]),
+                  operation: Schema.Union([
+                    Schema.Literals(["set", "remove"]),
+                    Schema.String,
+                  ]),
                   cloudflareOnly: Schema.optional(Schema.Boolean),
                 }).pipe(
                   Schema.encodeKeys({
@@ -33887,7 +35157,10 @@ const CreateRulesetBaseFields = {
               ),
               sMaxage: Schema.optional(
                 Schema.Struct({
-                  operation: Schema.Literals(["set", "remove"]),
+                  operation: Schema.Union([
+                    Schema.Literals(["set", "remove"]),
+                    Schema.String,
+                  ]),
                   cloudflareOnly: Schema.optional(Schema.Boolean),
                 }).pipe(
                   Schema.encodeKeys({
@@ -33898,7 +35171,10 @@ const CreateRulesetBaseFields = {
               ),
               staleIfError: Schema.optional(
                 Schema.Struct({
-                  operation: Schema.Literals(["set", "remove"]),
+                  operation: Schema.Union([
+                    Schema.Literals(["set", "remove"]),
+                    Schema.String,
+                  ]),
                   cloudflareOnly: Schema.optional(Schema.Boolean),
                 }).pipe(
                   Schema.encodeKeys({
@@ -33909,7 +35185,10 @@ const CreateRulesetBaseFields = {
               ),
               staleWhileRevalidate: Schema.optional(
                 Schema.Struct({
-                  operation: Schema.Literals(["set", "remove"]),
+                  operation: Schema.Union([
+                    Schema.Literals(["set", "remove"]),
+                    Schema.String,
+                  ]),
                   cloudflareOnly: Schema.optional(Schema.Boolean),
                 }).pipe(
                   Schema.encodeKeys({
@@ -34003,11 +35282,14 @@ const CreateRulesetBaseFields = {
               ),
               browserTtl: Schema.optional(
                 Schema.Struct({
-                  mode: Schema.Literals([
-                    "respect_origin",
-                    "bypass_by_default",
-                    "override_origin",
-                    "bypass",
+                  mode: Schema.Union([
+                    Schema.Literals([
+                      "respect_origin",
+                      "bypass_by_default",
+                      "override_origin",
+                      "bypass",
+                    ]),
+                    Schema.String,
                   ]),
                   default: Schema.optional(Schema.Number),
                 }),
@@ -34122,10 +35404,13 @@ const CreateRulesetBaseFields = {
               ),
               edgeTtl: Schema.optional(
                 Schema.Struct({
-                  mode: Schema.Literals([
-                    "respect_origin",
-                    "bypass_by_default",
-                    "override_origin",
+                  mode: Schema.Union([
+                    Schema.Literals([
+                      "respect_origin",
+                      "bypass_by_default",
+                      "override_origin",
+                    ]),
+                    Schema.String,
                   ]),
                   default: Schema.optional(Schema.Number),
                   statusCodeTtl: Schema.optional(
@@ -34260,12 +35545,18 @@ const CreateRulesetBaseFields = {
           actionParameters: Schema.optional(
             Schema.Union([
               Schema.Struct({
-                operation: Schema.Literals(["add", "remove", "set"]),
+                operation: Schema.Union([
+                  Schema.Literals(["add", "remove", "set"]),
+                  Schema.String,
+                ]),
                 values: Schema.Array(Schema.String),
               }),
               Schema.Struct({
                 expression: Schema.String,
-                operation: Schema.Literals(["add", "remove", "set"]),
+                operation: Schema.Union([
+                  Schema.Literals(["add", "remove", "set"]),
+                  Schema.String,
+                ]),
               }),
             ]),
           ),
@@ -34351,34 +35642,49 @@ const CreateRulesetBaseFields = {
               mirage: Schema.optional(Schema.Boolean),
               opportunisticEncryption: Schema.optional(Schema.Boolean),
               polish: Schema.optional(
-                Schema.Literals(["off", "lossless", "lossy", "webp"]),
+                Schema.Union([
+                  Schema.Literals(["off", "lossless", "lossy", "webp"]),
+                  Schema.String,
+                ]),
               ),
               redirectsForAiTraining: Schema.optional(Schema.Boolean),
               requestBodyBuffering: Schema.optional(
-                Schema.Literals(["none", "standard", "full"]),
+                Schema.Union([
+                  Schema.Literals(["none", "standard", "full"]),
+                  Schema.String,
+                ]),
               ),
               responseBodyBuffering: Schema.optional(
-                Schema.Literals(["none", "standard"]),
+                Schema.Union([
+                  Schema.Literals(["none", "standard"]),
+                  Schema.String,
+                ]),
               ),
               rocketLoader: Schema.optional(Schema.Boolean),
               securityLevel: Schema.optional(
-                Schema.Literals([
-                  "off",
-                  "essentially_off",
-                  "low",
-                  "medium",
-                  "high",
-                  "under_attack",
+                Schema.Union([
+                  Schema.Literals([
+                    "off",
+                    "essentially_off",
+                    "low",
+                    "medium",
+                    "high",
+                    "under_attack",
+                  ]),
+                  Schema.String,
                 ]),
               ),
               serverSideExcludes: Schema.optional(Schema.Boolean),
               ssl: Schema.optional(
-                Schema.Literals([
-                  "off",
-                  "flexible",
-                  "full",
-                  "strict",
-                  "origin_pull",
+                Schema.Union([
+                  Schema.Literals([
+                    "off",
+                    "flexible",
+                    "full",
+                    "strict",
+                    "origin_pull",
+                  ]),
+                  Schema.String,
                 ]),
               ),
               sxg: Schema.optional(Schema.Boolean),
@@ -34474,44 +35780,50 @@ const CreateRulesetBaseFields = {
               phase: Schema.optional(Schema.Literal("current")),
               phases: Schema.optional(
                 Schema.Array(
-                  Schema.Literals([
-                    "ddos_l4",
-                    "ddos_l7",
-                    "http_config_settings",
-                    "http_custom_errors",
-                    "http_log_custom_fields",
-                    "http_ratelimit",
-                    "http_request_cache_settings",
-                    "http_request_dynamic_redirect",
-                    "http_request_firewall_custom",
-                    "http_request_firewall_managed",
-                    "http_request_late_transform",
-                    "http_request_origin",
-                    "http_request_redirect",
-                    "http_request_sanitize",
-                    "http_request_sbfm",
-                    "http_request_transform",
-                    "http_response_cache_settings",
-                    "http_response_compression",
-                    "http_response_firewall_managed",
-                    "http_response_headers_transform",
-                    "magic_transit",
-                    "magic_transit_ids_managed",
-                    "magic_transit_managed",
-                    "magic_transit_ratelimit",
+                  Schema.Union([
+                    Schema.Literals([
+                      "ddos_l4",
+                      "ddos_l7",
+                      "http_config_settings",
+                      "http_custom_errors",
+                      "http_log_custom_fields",
+                      "http_ratelimit",
+                      "http_request_cache_settings",
+                      "http_request_dynamic_redirect",
+                      "http_request_firewall_custom",
+                      "http_request_firewall_managed",
+                      "http_request_late_transform",
+                      "http_request_origin",
+                      "http_request_redirect",
+                      "http_request_sanitize",
+                      "http_request_sbfm",
+                      "http_request_transform",
+                      "http_response_cache_settings",
+                      "http_response_compression",
+                      "http_response_firewall_managed",
+                      "http_response_headers_transform",
+                      "magic_transit",
+                      "magic_transit_ids_managed",
+                      "magic_transit_managed",
+                      "magic_transit_ratelimit",
+                    ]),
+                    Schema.String,
                   ]),
                 ),
               ),
               products: Schema.optional(
                 Schema.Array(
-                  Schema.Literals([
-                    "bic",
-                    "hot",
-                    "rateLimit",
-                    "securityLevel",
-                    "uaBlock",
-                    "waf",
-                    "zoneLockdown",
+                  Schema.Union([
+                    Schema.Literals([
+                      "bic",
+                      "hot",
+                      "rateLimit",
+                      "securityLevel",
+                      "uaBlock",
+                      "waf",
+                      "zoneLockdown",
+                    ]),
+                    Schema.String,
                   ]),
                 ),
               ),
@@ -34586,7 +35898,7 @@ const CreateRulesetBaseFields = {
 
 interface CreateRulesetBaseRequest {
   /** Body param: The kind of the ruleset. */
-  kind: "managed" | "custom" | "root" | "zone";
+  kind: "managed" | "custom" | "root" | "zone" | (string & {});
   /** Body param: The human-readable name of the ruleset. */
   name: string;
   /** Body param: The phase of the ruleset. */
@@ -34614,7 +35926,8 @@ interface CreateRulesetBaseRequest {
     | "magic_transit"
     | "magic_transit_ids_managed"
     | "magic_transit_managed"
-    | "magic_transit_ratelimit";
+    | "magic_transit_ratelimit"
+    | (string & {});
   /** Body param: An informative description of the ruleset. */
   description?: string;
   /** Body param: The list of rules in the ruleset. */
@@ -34678,7 +35991,14 @@ interface CreateRulesetBaseRequest {
         action?: "compress_response";
         actionParameters?: {
           algorithms: {
-            name?: "none" | "auto" | "default" | "gzip" | "brotli" | "zstd";
+            name?:
+              | "none"
+              | "auto"
+              | "default"
+              | "gzip"
+              | "brotli"
+              | "zstd"
+              | (string & {});
           }[];
         };
         description?: string;
@@ -34737,7 +36057,12 @@ interface CreateRulesetBaseRequest {
               category: string;
               action?: string;
               enabled?: boolean;
-              sensitivityLevel?: "default" | "medium" | "low" | "eoff";
+              sensitivityLevel?:
+                | "default"
+                | "medium"
+                | "low"
+                | "eoff"
+                | (string & {});
             }[];
             enabled?: boolean;
             rules?: {
@@ -34745,9 +36070,19 @@ interface CreateRulesetBaseRequest {
               action?: string;
               enabled?: boolean;
               scoreThreshold?: number;
-              sensitivityLevel?: "default" | "medium" | "low" | "eoff";
+              sensitivityLevel?:
+                | "default"
+                | "medium"
+                | "low"
+                | "eoff"
+                | (string & {});
             }[];
-            sensitivityLevel?: "default" | "medium" | "low" | "eoff";
+            sensitivityLevel?:
+              | "default"
+              | "medium"
+              | "low"
+              | "eoff"
+              | (string & {});
           };
         };
         description?: string;
@@ -34904,7 +36239,7 @@ interface CreateRulesetBaseRequest {
           fromValue?: {
             targetUrl: { expression?: string; value?: string };
             preserveQueryString?: boolean;
-            statusCode?: "301" | "302" | "303" | "307" | "308";
+            statusCode?: "301" | "302" | "303" | "307" | "308" | (string & {});
           };
         };
         description?: string;
@@ -35018,7 +36353,8 @@ interface CreateRulesetBaseRequest {
                 | "application/json"
                 | "text/html"
                 | "text/plain"
-                | "text/xml";
+                | "text/xml"
+                | (string & {});
               statusCode?: number;
             }
           | {
@@ -35027,7 +36363,8 @@ interface CreateRulesetBaseRequest {
                 | "application/json"
                 | "text/html"
                 | "text/plain"
-                | "text/xml";
+                | "text/xml"
+                | (string & {});
               statusCode?: number;
             };
         description?: string;
@@ -35054,35 +36391,56 @@ interface CreateRulesetBaseRequest {
         id?: string;
         action?: "set_cache_control";
         actionParameters?: {
-          immutable?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
-          maxAge?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+          immutable?: {
+            operation: "set" | "remove" | (string & {});
+            cloudflareOnly?: boolean;
+          };
+          maxAge?: {
+            operation: "set" | "remove" | (string & {});
+            cloudflareOnly?: boolean;
+          };
           mustRevalidate?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean;
           };
           mustUnderstand?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean;
           };
-          noCache?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
-          noStore?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+          noCache?: {
+            operation: "set" | "remove" | (string & {});
+            cloudflareOnly?: boolean;
+          };
+          noStore?: {
+            operation: "set" | "remove" | (string & {});
+            cloudflareOnly?: boolean;
+          };
           noTransform?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean;
           };
-          private?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+          private?: {
+            operation: "set" | "remove" | (string & {});
+            cloudflareOnly?: boolean;
+          };
           proxyRevalidate?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean;
           };
-          public?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
-          sMaxage?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+          public?: {
+            operation: "set" | "remove" | (string & {});
+            cloudflareOnly?: boolean;
+          };
+          sMaxage?: {
+            operation: "set" | "remove" | (string & {});
+            cloudflareOnly?: boolean;
+          };
           staleIfError?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean;
           };
           staleWhileRevalidate?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean;
           };
         };
@@ -35116,7 +36474,8 @@ interface CreateRulesetBaseRequest {
               | "respect_origin"
               | "bypass_by_default"
               | "override_origin"
-              | "bypass";
+              | "bypass"
+              | (string & {});
             default?: number;
           };
           cache?: boolean;
@@ -35142,7 +36501,11 @@ interface CreateRulesetBaseRequest {
           };
           cacheReserve?: { eligible: boolean; minimumFileSize?: number };
           edgeTtl?: {
-            mode: "respect_origin" | "bypass_by_default" | "override_origin";
+            mode:
+              | "respect_origin"
+              | "bypass_by_default"
+              | "override_origin"
+              | (string & {});
             default?: number;
             statusCodeTtl?: {
               value: number;
@@ -35184,8 +36547,14 @@ interface CreateRulesetBaseRequest {
         id?: string;
         action?: "set_cache_tags";
         actionParameters?:
-          | { operation: "add" | "remove" | "set"; values: string[] }
-          | { expression: string; operation: "add" | "remove" | "set" };
+          | {
+              operation: "add" | "remove" | "set" | (string & {});
+              values: string[];
+            }
+          | {
+              expression: string;
+              operation: "add" | "remove" | "set" | (string & {});
+            };
         description?: string;
         enabled?: boolean;
         exposedCredentialCheck?: {
@@ -35223,10 +36592,10 @@ interface CreateRulesetBaseRequest {
           hotlinkProtection?: boolean;
           mirage?: boolean;
           opportunisticEncryption?: boolean;
-          polish?: "off" | "lossless" | "lossy" | "webp";
+          polish?: "off" | "lossless" | "lossy" | "webp" | (string & {});
           redirectsForAiTraining?: boolean;
-          requestBodyBuffering?: "none" | "standard" | "full";
-          responseBodyBuffering?: "none" | "standard";
+          requestBodyBuffering?: "none" | "standard" | "full" | (string & {});
+          responseBodyBuffering?: "none" | "standard" | (string & {});
           rocketLoader?: boolean;
           securityLevel?:
             | "off"
@@ -35234,9 +36603,16 @@ interface CreateRulesetBaseRequest {
             | "low"
             | "medium"
             | "high"
-            | "under_attack";
+            | "under_attack"
+            | (string & {});
           serverSideExcludes?: boolean;
-          ssl?: "off" | "flexible" | "full" | "strict" | "origin_pull";
+          ssl?:
+            | "off"
+            | "flexible"
+            | "full"
+            | "strict"
+            | "origin_pull"
+            | (string & {});
           sxg?: boolean;
         };
         description?: string;
@@ -35289,6 +36665,7 @@ interface CreateRulesetBaseRequest {
             | "magic_transit_ids_managed"
             | "magic_transit_managed"
             | "magic_transit_ratelimit"
+            | (string & {})
           )[];
           products?: (
             | "bic"
@@ -35298,6 +36675,7 @@ interface CreateRulesetBaseRequest {
             | "uaBlock"
             | "waf"
             | "zoneLockdown"
+            | (string & {})
           )[];
           rules?: Record<string, unknown>;
           ruleset?: "current";
@@ -35356,7 +36734,7 @@ export interface CreateRulesetResponse {
   /** The unique ID of the ruleset. */
   id: string;
   /** The kind of the ruleset. */
-  kind: "managed" | "custom" | "root" | "zone";
+  kind: "managed" | "custom" | "root" | "zone" | (string & {});
   /** The timestamp of when the ruleset was last modified. */
   lastUpdated: string;
   /** The human-readable name of the ruleset. */
@@ -35386,7 +36764,8 @@ export interface CreateRulesetResponse {
     | "magic_transit"
     | "magic_transit_ids_managed"
     | "magic_transit_managed"
-    | "magic_transit_ratelimit";
+    | "magic_transit_ratelimit"
+    | (string & {});
   /** The list of rules in the ruleset. */
   rules: (
     | {
@@ -35463,6 +36842,7 @@ export interface CreateRulesetResponse {
               | "gzip"
               | "brotli"
               | "zstd"
+              | (string & {})
               | null;
           }[];
         } | null;
@@ -35534,6 +36914,7 @@ export interface CreateRulesetResponse {
                     | "medium"
                     | "low"
                     | "eoff"
+                    | (string & {})
                     | null;
                 }[]
               | null;
@@ -35549,10 +36930,17 @@ export interface CreateRulesetResponse {
                     | "medium"
                     | "low"
                     | "eoff"
+                    | (string & {})
                     | null;
                 }[]
               | null;
-            sensitivityLevel?: "default" | "medium" | "low" | "eoff" | null;
+            sensitivityLevel?:
+              | "default"
+              | "medium"
+              | "low"
+              | "eoff"
+              | (string & {})
+              | null;
           } | null;
         } | null;
         categories?: string[] | null;
@@ -35731,7 +37119,14 @@ export interface CreateRulesetResponse {
           fromValue?: {
             targetUrl: { expression?: string | null; value?: string | null };
             preserveQueryString?: boolean | null;
-            statusCode?: "301" | "302" | "303" | "307" | "308" | null;
+            statusCode?:
+              | "301"
+              | "302"
+              | "303"
+              | "307"
+              | "308"
+              | (string & {})
+              | null;
           } | null;
         } | null;
         categories?: string[] | null;
@@ -35865,6 +37260,7 @@ export interface CreateRulesetResponse {
                 | "text/html"
                 | "text/plain"
                 | "text/xml"
+                | (string & {})
                 | null;
               statusCode?: number | null;
             }
@@ -35875,6 +37271,7 @@ export interface CreateRulesetResponse {
                 | "text/html"
                 | "text/plain"
                 | "text/xml"
+                | (string & {})
                 | null;
               statusCode?: number | null;
             }
@@ -35907,55 +37304,55 @@ export interface CreateRulesetResponse {
         action?: "set_cache_control" | null;
         actionParameters?: {
           immutable?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           maxAge?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           mustRevalidate?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           mustUnderstand?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           noCache?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           noStore?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           noTransform?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           private?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           proxyRevalidate?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           public?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           sMaxage?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           staleIfError?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           staleWhileRevalidate?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
         } | null;
@@ -35992,7 +37389,8 @@ export interface CreateRulesetResponse {
               | "respect_origin"
               | "bypass_by_default"
               | "override_origin"
-              | "bypass";
+              | "bypass"
+              | (string & {});
             default?: number | null;
           } | null;
           cache?: boolean | null;
@@ -36028,7 +37426,11 @@ export interface CreateRulesetResponse {
             minimumFileSize?: number | null;
           } | null;
           edgeTtl?: {
-            mode: "respect_origin" | "bypass_by_default" | "override_origin";
+            mode:
+              | "respect_origin"
+              | "bypass_by_default"
+              | "override_origin"
+              | (string & {});
             default?: number | null;
             statusCodeTtl?:
               | {
@@ -36078,8 +37480,14 @@ export interface CreateRulesetResponse {
         id?: string | null;
         action?: "set_cache_tags" | null;
         actionParameters?:
-          | { operation: "add" | "remove" | "set"; values: string[] }
-          | { expression: string; operation: "add" | "remove" | "set" }
+          | {
+              operation: "add" | "remove" | "set" | (string & {});
+              values: string[];
+            }
+          | {
+              expression: string;
+              operation: "add" | "remove" | "set" | (string & {});
+            }
           | null;
         categories?: string[] | null;
         description?: string | null;
@@ -36125,10 +37533,15 @@ export interface CreateRulesetResponse {
           hotlinkProtection?: boolean | null;
           mirage?: boolean | null;
           opportunisticEncryption?: boolean | null;
-          polish?: "off" | "lossless" | "lossy" | "webp" | null;
+          polish?: "off" | "lossless" | "lossy" | "webp" | (string & {}) | null;
           redirectsForAiTraining?: boolean | null;
-          requestBodyBuffering?: "none" | "standard" | "full" | null;
-          responseBodyBuffering?: "none" | "standard" | null;
+          requestBodyBuffering?:
+            | "none"
+            | "standard"
+            | "full"
+            | (string & {})
+            | null;
+          responseBodyBuffering?: "none" | "standard" | (string & {}) | null;
           rocketLoader?: boolean | null;
           securityLevel?:
             | "off"
@@ -36137,9 +37550,17 @@ export interface CreateRulesetResponse {
             | "medium"
             | "high"
             | "under_attack"
+            | (string & {})
             | null;
           serverSideExcludes?: boolean | null;
-          ssl?: "off" | "flexible" | "full" | "strict" | "origin_pull" | null;
+          ssl?:
+            | "off"
+            | "flexible"
+            | "full"
+            | "strict"
+            | "origin_pull"
+            | (string & {})
+            | null;
           sxg?: boolean | null;
         } | null;
         categories?: string[] | null;
@@ -36196,6 +37617,7 @@ export interface CreateRulesetResponse {
                 | "magic_transit_ids_managed"
                 | "magic_transit_managed"
                 | "magic_transit_ratelimit"
+                | (string & {})
               )[]
             | null;
           products?:
@@ -36207,6 +37629,7 @@ export interface CreateRulesetResponse {
                 | "uaBlock"
                 | "waf"
                 | "zoneLockdown"
+                | (string & {})
               )[]
             | null;
           rules?: Record<string, unknown> | null;
@@ -36243,34 +37666,40 @@ export interface CreateRulesetResponse {
 
 export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
-  kind: Schema.Literals(["managed", "custom", "root", "zone"]),
+  kind: Schema.Union([
+    Schema.Literals(["managed", "custom", "root", "zone"]),
+    Schema.String,
+  ]),
   lastUpdated: Schema.String,
   name: Schema.String,
-  phase: Schema.Literals([
-    "ddos_l4",
-    "ddos_l7",
-    "http_config_settings",
-    "http_custom_errors",
-    "http_log_custom_fields",
-    "http_ratelimit",
-    "http_request_cache_settings",
-    "http_request_dynamic_redirect",
-    "http_request_firewall_custom",
-    "http_request_firewall_managed",
-    "http_request_late_transform",
-    "http_request_origin",
-    "http_request_redirect",
-    "http_request_sanitize",
-    "http_request_sbfm",
-    "http_request_transform",
-    "http_response_cache_settings",
-    "http_response_compression",
-    "http_response_firewall_managed",
-    "http_response_headers_transform",
-    "magic_transit",
-    "magic_transit_ids_managed",
-    "magic_transit_managed",
-    "magic_transit_ratelimit",
+  phase: Schema.Union([
+    Schema.Literals([
+      "ddos_l4",
+      "ddos_l7",
+      "http_config_settings",
+      "http_custom_errors",
+      "http_log_custom_fields",
+      "http_ratelimit",
+      "http_request_cache_settings",
+      "http_request_dynamic_redirect",
+      "http_request_firewall_custom",
+      "http_request_firewall_managed",
+      "http_request_late_transform",
+      "http_request_origin",
+      "http_request_redirect",
+      "http_request_sanitize",
+      "http_request_sbfm",
+      "http_request_transform",
+      "http_response_cache_settings",
+      "http_response_compression",
+      "http_response_firewall_managed",
+      "http_response_headers_transform",
+      "magic_transit",
+      "magic_transit_ids_managed",
+      "magic_transit_managed",
+      "magic_transit_ratelimit",
+    ]),
+    Schema.String,
   ]),
   rules: Schema.Array(
     Schema.Union([
@@ -36500,13 +37929,16 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 Schema.Struct({
                   name: Schema.optional(
                     Schema.Union([
-                      Schema.Literals([
-                        "none",
-                        "auto",
-                        "default",
-                        "gzip",
-                        "brotli",
-                        "zstd",
+                      Schema.Union([
+                        Schema.Literals([
+                          "none",
+                          "auto",
+                          "default",
+                          "gzip",
+                          "brotli",
+                          "zstd",
+                        ]),
+                        Schema.String,
                       ]),
                       Schema.Null,
                     ]),
@@ -36737,11 +38169,14 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                             ),
                             sensitivityLevel: Schema.optional(
                               Schema.Union([
-                                Schema.Literals([
-                                  "default",
-                                  "medium",
-                                  "low",
-                                  "eoff",
+                                Schema.Union([
+                                  Schema.Literals([
+                                    "default",
+                                    "medium",
+                                    "low",
+                                    "eoff",
+                                  ]),
+                                  Schema.String,
                                 ]),
                                 Schema.Null,
                               ]),
@@ -36777,11 +38212,14 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                             ),
                             sensitivityLevel: Schema.optional(
                               Schema.Union([
-                                Schema.Literals([
-                                  "default",
-                                  "medium",
-                                  "low",
-                                  "eoff",
+                                Schema.Union([
+                                  Schema.Literals([
+                                    "default",
+                                    "medium",
+                                    "low",
+                                    "eoff",
+                                  ]),
+                                  Schema.String,
                                 ]),
                                 Schema.Null,
                               ]),
@@ -36801,7 +38239,10 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     ),
                     sensitivityLevel: Schema.optional(
                       Schema.Union([
-                        Schema.Literals(["default", "medium", "low", "eoff"]),
+                        Schema.Union([
+                          Schema.Literals(["default", "medium", "low", "eoff"]),
+                          Schema.String,
+                        ]),
                         Schema.Null,
                       ]),
                     ),
@@ -37506,7 +38947,10 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     ),
                     statusCode: Schema.optional(
                       Schema.Union([
-                        Schema.Literals(["301", "302", "303", "307", "308"]),
+                        Schema.Union([
+                          Schema.Literals(["301", "302", "303", "307", "308"]),
+                          Schema.String,
+                        ]),
                         Schema.Null,
                       ]),
                     ),
@@ -37999,11 +39443,14 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 content: Schema.String,
                 contentType: Schema.optional(
                   Schema.Union([
-                    Schema.Literals([
-                      "application/json",
-                      "text/html",
-                      "text/plain",
-                      "text/xml",
+                    Schema.Union([
+                      Schema.Literals([
+                        "application/json",
+                        "text/html",
+                        "text/plain",
+                        "text/xml",
+                      ]),
+                      Schema.String,
                     ]),
                     Schema.Null,
                   ]),
@@ -38022,11 +39469,14 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 assetName: Schema.String,
                 contentType: Schema.optional(
                   Schema.Union([
-                    Schema.Literals([
-                      "application/json",
-                      "text/html",
-                      "text/plain",
-                      "text/xml",
+                    Schema.Union([
+                      Schema.Literals([
+                        "application/json",
+                        "text/html",
+                        "text/plain",
+                        "text/xml",
+                      ]),
+                      Schema.String,
                     ]),
                     Schema.Null,
                   ]),
@@ -38144,7 +39594,10 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               immutable: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -38160,7 +39613,10 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               maxAge: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -38176,7 +39632,10 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               mustRevalidate: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -38192,7 +39651,10 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               mustUnderstand: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -38208,7 +39670,10 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               noCache: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -38224,7 +39689,10 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               noStore: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -38240,7 +39708,10 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               noTransform: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -38256,7 +39727,10 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               private: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -38272,7 +39746,10 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               proxyRevalidate: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -38288,7 +39765,10 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               public: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -38304,7 +39784,10 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               sMaxage: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -38320,7 +39803,10 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               staleIfError: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -38336,7 +39822,10 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               staleWhileRevalidate: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -38471,11 +39960,14 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               browserTtl: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    mode: Schema.Literals([
-                      "respect_origin",
-                      "bypass_by_default",
-                      "override_origin",
-                      "bypass",
+                    mode: Schema.Union([
+                      Schema.Literals([
+                        "respect_origin",
+                        "bypass_by_default",
+                        "override_origin",
+                        "bypass",
+                      ]),
+                      Schema.String,
                     ]),
                     default: Schema.optional(
                       Schema.Union([Schema.Number, Schema.Null]),
@@ -38683,10 +40175,13 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               edgeTtl: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    mode: Schema.Literals([
-                      "respect_origin",
-                      "bypass_by_default",
-                      "override_origin",
+                    mode: Schema.Union([
+                      Schema.Literals([
+                        "respect_origin",
+                        "bypass_by_default",
+                        "override_origin",
+                      ]),
+                      Schema.String,
                     ]),
                     default: Schema.optional(
                       Schema.Union([Schema.Number, Schema.Null]),
@@ -38895,12 +40390,18 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([
             Schema.Union([
               Schema.Struct({
-                operation: Schema.Literals(["add", "remove", "set"]),
+                operation: Schema.Union([
+                  Schema.Literals(["add", "remove", "set"]),
+                  Schema.String,
+                ]),
                 values: Schema.Array(Schema.String),
               }),
               Schema.Struct({
                 expression: Schema.String,
-                operation: Schema.Literals(["add", "remove", "set"]),
+                operation: Schema.Union([
+                  Schema.Literals(["add", "remove", "set"]),
+                  Schema.String,
+                ]),
               }),
             ]),
             Schema.Null,
@@ -39054,7 +40555,10 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               polish: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["off", "lossless", "lossy", "webp"]),
+                  Schema.Union([
+                    Schema.Literals(["off", "lossless", "lossy", "webp"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -39063,13 +40567,19 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               requestBodyBuffering: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["none", "standard", "full"]),
+                  Schema.Union([
+                    Schema.Literals(["none", "standard", "full"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
               responseBodyBuffering: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["none", "standard"]),
+                  Schema.Union([
+                    Schema.Literals(["none", "standard"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -39078,13 +40588,16 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               securityLevel: Schema.optional(
                 Schema.Union([
-                  Schema.Literals([
-                    "off",
-                    "essentially_off",
-                    "low",
-                    "medium",
-                    "high",
-                    "under_attack",
+                  Schema.Union([
+                    Schema.Literals([
+                      "off",
+                      "essentially_off",
+                      "low",
+                      "medium",
+                      "high",
+                      "under_attack",
+                    ]),
+                    Schema.String,
                   ]),
                   Schema.Null,
                 ]),
@@ -39094,12 +40607,15 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               ssl: Schema.optional(
                 Schema.Union([
-                  Schema.Literals([
-                    "off",
-                    "flexible",
-                    "full",
-                    "strict",
-                    "origin_pull",
+                  Schema.Union([
+                    Schema.Literals([
+                      "off",
+                      "flexible",
+                      "full",
+                      "strict",
+                      "origin_pull",
+                    ]),
+                    Schema.String,
                   ]),
                   Schema.Null,
                 ]),
@@ -39236,31 +40752,34 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               phases: Schema.optional(
                 Schema.Union([
                   Schema.Array(
-                    Schema.Literals([
-                      "ddos_l4",
-                      "ddos_l7",
-                      "http_config_settings",
-                      "http_custom_errors",
-                      "http_log_custom_fields",
-                      "http_ratelimit",
-                      "http_request_cache_settings",
-                      "http_request_dynamic_redirect",
-                      "http_request_firewall_custom",
-                      "http_request_firewall_managed",
-                      "http_request_late_transform",
-                      "http_request_origin",
-                      "http_request_redirect",
-                      "http_request_sanitize",
-                      "http_request_sbfm",
-                      "http_request_transform",
-                      "http_response_cache_settings",
-                      "http_response_compression",
-                      "http_response_firewall_managed",
-                      "http_response_headers_transform",
-                      "magic_transit",
-                      "magic_transit_ids_managed",
-                      "magic_transit_managed",
-                      "magic_transit_ratelimit",
+                    Schema.Union([
+                      Schema.Literals([
+                        "ddos_l4",
+                        "ddos_l7",
+                        "http_config_settings",
+                        "http_custom_errors",
+                        "http_log_custom_fields",
+                        "http_ratelimit",
+                        "http_request_cache_settings",
+                        "http_request_dynamic_redirect",
+                        "http_request_firewall_custom",
+                        "http_request_firewall_managed",
+                        "http_request_late_transform",
+                        "http_request_origin",
+                        "http_request_redirect",
+                        "http_request_sanitize",
+                        "http_request_sbfm",
+                        "http_request_transform",
+                        "http_response_cache_settings",
+                        "http_response_compression",
+                        "http_response_firewall_managed",
+                        "http_response_headers_transform",
+                        "magic_transit",
+                        "magic_transit_ids_managed",
+                        "magic_transit_managed",
+                        "magic_transit_ratelimit",
+                      ]),
+                      Schema.String,
                     ]),
                   ),
                   Schema.Null,
@@ -39269,14 +40788,17 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               products: Schema.optional(
                 Schema.Union([
                   Schema.Array(
-                    Schema.Literals([
-                      "bic",
-                      "hot",
-                      "rateLimit",
-                      "securityLevel",
-                      "uaBlock",
-                      "waf",
-                      "zoneLockdown",
+                    Schema.Union([
+                      Schema.Literals([
+                        "bic",
+                        "hot",
+                        "rateLimit",
+                        "securityLevel",
+                        "uaBlock",
+                        "waf",
+                        "zoneLockdown",
+                      ]),
+                      Schema.String,
                     ]),
                   ),
                   Schema.Null,
@@ -39432,34 +40954,42 @@ export const createRulesetForZone: API.OperationMethod<
 const UpdateRulesetBaseFields = {
   rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
   description: Schema.optional(Schema.String),
-  kind: Schema.optional(Schema.Literals(["managed", "custom", "root", "zone"])),
+  kind: Schema.optional(
+    Schema.Union([
+      Schema.Literals(["managed", "custom", "root", "zone"]),
+      Schema.String,
+    ]),
+  ),
   name: Schema.optional(Schema.String),
   phase: Schema.optional(
-    Schema.Literals([
-      "ddos_l4",
-      "ddos_l7",
-      "http_config_settings",
-      "http_custom_errors",
-      "http_log_custom_fields",
-      "http_ratelimit",
-      "http_request_cache_settings",
-      "http_request_dynamic_redirect",
-      "http_request_firewall_custom",
-      "http_request_firewall_managed",
-      "http_request_late_transform",
-      "http_request_origin",
-      "http_request_redirect",
-      "http_request_sanitize",
-      "http_request_sbfm",
-      "http_request_transform",
-      "http_response_cache_settings",
-      "http_response_compression",
-      "http_response_firewall_managed",
-      "http_response_headers_transform",
-      "magic_transit",
-      "magic_transit_ids_managed",
-      "magic_transit_managed",
-      "magic_transit_ratelimit",
+    Schema.Union([
+      Schema.Literals([
+        "ddos_l4",
+        "ddos_l7",
+        "http_config_settings",
+        "http_custom_errors",
+        "http_log_custom_fields",
+        "http_ratelimit",
+        "http_request_cache_settings",
+        "http_request_dynamic_redirect",
+        "http_request_firewall_custom",
+        "http_request_firewall_managed",
+        "http_request_late_transform",
+        "http_request_origin",
+        "http_request_redirect",
+        "http_request_sanitize",
+        "http_request_sbfm",
+        "http_request_transform",
+        "http_response_cache_settings",
+        "http_response_compression",
+        "http_response_firewall_managed",
+        "http_response_headers_transform",
+        "magic_transit",
+        "magic_transit_ids_managed",
+        "magic_transit_managed",
+        "magic_transit_ratelimit",
+      ]),
+      Schema.String,
     ]),
   ),
   rules: Schema.optional(
@@ -39611,13 +41141,16 @@ const UpdateRulesetBaseFields = {
               algorithms: Schema.Array(
                 Schema.Struct({
                   name: Schema.optional(
-                    Schema.Literals([
-                      "none",
-                      "auto",
-                      "default",
-                      "gzip",
-                      "brotli",
-                      "zstd",
+                    Schema.Union([
+                      Schema.Literals([
+                        "none",
+                        "auto",
+                        "default",
+                        "gzip",
+                        "brotli",
+                        "zstd",
+                      ]),
+                      Schema.String,
                     ]),
                   ),
                 }),
@@ -39763,7 +41296,15 @@ const UpdateRulesetBaseFields = {
                         action: Schema.optional(Schema.String),
                         enabled: Schema.optional(Schema.Boolean),
                         sensitivityLevel: Schema.optional(
-                          Schema.Literals(["default", "medium", "low", "eoff"]),
+                          Schema.Union([
+                            Schema.Literals([
+                              "default",
+                              "medium",
+                              "low",
+                              "eoff",
+                            ]),
+                            Schema.String,
+                          ]),
                         ),
                       }).pipe(
                         Schema.encodeKeys({
@@ -39784,7 +41325,15 @@ const UpdateRulesetBaseFields = {
                         enabled: Schema.optional(Schema.Boolean),
                         scoreThreshold: Schema.optional(Schema.Number),
                         sensitivityLevel: Schema.optional(
-                          Schema.Literals(["default", "medium", "low", "eoff"]),
+                          Schema.Union([
+                            Schema.Literals([
+                              "default",
+                              "medium",
+                              "low",
+                              "eoff",
+                            ]),
+                            Schema.String,
+                          ]),
                         ),
                       }).pipe(
                         Schema.encodeKeys({
@@ -39798,7 +41347,10 @@ const UpdateRulesetBaseFields = {
                     ),
                   ),
                   sensitivityLevel: Schema.optional(
-                    Schema.Literals(["default", "medium", "low", "eoff"]),
+                    Schema.Union([
+                      Schema.Literals(["default", "medium", "low", "eoff"]),
+                      Schema.String,
+                    ]),
                   ),
                 }).pipe(
                   Schema.encodeKeys({
@@ -40257,7 +41809,10 @@ const UpdateRulesetBaseFields = {
                   }),
                   preserveQueryString: Schema.optional(Schema.Boolean),
                   statusCode: Schema.optional(
-                    Schema.Literals(["301", "302", "303", "307", "308"]),
+                    Schema.Union([
+                      Schema.Literals(["301", "302", "303", "307", "308"]),
+                      Schema.String,
+                    ]),
                   ),
                 }).pipe(
                   Schema.encodeKeys({
@@ -40569,11 +42124,14 @@ const UpdateRulesetBaseFields = {
               Schema.Struct({
                 content: Schema.String,
                 contentType: Schema.optional(
-                  Schema.Literals([
-                    "application/json",
-                    "text/html",
-                    "text/plain",
-                    "text/xml",
+                  Schema.Union([
+                    Schema.Literals([
+                      "application/json",
+                      "text/html",
+                      "text/plain",
+                      "text/xml",
+                    ]),
+                    Schema.String,
                   ]),
                 ),
                 statusCode: Schema.optional(Schema.Number),
@@ -40587,11 +42145,14 @@ const UpdateRulesetBaseFields = {
               Schema.Struct({
                 assetName: Schema.String,
                 contentType: Schema.optional(
-                  Schema.Literals([
-                    "application/json",
-                    "text/html",
-                    "text/plain",
-                    "text/xml",
+                  Schema.Union([
+                    Schema.Literals([
+                      "application/json",
+                      "text/html",
+                      "text/plain",
+                      "text/xml",
+                    ]),
+                    Schema.String,
                   ]),
                 ),
                 statusCode: Schema.optional(Schema.Number),
@@ -40668,7 +42229,10 @@ const UpdateRulesetBaseFields = {
             Schema.Struct({
               immutable: Schema.optional(
                 Schema.Struct({
-                  operation: Schema.Literals(["set", "remove"]),
+                  operation: Schema.Union([
+                    Schema.Literals(["set", "remove"]),
+                    Schema.String,
+                  ]),
                   cloudflareOnly: Schema.optional(Schema.Boolean),
                 }).pipe(
                   Schema.encodeKeys({
@@ -40679,7 +42243,10 @@ const UpdateRulesetBaseFields = {
               ),
               maxAge: Schema.optional(
                 Schema.Struct({
-                  operation: Schema.Literals(["set", "remove"]),
+                  operation: Schema.Union([
+                    Schema.Literals(["set", "remove"]),
+                    Schema.String,
+                  ]),
                   cloudflareOnly: Schema.optional(Schema.Boolean),
                 }).pipe(
                   Schema.encodeKeys({
@@ -40690,7 +42257,10 @@ const UpdateRulesetBaseFields = {
               ),
               mustRevalidate: Schema.optional(
                 Schema.Struct({
-                  operation: Schema.Literals(["set", "remove"]),
+                  operation: Schema.Union([
+                    Schema.Literals(["set", "remove"]),
+                    Schema.String,
+                  ]),
                   cloudflareOnly: Schema.optional(Schema.Boolean),
                 }).pipe(
                   Schema.encodeKeys({
@@ -40701,7 +42271,10 @@ const UpdateRulesetBaseFields = {
               ),
               mustUnderstand: Schema.optional(
                 Schema.Struct({
-                  operation: Schema.Literals(["set", "remove"]),
+                  operation: Schema.Union([
+                    Schema.Literals(["set", "remove"]),
+                    Schema.String,
+                  ]),
                   cloudflareOnly: Schema.optional(Schema.Boolean),
                 }).pipe(
                   Schema.encodeKeys({
@@ -40712,7 +42285,10 @@ const UpdateRulesetBaseFields = {
               ),
               noCache: Schema.optional(
                 Schema.Struct({
-                  operation: Schema.Literals(["set", "remove"]),
+                  operation: Schema.Union([
+                    Schema.Literals(["set", "remove"]),
+                    Schema.String,
+                  ]),
                   cloudflareOnly: Schema.optional(Schema.Boolean),
                 }).pipe(
                   Schema.encodeKeys({
@@ -40723,7 +42299,10 @@ const UpdateRulesetBaseFields = {
               ),
               noStore: Schema.optional(
                 Schema.Struct({
-                  operation: Schema.Literals(["set", "remove"]),
+                  operation: Schema.Union([
+                    Schema.Literals(["set", "remove"]),
+                    Schema.String,
+                  ]),
                   cloudflareOnly: Schema.optional(Schema.Boolean),
                 }).pipe(
                   Schema.encodeKeys({
@@ -40734,7 +42313,10 @@ const UpdateRulesetBaseFields = {
               ),
               noTransform: Schema.optional(
                 Schema.Struct({
-                  operation: Schema.Literals(["set", "remove"]),
+                  operation: Schema.Union([
+                    Schema.Literals(["set", "remove"]),
+                    Schema.String,
+                  ]),
                   cloudflareOnly: Schema.optional(Schema.Boolean),
                 }).pipe(
                   Schema.encodeKeys({
@@ -40745,7 +42327,10 @@ const UpdateRulesetBaseFields = {
               ),
               private: Schema.optional(
                 Schema.Struct({
-                  operation: Schema.Literals(["set", "remove"]),
+                  operation: Schema.Union([
+                    Schema.Literals(["set", "remove"]),
+                    Schema.String,
+                  ]),
                   cloudflareOnly: Schema.optional(Schema.Boolean),
                 }).pipe(
                   Schema.encodeKeys({
@@ -40756,7 +42341,10 @@ const UpdateRulesetBaseFields = {
               ),
               proxyRevalidate: Schema.optional(
                 Schema.Struct({
-                  operation: Schema.Literals(["set", "remove"]),
+                  operation: Schema.Union([
+                    Schema.Literals(["set", "remove"]),
+                    Schema.String,
+                  ]),
                   cloudflareOnly: Schema.optional(Schema.Boolean),
                 }).pipe(
                   Schema.encodeKeys({
@@ -40767,7 +42355,10 @@ const UpdateRulesetBaseFields = {
               ),
               public: Schema.optional(
                 Schema.Struct({
-                  operation: Schema.Literals(["set", "remove"]),
+                  operation: Schema.Union([
+                    Schema.Literals(["set", "remove"]),
+                    Schema.String,
+                  ]),
                   cloudflareOnly: Schema.optional(Schema.Boolean),
                 }).pipe(
                   Schema.encodeKeys({
@@ -40778,7 +42369,10 @@ const UpdateRulesetBaseFields = {
               ),
               sMaxage: Schema.optional(
                 Schema.Struct({
-                  operation: Schema.Literals(["set", "remove"]),
+                  operation: Schema.Union([
+                    Schema.Literals(["set", "remove"]),
+                    Schema.String,
+                  ]),
                   cloudflareOnly: Schema.optional(Schema.Boolean),
                 }).pipe(
                   Schema.encodeKeys({
@@ -40789,7 +42383,10 @@ const UpdateRulesetBaseFields = {
               ),
               staleIfError: Schema.optional(
                 Schema.Struct({
-                  operation: Schema.Literals(["set", "remove"]),
+                  operation: Schema.Union([
+                    Schema.Literals(["set", "remove"]),
+                    Schema.String,
+                  ]),
                   cloudflareOnly: Schema.optional(Schema.Boolean),
                 }).pipe(
                   Schema.encodeKeys({
@@ -40800,7 +42397,10 @@ const UpdateRulesetBaseFields = {
               ),
               staleWhileRevalidate: Schema.optional(
                 Schema.Struct({
-                  operation: Schema.Literals(["set", "remove"]),
+                  operation: Schema.Union([
+                    Schema.Literals(["set", "remove"]),
+                    Schema.String,
+                  ]),
                   cloudflareOnly: Schema.optional(Schema.Boolean),
                 }).pipe(
                   Schema.encodeKeys({
@@ -40894,11 +42494,14 @@ const UpdateRulesetBaseFields = {
               ),
               browserTtl: Schema.optional(
                 Schema.Struct({
-                  mode: Schema.Literals([
-                    "respect_origin",
-                    "bypass_by_default",
-                    "override_origin",
-                    "bypass",
+                  mode: Schema.Union([
+                    Schema.Literals([
+                      "respect_origin",
+                      "bypass_by_default",
+                      "override_origin",
+                      "bypass",
+                    ]),
+                    Schema.String,
                   ]),
                   default: Schema.optional(Schema.Number),
                 }),
@@ -41013,10 +42616,13 @@ const UpdateRulesetBaseFields = {
               ),
               edgeTtl: Schema.optional(
                 Schema.Struct({
-                  mode: Schema.Literals([
-                    "respect_origin",
-                    "bypass_by_default",
-                    "override_origin",
+                  mode: Schema.Union([
+                    Schema.Literals([
+                      "respect_origin",
+                      "bypass_by_default",
+                      "override_origin",
+                    ]),
+                    Schema.String,
                   ]),
                   default: Schema.optional(Schema.Number),
                   statusCodeTtl: Schema.optional(
@@ -41151,12 +42757,18 @@ const UpdateRulesetBaseFields = {
           actionParameters: Schema.optional(
             Schema.Union([
               Schema.Struct({
-                operation: Schema.Literals(["add", "remove", "set"]),
+                operation: Schema.Union([
+                  Schema.Literals(["add", "remove", "set"]),
+                  Schema.String,
+                ]),
                 values: Schema.Array(Schema.String),
               }),
               Schema.Struct({
                 expression: Schema.String,
-                operation: Schema.Literals(["add", "remove", "set"]),
+                operation: Schema.Union([
+                  Schema.Literals(["add", "remove", "set"]),
+                  Schema.String,
+                ]),
               }),
             ]),
           ),
@@ -41242,34 +42854,49 @@ const UpdateRulesetBaseFields = {
               mirage: Schema.optional(Schema.Boolean),
               opportunisticEncryption: Schema.optional(Schema.Boolean),
               polish: Schema.optional(
-                Schema.Literals(["off", "lossless", "lossy", "webp"]),
+                Schema.Union([
+                  Schema.Literals(["off", "lossless", "lossy", "webp"]),
+                  Schema.String,
+                ]),
               ),
               redirectsForAiTraining: Schema.optional(Schema.Boolean),
               requestBodyBuffering: Schema.optional(
-                Schema.Literals(["none", "standard", "full"]),
+                Schema.Union([
+                  Schema.Literals(["none", "standard", "full"]),
+                  Schema.String,
+                ]),
               ),
               responseBodyBuffering: Schema.optional(
-                Schema.Literals(["none", "standard"]),
+                Schema.Union([
+                  Schema.Literals(["none", "standard"]),
+                  Schema.String,
+                ]),
               ),
               rocketLoader: Schema.optional(Schema.Boolean),
               securityLevel: Schema.optional(
-                Schema.Literals([
-                  "off",
-                  "essentially_off",
-                  "low",
-                  "medium",
-                  "high",
-                  "under_attack",
+                Schema.Union([
+                  Schema.Literals([
+                    "off",
+                    "essentially_off",
+                    "low",
+                    "medium",
+                    "high",
+                    "under_attack",
+                  ]),
+                  Schema.String,
                 ]),
               ),
               serverSideExcludes: Schema.optional(Schema.Boolean),
               ssl: Schema.optional(
-                Schema.Literals([
-                  "off",
-                  "flexible",
-                  "full",
-                  "strict",
-                  "origin_pull",
+                Schema.Union([
+                  Schema.Literals([
+                    "off",
+                    "flexible",
+                    "full",
+                    "strict",
+                    "origin_pull",
+                  ]),
+                  Schema.String,
                 ]),
               ),
               sxg: Schema.optional(Schema.Boolean),
@@ -41365,44 +42992,50 @@ const UpdateRulesetBaseFields = {
               phase: Schema.optional(Schema.Literal("current")),
               phases: Schema.optional(
                 Schema.Array(
-                  Schema.Literals([
-                    "ddos_l4",
-                    "ddos_l7",
-                    "http_config_settings",
-                    "http_custom_errors",
-                    "http_log_custom_fields",
-                    "http_ratelimit",
-                    "http_request_cache_settings",
-                    "http_request_dynamic_redirect",
-                    "http_request_firewall_custom",
-                    "http_request_firewall_managed",
-                    "http_request_late_transform",
-                    "http_request_origin",
-                    "http_request_redirect",
-                    "http_request_sanitize",
-                    "http_request_sbfm",
-                    "http_request_transform",
-                    "http_response_cache_settings",
-                    "http_response_compression",
-                    "http_response_firewall_managed",
-                    "http_response_headers_transform",
-                    "magic_transit",
-                    "magic_transit_ids_managed",
-                    "magic_transit_managed",
-                    "magic_transit_ratelimit",
+                  Schema.Union([
+                    Schema.Literals([
+                      "ddos_l4",
+                      "ddos_l7",
+                      "http_config_settings",
+                      "http_custom_errors",
+                      "http_log_custom_fields",
+                      "http_ratelimit",
+                      "http_request_cache_settings",
+                      "http_request_dynamic_redirect",
+                      "http_request_firewall_custom",
+                      "http_request_firewall_managed",
+                      "http_request_late_transform",
+                      "http_request_origin",
+                      "http_request_redirect",
+                      "http_request_sanitize",
+                      "http_request_sbfm",
+                      "http_request_transform",
+                      "http_response_cache_settings",
+                      "http_response_compression",
+                      "http_response_firewall_managed",
+                      "http_response_headers_transform",
+                      "magic_transit",
+                      "magic_transit_ids_managed",
+                      "magic_transit_managed",
+                      "magic_transit_ratelimit",
+                    ]),
+                    Schema.String,
                   ]),
                 ),
               ),
               products: Schema.optional(
                 Schema.Array(
-                  Schema.Literals([
-                    "bic",
-                    "hot",
-                    "rateLimit",
-                    "securityLevel",
-                    "uaBlock",
-                    "waf",
-                    "zoneLockdown",
+                  Schema.Union([
+                    Schema.Literals([
+                      "bic",
+                      "hot",
+                      "rateLimit",
+                      "securityLevel",
+                      "uaBlock",
+                      "waf",
+                      "zoneLockdown",
+                    ]),
+                    Schema.String,
                   ]),
                 ),
               ),
@@ -41480,7 +43113,7 @@ interface UpdateRulesetBaseRequest {
   /** Body param: An informative description of the ruleset. */
   description?: string;
   /** Body param: The kind of the ruleset. */
-  kind?: "managed" | "custom" | "root" | "zone";
+  kind?: "managed" | "custom" | "root" | "zone" | (string & {});
   /** Body param: The human-readable name of the ruleset. */
   name?: string;
   /** Body param: The phase of the ruleset. */
@@ -41508,7 +43141,8 @@ interface UpdateRulesetBaseRequest {
     | "magic_transit"
     | "magic_transit_ids_managed"
     | "magic_transit_managed"
-    | "magic_transit_ratelimit";
+    | "magic_transit_ratelimit"
+    | (string & {});
   /** Body param: The list of rules in the ruleset. */
   rules?: (
     | {
@@ -41570,7 +43204,14 @@ interface UpdateRulesetBaseRequest {
         action?: "compress_response";
         actionParameters?: {
           algorithms: {
-            name?: "none" | "auto" | "default" | "gzip" | "brotli" | "zstd";
+            name?:
+              | "none"
+              | "auto"
+              | "default"
+              | "gzip"
+              | "brotli"
+              | "zstd"
+              | (string & {});
           }[];
         };
         description?: string;
@@ -41629,7 +43270,12 @@ interface UpdateRulesetBaseRequest {
               category: string;
               action?: string;
               enabled?: boolean;
-              sensitivityLevel?: "default" | "medium" | "low" | "eoff";
+              sensitivityLevel?:
+                | "default"
+                | "medium"
+                | "low"
+                | "eoff"
+                | (string & {});
             }[];
             enabled?: boolean;
             rules?: {
@@ -41637,9 +43283,19 @@ interface UpdateRulesetBaseRequest {
               action?: string;
               enabled?: boolean;
               scoreThreshold?: number;
-              sensitivityLevel?: "default" | "medium" | "low" | "eoff";
+              sensitivityLevel?:
+                | "default"
+                | "medium"
+                | "low"
+                | "eoff"
+                | (string & {});
             }[];
-            sensitivityLevel?: "default" | "medium" | "low" | "eoff";
+            sensitivityLevel?:
+              | "default"
+              | "medium"
+              | "low"
+              | "eoff"
+              | (string & {});
           };
         };
         description?: string;
@@ -41796,7 +43452,7 @@ interface UpdateRulesetBaseRequest {
           fromValue?: {
             targetUrl: { expression?: string; value?: string };
             preserveQueryString?: boolean;
-            statusCode?: "301" | "302" | "303" | "307" | "308";
+            statusCode?: "301" | "302" | "303" | "307" | "308" | (string & {});
           };
         };
         description?: string;
@@ -41910,7 +43566,8 @@ interface UpdateRulesetBaseRequest {
                 | "application/json"
                 | "text/html"
                 | "text/plain"
-                | "text/xml";
+                | "text/xml"
+                | (string & {});
               statusCode?: number;
             }
           | {
@@ -41919,7 +43576,8 @@ interface UpdateRulesetBaseRequest {
                 | "application/json"
                 | "text/html"
                 | "text/plain"
-                | "text/xml";
+                | "text/xml"
+                | (string & {});
               statusCode?: number;
             };
         description?: string;
@@ -41946,35 +43604,56 @@ interface UpdateRulesetBaseRequest {
         id?: string;
         action?: "set_cache_control";
         actionParameters?: {
-          immutable?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
-          maxAge?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+          immutable?: {
+            operation: "set" | "remove" | (string & {});
+            cloudflareOnly?: boolean;
+          };
+          maxAge?: {
+            operation: "set" | "remove" | (string & {});
+            cloudflareOnly?: boolean;
+          };
           mustRevalidate?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean;
           };
           mustUnderstand?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean;
           };
-          noCache?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
-          noStore?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+          noCache?: {
+            operation: "set" | "remove" | (string & {});
+            cloudflareOnly?: boolean;
+          };
+          noStore?: {
+            operation: "set" | "remove" | (string & {});
+            cloudflareOnly?: boolean;
+          };
           noTransform?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean;
           };
-          private?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+          private?: {
+            operation: "set" | "remove" | (string & {});
+            cloudflareOnly?: boolean;
+          };
           proxyRevalidate?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean;
           };
-          public?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
-          sMaxage?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+          public?: {
+            operation: "set" | "remove" | (string & {});
+            cloudflareOnly?: boolean;
+          };
+          sMaxage?: {
+            operation: "set" | "remove" | (string & {});
+            cloudflareOnly?: boolean;
+          };
           staleIfError?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean;
           };
           staleWhileRevalidate?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean;
           };
         };
@@ -42008,7 +43687,8 @@ interface UpdateRulesetBaseRequest {
               | "respect_origin"
               | "bypass_by_default"
               | "override_origin"
-              | "bypass";
+              | "bypass"
+              | (string & {});
             default?: number;
           };
           cache?: boolean;
@@ -42034,7 +43714,11 @@ interface UpdateRulesetBaseRequest {
           };
           cacheReserve?: { eligible: boolean; minimumFileSize?: number };
           edgeTtl?: {
-            mode: "respect_origin" | "bypass_by_default" | "override_origin";
+            mode:
+              | "respect_origin"
+              | "bypass_by_default"
+              | "override_origin"
+              | (string & {});
             default?: number;
             statusCodeTtl?: {
               value: number;
@@ -42076,8 +43760,14 @@ interface UpdateRulesetBaseRequest {
         id?: string;
         action?: "set_cache_tags";
         actionParameters?:
-          | { operation: "add" | "remove" | "set"; values: string[] }
-          | { expression: string; operation: "add" | "remove" | "set" };
+          | {
+              operation: "add" | "remove" | "set" | (string & {});
+              values: string[];
+            }
+          | {
+              expression: string;
+              operation: "add" | "remove" | "set" | (string & {});
+            };
         description?: string;
         enabled?: boolean;
         exposedCredentialCheck?: {
@@ -42115,10 +43805,10 @@ interface UpdateRulesetBaseRequest {
           hotlinkProtection?: boolean;
           mirage?: boolean;
           opportunisticEncryption?: boolean;
-          polish?: "off" | "lossless" | "lossy" | "webp";
+          polish?: "off" | "lossless" | "lossy" | "webp" | (string & {});
           redirectsForAiTraining?: boolean;
-          requestBodyBuffering?: "none" | "standard" | "full";
-          responseBodyBuffering?: "none" | "standard";
+          requestBodyBuffering?: "none" | "standard" | "full" | (string & {});
+          responseBodyBuffering?: "none" | "standard" | (string & {});
           rocketLoader?: boolean;
           securityLevel?:
             | "off"
@@ -42126,9 +43816,16 @@ interface UpdateRulesetBaseRequest {
             | "low"
             | "medium"
             | "high"
-            | "under_attack";
+            | "under_attack"
+            | (string & {});
           serverSideExcludes?: boolean;
-          ssl?: "off" | "flexible" | "full" | "strict" | "origin_pull";
+          ssl?:
+            | "off"
+            | "flexible"
+            | "full"
+            | "strict"
+            | "origin_pull"
+            | (string & {});
           sxg?: boolean;
         };
         description?: string;
@@ -42181,6 +43878,7 @@ interface UpdateRulesetBaseRequest {
             | "magic_transit_ids_managed"
             | "magic_transit_managed"
             | "magic_transit_ratelimit"
+            | (string & {})
           )[];
           products?: (
             | "bic"
@@ -42190,6 +43888,7 @@ interface UpdateRulesetBaseRequest {
             | "uaBlock"
             | "waf"
             | "zoneLockdown"
+            | (string & {})
           )[];
           rules?: Record<string, unknown>;
           ruleset?: "current";
@@ -42251,7 +43950,7 @@ export interface UpdateRulesetResponse {
   /** The unique ID of the ruleset. */
   id: string;
   /** The kind of the ruleset. */
-  kind: "managed" | "custom" | "root" | "zone";
+  kind: "managed" | "custom" | "root" | "zone" | (string & {});
   /** The timestamp of when the ruleset was last modified. */
   lastUpdated: string;
   /** The human-readable name of the ruleset. */
@@ -42281,7 +43980,8 @@ export interface UpdateRulesetResponse {
     | "magic_transit"
     | "magic_transit_ids_managed"
     | "magic_transit_managed"
-    | "magic_transit_ratelimit";
+    | "magic_transit_ratelimit"
+    | (string & {});
   /** The list of rules in the ruleset. */
   rules: (
     | {
@@ -42358,6 +44058,7 @@ export interface UpdateRulesetResponse {
               | "gzip"
               | "brotli"
               | "zstd"
+              | (string & {})
               | null;
           }[];
         } | null;
@@ -42429,6 +44130,7 @@ export interface UpdateRulesetResponse {
                     | "medium"
                     | "low"
                     | "eoff"
+                    | (string & {})
                     | null;
                 }[]
               | null;
@@ -42444,10 +44146,17 @@ export interface UpdateRulesetResponse {
                     | "medium"
                     | "low"
                     | "eoff"
+                    | (string & {})
                     | null;
                 }[]
               | null;
-            sensitivityLevel?: "default" | "medium" | "low" | "eoff" | null;
+            sensitivityLevel?:
+              | "default"
+              | "medium"
+              | "low"
+              | "eoff"
+              | (string & {})
+              | null;
           } | null;
         } | null;
         categories?: string[] | null;
@@ -42626,7 +44335,14 @@ export interface UpdateRulesetResponse {
           fromValue?: {
             targetUrl: { expression?: string | null; value?: string | null };
             preserveQueryString?: boolean | null;
-            statusCode?: "301" | "302" | "303" | "307" | "308" | null;
+            statusCode?:
+              | "301"
+              | "302"
+              | "303"
+              | "307"
+              | "308"
+              | (string & {})
+              | null;
           } | null;
         } | null;
         categories?: string[] | null;
@@ -42760,6 +44476,7 @@ export interface UpdateRulesetResponse {
                 | "text/html"
                 | "text/plain"
                 | "text/xml"
+                | (string & {})
                 | null;
               statusCode?: number | null;
             }
@@ -42770,6 +44487,7 @@ export interface UpdateRulesetResponse {
                 | "text/html"
                 | "text/plain"
                 | "text/xml"
+                | (string & {})
                 | null;
               statusCode?: number | null;
             }
@@ -42802,55 +44520,55 @@ export interface UpdateRulesetResponse {
         action?: "set_cache_control" | null;
         actionParameters?: {
           immutable?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           maxAge?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           mustRevalidate?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           mustUnderstand?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           noCache?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           noStore?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           noTransform?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           private?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           proxyRevalidate?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           public?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           sMaxage?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           staleIfError?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           staleWhileRevalidate?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
         } | null;
@@ -42887,7 +44605,8 @@ export interface UpdateRulesetResponse {
               | "respect_origin"
               | "bypass_by_default"
               | "override_origin"
-              | "bypass";
+              | "bypass"
+              | (string & {});
             default?: number | null;
           } | null;
           cache?: boolean | null;
@@ -42923,7 +44642,11 @@ export interface UpdateRulesetResponse {
             minimumFileSize?: number | null;
           } | null;
           edgeTtl?: {
-            mode: "respect_origin" | "bypass_by_default" | "override_origin";
+            mode:
+              | "respect_origin"
+              | "bypass_by_default"
+              | "override_origin"
+              | (string & {});
             default?: number | null;
             statusCodeTtl?:
               | {
@@ -42973,8 +44696,14 @@ export interface UpdateRulesetResponse {
         id?: string | null;
         action?: "set_cache_tags" | null;
         actionParameters?:
-          | { operation: "add" | "remove" | "set"; values: string[] }
-          | { expression: string; operation: "add" | "remove" | "set" }
+          | {
+              operation: "add" | "remove" | "set" | (string & {});
+              values: string[];
+            }
+          | {
+              expression: string;
+              operation: "add" | "remove" | "set" | (string & {});
+            }
           | null;
         categories?: string[] | null;
         description?: string | null;
@@ -43020,10 +44749,15 @@ export interface UpdateRulesetResponse {
           hotlinkProtection?: boolean | null;
           mirage?: boolean | null;
           opportunisticEncryption?: boolean | null;
-          polish?: "off" | "lossless" | "lossy" | "webp" | null;
+          polish?: "off" | "lossless" | "lossy" | "webp" | (string & {}) | null;
           redirectsForAiTraining?: boolean | null;
-          requestBodyBuffering?: "none" | "standard" | "full" | null;
-          responseBodyBuffering?: "none" | "standard" | null;
+          requestBodyBuffering?:
+            | "none"
+            | "standard"
+            | "full"
+            | (string & {})
+            | null;
+          responseBodyBuffering?: "none" | "standard" | (string & {}) | null;
           rocketLoader?: boolean | null;
           securityLevel?:
             | "off"
@@ -43032,9 +44766,17 @@ export interface UpdateRulesetResponse {
             | "medium"
             | "high"
             | "under_attack"
+            | (string & {})
             | null;
           serverSideExcludes?: boolean | null;
-          ssl?: "off" | "flexible" | "full" | "strict" | "origin_pull" | null;
+          ssl?:
+            | "off"
+            | "flexible"
+            | "full"
+            | "strict"
+            | "origin_pull"
+            | (string & {})
+            | null;
           sxg?: boolean | null;
         } | null;
         categories?: string[] | null;
@@ -43091,6 +44833,7 @@ export interface UpdateRulesetResponse {
                 | "magic_transit_ids_managed"
                 | "magic_transit_managed"
                 | "magic_transit_ratelimit"
+                | (string & {})
               )[]
             | null;
           products?:
@@ -43102,6 +44845,7 @@ export interface UpdateRulesetResponse {
                 | "uaBlock"
                 | "waf"
                 | "zoneLockdown"
+                | (string & {})
               )[]
             | null;
           rules?: Record<string, unknown> | null;
@@ -43138,34 +44882,40 @@ export interface UpdateRulesetResponse {
 
 export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
-  kind: Schema.Literals(["managed", "custom", "root", "zone"]),
+  kind: Schema.Union([
+    Schema.Literals(["managed", "custom", "root", "zone"]),
+    Schema.String,
+  ]),
   lastUpdated: Schema.String,
   name: Schema.String,
-  phase: Schema.Literals([
-    "ddos_l4",
-    "ddos_l7",
-    "http_config_settings",
-    "http_custom_errors",
-    "http_log_custom_fields",
-    "http_ratelimit",
-    "http_request_cache_settings",
-    "http_request_dynamic_redirect",
-    "http_request_firewall_custom",
-    "http_request_firewall_managed",
-    "http_request_late_transform",
-    "http_request_origin",
-    "http_request_redirect",
-    "http_request_sanitize",
-    "http_request_sbfm",
-    "http_request_transform",
-    "http_response_cache_settings",
-    "http_response_compression",
-    "http_response_firewall_managed",
-    "http_response_headers_transform",
-    "magic_transit",
-    "magic_transit_ids_managed",
-    "magic_transit_managed",
-    "magic_transit_ratelimit",
+  phase: Schema.Union([
+    Schema.Literals([
+      "ddos_l4",
+      "ddos_l7",
+      "http_config_settings",
+      "http_custom_errors",
+      "http_log_custom_fields",
+      "http_ratelimit",
+      "http_request_cache_settings",
+      "http_request_dynamic_redirect",
+      "http_request_firewall_custom",
+      "http_request_firewall_managed",
+      "http_request_late_transform",
+      "http_request_origin",
+      "http_request_redirect",
+      "http_request_sanitize",
+      "http_request_sbfm",
+      "http_request_transform",
+      "http_response_cache_settings",
+      "http_response_compression",
+      "http_response_firewall_managed",
+      "http_response_headers_transform",
+      "magic_transit",
+      "magic_transit_ids_managed",
+      "magic_transit_managed",
+      "magic_transit_ratelimit",
+    ]),
+    Schema.String,
   ]),
   rules: Schema.Array(
     Schema.Union([
@@ -43395,13 +45145,16 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 Schema.Struct({
                   name: Schema.optional(
                     Schema.Union([
-                      Schema.Literals([
-                        "none",
-                        "auto",
-                        "default",
-                        "gzip",
-                        "brotli",
-                        "zstd",
+                      Schema.Union([
+                        Schema.Literals([
+                          "none",
+                          "auto",
+                          "default",
+                          "gzip",
+                          "brotli",
+                          "zstd",
+                        ]),
+                        Schema.String,
                       ]),
                       Schema.Null,
                     ]),
@@ -43632,11 +45385,14 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                             ),
                             sensitivityLevel: Schema.optional(
                               Schema.Union([
-                                Schema.Literals([
-                                  "default",
-                                  "medium",
-                                  "low",
-                                  "eoff",
+                                Schema.Union([
+                                  Schema.Literals([
+                                    "default",
+                                    "medium",
+                                    "low",
+                                    "eoff",
+                                  ]),
+                                  Schema.String,
                                 ]),
                                 Schema.Null,
                               ]),
@@ -43672,11 +45428,14 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                             ),
                             sensitivityLevel: Schema.optional(
                               Schema.Union([
-                                Schema.Literals([
-                                  "default",
-                                  "medium",
-                                  "low",
-                                  "eoff",
+                                Schema.Union([
+                                  Schema.Literals([
+                                    "default",
+                                    "medium",
+                                    "low",
+                                    "eoff",
+                                  ]),
+                                  Schema.String,
                                 ]),
                                 Schema.Null,
                               ]),
@@ -43696,7 +45455,10 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     ),
                     sensitivityLevel: Schema.optional(
                       Schema.Union([
-                        Schema.Literals(["default", "medium", "low", "eoff"]),
+                        Schema.Union([
+                          Schema.Literals(["default", "medium", "low", "eoff"]),
+                          Schema.String,
+                        ]),
                         Schema.Null,
                       ]),
                     ),
@@ -44401,7 +46163,10 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     ),
                     statusCode: Schema.optional(
                       Schema.Union([
-                        Schema.Literals(["301", "302", "303", "307", "308"]),
+                        Schema.Union([
+                          Schema.Literals(["301", "302", "303", "307", "308"]),
+                          Schema.String,
+                        ]),
                         Schema.Null,
                       ]),
                     ),
@@ -44894,11 +46659,14 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 content: Schema.String,
                 contentType: Schema.optional(
                   Schema.Union([
-                    Schema.Literals([
-                      "application/json",
-                      "text/html",
-                      "text/plain",
-                      "text/xml",
+                    Schema.Union([
+                      Schema.Literals([
+                        "application/json",
+                        "text/html",
+                        "text/plain",
+                        "text/xml",
+                      ]),
+                      Schema.String,
                     ]),
                     Schema.Null,
                   ]),
@@ -44917,11 +46685,14 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 assetName: Schema.String,
                 contentType: Schema.optional(
                   Schema.Union([
-                    Schema.Literals([
-                      "application/json",
-                      "text/html",
-                      "text/plain",
-                      "text/xml",
+                    Schema.Union([
+                      Schema.Literals([
+                        "application/json",
+                        "text/html",
+                        "text/plain",
+                        "text/xml",
+                      ]),
+                      Schema.String,
                     ]),
                     Schema.Null,
                   ]),
@@ -45039,7 +46810,10 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               immutable: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -45055,7 +46829,10 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               maxAge: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -45071,7 +46848,10 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               mustRevalidate: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -45087,7 +46867,10 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               mustUnderstand: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -45103,7 +46886,10 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               noCache: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -45119,7 +46905,10 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               noStore: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -45135,7 +46924,10 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               noTransform: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -45151,7 +46943,10 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               private: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -45167,7 +46962,10 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               proxyRevalidate: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -45183,7 +46981,10 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               public: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -45199,7 +47000,10 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               sMaxage: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -45215,7 +47019,10 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               staleIfError: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -45231,7 +47038,10 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               staleWhileRevalidate: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -45366,11 +47176,14 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               browserTtl: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    mode: Schema.Literals([
-                      "respect_origin",
-                      "bypass_by_default",
-                      "override_origin",
-                      "bypass",
+                    mode: Schema.Union([
+                      Schema.Literals([
+                        "respect_origin",
+                        "bypass_by_default",
+                        "override_origin",
+                        "bypass",
+                      ]),
+                      Schema.String,
                     ]),
                     default: Schema.optional(
                       Schema.Union([Schema.Number, Schema.Null]),
@@ -45578,10 +47391,13 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               edgeTtl: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    mode: Schema.Literals([
-                      "respect_origin",
-                      "bypass_by_default",
-                      "override_origin",
+                    mode: Schema.Union([
+                      Schema.Literals([
+                        "respect_origin",
+                        "bypass_by_default",
+                        "override_origin",
+                      ]),
+                      Schema.String,
                     ]),
                     default: Schema.optional(
                       Schema.Union([Schema.Number, Schema.Null]),
@@ -45790,12 +47606,18 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([
             Schema.Union([
               Schema.Struct({
-                operation: Schema.Literals(["add", "remove", "set"]),
+                operation: Schema.Union([
+                  Schema.Literals(["add", "remove", "set"]),
+                  Schema.String,
+                ]),
                 values: Schema.Array(Schema.String),
               }),
               Schema.Struct({
                 expression: Schema.String,
-                operation: Schema.Literals(["add", "remove", "set"]),
+                operation: Schema.Union([
+                  Schema.Literals(["add", "remove", "set"]),
+                  Schema.String,
+                ]),
               }),
             ]),
             Schema.Null,
@@ -45949,7 +47771,10 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               polish: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["off", "lossless", "lossy", "webp"]),
+                  Schema.Union([
+                    Schema.Literals(["off", "lossless", "lossy", "webp"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -45958,13 +47783,19 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               requestBodyBuffering: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["none", "standard", "full"]),
+                  Schema.Union([
+                    Schema.Literals(["none", "standard", "full"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
               responseBodyBuffering: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["none", "standard"]),
+                  Schema.Union([
+                    Schema.Literals(["none", "standard"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -45973,13 +47804,16 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               securityLevel: Schema.optional(
                 Schema.Union([
-                  Schema.Literals([
-                    "off",
-                    "essentially_off",
-                    "low",
-                    "medium",
-                    "high",
-                    "under_attack",
+                  Schema.Union([
+                    Schema.Literals([
+                      "off",
+                      "essentially_off",
+                      "low",
+                      "medium",
+                      "high",
+                      "under_attack",
+                    ]),
+                    Schema.String,
                   ]),
                   Schema.Null,
                 ]),
@@ -45989,12 +47823,15 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               ssl: Schema.optional(
                 Schema.Union([
-                  Schema.Literals([
-                    "off",
-                    "flexible",
-                    "full",
-                    "strict",
-                    "origin_pull",
+                  Schema.Union([
+                    Schema.Literals([
+                      "off",
+                      "flexible",
+                      "full",
+                      "strict",
+                      "origin_pull",
+                    ]),
+                    Schema.String,
                   ]),
                   Schema.Null,
                 ]),
@@ -46131,31 +47968,34 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               phases: Schema.optional(
                 Schema.Union([
                   Schema.Array(
-                    Schema.Literals([
-                      "ddos_l4",
-                      "ddos_l7",
-                      "http_config_settings",
-                      "http_custom_errors",
-                      "http_log_custom_fields",
-                      "http_ratelimit",
-                      "http_request_cache_settings",
-                      "http_request_dynamic_redirect",
-                      "http_request_firewall_custom",
-                      "http_request_firewall_managed",
-                      "http_request_late_transform",
-                      "http_request_origin",
-                      "http_request_redirect",
-                      "http_request_sanitize",
-                      "http_request_sbfm",
-                      "http_request_transform",
-                      "http_response_cache_settings",
-                      "http_response_compression",
-                      "http_response_firewall_managed",
-                      "http_response_headers_transform",
-                      "magic_transit",
-                      "magic_transit_ids_managed",
-                      "magic_transit_managed",
-                      "magic_transit_ratelimit",
+                    Schema.Union([
+                      Schema.Literals([
+                        "ddos_l4",
+                        "ddos_l7",
+                        "http_config_settings",
+                        "http_custom_errors",
+                        "http_log_custom_fields",
+                        "http_ratelimit",
+                        "http_request_cache_settings",
+                        "http_request_dynamic_redirect",
+                        "http_request_firewall_custom",
+                        "http_request_firewall_managed",
+                        "http_request_late_transform",
+                        "http_request_origin",
+                        "http_request_redirect",
+                        "http_request_sanitize",
+                        "http_request_sbfm",
+                        "http_request_transform",
+                        "http_response_cache_settings",
+                        "http_response_compression",
+                        "http_response_firewall_managed",
+                        "http_response_headers_transform",
+                        "magic_transit",
+                        "magic_transit_ids_managed",
+                        "magic_transit_managed",
+                        "magic_transit_ratelimit",
+                      ]),
+                      Schema.String,
                     ]),
                   ),
                   Schema.Null,
@@ -46164,14 +48004,17 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               products: Schema.optional(
                 Schema.Union([
                   Schema.Array(
-                    Schema.Literals([
-                      "bic",
-                      "hot",
-                      "rateLimit",
-                      "securityLevel",
-                      "uaBlock",
-                      "waf",
-                      "zoneLockdown",
+                    Schema.Union([
+                      Schema.Literals([
+                        "bic",
+                        "hot",
+                        "rateLimit",
+                        "securityLevel",
+                        "uaBlock",
+                        "waf",
+                        "zoneLockdown",
+                      ]),
+                      Schema.String,
                     ]),
                   ),
                   Schema.Null,
@@ -46440,7 +48283,7 @@ export interface GetVersionResponse {
   /** The unique ID of the ruleset. */
   id: string;
   /** The kind of the ruleset. */
-  kind: "managed" | "custom" | "root" | "zone";
+  kind: "managed" | "custom" | "root" | "zone" | (string & {});
   /** The timestamp of when the ruleset was last modified. */
   lastUpdated: string;
   /** The human-readable name of the ruleset. */
@@ -46470,7 +48313,8 @@ export interface GetVersionResponse {
     | "magic_transit"
     | "magic_transit_ids_managed"
     | "magic_transit_managed"
-    | "magic_transit_ratelimit";
+    | "magic_transit_ratelimit"
+    | (string & {});
   /** The list of rules in the ruleset. */
   rules: (
     | {
@@ -46547,6 +48391,7 @@ export interface GetVersionResponse {
               | "gzip"
               | "brotli"
               | "zstd"
+              | (string & {})
               | null;
           }[];
         } | null;
@@ -46618,6 +48463,7 @@ export interface GetVersionResponse {
                     | "medium"
                     | "low"
                     | "eoff"
+                    | (string & {})
                     | null;
                 }[]
               | null;
@@ -46633,10 +48479,17 @@ export interface GetVersionResponse {
                     | "medium"
                     | "low"
                     | "eoff"
+                    | (string & {})
                     | null;
                 }[]
               | null;
-            sensitivityLevel?: "default" | "medium" | "low" | "eoff" | null;
+            sensitivityLevel?:
+              | "default"
+              | "medium"
+              | "low"
+              | "eoff"
+              | (string & {})
+              | null;
           } | null;
         } | null;
         categories?: string[] | null;
@@ -46815,7 +48668,14 @@ export interface GetVersionResponse {
           fromValue?: {
             targetUrl: { expression?: string | null; value?: string | null };
             preserveQueryString?: boolean | null;
-            statusCode?: "301" | "302" | "303" | "307" | "308" | null;
+            statusCode?:
+              | "301"
+              | "302"
+              | "303"
+              | "307"
+              | "308"
+              | (string & {})
+              | null;
           } | null;
         } | null;
         categories?: string[] | null;
@@ -46949,6 +48809,7 @@ export interface GetVersionResponse {
                 | "text/html"
                 | "text/plain"
                 | "text/xml"
+                | (string & {})
                 | null;
               statusCode?: number | null;
             }
@@ -46959,6 +48820,7 @@ export interface GetVersionResponse {
                 | "text/html"
                 | "text/plain"
                 | "text/xml"
+                | (string & {})
                 | null;
               statusCode?: number | null;
             }
@@ -46991,55 +48853,55 @@ export interface GetVersionResponse {
         action?: "set_cache_control" | null;
         actionParameters?: {
           immutable?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           maxAge?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           mustRevalidate?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           mustUnderstand?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           noCache?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           noStore?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           noTransform?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           private?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           proxyRevalidate?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           public?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           sMaxage?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           staleIfError?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
           staleWhileRevalidate?: {
-            operation: "set" | "remove";
+            operation: "set" | "remove" | (string & {});
             cloudflareOnly?: boolean | null;
           } | null;
         } | null;
@@ -47076,7 +48938,8 @@ export interface GetVersionResponse {
               | "respect_origin"
               | "bypass_by_default"
               | "override_origin"
-              | "bypass";
+              | "bypass"
+              | (string & {});
             default?: number | null;
           } | null;
           cache?: boolean | null;
@@ -47112,7 +48975,11 @@ export interface GetVersionResponse {
             minimumFileSize?: number | null;
           } | null;
           edgeTtl?: {
-            mode: "respect_origin" | "bypass_by_default" | "override_origin";
+            mode:
+              | "respect_origin"
+              | "bypass_by_default"
+              | "override_origin"
+              | (string & {});
             default?: number | null;
             statusCodeTtl?:
               | {
@@ -47162,8 +49029,14 @@ export interface GetVersionResponse {
         id?: string | null;
         action?: "set_cache_tags" | null;
         actionParameters?:
-          | { operation: "add" | "remove" | "set"; values: string[] }
-          | { expression: string; operation: "add" | "remove" | "set" }
+          | {
+              operation: "add" | "remove" | "set" | (string & {});
+              values: string[];
+            }
+          | {
+              expression: string;
+              operation: "add" | "remove" | "set" | (string & {});
+            }
           | null;
         categories?: string[] | null;
         description?: string | null;
@@ -47209,10 +49082,15 @@ export interface GetVersionResponse {
           hotlinkProtection?: boolean | null;
           mirage?: boolean | null;
           opportunisticEncryption?: boolean | null;
-          polish?: "off" | "lossless" | "lossy" | "webp" | null;
+          polish?: "off" | "lossless" | "lossy" | "webp" | (string & {}) | null;
           redirectsForAiTraining?: boolean | null;
-          requestBodyBuffering?: "none" | "standard" | "full" | null;
-          responseBodyBuffering?: "none" | "standard" | null;
+          requestBodyBuffering?:
+            | "none"
+            | "standard"
+            | "full"
+            | (string & {})
+            | null;
+          responseBodyBuffering?: "none" | "standard" | (string & {}) | null;
           rocketLoader?: boolean | null;
           securityLevel?:
             | "off"
@@ -47221,9 +49099,17 @@ export interface GetVersionResponse {
             | "medium"
             | "high"
             | "under_attack"
+            | (string & {})
             | null;
           serverSideExcludes?: boolean | null;
-          ssl?: "off" | "flexible" | "full" | "strict" | "origin_pull" | null;
+          ssl?:
+            | "off"
+            | "flexible"
+            | "full"
+            | "strict"
+            | "origin_pull"
+            | (string & {})
+            | null;
           sxg?: boolean | null;
         } | null;
         categories?: string[] | null;
@@ -47280,6 +49166,7 @@ export interface GetVersionResponse {
                 | "magic_transit_ids_managed"
                 | "magic_transit_managed"
                 | "magic_transit_ratelimit"
+                | (string & {})
               )[]
             | null;
           products?:
@@ -47291,6 +49178,7 @@ export interface GetVersionResponse {
                 | "uaBlock"
                 | "waf"
                 | "zoneLockdown"
+                | (string & {})
               )[]
             | null;
           rules?: Record<string, unknown> | null;
@@ -47327,34 +49215,40 @@ export interface GetVersionResponse {
 
 export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
-  kind: Schema.Literals(["managed", "custom", "root", "zone"]),
+  kind: Schema.Union([
+    Schema.Literals(["managed", "custom", "root", "zone"]),
+    Schema.String,
+  ]),
   lastUpdated: Schema.String,
   name: Schema.String,
-  phase: Schema.Literals([
-    "ddos_l4",
-    "ddos_l7",
-    "http_config_settings",
-    "http_custom_errors",
-    "http_log_custom_fields",
-    "http_ratelimit",
-    "http_request_cache_settings",
-    "http_request_dynamic_redirect",
-    "http_request_firewall_custom",
-    "http_request_firewall_managed",
-    "http_request_late_transform",
-    "http_request_origin",
-    "http_request_redirect",
-    "http_request_sanitize",
-    "http_request_sbfm",
-    "http_request_transform",
-    "http_response_cache_settings",
-    "http_response_compression",
-    "http_response_firewall_managed",
-    "http_response_headers_transform",
-    "magic_transit",
-    "magic_transit_ids_managed",
-    "magic_transit_managed",
-    "magic_transit_ratelimit",
+  phase: Schema.Union([
+    Schema.Literals([
+      "ddos_l4",
+      "ddos_l7",
+      "http_config_settings",
+      "http_custom_errors",
+      "http_log_custom_fields",
+      "http_ratelimit",
+      "http_request_cache_settings",
+      "http_request_dynamic_redirect",
+      "http_request_firewall_custom",
+      "http_request_firewall_managed",
+      "http_request_late_transform",
+      "http_request_origin",
+      "http_request_redirect",
+      "http_request_sanitize",
+      "http_request_sbfm",
+      "http_request_transform",
+      "http_response_cache_settings",
+      "http_response_compression",
+      "http_response_firewall_managed",
+      "http_response_headers_transform",
+      "magic_transit",
+      "magic_transit_ids_managed",
+      "magic_transit_managed",
+      "magic_transit_ratelimit",
+    ]),
+    Schema.String,
   ]),
   rules: Schema.Array(
     Schema.Union([
@@ -47584,13 +49478,16 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 Schema.Struct({
                   name: Schema.optional(
                     Schema.Union([
-                      Schema.Literals([
-                        "none",
-                        "auto",
-                        "default",
-                        "gzip",
-                        "brotli",
-                        "zstd",
+                      Schema.Union([
+                        Schema.Literals([
+                          "none",
+                          "auto",
+                          "default",
+                          "gzip",
+                          "brotli",
+                          "zstd",
+                        ]),
+                        Schema.String,
                       ]),
                       Schema.Null,
                     ]),
@@ -47821,11 +49718,14 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                             ),
                             sensitivityLevel: Schema.optional(
                               Schema.Union([
-                                Schema.Literals([
-                                  "default",
-                                  "medium",
-                                  "low",
-                                  "eoff",
+                                Schema.Union([
+                                  Schema.Literals([
+                                    "default",
+                                    "medium",
+                                    "low",
+                                    "eoff",
+                                  ]),
+                                  Schema.String,
                                 ]),
                                 Schema.Null,
                               ]),
@@ -47861,11 +49761,14 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                             ),
                             sensitivityLevel: Schema.optional(
                               Schema.Union([
-                                Schema.Literals([
-                                  "default",
-                                  "medium",
-                                  "low",
-                                  "eoff",
+                                Schema.Union([
+                                  Schema.Literals([
+                                    "default",
+                                    "medium",
+                                    "low",
+                                    "eoff",
+                                  ]),
+                                  Schema.String,
                                 ]),
                                 Schema.Null,
                               ]),
@@ -47885,7 +49788,10 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     ),
                     sensitivityLevel: Schema.optional(
                       Schema.Union([
-                        Schema.Literals(["default", "medium", "low", "eoff"]),
+                        Schema.Union([
+                          Schema.Literals(["default", "medium", "low", "eoff"]),
+                          Schema.String,
+                        ]),
                         Schema.Null,
                       ]),
                     ),
@@ -48590,7 +50496,10 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     ),
                     statusCode: Schema.optional(
                       Schema.Union([
-                        Schema.Literals(["301", "302", "303", "307", "308"]),
+                        Schema.Union([
+                          Schema.Literals(["301", "302", "303", "307", "308"]),
+                          Schema.String,
+                        ]),
                         Schema.Null,
                       ]),
                     ),
@@ -49083,11 +50992,14 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 content: Schema.String,
                 contentType: Schema.optional(
                   Schema.Union([
-                    Schema.Literals([
-                      "application/json",
-                      "text/html",
-                      "text/plain",
-                      "text/xml",
+                    Schema.Union([
+                      Schema.Literals([
+                        "application/json",
+                        "text/html",
+                        "text/plain",
+                        "text/xml",
+                      ]),
+                      Schema.String,
                     ]),
                     Schema.Null,
                   ]),
@@ -49106,11 +51018,14 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 assetName: Schema.String,
                 contentType: Schema.optional(
                   Schema.Union([
-                    Schema.Literals([
-                      "application/json",
-                      "text/html",
-                      "text/plain",
-                      "text/xml",
+                    Schema.Union([
+                      Schema.Literals([
+                        "application/json",
+                        "text/html",
+                        "text/plain",
+                        "text/xml",
+                      ]),
+                      Schema.String,
                     ]),
                     Schema.Null,
                   ]),
@@ -49228,7 +51143,10 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               immutable: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -49244,7 +51162,10 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               maxAge: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -49260,7 +51181,10 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               mustRevalidate: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -49276,7 +51200,10 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               mustUnderstand: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -49292,7 +51219,10 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               noCache: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -49308,7 +51238,10 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               noStore: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -49324,7 +51257,10 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               noTransform: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -49340,7 +51276,10 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               private: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -49356,7 +51295,10 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               proxyRevalidate: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -49372,7 +51314,10 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               public: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -49388,7 +51333,10 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               sMaxage: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -49404,7 +51352,10 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               staleIfError: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -49420,7 +51371,10 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               staleWhileRevalidate: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    operation: Schema.Literals(["set", "remove"]),
+                    operation: Schema.Union([
+                      Schema.Literals(["set", "remove"]),
+                      Schema.String,
+                    ]),
                     cloudflareOnly: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
@@ -49555,11 +51509,14 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               browserTtl: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    mode: Schema.Literals([
-                      "respect_origin",
-                      "bypass_by_default",
-                      "override_origin",
-                      "bypass",
+                    mode: Schema.Union([
+                      Schema.Literals([
+                        "respect_origin",
+                        "bypass_by_default",
+                        "override_origin",
+                        "bypass",
+                      ]),
+                      Schema.String,
                     ]),
                     default: Schema.optional(
                       Schema.Union([Schema.Number, Schema.Null]),
@@ -49767,10 +51724,13 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               edgeTtl: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    mode: Schema.Literals([
-                      "respect_origin",
-                      "bypass_by_default",
-                      "override_origin",
+                    mode: Schema.Union([
+                      Schema.Literals([
+                        "respect_origin",
+                        "bypass_by_default",
+                        "override_origin",
+                      ]),
+                      Schema.String,
                     ]),
                     default: Schema.optional(
                       Schema.Union([Schema.Number, Schema.Null]),
@@ -49979,12 +51939,18 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([
             Schema.Union([
               Schema.Struct({
-                operation: Schema.Literals(["add", "remove", "set"]),
+                operation: Schema.Union([
+                  Schema.Literals(["add", "remove", "set"]),
+                  Schema.String,
+                ]),
                 values: Schema.Array(Schema.String),
               }),
               Schema.Struct({
                 expression: Schema.String,
-                operation: Schema.Literals(["add", "remove", "set"]),
+                operation: Schema.Union([
+                  Schema.Literals(["add", "remove", "set"]),
+                  Schema.String,
+                ]),
               }),
             ]),
             Schema.Null,
@@ -50138,7 +52104,10 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               polish: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["off", "lossless", "lossy", "webp"]),
+                  Schema.Union([
+                    Schema.Literals(["off", "lossless", "lossy", "webp"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -50147,13 +52116,19 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               requestBodyBuffering: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["none", "standard", "full"]),
+                  Schema.Union([
+                    Schema.Literals(["none", "standard", "full"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
               responseBodyBuffering: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["none", "standard"]),
+                  Schema.Union([
+                    Schema.Literals(["none", "standard"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -50162,13 +52137,16 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               securityLevel: Schema.optional(
                 Schema.Union([
-                  Schema.Literals([
-                    "off",
-                    "essentially_off",
-                    "low",
-                    "medium",
-                    "high",
-                    "under_attack",
+                  Schema.Union([
+                    Schema.Literals([
+                      "off",
+                      "essentially_off",
+                      "low",
+                      "medium",
+                      "high",
+                      "under_attack",
+                    ]),
+                    Schema.String,
                   ]),
                   Schema.Null,
                 ]),
@@ -50178,12 +52156,15 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               ssl: Schema.optional(
                 Schema.Union([
-                  Schema.Literals([
-                    "off",
-                    "flexible",
-                    "full",
-                    "strict",
-                    "origin_pull",
+                  Schema.Union([
+                    Schema.Literals([
+                      "off",
+                      "flexible",
+                      "full",
+                      "strict",
+                      "origin_pull",
+                    ]),
+                    Schema.String,
                   ]),
                   Schema.Null,
                 ]),
@@ -50320,31 +52301,34 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               phases: Schema.optional(
                 Schema.Union([
                   Schema.Array(
-                    Schema.Literals([
-                      "ddos_l4",
-                      "ddos_l7",
-                      "http_config_settings",
-                      "http_custom_errors",
-                      "http_log_custom_fields",
-                      "http_ratelimit",
-                      "http_request_cache_settings",
-                      "http_request_dynamic_redirect",
-                      "http_request_firewall_custom",
-                      "http_request_firewall_managed",
-                      "http_request_late_transform",
-                      "http_request_origin",
-                      "http_request_redirect",
-                      "http_request_sanitize",
-                      "http_request_sbfm",
-                      "http_request_transform",
-                      "http_response_cache_settings",
-                      "http_response_compression",
-                      "http_response_firewall_managed",
-                      "http_response_headers_transform",
-                      "magic_transit",
-                      "magic_transit_ids_managed",
-                      "magic_transit_managed",
-                      "magic_transit_ratelimit",
+                    Schema.Union([
+                      Schema.Literals([
+                        "ddos_l4",
+                        "ddos_l7",
+                        "http_config_settings",
+                        "http_custom_errors",
+                        "http_log_custom_fields",
+                        "http_ratelimit",
+                        "http_request_cache_settings",
+                        "http_request_dynamic_redirect",
+                        "http_request_firewall_custom",
+                        "http_request_firewall_managed",
+                        "http_request_late_transform",
+                        "http_request_origin",
+                        "http_request_redirect",
+                        "http_request_sanitize",
+                        "http_request_sbfm",
+                        "http_request_transform",
+                        "http_response_cache_settings",
+                        "http_response_compression",
+                        "http_response_firewall_managed",
+                        "http_response_headers_transform",
+                        "magic_transit",
+                        "magic_transit_ids_managed",
+                        "magic_transit_managed",
+                        "magic_transit_ratelimit",
+                      ]),
+                      Schema.String,
                     ]),
                   ),
                   Schema.Null,
@@ -50353,14 +52337,17 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               products: Schema.optional(
                 Schema.Union([
                   Schema.Array(
-                    Schema.Literals([
-                      "bic",
-                      "hot",
-                      "rateLimit",
-                      "securityLevel",
-                      "uaBlock",
-                      "waf",
-                      "zoneLockdown",
+                    Schema.Union([
+                      Schema.Literals([
+                        "bic",
+                        "hot",
+                        "rateLimit",
+                        "securityLevel",
+                        "uaBlock",
+                        "waf",
+                        "zoneLockdown",
+                      ]),
+                      Schema.String,
                     ]),
                   ),
                   Schema.Null,
@@ -50556,7 +52543,7 @@ export const ListVersionsForZoneRequest =
 export interface ListVersionsResponse {
   result: {
     id: string;
-    kind: "managed" | "custom" | "root" | "zone";
+    kind: "managed" | "custom" | "root" | "zone" | (string & {});
     lastUpdated: string;
     name: string;
     phase:
@@ -50583,7 +52570,8 @@ export interface ListVersionsResponse {
       | "magic_transit"
       | "magic_transit_ids_managed"
       | "magic_transit_managed"
-      | "magic_transit_ratelimit";
+      | "magic_transit_ratelimit"
+      | (string & {});
     version: string;
     description?: string | null;
   }[];
@@ -50593,34 +52581,40 @@ export const ListVersionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       id: Schema.String,
-      kind: Schema.Literals(["managed", "custom", "root", "zone"]),
+      kind: Schema.Union([
+        Schema.Literals(["managed", "custom", "root", "zone"]),
+        Schema.String,
+      ]),
       lastUpdated: Schema.String,
       name: Schema.String,
-      phase: Schema.Literals([
-        "ddos_l4",
-        "ddos_l7",
-        "http_config_settings",
-        "http_custom_errors",
-        "http_log_custom_fields",
-        "http_ratelimit",
-        "http_request_cache_settings",
-        "http_request_dynamic_redirect",
-        "http_request_firewall_custom",
-        "http_request_firewall_managed",
-        "http_request_late_transform",
-        "http_request_origin",
-        "http_request_redirect",
-        "http_request_sanitize",
-        "http_request_sbfm",
-        "http_request_transform",
-        "http_response_cache_settings",
-        "http_response_compression",
-        "http_response_firewall_managed",
-        "http_response_headers_transform",
-        "magic_transit",
-        "magic_transit_ids_managed",
-        "magic_transit_managed",
-        "magic_transit_ratelimit",
+      phase: Schema.Union([
+        Schema.Literals([
+          "ddos_l4",
+          "ddos_l7",
+          "http_config_settings",
+          "http_custom_errors",
+          "http_log_custom_fields",
+          "http_ratelimit",
+          "http_request_cache_settings",
+          "http_request_dynamic_redirect",
+          "http_request_firewall_custom",
+          "http_request_firewall_managed",
+          "http_request_late_transform",
+          "http_request_origin",
+          "http_request_redirect",
+          "http_request_sanitize",
+          "http_request_sbfm",
+          "http_request_transform",
+          "http_response_cache_settings",
+          "http_response_compression",
+          "http_response_firewall_managed",
+          "http_response_headers_transform",
+          "magic_transit",
+          "magic_transit_ids_managed",
+          "magic_transit_managed",
+          "magic_transit_ratelimit",
+        ]),
+        Schema.String,
       ]),
       version: Schema.String,
       description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),

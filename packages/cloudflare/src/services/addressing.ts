@@ -200,7 +200,7 @@ export interface GetAddressMapResponse {
         canDelete?: boolean | null;
         createdAt?: string | null;
         identifier?: string | null;
-        kind?: "zone" | "account" | null;
+        kind?: "zone" | "account" | (string & {}) | null;
       }[]
     | null;
   modifiedAt?: string | null;
@@ -241,7 +241,13 @@ export const GetAddressMapResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.Union([Schema.String, Schema.Null]),
           ),
           kind: Schema.optional(
-            Schema.Union([Schema.Literals(["zone", "account"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([
+                Schema.Literals(["zone", "account"]),
+                Schema.String,
+              ]),
+              Schema.Null,
+            ]),
           ),
         }).pipe(
           Schema.encodeKeys({
@@ -378,7 +384,10 @@ export interface CreateAddressMapRequest {
   /** Body param */
   ips?: string[];
   /** Body param: Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership. */
-  memberships?: { identifier?: string; kind?: "zone" | "account" }[];
+  memberships?: {
+    identifier?: string;
+    kind?: "zone" | "account" | (string & {});
+  }[];
 }
 
 export const CreateAddressMapRequest =
@@ -391,7 +400,9 @@ export const CreateAddressMapRequest =
       Schema.Array(
         Schema.Struct({
           identifier: Schema.optional(Schema.String),
-          kind: Schema.optional(Schema.Literals(["zone", "account"])),
+          kind: Schema.optional(
+            Schema.Union([Schema.Literals(["zone", "account"]), Schema.String]),
+          ),
         }),
       ),
     ),
@@ -424,7 +435,7 @@ export interface CreateAddressMapResponse {
         canDelete?: boolean | null;
         createdAt?: string | null;
         identifier?: string | null;
-        kind?: "zone" | "account" | null;
+        kind?: "zone" | "account" | (string & {}) | null;
       }[]
     | null;
   modifiedAt?: string | null;
@@ -466,7 +477,13 @@ export const CreateAddressMapResponse =
               Schema.Union([Schema.String, Schema.Null]),
             ),
             kind: Schema.optional(
-              Schema.Union([Schema.Literals(["zone", "account"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["zone", "account"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
           }).pipe(
             Schema.encodeKeys({
@@ -3332,7 +3349,9 @@ export interface GetPrefixServiceBindingResponse {
   /** IP Prefix in Classless Inter-Domain Routing format. */
   cidr?: string | null;
   /** Status of a Service Binding's deployment to the Cloudflare network */
-  provisioning?: { state?: "provisioning" | "active" | null } | null;
+  provisioning?: {
+    state?: "provisioning" | "active" | (string & {}) | null;
+  } | null;
   /** Identifier of a Service on the Cloudflare network. Available services and their IDs may be found in the  List Services  endpoint. */
   serviceId?: string | null;
   /** Name of a service running on the Cloudflare network */
@@ -3348,7 +3367,10 @@ export const GetPrefixServiceBindingResponse =
         Schema.Struct({
           state: Schema.optional(
             Schema.Union([
-              Schema.Literals(["provisioning", "active"]),
+              Schema.Union([
+                Schema.Literals(["provisioning", "active"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -3410,7 +3432,9 @@ export interface ListPrefixServiceBindingsResponse {
   result: {
     id?: string | null;
     cidr?: string | null;
-    provisioning?: { state?: "provisioning" | "active" | null } | null;
+    provisioning?: {
+      state?: "provisioning" | "active" | (string & {}) | null;
+    } | null;
     serviceId?: string | null;
     serviceName?: string | null;
   }[];
@@ -3427,7 +3451,10 @@ export const ListPrefixServiceBindingsResponse =
             Schema.Struct({
               state: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["provisioning", "active"]),
+                  Schema.Union([
+                    Schema.Literals(["provisioning", "active"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -3498,7 +3525,9 @@ export interface CreatePrefixServiceBindingResponse {
   /** IP Prefix in Classless Inter-Domain Routing format. */
   cidr?: string | null;
   /** Status of a Service Binding's deployment to the Cloudflare network */
-  provisioning?: { state?: "provisioning" | "active" | null } | null;
+  provisioning?: {
+    state?: "provisioning" | "active" | (string & {}) | null;
+  } | null;
   /** Identifier of a Service on the Cloudflare network. Available services and their IDs may be found in the  List Services  endpoint. */
   serviceId?: string | null;
   /** Name of a service running on the Cloudflare network */
@@ -3514,7 +3543,10 @@ export const CreatePrefixServiceBindingResponse =
         Schema.Struct({
           state: Schema.optional(
             Schema.Union([
-              Schema.Literals(["provisioning", "active"]),
+              Schema.Union([
+                Schema.Literals(["provisioning", "active"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
