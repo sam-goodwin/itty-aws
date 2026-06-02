@@ -146,6 +146,11 @@ paths:
                   name:
                     type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        NotFound:
+          - code: 3000
+        Gone:
+          - code: 3005
     delete:
       operationId: deleteIndex
       description: "Deletes the specified Vectorize Index.  @example ```ts const index
@@ -168,9 +173,13 @@ paths:
           description: Success
           content:
             application/json:
-              schema:
-                type: string
+              schema: {}
       x-distilled-response-path: result
+      x-distilled-errors:
+        NotFound:
+          - code: 3000
+        Gone:
+          - code: 3005
   /accounts/{account_id}/vectorize/v2/indexes:
     get:
       operationId: listIndexes
@@ -277,7 +286,7 @@ paths:
                     index."
                 name:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 description:
                   type: string
                   description: "Body param: Specifies the description of the index."
@@ -322,6 +331,13 @@ paths:
                   name:
                     type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        IndexAlreadyExists:
+          - code: 3002
+        IndexInvalidName:
+          - code: 3001
+        IndexInvalidConfig:
+          - code: 3003
   /accounts/{account_id}/vectorize/v2/indexes/{indexName}/info:
     get:
       operationId: infoIndex
@@ -485,8 +501,7 @@ paths:
                         id:
                           type: string
                           description: Identifier for a Vector
-                        metadata:
-                          type: "null"
+                        metadata: {}
                         namespace:
                           oneOf:
                             - type: string
@@ -590,12 +605,20 @@ paths:
                             - string
                             - number
                             - boolean
+                            - String
+                            - Number
+                            - Boolean
                           description: Specifies the type of indexed metadata property.
                         propertyName:
                           type: string
                           description: Specifies the indexed metadata property.
                     description: Array of indexed metadata properties.
       x-distilled-response-path: result
+      x-distilled-errors:
+        NotFound:
+          - code: 3000
+        Gone:
+          - code: 3005
   /accounts/{account_id}/vectorize/v2/indexes/{indexName}/metadata_index/create:
     post:
       operationId: createIndexMetadataIndex
@@ -649,6 +672,13 @@ paths:
                     description: The unique identifier for the async mutation operation containing
                       the changeset.
       x-distilled-response-path: result
+      x-distilled-errors:
+        NotFound:
+          - code: 3000
+        MetadataIndexAlreadyExists:
+          - code: 40004
+        MetadataIndexInvalidType:
+          - code: 40026
   /accounts/{account_id}/vectorize/v2/indexes/{indexName}/metadata_index/delete:
     post:
       operationId: deleteIndexMetadataIndex
@@ -695,6 +725,13 @@ paths:
                     description: The unique identifier for the async mutation operation containing
                       the changeset.
       x-distilled-response-path: result
+      x-distilled-errors:
+        NotFound:
+          - code: 3000
+        Gone:
+          - code: 3005
+        MetadataIndexNotFound:
+          - code: 40005
   /accounts/{account_id}/vectorize/v2/indexes/{indexName}/list:
     get:
       operationId: listVectorsIndex

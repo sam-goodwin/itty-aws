@@ -121,6 +121,9 @@ paths:
                       total_count:
                         type: number
                         description: Total results available without any search parameters.
+                      total_pages:
+                        type: number
+                        description: The number of total pages in the entire result set.
                 required:
                   - errors
                   - messages
@@ -165,6 +168,522 @@ paths:
               schema:
                 type: string
       x-distilled-pagination-class: CustomNameserverUpdateResponsesSinglePage
+  /zones/{zone_id}/environments:
+    get:
+      operationId: listEnvironments
+      description: "List zone environments  @example ```ts const environments = await
+        client.zones.environments.list({ zone_id: 'zone_id', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier of the zone.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  environments:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        expression:
+                          type: string
+                        locked_on_deployment:
+                          oneOf:
+                            - type: boolean
+                          nullable: true
+                        name:
+                          type: string
+                        position:
+                          type: object
+                          properties:
+                            after:
+                              type: string
+                            before:
+                              type: string
+                        ref:
+                          type: string
+                        version:
+                          oneOf:
+                            - type: number
+                          nullable: true
+                        http_application_id:
+                          oneOf:
+                            - type: string
+                          nullable: true
+                      required:
+                        - expression
+                        - locked_on_deployment
+                        - name
+                        - position
+                        - ref
+                        - version
+                required:
+                  - environments
+      x-distilled-response-path: result
+    post:
+      operationId: createEnvironment
+      description: "Create zone environments  @example ```ts const environment = await
+        client.zones.environments.create({ zone_id: 'zone_id', environments: [ {
+        expression: 'expression', locked_on_deployment: true, name: 'name',
+        position: {}, ref: 'ref', version: 0, }, ], }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier of the zone."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                environments:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      expression:
+                        type: string
+                      locked_on_deployment:
+                        oneOf:
+                          - type: boolean
+                        nullable: true
+                      name:
+                        type: string
+                      position:
+                        type: object
+                        properties:
+                          after:
+                            type: string
+                          before:
+                            type: string
+                      ref:
+                        type: string
+                      version:
+                        oneOf:
+                          - type: number
+                        nullable: true
+                      http_application_id:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                    required:
+                      - expression
+                      - locked_on_deployment
+                      - name
+                      - position
+                      - ref
+                      - version
+                  description: Body param
+              required:
+                - environments
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  environments:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        expression:
+                          type: string
+                        locked_on_deployment:
+                          oneOf:
+                            - type: boolean
+                          nullable: true
+                        name:
+                          type: string
+                        position:
+                          type: object
+                          properties:
+                            after:
+                              type: string
+                            before:
+                              type: string
+                        ref:
+                          type: string
+                        version:
+                          oneOf:
+                            - type: number
+                          nullable: true
+                        http_application_id:
+                          oneOf:
+                            - type: string
+                          nullable: true
+                      required:
+                        - expression
+                        - locked_on_deployment
+                        - name
+                        - position
+                        - ref
+                        - version
+                required:
+                  - environments
+      x-distilled-response-path: result
+    put:
+      operationId: updateEnvironment
+      description: "Upsert zone environments  @example ```ts const environment = await
+        client.zones.environments.update({ zone_id: 'zone_id', environments: [ {
+        expression: 'expression', locked_on_deployment: true, name: 'name',
+        position: {}, ref: 'ref', version: 0, }, ], }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier of the zone."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                environments:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      expression:
+                        type: string
+                      locked_on_deployment:
+                        oneOf:
+                          - type: boolean
+                        nullable: true
+                      name:
+                        type: string
+                      position:
+                        type: object
+                        properties:
+                          after:
+                            type: string
+                          before:
+                            type: string
+                      ref:
+                        type: string
+                      version:
+                        oneOf:
+                          - type: number
+                        nullable: true
+                      http_application_id:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                    required:
+                      - expression
+                      - locked_on_deployment
+                      - name
+                      - position
+                      - ref
+                      - version
+                  description: Body param
+              required:
+                - environments
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  environments:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        expression:
+                          type: string
+                        locked_on_deployment:
+                          oneOf:
+                            - type: boolean
+                          nullable: true
+                        name:
+                          type: string
+                        position:
+                          type: object
+                          properties:
+                            after:
+                              type: string
+                            before:
+                              type: string
+                        ref:
+                          type: string
+                        version:
+                          oneOf:
+                            - type: number
+                          nullable: true
+                        http_application_id:
+                          oneOf:
+                            - type: string
+                          nullable: true
+                      required:
+                        - expression
+                        - locked_on_deployment
+                        - name
+                        - position
+                        - ref
+                        - version
+                required:
+                  - environments
+      x-distilled-response-path: result
+    patch:
+      operationId: patchEnvironment
+      description: "Partially update zone environments  @example ```ts const response
+        = await client.zones.environments.edit({ zone_id: 'zone_id',
+        environments: [ { expression: 'expression', locked_on_deployment: true,
+        name: 'name', position: {}, ref: 'ref', version: 0, }, ], }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier of the zone."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                environments:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      expression:
+                        type: string
+                      locked_on_deployment:
+                        oneOf:
+                          - type: boolean
+                        nullable: true
+                      name:
+                        type: string
+                      position:
+                        type: object
+                        properties:
+                          after:
+                            type: string
+                          before:
+                            type: string
+                      ref:
+                        type: string
+                      version:
+                        oneOf:
+                          - type: number
+                        nullable: true
+                      http_application_id:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                    required:
+                      - expression
+                      - locked_on_deployment
+                      - name
+                      - position
+                      - ref
+                      - version
+                  description: Body param
+              required:
+                - environments
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  environments:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        expression:
+                          type: string
+                        locked_on_deployment:
+                          oneOf:
+                            - type: boolean
+                          nullable: true
+                        name:
+                          type: string
+                        position:
+                          type: object
+                          properties:
+                            after:
+                              type: string
+                            before:
+                              type: string
+                        ref:
+                          type: string
+                        version:
+                          oneOf:
+                            - type: number
+                          nullable: true
+                        http_application_id:
+                          oneOf:
+                            - type: string
+                          nullable: true
+                      required:
+                        - expression
+                        - locked_on_deployment
+                        - name
+                        - position
+                        - ref
+                        - version
+                required:
+                  - environments
+      x-distilled-response-path: result
+  /zones/{zone_id}/environments/{environmentId}:
+    delete:
+      operationId: deleteEnvironment
+      description: "Delete zone environment  @example ```ts const environment = await
+        client.zones.environments.delete( 'environment_id', { zone_id: 'zone_id'
+        }, ); ```"
+      parameters:
+        - name: environmentId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier of the zone.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  environments:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        expression:
+                          type: string
+                        locked_on_deployment:
+                          oneOf:
+                            - type: boolean
+                          nullable: true
+                        name:
+                          type: string
+                        position:
+                          type: object
+                          properties:
+                            after:
+                              type: string
+                            before:
+                              type: string
+                        ref:
+                          type: string
+                        version:
+                          oneOf:
+                            - type: number
+                          nullable: true
+                        http_application_id:
+                          oneOf:
+                            - type: string
+                          nullable: true
+                      required:
+                        - expression
+                        - locked_on_deployment
+                        - name
+                        - position
+                        - ref
+                        - version
+                required:
+                  - environments
+      x-distilled-response-path: result
+  /zones/{zone_id}/environments/{environmentId}/rollback:
+    post:
+      operationId: rollbackEnvironment
+      description: "Roll back zone environment  @example ```ts const response = await
+        client.zones.environments.rollback( 'environment_id', { zone_id:
+        'zone_id' }, ); ```"
+      parameters:
+        - name: environmentId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier of the zone.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  environments:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        expression:
+                          type: string
+                        locked_on_deployment:
+                          oneOf:
+                            - type: boolean
+                          nullable: true
+                        name:
+                          type: string
+                        position:
+                          type: object
+                          properties:
+                            after:
+                              type: string
+                            before:
+                              type: string
+                        ref:
+                          type: string
+                        version:
+                          oneOf:
+                            - type: number
+                          nullable: true
+                        http_application_id:
+                          oneOf:
+                            - type: string
+                          nullable: true
+                      required:
+                        - expression
+                        - locked_on_deployment
+                        - name
+                        - position
+                        - ref
+                        - version
+                required:
+                  - environments
+      x-distilled-response-path: result
   /zones/{zone_id}/hold:
     get:
       operationId: getHold
@@ -879,6 +1398,34 @@ paths:
                       id:
                         type: string
                         enum:
+                          - content_converter
+                        description: ID of the zone setting.
+                      value:
+                        type: string
+                        enum:
+                          - off
+                          - on
+                        description: Current value of the zone setting.
+                      editable:
+                        type: boolean
+                        enum:
+                          - true
+                          - false
+                        description: Whether or not this setting can be modified for this zone (based on
+                          your Cloudflare plan level).
+                      modified_on:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: last time this setting was modified.
+                    required:
+                      - id
+                      - value
+                  - type: object
+                    properties:
+                      id:
+                        type: string
+                        enum:
                           - ciphers
                         description: ID of the zone setting.
                       value:
@@ -1697,6 +2244,34 @@ paths:
                       id:
                         type: string
                         enum:
+                          - redirects_for_ai_training
+                        description: ID of the zone setting.
+                      value:
+                        type: string
+                        enum:
+                          - off
+                          - on
+                        description: Current value of the zone setting.
+                      editable:
+                        type: boolean
+                        enum:
+                          - true
+                          - false
+                        description: Whether or not this setting can be modified for this zone (based on
+                          your Cloudflare plan level).
+                      modified_on:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: last time this setting was modified.
+                    required:
+                      - id
+                      - value
+                  - type: object
+                    properties:
+                      id:
+                        type: string
+                        enum:
                           - replace_insecure_js
                         description: ID of the zone setting.
                       value:
@@ -1819,6 +2394,34 @@ paths:
                           - hostnames
                           - wordpress
                           - wp_plugin
+                        description: Current value of the zone setting.
+                      editable:
+                        type: boolean
+                        enum:
+                          - true
+                          - false
+                        description: Whether or not this setting can be modified for this zone (based on
+                          your Cloudflare plan level).
+                      modified_on:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: last time this setting was modified.
+                    required:
+                      - id
+                      - value
+                  - type: object
+                    properties:
+                      id:
+                        type: string
+                        enum:
+                          - search_for_agents
+                        description: ID of the zone setting.
+                      value:
+                        type: string
+                        enum:
+                          - off
+                          - on
                         description: Current value of the zone setting.
                       editable:
                         type: boolean
@@ -2318,6 +2921,8 @@ paths:
                 enabled:
                   type: boolean
                   description: "Body param: ssl-recommender enrollment setting."
+                value:
+                  description: "Body param: Value of the zone setting."
       responses:
         "200":
           description: Success
@@ -2652,6 +3257,34 @@ paths:
                         enum:
                           - on
                           - off
+                        description: Current value of the zone setting.
+                      editable:
+                        type: boolean
+                        enum:
+                          - true
+                          - false
+                        description: Whether or not this setting can be modified for this zone (based on
+                          your Cloudflare plan level).
+                      modified_on:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: last time this setting was modified.
+                    required:
+                      - id
+                      - value
+                  - type: object
+                    properties:
+                      id:
+                        type: string
+                        enum:
+                          - content_converter
+                        description: ID of the zone setting.
+                      value:
+                        type: string
+                        enum:
+                          - off
+                          - on
                         description: Current value of the zone setting.
                       editable:
                         type: boolean
@@ -3491,6 +4124,34 @@ paths:
                       id:
                         type: string
                         enum:
+                          - redirects_for_ai_training
+                        description: ID of the zone setting.
+                      value:
+                        type: string
+                        enum:
+                          - off
+                          - on
+                        description: Current value of the zone setting.
+                      editable:
+                        type: boolean
+                        enum:
+                          - true
+                          - false
+                        description: Whether or not this setting can be modified for this zone (based on
+                          your Cloudflare plan level).
+                      modified_on:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: last time this setting was modified.
+                    required:
+                      - id
+                      - value
+                  - type: object
+                    properties:
+                      id:
+                        type: string
+                        enum:
                           - replace_insecure_js
                         description: ID of the zone setting.
                       value:
@@ -3613,6 +4274,34 @@ paths:
                           - hostnames
                           - wordpress
                           - wp_plugin
+                        description: Current value of the zone setting.
+                      editable:
+                        type: boolean
+                        enum:
+                          - true
+                          - false
+                        description: Whether or not this setting can be modified for this zone (based on
+                          your Cloudflare plan level).
+                      modified_on:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: last time this setting was modified.
+                    required:
+                      - id
+                      - value
+                  - type: object
+                    properties:
+                      id:
+                        type: string
+                        enum:
+                          - search_for_agents
+                        description: ID of the zone setting.
+                      value:
+                        type: string
+                        enum:
+                          - off
+                          - on
                         description: Current value of the zone setting.
                       editable:
                         type: boolean
@@ -4567,7 +5256,10 @@ paths:
                     description: When the zone was last modified.
                   name:
                     type: string
-                    description: The domain name.
+                    description: The domain name. Per [RFC
+                      1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4)
+                      the overall zone name can be up to 253 characters, with
+                      each segment ("label") not exceeding 63 characters.
                   name_servers:
                     type: array
                     items:
@@ -4717,6 +5409,11 @@ paths:
                   - owner
                   - plan
       x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidZoneIdentifier:
+          - code: 9109
+            message:
+              includes: Invalid zone identifier
     patch:
       operationId: patchZone
       description: "Edits a zone. Only one zone property can be changed at a
@@ -4824,7 +5521,10 @@ paths:
                     description: When the zone was last modified.
                   name:
                     type: string
-                    description: The domain name.
+                    description: The domain name. Per [RFC
+                      1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4)
+                      the overall zone name can be up to 253 characters, with
+                      each segment ("label") not exceeding 63 characters.
                   name_servers:
                     type: array
                     items:
@@ -4974,6 +5674,11 @@ paths:
                   - owner
                   - plan
       x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidZoneIdentifier:
+          - code: 9109
+            message:
+              includes: Invalid zone identifier
     delete:
       operationId: deleteZone
       description: "Deletes an existing zone.  @example ```ts const zone = await
@@ -5000,6 +5705,11 @@ paths:
                 required:
                   - id
       x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidZoneIdentifier:
+          - code: 9109
+            message:
+              includes: Invalid zone identifier
   /zones:
     get:
       operationId: listZones
@@ -5068,7 +5778,10 @@ paths:
                     description: When the zone was last modified.
                   name:
                     type: string
-                    description: The domain name.
+                    description: The domain name. Per [RFC
+                      1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4)
+                      the overall zone name can be up to 253 characters, with
+                      each segment ("label") not exceeding 63 characters.
                   name_servers:
                     type: array
                     items:
@@ -5237,7 +5950,10 @@ paths:
                       description: Identifier
                 name:
                   type: string
-                  description: The domain name.
+                  description: The domain name. Per [RFC
+                    1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4)
+                    the overall zone name can be up to 253 characters, with each
+                    segment ("label") not exceeding 63 characters.
                 type:
                   type: string
                   enum:
@@ -5315,7 +6031,10 @@ paths:
                     description: When the zone was last modified.
                   name:
                     type: string
-                    description: The domain name.
+                    description: The domain name. Per [RFC
+                      1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4)
+                      the overall zone name can be up to 253 characters, with
+                      each segment ("label") not exceeding 63 characters.
                   name_servers:
                     type: array
                     items:
@@ -5465,3 +6184,12 @@ paths:
                   - owner
                   - plan
       x-distilled-response-path: result
+      x-distilled-errors:
+        ZoneAlreadyExists:
+          - code: 1061
+        InvalidDomain:
+          - code: 1002
+        DomainNotRegistered:
+          - code: 1099
+        SubdomainNotAllowed:
+          - code: 1116

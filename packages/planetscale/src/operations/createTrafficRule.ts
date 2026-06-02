@@ -36,8 +36,8 @@ export const CreateTrafficRuleOutput =
         source: Schema.Literals(["sql", "system"]),
       }),
     ),
-    fingerprint: Schema.optional(Schema.String),
-    keyspace: Schema.optional(Schema.String),
+    fingerprint: Schema.optional(Schema.NullOr(Schema.String)),
+    keyspace: Schema.optional(Schema.NullOr(Schema.String)),
     actor: Schema.Struct({
       id: Schema.String,
       display_name: Schema.String,

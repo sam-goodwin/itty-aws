@@ -11,6 +11,7 @@ import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
+import { UploadableSchema } from "../schemas.ts";
 
 // =============================================================================
 // Errors
@@ -142,21 +143,21 @@ export interface ListNamespacesRequest {
   page?: number;
   perPage?: number;
   /** Query param: Direction to order namespaces. */
-  direction?: "asc" | "desc";
+  direction?: "asc" | "desc" | (string & {});
   /** Query param: Field to order results by. */
-  order?: "id" | "title";
+  order?: "id" | "title" | (string & {});
 }
 
 export const ListNamespacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
   perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-  direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-    T.HttpQuery("direction"),
-  ),
-  order: Schema.optional(Schema.Literals(["id", "title"])).pipe(
-    T.HttpQuery("order"),
-  ),
+  direction: Schema.optional(
+    Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+  ).pipe(T.HttpQuery("direction")),
+  order: Schema.optional(
+    Schema.Union([Schema.Literals(["id", "title"]), Schema.String]),
+  ).pipe(T.HttpQuery("order")),
 }).pipe(
   T.Http({
     method: "GET",
@@ -421,7 +422,7 @@ export interface BulkGetNamespacesRequest {
   /** Body param: Array of keys to retrieve (maximum of 100). */
   keys: string[];
   /** Body param: Whether to parse JSON values in the response. */
-  type?: "text" | "json";
+  type?: "text" | "json" | (string & {});
   /** Body param: Whether to include metadata in the response. */
   withMetadata?: boolean;
 }
@@ -431,7 +432,9 @@ export const BulkGetNamespacesRequest =
     namespaceId: Schema.String.pipe(T.HttpPath("namespaceId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     keys: Schema.Array(Schema.String),
-    type: Schema.optional(Schema.Literals(["text", "json"])),
+    type: Schema.optional(
+      Schema.Union([Schema.Literals(["text", "json"]), Schema.String]),
+    ),
     withMetadata: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
@@ -480,7 +483,7 @@ export interface BulkDeleteNamespacesRequest {
   namespaceId: string;
   /** Path param: Identifier. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   body: string[];
 }
 
@@ -547,9 +550,8 @@ export interface ListNamespaceKeysRequest {
   namespaceId: string;
   /** Path param: Identifier. */
   accountId: string;
-  cursor?: string;
-  /** Query param: Limits the number of keys returned in the response. The cursor attribute may be used to iterate over the next batch of keys if there are more than the limit. */
   limit?: number;
+  cursor?: string;
   /** Query param: Filters returned keys by a name prefix. Exact matches and any key names that begin with the prefix will be returned. */
   prefix?: string;
 }
@@ -558,8 +560,8 @@ export const ListNamespaceKeysRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespaceId: Schema.String.pipe(T.HttpPath("namespaceId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
     limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
+    cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
     prefix: Schema.optional(Schema.String).pipe(T.HttpQuery("prefix")),
   }).pipe(
     T.Http({
@@ -574,7 +576,11 @@ export interface ListNamespaceKeysResponse {
     expiration?: number | null;
     metadata?: unknown | null;
   }[];
-  resultInfo?: { cursors?: { after?: string | null } | null } | null;
+  resultInfo?: {
+    count?: number | null;
+    cursor?: string | null;
+    perPage?: number | null;
+  } | null;
 }
 
 export const ListNamespaceKeysResponse =
@@ -589,17 +595,16 @@ export const ListNamespaceKeysResponse =
     resultInfo: Schema.optional(
       Schema.Union([
         Schema.Struct({
-          cursors: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                after: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }),
+          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          cursor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        }).pipe(
+          Schema.encodeKeys({
+            count: "count",
+            cursor: "cursor",
+            perPage: "per_page",
+          }),
+        ),
         Schema.Null,
       ]),
     ),
@@ -621,8 +626,9 @@ export const listNamespaceKeys: API.PaginatedOperationMethod<
   pagination: {
     mode: "cursor",
     inputToken: "cursor",
-    outputToken: "resultInfo.cursors.after",
+    outputToken: "resultInfo.cursor",
     items: "result",
+    pageSize: "limit",
   } as const,
 }));
 
@@ -633,7 +639,7 @@ export interface BulkGetNamespaceKeysRequest {
   /** Body param: Array of keys to retrieve (maximum of 100). */
   keys: string[];
   /** Body param: Whether to parse JSON values in the response. */
-  type?: "text" | "json";
+  type?: "text" | "json" | (string & {});
   /** Body param: Whether to include metadata in the response. */
   withMetadata?: boolean;
 }
@@ -643,7 +649,9 @@ export const BulkGetNamespaceKeysRequest =
     namespaceId: Schema.String.pipe(T.HttpPath("namespaceId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     keys: Schema.Array(Schema.String),
-    type: Schema.optional(Schema.Literals(["text", "json"])),
+    type: Schema.optional(
+      Schema.Union([Schema.Literals(["text", "json"]), Schema.String]),
+    ),
     withMetadata: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
@@ -686,7 +694,7 @@ export interface BulkDeleteNamespaceKeysRequest {
   namespaceId: string;
   /** Path param: Identifier. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   body: string[];
 }
 
@@ -847,7 +855,7 @@ export interface PutNamespaceValueRequest {
   /** Query param: Expires the key after a number of seconds. Must be at least 60. */
   expirationTtl?: number;
   /** Body param: A byte sequence to be stored, up to 25 MiB in length. */
-  value: string;
+  value: string | File | Blob;
   /** Body param: Associates arbitrary JSON data with a key/value pair. */
   metadata?: unknown;
 }
@@ -861,7 +869,10 @@ export const PutNamespaceValueRequest =
     expirationTtl: Schema.optional(Schema.Number).pipe(
       T.HttpQuery("expiration_ttl"),
     ),
-    value: Schema.String,
+    value: Schema.Union([
+      Schema.String,
+      UploadableSchema.pipe(T.HttpFormDataFile()),
+    ]),
     metadata: Schema.optional(Schema.Unknown),
   }).pipe(
     T.Http({
@@ -945,7 +956,7 @@ export interface BulkPutNamespacesRequest {
   namespaceId: string;
   /** Path param: Identifier. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   body: {
     key: string;
     value: string;
@@ -1037,7 +1048,7 @@ export interface BulkPutNamespaceKeysRequest {
   namespaceId: string;
   /** Path param: Identifier. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   body: {
     key: string;
     value: string;

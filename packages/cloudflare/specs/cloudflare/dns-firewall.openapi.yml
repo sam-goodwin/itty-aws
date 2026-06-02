@@ -595,7 +595,7 @@ paths:
                   type: array
                   items:
                     type: string
-                  description: "Body param:"
+                  description: Body param
       responses:
         "200":
           description: Success
@@ -885,7 +885,7 @@ paths:
                   type: array
                   items:
                     type: string
-                  description: "Body param:"
+                  description: Body param
                 attack_mitigation:
                   oneOf:
                     - type: object

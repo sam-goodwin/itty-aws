@@ -24,7 +24,7 @@ export const CreateQueryPatternsReportOutput =
     id: Schema.String,
     state: Schema.Literals(["pending", "completed", "failed"]),
     created_at: Schema.String,
-    finished_at: Schema.String,
+    finished_at: Schema.NullOr(Schema.String),
     url: Schema.String,
     download_url: Schema.String,
     actor: Schema.Struct({

@@ -8,7 +8,7 @@ x-distilled-service: dcv-delegation
 paths:
   /zones/{zone_id}/dcv_delegation/uuid:
     get:
-      operationId: getDCVDelegation
+      operationId: getDcvDelegation
       description: Retrieve the account and zone specific unique identifier used as
         part of the CNAME target for DCV Delegation.
       parameters:

@@ -3,376 +3,55 @@ name: Release NPM Packages
 on:
   workflow_dispatch:
     inputs:
-      bump:
-        description: "Bump type"
-        required: true
-        type: choice
-        options:
-          - patch
-          - minor
-          - major
-      version-override:
-        description: "Exact version override (e.g. 0.2.0-alpha). Leave empty to use bump type."
+      version:
+        description: >-
+          Release spec. Empty = next beta. `patch|minor|major` or `x.y.z`
+          for a stable release. `beta` / `beta.N` / `alpha` / `alpha.N`
+          for a prerelease. Anything else = tag release on
+          `0.0.0-<name>`.
         required: false
         type: string
+        default: ""
 
+# Reusable workflows can't widen permissions — the caller must grant
+# `contents: write` (commit + tag) and `id-token: write` (npm OIDC).
 permissions:
   contents: write
   id-token: write
 
-env:
-  NODE_VERSION: "24"
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
-  # Files produced by the bump job and consumed by the commit-and-tag and
-  # publish jobs. Listed once here so additions stay in sync.
-  BUMP_ARTIFACT_PATHS: |
-    packages/aws/package.json
-    packages/axiom/package.json
-    packages/azure/package.json
-    packages/cloudflare/package.json
-    packages/coinbase/package.json
-    packages/core/package.json
-    packages/fly-io/package.json
-    packages/gcp/package.json
-    packages/kubernetes/package.json
-    packages/mongodb-atlas/package.json
-    packages/neon/package.json
-    packages/planetscale/package.json
-    packages/posthog/package.json
-    packages/prisma-postgres/package.json
-    packages/stripe/package.json
-    packages/supabase/package.json
-    packages/turso/package.json
-    packages/typesense/package.json
-    packages/workos/package.json
-    packages/expo-eas/package.json
-    bun.lock
-    CHANGELOG.md
-
 jobs:
-  # ── Step 1: Compute the next version and stage the bump in-memory. ──
-  # No git commit: a failed publish leaves no orphan commit behind. The staged
-  # files ride to commit-and-tag (and every publish job) as an artifact.
-  bump:
-    runs-on: ubuntu-latest
-    outputs:
-      version: ${{ steps.bump.outputs.version }}
-      sha: ${{ steps.sha.outputs.sha }}
-    steps:
-      - uses: actions/checkout@v6
-        with:
-          ref: ${{ github.ref }}
-          fetch-depth: 0
-
-      - id: sha
-        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
-
-      - uses: actions/setup-node@v6
-        with:
-          registry-url: https://registry.npmjs.org/
-          node-version: ${{ env.NODE_VERSION }}
-
-      - uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: latest
-
-      - uses: actions/cache@v4
-        with:
-          path: ~/.bun/install/cache
-          key: bun-${{ runner.os }}-${{ hashFiles('bun.lock') }}
-          restore-keys: |
-            bun-${{ runner.os }}-
-
-      - run: bun install
-
-      - id: bump
-        run: |
-          set -euo pipefail
-          if [ -n "${{ inputs.version-override }}" ]; then
-            bun ./scripts/bump.ts "${{ inputs.version-override }}"
-            VERSION="${{ inputs.version-override }}"
-          else
-            bun ./scripts/bump.ts "${{ inputs.bump }}"
-            VERSION=$(node -p "require('./packages/core/package.json').version")
-          fi
-          echo "Resolved version: $VERSION"
-          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: bump-files
-          path: ${{ env.BUMP_ARTIFACT_PATHS }}
-          if-no-files-found: error
-          retention-days: 7
-
-  # ── Step 2: Commit + tag BEFORE publishing.
-  # Committing first means the publishable source of truth is the tagged commit;
-  # publish jobs check it out by SHA. Durability: if a previous attempt already
-  # committed and tagged but failed during npm publish, this job detects HEAD is
-  # already at the tag and skips the commit/push.
-  commit-and-tag:
-    needs: bump
-    runs-on: ubuntu-latest
-    outputs:
-      sha: ${{ steps.commit.outputs.sha }}
-    steps:
-      - name: Generate bot token
-        id: bot-token
-        uses: actions/create-github-app-token@v1
-        with:
-          app-id: ${{ secrets.ALCHEMY_VERSION_BOT_ID }}
-          private-key: ${{ secrets.ALCHEMY_VERSION_BOT_PRIVATE_KEY }}
-
-      # Pin to the SHA captured by `bump` so concurrent pushes to the branch
-      # during the workflow can't shift the release base. The push below then
-      # targets the branch explicitly; if it advanced, the push is rejected as
-      # non-fast-forward and the workflow fails fast rather than producing a
-      # corrupt release.
-      - uses: actions/checkout@v6
-        with:
-          ref: ${{ needs.bump.outputs.sha }}
-          fetch-depth: 0
-          token: ${{ steps.bot-token.outputs.token }}
-
-      - uses: actions/download-artifact@v4
-        with:
-          name: bump-files
-
-      - name: Configure git
-        run: |
-          git config user.email "alchemy-version-bot[bot]@users.noreply.github.com"
-          git config user.name "alchemy-version-bot[bot]"
-
-      - id: commit
-        name: Commit bump + changelog, tag, push
-        env:
-          VERSION: ${{ needs.bump.outputs.version }}
-          BRANCH: ${{ github.ref_name }}
-        run: |
-          set -euo pipefail
-          TAG="v${VERSION}"
-
-          # Durability: if HEAD already points at the release tag (resumed run
-          # after a previous attempt committed+tagged but publish failed), there
-          # is nothing to do. Use HEAD as the publish SHA.
-          HEAD_TAG=$(git describe --exact-match --tags HEAD 2>/dev/null || true)
-          if [ "$HEAD_TAG" = "$TAG" ]; then
-            echo "HEAD is already at ${TAG}; skipping commit/tag/push"
-            SHA=$(git rev-parse HEAD)
-            echo "sha=${SHA}" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-
-          git add -A
-
-          if git diff --cached --quiet; then
-            echo "No changes to commit (already on a release commit?)"
-          else
-            git commit -m "chore(release): ${VERSION}"
-          fi
-
-          if ! git rev-parse --verify "refs/tags/${TAG}" >/dev/null 2>&1; then
-            git tag -a "${TAG}" -m "Release ${TAG}"
-          fi
-
-          # Push to the branch explicitly (we're on detached HEAD because we
-          # checked out by SHA). Non-fast-forward = someone pushed during the
-          # workflow → fail rather than force-push.
-          git push origin "HEAD:refs/heads/${BRANCH}"
-          if git ls-remote --exit-code --tags origin "refs/tags/${TAG}" >/dev/null 2>&1; then
-            echo "Tag ${TAG} already on remote, skipping tag push"
-          else
-            git push origin "refs/tags/${TAG}"
-          fi
-
-          SHA=$(git rev-parse HEAD)
-          echo "sha=${SHA}" >> "$GITHUB_OUTPUT"
-
-  # ── Step 3a: Build + publish core first (all SDKs depend on it). ──
-  publish-core:
-    needs: [bump, commit-and-tag]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-        with:
-          ref: ${{ needs.commit-and-tag.outputs.sha }}
-
-      - uses: actions/setup-node@v6
-        with:
-          registry-url: https://registry.npmjs.org/
-          node-version: ${{ env.NODE_VERSION }}
-
-      - name: Upgrade npm for OIDC trusted publishing
-        run: |
-          npm install -g npm@latest && npm --version
-          sed -i '/always-auth/d' ~/.npmrc 2>/dev/null || true
-
-      - uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: latest
-
-      - uses: actions/cache@v4
-        with:
-          path: ~/.bun/install/cache
-          key: bun-${{ runner.os }}-${{ hashFiles('bun.lock') }}
-          restore-keys: |
-            bun-${{ runner.os }}-
-
-      - run: bun install
-
-      - run: bun run build
-        working-directory: packages/core
-
-      - name: Publish
-        env:
-          VERSION: ${{ needs.bump.outputs.version }}
-        run: |
-          set -euo pipefail
-          PKG_NAME=$(node -p "require('./packages/core/package.json').name")
-          echo "--- Publishing ${PKG_NAME}@${VERSION} ---"
-          if npm view "${PKG_NAME}@${VERSION}" version >/dev/null 2>&1; then
-            echo "${PKG_NAME}@${VERSION} already published, skipping"
-            exit 0
-          fi
-          cd packages/core
-          bun pm pack --destination .
-          TARBALL=$(ls *.tgz | head -1)
-          TAG="latest"
-          if echo "${VERSION}" | grep -q '-'; then TAG="next"; fi
-          npm publish "${TARBALL}" --access public --tag "${TAG}"
-          rm -f *.tgz
-          echo "--- Published ${PKG_NAME}@${VERSION} ---"
-
-  # ── Step 3b: Build + publish all other SDKs in parallel. ──
-  publish-sdk:
-    needs: [bump, commit-and-tag, publish-core]
-    # aws and gcp are large enough that the default runner hangs during build;
-    # route them to a larger runner via the matrix `include` below. Everything
-    # else stays on the default ubuntu-latest.
-    runs-on: ${{ matrix.runner || 'ubuntu-latest' }}
-    strategy:
-      fail-fast: false
-      matrix:
-        package:
-          - aws
-          - axiom
-          - azure
-          - cloudflare
-          - coinbase
-          - fly-io
-          - gcp
-          - kubernetes
-          - mongodb-atlas
-          - neon
-          - planetscale
-          - posthog
-          - prisma-postgres
-          - stripe
-          - supabase
-          - turso
-          - typesense
-          - workos
-          - expo-eas
-        include:
-          - package: aws
-            runner: ubuntu-22-large
-          - package: gcp
-            runner: ubuntu-22-large
-    steps:
-      - uses: actions/checkout@v6
-        with:
-          ref: ${{ needs.commit-and-tag.outputs.sha }}
-
-      - name: Install system dependencies (aws)
-        if: matrix.package == 'aws'
-        run: sudo apt-get update && sudo apt-get install -y unzip
-
-      - uses: actions/setup-node@v6
-        with:
-          registry-url: https://registry.npmjs.org/
-          node-version: ${{ env.NODE_VERSION }}
-
-      - name: Upgrade npm for OIDC trusted publishing
-        run: |
-          npm install -g npm@latest && npm --version
-          sed -i '/always-auth/d' ~/.npmrc 2>/dev/null || true
-
-      - uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: latest
-
-      - uses: actions/cache@v4
-        with:
-          path: ~/.bun/install/cache
-          key: bun-${{ runner.os }}-${{ hashFiles('bun.lock') }}
-          restore-keys: |
-            bun-${{ runner.os }}-
-
-      - run: bun install
-
-      # `tsgo -b` follows project references, so building the leaf builds core.
-      - run: bun run build
-        working-directory: packages/${{ matrix.package }}
-
-      - name: Publish
-        env:
-          VERSION: ${{ needs.bump.outputs.version }}
-          PKG_DIR: ${{ matrix.package }}
-        run: |
-          set -euo pipefail
-          PKG_NAME=$(node -p "require('./packages/${PKG_DIR}/package.json').name")
-          echo "--- Publishing ${PKG_NAME}@${VERSION} ---"
-          if npm view "${PKG_NAME}@${VERSION}" version >/dev/null 2>&1; then
-            echo "${PKG_NAME}@${VERSION} already published, skipping"
-            exit 0
-          fi
-          cd "packages/${PKG_DIR}"
-          bun pm pack --destination .
-          TARBALL=$(ls *.tgz | head -1)
-          TAG="latest"
-          if echo "${VERSION}" | grep -q '-'; then TAG="next"; fi
-          npm publish "${TARBALL}" --access public --tag "${TAG}"
-          rm -f *.tgz
-          echo "--- Published ${PKG_NAME}@${VERSION} ---"
-
-  # ── Step 4: Create GitHub Release. ──
-  # Runs only after every publish job succeeded. Skipped for prerelease versions
-  # (those containing '-'), matching the previous behaviour.
-  finalize:
-    needs: [bump, commit-and-tag, publish-core, publish-sdk]
-    if: ${{ !contains(needs.bump.outputs.version, '-') }}
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-        with:
-          ref: ${{ needs.commit-and-tag.outputs.sha }}
-          fetch-depth: 0
-
-      - uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: latest
-
-      - name: Create GitHub Release
-        env:
-          VERSION: ${{ needs.bump.outputs.version }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          set -euo pipefail
-          TAG="v${VERSION}"
-          if gh release view "${TAG}" >/dev/null 2>&1; then
-            echo "Release ${TAG} already exists, skipping"
-            exit 0
-          fi
-          PREV_TAG=$(git describe --tags --abbrev=0 "${TAG}^" 2>/dev/null || echo "")
-          if [ -n "$PREV_TAG" ]; then
-            bunx changelogithub --from "$PREV_TAG" --to "${TAG}"
-          else
-            bunx changelogithub --to "${TAG}"
-          fi
-
-      - name: Notify Discord
-        if: success()
-        env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          VERSION: ${{ needs.bump.outputs.version }}
-        run: bun scripts/discord-notify.ts "v${VERSION}"
+  release:
+    uses: alchemy-run/actions/.github/workflows/release.yml@main
+    with:
+      version: ${{ inputs.version }}
+      repo: alchemy-run/distilled
+      current-version: "0.22.0"
+      # Each package builds inside its own publish job; aws and gcp run
+      # on a larger runner because their builds are too heavy for the
+      # default ubuntu-latest box.
+      build-mode: per-package
+      build-command: "bun run build"
+      packages: |
+        [
+          { "dir": "packages/core",            "name": "@distilled.cloud/core" },
+          { "dir": "packages/aws",             "name": "@distilled.cloud/aws",             "runner": "ubuntu-22-large" },
+          { "dir": "packages/axiom",           "name": "@distilled.cloud/axiom" },
+          { "dir": "packages/azure",           "name": "@distilled.cloud/azure" },
+          { "dir": "packages/cloudflare",      "name": "@distilled.cloud/cloudflare" },
+          { "dir": "packages/coinbase",        "name": "@distilled.cloud/coinbase" },
+          { "dir": "packages/expo-eas",        "name": "@distilled.cloud/expo-eas" },
+          { "dir": "packages/fly-io",          "name": "@distilled.cloud/fly-io" },
+          { "dir": "packages/gcp",             "name": "@distilled.cloud/gcp",             "runner": "ubuntu-22-large" },
+          { "dir": "packages/kubernetes",      "name": "@distilled.cloud/kubernetes" },
+          { "dir": "packages/mongodb-atlas",   "name": "@distilled.cloud/mongodb-atlas" },
+          { "dir": "packages/neon",            "name": "@distilled.cloud/neon" },
+          { "dir": "packages/planetscale",     "name": "@distilled.cloud/planetscale" },
+          { "dir": "packages/posthog",         "name": "@distilled.cloud/posthog" },
+          { "dir": "packages/prisma-postgres", "name": "@distilled.cloud/prisma-postgres" },
+          { "dir": "packages/stripe",          "name": "@distilled.cloud/stripe" },
+          { "dir": "packages/supabase",        "name": "@distilled.cloud/supabase" },
+          { "dir": "packages/turso",           "name": "@distilled.cloud/turso" },
+          { "dir": "packages/typesense",       "name": "@distilled.cloud/typesense" },
+          { "dir": "packages/workos",          "name": "@distilled.cloud/workos" }
+        ]
+    secrets: inherit

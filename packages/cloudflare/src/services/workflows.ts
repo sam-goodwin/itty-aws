@@ -71,13 +71,24 @@ T.applyErrorMatchers(WorkflowNotFound, [{ code: 10200 }]);
 export interface GetInstanceRequest {
   workflowName: string;
   instanceId: string;
+  /** Path param */
   accountId: string;
+  /** Query param: Step ordering: "asc" (default, oldest first) or "desc" (newest first). */
+  order?: "asc" | "desc" | (string & {});
+  /** Query param: When true, omits step details and returns only metadata with step_count. */
+  simple?: true | false;
 }
 
 export const GetInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
   instanceId: Schema.String.pipe(T.HttpPath("instanceId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  order: Schema.optional(
+    Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+  ).pipe(T.HttpQuery("order")),
+  simple: Schema.optional(Schema.Literals([true, false])).pipe(
+    T.HttpQuery("simple"),
+  ),
 }).pipe(
   T.Http({
     method: "GET",
@@ -100,7 +111,9 @@ export interface GetInstanceResponse {
     | "terminated"
     | "complete"
     | "waitingForPause"
-    | "waiting";
+    | "waiting"
+    | (string & {});
+  stepCount: number;
   steps: (
     | {
         attempts: {
@@ -111,15 +124,21 @@ export interface GetInstanceResponse {
         }[];
         config: {
           retries: {
-            delay: number;
+            delay: string | number;
             limit: number;
-            backoff?: "constant" | "linear" | "exponential" | null;
+            backoff?:
+              | "constant"
+              | "linear"
+              | "exponential"
+              | (string & {})
+              | null;
           };
           timeout: unknown;
+          sensitive?: "output" | null;
         };
         end: string | null;
         name: string;
-        output: unknown;
+        output: string | null;
         start: string;
         success: boolean | null;
         type: "step";
@@ -138,13 +157,15 @@ export interface GetInstanceResponse {
         error: { message: string; name: string } | null;
         finished: boolean;
         name: string;
-        output: string | number | boolean;
         start: string;
         type: "waitForEvent";
+        output?: string | null;
       }
   )[];
   success: boolean | null;
-  trigger: { source: "unknown" | "api" | "binding" | "event" | "cron" };
+  trigger: {
+    source: "unknown" | "api" | "binding" | "event" | "cron" | (string & {});
+  };
   versionId: string;
 }
 
@@ -161,16 +182,20 @@ export const GetInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   params: Schema.Unknown,
   queued: Schema.String,
   start: Schema.Union([Schema.String, Schema.Null]),
-  status: Schema.Literals([
-    "queued",
-    "running",
-    "paused",
-    "errored",
-    "terminated",
-    "complete",
-    "waitingForPause",
-    "waiting",
+  status: Schema.Union([
+    Schema.Literals([
+      "queued",
+      "running",
+      "paused",
+      "errored",
+      "terminated",
+      "complete",
+      "waitingForPause",
+      "waiting",
+    ]),
+    Schema.String,
   ]),
+  stepCount: Schema.Number,
   steps: Schema.Array(
     Schema.Union([
       Schema.Struct({
@@ -190,38 +215,29 @@ export const GetInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ),
         config: Schema.Struct({
           retries: Schema.Struct({
-            delay: Schema.Number,
+            delay: Schema.Union([Schema.String, Schema.Number]),
             limit: Schema.Number,
             backoff: Schema.optional(
               Schema.Union([
-                Schema.Literals(["constant", "linear", "exponential"]),
+                Schema.Union([
+                  Schema.Literals(["constant", "linear", "exponential"]),
+                  Schema.String,
+                ]),
                 Schema.Null,
               ]),
             ),
           }),
           timeout: Schema.Unknown,
+          sensitive: Schema.optional(
+            Schema.Union([Schema.Literal("output"), Schema.Null]),
+          ),
         }),
         end: Schema.Union([Schema.String, Schema.Null]),
         name: Schema.String,
-        output: Schema.Unknown,
+        output: Schema.Union([Schema.String, Schema.Null]),
         start: Schema.String,
         success: Schema.Union([Schema.Boolean, Schema.Null]),
         type: Schema.Literal("step"),
-      }),
-      Schema.Struct({
-        end: Schema.String,
-        error: Schema.Union([
-          Schema.Struct({
-            message: Schema.String,
-            name: Schema.String,
-          }),
-          Schema.Null,
-        ]),
-        finished: Schema.Boolean,
-        name: Schema.String,
-        output: Schema.Union([Schema.String, Schema.Number, Schema.Boolean]),
-        start: Schema.String,
-        type: Schema.Literal("waitForEvent"),
       }),
       Schema.Struct({
         end: Schema.String,
@@ -238,6 +254,21 @@ export const GetInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         type: Schema.Literal("sleep"),
       }),
       Schema.Struct({
+        end: Schema.String,
+        error: Schema.Union([
+          Schema.Struct({
+            message: Schema.String,
+            name: Schema.String,
+          }),
+          Schema.Null,
+        ]),
+        finished: Schema.Boolean,
+        name: Schema.String,
+        start: Schema.String,
+        type: Schema.Literal("waitForEvent"),
+        output: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      }),
+      Schema.Struct({
         trigger: Schema.Struct({
           source: Schema.String,
         }),
@@ -247,12 +278,32 @@ export const GetInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   success: Schema.Union([Schema.Boolean, Schema.Null]),
   trigger: Schema.Struct({
-    source: Schema.Literals(["unknown", "api", "binding", "event", "cron"]),
+    source: Schema.Union([
+      Schema.Literals(["unknown", "api", "binding", "event", "cron"]),
+      Schema.String,
+    ]),
   }),
   versionId: Schema.String,
-}).pipe(
-  T.ResponsePath("result"),
-) as unknown as Schema.Schema<GetInstanceResponse>;
+})
+  .pipe(
+    Schema.encodeKeys({
+      end: "end",
+      error: "error",
+      output: "output",
+      params: "params",
+      queued: "queued",
+      start: "start",
+      status: "status",
+      stepCount: "step_count",
+      steps: "steps",
+      success: "success",
+      trigger: "trigger",
+      versionId: "versionId",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<GetInstanceResponse>;
 
 export type GetInstanceError =
   | DefaultErrors
@@ -273,19 +324,19 @@ export const getInstance: API.OperationMethod<
 
 export interface ListInstancesRequest {
   workflowName: string;
-  /** Path param: */
+  /** Path param */
   accountId: string;
   page?: number;
   perPage?: number;
-  /** Query param: `page` and `cursor` are mutually exclusive, use one or the other. */
+  /** Query param: Opaque token for cursor-based pagination. Mutually exclusive with `page`. */
   cursor?: string;
   /** Query param: Accepts ISO 8601 with no timezone offsets and in UTC. */
   dateEnd?: string;
   /** Query param: Accepts ISO 8601 with no timezone offsets and in UTC. */
   dateStart?: string;
-  /** Query param: should only be used when `cursor` is used, defines a new direction for the cursor */
-  direction?: "asc" | "desc";
-  /** Query param: */
+  /** Query param: Defines the direction for cursor-based pagination. */
+  direction?: "asc" | "desc" | (string & {});
+  /** Query param */
   status?:
     | "queued"
     | "running"
@@ -294,7 +345,8 @@ export interface ListInstancesRequest {
     | "terminated"
     | "complete"
     | "waitingForPause"
-    | "waiting";
+    | "waiting"
+    | (string & {});
 }
 
 export const ListInstancesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -305,19 +357,22 @@ export const ListInstancesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
   dateEnd: Schema.optional(Schema.String).pipe(T.HttpQuery("date_end")),
   dateStart: Schema.optional(Schema.String).pipe(T.HttpQuery("date_start")),
-  direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-    T.HttpQuery("direction"),
-  ),
+  direction: Schema.optional(
+    Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+  ).pipe(T.HttpQuery("direction")),
   status: Schema.optional(
-    Schema.Literals([
-      "queued",
-      "running",
-      "paused",
-      "errored",
-      "terminated",
-      "complete",
-      "waitingForPause",
-      "waiting",
+    Schema.Union([
+      Schema.Literals([
+        "queued",
+        "running",
+        "paused",
+        "errored",
+        "terminated",
+        "complete",
+        "waitingForPause",
+        "waiting",
+      ]),
+      Schema.String,
     ]),
   ).pipe(T.HttpQuery("status")),
 }).pipe(
@@ -342,7 +397,8 @@ export interface ListInstancesResponse {
       | "terminated"
       | "complete"
       | "waitingForPause"
-      | "waiting";
+      | "waiting"
+      | (string & {});
     versionId: string;
     workflowId: string;
   }[];
@@ -362,15 +418,18 @@ export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       endedOn: Schema.Union([Schema.String, Schema.Null]),
       modifiedOn: Schema.String,
       startedOn: Schema.Union([Schema.String, Schema.Null]),
-      status: Schema.Literals([
-        "queued",
-        "running",
-        "paused",
-        "errored",
-        "terminated",
-        "complete",
-        "waitingForPause",
-        "waiting",
+      status: Schema.Union([
+        Schema.Literals([
+          "queued",
+          "running",
+          "paused",
+          "errored",
+          "terminated",
+          "complete",
+          "waitingForPause",
+          "waiting",
+        ]),
+        Schema.String,
       ]),
       versionId: Schema.String,
       workflowId: Schema.String,
@@ -436,16 +495,16 @@ export const listInstances: API.PaginatedOperationMethod<
 
 export interface CreateInstanceRequest {
   workflowName: string;
-  /** Path param: */
+  /** Path param */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   instanceId?: string;
-  /** Body param: */
+  /** Body param */
   instanceRetention?: {
     errorRetention?: number | string;
     successRetention?: number | string;
   };
-  /** Body param: */
+  /** Body param */
   params?: unknown;
 }
 
@@ -491,7 +550,8 @@ export interface CreateInstanceResponse {
     | "terminated"
     | "complete"
     | "waitingForPause"
-    | "waiting";
+    | "waiting"
+    | (string & {});
   versionId: string;
   workflowId: string;
 }
@@ -499,15 +559,18 @@ export interface CreateInstanceResponse {
 export const CreateInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.String,
-    status: Schema.Literals([
-      "queued",
-      "running",
-      "paused",
-      "errored",
-      "terminated",
-      "complete",
-      "waitingForPause",
-      "waiting",
+    status: Schema.Union([
+      Schema.Literals([
+        "queued",
+        "running",
+        "paused",
+        "errored",
+        "terminated",
+        "complete",
+        "waitingForPause",
+        "waiting",
+      ]),
+      Schema.String,
     ]),
     versionId: Schema.String,
     workflowId: Schema.String,
@@ -545,9 +608,9 @@ export const createInstance: API.OperationMethod<
 
 export interface BulkInstanceRequest {
   workflowName: string;
-  /** Path param: */
+  /** Path param */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   body?: {
     instanceId?: string;
     instanceRetention?: {
@@ -608,7 +671,8 @@ export interface BulkInstanceResponse {
       | "terminated"
       | "complete"
       | "waitingForPause"
-      | "waiting";
+      | "waiting"
+      | (string & {});
     versionId: string;
     workflowId: string;
   }[];
@@ -618,15 +682,18 @@ export const BulkInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       id: Schema.String,
-      status: Schema.Literals([
-        "queued",
-        "running",
-        "paused",
-        "errored",
-        "terminated",
-        "complete",
-        "waitingForPause",
-        "waiting",
+      status: Schema.Union([
+        Schema.Literals([
+          "queued",
+          "running",
+          "paused",
+          "errored",
+          "terminated",
+          "complete",
+          "waitingForPause",
+          "waiting",
+        ]),
+        Schema.String,
       ]),
       versionId: Schema.String,
       workflowId: Schema.String,
@@ -671,9 +738,9 @@ export interface CreateInstanceEventRequest {
   workflowName: string;
   instanceId: string;
   eventType: string;
-  /** Path param: */
+  /** Path param */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   body?: unknown;
 }
 
@@ -723,10 +790,16 @@ export const createInstanceEvent: API.OperationMethod<
 export interface PatchInstanceStatusRequest {
   workflowName: string;
   instanceId: string;
-  /** Path param: */
+  /** Path param */
   accountId: string;
   /** Body param: Apply action to instance. */
-  status: "resume" | "pause" | "terminate" | "restart";
+  status: "resume" | "pause" | "terminate" | "restart" | (string & {});
+  /** Body param: Step to restart from. Only applicable when status is "restart". */
+  from?: {
+    name: string;
+    count?: number;
+    type?: "do" | "sleep" | "waitForEvent" | (string & {});
+  };
 }
 
 export const PatchInstanceStatusRequest =
@@ -734,7 +807,22 @@ export const PatchInstanceStatusRequest =
     workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
     instanceId: Schema.String.pipe(T.HttpPath("instanceId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    status: Schema.Literals(["resume", "pause", "terminate", "restart"]),
+    status: Schema.Union([
+      Schema.Literals(["resume", "pause", "terminate", "restart"]),
+      Schema.String,
+    ]),
+    from: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        count: Schema.optional(Schema.Number),
+        type: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["do", "sleep", "waitForEvent"]),
+            Schema.String,
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -751,22 +839,26 @@ export interface PatchInstanceStatusResponse {
     | "terminated"
     | "complete"
     | "waitingForPause"
-    | "waiting";
+    | "waiting"
+    | (string & {});
   /** Accepts ISO 8601 with no timezone offsets and in UTC. */
   timestamp: string;
 }
 
 export const PatchInstanceStatusResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    status: Schema.Literals([
-      "queued",
-      "running",
-      "paused",
-      "errored",
-      "terminated",
-      "complete",
-      "waitingForPause",
-      "waiting",
+    status: Schema.Union([
+      Schema.Literals([
+        "queued",
+        "running",
+        "paused",
+        "errored",
+        "terminated",
+        "complete",
+        "waitingForPause",
+        "waiting",
+      ]),
+      Schema.String,
     ]),
     timestamp: Schema.String,
   }).pipe(
@@ -821,24 +913,44 @@ export interface GetVersionResponse {
   id: string;
   className: string;
   createdOn: string;
+  hasDag: boolean;
+  /** The programming language of the workflow implementation */
+  language: "javascript" | "python" | (string & {});
   modifiedOn: string;
   workflowId: string;
+  limits?: { steps?: number | null } | null;
 }
 
 export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
   className: Schema.String,
   createdOn: Schema.String,
+  hasDag: Schema.Boolean,
+  language: Schema.Union([
+    Schema.Literals(["javascript", "python"]),
+    Schema.String,
+  ]),
   modifiedOn: Schema.String,
   workflowId: Schema.String,
+  limits: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        steps: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      }),
+      Schema.Null,
+    ]),
+  ),
 })
   .pipe(
     Schema.encodeKeys({
       id: "id",
       className: "class_name",
       createdOn: "created_on",
+      hasDag: "has_dag",
+      language: "language",
       modifiedOn: "modified_on",
       workflowId: "workflow_id",
+      limits: "limits",
     }),
   )
   .pipe(
@@ -864,7 +976,7 @@ export const getVersion: API.OperationMethod<
 
 export interface ListVersionsRequest {
   workflowName: string;
-  /** Path param: */
+  /** Path param */
   accountId: string;
   page?: number;
   perPage?: number;
@@ -887,8 +999,11 @@ export interface ListVersionsResponse {
     id: string;
     className: string;
     createdOn: string;
+    hasDag: boolean;
+    language: "javascript" | "python" | (string & {});
     modifiedOn: string;
     workflowId: string;
+    limits?: { steps?: number | null } | null;
   }[];
   resultInfo?: {
     count?: number | null;
@@ -904,15 +1019,31 @@ export const ListVersionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       id: Schema.String,
       className: Schema.String,
       createdOn: Schema.String,
+      hasDag: Schema.Boolean,
+      language: Schema.Union([
+        Schema.Literals(["javascript", "python"]),
+        Schema.String,
+      ]),
       modifiedOn: Schema.String,
       workflowId: Schema.String,
+      limits: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            steps: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          }),
+          Schema.Null,
+        ]),
+      ),
     }).pipe(
       Schema.encodeKeys({
         id: "id",
         className: "class_name",
         createdOn: "created_on",
+        hasDag: "has_dag",
+        language: "language",
         modifiedOn: "modified_on",
         workflowId: "workflow_id",
+        limits: "limits",
       }),
     ),
   ),
@@ -1048,7 +1179,7 @@ export const getWorkflow: API.OperationMethod<
 }));
 
 export interface ListWorkflowsRequest {
-  /** Path param: */
+  /** Path param */
   accountId: string;
   page?: number;
   perPage?: number;
@@ -1172,12 +1303,14 @@ export const listWorkflows: API.PaginatedOperationMethod<
 
 export interface PutWorkflowRequest {
   workflowName: string;
-  /** Path param: */
+  /** Path param */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   className: string;
-  /** Body param: */
+  /** Body param */
   scriptName: string;
+  /** Body param */
+  limits?: { steps?: number };
 }
 
 export const PutWorkflowRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1185,8 +1318,17 @@ export const PutWorkflowRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   className: Schema.String,
   scriptName: Schema.String,
+  limits: Schema.optional(
+    Schema.Struct({
+      steps: Schema.optional(Schema.Number),
+    }),
+  ),
 }).pipe(
-  Schema.encodeKeys({ className: "class_name", scriptName: "script_name" }),
+  Schema.encodeKeys({
+    className: "class_name",
+    scriptName: "script_name",
+    limits: "limits",
+  }),
   T.Http({
     method: "PUT",
     path: "/accounts/{account_id}/workflows/{workflowName}",

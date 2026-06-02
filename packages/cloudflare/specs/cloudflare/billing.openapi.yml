@@ -105,3 +105,329 @@ paths:
                   zipcode:
                     type: string
       x-distilled-response-path: result
+  /accounts/{account_id}/billable/usage:
+    get:
+      operationId: getUsage
+      description: "Returns cost and usage data for a single Cloudflare account,
+        aligned with the [FinOps FOCUS
+        v1.3](https://focus.finops.org/focus-specification/v1-3/) Cost and Usage
+        dataset specification.  Each record represents one billable metric for
+        one account on one day. This includes all metered usage, including usage
+        that falls within free-tier allowances and may result in zero
+        cost.    Note:  Cost and pricing fields are not yet populated and will
+        be absent from responses until billing integration is complete.  When
+        `from` and `to` are omitted, defaults to the start of the current month
+        through today. The maximum date range is 31 days."
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Represents a Cloudflare resource identifier tag."
+          schema:
+            type: string
+        - name: from
+          in: query
+          required: false
+          description: "Query param: Start date for the usage query (ISO 8601). Required
+            if `to` is set. When omitted along with `to`, defaults to the start
+            of the current month. Filters by charge period (when consumption
+            happened), not billing period. The maximum date range is 31 days."
+          schema:
+            type: string
+        - name: metric
+          in: query
+          required: false
+          description: "Query param: Filter results by billable metric id (e.g.,
+            workers_standard_requests)."
+          schema:
+            type: string
+        - name: to
+          in: query
+          required: false
+          description: "Query param: End date for the usage query (ISO 8601). Required if
+            `from` is set. When omitted along with `from`, defaults to today.
+            Filters by charge period (when consumption happened), not billing
+            period. The maximum date range is 31 days."
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    BillingAccountId:
+                      type: string
+                      description: Public identifier of the Cloudflare account (account tag).
+                    BillingAccountName:
+                      type: string
+                      description: Display name of the Cloudflare account.
+                    ChargeCategory:
+                      type: string
+                      enum:
+                        - Usage
+                      description: Highest-level classification of a charge based on the nature of how
+                        it gets billed. Currently only "Usage" is supported.
+                    ChargeDescription:
+                      type: string
+                      description: Self-contained summary of the charge's purpose and price.
+                    ChargeFrequency:
+                      type: string
+                      enum:
+                        - Usage-Based
+                      description: Indicates how often a charge occurs. Currently only "Usage-Based"
+                        is supported.
+                    ChargePeriodEnd:
+                      type: string
+                      description: Exclusive end of the time interval during which the usage was
+                        consumed.
+                    ChargePeriodStart:
+                      type: string
+                      description: Inclusive start of the time interval during which the usage was
+                        consumed.
+                    ConsumedQuantity:
+                      type: number
+                      description: Measured usage amount within the charge period. Reflects raw
+                        metered consumption before pricing transformations.
+                    ConsumedUnit:
+                      type: string
+                      description: Unit of measure for the consumed quantity (e.g., "GB", "Requests",
+                        "vCPU-Hours").
+                    HostProviderName:
+                      type: string
+                      description: Name of the entity providing the underlying infrastructure or
+                        platform.
+                    InvoiceIssuerName:
+                      type: string
+                      description: Name of the entity responsible for invoicing for the services
+                        consumed.
+                    ServiceProviderName:
+                      type: string
+                      description: Name of the entity that made the services available for purchase.
+                    x_BillableMetricName:
+                      type: string
+                      description: The display name of the billable metric. Cloudflare extension;
+                        replaces FOCUS SkuMeter.
+                    BilledCost:
+                      oneOf:
+                        - type: number
+                      nullable: true
+                      description: A charge serving as the basis for invoicing, inclusive of all
+                        reduced rates and discounts while excluding the
+                        amortization of upfront charges (one-time or recurring).
+                    BillingCurrency:
+                      oneOf:
+                        - type: string
+                      nullable: true
+                      description: Currency that a charge was billed in (ISO 4217).
+                    BillingPeriodEnd:
+                      oneOf:
+                        - type: string
+                      nullable: true
+                      description: Exclusive end of the billing cycle that contains this usage record.
+                    BillingPeriodStart:
+                      oneOf:
+                        - type: string
+                      nullable: true
+                      description: Inclusive start of the billing cycle that contains this usage
+                        record.
+                    ChargeClass:
+                      type: string
+                      enum:
+                        - Correction
+                      nullable: true
+                      description: Indicates whether the row represents a correction to one or more
+                        charges invoiced in a previous billing period.
+                    ContractedCost:
+                      oneOf:
+                        - type: number
+                      nullable: true
+                      description: Cost calculated by multiplying ContractedUnitPrice and the
+                        corresponding PricingQuantity.
+                    ContractedUnitPrice:
+                      oneOf:
+                        - type: number
+                      nullable: true
+                      description: The agreed-upon unit price for a single PricingUnit of the
+                        associated billable metric, inclusive of negotiated
+                        discounts, if present, while excluding any other
+                        discounts.
+                    EffectiveCost:
+                      oneOf:
+                        - type: number
+                      nullable: true
+                      description: The amortized cost of the charge after applying all reduced rates,
+                        discounts, and the applicable portion of relevant,
+                        prepaid purchases (one-time or recurring) that covered
+                        the charge.
+                    ListCost:
+                      oneOf:
+                        - type: number
+                      nullable: true
+                      description: Cost calculated by multiplying ListUnitPrice and the corresponding
+                        PricingQuantity.
+                    ListUnitPrice:
+                      oneOf:
+                        - type: number
+                      nullable: true
+                      description: Suggested provider-published unit price for a single PricingUnit of
+                        the associated billable metric, exclusive of any
+                        discounts.
+                    PricingQuantity:
+                      oneOf:
+                        - type: number
+                      nullable: true
+                      description: Volume of a given service used or purchased, based on the
+                        PricingUnit.
+                    PricingUnit:
+                      oneOf:
+                        - type: string
+                      nullable: true
+                      description: Provider-specified measurement unit for determining unit prices,
+                        indicating how the provider rates measured usage after
+                        applying pricing rules like block pricing.
+                    RegionId:
+                      oneOf:
+                        - type: string
+                      nullable: true
+                      description: Provider-assigned identifier for an isolated geographic area where
+                        a service is provided.
+                    RegionName:
+                      oneOf:
+                        - type: string
+                      nullable: true
+                      description: Name of an isolated geographic area where a service is provided.
+                    SubAccountId:
+                      type: string
+                      description: Unique identifier assigned to a grouping of services. For
+                        Cloudflare, this is the subscription or contract ID.
+                    SubAccountName:
+                      type: string
+                      description: Name assigned to a grouping of services. For Cloudflare, this is
+                        the subscription or contract display name.
+                    x_BillableMetricId:
+                      type: string
+                      description: The unique identifier for the billable metric in the Cloudflare
+                        catalog. Cloudflare extension; replaces FOCUS SkuId.
+                    x_ProductFamilyName:
+                      type: string
+                      description: The product family the charge belongs to (e.g., "R2", "Workers").
+                        Cloudflare extension; replaces FOCUS ServiceName.
+                    x_ZoneId:
+                      oneOf:
+                        - type: string
+                      nullable: true
+                      description: The identifier for the Cloudflare zone (zone tag). Cloudflare
+                        extension.
+                    x_ZoneName:
+                      oneOf:
+                        - type: string
+                      nullable: true
+                      description: The display name of the Cloudflare zone. Cloudflare extension.
+                  required:
+                    - BillingAccountId
+                    - BillingAccountName
+                    - ChargeCategory
+                    - ChargeDescription
+                    - ChargeFrequency
+                    - ChargePeriodEnd
+                    - ChargePeriodStart
+                    - ConsumedQuantity
+                    - ConsumedUnit
+                    - HostProviderName
+                    - InvoiceIssuerName
+                    - ServiceProviderName
+                    - x_BillableMetricName
+      x-distilled-response-path: result
+  /accounts/{account_id}/paygo-usage:
+    get:
+      operationId: paygoUsage
+      description: Returns billable usage data for PayGo (self-serve) accounts. When
+        no query parameters are provided, returns usage for the current billing
+        period. This endpoint is currently in alpha and access is restricted to
+        select accounts. While in alpha, the endpoint may get breaking changes.
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Represents a Cloudflare resource identifier tag."
+          schema:
+            type: string
+        - name: from
+          in: query
+          required: false
+          description: "Query param: Start date for the usage query (ISO 8601)."
+          schema:
+            type: string
+        - name: to
+          in: query
+          required: false
+          description: "Query param: End date for the usage query (ISO 8601)."
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    BillingCurrency:
+                      type: string
+                      description: Specifies the billing currency code (ISO 4217).
+                    BillingPeriodStart:
+                      type: string
+                      description: Indicates the start of the billing period.
+                    ChargePeriodEnd:
+                      type: string
+                      description: Indicates the end of the charge period.
+                    ChargePeriodStart:
+                      type: string
+                      description: Indicates the start of the charge period.
+                    ConsumedQuantity:
+                      type: number
+                      description: Specifies the quantity consumed during this charge period.
+                    ConsumedUnit:
+                      type: string
+                      description: A display name for the unit of measurement used for the product
+                        (for example, "GB-months", "GB-seconds"). May be empty
+                        when the unit is implicit in the service name.
+                    ContractedCost:
+                      type: number
+                      description: Specifies the cost for this charge period in the billing currency.
+                    CumulatedContractedCost:
+                      type: number
+                      description: Specifies the cumulated cost for the billing period in the billing
+                        currency.
+                    CumulatedPricingQuantity:
+                      type: number
+                      description: Specifies the cumulated pricing quantity for the billing period.
+                    PricingQuantity:
+                      type: number
+                      description: Specifies the pricing quantity for this charge period.
+                    ServiceName:
+                      type: string
+                      description: Identifies the Cloudflare service.
+                    ServiceFamilyName:
+                      type: string
+                      description: Identifies the product family for the Cloudflare service.
+                  required:
+                    - BillingCurrency
+                    - BillingPeriodStart
+                    - ChargePeriodEnd
+                    - ChargePeriodStart
+                    - ConsumedQuantity
+                    - ConsumedUnit
+                    - ContractedCost
+                    - CumulatedContractedCost
+                    - CumulatedPricingQuantity
+                    - PricingQuantity
+                    - ServiceName
+      x-distilled-response-path: result

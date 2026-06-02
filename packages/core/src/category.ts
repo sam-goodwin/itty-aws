@@ -20,6 +20,7 @@
  */
 import * as Effect from "effect/Effect";
 import * as Predicate from "effect/Predicate";
+import * as HttpClientError from "effect/unstable/http/HttpClientError";
 
 // ============================================================================
 // Error Category Constants
@@ -261,6 +262,19 @@ export const isThrottling = (error: unknown): boolean => {
 };
 
 /**
+ * Check if an error is an Effect `HttpClientError` caused by a wire-level
+ * transport failure (undici `ConnectTimeoutError`, socket reset, DNS
+ * failure, premature stream close, …). The request never reached the
+ * server (or the response never finished) so retrying is safe.
+ *
+ * Status-code retries are intentionally left to the per-SDK API client,
+ * which knows whether a given response is genuinely retryable.
+ */
+const isHttpTransportError = (error: unknown): boolean =>
+  HttpClientError.isHttpClientError(error) &&
+  error.reason._tag === "TransportError";
+
+/**
  * Check if an error is a transient error that should be automatically retried.
  * Transient errors include:
  * - Errors marked with withRetryable()
@@ -270,6 +284,9 @@ export const isThrottling = (error: unknown): boolean => {
  * - NetworkError (connection issues)
  * - TimeoutError (request timed out)
  * - LockedError (423 - resource temporarily locked)
+ * - Effect `HttpClientError` with `reason._tag === "TransportError"`
+ *   (undici connect/read timeout, socket reset, DNS failure, premature
+ *   stream close)
  */
 export const isTransientError = (error: unknown): boolean => {
   // Check for retryable trait first
@@ -283,7 +300,8 @@ export const isTransientError = (error: unknown): boolean => {
     hasCategory(error, ServerError) ||
     hasCategory(error, NetworkError) ||
     hasCategory(error, TimeoutError) ||
-    hasCategory(error, LockedError)
+    hasCategory(error, LockedError) ||
+    isHttpTransportError(error)
   );
 };
 

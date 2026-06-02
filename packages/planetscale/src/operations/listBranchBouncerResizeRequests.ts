@@ -23,6 +23,7 @@ export type ListBranchBouncerResizeRequestsInput =
 // Output Schema
 export const ListBranchBouncerResizeRequestsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.String,
     current_page: Schema.Number,
     next_page: Schema.NullOr(Schema.Number),
     next_page_url: Schema.NullOr(Schema.String),
@@ -41,8 +42,8 @@ export const ListBranchBouncerResizeRequestsOutput =
         parameters: Schema.Record(Schema.String, Schema.Unknown),
         previous_replicas_per_cell: Schema.Number,
         previous_parameters: Schema.Record(Schema.String, Schema.Unknown),
-        started_at: Schema.String,
-        completed_at: Schema.String,
+        started_at: Schema.NullOr(Schema.String),
+        completed_at: Schema.NullOr(Schema.String),
         created_at: Schema.String,
         updated_at: Schema.String,
         actor: Schema.Struct({
@@ -55,7 +56,7 @@ export const ListBranchBouncerResizeRequestsOutput =
           name: Schema.String,
           created_at: Schema.String,
           updated_at: Schema.String,
-          deleted_at: Schema.String,
+          deleted_at: Schema.NullOr(Schema.String),
         }),
         sku: Schema.Struct({
           name: Schema.String,

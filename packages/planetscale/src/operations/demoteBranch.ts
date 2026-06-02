@@ -24,7 +24,7 @@ export const DemoteBranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   updated_at: Schema.String,
   deleted_at: Schema.NullOr(Schema.String),
   restore_checklist_completed_at: Schema.NullOr(Schema.String),
-  schema_last_updated_at: Schema.String,
+  schema_last_updated_at: Schema.NullOr(Schema.String),
   kind: Schema.Literals(["mysql", "postgresql"]),
   mysql_address: Schema.optional(Schema.String),
   mysql_edge_address: Schema.optional(Schema.String),
@@ -48,18 +48,20 @@ export const DemoteBranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   sharded: Schema.optional(Schema.Boolean),
   shard_count: Schema.optional(Schema.Number),
   stale_schema: Schema.Boolean,
-  actor: Schema.Struct({
-    id: Schema.String,
-    display_name: Schema.String,
-    avatar_url: Schema.String,
-  }),
+  actor: Schema.NullOr(
+    Schema.Struct({
+      id: Schema.String,
+      display_name: Schema.String,
+      avatar_url: Schema.String,
+    }),
+  ),
   restored_from_branch: Schema.NullOr(
     Schema.Struct({
       id: Schema.String,
       name: Schema.String,
       created_at: Schema.String,
       updated_at: Schema.String,
-      deleted_at: Schema.String,
+      deleted_at: Schema.NullOr(Schema.String),
     }),
   ),
   private_edge_connectivity: Schema.Boolean,
@@ -76,9 +78,12 @@ export const DemoteBranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.String,
     slug: Schema.String,
     current_default: Schema.Boolean,
+    mysql_supported: Schema.Boolean,
+    postgresql_supported: Schema.Boolean,
   }),
   parent_branch: Schema.NullOr(Schema.String),
   vtgate_options: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  cluster_architecture: Schema.optional(Schema.String),
 });
 export type DemoteBranchOutput = typeof DemoteBranchOutput.Type;
 

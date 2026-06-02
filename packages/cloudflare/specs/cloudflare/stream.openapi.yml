@@ -11,10 +11,9 @@ paths:
       operationId: getAudioTrack
       description: "Lists additional audio tracks on a video. Note this API will not
         return information for audio attached to the video upload.  @example
-        ```ts // Automatically fetches more pages as needed. for await (const
-        audio of client.stream.audioTracks.get(
+        ```ts const audioTrack = await client.stream.audioTracks.get(
         'ea95132c15732412d22c1476fa83f27a', { account_id:
-        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
         - name: identifier
           in: path
@@ -35,25 +34,31 @@ paths:
               schema:
                 type: object
                 properties:
-                  default:
-                    type: boolean
-                    description: Denotes whether the audio track will be played by default in a
-                      player.
-                  label:
-                    type: string
-                    description: A string to uniquely identify the track amongst other audio track
-                      labels for the specified video.
-                  status:
-                    type: string
-                    enum:
-                      - queued
-                      - ready
-                      - error
-                    description: Specifies the processing status of the video.
-                  uid:
-                    type: string
-                    description: A Cloudflare-generated unique identifier for a media item.
-      x-distilled-pagination-class: AudioSinglePage
+                  audio:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        default:
+                          type: boolean
+                          description: Denotes whether the audio track will be played by default in a
+                            player.
+                        label:
+                          type: string
+                          description: A string to uniquely identify the track amongst other audio track
+                            labels for the specified video.
+                        status:
+                          type: string
+                          enum:
+                            - queued
+                            - ready
+                            - error
+                          description: Specifies the processing status of the video.
+                        uid:
+                          type: string
+                          description: A Cloudflare-generated unique identifier for a media item.
+                    description: Array of audio tracks for the video.
+      x-distilled-response-path: result
   /accounts/{account_id}/stream/{identifier}/audio/{audioIdentifier}:
     patch:
       operationId: patchAudioTrack
@@ -496,7 +501,7 @@ paths:
     post:
       operationId: createClip
       description: "Clips a video based on the specified start and end times provided
-        in seconds.  @example ```ts const clip = await
+        in seconds.  @example ```ts const video = await
         client.stream.clip.create({ account_id:
         '023e105f4ecef8ad9ca31a8372d0c353', clippedFromVideoUID:
         '023e105f4ecef8ad9ca31a8372d0c353', endTimeSeconds: 0, startTimeSeconds:
@@ -536,173 +541,15 @@ paths:
                 creator:
                   type: string
                   description: "Body param: A user-defined identifier for the media creator."
-                maxDurationSeconds:
-                  type: number
-                  description: "Body param: The maximum duration in seconds for a video upload.
-                    Can be set for a video that is not yet uploaded to limit its
-                    duration. Uploads that exceed the specified duration will
-                    fail during processing. A value of `-1` means the value is
-                    unknown."
-                requireSignedURLs:
-                  type: boolean
-                  description: "Body param: Indicates whether the video can be a accessed using
-                    the UID. When set to `true`, a signed token must be
-                    generated with a signing key to view the video."
-                thumbnailTimestampPct:
-                  type: number
-                  description: "Body param: The timestamp for a thumbnail image calculated as a
-                    percentage value of the video's duration. To convert from a
-                    second-wise timestamp to a percentage, divide the desired
-                    timestamp by the total duration of the video. If this value
-                    is not set, the default thumbnail image is taken from 0s of
-                    the video."
-                watermark:
-                  type: object
-                  properties:
-                    uid:
-                      type: string
-                      description: The unique identifier for the watermark profile.
-                  description: "Body param:"
-              required:
-                - clippedFromVideoUID
-                - endTimeSeconds
-                - startTimeSeconds
-      responses:
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  allowedOrigins:
-                    type: array
-                    items:
-                      type: string
-                    description: Lists the origins allowed to display the video. Enter allowed
-                      origin domains in an array and use ` ` for wildcard
-                      subdomains. Empty arrays allow the video to be viewed on
-                      any origin.
-                  clippedFromVideoUID:
-                    type: string
-                    description: The unique video identifier (UID).
-                  created:
-                    type: string
-                    description: The date and time the clip was created.
-                  creator:
-                    type: string
-                    description: A user-defined identifier for the media creator.
-                  endTimeSeconds:
-                    type: number
-                    description: Specifies the end time for the video clip in seconds.
-                  maxDurationSeconds:
-                    type: number
-                    description: The maximum duration in seconds for a video upload. Can be set for
-                      a video that is not yet uploaded to limit its duration.
-                      Uploads that exceed the specified duration will fail
-                      during processing. A value of `-1` means the value is
-                      unknown.
-                  meta:
-                    description: A user modifiable key-value store used to reference other systems
-                      of record for managing videos.
-                  modified:
-                    type: string
-                    description: The date and time the live input was last modified.
-                  playback:
-                    type: object
-                    properties:
-                      dash:
-                        type: string
-                        description: DASH Media Presentation Description for the video.
-                      hls:
-                        type: string
-                        description: The HLS manifest for the video.
-                  preview:
-                    type: string
-                    description: The video's preview page URI. This field is omitted until encoding
-                      is complete.
-                  requireSignedURLs:
-                    type: boolean
-                    description: Indicates whether the video can be a accessed using the UID. When
-                      set to `true`, a signed token must be generated with a
-                      signing key to view the video.
-                  startTimeSeconds:
-                    type: number
-                    description: Specifies the start time for the video clip in seconds.
-                  status:
-                    type: string
-                    enum:
-                      - pendingupload
-                      - downloading
-                      - queued
-                      - inprogress
-                      - ready
-                      - error
-                      - live-inprogress
-                    description: Specifies the processing status for all quality levels for a video.
-                  thumbnailTimestampPct:
-                    type: number
-                    description: The timestamp for a thumbnail image calculated as a percentage
-                      value of the video's duration. To convert from a
-                      second-wise timestamp to a percentage, divide the desired
-                      timestamp by the total duration of the video. If this
-                      value is not set, the default thumbnail image is taken
-                      from 0s of the video.
-                  watermark:
-                    type: object
-                    properties:
-                      uid:
-                        type: string
-                        description: The unique identifier for the watermark profile.
-      x-distilled-response-path: result
-  /accounts/{account_id}/stream/copy:
-    post:
-      operationId: createCopy
-      description: "Uploads a video to Stream from a provided URL.  @example ```ts
-        const video = await client.stream.copy.create({ account_id:
-        '023e105f4ecef8ad9ca31a8372d0c353', url:
-        'https://example.com/myvideo.mp4', }); ```"
-      parameters:
-        - name: account_id
-          in: path
-          required: true
-          description: "Path param: The account identifier tag."
-          schema:
-            type: string
-        - name: Upload-Creator
-          in: header
-          required: false
-          description: "Header param: A user-defined identifier for the media creator."
-          schema:
-            type: string
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                url:
+                input:
                   type: string
-                  description: "Body param: A video's URL. The server must be publicly routable
-                    and support `HTTP HEAD` requests and `HTTP GET` range
-                    requests. The server should respond to `HTTP HEAD` requests
-                    with a `content-range` header that includes the size of the
-                    file."
-                allowedOrigins:
-                  type: array
-                  items:
-                    type: string
-                  description: "Body param: Lists the origins allowed to display the video. Enter
-                    allowed origin domains in an array and use ` ` for wildcard
-                    subdomains. Empty arrays allow the video to be viewed on any
-                    origin."
-                creator:
-                  type: string
-                  description: "Body param: A user-defined identifier for the media creator."
+                  description: "Body param: A video's URL. Preferred over 'url'."
                 meta:
                   description: "Body param: A user modifiable key-value store used to reference
                     other systems of record for managing videos."
+                name:
+                  type: string
+                  description: "Body param: A name for the video."
                 requireSignedURLs:
                   type: boolean
                   description: "Body param: Indicates whether the video can be a accessed using
@@ -723,15 +570,20 @@ paths:
                     timestamp by the total duration of the video. If this value
                     is not set, the default thumbnail image is taken from 0s of
                     the video."
+                url:
+                  type: string
+                  description: "Body param: A video's URL (legacy field, use 'input' instead)."
                 watermark:
                   type: object
                   properties:
                     uid:
                       type: string
                       description: The unique identifier for the watermark profile.
-                  description: "Body param:"
+                  description: Body param
               required:
-                - url
+                - clippedFromVideoUID
+                - endTimeSeconds
+                - startTimeSeconds
       responses:
         "200":
           description: Success
@@ -748,6 +600,10 @@ paths:
                       origin domains in an array and use ` ` for wildcard
                       subdomains. Empty arrays allow the video to be viewed on
                       any origin.
+                  clippedFrom:
+                    type: string
+                    description: The unique identifier of the source video this video was clipped
+                      from.
                   created:
                     type: string
                     description: The date and time the media item was created.
@@ -782,6 +638,9 @@ paths:
                       Uploads that exceed the specified duration will fail
                       during processing. A value of `-1` means the value is
                       unknown.
+                  maxSizeBytes:
+                    type: number
+                    description: The maximum size in bytes for the video upload.
                   meta:
                     description: A user modifiable key-value store used to reference other systems
                       of record for managing videos.
@@ -801,6 +660,343 @@ paths:
                     type: string
                     description: The video's preview page URI. This field is omitted until encoding
                       is complete.
+                  publicDetails:
+                    type: object
+                    properties:
+                      channel_link:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      logo:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      media_id:
+                        type: number
+                      share_link:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      title:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                    description: Public details for the video including title, share link, channel
+                      link, and logo.
+                  readyToStream:
+                    type: boolean
+                    description: Indicates whether the video is playable. The field is empty if the
+                      video is not ready for viewing or the live stream is still
+                      in progress.
+                  readyToStreamAt:
+                    type: string
+                    description: Indicates the time at which the video became playable. The field is
+                      empty if the video is not ready for viewing or the live
+                      stream is still in progress.
+                  requireSignedURLs:
+                    type: boolean
+                    description: Indicates whether the video can be a accessed using the UID. When
+                      set to `true`, a signed token must be generated with a
+                      signing key to view the video.
+                  scheduledDeletion:
+                    type: string
+                    description: Indicates the date and time at which the video will be deleted.
+                      Omit the field to indicate no change, or include with a
+                      `null` value to remove an existing scheduled deletion. If
+                      specified, must be at least 30 days from upload time.
+                  size:
+                    type: number
+                    description: The size of the media item in bytes.
+                  status:
+                    type: object
+                    properties:
+                      errorReasonCode:
+                        type: string
+                        description: Specifies why the video failed to encode. This field is empty if
+                          the video is not in an `error` state. Preferred for
+                          programmatic use.
+                      errorReasonText:
+                        type: string
+                        description: Specifies why the video failed to encode using a human readable
+                          error message in English. This field is empty if the
+                          video is not in an `error` state.
+                      pctComplete:
+                        type: string
+                        description: Indicates the progress as a percentage between 0 and 100.
+                      state:
+                        type: string
+                        enum:
+                          - pendingupload
+                          - downloading
+                          - queued
+                          - inprogress
+                          - ready
+                          - error
+                          - live-inprogress
+                        description: Specifies the processing status for all quality levels for a video.
+                    description: Specifies a detailed status for a video. If the `state` is
+                      `inprogress` or `error`, the `step` field returns
+                      `encoding` or `manifest`. If the `state` is `inprogress`,
+                      `pctComplete` returns a number between 0 and 100 to
+                      indicate the approximate percent of completion. If the
+                      `state` is `error`, `errorReasonCode` and
+                      `errorReasonText` provide additional details.
+                  thumbnail:
+                    type: string
+                    description: The media item's thumbnail URI. This field is omitted until
+                      encoding is complete.
+                  thumbnailTimestampPct:
+                    type: number
+                    description: The timestamp for a thumbnail image calculated as a percentage
+                      value of the video's duration. To convert from a
+                      second-wise timestamp to a percentage, divide the desired
+                      timestamp by the total duration of the video. If this
+                      value is not set, the default thumbnail image is taken
+                      from 0s of the video.
+                  uid:
+                    type: string
+                    description: A Cloudflare-generated unique identifier for a media item.
+                  uploaded:
+                    type: string
+                    description: The date and time the media item was uploaded.
+                  uploadExpiry:
+                    type: string
+                    description: The date and time when the video upload URL is no longer valid for
+                      direct user uploads.
+                  watermark:
+                    type: object
+                    properties:
+                      created:
+                        type: string
+                        description: The date and a time a watermark profile was created.
+                      downloadedFrom:
+                        type: string
+                        description: The source URL for a downloaded image. If the watermark profile was
+                          created via direct upload, this field is null.
+                      height:
+                        type: number
+                        description: The height of the image in pixels.
+                      name:
+                        type: string
+                        description: A short description of the watermark profile.
+                      opacity:
+                        type: number
+                        description: The translucency of the image. A value of `0.0` makes the image
+                          completely transparent, and `1.0` makes the image
+                          completely opaque. Note that if the image is already
+                          semi-transparent, setting this to `1.0` will not make
+                          the image completely opaque.
+                      padding:
+                        type: number
+                        description: The whitespace between the adjacent edges (determined by position)
+                          of the video and the image. `0.0` indicates no
+                          padding, and `1.0` indicates a fully padded video
+                          width or length, as determined by the algorithm.
+                      position:
+                        type: string
+                        description: "The location of the image. Valid positions are: `upperRight`,
+                          `upperLeft`, `lowerLeft`, `lowerRight`, and `center`.
+                          Note that `center` ignores the `padding` parameter."
+                      scale:
+                        type: number
+                        description: The size of the image relative to the overall size of the video.
+                          This parameter will adapt to horizontal and vertical
+                          videos automatically. `0.0` indicates no scaling (use
+                          the size of the image as-is), and `1.0 `fills the
+                          entire video.
+                      size:
+                        type: number
+                        description: The size of the image in bytes.
+                      uid:
+                        type: string
+                        description: The unique identifier for a watermark profile.
+                      width:
+                        type: number
+                        description: The width of the image in pixels.
+      x-distilled-response-path: result
+  /accounts/{account_id}/stream/copy:
+    post:
+      operationId: createCopy
+      description: "Uploads a video to Stream from a provided URL.  @example ```ts
+        const video = await client.stream.copy.create({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: The account identifier tag."
+          schema:
+            type: string
+        - name: Upload-Creator
+          in: header
+          required: false
+          description: "Header param: A user-defined identifier for the media creator."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                allowedOrigins:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: Lists the origins allowed to display the video. Enter
+                    allowed origin domains in an array and use ` ` for wildcard
+                    subdomains. Empty arrays allow the video to be viewed on any
+                    origin."
+                creator:
+                  type: string
+                  description: "Body param: A user-defined identifier for the media creator."
+                input:
+                  type: string
+                  description: "Body param: A video's URL. The server must be publicly routable
+                    and support `HTTP HEAD` requests and `HTTP GET` range
+                    requests. The server should respond to `HTTP HEAD` requests
+                    with a `content-range` header that includes the size of the
+                    file. This is the preferred field over `url`."
+                meta:
+                  description: "Body param: A user modifiable key-value store used to reference
+                    other systems of record for managing videos."
+                name:
+                  type: string
+                  description: "Body param: A video's name. Used for legacy compatibility."
+                requireSignedURLs:
+                  type: boolean
+                  description: "Body param: Indicates whether the video can be a accessed using
+                    the UID. When set to `true`, a signed token must be
+                    generated with a signing key to view the video."
+                scheduledDeletion:
+                  type: string
+                  description: "Body param: Indicates the date and time at which the video will be
+                    deleted. Omit the field to indicate no change, or include
+                    with a `null` value to remove an existing scheduled
+                    deletion. If specified, must be at least 30 days from upload
+                    time."
+                thumbnailTimestampPct:
+                  type: number
+                  description: "Body param: The timestamp for a thumbnail image calculated as a
+                    percentage value of the video's duration. To convert from a
+                    second-wise timestamp to a percentage, divide the desired
+                    timestamp by the total duration of the video. If this value
+                    is not set, the default thumbnail image is taken from 0s of
+                    the video."
+                url:
+                  type: string
+                  description: "Body param: A video's URL. The server must be publicly routable
+                    and support `HTTP HEAD` requests and `HTTP GET` range
+                    requests. The server should respond to `HTTP HEAD` requests
+                    with a `content-range` header that includes the size of the
+                    file. This field is deprecated in favor of `input`."
+                watermark:
+                  type: object
+                  properties:
+                    uid:
+                      type: string
+                      description: The unique identifier for the watermark profile.
+                  description: Body param
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  allowedOrigins:
+                    type: array
+                    items:
+                      type: string
+                    description: Lists the origins allowed to display the video. Enter allowed
+                      origin domains in an array and use ` ` for wildcard
+                      subdomains. Empty arrays allow the video to be viewed on
+                      any origin.
+                  clippedFrom:
+                    type: string
+                    description: The unique identifier of the source video this video was clipped
+                      from.
+                  created:
+                    type: string
+                    description: The date and time the media item was created.
+                  creator:
+                    type: string
+                    description: A user-defined identifier for the media creator.
+                  duration:
+                    type: number
+                    description: The duration of the video in seconds. A value of `-1` means the
+                      duration is unknown. The duration becomes available after
+                      the upload and before the video is ready.
+                  input:
+                    type: object
+                    properties:
+                      height:
+                        type: number
+                        description: The video height in pixels. A value of `-1` means the height is
+                          unknown. The value becomes available after the upload
+                          and before the video is ready.
+                      width:
+                        type: number
+                        description: The video width in pixels. A value of `-1` means the width is
+                          unknown. The value becomes available after the upload
+                          and before the video is ready.
+                  liveInput:
+                    type: string
+                    description: The live input ID used to upload a video with Stream Live.
+                  maxDurationSeconds:
+                    type: number
+                    description: The maximum duration in seconds for a video upload. Can be set for
+                      a video that is not yet uploaded to limit its duration.
+                      Uploads that exceed the specified duration will fail
+                      during processing. A value of `-1` means the value is
+                      unknown.
+                  maxSizeBytes:
+                    type: number
+                    description: The maximum size in bytes for the video upload.
+                  meta:
+                    description: A user modifiable key-value store used to reference other systems
+                      of record for managing videos.
+                  modified:
+                    type: string
+                    description: The date and time the media item was last modified.
+                  playback:
+                    type: object
+                    properties:
+                      dash:
+                        type: string
+                        description: DASH Media Presentation Description for the video.
+                      hls:
+                        type: string
+                        description: The HLS manifest for the video.
+                  preview:
+                    type: string
+                    description: The video's preview page URI. This field is omitted until encoding
+                      is complete.
+                  publicDetails:
+                    type: object
+                    properties:
+                      channel_link:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      logo:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      media_id:
+                        type: number
+                      share_link:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      title:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                    description: Public details for the video including title, share link, channel
+                      link, and logo.
                   readyToStream:
                     type: boolean
                     description: Indicates whether the video is playable. The field is empty if the
@@ -1010,7 +1206,7 @@ paths:
                     uid:
                       type: string
                       description: The unique identifier for the watermark profile.
-                  description: "Body param:"
+                  description: Body param
               required:
                 - maxDurationSeconds
       responses:
@@ -1128,6 +1324,9 @@ paths:
                       url:
                         type: string
                         description: The URL to access the generated download.
+                    required:
+                      - percentComplete
+                      - status
                     description: The audio-only download. Only present if this download type has
                       been created.
                   default:
@@ -1146,6 +1345,9 @@ paths:
                       url:
                         type: string
                         description: The URL to access the generated download.
+                    required:
+                      - percentComplete
+                      - status
                     description: The default video download. Only present if this download type has
                       been created.
       x-distilled-response-path: result
@@ -1156,7 +1358,7 @@ paths:
         Available types are `default` and `audio`.  @example ```ts const
         download = await client.stream.downloads.create(
         'ea95132c15732412d22c1476fa83f27a', { account_id:
-        '023e105f4ecef8ad9ca31a8372d0c353', body: {}, }, ); ```"
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
         - name: identifier
           in: path
@@ -1166,14 +1368,9 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param: Identifier."
+          description: Identifier.
           schema:
             type: string
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema: {}
       responses:
         "200":
           description: Success
@@ -1182,19 +1379,48 @@ paths:
               schema:
                 type: object
                 properties:
-                  percentComplete:
-                    type: number
-                    description: Indicates the progress as a percentage between 0 and 100.
-                  status:
-                    type: string
-                    enum:
-                      - ready
-                      - inprogress
-                      - error
-                    description: The status of a generated download.
-                  url:
-                    type: string
-                    description: The URL to access the generated download.
+                  audio:
+                    type: object
+                    properties:
+                      percentComplete:
+                        type: number
+                        description: Indicates the progress as a percentage between 0 and 100.
+                      status:
+                        type: string
+                        enum:
+                          - ready
+                          - inprogress
+                          - error
+                        description: The status of a generated download.
+                      url:
+                        type: string
+                        description: The URL to access the generated download.
+                    required:
+                      - percentComplete
+                      - status
+                    description: The audio-only download. Only present if this download type has
+                      been created.
+                  default:
+                    type: object
+                    properties:
+                      percentComplete:
+                        type: number
+                        description: Indicates the progress as a percentage between 0 and 100.
+                      status:
+                        type: string
+                        enum:
+                          - ready
+                          - inprogress
+                          - error
+                        description: The status of a generated download.
+                      url:
+                        type: string
+                        description: The URL to access the generated download.
+                    required:
+                      - percentComplete
+                      - status
+                    description: The default video download. Only present if this download type has
+                      been created.
       x-distilled-response-path: result
     delete:
       operationId: deleteDownload
@@ -1279,6 +1505,9 @@ paths:
                   created:
                     type: string
                     description: The date and time a signing key was created.
+                  key_id:
+                    type: string
+                    description: The unique identifier for the signing key.
       x-distilled-pagination-class: KeyGetResponsesSinglePage
     post:
       operationId: createKey
@@ -1385,6 +1614,9 @@ paths:
                       deletion date for that recording. Omit the field to
                       indicate no change, or include with a `null` value to
                       remove an existing scheduled deletion.
+                  enabled:
+                    type: boolean
+                    description: Indicates whether the live input is enabled and can accept streams.
                   meta:
                     description: A user modifiable key-value store used to reference other systems
                       of record for managing live inputs.
@@ -1431,6 +1663,10 @@ paths:
                     scheduled deletion date for that recording. Omit the field
                     to indicate no change, or include with a `null` value to
                     remove an existing scheduled deletion."
+                enabled:
+                  type: boolean
+                  description: "Body param: Indicates whether the live input is enabled and can
+                    accept streams."
                 meta:
                   description: "Body param: A user modifiable key-value store used to reference
                     other systems of record for managing live inputs."
@@ -1494,6 +1730,9 @@ paths:
                       deletion date for that recording. Omit the field to
                       indicate no change, or include with a `null` value to
                       remove an existing scheduled deletion.
+                  enabled:
+                    type: boolean
+                    description: Indicates whether the live input is enabled and can accept streams.
                   meta:
                     description: A user modifiable key-value store used to reference other systems
                       of record for managing live inputs.
@@ -1572,6 +1811,9 @@ paths:
                             field to indicate no change, or include with a
                             `null` value to remove an existing scheduled
                             deletion.
+                        enabled:
+                          type: boolean
+                          description: Indicates whether the live input is enabled and can accept streams.
                         meta:
                           description: A user modifiable key-value store used to reference other systems
                             of record for managing live inputs.
@@ -1619,6 +1861,10 @@ paths:
                     scheduled deletion date for that recording. Omit the field
                     to indicate no change, or include with a `null` value to
                     remove an existing scheduled deletion."
+                enabled:
+                  type: boolean
+                  description: "Body param: Indicates whether the live input is enabled and can
+                    accept streams."
                 meta:
                   description: "Body param: A user modifiable key-value store used to reference
                     other systems of record for managing live inputs."
@@ -1682,6 +1928,9 @@ paths:
                       deletion date for that recording. Omit the field to
                       indicate no change, or include with a `null` value to
                       remove an existing scheduled deletion.
+                  enabled:
+                    type: boolean
+                    description: Indicates whether the live input is enabled and can accept streams.
                   meta:
                     description: A user modifiable key-value store used to reference other systems
                       of record for managing live inputs.
@@ -1940,6 +2189,10 @@ paths:
                       origin domains in an array and use ` ` for wildcard
                       subdomains. Empty arrays allow the video to be viewed on
                       any origin.
+                  clippedFrom:
+                    type: string
+                    description: The unique identifier of the source video this video was clipped
+                      from.
                   created:
                     type: string
                     description: The date and time the media item was created.
@@ -1974,6 +2227,9 @@ paths:
                       Uploads that exceed the specified duration will fail
                       during processing. A value of `-1` means the value is
                       unknown.
+                  maxSizeBytes:
+                    type: number
+                    description: The maximum size in bytes for the video upload.
                   meta:
                     description: A user modifiable key-value store used to reference other systems
                       of record for managing videos.
@@ -1993,6 +2249,29 @@ paths:
                     type: string
                     description: The video's preview page URI. This field is omitted until encoding
                       is complete.
+                  publicDetails:
+                    type: object
+                    properties:
+                      channel_link:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      logo:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      media_id:
+                        type: number
+                      share_link:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      title:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                    description: Public details for the video including title, share link, channel
+                      link, and logo.
                   readyToStream:
                     type: boolean
                     description: Indicates whether the video is playable. The field is empty if the
@@ -2189,6 +2468,27 @@ paths:
                 meta:
                   description: "Body param: A user modifiable key-value store used to reference
                     other systems of record for managing videos."
+                publicDetails:
+                  type: object
+                  properties:
+                    channel_link:
+                      oneOf:
+                        - type: string
+                      nullable: true
+                    logo:
+                      oneOf:
+                        - type: string
+                      nullable: true
+                    share_link:
+                      oneOf:
+                        - type: string
+                      nullable: true
+                    title:
+                      oneOf:
+                        - type: string
+                      nullable: true
+                  description: "Body param: Public details for the video including title, share
+                    link, channel link, and logo."
                 requireSignedURLs:
                   type: boolean
                   description: "Body param: Indicates whether the video can be a accessed using
@@ -2209,6 +2509,10 @@ paths:
                     timestamp by the total duration of the video. If this value
                     is not set, the default thumbnail image is taken from 0s of
                     the video."
+                uid:
+                  type: string
+                  description: "Body param: The unique identifier for the video. Can be used to
+                    verify the video being updated."
                 uploadExpiry:
                   type: string
                   description: "Body param: The date and time when the video upload URL is no
@@ -2229,6 +2533,10 @@ paths:
                       origin domains in an array and use ` ` for wildcard
                       subdomains. Empty arrays allow the video to be viewed on
                       any origin.
+                  clippedFrom:
+                    type: string
+                    description: The unique identifier of the source video this video was clipped
+                      from.
                   created:
                     type: string
                     description: The date and time the media item was created.
@@ -2263,6 +2571,9 @@ paths:
                       Uploads that exceed the specified duration will fail
                       during processing. A value of `-1` means the value is
                       unknown.
+                  maxSizeBytes:
+                    type: number
+                    description: The maximum size in bytes for the video upload.
                   meta:
                     description: A user modifiable key-value store used to reference other systems
                       of record for managing videos.
@@ -2282,6 +2593,29 @@ paths:
                     type: string
                     description: The video's preview page URI. This field is omitted until encoding
                       is complete.
+                  publicDetails:
+                    type: object
+                    properties:
+                      channel_link:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      logo:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      media_id:
+                        type: number
+                      share_link:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      title:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                    description: Public details for the video including title, share link, channel
+                      link, and logo.
                   readyToStream:
                     type: boolean
                     description: Indicates whether the video is playable. The field is empty if the
@@ -2428,12 +2762,33 @@ paths:
           description: "Path param: The account identifier tag."
           schema:
             type: string
+        - name: id
+          in: query
+          required: false
+          description: "Query param: Filter by video ID(s). Can be a single ID or a
+            comma-separated list of IDs."
+          schema:
+            type: string
+        - name: after
+          in: query
+          required: false
+          description: "Query param: Alias for 'start'. Returns videos created after this
+            date/time (RFC 3339 format)."
+          schema:
+            type: string
         - name: asc
           in: query
           required: false
           description: "Query param: Lists videos in ascending order of creation."
           schema:
             type: boolean
+        - name: before
+          in: query
+          required: false
+          description: "Query param: Alias for 'end'. Returns videos created before this
+            date/time (RFC 3339 format)."
+          schema:
+            type: string
         - name: creator
           in: query
           required: false
@@ -2453,6 +2808,27 @@ paths:
             the submitted query parameters."
           schema:
             type: boolean
+        - name: limit
+          in: query
+          required: false
+          description: "Query param: Maximum number of videos to return (default 1000, max
+            1000)."
+          schema:
+            type: number
+        - name: live_input_id
+          in: query
+          required: false
+          description: "Query param: Filter by live input ID to find videos associated
+            with a specific live stream."
+          schema:
+            type: string
+        - name: name
+          in: query
+          required: false
+          description: "Query param: Filter by video name/UID(s). Can be a single name or
+            a comma-separated list."
+          schema:
+            type: string
         - name: search
           in: query
           required: false
@@ -2511,6 +2887,10 @@ paths:
                       origin domains in an array and use ` ` for wildcard
                       subdomains. Empty arrays allow the video to be viewed on
                       any origin.
+                  clippedFrom:
+                    type: string
+                    description: The unique identifier of the source video this video was clipped
+                      from.
                   created:
                     type: string
                     description: The date and time the media item was created.
@@ -2545,6 +2925,9 @@ paths:
                       Uploads that exceed the specified duration will fail
                       during processing. A value of `-1` means the value is
                       unknown.
+                  maxSizeBytes:
+                    type: number
+                    description: The maximum size in bytes for the video upload.
                   meta:
                     description: A user modifiable key-value store used to reference other systems
                       of record for managing videos.
@@ -2564,6 +2947,29 @@ paths:
                     type: string
                     description: The video's preview page URI. This field is omitted until encoding
                       is complete.
+                  publicDetails:
+                    type: object
+                    properties:
+                      channel_link:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      logo:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      media_id:
+                        type: number
+                      share_link:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      title:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                    description: Public details for the video including title, share link, channel
+                      link, and logo.
                   readyToStream:
                     type: boolean
                     description: Indicates whether the video is playable. The field is empty if the
@@ -2702,7 +3108,7 @@ paths:
         `location` header to indicate where the content should be uploaded.
         Refer to https://tus.io for protocol details.  @example ```ts await
         client.stream.create({ account_id: '023e105f4ecef8ad9ca31a8372d0c353',
-        body: {}, 'Tus-Resumable': '1.0.0', 'Upload-Length': 0, }); ```"
+        'Tus-Resumable': '1.0.0', 'Upload-Length': 0, }); ```"
       parameters:
         - name: account_id
           in: path
@@ -2751,11 +3157,6 @@ paths:
             `maxdurationseconds`."
           schema:
             type: string
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema: {}
       responses:
         "200":
           description: Success
@@ -2838,6 +3239,13 @@ paths:
                     time after a token is not accepted. The maximum time
                     specification is 24 hours from issuing time. If this field
                     is not set, the default is one hour after issuing."
+                flags:
+                  type: object
+                  properties:
+                    original:
+                      type: boolean
+                      description: Whether to return the original video without transformations.
+                  description: "Body param: Optional flags for the signed token."
                 nbf:
                   type: number
                   description: "Body param: The optional unix epoch timestamp that specifies the
@@ -2892,7 +3300,8 @@ paths:
                     description: A user-defined identifier for the media creator.
                   totalStorageMinutes:
                     type: number
-                    description: The total minutes of video content stored in the account.
+                    description: The total minutes of video content stored in the account. May
+                      contain decimal values.
                   totalStorageMinutesLimit:
                     type: number
                     description: The storage capacity alloted for the account.
@@ -3076,8 +3485,7 @@ paths:
       description: "Creates watermark profiles using a single `HTTP POST
         multipart/form-data` request.  @example ```ts const watermark = await
         client.stream.watermarks.create({ account_id:
-        '023e105f4ecef8ad9ca31a8372d0c353', file:
-        '@/Users/rchen/Downloads/watermark.png', }); ```"
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
       parameters:
         - name: account_id
           in: path
@@ -3086,15 +3494,12 @@ paths:
           schema:
             type: string
       requestBody:
-        required: true
+        required: false
         content:
-          multipart/form-data:
+          application/json:
             schema:
               type: object
               properties:
-                file:
-                  type: string
-                  description: "Body param: The image file to upload."
                 name:
                   type: string
                   description: "Body param: A short description of the watermark profile."
@@ -3124,8 +3529,9 @@ paths:
                     vertical videos automatically. `0.0` indicates no scaling
                     (use the size of the image as-is), and `1.0 `fills the
                     entire video."
-              required:
-                - file
+                url:
+                  type: string
+                  description: "Body param: URL of the watermark image to copy."
       responses:
         "200":
           description: Success
@@ -3200,14 +3606,24 @@ paths:
           description: Success
           content:
             application/json:
-              schema: {}
+              schema:
+                type: object
+                properties:
+                  modified:
+                    type: string
+                    description: The date and time the webhook was last modified.
+                  notificationUrl:
+                    type: string
+                    description: The URL where webhooks will be sent.
+                  secret:
+                    type: string
+                    description: The secret used to verify webhook signatures.
       x-distilled-response-path: result
     put:
       operationId: putWebhook
       description: "Creates a webhook notification.  @example ```ts const webhook =
         await client.stream.webhooks.update({ account_id:
-        '023e105f4ecef8ad9ca31a8372d0c353', notificationUrl:
-        'https://example.com', }); ```"
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
       parameters:
         - name: account_id
           in: path
@@ -3216,7 +3632,7 @@ paths:
           schema:
             type: string
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3225,14 +3641,23 @@ paths:
                 notificationUrl:
                   type: string
                   description: "Body param: The URL where webhooks will be sent."
-              required:
-                - notificationUrl
       responses:
         "200":
           description: Success
           content:
             application/json:
-              schema: {}
+              schema:
+                type: object
+                properties:
+                  modified:
+                    type: string
+                    description: The date and time the webhook was last modified.
+                  notificationUrl:
+                    type: string
+                    description: The URL where webhooks will be sent.
+                  secret:
+                    type: string
+                    description: The secret used to verify webhook signatures.
       x-distilled-response-path: result
     delete:
       operationId: deleteWebhook

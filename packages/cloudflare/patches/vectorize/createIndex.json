@@ -1,0 +1,7 @@
+{
+  "errors": {
+    "IndexAlreadyExists": [{ "code": 3002 }],
+    "IndexInvalidName": [{ "code": 3001 }],
+    "IndexInvalidConfig": [{ "code": 3003 }]
+  }
+}

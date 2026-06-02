@@ -38,7 +38,7 @@ export const UpdateDatabaseSettingsOutput =
     open_schema_recommendations_count: Schema.optional(Schema.Number),
     development_branches_count: Schema.optional(Schema.Number),
     production_branches_count: Schema.optional(Schema.Number),
-    issues_count: Schema.optional(Schema.Number),
+    issues_count: Schema.optional(Schema.NullOr(Schema.Number)),
     multiple_admins_required_for_deletion: Schema.optional(Schema.Boolean),
     ready: Schema.Boolean,
     at_backup_restore_branches_limit: Schema.optional(Schema.Boolean),
@@ -48,8 +48,8 @@ export const UpdateDatabaseSettingsOutput =
         Schema.Struct({
           state: Schema.String,
           import_check_errors: Schema.String,
-          started_at: Schema.String,
-          finished_at: Schema.String,
+          started_at: Schema.NullOr(Schema.String),
+          finished_at: Schema.NullOr(Schema.String),
           data_source: Schema.Struct({
             hostname: Schema.String,
             port: Schema.Number,
@@ -67,6 +67,8 @@ export const UpdateDatabaseSettingsOutput =
       location: Schema.String,
       slug: Schema.String,
       current_default: Schema.Boolean,
+      mysql_supported: Schema.Boolean,
+      postgresql_supported: Schema.Boolean,
     }),
     html_url: Schema.String,
     name: Schema.String,
@@ -101,7 +103,7 @@ export const UpdateDatabaseSettingsOutput =
     migration_framework: Schema.optional(Schema.NullOr(Schema.String)),
     created_at: Schema.String,
     updated_at: Schema.String,
-    schema_last_updated_at: Schema.optional(Schema.String),
+    schema_last_updated_at: Schema.optional(Schema.NullOr(Schema.String)),
     kind: Schema.Literals(["mysql", "postgresql"]),
   });
 export type UpdateDatabaseSettingsOutput =

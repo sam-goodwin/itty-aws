@@ -34,6 +34,7 @@ export interface ListAppsResponse {
         hostnames?: string[] | null;
         ipSubnets?: string[] | null;
         name?: string | null;
+        sourceSubnets?: string[] | null;
         type?: string | null;
       }
     | {
@@ -41,6 +42,7 @@ export interface ListAppsResponse {
         hostnames?: string[] | null;
         ipSubnets?: string[] | null;
         name?: string | null;
+        sourceSubnets?: string[] | null;
         type?: string | null;
       }
   )[];
@@ -58,6 +60,9 @@ export const ListAppsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([Schema.Array(Schema.String), Schema.Null]),
         ),
         name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        sourceSubnets: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
         type: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       }).pipe(
         Schema.encodeKeys({
@@ -65,6 +70,7 @@ export const ListAppsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           hostnames: "hostnames",
           ipSubnets: "ip_subnets",
           name: "name",
+          sourceSubnets: "source_subnets",
           type: "type",
         }),
       ),
@@ -77,6 +83,9 @@ export const ListAppsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([Schema.Array(Schema.String), Schema.Null]),
         ),
         name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        sourceSubnets: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
         type: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       }).pipe(
         Schema.encodeKeys({
@@ -84,6 +93,7 @@ export const ListAppsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           hostnames: "hostnames",
           ipSubnets: "ip_subnets",
           name: "name",
+          sourceSubnets: "source_subnets",
           type: "type",
         }),
       ),
@@ -119,6 +129,8 @@ export interface CreateAppRequest {
   hostnames?: string[];
   /** Body param: IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
   ipSubnets?: string[];
+  /** Body param: IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
+  sourceSubnets?: string[];
 }
 
 export const CreateAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -127,12 +139,14 @@ export const CreateAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   type: Schema.String,
   hostnames: Schema.optional(Schema.Array(Schema.String)),
   ipSubnets: Schema.optional(Schema.Array(Schema.String)),
+  sourceSubnets: Schema.optional(Schema.Array(Schema.String)),
 }).pipe(
   Schema.encodeKeys({
     name: "name",
     type: "type",
     hostnames: "hostnames",
     ipSubnets: "ip_subnets",
+    sourceSubnets: "source_subnets",
   }),
   T.Http({ method: "POST", path: "/accounts/{account_id}/magic/apps" }),
 ) as unknown as Schema.Schema<CreateAppRequest>;
@@ -146,6 +160,8 @@ export interface CreateAppResponse {
   ipSubnets?: string[] | null;
   /** Display name for the app. */
   name?: string | null;
+  /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
+  sourceSubnets?: string[] | null;
   /** Category of the app. */
   type?: string | null;
 }
@@ -159,6 +175,9 @@ export const CreateAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Union([Schema.Array(Schema.String), Schema.Null]),
   ),
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  sourceSubnets: Schema.optional(
+    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+  ),
   type: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
 })
   .pipe(
@@ -167,6 +186,7 @@ export const CreateAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       hostnames: "hostnames",
       ipSubnets: "ip_subnets",
       name: "name",
+      sourceSubnets: "source_subnets",
       type: "type",
     }),
   )
@@ -197,6 +217,8 @@ export interface UpdateAppRequest {
   ipSubnets?: string[];
   /** Body param: Display name for the app. */
   name?: string;
+  /** Body param: IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
+  sourceSubnets?: string[];
   /** Body param: Category of the app. */
   type?: string;
 }
@@ -207,12 +229,14 @@ export const UpdateAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   hostnames: Schema.optional(Schema.Array(Schema.String)),
   ipSubnets: Schema.optional(Schema.Array(Schema.String)),
   name: Schema.optional(Schema.String),
+  sourceSubnets: Schema.optional(Schema.Array(Schema.String)),
   type: Schema.optional(Schema.String),
 }).pipe(
   Schema.encodeKeys({
     hostnames: "hostnames",
     ipSubnets: "ip_subnets",
     name: "name",
+    sourceSubnets: "source_subnets",
     type: "type",
   }),
   T.Http({
@@ -230,6 +254,8 @@ export interface UpdateAppResponse {
   ipSubnets?: string[] | null;
   /** Display name for the app. */
   name?: string | null;
+  /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
+  sourceSubnets?: string[] | null;
   /** Category of the app. */
   type?: string | null;
 }
@@ -243,6 +269,9 @@ export const UpdateAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Union([Schema.Array(Schema.String), Schema.Null]),
   ),
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  sourceSubnets: Schema.optional(
+    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+  ),
   type: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
 })
   .pipe(
@@ -251,6 +280,7 @@ export const UpdateAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       hostnames: "hostnames",
       ipSubnets: "ip_subnets",
       name: "name",
+      sourceSubnets: "source_subnets",
       type: "type",
     }),
   )
@@ -281,6 +311,8 @@ export interface PatchAppRequest {
   ipSubnets?: string[];
   /** Body param: Display name for the app. */
   name?: string;
+  /** Body param: IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
+  sourceSubnets?: string[];
   /** Body param: Category of the app. */
   type?: string;
 }
@@ -291,12 +323,14 @@ export const PatchAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   hostnames: Schema.optional(Schema.Array(Schema.String)),
   ipSubnets: Schema.optional(Schema.Array(Schema.String)),
   name: Schema.optional(Schema.String),
+  sourceSubnets: Schema.optional(Schema.Array(Schema.String)),
   type: Schema.optional(Schema.String),
 }).pipe(
   Schema.encodeKeys({
     hostnames: "hostnames",
     ipSubnets: "ip_subnets",
     name: "name",
+    sourceSubnets: "source_subnets",
     type: "type",
   }),
   T.Http({
@@ -314,6 +348,8 @@ export interface PatchAppResponse {
   ipSubnets?: string[] | null;
   /** Display name for the app. */
   name?: string | null;
+  /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
+  sourceSubnets?: string[] | null;
   /** Category of the app. */
   type?: string | null;
 }
@@ -327,6 +363,9 @@ export const PatchAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Union([Schema.Array(Schema.String), Schema.Null]),
   ),
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  sourceSubnets: Schema.optional(
+    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+  ),
   type: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
 })
   .pipe(
@@ -335,6 +374,7 @@ export const PatchAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       hostnames: "hostnames",
       ipSubnets: "ip_subnets",
       name: "name",
+      sourceSubnets: "source_subnets",
       type: "type",
     }),
   )
@@ -378,6 +418,8 @@ export interface DeleteAppResponse {
   ipSubnets?: string[] | null;
   /** Display name for the app. */
   name?: string | null;
+  /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
+  sourceSubnets?: string[] | null;
   /** Category of the app. */
   type?: string | null;
 }
@@ -391,6 +433,9 @@ export const DeleteAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Union([Schema.Array(Schema.String), Schema.Null]),
   ),
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  sourceSubnets: Schema.optional(
+    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+  ),
   type: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
 })
   .pipe(
@@ -399,6 +444,7 @@ export const DeleteAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       hostnames: "hostnames",
       ipSubnets: "ip_subnets",
       name: "name",
+      sourceSubnets: "source_subnets",
       type: "type",
     }),
   )
@@ -455,18 +501,19 @@ export interface GetCfInterconnectResponse {
     gre?: { cloudflareEndpoint?: string | null } | null;
     healthCheck?: {
       enabled?: boolean | null;
-      rate?: "low" | "mid" | "high" | null;
+      rate?: "low" | "mid" | "high" | (string & {}) | null;
       target?:
         | { effective?: string | null; saved?: string | null }
         | string
         | null;
-      type?: "reply" | "request" | null;
+      type?: "reply" | "request" | (string & {}) | null;
     } | null;
     interfaceAddress?: string | null;
     interfaceAddress6?: string | null;
     modifiedOn?: string | null;
     mtu?: number | null;
     name?: string | null;
+    virtualPortReservationId?: string | null;
   } | null;
 }
 
@@ -508,7 +555,10 @@ export const GetCfInterconnectResponse =
                 ),
                 rate: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["low", "mid", "high"]),
+                    Schema.Union([
+                      Schema.Literals(["low", "mid", "high"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -530,7 +580,10 @@ export const GetCfInterconnectResponse =
                 ),
                 type: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["reply", "request"]),
+                    Schema.Union([
+                      Schema.Literals(["reply", "request"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -549,6 +602,9 @@ export const GetCfInterconnectResponse =
           ),
           mtu: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
           name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          virtualPortReservationId: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
         }).pipe(
           Schema.encodeKeys({
             id: "id",
@@ -563,6 +619,7 @@ export const GetCfInterconnectResponse =
             modifiedOn: "modified_on",
             mtu: "mtu",
             name: "name",
+            virtualPortReservationId: "virtual_port_reservation_id",
           }),
         ),
         Schema.Null,
@@ -616,18 +673,19 @@ export interface ListCfInterconnectsResponse {
         gre?: { cloudflareEndpoint?: string | null } | null;
         healthCheck?: {
           enabled?: boolean | null;
-          rate?: "low" | "mid" | "high" | null;
+          rate?: "low" | "mid" | "high" | (string & {}) | null;
           target?:
             | { effective?: string | null; saved?: string | null }
             | string
             | null;
-          type?: "reply" | "request" | null;
+          type?: "reply" | "request" | (string & {}) | null;
         } | null;
         interfaceAddress?: string | null;
         interfaceAddress6?: string | null;
         modifiedOn?: string | null;
         mtu?: number | null;
         name?: string | null;
+        virtualPortReservationId?: string | null;
       }[]
     | null;
 }
@@ -673,7 +731,10 @@ export const ListCfInterconnectsResponse =
                   ),
                   rate: Schema.optional(
                     Schema.Union([
-                      Schema.Literals(["low", "mid", "high"]),
+                      Schema.Union([
+                        Schema.Literals(["low", "mid", "high"]),
+                        Schema.String,
+                      ]),
                       Schema.Null,
                     ]),
                   ),
@@ -695,7 +756,10 @@ export const ListCfInterconnectsResponse =
                   ),
                   type: Schema.optional(
                     Schema.Union([
-                      Schema.Literals(["reply", "request"]),
+                      Schema.Union([
+                        Schema.Literals(["reply", "request"]),
+                        Schema.String,
+                      ]),
                       Schema.Null,
                     ]),
                   ),
@@ -714,6 +778,9 @@ export const ListCfInterconnectsResponse =
             ),
             mtu: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
             name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            virtualPortReservationId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
           }).pipe(
             Schema.encodeKeys({
               id: "id",
@@ -728,6 +795,7 @@ export const ListCfInterconnectsResponse =
               modifiedOn: "modified_on",
               mtu: "mtu",
               name: "name",
+              virtualPortReservationId: "virtual_port_reservation_id",
             }),
           ),
         ),
@@ -757,18 +825,18 @@ export interface PutCfInterconnectRequest {
   accountId: string;
   /** Header param: If true, the health check target in the request and response bodies will be presented using the new object format. Defaults to false. */
   xMagicNewHcTarget?: boolean;
-  /** Body param: True if automatic stateful return routing should be enabled for a tunnel, false otherwise. */
+  /** Body param: True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` wi */
   automaticReturnRouting?: boolean;
   /** Body param: An optional description of the interconnect. */
   description?: string;
   /** Body param: The configuration specific to GRE interconnects. */
   gre?: { cloudflareEndpoint?: string };
-  /** Body param: */
+  /** Body param */
   healthCheck?: {
     enabled?: boolean;
-    rate?: "low" | "mid" | "high";
+    rate?: "low" | "mid" | "high" | (string & {});
     target?: { saved?: string } | string;
-    type?: "reply" | "request";
+    type?: "reply" | "request" | (string & {});
   };
   /** Body param: A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172 */
   interfaceAddress?: string;
@@ -776,6 +844,8 @@ export interface PutCfInterconnectRequest {
   interfaceAddress6?: string;
   /** Body param: The Maximum Transmission Unit (MTU) in bytes for the interconnect. The minimum value is 576. */
   mtu?: number;
+  /** Body param: The name of the interconnect. The name cannot share a name with other tunnels. */
+  name?: string;
 }
 
 export const PutCfInterconnectRequest =
@@ -795,7 +865,12 @@ export const PutCfInterconnectRequest =
     healthCheck: Schema.optional(
       Schema.Struct({
         enabled: Schema.optional(Schema.Boolean),
-        rate: Schema.optional(Schema.Literals(["low", "mid", "high"])),
+        rate: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["low", "mid", "high"]),
+            Schema.String,
+          ]),
+        ),
         target: Schema.optional(
           Schema.Union([
             Schema.Struct({
@@ -804,12 +879,15 @@ export const PutCfInterconnectRequest =
             Schema.String,
           ]),
         ),
-        type: Schema.optional(Schema.Literals(["reply", "request"])),
+        type: Schema.optional(
+          Schema.Union([Schema.Literals(["reply", "request"]), Schema.String]),
+        ),
       }),
     ),
     interfaceAddress: Schema.optional(Schema.String),
     interfaceAddress6: Schema.optional(Schema.String),
     mtu: Schema.optional(Schema.Number),
+    name: Schema.optional(Schema.String),
   }).pipe(
     Schema.encodeKeys({
       automaticReturnRouting: "automatic_return_routing",
@@ -819,6 +897,7 @@ export const PutCfInterconnectRequest =
       interfaceAddress: "interface_address",
       interfaceAddress6: "interface_address6",
       mtu: "mtu",
+      name: "name",
     }),
     T.Http({
       method: "PUT",
@@ -837,18 +916,19 @@ export interface PutCfInterconnectResponse {
     gre?: { cloudflareEndpoint?: string | null } | null;
     healthCheck?: {
       enabled?: boolean | null;
-      rate?: "low" | "mid" | "high" | null;
+      rate?: "low" | "mid" | "high" | (string & {}) | null;
       target?:
         | { effective?: string | null; saved?: string | null }
         | string
         | null;
-      type?: "reply" | "request" | null;
+      type?: "reply" | "request" | (string & {}) | null;
     } | null;
     interfaceAddress?: string | null;
     interfaceAddress6?: string | null;
     modifiedOn?: string | null;
     mtu?: number | null;
     name?: string | null;
+    virtualPortReservationId?: string | null;
   } | null;
 }
 
@@ -891,7 +971,10 @@ export const PutCfInterconnectResponse =
                 ),
                 rate: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["low", "mid", "high"]),
+                    Schema.Union([
+                      Schema.Literals(["low", "mid", "high"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -913,7 +996,10 @@ export const PutCfInterconnectResponse =
                 ),
                 type: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["reply", "request"]),
+                    Schema.Union([
+                      Schema.Literals(["reply", "request"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -932,6 +1018,9 @@ export const PutCfInterconnectResponse =
           ),
           mtu: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
           name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          virtualPortReservationId: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
         }).pipe(
           Schema.encodeKeys({
             id: "id",
@@ -946,6 +1035,7 @@ export const PutCfInterconnectResponse =
             modifiedOn: "modified_on",
             mtu: "mtu",
             name: "name",
+            virtualPortReservationId: "virtual_port_reservation_id",
           }),
         ),
         Schema.Null,
@@ -998,12 +1088,29 @@ export const GetConnectorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface GetConnectorResponse {
   id: string;
   activated: boolean;
+  /** Allowed days of the week for upgrades. Default is all days. */
+  interruptWindowDaysOfWeek: (
+    | "Sunday"
+    | "Monday"
+    | "Tuesday"
+    | "Wednesday"
+    | "Thursday"
+    | "Friday"
+    | "Saturday"
+    | (string & {})
+  )[];
   interruptWindowDurationHours: number;
+  /** List of dates (YYYY-MM-DD) when upgrades are blocked. */
+  interruptWindowEmbargoDates: string[];
   interruptWindowHourOfDay: number;
   lastUpdated: string;
   notes: string;
   timezone: string;
-  device?: { id: string; serialNumber?: string | null } | null;
+  device?: {
+    id: string;
+    serialNumber?: string | null;
+    type?: "MANAGED" | "LICENSED" | (string & {}) | null;
+  } | null;
   lastHeartbeat?: string | null;
   lastSeenVersion?: string | null;
   licenseKey?: string | null;
@@ -1012,7 +1119,22 @@ export interface GetConnectorResponse {
 export const GetConnectorResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
   activated: Schema.Boolean,
+  interruptWindowDaysOfWeek: Schema.Array(
+    Schema.Union([
+      Schema.Literals([
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ]),
+      Schema.String,
+    ]),
+  ),
   interruptWindowDurationHours: Schema.Number,
+  interruptWindowEmbargoDates: Schema.Array(Schema.String),
   interruptWindowHourOfDay: Schema.Number,
   lastUpdated: Schema.String,
   notes: Schema.String,
@@ -1024,7 +1146,22 @@ export const GetConnectorResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         serialNumber: Schema.optional(
           Schema.Union([Schema.String, Schema.Null]),
         ),
-      }).pipe(Schema.encodeKeys({ id: "id", serialNumber: "serial_number" })),
+        type: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals(["MANAGED", "LICENSED"]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          id: "id",
+          serialNumber: "serial_number",
+          type: "type",
+        }),
+      ),
       Schema.Null,
     ]),
   ),
@@ -1036,7 +1173,9 @@ export const GetConnectorResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.encodeKeys({
       id: "id",
       activated: "activated",
+      interruptWindowDaysOfWeek: "interrupt_window_days_of_week",
       interruptWindowDurationHours: "interrupt_window_duration_hours",
+      interruptWindowEmbargoDates: "interrupt_window_embargo_dates",
       interruptWindowHourOfDay: "interrupt_window_hour_of_day",
       lastUpdated: "last_updated",
       notes: "notes",
@@ -1065,12 +1204,17 @@ export const getConnector: API.OperationMethod<
 }));
 
 export interface ListConnectorsRequest {
-  /** Account identifier */
+  /** Path param: Account identifier */
   accountId: string;
+  /** Query param: Filter connectors by device type. */
+  deviceType?: "MANAGED" | "LICENSED" | (string & {});
 }
 
 export const ListConnectorsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  deviceType: Schema.optional(
+    Schema.Union([Schema.Literals(["MANAGED", "LICENSED"]), Schema.String]),
+  ).pipe(T.HttpQuery("device_type")),
 }).pipe(
   T.Http({ method: "GET", path: "/accounts/{account_id}/magic/connectors" }),
 ) as unknown as Schema.Schema<ListConnectorsRequest>;
@@ -1079,12 +1223,27 @@ export interface ListConnectorsResponse {
   result: {
     id: string;
     activated: boolean;
+    interruptWindowDaysOfWeek: (
+      | "Sunday"
+      | "Monday"
+      | "Tuesday"
+      | "Wednesday"
+      | "Thursday"
+      | "Friday"
+      | "Saturday"
+      | (string & {})
+    )[];
     interruptWindowDurationHours: number;
+    interruptWindowEmbargoDates: string[];
     interruptWindowHourOfDay: number;
     lastUpdated: string;
     notes: string;
     timezone: string;
-    device?: { id: string; serialNumber?: string | null } | null;
+    device?: {
+      id: string;
+      serialNumber?: string | null;
+      type?: "MANAGED" | "LICENSED" | (string & {}) | null;
+    } | null;
     lastHeartbeat?: string | null;
     lastSeenVersion?: string | null;
     licenseKey?: string | null;
@@ -1097,7 +1256,22 @@ export const ListConnectorsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       Schema.Struct({
         id: Schema.String,
         activated: Schema.Boolean,
+        interruptWindowDaysOfWeek: Schema.Array(
+          Schema.Union([
+            Schema.Literals([
+              "Sunday",
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+            ]),
+            Schema.String,
+          ]),
+        ),
         interruptWindowDurationHours: Schema.Number,
+        interruptWindowEmbargoDates: Schema.Array(Schema.String),
         interruptWindowHourOfDay: Schema.Number,
         lastUpdated: Schema.String,
         notes: Schema.String,
@@ -1109,8 +1283,21 @@ export const ListConnectorsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
               serialNumber: Schema.optional(
                 Schema.Union([Schema.String, Schema.Null]),
               ),
+              type: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["MANAGED", "LICENSED"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
             }).pipe(
-              Schema.encodeKeys({ id: "id", serialNumber: "serial_number" }),
+              Schema.encodeKeys({
+                id: "id",
+                serialNumber: "serial_number",
+                type: "type",
+              }),
             ),
             Schema.Null,
           ]),
@@ -1126,7 +1313,9 @@ export const ListConnectorsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         Schema.encodeKeys({
           id: "id",
           activated: "activated",
+          interruptWindowDaysOfWeek: "interrupt_window_days_of_week",
           interruptWindowDurationHours: "interrupt_window_duration_hours",
+          interruptWindowEmbargoDates: "interrupt_window_embargo_dates",
           interruptWindowHourOfDay: "interrupt_window_hour_of_day",
           lastUpdated: "last_updated",
           notes: "notes",
@@ -1163,15 +1352,28 @@ export interface CreateConnectorRequest {
   accountId: string;
   /** Body param: Exactly one of id, serial_number, or provision_license must be provided. */
   device: { id?: string; provisionLicense?: boolean; serialNumber?: string };
-  /** Body param: */
+  /** Body param */
   activated?: boolean;
-  /** Body param: */
+  /** Body param: Allowed days of the week for upgrades. Default is all days. */
+  interruptWindowDaysOfWeek?: (
+    | "Sunday"
+    | "Monday"
+    | "Tuesday"
+    | "Wednesday"
+    | "Thursday"
+    | "Friday"
+    | "Saturday"
+    | (string & {})
+  )[];
+  /** Body param */
   interruptWindowDurationHours?: number;
-  /** Body param: */
+  /** Body param: List of dates (YYYY-MM-DD) when upgrades are blocked. */
+  interruptWindowEmbargoDates?: string[];
+  /** Body param */
   interruptWindowHourOfDay?: number;
-  /** Body param: */
+  /** Body param */
   notes?: string;
-  /** Body param: */
+  /** Body param */
   timezone?: string;
 }
 
@@ -1190,7 +1392,24 @@ export const CreateConnectorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
     activated: Schema.optional(Schema.Boolean),
+    interruptWindowDaysOfWeek: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals([
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+          ]),
+          Schema.String,
+        ]),
+      ),
+    ),
     interruptWindowDurationHours: Schema.optional(Schema.Number),
+    interruptWindowEmbargoDates: Schema.optional(Schema.Array(Schema.String)),
     interruptWindowHourOfDay: Schema.optional(Schema.Number),
     notes: Schema.optional(Schema.String),
     timezone: Schema.optional(Schema.String),
@@ -1199,7 +1418,9 @@ export const CreateConnectorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   Schema.encodeKeys({
     device: "device",
     activated: "activated",
+    interruptWindowDaysOfWeek: "interrupt_window_days_of_week",
     interruptWindowDurationHours: "interrupt_window_duration_hours",
+    interruptWindowEmbargoDates: "interrupt_window_embargo_dates",
     interruptWindowHourOfDay: "interrupt_window_hour_of_day",
     notes: "notes",
     timezone: "timezone",
@@ -1210,12 +1431,29 @@ export const CreateConnectorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export interface CreateConnectorResponse {
   id: string;
   activated: boolean;
+  /** Allowed days of the week for upgrades. Default is all days. */
+  interruptWindowDaysOfWeek: (
+    | "Sunday"
+    | "Monday"
+    | "Tuesday"
+    | "Wednesday"
+    | "Thursday"
+    | "Friday"
+    | "Saturday"
+    | (string & {})
+  )[];
   interruptWindowDurationHours: number;
+  /** List of dates (YYYY-MM-DD) when upgrades are blocked. */
+  interruptWindowEmbargoDates: string[];
   interruptWindowHourOfDay: number;
   lastUpdated: string;
   notes: string;
   timezone: string;
-  device?: { id: string; serialNumber?: string | null } | null;
+  device?: {
+    id: string;
+    serialNumber?: string | null;
+    type?: "MANAGED" | "LICENSED" | (string & {}) | null;
+  } | null;
   lastHeartbeat?: string | null;
   lastSeenVersion?: string | null;
   licenseKey?: string | null;
@@ -1225,7 +1463,22 @@ export const CreateConnectorResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
     activated: Schema.Boolean,
+    interruptWindowDaysOfWeek: Schema.Array(
+      Schema.Union([
+        Schema.Literals([
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ]),
+        Schema.String,
+      ]),
+    ),
     interruptWindowDurationHours: Schema.Number,
+    interruptWindowEmbargoDates: Schema.Array(Schema.String),
     interruptWindowHourOfDay: Schema.Number,
     lastUpdated: Schema.String,
     notes: Schema.String,
@@ -1237,7 +1490,22 @@ export const CreateConnectorResponse =
           serialNumber: Schema.optional(
             Schema.Union([Schema.String, Schema.Null]),
           ),
-        }).pipe(Schema.encodeKeys({ id: "id", serialNumber: "serial_number" })),
+          type: Schema.optional(
+            Schema.Union([
+              Schema.Union([
+                Schema.Literals(["MANAGED", "LICENSED"]),
+                Schema.String,
+              ]),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            serialNumber: "serial_number",
+            type: "type",
+          }),
+        ),
         Schema.Null,
       ]),
     ),
@@ -1251,7 +1519,9 @@ export const CreateConnectorResponse =
       Schema.encodeKeys({
         id: "id",
         activated: "activated",
+        interruptWindowDaysOfWeek: "interrupt_window_days_of_week",
         interruptWindowDurationHours: "interrupt_window_duration_hours",
+        interruptWindowEmbargoDates: "interrupt_window_embargo_dates",
         interruptWindowHourOfDay: "interrupt_window_hour_of_day",
         lastUpdated: "last_updated",
         notes: "notes",
@@ -1283,17 +1553,30 @@ export interface UpdateConnectorRequest {
   connectorId: string;
   /** Path param: Account identifier */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   activated?: boolean;
-  /** Body param: */
+  /** Body param: Allowed days of the week for upgrades. Default is all days. */
+  interruptWindowDaysOfWeek?: (
+    | "Sunday"
+    | "Monday"
+    | "Tuesday"
+    | "Wednesday"
+    | "Thursday"
+    | "Friday"
+    | "Saturday"
+    | (string & {})
+  )[];
+  /** Body param */
   interruptWindowDurationHours?: number;
-  /** Body param: */
+  /** Body param: List of dates (YYYY-MM-DD) when upgrades are blocked. */
+  interruptWindowEmbargoDates?: string[];
+  /** Body param */
   interruptWindowHourOfDay?: number;
-  /** Body param: */
+  /** Body param */
   notes?: string;
   /** Body param: When true, regenerate license key for the connector. */
   provisionLicense?: boolean;
-  /** Body param: */
+  /** Body param */
   timezone?: string;
 }
 
@@ -1302,7 +1585,24 @@ export const UpdateConnectorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     connectorId: Schema.String.pipe(T.HttpPath("connectorId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     activated: Schema.optional(Schema.Boolean),
+    interruptWindowDaysOfWeek: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals([
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+          ]),
+          Schema.String,
+        ]),
+      ),
+    ),
     interruptWindowDurationHours: Schema.optional(Schema.Number),
+    interruptWindowEmbargoDates: Schema.optional(Schema.Array(Schema.String)),
     interruptWindowHourOfDay: Schema.optional(Schema.Number),
     notes: Schema.optional(Schema.String),
     provisionLicense: Schema.optional(Schema.Boolean),
@@ -1311,7 +1611,9 @@ export const UpdateConnectorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   Schema.encodeKeys({
     activated: "activated",
+    interruptWindowDaysOfWeek: "interrupt_window_days_of_week",
     interruptWindowDurationHours: "interrupt_window_duration_hours",
+    interruptWindowEmbargoDates: "interrupt_window_embargo_dates",
     interruptWindowHourOfDay: "interrupt_window_hour_of_day",
     notes: "notes",
     provisionLicense: "provision_license",
@@ -1326,12 +1628,29 @@ export const UpdateConnectorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export interface UpdateConnectorResponse {
   id: string;
   activated: boolean;
+  /** Allowed days of the week for upgrades. Default is all days. */
+  interruptWindowDaysOfWeek: (
+    | "Sunday"
+    | "Monday"
+    | "Tuesday"
+    | "Wednesday"
+    | "Thursday"
+    | "Friday"
+    | "Saturday"
+    | (string & {})
+  )[];
   interruptWindowDurationHours: number;
+  /** List of dates (YYYY-MM-DD) when upgrades are blocked. */
+  interruptWindowEmbargoDates: string[];
   interruptWindowHourOfDay: number;
   lastUpdated: string;
   notes: string;
   timezone: string;
-  device?: { id: string; serialNumber?: string | null } | null;
+  device?: {
+    id: string;
+    serialNumber?: string | null;
+    type?: "MANAGED" | "LICENSED" | (string & {}) | null;
+  } | null;
   lastHeartbeat?: string | null;
   lastSeenVersion?: string | null;
   licenseKey?: string | null;
@@ -1341,7 +1660,22 @@ export const UpdateConnectorResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
     activated: Schema.Boolean,
+    interruptWindowDaysOfWeek: Schema.Array(
+      Schema.Union([
+        Schema.Literals([
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ]),
+        Schema.String,
+      ]),
+    ),
     interruptWindowDurationHours: Schema.Number,
+    interruptWindowEmbargoDates: Schema.Array(Schema.String),
     interruptWindowHourOfDay: Schema.Number,
     lastUpdated: Schema.String,
     notes: Schema.String,
@@ -1353,7 +1687,22 @@ export const UpdateConnectorResponse =
           serialNumber: Schema.optional(
             Schema.Union([Schema.String, Schema.Null]),
           ),
-        }).pipe(Schema.encodeKeys({ id: "id", serialNumber: "serial_number" })),
+          type: Schema.optional(
+            Schema.Union([
+              Schema.Union([
+                Schema.Literals(["MANAGED", "LICENSED"]),
+                Schema.String,
+              ]),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            serialNumber: "serial_number",
+            type: "type",
+          }),
+        ),
         Schema.Null,
       ]),
     ),
@@ -1367,7 +1716,9 @@ export const UpdateConnectorResponse =
       Schema.encodeKeys({
         id: "id",
         activated: "activated",
+        interruptWindowDaysOfWeek: "interrupt_window_days_of_week",
         interruptWindowDurationHours: "interrupt_window_duration_hours",
+        interruptWindowEmbargoDates: "interrupt_window_embargo_dates",
         interruptWindowHourOfDay: "interrupt_window_hour_of_day",
         lastUpdated: "last_updated",
         notes: "notes",
@@ -1399,17 +1750,30 @@ export interface PatchConnectorRequest {
   connectorId: string;
   /** Path param: Account identifier */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   activated?: boolean;
-  /** Body param: */
+  /** Body param: Allowed days of the week for upgrades. Default is all days. */
+  interruptWindowDaysOfWeek?: (
+    | "Sunday"
+    | "Monday"
+    | "Tuesday"
+    | "Wednesday"
+    | "Thursday"
+    | "Friday"
+    | "Saturday"
+    | (string & {})
+  )[];
+  /** Body param */
   interruptWindowDurationHours?: number;
-  /** Body param: */
+  /** Body param: List of dates (YYYY-MM-DD) when upgrades are blocked. */
+  interruptWindowEmbargoDates?: string[];
+  /** Body param */
   interruptWindowHourOfDay?: number;
-  /** Body param: */
+  /** Body param */
   notes?: string;
   /** Body param: When true, regenerate license key for the connector. */
   provisionLicense?: boolean;
-  /** Body param: */
+  /** Body param */
   timezone?: string;
 }
 
@@ -1417,7 +1781,24 @@ export const PatchConnectorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   connectorId: Schema.String.pipe(T.HttpPath("connectorId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   activated: Schema.optional(Schema.Boolean),
+  interruptWindowDaysOfWeek: Schema.optional(
+    Schema.Array(
+      Schema.Union([
+        Schema.Literals([
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ]),
+        Schema.String,
+      ]),
+    ),
+  ),
   interruptWindowDurationHours: Schema.optional(Schema.Number),
+  interruptWindowEmbargoDates: Schema.optional(Schema.Array(Schema.String)),
   interruptWindowHourOfDay: Schema.optional(Schema.Number),
   notes: Schema.optional(Schema.String),
   provisionLicense: Schema.optional(Schema.Boolean),
@@ -1425,7 +1806,9 @@ export const PatchConnectorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   Schema.encodeKeys({
     activated: "activated",
+    interruptWindowDaysOfWeek: "interrupt_window_days_of_week",
     interruptWindowDurationHours: "interrupt_window_duration_hours",
+    interruptWindowEmbargoDates: "interrupt_window_embargo_dates",
     interruptWindowHourOfDay: "interrupt_window_hour_of_day",
     notes: "notes",
     provisionLicense: "provision_license",
@@ -1440,12 +1823,29 @@ export const PatchConnectorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface PatchConnectorResponse {
   id: string;
   activated: boolean;
+  /** Allowed days of the week for upgrades. Default is all days. */
+  interruptWindowDaysOfWeek: (
+    | "Sunday"
+    | "Monday"
+    | "Tuesday"
+    | "Wednesday"
+    | "Thursday"
+    | "Friday"
+    | "Saturday"
+    | (string & {})
+  )[];
   interruptWindowDurationHours: number;
+  /** List of dates (YYYY-MM-DD) when upgrades are blocked. */
+  interruptWindowEmbargoDates: string[];
   interruptWindowHourOfDay: number;
   lastUpdated: string;
   notes: string;
   timezone: string;
-  device?: { id: string; serialNumber?: string | null } | null;
+  device?: {
+    id: string;
+    serialNumber?: string | null;
+    type?: "MANAGED" | "LICENSED" | (string & {}) | null;
+  } | null;
   lastHeartbeat?: string | null;
   lastSeenVersion?: string | null;
   licenseKey?: string | null;
@@ -1455,7 +1855,22 @@ export const PatchConnectorResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.String,
     activated: Schema.Boolean,
+    interruptWindowDaysOfWeek: Schema.Array(
+      Schema.Union([
+        Schema.Literals([
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ]),
+        Schema.String,
+      ]),
+    ),
     interruptWindowDurationHours: Schema.Number,
+    interruptWindowEmbargoDates: Schema.Array(Schema.String),
     interruptWindowHourOfDay: Schema.Number,
     lastUpdated: Schema.String,
     notes: Schema.String,
@@ -1467,7 +1882,22 @@ export const PatchConnectorResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           serialNumber: Schema.optional(
             Schema.Union([Schema.String, Schema.Null]),
           ),
-        }).pipe(Schema.encodeKeys({ id: "id", serialNumber: "serial_number" })),
+          type: Schema.optional(
+            Schema.Union([
+              Schema.Union([
+                Schema.Literals(["MANAGED", "LICENSED"]),
+                Schema.String,
+              ]),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            serialNumber: "serial_number",
+            type: "type",
+          }),
+        ),
         Schema.Null,
       ]),
     ),
@@ -1482,7 +1912,9 @@ export const PatchConnectorResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     Schema.encodeKeys({
       id: "id",
       activated: "activated",
+      interruptWindowDaysOfWeek: "interrupt_window_days_of_week",
       interruptWindowDurationHours: "interrupt_window_duration_hours",
+      interruptWindowEmbargoDates: "interrupt_window_embargo_dates",
       interruptWindowHourOfDay: "interrupt_window_hour_of_day",
       lastUpdated: "last_updated",
       notes: "notes",
@@ -1531,12 +1963,29 @@ export const DeleteConnectorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export interface DeleteConnectorResponse {
   id: string;
   activated: boolean;
+  /** Allowed days of the week for upgrades. Default is all days. */
+  interruptWindowDaysOfWeek: (
+    | "Sunday"
+    | "Monday"
+    | "Tuesday"
+    | "Wednesday"
+    | "Thursday"
+    | "Friday"
+    | "Saturday"
+    | (string & {})
+  )[];
   interruptWindowDurationHours: number;
+  /** List of dates (YYYY-MM-DD) when upgrades are blocked. */
+  interruptWindowEmbargoDates: string[];
   interruptWindowHourOfDay: number;
   lastUpdated: string;
   notes: string;
   timezone: string;
-  device?: { id: string; serialNumber?: string | null } | null;
+  device?: {
+    id: string;
+    serialNumber?: string | null;
+    type?: "MANAGED" | "LICENSED" | (string & {}) | null;
+  } | null;
   lastHeartbeat?: string | null;
   lastSeenVersion?: string | null;
   licenseKey?: string | null;
@@ -1546,7 +1995,22 @@ export const DeleteConnectorResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
     activated: Schema.Boolean,
+    interruptWindowDaysOfWeek: Schema.Array(
+      Schema.Union([
+        Schema.Literals([
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ]),
+        Schema.String,
+      ]),
+    ),
     interruptWindowDurationHours: Schema.Number,
+    interruptWindowEmbargoDates: Schema.Array(Schema.String),
     interruptWindowHourOfDay: Schema.Number,
     lastUpdated: Schema.String,
     notes: Schema.String,
@@ -1558,7 +2022,22 @@ export const DeleteConnectorResponse =
           serialNumber: Schema.optional(
             Schema.Union([Schema.String, Schema.Null]),
           ),
-        }).pipe(Schema.encodeKeys({ id: "id", serialNumber: "serial_number" })),
+          type: Schema.optional(
+            Schema.Union([
+              Schema.Union([
+                Schema.Literals(["MANAGED", "LICENSED"]),
+                Schema.String,
+              ]),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            serialNumber: "serial_number",
+            type: "type",
+          }),
+        ),
         Schema.Null,
       ]),
     ),
@@ -1572,7 +2051,9 @@ export const DeleteConnectorResponse =
       Schema.encodeKeys({
         id: "id",
         activated: "activated",
+        interruptWindowDaysOfWeek: "interrupt_window_days_of_week",
         interruptWindowDurationHours: "interrupt_window_duration_hours",
+        interruptWindowEmbargoDates: "interrupt_window_embargo_dates",
         interruptWindowHourOfDay: "interrupt_window_hour_of_day",
         lastUpdated: "last_updated",
         notes: "notes",
@@ -1647,6 +2128,8 @@ export interface GetConnectorEventResponse {
   n: number;
   /** Time the Event was recorded (seconds since the Unix epoch) */
   t: number;
+  /** Version */
+  v?: string | null;
 }
 
 export const GetConnectorEventResponse =
@@ -1704,6 +2187,7 @@ export const GetConnectorEventResponse =
     ]),
     n: Schema.Number,
     t: Schema.Number,
+    v: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetConnectorEventResponse>;
@@ -1725,15 +2209,15 @@ export interface ListConnectorEventsRequest {
   connectorId: string;
   /** Path param: Account identifier */
   accountId: string;
-  /** Query param: */
+  /** Query param */
   from: number;
-  /** Query param: */
+  /** Query param */
   to: number;
-  /** Query param: */
+  /** Query param */
   cursor?: string;
   /** Query param: Filter by event kind */
   k?: string;
-  /** Query param: */
+  /** Query param */
   limit?: number;
 }
 
@@ -1831,6 +2315,7 @@ export interface ListConnectorEventLatestsResponse {
       | { k: "ConfigureCloudflaredTunnel" };
     n: number;
     t: number;
+    v?: string | null;
   }[];
 }
 
@@ -1892,6 +2377,7 @@ export const ListConnectorEventLatestsResponse =
         ]),
         n: Schema.Number,
         t: Schema.Number,
+        v: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       }),
     ),
   }).pipe(
@@ -1978,6 +2464,8 @@ export interface GetConnectorSnapshotResponse {
   cpuTimeSystemMs?: number | null;
   /** Time spent in user mode (milliseconds) */
   cpuTimeUserMs?: number | null;
+  /** Number of network operations applied during state transition */
+  delta?: number | null;
   dhcpLeases?:
     | {
         clientId: string;
@@ -1986,7 +2474,6 @@ export interface GetConnectorSnapshotResponse {
         interfaceName: string;
         ipAddress: string;
         macAddress: string;
-        connectorId?: string | null;
       }[]
     | null;
   disks?:
@@ -2005,7 +2492,6 @@ export interface GetConnectorSnapshotResponse {
         weightedTimeInProgressMs: number;
         writes: number;
         writesMerged: number;
-        connectorId?: string | null;
         discards?: number | null;
         discardsMerged?: number | null;
         flushes?: number | null;
@@ -2014,6 +2500,8 @@ export interface GetConnectorSnapshotResponse {
         timeFlushingMs?: number | null;
       }[]
     | null;
+  /** Simulated number of network operations applied during state transition */
+  epsilon?: number | null;
   /** Name of high availability state */
   haState?: string | null;
   /** Numeric value associated with high availability state (0 = disabled, 1 = active, 2 = standby, 3 = stopped, 4 = fault) */
@@ -2022,14 +2510,7 @@ export interface GetConnectorSnapshotResponse {
     | {
         name: string;
         operstate: string;
-        connectorId?: string | null;
-        ipAddresses?:
-          | {
-              interfaceName: string;
-              ipAddress: string;
-              connectorId?: string | null;
-            }[]
-          | null;
+        ipAddresses?: { interfaceName: string; ipAddress: string }[] | null;
         speed?: number | null;
       }[]
     | null;
@@ -2184,10 +2665,11 @@ export interface GetConnectorSnapshotResponse {
         mountPoint: string;
         name: string;
         availableBytes?: number | null;
-        connectorId?: string | null;
+        availableInodes?: number | null;
         isReadOnly?: boolean | null;
         isRemovable?: boolean | null;
         totalBytes?: number | null;
+        totalInodes?: number | null;
       }[]
     | null;
   netdevs?:
@@ -2209,9 +2691,10 @@ export interface GetConnectorSnapshotResponse {
         sentErrs: number;
         sentFifo: number;
         sentPackets: number;
-        connectorId?: string | null;
       }[]
     | null;
+  /** Platform identifier */
+  platform?: string | null;
   /** Number of ICMP Address Mask Reply messages received */
   snmpIcmpInAddrMaskReps?: number | null;
   /** Number of ICMP Address Mask Request messages received */
@@ -2345,7 +2828,6 @@ export interface GetConnectorSnapshotResponse {
   thermals?:
     | {
         label: string;
-        connectorId?: string | null;
         criticalCelcius?: number | null;
         currentCelcius?: number | null;
         maxCelcius?: number | null;
@@ -2357,8 +2839,9 @@ export interface GetConnectorSnapshotResponse {
         healthValue: number;
         interfaceName: string;
         tunnelId: string;
-        connectorId?: string | null;
         probedMtu?: number | null;
+        recentHealthyPings?: number | null;
+        recentUnhealthyPings?: number | null;
       }[]
     | null;
   /** Sum of how much time each core has spent idle */
@@ -2417,6 +2900,7 @@ export const GetConnectorSnapshotResponse =
       Schema.Union([Schema.Number, Schema.Null]),
     ),
     cpuTimeUserMs: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    delta: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     dhcpLeases: Schema.optional(
       Schema.Union([
         Schema.Array(
@@ -2427,9 +2911,6 @@ export const GetConnectorSnapshotResponse =
             interfaceName: Schema.String,
             ipAddress: Schema.String,
             macAddress: Schema.String,
-            connectorId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
           }).pipe(
             Schema.encodeKeys({
               clientId: "client_id",
@@ -2438,7 +2919,6 @@ export const GetConnectorSnapshotResponse =
               interfaceName: "interface_name",
               ipAddress: "ip_address",
               macAddress: "mac_address",
-              connectorId: "connector_id",
             }),
           ),
         ),
@@ -2463,9 +2943,6 @@ export const GetConnectorSnapshotResponse =
             weightedTimeInProgressMs: Schema.Number,
             writes: Schema.Number,
             writesMerged: Schema.Number,
-            connectorId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
             discards: Schema.optional(
               Schema.Union([Schema.Number, Schema.Null]),
             ),
@@ -2500,7 +2977,6 @@ export const GetConnectorSnapshotResponse =
               weightedTimeInProgressMs: "weighted_time_in_progress_ms",
               writes: "writes",
               writesMerged: "writes_merged",
-              connectorId: "connector_id",
               discards: "discards",
               discardsMerged: "discards_merged",
               flushes: "flushes",
@@ -2513,6 +2989,7 @@ export const GetConnectorSnapshotResponse =
         Schema.Null,
       ]),
     ),
+    epsilon: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     haState: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     haValue: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     interfaces: Schema.optional(
@@ -2521,23 +2998,16 @@ export const GetConnectorSnapshotResponse =
           Schema.Struct({
             name: Schema.String,
             operstate: Schema.String,
-            connectorId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
             ipAddresses: Schema.optional(
               Schema.Union([
                 Schema.Array(
                   Schema.Struct({
                     interfaceName: Schema.String,
                     ipAddress: Schema.String,
-                    connectorId: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
                   }).pipe(
                     Schema.encodeKeys({
                       interfaceName: "interface_name",
                       ipAddress: "ip_address",
-                      connectorId: "connector_id",
                     }),
                   ),
                 ),
@@ -2549,7 +3019,6 @@ export const GetConnectorSnapshotResponse =
             Schema.encodeKeys({
               name: "name",
               operstate: "operstate",
-              connectorId: "connector_id",
               ipAddresses: "ip_addresses",
               speed: "speed",
             }),
@@ -2773,8 +3242,8 @@ export const GetConnectorSnapshotResponse =
             availableBytes: Schema.optional(
               Schema.Union([Schema.Number, Schema.Null]),
             ),
-            connectorId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
+            availableInodes: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
             ),
             isReadOnly: Schema.optional(
               Schema.Union([Schema.Boolean, Schema.Null]),
@@ -2785,6 +3254,9 @@ export const GetConnectorSnapshotResponse =
             totalBytes: Schema.optional(
               Schema.Union([Schema.Number, Schema.Null]),
             ),
+            totalInodes: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
           }).pipe(
             Schema.encodeKeys({
               fileSystem: "file_system",
@@ -2792,10 +3264,11 @@ export const GetConnectorSnapshotResponse =
               mountPoint: "mount_point",
               name: "name",
               availableBytes: "available_bytes",
-              connectorId: "connector_id",
+              availableInodes: "available_inodes",
               isReadOnly: "is_read_only",
               isRemovable: "is_removable",
               totalBytes: "total_bytes",
+              totalInodes: "total_inodes",
             }),
           ),
         ),
@@ -2823,9 +3296,6 @@ export const GetConnectorSnapshotResponse =
             sentErrs: Schema.Number,
             sentFifo: Schema.Number,
             sentPackets: Schema.Number,
-            connectorId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
           }).pipe(
             Schema.encodeKeys({
               name: "name",
@@ -2845,13 +3315,13 @@ export const GetConnectorSnapshotResponse =
               sentErrs: "sent_errs",
               sentFifo: "sent_fifo",
               sentPackets: "sent_packets",
-              connectorId: "connector_id",
             }),
           ),
         ),
         Schema.Null,
       ]),
     ),
+    platform: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     snmpIcmpInAddrMaskReps: Schema.optional(
       Schema.Union([Schema.Number, Schema.Null]),
     ),
@@ -3030,9 +3500,6 @@ export const GetConnectorSnapshotResponse =
         Schema.Array(
           Schema.Struct({
             label: Schema.String,
-            connectorId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
             criticalCelcius: Schema.optional(
               Schema.Union([Schema.Number, Schema.Null]),
             ),
@@ -3045,7 +3512,6 @@ export const GetConnectorSnapshotResponse =
           }).pipe(
             Schema.encodeKeys({
               label: "label",
-              connectorId: "connector_id",
               criticalCelcius: "critical_celcius",
               currentCelcius: "current_celcius",
               maxCelcius: "max_celcius",
@@ -3063,10 +3529,13 @@ export const GetConnectorSnapshotResponse =
             healthValue: Schema.Number,
             interfaceName: Schema.String,
             tunnelId: Schema.String,
-            connectorId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
             probedMtu: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            recentHealthyPings: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            recentUnhealthyPings: Schema.optional(
               Schema.Union([Schema.Number, Schema.Null]),
             ),
           }).pipe(
@@ -3075,8 +3544,9 @@ export const GetConnectorSnapshotResponse =
               healthValue: "health_value",
               interfaceName: "interface_name",
               tunnelId: "tunnel_id",
-              connectorId: "connector_id",
               probedMtu: "probed_mtu",
+              recentHealthyPings: "recent_healthy_pings",
+              recentUnhealthyPings: "recent_unhealthy_pings",
             }),
           ),
         ),
@@ -3110,8 +3580,10 @@ export const GetConnectorSnapshotResponse =
         cpuTimeStealMs: "cpu_time_steal_ms",
         cpuTimeSystemMs: "cpu_time_system_ms",
         cpuTimeUserMs: "cpu_time_user_ms",
+        delta: "delta",
         dhcpLeases: "dhcp_leases",
         disks: "disks",
+        epsilon: "epsilon",
         haState: "ha_state",
         haValue: "ha_value",
         interfaces: "interfaces",
@@ -3189,6 +3661,7 @@ export const GetConnectorSnapshotResponse =
         memoryZSwappedBytes: "memory_z_swapped_bytes",
         mounts: "mounts",
         netdevs: "netdevs",
+        platform: "platform",
         snmpIcmpInAddrMaskReps: "snmp_icmp_in_addr_mask_reps",
         snmpIcmpInAddrMasks: "snmp_icmp_in_addr_masks",
         snmpIcmpInCsumErrors: "snmp_icmp_in_csum_errors",
@@ -3281,13 +3754,13 @@ export interface ListConnectorSnapshotsRequest {
   connectorId: string;
   /** Path param: Account identifier */
   accountId: string;
-  /** Query param: */
+  /** Query param */
   from: number;
-  /** Query param: */
+  /** Query param */
   to: number;
-  /** Query param: */
+  /** Query param */
   cursor?: string;
-  /** Query param: */
+  /** Query param */
   limit?: number;
 }
 
@@ -3385,6 +3858,7 @@ export interface ListConnectorSnapshotLatestsResponse {
     cpuTimeStealMs?: number | null;
     cpuTimeSystemMs?: number | null;
     cpuTimeUserMs?: number | null;
+    delta?: number | null;
     dhcpLeases?:
       | {
           clientId: string;
@@ -3393,7 +3867,6 @@ export interface ListConnectorSnapshotLatestsResponse {
           interfaceName: string;
           ipAddress: string;
           macAddress: string;
-          connectorId?: string | null;
         }[]
       | null;
     disks?:
@@ -3412,7 +3885,6 @@ export interface ListConnectorSnapshotLatestsResponse {
           weightedTimeInProgressMs: number;
           writes: number;
           writesMerged: number;
-          connectorId?: string | null;
           discards?: number | null;
           discardsMerged?: number | null;
           flushes?: number | null;
@@ -3421,20 +3893,14 @@ export interface ListConnectorSnapshotLatestsResponse {
           timeFlushingMs?: number | null;
         }[]
       | null;
+    epsilon?: number | null;
     haState?: string | null;
     haValue?: number | null;
     interfaces?:
       | {
           name: string;
           operstate: string;
-          connectorId?: string | null;
-          ipAddresses?:
-            | {
-                interfaceName: string;
-                ipAddress: string;
-                connectorId?: string | null;
-              }[]
-            | null;
+          ipAddresses?: { interfaceName: string; ipAddress: string }[] | null;
           speed?: number | null;
         }[]
       | null;
@@ -3517,10 +3983,11 @@ export interface ListConnectorSnapshotLatestsResponse {
           mountPoint: string;
           name: string;
           availableBytes?: number | null;
-          connectorId?: string | null;
+          availableInodes?: number | null;
           isReadOnly?: boolean | null;
           isRemovable?: boolean | null;
           totalBytes?: number | null;
+          totalInodes?: number | null;
         }[]
       | null;
     netdevs?:
@@ -3542,9 +4009,9 @@ export interface ListConnectorSnapshotLatestsResponse {
           sentErrs: number;
           sentFifo: number;
           sentPackets: number;
-          connectorId?: string | null;
         }[]
       | null;
+    platform?: string | null;
     snmpIcmpInAddrMaskReps?: number | null;
     snmpIcmpInAddrMasks?: number | null;
     snmpIcmpInCsumErrors?: number | null;
@@ -3613,7 +4080,6 @@ export interface ListConnectorSnapshotLatestsResponse {
     thermals?:
       | {
           label: string;
-          connectorId?: string | null;
           criticalCelcius?: number | null;
           currentCelcius?: number | null;
           maxCelcius?: number | null;
@@ -3625,8 +4091,9 @@ export interface ListConnectorSnapshotLatestsResponse {
           healthValue: number;
           interfaceName: string;
           tunnelId: string;
-          connectorId?: string | null;
           probedMtu?: number | null;
+          recentHealthyPings?: number | null;
+          recentUnhealthyPings?: number | null;
         }[]
       | null;
     uptimeIdleMs?: number | null;
@@ -3699,6 +4166,7 @@ export const ListConnectorSnapshotLatestsResponse =
         cpuTimeUserMs: Schema.optional(
           Schema.Union([Schema.Number, Schema.Null]),
         ),
+        delta: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
         dhcpLeases: Schema.optional(
           Schema.Union([
             Schema.Array(
@@ -3709,9 +4177,6 @@ export const ListConnectorSnapshotLatestsResponse =
                 interfaceName: Schema.String,
                 ipAddress: Schema.String,
                 macAddress: Schema.String,
-                connectorId: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
               }).pipe(
                 Schema.encodeKeys({
                   clientId: "client_id",
@@ -3720,7 +4185,6 @@ export const ListConnectorSnapshotLatestsResponse =
                   interfaceName: "interface_name",
                   ipAddress: "ip_address",
                   macAddress: "mac_address",
-                  connectorId: "connector_id",
                 }),
               ),
             ),
@@ -3745,9 +4209,6 @@ export const ListConnectorSnapshotLatestsResponse =
                 weightedTimeInProgressMs: Schema.Number,
                 writes: Schema.Number,
                 writesMerged: Schema.Number,
-                connectorId: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
                 discards: Schema.optional(
                   Schema.Union([Schema.Number, Schema.Null]),
                 ),
@@ -3782,7 +4243,6 @@ export const ListConnectorSnapshotLatestsResponse =
                   weightedTimeInProgressMs: "weighted_time_in_progress_ms",
                   writes: "writes",
                   writesMerged: "writes_merged",
-                  connectorId: "connector_id",
                   discards: "discards",
                   discardsMerged: "discards_merged",
                   flushes: "flushes",
@@ -3795,6 +4255,7 @@ export const ListConnectorSnapshotLatestsResponse =
             Schema.Null,
           ]),
         ),
+        epsilon: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
         haState: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         haValue: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
         interfaces: Schema.optional(
@@ -3803,23 +4264,16 @@ export const ListConnectorSnapshotLatestsResponse =
               Schema.Struct({
                 name: Schema.String,
                 operstate: Schema.String,
-                connectorId: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
                 ipAddresses: Schema.optional(
                   Schema.Union([
                     Schema.Array(
                       Schema.Struct({
                         interfaceName: Schema.String,
                         ipAddress: Schema.String,
-                        connectorId: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
                       }).pipe(
                         Schema.encodeKeys({
                           interfaceName: "interface_name",
                           ipAddress: "ip_address",
-                          connectorId: "connector_id",
                         }),
                       ),
                     ),
@@ -3833,7 +4287,6 @@ export const ListConnectorSnapshotLatestsResponse =
                 Schema.encodeKeys({
                   name: "name",
                   operstate: "operstate",
-                  connectorId: "connector_id",
                   ipAddresses: "ip_addresses",
                   speed: "speed",
                 }),
@@ -4067,8 +4520,8 @@ export const ListConnectorSnapshotLatestsResponse =
                 availableBytes: Schema.optional(
                   Schema.Union([Schema.Number, Schema.Null]),
                 ),
-                connectorId: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
+                availableInodes: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
                 ),
                 isReadOnly: Schema.optional(
                   Schema.Union([Schema.Boolean, Schema.Null]),
@@ -4079,6 +4532,9 @@ export const ListConnectorSnapshotLatestsResponse =
                 totalBytes: Schema.optional(
                   Schema.Union([Schema.Number, Schema.Null]),
                 ),
+                totalInodes: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
               }).pipe(
                 Schema.encodeKeys({
                   fileSystem: "file_system",
@@ -4086,10 +4542,11 @@ export const ListConnectorSnapshotLatestsResponse =
                   mountPoint: "mount_point",
                   name: "name",
                   availableBytes: "available_bytes",
-                  connectorId: "connector_id",
+                  availableInodes: "available_inodes",
                   isReadOnly: "is_read_only",
                   isRemovable: "is_removable",
                   totalBytes: "total_bytes",
+                  totalInodes: "total_inodes",
                 }),
               ),
             ),
@@ -4117,9 +4574,6 @@ export const ListConnectorSnapshotLatestsResponse =
                 sentErrs: Schema.Number,
                 sentFifo: Schema.Number,
                 sentPackets: Schema.Number,
-                connectorId: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
               }).pipe(
                 Schema.encodeKeys({
                   name: "name",
@@ -4139,13 +4593,13 @@ export const ListConnectorSnapshotLatestsResponse =
                   sentErrs: "sent_errs",
                   sentFifo: "sent_fifo",
                   sentPackets: "sent_packets",
-                  connectorId: "connector_id",
                 }),
               ),
             ),
             Schema.Null,
           ]),
         ),
+        platform: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         snmpIcmpInAddrMaskReps: Schema.optional(
           Schema.Union([Schema.Number, Schema.Null]),
         ),
@@ -4346,9 +4800,6 @@ export const ListConnectorSnapshotLatestsResponse =
             Schema.Array(
               Schema.Struct({
                 label: Schema.String,
-                connectorId: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
                 criticalCelcius: Schema.optional(
                   Schema.Union([Schema.Number, Schema.Null]),
                 ),
@@ -4361,7 +4812,6 @@ export const ListConnectorSnapshotLatestsResponse =
               }).pipe(
                 Schema.encodeKeys({
                   label: "label",
-                  connectorId: "connector_id",
                   criticalCelcius: "critical_celcius",
                   currentCelcius: "current_celcius",
                   maxCelcius: "max_celcius",
@@ -4379,10 +4829,13 @@ export const ListConnectorSnapshotLatestsResponse =
                 healthValue: Schema.Number,
                 interfaceName: Schema.String,
                 tunnelId: Schema.String,
-                connectorId: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
                 probedMtu: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                recentHealthyPings: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                recentUnhealthyPings: Schema.optional(
                   Schema.Union([Schema.Number, Schema.Null]),
                 ),
               }).pipe(
@@ -4391,8 +4844,9 @@ export const ListConnectorSnapshotLatestsResponse =
                   healthValue: "health_value",
                   interfaceName: "interface_name",
                   tunnelId: "tunnel_id",
-                  connectorId: "connector_id",
                   probedMtu: "probed_mtu",
+                  recentHealthyPings: "recent_healthy_pings",
+                  recentUnhealthyPings: "recent_unhealthy_pings",
                 }),
               ),
             ),
@@ -4429,8 +4883,10 @@ export const ListConnectorSnapshotLatestsResponse =
           cpuTimeStealMs: "cpu_time_steal_ms",
           cpuTimeSystemMs: "cpu_time_system_ms",
           cpuTimeUserMs: "cpu_time_user_ms",
+          delta: "delta",
           dhcpLeases: "dhcp_leases",
           disks: "disks",
+          epsilon: "epsilon",
           haState: "ha_state",
           haValue: "ha_value",
           interfaces: "interfaces",
@@ -4508,6 +4964,7 @@ export const ListConnectorSnapshotLatestsResponse =
           memoryZSwappedBytes: "memory_z_swapped_bytes",
           mounts: "mounts",
           netdevs: "netdevs",
+          platform: "platform",
           snmpIcmpInAddrMaskReps: "snmp_icmp_in_addr_mask_reps",
           snmpIcmpInAddrMasks: "snmp_icmp_in_addr_masks",
           snmpIcmpInCsumErrors: "snmp_icmp_in_csum_errors",
@@ -4605,7 +5062,7 @@ export interface PskGenerateIpsecTunnelRequest {
   ipsecTunnelId: string;
   /** Path param: Identifier */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   body: unknown;
 }
 
@@ -4708,7 +5165,7 @@ export interface GetGreTunnelResponse {
       md5Key?: string | null;
     } | null;
     bgpStatus?: {
-      state: "BGP_DOWN" | "BGP_UP" | "BGP_ESTABLISHING";
+      state: "BGP_DOWN" | "BGP_UP" | "BGP_ESTABLISHING" | (string & {});
       tcpEstablished: boolean;
       updatedAt: string;
       bgpState?: string | null;
@@ -4720,14 +5177,14 @@ export interface GetGreTunnelResponse {
     createdOn?: string | null;
     description?: string | null;
     healthCheck?: {
-      direction?: "unidirectional" | "bidirectional" | null;
+      direction?: "unidirectional" | "bidirectional" | (string & {}) | null;
       enabled?: boolean | null;
-      rate?: "low" | "mid" | "high" | null;
+      rate?: "low" | "mid" | "high" | (string & {}) | null;
       target?:
         | { effective?: string | null; saved?: string | null }
         | string
         | null;
-      type?: "reply" | "request" | null;
+      type?: "reply" | "request" | (string & {}) | null;
     } | null;
     interfaceAddress6?: string | null;
     modifiedOn?: string | null;
@@ -4771,10 +5228,9 @@ export const GetGreTunnelResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         bgpStatus: Schema.optional(
           Schema.Union([
             Schema.Struct({
-              state: Schema.Literals([
-                "BGP_DOWN",
-                "BGP_UP",
-                "BGP_ESTABLISHING",
+              state: Schema.Union([
+                Schema.Literals(["BGP_DOWN", "BGP_UP", "BGP_ESTABLISHING"]),
+                Schema.String,
               ]),
               tcpEstablished: Schema.Boolean,
               updatedAt: Schema.String,
@@ -4817,7 +5273,10 @@ export const GetGreTunnelResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.Struct({
               direction: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["unidirectional", "bidirectional"]),
+                  Schema.Union([
+                    Schema.Literals(["unidirectional", "bidirectional"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -4826,7 +5285,10 @@ export const GetGreTunnelResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               rate: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["low", "mid", "high"]),
+                  Schema.Union([
+                    Schema.Literals(["low", "mid", "high"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -4848,7 +5310,10 @@ export const GetGreTunnelResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               type: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["reply", "request"]),
+                  Schema.Union([
+                    Schema.Literals(["reply", "request"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -4934,7 +5399,7 @@ export interface ListGreTunnelsResponse {
           md5Key?: string | null;
         } | null;
         bgpStatus?: {
-          state: "BGP_DOWN" | "BGP_UP" | "BGP_ESTABLISHING";
+          state: "BGP_DOWN" | "BGP_UP" | "BGP_ESTABLISHING" | (string & {});
           tcpEstablished: boolean;
           updatedAt: string;
           bgpState?: string | null;
@@ -4946,14 +5411,14 @@ export interface ListGreTunnelsResponse {
         createdOn?: string | null;
         description?: string | null;
         healthCheck?: {
-          direction?: "unidirectional" | "bidirectional" | null;
+          direction?: "unidirectional" | "bidirectional" | (string & {}) | null;
           enabled?: boolean | null;
-          rate?: "low" | "mid" | "high" | null;
+          rate?: "low" | "mid" | "high" | (string & {}) | null;
           target?:
             | { effective?: string | null; saved?: string | null }
             | string
             | null;
-          type?: "reply" | "request" | null;
+          type?: "reply" | "request" | (string & {}) | null;
         } | null;
         interfaceAddress6?: string | null;
         modifiedOn?: string | null;
@@ -5000,10 +5465,9 @@ export const ListGreTunnelsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             bgpStatus: Schema.optional(
               Schema.Union([
                 Schema.Struct({
-                  state: Schema.Literals([
-                    "BGP_DOWN",
-                    "BGP_UP",
-                    "BGP_ESTABLISHING",
+                  state: Schema.Union([
+                    Schema.Literals(["BGP_DOWN", "BGP_UP", "BGP_ESTABLISHING"]),
+                    Schema.String,
                   ]),
                   tcpEstablished: Schema.Boolean,
                   updatedAt: Schema.String,
@@ -5048,7 +5512,10 @@ export const ListGreTunnelsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 Schema.Struct({
                   direction: Schema.optional(
                     Schema.Union([
-                      Schema.Literals(["unidirectional", "bidirectional"]),
+                      Schema.Union([
+                        Schema.Literals(["unidirectional", "bidirectional"]),
+                        Schema.String,
+                      ]),
                       Schema.Null,
                     ]),
                   ),
@@ -5057,7 +5524,10 @@ export const ListGreTunnelsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                   ),
                   rate: Schema.optional(
                     Schema.Union([
-                      Schema.Literals(["low", "mid", "high"]),
+                      Schema.Union([
+                        Schema.Literals(["low", "mid", "high"]),
+                        Schema.String,
+                      ]),
                       Schema.Null,
                     ]),
                   ),
@@ -5079,7 +5549,10 @@ export const ListGreTunnelsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                   ),
                   type: Schema.optional(
                     Schema.Union([
-                      Schema.Literals(["reply", "request"]),
+                      Schema.Union([
+                        Schema.Literals(["reply", "request"]),
+                        Schema.String,
+                      ]),
                       Schema.Null,
                     ]),
                   ),
@@ -5151,19 +5624,19 @@ export interface CreateGreTunnelRequest {
   interfaceAddress: string;
   /** Body param: The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel. */
   name: string;
-  /** Body param: True if automatic stateful return routing should be enabled for a tunnel, false otherwise. */
+  /** Body param: True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` wi */
   automaticReturnRouting?: boolean;
-  /** Body param: */
+  /** Body param */
   bgp?: { customerAsn: number; extraPrefixes?: string[]; md5Key?: string };
   /** Body param: An optional description of the GRE tunnel. */
   description?: string;
-  /** Body param: */
+  /** Body param */
   healthCheck?: {
-    direction?: "unidirectional" | "bidirectional";
+    direction?: "unidirectional" | "bidirectional" | (string & {});
     enabled?: boolean;
-    rate?: "low" | "mid" | "high";
+    rate?: "low" | "mid" | "high" | (string & {});
     target?: { saved?: string } | string;
-    type?: "reply" | "request";
+    type?: "reply" | "request" | (string & {});
   };
   /** Body param: A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 i */
   interfaceAddress6?: string;
@@ -5201,10 +5674,18 @@ export const CreateGreTunnelRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     healthCheck: Schema.optional(
       Schema.Struct({
         direction: Schema.optional(
-          Schema.Literals(["unidirectional", "bidirectional"]),
+          Schema.Union([
+            Schema.Literals(["unidirectional", "bidirectional"]),
+            Schema.String,
+          ]),
         ),
         enabled: Schema.optional(Schema.Boolean),
-        rate: Schema.optional(Schema.Literals(["low", "mid", "high"])),
+        rate: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["low", "mid", "high"]),
+            Schema.String,
+          ]),
+        ),
         target: Schema.optional(
           Schema.Union([
             Schema.Struct({
@@ -5213,7 +5694,9 @@ export const CreateGreTunnelRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             Schema.String,
           ]),
         ),
-        type: Schema.optional(Schema.Literals(["reply", "request"])),
+        type: Schema.optional(
+          Schema.Union([Schema.Literals(["reply", "request"]), Schema.String]),
+        ),
       }),
     ),
     interfaceAddress6: Schema.optional(Schema.String),
@@ -5248,7 +5731,7 @@ export interface CreateGreTunnelResponse {
   interfaceAddress: string;
   /** The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel. */
   name: string;
-  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. */
+  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that f */
   automaticReturnRouting?: boolean | null;
   bgp?: {
     customerAsn: number;
@@ -5256,7 +5739,7 @@ export interface CreateGreTunnelResponse {
     md5Key?: string | null;
   } | null;
   bgpStatus?: {
-    state: "BGP_DOWN" | "BGP_UP" | "BGP_ESTABLISHING";
+    state: "BGP_DOWN" | "BGP_UP" | "BGP_ESTABLISHING" | (string & {});
     tcpEstablished: boolean;
     updatedAt: string;
     bgpState?: string | null;
@@ -5270,14 +5753,14 @@ export interface CreateGreTunnelResponse {
   /** An optional description of the GRE tunnel. */
   description?: string | null;
   healthCheck?: {
-    direction?: "unidirectional" | "bidirectional" | null;
+    direction?: "unidirectional" | "bidirectional" | (string & {}) | null;
     enabled?: boolean | null;
-    rate?: "low" | "mid" | "high" | null;
+    rate?: "low" | "mid" | "high" | (string & {}) | null;
     target?:
       | { effective?: string | null; saved?: string | null }
       | string
       | null;
-    type?: "reply" | "request" | null;
+    type?: "reply" | "request" | (string & {}) | null;
   } | null;
   /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1: */
   interfaceAddress6?: string | null;
@@ -5320,7 +5803,10 @@ export const CreateGreTunnelResponse =
     bgpStatus: Schema.optional(
       Schema.Union([
         Schema.Struct({
-          state: Schema.Literals(["BGP_DOWN", "BGP_UP", "BGP_ESTABLISHING"]),
+          state: Schema.Union([
+            Schema.Literals(["BGP_DOWN", "BGP_UP", "BGP_ESTABLISHING"]),
+            Schema.String,
+          ]),
           tcpEstablished: Schema.Boolean,
           updatedAt: Schema.String,
           bgpState: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -5358,14 +5844,20 @@ export const CreateGreTunnelResponse =
         Schema.Struct({
           direction: Schema.optional(
             Schema.Union([
-              Schema.Literals(["unidirectional", "bidirectional"]),
+              Schema.Union([
+                Schema.Literals(["unidirectional", "bidirectional"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
           enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
           rate: Schema.optional(
             Schema.Union([
-              Schema.Literals(["low", "mid", "high"]),
+              Schema.Union([
+                Schema.Literals(["low", "mid", "high"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -5386,7 +5878,13 @@ export const CreateGreTunnelResponse =
             ]),
           ),
           type: Schema.optional(
-            Schema.Union([Schema.Literals(["reply", "request"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([
+                Schema.Literals(["reply", "request"]),
+                Schema.String,
+              ]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Null,
@@ -5449,17 +5947,17 @@ export interface UpdateGreTunnelRequest {
   interfaceAddress: string;
   /** Body param: The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel. */
   name: string;
-  /** Body param: True if automatic stateful return routing should be enabled for a tunnel, false otherwise. */
+  /** Body param: True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` wi */
   automaticReturnRouting?: boolean;
   /** Body param: An optional description of the GRE tunnel. */
   description?: string;
-  /** Body param: */
+  /** Body param */
   healthCheck?: {
-    direction?: "unidirectional" | "bidirectional";
+    direction?: "unidirectional" | "bidirectional" | (string & {});
     enabled?: boolean;
-    rate?: "low" | "mid" | "high";
+    rate?: "low" | "mid" | "high" | (string & {});
     target?: { saved?: string } | string;
-    type?: "reply" | "request";
+    type?: "reply" | "request" | (string & {});
   };
   /** Body param: A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 i */
   interfaceAddress6?: string;
@@ -5485,10 +5983,18 @@ export const UpdateGreTunnelRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     healthCheck: Schema.optional(
       Schema.Struct({
         direction: Schema.optional(
-          Schema.Literals(["unidirectional", "bidirectional"]),
+          Schema.Union([
+            Schema.Literals(["unidirectional", "bidirectional"]),
+            Schema.String,
+          ]),
         ),
         enabled: Schema.optional(Schema.Boolean),
-        rate: Schema.optional(Schema.Literals(["low", "mid", "high"])),
+        rate: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["low", "mid", "high"]),
+            Schema.String,
+          ]),
+        ),
         target: Schema.optional(
           Schema.Union([
             Schema.Struct({
@@ -5497,7 +6003,9 @@ export const UpdateGreTunnelRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             Schema.String,
           ]),
         ),
-        type: Schema.optional(Schema.Literals(["reply", "request"])),
+        type: Schema.optional(
+          Schema.Union([Schema.Literals(["reply", "request"]), Schema.String]),
+        ),
       }),
     ),
     interfaceAddress6: Schema.optional(Schema.String),
@@ -5538,7 +6046,7 @@ export interface UpdateGreTunnelResponse {
       md5Key?: string | null;
     } | null;
     bgpStatus?: {
-      state: "BGP_DOWN" | "BGP_UP" | "BGP_ESTABLISHING";
+      state: "BGP_DOWN" | "BGP_UP" | "BGP_ESTABLISHING" | (string & {});
       tcpEstablished: boolean;
       updatedAt: string;
       bgpState?: string | null;
@@ -5550,14 +6058,14 @@ export interface UpdateGreTunnelResponse {
     createdOn?: string | null;
     description?: string | null;
     healthCheck?: {
-      direction?: "unidirectional" | "bidirectional" | null;
+      direction?: "unidirectional" | "bidirectional" | (string & {}) | null;
       enabled?: boolean | null;
-      rate?: "low" | "mid" | "high" | null;
+      rate?: "low" | "mid" | "high" | (string & {}) | null;
       target?:
         | { effective?: string | null; saved?: string | null }
         | string
         | null;
-      type?: "reply" | "request" | null;
+      type?: "reply" | "request" | (string & {}) | null;
     } | null;
     interfaceAddress6?: string | null;
     modifiedOn?: string | null;
@@ -5603,10 +6111,9 @@ export const UpdateGreTunnelResponse =
           bgpStatus: Schema.optional(
             Schema.Union([
               Schema.Struct({
-                state: Schema.Literals([
-                  "BGP_DOWN",
-                  "BGP_UP",
-                  "BGP_ESTABLISHING",
+                state: Schema.Union([
+                  Schema.Literals(["BGP_DOWN", "BGP_UP", "BGP_ESTABLISHING"]),
+                  Schema.String,
                 ]),
                 tcpEstablished: Schema.Boolean,
                 updatedAt: Schema.String,
@@ -5651,7 +6158,10 @@ export const UpdateGreTunnelResponse =
               Schema.Struct({
                 direction: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["unidirectional", "bidirectional"]),
+                    Schema.Union([
+                      Schema.Literals(["unidirectional", "bidirectional"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -5660,7 +6170,10 @@ export const UpdateGreTunnelResponse =
                 ),
                 rate: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["low", "mid", "high"]),
+                    Schema.Union([
+                      Schema.Literals(["low", "mid", "high"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -5682,7 +6195,10 @@ export const UpdateGreTunnelResponse =
                 ),
                 type: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["reply", "request"]),
+                    Schema.Union([
+                      Schema.Literals(["reply", "request"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -5782,7 +6298,7 @@ export interface DeleteGreTunnelResponse {
       md5Key?: string | null;
     } | null;
     bgpStatus?: {
-      state: "BGP_DOWN" | "BGP_UP" | "BGP_ESTABLISHING";
+      state: "BGP_DOWN" | "BGP_UP" | "BGP_ESTABLISHING" | (string & {});
       tcpEstablished: boolean;
       updatedAt: string;
       bgpState?: string | null;
@@ -5794,14 +6310,14 @@ export interface DeleteGreTunnelResponse {
     createdOn?: string | null;
     description?: string | null;
     healthCheck?: {
-      direction?: "unidirectional" | "bidirectional" | null;
+      direction?: "unidirectional" | "bidirectional" | (string & {}) | null;
       enabled?: boolean | null;
-      rate?: "low" | "mid" | "high" | null;
+      rate?: "low" | "mid" | "high" | (string & {}) | null;
       target?:
         | { effective?: string | null; saved?: string | null }
         | string
         | null;
-      type?: "reply" | "request" | null;
+      type?: "reply" | "request" | (string & {}) | null;
     } | null;
     interfaceAddress6?: string | null;
     modifiedOn?: string | null;
@@ -5847,10 +6363,9 @@ export const DeleteGreTunnelResponse =
           bgpStatus: Schema.optional(
             Schema.Union([
               Schema.Struct({
-                state: Schema.Literals([
-                  "BGP_DOWN",
-                  "BGP_UP",
-                  "BGP_ESTABLISHING",
+                state: Schema.Union([
+                  Schema.Literals(["BGP_DOWN", "BGP_UP", "BGP_ESTABLISHING"]),
+                  Schema.String,
                 ]),
                 tcpEstablished: Schema.Boolean,
                 updatedAt: Schema.String,
@@ -5895,7 +6410,10 @@ export const DeleteGreTunnelResponse =
               Schema.Struct({
                 direction: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["unidirectional", "bidirectional"]),
+                    Schema.Union([
+                      Schema.Literals(["unidirectional", "bidirectional"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -5904,7 +6422,10 @@ export const DeleteGreTunnelResponse =
                 ),
                 rate: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["low", "mid", "high"]),
+                    Schema.Union([
+                      Schema.Literals(["low", "mid", "high"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -5926,7 +6447,10 @@ export const DeleteGreTunnelResponse =
                 ),
                 type: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["reply", "request"]),
+                    Schema.Union([
+                      Schema.Literals(["reply", "request"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -6027,7 +6551,7 @@ export interface GetIpsecTunnelResponse {
       md5Key?: string | null;
     } | null;
     bgpStatus?: {
-      state: "BGP_DOWN" | "BGP_UP" | "BGP_ESTABLISHING";
+      state: "BGP_DOWN" | "BGP_UP" | "BGP_ESTABLISHING" | (string & {});
       tcpEstablished: boolean;
       updatedAt: string;
       bgpState?: string | null;
@@ -6041,14 +6565,14 @@ export interface GetIpsecTunnelResponse {
     customerEndpoint?: string | null;
     description?: string | null;
     healthCheck?: {
-      direction?: "unidirectional" | "bidirectional" | null;
+      direction?: "unidirectional" | "bidirectional" | (string & {}) | null;
       enabled?: boolean | null;
-      rate?: "low" | "mid" | "high" | null;
+      rate?: "low" | "mid" | "high" | (string & {}) | null;
       target?:
         | { effective?: string | null; saved?: string | null }
         | string
         | null;
-      type?: "reply" | "request" | null;
+      type?: "reply" | "request" | (string & {}) | null;
     } | null;
     interfaceAddress6?: string | null;
     modifiedOn?: string | null;
@@ -6095,10 +6619,9 @@ export const GetIpsecTunnelResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           bgpStatus: Schema.optional(
             Schema.Union([
               Schema.Struct({
-                state: Schema.Literals([
-                  "BGP_DOWN",
-                  "BGP_UP",
-                  "BGP_ESTABLISHING",
+                state: Schema.Union([
+                  Schema.Literals(["BGP_DOWN", "BGP_UP", "BGP_ESTABLISHING"]),
+                  Schema.String,
                 ]),
                 tcpEstablished: Schema.Boolean,
                 updatedAt: Schema.String,
@@ -6156,7 +6679,10 @@ export const GetIpsecTunnelResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
               Schema.Struct({
                 direction: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["unidirectional", "bidirectional"]),
+                    Schema.Union([
+                      Schema.Literals(["unidirectional", "bidirectional"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -6165,7 +6691,10 @@ export const GetIpsecTunnelResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 ),
                 rate: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["low", "mid", "high"]),
+                    Schema.Union([
+                      Schema.Literals(["low", "mid", "high"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -6187,7 +6716,10 @@ export const GetIpsecTunnelResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 ),
                 type: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["reply", "request"]),
+                    Schema.Union([
+                      Schema.Literals(["reply", "request"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -6295,7 +6827,7 @@ export interface ListIpsecTunnelsResponse {
           md5Key?: string | null;
         } | null;
         bgpStatus?: {
-          state: "BGP_DOWN" | "BGP_UP" | "BGP_ESTABLISHING";
+          state: "BGP_DOWN" | "BGP_UP" | "BGP_ESTABLISHING" | (string & {});
           tcpEstablished: boolean;
           updatedAt: string;
           bgpState?: string | null;
@@ -6309,14 +6841,14 @@ export interface ListIpsecTunnelsResponse {
         customerEndpoint?: string | null;
         description?: string | null;
         healthCheck?: {
-          direction?: "unidirectional" | "bidirectional" | null;
+          direction?: "unidirectional" | "bidirectional" | (string & {}) | null;
           enabled?: boolean | null;
-          rate?: "low" | "mid" | "high" | null;
+          rate?: "low" | "mid" | "high" | (string & {}) | null;
           target?:
             | { effective?: string | null; saved?: string | null }
             | string
             | null;
-          type?: "reply" | "request" | null;
+          type?: "reply" | "request" | (string & {}) | null;
         } | null;
         interfaceAddress6?: string | null;
         modifiedOn?: string | null;
@@ -6365,10 +6897,9 @@ export const ListIpsecTunnelsResponse =
             bgpStatus: Schema.optional(
               Schema.Union([
                 Schema.Struct({
-                  state: Schema.Literals([
-                    "BGP_DOWN",
-                    "BGP_UP",
-                    "BGP_ESTABLISHING",
+                  state: Schema.Union([
+                    Schema.Literals(["BGP_DOWN", "BGP_UP", "BGP_ESTABLISHING"]),
+                    Schema.String,
                   ]),
                   tcpEstablished: Schema.Boolean,
                   updatedAt: Schema.String,
@@ -6426,7 +6957,10 @@ export const ListIpsecTunnelsResponse =
                 Schema.Struct({
                   direction: Schema.optional(
                     Schema.Union([
-                      Schema.Literals(["unidirectional", "bidirectional"]),
+                      Schema.Union([
+                        Schema.Literals(["unidirectional", "bidirectional"]),
+                        Schema.String,
+                      ]),
                       Schema.Null,
                     ]),
                   ),
@@ -6435,7 +6969,10 @@ export const ListIpsecTunnelsResponse =
                   ),
                   rate: Schema.optional(
                     Schema.Union([
-                      Schema.Literals(["low", "mid", "high"]),
+                      Schema.Union([
+                        Schema.Literals(["low", "mid", "high"]),
+                        Schema.String,
+                      ]),
                       Schema.Null,
                     ]),
                   ),
@@ -6457,7 +6994,10 @@ export const ListIpsecTunnelsResponse =
                   ),
                   type: Schema.optional(
                     Schema.Union([
-                      Schema.Literals(["reply", "request"]),
+                      Schema.Union([
+                        Schema.Literals(["reply", "request"]),
+                        Schema.String,
+                      ]),
                       Schema.Null,
                     ]),
                   ),
@@ -6541,23 +7081,23 @@ export interface CreateIpsecTunnelRequest {
   interfaceAddress: string;
   /** Body param: The name of the IPsec tunnel. The name cannot share a name with other tunnels. */
   name: string;
-  /** Body param: True if automatic stateful return routing should be enabled for a tunnel, false otherwise. */
+  /** Body param: True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` wi */
   automaticReturnRouting?: boolean;
-  /** Body param: */
+  /** Body param */
   bgp?: { customerAsn: number; extraPrefixes?: string[]; md5Key?: string };
-  /** Body param: */
+  /** Body param */
   customRemoteIdentities?: { fqdnId?: string };
   /** Body param: The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work. */
   customerEndpoint?: string;
   /** Body param: An optional description forthe IPsec tunnel. */
   description?: string;
-  /** Body param: */
+  /** Body param */
   healthCheck?: {
-    direction?: "unidirectional" | "bidirectional";
+    direction?: "unidirectional" | "bidirectional" | (string & {});
     enabled?: boolean;
-    rate?: "low" | "mid" | "high";
+    rate?: "low" | "mid" | "high" | (string & {});
     target?: { saved?: string } | string;
-    type?: "reply" | "request";
+    type?: "reply" | "request" | (string & {});
   };
   /** Body param: A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 i */
   interfaceAddress6?: string;
@@ -6600,10 +7140,18 @@ export const CreateIpsecTunnelRequest =
     healthCheck: Schema.optional(
       Schema.Struct({
         direction: Schema.optional(
-          Schema.Literals(["unidirectional", "bidirectional"]),
+          Schema.Union([
+            Schema.Literals(["unidirectional", "bidirectional"]),
+            Schema.String,
+          ]),
         ),
         enabled: Schema.optional(Schema.Boolean),
-        rate: Schema.optional(Schema.Literals(["low", "mid", "high"])),
+        rate: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["low", "mid", "high"]),
+            Schema.String,
+          ]),
+        ),
         target: Schema.optional(
           Schema.Union([
             Schema.Struct({
@@ -6612,7 +7160,9 @@ export const CreateIpsecTunnelRequest =
             Schema.String,
           ]),
         ),
-        type: Schema.optional(Schema.Literals(["reply", "request"])),
+        type: Schema.optional(
+          Schema.Union([Schema.Literals(["reply", "request"]), Schema.String]),
+        ),
       }),
     ),
     interfaceAddress6: Schema.optional(Schema.String),
@@ -6650,7 +7200,7 @@ export interface CreateIpsecTunnelResponse {
   name: string;
   /** When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2). */
   allowNullCipher?: boolean | null;
-  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. */
+  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that f */
   automaticReturnRouting?: boolean | null;
   bgp?: {
     customerAsn: number;
@@ -6658,7 +7208,7 @@ export interface CreateIpsecTunnelResponse {
     md5Key?: string | null;
   } | null;
   bgpStatus?: {
-    state: "BGP_DOWN" | "BGP_UP" | "BGP_ESTABLISHING";
+    state: "BGP_DOWN" | "BGP_UP" | "BGP_ESTABLISHING" | (string & {});
     tcpEstablished: boolean;
     updatedAt: string;
     bgpState?: string | null;
@@ -6675,14 +7225,14 @@ export interface CreateIpsecTunnelResponse {
   /** An optional description forthe IPsec tunnel. */
   description?: string | null;
   healthCheck?: {
-    direction?: "unidirectional" | "bidirectional" | null;
+    direction?: "unidirectional" | "bidirectional" | (string & {}) | null;
     enabled?: boolean | null;
-    rate?: "low" | "mid" | "high" | null;
+    rate?: "low" | "mid" | "high" | (string & {}) | null;
     target?:
       | { effective?: string | null; saved?: string | null }
       | string
       | null;
-    type?: "reply" | "request" | null;
+    type?: "reply" | "request" | (string & {}) | null;
   } | null;
   /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1: */
   interfaceAddress6?: string | null;
@@ -6727,7 +7277,10 @@ export const CreateIpsecTunnelResponse =
     bgpStatus: Schema.optional(
       Schema.Union([
         Schema.Struct({
-          state: Schema.Literals(["BGP_DOWN", "BGP_UP", "BGP_ESTABLISHING"]),
+          state: Schema.Union([
+            Schema.Literals(["BGP_DOWN", "BGP_UP", "BGP_ESTABLISHING"]),
+            Schema.String,
+          ]),
           tcpEstablished: Schema.Boolean,
           updatedAt: Schema.String,
           bgpState: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -6776,14 +7329,20 @@ export const CreateIpsecTunnelResponse =
         Schema.Struct({
           direction: Schema.optional(
             Schema.Union([
-              Schema.Literals(["unidirectional", "bidirectional"]),
+              Schema.Union([
+                Schema.Literals(["unidirectional", "bidirectional"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
           enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
           rate: Schema.optional(
             Schema.Union([
-              Schema.Literals(["low", "mid", "high"]),
+              Schema.Union([
+                Schema.Literals(["low", "mid", "high"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -6804,7 +7363,13 @@ export const CreateIpsecTunnelResponse =
             ]),
           ),
           type: Schema.optional(
-            Schema.Union([Schema.Literals(["reply", "request"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([
+                Schema.Literals(["reply", "request"]),
+                Schema.String,
+              ]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Null,
@@ -6878,23 +7443,23 @@ export interface UpdateIpsecTunnelRequest {
   interfaceAddress: string;
   /** Body param: The name of the IPsec tunnel. The name cannot share a name with other tunnels. */
   name: string;
-  /** Body param: True if automatic stateful return routing should be enabled for a tunnel, false otherwise. */
+  /** Body param: True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` wi */
   automaticReturnRouting?: boolean;
-  /** Body param: */
+  /** Body param */
   bgp?: { customerAsn: number; extraPrefixes?: string[]; md5Key?: string };
-  /** Body param: */
+  /** Body param */
   customRemoteIdentities?: { fqdnId?: string };
   /** Body param: The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work. */
   customerEndpoint?: string;
   /** Body param: An optional description forthe IPsec tunnel. */
   description?: string;
-  /** Body param: */
+  /** Body param */
   healthCheck?: {
-    direction?: "unidirectional" | "bidirectional";
+    direction?: "unidirectional" | "bidirectional" | (string & {});
     enabled?: boolean;
-    rate?: "low" | "mid" | "high";
+    rate?: "low" | "mid" | "high" | (string & {});
     target?: { saved?: string } | string;
-    type?: "reply" | "request";
+    type?: "reply" | "request" | (string & {});
   };
   /** Body param: A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 i */
   interfaceAddress6?: string;
@@ -6938,10 +7503,18 @@ export const UpdateIpsecTunnelRequest =
     healthCheck: Schema.optional(
       Schema.Struct({
         direction: Schema.optional(
-          Schema.Literals(["unidirectional", "bidirectional"]),
+          Schema.Union([
+            Schema.Literals(["unidirectional", "bidirectional"]),
+            Schema.String,
+          ]),
         ),
         enabled: Schema.optional(Schema.Boolean),
-        rate: Schema.optional(Schema.Literals(["low", "mid", "high"])),
+        rate: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["low", "mid", "high"]),
+            Schema.String,
+          ]),
+        ),
         target: Schema.optional(
           Schema.Union([
             Schema.Struct({
@@ -6950,7 +7523,9 @@ export const UpdateIpsecTunnelRequest =
             Schema.String,
           ]),
         ),
-        type: Schema.optional(Schema.Literals(["reply", "request"])),
+        type: Schema.optional(
+          Schema.Union([Schema.Literals(["reply", "request"]), Schema.String]),
+        ),
       }),
     ),
     interfaceAddress6: Schema.optional(Schema.String),
@@ -6992,7 +7567,7 @@ export interface UpdateIpsecTunnelResponse {
       md5Key?: string | null;
     } | null;
     bgpStatus?: {
-      state: "BGP_DOWN" | "BGP_UP" | "BGP_ESTABLISHING";
+      state: "BGP_DOWN" | "BGP_UP" | "BGP_ESTABLISHING" | (string & {});
       tcpEstablished: boolean;
       updatedAt: string;
       bgpState?: string | null;
@@ -7006,14 +7581,14 @@ export interface UpdateIpsecTunnelResponse {
     customerEndpoint?: string | null;
     description?: string | null;
     healthCheck?: {
-      direction?: "unidirectional" | "bidirectional" | null;
+      direction?: "unidirectional" | "bidirectional" | (string & {}) | null;
       enabled?: boolean | null;
-      rate?: "low" | "mid" | "high" | null;
+      rate?: "low" | "mid" | "high" | (string & {}) | null;
       target?:
         | { effective?: string | null; saved?: string | null }
         | string
         | null;
-      type?: "reply" | "request" | null;
+      type?: "reply" | "request" | (string & {}) | null;
     } | null;
     interfaceAddress6?: string | null;
     modifiedOn?: string | null;
@@ -7061,10 +7636,9 @@ export const UpdateIpsecTunnelResponse =
           bgpStatus: Schema.optional(
             Schema.Union([
               Schema.Struct({
-                state: Schema.Literals([
-                  "BGP_DOWN",
-                  "BGP_UP",
-                  "BGP_ESTABLISHING",
+                state: Schema.Union([
+                  Schema.Literals(["BGP_DOWN", "BGP_UP", "BGP_ESTABLISHING"]),
+                  Schema.String,
                 ]),
                 tcpEstablished: Schema.Boolean,
                 updatedAt: Schema.String,
@@ -7122,7 +7696,10 @@ export const UpdateIpsecTunnelResponse =
               Schema.Struct({
                 direction: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["unidirectional", "bidirectional"]),
+                    Schema.Union([
+                      Schema.Literals(["unidirectional", "bidirectional"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -7131,7 +7708,10 @@ export const UpdateIpsecTunnelResponse =
                 ),
                 rate: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["low", "mid", "high"]),
+                    Schema.Union([
+                      Schema.Literals(["low", "mid", "high"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -7153,7 +7733,10 @@ export const UpdateIpsecTunnelResponse =
                 ),
                 type: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["reply", "request"]),
+                    Schema.Union([
+                      Schema.Literals(["reply", "request"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -7267,7 +7850,7 @@ export interface DeleteIpsecTunnelResponse {
       md5Key?: string | null;
     } | null;
     bgpStatus?: {
-      state: "BGP_DOWN" | "BGP_UP" | "BGP_ESTABLISHING";
+      state: "BGP_DOWN" | "BGP_UP" | "BGP_ESTABLISHING" | (string & {});
       tcpEstablished: boolean;
       updatedAt: string;
       bgpState?: string | null;
@@ -7281,14 +7864,14 @@ export interface DeleteIpsecTunnelResponse {
     customerEndpoint?: string | null;
     description?: string | null;
     healthCheck?: {
-      direction?: "unidirectional" | "bidirectional" | null;
+      direction?: "unidirectional" | "bidirectional" | (string & {}) | null;
       enabled?: boolean | null;
-      rate?: "low" | "mid" | "high" | null;
+      rate?: "low" | "mid" | "high" | (string & {}) | null;
       target?:
         | { effective?: string | null; saved?: string | null }
         | string
         | null;
-      type?: "reply" | "request" | null;
+      type?: "reply" | "request" | (string & {}) | null;
     } | null;
     interfaceAddress6?: string | null;
     modifiedOn?: string | null;
@@ -7336,10 +7919,9 @@ export const DeleteIpsecTunnelResponse =
           bgpStatus: Schema.optional(
             Schema.Union([
               Schema.Struct({
-                state: Schema.Literals([
-                  "BGP_DOWN",
-                  "BGP_UP",
-                  "BGP_ESTABLISHING",
+                state: Schema.Union([
+                  Schema.Literals(["BGP_DOWN", "BGP_UP", "BGP_ESTABLISHING"]),
+                  Schema.String,
                 ]),
                 tcpEstablished: Schema.Boolean,
                 updatedAt: Schema.String,
@@ -7397,7 +7979,10 @@ export const DeleteIpsecTunnelResponse =
               Schema.Struct({
                 direction: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["unidirectional", "bidirectional"]),
+                    Schema.Union([
+                      Schema.Literals(["unidirectional", "bidirectional"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -7406,7 +7991,10 @@ export const DeleteIpsecTunnelResponse =
                 ),
                 rate: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["low", "mid", "high"]),
+                    Schema.Union([
+                      Schema.Literals(["low", "mid", "high"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -7428,7 +8016,10 @@ export const DeleteIpsecTunnelResponse =
                 ),
                 type: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["reply", "request"]),
+                    Schema.Union([
+                      Schema.Literals(["reply", "request"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -7542,11 +8133,12 @@ export type GetPcapResponse =
         | "conversion_running"
         | "complete"
         | "failed"
+        | (string & {})
         | null;
       submitted?: string | null;
       system?: "magic-transit" | null;
       timeLimit?: number | null;
-      type?: "simple" | "full" | null;
+      type?: "simple" | "full" | (string & {}) | null;
     }
   | {
       id?: string | null;
@@ -7571,12 +8163,13 @@ export type GetPcapResponse =
         | "conversion_running"
         | "complete"
         | "failed"
+        | (string & {})
         | null;
       stopRequested?: string | null;
       submitted?: string | null;
       system?: "magic-transit" | null;
       timeLimit?: number | null;
-      type?: "simple" | "full" | null;
+      type?: "simple" | "full" | (string & {}) | null;
     };
 
 export const GetPcapResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
@@ -7613,15 +8206,18 @@ export const GetPcapResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     offsetTime: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     status: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "unknown",
-          "success",
-          "pending",
-          "running",
-          "conversion_pending",
-          "conversion_running",
-          "complete",
-          "failed",
+        Schema.Union([
+          Schema.Literals([
+            "unknown",
+            "success",
+            "pending",
+            "running",
+            "conversion_pending",
+            "conversion_running",
+            "complete",
+            "failed",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -7632,7 +8228,10 @@ export const GetPcapResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     ),
     timeLimit: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     type: Schema.optional(
-      Schema.Union([Schema.Literals(["simple", "full"]), Schema.Null]),
+      Schema.Union([
+        Schema.Union([Schema.Literals(["simple", "full"]), Schema.String]),
+        Schema.Null,
+      ]),
     ),
   }).pipe(
     Schema.encodeKeys({
@@ -7687,15 +8286,18 @@ export const GetPcapResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     ),
     status: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "unknown",
-          "success",
-          "pending",
-          "running",
-          "conversion_pending",
-          "conversion_running",
-          "complete",
-          "failed",
+        Schema.Union([
+          Schema.Literals([
+            "unknown",
+            "success",
+            "pending",
+            "running",
+            "conversion_pending",
+            "conversion_running",
+            "complete",
+            "failed",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -7707,7 +8309,10 @@ export const GetPcapResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     ),
     timeLimit: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     type: Schema.optional(
-      Schema.Union([Schema.Literals(["simple", "full"]), Schema.Null]),
+      Schema.Union([
+        Schema.Union([Schema.Literals(["simple", "full"]), Schema.String]),
+        Schema.Null,
+      ]),
     ),
   }).pipe(
     Schema.encodeKeys({
@@ -7773,11 +8378,12 @@ export interface ListPcapsResponse {
           | "conversion_running"
           | "complete"
           | "failed"
+          | (string & {})
           | null;
         submitted?: string | null;
         system?: "magic-transit" | null;
         timeLimit?: number | null;
-        type?: "simple" | "full" | null;
+        type?: "simple" | "full" | (string & {}) | null;
       }
     | {
         id?: string | null;
@@ -7802,12 +8408,13 @@ export interface ListPcapsResponse {
           | "conversion_running"
           | "complete"
           | "failed"
+          | (string & {})
           | null;
         stopRequested?: string | null;
         submitted?: string | null;
         system?: "magic-transit" | null;
         timeLimit?: number | null;
-        type?: "simple" | "full" | null;
+        type?: "simple" | "full" | (string & {}) | null;
       }
   )[];
 }
@@ -7850,15 +8457,18 @@ export const ListPcapsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         offsetTime: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         status: Schema.optional(
           Schema.Union([
-            Schema.Literals([
-              "unknown",
-              "success",
-              "pending",
-              "running",
-              "conversion_pending",
-              "conversion_running",
-              "complete",
-              "failed",
+            Schema.Union([
+              Schema.Literals([
+                "unknown",
+                "success",
+                "pending",
+                "running",
+                "conversion_pending",
+                "conversion_running",
+                "complete",
+                "failed",
+              ]),
+              Schema.String,
             ]),
             Schema.Null,
           ]),
@@ -7869,7 +8479,10 @@ export const ListPcapsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ),
         timeLimit: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
         type: Schema.optional(
-          Schema.Union([Schema.Literals(["simple", "full"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["simple", "full"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
       }).pipe(
         Schema.encodeKeys({
@@ -7928,15 +8541,18 @@ export const ListPcapsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ),
         status: Schema.optional(
           Schema.Union([
-            Schema.Literals([
-              "unknown",
-              "success",
-              "pending",
-              "running",
-              "conversion_pending",
-              "conversion_running",
-              "complete",
-              "failed",
+            Schema.Union([
+              Schema.Literals([
+                "unknown",
+                "success",
+                "pending",
+                "running",
+                "conversion_pending",
+                "conversion_running",
+                "complete",
+                "failed",
+              ]),
+              Schema.String,
             ]),
             Schema.Null,
           ]),
@@ -7950,7 +8566,10 @@ export const ListPcapsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ),
         timeLimit: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
         type: Schema.optional(
-          Schema.Union([Schema.Literals(["simple", "full"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["simple", "full"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
       }).pipe(
         Schema.encodeKeys({
@@ -7994,13 +8613,13 @@ export interface CreatePcapRequest {
   /** Path param: Identifier. */
   accountId: string;
   /** Body param: The limit of packets contained in a packet capture. */
-  packetLimit: number;
+  packetLimit?: number;
   /** Body param: The system used to collect packet captures. */
   system: "magic-transit";
   /** Body param: The packet capture duration in seconds. */
   timeLimit: number;
   /** Body param: The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets. */
-  type: "simple" | "full";
+  type: "simple" | "full" | (string & {});
   /** Body param: The packet capture filter. When this field is empty, all packets are captured. */
   filterV1?: {
     destinationAddress?: string;
@@ -8011,14 +8630,20 @@ export interface CreatePcapRequest {
   };
   /** Body param: The RFC 3339 offset timestamp from which to query backwards for packets. Must be within the last 24h. When this field is empty, defaults to time of request. */
   offsetTime?: string;
+  /** Body param: The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures. */
+  coloName?: string;
+  /** Body param: The full URI for the bucket. This field only applies to `full` packet captures. */
+  destinationConf?: string;
+  /** Body param: The maximum number of bytes to capture. This field only applies to `full` packet captures. */
+  byteLimit?: number;
 }
 
 export const CreatePcapRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  packetLimit: Schema.Number,
+  packetLimit: Schema.optional(Schema.Number),
   system: Schema.Literal("magic-transit"),
   timeLimit: Schema.Number,
-  type: Schema.Literals(["simple", "full"]),
+  type: Schema.Union([Schema.Literals(["simple", "full"]), Schema.String]),
   filterV1: Schema.optional(
     Schema.Struct({
       destinationAddress: Schema.optional(Schema.String),
@@ -8037,6 +8662,9 @@ export const CreatePcapRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   offsetTime: Schema.optional(Schema.String),
+  coloName: Schema.optional(Schema.String),
+  destinationConf: Schema.optional(Schema.String),
+  byteLimit: Schema.optional(Schema.Number),
 }).pipe(
   Schema.encodeKeys({
     packetLimit: "packet_limit",
@@ -8045,6 +8673,9 @@ export const CreatePcapRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: "type",
     filterV1: "filter_v1",
     offsetTime: "offset_time",
+    coloName: "colo_name",
+    destinationConf: "destination_conf",
+    byteLimit: "byte_limit",
   }),
   T.Http({ method: "POST", path: "/accounts/{account_id}/pcaps" }),
 ) as unknown as Schema.Schema<CreatePcapRequest>;
@@ -8069,11 +8700,12 @@ export type CreatePcapResponse =
         | "conversion_running"
         | "complete"
         | "failed"
+        | (string & {})
         | null;
       submitted?: string | null;
       system?: "magic-transit" | null;
       timeLimit?: number | null;
-      type?: "simple" | "full" | null;
+      type?: "simple" | "full" | (string & {}) | null;
     }
   | {
       id?: string | null;
@@ -8098,12 +8730,13 @@ export type CreatePcapResponse =
         | "conversion_running"
         | "complete"
         | "failed"
+        | (string & {})
         | null;
       stopRequested?: string | null;
       submitted?: string | null;
       system?: "magic-transit" | null;
       timeLimit?: number | null;
-      type?: "simple" | "full" | null;
+      type?: "simple" | "full" | (string & {}) | null;
     };
 
 export const CreatePcapResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
@@ -8140,15 +8773,18 @@ export const CreatePcapResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     offsetTime: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     status: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "unknown",
-          "success",
-          "pending",
-          "running",
-          "conversion_pending",
-          "conversion_running",
-          "complete",
-          "failed",
+        Schema.Union([
+          Schema.Literals([
+            "unknown",
+            "success",
+            "pending",
+            "running",
+            "conversion_pending",
+            "conversion_running",
+            "complete",
+            "failed",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -8159,7 +8795,10 @@ export const CreatePcapResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     ),
     timeLimit: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     type: Schema.optional(
-      Schema.Union([Schema.Literals(["simple", "full"]), Schema.Null]),
+      Schema.Union([
+        Schema.Union([Schema.Literals(["simple", "full"]), Schema.String]),
+        Schema.Null,
+      ]),
     ),
   }).pipe(
     Schema.encodeKeys({
@@ -8214,15 +8853,18 @@ export const CreatePcapResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     ),
     status: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "unknown",
-          "success",
-          "pending",
-          "running",
-          "conversion_pending",
-          "conversion_running",
-          "complete",
-          "failed",
+        Schema.Union([
+          Schema.Literals([
+            "unknown",
+            "success",
+            "pending",
+            "running",
+            "conversion_pending",
+            "conversion_running",
+            "complete",
+            "failed",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -8234,7 +8876,10 @@ export const CreatePcapResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     ),
     timeLimit: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     type: Schema.optional(
-      Schema.Union([Schema.Literals(["simple", "full"]), Schema.Null]),
+      Schema.Union([
+        Schema.Union([Schema.Literals(["simple", "full"]), Schema.String]),
+        Schema.Null,
+      ]),
     ),
   }).pipe(
     Schema.encodeKeys({
@@ -8362,7 +9007,7 @@ export interface GetPcapOwnershipResponse {
     id: string;
     destinationConf: string;
     filename: string;
-    status: "pending" | "success" | "failed";
+    status: "pending" | "success" | "failed" | (string & {});
     submitted: string;
     validated?: string | null;
   }[];
@@ -8375,7 +9020,10 @@ export const GetPcapOwnershipResponse =
         id: Schema.String,
         destinationConf: Schema.String,
         filename: Schema.String,
-        status: Schema.Literals(["pending", "success", "failed"]),
+        status: Schema.Union([
+          Schema.Literals(["pending", "success", "failed"]),
+          Schema.String,
+        ]),
         submitted: Schema.String,
         validated: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       }).pipe(
@@ -8432,7 +9080,7 @@ export interface CreatePcapOwnershipResponse {
   /** The ownership challenge filename stored in the bucket. */
   filename: string;
   /** The status of the ownership challenge. Can be pending, success or failed. */
-  status: "pending" | "success" | "failed";
+  status: "pending" | "success" | "failed" | (string & {});
   /** The RFC 3339 timestamp when the bucket was added to packet captures API. */
   submitted: string;
   /** The RFC 3339 timestamp when the bucket was validated. */
@@ -8444,7 +9092,10 @@ export const CreatePcapOwnershipResponse =
     id: Schema.String,
     destinationConf: Schema.String,
     filename: Schema.String,
-    status: Schema.Literals(["pending", "success", "failed"]),
+    status: Schema.Union([
+      Schema.Literals(["pending", "success", "failed"]),
+      Schema.String,
+    ]),
     submitted: Schema.String,
     validated: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
@@ -8543,7 +9194,7 @@ export interface ValidatePcapOwnershipResponse {
   /** The ownership challenge filename stored in the bucket. */
   filename: string;
   /** The status of the ownership challenge. Can be pending, success or failed. */
-  status: "pending" | "success" | "failed";
+  status: "pending" | "success" | "failed" | (string & {});
   /** The RFC 3339 timestamp when the bucket was added to packet captures API. */
   submitted: string;
   /** The RFC 3339 timestamp when the bucket was validated. */
@@ -8555,7 +9206,10 @@ export const ValidatePcapOwnershipResponse =
     id: Schema.String,
     destinationConf: Schema.String,
     filename: Schema.String,
-    status: Schema.Literals(["pending", "success", "failed"]),
+    status: Schema.Union([
+      Schema.Literals(["pending", "success", "failed"]),
+      Schema.String,
+    ]),
     submitted: Schema.String,
     validated: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
@@ -8595,7 +9249,7 @@ export interface BulkPutCfInterconnectsRequest {
   accountId: string;
   /** Header param: If true, the health check target in the request and response bodies will be presented using the new object format. Defaults to false. */
   xMagicNewHcTarget?: boolean;
-  /** Body param: */
+  /** Body param */
   body: unknown;
 }
 
@@ -8625,18 +9279,19 @@ export interface BulkPutCfInterconnectsResponse {
         gre?: { cloudflareEndpoint?: string | null } | null;
         healthCheck?: {
           enabled?: boolean | null;
-          rate?: "low" | "mid" | "high" | null;
+          rate?: "low" | "mid" | "high" | (string & {}) | null;
           target?:
             | { effective?: string | null; saved?: string | null }
             | string
             | null;
-          type?: "reply" | "request" | null;
+          type?: "reply" | "request" | (string & {}) | null;
         } | null;
         interfaceAddress?: string | null;
         interfaceAddress6?: string | null;
         modifiedOn?: string | null;
         mtu?: number | null;
         name?: string | null;
+        virtualPortReservationId?: string | null;
       }[]
     | null;
 }
@@ -8683,7 +9338,10 @@ export const BulkPutCfInterconnectsResponse =
                   ),
                   rate: Schema.optional(
                     Schema.Union([
-                      Schema.Literals(["low", "mid", "high"]),
+                      Schema.Union([
+                        Schema.Literals(["low", "mid", "high"]),
+                        Schema.String,
+                      ]),
                       Schema.Null,
                     ]),
                   ),
@@ -8705,7 +9363,10 @@ export const BulkPutCfInterconnectsResponse =
                   ),
                   type: Schema.optional(
                     Schema.Union([
-                      Schema.Literals(["reply", "request"]),
+                      Schema.Union([
+                        Schema.Literals(["reply", "request"]),
+                        Schema.String,
+                      ]),
                       Schema.Null,
                     ]),
                   ),
@@ -8724,6 +9385,9 @@ export const BulkPutCfInterconnectsResponse =
             ),
             mtu: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
             name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            virtualPortReservationId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
           }).pipe(
             Schema.encodeKeys({
               id: "id",
@@ -8738,6 +9402,7 @@ export const BulkPutCfInterconnectsResponse =
               modifiedOn: "modified_on",
               mtu: "mtu",
               name: "name",
+              virtualPortReservationId: "virtual_port_reservation_id",
             }),
           ),
         ),
@@ -8777,7 +9442,7 @@ export interface BulkPutGreTunnelsRequest {
   accountId: string;
   /** Header param: If true, the health check target in the request and response bodies will be presented using the new object format. Defaults to false. */
   xMagicNewHcTarget?: boolean;
-  /** Body param: */
+  /** Body param */
   body: unknown;
 }
 
@@ -8808,7 +9473,7 @@ export interface BulkPutGreTunnelsResponse {
           md5Key?: string | null;
         } | null;
         bgpStatus?: {
-          state: "BGP_DOWN" | "BGP_UP" | "BGP_ESTABLISHING";
+          state: "BGP_DOWN" | "BGP_UP" | "BGP_ESTABLISHING" | (string & {});
           tcpEstablished: boolean;
           updatedAt: string;
           bgpState?: string | null;
@@ -8820,14 +9485,14 @@ export interface BulkPutGreTunnelsResponse {
         createdOn?: string | null;
         description?: string | null;
         healthCheck?: {
-          direction?: "unidirectional" | "bidirectional" | null;
+          direction?: "unidirectional" | "bidirectional" | (string & {}) | null;
           enabled?: boolean | null;
-          rate?: "low" | "mid" | "high" | null;
+          rate?: "low" | "mid" | "high" | (string & {}) | null;
           target?:
             | { effective?: string | null; saved?: string | null }
             | string
             | null;
-          type?: "reply" | "request" | null;
+          type?: "reply" | "request" | (string & {}) | null;
         } | null;
         interfaceAddress6?: string | null;
         modifiedOn?: string | null;
@@ -8875,10 +9540,9 @@ export const BulkPutGreTunnelsResponse =
             bgpStatus: Schema.optional(
               Schema.Union([
                 Schema.Struct({
-                  state: Schema.Literals([
-                    "BGP_DOWN",
-                    "BGP_UP",
-                    "BGP_ESTABLISHING",
+                  state: Schema.Union([
+                    Schema.Literals(["BGP_DOWN", "BGP_UP", "BGP_ESTABLISHING"]),
+                    Schema.String,
                   ]),
                   tcpEstablished: Schema.Boolean,
                   updatedAt: Schema.String,
@@ -8923,7 +9587,10 @@ export const BulkPutGreTunnelsResponse =
                 Schema.Struct({
                   direction: Schema.optional(
                     Schema.Union([
-                      Schema.Literals(["unidirectional", "bidirectional"]),
+                      Schema.Union([
+                        Schema.Literals(["unidirectional", "bidirectional"]),
+                        Schema.String,
+                      ]),
                       Schema.Null,
                     ]),
                   ),
@@ -8932,7 +9599,10 @@ export const BulkPutGreTunnelsResponse =
                   ),
                   rate: Schema.optional(
                     Schema.Union([
-                      Schema.Literals(["low", "mid", "high"]),
+                      Schema.Union([
+                        Schema.Literals(["low", "mid", "high"]),
+                        Schema.String,
+                      ]),
                       Schema.Null,
                     ]),
                   ),
@@ -8954,7 +9624,10 @@ export const BulkPutGreTunnelsResponse =
                   ),
                   type: Schema.optional(
                     Schema.Union([
-                      Schema.Literals(["reply", "request"]),
+                      Schema.Union([
+                        Schema.Literals(["reply", "request"]),
+                        Schema.String,
+                      ]),
                       Schema.Null,
                     ]),
                   ),
@@ -9026,7 +9699,7 @@ export interface BulkPutIpsecTunnelsRequest {
   accountId: string;
   /** Header param: If true, the health check target in the request and response bodies will be presented using the new object format. Defaults to false. */
   xMagicNewHcTarget?: boolean;
-  /** Body param: */
+  /** Body param */
   body: unknown;
 }
 
@@ -9060,7 +9733,7 @@ export interface BulkPutIpsecTunnelsResponse {
           md5Key?: string | null;
         } | null;
         bgpStatus?: {
-          state: "BGP_DOWN" | "BGP_UP" | "BGP_ESTABLISHING";
+          state: "BGP_DOWN" | "BGP_UP" | "BGP_ESTABLISHING" | (string & {});
           tcpEstablished: boolean;
           updatedAt: string;
           bgpState?: string | null;
@@ -9074,14 +9747,14 @@ export interface BulkPutIpsecTunnelsResponse {
         customerEndpoint?: string | null;
         description?: string | null;
         healthCheck?: {
-          direction?: "unidirectional" | "bidirectional" | null;
+          direction?: "unidirectional" | "bidirectional" | (string & {}) | null;
           enabled?: boolean | null;
-          rate?: "low" | "mid" | "high" | null;
+          rate?: "low" | "mid" | "high" | (string & {}) | null;
           target?:
             | { effective?: string | null; saved?: string | null }
             | string
             | null;
-          type?: "reply" | "request" | null;
+          type?: "reply" | "request" | (string & {}) | null;
         } | null;
         interfaceAddress6?: string | null;
         modifiedOn?: string | null;
@@ -9131,10 +9804,9 @@ export const BulkPutIpsecTunnelsResponse =
             bgpStatus: Schema.optional(
               Schema.Union([
                 Schema.Struct({
-                  state: Schema.Literals([
-                    "BGP_DOWN",
-                    "BGP_UP",
-                    "BGP_ESTABLISHING",
+                  state: Schema.Union([
+                    Schema.Literals(["BGP_DOWN", "BGP_UP", "BGP_ESTABLISHING"]),
+                    Schema.String,
                   ]),
                   tcpEstablished: Schema.Boolean,
                   updatedAt: Schema.String,
@@ -9192,7 +9864,10 @@ export const BulkPutIpsecTunnelsResponse =
                 Schema.Struct({
                   direction: Schema.optional(
                     Schema.Union([
-                      Schema.Literals(["unidirectional", "bidirectional"]),
+                      Schema.Union([
+                        Schema.Literals(["unidirectional", "bidirectional"]),
+                        Schema.String,
+                      ]),
                       Schema.Null,
                     ]),
                   ),
@@ -9201,7 +9876,10 @@ export const BulkPutIpsecTunnelsResponse =
                   ),
                   rate: Schema.optional(
                     Schema.Union([
-                      Schema.Literals(["low", "mid", "high"]),
+                      Schema.Union([
+                        Schema.Literals(["low", "mid", "high"]),
+                        Schema.String,
+                      ]),
                       Schema.Null,
                     ]),
                   ),
@@ -9223,7 +9901,10 @@ export const BulkPutIpsecTunnelsResponse =
                   ),
                   type: Schema.optional(
                     Schema.Union([
-                      Schema.Literals(["reply", "request"]),
+                      Schema.Union([
+                        Schema.Literals(["reply", "request"]),
+                        Schema.String,
+                      ]),
                       Schema.Null,
                     ]),
                   ),
@@ -9308,7 +9989,7 @@ export const bulkPutIpsecTunnels: API.OperationMethod<
 export interface BulkPutRoutesRequest {
   /** Path param: Identifier */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   routes: {
     id: string;
     nexthop: string;
@@ -10281,7 +10962,7 @@ export interface CreateSiteRequest {
   name: string;
   /** Body param: Magic Connector identifier tag. */
   connectorId?: string;
-  /** Body param: */
+  /** Body param */
   description?: string;
   /** Body param: Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode. */
   haMode?: boolean;
@@ -10385,7 +11066,7 @@ export interface UpdateSiteRequest {
   accountId: string;
   /** Body param: Magic Connector identifier tag. */
   connectorId?: string;
-  /** Body param: */
+  /** Body param */
   description?: string;
   /** Body param: Location of site in latitude and longitude. */
   location?: { lat?: string; lon?: string };
@@ -10491,7 +11172,7 @@ export interface PatchSiteRequest {
   accountId: string;
   /** Body param: Magic Connector identifier tag. */
   connectorId?: string;
-  /** Body param: */
+  /** Body param */
   description?: string;
   /** Body param: Location of site in latitude and longitude. */
   location?: { lat?: string; lon?: string };
@@ -10715,7 +11396,7 @@ export interface GetSiteAclResponse {
   } | null;
   /** The name of the ACL. */
   name?: string | null;
-  protocols?: ("tcp" | "udp" | "icmp")[] | null;
+  protocols?: ("tcp" | "udp" | "icmp" | (string & {}))[] | null;
   /** The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not include */
   unidirectional?: boolean | null;
 }
@@ -10779,7 +11460,9 @@ export const GetSiteAclResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   protocols: Schema.optional(
     Schema.Union([
-      Schema.Array(Schema.Literals(["tcp", "udp", "icmp"])),
+      Schema.Array(
+        Schema.Union([Schema.Literals(["tcp", "udp", "icmp"]), Schema.String]),
+      ),
       Schema.Null,
     ]),
   ),
@@ -10850,7 +11533,7 @@ export interface ListSiteAclsResponse {
       subnets?: string[] | null;
     } | null;
     name?: string | null;
-    protocols?: ("tcp" | "udp" | "icmp")[] | null;
+    protocols?: ("tcp" | "udp" | "icmp" | (string & {}))[] | null;
     unidirectional?: boolean | null;
   }[];
 }
@@ -10922,7 +11605,12 @@ export const ListSiteAclsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       protocols: Schema.optional(
         Schema.Union([
-          Schema.Array(Schema.Literals(["tcp", "udp", "icmp"])),
+          Schema.Array(
+            Schema.Union([
+              Schema.Literals(["tcp", "udp", "icmp"]),
+              Schema.String,
+            ]),
+          ),
           Schema.Null,
         ]),
       ),
@@ -10965,7 +11653,7 @@ export interface CreateSiteAclRequest {
   siteId: string;
   /** Path param: Identifier */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   lan_1: {
     lanId: string;
     lanName?: string;
@@ -10973,7 +11661,7 @@ export interface CreateSiteAclRequest {
     ports?: number[];
     subnets?: string[];
   };
-  /** Body param: */
+  /** Body param */
   lan_2: {
     lanId: string;
     lanName?: string;
@@ -10987,8 +11675,8 @@ export interface CreateSiteAclRequest {
   description?: string;
   /** Body param: The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic  */
   forwardLocally?: boolean;
-  /** Body param: */
-  protocols?: ("tcp" | "udp" | "icmp")[];
+  /** Body param */
+  protocols?: ("tcp" | "udp" | "icmp" | (string & {}))[];
   /** Body param: The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If */
   unidirectional?: boolean;
 }
@@ -11030,7 +11718,9 @@ export const CreateSiteAclRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   description: Schema.optional(Schema.String),
   forwardLocally: Schema.optional(Schema.Boolean),
   protocols: Schema.optional(
-    Schema.Array(Schema.Literals(["tcp", "udp", "icmp"])),
+    Schema.Array(
+      Schema.Union([Schema.Literals(["tcp", "udp", "icmp"]), Schema.String]),
+    ),
   ),
   unidirectional: Schema.optional(Schema.Boolean),
 }).pipe(
@@ -11072,7 +11762,7 @@ export interface CreateSiteAclResponse {
   } | null;
   /** The name of the ACL. */
   name?: string | null;
-  protocols?: ("tcp" | "udp" | "icmp")[] | null;
+  protocols?: ("tcp" | "udp" | "icmp" | (string & {}))[] | null;
   /** The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not include */
   unidirectional?: boolean | null;
 }
@@ -11136,7 +11826,9 @@ export const CreateSiteAclResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   protocols: Schema.optional(
     Schema.Union([
-      Schema.Array(Schema.Literals(["tcp", "udp", "icmp"])),
+      Schema.Array(
+        Schema.Union([Schema.Literals(["tcp", "udp", "icmp"]), Schema.String]),
+      ),
       Schema.Null,
     ]),
   ),
@@ -11180,7 +11872,7 @@ export interface UpdateSiteAclRequest {
   description?: string;
   /** Body param: The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic  */
   forwardLocally?: boolean;
-  /** Body param: */
+  /** Body param */
   lan_1?: {
     lanId: string;
     lanName?: string;
@@ -11188,7 +11880,7 @@ export interface UpdateSiteAclRequest {
     ports?: number[];
     subnets?: string[];
   };
-  /** Body param: */
+  /** Body param */
   lan_2?: {
     lanId: string;
     lanName?: string;
@@ -11198,8 +11890,8 @@ export interface UpdateSiteAclRequest {
   };
   /** Body param: The name of the ACL. */
   name?: string;
-  /** Body param: */
-  protocols?: ("tcp" | "udp" | "icmp")[];
+  /** Body param */
+  protocols?: ("tcp" | "udp" | "icmp" | (string & {}))[];
   /** Body param: The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If */
   unidirectional?: boolean;
 }
@@ -11246,7 +11938,9 @@ export const UpdateSiteAclRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   name: Schema.optional(Schema.String),
   protocols: Schema.optional(
-    Schema.Array(Schema.Literals(["tcp", "udp", "icmp"])),
+    Schema.Array(
+      Schema.Union([Schema.Literals(["tcp", "udp", "icmp"]), Schema.String]),
+    ),
   ),
   unidirectional: Schema.optional(Schema.Boolean),
 }).pipe(
@@ -11288,7 +11982,7 @@ export interface UpdateSiteAclResponse {
   } | null;
   /** The name of the ACL. */
   name?: string | null;
-  protocols?: ("tcp" | "udp" | "icmp")[] | null;
+  protocols?: ("tcp" | "udp" | "icmp" | (string & {}))[] | null;
   /** The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not include */
   unidirectional?: boolean | null;
 }
@@ -11352,7 +12046,9 @@ export const UpdateSiteAclResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   protocols: Schema.optional(
     Schema.Union([
-      Schema.Array(Schema.Literals(["tcp", "udp", "icmp"])),
+      Schema.Array(
+        Schema.Union([Schema.Literals(["tcp", "udp", "icmp"]), Schema.String]),
+      ),
       Schema.Null,
     ]),
   ),
@@ -11396,7 +12092,7 @@ export interface PatchSiteAclRequest {
   description?: string;
   /** Body param: The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic  */
   forwardLocally?: boolean;
-  /** Body param: */
+  /** Body param */
   lan_1?: {
     lanId: string;
     lanName?: string;
@@ -11404,7 +12100,7 @@ export interface PatchSiteAclRequest {
     ports?: number[];
     subnets?: string[];
   };
-  /** Body param: */
+  /** Body param */
   lan_2?: {
     lanId: string;
     lanName?: string;
@@ -11414,8 +12110,8 @@ export interface PatchSiteAclRequest {
   };
   /** Body param: The name of the ACL. */
   name?: string;
-  /** Body param: */
-  protocols?: ("tcp" | "udp" | "icmp")[];
+  /** Body param */
+  protocols?: ("tcp" | "udp" | "icmp" | (string & {}))[];
   /** Body param: The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If */
   unidirectional?: boolean;
 }
@@ -11462,7 +12158,9 @@ export const PatchSiteAclRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   name: Schema.optional(Schema.String),
   protocols: Schema.optional(
-    Schema.Array(Schema.Literals(["tcp", "udp", "icmp"])),
+    Schema.Array(
+      Schema.Union([Schema.Literals(["tcp", "udp", "icmp"]), Schema.String]),
+    ),
   ),
   unidirectional: Schema.optional(Schema.Boolean),
 }).pipe(
@@ -11504,7 +12202,7 @@ export interface PatchSiteAclResponse {
   } | null;
   /** The name of the ACL. */
   name?: string | null;
-  protocols?: ("tcp" | "udp" | "icmp")[] | null;
+  protocols?: ("tcp" | "udp" | "icmp" | (string & {}))[] | null;
   /** The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not include */
   unidirectional?: boolean | null;
 }
@@ -11568,7 +12266,9 @@ export const PatchSiteAclResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   protocols: Schema.optional(
     Schema.Union([
-      Schema.Array(Schema.Literals(["tcp", "udp", "icmp"])),
+      Schema.Array(
+        Schema.Union([Schema.Literals(["tcp", "udp", "icmp"]), Schema.String]),
+      ),
       Schema.Null,
     ]),
   ),
@@ -11644,7 +12344,7 @@ export interface DeleteSiteAclResponse {
   } | null;
   /** The name of the ACL. */
   name?: string | null;
-  protocols?: ("tcp" | "udp" | "icmp")[] | null;
+  protocols?: ("tcp" | "udp" | "icmp" | (string & {}))[] | null;
   /** The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not include */
   unidirectional?: boolean | null;
 }
@@ -11708,7 +12408,9 @@ export const DeleteSiteAclResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   protocols: Schema.optional(
     Schema.Union([
-      Schema.Array(Schema.Literals(["tcp", "udp", "icmp"])),
+      Schema.Array(
+        Schema.Union([Schema.Literals(["tcp", "udp", "icmp"]), Schema.String]),
+      ),
       Schema.Null,
     ]),
   ),
@@ -11768,8 +12470,13 @@ export const GetSiteLanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface GetSiteLanResponse {
   /** Identifier */
   id?: string | null;
+  bondId?: number | null;
   /** mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link. */
   haLink?: boolean | null;
+  /** mark true to use this LAN for source-based breakout traffic */
+  isBreakout?: boolean | null;
+  /** mark true to use this LAN for source-based prioritized traffic */
+  isPrioritized?: boolean | null;
   name?: string | null;
   nat?: { staticPrefix?: string | null } | null;
   physport?: number | null;
@@ -11787,6 +12494,20 @@ export interface GetSiteLanResponse {
     address: string;
     dhcpRelay?: { serverAddresses?: string[] | null } | null;
     dhcpServer?: {
+      dhcpOptions?:
+        | {
+            code: number;
+            type:
+              | "text"
+              | "hex"
+              | "ip"
+              | "byte"
+              | "short"
+              | "integer"
+              | (string & {});
+            value: string;
+          }[]
+        | null;
       dhcpPoolEnd?: string | null;
       dhcpPoolStart?: string | null;
       dnsServer?: string | null;
@@ -11802,7 +12523,10 @@ export interface GetSiteLanResponse {
 
 export const GetSiteLanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  bondId: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   haLink: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  isBreakout: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  isPrioritized: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   nat: Schema.optional(
     Schema.Union([
@@ -11860,6 +12584,28 @@ export const GetSiteLanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         dhcpServer: Schema.optional(
           Schema.Union([
             Schema.Struct({
+              dhcpOptions: Schema.optional(
+                Schema.Union([
+                  Schema.Array(
+                    Schema.Struct({
+                      code: Schema.Number,
+                      type: Schema.Union([
+                        Schema.Literals([
+                          "text",
+                          "hex",
+                          "ip",
+                          "byte",
+                          "short",
+                          "integer",
+                        ]),
+                        Schema.String,
+                      ]),
+                      value: Schema.String,
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
               dhcpPoolEnd: Schema.optional(
                 Schema.Union([Schema.String, Schema.Null]),
               ),
@@ -11880,6 +12626,7 @@ export const GetSiteLanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
             }).pipe(
               Schema.encodeKeys({
+                dhcpOptions: "dhcp_options",
                 dhcpPoolEnd: "dhcp_pool_end",
                 dhcpPoolStart: "dhcp_pool_start",
                 dnsServer: "dns_server",
@@ -11913,7 +12660,10 @@ export const GetSiteLanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   .pipe(
     Schema.encodeKeys({
       id: "id",
+      bondId: "bond_id",
       haLink: "ha_link",
+      isBreakout: "is_breakout",
+      isPrioritized: "is_prioritized",
       name: "name",
       nat: "nat",
       physport: "physport",
@@ -11959,7 +12709,10 @@ export const ListSiteLansRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface ListSiteLansResponse {
   result: {
     id?: string | null;
+    bondId?: number | null;
     haLink?: boolean | null;
+    isBreakout?: boolean | null;
+    isPrioritized?: boolean | null;
     name?: string | null;
     nat?: { staticPrefix?: string | null } | null;
     physport?: number | null;
@@ -11975,6 +12728,20 @@ export interface ListSiteLansResponse {
       address: string;
       dhcpRelay?: { serverAddresses?: string[] | null } | null;
       dhcpServer?: {
+        dhcpOptions?:
+          | {
+              code: number;
+              type:
+                | "text"
+                | "hex"
+                | "ip"
+                | "byte"
+                | "short"
+                | "integer"
+                | (string & {});
+              value: string;
+            }[]
+          | null;
         dhcpPoolEnd?: string | null;
         dhcpPoolStart?: string | null;
         dnsServer?: string | null;
@@ -11992,7 +12759,12 @@ export const ListSiteLansResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      bondId: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       haLink: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      isBreakout: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      isPrioritized: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
       name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       nat: Schema.optional(
         Schema.Union([
@@ -12052,6 +12824,28 @@ export const ListSiteLansResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             dhcpServer: Schema.optional(
               Schema.Union([
                 Schema.Struct({
+                  dhcpOptions: Schema.optional(
+                    Schema.Union([
+                      Schema.Array(
+                        Schema.Struct({
+                          code: Schema.Number,
+                          type: Schema.Union([
+                            Schema.Literals([
+                              "text",
+                              "hex",
+                              "ip",
+                              "byte",
+                              "short",
+                              "integer",
+                            ]),
+                            Schema.String,
+                          ]),
+                          value: Schema.String,
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
                   dhcpPoolEnd: Schema.optional(
                     Schema.Union([Schema.String, Schema.Null]),
                   ),
@@ -12072,6 +12866,7 @@ export const ListSiteLansResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   ),
                 }).pipe(
                   Schema.encodeKeys({
+                    dhcpOptions: "dhcp_options",
                     dhcpPoolEnd: "dhcp_pool_end",
                     dhcpPoolStart: "dhcp_pool_start",
                     dnsServer: "dns_server",
@@ -12104,7 +12899,10 @@ export const ListSiteLansResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }).pipe(
       Schema.encodeKeys({
         id: "id",
+        bondId: "bond_id",
         haLink: "ha_link",
+        isBreakout: "is_breakout",
+        isPrioritized: "is_prioritized",
         name: "name",
         nat: "nat",
         physport: "physport",
@@ -12138,15 +12936,21 @@ export interface CreateSiteLanRequest {
   siteId: string;
   /** Path param: Identifier */
   accountId: string;
-  /** Body param: */
-  physport: number;
+  /** Body param */
+  bondId?: number;
   /** Body param: mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link. */
   haLink?: boolean;
-  /** Body param: */
+  /** Body param: mark true to use this LAN for source-based breakout traffic */
+  isBreakout?: boolean;
+  /** Body param: mark true to use this LAN for source-based prioritized traffic */
+  isPrioritized?: boolean;
+  /** Body param */
   name?: string;
-  /** Body param: */
+  /** Body param */
   nat?: { staticPrefix?: string };
-  /** Body param: */
+  /** Body param */
+  physport?: number;
+  /** Body param */
   routedSubnets?: {
     nextHop: string;
     prefix: string;
@@ -12157,6 +12961,18 @@ export interface CreateSiteLanRequest {
     address: string;
     dhcpRelay?: { serverAddresses?: string[] };
     dhcpServer?: {
+      dhcpOptions?: {
+        code: number;
+        type:
+          | "text"
+          | "hex"
+          | "ip"
+          | "byte"
+          | "short"
+          | "integer"
+          | (string & {});
+        value: string;
+      }[];
       dhcpPoolEnd?: string;
       dhcpPoolStart?: string;
       dnsServer?: string;
@@ -12173,14 +12989,17 @@ export interface CreateSiteLanRequest {
 export const CreateSiteLanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   siteId: Schema.String.pipe(T.HttpPath("siteId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  physport: Schema.Number,
+  bondId: Schema.optional(Schema.Number),
   haLink: Schema.optional(Schema.Boolean),
+  isBreakout: Schema.optional(Schema.Boolean),
+  isPrioritized: Schema.optional(Schema.Boolean),
   name: Schema.optional(Schema.String),
   nat: Schema.optional(
     Schema.Struct({
       staticPrefix: Schema.optional(Schema.String),
     }).pipe(Schema.encodeKeys({ staticPrefix: "static_prefix" })),
   ),
+  physport: Schema.optional(Schema.Number),
   routedSubnets: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -12210,6 +13029,25 @@ export const CreateSiteLanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
       dhcpServer: Schema.optional(
         Schema.Struct({
+          dhcpOptions: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                code: Schema.Number,
+                type: Schema.Union([
+                  Schema.Literals([
+                    "text",
+                    "hex",
+                    "ip",
+                    "byte",
+                    "short",
+                    "integer",
+                  ]),
+                  Schema.String,
+                ]),
+                value: Schema.String,
+              }),
+            ),
+          ),
           dhcpPoolEnd: Schema.optional(Schema.String),
           dhcpPoolStart: Schema.optional(Schema.String),
           dnsServer: Schema.optional(Schema.String),
@@ -12219,6 +13057,7 @@ export const CreateSiteLanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ),
         }).pipe(
           Schema.encodeKeys({
+            dhcpOptions: "dhcp_options",
             dhcpPoolEnd: "dhcp_pool_end",
             dhcpPoolStart: "dhcp_pool_start",
             dnsServer: "dns_server",
@@ -12242,10 +13081,13 @@ export const CreateSiteLanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   vlanTag: Schema.optional(Schema.Number),
 }).pipe(
   Schema.encodeKeys({
-    physport: "physport",
+    bondId: "bond_id",
     haLink: "ha_link",
+    isBreakout: "is_breakout",
+    isPrioritized: "is_prioritized",
     name: "name",
     nat: "nat",
+    physport: "physport",
     routedSubnets: "routed_subnets",
     staticAddressing: "static_addressing",
     vlanTag: "vlan_tag",
@@ -12259,7 +13101,10 @@ export const CreateSiteLanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface CreateSiteLanResponse {
   result: {
     id?: string | null;
+    bondId?: number | null;
     haLink?: boolean | null;
+    isBreakout?: boolean | null;
+    isPrioritized?: boolean | null;
     name?: string | null;
     nat?: { staticPrefix?: string | null } | null;
     physport?: number | null;
@@ -12275,6 +13120,20 @@ export interface CreateSiteLanResponse {
       address: string;
       dhcpRelay?: { serverAddresses?: string[] | null } | null;
       dhcpServer?: {
+        dhcpOptions?:
+          | {
+              code: number;
+              type:
+                | "text"
+                | "hex"
+                | "ip"
+                | "byte"
+                | "short"
+                | "integer"
+                | (string & {});
+              value: string;
+            }[]
+          | null;
         dhcpPoolEnd?: string | null;
         dhcpPoolStart?: string | null;
         dnsServer?: string | null;
@@ -12292,7 +13151,12 @@ export const CreateSiteLanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      bondId: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       haLink: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      isBreakout: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      isPrioritized: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
       name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       nat: Schema.optional(
         Schema.Union([
@@ -12352,6 +13216,28 @@ export const CreateSiteLanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             dhcpServer: Schema.optional(
               Schema.Union([
                 Schema.Struct({
+                  dhcpOptions: Schema.optional(
+                    Schema.Union([
+                      Schema.Array(
+                        Schema.Struct({
+                          code: Schema.Number,
+                          type: Schema.Union([
+                            Schema.Literals([
+                              "text",
+                              "hex",
+                              "ip",
+                              "byte",
+                              "short",
+                              "integer",
+                            ]),
+                            Schema.String,
+                          ]),
+                          value: Schema.String,
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
                   dhcpPoolEnd: Schema.optional(
                     Schema.Union([Schema.String, Schema.Null]),
                   ),
@@ -12372,6 +13258,7 @@ export const CreateSiteLanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   ),
                 }).pipe(
                   Schema.encodeKeys({
+                    dhcpOptions: "dhcp_options",
                     dhcpPoolEnd: "dhcp_pool_end",
                     dhcpPoolStart: "dhcp_pool_start",
                     dnsServer: "dns_server",
@@ -12404,7 +13291,10 @@ export const CreateSiteLanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }).pipe(
       Schema.encodeKeys({
         id: "id",
+        bondId: "bond_id",
         haLink: "ha_link",
+        isBreakout: "is_breakout",
+        isPrioritized: "is_prioritized",
         name: "name",
         nat: "nat",
         physport: "physport",
@@ -12439,13 +13329,19 @@ export interface UpdateSiteLanRequest {
   lanId: string;
   /** Path param: Identifier */
   accountId: string;
-  /** Body param: */
+  /** Body param */
+  bondId?: number;
+  /** Body param: mark true to use this LAN for source-based breakout traffic */
+  isBreakout?: boolean;
+  /** Body param: mark true to use this LAN for source-based prioritized traffic */
+  isPrioritized?: boolean;
+  /** Body param */
   name?: string;
-  /** Body param: */
+  /** Body param */
   nat?: { staticPrefix?: string };
-  /** Body param: */
+  /** Body param */
   physport?: number;
-  /** Body param: */
+  /** Body param */
   routedSubnets?: {
     nextHop: string;
     prefix: string;
@@ -12456,6 +13352,18 @@ export interface UpdateSiteLanRequest {
     address: string;
     dhcpRelay?: { serverAddresses?: string[] };
     dhcpServer?: {
+      dhcpOptions?: {
+        code: number;
+        type:
+          | "text"
+          | "hex"
+          | "ip"
+          | "byte"
+          | "short"
+          | "integer"
+          | (string & {});
+        value: string;
+      }[];
       dhcpPoolEnd?: string;
       dhcpPoolStart?: string;
       dnsServer?: string;
@@ -12473,6 +13381,9 @@ export const UpdateSiteLanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   siteId: Schema.String.pipe(T.HttpPath("siteId")),
   lanId: Schema.String.pipe(T.HttpPath("lanId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  bondId: Schema.optional(Schema.Number),
+  isBreakout: Schema.optional(Schema.Boolean),
+  isPrioritized: Schema.optional(Schema.Boolean),
   name: Schema.optional(Schema.String),
   nat: Schema.optional(
     Schema.Struct({
@@ -12509,6 +13420,25 @@ export const UpdateSiteLanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
       dhcpServer: Schema.optional(
         Schema.Struct({
+          dhcpOptions: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                code: Schema.Number,
+                type: Schema.Union([
+                  Schema.Literals([
+                    "text",
+                    "hex",
+                    "ip",
+                    "byte",
+                    "short",
+                    "integer",
+                  ]),
+                  Schema.String,
+                ]),
+                value: Schema.String,
+              }),
+            ),
+          ),
           dhcpPoolEnd: Schema.optional(Schema.String),
           dhcpPoolStart: Schema.optional(Schema.String),
           dnsServer: Schema.optional(Schema.String),
@@ -12518,6 +13448,7 @@ export const UpdateSiteLanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ),
         }).pipe(
           Schema.encodeKeys({
+            dhcpOptions: "dhcp_options",
             dhcpPoolEnd: "dhcp_pool_end",
             dhcpPoolStart: "dhcp_pool_start",
             dnsServer: "dns_server",
@@ -12541,6 +13472,9 @@ export const UpdateSiteLanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   vlanTag: Schema.optional(Schema.Number),
 }).pipe(
   Schema.encodeKeys({
+    bondId: "bond_id",
+    isBreakout: "is_breakout",
+    isPrioritized: "is_prioritized",
     name: "name",
     nat: "nat",
     physport: "physport",
@@ -12557,8 +13491,13 @@ export const UpdateSiteLanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface UpdateSiteLanResponse {
   /** Identifier */
   id?: string | null;
+  bondId?: number | null;
   /** mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link. */
   haLink?: boolean | null;
+  /** mark true to use this LAN for source-based breakout traffic */
+  isBreakout?: boolean | null;
+  /** mark true to use this LAN for source-based prioritized traffic */
+  isPrioritized?: boolean | null;
   name?: string | null;
   nat?: { staticPrefix?: string | null } | null;
   physport?: number | null;
@@ -12576,6 +13515,20 @@ export interface UpdateSiteLanResponse {
     address: string;
     dhcpRelay?: { serverAddresses?: string[] | null } | null;
     dhcpServer?: {
+      dhcpOptions?:
+        | {
+            code: number;
+            type:
+              | "text"
+              | "hex"
+              | "ip"
+              | "byte"
+              | "short"
+              | "integer"
+              | (string & {});
+            value: string;
+          }[]
+        | null;
       dhcpPoolEnd?: string | null;
       dhcpPoolStart?: string | null;
       dnsServer?: string | null;
@@ -12591,7 +13544,10 @@ export interface UpdateSiteLanResponse {
 
 export const UpdateSiteLanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  bondId: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   haLink: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  isBreakout: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  isPrioritized: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   nat: Schema.optional(
     Schema.Union([
@@ -12649,6 +13605,28 @@ export const UpdateSiteLanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         dhcpServer: Schema.optional(
           Schema.Union([
             Schema.Struct({
+              dhcpOptions: Schema.optional(
+                Schema.Union([
+                  Schema.Array(
+                    Schema.Struct({
+                      code: Schema.Number,
+                      type: Schema.Union([
+                        Schema.Literals([
+                          "text",
+                          "hex",
+                          "ip",
+                          "byte",
+                          "short",
+                          "integer",
+                        ]),
+                        Schema.String,
+                      ]),
+                      value: Schema.String,
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
               dhcpPoolEnd: Schema.optional(
                 Schema.Union([Schema.String, Schema.Null]),
               ),
@@ -12669,6 +13647,7 @@ export const UpdateSiteLanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
             }).pipe(
               Schema.encodeKeys({
+                dhcpOptions: "dhcp_options",
                 dhcpPoolEnd: "dhcp_pool_end",
                 dhcpPoolStart: "dhcp_pool_start",
                 dnsServer: "dns_server",
@@ -12702,7 +13681,10 @@ export const UpdateSiteLanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   .pipe(
     Schema.encodeKeys({
       id: "id",
+      bondId: "bond_id",
       haLink: "ha_link",
+      isBreakout: "is_breakout",
+      isPrioritized: "is_prioritized",
       name: "name",
       nat: "nat",
       physport: "physport",
@@ -12734,13 +13716,19 @@ export interface PatchSiteLanRequest {
   lanId: string;
   /** Path param: Identifier */
   accountId: string;
-  /** Body param: */
+  /** Body param */
+  bondId?: number;
+  /** Body param: mark true to use this LAN for source-based breakout traffic */
+  isBreakout?: boolean;
+  /** Body param: mark true to use this LAN for source-based prioritized traffic */
+  isPrioritized?: boolean;
+  /** Body param */
   name?: string;
-  /** Body param: */
+  /** Body param */
   nat?: { staticPrefix?: string };
-  /** Body param: */
+  /** Body param */
   physport?: number;
-  /** Body param: */
+  /** Body param */
   routedSubnets?: {
     nextHop: string;
     prefix: string;
@@ -12751,6 +13739,18 @@ export interface PatchSiteLanRequest {
     address: string;
     dhcpRelay?: { serverAddresses?: string[] };
     dhcpServer?: {
+      dhcpOptions?: {
+        code: number;
+        type:
+          | "text"
+          | "hex"
+          | "ip"
+          | "byte"
+          | "short"
+          | "integer"
+          | (string & {});
+        value: string;
+      }[];
       dhcpPoolEnd?: string;
       dhcpPoolStart?: string;
       dnsServer?: string;
@@ -12768,6 +13768,9 @@ export const PatchSiteLanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   siteId: Schema.String.pipe(T.HttpPath("siteId")),
   lanId: Schema.String.pipe(T.HttpPath("lanId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  bondId: Schema.optional(Schema.Number),
+  isBreakout: Schema.optional(Schema.Boolean),
+  isPrioritized: Schema.optional(Schema.Boolean),
   name: Schema.optional(Schema.String),
   nat: Schema.optional(
     Schema.Struct({
@@ -12804,6 +13807,25 @@ export const PatchSiteLanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
       dhcpServer: Schema.optional(
         Schema.Struct({
+          dhcpOptions: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                code: Schema.Number,
+                type: Schema.Union([
+                  Schema.Literals([
+                    "text",
+                    "hex",
+                    "ip",
+                    "byte",
+                    "short",
+                    "integer",
+                  ]),
+                  Schema.String,
+                ]),
+                value: Schema.String,
+              }),
+            ),
+          ),
           dhcpPoolEnd: Schema.optional(Schema.String),
           dhcpPoolStart: Schema.optional(Schema.String),
           dnsServer: Schema.optional(Schema.String),
@@ -12813,6 +13835,7 @@ export const PatchSiteLanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ),
         }).pipe(
           Schema.encodeKeys({
+            dhcpOptions: "dhcp_options",
             dhcpPoolEnd: "dhcp_pool_end",
             dhcpPoolStart: "dhcp_pool_start",
             dnsServer: "dns_server",
@@ -12836,6 +13859,9 @@ export const PatchSiteLanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   vlanTag: Schema.optional(Schema.Number),
 }).pipe(
   Schema.encodeKeys({
+    bondId: "bond_id",
+    isBreakout: "is_breakout",
+    isPrioritized: "is_prioritized",
     name: "name",
     nat: "nat",
     physport: "physport",
@@ -12852,8 +13878,13 @@ export const PatchSiteLanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface PatchSiteLanResponse {
   /** Identifier */
   id?: string | null;
+  bondId?: number | null;
   /** mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link. */
   haLink?: boolean | null;
+  /** mark true to use this LAN for source-based breakout traffic */
+  isBreakout?: boolean | null;
+  /** mark true to use this LAN for source-based prioritized traffic */
+  isPrioritized?: boolean | null;
   name?: string | null;
   nat?: { staticPrefix?: string | null } | null;
   physport?: number | null;
@@ -12871,6 +13902,20 @@ export interface PatchSiteLanResponse {
     address: string;
     dhcpRelay?: { serverAddresses?: string[] | null } | null;
     dhcpServer?: {
+      dhcpOptions?:
+        | {
+            code: number;
+            type:
+              | "text"
+              | "hex"
+              | "ip"
+              | "byte"
+              | "short"
+              | "integer"
+              | (string & {});
+            value: string;
+          }[]
+        | null;
       dhcpPoolEnd?: string | null;
       dhcpPoolStart?: string | null;
       dnsServer?: string | null;
@@ -12886,7 +13931,10 @@ export interface PatchSiteLanResponse {
 
 export const PatchSiteLanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  bondId: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   haLink: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  isBreakout: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  isPrioritized: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   nat: Schema.optional(
     Schema.Union([
@@ -12944,6 +13992,28 @@ export const PatchSiteLanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         dhcpServer: Schema.optional(
           Schema.Union([
             Schema.Struct({
+              dhcpOptions: Schema.optional(
+                Schema.Union([
+                  Schema.Array(
+                    Schema.Struct({
+                      code: Schema.Number,
+                      type: Schema.Union([
+                        Schema.Literals([
+                          "text",
+                          "hex",
+                          "ip",
+                          "byte",
+                          "short",
+                          "integer",
+                        ]),
+                        Schema.String,
+                      ]),
+                      value: Schema.String,
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
               dhcpPoolEnd: Schema.optional(
                 Schema.Union([Schema.String, Schema.Null]),
               ),
@@ -12964,6 +14034,7 @@ export const PatchSiteLanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
             }).pipe(
               Schema.encodeKeys({
+                dhcpOptions: "dhcp_options",
                 dhcpPoolEnd: "dhcp_pool_end",
                 dhcpPoolStart: "dhcp_pool_start",
                 dnsServer: "dns_server",
@@ -12997,7 +14068,10 @@ export const PatchSiteLanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   .pipe(
     Schema.encodeKeys({
       id: "id",
+      bondId: "bond_id",
       haLink: "ha_link",
+      isBreakout: "is_breakout",
+      isPrioritized: "is_prioritized",
       name: "name",
       nat: "nat",
       physport: "physport",
@@ -13045,8 +14119,13 @@ export const DeleteSiteLanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface DeleteSiteLanResponse {
   /** Identifier */
   id?: string | null;
+  bondId?: number | null;
   /** mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link. */
   haLink?: boolean | null;
+  /** mark true to use this LAN for source-based breakout traffic */
+  isBreakout?: boolean | null;
+  /** mark true to use this LAN for source-based prioritized traffic */
+  isPrioritized?: boolean | null;
   name?: string | null;
   nat?: { staticPrefix?: string | null } | null;
   physport?: number | null;
@@ -13064,6 +14143,20 @@ export interface DeleteSiteLanResponse {
     address: string;
     dhcpRelay?: { serverAddresses?: string[] | null } | null;
     dhcpServer?: {
+      dhcpOptions?:
+        | {
+            code: number;
+            type:
+              | "text"
+              | "hex"
+              | "ip"
+              | "byte"
+              | "short"
+              | "integer"
+              | (string & {});
+            value: string;
+          }[]
+        | null;
       dhcpPoolEnd?: string | null;
       dhcpPoolStart?: string | null;
       dnsServer?: string | null;
@@ -13079,7 +14172,10 @@ export interface DeleteSiteLanResponse {
 
 export const DeleteSiteLanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  bondId: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   haLink: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  isBreakout: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  isPrioritized: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   nat: Schema.optional(
     Schema.Union([
@@ -13137,6 +14233,28 @@ export const DeleteSiteLanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         dhcpServer: Schema.optional(
           Schema.Union([
             Schema.Struct({
+              dhcpOptions: Schema.optional(
+                Schema.Union([
+                  Schema.Array(
+                    Schema.Struct({
+                      code: Schema.Number,
+                      type: Schema.Union([
+                        Schema.Literals([
+                          "text",
+                          "hex",
+                          "ip",
+                          "byte",
+                          "short",
+                          "integer",
+                        ]),
+                        Schema.String,
+                      ]),
+                      value: Schema.String,
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
               dhcpPoolEnd: Schema.optional(
                 Schema.Union([Schema.String, Schema.Null]),
               ),
@@ -13157,6 +14275,7 @@ export const DeleteSiteLanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
             }).pipe(
               Schema.encodeKeys({
+                dhcpOptions: "dhcp_options",
                 dhcpPoolEnd: "dhcp_pool_end",
                 dhcpPoolStart: "dhcp_pool_start",
                 dnsServer: "dns_server",
@@ -13190,7 +14309,10 @@ export const DeleteSiteLanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   .pipe(
     Schema.encodeKeys({
       id: "id",
+      bondId: "bond_id",
       haLink: "ha_link",
+      isBreakout: "is_breakout",
+      isPrioritized: "is_prioritized",
       name: "name",
       nat: "nat",
       physport: "physport",
@@ -13243,7 +14365,7 @@ export interface GetSiteWanResponse {
   /** Identifier */
   id?: string | null;
   /** Magic WAN health check rate for tunnels created on this link. The default value is `mid`. */
-  healthCheckRate?: "low" | "mid" | "high" | null;
+  healthCheckRate?: "low" | "mid" | "high" | (string & {}) | null;
   name?: string | null;
   physport?: number | null;
   /** Priority of WAN for traffic loadbalancing. */
@@ -13263,7 +14385,10 @@ export interface GetSiteWanResponse {
 export const GetSiteWanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   healthCheckRate: Schema.optional(
-    Schema.Union([Schema.Literals(["low", "mid", "high"]), Schema.Null]),
+    Schema.Union([
+      Schema.Union([Schema.Literals(["low", "mid", "high"]), Schema.String]),
+      Schema.Null,
+    ]),
   ),
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   physport: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -13337,7 +14462,7 @@ export const ListSiteWansRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface ListSiteWansResponse {
   result: {
     id?: string | null;
-    healthCheckRate?: "low" | "mid" | "high" | null;
+    healthCheckRate?: "low" | "mid" | "high" | (string & {}) | null;
     name?: string | null;
     physport?: number | null;
     priority?: number | null;
@@ -13356,7 +14481,13 @@ export const ListSiteWansResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       healthCheckRate: Schema.optional(
-        Schema.Union([Schema.Literals(["low", "mid", "high"]), Schema.Null]),
+        Schema.Union([
+          Schema.Union([
+            Schema.Literals(["low", "mid", "high"]),
+            Schema.String,
+          ]),
+          Schema.Null,
+        ]),
       ),
       name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       physport: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -13417,11 +14548,11 @@ export interface CreateSiteWanRequest {
   siteId: string;
   /** Path param: Identifier */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   physport: number;
-  /** Body param: */
+  /** Body param */
   name?: string;
-  /** Body param: */
+  /** Body param */
   priority?: number;
   /** Body param: (optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode. */
   staticAddressing?: {
@@ -13470,7 +14601,7 @@ export const CreateSiteWanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface CreateSiteWanResponse {
   result: {
     id?: string | null;
-    healthCheckRate?: "low" | "mid" | "high" | null;
+    healthCheckRate?: "low" | "mid" | "high" | (string & {}) | null;
     name?: string | null;
     physport?: number | null;
     priority?: number | null;
@@ -13489,7 +14620,13 @@ export const CreateSiteWanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       healthCheckRate: Schema.optional(
-        Schema.Union([Schema.Literals(["low", "mid", "high"]), Schema.Null]),
+        Schema.Union([
+          Schema.Union([
+            Schema.Literals(["low", "mid", "high"]),
+            Schema.String,
+          ]),
+          Schema.Null,
+        ]),
       ),
       name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       physport: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -13551,11 +14688,11 @@ export interface UpdateSiteWanRequest {
   wanId: string;
   /** Path param: Identifier */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   name?: string;
-  /** Body param: */
+  /** Body param */
   physport?: number;
-  /** Body param: */
+  /** Body param */
   priority?: number;
   /** Body param: (optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode. */
   staticAddressing?: {
@@ -13606,7 +14743,7 @@ export interface UpdateSiteWanResponse {
   /** Identifier */
   id?: string | null;
   /** Magic WAN health check rate for tunnels created on this link. The default value is `mid`. */
-  healthCheckRate?: "low" | "mid" | "high" | null;
+  healthCheckRate?: "low" | "mid" | "high" | (string & {}) | null;
   name?: string | null;
   physport?: number | null;
   /** Priority of WAN for traffic loadbalancing. */
@@ -13626,7 +14763,10 @@ export interface UpdateSiteWanResponse {
 export const UpdateSiteWanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   healthCheckRate: Schema.optional(
-    Schema.Union([Schema.Literals(["low", "mid", "high"]), Schema.Null]),
+    Schema.Union([
+      Schema.Union([Schema.Literals(["low", "mid", "high"]), Schema.String]),
+      Schema.Null,
+    ]),
   ),
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   physport: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -13686,11 +14826,11 @@ export interface PatchSiteWanRequest {
   wanId: string;
   /** Path param: Identifier */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   name?: string;
-  /** Body param: */
+  /** Body param */
   physport?: number;
-  /** Body param: */
+  /** Body param */
   priority?: number;
   /** Body param: (optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode. */
   staticAddressing?: {
@@ -13741,7 +14881,7 @@ export interface PatchSiteWanResponse {
   /** Identifier */
   id?: string | null;
   /** Magic WAN health check rate for tunnels created on this link. The default value is `mid`. */
-  healthCheckRate?: "low" | "mid" | "high" | null;
+  healthCheckRate?: "low" | "mid" | "high" | (string & {}) | null;
   name?: string | null;
   physport?: number | null;
   /** Priority of WAN for traffic loadbalancing. */
@@ -13761,7 +14901,10 @@ export interface PatchSiteWanResponse {
 export const PatchSiteWanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   healthCheckRate: Schema.optional(
-    Schema.Union([Schema.Literals(["low", "mid", "high"]), Schema.Null]),
+    Schema.Union([
+      Schema.Union([Schema.Literals(["low", "mid", "high"]), Schema.String]),
+      Schema.Null,
+    ]),
   ),
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   physport: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -13838,7 +14981,7 @@ export interface DeleteSiteWanResponse {
   /** Identifier */
   id?: string | null;
   /** Magic WAN health check rate for tunnels created on this link. The default value is `mid`. */
-  healthCheckRate?: "low" | "mid" | "high" | null;
+  healthCheckRate?: "low" | "mid" | "high" | (string & {}) | null;
   name?: string | null;
   physport?: number | null;
   /** Priority of WAN for traffic loadbalancing. */
@@ -13858,7 +15001,10 @@ export interface DeleteSiteWanResponse {
 export const DeleteSiteWanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   healthCheckRate: Schema.optional(
-    Schema.Union([Schema.Literals(["low", "mid", "high"]), Schema.Null]),
+    Schema.Union([
+      Schema.Union([Schema.Literals(["low", "mid", "high"]), Schema.String]),
+      Schema.Null,
+    ]),
   ),
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   physport: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),

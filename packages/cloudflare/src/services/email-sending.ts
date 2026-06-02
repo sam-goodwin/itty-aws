@@ -47,11 +47,11 @@ export interface SendEmailSendingRequest {
   cc?: string | string[];
   /** Body param: Custom email headers as key-value pairs. */
   headers?: Record<string, unknown>;
-  /** Body param: HTML body of the email. At least one of text or html must be provided. */
+  /** Body param: HTML body of the email. At least one of text or html must be provided (non-empty). */
   html?: string;
   /** Body param: Reply-to address. Either a plain string or an object with address and name. */
   replyTo?: string | { address: string; name: string };
-  /** Body param: Plain text body of the email. At least one of text or html must be provided. */
+  /** Body param: Plain text body of the email. At least one of text or html must be provided (non-empty). */
   text?: string;
 }
 
@@ -611,6 +611,7 @@ export interface GetSubdomainDnsResponse {
       | "SVCB"
       | "TLSA"
       | "URI"
+      | (string & {})
       | null;
   }[];
 }
@@ -630,25 +631,28 @@ export const GetSubdomainDnsResponse =
         ),
         type: Schema.optional(
           Schema.Union([
-            Schema.Literals([
-              "A",
-              "AAAA",
-              "CNAME",
-              "HTTPS",
-              "TXT",
-              "SRV",
-              "LOC",
-              "MX",
-              "NS",
-              "CERT",
-              "DNSKEY",
-              "DS",
-              "NAPTR",
-              "SMIMEA",
-              "SSHFP",
-              "SVCB",
-              "TLSA",
-              "URI",
+            Schema.Union([
+              Schema.Literals([
+                "A",
+                "AAAA",
+                "CNAME",
+                "HTTPS",
+                "TXT",
+                "SRV",
+                "LOC",
+                "MX",
+                "NS",
+                "CERT",
+                "DNSKEY",
+                "DS",
+                "NAPTR",
+                "SMIMEA",
+                "SSHFP",
+                "SVCB",
+                "TLSA",
+                "URI",
+              ]),
+              Schema.String,
             ]),
             Schema.Null,
           ]),

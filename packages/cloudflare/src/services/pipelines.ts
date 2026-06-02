@@ -124,7 +124,7 @@ export interface GetPipelineResponse {
   id: string;
   destination: {
     batch: { maxBytes: number; maxDurationS: number; maxRows: number };
-    compression: { type: "none" | "gzip" | "deflate" };
+    compression: { type: "none" | "gzip" | "deflate" | (string & {}) };
     format: "json";
     path: {
       bucket: string;
@@ -166,7 +166,10 @@ export const GetPipelineResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
     compression: Schema.Struct({
-      type: Schema.Literals(["none", "gzip", "deflate"]),
+      type: Schema.Union([
+        Schema.Literals(["none", "gzip", "deflate"]),
+        Schema.String,
+      ]),
     }),
     format: Schema.Literal("json"),
     path: Schema.Struct({
@@ -253,7 +256,7 @@ export interface ListPipelinesResponse {
     id: string;
     destination: {
       batch: { maxBytes: number; maxDurationS: number; maxRows: number };
-      compression: { type: "none" | "gzip" | "deflate" };
+      compression: { type: "none" | "gzip" | "deflate" | (string & {}) };
       format: "json";
       path: {
         bucket: string;
@@ -315,7 +318,10 @@ export const ListPipelinesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           }),
         ),
         compression: Schema.Struct({
-          type: Schema.Literals(["none", "gzip", "deflate"]),
+          type: Schema.Union([
+            Schema.Literals(["none", "gzip", "deflate"]),
+            Schema.String,
+          ]),
         }),
         format: Schema.Literal("json"),
         path: Schema.Struct({
@@ -381,10 +387,10 @@ export const listPipelines: API.OperationMethod<
 export interface CreatePipelineRequest {
   /** Path param: Specifies the public ID of the account. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   destination: {
     batch: { maxBytes?: number; maxDurationS?: number; maxRows?: number };
-    compression: { type?: "none" | "gzip" | "deflate" };
+    compression: { type?: "none" | "gzip" | "deflate" | (string & {}) };
     credentials: {
       accessKeyId: string;
       endpoint: string;
@@ -401,7 +407,7 @@ export interface CreatePipelineRequest {
   };
   /** Body param: Defines the name of the pipeline. */
   name: string;
-  /** Body param: */
+  /** Body param */
   source: (
     | {
         format: "json";
@@ -428,7 +434,12 @@ export const CreatePipelineRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
     compression: Schema.Struct({
-      type: Schema.optional(Schema.Literals(["none", "gzip", "deflate"])),
+      type: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["none", "gzip", "deflate"]),
+          Schema.String,
+        ]),
+      ),
     }),
     credentials: Schema.Struct({
       accessKeyId: SensitiveString,
@@ -478,7 +489,7 @@ export interface CreatePipelineResponse {
   id: string;
   destination: {
     batch: { maxBytes: number; maxDurationS: number; maxRows: number };
-    compression: { type: "none" | "gzip" | "deflate" };
+    compression: { type: "none" | "gzip" | "deflate" | (string & {}) };
     format: "json";
     path: {
       bucket: string;
@@ -521,7 +532,10 @@ export const CreatePipelineResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         }),
       ),
       compression: Schema.Struct({
-        type: Schema.Literals(["none", "gzip", "deflate"]),
+        type: Schema.Union([
+          Schema.Literals(["none", "gzip", "deflate"]),
+          Schema.String,
+        ]),
       }),
       format: Schema.Literal("json"),
       path: Schema.Struct({
@@ -582,10 +596,10 @@ export interface UpdatePipelineRequest {
   pipelineName: string;
   /** Path param: Specifies the public ID of the account. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   destination: {
     batch: { maxBytes?: number; maxDurationS?: number; maxRows?: number };
-    compression: { type?: "none" | "gzip" | "deflate" };
+    compression: { type?: "none" | "gzip" | "deflate" | (string & {}) };
     format: "json";
     path: {
       bucket: string;
@@ -602,7 +616,7 @@ export interface UpdatePipelineRequest {
   };
   /** Body param: Defines the name of the pipeline. */
   name: string;
-  /** Body param: */
+  /** Body param */
   source: (
     | {
         format: "json";
@@ -630,7 +644,12 @@ export const UpdatePipelineRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
     compression: Schema.Struct({
-      type: Schema.optional(Schema.Literals(["none", "gzip", "deflate"])),
+      type: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["none", "gzip", "deflate"]),
+          Schema.String,
+        ]),
+      ),
     }),
     format: Schema.Literal("json"),
     path: Schema.Struct({
@@ -685,7 +704,7 @@ export interface UpdatePipelineResponse {
   id: string;
   destination: {
     batch: { maxBytes: number; maxDurationS: number; maxRows: number };
-    compression: { type: "none" | "gzip" | "deflate" };
+    compression: { type: "none" | "gzip" | "deflate" | (string & {}) };
     format: "json";
     path: {
       bucket: string;
@@ -728,7 +747,10 @@ export const UpdatePipelineResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         }),
       ),
       compression: Schema.Struct({
-        type: Schema.Literals(["none", "gzip", "deflate"]),
+        type: Schema.Union([
+          Schema.Literals(["none", "gzip", "deflate"]),
+          Schema.String,
+        ]),
       }),
       format: Schema.Literal("json"),
       path: Schema.Struct({
@@ -847,16 +869,21 @@ export interface GetSinkResponse {
   /** Defines the name of the Sink. */
   name: string;
   /** Specifies the type of sink. */
-  type: "r2" | "r2_data_catalog";
+  type: "r2" | "r2_data_catalog" | (string & {});
   /** Defines the configuration of the R2 Sink. */
   config?:
     | {
         accountId: string;
         bucket: string;
-        credentials: { accessKeyId: string; secretAccessKey: string };
         fileNaming?: {
           prefix?: string | null;
-          strategy?: "serial" | "uuid" | "uuid_v7" | "ulid" | null;
+          strategy?:
+            | "serial"
+            | "uuid"
+            | "uuid_v7"
+            | "ulid"
+            | (string & {})
+            | null;
           suffix?: string | null;
         } | null;
         jurisdiction?: string | null;
@@ -869,7 +896,6 @@ export interface GetSinkResponse {
         } | null;
       }
     | {
-        token: string;
         accountId: string;
         bucket: string;
         tableName: string;
@@ -884,8 +910,8 @@ export interface GetSinkResponse {
   format?:
     | {
         type: "json";
-        decimalEncoding?: "number" | "string" | "bytes" | null;
-        timestampFormat?: "rfc3339" | "unix_millis" | null;
+        decimalEncoding?: "number" | "string" | "bytes" | (string & {}) | null;
+        timestampFormat?: "rfc3339" | "unix_millis" | (string & {}) | null;
         unstructured?: boolean | null;
       }
     | {
@@ -896,6 +922,7 @@ export interface GetSinkResponse {
           | "gzip"
           | "zstd"
           | "lz4"
+          | (string & {})
           | null;
         rowGroupBytes?: number | null;
       }
@@ -963,6 +990,7 @@ export interface GetSinkResponse {
                 | "millisecond"
                 | "microsecond"
                 | "nanosecond"
+                | (string & {})
                 | null;
             }
           | {
@@ -991,6 +1019,7 @@ export interface GetSinkResponse {
             | "gzip"
             | "zstd"
             | "lz4"
+            | (string & {})
             | null;
           rowGroupBytes?: number | null;
         }
@@ -1004,12 +1033,14 @@ export const GetSinkResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   createdAt: Schema.String,
   modifiedAt: Schema.String,
   name: Schema.String,
-  type: Schema.Literals(["r2", "r2_data_catalog"]),
+  type: Schema.Union([
+    Schema.Literals(["r2", "r2_data_catalog"]),
+    Schema.String,
+  ]),
   config: Schema.optional(
     Schema.Union([
       Schema.Union([
         Schema.Struct({
-          token: Schema.String,
           accountId: Schema.String,
           bucket: Schema.String,
           tableName: Schema.String,
@@ -1040,7 +1071,6 @@ export const GetSinkResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ),
         }).pipe(
           Schema.encodeKeys({
-            token: "token",
             accountId: "account_id",
             bucket: "bucket",
             tableName: "table_name",
@@ -1051,15 +1081,6 @@ export const GetSinkResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Struct({
           accountId: Schema.String,
           bucket: Schema.String,
-          credentials: Schema.Struct({
-            accessKeyId: SensitiveString,
-            secretAccessKey: SensitiveString,
-          }).pipe(
-            Schema.encodeKeys({
-              accessKeyId: "access_key_id",
-              secretAccessKey: "secret_access_key",
-            }),
-          ),
           fileNaming: Schema.optional(
             Schema.Union([
               Schema.Struct({
@@ -1068,7 +1089,10 @@ export const GetSinkResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 ),
                 strategy: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["serial", "uuid", "uuid_v7", "ulid"]),
+                    Schema.Union([
+                      Schema.Literals(["serial", "uuid", "uuid_v7", "ulid"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -1119,7 +1143,6 @@ export const GetSinkResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.encodeKeys({
             accountId: "account_id",
             bucket: "bucket",
-            credentials: "credentials",
             fileNaming: "file_naming",
             jurisdiction: "jurisdiction",
             partitioning: "partitioning",
@@ -1138,13 +1161,19 @@ export const GetSinkResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           type: Schema.Literal("json"),
           decimalEncoding: Schema.optional(
             Schema.Union([
-              Schema.Literals(["number", "string", "bytes"]),
+              Schema.Union([
+                Schema.Literals(["number", "string", "bytes"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
           timestampFormat: Schema.optional(
             Schema.Union([
-              Schema.Literals(["rfc3339", "unix_millis"]),
+              Schema.Union([
+                Schema.Literals(["rfc3339", "unix_millis"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -1163,12 +1192,15 @@ export const GetSinkResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           type: Schema.Literal("parquet"),
           compression: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "uncompressed",
-                "snappy",
-                "gzip",
-                "zstd",
-                "lz4",
+              Schema.Union([
+                Schema.Literals([
+                  "uncompressed",
+                  "snappy",
+                  "gzip",
+                  "zstd",
+                  "lz4",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -1371,11 +1403,14 @@ export const GetSinkResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   ),
                   unit: Schema.optional(
                     Schema.Union([
-                      Schema.Literals([
-                        "second",
-                        "millisecond",
-                        "microsecond",
-                        "nanosecond",
+                      Schema.Union([
+                        Schema.Literals([
+                          "second",
+                          "millisecond",
+                          "microsecond",
+                          "nanosecond",
+                        ]),
+                        Schema.String,
                       ]),
                       Schema.Null,
                     ]),
@@ -1449,12 +1484,15 @@ export const GetSinkResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 type: Schema.Literal("parquet"),
                 compression: Schema.optional(
                   Schema.Union([
-                    Schema.Literals([
-                      "uncompressed",
-                      "snappy",
-                      "gzip",
-                      "zstd",
-                      "lz4",
+                    Schema.Union([
+                      Schema.Literals([
+                        "uncompressed",
+                        "snappy",
+                        "gzip",
+                        "zstd",
+                        "lz4",
+                      ]),
+                      Schema.String,
                     ]),
                     Schema.Null,
                   ]),
@@ -1511,7 +1549,7 @@ export interface ListSinksRequest {
   accountId: string;
   page?: number;
   perPage?: number;
-  /** Query param: */
+  /** Query param */
   pipelineId?: string;
 }
 
@@ -1530,15 +1568,20 @@ export interface ListSinksResponse {
     createdAt: string;
     modifiedAt: string;
     name: string;
-    type: "r2" | "r2_data_catalog";
+    type: "r2" | "r2_data_catalog" | (string & {});
     config?:
       | {
           accountId: string;
           bucket: string;
-          credentials: { accessKeyId: string; secretAccessKey: string };
           fileNaming?: {
             prefix?: string | null;
-            strategy?: "serial" | "uuid" | "uuid_v7" | "ulid" | null;
+            strategy?:
+              | "serial"
+              | "uuid"
+              | "uuid_v7"
+              | "ulid"
+              | (string & {})
+              | null;
             suffix?: string | null;
           } | null;
           jurisdiction?: string | null;
@@ -1551,7 +1594,6 @@ export interface ListSinksResponse {
           } | null;
         }
       | {
-          token: string;
           accountId: string;
           bucket: string;
           tableName: string;
@@ -1566,8 +1608,13 @@ export interface ListSinksResponse {
     format?:
       | {
           type: "json";
-          decimalEncoding?: "number" | "string" | "bytes" | null;
-          timestampFormat?: "rfc3339" | "unix_millis" | null;
+          decimalEncoding?:
+            | "number"
+            | "string"
+            | "bytes"
+            | (string & {})
+            | null;
+          timestampFormat?: "rfc3339" | "unix_millis" | (string & {}) | null;
           unstructured?: boolean | null;
         }
       | {
@@ -1578,6 +1625,7 @@ export interface ListSinksResponse {
             | "gzip"
             | "zstd"
             | "lz4"
+            | (string & {})
             | null;
           rowGroupBytes?: number | null;
         }
@@ -1645,6 +1693,7 @@ export interface ListSinksResponse {
                   | "millisecond"
                   | "microsecond"
                   | "nanosecond"
+                  | (string & {})
                   | null;
               }
             | {
@@ -1673,6 +1722,7 @@ export interface ListSinksResponse {
               | "gzip"
               | "zstd"
               | "lz4"
+              | (string & {})
               | null;
             rowGroupBytes?: number | null;
           }
@@ -1695,12 +1745,14 @@ export const ListSinksResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       createdAt: Schema.String,
       modifiedAt: Schema.String,
       name: Schema.String,
-      type: Schema.Literals(["r2", "r2_data_catalog"]),
+      type: Schema.Union([
+        Schema.Literals(["r2", "r2_data_catalog"]),
+        Schema.String,
+      ]),
       config: Schema.optional(
         Schema.Union([
           Schema.Union([
             Schema.Struct({
-              token: Schema.String,
               accountId: Schema.String,
               bucket: Schema.String,
               tableName: Schema.String,
@@ -1731,7 +1783,6 @@ export const ListSinksResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
             }).pipe(
               Schema.encodeKeys({
-                token: "token",
                 accountId: "account_id",
                 bucket: "bucket",
                 tableName: "table_name",
@@ -1742,15 +1793,6 @@ export const ListSinksResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.Struct({
               accountId: Schema.String,
               bucket: Schema.String,
-              credentials: Schema.Struct({
-                accessKeyId: SensitiveString,
-                secretAccessKey: SensitiveString,
-              }).pipe(
-                Schema.encodeKeys({
-                  accessKeyId: "access_key_id",
-                  secretAccessKey: "secret_access_key",
-                }),
-              ),
               fileNaming: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
@@ -1759,7 +1801,15 @@ export const ListSinksResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     ),
                     strategy: Schema.optional(
                       Schema.Union([
-                        Schema.Literals(["serial", "uuid", "uuid_v7", "ulid"]),
+                        Schema.Union([
+                          Schema.Literals([
+                            "serial",
+                            "uuid",
+                            "uuid_v7",
+                            "ulid",
+                          ]),
+                          Schema.String,
+                        ]),
                         Schema.Null,
                       ]),
                     ),
@@ -1810,7 +1860,6 @@ export const ListSinksResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               Schema.encodeKeys({
                 accountId: "account_id",
                 bucket: "bucket",
-                credentials: "credentials",
                 fileNaming: "file_naming",
                 jurisdiction: "jurisdiction",
                 partitioning: "partitioning",
@@ -1829,13 +1878,19 @@ export const ListSinksResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               type: Schema.Literal("json"),
               decimalEncoding: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["number", "string", "bytes"]),
+                  Schema.Union([
+                    Schema.Literals(["number", "string", "bytes"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
               timestampFormat: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["rfc3339", "unix_millis"]),
+                  Schema.Union([
+                    Schema.Literals(["rfc3339", "unix_millis"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -1854,12 +1909,15 @@ export const ListSinksResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               type: Schema.Literal("parquet"),
               compression: Schema.optional(
                 Schema.Union([
-                  Schema.Literals([
-                    "uncompressed",
-                    "snappy",
-                    "gzip",
-                    "zstd",
-                    "lz4",
+                  Schema.Union([
+                    Schema.Literals([
+                      "uncompressed",
+                      "snappy",
+                      "gzip",
+                      "zstd",
+                      "lz4",
+                    ]),
+                    Schema.String,
                   ]),
                   Schema.Null,
                 ]),
@@ -2062,11 +2120,14 @@ export const ListSinksResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                       ),
                       unit: Schema.optional(
                         Schema.Union([
-                          Schema.Literals([
-                            "second",
-                            "millisecond",
-                            "microsecond",
-                            "nanosecond",
+                          Schema.Union([
+                            Schema.Literals([
+                              "second",
+                              "millisecond",
+                              "microsecond",
+                              "nanosecond",
+                            ]),
+                            Schema.String,
                           ]),
                           Schema.Null,
                         ]),
@@ -2140,12 +2201,15 @@ export const ListSinksResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     type: Schema.Literal("parquet"),
                     compression: Schema.optional(
                       Schema.Union([
-                        Schema.Literals([
-                          "uncompressed",
-                          "snappy",
-                          "gzip",
-                          "zstd",
-                          "lz4",
+                        Schema.Union([
+                          Schema.Literals([
+                            "uncompressed",
+                            "snappy",
+                            "gzip",
+                            "zstd",
+                            "lz4",
+                          ]),
+                          Schema.String,
                         ]),
                         Schema.Null,
                       ]),
@@ -2232,7 +2296,7 @@ export interface CreateSinkRequest {
   /** Body param: Defines the name of the Sink. */
   name: string;
   /** Body param: Specifies the type of sink. */
-  type: "r2" | "r2_data_catalog";
+  type: "r2" | "r2_data_catalog" | (string & {});
   /** Body param: Defines the configuration of the R2 Sink. */
   config?:
     | {
@@ -2241,7 +2305,7 @@ export interface CreateSinkRequest {
         credentials: { accessKeyId: string; secretAccessKey: string };
         fileNaming?: {
           prefix?: string;
-          strategy?: "serial" | "uuid" | "uuid_v7" | "ulid";
+          strategy?: "serial" | "uuid" | "uuid_v7" | "ulid" | (string & {});
           suffix?: string;
         };
         jurisdiction?: string;
@@ -2265,20 +2329,26 @@ export interface CreateSinkRequest {
           intervalSeconds?: number;
         };
       };
-  /** Body param: */
+  /** Body param */
   format?:
     | {
         type: "json";
-        decimalEncoding?: "number" | "string" | "bytes";
-        timestampFormat?: "rfc3339" | "unix_millis";
+        decimalEncoding?: "number" | "string" | "bytes" | (string & {});
+        timestampFormat?: "rfc3339" | "unix_millis" | (string & {});
         unstructured?: boolean;
       }
     | {
         type: "parquet";
-        compression?: "uncompressed" | "snappy" | "gzip" | "zstd" | "lz4";
+        compression?:
+          | "uncompressed"
+          | "snappy"
+          | "gzip"
+          | "zstd"
+          | "lz4"
+          | (string & {});
         rowGroupBytes?: number | null;
       };
-  /** Body param: */
+  /** Body param */
   schema?: {
     fields?: (
       | {
@@ -2336,7 +2406,12 @@ export interface CreateSinkRequest {
           name?: string;
           required?: boolean;
           sqlName?: string;
-          unit?: "second" | "millisecond" | "microsecond" | "nanosecond";
+          unit?:
+            | "second"
+            | "millisecond"
+            | "microsecond"
+            | "nanosecond"
+            | (string & {});
         }
       | {
           type: "json";
@@ -2357,7 +2432,13 @@ export interface CreateSinkRequest {
         }
       | {
           type: "parquet";
-          compression?: "uncompressed" | "snappy" | "gzip" | "zstd" | "lz4";
+          compression?:
+            | "uncompressed"
+            | "snappy"
+            | "gzip"
+            | "zstd"
+            | "lz4"
+            | (string & {});
           rowGroupBytes?: number | null;
         };
     inferred?: boolean | null;
@@ -2367,7 +2448,10 @@ export interface CreateSinkRequest {
 export const CreateSinkRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   name: Schema.String,
-  type: Schema.Literals(["r2", "r2_data_catalog"]),
+  type: Schema.Union([
+    Schema.Literals(["r2", "r2_data_catalog"]),
+    Schema.String,
+  ]),
   config: Schema.optional(
     Schema.Union([
       Schema.Struct({
@@ -2415,7 +2499,10 @@ export const CreateSinkRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Struct({
             prefix: Schema.optional(Schema.String),
             strategy: Schema.optional(
-              Schema.Literals(["serial", "uuid", "uuid_v7", "ulid"]),
+              Schema.Union([
+                Schema.Literals(["serial", "uuid", "uuid_v7", "ulid"]),
+                Schema.String,
+              ]),
             ),
             suffix: Schema.optional(Schema.String),
           }),
@@ -2459,10 +2546,16 @@ export const CreateSinkRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Struct({
         type: Schema.Literal("json"),
         decimalEncoding: Schema.optional(
-          Schema.Literals(["number", "string", "bytes"]),
+          Schema.Union([
+            Schema.Literals(["number", "string", "bytes"]),
+            Schema.String,
+          ]),
         ),
         timestampFormat: Schema.optional(
-          Schema.Literals(["rfc3339", "unix_millis"]),
+          Schema.Union([
+            Schema.Literals(["rfc3339", "unix_millis"]),
+            Schema.String,
+          ]),
         ),
         unstructured: Schema.optional(Schema.Boolean),
       }).pipe(
@@ -2476,7 +2569,10 @@ export const CreateSinkRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Struct({
         type: Schema.Literal("parquet"),
         compression: Schema.optional(
-          Schema.Literals(["uncompressed", "snappy", "gzip", "zstd", "lz4"]),
+          Schema.Union([
+            Schema.Literals(["uncompressed", "snappy", "gzip", "zstd", "lz4"]),
+            Schema.String,
+          ]),
         ),
         rowGroupBytes: Schema.optional(
           Schema.Union([Schema.Number, Schema.Null]),
@@ -2623,11 +2719,14 @@ export const CreateSinkRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               required: Schema.optional(Schema.Boolean),
               sqlName: Schema.optional(Schema.String),
               unit: Schema.optional(
-                Schema.Literals([
-                  "second",
-                  "millisecond",
-                  "microsecond",
-                  "nanosecond",
+                Schema.Union([
+                  Schema.Literals([
+                    "second",
+                    "millisecond",
+                    "microsecond",
+                    "nanosecond",
+                  ]),
+                  Schema.String,
                 ]),
               ),
             }).pipe(
@@ -2683,12 +2782,15 @@ export const CreateSinkRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Struct({
             type: Schema.Literal("parquet"),
             compression: Schema.optional(
-              Schema.Literals([
-                "uncompressed",
-                "snappy",
-                "gzip",
-                "zstd",
-                "lz4",
+              Schema.Union([
+                Schema.Literals([
+                  "uncompressed",
+                  "snappy",
+                  "gzip",
+                  "zstd",
+                  "lz4",
+                ]),
+                Schema.String,
               ]),
             ),
             rowGroupBytes: Schema.optional(
@@ -2718,7 +2820,7 @@ export interface CreateSinkResponse {
   /** Defines the name of the Sink. */
   name: string;
   /** Specifies the type of sink. */
-  type: "r2" | "r2_data_catalog";
+  type: "r2" | "r2_data_catalog" | (string & {});
   /** R2 Data Catalog Sink */
   config?:
     | {
@@ -2727,7 +2829,13 @@ export interface CreateSinkResponse {
         credentials: { accessKeyId: string; secretAccessKey: string };
         fileNaming?: {
           prefix?: string | null;
-          strategy?: "serial" | "uuid" | "uuid_v7" | "ulid" | null;
+          strategy?:
+            | "serial"
+            | "uuid"
+            | "uuid_v7"
+            | "ulid"
+            | (string & {})
+            | null;
           suffix?: string | null;
         } | null;
         jurisdiction?: string | null;
@@ -2755,8 +2863,8 @@ export interface CreateSinkResponse {
   format?:
     | {
         type: "json";
-        decimalEncoding?: "number" | "string" | "bytes" | null;
-        timestampFormat?: "rfc3339" | "unix_millis" | null;
+        decimalEncoding?: "number" | "string" | "bytes" | (string & {}) | null;
+        timestampFormat?: "rfc3339" | "unix_millis" | (string & {}) | null;
         unstructured?: boolean | null;
       }
     | {
@@ -2767,6 +2875,7 @@ export interface CreateSinkResponse {
           | "gzip"
           | "zstd"
           | "lz4"
+          | (string & {})
           | null;
         rowGroupBytes?: number | null;
       }
@@ -2834,6 +2943,7 @@ export interface CreateSinkResponse {
                 | "millisecond"
                 | "microsecond"
                 | "nanosecond"
+                | (string & {})
                 | null;
             }
           | {
@@ -2862,6 +2972,7 @@ export interface CreateSinkResponse {
             | "gzip"
             | "zstd"
             | "lz4"
+            | (string & {})
             | null;
           rowGroupBytes?: number | null;
         }
@@ -2875,7 +2986,10 @@ export const CreateSinkResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   createdAt: Schema.String,
   modifiedAt: Schema.String,
   name: Schema.String,
-  type: Schema.Literals(["r2", "r2_data_catalog"]),
+  type: Schema.Union([
+    Schema.Literals(["r2", "r2_data_catalog"]),
+    Schema.String,
+  ]),
   config: Schema.optional(
     Schema.Union([
       Schema.Union([
@@ -2939,7 +3053,10 @@ export const CreateSinkResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 ),
                 strategy: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["serial", "uuid", "uuid_v7", "ulid"]),
+                    Schema.Union([
+                      Schema.Literals(["serial", "uuid", "uuid_v7", "ulid"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -3009,13 +3126,19 @@ export const CreateSinkResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           type: Schema.Literal("json"),
           decimalEncoding: Schema.optional(
             Schema.Union([
-              Schema.Literals(["number", "string", "bytes"]),
+              Schema.Union([
+                Schema.Literals(["number", "string", "bytes"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
           timestampFormat: Schema.optional(
             Schema.Union([
-              Schema.Literals(["rfc3339", "unix_millis"]),
+              Schema.Union([
+                Schema.Literals(["rfc3339", "unix_millis"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -3034,12 +3157,15 @@ export const CreateSinkResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           type: Schema.Literal("parquet"),
           compression: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "uncompressed",
-                "snappy",
-                "gzip",
-                "zstd",
-                "lz4",
+              Schema.Union([
+                Schema.Literals([
+                  "uncompressed",
+                  "snappy",
+                  "gzip",
+                  "zstd",
+                  "lz4",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -3242,11 +3368,14 @@ export const CreateSinkResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   ),
                   unit: Schema.optional(
                     Schema.Union([
-                      Schema.Literals([
-                        "second",
-                        "millisecond",
-                        "microsecond",
-                        "nanosecond",
+                      Schema.Union([
+                        Schema.Literals([
+                          "second",
+                          "millisecond",
+                          "microsecond",
+                          "nanosecond",
+                        ]),
+                        Schema.String,
                       ]),
                       Schema.Null,
                     ]),
@@ -3320,12 +3449,15 @@ export const CreateSinkResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 type: Schema.Literal("parquet"),
                 compression: Schema.optional(
                   Schema.Union([
-                    Schema.Literals([
-                      "uncompressed",
-                      "snappy",
-                      "gzip",
-                      "zstd",
-                      "lz4",
+                    Schema.Union([
+                      Schema.Literals([
+                        "uncompressed",
+                        "snappy",
+                        "gzip",
+                        "zstd",
+                        "lz4",
+                      ]),
+                      Schema.String,
                     ]),
                     Schema.Null,
                   ]),
@@ -3405,7 +3537,9 @@ export const DeleteSinkRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteSinkResponse = unknown;
 
 export const DeleteSinkResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteSinkResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<DeleteSinkResponse>;
 
 export type DeleteSinkError = DefaultErrors;
 
@@ -3564,8 +3698,8 @@ export interface GetStreamResponse {
   format?:
     | {
         type: "json";
-        decimalEncoding?: "number" | "string" | "bytes" | null;
-        timestampFormat?: "rfc3339" | "unix_millis" | null;
+        decimalEncoding?: "number" | "string" | "bytes" | (string & {}) | null;
+        timestampFormat?: "rfc3339" | "unix_millis" | (string & {}) | null;
         unstructured?: boolean | null;
       }
     | {
@@ -3576,6 +3710,7 @@ export interface GetStreamResponse {
           | "gzip"
           | "zstd"
           | "lz4"
+          | (string & {})
           | null;
         rowGroupBytes?: number | null;
       }
@@ -3643,6 +3778,7 @@ export interface GetStreamResponse {
                 | "millisecond"
                 | "microsecond"
                 | "nanosecond"
+                | (string & {})
                 | null;
             }
           | {
@@ -3671,6 +3807,7 @@ export interface GetStreamResponse {
             | "gzip"
             | "zstd"
             | "lz4"
+            | (string & {})
             | null;
           rowGroupBytes?: number | null;
         }
@@ -3710,13 +3847,19 @@ export const GetStreamResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           type: Schema.Literal("json"),
           decimalEncoding: Schema.optional(
             Schema.Union([
-              Schema.Literals(["number", "string", "bytes"]),
+              Schema.Union([
+                Schema.Literals(["number", "string", "bytes"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
           timestampFormat: Schema.optional(
             Schema.Union([
-              Schema.Literals(["rfc3339", "unix_millis"]),
+              Schema.Union([
+                Schema.Literals(["rfc3339", "unix_millis"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -3735,12 +3878,15 @@ export const GetStreamResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           type: Schema.Literal("parquet"),
           compression: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "uncompressed",
-                "snappy",
-                "gzip",
-                "zstd",
-                "lz4",
+              Schema.Union([
+                Schema.Literals([
+                  "uncompressed",
+                  "snappy",
+                  "gzip",
+                  "zstd",
+                  "lz4",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -3943,11 +4089,14 @@ export const GetStreamResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   ),
                   unit: Schema.optional(
                     Schema.Union([
-                      Schema.Literals([
-                        "second",
-                        "millisecond",
-                        "microsecond",
-                        "nanosecond",
+                      Schema.Union([
+                        Schema.Literals([
+                          "second",
+                          "millisecond",
+                          "microsecond",
+                          "nanosecond",
+                        ]),
+                        Schema.String,
                       ]),
                       Schema.Null,
                     ]),
@@ -4021,12 +4170,15 @@ export const GetStreamResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 type: Schema.Literal("parquet"),
                 compression: Schema.optional(
                   Schema.Union([
-                    Schema.Literals([
-                      "uncompressed",
-                      "snappy",
-                      "gzip",
-                      "zstd",
-                      "lz4",
+                    Schema.Union([
+                      Schema.Literals([
+                        "uncompressed",
+                        "snappy",
+                        "gzip",
+                        "zstd",
+                        "lz4",
+                      ]),
+                      Schema.String,
                     ]),
                     Schema.Null,
                   ]),
@@ -4120,8 +4272,13 @@ export interface ListStreamsResponse {
     format?:
       | {
           type: "json";
-          decimalEncoding?: "number" | "string" | "bytes" | null;
-          timestampFormat?: "rfc3339" | "unix_millis" | null;
+          decimalEncoding?:
+            | "number"
+            | "string"
+            | "bytes"
+            | (string & {})
+            | null;
+          timestampFormat?: "rfc3339" | "unix_millis" | (string & {}) | null;
           unstructured?: boolean | null;
         }
       | {
@@ -4132,6 +4289,7 @@ export interface ListStreamsResponse {
             | "gzip"
             | "zstd"
             | "lz4"
+            | (string & {})
             | null;
           rowGroupBytes?: number | null;
         }
@@ -4199,6 +4357,7 @@ export interface ListStreamsResponse {
                   | "millisecond"
                   | "microsecond"
                   | "nanosecond"
+                  | (string & {})
                   | null;
               }
             | {
@@ -4227,6 +4386,7 @@ export interface ListStreamsResponse {
               | "gzip"
               | "zstd"
               | "lz4"
+              | (string & {})
               | null;
             rowGroupBytes?: number | null;
           }
@@ -4275,13 +4435,19 @@ export const ListStreamsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               type: Schema.Literal("json"),
               decimalEncoding: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["number", "string", "bytes"]),
+                  Schema.Union([
+                    Schema.Literals(["number", "string", "bytes"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
               timestampFormat: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["rfc3339", "unix_millis"]),
+                  Schema.Union([
+                    Schema.Literals(["rfc3339", "unix_millis"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -4300,12 +4466,15 @@ export const ListStreamsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               type: Schema.Literal("parquet"),
               compression: Schema.optional(
                 Schema.Union([
-                  Schema.Literals([
-                    "uncompressed",
-                    "snappy",
-                    "gzip",
-                    "zstd",
-                    "lz4",
+                  Schema.Union([
+                    Schema.Literals([
+                      "uncompressed",
+                      "snappy",
+                      "gzip",
+                      "zstd",
+                      "lz4",
+                    ]),
+                    Schema.String,
                   ]),
                   Schema.Null,
                 ]),
@@ -4508,11 +4677,14 @@ export const ListStreamsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                       ),
                       unit: Schema.optional(
                         Schema.Union([
-                          Schema.Literals([
-                            "second",
-                            "millisecond",
-                            "microsecond",
-                            "nanosecond",
+                          Schema.Union([
+                            Schema.Literals([
+                              "second",
+                              "millisecond",
+                              "microsecond",
+                              "nanosecond",
+                            ]),
+                            Schema.String,
                           ]),
                           Schema.Null,
                         ]),
@@ -4586,12 +4758,15 @@ export const ListStreamsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     type: Schema.Literal("parquet"),
                     compression: Schema.optional(
                       Schema.Union([
-                        Schema.Literals([
-                          "uncompressed",
-                          "snappy",
-                          "gzip",
-                          "zstd",
-                          "lz4",
+                        Schema.Union([
+                          Schema.Literals([
+                            "uncompressed",
+                            "snappy",
+                            "gzip",
+                            "zstd",
+                            "lz4",
+                          ]),
+                          Schema.String,
                         ]),
                         Schema.Null,
                       ]),
@@ -4679,26 +4854,32 @@ export interface CreateStreamRequest {
   accountId: string;
   /** Body param: Specifies the name of the Stream. */
   name: string;
-  /** Body param: */
+  /** Body param */
   format?:
     | {
         type: "json";
-        decimalEncoding?: "number" | "string" | "bytes";
-        timestampFormat?: "rfc3339" | "unix_millis";
+        decimalEncoding?: "number" | "string" | "bytes" | (string & {});
+        timestampFormat?: "rfc3339" | "unix_millis" | (string & {});
         unstructured?: boolean;
       }
     | {
         type: "parquet";
-        compression?: "uncompressed" | "snappy" | "gzip" | "zstd" | "lz4";
+        compression?:
+          | "uncompressed"
+          | "snappy"
+          | "gzip"
+          | "zstd"
+          | "lz4"
+          | (string & {});
         rowGroupBytes?: number | null;
       };
-  /** Body param: */
+  /** Body param */
   http?: {
     authentication: boolean;
     enabled: boolean;
     cors?: { origins?: string[] };
   };
-  /** Body param: */
+  /** Body param */
   schema?: {
     fields?: (
       | {
@@ -4756,7 +4937,12 @@ export interface CreateStreamRequest {
           name?: string;
           required?: boolean;
           sqlName?: string;
-          unit?: "second" | "millisecond" | "microsecond" | "nanosecond";
+          unit?:
+            | "second"
+            | "millisecond"
+            | "microsecond"
+            | "nanosecond"
+            | (string & {});
         }
       | {
           type: "json";
@@ -4777,12 +4963,18 @@ export interface CreateStreamRequest {
         }
       | {
           type: "parquet";
-          compression?: "uncompressed" | "snappy" | "gzip" | "zstd" | "lz4";
+          compression?:
+            | "uncompressed"
+            | "snappy"
+            | "gzip"
+            | "zstd"
+            | "lz4"
+            | (string & {});
           rowGroupBytes?: number | null;
         };
     inferred?: boolean | null;
   };
-  /** Body param: */
+  /** Body param */
   workerBinding?: { enabled: boolean };
 }
 
@@ -4794,10 +4986,16 @@ export const CreateStreamRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Struct({
         type: Schema.Literal("json"),
         decimalEncoding: Schema.optional(
-          Schema.Literals(["number", "string", "bytes"]),
+          Schema.Union([
+            Schema.Literals(["number", "string", "bytes"]),
+            Schema.String,
+          ]),
         ),
         timestampFormat: Schema.optional(
-          Schema.Literals(["rfc3339", "unix_millis"]),
+          Schema.Union([
+            Schema.Literals(["rfc3339", "unix_millis"]),
+            Schema.String,
+          ]),
         ),
         unstructured: Schema.optional(Schema.Boolean),
       }).pipe(
@@ -4811,7 +5009,10 @@ export const CreateStreamRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Struct({
         type: Schema.Literal("parquet"),
         compression: Schema.optional(
-          Schema.Literals(["uncompressed", "snappy", "gzip", "zstd", "lz4"]),
+          Schema.Union([
+            Schema.Literals(["uncompressed", "snappy", "gzip", "zstd", "lz4"]),
+            Schema.String,
+          ]),
         ),
         rowGroupBytes: Schema.optional(
           Schema.Union([Schema.Number, Schema.Null]),
@@ -4969,11 +5170,14 @@ export const CreateStreamRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               required: Schema.optional(Schema.Boolean),
               sqlName: Schema.optional(Schema.String),
               unit: Schema.optional(
-                Schema.Literals([
-                  "second",
-                  "millisecond",
-                  "microsecond",
-                  "nanosecond",
+                Schema.Union([
+                  Schema.Literals([
+                    "second",
+                    "millisecond",
+                    "microsecond",
+                    "nanosecond",
+                  ]),
+                  Schema.String,
                 ]),
               ),
             }).pipe(
@@ -5029,12 +5233,15 @@ export const CreateStreamRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Struct({
             type: Schema.Literal("parquet"),
             compression: Schema.optional(
-              Schema.Literals([
-                "uncompressed",
-                "snappy",
-                "gzip",
-                "zstd",
-                "lz4",
+              Schema.Union([
+                Schema.Literals([
+                  "uncompressed",
+                  "snappy",
+                  "gzip",
+                  "zstd",
+                  "lz4",
+                ]),
+                Schema.String,
               ]),
             ),
             rowGroupBytes: Schema.optional(
@@ -5091,8 +5298,8 @@ export interface CreateStreamResponse {
   format?:
     | {
         type: "json";
-        decimalEncoding?: "number" | "string" | "bytes" | null;
-        timestampFormat?: "rfc3339" | "unix_millis" | null;
+        decimalEncoding?: "number" | "string" | "bytes" | (string & {}) | null;
+        timestampFormat?: "rfc3339" | "unix_millis" | (string & {}) | null;
         unstructured?: boolean | null;
       }
     | {
@@ -5103,6 +5310,7 @@ export interface CreateStreamResponse {
           | "gzip"
           | "zstd"
           | "lz4"
+          | (string & {})
           | null;
         rowGroupBytes?: number | null;
       }
@@ -5170,6 +5378,7 @@ export interface CreateStreamResponse {
                 | "millisecond"
                 | "microsecond"
                 | "nanosecond"
+                | (string & {})
                 | null;
             }
           | {
@@ -5198,6 +5407,7 @@ export interface CreateStreamResponse {
             | "gzip"
             | "zstd"
             | "lz4"
+            | (string & {})
             | null;
           rowGroupBytes?: number | null;
         }
@@ -5237,13 +5447,19 @@ export const CreateStreamResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           type: Schema.Literal("json"),
           decimalEncoding: Schema.optional(
             Schema.Union([
-              Schema.Literals(["number", "string", "bytes"]),
+              Schema.Union([
+                Schema.Literals(["number", "string", "bytes"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
           timestampFormat: Schema.optional(
             Schema.Union([
-              Schema.Literals(["rfc3339", "unix_millis"]),
+              Schema.Union([
+                Schema.Literals(["rfc3339", "unix_millis"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -5262,12 +5478,15 @@ export const CreateStreamResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           type: Schema.Literal("parquet"),
           compression: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "uncompressed",
-                "snappy",
-                "gzip",
-                "zstd",
-                "lz4",
+              Schema.Union([
+                Schema.Literals([
+                  "uncompressed",
+                  "snappy",
+                  "gzip",
+                  "zstd",
+                  "lz4",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -5470,11 +5689,14 @@ export const CreateStreamResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   ),
                   unit: Schema.optional(
                     Schema.Union([
-                      Schema.Literals([
-                        "second",
-                        "millisecond",
-                        "microsecond",
-                        "nanosecond",
+                      Schema.Union([
+                        Schema.Literals([
+                          "second",
+                          "millisecond",
+                          "microsecond",
+                          "nanosecond",
+                        ]),
+                        Schema.String,
                       ]),
                       Schema.Null,
                     ]),
@@ -5548,12 +5770,15 @@ export const CreateStreamResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 type: Schema.Literal("parquet"),
                 compression: Schema.optional(
                   Schema.Union([
-                    Schema.Literals([
-                      "uncompressed",
-                      "snappy",
-                      "gzip",
-                      "zstd",
-                      "lz4",
+                    Schema.Union([
+                      Schema.Literals([
+                        "uncompressed",
+                        "snappy",
+                        "gzip",
+                        "zstd",
+                        "lz4",
+                      ]),
+                      Schema.String,
                     ]),
                     Schema.Null,
                   ]),
@@ -5616,13 +5841,13 @@ export interface PatchStreamRequest {
   streamId: string;
   /** Path param: Specifies the public ID of the account. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   http?: {
     authentication: boolean;
     enabled: boolean;
     cors?: { origins?: string[] };
   };
-  /** Body param: */
+  /** Body param */
   workerBinding?: { enabled: boolean };
 }
 
@@ -5673,8 +5898,8 @@ export interface PatchStreamResponse {
   format?:
     | {
         type: "json";
-        decimalEncoding?: "number" | "string" | "bytes" | null;
-        timestampFormat?: "rfc3339" | "unix_millis" | null;
+        decimalEncoding?: "number" | "string" | "bytes" | (string & {}) | null;
+        timestampFormat?: "rfc3339" | "unix_millis" | (string & {}) | null;
         unstructured?: boolean | null;
       }
     | {
@@ -5685,6 +5910,7 @@ export interface PatchStreamResponse {
           | "gzip"
           | "zstd"
           | "lz4"
+          | (string & {})
           | null;
         rowGroupBytes?: number | null;
       }
@@ -5722,13 +5948,19 @@ export const PatchStreamResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           type: Schema.Literal("json"),
           decimalEncoding: Schema.optional(
             Schema.Union([
-              Schema.Literals(["number", "string", "bytes"]),
+              Schema.Union([
+                Schema.Literals(["number", "string", "bytes"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
           timestampFormat: Schema.optional(
             Schema.Union([
-              Schema.Literals(["rfc3339", "unix_millis"]),
+              Schema.Union([
+                Schema.Literals(["rfc3339", "unix_millis"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -5747,12 +5979,15 @@ export const PatchStreamResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           type: Schema.Literal("parquet"),
           compression: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "uncompressed",
-                "snappy",
-                "gzip",
-                "zstd",
-                "lz4",
+              Schema.Union([
+                Schema.Literals([
+                  "uncompressed",
+                  "snappy",
+                  "gzip",
+                  "zstd",
+                  "lz4",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -5824,7 +6059,9 @@ export const DeleteStreamRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteStreamResponse = unknown;
 
 export const DeleteStreamResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteStreamResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<DeleteStreamResponse>;
 
 export type DeleteStreamError = DefaultErrors | PipelineNotExists;
 
@@ -5875,9 +6112,11 @@ export interface GetV1PipelineResponse {
     id: string;
     latest: number;
     name: string;
-    type: "stream" | "sink";
+    type: "stream" | "sink" | (string & {});
     version: number;
   }[];
+  /** Indicates the reason for the failure of the Pipeline. */
+  failureReason?: string | null;
 }
 
 export const GetV1PipelineResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -5892,10 +6131,11 @@ export const GetV1PipelineResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       id: Schema.String,
       latest: Schema.Number,
       name: Schema.String,
-      type: Schema.Literals(["stream", "sink"]),
+      type: Schema.Union([Schema.Literals(["stream", "sink"]), Schema.String]),
       version: Schema.Number,
     }),
   ),
+  failureReason: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
 })
   .pipe(
     Schema.encodeKeys({
@@ -5906,6 +6146,7 @@ export const GetV1PipelineResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       sql: "sql",
       status: "status",
       tables: "tables",
+      failureReason: "failure_reason",
     }),
   )
   .pipe(
@@ -6120,7 +6361,9 @@ export const DeleteV1PipelineRequest =
 export type DeleteV1PipelineResponse = unknown;
 
 export const DeleteV1PipelineResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteV1PipelineResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<DeleteV1PipelineResponse>;
 
 export type DeleteV1PipelineError = DefaultErrors | PipelineNotExists;
 

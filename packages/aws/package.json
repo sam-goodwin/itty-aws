@@ -1,6 +1,6 @@
 {
   "name": "@distilled.cloud/aws",
-  "version": "0.19.1",
+  "version": "0.22.4",
   "repository": {
     "type": "git",
     "url": "https://github.com/alchemy-run/distilled",
@@ -14,6 +14,12 @@
     "src"
   ],
   "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "bun": "./src/index.ts",
+      "browser": "./lib/index.browser.js",
+      "default": "./lib/index.js"
+    },
     "./*": {
       "types": "./lib/services/*.d.ts",
       "bun": "./src/services/*.ts",
@@ -22,6 +28,7 @@
     "./Auth": {
       "types": "./lib/auth.d.ts",
       "bun": "./src/auth.ts",
+      "browser": "./lib/auth.browser.js",
       "default": "./lib/auth.js"
     },
     "./Category": {
@@ -32,6 +39,7 @@
     "./Credentials": {
       "types": "./lib/credentials.d.ts",
       "bun": "./src/credentials.ts",
+      "browser": "./lib/credentials.browser.js",
       "default": "./lib/credentials.js"
     },
     "./Errors": {
@@ -58,11 +66,6 @@
       "types": "./lib/traits.d.ts",
       "bun": "./src/traits.ts",
       "default": "./lib/traits.js"
-    },
-    ".": {
-      "types": "./lib/index.d.ts",
-      "bun": "./src/index.ts",
-      "default": "./lib/index.js"
     }
   },
   "scripts": {

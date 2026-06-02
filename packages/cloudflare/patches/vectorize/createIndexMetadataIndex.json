@@ -1,0 +1,7 @@
+{
+  "errors": {
+    "NotFound": [{ "code": 3000 }],
+    "MetadataIndexAlreadyExists": [{ "code": 40004 }],
+    "MetadataIndexInvalidType": [{ "code": 40026 }]
+  }
+}

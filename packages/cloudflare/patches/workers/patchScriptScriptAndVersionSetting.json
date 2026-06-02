@@ -6,6 +6,12 @@
   "request": {
     "properties": {
       "settings.bindings[].json": { "type": "unknown" },
+      "settings.bindings[?type=durable_object_namespace].class_name": {
+        "optional": false
+      },
+      "settings.bindings[?type=workflow].class_name": {
+        "optional": false
+      },
       "settings.bindings[]": {
         "appendUnion": [
           {

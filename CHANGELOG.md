@@ -1,4 +1,145 @@
+## v0.22.4
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **cloudflare**: Merge union-typed request params instead of taking first variant &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/309 [<samp>(b321f)</samp>](https://github.com/alchemy-run/distilled/commit/b321fbe1)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/alchemy-run/distilled/compare/v0.22.3...HEAD)
+
+---
+
+## v0.22.3
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **cloudflare**:
+  - Treat string enums as open in generated schemas &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/314 [<samp>(56667)</samp>](https://github.com/alchemy-run/distilled/commit/56667ca8)
+  - **zones**: Add typed errors for zone CRUD &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/315 [<samp>(31b06)</samp>](https://github.com/alchemy-run/distilled/commit/31b0639c)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/alchemy-run/distilled/compare/v0.22.2...HEAD)
+
+---
+
+## v0.22.2
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **cloudflare**:
+  - **vectorize**: Add 3005/gone error &nbsp;-&nbsp; by **John Royal** in https://github.com/alchemy-run/distilled/issues/313 [<samp>(e5833)</samp>](https://github.com/alchemy-run/distilled/commit/e58339d1)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/alchemy-run/distilled/compare/v0.22.1...HEAD)
+
+---
+
+## v0.22.1
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **cloudflare**:
+  - **queues**: Patch script_name/script property to match wire &nbsp;-&nbsp; by **Sam Goodwin** [<samp>(3b6d5)</samp>](https://github.com/alchemy-run/distilled/commit/3b6d5e89)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/alchemy-run/distilled/compare/v0.22.0...HEAD)
+
+---
+
+## v0.22.0
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **cloudflare**: Update cloudflare spec &nbsp;-&nbsp; by **Michael K** in https://github.com/alchemy-run/distilled/issues/312 [<samp>(f50ef)</samp>](https://github.com/alchemy-run/distilled/commit/f50ef4ed)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **cloudflare**: Collapse unions containing `unknown` to `unknown` in parser &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/310 [<samp>(cf15f)</samp>](https://github.com/alchemy-run/distilled/commit/cf15f0c0)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/alchemy-run/distilled/compare/v0.21.6...HEAD)
+
+---
+
+## v0.21.6
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **cloudflare**: Add typed errors to vectorize operations &nbsp;-&nbsp; by **sam** and **Claude Opus 4.7** in https://github.com/alchemy-run/distilled/issues/308 [<samp>(2356f)</samp>](https://github.com/alchemy-run/distilled/commit/2356f645)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/alchemy-run/distilled/compare/v0.21.5...HEAD)
+
+---
+
+## v0.21.5
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **cloudflare**:
+  - Require `className` in worker bindings &nbsp;-&nbsp; by **John Royal** in https://github.com/alchemy-run/distilled/issues/305 [<samp>(9e20b)</samp>](https://github.com/alchemy-run/distilled/commit/9e20b89f)
+  - Add missing binding types to workers edge preview api &nbsp;-&nbsp; by **John Royal** in https://github.com/alchemy-run/distilled/issues/304 [<samp>(cf8d5)</samp>](https://github.com/alchemy-run/distilled/commit/cf8d5ff4)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/alchemy-run/distilled/compare/v0.21.4...HEAD)
+
+---
+
+## v0.21.4
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **cloudflare**:
+  - **zaraz**: Send workflow updates as raw body &nbsp;-&nbsp; by **Alex** in https://github.com/alchemy-run/distilled/issues/301 [<samp>(8d5c1)</samp>](https://github.com/alchemy-run/distilled/commit/8d5c1799)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/alchemy-run/distilled/compare/v0.21.3...HEAD)
+
+---
+
 # Changelog
+
+## [v0.21.3](https://github.com/alchemy-run/distilled/releases/tag/v0.21.3) (2026-05-18)
+
+### Features
+
+- **core**: split Sensitive into input-friendly + output-strict variants - by Michael K in [#300](https://github.com/alchemy-run/distilled/pull/300) [(290c38f)](https://github.com/alchemy-run/distilled/commit/290c38f5252da8c329b255ec1ed55e7890ea9077)
+
+## [v0.21.2](https://github.com/alchemy-run/distilled/releases/tag/v0.21.2) (2026-05-18)
+
+### Bug Fixes
+
+- **planetscale**: type plain_text as non-nullable for create/renew password - by Michael K in [#299](https://github.com/alchemy-run/distilled/pull/299) [(777eb07)](https://github.com/alchemy-run/distilled/commit/777eb077ef2cd4d80788a6852a969f9137d2d017)
+
+## [v0.21.1](https://github.com/alchemy-run/distilled/releases/tag/v0.21.1) (2026-05-18)
+
+### Bug Fixes
+
+- **planetscale**: add branch cluster architecture and redact tokenId - by Lucas Thevenet in [#297](https://github.com/alchemy-run/distilled/pull/297) [(982594b)](https://github.com/alchemy-run/distilled/commit/982594b705e1503fe83e63313a60c00694394046)
+- **cloudflare/workers**: remove stale code 10013 from WorkerNotFound - by sam in [#296](https://github.com/alchemy-run/distilled/pull/296) [(bbd0bb9)](https://github.com/alchemy-run/distilled/commit/bbd0bb963eaefea77c770bd2584cc286c6f7d105)
+
+## [v0.21.0](https://github.com/alchemy-run/distilled/releases/tag/v0.21.0) (2026-05-15)
+
+### Bug Fixes
+
+- **aws**: expose browser exports from aws - by Michael K in [#295](https://github.com/alchemy-run/distilled/pull/295) [(dbb35dc)](https://github.com/alchemy-run/distilled/commit/dbb35dc7a38d1c671e9f4f263535581c4bd69d24)
+
+## [v0.20.2](https://github.com/alchemy-run/distilled/releases/tag/v0.20.2) (2026-05-13)
+
+### Bug Fixes
+
+- **planetscale**: Add missing error return codes and nullable fields to branch, resize request, roles - by Lucas Thevenet in [#294](https://github.com/alchemy-run/distilled/pull/294) [(fd8e355)](https://github.com/alchemy-run/distilled/commit/fd8e35506d3ba9f26b958271145e009ff05a682c)
+
+## [v0.20.1](https://github.com/alchemy-run/distilled/releases/tag/v0.20.1) (2026-05-13)
+
+### Bug Fixes
+
+- **core**: retry HttpClientError TransportError and 5xx in isTransientError - by sam in [#293](https://github.com/alchemy-run/distilled/pull/293) [(a9cb25a)](https://github.com/alchemy-run/distilled/commit/a9cb25afc367b87af52034e69add8bca01a651f9)
+
+## [v0.20.0](https://github.com/alchemy-run/distilled/releases/tag/v0.20.0) (2026-05-12)
+
+### Bug Fixes
+
+- move to effect@4.0.0-beta.66 - by sam in [#292](https://github.com/alchemy-run/distilled/pull/292) [(01024e9)](https://github.com/alchemy-run/distilled/commit/01024e9fd3ece3b5cb2a12ed715fe421e13f7272)
+- **cloudflare/workers**: type code 10002 'unknown error' on putScript - by sam in [#290](https://github.com/alchemy-run/distilled/pull/290) [(b235915)](https://github.com/alchemy-run/distilled/commit/b23591527f64805709ddeeedf1471474017d169f)
+
+## [v0.19.2](https://github.com/alchemy-run/distilled/releases/tag/v0.19.2) (2026-05-12)
+
+### Bug Fixes
+
+- **cloudflare**: allow empty ruleset phase responses - by Alex in [#289](https://github.com/alchemy-run/distilled/pull/289) [(4700496)](https://github.com/alchemy-run/distilled/commit/47004960e965906a4f026a07a2a28ddfeec09f2d)
 
 ## [v0.19.1](https://github.com/alchemy-run/distilled/releases/tag/v0.19.1) (2026-05-11)
 

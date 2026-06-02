@@ -391,14 +391,14 @@ export const deleteEndpointHealthcheck: API.OperationMethod<
 export interface CreateTracerouteRequest {
   /** Path param: Identifier */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   targets: string[];
   /** Body param: If no source colo names specified, all colos will be used. China colos are unavailable for traceroutes. */
   colos?: string[];
-  /** Body param: */
+  /** Body param */
   options?: {
     maxTtl?: number;
-    packetType?: "icmp" | "tcp" | "udp" | "gre" | "gre+icmp";
+    packetType?: "icmp" | "tcp" | "udp" | "gre" | "gre+icmp" | (string & {});
     packetsPerTtl?: number;
     port?: number;
     waitTime?: number;
@@ -414,7 +414,10 @@ export const CreateTracerouteRequest =
       Schema.Struct({
         maxTtl: Schema.optional(Schema.Number),
         packetType: Schema.optional(
-          Schema.Literals(["icmp", "tcp", "udp", "gre", "gre+icmp"]),
+          Schema.Union([
+            Schema.Literals(["icmp", "tcp", "udp", "gre", "gre+icmp"]),
+            Schema.String,
+          ]),
         ),
         packetsPerTtl: Schema.optional(Schema.Number),
         port: Schema.optional(Schema.Number),
@@ -447,6 +450,7 @@ export interface CreateTracerouteResponse {
             | "Could not gather traceroute data: Code 2"
             | "Could not gather traceroute data: Code 3"
             | "Could not gather traceroute data: Code 4"
+            | (string & {})
             | null;
           hops?:
             | {
@@ -499,12 +503,15 @@ export const CreateTracerouteResponse =
                 ),
                 error: Schema.optional(
                   Schema.Union([
-                    Schema.Literals([
-                      "",
-                      "Could not gather traceroute data: Code 1",
-                      "Could not gather traceroute data: Code 2",
-                      "Could not gather traceroute data: Code 3",
-                      "Could not gather traceroute data: Code 4",
+                    Schema.Union([
+                      Schema.Literals([
+                        "",
+                        "Could not gather traceroute data: Code 1",
+                        "Could not gather traceroute data: Code 2",
+                        "Could not gather traceroute data: Code 3",
+                        "Could not gather traceroute data: Code 4",
+                      ]),
+                      Schema.String,
                     ]),
                     Schema.Null,
                   ]),

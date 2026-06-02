@@ -94,7 +94,7 @@ paths:
                           - gcp_storage
                           - azure_storage
                         description: Cloud Provider type
-                  description: "Body param:"
+                  description: Body param
       responses:
         "200":
           description: Success

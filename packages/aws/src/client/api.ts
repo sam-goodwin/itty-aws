@@ -22,7 +22,9 @@ import {
   type ResponseParserOptions,
 } from "./response-parser.ts";
 
-import { Credentials, Endpoint, Region } from "../index.ts";
+import * as Credentials from "../credentials.browser.ts";
+import * as Endpoint from "../endpoint.ts";
+import * as Region from "../region.ts";
 
 export interface MakeOptions extends ResponseParserOptions {}
 
@@ -317,10 +319,10 @@ export const make = <Op extends Operation<any, any, any>>(
   );
 
   const Proto = {
-    [Symbol.iterator]() {
-      return new SingleShotGen(this);
+    [Symbol.iterator](this: any) {
+      return new SingleShotGen(this.asEffect());
     },
-    pipe() {
+    pipe(this: any) {
       return pipeArguments(this.asEffect(), arguments);
     },
     asEffect() {

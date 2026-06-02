@@ -49,12 +49,24 @@
     },
     {
       "op": "add",
+      "path": "/definitions/DatabaseBranch/properties/cluster_architecture",
+      "value": {
+        "type": "string"
+      }
+    },
+    {
+      "op": "add",
       "path": "/definitions/DatabaseBranch/properties/restored_from_branch/x-nullable",
       "value": true
     },
     {
       "op": "add",
       "path": "/definitions/DatabaseBranch/properties/parent_branch/x-nullable",
+      "value": true
+    },
+    {
+      "op": "add",
+      "path": "/definitions/DatabaseBranch/properties/restored_from_branch/properties/deleted_at/x-nullable",
       "value": true
     },
     {
@@ -105,12 +117,24 @@
     },
     {
       "op": "add",
+      "path": "/definitions/PaginatedDatabaseBranch/properties/data/items/properties/cluster_architecture",
+      "value": {
+        "type": "string"
+      }
+    },
+    {
+      "op": "add",
       "path": "/definitions/PaginatedDatabaseBranch/properties/data/items/properties/restored_from_branch/x-nullable",
       "value": true
     },
     {
       "op": "add",
       "path": "/definitions/PaginatedDatabaseBranch/properties/data/items/properties/parent_branch/x-nullable",
+      "value": true
+    },
+    {
+      "op": "add",
+      "path": "/definitions/PaginatedDatabaseBranch/properties/data/items/properties/restored_from_branch/properties/deleted_at/x-nullable",
       "value": true
     }
   ]

@@ -122,13 +122,13 @@ export interface ListAttackSurfaceReportIssuesRequest {
   accountId: string;
   page?: number;
   perPage?: number;
-  /** Query param: */
+  /** Query param */
   dismissed?: boolean;
-  /** Query param: */
+  /** Query param */
   issueClass?: string[];
-  /** Query param: */
+  /** Query param */
   issueClassNeq?: string[];
-  /** Query param: */
+  /** Query param */
   issueType?: (
     | "compliance_violation"
     | "email_security"
@@ -136,8 +136,9 @@ export interface ListAttackSurfaceReportIssuesRequest {
     | "insecure_configuration"
     | "weak_authentication"
     | "configuration_suggestion"
+    | (string & {})
   )[];
-  /** Query param: */
+  /** Query param */
   issueTypeNeq?: (
     | "compliance_violation"
     | "email_security"
@@ -145,18 +146,19 @@ export interface ListAttackSurfaceReportIssuesRequest {
     | "insecure_configuration"
     | "weak_authentication"
     | "configuration_suggestion"
+    | (string & {})
   )[];
-  /** Query param: */
+  /** Query param */
   product?: string[];
-  /** Query param: */
+  /** Query param */
   productNeq?: string[];
-  /** Query param: */
-  severity?: ("low" | "moderate" | "critical")[];
-  /** Query param: */
-  severityNeq?: ("low" | "moderate" | "critical")[];
-  /** Query param: */
+  /** Query param */
+  severity?: ("low" | "moderate" | "critical" | (string & {}))[];
+  /** Query param */
+  severityNeq?: ("low" | "moderate" | "critical" | (string & {}))[];
+  /** Query param */
   subject?: string[];
-  /** Query param: */
+  /** Query param */
   subjectNeq?: string[];
 }
 
@@ -174,25 +176,31 @@ export const ListAttackSurfaceReportIssuesRequest =
     ),
     issueType: Schema.optional(
       Schema.Array(
-        Schema.Literals([
-          "compliance_violation",
-          "email_security",
-          "exposed_infrastructure",
-          "insecure_configuration",
-          "weak_authentication",
-          "configuration_suggestion",
+        Schema.Union([
+          Schema.Literals([
+            "compliance_violation",
+            "email_security",
+            "exposed_infrastructure",
+            "insecure_configuration",
+            "weak_authentication",
+            "configuration_suggestion",
+          ]),
+          Schema.String,
         ]),
       ),
     ).pipe(T.HttpQuery("issue_type")),
     issueTypeNeq: Schema.optional(
       Schema.Array(
-        Schema.Literals([
-          "compliance_violation",
-          "email_security",
-          "exposed_infrastructure",
-          "insecure_configuration",
-          "weak_authentication",
-          "configuration_suggestion",
+        Schema.Union([
+          Schema.Literals([
+            "compliance_violation",
+            "email_security",
+            "exposed_infrastructure",
+            "insecure_configuration",
+            "weak_authentication",
+            "configuration_suggestion",
+          ]),
+          Schema.String,
         ]),
       ),
     ).pipe(T.HttpQuery("issue_type~neq")),
@@ -203,10 +211,20 @@ export const ListAttackSurfaceReportIssuesRequest =
       T.HttpQuery("product~neq"),
     ),
     severity: Schema.optional(
-      Schema.Array(Schema.Literals(["low", "moderate", "critical"])),
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals(["low", "moderate", "critical"]),
+          Schema.String,
+        ]),
+      ),
     ).pipe(T.HttpQuery("severity")),
     severityNeq: Schema.optional(
-      Schema.Array(Schema.Literals(["low", "moderate", "critical"])),
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals(["low", "moderate", "critical"]),
+          Schema.String,
+        ]),
+      ),
     ).pipe(T.HttpQuery("severity~neq")),
     subject: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("subject"),
@@ -230,6 +248,7 @@ export interface ListAttackSurfaceReportIssuesResponse {
             | {
                 id?: string | null;
                 dismissed?: boolean | null;
+                hasExtendedContext?: boolean | null;
                 issueClass?: string | null;
                 issueType?:
                   | "compliance_violation"
@@ -238,6 +257,7 @@ export interface ListAttackSurfaceReportIssuesResponse {
                   | "insecure_configuration"
                   | "weak_authentication"
                   | "configuration_suggestion"
+                  | (string & {})
                   | null;
                 payload?: {
                   detectionMethod?: string | null;
@@ -245,10 +265,21 @@ export interface ListAttackSurfaceReportIssuesResponse {
                 } | null;
                 resolveLink?: string | null;
                 resolveText?: string | null;
-                severity?: "Low" | "Moderate" | "Critical" | null;
+                severity?:
+                  | "Low"
+                  | "Moderate"
+                  | "Critical"
+                  | (string & {})
+                  | null;
                 since?: string | null;
+                status?: "active" | "resolved" | (string & {}) | null;
                 subject?: string | null;
                 timestamp?: string | null;
+                userClassification?:
+                  | "false_positive"
+                  | "accept_risk"
+                  | "other"
+                  | null;
               }[]
             | null;
           page?: number | null;
@@ -284,18 +315,24 @@ export const ListAttackSurfaceReportIssuesResponse =
                       dismissed: Schema.optional(
                         Schema.Union([Schema.Boolean, Schema.Null]),
                       ),
+                      hasExtendedContext: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
                       issueClass: Schema.optional(
                         Schema.Union([Schema.String, Schema.Null]),
                       ),
                       issueType: Schema.optional(
                         Schema.Union([
-                          Schema.Literals([
-                            "compliance_violation",
-                            "email_security",
-                            "exposed_infrastructure",
-                            "insecure_configuration",
-                            "weak_authentication",
-                            "configuration_suggestion",
+                          Schema.Union([
+                            Schema.Literals([
+                              "compliance_violation",
+                              "email_security",
+                              "exposed_infrastructure",
+                              "insecure_configuration",
+                              "weak_authentication",
+                              "configuration_suggestion",
+                            ]),
+                            Schema.String,
                           ]),
                           Schema.Null,
                         ]),
@@ -326,12 +363,24 @@ export const ListAttackSurfaceReportIssuesResponse =
                       ),
                       severity: Schema.optional(
                         Schema.Union([
-                          Schema.Literals(["Low", "Moderate", "Critical"]),
+                          Schema.Union([
+                            Schema.Literals(["Low", "Moderate", "Critical"]),
+                            Schema.String,
+                          ]),
                           Schema.Null,
                         ]),
                       ),
                       since: Schema.optional(
                         Schema.Union([Schema.String, Schema.Null]),
+                      ),
+                      status: Schema.optional(
+                        Schema.Union([
+                          Schema.Union([
+                            Schema.Literals(["active", "resolved"]),
+                            Schema.String,
+                          ]),
+                          Schema.Null,
+                        ]),
                       ),
                       subject: Schema.optional(
                         Schema.Union([Schema.String, Schema.Null]),
@@ -339,10 +388,19 @@ export const ListAttackSurfaceReportIssuesResponse =
                       timestamp: Schema.optional(
                         Schema.Union([Schema.String, Schema.Null]),
                       ),
+                      userClassification: Schema.optional(
+                        Schema.Union([
+                          Schema.Literal("false_positive"),
+                          Schema.Literal("accept_risk"),
+                          Schema.Literal("other"),
+                          Schema.Null,
+                        ]),
+                      ),
                     }).pipe(
                       Schema.encodeKeys({
                         id: "id",
                         dismissed: "dismissed",
+                        hasExtendedContext: "has_extended_context",
                         issueClass: "issue_class",
                         issueType: "issue_type",
                         payload: "payload",
@@ -350,8 +408,10 @@ export const ListAttackSurfaceReportIssuesResponse =
                         resolveText: "resolve_text",
                         severity: "severity",
                         since: "since",
+                        status: "status",
                         subject: "subject",
                         timestamp: "timestamp",
+                        userClassification: "user_classification",
                       }),
                     ),
                   ),
@@ -422,13 +482,13 @@ export const listAttackSurfaceReportIssues: API.PaginatedOperationMethod<
 export interface ClassAttackSurfaceReportIssueRequest {
   /** Path param: Identifier. */
   accountId: string;
-  /** Query param: */
+  /** Query param */
   dismissed?: boolean;
-  /** Query param: */
+  /** Query param */
   issueClass?: string[];
-  /** Query param: */
+  /** Query param */
   issueClassNeq?: string[];
-  /** Query param: */
+  /** Query param */
   issueType?: (
     | "compliance_violation"
     | "email_security"
@@ -436,8 +496,9 @@ export interface ClassAttackSurfaceReportIssueRequest {
     | "insecure_configuration"
     | "weak_authentication"
     | "configuration_suggestion"
+    | (string & {})
   )[];
-  /** Query param: */
+  /** Query param */
   issueTypeNeq?: (
     | "compliance_violation"
     | "email_security"
@@ -445,18 +506,19 @@ export interface ClassAttackSurfaceReportIssueRequest {
     | "insecure_configuration"
     | "weak_authentication"
     | "configuration_suggestion"
+    | (string & {})
   )[];
-  /** Query param: */
+  /** Query param */
   product?: string[];
-  /** Query param: */
+  /** Query param */
   productNeq?: string[];
-  /** Query param: */
-  severity?: ("low" | "moderate" | "critical")[];
-  /** Query param: */
-  severityNeq?: ("low" | "moderate" | "critical")[];
-  /** Query param: */
+  /** Query param */
+  severity?: ("low" | "moderate" | "critical" | (string & {}))[];
+  /** Query param */
+  severityNeq?: ("low" | "moderate" | "critical" | (string & {}))[];
+  /** Query param */
   subject?: string[];
-  /** Query param: */
+  /** Query param */
   subjectNeq?: string[];
 }
 
@@ -472,25 +534,31 @@ export const ClassAttackSurfaceReportIssueRequest =
     ),
     issueType: Schema.optional(
       Schema.Array(
-        Schema.Literals([
-          "compliance_violation",
-          "email_security",
-          "exposed_infrastructure",
-          "insecure_configuration",
-          "weak_authentication",
-          "configuration_suggestion",
+        Schema.Union([
+          Schema.Literals([
+            "compliance_violation",
+            "email_security",
+            "exposed_infrastructure",
+            "insecure_configuration",
+            "weak_authentication",
+            "configuration_suggestion",
+          ]),
+          Schema.String,
         ]),
       ),
     ).pipe(T.HttpQuery("issue_type")),
     issueTypeNeq: Schema.optional(
       Schema.Array(
-        Schema.Literals([
-          "compliance_violation",
-          "email_security",
-          "exposed_infrastructure",
-          "insecure_configuration",
-          "weak_authentication",
-          "configuration_suggestion",
+        Schema.Union([
+          Schema.Literals([
+            "compliance_violation",
+            "email_security",
+            "exposed_infrastructure",
+            "insecure_configuration",
+            "weak_authentication",
+            "configuration_suggestion",
+          ]),
+          Schema.String,
         ]),
       ),
     ).pipe(T.HttpQuery("issue_type~neq")),
@@ -501,10 +569,20 @@ export const ClassAttackSurfaceReportIssueRequest =
       T.HttpQuery("product~neq"),
     ),
     severity: Schema.optional(
-      Schema.Array(Schema.Literals(["low", "moderate", "critical"])),
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals(["low", "moderate", "critical"]),
+          Schema.String,
+        ]),
+      ),
     ).pipe(T.HttpQuery("severity")),
     severityNeq: Schema.optional(
-      Schema.Array(Schema.Literals(["low", "moderate", "critical"])),
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals(["low", "moderate", "critical"]),
+          Schema.String,
+        ]),
+      ),
     ).pipe(T.HttpQuery("severity~neq")),
     subject: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("subject"),
@@ -551,7 +629,7 @@ export interface DismissAttackSurfaceReportIssueRequest {
   issueId: string;
   /** Path param: Identifier. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   dismiss?: boolean;
 }
 
@@ -657,13 +735,13 @@ export const dismissAttackSurfaceReportIssue: API.OperationMethod<
 export interface SeverityAttackSurfaceReportIssueRequest {
   /** Path param: Identifier. */
   accountId: string;
-  /** Query param: */
+  /** Query param */
   dismissed?: boolean;
-  /** Query param: */
+  /** Query param */
   issueClass?: string[];
-  /** Query param: */
+  /** Query param */
   issueClassNeq?: string[];
-  /** Query param: */
+  /** Query param */
   issueType?: (
     | "compliance_violation"
     | "email_security"
@@ -671,8 +749,9 @@ export interface SeverityAttackSurfaceReportIssueRequest {
     | "insecure_configuration"
     | "weak_authentication"
     | "configuration_suggestion"
+    | (string & {})
   )[];
-  /** Query param: */
+  /** Query param */
   issueTypeNeq?: (
     | "compliance_violation"
     | "email_security"
@@ -680,18 +759,19 @@ export interface SeverityAttackSurfaceReportIssueRequest {
     | "insecure_configuration"
     | "weak_authentication"
     | "configuration_suggestion"
+    | (string & {})
   )[];
-  /** Query param: */
+  /** Query param */
   product?: string[];
-  /** Query param: */
+  /** Query param */
   productNeq?: string[];
-  /** Query param: */
-  severity?: ("low" | "moderate" | "critical")[];
-  /** Query param: */
-  severityNeq?: ("low" | "moderate" | "critical")[];
-  /** Query param: */
+  /** Query param */
+  severity?: ("low" | "moderate" | "critical" | (string & {}))[];
+  /** Query param */
+  severityNeq?: ("low" | "moderate" | "critical" | (string & {}))[];
+  /** Query param */
   subject?: string[];
-  /** Query param: */
+  /** Query param */
   subjectNeq?: string[];
 }
 
@@ -707,25 +787,31 @@ export const SeverityAttackSurfaceReportIssueRequest =
     ),
     issueType: Schema.optional(
       Schema.Array(
-        Schema.Literals([
-          "compliance_violation",
-          "email_security",
-          "exposed_infrastructure",
-          "insecure_configuration",
-          "weak_authentication",
-          "configuration_suggestion",
+        Schema.Union([
+          Schema.Literals([
+            "compliance_violation",
+            "email_security",
+            "exposed_infrastructure",
+            "insecure_configuration",
+            "weak_authentication",
+            "configuration_suggestion",
+          ]),
+          Schema.String,
         ]),
       ),
     ).pipe(T.HttpQuery("issue_type")),
     issueTypeNeq: Schema.optional(
       Schema.Array(
-        Schema.Literals([
-          "compliance_violation",
-          "email_security",
-          "exposed_infrastructure",
-          "insecure_configuration",
-          "weak_authentication",
-          "configuration_suggestion",
+        Schema.Union([
+          Schema.Literals([
+            "compliance_violation",
+            "email_security",
+            "exposed_infrastructure",
+            "insecure_configuration",
+            "weak_authentication",
+            "configuration_suggestion",
+          ]),
+          Schema.String,
         ]),
       ),
     ).pipe(T.HttpQuery("issue_type~neq")),
@@ -736,10 +822,20 @@ export const SeverityAttackSurfaceReportIssueRequest =
       T.HttpQuery("product~neq"),
     ),
     severity: Schema.optional(
-      Schema.Array(Schema.Literals(["low", "moderate", "critical"])),
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals(["low", "moderate", "critical"]),
+          Schema.String,
+        ]),
+      ),
     ).pipe(T.HttpQuery("severity")),
     severityNeq: Schema.optional(
-      Schema.Array(Schema.Literals(["low", "moderate", "critical"])),
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals(["low", "moderate", "critical"]),
+          Schema.String,
+        ]),
+      ),
     ).pipe(T.HttpQuery("severity~neq")),
     subject: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("subject"),
@@ -785,13 +881,13 @@ export const severityAttackSurfaceReportIssue: API.OperationMethod<
 export interface TypeAttackSurfaceReportIssueRequest {
   /** Path param: Identifier. */
   accountId: string;
-  /** Query param: */
+  /** Query param */
   dismissed?: boolean;
-  /** Query param: */
+  /** Query param */
   issueClass?: string[];
-  /** Query param: */
+  /** Query param */
   issueClassNeq?: string[];
-  /** Query param: */
+  /** Query param */
   issueType?: (
     | "compliance_violation"
     | "email_security"
@@ -799,8 +895,9 @@ export interface TypeAttackSurfaceReportIssueRequest {
     | "insecure_configuration"
     | "weak_authentication"
     | "configuration_suggestion"
+    | (string & {})
   )[];
-  /** Query param: */
+  /** Query param */
   issueTypeNeq?: (
     | "compliance_violation"
     | "email_security"
@@ -808,18 +905,19 @@ export interface TypeAttackSurfaceReportIssueRequest {
     | "insecure_configuration"
     | "weak_authentication"
     | "configuration_suggestion"
+    | (string & {})
   )[];
-  /** Query param: */
+  /** Query param */
   product?: string[];
-  /** Query param: */
+  /** Query param */
   productNeq?: string[];
-  /** Query param: */
-  severity?: ("low" | "moderate" | "critical")[];
-  /** Query param: */
-  severityNeq?: ("low" | "moderate" | "critical")[];
-  /** Query param: */
+  /** Query param */
+  severity?: ("low" | "moderate" | "critical" | (string & {}))[];
+  /** Query param */
+  severityNeq?: ("low" | "moderate" | "critical" | (string & {}))[];
+  /** Query param */
   subject?: string[];
-  /** Query param: */
+  /** Query param */
   subjectNeq?: string[];
 }
 
@@ -835,25 +933,31 @@ export const TypeAttackSurfaceReportIssueRequest =
     ),
     issueType: Schema.optional(
       Schema.Array(
-        Schema.Literals([
-          "compliance_violation",
-          "email_security",
-          "exposed_infrastructure",
-          "insecure_configuration",
-          "weak_authentication",
-          "configuration_suggestion",
+        Schema.Union([
+          Schema.Literals([
+            "compliance_violation",
+            "email_security",
+            "exposed_infrastructure",
+            "insecure_configuration",
+            "weak_authentication",
+            "configuration_suggestion",
+          ]),
+          Schema.String,
         ]),
       ),
     ).pipe(T.HttpQuery("issue_type")),
     issueTypeNeq: Schema.optional(
       Schema.Array(
-        Schema.Literals([
-          "compliance_violation",
-          "email_security",
-          "exposed_infrastructure",
-          "insecure_configuration",
-          "weak_authentication",
-          "configuration_suggestion",
+        Schema.Union([
+          Schema.Literals([
+            "compliance_violation",
+            "email_security",
+            "exposed_infrastructure",
+            "insecure_configuration",
+            "weak_authentication",
+            "configuration_suggestion",
+          ]),
+          Schema.String,
         ]),
       ),
     ).pipe(T.HttpQuery("issue_type~neq")),
@@ -864,10 +968,20 @@ export const TypeAttackSurfaceReportIssueRequest =
       T.HttpQuery("product~neq"),
     ),
     severity: Schema.optional(
-      Schema.Array(Schema.Literals(["low", "moderate", "critical"])),
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals(["low", "moderate", "critical"]),
+          Schema.String,
+        ]),
+      ),
     ).pipe(T.HttpQuery("severity")),
     severityNeq: Schema.optional(
-      Schema.Array(Schema.Literals(["low", "moderate", "critical"])),
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals(["low", "moderate", "critical"]),
+          Schema.String,
+        ]),
+      ),
     ).pipe(T.HttpQuery("severity~neq")),
     subject: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("subject"),
@@ -964,9 +1078,9 @@ export interface ListDnsRequest {
   accountId: string;
   page?: number;
   perPage?: number;
-  /** Query param: */
+  /** Query param */
   ipv4?: string;
-  /** Query param: */
+  /** Query param */
   startEndParams?: { end?: string; start?: string };
 }
 
@@ -1107,13 +1221,16 @@ export const listDns: API.PaginatedOperationMethod<
 export interface GetDomainRequest {
   /** Path param: Identifier. */
   accountId: string;
-  /** Query param: */
+  /** Query param */
   domain?: string;
+  /** Query param: Skip DNS resolution lookups for faster response. */
+  skipDns?: boolean;
 }
 
 export const GetDomainRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   domain: Schema.optional(Schema.String).pipe(T.HttpQuery("domain")),
+  skipDns: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("skip_dns")),
 }).pipe(
   T.Http({ method: "GET", path: "/accounts/{account_id}/intel/domain" }),
 ) as unknown as Schema.Schema<GetDomainRequest>;
@@ -1518,7 +1635,7 @@ export const getDomainBulk: API.OperationMethod<
 export interface GetDomainHistoryRequest {
   /** Path param: Identifier. */
   accountId: string;
-  /** Query param: */
+  /** Query param */
   domain?: string;
 }
 
@@ -1628,6 +1745,29 @@ export interface GetIndicatorFeedResponse {
   isDownloadable?: boolean | null;
   /** Whether the indicator feed is exposed to customers */
   isPublic?: boolean | null;
+  /** Summary of indicator counts from the last successful upload to this feed. Populated by the custom-threat-feeds loader at the end of each successful load. Absent (omitted) when no upload has completed  */
+  lastUploadSummary?: {
+    persisted?: {
+      domainsAdded?: number | null;
+      domainsRemoved?: number | null;
+      ipsAdded?: number | null;
+      ipsRemoved?: number | null;
+      urlsAdded?: number | null;
+      urlsRemoved?: number | null;
+    } | null;
+    skipped?: {
+      allowlistedDomains?: number | null;
+      expiredIndicators?: number | null;
+      invalidIndicators?: number | null;
+    } | null;
+    uploaded?: {
+      domains?: number | null;
+      ips?: number | null;
+      urls?: number | null;
+    } | null;
+  } | null;
+  /** Human-readable error message describing why the latest upload failed. Populated only when `latest_upload_status` is `Error`. Returns one of a small fixed set of category-level messages (invalid domain */
+  latestUploadError?: string | null;
   /** Status of the latest snapshot uploaded */
   latestUploadStatus?:
     | "Mirroring"
@@ -1636,13 +1776,14 @@ export interface GetIndicatorFeedResponse {
     | "Provisioning"
     | "Complete"
     | "Error"
+    | (string & {})
     | null;
   /** The date and time when the data entry was last modified */
   modifiedOn?: string | null;
   /** The name of the indicator feed */
   name?: string | null;
   /** The unique identifier for the provider */
-  providerId?: string | null;
+  providerId?: number | null;
   /** The provider of the indicator feed */
   providerName?: string | null;
 }
@@ -1659,22 +1800,107 @@ export const GetIndicatorFeedResponse =
       Schema.Union([Schema.Boolean, Schema.Null]),
     ),
     isPublic: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    lastUploadSummary: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          persisted: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                domainsAdded: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                domainsRemoved: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                ipsAdded: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                ipsRemoved: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                urlsAdded: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                urlsRemoved: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  domainsAdded: "domains_added",
+                  domainsRemoved: "domains_removed",
+                  ipsAdded: "ips_added",
+                  ipsRemoved: "ips_removed",
+                  urlsAdded: "urls_added",
+                  urlsRemoved: "urls_removed",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          skipped: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                allowlistedDomains: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                expiredIndicators: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                invalidIndicators: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  allowlistedDomains: "allowlisted_domains",
+                  expiredIndicators: "expired_indicators",
+                  invalidIndicators: "invalid_indicators",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          uploaded: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                domains: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                ips: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                urls: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+        }),
+        Schema.Null,
+      ]),
+    ),
+    latestUploadError: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
     latestUploadStatus: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "Mirroring",
-          "Unifying",
-          "Loading",
-          "Provisioning",
-          "Complete",
-          "Error",
+        Schema.Union([
+          Schema.Literals([
+            "Mirroring",
+            "Unifying",
+            "Loading",
+            "Provisioning",
+            "Complete",
+            "Error",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
     ),
     modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    providerId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    providerId: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     providerName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
     .pipe(
@@ -1685,6 +1911,8 @@ export const GetIndicatorFeedResponse =
         isAttributable: "is_attributable",
         isDownloadable: "is_downloadable",
         isPublic: "is_public",
+        lastUploadSummary: "last_upload_summary",
+        latestUploadError: "latest_upload_error",
         latestUploadStatus: "latest_upload_status",
         modifiedOn: "modified_on",
         name: "name",
@@ -2241,9 +2469,9 @@ export const putIndicatorFeedSnapshot: API.OperationMethod<
 export interface GetIpRequest {
   /** Path param: Identifier. */
   accountId: string;
-  /** Query param: */
+  /** Query param */
   ipv4?: string;
-  /** Query param: */
+  /** Query param */
   ipv6?: string;
 }
 
@@ -2260,7 +2488,7 @@ export type GetIpResponse = {
     id?: string | null;
     country?: string | null;
     description?: string | null;
-    type?: "hosting_provider" | "isp" | "organization" | null;
+    type?: "hosting_provider" | "isp" | "organization" | (string & {}) | null;
     value?: string | null;
   } | null;
   ip?: string | null;
@@ -2285,7 +2513,10 @@ export const GetIpResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
           ),
           type: Schema.optional(
             Schema.Union([
-              Schema.Literals(["hosting_provider", "isp", "organization"]),
+              Schema.Union([
+                Schema.Literals(["hosting_provider", "isp", "organization"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -2338,56 +2569,6 @@ export const getIp: API.OperationMethod<
 }));
 
 // =============================================================================
-// IpList
-// =============================================================================
-
-export interface GetIpListRequest {
-  /** Identifier. */
-  accountId: string;
-}
-
-export const GetIpListRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-}).pipe(
-  T.Http({ method: "GET", path: "/accounts/{account_id}/intel/ip-list" }),
-) as unknown as Schema.Schema<GetIpListRequest>;
-
-export interface GetIpListResponse {
-  result: {
-    id?: number | null;
-    description?: string | null;
-    name?: string | null;
-  }[];
-}
-
-export const GetIpListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  result: Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }),
-  ),
-}) as unknown as Schema.Schema<GetIpListResponse>;
-
-export type GetIpListError = DefaultErrors;
-
-export const getIpList: API.PaginatedOperationMethod<
-  GetIpListRequest,
-  GetIpListResponse,
-  GetIpListError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: GetIpListRequest,
-  output: GetIpListResponse,
-  errors: [],
-  pagination: {
-    mode: "single",
-    items: "result",
-  } as const,
-}));
-
-// =============================================================================
 // Miscategorization
 // =============================================================================
 
@@ -2398,8 +2579,8 @@ export interface CreateMiscategorizationRequest {
   contentAdds?: number[];
   /** Body param: Content category IDs to remove. */
   contentRemoves?: number[];
-  /** Body param: */
-  indicatorType?: "domain" | "ipv4" | "ipv6" | "url";
+  /** Body param */
+  indicatorType?: "domain" | "ipv4" | "ipv6" | "url" | (string & {});
   /** Body param: Provide only if indicator_type is `ipv4` or `ipv6`. */
   ip?: string | null;
   /** Body param: Security category IDs to add. */
@@ -2416,7 +2597,10 @@ export const CreateMiscategorizationRequest =
     contentAdds: Schema.optional(Schema.Array(Schema.Number)),
     contentRemoves: Schema.optional(Schema.Array(Schema.Number)),
     indicatorType: Schema.optional(
-      Schema.Literals(["domain", "ipv4", "ipv6", "url"]),
+      Schema.Union([
+        Schema.Literals(["domain", "ipv4", "ipv6", "url"]),
+        Schema.String,
+      ]),
     ),
     ip: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     securityAdds: Schema.optional(Schema.Array(Schema.Number)),
@@ -2530,7 +2714,7 @@ export const createMiscategorization: API.OperationMethod<
 // =============================================================================
 
 export interface ListSinkholesRequest {
-  /** Identifier */
+  /** Identifier. */
   accountId: string;
 }
 
@@ -2600,7 +2784,7 @@ export const listSinkholes: API.PaginatedOperationMethod<
 export interface GetWhoiRequest {
   /** Path param: Use to uniquely identify or reference the resource. */
   accountId: string;
-  /** Query param: */
+  /** Query param */
   domain?: string;
 }
 

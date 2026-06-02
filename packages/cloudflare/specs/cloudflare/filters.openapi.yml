@@ -306,7 +306,7 @@ paths:
         - name: id
           in: query
           required: true
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:

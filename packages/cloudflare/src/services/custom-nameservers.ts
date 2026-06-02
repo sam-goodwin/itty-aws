@@ -30,9 +30,12 @@ export const GetCustomNameserverRequest =
 
 export interface GetCustomNameserverResponse {
   result: {
-    dnsRecords: { type?: "A" | "AAAA" | null; value?: string | null }[];
+    dnsRecords: {
+      type?: "A" | "AAAA" | (string & {}) | null;
+      value?: string | null;
+    }[];
     nsName: string;
-    status: "moved" | "pending" | "verified";
+    status: "moved" | "pending" | "verified" | (string & {});
     zoneTag: string;
     nsSet?: number | null;
   }[];
@@ -45,13 +48,19 @@ export const GetCustomNameserverResponse =
         dnsRecords: Schema.Array(
           Schema.Struct({
             type: Schema.optional(
-              Schema.Union([Schema.Literals(["A", "AAAA"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([Schema.Literals(["A", "AAAA"]), Schema.String]),
+                Schema.Null,
+              ]),
             ),
             value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           }),
         ),
         nsName: Schema.String,
-        status: Schema.Literals(["moved", "pending", "verified"]),
+        status: Schema.Union([
+          Schema.Literals(["moved", "pending", "verified"]),
+          Schema.String,
+        ]),
         zoneTag: Schema.String,
         nsSet: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       }).pipe(
@@ -104,11 +113,14 @@ export const CreateCustomNameserverRequest =
 
 export interface CreateCustomNameserverResponse {
   /** A and AAAA records associated with the nameserver. */
-  dnsRecords: { type?: "A" | "AAAA" | null; value?: string | null }[];
+  dnsRecords: {
+    type?: "A" | "AAAA" | (string & {}) | null;
+    value?: string | null;
+  }[];
   /** The FQDN of the name server. */
   nsName: string;
   /** @deprecated Verification status of the nameserver. */
-  status: "moved" | "pending" | "verified";
+  status: "moved" | "pending" | "verified" | (string & {});
   /** Identifier. */
   zoneTag: string;
   /** The number of the set that this name server belongs to. */
@@ -120,13 +132,19 @@ export const CreateCustomNameserverResponse =
     dnsRecords: Schema.Array(
       Schema.Struct({
         type: Schema.optional(
-          Schema.Union([Schema.Literals(["A", "AAAA"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["A", "AAAA"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
         value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       }),
     ),
     nsName: Schema.String,
-    status: Schema.Literals(["moved", "pending", "verified"]),
+    status: Schema.Union([
+      Schema.Literals(["moved", "pending", "verified"]),
+      Schema.String,
+    ]),
     zoneTag: Schema.String,
     nsSet: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   })

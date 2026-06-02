@@ -19,6 +19,7 @@ export type ListOrganizationMembersInput =
 // Output Schema
 export const ListOrganizationMembersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.String,
     current_page: Schema.Number,
     next_page: Schema.NullOr(Schema.Number),
     next_page_url: Schema.NullOr(Schema.String),
@@ -37,18 +38,20 @@ export const ListOrganizationMembersOutput =
           updated_at: Schema.String,
           two_factor_auth_configured: Schema.Boolean,
           default_organization: Schema.optional(
-            Schema.Struct({
-              id: Schema.String,
-              name: Schema.String,
-              created_at: Schema.String,
-              updated_at: Schema.String,
-              deleted_at: Schema.String,
-            }),
+            Schema.NullOr(
+              Schema.Struct({
+                id: Schema.String,
+                name: Schema.String,
+                created_at: Schema.String,
+                updated_at: Schema.String,
+                deleted_at: Schema.NullOr(Schema.String),
+              }),
+            ),
           ),
-          sso: Schema.optional(Schema.Boolean),
-          managed: Schema.optional(Schema.Boolean),
-          directory_managed: Schema.optional(Schema.Boolean),
-          email_verified: Schema.optional(Schema.Boolean),
+          sso: Schema.optional(Schema.NullOr(Schema.Boolean)),
+          managed: Schema.optional(Schema.NullOr(Schema.Boolean)),
+          directory_managed: Schema.optional(Schema.NullOr(Schema.Boolean)),
+          email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
         }),
         role: Schema.Literals(["member", "admin"]),
         created_at: Schema.String,

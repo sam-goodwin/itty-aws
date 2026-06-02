@@ -635,7 +635,7 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
@@ -647,7 +647,7 @@ paths:
               properties:
                 name:
                   type: string
-                  description: "Body param:"
+                  description: Body param
               required:
                 - name
       responses:
@@ -765,7 +765,7 @@ paths:
                   oneOf:
                     - type: string
                   nullable: true
-                  description: "Body param:"
+                  description: Body param
                 video_config:
                   type: object
                   properties:
@@ -775,7 +775,7 @@ paths:
                     width:
                       type: number
                       description: Width of the livestreaming video in pixels
-                  description: "Body param:"
+                  description: Body param
       responses:
         "200":
           description: Success
@@ -1840,7 +1840,7 @@ paths:
         - name: name
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
       responses:
@@ -3793,7 +3793,7 @@ paths:
                     - stop
                     - pause
                     - resume
-                  description: "Body param:"
+                  description: Body param
               required:
                 - action
       responses:
@@ -4629,12 +4629,12 @@ paths:
                   type: array
                   items:
                     type: string
-                  description: "Body param:"
+                  description: Body param
                 participant_ids:
                   type: array
                   items:
                     type: string
-                  description: "Body param:"
+                  description: Body param
               required:
                 - custom_participant_ids
                 - participant_ids
@@ -5030,7 +5030,7 @@ paths:
                     - max_video_streams
                     - media
                     - view_type
-                  description: "Body param:"
+                  description: Body param
                 name:
                   type: string
                   description: "Body param: Name of the preset"
@@ -5128,7 +5128,7 @@ paths:
                     config_diff: {}
                   required:
                     - design_tokens
-                  description: "Body param:"
+                  description: Body param
                 permissions:
                   type: object
                   properties:
@@ -5349,7 +5349,7 @@ paths:
                     - recorder_type
                     - show_participant_list
                     - waiting_room_type
-                  description: "Body param:"
+                  description: Body param
               required:
                 - config
                 - name
@@ -5864,7 +5864,7 @@ paths:
                         - WEBINAR
                         - AUDIO_ROOM
                       description: Type of the meeting
-                  description: "Body param:"
+                  description: Body param
                 name:
                   type: string
                   description: "Body param: Name of the preset"
@@ -6028,7 +6028,7 @@ paths:
                         - ON_PRIVILEGED_USER_ENTRY
                         - SKIP_ON_ACCEPT
                       description: Waiting room type
-                  description: "Body param:"
+                  description: Body param
                 ui:
                   type: object
                   properties:
@@ -6093,7 +6093,7 @@ paths:
                           type: string
                           enum:
                             - dark
-                  description: "Body param:"
+                  description: Body param
       responses:
         "200":
           description: Success
@@ -7478,7 +7478,7 @@ paths:
         - name: sort_by
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
             enum:
@@ -7486,7 +7486,7 @@ paths:
         - name: sort_order
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
             enum:
@@ -7821,14 +7821,14 @@ paths:
                         recording.
                   required:
                     - enabled
-                  description: "Body param:"
+                  description: Body param
                 rtmp_out_config:
                   type: object
                   properties:
                     rtmp_url:
                       type: string
                       description: RTMP URL to stream to
-                  description: "Body param:"
+                  description: Body param
                 storage_config:
                   oneOf:
                     - type: object
@@ -7888,7 +7888,7 @@ paths:
                       required:
                         - type
                   nullable: true
-                  description: "Body param:"
+                  description: Body param
                 url:
                   type: string
                   description: "Body param: Pass a custom url to record arbitary screen"
@@ -7935,7 +7935,7 @@ paths:
                     width:
                       type: number
                       description: Width of the recording video in pixels
-                  description: "Body param:"
+                  description: Body param
       responses:
         "200":
           description: Success
@@ -8585,7 +8585,7 @@ paths:
         - name: sort_by
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
             enum:
@@ -8594,7 +8594,7 @@ paths:
         - name: sort_order
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
             enum:
@@ -8701,7 +8701,7 @@ paths:
         - name: participants
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
         - name: per_page
@@ -8720,7 +8720,7 @@ paths:
         - name: sort_by
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
             enum:
@@ -8729,7 +8729,7 @@ paths:
         - name: sort_order
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
             enum:
@@ -8745,7 +8745,7 @@ paths:
         - name: status
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
             enum:
@@ -8999,7 +8999,7 @@ paths:
                 layers:
                   type: object
                   additionalProperties: true
-                  description: "Body param:"
+                  description: Body param
                 meeting_id:
                   type: string
                   description: "Body param: ID of the meeting to record."
@@ -9206,7 +9206,7 @@ paths:
               properties:
                 enabled:
                   type: boolean
-                  description: "Body param:"
+                  description: Body param
                 events:
                   type: array
                   items:

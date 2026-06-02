@@ -24,7 +24,7 @@ export interface CreateTraceRequest {
   method: string;
   /** Body param: URL to which perform tracing request */
   url: string;
-  /** Body param: */
+  /** Body param */
   body?: { base64?: string; json?: unknown; plainText?: string };
   /** Body param: Additional request parameters */
   context?: {

@@ -20,6 +20,7 @@ export type ListKeyspacesInput = typeof ListKeyspacesInput.Type;
 
 // Output Schema
 export const ListKeyspacesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.String,
   current_page: Schema.Number,
   next_page: Schema.NullOr(Schema.Number),
   next_page_url: Schema.NullOr(Schema.String),

@@ -82,7 +82,7 @@ describe("Credentials", () => {
     ];
 
     for (const { provider, expected } of cases) {
-      expect(Credentials._providerHints(provider as any)).toEqual(expected);
+      expect(Credentials.providerHints(provider as any)).toEqual(expected);
     }
   });
 

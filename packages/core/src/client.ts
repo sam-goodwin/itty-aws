@@ -31,8 +31,8 @@ import * as Effect from "effect/Effect";
 import { pipe } from "effect/Function";
 import * as Option from "effect/Option";
 import { pipeArguments } from "effect/Pipeable";
-import { MinimumLogLevel } from "effect/References";
 import * as Ref from "effect/Ref";
+import { MinimumLogLevel } from "effect/References";
 import * as Schema from "effect/Schema";
 import * as AST from "effect/SchemaAST";
 import * as Stream from "effect/Stream";
@@ -59,7 +59,6 @@ const distilledDebugConfig: Effect.Effect<boolean> = Config.string(
   "DISTILLED_DEBUG",
 )
   .pipe(Config.map((raw) => raw === "1"))
-  .asEffect()
   .pipe(Effect.orElseSucceed(() => false));
 
 // ============================================================================
@@ -886,10 +885,10 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
       };
 
       const Proto = {
-        [Symbol.iterator]() {
-          return new SingleShotGen(this);
+        [Symbol.iterator](this: any) {
+          return new SingleShotGen(this.asEffect());
         },
-        pipe() {
+        pipe(this: any) {
           return pipeArguments(this.asEffect(), arguments);
         },
         asEffect() {

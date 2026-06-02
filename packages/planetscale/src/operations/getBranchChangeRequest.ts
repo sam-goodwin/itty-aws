@@ -31,8 +31,8 @@ export const GetBranchChangeRequestOutput =
       "canceled",
       "completed",
     ]),
-    started_at: Schema.String,
-    completed_at: Schema.String,
+    started_at: Schema.NullOr(Schema.String),
+    completed_at: Schema.optional(Schema.NullOr(Schema.String)),
     created_at: Schema.String,
     updated_at: Schema.String,
     actor: Schema.Struct({

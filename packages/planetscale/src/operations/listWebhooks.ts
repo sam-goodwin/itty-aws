@@ -2,7 +2,7 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const ListWebhooksInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -20,6 +20,7 @@ export type ListWebhooksInput = typeof ListWebhooksInput.Type;
 
 // Output Schema
 export const ListWebhooksOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.String,
   current_page: Schema.Number,
   next_page: Schema.NullOr(Schema.Number),
   next_page_url: Schema.NullOr(Schema.String),
@@ -29,7 +30,7 @@ export const ListWebhooksOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Struct({
       id: Schema.String,
       url: Schema.String,
-      secret: SensitiveString,
+      secret: SensitiveOutputString,
       enabled: Schema.Boolean,
       last_sent_result: Schema.NullOr(Schema.String),
       last_sent_success: Schema.NullOr(Schema.Boolean),

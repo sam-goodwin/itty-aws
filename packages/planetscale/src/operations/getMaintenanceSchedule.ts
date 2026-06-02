@@ -34,11 +34,13 @@ export const GetMaintenanceScheduleOutput =
     frequency_value: Schema.Number,
     frequency_unit: Schema.Literals(["day", "week", "month", "once"]),
     enabled: Schema.Boolean,
-    expires_at: Schema.String,
-    deadline_at: Schema.String,
+    expires_at: Schema.NullOr(Schema.String),
+    deadline_at: Schema.NullOr(Schema.String),
     required: Schema.Boolean,
     pending_vitess_version_update: Schema.Boolean,
-    pending_vitess_version: Schema.String,
+    pending_vitess_version: Schema.NullOr(Schema.String),
+    pending_mysql_version_update: Schema.Boolean,
+    pending_mysql_version: Schema.NullOr(Schema.String),
   });
 export type GetMaintenanceScheduleOutput =
   typeof GetMaintenanceScheduleOutput.Type;

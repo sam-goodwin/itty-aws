@@ -16,6 +16,7 @@ export type ListAuditLogsInput = typeof ListAuditLogsInput.Type;
 
 // Output Schema
 export const ListAuditLogsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.String,
   has_next: Schema.Boolean,
   has_prev: Schema.Boolean,
   cursor_start: Schema.NullOr(Schema.String),
@@ -23,14 +24,14 @@ export const ListAuditLogsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   data: Schema.Array(
     Schema.Struct({
       id: Schema.String,
-      actor_id: Schema.String,
-      actor_type: Schema.String,
-      auditable_id: Schema.String,
-      auditable_type: Schema.String,
-      target_id: Schema.String,
-      target_type: Schema.String,
+      actor_id: Schema.NullOr(Schema.String),
+      actor_type: Schema.NullOr(Schema.String),
+      auditable_id: Schema.NullOr(Schema.String),
+      auditable_type: Schema.NullOr(Schema.String),
+      target_id: Schema.NullOr(Schema.String),
+      target_type: Schema.NullOr(Schema.String),
       location: Schema.NullOr(Schema.String),
-      target_display_name: Schema.String,
+      target_display_name: Schema.NullOr(Schema.String),
       audit_action: Schema.String,
       action: Schema.String,
       actor_display_name: Schema.String,
@@ -38,7 +39,7 @@ export const ListAuditLogsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       remote_ip: Schema.NullOr(Schema.String),
       created_at: Schema.String,
       updated_at: Schema.String,
-      metadata: Schema.Record(Schema.String, Schema.Unknown),
+      metadata: Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
     }),
   ),
 });

@@ -75,15 +75,15 @@ export const getConfig: API.OperationMethod<
 }));
 
 export interface CreateConfigRequest {
-  /** Path param: */
+  /** Path param */
   accountId: string;
   /** Body param: Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router. */
   defaultSampling: number;
   /** Body param: The account name. */
   name: string;
-  /** Body param: */
+  /** Body param */
   routerIps?: string[];
-  /** Body param: */
+  /** Body param */
   warpDevices?: { id: string; name: string; routerIp: string }[];
 }
 
@@ -162,15 +162,15 @@ export const createConfig: API.OperationMethod<
 }));
 
 export interface UpdateConfigRequest {
-  /** Path param: */
+  /** Path param */
   accountId: string;
   /** Body param: Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router. */
   defaultSampling: number;
   /** Body param: The account name. */
   name: string;
-  /** Body param: */
+  /** Body param */
   routerIps?: string[];
-  /** Body param: */
+  /** Body param */
   warpDevices?: { id: string; name: string; routerIp: string }[];
 }
 
@@ -249,15 +249,15 @@ export const updateConfig: API.OperationMethod<
 }));
 
 export interface PatchConfigRequest {
-  /** Path param: */
+  /** Path param */
   accountId: string;
   /** Body param: Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router. */
   defaultSampling?: number;
   /** Body param: The account name. */
   name?: string;
-  /** Body param: */
+  /** Body param */
   routerIps?: string[];
-  /** Body param: */
+  /** Body param */
   warpDevices?: { id: string; name: string; routerIp: string }[];
 }
 
@@ -472,19 +472,29 @@ export const GetRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<GetRuleRequest>;
 
 export interface GetRuleResponse {
+  /** The id of the rule. Must be unique. */
+  id: string;
   /** Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit. */
   automaticAdvertisement: boolean | null;
   /** The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (\_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters. */
   name: string;
   prefixes: string[];
   /** MNM rule type. */
-  type: "threshold" | "zscore" | "advanced_ddos";
-  /** The id of the rule. Must be unique. */
-  id?: string | null;
+  type: "threshold" | "zscore" | "advanced_ddos" | (string & {});
   /** The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum. */
   bandwidthThreshold?: number | null;
   /** The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m", */
-  duration?: "1m" | "5m" | "10m" | "15m" | "20m" | "30m" | "45m" | "60m" | null;
+  duration?:
+    | "1m"
+    | "5m"
+    | "10m"
+    | "15m"
+    | "20m"
+    | "30m"
+    | "45m"
+    | "60m"
+    | (string & {})
+    | null;
   /** The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum. */
   packetThreshold?: number | null;
   /** Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule. */
@@ -496,17 +506,23 @@ export interface GetRuleResponse {
 }
 
 export const GetRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.String,
   automaticAdvertisement: Schema.Union([Schema.Boolean, Schema.Null]),
   name: Schema.String,
   prefixes: Schema.Array(Schema.String),
-  type: Schema.Literals(["threshold", "zscore", "advanced_ddos"]),
-  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  type: Schema.Union([
+    Schema.Literals(["threshold", "zscore", "advanced_ddos"]),
+    Schema.String,
+  ]),
   bandwidthThreshold: Schema.optional(
     Schema.Union([Schema.Number, Schema.Null]),
   ),
   duration: Schema.optional(
     Schema.Union([
-      Schema.Literals(["1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m"]),
+      Schema.Union([
+        Schema.Literals(["1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m"]),
+        Schema.String,
+      ]),
       Schema.Null,
     ]),
   ),
@@ -537,11 +553,11 @@ export const GetRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 })
   .pipe(
     Schema.encodeKeys({
+      id: "id",
       automaticAdvertisement: "automatic_advertisement",
       name: "name",
       prefixes: "prefixes",
       type: "type",
-      id: "id",
       bandwidthThreshold: "bandwidth_threshold",
       duration: "duration",
       packetThreshold: "packet_threshold",
@@ -577,11 +593,11 @@ export const ListRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListRulesResponse {
   result: ({
+    id: string;
     automaticAdvertisement: boolean | null;
     name: string;
     prefixes: string[];
-    type: "threshold" | "zscore" | "advanced_ddos";
-    id?: string | null;
+    type: "threshold" | "zscore" | "advanced_ddos" | (string & {});
     bandwidthThreshold?: number | null;
     duration?:
       | "1m"
@@ -592,6 +608,7 @@ export interface ListRulesResponse {
       | "30m"
       | "45m"
       | "60m"
+      | (string & {})
       | null;
     packetThreshold?: number | null;
     prefixMatch?: "exact" | "subnet" | "supernet" | null;
@@ -604,25 +621,31 @@ export const ListRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Union([
       Schema.Struct({
+        id: Schema.String,
         automaticAdvertisement: Schema.Union([Schema.Boolean, Schema.Null]),
         name: Schema.String,
         prefixes: Schema.Array(Schema.String),
-        type: Schema.Literals(["threshold", "zscore", "advanced_ddos"]),
-        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        type: Schema.Union([
+          Schema.Literals(["threshold", "zscore", "advanced_ddos"]),
+          Schema.String,
+        ]),
         bandwidthThreshold: Schema.optional(
           Schema.Union([Schema.Number, Schema.Null]),
         ),
         duration: Schema.optional(
           Schema.Union([
-            Schema.Literals([
-              "1m",
-              "5m",
-              "10m",
-              "15m",
-              "20m",
-              "30m",
-              "45m",
-              "60m",
+            Schema.Union([
+              Schema.Literals([
+                "1m",
+                "5m",
+                "10m",
+                "15m",
+                "20m",
+                "30m",
+                "45m",
+                "60m",
+              ]),
+              Schema.String,
             ]),
             Schema.Null,
           ]),
@@ -655,11 +678,11 @@ export const ListRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ),
       }).pipe(
         Schema.encodeKeys({
+          id: "id",
           automaticAdvertisement: "automatic_advertisement",
           name: "name",
           prefixes: "prefixes",
           type: "type",
-          id: "id",
           bandwidthThreshold: "bandwidth_threshold",
           duration: "duration",
           packetThreshold: "packet_threshold",
@@ -691,67 +714,119 @@ export const listRules: API.PaginatedOperationMethod<
 }));
 
 export interface CreateRuleRequest {
-  /** Path param: */
+  /** Path param */
   accountId: string;
-  /** Body param: The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m", */
-  duration: "1m" | "5m" | "10m" | "15m" | "20m" | "30m" | "45m" | "60m";
+  /** Body param: Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit. */
+  automaticAdvertisement: boolean | null;
   /** Body param: The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (\_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters. */
   name: string;
-  /** Body param: Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit. */
-  automaticAdvertisement?: boolean | null;
+  /** Body param */
+  prefixes: string[];
+  /** Body param: MNM rule type. */
+  type: "threshold" | "zscore" | "advanced_ddos" | (string & {});
   /** Body param: The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum. */
-  bandwidth?: number;
+  bandwidthThreshold?: number;
+  /** Body param: The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m", */
+  duration?:
+    | "1m"
+    | "5m"
+    | "10m"
+    | "15m"
+    | "20m"
+    | "30m"
+    | "45m"
+    | "60m"
+    | (string & {});
   /** Body param: The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum. */
   packetThreshold?: number;
-  /** Body param: */
-  prefixes?: string[];
+  /** Body param: Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule. */
+  prefixMatch?: "exact" | "subnet" | "supernet" | null;
+  /** Body param: Level of sensitivity set for zscore rules. */
+  zscoreSensitivity?: "low" | "medium" | "high" | null;
+  /** Body param: Target of the zscore rule analysis. */
+  zscoreTarget?: "bits" | "packets" | null;
 }
 
 export const CreateRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  duration: Schema.Literals([
-    "1m",
-    "5m",
-    "10m",
-    "15m",
-    "20m",
-    "30m",
-    "45m",
-    "60m",
-  ]),
+  automaticAdvertisement: Schema.Union([Schema.Boolean, Schema.Null]),
   name: Schema.String,
-  automaticAdvertisement: Schema.optional(
-    Schema.Union([Schema.Boolean, Schema.Null]),
+  prefixes: Schema.Array(Schema.String),
+  type: Schema.Union([
+    Schema.Literals(["threshold", "zscore", "advanced_ddos"]),
+    Schema.String,
+  ]),
+  bandwidthThreshold: Schema.optional(Schema.Number),
+  duration: Schema.optional(
+    Schema.Union([
+      Schema.Literals(["1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m"]),
+      Schema.String,
+    ]),
   ),
-  bandwidth: Schema.optional(Schema.Number),
   packetThreshold: Schema.optional(Schema.Number),
-  prefixes: Schema.optional(Schema.Array(Schema.String)),
+  prefixMatch: Schema.optional(
+    Schema.Union([
+      Schema.Literal("exact"),
+      Schema.Literal("subnet"),
+      Schema.Literal("supernet"),
+      Schema.Null,
+    ]),
+  ),
+  zscoreSensitivity: Schema.optional(
+    Schema.Union([
+      Schema.Literal("low"),
+      Schema.Literal("medium"),
+      Schema.Literal("high"),
+      Schema.Null,
+    ]),
+  ),
+  zscoreTarget: Schema.optional(
+    Schema.Union([
+      Schema.Literal("bits"),
+      Schema.Literal("packets"),
+      Schema.Null,
+    ]),
+  ),
 }).pipe(
   Schema.encodeKeys({
-    duration: "duration",
-    name: "name",
     automaticAdvertisement: "automatic_advertisement",
-    bandwidth: "bandwidth",
-    packetThreshold: "packet_threshold",
+    name: "name",
     prefixes: "prefixes",
+    type: "type",
+    bandwidthThreshold: "bandwidth_threshold",
+    duration: "duration",
+    packetThreshold: "packet_threshold",
+    prefixMatch: "prefix_match",
+    zscoreSensitivity: "zscore_sensitivity",
+    zscoreTarget: "zscore_target",
   }),
   T.Http({ method: "POST", path: "/accounts/{account_id}/mnm/rules" }),
 ) as unknown as Schema.Schema<CreateRuleRequest>;
 
 export interface CreateRuleResponse {
+  /** The id of the rule. Must be unique. */
+  id: string;
   /** Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit. */
   automaticAdvertisement: boolean | null;
   /** The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (\_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters. */
   name: string;
   prefixes: string[];
   /** MNM rule type. */
-  type: "threshold" | "zscore" | "advanced_ddos";
-  /** The id of the rule. Must be unique. */
-  id?: string | null;
+  type: "threshold" | "zscore" | "advanced_ddos" | (string & {});
   /** The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum. */
   bandwidthThreshold?: number | null;
   /** The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m", */
-  duration?: "1m" | "5m" | "10m" | "15m" | "20m" | "30m" | "45m" | "60m" | null;
+  duration?:
+    | "1m"
+    | "5m"
+    | "10m"
+    | "15m"
+    | "20m"
+    | "30m"
+    | "45m"
+    | "60m"
+    | (string & {})
+    | null;
   /** The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum. */
   packetThreshold?: number | null;
   /** Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule. */
@@ -763,17 +838,23 @@ export interface CreateRuleResponse {
 }
 
 export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.String,
   automaticAdvertisement: Schema.Union([Schema.Boolean, Schema.Null]),
   name: Schema.String,
   prefixes: Schema.Array(Schema.String),
-  type: Schema.Literals(["threshold", "zscore", "advanced_ddos"]),
-  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  type: Schema.Union([
+    Schema.Literals(["threshold", "zscore", "advanced_ddos"]),
+    Schema.String,
+  ]),
   bandwidthThreshold: Schema.optional(
     Schema.Union([Schema.Number, Schema.Null]),
   ),
   duration: Schema.optional(
     Schema.Union([
-      Schema.Literals(["1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m"]),
+      Schema.Union([
+        Schema.Literals(["1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m"]),
+        Schema.String,
+      ]),
       Schema.Null,
     ]),
   ),
@@ -804,11 +885,11 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 })
   .pipe(
     Schema.encodeKeys({
+      id: "id",
       automaticAdvertisement: "automatic_advertisement",
       name: "name",
       prefixes: "prefixes",
       type: "type",
-      id: "id",
       bandwidthThreshold: "bandwidth_threshold",
       duration: "duration",
       packetThreshold: "packet_threshold",
@@ -835,71 +916,119 @@ export const createRule: API.OperationMethod<
 }));
 
 export interface UpdateRuleRequest {
-  /** Path param: */
+  /** Path param */
   accountId: string;
-  /** Body param: The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m", */
-  duration: "1m" | "5m" | "10m" | "15m" | "20m" | "30m" | "45m" | "60m";
+  /** Body param: Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit. */
+  automaticAdvertisement: boolean | null;
   /** Body param: The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (\_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters. */
   name: string;
-  /** Body param: The id of the rule. Must be unique. */
-  id?: string;
-  /** Body param: Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit. */
-  automaticAdvertisement?: boolean | null;
+  /** Body param */
+  prefixes: string[];
+  /** Body param: MNM rule type. */
+  type: "threshold" | "zscore" | "advanced_ddos" | (string & {});
   /** Body param: The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum. */
-  bandwidth?: number;
+  bandwidthThreshold?: number;
+  /** Body param: The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m", */
+  duration?:
+    | "1m"
+    | "5m"
+    | "10m"
+    | "15m"
+    | "20m"
+    | "30m"
+    | "45m"
+    | "60m"
+    | (string & {});
   /** Body param: The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum. */
   packetThreshold?: number;
-  /** Body param: */
-  prefixes?: string[];
+  /** Body param: Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule. */
+  prefixMatch?: "exact" | "subnet" | "supernet" | null;
+  /** Body param: Level of sensitivity set for zscore rules. */
+  zscoreSensitivity?: "low" | "medium" | "high" | null;
+  /** Body param: Target of the zscore rule analysis. */
+  zscoreTarget?: "bits" | "packets" | null;
 }
 
 export const UpdateRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  duration: Schema.Literals([
-    "1m",
-    "5m",
-    "10m",
-    "15m",
-    "20m",
-    "30m",
-    "45m",
-    "60m",
-  ]),
+  automaticAdvertisement: Schema.Union([Schema.Boolean, Schema.Null]),
   name: Schema.String,
-  id: Schema.optional(Schema.String),
-  automaticAdvertisement: Schema.optional(
-    Schema.Union([Schema.Boolean, Schema.Null]),
+  prefixes: Schema.Array(Schema.String),
+  type: Schema.Union([
+    Schema.Literals(["threshold", "zscore", "advanced_ddos"]),
+    Schema.String,
+  ]),
+  bandwidthThreshold: Schema.optional(Schema.Number),
+  duration: Schema.optional(
+    Schema.Union([
+      Schema.Literals(["1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m"]),
+      Schema.String,
+    ]),
   ),
-  bandwidth: Schema.optional(Schema.Number),
   packetThreshold: Schema.optional(Schema.Number),
-  prefixes: Schema.optional(Schema.Array(Schema.String)),
+  prefixMatch: Schema.optional(
+    Schema.Union([
+      Schema.Literal("exact"),
+      Schema.Literal("subnet"),
+      Schema.Literal("supernet"),
+      Schema.Null,
+    ]),
+  ),
+  zscoreSensitivity: Schema.optional(
+    Schema.Union([
+      Schema.Literal("low"),
+      Schema.Literal("medium"),
+      Schema.Literal("high"),
+      Schema.Null,
+    ]),
+  ),
+  zscoreTarget: Schema.optional(
+    Schema.Union([
+      Schema.Literal("bits"),
+      Schema.Literal("packets"),
+      Schema.Null,
+    ]),
+  ),
 }).pipe(
   Schema.encodeKeys({
-    duration: "duration",
-    name: "name",
-    id: "id",
     automaticAdvertisement: "automatic_advertisement",
-    bandwidth: "bandwidth",
-    packetThreshold: "packet_threshold",
+    name: "name",
     prefixes: "prefixes",
+    type: "type",
+    bandwidthThreshold: "bandwidth_threshold",
+    duration: "duration",
+    packetThreshold: "packet_threshold",
+    prefixMatch: "prefix_match",
+    zscoreSensitivity: "zscore_sensitivity",
+    zscoreTarget: "zscore_target",
   }),
   T.Http({ method: "PUT", path: "/accounts/{account_id}/mnm/rules" }),
 ) as unknown as Schema.Schema<UpdateRuleRequest>;
 
 export interface UpdateRuleResponse {
+  /** The id of the rule. Must be unique. */
+  id: string;
   /** Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit. */
   automaticAdvertisement: boolean | null;
   /** The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (\_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters. */
   name: string;
   prefixes: string[];
   /** MNM rule type. */
-  type: "threshold" | "zscore" | "advanced_ddos";
-  /** The id of the rule. Must be unique. */
-  id?: string | null;
+  type: "threshold" | "zscore" | "advanced_ddos" | (string & {});
   /** The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum. */
   bandwidthThreshold?: number | null;
   /** The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m", */
-  duration?: "1m" | "5m" | "10m" | "15m" | "20m" | "30m" | "45m" | "60m" | null;
+  duration?:
+    | "1m"
+    | "5m"
+    | "10m"
+    | "15m"
+    | "20m"
+    | "30m"
+    | "45m"
+    | "60m"
+    | (string & {})
+    | null;
   /** The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum. */
   packetThreshold?: number | null;
   /** Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule. */
@@ -911,17 +1040,23 @@ export interface UpdateRuleResponse {
 }
 
 export const UpdateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.String,
   automaticAdvertisement: Schema.Union([Schema.Boolean, Schema.Null]),
   name: Schema.String,
   prefixes: Schema.Array(Schema.String),
-  type: Schema.Literals(["threshold", "zscore", "advanced_ddos"]),
-  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  type: Schema.Union([
+    Schema.Literals(["threshold", "zscore", "advanced_ddos"]),
+    Schema.String,
+  ]),
   bandwidthThreshold: Schema.optional(
     Schema.Union([Schema.Number, Schema.Null]),
   ),
   duration: Schema.optional(
     Schema.Union([
-      Schema.Literals(["1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m"]),
+      Schema.Union([
+        Schema.Literals(["1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m"]),
+        Schema.String,
+      ]),
       Schema.Null,
     ]),
   ),
@@ -952,11 +1087,11 @@ export const UpdateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 })
   .pipe(
     Schema.encodeKeys({
+      id: "id",
       automaticAdvertisement: "automatic_advertisement",
       name: "name",
       prefixes: "prefixes",
       type: "type",
-      id: "id",
       bandwidthThreshold: "bandwidth_threshold",
       duration: "duration",
       packetThreshold: "packet_threshold",
@@ -984,43 +1119,92 @@ export const updateRule: API.OperationMethod<
 
 export interface PatchRuleRequest {
   ruleId: string;
-  /** Path param: */
+  /** Path param */
   accountId: string;
   /** Body param: Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit. */
-  automaticAdvertisement?: boolean | null;
-  /** Body param: The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum. */
-  bandwidth?: number;
-  /** Body param: The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m", */
-  duration?: "1m" | "5m" | "10m" | "15m" | "20m" | "30m" | "45m" | "60m";
+  automaticAdvertisement: boolean | null;
   /** Body param: The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (\_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters. */
-  name?: string;
+  name: string;
+  /** Body param */
+  prefixes: string[];
+  /** Body param: MNM rule type. */
+  type: "threshold" | "zscore" | "advanced_ddos" | (string & {});
+  /** Body param: The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum. */
+  bandwidthThreshold?: number;
+  /** Body param: The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m", */
+  duration?:
+    | "1m"
+    | "5m"
+    | "10m"
+    | "15m"
+    | "20m"
+    | "30m"
+    | "45m"
+    | "60m"
+    | (string & {});
   /** Body param: The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum. */
   packetThreshold?: number;
-  /** Body param: */
-  prefixes?: string[];
+  /** Body param: Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule. */
+  prefixMatch?: "exact" | "subnet" | "supernet" | null;
+  /** Body param: Level of sensitivity set for zscore rules. */
+  zscoreSensitivity?: "low" | "medium" | "high" | null;
+  /** Body param: Target of the zscore rule analysis. */
+  zscoreTarget?: "bits" | "packets" | null;
 }
 
 export const PatchRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  automaticAdvertisement: Schema.optional(
-    Schema.Union([Schema.Boolean, Schema.Null]),
-  ),
-  bandwidth: Schema.optional(Schema.Number),
+  automaticAdvertisement: Schema.Union([Schema.Boolean, Schema.Null]),
+  name: Schema.String,
+  prefixes: Schema.Array(Schema.String),
+  type: Schema.Union([
+    Schema.Literals(["threshold", "zscore", "advanced_ddos"]),
+    Schema.String,
+  ]),
+  bandwidthThreshold: Schema.optional(Schema.Number),
   duration: Schema.optional(
-    Schema.Literals(["1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m"]),
+    Schema.Union([
+      Schema.Literals(["1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m"]),
+      Schema.String,
+    ]),
   ),
-  name: Schema.optional(Schema.String),
   packetThreshold: Schema.optional(Schema.Number),
-  prefixes: Schema.optional(Schema.Array(Schema.String)),
+  prefixMatch: Schema.optional(
+    Schema.Union([
+      Schema.Literal("exact"),
+      Schema.Literal("subnet"),
+      Schema.Literal("supernet"),
+      Schema.Null,
+    ]),
+  ),
+  zscoreSensitivity: Schema.optional(
+    Schema.Union([
+      Schema.Literal("low"),
+      Schema.Literal("medium"),
+      Schema.Literal("high"),
+      Schema.Null,
+    ]),
+  ),
+  zscoreTarget: Schema.optional(
+    Schema.Union([
+      Schema.Literal("bits"),
+      Schema.Literal("packets"),
+      Schema.Null,
+    ]),
+  ),
 }).pipe(
   Schema.encodeKeys({
     automaticAdvertisement: "automatic_advertisement",
-    bandwidth: "bandwidth",
-    duration: "duration",
     name: "name",
-    packetThreshold: "packet_threshold",
     prefixes: "prefixes",
+    type: "type",
+    bandwidthThreshold: "bandwidth_threshold",
+    duration: "duration",
+    packetThreshold: "packet_threshold",
+    prefixMatch: "prefix_match",
+    zscoreSensitivity: "zscore_sensitivity",
+    zscoreTarget: "zscore_target",
   }),
   T.Http({
     method: "PATCH",
@@ -1029,19 +1213,29 @@ export const PatchRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<PatchRuleRequest>;
 
 export interface PatchRuleResponse {
+  /** The id of the rule. Must be unique. */
+  id: string;
   /** Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit. */
   automaticAdvertisement: boolean | null;
   /** The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (\_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters. */
   name: string;
   prefixes: string[];
   /** MNM rule type. */
-  type: "threshold" | "zscore" | "advanced_ddos";
-  /** The id of the rule. Must be unique. */
-  id?: string | null;
+  type: "threshold" | "zscore" | "advanced_ddos" | (string & {});
   /** The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum. */
   bandwidthThreshold?: number | null;
   /** The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m", */
-  duration?: "1m" | "5m" | "10m" | "15m" | "20m" | "30m" | "45m" | "60m" | null;
+  duration?:
+    | "1m"
+    | "5m"
+    | "10m"
+    | "15m"
+    | "20m"
+    | "30m"
+    | "45m"
+    | "60m"
+    | (string & {})
+    | null;
   /** The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum. */
   packetThreshold?: number | null;
   /** Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule. */
@@ -1053,17 +1247,23 @@ export interface PatchRuleResponse {
 }
 
 export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.String,
   automaticAdvertisement: Schema.Union([Schema.Boolean, Schema.Null]),
   name: Schema.String,
   prefixes: Schema.Array(Schema.String),
-  type: Schema.Literals(["threshold", "zscore", "advanced_ddos"]),
-  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  type: Schema.Union([
+    Schema.Literals(["threshold", "zscore", "advanced_ddos"]),
+    Schema.String,
+  ]),
   bandwidthThreshold: Schema.optional(
     Schema.Union([Schema.Number, Schema.Null]),
   ),
   duration: Schema.optional(
     Schema.Union([
-      Schema.Literals(["1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m"]),
+      Schema.Union([
+        Schema.Literals(["1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m"]),
+        Schema.String,
+      ]),
       Schema.Null,
     ]),
   ),
@@ -1094,11 +1294,11 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 })
   .pipe(
     Schema.encodeKeys({
+      id: "id",
       automaticAdvertisement: "automatic_advertisement",
       name: "name",
       prefixes: "prefixes",
       type: "type",
-      id: "id",
       bandwidthThreshold: "bandwidth_threshold",
       duration: "duration",
       packetThreshold: "packet_threshold",
@@ -1140,19 +1340,29 @@ export const DeleteRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<DeleteRuleRequest>;
 
 export interface DeleteRuleResponse {
+  /** The id of the rule. Must be unique. */
+  id: string;
   /** Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit. */
   automaticAdvertisement: boolean | null;
   /** The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (\_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters. */
   name: string;
   prefixes: string[];
   /** MNM rule type. */
-  type: "threshold" | "zscore" | "advanced_ddos";
-  /** The id of the rule. Must be unique. */
-  id?: string | null;
+  type: "threshold" | "zscore" | "advanced_ddos" | (string & {});
   /** The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum. */
   bandwidthThreshold?: number | null;
   /** The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m", */
-  duration?: "1m" | "5m" | "10m" | "15m" | "20m" | "30m" | "45m" | "60m" | null;
+  duration?:
+    | "1m"
+    | "5m"
+    | "10m"
+    | "15m"
+    | "20m"
+    | "30m"
+    | "45m"
+    | "60m"
+    | (string & {})
+    | null;
   /** The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum. */
   packetThreshold?: number | null;
   /** Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule. */
@@ -1164,17 +1374,23 @@ export interface DeleteRuleResponse {
 }
 
 export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.String,
   automaticAdvertisement: Schema.Union([Schema.Boolean, Schema.Null]),
   name: Schema.String,
   prefixes: Schema.Array(Schema.String),
-  type: Schema.Literals(["threshold", "zscore", "advanced_ddos"]),
-  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  type: Schema.Union([
+    Schema.Literals(["threshold", "zscore", "advanced_ddos"]),
+    Schema.String,
+  ]),
   bandwidthThreshold: Schema.optional(
     Schema.Union([Schema.Number, Schema.Null]),
   ),
   duration: Schema.optional(
     Schema.Union([
-      Schema.Literals(["1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m"]),
+      Schema.Union([
+        Schema.Literals(["1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m"]),
+        Schema.String,
+      ]),
       Schema.Null,
     ]),
   ),
@@ -1205,11 +1421,11 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 })
   .pipe(
     Schema.encodeKeys({
+      id: "id",
       automaticAdvertisement: "automatic_advertisement",
       name: "name",
       prefixes: "prefixes",
       type: "type",
-      id: "id",
       bandwidthThreshold: "bandwidth_threshold",
       duration: "duration",
       packetThreshold: "packet_threshold",
@@ -1241,9 +1457,9 @@ export const deleteRule: API.OperationMethod<
 
 export interface PatchRuleAdvertisementRequest {
   ruleId: string;
-  /** Path param: */
+  /** Path param */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   body: unknown;
 }
 

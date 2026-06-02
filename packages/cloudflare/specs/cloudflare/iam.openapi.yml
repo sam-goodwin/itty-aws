@@ -1055,11 +1055,13 @@ paths:
         - name: direction
           in: query
           required: false
-          description: 'Query param: The sort order of returned user groups by name.
-            Default sort order is ascending. To switch to descending, set this
-            parameter to "desc"'
+          description: "Query param: The sort order of returned user groups by name
+            (ascending or descending)."
           schema:
             type: string
+            enum:
+              - asc
+              - desc
         - name: fuzzyName
           in: query
           required: false
@@ -1188,11 +1190,7 @@ paths:
       operationId: createUserGroup
       description: "Create a new user group under the specified account.  @example
         ```ts const userGroup = await client.iam.userGroups.create({ account_id:
-        '023e105f4ecef8ad9ca31a8372d0c353', name: 'My New User Group', policies:
-        [ { access: 'allow', permission_groups: [ { id:
-        'c8fed203ed3043cba015a93ad1616f1f' }, { id:
-        '82e64a83756745bbbb1c9c2701bf816b' }, ], resource_groups: [ { id:
-        '6d7f2f5f5b1d4a0e9081fdc98d432fd1' }, ], }, ], }); ```"
+        '023e105f4ecef8ad9ca31a8372d0c353', name: 'My New User Group', }); ```"
       parameters:
         - name: account_id
           in: path
@@ -1250,7 +1248,6 @@ paths:
                   description: "Body param: Policies attached to the User group"
               required:
                 - name
-                - policies
       responses:
         "200":
           description: Success
@@ -1339,16 +1336,20 @@ paths:
                   - modified_on
                   - name
       x-distilled-response-path: result
-  /accounts/{account_id}/iam/user_groups/{userGroupId}/members:
+  /accounts/{account_id}/iam/user_groups/{userGroupId}/members/{memberId}:
     get:
-      operationId: listUserGroupMembers
-      description: "List all the members attached to a user group.  @example ```ts //
-        Automatically fetches more pages as needed. for await (const
-        memberListResponse of client.iam.userGroups.members.list(
-        '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
-        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      operationId: getUserGroupMember
+      description: "Get details of a specific member in a user group.  @example ```ts
+        const member = await client.iam.userGroups.members.get(
+        '023e105f4ecef8ad9ca31a8372d0c353', '023e105f4ecef8ad9ca31a8372d0c353',
+        { account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
         - name: userGroupId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: memberId
           in: path
           required: true
           schema:
@@ -1356,19 +1357,9 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param: Account identifier tag."
+          description: Account identifier tag.
           schema:
             type: string
-        - name: page
-          in: query
-          required: false
-          schema:
-            type: number
-        - name: per_page
-          in: query
-          required: false
-          schema:
-            type: number
       responses:
         "200":
           description: Success
@@ -1380,6 +1371,9 @@ paths:
                   id:
                     type: string
                     description: Account member identifier.
+                  created_at:
+                    type: string
+                    description: When the member was added to the user group.
                   email:
                     type: string
                     description: The contact email address of the user.
@@ -1389,126 +1383,25 @@ paths:
                       - accepted
                       - pending
                     description: The member's status in the account.
-                required:
-                  - id
-      x-distilled-pagination-class: MemberListResponsesV4PagePaginationArray
-    post:
-      operationId: createUserGroupMember
-      description: "Add members to a User Group.  @example ```ts const member = await
-        client.iam.userGroups.members.create(
-        '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
-        '023e105f4ecef8ad9ca31a8372d0c353', body: [{ id:
-        '023e105f4ecef8ad9ca31a8372d0c353' }], }, ); ```"
-      parameters:
-        - name: userGroupId
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: account_id
-          in: path
-          required: true
-          description: "Path param: Account identifier tag."
-          schema:
-            type: string
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: array
-              items:
-                type: object
-                properties:
-                  id:
-                    type: string
-                    description: The identifier of an existing account Member.
-                required:
-                  - id
-      responses:
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  id:
-                    type: string
-                    description: Account member identifier.
-                  email:
-                    type: string
-                    description: The contact email address of the user.
-                  status:
-                    type: string
-                    enum:
-                      - accepted
-                      - pending
-                    description: The member's status in the account.
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: User identifier tag.
+                      email:
+                        type: string
+                        description: The contact email address of the user.
+                      first_name:
+                        type: string
+                        description: User's first name.
+                      last_name:
+                        type: string
+                        description: User's last name.
+                    description: Details of the user associated with this membership.
                 required:
                   - id
       x-distilled-response-path: result
-      x-distilled-errors:
-        InvalidMember:
-          - code: 400
-    put:
-      operationId: updateUserGroupMember
-      description: "Replace the set of members attached to a User Group.  @example
-        ```ts // Automatically fetches more pages as needed. for await (const
-        memberUpdateResponse of client.iam.userGroups.members.update(
-        '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
-        '023e105f4ecef8ad9ca31a8372d0c353', body: [{ id:
-        '023e105f4ecef8ad9ca31a8372d0c353' }], }, )) { // ... } ```"
-      parameters:
-        - name: userGroupId
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: account_id
-          in: path
-          required: true
-          description: "Path param: Account identifier tag."
-          schema:
-            type: string
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: array
-              items:
-                type: object
-                properties:
-                  id:
-                    type: string
-                    description: The identifier of an existing account Member.
-                required:
-                  - id
-      responses:
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  id:
-                    type: string
-                    description: Account member identifier.
-                  email:
-                    type: string
-                    description: The contact email address of the user.
-                  status:
-                    type: string
-                    enum:
-                      - accepted
-                      - pending
-                    description: The member's status in the account.
-                required:
-                  - id
-      x-distilled-pagination-class: MemberUpdateResponsesSinglePage
-  /accounts/{account_id}/iam/user_groups/{userGroupId}/members/{memberId}:
     delete:
       operationId: deleteUserGroupMember
       description: "Remove a member from User Group  @example ```ts const member =
@@ -1558,6 +1451,205 @@ paths:
       x-distilled-errors:
         InvalidMember:
           - code: 400
+  /accounts/{account_id}/iam/user_groups/{userGroupId}/members:
+    get:
+      operationId: listUserGroupMembers
+      description: "List all the members attached to a user group.  @example ```ts //
+        Automatically fetches more pages as needed. for await (const
+        memberListResponse of client.iam.userGroups.members.list(
+        '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: userGroupId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: direction
+          in: query
+          required: false
+          description: "Query param: The sort order of returned user group members by
+            email."
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        - name: fuzzyEmail
+          in: query
+          required: false
+          description: "Query param: A string used for filtering members by partial email
+            match."
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Account member identifier.
+                  email:
+                    type: string
+                    description: The contact email address of the user.
+                  status:
+                    type: string
+                    enum:
+                      - accepted
+                      - pending
+                    description: The member's status in the account.
+                required:
+                  - id
+      x-distilled-pagination-class: MemberListResponsesV4PagePaginationArray
+    post:
+      operationId: createUserGroupMember
+      description: "Add members to a User Group.  @example ```ts // Automatically
+        fetches more pages as needed. for await (const memberCreateResponse of
+        client.iam.userGroups.members.create(
+        '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', members: [{ id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }], }, )) { // ... } ```"
+      parameters:
+        - name: userGroupId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                members:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: The identifier of an existing account Member.
+                    required:
+                      - id
+                  description: Body param
+              required:
+                - members
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Account member identifier.
+                  email:
+                    type: string
+                    description: The contact email address of the user.
+                  status:
+                    type: string
+                    enum:
+                      - accepted
+                      - pending
+                    description: The member's status in the account.
+                required:
+                  - id
+      x-distilled-pagination-class: MemberCreateResponsesSinglePage
+      x-distilled-errors:
+        InvalidMember:
+          - code: 400
+    put:
+      operationId: updateUserGroupMember
+      description: "Replace the set of members attached to a User Group.  @example
+        ```ts // Automatically fetches more pages as needed. for await (const
+        memberUpdateResponse of client.iam.userGroups.members.update(
+        '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', members: [{ id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }], }, )) { // ... } ```"
+      parameters:
+        - name: userGroupId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                members:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: The identifier of an existing account Member.
+                    required:
+                      - id
+                  description: "Body param: Set/Replace members to a user group."
+              required:
+                - members
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Account member identifier.
+                  email:
+                    type: string
+                    description: The contact email address of the user.
+                  status:
+                    type: string
+                    enum:
+                      - accepted
+                      - pending
+                    description: The member's status in the account.
+                required:
+                  - id
+      x-distilled-pagination-class: MemberUpdateResponsesSinglePage
   /accounts/{account_id}/sso_connectors/{ssoConnectorId}/begin_verification:
     post:
       operationId: beginVerificationSso

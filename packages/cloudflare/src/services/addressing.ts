@@ -200,7 +200,7 @@ export interface GetAddressMapResponse {
         canDelete?: boolean | null;
         createdAt?: string | null;
         identifier?: string | null;
-        kind?: "zone" | "account" | null;
+        kind?: "zone" | "account" | (string & {}) | null;
       }[]
     | null;
   modifiedAt?: string | null;
@@ -241,7 +241,13 @@ export const GetAddressMapResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.Union([Schema.String, Schema.Null]),
           ),
           kind: Schema.optional(
-            Schema.Union([Schema.Literals(["zone", "account"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([
+                Schema.Literals(["zone", "account"]),
+                Schema.String,
+              ]),
+              Schema.Null,
+            ]),
           ),
         }).pipe(
           Schema.encodeKeys({
@@ -375,10 +381,13 @@ export interface CreateAddressMapRequest {
   description?: string | null;
   /** Body param: Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled. */
   enabled?: boolean | null;
-  /** Body param: */
+  /** Body param */
   ips?: string[];
   /** Body param: Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership. */
-  memberships?: { identifier?: string; kind?: "zone" | "account" }[];
+  memberships?: {
+    identifier?: string;
+    kind?: "zone" | "account" | (string & {});
+  }[];
 }
 
 export const CreateAddressMapRequest =
@@ -391,7 +400,9 @@ export const CreateAddressMapRequest =
       Schema.Array(
         Schema.Struct({
           identifier: Schema.optional(Schema.String),
-          kind: Schema.optional(Schema.Literals(["zone", "account"])),
+          kind: Schema.optional(
+            Schema.Union([Schema.Literals(["zone", "account"]), Schema.String]),
+          ),
         }),
       ),
     ),
@@ -424,7 +435,7 @@ export interface CreateAddressMapResponse {
         canDelete?: boolean | null;
         createdAt?: string | null;
         identifier?: string | null;
-        kind?: "zone" | "account" | null;
+        kind?: "zone" | "account" | (string & {}) | null;
       }[]
     | null;
   modifiedAt?: string | null;
@@ -466,7 +477,13 @@ export const CreateAddressMapResponse =
               Schema.Union([Schema.String, Schema.Null]),
             ),
             kind: Schema.optional(
-              Schema.Union([Schema.Literals(["zone", "account"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["zone", "account"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
           }).pipe(
             Schema.encodeKeys({
@@ -646,6 +663,7 @@ export interface DeleteAddressMapResponse {
     page?: number | null;
     perPage?: number | null;
     totalCount?: number | null;
+    totalPages?: number | null;
   } | null;
 }
 
@@ -713,12 +731,16 @@ export const DeleteAddressMapResponse =
           totalCount: Schema.optional(
             Schema.Union([Schema.Number, Schema.Null]),
           ),
+          totalPages: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
         }).pipe(
           Schema.encodeKeys({
             count: "count",
             page: "page",
             perPage: "per_page",
             totalCount: "total_count",
+            totalPages: "total_pages",
           }),
         ),
         Schema.Null,
@@ -764,7 +786,7 @@ export interface PutAddressMapAccountRequest {
   addressMapId: string;
   /** Path param: Identifier of a Cloudflare account. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   body: unknown;
 }
 
@@ -800,6 +822,7 @@ export interface PutAddressMapAccountResponse {
     page?: number | null;
     perPage?: number | null;
     totalCount?: number | null;
+    totalPages?: number | null;
   } | null;
 }
 
@@ -867,12 +890,16 @@ export const PutAddressMapAccountResponse =
           totalCount: Schema.optional(
             Schema.Union([Schema.Number, Schema.Null]),
           ),
+          totalPages: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
         }).pipe(
           Schema.encodeKeys({
             count: "count",
             page: "page",
             perPage: "per_page",
             totalCount: "total_count",
+            totalPages: "total_pages",
           }),
         ),
         Schema.Null,
@@ -941,6 +968,7 @@ export interface DeleteAddressMapAccountResponse {
     page?: number | null;
     perPage?: number | null;
     totalCount?: number | null;
+    totalPages?: number | null;
   } | null;
 }
 
@@ -1008,12 +1036,16 @@ export const DeleteAddressMapAccountResponse =
           totalCount: Schema.optional(
             Schema.Union([Schema.Number, Schema.Null]),
           ),
+          totalPages: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
         }).pipe(
           Schema.encodeKeys({
             count: "count",
             page: "page",
             perPage: "per_page",
             totalCount: "total_count",
+            totalPages: "total_pages",
           }),
         ),
         Schema.Null,
@@ -1054,7 +1086,7 @@ export interface PutAddressMapIpRequest {
   ipAddress: string;
   /** Path param: Identifier of a Cloudflare account. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   body: unknown;
 }
 
@@ -1092,6 +1124,7 @@ export interface PutAddressMapIpResponse {
     page?: number | null;
     perPage?: number | null;
     totalCount?: number | null;
+    totalPages?: number | null;
   } | null;
 }
 
@@ -1159,12 +1192,16 @@ export const PutAddressMapIpResponse =
           totalCount: Schema.optional(
             Schema.Union([Schema.Number, Schema.Null]),
           ),
+          totalPages: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
         }).pipe(
           Schema.encodeKeys({
             count: "count",
             page: "page",
             perPage: "per_page",
             totalCount: "total_count",
+            totalPages: "total_pages",
           }),
         ),
         Schema.Null,
@@ -1241,6 +1278,7 @@ export interface DeleteAddressMapIpResponse {
     page?: number | null;
     perPage?: number | null;
     totalCount?: number | null;
+    totalPages?: number | null;
   } | null;
 }
 
@@ -1308,12 +1346,16 @@ export const DeleteAddressMapIpResponse =
           totalCount: Schema.optional(
             Schema.Union([Schema.Number, Schema.Null]),
           ),
+          totalPages: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
         }).pipe(
           Schema.encodeKeys({
             count: "count",
             page: "page",
             perPage: "per_page",
             totalCount: "total_count",
+            totalPages: "total_pages",
           }),
         ),
         Schema.Null,
@@ -1361,7 +1403,7 @@ export interface PutAddressMapZoneRequest {
   zoneId: string;
   /** Path param: Identifier of a Cloudflare account. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   body: unknown;
 }
 
@@ -1398,6 +1440,7 @@ export interface PutAddressMapZoneResponse {
     page?: number | null;
     perPage?: number | null;
     totalCount?: number | null;
+    totalPages?: number | null;
   } | null;
 }
 
@@ -1465,12 +1508,16 @@ export const PutAddressMapZoneResponse =
           totalCount: Schema.optional(
             Schema.Union([Schema.Number, Schema.Null]),
           ),
+          totalPages: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
         }).pipe(
           Schema.encodeKeys({
             count: "count",
             page: "page",
             perPage: "per_page",
             totalCount: "total_count",
+            totalPages: "total_pages",
           }),
         ),
         Schema.Null,
@@ -1542,6 +1589,7 @@ export interface DeleteAddressMapZoneResponse {
     page?: number | null;
     perPage?: number | null;
     totalCount?: number | null;
+    totalPages?: number | null;
   } | null;
 }
 
@@ -1609,12 +1657,16 @@ export const DeleteAddressMapZoneResponse =
           totalCount: Schema.optional(
             Schema.Union([Schema.Number, Schema.Null]),
           ),
+          totalPages: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
         }).pipe(
           Schema.encodeKeys({
             count: "count",
             page: "page",
             perPage: "per_page",
             totalCount: "total_count",
+            totalPages: "total_pages",
           }),
         ),
         Schema.Null,
@@ -1651,15 +1703,13 @@ export const deleteAddressMapZone: API.OperationMethod<
 // =============================================================================
 
 export interface GetLoaDocumentRequest {
-  loaDocumentId: string | null;
+  loaDocumentId: string;
   /** Identifier of a Cloudflare account. */
   accountId: string;
 }
 
 export const GetLoaDocumentRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  loaDocumentId: Schema.Union([Schema.String, Schema.Null]).pipe(
-    T.HttpPath("loaDocumentId"),
-  ),
+  loaDocumentId: Schema.String.pipe(T.HttpPath("loaDocumentId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
   T.Http({
@@ -2926,7 +2976,7 @@ export interface PatchPrefixBgpPrefixRequest {
   asnPrependCount?: number;
   /** Body param: Determines if Cloudflare advertises a BYOIP BGP prefix even when there is no matching BGP prefix in the Magic routing table. When true, Cloudflare will automatically withdraw the BGP prefi */
   autoAdvertiseWithdraw?: boolean;
-  /** Body param: */
+  /** Body param */
   onDemand?: { advertised?: boolean };
 }
 
@@ -3299,7 +3349,9 @@ export interface GetPrefixServiceBindingResponse {
   /** IP Prefix in Classless Inter-Domain Routing format. */
   cidr?: string | null;
   /** Status of a Service Binding's deployment to the Cloudflare network */
-  provisioning?: { state?: "provisioning" | "active" | null } | null;
+  provisioning?: {
+    state?: "provisioning" | "active" | (string & {}) | null;
+  } | null;
   /** Identifier of a Service on the Cloudflare network. Available services and their IDs may be found in the  List Services  endpoint. */
   serviceId?: string | null;
   /** Name of a service running on the Cloudflare network */
@@ -3315,7 +3367,10 @@ export const GetPrefixServiceBindingResponse =
         Schema.Struct({
           state: Schema.optional(
             Schema.Union([
-              Schema.Literals(["provisioning", "active"]),
+              Schema.Union([
+                Schema.Literals(["provisioning", "active"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -3377,7 +3432,9 @@ export interface ListPrefixServiceBindingsResponse {
   result: {
     id?: string | null;
     cidr?: string | null;
-    provisioning?: { state?: "provisioning" | "active" | null } | null;
+    provisioning?: {
+      state?: "provisioning" | "active" | (string & {}) | null;
+    } | null;
     serviceId?: string | null;
     serviceName?: string | null;
   }[];
@@ -3394,7 +3451,10 @@ export const ListPrefixServiceBindingsResponse =
             Schema.Struct({
               state: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["provisioning", "active"]),
+                  Schema.Union([
+                    Schema.Literals(["provisioning", "active"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -3465,7 +3525,9 @@ export interface CreatePrefixServiceBindingResponse {
   /** IP Prefix in Classless Inter-Domain Routing format. */
   cidr?: string | null;
   /** Status of a Service Binding's deployment to the Cloudflare network */
-  provisioning?: { state?: "provisioning" | "active" | null } | null;
+  provisioning?: {
+    state?: "provisioning" | "active" | (string & {}) | null;
+  } | null;
   /** Identifier of a Service on the Cloudflare network. Available services and their IDs may be found in the  List Services  endpoint. */
   serviceId?: string | null;
   /** Name of a service running on the Cloudflare network */
@@ -3481,7 +3543,10 @@ export const CreatePrefixServiceBindingResponse =
         Schema.Struct({
           state: Schema.optional(
             Schema.Union([
-              Schema.Literals(["provisioning", "active"]),
+              Schema.Union([
+                Schema.Literals(["provisioning", "active"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),

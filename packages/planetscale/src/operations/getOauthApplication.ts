@@ -25,7 +25,7 @@ export const GetOauthApplicationOutput =
     domain: Schema.String,
     created_at: Schema.String,
     updated_at: Schema.String,
-    scopes: Schema.Array(Schema.String),
+    scopes: Schema.String,
     avatar: Schema.String,
     client_id: Schema.String,
     tokens: Schema.Number,

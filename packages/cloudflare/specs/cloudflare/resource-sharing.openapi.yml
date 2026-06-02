@@ -270,8 +270,9 @@ paths:
   /accounts/{path_account_id}/shares/{shareId}/recipients:
     post:
       operationId: createRecipient
-      description: "Create a new share recipient  @example ```ts const recipient =
-        await client.resourceSharing.recipients.create(
+      description: "Adds a recipient to a resource share, granting them access to the
+        shared resources.  @example ```ts const recipient = await
+        client.resourceSharing.recipients.create(
         '3fd85f74b32742f1bff64a85009dda07', { path_account_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
@@ -409,11 +410,11 @@ paths:
                     type: string
                     enum:
                       - custom-ruleset
-                      - widget
                       - gateway-policy
                       - gateway-destination-ip
                       - gateway-block-page-settings
                       - gateway-extended-email-matching
+                      - idp-federation-grant
                     description: Resource Type.
                   resource_version:
                     type: number
@@ -500,11 +501,11 @@ paths:
                     type: string
                     enum:
                       - custom-ruleset
-                      - widget
                       - gateway-policy
                       - gateway-destination-ip
                       - gateway-block-page-settings
                       - gateway-extended-email-matching
+                      - idp-federation-grant
                     description: Resource Type.
                   resource_version:
                     type: number
@@ -580,11 +581,11 @@ paths:
                     type: string
                     enum:
                       - custom-ruleset
-                      - widget
                       - gateway-policy
                       - gateway-destination-ip
                       - gateway-block-page-settings
                       - gateway-extended-email-matching
+                      - idp-federation-grant
                     description: Resource Type.
                   resource_version:
                     type: number
@@ -645,11 +646,11 @@ paths:
             type: string
             enum:
               - custom-ruleset
-              - widget
               - gateway-policy
               - gateway-destination-ip
               - gateway-block-page-settings
               - gateway-extended-email-matching
+              - idp-federation-grant
         - name: status
           in: query
           required: false
@@ -689,11 +690,11 @@ paths:
                     type: string
                     enum:
                       - custom-ruleset
-                      - widget
                       - gateway-policy
                       - gateway-destination-ip
                       - gateway-block-page-settings
                       - gateway-extended-email-matching
+                      - idp-federation-grant
                     description: Resource Type.
                   resource_version:
                     type: number
@@ -718,7 +719,8 @@ paths:
       x-distilled-pagination-class: ResourceListResponsesV4PagePaginationArray
     post:
       operationId: createResource
-      description: "Create a new share resource  @example ```ts const resource = await
+      description: "Adds a resource to an existing share, making it available to share
+        recipients.  @example ```ts const resource = await
         client.resourceSharing.resources.create(
         '3fd85f74b32742f1bff64a85009dda07', { account_id:
         '023e105f4ecef8ad9ca31a8372d0c353', meta: {}, resource_account_id:
@@ -756,11 +758,11 @@ paths:
                   type: string
                   enum:
                     - custom-ruleset
-                    - widget
                     - gateway-policy
                     - gateway-destination-ip
                     - gateway-block-page-settings
                     - gateway-extended-email-matching
+                    - idp-federation-grant
                   description: "Body param: Resource Type."
               required:
                 - meta
@@ -796,11 +798,11 @@ paths:
                     type: string
                     enum:
                       - custom-ruleset
-                      - widget
                       - gateway-policy
                       - gateway-destination-ip
                       - gateway-block-page-settings
                       - gateway-extended-email-matching
+                      - idp-federation-grant
                     description: Resource Type.
                   resource_version:
                     type: number
@@ -944,11 +946,11 @@ paths:
                           type: string
                           enum:
                             - custom-ruleset
-                            - widget
                             - gateway-policy
                             - gateway-destination-ip
                             - gateway-block-page-settings
                             - gateway-extended-email-matching
+                            - idp-federation-grant
                           description: Resource Type.
                         resource_version:
                           type: number
@@ -1106,11 +1108,11 @@ paths:
                           type: string
                           enum:
                             - custom-ruleset
-                            - widget
                             - gateway-policy
                             - gateway-destination-ip
                             - gateway-block-page-settings
                             - gateway-extended-email-matching
+                            - idp-federation-grant
                           description: Resource Type.
                         resource_version:
                           type: number
@@ -1255,11 +1257,11 @@ paths:
                           type: string
                           enum:
                             - custom-ruleset
-                            - widget
                             - gateway-policy
                             - gateway-destination-ip
                             - gateway-block-page-settings
                             - gateway-extended-email-matching
+                            - idp-federation-grant
                           description: Resource Type.
                         resource_version:
                           type: number
@@ -1368,11 +1370,11 @@ paths:
               type: string
               enum:
                 - custom-ruleset
-                - widget
                 - gateway-policy
                 - gateway-destination-ip
                 - gateway-block-page-settings
                 - gateway-extended-email-matching
+                - idp-federation-grant
         - name: status
           in: query
           required: false
@@ -1383,6 +1385,18 @@ paths:
               - active
               - deleting
               - deleted
+        - name: tag
+          in: query
+          required: false
+          description: "Query param: Filter shares by tag. Each value is either
+            `key=value` (matches shares whose tags contain that key/value pair)
+            or `key` alone (matches shares that have any value for that key).
+            May be repeated; multiple `tag` parameters are ANDed together.
+            Maximum 20 `tag` parameters per request."
+          schema:
+            type: array
+            items:
+              type: string
         - name: target_type
           in: query
           required: false
@@ -1483,11 +1497,11 @@ paths:
                           type: string
                           enum:
                             - custom-ruleset
-                            - widget
                             - gateway-policy
                             - gateway-destination-ip
                             - gateway-block-page-settings
                             - gateway-extended-email-matching
+                            - idp-federation-grant
                           description: Resource Type.
                         resource_version:
                           type: number
@@ -1525,8 +1539,9 @@ paths:
       x-distilled-pagination-class: ResourceSharingListResponsesV4PagePaginationArray
     post:
       operationId: createResourceSharing
-      description: "Create a new share  @example ```ts const resourceSharing = await
-        client.resourceSharing.create( { account_id:
+      description: "Creates a new resource share for sharing Cloudflare resources with
+        other accounts or organizations.  @example ```ts const resourceSharing =
+        await client.resourceSharing.create( { account_id:
         '023e105f4ecef8ad9ca31a8372d0c353', name: 'My Shared WAF Managed Rule',
         recipients: [{}], resources: [ { meta: {}, resource_account_id:
         '023e105f4ecef8ad9ca31a8372d0c353', resource_id:
@@ -1560,7 +1575,7 @@ paths:
                       organization_id:
                         type: string
                         description: Organization identifier.
-                  description: "Body param:"
+                  description: Body param
                 resources:
                   type: array
                   items:
@@ -1578,18 +1593,18 @@ paths:
                         type: string
                         enum:
                           - custom-ruleset
-                          - widget
                           - gateway-policy
                           - gateway-destination-ip
                           - gateway-block-page-settings
                           - gateway-extended-email-matching
+                          - idp-federation-grant
                         description: Resource Type.
                     required:
                       - meta
                       - resource_account_id
                       - resource_id
                       - resource_type
-                  description: "Body param:"
+                  description: Body param
               required:
                 - name
                 - recipients
@@ -1685,11 +1700,11 @@ paths:
                           type: string
                           enum:
                             - custom-ruleset
-                            - widget
                             - gateway-policy
                             - gateway-destination-ip
                             - gateway-block-page-settings
                             - gateway-extended-email-matching
+                            - idp-federation-grant
                           description: Resource Type.
                         resource_version:
                           type: number

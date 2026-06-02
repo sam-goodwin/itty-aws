@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { Forbidden, NotFound } from "../errors.ts";
+import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const DeleteRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -35,5 +35,5 @@ export type DeleteRoleOutput = typeof DeleteRoleOutput.Type;
 export const deleteRole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DeleteRoleInput,
   outputSchema: DeleteRoleOutput,
-  errors: [Forbidden, NotFound] as const,
+  errors: [Forbidden, NotFound, UnprocessableEntity] as const,
 }));

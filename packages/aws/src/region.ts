@@ -9,9 +9,9 @@ export class Region extends Context.Service<Region, RegionName>()(
 export const fromEnv = () =>
   Layer.effect(
     Region,
-    Config.string("AWS_REGION")
-      .pipe(Config.orElse(() => Config.string("AWS_DEFAULT_REGION")))
-      .asEffect(),
+    Config.string("AWS_REGION").pipe(
+      Config.orElse(() => Config.string("AWS_DEFAULT_REGION")),
+    ),
   );
 
 export type RegionName =

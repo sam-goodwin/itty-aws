@@ -157,7 +157,8 @@ export interface GetAnalyticReportBytimeRequest {
     | "day"
     | "hour"
     | "dekaminute"
-    | "minute";
+    | "minute"
+    | (string & {});
   /** Query param: End date and time of requesting data period in ISO 8601 format. */
   until?: string;
 }
@@ -172,17 +173,20 @@ export const GetAnalyticReportBytimeRequest =
     since: Schema.optional(Schema.String).pipe(T.HttpQuery("since")),
     sort: Schema.optional(Schema.String).pipe(T.HttpQuery("sort")),
     timeDelta: Schema.optional(
-      Schema.Literals([
-        "all",
-        "auto",
-        "year",
-        "quarter",
-        "month",
-        "week",
-        "day",
-        "hour",
-        "dekaminute",
-        "minute",
+      Schema.Union([
+        Schema.Literals([
+          "all",
+          "auto",
+          "year",
+          "quarter",
+          "month",
+          "week",
+          "day",
+          "hour",
+          "dekaminute",
+          "minute",
+        ]),
+        Schema.String,
       ]),
     ).pipe(T.HttpQuery("time_delta")),
     until: Schema.optional(Schema.String).pipe(T.HttpQuery("until")),
@@ -217,7 +221,8 @@ export interface GetAnalyticReportBytimeResponse {
       | "day"
       | "hour"
       | "dekaminute"
-      | "minute";
+      | "minute"
+      | (string & {});
     until: string;
     filters?: string | null;
     sort?: string[] | null;
@@ -246,17 +251,20 @@ export const GetAnalyticReportBytimeResponse =
       limit: Schema.Number,
       metrics: Schema.Array(Schema.String),
       since: Schema.String,
-      timeDelta: Schema.Literals([
-        "all",
-        "auto",
-        "year",
-        "quarter",
-        "month",
-        "week",
-        "day",
-        "hour",
-        "dekaminute",
-        "minute",
+      timeDelta: Schema.Union([
+        Schema.Literals([
+          "all",
+          "auto",
+          "year",
+          "quarter",
+          "month",
+          "week",
+          "day",
+          "hour",
+          "dekaminute",
+          "minute",
+        ]),
+        Schema.String,
       ]),
       until: Schema.String,
       filters: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -357,6 +365,7 @@ export interface GetDnssecResponse {
     | "disabled"
     | "pending-disabled"
     | "error"
+    | (string & {})
     | null;
 }
 
@@ -378,12 +387,15 @@ export const GetDnssecResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   publicKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   status: Schema.optional(
     Schema.Union([
-      Schema.Literals([
-        "active",
-        "pending",
-        "disabled",
-        "pending-disabled",
-        "error",
+      Schema.Union([
+        Schema.Literals([
+          "active",
+          "pending",
+          "disabled",
+          "pending-disabled",
+          "error",
+        ]),
+        Schema.String,
       ]),
       Schema.Null,
     ]),
@@ -434,7 +446,7 @@ export interface PatchDnssecRequest {
   /** Body param: If true, enables the use of NSEC3 together with DNSSEC on the zone. Combined with setting dnssec_presigned to true, this enables the use of NSEC3 records when transferring in from an exter */
   dnssecUseNsec3?: boolean;
   /** Body param: Status of DNSSEC, based on user-desired state and presence of necessary records. */
-  status?: "active" | "disabled";
+  status?: "active" | "disabled" | (string & {});
 }
 
 export const PatchDnssecRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -442,7 +454,9 @@ export const PatchDnssecRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   dnssecMultiSigner: Schema.optional(Schema.Boolean),
   dnssecPresigned: Schema.optional(Schema.Boolean),
   dnssecUseNsec3: Schema.optional(Schema.Boolean),
-  status: Schema.optional(Schema.Literals(["active", "disabled"])),
+  status: Schema.optional(
+    Schema.Union([Schema.Literals(["active", "disabled"]), Schema.String]),
+  ),
 }).pipe(
   Schema.encodeKeys({
     dnssecMultiSigner: "dnssec_multi_signer",
@@ -487,6 +501,7 @@ export interface PatchDnssecResponse {
     | "disabled"
     | "pending-disabled"
     | "error"
+    | (string & {})
     | null;
 }
 
@@ -508,12 +523,15 @@ export const PatchDnssecResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   publicKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   status: Schema.optional(
     Schema.Union([
-      Schema.Literals([
-        "active",
-        "pending",
-        "disabled",
-        "pending-disabled",
-        "error",
+      Schema.Union([
+        Schema.Literals([
+          "active",
+          "pending",
+          "disabled",
+          "pending-disabled",
+          "error",
+        ]),
+        Schema.String,
       ]),
       Schema.Null,
     ]),
@@ -608,6 +626,7 @@ export interface ScanListRecordResponse {
         type: "A";
         comment?: string | null;
         content?: string | null;
+        privateRouting?: boolean | null;
         proxied?: boolean | null;
         settings?: {
           ipv4Only?: boolean | null;
@@ -628,6 +647,7 @@ export interface ScanListRecordResponse {
         type: "AAAA";
         comment?: string | null;
         content?: string | null;
+        privateRouting?: boolean | null;
         proxied?: boolean | null;
         settings?: {
           ipv4Only?: boolean | null;
@@ -898,11 +918,11 @@ export interface ScanListRecordResponse {
         data?: {
           altitude?: number | null;
           latDegrees?: number | null;
-          latDirection?: "N" | "S" | null;
+          latDirection?: "N" | "S" | (string & {}) | null;
           latMinutes?: number | null;
           latSeconds?: number | null;
           longDegrees?: number | null;
-          longDirection?: "E" | "W" | null;
+          longDirection?: "E" | "W" | (string & {}) | null;
           longMinutes?: number | null;
           longSeconds?: number | null;
           precisionHorz?: number | null;
@@ -1162,6 +1182,9 @@ export const ScanListRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           type: Schema.Literal("A"),
           comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          privateRouting: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
           proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
           settings: Schema.optional(
             Schema.Union([
@@ -1202,6 +1225,7 @@ export const ScanListRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             type: "type",
             comment: "comment",
             content: "content",
+            privateRouting: "private_routing",
             proxied: "proxied",
             settings: "settings",
             tags: "tags",
@@ -1220,6 +1244,9 @@ export const ScanListRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           type: Schema.Literal("AAAA"),
           comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          privateRouting: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
           proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
           settings: Schema.optional(
             Schema.Union([
@@ -1260,6 +1287,7 @@ export const ScanListRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             type: "type",
             comment: "comment",
             content: "content",
+            privateRouting: "private_routing",
             proxied: "proxied",
             settings: "settings",
             tags: "tags",
@@ -1989,7 +2017,10 @@ export const ScanListRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                   Schema.Union([Schema.Number, Schema.Null]),
                 ),
                 latDirection: Schema.optional(
-                  Schema.Union([Schema.Literals(["N", "S"]), Schema.Null]),
+                  Schema.Union([
+                    Schema.Union([Schema.Literals(["N", "S"]), Schema.String]),
+                    Schema.Null,
+                  ]),
                 ),
                 latMinutes: Schema.optional(
                   Schema.Union([Schema.Number, Schema.Null]),
@@ -2001,7 +2032,10 @@ export const ScanListRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                   Schema.Union([Schema.Number, Schema.Null]),
                 ),
                 longDirection: Schema.optional(
-                  Schema.Union([Schema.Literals(["E", "W"]), Schema.Null]),
+                  Schema.Union([
+                    Schema.Union([Schema.Literals(["E", "W"]), Schema.String]),
+                    Schema.Null,
+                  ]),
                 ),
                 longMinutes: Schema.optional(
                   Schema.Union([Schema.Number, Schema.Null]),
@@ -2673,9 +2707,9 @@ export const scanListRecord: API.PaginatedOperationMethod<
 // =============================================================================
 
 export interface ForceNotifyZoneTransferOutgoingRequest {
-  /** Path param: */
+  /** Path param */
   zoneId: string;
-  /** Body param: */
+  /** Body param */
   body: unknown;
 }
 
@@ -2734,6 +2768,7 @@ export type GetRecordResponse =
       type: "A";
       comment?: string | null;
       content?: string | null;
+      privateRouting?: boolean | null;
       proxied?: boolean | null;
       settings?: {
         ipv4Only?: boolean | null;
@@ -2754,6 +2789,7 @@ export type GetRecordResponse =
       type: "AAAA";
       comment?: string | null;
       content?: string | null;
+      privateRouting?: boolean | null;
       proxied?: boolean | null;
       settings?: {
         ipv4Only?: boolean | null;
@@ -3024,11 +3060,11 @@ export type GetRecordResponse =
       data?: {
         altitude?: number | null;
         latDegrees?: number | null;
-        latDirection?: "N" | "S" | null;
+        latDirection?: "N" | "S" | (string & {}) | null;
         latMinutes?: number | null;
         latSeconds?: number | null;
         longDegrees?: number | null;
-        longDirection?: "E" | "W" | null;
+        longDirection?: "E" | "W" | (string & {}) | null;
         longMinutes?: number | null;
         longSeconds?: number | null;
         precisionHorz?: number | null;
@@ -3277,6 +3313,9 @@ export const GetRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     type: Schema.Literal("A"),
     comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    privateRouting: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
     proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     settings: Schema.optional(
       Schema.Union([
@@ -3312,6 +3351,7 @@ export const GetRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
       type: "type",
       comment: "comment",
       content: "content",
+      privateRouting: "private_routing",
       proxied: "proxied",
       settings: "settings",
       tags: "tags",
@@ -3330,6 +3370,9 @@ export const GetRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     type: Schema.Literal("AAAA"),
     comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    privateRouting: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
     proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     settings: Schema.optional(
       Schema.Union([
@@ -3365,6 +3408,7 @@ export const GetRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
       type: "type",
       comment: "comment",
       content: "content",
+      privateRouting: "private_routing",
       proxied: "proxied",
       settings: "settings",
       tags: "tags",
@@ -4021,7 +4065,10 @@ export const GetRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
             Schema.Union([Schema.Number, Schema.Null]),
           ),
           latDirection: Schema.optional(
-            Schema.Union([Schema.Literals(["N", "S"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["N", "S"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           latMinutes: Schema.optional(
             Schema.Union([Schema.Number, Schema.Null]),
@@ -4033,7 +4080,10 @@ export const GetRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
             Schema.Union([Schema.Number, Schema.Null]),
           ),
           longDirection: Schema.optional(
-            Schema.Union([Schema.Literals(["E", "W"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["E", "W"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           longMinutes: Schema.optional(
             Schema.Union([Schema.Number, Schema.Null]),
@@ -4622,7 +4672,7 @@ export interface ListRecordsRequest {
   zoneId: string;
   page?: number;
   perPage?: number;
-  /** Query param: */
+  /** Query param */
   comment?: {
     absent?: string;
     contains?: string;
@@ -4631,7 +4681,7 @@ export interface ListRecordsRequest {
     present?: string;
     startswith?: string;
   };
-  /** Query param: */
+  /** Query param */
   content?: {
     contains?: string;
     endswith?: string;
@@ -4639,10 +4689,10 @@ export interface ListRecordsRequest {
     startswith?: string;
   };
   /** Query param: Direction to order DNS records in. */
-  direction?: "asc" | "desc";
+  direction?: "asc" | "desc" | (string & {});
   /** Query param: Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the in */
-  match?: "any" | "all";
-  /** Query param: */
+  match?: "any" | "all" | (string & {});
+  /** Query param */
   name?: {
     contains?: string;
     endswith?: string;
@@ -4650,12 +4700,12 @@ export interface ListRecordsRequest {
     startswith?: string;
   };
   /** Query param: Field to order DNS records by. */
-  order?: "type" | "name" | "content" | "ttl" | "proxied";
+  order?: "type" | "name" | "content" | "ttl" | "proxied" | (string & {});
   /** Query param: Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Query param: Allows searching in multiple properties of a DNS record simultaneously. This parameter is intended for human users, not automation. Its exact behavior is intentionally left unspecified an */
   search?: string;
-  /** Query param: */
+  /** Query param */
   tag?: {
     absent?: string;
     contains?: string;
@@ -4665,7 +4715,7 @@ export interface ListRecordsRequest {
     startswith?: string;
   };
   /** Query param: Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note tha */
-  tagMatch?: "any" | "all";
+  tagMatch?: "any" | "all" | (string & {});
   /** Query param: Record type. */
   type?:
     | "A"
@@ -4688,7 +4738,8 @@ export interface ListRecordsRequest {
     | "SVCB"
     | "TLSA"
     | "TXT"
-    | "URI";
+    | "URI"
+    | (string & {});
 }
 
 export const ListRecordsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4713,12 +4764,12 @@ export const ListRecordsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       startswith: Schema.optional(Schema.String),
     }),
   ).pipe(T.HttpQuery("content")),
-  direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-    T.HttpQuery("direction"),
-  ),
-  match: Schema.optional(Schema.Literals(["any", "all"])).pipe(
-    T.HttpQuery("match"),
-  ),
+  direction: Schema.optional(
+    Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+  ).pipe(T.HttpQuery("direction")),
+  match: Schema.optional(
+    Schema.Union([Schema.Literals(["any", "all"]), Schema.String]),
+  ).pipe(T.HttpQuery("match")),
   name: Schema.optional(
     Schema.Struct({
       contains: Schema.optional(Schema.String),
@@ -4728,7 +4779,10 @@ export const ListRecordsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ).pipe(T.HttpQuery("name")),
   order: Schema.optional(
-    Schema.Literals(["type", "name", "content", "ttl", "proxied"]),
+    Schema.Union([
+      Schema.Literals(["type", "name", "content", "ttl", "proxied"]),
+      Schema.String,
+    ]),
   ).pipe(T.HttpQuery("order")),
   proxied: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("proxied")),
   search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
@@ -4742,32 +4796,35 @@ export const ListRecordsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       startswith: Schema.optional(Schema.String),
     }),
   ).pipe(T.HttpQuery("tag")),
-  tagMatch: Schema.optional(Schema.Literals(["any", "all"])).pipe(
-    T.HttpQuery("tag_match"),
-  ),
+  tagMatch: Schema.optional(
+    Schema.Union([Schema.Literals(["any", "all"]), Schema.String]),
+  ).pipe(T.HttpQuery("tag_match")),
   type: Schema.optional(
-    Schema.Literals([
-      "A",
-      "AAAA",
-      "CAA",
-      "CERT",
-      "CNAME",
-      "DNSKEY",
-      "DS",
-      "HTTPS",
-      "LOC",
-      "MX",
-      "NAPTR",
-      "NS",
-      "OPENPGPKEY",
-      "PTR",
-      "SMIMEA",
-      "SRV",
-      "SSHFP",
-      "SVCB",
-      "TLSA",
-      "TXT",
-      "URI",
+    Schema.Union([
+      Schema.Literals([
+        "A",
+        "AAAA",
+        "CAA",
+        "CERT",
+        "CNAME",
+        "DNSKEY",
+        "DS",
+        "HTTPS",
+        "LOC",
+        "MX",
+        "NAPTR",
+        "NS",
+        "OPENPGPKEY",
+        "PTR",
+        "SMIMEA",
+        "SRV",
+        "SSHFP",
+        "SVCB",
+        "TLSA",
+        "TXT",
+        "URI",
+      ]),
+      Schema.String,
     ]),
   ).pipe(T.HttpQuery("type")),
 }).pipe(
@@ -4782,6 +4839,7 @@ export interface ListRecordsResponse {
         type: "A";
         comment?: string | null;
         content?: string | null;
+        privateRouting?: boolean | null;
         proxied?: boolean | null;
         settings?: {
           ipv4Only?: boolean | null;
@@ -4802,6 +4860,7 @@ export interface ListRecordsResponse {
         type: "AAAA";
         comment?: string | null;
         content?: string | null;
+        privateRouting?: boolean | null;
         proxied?: boolean | null;
         settings?: {
           ipv4Only?: boolean | null;
@@ -5072,11 +5131,11 @@ export interface ListRecordsResponse {
         data?: {
           altitude?: number | null;
           latDegrees?: number | null;
-          latDirection?: "N" | "S" | null;
+          latDirection?: "N" | "S" | (string & {}) | null;
           latMinutes?: number | null;
           latSeconds?: number | null;
           longDegrees?: number | null;
-          longDirection?: "E" | "W" | null;
+          longDirection?: "E" | "W" | (string & {}) | null;
           longMinutes?: number | null;
           longSeconds?: number | null;
           precisionHorz?: number | null;
@@ -5341,6 +5400,9 @@ export const ListRecordsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         type: Schema.Literal("A"),
         comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        privateRouting: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
+        ),
         proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
         settings: Schema.optional(
           Schema.Union([
@@ -5381,6 +5443,7 @@ export const ListRecordsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           type: "type",
           comment: "comment",
           content: "content",
+          privateRouting: "private_routing",
           proxied: "proxied",
           settings: "settings",
           tags: "tags",
@@ -5399,6 +5462,9 @@ export const ListRecordsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         type: Schema.Literal("AAAA"),
         comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        privateRouting: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
+        ),
         proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
         settings: Schema.optional(
           Schema.Union([
@@ -5439,6 +5505,7 @@ export const ListRecordsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           type: "type",
           comment: "comment",
           content: "content",
+          privateRouting: "private_routing",
           proxied: "proxied",
           settings: "settings",
           tags: "tags",
@@ -6164,7 +6231,10 @@ export const ListRecordsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 Schema.Union([Schema.Number, Schema.Null]),
               ),
               latDirection: Schema.optional(
-                Schema.Union([Schema.Literals(["N", "S"]), Schema.Null]),
+                Schema.Union([
+                  Schema.Union([Schema.Literals(["N", "S"]), Schema.String]),
+                  Schema.Null,
+                ]),
               ),
               latMinutes: Schema.optional(
                 Schema.Union([Schema.Number, Schema.Null]),
@@ -6176,7 +6246,10 @@ export const ListRecordsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 Schema.Union([Schema.Number, Schema.Null]),
               ),
               longDirection: Schema.optional(
-                Schema.Union([Schema.Literals(["E", "W"]), Schema.Null]),
+                Schema.Union([
+                  Schema.Union([Schema.Literals(["E", "W"]), Schema.String]),
+                  Schema.Null,
+                ]),
               ),
               longMinutes: Schema.optional(
                 Schema.Union([Schema.Number, Schema.Null]),
@@ -6867,37 +6940,230 @@ export interface CreateRecordRequest {
   /** Body param: Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number | "1";
   /** Body param: Record type. */
-  type: "A";
+  type:
+    | "A"
+    | "AAAA"
+    | "CNAME"
+    | "MX"
+    | "NS"
+    | "OPENPGPKEY"
+    | "PTR"
+    | "TXT"
+    | "CAA"
+    | "CERT"
+    | "DNSKEY"
+    | "DS"
+    | "HTTPS"
+    | "LOC"
+    | "NAPTR"
+    | "SMIMEA"
+    | "SRV"
+    | "SSHFP"
+    | "SVCB"
+    | "TLSA"
+    | "URI"
+    | (string & {});
   /** Body param: Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** Body param: A valid IPv4 address. */
   content?: string;
+  /** Body param: Enables private network routing to the origin. */
+  privateRouting?: boolean;
   /** Body param: Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Body param: Settings for the DNS record. */
-  settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
+  settings?: { ipv4Only?: boolean; ipv6Only?: boolean; flattenCname?: boolean };
   /** Body param: Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: string[];
+  /** Body param: Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor */
+  priority?: number;
+  /** Body param: Components of a CAA record. */
+  data?: {
+    flags?: number | string;
+    tag?: string;
+    value?: string;
+    algorithm?: number;
+    certificate?: string;
+    keyTag?: number;
+    type?: number;
+    protocol?: number;
+    publicKey?: string;
+    digest?: string;
+    digestType?: number;
+    priority?: number;
+    target?: string;
+    altitude?: number;
+    latDegrees?: number;
+    latDirection?: "N" | "S" | (string & {});
+    latMinutes?: number;
+    latSeconds?: number;
+    longDegrees?: number;
+    longDirection?: "E" | "W" | (string & {});
+    longMinutes?: number;
+    longSeconds?: number;
+    precisionHorz?: number;
+    precisionVert?: number;
+    size?: number;
+    order?: number;
+    preference?: number;
+    regex?: string;
+    replacement?: string;
+    service?: string;
+    matchingType?: number;
+    selector?: number;
+    usage?: number;
+    port?: number;
+    weight?: number;
+    fingerprint?: string;
+  };
 }
 
 export const CreateRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   name: Schema.String,
   ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-  type: Schema.Literal("A"),
+  type: Schema.Union([
+    Schema.Literals([
+      "A",
+      "AAAA",
+      "CNAME",
+      "MX",
+      "NS",
+      "OPENPGPKEY",
+      "PTR",
+      "TXT",
+      "CAA",
+      "CERT",
+      "DNSKEY",
+      "DS",
+      "HTTPS",
+      "LOC",
+      "NAPTR",
+      "SMIMEA",
+      "SRV",
+      "SSHFP",
+      "SVCB",
+      "TLSA",
+      "URI",
+    ]),
+    Schema.String,
+  ]),
   comment: Schema.optional(Schema.String),
   content: Schema.optional(Schema.String),
+  privateRouting: Schema.optional(Schema.Boolean),
   proxied: Schema.optional(Schema.Boolean),
   settings: Schema.optional(
     Schema.Struct({
       ipv4Only: Schema.optional(Schema.Boolean),
       ipv6Only: Schema.optional(Schema.Boolean),
+      flattenCname: Schema.optional(Schema.Boolean),
     }).pipe(
-      Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
+      Schema.encodeKeys({
+        ipv4Only: "ipv4_only",
+        ipv6Only: "ipv6_only",
+        flattenCname: "flatten_cname",
+      }),
     ),
   ),
   tags: Schema.optional(Schema.Array(Schema.String)),
+  priority: Schema.optional(Schema.Number),
+  data: Schema.optional(
+    Schema.Struct({
+      flags: Schema.optional(Schema.Union([Schema.Number, Schema.String])),
+      tag: Schema.optional(Schema.String),
+      value: Schema.optional(Schema.String),
+      algorithm: Schema.optional(Schema.Number),
+      certificate: Schema.optional(Schema.String),
+      keyTag: Schema.optional(Schema.Number),
+      type: Schema.optional(Schema.Number),
+      protocol: Schema.optional(Schema.Number),
+      publicKey: Schema.optional(Schema.String),
+      digest: Schema.optional(Schema.String),
+      digestType: Schema.optional(Schema.Number),
+      priority: Schema.optional(Schema.Number),
+      target: Schema.optional(Schema.String),
+      altitude: Schema.optional(Schema.Number),
+      latDegrees: Schema.optional(Schema.Number),
+      latDirection: Schema.optional(
+        Schema.Union([Schema.Literals(["N", "S"]), Schema.String]),
+      ),
+      latMinutes: Schema.optional(Schema.Number),
+      latSeconds: Schema.optional(Schema.Number),
+      longDegrees: Schema.optional(Schema.Number),
+      longDirection: Schema.optional(
+        Schema.Union([Schema.Literals(["E", "W"]), Schema.String]),
+      ),
+      longMinutes: Schema.optional(Schema.Number),
+      longSeconds: Schema.optional(Schema.Number),
+      precisionHorz: Schema.optional(Schema.Number),
+      precisionVert: Schema.optional(Schema.Number),
+      size: Schema.optional(Schema.Number),
+      order: Schema.optional(Schema.Number),
+      preference: Schema.optional(Schema.Number),
+      regex: Schema.optional(Schema.String),
+      replacement: Schema.optional(Schema.String),
+      service: Schema.optional(Schema.String),
+      matchingType: Schema.optional(Schema.Number),
+      selector: Schema.optional(Schema.Number),
+      usage: Schema.optional(Schema.Number),
+      port: Schema.optional(Schema.Number),
+      weight: Schema.optional(Schema.Number),
+      fingerprint: Schema.optional(Schema.String),
+    }).pipe(
+      Schema.encodeKeys({
+        flags: "flags",
+        tag: "tag",
+        value: "value",
+        algorithm: "algorithm",
+        certificate: "certificate",
+        keyTag: "key_tag",
+        type: "type",
+        protocol: "protocol",
+        publicKey: "public_key",
+        digest: "digest",
+        digestType: "digest_type",
+        priority: "priority",
+        target: "target",
+        altitude: "altitude",
+        latDegrees: "lat_degrees",
+        latDirection: "lat_direction",
+        latMinutes: "lat_minutes",
+        latSeconds: "lat_seconds",
+        longDegrees: "long_degrees",
+        longDirection: "long_direction",
+        longMinutes: "long_minutes",
+        longSeconds: "long_seconds",
+        precisionHorz: "precision_horz",
+        precisionVert: "precision_vert",
+        size: "size",
+        order: "order",
+        preference: "preference",
+        regex: "regex",
+        replacement: "replacement",
+        service: "service",
+        matchingType: "matching_type",
+        selector: "selector",
+        usage: "usage",
+        port: "port",
+        weight: "weight",
+        fingerprint: "fingerprint",
+      }),
+    ),
+  ),
 }).pipe(
+  Schema.encodeKeys({
+    name: "name",
+    ttl: "ttl",
+    type: "type",
+    comment: "comment",
+    content: "content",
+    privateRouting: "private_routing",
+    proxied: "proxied",
+    settings: "settings",
+    tags: "tags",
+    priority: "priority",
+    data: "data",
+  }),
   T.Http({ method: "POST", path: "/zones/{zone_id}/dns_records" }),
 ) as unknown as Schema.Schema<CreateRecordRequest>;
 
@@ -6908,6 +7174,7 @@ export type CreateRecordResponse =
       type: "A";
       comment?: string | null;
       content?: string | null;
+      privateRouting?: boolean | null;
       proxied?: boolean | null;
       settings?: {
         ipv4Only?: boolean | null;
@@ -6928,6 +7195,7 @@ export type CreateRecordResponse =
       type: "AAAA";
       comment?: string | null;
       content?: string | null;
+      privateRouting?: boolean | null;
       proxied?: boolean | null;
       settings?: {
         ipv4Only?: boolean | null;
@@ -7198,11 +7466,11 @@ export type CreateRecordResponse =
       data?: {
         altitude?: number | null;
         latDegrees?: number | null;
-        latDirection?: "N" | "S" | null;
+        latDirection?: "N" | "S" | (string & {}) | null;
         latMinutes?: number | null;
         latSeconds?: number | null;
         longDegrees?: number | null;
-        longDirection?: "E" | "W" | null;
+        longDirection?: "E" | "W" | (string & {}) | null;
         longMinutes?: number | null;
         longSeconds?: number | null;
         precisionHorz?: number | null;
@@ -7451,6 +7719,9 @@ export const CreateRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     type: Schema.Literal("A"),
     comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    privateRouting: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
     proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     settings: Schema.optional(
       Schema.Union([
@@ -7486,6 +7757,7 @@ export const CreateRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
       type: "type",
       comment: "comment",
       content: "content",
+      privateRouting: "private_routing",
       proxied: "proxied",
       settings: "settings",
       tags: "tags",
@@ -7504,6 +7776,9 @@ export const CreateRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     type: Schema.Literal("AAAA"),
     comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    privateRouting: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
     proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     settings: Schema.optional(
       Schema.Union([
@@ -7539,6 +7814,7 @@ export const CreateRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
       type: "type",
       comment: "comment",
       content: "content",
+      privateRouting: "private_routing",
       proxied: "proxied",
       settings: "settings",
       tags: "tags",
@@ -8195,7 +8471,10 @@ export const CreateRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
             Schema.Union([Schema.Number, Schema.Null]),
           ),
           latDirection: Schema.optional(
-            Schema.Union([Schema.Literals(["N", "S"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["N", "S"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           latMinutes: Schema.optional(
             Schema.Union([Schema.Number, Schema.Null]),
@@ -8207,7 +8486,10 @@ export const CreateRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
             Schema.Union([Schema.Number, Schema.Null]),
           ),
           longDirection: Schema.optional(
-            Schema.Union([Schema.Literals(["E", "W"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["E", "W"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           longMinutes: Schema.optional(
             Schema.Union([Schema.Number, Schema.Null]),
@@ -8800,17 +9082,82 @@ export interface UpdateRecordRequest {
   /** Body param: Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number | "1";
   /** Body param: Record type. */
-  type: "A";
+  type:
+    | "A"
+    | "AAAA"
+    | "CNAME"
+    | "MX"
+    | "NS"
+    | "OPENPGPKEY"
+    | "PTR"
+    | "TXT"
+    | "CAA"
+    | "CERT"
+    | "DNSKEY"
+    | "DS"
+    | "HTTPS"
+    | "LOC"
+    | "NAPTR"
+    | "SMIMEA"
+    | "SRV"
+    | "SSHFP"
+    | "SVCB"
+    | "TLSA"
+    | "URI"
+    | (string & {});
   /** Body param: Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** Body param: A valid IPv4 address. */
   content?: string;
+  /** Body param: Enables private network routing to the origin. */
+  privateRouting?: boolean;
   /** Body param: Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Body param: Settings for the DNS record. */
-  settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
+  settings?: { ipv4Only?: boolean; ipv6Only?: boolean; flattenCname?: boolean };
   /** Body param: Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: string[];
+  /** Body param: Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor */
+  priority?: number;
+  /** Body param: Components of a CAA record. */
+  data?: {
+    flags?: number | string;
+    tag?: string;
+    value?: string;
+    algorithm?: number;
+    certificate?: string;
+    keyTag?: number;
+    type?: number;
+    protocol?: number;
+    publicKey?: string;
+    digest?: string;
+    digestType?: number;
+    priority?: number;
+    target?: string;
+    altitude?: number;
+    latDegrees?: number;
+    latDirection?: "N" | "S" | (string & {});
+    latMinutes?: number;
+    latSeconds?: number;
+    longDegrees?: number;
+    longDirection?: "E" | "W" | (string & {});
+    longMinutes?: number;
+    longSeconds?: number;
+    precisionHorz?: number;
+    precisionVert?: number;
+    size?: number;
+    order?: number;
+    preference?: number;
+    regex?: string;
+    replacement?: string;
+    service?: string;
+    matchingType?: number;
+    selector?: number;
+    usage?: number;
+    port?: number;
+    weight?: number;
+    fingerprint?: string;
+  };
 }
 
 export const UpdateRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -8818,20 +9165,148 @@ export const UpdateRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   name: Schema.String,
   ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-  type: Schema.Literal("A"),
+  type: Schema.Union([
+    Schema.Literals([
+      "A",
+      "AAAA",
+      "CNAME",
+      "MX",
+      "NS",
+      "OPENPGPKEY",
+      "PTR",
+      "TXT",
+      "CAA",
+      "CERT",
+      "DNSKEY",
+      "DS",
+      "HTTPS",
+      "LOC",
+      "NAPTR",
+      "SMIMEA",
+      "SRV",
+      "SSHFP",
+      "SVCB",
+      "TLSA",
+      "URI",
+    ]),
+    Schema.String,
+  ]),
   comment: Schema.optional(Schema.String),
   content: Schema.optional(Schema.String),
+  privateRouting: Schema.optional(Schema.Boolean),
   proxied: Schema.optional(Schema.Boolean),
   settings: Schema.optional(
     Schema.Struct({
       ipv4Only: Schema.optional(Schema.Boolean),
       ipv6Only: Schema.optional(Schema.Boolean),
+      flattenCname: Schema.optional(Schema.Boolean),
     }).pipe(
-      Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
+      Schema.encodeKeys({
+        ipv4Only: "ipv4_only",
+        ipv6Only: "ipv6_only",
+        flattenCname: "flatten_cname",
+      }),
     ),
   ),
   tags: Schema.optional(Schema.Array(Schema.String)),
+  priority: Schema.optional(Schema.Number),
+  data: Schema.optional(
+    Schema.Struct({
+      flags: Schema.optional(Schema.Union([Schema.Number, Schema.String])),
+      tag: Schema.optional(Schema.String),
+      value: Schema.optional(Schema.String),
+      algorithm: Schema.optional(Schema.Number),
+      certificate: Schema.optional(Schema.String),
+      keyTag: Schema.optional(Schema.Number),
+      type: Schema.optional(Schema.Number),
+      protocol: Schema.optional(Schema.Number),
+      publicKey: Schema.optional(Schema.String),
+      digest: Schema.optional(Schema.String),
+      digestType: Schema.optional(Schema.Number),
+      priority: Schema.optional(Schema.Number),
+      target: Schema.optional(Schema.String),
+      altitude: Schema.optional(Schema.Number),
+      latDegrees: Schema.optional(Schema.Number),
+      latDirection: Schema.optional(
+        Schema.Union([Schema.Literals(["N", "S"]), Schema.String]),
+      ),
+      latMinutes: Schema.optional(Schema.Number),
+      latSeconds: Schema.optional(Schema.Number),
+      longDegrees: Schema.optional(Schema.Number),
+      longDirection: Schema.optional(
+        Schema.Union([Schema.Literals(["E", "W"]), Schema.String]),
+      ),
+      longMinutes: Schema.optional(Schema.Number),
+      longSeconds: Schema.optional(Schema.Number),
+      precisionHorz: Schema.optional(Schema.Number),
+      precisionVert: Schema.optional(Schema.Number),
+      size: Schema.optional(Schema.Number),
+      order: Schema.optional(Schema.Number),
+      preference: Schema.optional(Schema.Number),
+      regex: Schema.optional(Schema.String),
+      replacement: Schema.optional(Schema.String),
+      service: Schema.optional(Schema.String),
+      matchingType: Schema.optional(Schema.Number),
+      selector: Schema.optional(Schema.Number),
+      usage: Schema.optional(Schema.Number),
+      port: Schema.optional(Schema.Number),
+      weight: Schema.optional(Schema.Number),
+      fingerprint: Schema.optional(Schema.String),
+    }).pipe(
+      Schema.encodeKeys({
+        flags: "flags",
+        tag: "tag",
+        value: "value",
+        algorithm: "algorithm",
+        certificate: "certificate",
+        keyTag: "key_tag",
+        type: "type",
+        protocol: "protocol",
+        publicKey: "public_key",
+        digest: "digest",
+        digestType: "digest_type",
+        priority: "priority",
+        target: "target",
+        altitude: "altitude",
+        latDegrees: "lat_degrees",
+        latDirection: "lat_direction",
+        latMinutes: "lat_minutes",
+        latSeconds: "lat_seconds",
+        longDegrees: "long_degrees",
+        longDirection: "long_direction",
+        longMinutes: "long_minutes",
+        longSeconds: "long_seconds",
+        precisionHorz: "precision_horz",
+        precisionVert: "precision_vert",
+        size: "size",
+        order: "order",
+        preference: "preference",
+        regex: "regex",
+        replacement: "replacement",
+        service: "service",
+        matchingType: "matching_type",
+        selector: "selector",
+        usage: "usage",
+        port: "port",
+        weight: "weight",
+        fingerprint: "fingerprint",
+      }),
+    ),
+  ),
 }).pipe(
+  Schema.encodeKeys({
+    name: "name",
+    ttl: "ttl",
+    type: "type",
+    comment: "comment",
+    content: "content",
+    privateRouting: "private_routing",
+    proxied: "proxied",
+    settings: "settings",
+    tags: "tags",
+    priority: "priority",
+    data: "data",
+  }),
   T.Http({ method: "PUT", path: "/zones/{zone_id}/dns_records/{dnsRecordId}" }),
 ) as unknown as Schema.Schema<UpdateRecordRequest>;
 
@@ -8842,6 +9317,7 @@ export type UpdateRecordResponse =
       type: "A";
       comment?: string | null;
       content?: string | null;
+      privateRouting?: boolean | null;
       proxied?: boolean | null;
       settings?: {
         ipv4Only?: boolean | null;
@@ -8862,6 +9338,7 @@ export type UpdateRecordResponse =
       type: "AAAA";
       comment?: string | null;
       content?: string | null;
+      privateRouting?: boolean | null;
       proxied?: boolean | null;
       settings?: {
         ipv4Only?: boolean | null;
@@ -9132,11 +9609,11 @@ export type UpdateRecordResponse =
       data?: {
         altitude?: number | null;
         latDegrees?: number | null;
-        latDirection?: "N" | "S" | null;
+        latDirection?: "N" | "S" | (string & {}) | null;
         latMinutes?: number | null;
         latSeconds?: number | null;
         longDegrees?: number | null;
-        longDirection?: "E" | "W" | null;
+        longDirection?: "E" | "W" | (string & {}) | null;
         longMinutes?: number | null;
         longSeconds?: number | null;
         precisionHorz?: number | null;
@@ -9385,6 +9862,9 @@ export const UpdateRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     type: Schema.Literal("A"),
     comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    privateRouting: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
     proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     settings: Schema.optional(
       Schema.Union([
@@ -9420,6 +9900,7 @@ export const UpdateRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
       type: "type",
       comment: "comment",
       content: "content",
+      privateRouting: "private_routing",
       proxied: "proxied",
       settings: "settings",
       tags: "tags",
@@ -9438,6 +9919,9 @@ export const UpdateRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     type: Schema.Literal("AAAA"),
     comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    privateRouting: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
     proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     settings: Schema.optional(
       Schema.Union([
@@ -9473,6 +9957,7 @@ export const UpdateRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
       type: "type",
       comment: "comment",
       content: "content",
+      privateRouting: "private_routing",
       proxied: "proxied",
       settings: "settings",
       tags: "tags",
@@ -10129,7 +10614,10 @@ export const UpdateRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
             Schema.Union([Schema.Number, Schema.Null]),
           ),
           latDirection: Schema.optional(
-            Schema.Union([Schema.Literals(["N", "S"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["N", "S"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           latMinutes: Schema.optional(
             Schema.Union([Schema.Number, Schema.Null]),
@@ -10141,7 +10629,10 @@ export const UpdateRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
             Schema.Union([Schema.Number, Schema.Null]),
           ),
           longDirection: Schema.optional(
-            Schema.Union([Schema.Literals(["E", "W"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["E", "W"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           longMinutes: Schema.optional(
             Schema.Union([Schema.Number, Schema.Null]),
@@ -10734,17 +11225,82 @@ export interface PatchRecordRequest {
   /** Body param: Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
   ttl: number | "1";
   /** Body param: Record type. */
-  type: "A";
+  type:
+    | "A"
+    | "AAAA"
+    | "CNAME"
+    | "MX"
+    | "NS"
+    | "OPENPGPKEY"
+    | "PTR"
+    | "TXT"
+    | "CAA"
+    | "CERT"
+    | "DNSKEY"
+    | "DS"
+    | "HTTPS"
+    | "LOC"
+    | "NAPTR"
+    | "SMIMEA"
+    | "SRV"
+    | "SSHFP"
+    | "SVCB"
+    | "TLSA"
+    | "URI"
+    | (string & {});
   /** Body param: Comments or notes about the DNS record. This field has no effect on DNS responses. */
   comment?: string;
   /** Body param: A valid IPv4 address. */
   content?: string;
+  /** Body param: Enables private network routing to the origin. */
+  privateRouting?: boolean;
   /** Body param: Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Body param: Settings for the DNS record. */
-  settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
+  settings?: { ipv4Only?: boolean; ipv6Only?: boolean; flattenCname?: boolean };
   /** Body param: Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: string[];
+  /** Body param: Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor */
+  priority?: number;
+  /** Body param: Components of a CAA record. */
+  data?: {
+    flags?: number | string;
+    tag?: string;
+    value?: string;
+    algorithm?: number;
+    certificate?: string;
+    keyTag?: number;
+    type?: number;
+    protocol?: number;
+    publicKey?: string;
+    digest?: string;
+    digestType?: number;
+    priority?: number;
+    target?: string;
+    altitude?: number;
+    latDegrees?: number;
+    latDirection?: "N" | "S" | (string & {});
+    latMinutes?: number;
+    latSeconds?: number;
+    longDegrees?: number;
+    longDirection?: "E" | "W" | (string & {});
+    longMinutes?: number;
+    longSeconds?: number;
+    precisionHorz?: number;
+    precisionVert?: number;
+    size?: number;
+    order?: number;
+    preference?: number;
+    regex?: string;
+    replacement?: string;
+    service?: string;
+    matchingType?: number;
+    selector?: number;
+    usage?: number;
+    port?: number;
+    weight?: number;
+    fingerprint?: string;
+  };
 }
 
 export const PatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -10752,20 +11308,148 @@ export const PatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   name: Schema.String,
   ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-  type: Schema.Literal("A"),
+  type: Schema.Union([
+    Schema.Literals([
+      "A",
+      "AAAA",
+      "CNAME",
+      "MX",
+      "NS",
+      "OPENPGPKEY",
+      "PTR",
+      "TXT",
+      "CAA",
+      "CERT",
+      "DNSKEY",
+      "DS",
+      "HTTPS",
+      "LOC",
+      "NAPTR",
+      "SMIMEA",
+      "SRV",
+      "SSHFP",
+      "SVCB",
+      "TLSA",
+      "URI",
+    ]),
+    Schema.String,
+  ]),
   comment: Schema.optional(Schema.String),
   content: Schema.optional(Schema.String),
+  privateRouting: Schema.optional(Schema.Boolean),
   proxied: Schema.optional(Schema.Boolean),
   settings: Schema.optional(
     Schema.Struct({
       ipv4Only: Schema.optional(Schema.Boolean),
       ipv6Only: Schema.optional(Schema.Boolean),
+      flattenCname: Schema.optional(Schema.Boolean),
     }).pipe(
-      Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
+      Schema.encodeKeys({
+        ipv4Only: "ipv4_only",
+        ipv6Only: "ipv6_only",
+        flattenCname: "flatten_cname",
+      }),
     ),
   ),
   tags: Schema.optional(Schema.Array(Schema.String)),
+  priority: Schema.optional(Schema.Number),
+  data: Schema.optional(
+    Schema.Struct({
+      flags: Schema.optional(Schema.Union([Schema.Number, Schema.String])),
+      tag: Schema.optional(Schema.String),
+      value: Schema.optional(Schema.String),
+      algorithm: Schema.optional(Schema.Number),
+      certificate: Schema.optional(Schema.String),
+      keyTag: Schema.optional(Schema.Number),
+      type: Schema.optional(Schema.Number),
+      protocol: Schema.optional(Schema.Number),
+      publicKey: Schema.optional(Schema.String),
+      digest: Schema.optional(Schema.String),
+      digestType: Schema.optional(Schema.Number),
+      priority: Schema.optional(Schema.Number),
+      target: Schema.optional(Schema.String),
+      altitude: Schema.optional(Schema.Number),
+      latDegrees: Schema.optional(Schema.Number),
+      latDirection: Schema.optional(
+        Schema.Union([Schema.Literals(["N", "S"]), Schema.String]),
+      ),
+      latMinutes: Schema.optional(Schema.Number),
+      latSeconds: Schema.optional(Schema.Number),
+      longDegrees: Schema.optional(Schema.Number),
+      longDirection: Schema.optional(
+        Schema.Union([Schema.Literals(["E", "W"]), Schema.String]),
+      ),
+      longMinutes: Schema.optional(Schema.Number),
+      longSeconds: Schema.optional(Schema.Number),
+      precisionHorz: Schema.optional(Schema.Number),
+      precisionVert: Schema.optional(Schema.Number),
+      size: Schema.optional(Schema.Number),
+      order: Schema.optional(Schema.Number),
+      preference: Schema.optional(Schema.Number),
+      regex: Schema.optional(Schema.String),
+      replacement: Schema.optional(Schema.String),
+      service: Schema.optional(Schema.String),
+      matchingType: Schema.optional(Schema.Number),
+      selector: Schema.optional(Schema.Number),
+      usage: Schema.optional(Schema.Number),
+      port: Schema.optional(Schema.Number),
+      weight: Schema.optional(Schema.Number),
+      fingerprint: Schema.optional(Schema.String),
+    }).pipe(
+      Schema.encodeKeys({
+        flags: "flags",
+        tag: "tag",
+        value: "value",
+        algorithm: "algorithm",
+        certificate: "certificate",
+        keyTag: "key_tag",
+        type: "type",
+        protocol: "protocol",
+        publicKey: "public_key",
+        digest: "digest",
+        digestType: "digest_type",
+        priority: "priority",
+        target: "target",
+        altitude: "altitude",
+        latDegrees: "lat_degrees",
+        latDirection: "lat_direction",
+        latMinutes: "lat_minutes",
+        latSeconds: "lat_seconds",
+        longDegrees: "long_degrees",
+        longDirection: "long_direction",
+        longMinutes: "long_minutes",
+        longSeconds: "long_seconds",
+        precisionHorz: "precision_horz",
+        precisionVert: "precision_vert",
+        size: "size",
+        order: "order",
+        preference: "preference",
+        regex: "regex",
+        replacement: "replacement",
+        service: "service",
+        matchingType: "matching_type",
+        selector: "selector",
+        usage: "usage",
+        port: "port",
+        weight: "weight",
+        fingerprint: "fingerprint",
+      }),
+    ),
+  ),
 }).pipe(
+  Schema.encodeKeys({
+    name: "name",
+    ttl: "ttl",
+    type: "type",
+    comment: "comment",
+    content: "content",
+    privateRouting: "private_routing",
+    proxied: "proxied",
+    settings: "settings",
+    tags: "tags",
+    priority: "priority",
+    data: "data",
+  }),
   T.Http({
     method: "PATCH",
     path: "/zones/{zone_id}/dns_records/{dnsRecordId}",
@@ -10779,6 +11463,7 @@ export type PatchRecordResponse =
       type: "A";
       comment?: string | null;
       content?: string | null;
+      privateRouting?: boolean | null;
       proxied?: boolean | null;
       settings?: {
         ipv4Only?: boolean | null;
@@ -10799,6 +11484,7 @@ export type PatchRecordResponse =
       type: "AAAA";
       comment?: string | null;
       content?: string | null;
+      privateRouting?: boolean | null;
       proxied?: boolean | null;
       settings?: {
         ipv4Only?: boolean | null;
@@ -11069,11 +11755,11 @@ export type PatchRecordResponse =
       data?: {
         altitude?: number | null;
         latDegrees?: number | null;
-        latDirection?: "N" | "S" | null;
+        latDirection?: "N" | "S" | (string & {}) | null;
         latMinutes?: number | null;
         latSeconds?: number | null;
         longDegrees?: number | null;
-        longDirection?: "E" | "W" | null;
+        longDirection?: "E" | "W" | (string & {}) | null;
         longMinutes?: number | null;
         longSeconds?: number | null;
         precisionHorz?: number | null;
@@ -11322,6 +12008,9 @@ export const PatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     type: Schema.Literal("A"),
     comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    privateRouting: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
     proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     settings: Schema.optional(
       Schema.Union([
@@ -11357,6 +12046,7 @@ export const PatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
       type: "type",
       comment: "comment",
       content: "content",
+      privateRouting: "private_routing",
       proxied: "proxied",
       settings: "settings",
       tags: "tags",
@@ -11375,6 +12065,9 @@ export const PatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     type: Schema.Literal("AAAA"),
     comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    privateRouting: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
     proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     settings: Schema.optional(
       Schema.Union([
@@ -11410,6 +12103,7 @@ export const PatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
       type: "type",
       comment: "comment",
       content: "content",
+      privateRouting: "private_routing",
       proxied: "proxied",
       settings: "settings",
       tags: "tags",
@@ -12066,7 +12760,10 @@ export const PatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
             Schema.Union([Schema.Number, Schema.Null]),
           ),
           latDirection: Schema.optional(
-            Schema.Union([Schema.Literals(["N", "S"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["N", "S"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           latMinutes: Schema.optional(
             Schema.Union([Schema.Number, Schema.Null]),
@@ -12078,7 +12775,10 @@ export const PatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
             Schema.Union([Schema.Number, Schema.Null]),
           ),
           longDirection: Schema.optional(
-            Schema.Union([Schema.Literals(["E", "W"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["E", "W"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           longMinutes: Schema.optional(
             Schema.Union([Schema.Number, Schema.Null]),
@@ -12705,9 +13405,9 @@ export const deleteRecord: API.OperationMethod<
 export interface BatchRecordRequest {
   /** Path param: Identifier. */
   zoneId: string;
-  /** Body param: */
+  /** Body param */
   deletes?: { id: string }[];
-  /** Body param: */
+  /** Body param */
   patches?: (
     | {
         name: string;
@@ -12715,6 +13415,7 @@ export interface BatchRecordRequest {
         type: "A";
         comment?: string;
         content?: string;
+        privateRouting?: boolean;
         proxied?: boolean;
         settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
         tags?: string[];
@@ -12726,6 +13427,7 @@ export interface BatchRecordRequest {
         type: "AAAA";
         comment?: string;
         content?: string;
+        privateRouting?: boolean;
         proxied?: boolean;
         settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
         tags?: string[];
@@ -12880,11 +13582,11 @@ export interface BatchRecordRequest {
         data?: {
           altitude?: number;
           latDegrees?: number;
-          latDirection?: "N" | "S";
+          latDirection?: "N" | "S" | (string & {});
           latMinutes?: number;
           latSeconds?: number;
           longDegrees?: number;
-          longDirection?: "E" | "W";
+          longDirection?: "E" | "W" | (string & {});
           longMinutes?: number;
           longSeconds?: number;
           precisionHorz?: number;
@@ -12997,7 +13699,7 @@ export interface BatchRecordRequest {
         id: string;
       }
   )[];
-  /** Body param: */
+  /** Body param */
   posts?: (
     | {
         name: string;
@@ -13005,6 +13707,7 @@ export interface BatchRecordRequest {
         type: "A";
         comment?: string;
         content?: string;
+        privateRouting?: boolean;
         proxied?: boolean;
         settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
         tags?: string[];
@@ -13015,6 +13718,7 @@ export interface BatchRecordRequest {
         type: "AAAA";
         comment?: string;
         content?: string;
+        privateRouting?: boolean;
         proxied?: boolean;
         settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
         tags?: string[];
@@ -13157,11 +13861,11 @@ export interface BatchRecordRequest {
         data?: {
           altitude?: number;
           latDegrees?: number;
-          latDirection?: "N" | "S";
+          latDirection?: "N" | "S" | (string & {});
           latMinutes?: number;
           latSeconds?: number;
           longDegrees?: number;
-          longDirection?: "E" | "W";
+          longDirection?: "E" | "W" | (string & {});
           longMinutes?: number;
           longSeconds?: number;
           precisionHorz?: number;
@@ -13266,7 +13970,7 @@ export interface BatchRecordRequest {
         tags?: string[];
       }
   )[];
-  /** Body param: */
+  /** Body param */
   puts?: (
     | {
         name: string;
@@ -13274,6 +13978,7 @@ export interface BatchRecordRequest {
         type: "A";
         comment?: string;
         content?: string;
+        privateRouting?: boolean;
         proxied?: boolean;
         settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
         tags?: string[];
@@ -13285,6 +13990,7 @@ export interface BatchRecordRequest {
         type: "AAAA";
         comment?: string;
         content?: string;
+        privateRouting?: boolean;
         proxied?: boolean;
         settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
         tags?: string[];
@@ -13439,11 +14145,11 @@ export interface BatchRecordRequest {
         data?: {
           altitude?: number;
           latDegrees?: number;
-          latDirection?: "N" | "S";
+          latDirection?: "N" | "S" | (string & {});
           latMinutes?: number;
           latSeconds?: number;
           longDegrees?: number;
-          longDirection?: "E" | "W";
+          longDirection?: "E" | "W" | (string & {});
           longMinutes?: number;
           longSeconds?: number;
           precisionHorz?: number;
@@ -13576,6 +14282,7 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           type: Schema.Literal("A"),
           comment: Schema.optional(Schema.String),
           content: Schema.optional(Schema.String),
+          privateRouting: Schema.optional(Schema.Boolean),
           proxied: Schema.optional(Schema.Boolean),
           settings: Schema.optional(
             Schema.Struct({
@@ -13590,13 +14297,27 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ),
           tags: Schema.optional(Schema.Array(Schema.String)),
           id: Schema.String,
-        }),
+        }).pipe(
+          Schema.encodeKeys({
+            name: "name",
+            ttl: "ttl",
+            type: "type",
+            comment: "comment",
+            content: "content",
+            privateRouting: "private_routing",
+            proxied: "proxied",
+            settings: "settings",
+            tags: "tags",
+            id: "id",
+          }),
+        ),
         Schema.Struct({
           name: Schema.String,
           ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
           type: Schema.Literal("AAAA"),
           comment: Schema.optional(Schema.String),
           content: Schema.optional(Schema.String),
+          privateRouting: Schema.optional(Schema.Boolean),
           proxied: Schema.optional(Schema.Boolean),
           settings: Schema.optional(
             Schema.Struct({
@@ -13611,7 +14332,20 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ),
           tags: Schema.optional(Schema.Array(Schema.String)),
           id: Schema.String,
-        }),
+        }).pipe(
+          Schema.encodeKeys({
+            name: "name",
+            ttl: "ttl",
+            type: "type",
+            comment: "comment",
+            content: "content",
+            privateRouting: "private_routing",
+            proxied: "proxied",
+            settings: "settings",
+            tags: "tags",
+            id: "id",
+          }),
+        ),
         Schema.Struct({
           name: Schema.String,
           ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -13909,11 +14643,15 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.Struct({
               altitude: Schema.optional(Schema.Number),
               latDegrees: Schema.optional(Schema.Number),
-              latDirection: Schema.optional(Schema.Literals(["N", "S"])),
+              latDirection: Schema.optional(
+                Schema.Union([Schema.Literals(["N", "S"]), Schema.String]),
+              ),
               latMinutes: Schema.optional(Schema.Number),
               latSeconds: Schema.optional(Schema.Number),
               longDegrees: Schema.optional(Schema.Number),
-              longDirection: Schema.optional(Schema.Literals(["E", "W"])),
+              longDirection: Schema.optional(
+                Schema.Union([Schema.Literals(["E", "W"]), Schema.String]),
+              ),
               longMinutes: Schema.optional(Schema.Number),
               longSeconds: Schema.optional(Schema.Number),
               precisionHorz: Schema.optional(Schema.Number),
@@ -14172,6 +14910,7 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           type: Schema.Literal("A"),
           comment: Schema.optional(Schema.String),
           content: Schema.optional(Schema.String),
+          privateRouting: Schema.optional(Schema.Boolean),
           proxied: Schema.optional(Schema.Boolean),
           settings: Schema.optional(
             Schema.Struct({
@@ -14185,13 +14924,26 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             ),
           ),
           tags: Schema.optional(Schema.Array(Schema.String)),
-        }),
+        }).pipe(
+          Schema.encodeKeys({
+            name: "name",
+            ttl: "ttl",
+            type: "type",
+            comment: "comment",
+            content: "content",
+            privateRouting: "private_routing",
+            proxied: "proxied",
+            settings: "settings",
+            tags: "tags",
+          }),
+        ),
         Schema.Struct({
           name: Schema.String,
           ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
           type: Schema.Literal("AAAA"),
           comment: Schema.optional(Schema.String),
           content: Schema.optional(Schema.String),
+          privateRouting: Schema.optional(Schema.Boolean),
           proxied: Schema.optional(Schema.Boolean),
           settings: Schema.optional(
             Schema.Struct({
@@ -14205,7 +14957,19 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             ),
           ),
           tags: Schema.optional(Schema.Array(Schema.String)),
-        }),
+        }).pipe(
+          Schema.encodeKeys({
+            name: "name",
+            ttl: "ttl",
+            type: "type",
+            comment: "comment",
+            content: "content",
+            privateRouting: "private_routing",
+            proxied: "proxied",
+            settings: "settings",
+            tags: "tags",
+          }),
+        ),
         Schema.Struct({
           name: Schema.String,
           ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -14492,11 +15256,15 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.Struct({
               altitude: Schema.optional(Schema.Number),
               latDegrees: Schema.optional(Schema.Number),
-              latDirection: Schema.optional(Schema.Literals(["N", "S"])),
+              latDirection: Schema.optional(
+                Schema.Union([Schema.Literals(["N", "S"]), Schema.String]),
+              ),
               latMinutes: Schema.optional(Schema.Number),
               latSeconds: Schema.optional(Schema.Number),
               longDegrees: Schema.optional(Schema.Number),
-              longDirection: Schema.optional(Schema.Literals(["E", "W"])),
+              longDirection: Schema.optional(
+                Schema.Union([Schema.Literals(["E", "W"]), Schema.String]),
+              ),
               longMinutes: Schema.optional(Schema.Number),
               longSeconds: Schema.optional(Schema.Number),
               precisionHorz: Schema.optional(Schema.Number),
@@ -14747,6 +15515,7 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           type: Schema.Literal("A"),
           comment: Schema.optional(Schema.String),
           content: Schema.optional(Schema.String),
+          privateRouting: Schema.optional(Schema.Boolean),
           proxied: Schema.optional(Schema.Boolean),
           settings: Schema.optional(
             Schema.Struct({
@@ -14761,13 +15530,27 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ),
           tags: Schema.optional(Schema.Array(Schema.String)),
           id: Schema.String,
-        }),
+        }).pipe(
+          Schema.encodeKeys({
+            name: "name",
+            ttl: "ttl",
+            type: "type",
+            comment: "comment",
+            content: "content",
+            privateRouting: "private_routing",
+            proxied: "proxied",
+            settings: "settings",
+            tags: "tags",
+            id: "id",
+          }),
+        ),
         Schema.Struct({
           name: Schema.String,
           ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
           type: Schema.Literal("AAAA"),
           comment: Schema.optional(Schema.String),
           content: Schema.optional(Schema.String),
+          privateRouting: Schema.optional(Schema.Boolean),
           proxied: Schema.optional(Schema.Boolean),
           settings: Schema.optional(
             Schema.Struct({
@@ -14782,7 +15565,20 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ),
           tags: Schema.optional(Schema.Array(Schema.String)),
           id: Schema.String,
-        }),
+        }).pipe(
+          Schema.encodeKeys({
+            name: "name",
+            ttl: "ttl",
+            type: "type",
+            comment: "comment",
+            content: "content",
+            privateRouting: "private_routing",
+            proxied: "proxied",
+            settings: "settings",
+            tags: "tags",
+            id: "id",
+          }),
+        ),
         Schema.Struct({
           name: Schema.String,
           ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -15080,11 +15876,15 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.Struct({
               altitude: Schema.optional(Schema.Number),
               latDegrees: Schema.optional(Schema.Number),
-              latDirection: Schema.optional(Schema.Literals(["N", "S"])),
+              latDirection: Schema.optional(
+                Schema.Union([Schema.Literals(["N", "S"]), Schema.String]),
+              ),
               latMinutes: Schema.optional(Schema.Number),
               latSeconds: Schema.optional(Schema.Number),
               longDegrees: Schema.optional(Schema.Number),
-              longDirection: Schema.optional(Schema.Literals(["E", "W"])),
+              longDirection: Schema.optional(
+                Schema.Union([Schema.Literals(["E", "W"]), Schema.String]),
+              ),
               longMinutes: Schema.optional(Schema.Number),
               longSeconds: Schema.optional(Schema.Number),
               precisionHorz: Schema.optional(Schema.Number),
@@ -15347,6 +16147,7 @@ export interface BatchRecordResponse {
             type: "A";
             comment?: string | null;
             content?: string | null;
+            privateRouting?: boolean | null;
             proxied?: boolean | null;
             settings?: {
               ipv4Only?: boolean | null;
@@ -15367,6 +16168,7 @@ export interface BatchRecordResponse {
             type: "AAAA";
             comment?: string | null;
             content?: string | null;
+            privateRouting?: boolean | null;
             proxied?: boolean | null;
             settings?: {
               ipv4Only?: boolean | null;
@@ -15637,11 +16439,11 @@ export interface BatchRecordResponse {
             data?: {
               altitude?: number | null;
               latDegrees?: number | null;
-              latDirection?: "N" | "S" | null;
+              latDirection?: "N" | "S" | (string & {}) | null;
               latMinutes?: number | null;
               latSeconds?: number | null;
               longDegrees?: number | null;
-              longDirection?: "E" | "W" | null;
+              longDirection?: "E" | "W" | (string & {}) | null;
               longMinutes?: number | null;
               longSeconds?: number | null;
               precisionHorz?: number | null;
@@ -15850,6 +16652,7 @@ export interface BatchRecordResponse {
             type: "A";
             comment?: string | null;
             content?: string | null;
+            privateRouting?: boolean | null;
             proxied?: boolean | null;
             settings?: {
               ipv4Only?: boolean | null;
@@ -15870,6 +16673,7 @@ export interface BatchRecordResponse {
             type: "AAAA";
             comment?: string | null;
             content?: string | null;
+            privateRouting?: boolean | null;
             proxied?: boolean | null;
             settings?: {
               ipv4Only?: boolean | null;
@@ -16140,11 +16944,11 @@ export interface BatchRecordResponse {
             data?: {
               altitude?: number | null;
               latDegrees?: number | null;
-              latDirection?: "N" | "S" | null;
+              latDirection?: "N" | "S" | (string & {}) | null;
               latMinutes?: number | null;
               latSeconds?: number | null;
               longDegrees?: number | null;
-              longDirection?: "E" | "W" | null;
+              longDirection?: "E" | "W" | (string & {}) | null;
               longMinutes?: number | null;
               longSeconds?: number | null;
               precisionHorz?: number | null;
@@ -16353,6 +17157,7 @@ export interface BatchRecordResponse {
             type: "A";
             comment?: string | null;
             content?: string | null;
+            privateRouting?: boolean | null;
             proxied?: boolean | null;
             settings?: {
               ipv4Only?: boolean | null;
@@ -16373,6 +17178,7 @@ export interface BatchRecordResponse {
             type: "AAAA";
             comment?: string | null;
             content?: string | null;
+            privateRouting?: boolean | null;
             proxied?: boolean | null;
             settings?: {
               ipv4Only?: boolean | null;
@@ -16643,11 +17449,11 @@ export interface BatchRecordResponse {
             data?: {
               altitude?: number | null;
               latDegrees?: number | null;
-              latDirection?: "N" | "S" | null;
+              latDirection?: "N" | "S" | (string & {}) | null;
               latMinutes?: number | null;
               latSeconds?: number | null;
               longDegrees?: number | null;
-              longDirection?: "E" | "W" | null;
+              longDirection?: "E" | "W" | (string & {}) | null;
               longMinutes?: number | null;
               longSeconds?: number | null;
               precisionHorz?: number | null;
@@ -16856,6 +17662,7 @@ export interface BatchRecordResponse {
             type: "A";
             comment?: string | null;
             content?: string | null;
+            privateRouting?: boolean | null;
             proxied?: boolean | null;
             settings?: {
               ipv4Only?: boolean | null;
@@ -16876,6 +17683,7 @@ export interface BatchRecordResponse {
             type: "AAAA";
             comment?: string | null;
             content?: string | null;
+            privateRouting?: boolean | null;
             proxied?: boolean | null;
             settings?: {
               ipv4Only?: boolean | null;
@@ -17146,11 +17954,11 @@ export interface BatchRecordResponse {
             data?: {
               altitude?: number | null;
               latDegrees?: number | null;
-              latDirection?: "N" | "S" | null;
+              latDirection?: "N" | "S" | (string & {}) | null;
               latMinutes?: number | null;
               latSeconds?: number | null;
               longDegrees?: number | null;
-              longDirection?: "E" | "W" | null;
+              longDirection?: "E" | "W" | (string & {}) | null;
               longMinutes?: number | null;
               longSeconds?: number | null;
               precisionHorz?: number | null;
@@ -17419,6 +18227,9 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             content: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
+            privateRouting: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
             proxied: Schema.optional(
               Schema.Union([Schema.Boolean, Schema.Null]),
             ),
@@ -17461,6 +18272,7 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               type: "type",
               comment: "comment",
               content: "content",
+              privateRouting: "private_routing",
               proxied: "proxied",
               settings: "settings",
               tags: "tags",
@@ -17483,6 +18295,9 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             content: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
+            privateRouting: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
             proxied: Schema.optional(
               Schema.Union([Schema.Boolean, Schema.Null]),
             ),
@@ -17525,6 +18340,7 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               type: "type",
               comment: "comment",
               content: "content",
+              privateRouting: "private_routing",
               proxied: "proxied",
               settings: "settings",
               tags: "tags",
@@ -18320,7 +19136,13 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     Schema.Union([Schema.Number, Schema.Null]),
                   ),
                   latDirection: Schema.optional(
-                    Schema.Union([Schema.Literals(["N", "S"]), Schema.Null]),
+                    Schema.Union([
+                      Schema.Union([
+                        Schema.Literals(["N", "S"]),
+                        Schema.String,
+                      ]),
+                      Schema.Null,
+                    ]),
                   ),
                   latMinutes: Schema.optional(
                     Schema.Union([Schema.Number, Schema.Null]),
@@ -18332,7 +19154,13 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     Schema.Union([Schema.Number, Schema.Null]),
                   ),
                   longDirection: Schema.optional(
-                    Schema.Union([Schema.Literals(["E", "W"]), Schema.Null]),
+                    Schema.Union([
+                      Schema.Union([
+                        Schema.Literals(["E", "W"]),
+                        Schema.String,
+                      ]),
+                      Schema.Null,
+                    ]),
                   ),
                   longMinutes: Schema.optional(
                     Schema.Union([Schema.Number, Schema.Null]),
@@ -19093,6 +19921,9 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             content: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
+            privateRouting: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
             proxied: Schema.optional(
               Schema.Union([Schema.Boolean, Schema.Null]),
             ),
@@ -19135,6 +19966,7 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               type: "type",
               comment: "comment",
               content: "content",
+              privateRouting: "private_routing",
               proxied: "proxied",
               settings: "settings",
               tags: "tags",
@@ -19157,6 +19989,9 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             content: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
+            privateRouting: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
             proxied: Schema.optional(
               Schema.Union([Schema.Boolean, Schema.Null]),
             ),
@@ -19199,6 +20034,7 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               type: "type",
               comment: "comment",
               content: "content",
+              privateRouting: "private_routing",
               proxied: "proxied",
               settings: "settings",
               tags: "tags",
@@ -19994,7 +20830,13 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     Schema.Union([Schema.Number, Schema.Null]),
                   ),
                   latDirection: Schema.optional(
-                    Schema.Union([Schema.Literals(["N", "S"]), Schema.Null]),
+                    Schema.Union([
+                      Schema.Union([
+                        Schema.Literals(["N", "S"]),
+                        Schema.String,
+                      ]),
+                      Schema.Null,
+                    ]),
                   ),
                   latMinutes: Schema.optional(
                     Schema.Union([Schema.Number, Schema.Null]),
@@ -20006,7 +20848,13 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     Schema.Union([Schema.Number, Schema.Null]),
                   ),
                   longDirection: Schema.optional(
-                    Schema.Union([Schema.Literals(["E", "W"]), Schema.Null]),
+                    Schema.Union([
+                      Schema.Union([
+                        Schema.Literals(["E", "W"]),
+                        Schema.String,
+                      ]),
+                      Schema.Null,
+                    ]),
                   ),
                   longMinutes: Schema.optional(
                     Schema.Union([Schema.Number, Schema.Null]),
@@ -20767,6 +21615,9 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             content: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
+            privateRouting: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
             proxied: Schema.optional(
               Schema.Union([Schema.Boolean, Schema.Null]),
             ),
@@ -20809,6 +21660,7 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               type: "type",
               comment: "comment",
               content: "content",
+              privateRouting: "private_routing",
               proxied: "proxied",
               settings: "settings",
               tags: "tags",
@@ -20831,6 +21683,9 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             content: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
+            privateRouting: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
             proxied: Schema.optional(
               Schema.Union([Schema.Boolean, Schema.Null]),
             ),
@@ -20873,6 +21728,7 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               type: "type",
               comment: "comment",
               content: "content",
+              privateRouting: "private_routing",
               proxied: "proxied",
               settings: "settings",
               tags: "tags",
@@ -21668,7 +22524,13 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     Schema.Union([Schema.Number, Schema.Null]),
                   ),
                   latDirection: Schema.optional(
-                    Schema.Union([Schema.Literals(["N", "S"]), Schema.Null]),
+                    Schema.Union([
+                      Schema.Union([
+                        Schema.Literals(["N", "S"]),
+                        Schema.String,
+                      ]),
+                      Schema.Null,
+                    ]),
                   ),
                   latMinutes: Schema.optional(
                     Schema.Union([Schema.Number, Schema.Null]),
@@ -21680,7 +22542,13 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     Schema.Union([Schema.Number, Schema.Null]),
                   ),
                   longDirection: Schema.optional(
-                    Schema.Union([Schema.Literals(["E", "W"]), Schema.Null]),
+                    Schema.Union([
+                      Schema.Union([
+                        Schema.Literals(["E", "W"]),
+                        Schema.String,
+                      ]),
+                      Schema.Null,
+                    ]),
                   ),
                   longMinutes: Schema.optional(
                     Schema.Union([Schema.Number, Schema.Null]),
@@ -22441,6 +23309,9 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             content: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
+            privateRouting: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
             proxied: Schema.optional(
               Schema.Union([Schema.Boolean, Schema.Null]),
             ),
@@ -22483,6 +23354,7 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               type: "type",
               comment: "comment",
               content: "content",
+              privateRouting: "private_routing",
               proxied: "proxied",
               settings: "settings",
               tags: "tags",
@@ -22505,6 +23377,9 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             content: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
+            privateRouting: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
             proxied: Schema.optional(
               Schema.Union([Schema.Boolean, Schema.Null]),
             ),
@@ -22547,6 +23422,7 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               type: "type",
               comment: "comment",
               content: "content",
+              privateRouting: "private_routing",
               proxied: "proxied",
               settings: "settings",
               tags: "tags",
@@ -23342,7 +24218,13 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     Schema.Union([Schema.Number, Schema.Null]),
                   ),
                   latDirection: Schema.optional(
-                    Schema.Union([Schema.Literals(["N", "S"]), Schema.Null]),
+                    Schema.Union([
+                      Schema.Union([
+                        Schema.Literals(["N", "S"]),
+                        Schema.String,
+                      ]),
+                      Schema.Null,
+                    ]),
                   ),
                   latMinutes: Schema.optional(
                     Schema.Union([Schema.Number, Schema.Null]),
@@ -23354,7 +24236,13 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     Schema.Union([Schema.Number, Schema.Null]),
                   ),
                   longDirection: Schema.optional(
-                    Schema.Union([Schema.Literals(["E", "W"]), Schema.Null]),
+                    Schema.Union([
+                      Schema.Union([
+                        Schema.Literals(["E", "W"]),
+                        Schema.String,
+                      ]),
+                      Schema.Null,
+                    ]),
                   ),
                   longMinutes: Schema.optional(
                     Schema.Union([Schema.Number, Schema.Null]),
@@ -24156,7 +25044,7 @@ export const importRecord: API.OperationMethod<
 export interface ScanRecordRequest {
   /** Path param: Identifier. */
   zoneId: string;
-  /** Body param: */
+  /** Body param */
   body: unknown;
 }
 
@@ -24210,7 +25098,7 @@ export const scanRecord: API.OperationMethod<
 export interface ScanReviewRecordRequest {
   /** Path param: Identifier. */
   zoneId: string;
-  /** Body param: */
+  /** Body param */
   accepts?: (
     | {
         name: string;
@@ -24218,6 +25106,7 @@ export interface ScanReviewRecordRequest {
         type: "A";
         comment?: string;
         content?: string;
+        privateRouting?: boolean;
         proxied?: boolean;
         settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
         tags?: string[];
@@ -24228,6 +25117,7 @@ export interface ScanReviewRecordRequest {
         type: "AAAA";
         comment?: string;
         content?: string;
+        privateRouting?: boolean;
         proxied?: boolean;
         settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
         tags?: string[];
@@ -24370,11 +25260,11 @@ export interface ScanReviewRecordRequest {
         data?: {
           altitude?: number;
           latDegrees?: number;
-          latDirection?: "N" | "S";
+          latDirection?: "N" | "S" | (string & {});
           latMinutes?: number;
           latSeconds?: number;
           longDegrees?: number;
-          longDirection?: "E" | "W";
+          longDirection?: "E" | "W" | (string & {});
           longMinutes?: number;
           longSeconds?: number;
           precisionHorz?: number;
@@ -24479,7 +25369,7 @@ export interface ScanReviewRecordRequest {
         tags?: string[];
       }
   )[];
-  /** Body param: */
+  /** Body param */
   rejects?: { id: string }[];
 }
 
@@ -24495,6 +25385,7 @@ export const ScanReviewRecordRequest =
             type: Schema.Literal("A"),
             comment: Schema.optional(Schema.String),
             content: Schema.optional(Schema.String),
+            privateRouting: Schema.optional(Schema.Boolean),
             proxied: Schema.optional(Schema.Boolean),
             settings: Schema.optional(
               Schema.Struct({
@@ -24508,13 +25399,26 @@ export const ScanReviewRecordRequest =
               ),
             ),
             tags: Schema.optional(Schema.Array(Schema.String)),
-          }),
+          }).pipe(
+            Schema.encodeKeys({
+              name: "name",
+              ttl: "ttl",
+              type: "type",
+              comment: "comment",
+              content: "content",
+              privateRouting: "private_routing",
+              proxied: "proxied",
+              settings: "settings",
+              tags: "tags",
+            }),
+          ),
           Schema.Struct({
             name: Schema.String,
             ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
             type: Schema.Literal("AAAA"),
             comment: Schema.optional(Schema.String),
             content: Schema.optional(Schema.String),
+            privateRouting: Schema.optional(Schema.Boolean),
             proxied: Schema.optional(Schema.Boolean),
             settings: Schema.optional(
               Schema.Struct({
@@ -24528,7 +25432,19 @@ export const ScanReviewRecordRequest =
               ),
             ),
             tags: Schema.optional(Schema.Array(Schema.String)),
-          }),
+          }).pipe(
+            Schema.encodeKeys({
+              name: "name",
+              ttl: "ttl",
+              type: "type",
+              comment: "comment",
+              content: "content",
+              privateRouting: "private_routing",
+              proxied: "proxied",
+              settings: "settings",
+              tags: "tags",
+            }),
+          ),
           Schema.Struct({
             name: Schema.String,
             ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -24815,11 +25731,15 @@ export const ScanReviewRecordRequest =
               Schema.Struct({
                 altitude: Schema.optional(Schema.Number),
                 latDegrees: Schema.optional(Schema.Number),
-                latDirection: Schema.optional(Schema.Literals(["N", "S"])),
+                latDirection: Schema.optional(
+                  Schema.Union([Schema.Literals(["N", "S"]), Schema.String]),
+                ),
                 latMinutes: Schema.optional(Schema.Number),
                 latSeconds: Schema.optional(Schema.Number),
                 longDegrees: Schema.optional(Schema.Number),
-                longDirection: Schema.optional(Schema.Literals(["E", "W"])),
+                longDirection: Schema.optional(
+                  Schema.Union([Schema.Literals(["E", "W"]), Schema.String]),
+                ),
                 longMinutes: Schema.optional(Schema.Number),
                 longSeconds: Schema.optional(Schema.Number),
                 precisionHorz: Schema.optional(Schema.Number),
@@ -25084,6 +26004,7 @@ export interface ScanReviewRecordResponse {
             type: "A";
             comment?: string | null;
             content?: string | null;
+            privateRouting?: boolean | null;
             proxied?: boolean | null;
             settings?: {
               ipv4Only?: boolean | null;
@@ -25104,6 +26025,7 @@ export interface ScanReviewRecordResponse {
             type: "AAAA";
             comment?: string | null;
             content?: string | null;
+            privateRouting?: boolean | null;
             proxied?: boolean | null;
             settings?: {
               ipv4Only?: boolean | null;
@@ -25374,11 +26296,11 @@ export interface ScanReviewRecordResponse {
             data?: {
               altitude?: number | null;
               latDegrees?: number | null;
-              latDirection?: "N" | "S" | null;
+              latDirection?: "N" | "S" | (string & {}) | null;
               latMinutes?: number | null;
               latSeconds?: number | null;
               longDegrees?: number | null;
-              longDirection?: "E" | "W" | null;
+              longDirection?: "E" | "W" | (string & {}) | null;
               longMinutes?: number | null;
               longSeconds?: number | null;
               precisionHorz?: number | null;
@@ -25649,6 +26571,9 @@ export const ScanReviewRecordResponse =
               content: Schema.optional(
                 Schema.Union([Schema.String, Schema.Null]),
               ),
+              privateRouting: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
               proxied: Schema.optional(
                 Schema.Union([Schema.Boolean, Schema.Null]),
               ),
@@ -25691,6 +26616,7 @@ export const ScanReviewRecordResponse =
                 type: "type",
                 comment: "comment",
                 content: "content",
+                privateRouting: "private_routing",
                 proxied: "proxied",
                 settings: "settings",
                 tags: "tags",
@@ -25713,6 +26639,9 @@ export const ScanReviewRecordResponse =
               content: Schema.optional(
                 Schema.Union([Schema.String, Schema.Null]),
               ),
+              privateRouting: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
               proxied: Schema.optional(
                 Schema.Union([Schema.Boolean, Schema.Null]),
               ),
@@ -25755,6 +26684,7 @@ export const ScanReviewRecordResponse =
                 type: "type",
                 comment: "comment",
                 content: "content",
+                privateRouting: "private_routing",
                 proxied: "proxied",
                 settings: "settings",
                 tags: "tags",
@@ -26550,7 +27480,13 @@ export const ScanReviewRecordResponse =
                       Schema.Union([Schema.Number, Schema.Null]),
                     ),
                     latDirection: Schema.optional(
-                      Schema.Union([Schema.Literals(["N", "S"]), Schema.Null]),
+                      Schema.Union([
+                        Schema.Union([
+                          Schema.Literals(["N", "S"]),
+                          Schema.String,
+                        ]),
+                        Schema.Null,
+                      ]),
                     ),
                     latMinutes: Schema.optional(
                       Schema.Union([Schema.Number, Schema.Null]),
@@ -26562,7 +27498,13 @@ export const ScanReviewRecordResponse =
                       Schema.Union([Schema.Number, Schema.Null]),
                     ),
                     longDirection: Schema.optional(
-                      Schema.Union([Schema.Literals(["E", "W"]), Schema.Null]),
+                      Schema.Union([
+                        Schema.Union([
+                          Schema.Literals(["E", "W"]),
+                          Schema.String,
+                        ]),
+                        Schema.Null,
+                      ]),
                     ),
                     longMinutes: Schema.optional(
                       Schema.Union([Schema.Number, Schema.Null]),
@@ -27305,7 +28247,8 @@ export interface GetSettingAccountResponse {
         | "cloudflare.standard"
         | "cloudflare.standard.random"
         | "custom.account"
-        | "custom.tenant";
+        | "custom.tenant"
+        | (string & {});
     };
     nsTtl: number;
     secondaryOverrides: boolean;
@@ -27318,8 +28261,10 @@ export interface GetSettingAccountResponse {
       rname?: string | null;
       ttl?: number | null;
     };
-    zoneMode: "standard" | "cdn_only" | "dns_only";
+    zoneMode: "standard" | "cdn_only" | "dns_only" | (string & {});
   };
+  /** When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modi */
+  enforceDnsOnly?: boolean | null;
 }
 
 export const GetSettingAccountResponse =
@@ -27334,11 +28279,14 @@ export const GetSettingAccountResponse =
       }).pipe(Schema.encodeKeys({ referenceZoneId: "reference_zone_id" })),
       multiProvider: Schema.Boolean,
       nameservers: Schema.Struct({
-        type: Schema.Literals([
-          "cloudflare.standard",
-          "cloudflare.standard.random",
-          "custom.account",
-          "custom.tenant",
+        type: Schema.Union([
+          Schema.Literals([
+            "cloudflare.standard",
+            "cloudflare.standard.random",
+            "custom.account",
+            "custom.tenant",
+          ]),
+          Schema.String,
         ]),
       }),
       nsTtl: Schema.Number,
@@ -27362,7 +28310,10 @@ export const GetSettingAccountResponse =
           ttl: "ttl",
         }),
       ),
-      zoneMode: Schema.Literals(["standard", "cdn_only", "dns_only"]),
+      zoneMode: Schema.Union([
+        Schema.Literals(["standard", "cdn_only", "dns_only"]),
+        Schema.String,
+      ]),
     }).pipe(
       Schema.encodeKeys({
         flattenAllCnames: "flatten_all_cnames",
@@ -27376,8 +28327,16 @@ export const GetSettingAccountResponse =
         zoneMode: "zone_mode",
       }),
     ),
+    enforceDnsOnly: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
   })
-    .pipe(Schema.encodeKeys({ zoneDefaults: "zone_defaults" }))
+    .pipe(
+      Schema.encodeKeys({
+        zoneDefaults: "zone_defaults",
+        enforceDnsOnly: "enforce_dns_only",
+      }),
+    )
     .pipe(
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetSettingAccountResponse>;
@@ -27398,7 +28357,9 @@ export const getSettingAccount: API.OperationMethod<
 export interface PatchSettingAccountRequest {
   /** Path param: Identifier. */
   accountId: string;
-  /** Body param: */
+  /** Body param: When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override d */
+  enforceDnsOnly?: boolean;
+  /** Body param */
   zoneDefaults?: {
     flattenAllCnames?: boolean;
     foundationDns?: boolean;
@@ -27409,7 +28370,8 @@ export interface PatchSettingAccountRequest {
         | "cloudflare.standard"
         | "cloudflare.standard.random"
         | "custom.account"
-        | "custom.tenant";
+        | "custom.tenant"
+        | (string & {});
     };
     nsTtl?: number;
     secondaryOverrides?: boolean;
@@ -27422,13 +28384,14 @@ export interface PatchSettingAccountRequest {
       rname?: string;
       ttl?: number;
     };
-    zoneMode?: "standard" | "cdn_only" | "dns_only";
+    zoneMode?: "standard" | "cdn_only" | "dns_only" | (string & {});
   };
 }
 
 export const PatchSettingAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    enforceDnsOnly: Schema.optional(Schema.Boolean),
     zoneDefaults: Schema.optional(
       Schema.Struct({
         flattenAllCnames: Schema.optional(Schema.Boolean),
@@ -27442,11 +28405,14 @@ export const PatchSettingAccountRequest =
         nameservers: Schema.optional(
           Schema.Struct({
             type: Schema.optional(
-              Schema.Literals([
-                "cloudflare.standard",
-                "cloudflare.standard.random",
-                "custom.account",
-                "custom.tenant",
+              Schema.Union([
+                Schema.Literals([
+                  "cloudflare.standard",
+                  "cloudflare.standard.random",
+                  "custom.account",
+                  "custom.tenant",
+                ]),
+                Schema.String,
               ]),
             ),
           }),
@@ -27475,7 +28441,10 @@ export const PatchSettingAccountRequest =
           ),
         ),
         zoneMode: Schema.optional(
-          Schema.Literals(["standard", "cdn_only", "dns_only"]),
+          Schema.Union([
+            Schema.Literals(["standard", "cdn_only", "dns_only"]),
+            Schema.String,
+          ]),
         ),
       }).pipe(
         Schema.encodeKeys({
@@ -27492,7 +28461,10 @@ export const PatchSettingAccountRequest =
       ),
     ),
   }).pipe(
-    Schema.encodeKeys({ zoneDefaults: "zone_defaults" }),
+    Schema.encodeKeys({
+      enforceDnsOnly: "enforce_dns_only",
+      zoneDefaults: "zone_defaults",
+    }),
     T.Http({ method: "PATCH", path: "/accounts/{account_id}/dns_settings" }),
   ) as unknown as Schema.Schema<PatchSettingAccountRequest>;
 
@@ -27507,7 +28479,8 @@ export interface PatchSettingAccountResponse {
         | "cloudflare.standard"
         | "cloudflare.standard.random"
         | "custom.account"
-        | "custom.tenant";
+        | "custom.tenant"
+        | (string & {});
     };
     nsTtl: number;
     secondaryOverrides: boolean;
@@ -27520,8 +28493,10 @@ export interface PatchSettingAccountResponse {
       rname?: string | null;
       ttl?: number | null;
     };
-    zoneMode: "standard" | "cdn_only" | "dns_only";
+    zoneMode: "standard" | "cdn_only" | "dns_only" | (string & {});
   };
+  /** When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modi */
+  enforceDnsOnly?: boolean | null;
 }
 
 export const PatchSettingAccountResponse =
@@ -27536,11 +28511,14 @@ export const PatchSettingAccountResponse =
       }).pipe(Schema.encodeKeys({ referenceZoneId: "reference_zone_id" })),
       multiProvider: Schema.Boolean,
       nameservers: Schema.Struct({
-        type: Schema.Literals([
-          "cloudflare.standard",
-          "cloudflare.standard.random",
-          "custom.account",
-          "custom.tenant",
+        type: Schema.Union([
+          Schema.Literals([
+            "cloudflare.standard",
+            "cloudflare.standard.random",
+            "custom.account",
+            "custom.tenant",
+          ]),
+          Schema.String,
         ]),
       }),
       nsTtl: Schema.Number,
@@ -27564,7 +28542,10 @@ export const PatchSettingAccountResponse =
           ttl: "ttl",
         }),
       ),
-      zoneMode: Schema.Literals(["standard", "cdn_only", "dns_only"]),
+      zoneMode: Schema.Union([
+        Schema.Literals(["standard", "cdn_only", "dns_only"]),
+        Schema.String,
+      ]),
     }).pipe(
       Schema.encodeKeys({
         flattenAllCnames: "flatten_all_cnames",
@@ -27578,8 +28559,16 @@ export const PatchSettingAccountResponse =
         zoneMode: "zone_mode",
       }),
     ),
+    enforceDnsOnly: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
   })
-    .pipe(Schema.encodeKeys({ zoneDefaults: "zone_defaults" }))
+    .pipe(
+      Schema.encodeKeys({
+        zoneDefaults: "zone_defaults",
+        enforceDnsOnly: "enforce_dns_only",
+      }),
+    )
     .pipe(
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<PatchSettingAccountResponse>;
@@ -27671,10 +28660,10 @@ export interface ListSettingAccountViewsRequest {
   page?: number;
   perPage?: number;
   /** Query param: Direction to order DNS views in. */
-  direction?: "asc" | "desc";
+  direction?: "asc" | "desc" | (string & {});
   /** Query param: Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. */
-  match?: "any" | "all";
-  /** Query param: */
+  match?: "any" | "all" | (string & {});
+  /** Query param */
   name?: {
     contains?: string;
     endswith?: string;
@@ -27682,7 +28671,7 @@ export interface ListSettingAccountViewsRequest {
     startswith?: string;
   };
   /** Query param: Field to order DNS views by. */
-  order?: "name" | "created_on" | "modified_on";
+  order?: "name" | "created_on" | "modified_on" | (string & {});
   /** Query param: A zone ID that exists in the zones list for the view. */
   zoneId?: string;
   /** Query param: A zone name that exists in the zones list for the view. */
@@ -27694,12 +28683,12 @@ export const ListSettingAccountViewsRequest =
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
     perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-    direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-      T.HttpQuery("direction"),
-    ),
-    match: Schema.optional(Schema.Literals(["any", "all"])).pipe(
-      T.HttpQuery("match"),
-    ),
+    direction: Schema.optional(
+      Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+    ).pipe(T.HttpQuery("direction")),
+    match: Schema.optional(
+      Schema.Union([Schema.Literals(["any", "all"]), Schema.String]),
+    ).pipe(T.HttpQuery("match")),
     name: Schema.optional(
       Schema.Struct({
         contains: Schema.optional(Schema.String),
@@ -27709,7 +28698,10 @@ export const ListSettingAccountViewsRequest =
       }),
     ).pipe(T.HttpQuery("name")),
     order: Schema.optional(
-      Schema.Literals(["name", "created_on", "modified_on"]),
+      Schema.Union([
+        Schema.Literals(["name", "created_on", "modified_on"]),
+        Schema.String,
+      ]),
     ).pipe(T.HttpQuery("order")),
     zoneId: Schema.optional(Schema.String).pipe(T.HttpQuery("zone_id")),
     zoneName: Schema.optional(Schema.String).pipe(T.HttpQuery("zone_name")),
@@ -28009,7 +29001,8 @@ export interface GetSettingZoneResponse {
       | "cloudflare.standard"
       | "custom.account"
       | "custom.tenant"
-      | "custom.zone";
+      | "custom.zone"
+      | (string & {});
     nsSet?: number | null;
   };
   /** The time to live (TTL) of the zone's nameserver (NS) records. */
@@ -28027,7 +29020,7 @@ export interface GetSettingZoneResponse {
     ttl?: number | null;
   };
   /** Whether the zone mode is a regular or CDN/DNS only zone. */
-  zoneMode: "standard" | "cdn_only" | "dns_only";
+  zoneMode: "standard" | "cdn_only" | "dns_only" | (string & {});
 }
 
 export const GetSettingZoneResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -28041,11 +29034,14 @@ export const GetSettingZoneResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     }).pipe(Schema.encodeKeys({ referenceZoneId: "reference_zone_id" })),
     multiProvider: Schema.Boolean,
     nameservers: Schema.Struct({
-      type: Schema.Literals([
-        "cloudflare.standard",
-        "custom.account",
-        "custom.tenant",
-        "custom.zone",
+      type: Schema.Union([
+        Schema.Literals([
+          "cloudflare.standard",
+          "custom.account",
+          "custom.tenant",
+          "custom.zone",
+        ]),
+        Schema.String,
       ]),
       nsSet: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     }).pipe(Schema.encodeKeys({ type: "type", nsSet: "ns_set" })),
@@ -28070,7 +29066,10 @@ export const GetSettingZoneResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         ttl: "ttl",
       }),
     ),
-    zoneMode: Schema.Literals(["standard", "cdn_only", "dns_only"]),
+    zoneMode: Schema.Union([
+      Schema.Literals(["standard", "cdn_only", "dns_only"]),
+      Schema.String,
+    ]),
   },
 )
   .pipe(
@@ -28121,7 +29120,8 @@ export interface PatchSettingZoneRequest {
       | "cloudflare.standard"
       | "custom.account"
       | "custom.tenant"
-      | "custom.zone";
+      | "custom.zone"
+      | (string & {});
   };
   /** Body param: The time to live (TTL) of the zone's nameserver (NS) records. */
   nsTtl?: number;
@@ -28138,7 +29138,7 @@ export interface PatchSettingZoneRequest {
     ttl?: number;
   };
   /** Body param: Whether the zone mode is a regular or CDN/DNS only zone. */
-  zoneMode?: "standard" | "cdn_only" | "dns_only";
+  zoneMode?: "standard" | "cdn_only" | "dns_only" | (string & {});
 }
 
 export const PatchSettingZoneRequest =
@@ -28156,11 +29156,14 @@ export const PatchSettingZoneRequest =
       Schema.Struct({
         nsSet: Schema.optional(Schema.Number),
         type: Schema.optional(
-          Schema.Literals([
-            "cloudflare.standard",
-            "custom.account",
-            "custom.tenant",
-            "custom.zone",
+          Schema.Union([
+            Schema.Literals([
+              "cloudflare.standard",
+              "custom.account",
+              "custom.tenant",
+              "custom.zone",
+            ]),
+            Schema.String,
           ]),
         ),
       }).pipe(Schema.encodeKeys({ nsSet: "ns_set", type: "type" })),
@@ -28189,7 +29192,10 @@ export const PatchSettingZoneRequest =
       ),
     ),
     zoneMode: Schema.optional(
-      Schema.Literals(["standard", "cdn_only", "dns_only"]),
+      Schema.Union([
+        Schema.Literals(["standard", "cdn_only", "dns_only"]),
+        Schema.String,
+      ]),
     ),
   }).pipe(
     Schema.encodeKeys({
@@ -28221,7 +29227,8 @@ export interface PatchSettingZoneResponse {
       | "cloudflare.standard"
       | "custom.account"
       | "custom.tenant"
-      | "custom.zone";
+      | "custom.zone"
+      | (string & {});
     nsSet?: number | null;
   };
   /** The time to live (TTL) of the zone's nameserver (NS) records. */
@@ -28239,7 +29246,7 @@ export interface PatchSettingZoneResponse {
     ttl?: number | null;
   };
   /** Whether the zone mode is a regular or CDN/DNS only zone. */
-  zoneMode: "standard" | "cdn_only" | "dns_only";
+  zoneMode: "standard" | "cdn_only" | "dns_only" | (string & {});
 }
 
 export const PatchSettingZoneResponse =
@@ -28253,11 +29260,14 @@ export const PatchSettingZoneResponse =
     }).pipe(Schema.encodeKeys({ referenceZoneId: "reference_zone_id" })),
     multiProvider: Schema.Boolean,
     nameservers: Schema.Struct({
-      type: Schema.Literals([
-        "cloudflare.standard",
-        "custom.account",
-        "custom.tenant",
-        "custom.zone",
+      type: Schema.Union([
+        Schema.Literals([
+          "cloudflare.standard",
+          "custom.account",
+          "custom.tenant",
+          "custom.zone",
+        ]),
+        Schema.String,
       ]),
       nsSet: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     }).pipe(Schema.encodeKeys({ type: "type", nsSet: "ns_set" })),
@@ -28282,7 +29292,10 @@ export const PatchSettingZoneResponse =
         ttl: "ttl",
       }),
     ),
-    zoneMode: Schema.Literals(["standard", "cdn_only", "dns_only"]),
+    zoneMode: Schema.Union([
+      Schema.Literals(["standard", "cdn_only", "dns_only"]),
+      Schema.String,
+    ]),
   })
     .pipe(
       Schema.encodeKeys({
@@ -28521,7 +29534,7 @@ export const listZoneTransferAcls: API.PaginatedOperationMethod<
 }));
 
 export interface CreateZoneTransferAclRequest {
-  /** Path param: */
+  /** Path param */
   accountId: string;
   /** Body param: Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones an */
   ipRange: string;
@@ -28576,7 +29589,7 @@ export const createZoneTransferAcl: API.OperationMethod<
 
 export interface UpdateZoneTransferAclRequest {
   aclId: string;
-  /** Path param: */
+  /** Path param */
   accountId: string;
   /** Body param: Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones an */
   ipRange: string;
@@ -28675,9 +29688,9 @@ export const deleteZoneTransferAcl: API.OperationMethod<
 // =============================================================================
 
 export interface CreateZoneTransferForceAxfrRequest {
-  /** Path param: */
+  /** Path param */
   zoneId: string;
-  /** Body param: */
+  /** Body param */
   body: unknown;
 }
 
@@ -28790,7 +29803,7 @@ export const getZoneTransferIncoming: API.OperationMethod<
 }));
 
 export interface CreateZoneTransferIncomingRequest {
-  /** Path param: */
+  /** Path param */
   zoneId: string;
   /** Body param: How often should a secondary zone auto refresh regardless of DNS NOTIFY. Not applicable for primary zones. */
   autoRefreshSeconds: number;
@@ -28878,7 +29891,7 @@ export const createZoneTransferIncoming: API.OperationMethod<
 }));
 
 export interface UpdateZoneTransferIncomingRequest {
-  /** Path param: */
+  /** Path param */
   zoneId: string;
   /** Body param: How often should a secondary zone auto refresh regardless of DNS NOTIFY. Not applicable for primary zones. */
   autoRefreshSeconds: number;
@@ -29077,7 +30090,7 @@ export const getZoneTransferOutgoing: API.OperationMethod<
 }));
 
 export interface CreateZoneTransferOutgoingRequest {
-  /** Path param: */
+  /** Path param */
   zoneId: string;
   /** Body param: Zone name. */
   name: string;
@@ -29153,7 +30166,7 @@ export const createZoneTransferOutgoing: API.OperationMethod<
 }));
 
 export interface UpdateZoneTransferOutgoingRequest {
-  /** Path param: */
+  /** Path param */
   zoneId: string;
   /** Body param: Zone name. */
   name: string;
@@ -29267,9 +30280,9 @@ export const deleteZoneTransferOutgoing: API.OperationMethod<
 }));
 
 export interface EnableZoneTransferOutgoingRequest {
-  /** Path param: */
+  /** Path param */
   zoneId: string;
-  /** Body param: */
+  /** Body param */
   body: unknown;
 }
 
@@ -29305,9 +30318,9 @@ export const enableZoneTransferOutgoing: API.OperationMethod<
 }));
 
 export interface DisableZoneTransferOutgoingRequest {
-  /** Path param: */
+  /** Path param */
   zoneId: string;
-  /** Body param: */
+  /** Body param */
   body: unknown;
 }
 
@@ -29518,7 +30531,7 @@ export const listZoneTransferPeers: API.PaginatedOperationMethod<
 }));
 
 export interface CreateZoneTransferPeerRequest {
-  /** Path param: */
+  /** Path param */
   accountId: string;
   /** Body param: The name of the peer. */
   name: string;
@@ -29587,7 +30600,7 @@ export const createZoneTransferPeer: API.OperationMethod<
 
 export interface UpdateZoneTransferPeerRequest {
   peerId: string;
-  /** Path param: */
+  /** Path param */
   accountId: string;
   /** Body param: The name of the peer. */
   name: string;
@@ -29815,7 +30828,7 @@ export const listZoneTransferTsigs: API.PaginatedOperationMethod<
 }));
 
 export interface CreateZoneTransferTsigRequest {
-  /** Path param: */
+  /** Path param */
   accountId: string;
   /** Body param: TSIG algorithm. */
   algo: string;
@@ -29873,7 +30886,7 @@ export const createZoneTransferTsig: API.OperationMethod<
 
 export interface UpdateZoneTransferTsigRequest {
   tsigId: string;
-  /** Path param: */
+  /** Path param */
   accountId: string;
   /** Body param: TSIG algorithm. */
   algo: string;

@@ -413,6 +413,9 @@ paths:
                           total_count:
                             type: number
                             description: Total results available without any search parameters.
+                          total_pages:
+                            type: number
+                            description: The number of total pages in the entire result set.
                     required:
                       - errors
                       - messages
@@ -522,6 +525,9 @@ paths:
                           total_count:
                             type: number
                             description: Total results available without any search parameters.
+                          total_pages:
+                            type: number
+                            description: The number of total pages in the entire result set.
                     required:
                       - errors
                       - messages
@@ -1027,7 +1033,8 @@ paths:
     put:
       operationId: updateRule
       description: "Update actions and matches, or enable/disable specific routing
-        rules.  @example ```ts const emailRoutingRule = await
+        rules. Forward actions require all destination addresses to be
+        verified.  @example ```ts const emailRoutingRule = await
         client.emailRouting.rules.update( 'a7e6fb77503c41d8a7f3113c6918f10c', {
         zone_id: '023e105f4ecef8ad9ca31a8372d0c353', actions: [{ type: 'forward'
         }], matchers: [{ type: 'literal' }], }, ); ```"
@@ -1369,7 +1376,8 @@ paths:
       description: "Rules consist of a set of criteria for matching emails (such as an
         email being sent to a specific custom email address) plus a set of
         actions to take on the email (like forwarding it to a specific
-        destination address).  @example ```ts const emailRoutingRule = await
+        destination address). Forward actions require all destination addresses
+        to be verified.  @example ```ts const emailRoutingRule = await
         client.emailRouting.rules.create({ zone_id:
         '023e105f4ecef8ad9ca31a8372d0c353', actions: [{ type: 'forward' }],
         matchers: [{ type: 'literal' }], }); ```"
@@ -1585,8 +1593,9 @@ paths:
     put:
       operationId: putRuleCatchAll
       description: "Enable or disable catch-all routing rule, or change action to
-        forward to specific destination address.  @example ```ts const catchAll
-        = await client.emailRouting.rules.catchAlls.update({ zone_id:
+        forward to specific destination address. Forward actions require all
+        destination addresses to be verified.  @example ```ts const catchAll =
+        await client.emailRouting.rules.catchAlls.update({ zone_id:
         '023e105f4ecef8ad9ca31a8372d0c353', actions: [{ type: 'forward' }],
         matchers: [{ type: 'all' }], }); ```"
       parameters:

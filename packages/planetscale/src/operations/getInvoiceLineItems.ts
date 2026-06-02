@@ -21,6 +21,7 @@ export type GetInvoiceLineItemsInput = typeof GetInvoiceLineItemsInput.Type;
 // Output Schema
 export const GetInvoiceLineItemsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.String,
     current_page: Schema.Number,
     next_page: Schema.NullOr(Schema.Number),
     next_page_url: Schema.NullOr(Schema.String),
@@ -39,7 +40,7 @@ export const GetInvoiceLineItemsOutput =
           name: Schema.String,
           created_at: Schema.String,
           updated_at: Schema.String,
-          deleted_at: Schema.String,
+          deleted_at: Schema.NullOr(Schema.String),
         }),
       }),
     ),

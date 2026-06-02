@@ -8,10 +8,11 @@ x-distilled-service: security-txt
 paths:
   /zones/{zone_id}/security-center/securitytxt:
     get:
-      operationId: getSecurityTXT
-      description: "Get security.txt  @example ```ts const securityTXT = await
-        client.securityTXT.get({ zone_id: '023e105f4ecef8ad9ca31a8372d0c353',
-        }); ```"
+      operationId: getSecurityTxt
+      description: "Retrieves the current security.txt file configuration for a zone,
+        used for security vulnerability reporting.  @example ```ts const
+        securityTXT = await client.securityTXT.get({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
       parameters:
         - name: zone_id
           in: path
@@ -55,12 +56,14 @@ paths:
                     type: array
                     items:
                       type: string
-                  preferredLanguages:
+                  preferred_languages:
                     type: string
       x-distilled-response-path: result
     put:
-      operationId: putSecurityTXT
-      description: "Update security.txt  @example ```ts const securityTXT = await
+      operationId: putSecurityTxt
+      description: "Updates the security.txt file configuration for a zone, which
+        provides security researchers with vulnerability reporting
+        information.  @example ```ts const securityTXT = await
         client.securityTXT.update({ zone_id: '023e105f4ecef8ad9ca31a8372d0c353',
         }); ```"
       parameters:
@@ -81,41 +84,41 @@ paths:
                   type: array
                   items:
                     type: string
-                  description: "Body param:"
+                  description: Body param
                 canonical:
                   type: array
                   items:
                     type: string
-                  description: "Body param:"
+                  description: Body param
                 contact:
                   type: array
                   items:
                     type: string
-                  description: "Body param:"
+                  description: Body param
                 enabled:
                   type: boolean
-                  description: "Body param:"
+                  description: Body param
                 encryption:
                   type: array
                   items:
                     type: string
-                  description: "Body param:"
+                  description: Body param
                 expires:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 hiring:
                   type: array
                   items:
                     type: string
-                  description: "Body param:"
+                  description: Body param
                 policy:
                   type: array
                   items:
                     type: string
-                  description: "Body param:"
-                preferredLanguages:
+                  description: Body param
+                preferred_languages:
                   type: string
-                  description: "Body param:"
+                  description: Body param
       responses:
         "200":
           description: Success
@@ -172,10 +175,11 @@ paths:
                   - messages
                   - success
     delete:
-      operationId: deleteSecurityTXT
-      description: "Delete security.txt  @example ```ts const securityTXT = await
-        client.securityTXT.delete({ zone_id: '023e105f4ecef8ad9ca31a8372d0c353',
-        }); ```"
+      operationId: deleteSecurityTxt
+      description: "Removes the security.txt file configuration for a zone. The
+        /.well-known/security.txt endpoint will no longer be served.  @example
+        ```ts const securityTXT = await client.securityTXT.delete({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
       parameters:
         - name: zone_id
           in: path

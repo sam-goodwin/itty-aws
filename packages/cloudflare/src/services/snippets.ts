@@ -18,7 +18,7 @@ import { type DefaultErrors } from "../errors.ts";
 
 export interface GetContentRequest {
   snippetName: string;
-  /** The unique ID of the zone. */
+  /** Use this field to specify the unique ID of the zone. */
   zoneId: string;
 }
 
@@ -55,7 +55,7 @@ export const getContent: API.OperationMethod<
 // =============================================================================
 
 export interface ListRulesRequest {
-  /** The unique ID of the zone. */
+  /** Use this field to specify the unique ID of the zone. */
   zoneId: string;
 }
 
@@ -65,60 +65,30 @@ export const ListRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({ method: "GET", path: "/zones/{zone_id}/snippets/snippet_rules" }),
 ) as unknown as Schema.Schema<ListRulesRequest>;
 
-export interface ListRulesResponse {
-  result: {
-    id: string;
-    expression: string;
-    lastUpdated: string;
-    snippetName: string;
-    description?: string | null;
-    enabled?: boolean | null;
-  }[];
-}
+export type ListRulesResponse = unknown;
 
-export const ListRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  result: Schema.Array(
-    Schema.Struct({
-      id: Schema.String,
-      expression: Schema.String,
-      lastUpdated: Schema.String,
-      snippetName: Schema.String,
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        expression: "expression",
-        lastUpdated: "last_updated",
-        snippetName: "snippet_name",
-        description: "description",
-        enabled: "enabled",
-      }),
-    ),
-  ),
-}) as unknown as Schema.Schema<ListRulesResponse>;
+export const ListRulesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<ListRulesResponse>;
 
 export type ListRulesError = DefaultErrors;
 
-export const listRules: API.PaginatedOperationMethod<
+export const listRules: API.OperationMethod<
   ListRulesRequest,
   ListRulesResponse,
   ListRulesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListRulesRequest,
   output: ListRulesResponse,
   errors: [],
-  pagination: {
-    mode: "single",
-    items: "result",
-  } as const,
 }));
 
 export interface PutRuleRequest {
-  /** Path param: The unique ID of the zone. */
+  /** Path param: Use this field to specify the unique ID of the zone. */
   zoneId: string;
-  /** Body param: A list of snippet rules. */
+  /** Body param: Lists snippet rules. */
   rules: {
     expression: string;
     snippetName: string;
@@ -148,58 +118,27 @@ export const PutRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({ method: "PUT", path: "/zones/{zone_id}/snippets/snippet_rules" }),
 ) as unknown as Schema.Schema<PutRuleRequest>;
 
-export interface PutRuleResponse {
-  result: {
-    id: string;
-    expression: string;
-    lastUpdated: string;
-    snippetName: string;
-    description?: string | null;
-    enabled?: boolean | null;
-  }[];
-}
+export type PutRuleResponse = unknown;
 
-export const PutRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  result: Schema.Array(
-    Schema.Struct({
-      id: Schema.String,
-      expression: Schema.String,
-      lastUpdated: Schema.String,
-      snippetName: Schema.String,
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        expression: "expression",
-        lastUpdated: "last_updated",
-        snippetName: "snippet_name",
-        description: "description",
-        enabled: "enabled",
-      }),
-    ),
-  ),
-}) as unknown as Schema.Schema<PutRuleResponse>;
+export const PutRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<PutRuleResponse>;
 
 export type PutRuleError = DefaultErrors;
 
-export const putRule: API.PaginatedOperationMethod<
+export const putRule: API.OperationMethod<
   PutRuleRequest,
   PutRuleResponse,
   PutRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutRuleRequest,
   output: PutRuleResponse,
   errors: [],
-  pagination: {
-    mode: "single",
-    items: "result",
-  } as const,
 }));
 
 export interface DeleteRuleRequest {
-  /** The unique ID of the zone. */
+  /** Use this field to specify the unique ID of the zone. */
   zoneId: string;
 }
 
@@ -209,54 +148,24 @@ export const DeleteRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({ method: "DELETE", path: "/zones/{zone_id}/snippets/snippet_rules" }),
 ) as unknown as Schema.Schema<DeleteRuleRequest>;
 
-export interface DeleteRuleResponse {
-  result: {
-    id: string;
-    expression: string;
-    lastUpdated: string;
-    snippetName: string;
-    description?: string | null;
-    enabled?: boolean | null;
-  }[];
-}
+export type DeleteRuleResponse = unknown;
 
-export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  result: Schema.Array(
-    Schema.Struct({
-      id: Schema.String,
-      expression: Schema.String,
-      lastUpdated: Schema.String,
-      snippetName: Schema.String,
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        expression: "expression",
-        lastUpdated: "last_updated",
-        snippetName: "snippet_name",
-        description: "description",
-        enabled: "enabled",
-      }),
-    ),
-  ),
-}) as unknown as Schema.Schema<DeleteRuleResponse>;
+export const DeleteRuleResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<DeleteRuleResponse>;
 
 export type DeleteRuleError = DefaultErrors;
 
-export const deleteRule: API.PaginatedOperationMethod<
+export const deleteRule: API.OperationMethod<
   DeleteRuleRequest,
   DeleteRuleResponse,
   DeleteRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRuleRequest,
   output: DeleteRuleResponse,
   errors: [],
-  pagination: {
-    mode: "single",
-    items: "result",
-  } as const,
 }));
 
 // =============================================================================
@@ -265,7 +174,7 @@ export const deleteRule: API.PaginatedOperationMethod<
 
 export interface GetSnippetRequest {
   snippetName: string;
-  /** The unique ID of the zone. */
+  /** Use this field to specify the unique ID of the zone. */
   zoneId: string;
 }
 
@@ -277,11 +186,11 @@ export const GetSnippetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<GetSnippetRequest>;
 
 export interface GetSnippetResponse {
-  /** The timestamp of when the snippet was created. */
+  /** Indicates when the snippet was created. */
   createdOn: string;
-  /** The identifying name of the snippet. */
+  /** Identify the snippet. */
   snippetName: string;
-  /** The timestamp of when the snippet was last modified. */
+  /** Indicates when the snippet was last modified. */
   modifiedOn?: string | null;
 }
 
@@ -315,7 +224,7 @@ export const getSnippet: API.OperationMethod<
 }));
 
 export interface ListSnippetsRequest {
-  /** Path param: The unique ID of the zone. */
+  /** Path param: Use this field to specify the unique ID of the zone. */
   zoneId: string;
   page?: number;
   perPage?: number;
@@ -401,9 +310,9 @@ export const listSnippets: API.PaginatedOperationMethod<
 
 export interface PutSnippetRequest {
   snippetName: string;
-  /** Path param: The unique ID of the zone. */
+  /** Path param: Use this field to specify the unique ID of the zone. */
   zoneId: string;
-  /** Body param: Metadata about the snippet. */
+  /** Body param: Provide metadata about the snippet. */
   metadata: { mainModule: string };
 }
 
@@ -422,11 +331,11 @@ export const PutSnippetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<PutSnippetRequest>;
 
 export interface PutSnippetResponse {
-  /** The timestamp of when the snippet was created. */
+  /** Indicates when the snippet was created. */
   createdOn: string;
-  /** The identifying name of the snippet. */
+  /** Identify the snippet. */
   snippetName: string;
-  /** The timestamp of when the snippet was last modified. */
+  /** Indicates when the snippet was last modified. */
   modifiedOn?: string | null;
 }
 
@@ -461,7 +370,7 @@ export const putSnippet: API.OperationMethod<
 
 export interface DeleteSnippetRequest {
   snippetName: string;
-  /** The unique ID of the zone. */
+  /** Use this field to specify the unique ID of the zone. */
   zoneId: string;
 }
 
@@ -472,14 +381,12 @@ export const DeleteSnippetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({ method: "DELETE", path: "/zones/{zone_id}/snippets/{snippetName}" }),
 ) as unknown as Schema.Schema<DeleteSnippetRequest>;
 
-export type DeleteSnippetResponse = string | null;
+export type DeleteSnippetResponse = unknown;
 
-export const DeleteSnippetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
-  Schema.String,
-  Schema.Null,
-]).pipe(
-  T.ResponsePath("result"),
-) as unknown as Schema.Schema<DeleteSnippetResponse>;
+export const DeleteSnippetResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<DeleteSnippetResponse>;
 
 export type DeleteSnippetError = DefaultErrors;
 

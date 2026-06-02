@@ -102,6 +102,8 @@ export interface GetMtlsCertificateResponse {
   serialNumber?: string | null;
   /** The type of hash used for the certificate. */
   signature?: string | null;
+  /** The type of the certificate, indicating how it was created and who manages it. */
+  type?: "custom" | "gateway_managed" | "access_managed" | (string & {}) | null;
   /** This is the time the certificate was uploaded. */
   uploadedOn?: string | null;
 }
@@ -116,6 +118,15 @@ export const GetMtlsCertificateResponse =
     name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     serialNumber: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    type: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals(["custom", "gateway_managed", "access_managed"]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
+    ),
     uploadedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
     .pipe(
@@ -128,6 +139,7 @@ export const GetMtlsCertificateResponse =
         name: "name",
         serialNumber: "serial_number",
         signature: "signature",
+        type: "type",
         uploadedOn: "uploaded_on",
       }),
     )
@@ -149,13 +161,23 @@ export const getMtlsCertificate: API.OperationMethod<
 }));
 
 export interface ListMtlsCertificatesRequest {
-  /** Identifier. */
+  /** Path param: Identifier. */
   accountId: string;
+  /** Query param: Filters results by certificate type. Multiple types can be comma-separated. */
+  type?: ("custom" | "gateway_managed" | "access_managed" | (string & {}))[];
 }
 
 export const ListMtlsCertificatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    type: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals(["custom", "gateway_managed", "access_managed"]),
+          Schema.String,
+        ]),
+      ),
+    ).pipe(T.HttpQuery("type")),
   }).pipe(
     T.Http({ method: "GET", path: "/accounts/{account_id}/mtls_certificates" }),
   ) as unknown as Schema.Schema<ListMtlsCertificatesRequest>;
@@ -170,6 +192,12 @@ export interface ListMtlsCertificatesResponse {
     name?: string | null;
     serialNumber?: string | null;
     signature?: string | null;
+    type?:
+      | "custom"
+      | "gateway_managed"
+      | "access_managed"
+      | (string & {})
+      | null;
     uploadedOn?: string | null;
   }[];
 }
@@ -190,6 +218,15 @@ export const ListMtlsCertificatesResponse =
           Schema.Union([Schema.String, Schema.Null]),
         ),
         signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        type: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals(["custom", "gateway_managed", "access_managed"]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
+        ),
         uploadedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       }).pipe(
         Schema.encodeKeys({
@@ -201,6 +238,7 @@ export const ListMtlsCertificatesResponse =
           name: "name",
           serialNumber: "serial_number",
           signature: "signature",
+          type: "type",
           uploadedOn: "uploaded_on",
         }),
       ),
@@ -274,6 +312,8 @@ export interface CreateMtlsCertificateResponse {
   serialNumber?: string | null;
   /** The type of hash used for the certificate. */
   signature?: string | null;
+  /** The type of the certificate, indicating how it was created and who manages it. */
+  type?: "custom" | "gateway_managed" | "access_managed" | (string & {}) | null;
   /** This is the time the certificate was updated. */
   updatedAt?: string | null;
   /** This is the time the certificate was uploaded. */
@@ -290,6 +330,15 @@ export const CreateMtlsCertificateResponse =
     name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     serialNumber: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    type: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals(["custom", "gateway_managed", "access_managed"]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
+    ),
     updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     uploadedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
@@ -303,6 +352,7 @@ export const CreateMtlsCertificateResponse =
         name: "name",
         serialNumber: "serial_number",
         signature: "signature",
+        type: "type",
         updatedAt: "updated_at",
         uploadedOn: "uploaded_on",
       }),
@@ -358,6 +408,8 @@ export interface DeleteMtlsCertificateResponse {
   serialNumber?: string | null;
   /** The type of hash used for the certificate. */
   signature?: string | null;
+  /** The type of the certificate, indicating how it was created and who manages it. */
+  type?: "custom" | "gateway_managed" | "access_managed" | (string & {}) | null;
   /** This is the time the certificate was uploaded. */
   uploadedOn?: string | null;
 }
@@ -372,6 +424,15 @@ export const DeleteMtlsCertificateResponse =
     name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     serialNumber: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    type: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals(["custom", "gateway_managed", "access_managed"]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
+    ),
     uploadedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
     .pipe(
@@ -384,6 +445,7 @@ export const DeleteMtlsCertificateResponse =
         name: "name",
         serialNumber: "serial_number",
         signature: "signature",
+        type: "type",
         uploadedOn: "uploaded_on",
       }),
     )

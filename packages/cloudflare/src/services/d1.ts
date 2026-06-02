@@ -154,6 +154,7 @@ export const ListDatabasesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface ListDatabasesResponse {
   result: {
     createdAt?: string | null;
+    jurisdiction?: "eu" | "fedramp" | null;
     name?: string | null;
     uuid?: string | null;
     version?: string | null;
@@ -170,12 +171,20 @@ export const ListDatabasesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      jurisdiction: Schema.optional(
+        Schema.Union([
+          Schema.Literal("eu"),
+          Schema.Literal("fedramp"),
+          Schema.Null,
+        ]),
+      ),
       name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       uuid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       version: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(
       Schema.encodeKeys({
         createdAt: "created_at",
+        jurisdiction: "jurisdiction",
         name: "name",
         uuid: "uuid",
         version: "version",
@@ -249,11 +258,13 @@ export interface GetDatabaseResponse {
   createdAt?: string | null;
   /** The D1 database's size, in bytes. */
   fileSize?: number | null;
+  /** Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored. */
+  jurisdiction?: "eu" | "fedramp" | null;
   /** D1 database name. */
   name?: string | null;
   numTables?: number | null;
   /** Configuration for D1 read replication. */
-  readReplication?: { mode: "auto" | "disabled" } | null;
+  readReplication?: { mode: "auto" | "disabled" | (string & {}) } | null;
   /** D1 database identifier (UUID). */
   uuid?: string | null;
   version?: string | null;
@@ -262,12 +273,22 @@ export interface GetDatabaseResponse {
 export const GetDatabaseResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   fileSize: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  jurisdiction: Schema.optional(
+    Schema.Union([
+      Schema.Literal("eu"),
+      Schema.Literal("fedramp"),
+      Schema.Null,
+    ]),
+  ),
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   numTables: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   readReplication: Schema.optional(
     Schema.Union([
       Schema.Struct({
-        mode: Schema.Literals(["auto", "disabled"]),
+        mode: Schema.Union([
+          Schema.Literals(["auto", "disabled"]),
+          Schema.String,
+        ]),
       }),
       Schema.Null,
     ]),
@@ -279,6 +300,7 @@ export const GetDatabaseResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.encodeKeys({
       createdAt: "created_at",
       fileSize: "file_size",
+      jurisdiction: "jurisdiction",
       name: "name",
       numTables: "num_tables",
       readReplication: "read_replication",
@@ -313,23 +335,46 @@ export interface CreateDatabaseRequest {
   /** Body param: D1 database name. */
   name: string;
   /** Body param: Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored. */
-  jurisdiction?: "eu" | "fedramp";
+  jurisdiction?: "eu" | "fedramp" | (string & {});
   /** Body param: Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user. */
-  primaryLocationHint?: "wnam" | "enam" | "weur" | "eeur" | "apac" | "oc";
+  primaryLocationHint?:
+    | "wnam"
+    | "enam"
+    | "weur"
+    | "eeur"
+    | "apac"
+    | "oc"
+    | (string & {});
+  /** Body param: Configuration for D1 read replication. */
+  readReplication?: { mode: "auto" | "disabled" | (string & {}) };
 }
 
 export const CreateDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   name: Schema.String,
-  jurisdiction: Schema.optional(Schema.Literals(["eu", "fedramp"])),
+  jurisdiction: Schema.optional(
+    Schema.Union([Schema.Literals(["eu", "fedramp"]), Schema.String]),
+  ),
   primaryLocationHint: Schema.optional(
-    Schema.Literals(["wnam", "enam", "weur", "eeur", "apac", "oc"]),
+    Schema.Union([
+      Schema.Literals(["wnam", "enam", "weur", "eeur", "apac", "oc"]),
+      Schema.String,
+    ]),
+  ),
+  readReplication: Schema.optional(
+    Schema.Struct({
+      mode: Schema.Union([
+        Schema.Literals(["auto", "disabled"]),
+        Schema.String,
+      ]),
+    }),
   ),
 }).pipe(
   Schema.encodeKeys({
     name: "name",
     jurisdiction: "jurisdiction",
     primaryLocationHint: "primary_location_hint",
+    readReplication: "read_replication",
   }),
   T.Http({ method: "POST", path: "/accounts/{account_id}/d1/database" }),
 ) as unknown as Schema.Schema<CreateDatabaseRequest>;
@@ -339,11 +384,13 @@ export interface CreateDatabaseResponse {
   createdAt?: string | null;
   /** The D1 database's size, in bytes. */
   fileSize?: number | null;
+  /** Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored. */
+  jurisdiction?: "eu" | "fedramp" | null;
   /** D1 database name. */
   name?: string | null;
   numTables?: number | null;
   /** Configuration for D1 read replication. */
-  readReplication?: { mode: "auto" | "disabled" } | null;
+  readReplication?: { mode: "auto" | "disabled" | (string & {}) } | null;
   /** D1 database identifier (UUID). */
   uuid?: string | null;
   version?: string | null;
@@ -353,12 +400,22 @@ export const CreateDatabaseResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     fileSize: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    jurisdiction: Schema.optional(
+      Schema.Union([
+        Schema.Literal("eu"),
+        Schema.Literal("fedramp"),
+        Schema.Null,
+      ]),
+    ),
     name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     numTables: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     readReplication: Schema.optional(
       Schema.Union([
         Schema.Struct({
-          mode: Schema.Literals(["auto", "disabled"]),
+          mode: Schema.Union([
+            Schema.Literals(["auto", "disabled"]),
+            Schema.String,
+          ]),
         }),
         Schema.Null,
       ]),
@@ -371,6 +428,7 @@ export const CreateDatabaseResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     Schema.encodeKeys({
       createdAt: "created_at",
       fileSize: "file_size",
+      jurisdiction: "jurisdiction",
       name: "name",
       numTables: "num_tables",
       readReplication: "read_replication",
@@ -404,14 +462,14 @@ export interface UpdateDatabaseRequest {
   /** Path param: Account identifier tag. */
   accountId: string;
   /** Body param: Configuration for D1 read replication. */
-  readReplication: { mode: "auto" | "disabled" };
+  readReplication: { mode: "auto" | "disabled" | (string & {}) };
 }
 
 export const UpdateDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   databaseId: Schema.String.pipe(T.HttpPath("databaseId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   readReplication: Schema.Struct({
-    mode: Schema.Literals(["auto", "disabled"]),
+    mode: Schema.Union([Schema.Literals(["auto", "disabled"]), Schema.String]),
   }),
 }).pipe(
   Schema.encodeKeys({ readReplication: "read_replication" }),
@@ -426,11 +484,13 @@ export interface UpdateDatabaseResponse {
   createdAt?: string | null;
   /** The D1 database's size, in bytes. */
   fileSize?: number | null;
+  /** Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored. */
+  jurisdiction?: "eu" | "fedramp" | null;
   /** D1 database name. */
   name?: string | null;
   numTables?: number | null;
   /** Configuration for D1 read replication. */
-  readReplication?: { mode: "auto" | "disabled" } | null;
+  readReplication?: { mode: "auto" | "disabled" | (string & {}) } | null;
   /** D1 database identifier (UUID). */
   uuid?: string | null;
   version?: string | null;
@@ -440,12 +500,22 @@ export const UpdateDatabaseResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     fileSize: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    jurisdiction: Schema.optional(
+      Schema.Union([
+        Schema.Literal("eu"),
+        Schema.Literal("fedramp"),
+        Schema.Null,
+      ]),
+    ),
     name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     numTables: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     readReplication: Schema.optional(
       Schema.Union([
         Schema.Struct({
-          mode: Schema.Literals(["auto", "disabled"]),
+          mode: Schema.Union([
+            Schema.Literals(["auto", "disabled"]),
+            Schema.String,
+          ]),
         }),
         Schema.Null,
       ]),
@@ -458,6 +528,7 @@ export const UpdateDatabaseResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     Schema.encodeKeys({
       createdAt: "created_at",
       fileSize: "file_size",
+      jurisdiction: "jurisdiction",
       name: "name",
       numTables: "num_tables",
       readReplication: "read_replication",
@@ -491,7 +562,7 @@ export interface PatchDatabaseRequest {
   /** Path param: Account identifier tag. */
   accountId: string;
   /** Body param: Configuration for D1 read replication. */
-  readReplication?: { mode: "auto" | "disabled" };
+  readReplication?: { mode: "auto" | "disabled" | (string & {}) };
 }
 
 export const PatchDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -499,7 +570,10 @@ export const PatchDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   readReplication: Schema.optional(
     Schema.Struct({
-      mode: Schema.Literals(["auto", "disabled"]),
+      mode: Schema.Union([
+        Schema.Literals(["auto", "disabled"]),
+        Schema.String,
+      ]),
     }),
   ),
 }).pipe(
@@ -515,11 +589,13 @@ export interface PatchDatabaseResponse {
   createdAt?: string | null;
   /** The D1 database's size, in bytes. */
   fileSize?: number | null;
+  /** Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored. */
+  jurisdiction?: "eu" | "fedramp" | null;
   /** D1 database name. */
   name?: string | null;
   numTables?: number | null;
   /** Configuration for D1 read replication. */
-  readReplication?: { mode: "auto" | "disabled" } | null;
+  readReplication?: { mode: "auto" | "disabled" | (string & {}) } | null;
   /** D1 database identifier (UUID). */
   uuid?: string | null;
   version?: string | null;
@@ -528,12 +604,22 @@ export interface PatchDatabaseResponse {
 export const PatchDatabaseResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   fileSize: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  jurisdiction: Schema.optional(
+    Schema.Union([
+      Schema.Literal("eu"),
+      Schema.Literal("fedramp"),
+      Schema.Null,
+    ]),
+  ),
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   numTables: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   readReplication: Schema.optional(
     Schema.Union([
       Schema.Struct({
-        mode: Schema.Literals(["auto", "disabled"]),
+        mode: Schema.Union([
+          Schema.Literals(["auto", "disabled"]),
+          Schema.String,
+        ]),
       }),
       Schema.Null,
     ]),
@@ -545,6 +631,7 @@ export const PatchDatabaseResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.encodeKeys({
       createdAt: "created_at",
       fileSize: "file_size",
+      jurisdiction: "jurisdiction",
       name: "name",
       numTables: "num_tables",
       readReplication: "read_replication",
@@ -621,7 +708,7 @@ export interface ExportDatabaseRequest {
   outputFormat: "polling";
   /** Body param: To poll an in-progress export, provide the current bookmark (returned by your first polling response) */
   currentBookmark?: string;
-  /** Body param: */
+  /** Body param */
   dumpOptions?: { noData?: boolean; noSchema?: boolean; tables?: string[] };
 }
 
@@ -664,7 +751,7 @@ export interface ExportDatabaseResponse {
   messages?: string[] | null;
   /** Only present when status = 'complete' */
   result?: { filename?: string | null; signedUrl?: string | null } | null;
-  status?: "complete" | "error" | "active" | null;
+  status?: "complete" | "error" | "active" | (string & {}) | null;
   success?: boolean | null;
   type?: "export" | null;
 }
@@ -691,7 +778,10 @@ export const ExportDatabaseResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     status: Schema.optional(
       Schema.Union([
-        Schema.Literals(["complete", "error", "active"]),
+        Schema.Union([
+          Schema.Literals(["complete", "error", "active"]),
+          Schema.String,
+        ]),
         Schema.Null,
       ]),
     ),
@@ -738,17 +828,32 @@ export interface ImportDatabaseRequest {
   /** Path param: Account identifier tag. */
   accountId: string;
   /** Body param: Indicates you have a new SQL file to upload. */
-  action: "init";
+  action: "init" | "ingest" | "poll" | (string & {});
   /** Body param: Required when action is 'init' or 'ingest'. An md5 hash of the file you're uploading. Used to check if it already exists, and validate its contents before ingesting. */
-  etag: string;
+  etag?: string;
+  /** Body param: The filename you have successfully uploaded. */
+  filename?: string;
+  /** Body param: This identifies the currently-running import, checking its status. */
+  currentBookmark?: string;
 }
 
 export const ImportDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   databaseId: Schema.String.pipe(T.HttpPath("databaseId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  action: Schema.Literal("init"),
-  etag: Schema.String,
+  action: Schema.Union([
+    Schema.Literals(["init", "ingest", "poll"]),
+    Schema.String,
+  ]),
+  etag: Schema.optional(Schema.String),
+  filename: Schema.optional(Schema.String),
+  currentBookmark: Schema.optional(Schema.String),
 }).pipe(
+  Schema.encodeKeys({
+    action: "action",
+    etag: "etag",
+    filename: "filename",
+    currentBookmark: "current_bookmark",
+  }),
   T.Http({
     method: "POST",
     path: "/accounts/{account_id}/d1/database/{databaseId}/import",
@@ -776,13 +881,21 @@ export interface ImportDatabaseResponse {
       rowsWritten?: number | null;
       servedByColo?: string | null;
       servedByPrimary?: boolean | null;
-      servedByRegion?: "WNAM" | "ENAM" | "WEUR" | "EEUR" | "APAC" | "OC" | null;
+      servedByRegion?:
+        | "WNAM"
+        | "ENAM"
+        | "WEUR"
+        | "EEUR"
+        | "APAC"
+        | "OC"
+        | (string & {})
+        | null;
       sizeAfter?: number | null;
       timings?: { sqlDurationMs?: number | null } | null;
     } | null;
     numQueries?: number | null;
   } | null;
-  status?: "complete" | "error" | null;
+  status?: "complete" | "error" | (string & {}) | null;
   success?: boolean | null;
   type?: "import" | null;
   /** The R2 presigned URL to use for uploading. Only returned when for the 'init' action. */
@@ -832,13 +945,16 @@ export const ImportDatabaseResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 ),
                 servedByRegion: Schema.optional(
                   Schema.Union([
-                    Schema.Literals([
-                      "WNAM",
-                      "ENAM",
-                      "WEUR",
-                      "EEUR",
-                      "APAC",
-                      "OC",
+                    Schema.Union([
+                      Schema.Literals([
+                        "WNAM",
+                        "ENAM",
+                        "WEUR",
+                        "EEUR",
+                        "APAC",
+                        "OC",
+                      ]),
+                      Schema.String,
                     ]),
                     Schema.Null,
                   ]),
@@ -890,7 +1006,10 @@ export const ImportDatabaseResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       ]),
     ),
     status: Schema.optional(
-      Schema.Union([Schema.Literals(["complete", "error"]), Schema.Null]),
+      Schema.Union([
+        Schema.Union([Schema.Literals(["complete", "error"]), Schema.String]),
+        Schema.Null,
+      ]),
     ),
     success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     type: Schema.optional(
@@ -934,16 +1053,26 @@ export interface QueryDatabaseRequest {
   /** Path param: Account identifier tag. */
   accountId: string;
   /** Body param: Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch. */
-  sql: string;
-  /** Body param: */
+  sql?: string;
+  /** Body param */
   params?: string[];
+  /** Body param */
+  batch?: { sql: string; params?: string[] }[];
 }
 
 export const QueryDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   databaseId: Schema.String.pipe(T.HttpPath("databaseId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  sql: Schema.String,
+  sql: Schema.optional(Schema.String),
   params: Schema.optional(Schema.Array(Schema.String)),
+  batch: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        sql: Schema.String,
+        params: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+  ),
 }).pipe(
   T.Http({
     method: "POST",
@@ -962,7 +1091,15 @@ export interface QueryDatabaseResponse {
       rowsWritten?: number | null;
       servedByColo?: string | null;
       servedByPrimary?: boolean | null;
-      servedByRegion?: "WNAM" | "ENAM" | "WEUR" | "EEUR" | "APAC" | "OC" | null;
+      servedByRegion?:
+        | "WNAM"
+        | "ENAM"
+        | "WEUR"
+        | "EEUR"
+        | "APAC"
+        | "OC"
+        | (string & {})
+        | null;
       sizeAfter?: number | null;
       timings?: { sqlDurationMs?: number | null } | null;
     } | null;
@@ -1003,7 +1140,17 @@ export const QueryDatabaseResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             ),
             servedByRegion: Schema.optional(
               Schema.Union([
-                Schema.Literals(["WNAM", "ENAM", "WEUR", "EEUR", "APAC", "OC"]),
+                Schema.Union([
+                  Schema.Literals([
+                    "WNAM",
+                    "ENAM",
+                    "WEUR",
+                    "EEUR",
+                    "APAC",
+                    "OC",
+                  ]),
+                  Schema.String,
+                ]),
                 Schema.Null,
               ]),
             ),
@@ -1070,16 +1217,26 @@ export interface RawDatabaseRequest {
   /** Path param: Account identifier tag. */
   accountId: string;
   /** Body param: Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch. */
-  sql: string;
-  /** Body param: */
+  sql?: string;
+  /** Body param */
   params?: string[];
+  /** Body param */
+  batch?: { sql: string; params?: string[] }[];
 }
 
 export const RawDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   databaseId: Schema.String.pipe(T.HttpPath("databaseId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  sql: Schema.String,
+  sql: Schema.optional(Schema.String),
   params: Schema.optional(Schema.Array(Schema.String)),
+  batch: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        sql: Schema.String,
+        params: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+  ),
 }).pipe(
   T.Http({
     method: "POST",
@@ -1098,14 +1255,19 @@ export interface RawDatabaseResponse {
       rowsWritten?: number | null;
       servedByColo?: string | null;
       servedByPrimary?: boolean | null;
-      servedByRegion?: "WNAM" | "ENAM" | "WEUR" | "EEUR" | "APAC" | "OC" | null;
+      servedByRegion?:
+        | "WNAM"
+        | "ENAM"
+        | "WEUR"
+        | "EEUR"
+        | "APAC"
+        | "OC"
+        | (string & {})
+        | null;
       sizeAfter?: number | null;
       timings?: { sqlDurationMs?: number | null } | null;
     } | null;
-    results?: {
-      columns?: string[] | null;
-      rows?: (number | string)[][] | null;
-    } | null;
+    results?: { columns?: string[] | null; rows?: unknown[][] | null } | null;
     success?: boolean | null;
   }[];
 }
@@ -1142,7 +1304,17 @@ export const RawDatabaseResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             ),
             servedByRegion: Schema.optional(
               Schema.Union([
-                Schema.Literals(["WNAM", "ENAM", "WEUR", "EEUR", "APAC", "OC"]),
+                Schema.Union([
+                  Schema.Literals([
+                    "WNAM",
+                    "ENAM",
+                    "WEUR",
+                    "EEUR",
+                    "APAC",
+                    "OC",
+                  ]),
+                  Schema.String,
+                ]),
                 Schema.Null,
               ]),
             ),
@@ -1187,9 +1359,7 @@ export const RawDatabaseResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             ),
             rows: Schema.optional(
               Schema.Union([
-                Schema.Array(
-                  Schema.Array(Schema.Union([Schema.Number, Schema.String])),
-                ),
+                Schema.Array(Schema.Array(Schema.Unknown)),
                 Schema.Null,
               ]),
             ),

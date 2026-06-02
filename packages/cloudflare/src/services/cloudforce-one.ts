@@ -138,7 +138,7 @@ export interface GetRequestResponse {
   /** Brief description of the request. */
   summary: string;
   /** The CISA defined Traffic Light Protocol (TLP). */
-  tlp: "clear" | "amber" | "amber-strict" | "green" | "red";
+  tlp: "clear" | "amber" | "amber-strict" | "green" | "red" | (string & {});
   updated: string;
   completed?: string | null;
   /** Tokens for the request messages. */
@@ -153,6 +153,7 @@ export interface GetRequestResponse {
     | "approved"
     | "completed"
     | "declined"
+    | (string & {})
     | null;
   /** Tokens for the request. */
   tokens?: number | null;
@@ -165,20 +166,26 @@ export const GetRequestResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   priority: Schema.String,
   request: Schema.String,
   summary: Schema.String,
-  tlp: Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+  tlp: Schema.Union([
+    Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+    Schema.String,
+  ]),
   updated: Schema.String,
   completed: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   messageTokens: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   readableId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   status: Schema.optional(
     Schema.Union([
-      Schema.Literals([
-        "open",
-        "accepted",
-        "reported",
-        "approved",
-        "completed",
-        "declined",
+      Schema.Union([
+        Schema.Literals([
+          "open",
+          "accepted",
+          "reported",
+          "approved",
+          "completed",
+          "declined",
+        ]),
+        Schema.String,
       ]),
       Schema.Null,
     ]),
@@ -239,7 +246,7 @@ export interface ListRequestsRequest {
   /** Body param: Field to sort results by. */
   sortBy?: string;
   /** Body param: Sort order (asc or desc). */
-  sortOrder?: "asc" | "desc";
+  sortOrder?: "asc" | "desc" | (string & {});
   /** Body param: Request Status. */
   status?:
     | "open"
@@ -247,7 +254,8 @@ export interface ListRequestsRequest {
     | "reported"
     | "approved"
     | "completed"
-    | "declined";
+    | "declined"
+    | (string & {});
 }
 
 export const ListRequestsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -260,15 +268,20 @@ export const ListRequestsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   createdBefore: Schema.optional(Schema.String),
   requestType: Schema.optional(Schema.String),
   sortBy: Schema.optional(Schema.String),
-  sortOrder: Schema.optional(Schema.Literals(["asc", "desc"])),
+  sortOrder: Schema.optional(
+    Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+  ),
   status: Schema.optional(
-    Schema.Literals([
-      "open",
-      "accepted",
-      "reported",
-      "approved",
-      "completed",
-      "declined",
+    Schema.Union([
+      Schema.Literals([
+        "open",
+        "accepted",
+        "reported",
+        "approved",
+        "completed",
+        "declined",
+      ]),
+      Schema.String,
     ]),
   ),
 }).pipe(
@@ -294,10 +307,10 @@ export interface ListRequestsResponse {
   result: {
     id: string;
     created: string;
-    priority: "routine" | "high" | "urgent";
+    priority: "routine" | "high" | "urgent" | (string & {});
     request: string;
     summary: string;
-    tlp: "clear" | "amber" | "amber-strict" | "green" | "red";
+    tlp: "clear" | "amber" | "amber-strict" | "green" | "red" | (string & {});
     updated: string;
     completed?: string | null;
     messageTokens?: number | null;
@@ -309,6 +322,7 @@ export interface ListRequestsResponse {
       | "approved"
       | "completed"
       | "declined"
+      | (string & {})
       | null;
     tokens?: number | null;
   }[];
@@ -319,10 +333,16 @@ export const ListRequestsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Struct({
       id: Schema.String,
       created: Schema.String,
-      priority: Schema.Literals(["routine", "high", "urgent"]),
+      priority: Schema.Union([
+        Schema.Literals(["routine", "high", "urgent"]),
+        Schema.String,
+      ]),
       request: Schema.String,
       summary: Schema.String,
-      tlp: Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+      tlp: Schema.Union([
+        Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+        Schema.String,
+      ]),
       updated: Schema.String,
       completed: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       messageTokens: Schema.optional(
@@ -331,13 +351,16 @@ export const ListRequestsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       readableId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       status: Schema.optional(
         Schema.Union([
-          Schema.Literals([
-            "open",
-            "accepted",
-            "reported",
-            "approved",
-            "completed",
-            "declined",
+          Schema.Union([
+            Schema.Literals([
+              "open",
+              "accepted",
+              "reported",
+              "approved",
+              "completed",
+              "declined",
+            ]),
+            Schema.String,
           ]),
           Schema.Null,
         ]),
@@ -391,7 +414,7 @@ export interface CreateRequestRequest {
   /** Body param: Brief description of the request. */
   summary?: string;
   /** Body param: The CISA defined Traffic Light Protocol (TLP). */
-  tlp?: "clear" | "amber" | "amber-strict" | "green" | "red";
+  tlp?: "clear" | "amber" | "amber-strict" | "green" | "red" | (string & {});
 }
 
 export const CreateRequestRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -401,7 +424,10 @@ export const CreateRequestRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   requestType: Schema.optional(Schema.String),
   summary: Schema.optional(Schema.String),
   tlp: Schema.optional(
-    Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+    Schema.Union([
+      Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+      Schema.String,
+    ]),
   ),
 }).pipe(
   Schema.encodeKeys({
@@ -429,7 +455,7 @@ export interface CreateRequestResponse {
   /** Brief description of the request. */
   summary: string;
   /** The CISA defined Traffic Light Protocol (TLP). */
-  tlp: "clear" | "amber" | "amber-strict" | "green" | "red";
+  tlp: "clear" | "amber" | "amber-strict" | "green" | "red" | (string & {});
   updated: string;
   completed?: string | null;
   /** Tokens for the request messages. */
@@ -444,6 +470,7 @@ export interface CreateRequestResponse {
     | "approved"
     | "completed"
     | "declined"
+    | (string & {})
     | null;
   /** Tokens for the request. */
   tokens?: number | null;
@@ -456,20 +483,26 @@ export const CreateRequestResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   priority: Schema.String,
   request: Schema.String,
   summary: Schema.String,
-  tlp: Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+  tlp: Schema.Union([
+    Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+    Schema.String,
+  ]),
   updated: Schema.String,
   completed: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   messageTokens: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   readableId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   status: Schema.optional(
     Schema.Union([
-      Schema.Literals([
-        "open",
-        "accepted",
-        "reported",
-        "approved",
-        "completed",
-        "declined",
+      Schema.Union([
+        Schema.Literals([
+          "open",
+          "accepted",
+          "reported",
+          "approved",
+          "completed",
+          "declined",
+        ]),
+        Schema.String,
       ]),
       Schema.Null,
     ]),
@@ -523,7 +556,7 @@ export interface UpdateRequestRequest {
   /** Body param: Brief description of the request. */
   summary?: string;
   /** Body param: The CISA defined Traffic Light Protocol (TLP). */
-  tlp?: "clear" | "amber" | "amber-strict" | "green" | "red";
+  tlp?: "clear" | "amber" | "amber-strict" | "green" | "red" | (string & {});
 }
 
 export const UpdateRequestRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -534,7 +567,10 @@ export const UpdateRequestRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   requestType: Schema.optional(Schema.String),
   summary: Schema.optional(Schema.String),
   tlp: Schema.optional(
-    Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+    Schema.Union([
+      Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+      Schema.String,
+    ]),
   ),
 }).pipe(
   Schema.encodeKeys({
@@ -562,7 +598,7 @@ export interface UpdateRequestResponse {
   /** Brief description of the request. */
   summary: string;
   /** The CISA defined Traffic Light Protocol (TLP). */
-  tlp: "clear" | "amber" | "amber-strict" | "green" | "red";
+  tlp: "clear" | "amber" | "amber-strict" | "green" | "red" | (string & {});
   updated: string;
   completed?: string | null;
   /** Tokens for the request messages. */
@@ -577,6 +613,7 @@ export interface UpdateRequestResponse {
     | "approved"
     | "completed"
     | "declined"
+    | (string & {})
     | null;
   /** Tokens for the request. */
   tokens?: number | null;
@@ -589,20 +626,26 @@ export const UpdateRequestResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   priority: Schema.String,
   request: Schema.String,
   summary: Schema.String,
-  tlp: Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+  tlp: Schema.Union([
+    Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+    Schema.String,
+  ]),
   updated: Schema.String,
   completed: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   messageTokens: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   readableId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   status: Schema.optional(
     Schema.Union([
-      Schema.Literals([
-        "open",
-        "accepted",
-        "reported",
-        "approved",
-        "completed",
-        "declined",
+      Schema.Union([
+        Schema.Literals([
+          "open",
+          "accepted",
+          "reported",
+          "approved",
+          "completed",
+          "declined",
+        ]),
+        Schema.String,
       ]),
       Schema.Null,
     ]),
@@ -761,7 +804,7 @@ export const ConstantsRequestRequest =
   ) as unknown as Schema.Schema<ConstantsRequestRequest>;
 
 export interface ConstantsRequestResponse {
-  priority?: ("routine" | "high" | "urgent")[] | null;
+  priority?: ("routine" | "high" | "urgent" | (string & {}))[] | null;
   status?:
     | (
         | "open"
@@ -770,29 +813,40 @@ export interface ConstantsRequestResponse {
         | "approved"
         | "completed"
         | "declined"
+        | (string & {})
       )[]
     | null;
-  tlp?: ("clear" | "amber" | "amber-strict" | "green" | "red")[] | null;
+  tlp?:
+    | ("clear" | "amber" | "amber-strict" | "green" | "red" | (string & {}))[]
+    | null;
 }
 
 export const ConstantsRequestResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     priority: Schema.optional(
       Schema.Union([
-        Schema.Array(Schema.Literals(["routine", "high", "urgent"])),
+        Schema.Array(
+          Schema.Union([
+            Schema.Literals(["routine", "high", "urgent"]),
+            Schema.String,
+          ]),
+        ),
         Schema.Null,
       ]),
     ),
     status: Schema.optional(
       Schema.Union([
         Schema.Array(
-          Schema.Literals([
-            "open",
-            "accepted",
-            "reported",
-            "approved",
-            "completed",
-            "declined",
+          Schema.Union([
+            Schema.Literals([
+              "open",
+              "accepted",
+              "reported",
+              "approved",
+              "completed",
+              "declined",
+            ]),
+            Schema.String,
           ]),
         ),
         Schema.Null,
@@ -801,7 +855,10 @@ export const ConstantsRequestResponse =
     tlp: Schema.optional(
       Schema.Union([
         Schema.Array(
-          Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+          Schema.Union([
+            Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+            Schema.String,
+          ]),
         ),
         Schema.Null,
       ]),
@@ -1262,7 +1319,7 @@ export interface GetRequestMessageRequest {
   /** Body param: Field to sort results by. */
   sortBy?: string;
   /** Body param: Sort order (asc or desc). */
-  sortOrder?: "asc" | "desc";
+  sortOrder?: "asc" | "desc" | (string & {});
 }
 
 export const GetRequestMessageRequest =
@@ -1274,7 +1331,9 @@ export const GetRequestMessageRequest =
     after: Schema.optional(Schema.String),
     before: Schema.optional(Schema.String),
     sortBy: Schema.optional(Schema.String),
-    sortOrder: Schema.optional(Schema.Literals(["asc", "desc"])),
+    sortOrder: Schema.optional(
+      Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+    ),
   }).pipe(
     Schema.encodeKeys({
       page: "page",
@@ -1623,7 +1682,7 @@ export interface GetRequestPriorityResponse {
   /** Brief description of the request. */
   summary: string;
   /** The CISA defined Traffic Light Protocol (TLP). */
-  tlp: "clear" | "amber" | "amber-strict" | "green" | "red";
+  tlp: "clear" | "amber" | "amber-strict" | "green" | "red" | (string & {});
   updated: string;
   completed?: string | null;
   /** Tokens for the request messages. */
@@ -1638,6 +1697,7 @@ export interface GetRequestPriorityResponse {
     | "approved"
     | "completed"
     | "declined"
+    | (string & {})
     | null;
   /** Tokens for the request. */
   tokens?: number | null;
@@ -1651,20 +1711,26 @@ export const GetRequestPriorityResponse =
     priority: Schema.String,
     request: Schema.String,
     summary: Schema.String,
-    tlp: Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+    tlp: Schema.Union([
+      Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+      Schema.String,
+    ]),
     updated: Schema.String,
     completed: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     messageTokens: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     readableId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     status: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "open",
-          "accepted",
-          "reported",
-          "approved",
-          "completed",
-          "declined",
+        Schema.Union([
+          Schema.Literals([
+            "open",
+            "accepted",
+            "reported",
+            "approved",
+            "completed",
+            "declined",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -1715,7 +1781,7 @@ export interface CreateRequestPriorityRequest {
   /** Body param: Requirement. */
   requirement: string;
   /** Body param: The CISA defined Traffic Light Protocol (TLP). */
-  tlp: "clear" | "amber" | "amber-strict" | "green" | "red";
+  tlp: "clear" | "amber" | "amber-strict" | "green" | "red" | (string & {});
 }
 
 export const CreateRequestPriorityRequest =
@@ -1724,7 +1790,10 @@ export const CreateRequestPriorityRequest =
     labels: Schema.Array(Schema.String),
     priority: Schema.Number,
     requirement: Schema.String,
-    tlp: Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+    tlp: Schema.Union([
+      Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+      Schema.String,
+    ]),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1744,7 +1813,7 @@ export interface CreateRequestPriorityResponse {
   /** Requirement. */
   requirement: string;
   /** The CISA defined Traffic Light Protocol (TLP). */
-  tlp: "clear" | "amber" | "amber-strict" | "green" | "red";
+  tlp: "clear" | "amber" | "amber-strict" | "green" | "red" | (string & {});
   /** Priority last updated time. */
   updated: string;
 }
@@ -1756,7 +1825,10 @@ export const CreateRequestPriorityResponse =
     labels: Schema.Array(Schema.String),
     priority: Schema.Number,
     requirement: Schema.String,
-    tlp: Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+    tlp: Schema.Union([
+      Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+      Schema.String,
+    ]),
     updated: Schema.String,
   }).pipe(
     T.ResponsePath("result"),
@@ -1786,7 +1858,7 @@ export interface UpdateRequestPriorityRequest {
   /** Body param: Requirement. */
   requirement: string;
   /** Body param: The CISA defined Traffic Light Protocol (TLP). */
-  tlp: "clear" | "amber" | "amber-strict" | "green" | "red";
+  tlp: "clear" | "amber" | "amber-strict" | "green" | "red" | (string & {});
 }
 
 export const UpdateRequestPriorityRequest =
@@ -1796,7 +1868,10 @@ export const UpdateRequestPriorityRequest =
     labels: Schema.Array(Schema.String),
     priority: Schema.Number,
     requirement: Schema.String,
-    tlp: Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+    tlp: Schema.Union([
+      Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+      Schema.String,
+    ]),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1816,7 +1891,7 @@ export interface UpdateRequestPriorityResponse {
   /** Brief description of the request. */
   summary: string;
   /** The CISA defined Traffic Light Protocol (TLP). */
-  tlp: "clear" | "amber" | "amber-strict" | "green" | "red";
+  tlp: "clear" | "amber" | "amber-strict" | "green" | "red" | (string & {});
   updated: string;
   completed?: string | null;
   /** Tokens for the request messages. */
@@ -1831,6 +1906,7 @@ export interface UpdateRequestPriorityResponse {
     | "approved"
     | "completed"
     | "declined"
+    | (string & {})
     | null;
   /** Tokens for the request. */
   tokens?: number | null;
@@ -1844,20 +1920,26 @@ export const UpdateRequestPriorityResponse =
     priority: Schema.String,
     request: Schema.String,
     summary: Schema.String,
-    tlp: Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+    tlp: Schema.Union([
+      Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+      Schema.String,
+    ]),
     updated: Schema.String,
     completed: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     messageTokens: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     readableId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     status: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "open",
-          "accepted",
-          "reported",
-          "approved",
-          "completed",
-          "declined",
+        Schema.Union([
+          Schema.Literals([
+            "open",
+            "accepted",
+            "reported",
+            "approved",
+            "completed",
+            "declined",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -2389,6 +2471,7 @@ export interface GetThreatEventResponse {
   attacker: string;
   attackerCountry: string;
   category: string;
+  datasetId: string;
   date: string;
   event: string;
   hasChildren: boolean;
@@ -2397,6 +2480,7 @@ export interface GetThreatEventResponse {
   indicatorTypeId: number;
   killChain: number;
   mitreAttack: string[];
+  mitreCapec: string[];
   numReferenced: number;
   numReferences: number;
   rawId: string;
@@ -2418,6 +2502,7 @@ export const GetThreatEventResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     attacker: Schema.String,
     attackerCountry: Schema.String,
     category: Schema.String,
+    datasetId: Schema.String,
     date: Schema.String,
     event: Schema.String,
     hasChildren: Schema.Boolean,
@@ -2426,6 +2511,7 @@ export const GetThreatEventResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     indicatorTypeId: Schema.Number,
     killChain: Schema.Number,
     mitreAttack: Schema.Array(Schema.String),
+    mitreCapec: Schema.Array(Schema.String),
     numReferenced: Schema.Number,
     numReferences: Schema.Number,
     rawId: Schema.String,
@@ -2461,21 +2547,23 @@ export const getThreatEvent: API.OperationMethod<
 export interface ListThreatEventsRequest {
   /** Path param: Account ID. */
   accountId: string;
-  /** Query param: */
+  /** Query param: Cursor for pagination. When provided, filters are embedded in the cursor so you only need to pass cursor and pageSize. Returned in the previous response's result_info.cursor field. Use cu */
+  cursor?: string;
+  /** Query param: Dataset IDs to query events from (array of UUIDs), or special value 'all' or '\ ' to query all event datasets for the account. If not provided, uses the default dataset. */
   datasetId?: string[];
-  /** Query param: */
+  /** Query param */
   forceRefresh?: boolean;
-  /** Query param: */
-  format?: "json" | "stix2";
-  /** Query param: */
-  order?: "asc" | "desc";
-  /** Query param: */
+  /** Query param */
+  format?: "json" | "stix2" | "taxii" | (string & {});
+  /** Query param */
+  order?: "asc" | "desc" | (string & {});
+  /** Query param */
   orderBy?: string;
-  /** Query param: */
+  /** Query param: Page number (1-indexed) for offset-based pagination. Limited to offset of 100,000 records. For deep pagination, use cursor-based pagination instead. */
   page?: number;
-  /** Query param: */
+  /** Query param: Number of results per page. Maximum 25,000. */
   pageSize?: number;
-  /** Query param: */
+  /** Query param */
   search?: {
     field?: string;
     op?:
@@ -2490,7 +2578,8 @@ export interface ListThreatEventsRequest {
       | "startsWith"
       | "endsWith"
       | "in"
-      | "find";
+      | "find"
+      | (string & {});
     value?: string | number | (string | number)[];
   }[];
 }
@@ -2498,18 +2587,22 @@ export interface ListThreatEventsRequest {
 export const ListThreatEventsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
     datasetId: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("datasetId"),
     ),
     forceRefresh: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("forceRefresh"),
     ),
-    format: Schema.optional(Schema.Literals(["json", "stix2"])).pipe(
-      T.HttpQuery("format"),
-    ),
-    order: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-      T.HttpQuery("order"),
-    ),
+    format: Schema.optional(
+      Schema.Union([
+        Schema.Literals(["json", "stix2", "taxii"]),
+        Schema.String,
+      ]),
+    ).pipe(T.HttpQuery("format")),
+    order: Schema.optional(
+      Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+    ).pipe(T.HttpQuery("order")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -2518,19 +2611,22 @@ export const ListThreatEventsRequest =
         Schema.Struct({
           field: Schema.optional(Schema.String),
           op: Schema.optional(
-            Schema.Literals([
-              "equals",
-              "not",
-              "gt",
-              "gte",
-              "lt",
-              "lte",
-              "like",
-              "contains",
-              "startsWith",
-              "endsWith",
-              "in",
-              "find",
+            Schema.Union([
+              Schema.Literals([
+                "equals",
+                "not",
+                "gt",
+                "gte",
+                "lt",
+                "lte",
+                "like",
+                "contains",
+                "startsWith",
+                "endsWith",
+                "in",
+                "find",
+              ]),
+              Schema.String,
             ]),
           ),
           value: Schema.optional(
@@ -2554,6 +2650,7 @@ export type ListThreatEventsResponse = {
   attacker: string;
   attackerCountry: string;
   category: string;
+  datasetId: string;
   date: string;
   event: string;
   hasChildren: boolean;
@@ -2562,6 +2659,7 @@ export type ListThreatEventsResponse = {
   indicatorTypeId: number;
   killChain: number;
   mitreAttack: string[];
+  mitreCapec: string[];
   numReferenced: number;
   numReferences: number;
   rawId: string;
@@ -2584,6 +2682,7 @@ export const ListThreatEventsResponse =
       attacker: Schema.String,
       attackerCountry: Schema.String,
       category: Schema.String,
+      datasetId: Schema.String,
       date: Schema.String,
       event: Schema.String,
       hasChildren: Schema.Boolean,
@@ -2592,6 +2691,7 @@ export const ListThreatEventsResponse =
       indicatorTypeId: Schema.Number,
       killChain: Schema.Number,
       mitreAttack: Schema.Array(Schema.String),
+      mitreCapec: Schema.Array(Schema.String),
       numReferenced: Schema.Number,
       numReferences: Schema.Number,
       rawId: Schema.String,
@@ -2625,40 +2725,37 @@ export const listThreatEvents: API.OperationMethod<
 }));
 
 export interface CreateThreatEventRequest {
-  /** Path param: Account ID. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   category: string;
-  /** Body param: */
+  /** Body param */
   date: string;
-  /** Body param: */
+  /** Body param */
   event: string;
-  /** Body param: */
+  /** Body param */
   raw: { data: Record<string, unknown> | null; source?: string; tlp?: string };
-  /** Body param: */
+  /** Body param */
   tlp: string;
-  /** Body param: */
+  /** Body param */
   attacker?: string | null;
-  /** Body param: */
+  /** Body param */
   attackerCountry?: string;
-  /** Body param: */
+  /** Body param */
   datasetId?: string;
-  /** Body param: */
+  /** Body param */
   indicator?: string;
   /** Body param: Array of indicators for this event. Supports multiple indicators per event for complex scenarios. */
   indicators?: { indicatorType: string; value: string }[];
-  /** Body param: */
+  /** Body param */
   indicatorType?: string;
-  /** Body param: */
+  /** Body param */
   insight?: string;
-  /** Body param: */
+  /** Body param */
   tags?: string[];
-  /** Body param: */
+  /** Body param */
   targetCountry?: string;
-  /** Body param: */
+  /** Body param */
   targetIndustry?: string;
-  /** Body param: Optional UUID for the event. Only used when preserveUuid=true in bulk create. Must be a valid UUID format. */
-  uuid?: string;
 }
 
 export const CreateThreatEventRequest =
@@ -2693,7 +2790,6 @@ export const CreateThreatEventRequest =
     tags: Schema.optional(Schema.Array(Schema.String)),
     targetCountry: Schema.optional(Schema.String),
     targetIndustry: Schema.optional(Schema.String),
-    uuid: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2705,6 +2801,7 @@ export interface CreateThreatEventResponse {
   attacker: string;
   attackerCountry: string;
   category: string;
+  datasetId: string;
   date: string;
   event: string;
   hasChildren: boolean;
@@ -2713,6 +2810,7 @@ export interface CreateThreatEventResponse {
   indicatorTypeId: number;
   killChain: number;
   mitreAttack: string[];
+  mitreCapec: string[];
   numReferenced: number;
   numReferences: number;
   rawId: string;
@@ -2734,6 +2832,7 @@ export const CreateThreatEventResponse =
     attacker: Schema.String,
     attackerCountry: Schema.String,
     category: Schema.String,
+    datasetId: Schema.String,
     date: Schema.String,
     event: Schema.String,
     hasChildren: Schema.Boolean,
@@ -2742,6 +2841,7 @@ export const CreateThreatEventResponse =
     indicatorTypeId: Schema.Number,
     killChain: Schema.Number,
     mitreAttack: Schema.Array(Schema.String),
+    mitreCapec: Schema.Array(Schema.String),
     numReferenced: Schema.Number,
     numReferences: Schema.Number,
     rawId: Schema.String,
@@ -2777,37 +2877,37 @@ export interface PatchThreatEventRequest {
   eventId: string;
   /** Path param: Account ID. */
   accountId: string;
-  /** Body param: */
+  /** Body param: Dataset ID containing the event to update. */
+  datasetId: string;
+  /** Body param */
   attacker?: string | null;
-  /** Body param: */
+  /** Body param */
   attackerCountry?: string;
-  /** Body param: */
+  /** Body param */
   category?: string;
-  /** Body param: */
+  /** Body param */
   createdAt?: string;
-  /** Body param: */
-  datasetId?: string;
-  /** Body param: */
+  /** Body param */
   date?: string;
-  /** Body param: */
+  /** Body param */
   event?: string;
-  /** Body param: */
+  /** Body param */
   indicator?: string;
-  /** Body param: */
+  /** Body param */
   indicatorType?: string;
-  /** Body param: */
+  /** Body param */
   insight?: string;
-  /** Body param: */
+  /** Body param */
   raw?: {
     data?: Record<string, unknown> | null;
     source?: string;
     tlp?: string;
   };
-  /** Body param: */
+  /** Body param */
   targetCountry?: string;
-  /** Body param: */
+  /** Body param */
   targetIndustry?: string;
-  /** Body param: */
+  /** Body param */
   tlp?: string;
 }
 
@@ -2815,11 +2915,11 @@ export const PatchThreatEventRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventId: Schema.String.pipe(T.HttpPath("eventId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    datasetId: Schema.String,
     attacker: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     attackerCountry: Schema.optional(Schema.String),
     category: Schema.optional(Schema.String),
     createdAt: Schema.optional(Schema.String),
-    datasetId: Schema.optional(Schema.String),
     date: Schema.optional(Schema.String),
     event: Schema.optional(Schema.String),
     indicator: Schema.optional(Schema.String),
@@ -2851,6 +2951,7 @@ export interface PatchThreatEventResponse {
   attacker: string;
   attackerCountry: string;
   category: string;
+  datasetId: string;
   date: string;
   event: string;
   hasChildren: boolean;
@@ -2859,6 +2960,7 @@ export interface PatchThreatEventResponse {
   indicatorTypeId: number;
   killChain: number;
   mitreAttack: string[];
+  mitreCapec: string[];
   numReferenced: number;
   numReferences: number;
   rawId: string;
@@ -2880,6 +2982,7 @@ export const PatchThreatEventResponse =
     attacker: Schema.String,
     attackerCountry: Schema.String,
     category: Schema.String,
+    datasetId: Schema.String,
     date: Schema.String,
     event: Schema.String,
     hasChildren: Schema.Boolean,
@@ -2888,6 +2991,7 @@ export const PatchThreatEventResponse =
     indicatorTypeId: Schema.Number,
     killChain: Schema.Number,
     mitreAttack: Schema.Array(Schema.String),
+    mitreCapec: Schema.Array(Schema.String),
     numReferenced: Schema.Number,
     numReferences: Schema.Number,
     rawId: Schema.String,
@@ -2919,49 +3023,10 @@ export const patchThreatEvent: API.OperationMethod<
   errors: [],
 }));
 
-export interface DeleteThreatEventRequest {
-  eventId: string;
-  /** Account ID. */
-  accountId: string;
-}
-
-export const DeleteThreatEventRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    eventId: Schema.String.pipe(T.HttpPath("eventId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/accounts/{account_id}/cloudforce-one/events/{eventId}",
-    }),
-  ) as unknown as Schema.Schema<DeleteThreatEventRequest>;
-
-export interface DeleteThreatEventResponse {
-  uuid: string;
-}
-
-export const DeleteThreatEventResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    uuid: Schema.String,
-  }) as unknown as Schema.Schema<DeleteThreatEventResponse>;
-
-export type DeleteThreatEventError = DefaultErrors;
-
-export const deleteThreatEvent: API.OperationMethod<
-  DeleteThreatEventRequest,
-  DeleteThreatEventResponse,
-  DeleteThreatEventError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteThreatEventRequest,
-  output: DeleteThreatEventResponse,
-  errors: [],
-}));
-
 export interface BulkCreateThreatEventsRequest {
   /** Path param: Account ID. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   data: {
     category: string;
     date: string;
@@ -2983,12 +3048,11 @@ export interface BulkCreateThreatEventsRequest {
     tags?: string[];
     targetCountry?: string;
     targetIndustry?: string;
-    uuid?: string;
   }[];
-  /** Body param: */
+  /** Body param */
   datasetId: string;
-  /** Body param: When true, use provided UUIDs from event data instead of generating new ones. Used for migration scenarios where original UUIDs must be preserved. Duplicate UUIDs will be skipped. */
-  preserveUuid?: boolean;
+  /** Body param: When true, response includes array of created event UUIDs and shard IDs. Useful for tracking which events were created and where. */
+  includeCreatedEvents?: boolean;
 }
 
 export const BulkCreateThreatEventsRequest =
@@ -3026,11 +3090,10 @@ export const BulkCreateThreatEventsRequest =
         tags: Schema.optional(Schema.Array(Schema.String)),
         targetCountry: Schema.optional(Schema.String),
         targetIndustry: Schema.optional(Schema.String),
-        uuid: Schema.optional(Schema.String),
       }),
     ),
     datasetId: Schema.String,
-    preserveUuid: Schema.optional(Schema.Boolean),
+    includeCreatedEvents: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
@@ -3047,10 +3110,12 @@ export interface BulkCreateThreatEventsResponse {
   errorCount: number;
   /** Number of indicators queued for async processing */
   queuedIndicatorsCount: number;
-  /** Number of events skipped due to duplicate UUID (only when preserveUuid=true) */
-  skippedEventsCount: number;
   /** Correlation ID for async indicator processing */
   createBulkEventsRequestId?: string | null;
+  /** Array of created events with UUIDs and shard locations. Only present when includeCreatedEvents=true */
+  createdEvents?:
+    | { eventIndex: number; shardId: string; uuid: string }[]
+    | null;
   /** Array of error details */
   errors?: { error: string; eventIndex: number }[] | null;
 }
@@ -3061,9 +3126,20 @@ export const BulkCreateThreatEventsResponse =
     createdTagsCount: Schema.Number,
     errorCount: Schema.Number,
     queuedIndicatorsCount: Schema.Number,
-    skippedEventsCount: Schema.Number,
     createBulkEventsRequestId: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
+    ),
+    createdEvents: Schema.optional(
+      Schema.Union([
+        Schema.Array(
+          Schema.Struct({
+            eventIndex: Schema.Number,
+            shardId: Schema.String,
+            uuid: Schema.String,
+          }),
+        ),
+        Schema.Null,
+      ]),
     ),
     errors: Schema.optional(
       Schema.Union([
@@ -3167,6 +3243,7 @@ export interface GetThreatEventCategoryResponse {
   name: string;
   uuid: string;
   mitreAttack?: string[] | null;
+  mitreCapec?: string[] | null;
   shortname?: string | null;
 }
 
@@ -3176,6 +3253,9 @@ export const GetThreatEventCategoryResponse =
     name: Schema.String,
     uuid: Schema.String,
     mitreAttack: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    mitreCapec: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
     ),
     shortname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -3219,6 +3299,7 @@ export type ListThreatEventCategoriesResponse = {
   name: string;
   uuid: string;
   mitreAttack?: string[] | null;
+  mitreCapec?: string[] | null;
   shortname?: string | null;
 }[];
 
@@ -3229,6 +3310,9 @@ export const ListThreatEventCategoriesResponse =
       name: Schema.String,
       uuid: Schema.String,
       mitreAttack: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      mitreCapec: Schema.optional(
         Schema.Union([Schema.Array(Schema.String), Schema.Null]),
       ),
       shortname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -3251,13 +3335,15 @@ export const listThreatEventCategories: API.OperationMethod<
 export interface CreateThreatEventCategoryRequest {
   /** Path param: Account ID. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   killChain: number;
-  /** Body param: */
+  /** Body param */
   name: string;
-  /** Body param: */
+  /** Body param */
   mitreAttack?: string[];
-  /** Body param: */
+  /** Body param */
+  mitreCapec?: string[];
+  /** Body param */
   shortname?: string;
 }
 
@@ -3267,6 +3353,7 @@ export const CreateThreatEventCategoryRequest =
     killChain: Schema.Number,
     name: Schema.String,
     mitreAttack: Schema.optional(Schema.Array(Schema.String)),
+    mitreCapec: Schema.optional(Schema.Array(Schema.String)),
     shortname: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -3280,6 +3367,7 @@ export interface CreateThreatEventCategoryResponse {
   name: string;
   uuid: string;
   mitreAttack?: string[] | null;
+  mitreCapec?: string[] | null;
   shortname?: string | null;
 }
 
@@ -3289,6 +3377,9 @@ export const CreateThreatEventCategoryResponse =
     name: Schema.String,
     uuid: Schema.String,
     mitreAttack: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    mitreCapec: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
     ),
     shortname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -3311,13 +3402,15 @@ export interface PatchThreatEventCategoryRequest {
   categoryId: string;
   /** Path param: Account ID. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   killChain?: number;
-  /** Body param: */
+  /** Body param */
   mitreAttack?: string[];
-  /** Body param: */
+  /** Body param */
+  mitreCapec?: string[];
+  /** Body param */
   name?: string;
-  /** Body param: */
+  /** Body param */
   shortname?: string;
 }
 
@@ -3327,6 +3420,7 @@ export const PatchThreatEventCategoryRequest =
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     killChain: Schema.optional(Schema.Number),
     mitreAttack: Schema.optional(Schema.Array(Schema.String)),
+    mitreCapec: Schema.optional(Schema.Array(Schema.String)),
     name: Schema.optional(Schema.String),
     shortname: Schema.optional(Schema.String),
   }).pipe(
@@ -3341,6 +3435,7 @@ export interface PatchThreatEventCategoryResponse {
   name: string;
   uuid: string;
   mitreAttack?: string[] | null;
+  mitreCapec?: string[] | null;
   shortname?: string | null;
 }
 
@@ -3350,6 +3445,9 @@ export const PatchThreatEventCategoryResponse =
     name: Schema.String,
     uuid: Schema.String,
     mitreAttack: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    mitreCapec: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
     ),
     shortname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -3427,7 +3525,7 @@ export const ListThreatEventCountriesRequest =
   ) as unknown as Schema.Schema<ListThreatEventCountriesRequest>;
 
 export type ListThreatEventCountriesResponse = {
-  result: { alpha3: string; name: string }[];
+  result: { alpha2: string; alpha3: string; name: string }[];
   success: string;
 }[];
 
@@ -3436,6 +3534,7 @@ export const ListThreatEventCountriesResponse =
     Schema.Struct({
       result: Schema.Array(
         Schema.Struct({
+          alpha2: Schema.String,
           alpha3: Schema.String,
           name: Schema.String,
         }),
@@ -3663,20 +3762,20 @@ export const RawThreatEventDatasetRequest =
   ) as unknown as Schema.Schema<RawThreatEventDatasetRequest>;
 
 export interface RawThreatEventDatasetResponse {
-  id: string;
+  id: number;
   accountId: number;
   created: string;
-  data: unknown;
+  data: string;
   source: string;
   tlp: string;
 }
 
 export const RawThreatEventDatasetResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
+    id: Schema.Number,
     accountId: Schema.Number,
     created: Schema.String,
-    data: Schema.Unknown,
+    data: Schema.String,
     source: Schema.String,
     tlp: Schema.String,
   }) as unknown as Schema.Schema<RawThreatEventDatasetResponse>;
@@ -3702,7 +3801,7 @@ export interface CreateThreatEventEventTagRequest {
   eventId: string;
   /** Path param: Account ID. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   tags: string[];
 }
 
@@ -3888,11 +3987,11 @@ export interface PatchThreatEventRawRequest {
   rawId: string;
   /** Path param: Account ID. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   data?: unknown;
-  /** Body param: */
+  /** Body param */
   source?: string;
-  /** Body param: */
+  /** Body param */
   tlp?: string;
 }
 
@@ -3987,37 +4086,37 @@ export const deleteThreatEventRelate: API.OperationMethod<
 export interface CreateThreatEventTagRequest {
   /** Path param: Account ID. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   value: string;
-  /** Body param: */
+  /** Body param */
   activeDuration?: string;
-  /** Body param: */
+  /** Body param */
   actorCategory?: string;
-  /** Body param: */
+  /** Body param */
   aliasGroupNames?: string[];
-  /** Body param: */
+  /** Body param */
   aliasGroupNamesInternal?: string[];
-  /** Body param: */
+  /** Body param */
   analyticPriority?: number;
-  /** Body param: */
+  /** Body param */
   attributionConfidence?: string;
-  /** Body param: */
+  /** Body param */
   attributionOrganization?: string;
-  /** Body param: */
+  /** Body param */
   categoryUuid?: string;
-  /** Body param: */
+  /** Body param */
   externalReferenceLinks?: string[];
-  /** Body param: */
+  /** Body param */
   internalDescription?: string;
-  /** Body param: */
+  /** Body param */
   motive?: string;
-  /** Body param: */
+  /** Body param */
   opsecLevel?: string;
-  /** Body param: */
+  /** Body param */
   originCountryISO?: string;
-  /** Body param: */
+  /** Body param */
   priority?: number;
-  /** Body param: */
+  /** Body param */
   sophisticationLevel?: string;
 }
 

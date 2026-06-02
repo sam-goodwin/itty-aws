@@ -193,6 +193,42 @@ paths:
                     description: Whether or not to add Cloudflare Branding for the order. This will
                       add a subdomain of sni.cloudflaressl.com as the Common
                       Name if set to true.
+                  dcv_delegation_records:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        cname:
+                          type: string
+                          description: The CNAME record hostname for DCV delegation.
+                        cname_target:
+                          type: string
+                          description: The CNAME record target value for DCV delegation.
+                        emails:
+                          type: array
+                          items:
+                            type: string
+                          description: The set of email addresses that the certificate authority (CA) will
+                            use to complete domain validation.
+                        http_body:
+                          type: string
+                          description: The content that the certificate authority (CA) will expect to find
+                            at the http_url during the domain validation.
+                        http_url:
+                          type: string
+                          description: The url that will be checked during domain validation.
+                        status:
+                          type: string
+                          description: Status of the validation record.
+                        txt_name:
+                          type: string
+                          description: The hostname that the certificate authority (CA) will check for a
+                            TXT record during domain validation .
+                        txt_value:
+                          type: string
+                          description: The TXT record that the certificate authority (CA) will check
+                            during domain validation.
+                    description: DCV Delegation records for domain validation.
                   primary_certificate:
                     type: string
                     description: Identifier of the primary certificate in a pack.
@@ -218,6 +254,12 @@ paths:
                     items:
                       type: object
                       properties:
+                        cname:
+                          type: string
+                          description: The CNAME record hostname for DCV delegation.
+                        cname_target:
+                          type: string
+                          description: The CNAME record target value for DCV delegation.
                         emails:
                           type: array
                           items:
@@ -231,6 +273,9 @@ paths:
                         http_url:
                           type: string
                           description: The url that will be checked during domain validation.
+                        status:
+                          type: string
+                          description: Status of the validation record.
                         txt_name:
                           type: string
                           description: The hostname that the certificate authority (CA) will check for a
@@ -412,6 +457,42 @@ paths:
                     description: Whether or not to add Cloudflare Branding for the order. This will
                       add a subdomain of sni.cloudflaressl.com as the Common
                       Name if set to true.
+                  dcv_delegation_records:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        cname:
+                          type: string
+                          description: The CNAME record hostname for DCV delegation.
+                        cname_target:
+                          type: string
+                          description: The CNAME record target value for DCV delegation.
+                        emails:
+                          type: array
+                          items:
+                            type: string
+                          description: The set of email addresses that the certificate authority (CA) will
+                            use to complete domain validation.
+                        http_body:
+                          type: string
+                          description: The content that the certificate authority (CA) will expect to find
+                            at the http_url during the domain validation.
+                        http_url:
+                          type: string
+                          description: The url that will be checked during domain validation.
+                        status:
+                          type: string
+                          description: Status of the validation record.
+                        txt_name:
+                          type: string
+                          description: The hostname that the certificate authority (CA) will check for a
+                            TXT record during domain validation .
+                        txt_value:
+                          type: string
+                          description: The TXT record that the certificate authority (CA) will check
+                            during domain validation.
+                    description: DCV Delegation records for domain validation.
                   primary_certificate:
                     type: string
                     description: Identifier of the primary certificate in a pack.
@@ -437,6 +518,12 @@ paths:
                     items:
                       type: object
                       properties:
+                        cname:
+                          type: string
+                          description: The CNAME record hostname for DCV delegation.
+                        cname_target:
+                          type: string
+                          description: The CNAME record target value for DCV delegation.
                         emails:
                           type: array
                           items:
@@ -450,6 +537,9 @@ paths:
                         http_url:
                           type: string
                           description: The url that will be checked during domain validation.
+                        status:
+                          type: string
+                          description: Status of the validation record.
                         txt_name:
                           type: string
                           description: The hostname that the certificate authority (CA) will check for a
@@ -518,6 +608,26 @@ paths:
           description: "Path param: Identifier."
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: deploy
+          in: query
+          required: false
+          description: "Query param: Specify the deployment environment for the
+            certificate packs."
+          schema:
+            type: string
+            enum:
+              - staging
+              - production
         - name: status
           in: query
           required: false
@@ -652,6 +762,42 @@ paths:
                     description: Whether or not to add Cloudflare Branding for the order. This will
                       add a subdomain of sni.cloudflaressl.com as the Common
                       Name if set to true.
+                  dcv_delegation_records:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        cname:
+                          type: string
+                          description: The CNAME record hostname for DCV delegation.
+                        cname_target:
+                          type: string
+                          description: The CNAME record target value for DCV delegation.
+                        emails:
+                          type: array
+                          items:
+                            type: string
+                          description: The set of email addresses that the certificate authority (CA) will
+                            use to complete domain validation.
+                        http_body:
+                          type: string
+                          description: The content that the certificate authority (CA) will expect to find
+                            at the http_url during the domain validation.
+                        http_url:
+                          type: string
+                          description: The url that will be checked during domain validation.
+                        status:
+                          type: string
+                          description: Status of the validation record.
+                        txt_name:
+                          type: string
+                          description: The hostname that the certificate authority (CA) will check for a
+                            TXT record during domain validation .
+                        txt_value:
+                          type: string
+                          description: The TXT record that the certificate authority (CA) will check
+                            during domain validation.
+                    description: DCV Delegation records for domain validation.
                   primary_certificate:
                     type: string
                     description: Identifier of the primary certificate in a pack.
@@ -677,6 +823,12 @@ paths:
                     items:
                       type: object
                       properties:
+                        cname:
+                          type: string
+                          description: The CNAME record hostname for DCV delegation.
+                        cname_target:
+                          type: string
+                          description: The CNAME record target value for DCV delegation.
                         emails:
                           type: array
                           items:
@@ -690,6 +842,9 @@ paths:
                         http_url:
                           type: string
                           description: The url that will be checked during domain validation.
+                        status:
+                          type: string
+                          description: Status of the validation record.
                         txt_name:
                           type: string
                           description: The hostname that the certificate authority (CA) will check for a
@@ -713,7 +868,7 @@ paths:
                   - hosts
                   - status
                   - type
-      x-distilled-pagination-class: CertificatePackListResponsesSinglePage
+      x-distilled-pagination-class: CertificatePackListResponsesV4PagePaginationArray
   /zones/{zone_id}/ssl/certificate_packs/order:
     post:
       operationId: createCertificatePack
@@ -911,6 +1066,42 @@ paths:
                     description: Whether or not to add Cloudflare Branding for the order. This will
                       add a subdomain of sni.cloudflaressl.com as the Common
                       Name if set to true.
+                  dcv_delegation_records:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        cname:
+                          type: string
+                          description: The CNAME record hostname for DCV delegation.
+                        cname_target:
+                          type: string
+                          description: The CNAME record target value for DCV delegation.
+                        emails:
+                          type: array
+                          items:
+                            type: string
+                          description: The set of email addresses that the certificate authority (CA) will
+                            use to complete domain validation.
+                        http_body:
+                          type: string
+                          description: The content that the certificate authority (CA) will expect to find
+                            at the http_url during the domain validation.
+                        http_url:
+                          type: string
+                          description: The url that will be checked during domain validation.
+                        status:
+                          type: string
+                          description: Status of the validation record.
+                        txt_name:
+                          type: string
+                          description: The hostname that the certificate authority (CA) will check for a
+                            TXT record during domain validation .
+                        txt_value:
+                          type: string
+                          description: The TXT record that the certificate authority (CA) will check
+                            during domain validation.
+                    description: DCV Delegation records for domain validation.
                   primary_certificate:
                     type: string
                     description: Identifier of the primary certificate in a pack.
@@ -936,6 +1127,12 @@ paths:
                     items:
                       type: object
                       properties:
+                        cname:
+                          type: string
+                          description: The CNAME record hostname for DCV delegation.
+                        cname_target:
+                          type: string
+                          description: The CNAME record target value for DCV delegation.
                         emails:
                           type: array
                           items:
@@ -949,6 +1146,9 @@ paths:
                         http_url:
                           type: string
                           description: The url that will be checked during domain validation.
+                        status:
+                          type: string
+                          description: Status of the validation record.
                         txt_name:
                           type: string
                           description: The hostname that the certificate authority (CA) will check for a

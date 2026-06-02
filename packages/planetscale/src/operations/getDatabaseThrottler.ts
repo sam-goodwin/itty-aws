@@ -25,7 +25,7 @@ export const GetDatabaseThrottlerOutput =
       name: Schema.String,
       created_at: Schema.String,
       updated_at: Schema.String,
-      deleted_at: Schema.String,
+      deleted_at: Schema.NullOr(Schema.String),
     }),
     configurations: Schema.Array(
       Schema.Struct({

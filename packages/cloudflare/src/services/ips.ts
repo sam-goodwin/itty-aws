@@ -13,18 +13,18 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
-// IP
+// Ip
 // =============================================================================
 
-export interface ListIPsRequest {}
+export interface ListIpsRequest {}
 
-export const ListIPsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+export const ListIpsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
   T.Http({ method: "GET", path: "/ips" }),
-) as unknown as Schema.Schema<ListIPsRequest>;
+) as unknown as Schema.Schema<ListIpsRequest>;
 
-export type ListIPsResponse =
+export type ListIpsResponse =
   | {
       etag?: string | null;
       ipv4Cidrs?: string[] | null;
@@ -37,7 +37,7 @@ export type ListIPsResponse =
       jdcloudCidrs?: string[] | null;
     };
 
-export const ListIPsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+export const ListIpsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   Schema.Struct({
     etag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     ipv4Cidrs: Schema.optional(
@@ -72,17 +72,17 @@ export const ListIPsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
       jdcloudCidrs: "jdcloud_cidrs",
     }),
   ),
-]).pipe(T.ResponsePath("result")) as unknown as Schema.Schema<ListIPsResponse>;
+]).pipe(T.ResponsePath("result")) as unknown as Schema.Schema<ListIpsResponse>;
 
-export type ListIPsError = DefaultErrors;
+export type ListIpsError = DefaultErrors;
 
-export const listIPs: API.OperationMethod<
-  ListIPsRequest,
-  ListIPsResponse,
-  ListIPsError,
+export const listIps: API.OperationMethod<
+  ListIpsRequest,
+  ListIpsResponse,
+  ListIpsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ListIPsRequest,
-  output: ListIPsResponse,
+  input: ListIpsRequest,
+  output: ListIpsResponse,
   errors: [],
 }));

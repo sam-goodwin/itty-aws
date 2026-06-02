@@ -2,7 +2,7 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
-import { SensitiveNullableString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const RenewPasswordInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -35,11 +35,13 @@ export const RenewPasswordOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   access_host_url: Schema.String,
   access_host_regional_url: Schema.String,
   access_host_regional_urls: Schema.Array(Schema.String),
-  actor: Schema.Struct({
-    id: Schema.String,
-    display_name: Schema.String,
-    avatar_url: Schema.String,
-  }),
+  actor: Schema.NullOr(
+    Schema.Struct({
+      id: Schema.String,
+      display_name: Schema.String,
+      avatar_url: Schema.String,
+    }),
+  ),
   region: Schema.Struct({
     id: Schema.String,
     provider: Schema.String,
@@ -49,9 +51,11 @@ export const RenewPasswordOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.String,
     slug: Schema.String,
     current_default: Schema.Boolean,
+    mysql_supported: Schema.Boolean,
+    postgresql_supported: Schema.Boolean,
   }),
   username: Schema.String,
-  plain_text: SensitiveNullableString,
+  plain_text: SensitiveOutputString,
   replica: Schema.Boolean,
   renewable: Schema.Boolean,
   database_branch: Schema.Struct({

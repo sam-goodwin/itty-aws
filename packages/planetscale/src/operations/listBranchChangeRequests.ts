@@ -23,6 +23,7 @@ export type ListBranchChangeRequestsInput =
 // Output Schema
 export const ListBranchChangeRequestsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.String,
     current_page: Schema.Number,
     next_page: Schema.NullOr(Schema.Number),
     next_page_url: Schema.NullOr(Schema.String),
@@ -39,8 +40,8 @@ export const ListBranchChangeRequestsOutput =
           "canceled",
           "completed",
         ]),
-        started_at: Schema.String,
-        completed_at: Schema.String,
+        started_at: Schema.NullOr(Schema.String),
+        completed_at: Schema.optional(Schema.NullOr(Schema.String)),
         created_at: Schema.String,
         updated_at: Schema.String,
         actor: Schema.Struct({

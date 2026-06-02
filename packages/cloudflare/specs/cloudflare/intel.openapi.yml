@@ -79,7 +79,8 @@ paths:
   /accounts/{account_id}/intel/attack-surface-report/issues:
     get:
       operationId: listAttackSurfaceReportIssues
-      description: Get Security Center Issues  @deprecated
+      description: Lists all Security Center issues for the account, showing active
+        security problems requiring attention.  @deprecated
       parameters:
         - name: account_id
           in: path
@@ -100,13 +101,13 @@ paths:
         - name: dismissed
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: boolean
         - name: issue_class
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -114,7 +115,7 @@ paths:
         - name: issue_class~neq
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -122,7 +123,7 @@ paths:
         - name: issue_type
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -137,7 +138,7 @@ paths:
         - name: issue_type~neq
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -152,7 +153,7 @@ paths:
         - name: product
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -160,7 +161,7 @@ paths:
         - name: product~neq
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -168,7 +169,7 @@ paths:
         - name: severity
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -180,7 +181,7 @@ paths:
         - name: severity~neq
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -192,7 +193,7 @@ paths:
         - name: subject
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -200,7 +201,7 @@ paths:
         - name: subject~neq
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -215,7 +216,7 @@ paths:
                 properties:
                   count:
                     type: number
-                    description: Total number of results
+                    description: Indicates the total number of results.
                   issues:
                     type: array
                     items:
@@ -225,6 +226,10 @@ paths:
                           type: string
                         dismissed:
                           type: boolean
+                        has_extended_context:
+                          type: boolean
+                          description: Indicates whether the insight has a large payload that requires
+                            fetching via the context endpoint.
                         issue_class:
                           type: string
                         issue_type:
@@ -241,7 +246,7 @@ paths:
                           properties:
                             detection_method:
                               type: string
-                              description: Method used to detect insight
+                              description: Describes the method used to detect insight.
                             zone_tag:
                               type: string
                         resolve_link:
@@ -256,21 +261,37 @@ paths:
                             - Critical
                         since:
                           type: string
+                        status:
+                          type: string
+                          enum:
+                            - active
+                            - resolved
+                          description: The current status of the insight.
                         subject:
                           type: string
                         timestamp:
                           type: string
+                        user_classification:
+                          type: string
+                          enum:
+                            - false_positive
+                            - accept_risk
+                            - other
+                          nullable: true
+                          description: User-defined classification for the insight. Can be
+                            'false_positive', 'accept_risk', 'other', or null.
                   page:
                     type: number
-                    description: Current page within paginated list of results
+                    description: Specifies the current page within paginated list of results.
                   per_page:
                     type: number
-                    description: Number of results per page of results
+                    description: Sets the number of results per page of results.
       x-distilled-pagination-class: IssueListResponsesV4PagePagination
   /accounts/{account_id}/intel/attack-surface-report/issues/class:
     get:
       operationId: classAttackSurfaceReportIssue
-      description: Get Security Center Issue Counts by Class  @deprecated
+      description: Retrieves Security Center issue counts aggregated by classification
+        class.  @deprecated
       parameters:
         - name: account_id
           in: path
@@ -281,13 +302,13 @@ paths:
         - name: dismissed
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: boolean
         - name: issue_class
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -295,7 +316,7 @@ paths:
         - name: issue_class~neq
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -303,7 +324,7 @@ paths:
         - name: issue_type
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -318,7 +339,7 @@ paths:
         - name: issue_type~neq
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -333,7 +354,7 @@ paths:
         - name: product
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -341,7 +362,7 @@ paths:
         - name: product~neq
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -349,7 +370,7 @@ paths:
         - name: severity
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -361,7 +382,7 @@ paths:
         - name: severity~neq
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -373,7 +394,7 @@ paths:
         - name: subject
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -381,7 +402,7 @@ paths:
         - name: subject~neq
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -404,7 +425,8 @@ paths:
   /accounts/{account_id}/intel/attack-surface-report/{issueId}/dismiss:
     put:
       operationId: dismissAttackSurfaceReportIssue
-      description: Archive Security Center Insight  @deprecated
+      description: Deprecated endpoint for archiving Security Center insights. Use the
+        newer archive-security-center-insight endpoint instead.  @deprecated
       parameters:
         - name: issueId
           in: path
@@ -426,7 +448,7 @@ paths:
               properties:
                 dismiss:
                   type: boolean
-                  description: "Body param:"
+                  description: Body param
       responses:
         "200":
           description: Success
@@ -485,7 +507,8 @@ paths:
   /accounts/{account_id}/intel/attack-surface-report/issues/severity:
     get:
       operationId: severityAttackSurfaceReportIssue
-      description: Get Security Center Issue Counts by Severity  @deprecated
+      description: Retrieves Security Center issue counts aggregated by severity
+        level.  @deprecated
       parameters:
         - name: account_id
           in: path
@@ -496,13 +519,13 @@ paths:
         - name: dismissed
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: boolean
         - name: issue_class
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -510,7 +533,7 @@ paths:
         - name: issue_class~neq
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -518,7 +541,7 @@ paths:
         - name: issue_type
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -533,7 +556,7 @@ paths:
         - name: issue_type~neq
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -548,7 +571,7 @@ paths:
         - name: product
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -556,7 +579,7 @@ paths:
         - name: product~neq
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -564,7 +587,7 @@ paths:
         - name: severity
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -576,7 +599,7 @@ paths:
         - name: severity~neq
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -588,7 +611,7 @@ paths:
         - name: subject
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -596,7 +619,7 @@ paths:
         - name: subject~neq
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -619,7 +642,8 @@ paths:
   /accounts/{account_id}/intel/attack-surface-report/issues/type:
     get:
       operationId: typeAttackSurfaceReportIssue
-      description: Get Security Center Issue Counts by Type  @deprecated
+      description: Retrieves Security Center issue counts aggregated by issue
+        type.  @deprecated
       parameters:
         - name: account_id
           in: path
@@ -630,13 +654,13 @@ paths:
         - name: dismissed
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: boolean
         - name: issue_class
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -644,7 +668,7 @@ paths:
         - name: issue_class~neq
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -652,7 +676,7 @@ paths:
         - name: issue_type
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -667,7 +691,7 @@ paths:
         - name: issue_type~neq
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -682,7 +706,7 @@ paths:
         - name: product
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -690,7 +714,7 @@ paths:
         - name: product~neq
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -698,7 +722,7 @@ paths:
         - name: severity
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -710,7 +734,7 @@ paths:
         - name: severity~neq
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -722,7 +746,7 @@ paths:
         - name: subject
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -730,7 +754,7 @@ paths:
         - name: subject~neq
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -753,8 +777,9 @@ paths:
   /accounts/{account_id}/intel/attack-surface-report/issue-types:
     get:
       operationId: getAttackSurfaceReportIssueType
-      description: "Get Security Center Issues Types  @example ```ts // Automatically
-        fetches more pages as needed. for await (const issueTypeGetResponse of
+      description: "Lists all available issue types in Security Center, describing
+        categories of security issues.  @example ```ts // Automatically fetches
+        more pages as needed. for await (const issueTypeGetResponse of
         client.intel.attackSurfaceReport.issueTypes.get( { account_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
       parameters:
@@ -799,13 +824,13 @@ paths:
         - name: ipv4
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
         - name: start_end_params
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: object
             properties:
@@ -864,9 +889,15 @@ paths:
         - name: domain
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
+        - name: skip_dns
+          in: query
+          required: false
+          description: "Query param: Skip DNS resolution lookups for faster response."
+          schema:
+            type: boolean
       responses:
         "200":
           description: Success
@@ -1089,7 +1120,7 @@ paths:
         - name: domain
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
       responses:
@@ -1126,8 +1157,9 @@ paths:
   /accounts/{account_id}/intel/indicator-feeds/{feedId}:
     get:
       operationId: getIndicatorFeed
-      description: "Get indicator feed metadata  @example ```ts const indicatorFeed =
-        await client.intel.indicatorFeeds.get( 12, { account_id:
+      description: "Retrieves details for a specific custom threat indicator
+        feed.  @example ```ts const indicatorFeed = await
+        client.intel.indicatorFeeds.get( 12, { account_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
         - name: feedId
@@ -1167,6 +1199,82 @@ paths:
                   is_public:
                     type: boolean
                     description: Whether the indicator feed is exposed to customers
+                  last_upload_summary:
+                    type: object
+                    properties:
+                      persisted:
+                        type: object
+                        properties:
+                          domains_added:
+                            type: number
+                          domains_removed:
+                            type: number
+                          ips_added:
+                            type: number
+                          ips_removed:
+                            type: number
+                          urls_added:
+                            type: number
+                          urls_removed:
+                            type: number
+                        description: Net delta applied to feed indicators by this upload. Snapshot
+                          uploads emit both _\_added and _\_removed; delta-add
+                          emits only _\_added; delta-remove emits only
+                          _\_removed.
+                      skipped:
+                        type: object
+                        properties:
+                          allowlisted_domains:
+                            type: number
+                            description: Domains filtered by the global popularity allowlist at QS
+                              provisioning time. Popular domains (bing.com,
+                              naver.com, etc.) are protected from
+                              custom-threat-feed enforcement.
+                          expired_indicators:
+                            type: number
+                            description: Indicators in the upload whose valid_until is already in the past.
+                              These are not added to QS; the expiration cron
+                              handles cleanup.
+                          invalid_indicators:
+                            type: number
+                            description: Reserved for future use. Currently always 0 — the unifier aborts
+                              the entire upload on a single bad indicator.
+                        description: Counts of indicators that were uploaded but did not reach
+                          QuickSilver, broken down by reason.
+                      uploaded:
+                        type: object
+                        properties:
+                          domains:
+                            type: number
+                            description: Number of domain indicators in the upload
+                          ips:
+                            type: number
+                            description: Number of IP indicators in the upload
+                          urls:
+                            type: number
+                            description: Number of URL indicators in the upload
+                        description: Indicator counts from the unified file the loader received
+                    description: Summary of indicator counts from the last successful upload to this
+                      feed. Populated by the custom-threat-feeds loader at the
+                      end of each successful load. Absent (omitted) when no
+                      upload has completed successfully or the upload errored
+                      before the summary write. Surfaces silent-failure paths so
+                      operators can see when their indicators were dropped
+                      (popularity allowlist, expired valid_until, etc.) without
+                      reading loader logs.
+                  latest_upload_error:
+                    type: string
+                    description: Human-readable error message describing why the latest upload
+                      failed. Populated only when `latest_upload_status` is
+                      `Error`. Returns one of a small fixed set of
+                      category-level messages (invalid domain / IP / URL
+                      entries, malformed row or header, invalid valid_until
+                      timestamp, etc.) or the generic `Upload failed` for
+                      unknown or infrastructure-level errors. Never echoes raw
+                      error text from the underlying loader. Intel accounts
+                      receive the verbatim loader/API error text (including
+                      specific offending values) instead of these category-level
+                      messages.
                   latest_upload_status:
                     type: string
                     enum:
@@ -1184,7 +1292,7 @@ paths:
                     type: string
                     description: The name of the indicator feed
                   provider_id:
-                    type: string
+                    type: number
                     description: The unique identifier for the provider
                   provider_name:
                     type: string
@@ -1192,8 +1300,9 @@ paths:
       x-distilled-response-path: result
     put:
       operationId: updateIndicatorFeed
-      description: "Update indicator feed metadata  @example ```ts const indicatorFeed
-        = await client.intel.indicatorFeeds.update(12, { account_id:
+      description: "Revises details for a specific custom threat indicator
+        feed.  @example ```ts const indicatorFeed = await
+        client.intel.indicatorFeeds.update(12, { account_id:
         '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
       parameters:
         - name: feedId
@@ -1265,10 +1374,11 @@ paths:
   /accounts/{account_id}/intel/indicator-feeds:
     get:
       operationId: listIndicatorFeeds
-      description: "Get indicator feeds owned by this account  @example ```ts //
-        Automatically fetches more pages as needed. for await (const
-        indicatorFeedListResponse of client.intel.indicatorFeeds.list( {
-        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      description: "Retrieves details for all accessible custom threat indicator
+        feeds.  @example ```ts // Automatically fetches more pages as needed.
+        for await (const indicatorFeedListResponse of
+        client.intel.indicatorFeeds.list( { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
       parameters:
         - name: account_id
           in: path
@@ -1311,8 +1421,9 @@ paths:
       x-distilled-pagination-class: IndicatorFeedListResponsesSinglePage
     post:
       operationId: createIndicatorFeed
-      description: "Create new indicator feed  @example ```ts const indicatorFeed =
-        await client.intel.indicatorFeeds.create({ account_id:
+      description: "Creates a new custom threat indicator feed for sharing threat
+        intelligence data.  @example ```ts const indicatorFeed = await
+        client.intel.indicatorFeeds.create({ account_id:
         '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
       parameters:
         - name: account_id
@@ -1370,7 +1481,8 @@ paths:
   /accounts/{account_id}/intel/indicator-feeds/{feedId}/data:
     get:
       operationId: dataIndicatorFeed
-      description: "Get indicator feed data  @example ```ts const response = await
+      description: "Retrieves the raw data entries in a custom threat indicator
+        feed.  @example ```ts const response = await
         client.intel.indicatorFeeds.data( 12, { account_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
@@ -1395,8 +1507,9 @@ paths:
   /accounts/{account_id}/intel/indicator-feeds/permissions/view:
     get:
       operationId: listIndicatorFeedPermissions
-      description: "List indicator feed permissions  @example ```ts const permissions
-        = await client.intel.indicatorFeeds.permissions.list({ account_id:
+      description: "Lists current access permissions for custom threat indicator
+        feeds.  @example ```ts const permissions = await
+        client.intel.indicatorFeeds.permissions.list({ account_id:
         '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
       parameters:
         - name: account_id
@@ -1437,9 +1550,10 @@ paths:
   /accounts/{account_id}/intel/indicator-feeds/permissions/add:
     put:
       operationId: createIndicatorFeedPermission
-      description: "Grant permission to indicator feed  @example ```ts const
-        permission = await client.intel.indicatorFeeds.permissions.create({
-        account_id: '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      description: "Grants access permissions for a custom threat indicator feed to
+        other accounts.  @example ```ts const permission = await
+        client.intel.indicatorFeeds.permissions.create({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
       parameters:
         - name: account_id
           in: path
@@ -1476,9 +1590,10 @@ paths:
   /accounts/{account_id}/intel/indicator-feeds/permissions/remove:
     put:
       operationId: deleteIndicatorFeedPermission
-      description: "Revoke permission to indicator feed  @example ```ts const
-        permission = await client.intel.indicatorFeeds.permissions.delete({
-        account_id: '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      description: "Revokes access permissions for a custom threat indicator
+        feed.  @example ```ts const permission = await
+        client.intel.indicatorFeeds.permissions.delete({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
       parameters:
         - name: account_id
           in: path
@@ -1515,7 +1630,8 @@ paths:
   /accounts/{account_id}/intel/indicator-feeds/{feedId}/snapshot:
     put:
       operationId: putIndicatorFeedSnapshot
-      description: "Update indicator feed data  @example ```ts const snapshot = await
+      description: "Revises the raw data entries in a custom threat indicator
+        feed.  @example ```ts const snapshot = await
         client.intel.indicatorFeeds.snapshots.update(12, { account_id:
         '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
       parameters:
@@ -1577,13 +1693,13 @@ paths:
         - name: ipv4
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
         - name: ipv6
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
       responses:
@@ -1630,40 +1746,16 @@ paths:
                           super_category_id:
                             type: number
       x-distilled-response-path: result
-  /accounts/{account_id}/intel/ip-list:
-    get:
-      operationId: getIpList
-      description: "Get IP Lists.  @example ```ts // Automatically fetches more pages
-        as needed. for await (const ipList of client.intel.ipLists.get({
-        account_id: '023e105f4ecef8ad9ca31a8372d0c353', })) { // ... } ```"
-      parameters:
-        - name: account_id
-          in: path
-          required: true
-          description: Identifier.
-          schema:
-            type: string
-      responses:
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  id:
-                    type: number
-                  description:
-                    type: string
-                  name:
-                    type: string
-      x-distilled-pagination-class: IPListsSinglePage
   /accounts/{account_id}/intel/miscategorization:
     post:
       operationId: createMiscategorization
       description: "Allows you to submit requests to change a domain’s
-        category.  @example ```ts const miscategorization = await
-        client.intel.miscategorizations.create({ account_id:
+        category.  Requests that include category `169` (New Domains) or
+        category `177` (Newly Seen) in any of `content_adds`, `content_removes`,
+        `security_adds`, or `security_removes` will be rejected with a `400 Bad
+        Request`. These categories are automatically managed and fall off 30
+        days after they are applied.  @example ```ts const miscategorization =
+        await client.intel.miscategorizations.create({ account_id:
         '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
       parameters:
         - name: account_id
@@ -1696,7 +1788,7 @@ paths:
                     - ipv4
                     - ipv6
                     - url
-                  description: "Body param:"
+                  description: Body param
                 ip:
                   oneOf:
                     - type: string
@@ -1776,15 +1868,15 @@ paths:
   /accounts/{account_id}/intel/sinkholes:
     get:
       operationId: listSinkholes
-      description: "List sinkholes owned by this account  @example ```ts //
-        Automatically fetches more pages as needed. for await (const sinkhole of
-        client.intel.sinkholes.list({ account_id:
+      description: "Lists sinkholes owned by the account for redirecting malicious
+        traffic.  @example ```ts // Automatically fetches more pages as needed.
+        for await (const sinkhole of client.intel.sinkholes.list({ account_id:
         '023e105f4ecef8ad9ca31a8372d0c353', })) { // ... } ```"
       parameters:
         - name: account_id
           in: path
           required: true
-          description: Identifier
+          description: Identifier.
           schema:
             type: string
       responses:
@@ -1797,32 +1889,33 @@ paths:
                 properties:
                   id:
                     type: number
-                    description: The unique identifier for the sinkhole
+                    description: The unique identifier for the sinkhole.
                   account_tag:
                     type: string
-                    description: The account tag that owns this sinkhole
+                    description: The account tag that owns this sinkhole.
                   created_on:
                     type: string
-                    description: The date and time when the sinkhole was created
+                    description: The date and time when the sinkhole was created.
                   modified_on:
                     type: string
-                    description: The date and time when the sinkhole was last modified
+                    description: The date and time when the sinkhole was last modified.
                   name:
                     type: string
-                    description: The name of the sinkhole
+                    description: The name of the sinkhole.
                   r2_bucket:
                     type: string
-                    description: The name of the R2 bucket to store results
+                    description: The name of the R2 bucket to store results.
                   r2_id:
                     type: string
-                    description: The id of the R2 instance
+                    description: The id of the R2 instance.
       x-distilled-pagination-class: SinkholesSinglePage
   /accounts/{account_id}/intel/whois:
     get:
       operationId: getWhoi
-      description: "Get WHOIS Record  @example ```ts const whois = await
-        client.intel.whois.get({ account_id: '023e105f4ecef8ad9ca31a8372d0c353',
-        }); ```"
+      description: "Retrieves WHOIS registration data for a domain, including
+        registrant and nameserver information.  @example ```ts const whois =
+        await client.intel.whois.get({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
       parameters:
         - name: account_id
           in: path
@@ -1833,7 +1926,7 @@ paths:
         - name: domain
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
       responses:

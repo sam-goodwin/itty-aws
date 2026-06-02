@@ -125,13 +125,13 @@ export interface CreateRuleRequest {
   rulesetId: string;
   /** Path param: Identifier. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   host?: string;
   /** Body param: Whether the rule includes or excludes traffic from being measured. */
   inclusive?: boolean;
   /** Body param: Whether the rule is paused or not. */
   isPaused?: boolean;
-  /** Body param: */
+  /** Body param */
   paths?: string[];
 }
 
@@ -214,13 +214,13 @@ export interface UpdateRuleRequest {
   ruleId: string;
   /** Path param: Identifier. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   host?: string;
   /** Body param: Whether the rule includes or excludes traffic from being measured. */
   inclusive?: boolean;
   /** Body param: Whether the rule is paused or not. */
   isPaused?: boolean;
-  /** Body param: */
+  /** Body param */
   paths?: string[];
 }
 
@@ -625,16 +625,16 @@ export interface ListSiteInfosRequest {
   page?: number;
   perPage?: number;
   /** Query param: The property used to sort the list of results. */
-  orderBy?: "host" | "created";
+  orderBy?: "host" | "created" | (string & {});
 }
 
 export const ListSiteInfosRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
   perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-  orderBy: Schema.optional(Schema.Literals(["host", "created"])).pipe(
-    T.HttpQuery("order_by"),
-  ),
+  orderBy: Schema.optional(
+    Schema.Union([Schema.Literals(["host", "created"]), Schema.String]),
+  ).pipe(T.HttpQuery("order_by")),
 }).pipe(
   T.Http({ method: "GET", path: "/accounts/{account_id}/rum/site_info/list" }),
 ) as unknown as Schema.Schema<ListSiteInfosRequest>;

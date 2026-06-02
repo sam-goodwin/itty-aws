@@ -13,24 +13,24 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
-// SecurityTXT
+// SecurityTxt
 // =============================================================================
 
-export interface GetSecurityTXTRequest {
+export interface GetSecurityTxtRequest {
   /** Identifier. */
   zoneId: string;
 }
 
-export const GetSecurityTXTRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetSecurityTxtRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/zones/{zone_id}/security-center/securitytxt",
   }),
-) as unknown as Schema.Schema<GetSecurityTXTRequest>;
+) as unknown as Schema.Schema<GetSecurityTxtRequest>;
 
-export interface GetSecurityTXTResponse {
+export interface GetSecurityTxtResponse {
   acknowledgments?: string[] | null;
   canonical?: string[] | null;
   contact?: string[] | null;
@@ -42,7 +42,7 @@ export interface GetSecurityTXTResponse {
   preferredLanguages?: string | null;
 }
 
-export const GetSecurityTXTResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+export const GetSecurityTxtResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     acknowledgments: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -68,47 +68,61 @@ export const GetSecurityTXTResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       Schema.Union([Schema.String, Schema.Null]),
     ),
   },
-).pipe(
-  T.ResponsePath("result"),
-) as unknown as Schema.Schema<GetSecurityTXTResponse>;
+)
+  .pipe(
+    Schema.encodeKeys({
+      acknowledgments: "acknowledgments",
+      canonical: "canonical",
+      contact: "contact",
+      enabled: "enabled",
+      encryption: "encryption",
+      expires: "expires",
+      hiring: "hiring",
+      policy: "policy",
+      preferredLanguages: "preferred_languages",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<GetSecurityTxtResponse>;
 
-export type GetSecurityTXTError = DefaultErrors;
+export type GetSecurityTxtError = DefaultErrors;
 
-export const getSecurityTXT: API.OperationMethod<
-  GetSecurityTXTRequest,
-  GetSecurityTXTResponse,
-  GetSecurityTXTError,
+export const getSecurityTxt: API.OperationMethod<
+  GetSecurityTxtRequest,
+  GetSecurityTxtResponse,
+  GetSecurityTxtError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetSecurityTXTRequest,
-  output: GetSecurityTXTResponse,
+  input: GetSecurityTxtRequest,
+  output: GetSecurityTxtResponse,
   errors: [],
 }));
 
-export interface PutSecurityTXTRequest {
+export interface PutSecurityTxtRequest {
   /** Path param: Identifier. */
   zoneId: string;
-  /** Body param: */
+  /** Body param */
   acknowledgments?: string[];
-  /** Body param: */
+  /** Body param */
   canonical?: string[];
-  /** Body param: */
+  /** Body param */
   contact?: string[];
-  /** Body param: */
+  /** Body param */
   enabled?: boolean;
-  /** Body param: */
+  /** Body param */
   encryption?: string[];
-  /** Body param: */
+  /** Body param */
   expires?: string;
-  /** Body param: */
+  /** Body param */
   hiring?: string[];
-  /** Body param: */
+  /** Body param */
   policy?: string[];
-  /** Body param: */
+  /** Body param */
   preferredLanguages?: string;
 }
 
-export const PutSecurityTXTRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PutSecurityTxtRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   acknowledgments: Schema.optional(Schema.Array(Schema.String)),
   canonical: Schema.optional(Schema.Array(Schema.String)),
@@ -120,13 +134,24 @@ export const PutSecurityTXTRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   policy: Schema.optional(Schema.Array(Schema.String)),
   preferredLanguages: Schema.optional(Schema.String),
 }).pipe(
+  Schema.encodeKeys({
+    acknowledgments: "acknowledgments",
+    canonical: "canonical",
+    contact: "contact",
+    enabled: "enabled",
+    encryption: "encryption",
+    expires: "expires",
+    hiring: "hiring",
+    policy: "policy",
+    preferredLanguages: "preferred_languages",
+  }),
   T.Http({
     method: "PUT",
     path: "/zones/{zone_id}/security-center/securitytxt",
   }),
-) as unknown as Schema.Schema<PutSecurityTXTRequest>;
+) as unknown as Schema.Schema<PutSecurityTxtRequest>;
 
-export interface PutSecurityTXTResponse {
+export interface PutSecurityTxtResponse {
   errors: {
     code: number;
     message: string;
@@ -143,7 +168,7 @@ export interface PutSecurityTXTResponse {
   success: true;
 }
 
-export const PutSecurityTXTResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+export const PutSecurityTxtResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     errors: Schema.Array(
       Schema.Struct({
@@ -199,27 +224,27 @@ export const PutSecurityTXTResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     success: Schema.Literal(true),
   },
-) as unknown as Schema.Schema<PutSecurityTXTResponse>;
+) as unknown as Schema.Schema<PutSecurityTxtResponse>;
 
-export type PutSecurityTXTError = DefaultErrors;
+export type PutSecurityTxtError = DefaultErrors;
 
-export const putSecurityTXT: API.OperationMethod<
-  PutSecurityTXTRequest,
-  PutSecurityTXTResponse,
-  PutSecurityTXTError,
+export const putSecurityTxt: API.OperationMethod<
+  PutSecurityTxtRequest,
+  PutSecurityTxtResponse,
+  PutSecurityTxtError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PutSecurityTXTRequest,
-  output: PutSecurityTXTResponse,
+  input: PutSecurityTxtRequest,
+  output: PutSecurityTxtResponse,
   errors: [],
 }));
 
-export interface DeleteSecurityTXTRequest {
+export interface DeleteSecurityTxtRequest {
   /** Identifier. */
   zoneId: string;
 }
 
-export const DeleteSecurityTXTRequest =
+export const DeleteSecurityTxtRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   }).pipe(
@@ -227,9 +252,9 @@ export const DeleteSecurityTXTRequest =
       method: "DELETE",
       path: "/zones/{zone_id}/security-center/securitytxt",
     }),
-  ) as unknown as Schema.Schema<DeleteSecurityTXTRequest>;
+  ) as unknown as Schema.Schema<DeleteSecurityTxtRequest>;
 
-export interface DeleteSecurityTXTResponse {
+export interface DeleteSecurityTxtResponse {
   errors: {
     code: number;
     message: string;
@@ -246,7 +271,7 @@ export interface DeleteSecurityTXTResponse {
   success: true;
 }
 
-export const DeleteSecurityTXTResponse =
+export const DeleteSecurityTxtResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errors: Schema.Array(
       Schema.Struct({
@@ -301,17 +326,17 @@ export const DeleteSecurityTXTResponse =
       ),
     ),
     success: Schema.Literal(true),
-  }) as unknown as Schema.Schema<DeleteSecurityTXTResponse>;
+  }) as unknown as Schema.Schema<DeleteSecurityTxtResponse>;
 
-export type DeleteSecurityTXTError = DefaultErrors;
+export type DeleteSecurityTxtError = DefaultErrors;
 
-export const deleteSecurityTXT: API.OperationMethod<
-  DeleteSecurityTXTRequest,
-  DeleteSecurityTXTResponse,
-  DeleteSecurityTXTError,
+export const deleteSecurityTxt: API.OperationMethod<
+  DeleteSecurityTxtRequest,
+  DeleteSecurityTxtResponse,
+  DeleteSecurityTxtError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteSecurityTXTRequest,
-  output: DeleteSecurityTXTResponse,
+  input: DeleteSecurityTxtRequest,
+  output: DeleteSecurityTxtResponse,
   errors: [],
 }));

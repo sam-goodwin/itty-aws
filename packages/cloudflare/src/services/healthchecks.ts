@@ -54,6 +54,7 @@ export interface GetHealthcheckResponse {
         | "SEAS"
         | "NEAS"
         | "ALL_REGIONS"
+        | (string & {})
       )[]
     | null;
   /** The number of consecutive fails required from a health check before changing the health to unhealthy. */
@@ -72,7 +73,7 @@ export interface GetHealthcheckResponse {
     expectedCodes?: string[] | null;
     followRedirects?: boolean | null;
     header?: Record<string, unknown> | null;
-    method?: "GET" | "HEAD" | null;
+    method?: "GET" | "HEAD" | (string & {}) | null;
     path?: string | null;
     port?: number | null;
   } | null;
@@ -84,7 +85,13 @@ export interface GetHealthcheckResponse {
   /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
   retries?: number | null;
   /** The current status of the origin server according to the health check. */
-  status?: "unknown" | "healthy" | "unhealthy" | "suspended" | null;
+  status?:
+    | "unknown"
+    | "healthy"
+    | "unhealthy"
+    | "suspended"
+    | (string & {})
+    | null;
   /** If suspended, no health checks are sent to the origin. */
   suspended?: boolean | null;
   /** Parameters specific to TCP health check. */
@@ -105,21 +112,24 @@ export const GetHealthcheckResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     checkRegions: Schema.optional(
       Schema.Union([
         Schema.Array(
-          Schema.Literals([
-            "WNAM",
-            "ENAM",
-            "WEU",
-            "EEU",
-            "NSAM",
-            "SSAM",
-            "OC",
-            "ME",
-            "NAF",
-            "SAF",
-            "IN",
-            "SEAS",
-            "NEAS",
-            "ALL_REGIONS",
+          Schema.Union([
+            Schema.Literals([
+              "WNAM",
+              "ENAM",
+              "WEU",
+              "EEU",
+              "NSAM",
+              "SSAM",
+              "OC",
+              "ME",
+              "NAF",
+              "SAF",
+              "IN",
+              "SEAS",
+              "NEAS",
+              "ALL_REGIONS",
+            ]),
+            Schema.String,
           ]),
         ),
         Schema.Null,
@@ -156,7 +166,10 @@ export const GetHealthcheckResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             ]),
           ),
           method: Schema.optional(
-            Schema.Union([Schema.Literals(["GET", "HEAD"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["GET", "HEAD"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           port: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -181,7 +194,10 @@ export const GetHealthcheckResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     retries: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     status: Schema.optional(
       Schema.Union([
-        Schema.Literals(["unknown", "healthy", "unhealthy", "suspended"]),
+        Schema.Union([
+          Schema.Literals(["unknown", "healthy", "unhealthy", "suspended"]),
+          Schema.String,
+        ]),
         Schema.Null,
       ]),
     ),
@@ -279,6 +295,7 @@ export interface ListHealthchecksResponse {
           | "SEAS"
           | "NEAS"
           | "ALL_REGIONS"
+          | (string & {})
         )[]
       | null;
     consecutiveFails?: number | null;
@@ -292,7 +309,7 @@ export interface ListHealthchecksResponse {
       expectedCodes?: string[] | null;
       followRedirects?: boolean | null;
       header?: Record<string, unknown> | null;
-      method?: "GET" | "HEAD" | null;
+      method?: "GET" | "HEAD" | (string & {}) | null;
       path?: string | null;
       port?: number | null;
     } | null;
@@ -300,7 +317,13 @@ export interface ListHealthchecksResponse {
     modifiedOn?: string | null;
     name?: string | null;
     retries?: number | null;
-    status?: "unknown" | "healthy" | "unhealthy" | "suspended" | null;
+    status?:
+      | "unknown"
+      | "healthy"
+      | "unhealthy"
+      | "suspended"
+      | (string & {})
+      | null;
     suspended?: boolean | null;
     tcpConfig?: {
       method?: "connection_established" | null;
@@ -326,21 +349,24 @@ export const ListHealthchecksResponse =
         checkRegions: Schema.optional(
           Schema.Union([
             Schema.Array(
-              Schema.Literals([
-                "WNAM",
-                "ENAM",
-                "WEU",
-                "EEU",
-                "NSAM",
-                "SSAM",
-                "OC",
-                "ME",
-                "NAF",
-                "SAF",
-                "IN",
-                "SEAS",
-                "NEAS",
-                "ALL_REGIONS",
+              Schema.Union([
+                Schema.Literals([
+                  "WNAM",
+                  "ENAM",
+                  "WEU",
+                  "EEU",
+                  "NSAM",
+                  "SSAM",
+                  "OC",
+                  "ME",
+                  "NAF",
+                  "SAF",
+                  "IN",
+                  "SEAS",
+                  "NEAS",
+                  "ALL_REGIONS",
+                ]),
+                Schema.String,
               ]),
             ),
             Schema.Null,
@@ -381,7 +407,13 @@ export const ListHealthchecksResponse =
                 ]),
               ),
               method: Schema.optional(
-                Schema.Union([Schema.Literals(["GET", "HEAD"]), Schema.Null]),
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["GET", "HEAD"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
               ),
               path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
               port: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -406,7 +438,10 @@ export const ListHealthchecksResponse =
         retries: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
         status: Schema.optional(
           Schema.Union([
-            Schema.Literals(["unknown", "healthy", "unhealthy", "suspended"]),
+            Schema.Union([
+              Schema.Literals(["unknown", "healthy", "unhealthy", "suspended"]),
+              Schema.String,
+            ]),
             Schema.Null,
           ]),
         ),
@@ -518,6 +553,7 @@ export interface CreateHealthcheckRequest {
         | "SEAS"
         | "NEAS"
         | "ALL_REGIONS"
+        | (string & {})
       )[]
     | null;
   /** Body param: The number of consecutive fails required from a health check before changing the health to unhealthy. */
@@ -533,7 +569,7 @@ export interface CreateHealthcheckRequest {
     expectedCodes?: string[] | null;
     followRedirects?: boolean;
     header?: Record<string, unknown> | null;
-    method?: "GET" | "HEAD";
+    method?: "GET" | "HEAD" | (string & {});
     path?: string;
     port?: number;
   } | null;
@@ -559,21 +595,24 @@ export const CreateHealthcheckRequest =
     checkRegions: Schema.optional(
       Schema.Union([
         Schema.Array(
-          Schema.Literals([
-            "WNAM",
-            "ENAM",
-            "WEU",
-            "EEU",
-            "NSAM",
-            "SSAM",
-            "OC",
-            "ME",
-            "NAF",
-            "SAF",
-            "IN",
-            "SEAS",
-            "NEAS",
-            "ALL_REGIONS",
+          Schema.Union([
+            Schema.Literals([
+              "WNAM",
+              "ENAM",
+              "WEU",
+              "EEU",
+              "NSAM",
+              "SSAM",
+              "OC",
+              "ME",
+              "NAF",
+              "SAF",
+              "IN",
+              "SEAS",
+              "NEAS",
+              "ALL_REGIONS",
+            ]),
+            Schema.String,
           ]),
         ),
         Schema.Null,
@@ -597,7 +636,9 @@ export const CreateHealthcheckRequest =
               Schema.Null,
             ]),
           ),
-          method: Schema.optional(Schema.Literals(["GET", "HEAD"])),
+          method: Schema.optional(
+            Schema.Union([Schema.Literals(["GET", "HEAD"]), Schema.String]),
+          ),
           path: Schema.optional(Schema.String),
           port: Schema.optional(Schema.Number),
         }).pipe(
@@ -670,6 +711,7 @@ export interface CreateHealthcheckResponse {
         | "SEAS"
         | "NEAS"
         | "ALL_REGIONS"
+        | (string & {})
       )[]
     | null;
   /** The number of consecutive fails required from a health check before changing the health to unhealthy. */
@@ -688,7 +730,7 @@ export interface CreateHealthcheckResponse {
     expectedCodes?: string[] | null;
     followRedirects?: boolean | null;
     header?: Record<string, unknown> | null;
-    method?: "GET" | "HEAD" | null;
+    method?: "GET" | "HEAD" | (string & {}) | null;
     path?: string | null;
     port?: number | null;
   } | null;
@@ -700,7 +742,13 @@ export interface CreateHealthcheckResponse {
   /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
   retries?: number | null;
   /** The current status of the origin server according to the health check. */
-  status?: "unknown" | "healthy" | "unhealthy" | "suspended" | null;
+  status?:
+    | "unknown"
+    | "healthy"
+    | "unhealthy"
+    | "suspended"
+    | (string & {})
+    | null;
   /** If suspended, no health checks are sent to the origin. */
   suspended?: boolean | null;
   /** Parameters specific to TCP health check. */
@@ -721,21 +769,24 @@ export const CreateHealthcheckResponse =
     checkRegions: Schema.optional(
       Schema.Union([
         Schema.Array(
-          Schema.Literals([
-            "WNAM",
-            "ENAM",
-            "WEU",
-            "EEU",
-            "NSAM",
-            "SSAM",
-            "OC",
-            "ME",
-            "NAF",
-            "SAF",
-            "IN",
-            "SEAS",
-            "NEAS",
-            "ALL_REGIONS",
+          Schema.Union([
+            Schema.Literals([
+              "WNAM",
+              "ENAM",
+              "WEU",
+              "EEU",
+              "NSAM",
+              "SSAM",
+              "OC",
+              "ME",
+              "NAF",
+              "SAF",
+              "IN",
+              "SEAS",
+              "NEAS",
+              "ALL_REGIONS",
+            ]),
+            Schema.String,
           ]),
         ),
         Schema.Null,
@@ -772,7 +823,10 @@ export const CreateHealthcheckResponse =
             ]),
           ),
           method: Schema.optional(
-            Schema.Union([Schema.Literals(["GET", "HEAD"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["GET", "HEAD"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           port: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -797,7 +851,10 @@ export const CreateHealthcheckResponse =
     retries: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     status: Schema.optional(
       Schema.Union([
-        Schema.Literals(["unknown", "healthy", "unhealthy", "suspended"]),
+        Schema.Union([
+          Schema.Literals(["unknown", "healthy", "unhealthy", "suspended"]),
+          Schema.String,
+        ]),
         Schema.Null,
       ]),
     ),
@@ -883,6 +940,7 @@ export interface UpdateHealthcheckRequest {
         | "SEAS"
         | "NEAS"
         | "ALL_REGIONS"
+        | (string & {})
       )[]
     | null;
   /** Body param: The number of consecutive fails required from a health check before changing the health to unhealthy. */
@@ -898,7 +956,7 @@ export interface UpdateHealthcheckRequest {
     expectedCodes?: string[] | null;
     followRedirects?: boolean;
     header?: Record<string, unknown> | null;
-    method?: "GET" | "HEAD";
+    method?: "GET" | "HEAD" | (string & {});
     path?: string;
     port?: number;
   } | null;
@@ -925,21 +983,24 @@ export const UpdateHealthcheckRequest =
     checkRegions: Schema.optional(
       Schema.Union([
         Schema.Array(
-          Schema.Literals([
-            "WNAM",
-            "ENAM",
-            "WEU",
-            "EEU",
-            "NSAM",
-            "SSAM",
-            "OC",
-            "ME",
-            "NAF",
-            "SAF",
-            "IN",
-            "SEAS",
-            "NEAS",
-            "ALL_REGIONS",
+          Schema.Union([
+            Schema.Literals([
+              "WNAM",
+              "ENAM",
+              "WEU",
+              "EEU",
+              "NSAM",
+              "SSAM",
+              "OC",
+              "ME",
+              "NAF",
+              "SAF",
+              "IN",
+              "SEAS",
+              "NEAS",
+              "ALL_REGIONS",
+            ]),
+            Schema.String,
           ]),
         ),
         Schema.Null,
@@ -963,7 +1024,9 @@ export const UpdateHealthcheckRequest =
               Schema.Null,
             ]),
           ),
-          method: Schema.optional(Schema.Literals(["GET", "HEAD"])),
+          method: Schema.optional(
+            Schema.Union([Schema.Literals(["GET", "HEAD"]), Schema.String]),
+          ),
           path: Schema.optional(Schema.String),
           port: Schema.optional(Schema.Number),
         }).pipe(
@@ -1039,6 +1102,7 @@ export interface UpdateHealthcheckResponse {
         | "SEAS"
         | "NEAS"
         | "ALL_REGIONS"
+        | (string & {})
       )[]
     | null;
   /** The number of consecutive fails required from a health check before changing the health to unhealthy. */
@@ -1057,7 +1121,7 @@ export interface UpdateHealthcheckResponse {
     expectedCodes?: string[] | null;
     followRedirects?: boolean | null;
     header?: Record<string, unknown> | null;
-    method?: "GET" | "HEAD" | null;
+    method?: "GET" | "HEAD" | (string & {}) | null;
     path?: string | null;
     port?: number | null;
   } | null;
@@ -1069,7 +1133,13 @@ export interface UpdateHealthcheckResponse {
   /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
   retries?: number | null;
   /** The current status of the origin server according to the health check. */
-  status?: "unknown" | "healthy" | "unhealthy" | "suspended" | null;
+  status?:
+    | "unknown"
+    | "healthy"
+    | "unhealthy"
+    | "suspended"
+    | (string & {})
+    | null;
   /** If suspended, no health checks are sent to the origin. */
   suspended?: boolean | null;
   /** Parameters specific to TCP health check. */
@@ -1090,21 +1160,24 @@ export const UpdateHealthcheckResponse =
     checkRegions: Schema.optional(
       Schema.Union([
         Schema.Array(
-          Schema.Literals([
-            "WNAM",
-            "ENAM",
-            "WEU",
-            "EEU",
-            "NSAM",
-            "SSAM",
-            "OC",
-            "ME",
-            "NAF",
-            "SAF",
-            "IN",
-            "SEAS",
-            "NEAS",
-            "ALL_REGIONS",
+          Schema.Union([
+            Schema.Literals([
+              "WNAM",
+              "ENAM",
+              "WEU",
+              "EEU",
+              "NSAM",
+              "SSAM",
+              "OC",
+              "ME",
+              "NAF",
+              "SAF",
+              "IN",
+              "SEAS",
+              "NEAS",
+              "ALL_REGIONS",
+            ]),
+            Schema.String,
           ]),
         ),
         Schema.Null,
@@ -1141,7 +1214,10 @@ export const UpdateHealthcheckResponse =
             ]),
           ),
           method: Schema.optional(
-            Schema.Union([Schema.Literals(["GET", "HEAD"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["GET", "HEAD"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           port: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -1166,7 +1242,10 @@ export const UpdateHealthcheckResponse =
     retries: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     status: Schema.optional(
       Schema.Union([
-        Schema.Literals(["unknown", "healthy", "unhealthy", "suspended"]),
+        Schema.Union([
+          Schema.Literals(["unknown", "healthy", "unhealthy", "suspended"]),
+          Schema.String,
+        ]),
         Schema.Null,
       ]),
     ),
@@ -1252,6 +1331,7 @@ export interface PatchHealthcheckRequest {
         | "SEAS"
         | "NEAS"
         | "ALL_REGIONS"
+        | (string & {})
       )[]
     | null;
   /** Body param: The number of consecutive fails required from a health check before changing the health to unhealthy. */
@@ -1267,7 +1347,7 @@ export interface PatchHealthcheckRequest {
     expectedCodes?: string[] | null;
     followRedirects?: boolean;
     header?: Record<string, unknown> | null;
-    method?: "GET" | "HEAD";
+    method?: "GET" | "HEAD" | (string & {});
     path?: string;
     port?: number;
   } | null;
@@ -1294,21 +1374,24 @@ export const PatchHealthcheckRequest =
     checkRegions: Schema.optional(
       Schema.Union([
         Schema.Array(
-          Schema.Literals([
-            "WNAM",
-            "ENAM",
-            "WEU",
-            "EEU",
-            "NSAM",
-            "SSAM",
-            "OC",
-            "ME",
-            "NAF",
-            "SAF",
-            "IN",
-            "SEAS",
-            "NEAS",
-            "ALL_REGIONS",
+          Schema.Union([
+            Schema.Literals([
+              "WNAM",
+              "ENAM",
+              "WEU",
+              "EEU",
+              "NSAM",
+              "SSAM",
+              "OC",
+              "ME",
+              "NAF",
+              "SAF",
+              "IN",
+              "SEAS",
+              "NEAS",
+              "ALL_REGIONS",
+            ]),
+            Schema.String,
           ]),
         ),
         Schema.Null,
@@ -1332,7 +1415,9 @@ export const PatchHealthcheckRequest =
               Schema.Null,
             ]),
           ),
-          method: Schema.optional(Schema.Literals(["GET", "HEAD"])),
+          method: Schema.optional(
+            Schema.Union([Schema.Literals(["GET", "HEAD"]), Schema.String]),
+          ),
           path: Schema.optional(Schema.String),
           port: Schema.optional(Schema.Number),
         }).pipe(
@@ -1408,6 +1493,7 @@ export interface PatchHealthcheckResponse {
         | "SEAS"
         | "NEAS"
         | "ALL_REGIONS"
+        | (string & {})
       )[]
     | null;
   /** The number of consecutive fails required from a health check before changing the health to unhealthy. */
@@ -1426,7 +1512,7 @@ export interface PatchHealthcheckResponse {
     expectedCodes?: string[] | null;
     followRedirects?: boolean | null;
     header?: Record<string, unknown> | null;
-    method?: "GET" | "HEAD" | null;
+    method?: "GET" | "HEAD" | (string & {}) | null;
     path?: string | null;
     port?: number | null;
   } | null;
@@ -1438,7 +1524,13 @@ export interface PatchHealthcheckResponse {
   /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
   retries?: number | null;
   /** The current status of the origin server according to the health check. */
-  status?: "unknown" | "healthy" | "unhealthy" | "suspended" | null;
+  status?:
+    | "unknown"
+    | "healthy"
+    | "unhealthy"
+    | "suspended"
+    | (string & {})
+    | null;
   /** If suspended, no health checks are sent to the origin. */
   suspended?: boolean | null;
   /** Parameters specific to TCP health check. */
@@ -1459,21 +1551,24 @@ export const PatchHealthcheckResponse =
     checkRegions: Schema.optional(
       Schema.Union([
         Schema.Array(
-          Schema.Literals([
-            "WNAM",
-            "ENAM",
-            "WEU",
-            "EEU",
-            "NSAM",
-            "SSAM",
-            "OC",
-            "ME",
-            "NAF",
-            "SAF",
-            "IN",
-            "SEAS",
-            "NEAS",
-            "ALL_REGIONS",
+          Schema.Union([
+            Schema.Literals([
+              "WNAM",
+              "ENAM",
+              "WEU",
+              "EEU",
+              "NSAM",
+              "SSAM",
+              "OC",
+              "ME",
+              "NAF",
+              "SAF",
+              "IN",
+              "SEAS",
+              "NEAS",
+              "ALL_REGIONS",
+            ]),
+            Schema.String,
           ]),
         ),
         Schema.Null,
@@ -1510,7 +1605,10 @@ export const PatchHealthcheckResponse =
             ]),
           ),
           method: Schema.optional(
-            Schema.Union([Schema.Literals(["GET", "HEAD"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["GET", "HEAD"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           port: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -1535,7 +1633,10 @@ export const PatchHealthcheckResponse =
     retries: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     status: Schema.optional(
       Schema.Union([
-        Schema.Literals(["unknown", "healthy", "unhealthy", "suspended"]),
+        Schema.Union([
+          Schema.Literals(["unknown", "healthy", "unhealthy", "suspended"]),
+          Schema.String,
+        ]),
         Schema.Null,
       ]),
     ),
@@ -1680,6 +1781,7 @@ export interface GetPreviewResponse {
         | "SEAS"
         | "NEAS"
         | "ALL_REGIONS"
+        | (string & {})
       )[]
     | null;
   /** The number of consecutive fails required from a health check before changing the health to unhealthy. */
@@ -1698,7 +1800,7 @@ export interface GetPreviewResponse {
     expectedCodes?: string[] | null;
     followRedirects?: boolean | null;
     header?: Record<string, unknown> | null;
-    method?: "GET" | "HEAD" | null;
+    method?: "GET" | "HEAD" | (string & {}) | null;
     path?: string | null;
     port?: number | null;
   } | null;
@@ -1710,7 +1812,13 @@ export interface GetPreviewResponse {
   /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
   retries?: number | null;
   /** The current status of the origin server according to the health check. */
-  status?: "unknown" | "healthy" | "unhealthy" | "suspended" | null;
+  status?:
+    | "unknown"
+    | "healthy"
+    | "unhealthy"
+    | "suspended"
+    | (string & {})
+    | null;
   /** If suspended, no health checks are sent to the origin. */
   suspended?: boolean | null;
   /** Parameters specific to TCP health check. */
@@ -1730,21 +1838,24 @@ export const GetPreviewResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   checkRegions: Schema.optional(
     Schema.Union([
       Schema.Array(
-        Schema.Literals([
-          "WNAM",
-          "ENAM",
-          "WEU",
-          "EEU",
-          "NSAM",
-          "SSAM",
-          "OC",
-          "ME",
-          "NAF",
-          "SAF",
-          "IN",
-          "SEAS",
-          "NEAS",
-          "ALL_REGIONS",
+        Schema.Union([
+          Schema.Literals([
+            "WNAM",
+            "ENAM",
+            "WEU",
+            "EEU",
+            "NSAM",
+            "SSAM",
+            "OC",
+            "ME",
+            "NAF",
+            "SAF",
+            "IN",
+            "SEAS",
+            "NEAS",
+            "ALL_REGIONS",
+          ]),
+          Schema.String,
         ]),
       ),
       Schema.Null,
@@ -1779,7 +1890,10 @@ export const GetPreviewResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ]),
         ),
         method: Schema.optional(
-          Schema.Union([Schema.Literals(["GET", "HEAD"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["GET", "HEAD"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
         path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         port: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -1804,7 +1918,10 @@ export const GetPreviewResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   retries: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   status: Schema.optional(
     Schema.Union([
-      Schema.Literals(["unknown", "healthy", "unhealthy", "suspended"]),
+      Schema.Union([
+        Schema.Literals(["unknown", "healthy", "unhealthy", "suspended"]),
+        Schema.String,
+      ]),
       Schema.Null,
     ]),
   ),
@@ -1886,6 +2003,7 @@ export interface CreatePreviewRequest {
         | "SEAS"
         | "NEAS"
         | "ALL_REGIONS"
+        | (string & {})
       )[]
     | null;
   /** Body param: The number of consecutive fails required from a health check before changing the health to unhealthy. */
@@ -1901,7 +2019,7 @@ export interface CreatePreviewRequest {
     expectedCodes?: string[] | null;
     followRedirects?: boolean;
     header?: Record<string, unknown> | null;
-    method?: "GET" | "HEAD";
+    method?: "GET" | "HEAD" | (string & {});
     path?: string;
     port?: number;
   } | null;
@@ -1926,21 +2044,24 @@ export const CreatePreviewRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   checkRegions: Schema.optional(
     Schema.Union([
       Schema.Array(
-        Schema.Literals([
-          "WNAM",
-          "ENAM",
-          "WEU",
-          "EEU",
-          "NSAM",
-          "SSAM",
-          "OC",
-          "ME",
-          "NAF",
-          "SAF",
-          "IN",
-          "SEAS",
-          "NEAS",
-          "ALL_REGIONS",
+        Schema.Union([
+          Schema.Literals([
+            "WNAM",
+            "ENAM",
+            "WEU",
+            "EEU",
+            "NSAM",
+            "SSAM",
+            "OC",
+            "ME",
+            "NAF",
+            "SAF",
+            "IN",
+            "SEAS",
+            "NEAS",
+            "ALL_REGIONS",
+          ]),
+          Schema.String,
         ]),
       ),
       Schema.Null,
@@ -1964,7 +2085,9 @@ export const CreatePreviewRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.Null,
           ]),
         ),
-        method: Schema.optional(Schema.Literals(["GET", "HEAD"])),
+        method: Schema.optional(
+          Schema.Union([Schema.Literals(["GET", "HEAD"]), Schema.String]),
+        ),
         path: Schema.optional(Schema.String),
         port: Schema.optional(Schema.Number),
       }).pipe(
@@ -2037,6 +2160,7 @@ export interface CreatePreviewResponse {
         | "SEAS"
         | "NEAS"
         | "ALL_REGIONS"
+        | (string & {})
       )[]
     | null;
   /** The number of consecutive fails required from a health check before changing the health to unhealthy. */
@@ -2055,7 +2179,7 @@ export interface CreatePreviewResponse {
     expectedCodes?: string[] | null;
     followRedirects?: boolean | null;
     header?: Record<string, unknown> | null;
-    method?: "GET" | "HEAD" | null;
+    method?: "GET" | "HEAD" | (string & {}) | null;
     path?: string | null;
     port?: number | null;
   } | null;
@@ -2067,7 +2191,13 @@ export interface CreatePreviewResponse {
   /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
   retries?: number | null;
   /** The current status of the origin server according to the health check. */
-  status?: "unknown" | "healthy" | "unhealthy" | "suspended" | null;
+  status?:
+    | "unknown"
+    | "healthy"
+    | "unhealthy"
+    | "suspended"
+    | (string & {})
+    | null;
   /** If suspended, no health checks are sent to the origin. */
   suspended?: boolean | null;
   /** Parameters specific to TCP health check. */
@@ -2087,21 +2217,24 @@ export const CreatePreviewResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   checkRegions: Schema.optional(
     Schema.Union([
       Schema.Array(
-        Schema.Literals([
-          "WNAM",
-          "ENAM",
-          "WEU",
-          "EEU",
-          "NSAM",
-          "SSAM",
-          "OC",
-          "ME",
-          "NAF",
-          "SAF",
-          "IN",
-          "SEAS",
-          "NEAS",
-          "ALL_REGIONS",
+        Schema.Union([
+          Schema.Literals([
+            "WNAM",
+            "ENAM",
+            "WEU",
+            "EEU",
+            "NSAM",
+            "SSAM",
+            "OC",
+            "ME",
+            "NAF",
+            "SAF",
+            "IN",
+            "SEAS",
+            "NEAS",
+            "ALL_REGIONS",
+          ]),
+          Schema.String,
         ]),
       ),
       Schema.Null,
@@ -2136,7 +2269,10 @@ export const CreatePreviewResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ]),
         ),
         method: Schema.optional(
-          Schema.Union([Schema.Literals(["GET", "HEAD"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["GET", "HEAD"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
         path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         port: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -2161,7 +2297,10 @@ export const CreatePreviewResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   retries: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   status: Schema.optional(
     Schema.Union([
-      Schema.Literals(["unknown", "healthy", "unhealthy", "suspended"]),
+      Schema.Union([
+        Schema.Literals(["unknown", "healthy", "unhealthy", "suspended"]),
+        Schema.String,
+      ]),
       Schema.Null,
     ]),
   ),

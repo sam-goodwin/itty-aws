@@ -201,6 +201,8 @@ interface OperationPatch {
   responsePath?: string;
   /** Request schema modifications */
   request?: ResponsePatch;
+  /** Override request body encoding when the upstream SDK metadata is wrong. */
+  requestContentType?: "binary";
   /** Response schema modifications */
   response?: ResponsePatch;
 }
@@ -392,6 +394,45 @@ function applyPropertyPatch(
 
   const [current, ...rest] = pathSegments;
 
+  // Handle discriminated union variant access:
+  //   "bindings[?type=durable_object_namespace]" → descend into property
+  //     "bindings", into its array element (a union), then narrow to the
+  //     variant whose literal property `type` equals "durable_object_namespace".
+  //   "[?type=durable_object_namespace]" → narrow the current union directly.
+  // This lets patches target a single discriminated-union variant by its tag,
+  // instead of hitting every variant that happens to share a property name.
+  const discMatch = current.match(/^(\w*)\[\?(\w+)=([^\]]+)\]$/);
+  if (discMatch) {
+    const [, fieldName, discKey, discValue] = discMatch;
+    let unionType: TypeInfo | undefined;
+    if (fieldName === "") {
+      unionType = typeInfo;
+    } else {
+      const prop = typeInfo.properties?.find((p) => p.name === fieldName);
+      if (!prop) return;
+      const arrayType = unwrapToArray(prop.type);
+      unionType = arrayType?.elementType ?? prop.type;
+    }
+    if (unionType?.kind !== "union" || !unionType.values) return;
+    const variant = unionType.values.find(
+      (v) =>
+        v.kind === "object" &&
+        v.properties?.some(
+          (p) =>
+            p.name === discKey &&
+            p.type.kind === "literal" &&
+            p.type.value === discValue,
+        ),
+    );
+    if (!variant) return;
+    if (rest.length === 0) {
+      applyPatchToTypeInfo(variant, patch);
+    } else {
+      applyPropertyPatch(variant, rest, patch);
+    }
+    return;
+  }
+
   // Handle array element access: "buckets[]" means descend into array element type
   if (current.endsWith("[]")) {
     const fieldName = current.slice(0, -2);
@@ -536,9 +577,7 @@ function applyPatchToTypeInfo(typeInfo: TypeInfo, patch: PropertyPatch): void {
     typeInfo.values
   ) {
     for (const variant of patch.appendUnion) {
-      typeInfo.values.push(
-        JSON.parse(JSON.stringify(variant)) as TypeInfo,
-      );
+      typeInfo.values.push(JSON.parse(JSON.stringify(variant)) as TypeInfo);
     }
   }
 
@@ -661,6 +700,7 @@ function resolveOperationModel(
         if (param) {
           param.type = patchedProp.type;
           param.required = patchedProp.required;
+          param.wireKey = patchedProp.wireKey;
         }
         for (const arr of [
           resolvedPathParams,
@@ -674,6 +714,7 @@ function resolveOperationModel(
           if (catParam) {
             catParam.type = patchedProp.type;
             catParam.required = patchedProp.required;
+            catParam.wireKey = patchedProp.wireKey;
           }
         }
       }
@@ -1045,14 +1086,26 @@ function typeInfoToSchema(
       const allLiterals = type.values.every((v) => v.kind === "literal");
       if (allLiterals) {
         const literalSet = new Set<string>();
+        let allStringLiterals = true;
         for (const v of type.values) {
           if (v.value === "true" || v.value === "false") {
             literalSet.add(v.value);
+            allStringLiterals = false;
           } else {
             literalSet.add(`"${v.value}"`);
           }
         }
-        return `Schema.Literals([${[...literalSet].join(", ")}])`;
+        const literals = `Schema.Literals([${[...literalSet].join(", ")}])`;
+        // Cloudflare's string enums are OPEN: the API regularly returns values
+        // the SDK's union doesn't yet list (e.g. new permission-group scopes
+        // like `com.cloudflare.edge.worker.script`). A bare `Schema.Literals`
+        // rejects those and fails to decode the whole response. Union with
+        // `Schema.String` so decoding/encoding stays forward-compatible —
+        // mirroring the SDK's own `"a" | "b" | (string & {})` convention (see
+        // `typeInfoToTsType`). Boolean-literal unions stay strict.
+        return allStringLiterals
+          ? `Schema.Union([${literals}, Schema.String])`
+          : literals;
       }
       // General union - de-duplicate and filter unknowns.
       // Sort object variants by required-property count (descending) so that
@@ -1211,6 +1264,22 @@ function typeInfoToTsType(
         tsTypeSet.add(t);
       }
       const uniqueTsTypes = [...tsTypeSet];
+      // Cloudflare's string enums are OPEN (see `typeInfoToSchema`): keep the
+      // literal members for autocomplete but widen with `(string & {})` so
+      // newer server-side values still type-check. Boolean-literal unions and
+      // unions containing non-literals (e.g. `... | null`, object variants)
+      // stay closed.
+      const allStringLiterals =
+        values.length > 0 &&
+        values.every(
+          (v) =>
+            v.kind === "literal" &&
+            v.value !== "true" &&
+            v.value !== "false",
+        );
+      if (allStringLiterals) {
+        uniqueTsTypes.push("(string & {})");
+      }
       if (uniqueTsTypes.length === 1) {
         return uniqueTsTypes[0];
       }
@@ -1365,6 +1434,7 @@ function generateOperationSchemaAst(
         if (param) {
           param.type = patchedProp.type;
           param.required = patchedProp.required;
+          param.wireKey = patchedProp.wireKey;
         }
         for (const arr of [
           resolvedPathParams,
@@ -1378,6 +1448,7 @@ function generateOperationSchemaAst(
           if (catParam) {
             catParam.type = patchedProp.type;
             catParam.required = patchedProp.required;
+            catParam.wireKey = patchedProp.wireKey;
           }
         }
       }
@@ -1447,7 +1518,7 @@ function generateOperationSchemaAst(
   let hasRenamedBodyKey = false;
   for (const param of resolvedBodyParams) {
     const propName = toCamelCase(param.name);
-    const wireName = param.name;
+    const wireName = param.wireKey ?? param.name;
     let schema = typeInfoToSchema(param.type);
     if (!param.required) {
       schema = `Schema.optional(${schema})`;
@@ -1493,7 +1564,9 @@ function generateOperationSchemaAst(
   // Use responseContentType: "binary" for raw octet-stream downloads (e.g. R2 GetObject).
   const hasFiles = operationHasFiles(op);
   const isMultipart = hasFiles || op.isMultipart;
-  const isBinary = !isMultipart && operationHasBinaryBody(op);
+  const isBinary =
+    !isMultipart &&
+    (patch?.requestContentType === "binary" || operationHasBinaryBody(op));
   const httpTraitParts: string[] = [
     `method: "${op.httpMethod}"`,
     `path: "${openApiPath}"`,
@@ -1766,7 +1839,9 @@ function generateAccountOrZoneOperationSchema(
   const isScopeParam = (p: { name: string }): boolean =>
     SCOPE_PARAM_NAMES.has(toCamelCase(p.name));
 
-  const nonScopePathParams = resolved.pathParams.filter((p) => !isScopeParam(p));
+  const nonScopePathParams = resolved.pathParams.filter(
+    (p) => !isScopeParam(p),
+  );
   const queryParams = resolved.queryParams;
   const headerParams = resolved.headerParams;
   const bodyParams = resolved.bodyParams.filter((p) => !isScopeParam(p));
@@ -1813,7 +1888,7 @@ function generateAccountOrZoneOperationSchema(
   let bodyAsHttpBodyEntry: string | undefined;
   for (const param of bodyParams) {
     const propName = toCamelCase(param.name);
-    const wireName = param.name;
+    const wireName = param.wireKey ?? param.name;
     let schema = typeInfoToSchema(param.type);
     if (!param.required) {
       schema = `Schema.optional(${schema})`;
@@ -1851,12 +1926,11 @@ function generateAccountOrZoneOperationSchema(
 
   const hasFiles = operationHasFiles(op);
   const isMultipart = hasFiles || op.isMultipart;
-  const isBinary = !isMultipart && operationHasBinaryBody(op);
+  const isBinary =
+    !isMultipart &&
+    (patch?.requestContentType === "binary" || operationHasBinaryBody(op));
   const buildHttpTrait = (path: string): string => {
-    const parts: string[] = [
-      `method: "${op.httpMethod}"`,
-      `path: "${path}"`,
-    ];
+    const parts: string[] = [`method: "${op.httpMethod}"`, `path: "${path}"`];
     if (isMultipart) parts.push(`contentType: "multipart"`);
     else if (isBinary) parts.push(`contentType: "binary"`);
     if (op.responseContentType === "binary") {
@@ -1888,7 +1962,9 @@ function generateAccountOrZoneOperationSchema(
         `  /** ${param.description.replace(/\n/g, " ").slice(0, 200)} */`,
       );
     }
-    baseInterfaceLines.push(`  ${quotePropKey(propName)}${optMark}: ${tsType};`);
+    baseInterfaceLines.push(
+      `  ${quotePropKey(propName)}${optMark}: ${tsType};`,
+    );
   }
   for (const param of queryParams) {
     const propName = toCamelCase(param.name);
@@ -1899,7 +1975,9 @@ function generateAccountOrZoneOperationSchema(
         `  /** ${param.description.replace(/\n/g, " ").slice(0, 200)} */`,
       );
     }
-    baseInterfaceLines.push(`  ${quotePropKey(propName)}${optMark}: ${tsType};`);
+    baseInterfaceLines.push(
+      `  ${quotePropKey(propName)}${optMark}: ${tsType};`,
+    );
   }
   for (const param of headerParams) {
     const propName = toCamelCase(param.name);
@@ -1910,7 +1988,9 @@ function generateAccountOrZoneOperationSchema(
         `  /** ${param.description.replace(/\n/g, " ").slice(0, 200)} */`,
       );
     }
-    baseInterfaceLines.push(`  ${quotePropKey(propName)}${optMark}: ${tsType};`);
+    baseInterfaceLines.push(
+      `  ${quotePropKey(propName)}${optMark}: ${tsType};`,
+    );
   }
   for (const param of bodyParams) {
     const propName = toCamelCase(param.name);
@@ -1921,7 +2001,9 @@ function generateAccountOrZoneOperationSchema(
         `  /** ${param.description.replace(/\n/g, " ").slice(0, 200)} */`,
       );
     }
-    baseInterfaceLines.push(`  ${quotePropKey(propName)}${optMark}: ${tsType};`);
+    baseInterfaceLines.push(
+      `  ${quotePropKey(propName)}${optMark}: ${tsType};`,
+    );
   }
 
   // Emit a shared base interface containing all non-scope fields, then have
@@ -2222,7 +2304,7 @@ function generateOperationSchema(
   let hasRenamedBodyKey = false;
   for (const param of resolvedBodyParams) {
     const propName = toCamelCase(param.name);
-    const wireName = param.name;
+    const wireName = param.wireKey ?? param.name;
     let schema = typeInfoToSchema(param.type);
     if (!param.required) {
       schema = `Schema.optional(${schema})`;
@@ -2258,7 +2340,9 @@ function generateOperationSchema(
   }
   const hasFiles = operationHasFiles(op);
   const isMultipart = hasFiles || op.isMultipart;
-  const isBinary = !isMultipart && operationHasBinaryBody(op);
+  const isBinary =
+    !isMultipart &&
+    (patch?.requestContentType === "binary" || operationHasBinaryBody(op));
   const httpTraitParts2: string[] = [
     `method: "${op.httpMethod}"`,
     `path: "${openApiPath}"`,
@@ -2656,19 +2740,23 @@ function bodyParamsToOpenApiSchema(
   if (bodyParams.length === 0) {
     return undefined;
   }
-  if (bodyParams.length === 1 && bodyParams[0].name === "body") {
+  if (
+    bodyParams.length === 1 &&
+    (bodyParams[0].wireKey ?? bodyParams[0].name) === "body"
+  ) {
     return typeInfoToOpenApiSchema(bodyParams[0].type);
   }
 
   const properties: Record<string, unknown> = {};
   const required: string[] = [];
   for (const param of bodyParams) {
-    properties[param.name] = typeInfoToOpenApiSchema(param.type);
+    const wireName = param.wireKey ?? param.name;
+    properties[wireName] = typeInfoToOpenApiSchema(param.type);
     if (param.description) {
-      (properties[param.name] as Record<string, unknown>).description =
+      (properties[wireName] as Record<string, unknown>).description =
         param.description;
     }
-    if (param.required) required.push(param.name);
+    if (param.required) required.push(wireName);
   }
   const schema: Record<string, unknown> = {
     type: "object",
@@ -2713,7 +2801,7 @@ function operationToOpenApi(
   const contentType =
     op.isMultipart || operationHasFiles(op)
       ? "multipart/form-data"
-      : operationHasBinaryBody(op)
+      : patch?.requestContentType === "binary" || operationHasBinaryBody(op)
         ? "application/octet-stream"
         : "application/json";
   const errors =
@@ -2915,9 +3003,7 @@ function emitBinaryResponse(
       `  ${quotePropKey(propName)}: Schema.optional(${innerSchema}).pipe(T.HttpResponseHeader("${wireName}")),`,
     );
   }
-  lines.push(
-    `}) as unknown as Schema.Schema<${responseTypeName}>;`,
-  );
+  lines.push(`}) as unknown as Schema.Schema<${responseTypeName}>;`);
   lines.push("");
 }
 
@@ -2964,8 +3050,21 @@ function generateServiceFile(
   lines.push(
     `import type { Credentials } from "${withTsExtension("../credentials")}";`,
   );
+  // Collect error tags that are shared classes re-exported from
+  // `../errors.ts` (and ultimately from `@distilled.cloud/core/errors`).
+  // These are imported rather than redeclared per service, so an
+  // operation that surfaces e.g. `InternalServerError` always refers to
+  // the same class everywhere.
+  const sharedErrorTags = ["InternalServerError"] as const;
+  const mergedErrorsPreview = mergeServiceErrors(service, patches);
+  const importedSharedErrors = sharedErrorTags.filter((tag) =>
+    mergedErrorsPreview.some((e) => e.tag === tag),
+  );
   lines.push(`import {`);
   lines.push(`  type DefaultErrors,`);
+  for (const tag of importedSharedErrors) {
+    lines.push(`  ${tag},`);
+  }
   lines.push(`} from "${withTsExtension("../errors")}";`);
   // Conditionally import UploadableSchema for file uploads
   if (hasFileUploads) {
@@ -2993,19 +3092,27 @@ function generateServiceFile(
   lines.push(`__SENSITIVE_IMPORT__`);
   lines.push("");
 
-  // Merge all error definitions across patches and emit each class once
-  const mergedErrors = mergeServiceErrors(service, patches);
+  // Merge all error definitions across patches and emit each class once.
+  // Tags listed in `sharedErrorTags` are not redeclared — we just attach
+  // their service-specific matchers to the imported class.
+  const mergedErrors = mergedErrorsPreview;
   if (mergedErrors.length > 0) {
     lines.push(`// ${"=".repeat(77)}`);
     lines.push(`// Errors`);
     lines.push(`// ${"=".repeat(77)}`);
     lines.push("");
     for (const { tag, matchers } of mergedErrors) {
-      lines.push(`export class ${tag} extends Schema.TaggedErrorClass<${tag}>()(
+      if ((sharedErrorTags as readonly string[]).includes(tag)) {
+        lines.push(
+          `T.applyErrorMatchers(${tag}, ${JSON.stringify(matchers)});`,
+        );
+      } else {
+        lines.push(`export class ${tag} extends Schema.TaggedErrorClass<${tag}>()(
   "${tag}",
   { code: Schema.Number, message: Schema.String },
 ) {}
 T.applyErrorMatchers(${tag}, ${JSON.stringify(matchers)});`);
+      }
       lines.push("");
     }
   }

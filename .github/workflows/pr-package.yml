@@ -1,11 +1,5 @@
 name: pr-package
 
-# Publishes per-package tarballs to the pr-package service at pkg.ing on every
-# push to main and every PR sync. Only packages whose paths-filter matched the
-# diff are built and published. On PR close, deletes every tag we ever assigned
-# for that PR so the underlying tarballs become orphaned and the bucket cleans
-# them up.
-
 on:
   push:
     branches: [main]
@@ -13,283 +7,39 @@ on:
     # `labeled` so adding the `force-ci` label re-triggers the run.
     types: [opened, synchronize, reopened, closed, labeled]
 
+# Reusable workflows can't widen permissions — the caller must grant
+# `pull-requests: write` (sticky install-instructions comment + cleanup
+# on PR close).
 permissions:
   contents: read
   pull-requests: write
 
-env:
-  PR_PACKAGE_HOST: pkg.ing
-  NODE_VERSION: "24"
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
-
 jobs:
-  # ── Detect which packages changed (same filters as test.yml). ─────────────
-  detect-changes:
-    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
-    runs-on: ubuntu-latest
-    outputs:
-      # The `force-ci` PR label replaces the diff-derived list with every
-      # package, bypassing the paths-filter directory check.
-      packages: ${{ steps.force.outputs.packages || steps.changes.outputs.changes }}
-    steps:
-      - id: force
-        if: contains(github.event.pull_request.labels.*.name, 'force-ci')
-        run: |
-          set -euo pipefail
-          all='["core","aws","cloudflare","gcp","neon","planetscale","prisma-postgres","stripe","supabase","posthog","axiom","azure","kubernetes","coinbase","mongodb-atlas","fly-io","turso","typesense","workos","expo-eas"]'
-          echo "packages=${all}" >> "$GITHUB_OUTPUT"
-      - uses: actions/checkout@v6
-      - uses: dorny/paths-filter@v4
-        id: changes
-        with:
-          filters: |
-            core:
-              - 'packages/core/**'
-            aws:
-              - 'packages/aws/**'
-              - 'packages/core/**'
-            cloudflare:
-              - 'packages/cloudflare/**'
-              - 'packages/core/**'
-            gcp:
-              - 'packages/gcp/**'
-              - 'packages/core/**'
-            neon:
-              - 'packages/neon/**'
-              - 'packages/core/**'
-            planetscale:
-              - 'packages/planetscale/**'
-              - 'packages/core/**'
-            prisma-postgres:
-              - 'packages/prisma-postgres/**'
-              - 'packages/core/**'
-            stripe:
-              - 'packages/stripe/**'
-              - 'packages/core/**'
-            supabase:
-              - 'packages/supabase/**'
-              - 'packages/core/**'
-            posthog:
-              - 'packages/posthog/**'
-              - 'packages/core/**'
-            axiom:
-              - 'packages/axiom/**'
-              - 'packages/core/**'
-            azure:
-              - 'packages/azure/**'
-              - 'packages/core/**'
-            kubernetes:
-              - 'packages/kubernetes/**'
-              - 'packages/core/**'
-            coinbase:
-              - 'packages/coinbase/**'
-              - 'packages/core/**'
-            mongodb-atlas:
-              - 'packages/mongodb-atlas/**'
-              - 'packages/core/**'
-            fly-io:
-              - 'packages/fly-io/**'
-              - 'packages/core/**'
-            turso:
-              - 'packages/turso/**'
-              - 'packages/core/**'
-            typesense:
-              - 'packages/typesense/**'
-              - 'packages/core/**'
-            workos:
-              - 'packages/workos/**'
-              - 'packages/core/**'
-            expo-eas:
-              - 'packages/expo-eas/**'
-              - 'packages/core/**'
-
-  # ── Compute tags once so every matrix job + the comment use the same set. ─
-  tags:
-    needs: detect-changes
-    if: needs.detect-changes.outputs.packages != '[]'
-    runs-on: ubuntu-latest
-    outputs:
-      tags: ${{ steps.tags.outputs.tags }}
-      short: ${{ steps.tags.outputs.short }}
-    steps:
-      - id: tags
-        env:
-          EVENT: ${{ github.event_name }}
-          BRANCH: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
-          # PR builds run on the merge commit by default; tag the actual head sha
-          # so consumers can pin to a specific PR commit.
-          SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
-        run: |
-          set -euo pipefail
-          short="${SHA:0:7}"
-          long="$SHA"
-          tags=("$short" "$long" "$BRANCH")
-          if [ "$EVENT" = "pull_request" ]; then
-            tags+=("pr-${PR_NUMBER}")
-          fi
-          json=$(printf '%s\n' "${tags[@]}" | jq -R . | jq -s -c .)
-          echo "tags=$json" >> "$GITHUB_OUTPUT"
-          echo "short=$short" >> "$GITHUB_OUTPUT"
-          echo "Tags: $json"
-
-  # ── Build + publish each changed package in parallel. ─────────────────────
-  publish:
-    needs: [detect-changes, tags]
-    if: needs.detect-changes.outputs.packages != '[]'
-    # aws and gcp builds are too large for the default runner; route them to a
-    # larger runner. Everything else stays on ubuntu-latest.
-    runs-on: ${{ (matrix.package == 'aws' || matrix.package == 'gcp') && 'ubuntu-22-large' || 'ubuntu-latest' }}
-    strategy:
-      fail-fast: false
-      matrix:
-        package: ${{ fromJSON(needs.detect-changes.outputs.packages) }}
-    steps:
-      - uses: actions/checkout@v6
-
-      - uses: actions/setup-node@v6
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-
-      - uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: latest
-
-      - uses: actions/cache@v4
-        with:
-          path: ~/.bun/install/cache
-          key: bun-${{ runner.os }}-${{ hashFiles('bun.lock') }}
-          restore-keys: |
-            bun-${{ runner.os }}-
-
-      - run: bun install --frozen-lockfile
-
-      # `tsgo -b` follows project references, so building the leaf package also
-      # builds core.
-      - run: bun run build
-        working-directory: packages/${{ matrix.package }}
-
-      - name: Publish ${{ matrix.package }}
-        env:
-          TOKEN: ${{ secrets.PR_PACKAGE_TOKEN }}
-          TAGS: ${{ needs.tags.outputs.tags }}
-        working-directory: packages/${{ matrix.package }}
-        run: |
-          set -euo pipefail
-          PKG_NAME=$(node -p "require('./package.json').name")
-          rm -f *.tgz
-          bun pm pack --destination .
-          tgz=$(ls *.tgz)
-          echo "Publishing ${PKG_NAME} (${tgz}) with tags ${TAGS}"
-          curl -fsSL --show-error -X PUT \
-            "https://${PR_PACKAGE_HOST}/projects/${PKG_NAME}/packages" \
-            -H "Authorization: Bearer ${TOKEN}" \
-            -H "X-Tags: ${TAGS}" \
-            -H "Content-Type: application/gzip" \
-            --data-binary "@${tgz}"
-
-  # ── PR-only: sticky comment with install URLs pinned to this commit. ──────
-  comment:
-    needs: [detect-changes, tags, publish]
-    # `always()` so a single matrix failure doesn't drop the comment for every
-    # other package that did publish.
-    if: always() && github.event_name == 'pull_request' && needs.detect-changes.outputs.packages != '[]' && needs.tags.result == 'success'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-
-      - name: Generate bot token
-        id: bot-token
-        uses: actions/create-github-app-token@v1
-        with:
-          app-id: ${{ secrets.ALCHEMY_VERSION_BOT_ID }}
-          private-key: ${{ secrets.ALCHEMY_VERSION_BOT_PRIVATE_KEY }}
-
-      - name: Comment on PR
-        env:
-          GH_TOKEN: ${{ steps.bot-token.outputs.token }}
-          REPO: ${{ github.repository }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
-          SHORT_SHA: ${{ needs.tags.outputs.short }}
-          PACKAGES: ${{ needs.detect-changes.outputs.packages }}
-        run: |
-          set -euo pipefail
-          MARKER="<!-- pr-package-comment -->"
-
-          # pkg.distilled.cloud auto-prefixes the `@distilled.cloud/` scope, so
-          # the unscoped directory name is enough on the install URL.
-          {
-            echo "$MARKER"
-            echo
-            echo "Install the packages built from this commit:"
-            echo
-            for dir in $(echo "$PACKAGES" | jq -r '.[]'); do
-              name=$(node -p "require('./packages/${dir}/package.json').name")
-              echo "**${name}**"
-              echo '```sh'
-              echo "bun add https://pkg.distilled.cloud/${dir}/${SHORT_SHA}"
-              echo '```'
-              echo
-            done
-          } > /tmp/body.md
-
-          BODY=$(cat /tmp/body.md)
-
-          existing=$(gh api --paginate \
-            "repos/${REPO}/issues/${PR_NUMBER}/comments" \
-            --jq ".[] | select(.user.login == \"alchemy-version-bot[bot]\") | select(.body | startswith(\"${MARKER}\")) | .id" \
-            | head -1)
-
-          if [ -n "$existing" ]; then
-            gh api -X PATCH "repos/${REPO}/issues/comments/${existing}" -f body="$BODY"
-          else
-            gh api -X POST "repos/${REPO}/issues/${PR_NUMBER}/comments" -f body="$BODY"
-          fi
-
-  # ── Cleanup on PR close (merged or not). ──────────────────────────────────
-  # Deletes the branch tag, pr-<number> tag, and short+long sha tags for every
-  # commit in the PR across every package project. 404s are ignored (tag may
-  # have been TTL'd or never set).
-  cleanup:
-    if: github.event_name == 'pull_request' && github.event.action == 'closed'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-
-      - name: Delete tags
-        env:
-          TOKEN: ${{ secrets.PR_PACKAGE_TOKEN }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
-          BRANCH: ${{ github.event.pull_request.head.ref }}
-          GH_TOKEN: ${{ github.token }}
-          REPO: ${{ github.repository }}
-        run: |
-          set -euo pipefail
-
-          # Collect every commit sha that appeared in the PR (paginated).
-          shas=$(gh api --paginate "repos/${REPO}/pulls/${PR_NUMBER}/commits" --jq '.[].sha')
-
-          tags=()
-          while IFS= read -r sha; do
-            [ -z "$sha" ] && continue
-            tags+=("$sha" "${sha:0:7}")
-          done <<< "$shas"
-          tags+=("$BRANCH" "pr-${PR_NUMBER}")
-
-          unique=$(printf '%s\n' "${tags[@]}" | sort -u)
-
-          # Project names match npm package names; scopes stay literal in the
-          # URL (the API route accepts /projects/@scope/name/...).
-          projects=$(for d in packages/*/package.json; do node -p "require('./${d}').name"; done)
-
-          while IFS= read -r project; do
-            [ -z "$project" ] && continue
-            while IFS= read -r tag; do
-              [ -z "$tag" ] && continue
-              encoded=$(jq -rn --arg t "$tag" '$t|@uri')
-              code=$(curl -sS -o /dev/null -w "%{http_code}" -X DELETE \
-                "https://${PR_PACKAGE_HOST}/projects/${project}/tags/${encoded}" \
-                -H "Authorization: Bearer ${TOKEN}")
-              echo "DELETE ${project}:${tag} → ${code}"
-            done <<< "$unique"
-          done <<< "$projects"
+  pr-package:
+    uses: alchemy-run/actions/.github/workflows/pr-package.yml@main
+    with:
+      install-host: pkg.distilled.cloud
+      packages: |
+        [
+          { "dir": "packages/core",            "name": "@distilled.cloud/core",            "install": "core" },
+          { "dir": "packages/aws",             "name": "@distilled.cloud/aws",             "install": "aws",             "runner": "ubuntu-22-large" },
+          { "dir": "packages/axiom",           "name": "@distilled.cloud/axiom",           "install": "axiom" },
+          { "dir": "packages/azure",           "name": "@distilled.cloud/azure",           "install": "azure" },
+          { "dir": "packages/cloudflare",      "name": "@distilled.cloud/cloudflare",      "install": "cloudflare" },
+          { "dir": "packages/coinbase",        "name": "@distilled.cloud/coinbase",        "install": "coinbase" },
+          { "dir": "packages/expo-eas",        "name": "@distilled.cloud/expo-eas",        "install": "expo-eas" },
+          { "dir": "packages/fly-io",          "name": "@distilled.cloud/fly-io",          "install": "fly-io" },
+          { "dir": "packages/gcp",             "name": "@distilled.cloud/gcp",             "install": "gcp",             "runner": "ubuntu-22-large" },
+          { "dir": "packages/kubernetes",      "name": "@distilled.cloud/kubernetes",      "install": "kubernetes" },
+          { "dir": "packages/mongodb-atlas",   "name": "@distilled.cloud/mongodb-atlas",   "install": "mongodb-atlas" },
+          { "dir": "packages/neon",            "name": "@distilled.cloud/neon",            "install": "neon" },
+          { "dir": "packages/planetscale",     "name": "@distilled.cloud/planetscale",     "install": "planetscale" },
+          { "dir": "packages/posthog",         "name": "@distilled.cloud/posthog",         "install": "posthog" },
+          { "dir": "packages/prisma-postgres", "name": "@distilled.cloud/prisma-postgres", "install": "prisma-postgres" },
+          { "dir": "packages/stripe",          "name": "@distilled.cloud/stripe",          "install": "stripe" },
+          { "dir": "packages/supabase",        "name": "@distilled.cloud/supabase",        "install": "supabase" },
+          { "dir": "packages/turso",           "name": "@distilled.cloud/turso",           "install": "turso" },
+          { "dir": "packages/typesense",       "name": "@distilled.cloud/typesense",       "install": "typesense" },
+          { "dir": "packages/workos",          "name": "@distilled.cloud/workos",          "install": "workos" }
+        ]
+    secrets: inherit

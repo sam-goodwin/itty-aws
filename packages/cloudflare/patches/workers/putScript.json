@@ -2,6 +2,12 @@
   "errors": {
     "InvalidRoute": [{ "code": 7003 }],
     "InvalidWorkerScript": [{ "code": 10068 }],
+    "InternalServerError": [
+      {
+        "code": 10002,
+        "message": { "includes": "An unknown error has occurred" }
+      }
+    ],
     "DurableObjectMustBeSqlite": [
       {
         "code": 10074,
@@ -27,6 +33,12 @@
   "request": {
     "properties": {
       "metadata.bindings[].json": { "type": "unknown" },
+      "metadata.bindings[?type=durable_object_namespace].class_name": {
+        "optional": false
+      },
+      "metadata.bindings[?type=workflow].class_name": {
+        "optional": false
+      },
       "metadata.bindings[]": {
         "appendUnion": [
           {

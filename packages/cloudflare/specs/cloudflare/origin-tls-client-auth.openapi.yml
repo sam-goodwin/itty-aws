@@ -9,8 +9,9 @@ paths:
   /zones/{zone_id}/origin_tls_client_auth/hostnames/{hostname}:
     get:
       operationId: getHostname
-      description: "Get the Hostname Status for Client Authentication  @example ```ts
-        const authenticatedOriginPull = await
+      description: "Retrieves the client certificate authentication status for a
+        specific hostname, showing whether authenticated origin pulls are
+        enabled.  @example ```ts const authenticatedOriginPull = await
         client.originTLSClientAuth.hostnames.get( 'app.example.com', { zone_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
@@ -140,7 +141,7 @@ paths:
                         type: string
                         description: The hostname on the origin for which the client certificate
                           uploaded will be used.
-                  description: "Body param:"
+                  description: Body param
               required:
                 - config
       responses:
@@ -224,8 +225,8 @@ paths:
     get:
       operationId: getHostnameCertificate
       description: "Get the certificate by ID to be used for client authentication on
-        a hostname.  @example ```ts const certificate = await
-        client.originTLSClientAuth.hostnames.certificates.get(
+        a hostname.  @example ```ts const hostnameCertificate = await
+        client.originTLSClientAuth.hostnameCertificates.get(
         '023e105f4ecef8ad9ca31a8372d0c353', { zone_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
@@ -283,9 +284,13 @@ paths:
       x-distilled-response-path: result
     delete:
       operationId: deleteHostnameCertificate
-      description: "Delete Hostname Client Certificate  @example ```ts const
-        certificate = await
-        client.originTLSClientAuth.hostnames.certificates.delete(
+      description: "Removes a client certificate used for authenticated origin pulls
+        on a specific hostname. Note: Before deleting the certificate, you must
+        first invalidate the hostname for client authentication by sending a PUT
+        request with `enabled` set to null. After invalidating the association,
+        the certificate can be safely deleted.  @example ```ts const
+        hostnameCertificate = await
+        client.originTLSClientAuth.hostnameCertificates.delete(
         '023e105f4ecef8ad9ca31a8372d0c353', { zone_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
@@ -344,9 +349,11 @@ paths:
   /zones/{zone_id}/origin_tls_client_auth/hostnames/certificates:
     get:
       operationId: listHostnameCertificates
-      description: "List Certificates  @example ```ts // Automatically fetches more
-        pages as needed. for await (const certificateListResponse of
-        client.originTLSClientAuth.hostnames.certificates.list( { zone_id:
+      description: "Lists all client certificates configured for per-hostname
+        authenticated origin pulls on the zone.  @example ```ts // Automatically
+        fetches more pages as needed. for await (const
+        hostnameCertificateListResponse of
+        client.originTLSClientAuth.hostnameCertificates.list( { zone_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
       parameters:
         - name: zone_id
@@ -363,45 +370,15 @@ paths:
               schema:
                 type: object
                 properties:
-                  cert_id:
+                  id:
                     type: string
                     description: Identifier.
-                  cert_status:
-                    type: string
-                    enum:
-                      - initializing
-                      - pending_deployment
-                      - pending_deletion
-                      - active
-                      - deleted
-                      - deployment_timed_out
-                      - deletion_timed_out
-                    description: Status of the certificate or the association.
-                  cert_updated_at:
-                    type: string
-                    description: The time when the certificate was updated.
-                  cert_uploaded_on:
-                    type: string
-                    description: The time when the certificate was uploaded.
                   certificate:
                     type: string
                     description: The hostname certificate.
-                  created_at:
-                    type: string
-                    description: The time when the certificate was created.
-                  enabled:
-                    oneOf:
-                      - type: boolean
-                    nullable: true
-                    description: Indicates whether hostname-level authenticated origin pulls is
-                      enabled. A null value voids the association.
                   expires_on:
                     type: string
                     description: The date when the certificate expires.
-                  hostname:
-                    type: string
-                    description: The hostname on the origin for which the client certificate
-                      uploaded will be used.
                   issuer:
                     type: string
                     description: The certificate authority that issued the certificate.
@@ -422,22 +399,16 @@ paths:
                       - deployment_timed_out
                       - deletion_timed_out
                     description: Status of the certificate or the association.
-                  updated_at:
+                  uploaded_on:
                     type: string
-                    description: The time when the certificate was updated.
-                  id:
-                    type: string
-                    description: Identifier.
-                  private_key:
-                    type: string
-                    description: The hostname certificate's private key.
-      x-distilled-pagination-class: CertificateListResponsesSinglePage
+                    description: The time when the certificate was uploaded.
+      x-distilled-pagination-class: HostnameCertificateListResponsesSinglePage
     post:
       operationId: createHostnameCertificate
       description: "Upload a certificate to be used for client authentication on a
         hostname. 10 hostname certificates per zone are allowed.  @example ```ts
-        const certificate = await
-        client.originTLSClientAuth.hostnames.certificates.create( { zone_id:
+        const hostnameCertificate = await
+        client.originTLSClientAuth.hostnameCertificates.create( { zone_id:
         '023e105f4ecef8ad9ca31a8372d0c353', certificate: '-----BEGIN
         CERTIFICATE-----\\nMIIDtTCCAp2gAwIBAgIJAMHAwfXZ5/PWMA0GCSqGSIb3DQEBCwUA\
         MEUxCzAJBgNV\\nBAYTAkFVMRMwEQYDVQQIEwpTb21lLVN0YXRlMSEwHwYDVQQKExhJbnRl\
@@ -550,9 +521,10 @@ paths:
       x-distilled-response-path: result
   /zones/{zone_id}/origin_tls_client_auth/{certificateId}:
     get:
-      operationId: getOriginTlsClientAuth
-      description: "Get Certificate Details  @example ```ts const originTLSClientAuth
-        = await client.originTLSClientAuth.get(
+      operationId: getZoneCertificate
+      description: "Retrieves details for a specific client certificate used in
+        zone-level authenticated origin pulls.  @example ```ts const
+        zoneCertificate = await client.originTLSClientAuth.zoneCertificates.get(
         '023e105f4ecef8ad9ca31a8372d0c353', { zone_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
@@ -612,9 +584,10 @@ paths:
                     description: The zone's private key.
       x-distilled-response-path: result
     delete:
-      operationId: deleteOriginTlsClientAuth
-      description: "Delete Certificate  @example ```ts const originTLSClientAuth =
-        await client.originTLSClientAuth.delete(
+      operationId: deleteZoneCertificate
+      description: "Removes a client certificate used for zone-level authenticated
+        origin pulls.  @example ```ts const zoneCertificate = await
+        client.originTLSClientAuth.zoneCertificates.delete(
         '023e105f4ecef8ad9ca31a8372d0c353', { zone_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
@@ -675,10 +648,11 @@ paths:
       x-distilled-response-path: result
   /zones/{zone_id}/origin_tls_client_auth:
     get:
-      operationId: listOriginTlsClientAuths
-      description: "List Certificates  @example ```ts // Automatically fetches more
-        pages as needed. for await (const originTLSClientAuthListResponse of
-        client.originTLSClientAuth.list( { zone_id:
+      operationId: listZoneCertificates
+      description: "Lists all client certificates configured for zone-level
+        authenticated origin pulls.  @example ```ts // Automatically fetches
+        more pages as needed. for await (const zoneCertificateListResponse of
+        client.originTLSClientAuth.zoneCertificates.list( { zone_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
       parameters:
         - name: zone_id
@@ -730,16 +704,16 @@ paths:
                   private_key:
                     type: string
                     description: The zone's private key.
-      x-distilled-pagination-class: OriginTLSClientAuthListResponsesSinglePage
+      x-distilled-pagination-class: ZoneCertificateListResponsesSinglePage
     post:
-      operationId: createOriginTlsClientAuth
+      operationId: createZoneCertificate
       description: "Upload your own certificate you want Cloudflare to use for
         edge-to-origin communication to override the shared certificate. Please
         note that it is important to keep only one certificate active. Also,
         make sure to enable zone-level authenticated origin pulls by making a
         PUT call to settings endpoint to see the uploaded certificate in
-        use.  @example ```ts const originTLSClientAuth = await
-        client.originTLSClientAuth.create({ zone_id:
+        use.  @example ```ts const zoneCertificate = await
+        client.originTLSClientAuth.zoneCertificates.create({ zone_id:
         '023e105f4ecef8ad9ca31a8372d0c353', certificate: '-----BEGIN
         CERTIFICATE-----\\nMIIDtTCCAp2gAwIBAgIJAMHAwfXZ5/PWMA0GCSqGSIb3DQEBCwUA\
         MEUxCzAJBgNV\\nBAYTAkFVMRMwEQYDVQQIEwpTb21lLVN0YXRlMSEwHwYDVQQKExhJbnRl\

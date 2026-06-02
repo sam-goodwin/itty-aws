@@ -3,5 +3,10 @@
     "InvalidRequestBody": [{ "code": 10026 }],
     "QueueNotFound": [{ "code": 11000 }],
     "InvalidRoute": [{ "code": 7003 }]
+  },
+  "response": {
+    "properties": {
+      "result[].script_name": { "wireKey": "script" }
+    }
   }
 }

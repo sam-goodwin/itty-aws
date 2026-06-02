@@ -20,6 +20,7 @@ export type ListBouncersInput = typeof ListBouncersInput.Type;
 
 // Output Schema
 export const ListBouncersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.String,
   current_page: Schema.Number,
   next_page: Schema.NullOr(Schema.Number),
   next_page_url: Schema.NullOr(Schema.String),
@@ -40,7 +41,7 @@ export const ListBouncersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       replicas_per_cell: Schema.Number,
       created_at: Schema.String,
       updated_at: Schema.String,
-      deleted_at: Schema.String,
+      deleted_at: Schema.NullOr(Schema.String),
       actor: Schema.Struct({
         id: Schema.String,
         display_name: Schema.String,
@@ -51,7 +52,7 @@ export const ListBouncersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         name: Schema.String,
         created_at: Schema.String,
         updated_at: Schema.String,
-        deleted_at: Schema.String,
+        deleted_at: Schema.NullOr(Schema.String),
       }),
       parameters: Schema.Array(
         Schema.Struct({

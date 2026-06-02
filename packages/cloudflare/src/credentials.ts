@@ -1,11 +1,11 @@
 import { ConfigError } from "@distilled.cloud/core/errors";
 import * as Config from "effect/Config";
+import * as Context from "effect/Context";
 import * as Data from "effect/Data";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
 import * as Option from "effect/Option";
 import * as Redacted from "effect/Redacted";
-import * as Context from "effect/Context";
 
 export const DEFAULT_API_BASE_URL = "https://api.cloudflare.com/client/v4";
 
@@ -205,13 +205,11 @@ const envConfig = Config.all({
 
 export const resolveFromEnv: Effect.Effect<ResolvedCredentials, ConfigError> =
   Effect.gen(function* () {
-    const config = yield* envConfig
-      .asEffect()
-      .pipe(
-        Effect.mapError(
-          fromConfigError("Failed to load Cloudflare credentials from config"),
-        ),
-      );
+    const config = yield* envConfig.pipe(
+      Effect.mapError(
+        fromConfigError("Failed to load Cloudflare credentials from config"),
+      ),
+    );
     const apiToken = Option.getOrUndefined(config.apiToken);
     const apiKey = Option.getOrUndefined(config.apiKey);
     const email = Option.getOrUndefined(config.email);

@@ -6,14 +6,18 @@ servers:
   - url: https://api.cloudflare.com/client/v4
 x-distilled-service: email-security
 paths:
-  /accounts/{account_id}/email-security/investigate/{postfixId}:
+  /accounts/{account_id}/email-security/investigate/{investigateId}:
     get:
       operationId: getInvestigate
-      description: "Get message details  @example ```ts const investigate = await
-        client.emailSecurity.investigate.get( '4Njp3P0STMz2c02Q', { account_id:
+      description: "Retrieves comprehensive details for a specific email message
+        including headers, recipients, sender information, and current
+        quarantine status. Use the investigate_id from search results to fetch
+        detailed information.  @example ```ts const investigate = await
+        client.emailSecurity.investigate.get(
+        '4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678', { account_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
-        - name: postfixId
+        - name: investigateId
           in: path
           required: true
           schema:
@@ -21,9 +25,16 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: Account Identifier
+          description: "Path param: Identifier."
           schema:
             type: string
+        - name: submission
+          in: query
+          required: false
+          description: "Query param: When true, search the submissions datastore only.
+            When false or omitted, search the regular datastore only."
+          schema:
+            type: boolean
       responses:
         "200":
           description: Success
@@ -34,7 +45,50 @@ paths:
                 properties:
                   id:
                     type: string
-                  action_log: {}
+                    description: Unique identifier for a message retrieved from investigation
+                  action_log:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        completed_at:
+                          type: string
+                          description: Timestamp when action completed
+                        operation:
+                          type: string
+                          enum:
+                            - MOVE
+                            - RELEASE
+                            - RECLASSIFY
+                            - SUBMISSION
+                            - QUARANTINE_RELEASE
+                            - PREVIEW
+                          description: Type of action performed
+                        completed_timestamp:
+                          type: string
+                          description: "@deprecated Deprecated, use `completed_at` instead. End of life:
+                            November 1, 2026."
+                        properties:
+                          type: object
+                          properties:
+                            folder:
+                              type: string
+                              description: Target folder for move operations
+                            requested_by:
+                              type: string
+                              description: User who requested the action
+                          description: Additional properties for the action
+                        status:
+                          oneOf:
+                            - type: string
+                          nullable: true
+                          description: Status of the action
+                      required:
+                        - completed_at
+                        - operation
+                    description: "@deprecated Deprecated, use `GET
+                      /investigate/{investigate_id}/action_log` instead. End of
+                      life: November 1, 2026."
                   client_recipients:
                     type: array
                     items:
@@ -49,12 +103,15 @@ paths:
                     type: boolean
                   postfix_id:
                     type: string
-                    description: The identifier of the message.
+                    description: The identifier of the message
                   properties:
                     type: object
                     properties:
                       allowlisted_pattern:
-                        type: string
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: Pattern that allowlisted this message
                       allowlisted_pattern_type:
                         type: string
                         enum:
@@ -66,10 +123,18 @@ paths:
                           - domain_recency
                           - managed_acceptable_sender
                           - outbound_ndr
+                        nullable: true
+                        description: Type of allowlist pattern
                       blocklisted_message:
-                        type: boolean
+                        oneOf:
+                          - type: boolean
+                        nullable: true
+                        description: Whether message was blocklisted
                       blocklisted_pattern:
-                        type: string
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: Pattern that blocklisted this message
                       whitelisted_pattern_type:
                         type: string
                         enum:
@@ -81,8 +146,13 @@ paths:
                           - domain_recency
                           - managed_acceptable_sender
                           - outbound_ndr
+                        nullable: true
+                        description: Legacy field for allowlist pattern type
+                    description: Message processing properties
                   ts:
                     type: string
+                    description: "@deprecated Deprecated, use `scanned_at` instead. End of life:
+                      November 1, 2026."
                   alert_id:
                     oneOf:
                       - type: string
@@ -101,6 +171,19 @@ paths:
                       - SIMULATION_SUBMISSION
                       - API
                       - RETRO_SCAN
+                  delivery_status:
+                    oneOf:
+                      - type: array
+                        items:
+                          type: string
+                          enum:
+                            - delivered
+                            - moved
+                            - quarantined
+                            - rejected
+                            - deferred
+                            - bounced
+                            - queued
                     nullable: true
                   edf_hash:
                     oneOf:
@@ -129,7 +212,6 @@ paths:
                       - EXTERNAL
                       - UNKNOWN
                       - NONE
-                    nullable: true
                   findings:
                     oneOf:
                       - type: array
@@ -157,7 +239,6 @@ paths:
                                 - EXTERNAL
                                 - UNKNOWN
                                 - NONE
-                              nullable: true
                             field:
                               oneOf:
                                 - type: string
@@ -183,6 +264,10 @@ paths:
                                 - type: string
                               nullable: true
                     nullable: true
+                    description: "@deprecated Deprecated, use the `findings` field from `GET
+                      /investigate/{investigate_id}/detections` instead. End of
+                      life: November 1, 2026. Detection findings for this
+                      message."
                   from:
                     oneOf:
                       - type: string
@@ -199,6 +284,18 @@ paths:
                     oneOf:
                       - type: string
                     nullable: true
+                  post_delivery_operations:
+                    oneOf:
+                      - type: array
+                        items:
+                          type: string
+                          enum:
+                            - PREVIEW
+                            - QUARANTINE_RELEASE
+                            - SUBMISSION
+                            - MOVE
+                    nullable: true
+                    description: Post-delivery operations performed on this message
                   postfix_id_outbound:
                     oneOf:
                       - type: string
@@ -207,7 +304,25 @@ paths:
                     oneOf:
                       - type: string
                     nullable: true
+                  scanned_at:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: When the message was scanned (UTC)
+                  sent_at:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: When the message was sent (UTC)
                   sent_date:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  smtp_helo_server_ip:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  smtp_previous_hop_ip:
                     oneOf:
                       - type: string
                     nullable: true
@@ -234,40 +349,39 @@ paths:
                           type: string
                     nullable: true
                   validation:
+                    type: object
+                    properties:
+                      comment:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      dkim:
+                        type: string
+                        enum:
+                          - pass
+                          - neutral
+                          - fail
+                          - error
+                          - none
+                      dmarc:
+                        type: string
+                        enum:
+                          - pass
+                          - neutral
+                          - fail
+                          - error
+                          - none
+                      spf:
+                        type: string
+                        enum:
+                          - pass
+                          - neutral
+                          - fail
+                          - error
+                          - none
+                  x_originating_ip:
                     oneOf:
-                      - type: object
-                        properties:
-                          comment:
-                            oneOf:
-                              - type: string
-                            nullable: true
-                          dkim:
-                            type: string
-                            enum:
-                              - pass
-                              - neutral
-                              - fail
-                              - error
-                              - none
-                            nullable: true
-                          dmarc:
-                            type: string
-                            enum:
-                              - pass
-                              - neutral
-                              - fail
-                              - error
-                              - none
-                            nullable: true
-                          spf:
-                            type: string
-                            enum:
-                              - pass
-                              - neutral
-                              - fail
-                              - error
-                              - none
-                            nullable: true
+                      - type: string
                     nullable: true
                 required:
                   - id
@@ -284,17 +398,15 @@ paths:
     get:
       operationId: listInvestigates
       description: "Returns information for each email that matches the search
-        parameter(s). If the search takes too long, the endpoint returns 202
-        with a Location header pointing to a polling endpoint where results can
-        be retrieved once ready.  @example ```ts // Automatically fetches more
-        pages as needed. for await (const investigateListResponse of
+        parameter(s).  @example ```ts // Automatically fetches more pages as
+        needed. for await (const investigateListResponse of
         client.emailSecurity.investigate.list( { account_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
       parameters:
         - name: account_id
           in: path
           required: true
-          description: "Path param: Account Identifier"
+          description: "Path param: Identifier."
           schema:
             type: string
         - name: page
@@ -310,33 +422,46 @@ paths:
         - name: action_log
           in: query
           required: false
-          description: "Query param: Determines if the message action log is included in
-            the response."
+          description: "Query param: Whether to include the message action log in the
+            response."
           schema:
             type: boolean
         - name: alert_id
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
         - name: cursor
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
+        - name: delivery_status
+          in: query
+          required: false
+          description: "Query param: Delivery status to filter by."
+          schema:
+            type: string
+            enum:
+              - delivered
+              - moved
+              - quarantined
+              - rejected
+              - deferred
+              - bounced
+              - queued
         - name: detections_only
           in: query
           required: false
-          description: "Query param: Determines if the search results will include
-            detections or not."
+          description: "Query param: Whether to include only detections in search results."
           schema:
             type: boolean
         - name: domain
           in: query
           required: false
-          description: "Query param: The sender domains the search filters by."
+          description: "Query param: Sender domains to filter by."
           schema:
             type: string
         - name: end
@@ -348,7 +473,7 @@ paths:
         - name: final_disposition
           in: query
           required: false
-          description: "Query param: The dispositions the search filters by."
+          description: "Query param: Dispositions to filter by."
           schema:
             type: string
             enum:
@@ -361,7 +486,7 @@ paths:
         - name: message_action
           in: query
           required: false
-          description: "Query param: The message actions the search filters by."
+          description: "Query param: Message actions to filter by."
           schema:
             type: string
             enum:
@@ -371,40 +496,31 @@ paths:
         - name: message_id
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
         - name: metric
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
         - name: query
           in: query
           required: false
-          description: "Query param: The space-delimited term used in the query. The
-            search is case-insensitive.  The content of the following email
-            metadata fields are searched:  - alert_id - CC - From
-            (envelope_from) - From Name - final_disposition - md5 hash (of any
-            attachment) - sha1 hash (of any attachment) - sha256 hash (of any
-            attachment) - name (of any attachment) - Reason - Received DateTime
-            (yyyy-mm-ddThh:mm:ss) - Sent DateTime (yyyy-mm-ddThh:mm:ss) -
-            ReplyTo - To (envelope_to) - To Name - Message-ID -
-            smtp_helo_server_ip - smtp_previous_hop_ip - x_originating_ip -
-            Subject"
+          description: "Query param: Space-delimited search term. Case-insensitive."
           schema:
             type: string
         - name: recipient
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
         - name: sender
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
         - name: start
@@ -417,7 +533,7 @@ paths:
         - name: subject
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
       responses:
@@ -430,7 +546,50 @@ paths:
                 properties:
                   id:
                     type: string
-                  action_log: {}
+                    description: Unique identifier for a message retrieved from investigation
+                  action_log:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        completed_at:
+                          type: string
+                          description: Timestamp when action completed
+                        operation:
+                          type: string
+                          enum:
+                            - MOVE
+                            - RELEASE
+                            - RECLASSIFY
+                            - SUBMISSION
+                            - QUARANTINE_RELEASE
+                            - PREVIEW
+                          description: Type of action performed
+                        completed_timestamp:
+                          type: string
+                          description: "@deprecated Deprecated, use `completed_at` instead. End of life:
+                            November 1, 2026."
+                        properties:
+                          type: object
+                          properties:
+                            folder:
+                              type: string
+                              description: Target folder for move operations
+                            requested_by:
+                              type: string
+                              description: User who requested the action
+                          description: Additional properties for the action
+                        status:
+                          oneOf:
+                            - type: string
+                          nullable: true
+                          description: Status of the action
+                      required:
+                        - completed_at
+                        - operation
+                    description: "@deprecated Deprecated, use `GET
+                      /investigate/{investigate_id}/action_log` instead. End of
+                      life: November 1, 2026."
                   client_recipients:
                     type: array
                     items:
@@ -445,12 +604,15 @@ paths:
                     type: boolean
                   postfix_id:
                     type: string
-                    description: The identifier of the message.
+                    description: The identifier of the message
                   properties:
                     type: object
                     properties:
                       allowlisted_pattern:
-                        type: string
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: Pattern that allowlisted this message
                       allowlisted_pattern_type:
                         type: string
                         enum:
@@ -462,10 +624,18 @@ paths:
                           - domain_recency
                           - managed_acceptable_sender
                           - outbound_ndr
+                        nullable: true
+                        description: Type of allowlist pattern
                       blocklisted_message:
-                        type: boolean
+                        oneOf:
+                          - type: boolean
+                        nullable: true
+                        description: Whether message was blocklisted
                       blocklisted_pattern:
-                        type: string
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: Pattern that blocklisted this message
                       whitelisted_pattern_type:
                         type: string
                         enum:
@@ -477,8 +647,13 @@ paths:
                           - domain_recency
                           - managed_acceptable_sender
                           - outbound_ndr
+                        nullable: true
+                        description: Legacy field for allowlist pattern type
+                    description: Message processing properties
                   ts:
                     type: string
+                    description: "@deprecated Deprecated, use `scanned_at` instead. End of life:
+                      November 1, 2026."
                   alert_id:
                     oneOf:
                       - type: string
@@ -497,6 +672,19 @@ paths:
                       - SIMULATION_SUBMISSION
                       - API
                       - RETRO_SCAN
+                  delivery_status:
+                    oneOf:
+                      - type: array
+                        items:
+                          type: string
+                          enum:
+                            - delivered
+                            - moved
+                            - quarantined
+                            - rejected
+                            - deferred
+                            - bounced
+                            - queued
                     nullable: true
                   edf_hash:
                     oneOf:
@@ -525,7 +713,6 @@ paths:
                       - EXTERNAL
                       - UNKNOWN
                       - NONE
-                    nullable: true
                   findings:
                     oneOf:
                       - type: array
@@ -553,7 +740,6 @@ paths:
                                 - EXTERNAL
                                 - UNKNOWN
                                 - NONE
-                              nullable: true
                             field:
                               oneOf:
                                 - type: string
@@ -579,6 +765,10 @@ paths:
                                 - type: string
                               nullable: true
                     nullable: true
+                    description: "@deprecated Deprecated, use the `findings` field from `GET
+                      /investigate/{investigate_id}/detections` instead. End of
+                      life: November 1, 2026. Detection findings for this
+                      message."
                   from:
                     oneOf:
                       - type: string
@@ -595,6 +785,18 @@ paths:
                     oneOf:
                       - type: string
                     nullable: true
+                  post_delivery_operations:
+                    oneOf:
+                      - type: array
+                        items:
+                          type: string
+                          enum:
+                            - PREVIEW
+                            - QUARANTINE_RELEASE
+                            - SUBMISSION
+                            - MOVE
+                    nullable: true
+                    description: Post-delivery operations performed on this message
                   postfix_id_outbound:
                     oneOf:
                       - type: string
@@ -603,7 +805,25 @@ paths:
                     oneOf:
                       - type: string
                     nullable: true
+                  scanned_at:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: When the message was scanned (UTC)
+                  sent_at:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: When the message was sent (UTC)
                   sent_date:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  smtp_helo_server_ip:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  smtp_previous_hop_ip:
                     oneOf:
                       - type: string
                     nullable: true
@@ -630,40 +850,39 @@ paths:
                           type: string
                     nullable: true
                   validation:
+                    type: object
+                    properties:
+                      comment:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      dkim:
+                        type: string
+                        enum:
+                          - pass
+                          - neutral
+                          - fail
+                          - error
+                          - none
+                      dmarc:
+                        type: string
+                        enum:
+                          - pass
+                          - neutral
+                          - fail
+                          - error
+                          - none
+                      spf:
+                        type: string
+                        enum:
+                          - pass
+                          - neutral
+                          - fail
+                          - error
+                          - none
+                  x_originating_ip:
                     oneOf:
-                      - type: object
-                        properties:
-                          comment:
-                            oneOf:
-                              - type: string
-                            nullable: true
-                          dkim:
-                            type: string
-                            enum:
-                              - pass
-                              - neutral
-                              - fail
-                              - error
-                              - none
-                            nullable: true
-                          dmarc:
-                            type: string
-                            enum:
-                              - pass
-                              - neutral
-                              - fail
-                              - error
-                              - none
-                            nullable: true
-                          spf:
-                            type: string
-                            enum:
-                              - pass
-                              - neutral
-                              - fail
-                              - error
-                              - none
-                            nullable: true
+                      - type: string
                     nullable: true
                 required:
                   - id
@@ -676,16 +895,16 @@ paths:
                   - properties
                   - ts
       x-distilled-pagination-class: InvestigateListResponsesV4PagePaginationArray
-  /accounts/{account_id}/email-security/investigate/{postfixId}/detections:
+  /accounts/{account_id}/email-security/investigate/{investigateId}/detections:
     get:
       operationId: getInvestigateDetection
       description: "Returns detection details such as threat categories and sender
         information for non-benign messages.  @example ```ts const detection =
         await client.emailSecurity.investigate.detections.get(
-        '4Njp3P0STMz2c02Q', { account_id: '023e105f4ecef8ad9ca31a8372d0c353' },
-        ); ```"
+        '4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
-        - name: postfixId
+        - name: investigateId
           in: path
           required: true
           schema:
@@ -693,7 +912,7 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: Account Identifier
+          description: Identifier.
           schema:
             type: string
       responses:
@@ -713,10 +932,12 @@ paths:
                       properties:
                         size:
                           type: number
+                          description: Size of the attachment in bytes
                         content_type:
                           oneOf:
                             - type: string
                           nullable: true
+                          description: MIME type of the attachment
                         detection:
                           type: string
                           enum:
@@ -731,16 +952,91 @@ paths:
                             - UNKNOWN
                             - NONE
                           nullable: true
+                          description: Detection result for this attachment
                         encrypted:
                           oneOf:
                             - type: boolean
                           nullable: true
+                          description: Whether the attachment is encrypted
+                        filename:
+                          oneOf:
+                            - type: string
+                          nullable: true
+                          description: Name of the attached file
+                        md5:
+                          oneOf:
+                            - type: string
+                          nullable: true
+                          description: MD5 hash of the attachment
                         name:
                           oneOf:
                             - type: string
                           nullable: true
+                          description: Attachment name (alternative to filename)
+                        sha1:
+                          oneOf:
+                            - type: string
+                          nullable: true
+                          description: SHA1 hash of the attachment
+                        sha256:
+                          oneOf:
+                            - type: string
+                          nullable: true
+                          description: SHA256 hash of the attachment
                       required:
                         - size
+                  findings:
+                    oneOf:
+                      - type: array
+                        items:
+                          type: object
+                          properties:
+                            attachment:
+                              oneOf:
+                                - type: string
+                              nullable: true
+                            detail:
+                              oneOf:
+                                - type: string
+                              nullable: true
+                            detection:
+                              type: string
+                              enum:
+                                - MALICIOUS
+                                - MALICIOUS-BEC
+                                - SUSPICIOUS
+                                - SPOOF
+                                - SPAM
+                                - BULK
+                                - ENCRYPTED
+                                - EXTERNAL
+                                - UNKNOWN
+                                - NONE
+                            field:
+                              oneOf:
+                                - type: string
+                              nullable: true
+                            name:
+                              oneOf:
+                                - type: string
+                              nullable: true
+                            portion:
+                              oneOf:
+                                - type: string
+                              nullable: true
+                            reason:
+                              oneOf:
+                                - type: string
+                              nullable: true
+                            score:
+                              oneOf:
+                                - type: number
+                              nullable: true
+                            value:
+                              oneOf:
+                                - type: string
+                              nullable: true
+                    nullable: true
                   headers:
                     type: array
                     items:
@@ -806,8 +1102,6 @@ paths:
                           oneOf:
                             - type: string
                           nullable: true
-                      required:
-                        - id
                   validation:
                     type: object
                     properties:
@@ -823,7 +1117,6 @@ paths:
                           - fail
                           - error
                           - none
-                        nullable: true
                       dmarc:
                         type: string
                         enum:
@@ -832,7 +1125,6 @@ paths:
                           - fail
                           - error
                           - none
-                        nullable: true
                       spf:
                         type: string
                         enum:
@@ -841,7 +1133,6 @@ paths:
                           - fail
                           - error
                           - none
-                        nullable: true
                   final_disposition:
                     type: string
                     enum:
@@ -855,26 +1146,29 @@ paths:
                       - EXTERNAL
                       - UNKNOWN
                       - NONE
-                    nullable: true
                 required:
                   - action
                   - attachments
+                  - findings
                   - headers
                   - links
                   - sender_info
                   - threat_categories
                   - validation
       x-distilled-response-path: result
-  /accounts/{account_id}/email-security/investigate/{postfixId}/move:
+  /accounts/{account_id}/email-security/investigate/{investigateId}/move:
     post:
       operationId: createInvestigateMove
-      description: "Move a message  @example ```ts // Automatically fetches more pages
-        as needed. for await (const moveCreateResponse of
-        client.emailSecurity.investigate.move.create( '4Njp3P0STMz2c02Q', {
-        account_id: '023e105f4ecef8ad9ca31a8372d0c353', destination: 'Inbox', },
-        )) { // ... } ```"
+      description: "Moves a single message to a specified mailbox folder (Inbox,
+        JunkEmail, DeletedItems, RecoverableItemsDeletions, or
+        RecoverableItemsPurges). Requires active integration.  @example ```ts //
+        Automatically fetches more pages as needed. for await (const
+        moveCreateResponse of client.emailSecurity.investigate.move.create(
+        '4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', destination: 'Inbox', }, )) { // ...
+        } ```"
       parameters:
-        - name: postfixId
+        - name: investigateId
           in: path
           required: true
           schema:
@@ -882,7 +1176,7 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param: Account Identifier"
+          description: "Path param: Identifier."
           schema:
             type: string
       requestBody:
@@ -900,7 +1194,7 @@ paths:
                     - DeletedItems
                     - RecoverableItemsDeletions
                     - RecoverableItemsPurges
-                  description: "Body param:"
+                  description: Body param
               required:
                 - destination
       responses:
@@ -911,53 +1205,75 @@ paths:
               schema:
                 type: object
                 properties:
-                  completed_timestamp:
-                    type: string
-                  item_count:
-                    type: number
-                    description: "@deprecated"
                   success:
                     type: boolean
+                    description: Whether the operation succeeded
+                  completed_at:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: When the move operation completed (UTC)
+                  completed_timestamp:
+                    type: string
+                    description: "@deprecated Deprecated, use `completed_at` instead. End of life:
+                      November 1, 2026."
                   destination:
                     oneOf:
                       - type: string
                     nullable: true
+                    description: Destination folder for the message
+                  item_count:
+                    type: number
+                    description: "@deprecated Number of items moved. End of life: November 1, 2026."
                   message_id:
                     oneOf:
                       - type: string
                     nullable: true
+                    description: Message identifier
                   operation:
                     oneOf:
                       - type: string
                     nullable: true
+                    description: Type of operation performed
                   recipient:
                     oneOf:
                       - type: string
                     nullable: true
+                    description: Recipient email address
                   status:
                     oneOf:
                       - type: string
                     nullable: true
+                    description: Operation status
                 required:
-                  - completed_timestamp
-                  - item_count
                   - success
       x-distilled-pagination-class: MoveCreateResponsesSinglePage
   /accounts/{account_id}/email-security/investigate/move:
     post:
       operationId: bulkInvestigateMove
-      description: "Move multiple messages  @example ```ts // Automatically fetches
-        more pages as needed. for await (const moveBulkResponse of
-        client.emailSecurity.investigate.move.bulk( { account_id:
-        '023e105f4ecef8ad9ca31a8372d0c353', destination: 'Inbox', postfix_ids:
-        ['4Njp3P0STMz2c02Q'], }, )) { // ... } ```"
+      description: "Moves multiple messages to a specified mailbox folder (Inbox,
+        JunkEmail, DeletedItems, RecoverableItemsDeletions, or
+        RecoverableItemsPurges). Requires active integration.  @example ```ts //
+        Automatically fetches more pages as needed. for await (const
+        moveBulkResponse of client.emailSecurity.investigate.move.bulk( {
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353', destination: 'Inbox', },
+        )) { // ... } ```"
       parameters:
         - name: account_id
           in: path
           required: true
-          description: "Path param: Account Identifier"
+          description: "Path param: Identifier."
           schema:
             type: string
+        - name: postfix_ids
+          in: query
+          required: false
+          description: "@deprecated Body param: Deprecated, use `ids` instead. End of
+            life: November 1, 2026. List of message IDs to move."
+          schema:
+            type: array
+            items:
+              type: string
       requestBody:
         required: true
         content:
@@ -973,15 +1289,14 @@ paths:
                     - DeletedItems
                     - RecoverableItemsDeletions
                     - RecoverableItemsPurges
-                  description: "Body param:"
-                postfix_ids:
+                  description: Body param
+                ids:
                   type: array
                   items:
                     type: string
-                  description: "Body param:"
+                  description: "Body param: List of message IDs to move"
               required:
                 - destination
-                - postfix_ids
       responses:
         "200":
           description: Success
@@ -990,47 +1305,59 @@ paths:
               schema:
                 type: object
                 properties:
-                  completed_timestamp:
-                    type: string
-                  item_count:
-                    type: number
-                    description: "@deprecated"
                   success:
                     type: boolean
+                    description: Whether the operation succeeded
+                  completed_at:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: When the move operation completed (UTC)
+                  completed_timestamp:
+                    type: string
+                    description: "@deprecated Deprecated, use `completed_at` instead. End of life:
+                      November 1, 2026."
                   destination:
                     oneOf:
                       - type: string
                     nullable: true
+                    description: Destination folder for the message
+                  item_count:
+                    type: number
+                    description: "@deprecated Number of items moved. End of life: November 1, 2026."
                   message_id:
                     oneOf:
                       - type: string
                     nullable: true
+                    description: Message identifier
                   operation:
                     oneOf:
                       - type: string
                     nullable: true
+                    description: Type of operation performed
                   recipient:
                     oneOf:
                       - type: string
                     nullable: true
+                    description: Recipient email address
                   status:
                     oneOf:
                       - type: string
                     nullable: true
+                    description: Operation status
                 required:
-                  - completed_timestamp
-                  - item_count
                   - success
       x-distilled-pagination-class: MoveBulkResponsesSinglePage
-  /accounts/{account_id}/email-security/investigate/{postfixId}/preview:
+  /accounts/{account_id}/email-security/investigate/{investigateId}/preview:
     get:
       operationId: getInvestigatePreview
       description: "Returns a preview of the message body as a base64 encoded PNG
         image for non-benign messages.  @example ```ts const preview = await
-        client.emailSecurity.investigate.preview.get( '4Njp3P0STMz2c02Q', {
-        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+        client.emailSecurity.investigate.preview.get(
+        '4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
-        - name: postfixId
+        - name: investigateId
           in: path
           required: true
           schema:
@@ -1038,7 +1365,7 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: Account Identifier
+          description: Identifier.
           schema:
             type: string
       responses:
@@ -1058,15 +1385,17 @@ paths:
   /accounts/{account_id}/email-security/investigate/preview:
     post:
       operationId: createInvestigatePreview
-      description: "Preview for non-detection messages  @example ```ts const preview =
-        await client.emailSecurity.investigate.preview.create({ account_id:
-        '023e105f4ecef8ad9ca31a8372d0c353', postfix_id: '4Njp3P0STMz2c02Q', });
-        ```"
+      description: "Generates a preview image for a message that was not flagged as a
+        detection. Useful for investigating benign messages. Returns a
+        base64-encoded PNG screenshot of the email body.  @example ```ts const
+        preview = await client.emailSecurity.investigate.preview.create({
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353', postfix_id:
+        '4Njp3P0STMz2c02Q', }); ```"
       parameters:
         - name: account_id
           in: path
           required: true
-          description: "Path param: Account Identifier"
+          description: "Path param: Identifier."
           schema:
             type: string
       requestBody:
@@ -1078,7 +1407,7 @@ paths:
               properties:
                 postfix_id:
                   type: string
-                  description: "Body param: The identifier of the message."
+                  description: "Body param: The identifier of the message"
               required:
                 - postfix_id
       responses:
@@ -1095,15 +1424,15 @@ paths:
                 required:
                   - screenshot
       x-distilled-response-path: result
-  /accounts/{account_id}/email-security/investigate/{postfixId}/raw:
+  /accounts/{account_id}/email-security/investigate/{investigateId}/raw:
     get:
       operationId: getInvestigateRaw
       description: "Returns the raw eml of any non-benign message.  @example ```ts
         const raw = await client.emailSecurity.investigate.raw.get(
-        '4Njp3P0STMz2c02Q', { account_id: '023e105f4ecef8ad9ca31a8372d0c353' },
-        ); ```"
+        '4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
-        - name: postfixId
+        - name: investigateId
           in: path
           required: true
           schema:
@@ -1111,7 +1440,7 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: Account Identifier
+          description: Identifier.
           schema:
             type: string
       responses:
@@ -1128,15 +1457,19 @@ paths:
                 required:
                   - raw
       x-distilled-response-path: result
-  /accounts/{account_id}/email-security/investigate/{postfixId}/reclassify:
+  /accounts/{account_id}/email-security/investigate/{investigateId}/reclassify:
     post:
       operationId: createInvestigateReclassify
-      description: "Change email classfication  @example ```ts const reclassify =
-        await client.emailSecurity.investigate.reclassify.create(
-        '4Njp3P0STMz2c02Q', { account_id: '023e105f4ecef8ad9ca31a8372d0c353',
-        expected_disposition: 'NONE', }, ); ```"
+      description: "Submits a request to reclassify an email's disposition. Use for
+        reporting false positives or false negatives. Optionally provide the raw
+        EML content for reanalysis. The reclassification is processed
+        asynchronously.  @example ```ts const reclassify = await
+        client.emailSecurity.investigate.reclassify.create(
+        '4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', expected_disposition: 'NONE', }, );
+        ```"
       parameters:
-        - name: postfixId
+        - name: investigateId
           in: path
           required: true
           schema:
@@ -1144,7 +1477,7 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param: Account Identifier"
+          description: "Path param: Identifier."
           schema:
             type: string
       requestBody:
@@ -1163,13 +1496,13 @@ paths:
                     - SPAM
                     - SPOOF
                     - SUSPICIOUS
-                  description: "Body param:"
+                  description: Body param
                 eml_content:
                   type: string
-                  description: "Body param: Base64 encoded content of the EML file"
+                  description: "Body param: Base64 encoded content of the EML file."
                 escalated_submission_id:
                   type: string
-                  description: "Body param:"
+                  description: Body param
               required:
                 - expected_disposition
       responses:
@@ -1182,16 +1515,18 @@ paths:
   /accounts/{account_id}/email-security/investigate/release:
     post:
       operationId: bulkInvestigateRelease
-      description: "Release messages from quarantine  @example ```ts // Automatically
-        fetches more pages as needed. for await (const releaseBulkResponse of
-        client.emailSecurity.investigate.release.bulk( { account_id:
-        '023e105f4ecef8ad9ca31a8372d0c353', body: ['4Njp3P0STMz2c02Q'], }, )) {
-        // ... } ```"
+      description: "Releases one or more quarantined messages, delivering them to the
+        intended recipients. Use when a message was incorrectly quarantined.
+        Returns delivery status for each recipient.  @example ```ts //
+        Automatically fetches more pages as needed. for await (const
+        releaseBulkResponse of client.emailSecurity.investigate.release.bulk( {
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353', body:
+        ['4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678'], }, )) { // ... } ```"
       parameters:
         - name: account_id
           in: path
           required: true
-          description: "Path param: Account Identifier"
+          description: "Path param: Identifier."
           schema:
             type: string
       requestBody:
@@ -1210,9 +1545,9 @@ paths:
               schema:
                 type: object
                 properties:
-                  postfix_id:
+                  id:
                     type: string
-                    description: The identifier of the message.
+                    description: Unique identifier for a message retrieved from investigation
                   delivered:
                     oneOf:
                       - type: array
@@ -1225,6 +1560,10 @@ paths:
                         items:
                           type: string
                     nullable: true
+                  postfix_id:
+                    type: string
+                    description: "@deprecated Deprecated, use `id` instead. End of life: November 1,
+                      2026."
                   undelivered:
                     oneOf:
                       - type: array
@@ -1232,16 +1571,20 @@ paths:
                           type: string
                     nullable: true
                 required:
-                  - postfix_id
+                  - id
       x-distilled-pagination-class: ReleaseBulkResponsesSinglePage
-  /accounts/{account_id}/email-security/investigate/{postfixId}/trace:
+  /accounts/{account_id}/email-security/investigate/{investigateId}/trace:
     get:
       operationId: getInvestigateTrace
-      description: "Get email trace  @example ```ts const trace = await
-        client.emailSecurity.investigate.trace.get( '4Njp3P0STMz2c02Q', {
-        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      description: "Retrieves delivery and processing trace information for an email
+        message. Shows the delivery path, retraction history, and move
+        operations performed on the message. Useful for debugging delivery
+        issues.  @example ```ts const trace = await
+        client.emailSecurity.investigate.trace.get(
+        '4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
-        - name: postfixId
+        - name: investigateId
           in: path
           required: true
           schema:
@@ -1249,7 +1592,7 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: Account Identifier
+          description: Identifier.
           schema:
             type: string
       responses:
@@ -1271,14 +1614,17 @@ paths:
                               properties:
                                 lineno:
                                   type: number
+                                  description: Line number in the trace log
+                                logged_at:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
                                 message:
                                   type: string
                                 ts:
                                   type: string
-                              required:
-                                - lineno
-                                - message
-                                - ts
+                                  description: "@deprecated Deprecated, use `logged_at` instead. End of life:
+                                    November 1, 2026."
                         nullable: true
                       pending:
                         oneOf:
@@ -1295,14 +1641,17 @@ paths:
                               properties:
                                 lineno:
                                   type: number
+                                  description: Line number in the trace log
+                                logged_at:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
                                 message:
                                   type: string
                                 ts:
                                   type: string
-                              required:
-                                - lineno
-                                - message
-                                - ts
+                                  description: "@deprecated Deprecated, use `logged_at` instead. End of life:
+                                    November 1, 2026."
                         nullable: true
                       pending:
                         oneOf:
@@ -1312,22 +1661,48 @@ paths:
                   - inbound
                   - outbound
       x-distilled-response-path: result
-  /accounts/{account_id}/email-security/settings/allow_policies/{policyId}:
+  /accounts/{account_id}/email-security/phishguard/reports:
     get:
-      operationId: getSettingAllowPolicy
-      description: "Get an email allow policy  @example ```ts const allowPolicy =
-        await client.emailSecurity.settings.allowPolicies.get( 2401, {
-        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      operationId: listPhishguardReports
+      description: "Retrieves PhishGuard security alert reports for a specified date
+        range. Reports include detected threats, dispositions, and contextual
+        information. Use for security monitoring and threat analysis.  @example
+        ```ts // Automatically fetches more pages as needed. for await (const
+        reportListResponse of client.emailSecurity.phishguard.reports.list( {
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
       parameters:
-        - name: policyId
-          in: path
-          required: true
-          schema:
-            type: number
         - name: account_id
           in: path
           required: true
-          description: Account Identifier
+          description: "Path param: Identifier."
+          schema:
+            type: string
+        - name: end
+          in: query
+          required: false
+          description: "Query param: End of the time range (RFC3339). Takes precedence
+            over to_date."
+          schema:
+            type: string
+        - name: from_date
+          in: query
+          required: false
+          description: "Query param: Deprecated, use `start` instead. Start date in
+            YYYY-MM-DD format."
+          schema:
+            type: string
+        - name: start
+          in: query
+          required: false
+          description: "Query param: Start of the time range (RFC3339). Takes precedence
+            over from_date."
+          schema:
+            type: string
+        - name: to_date
+          in: query
+          required: false
+          description: "Query param: Deprecated, use `end` instead. End date in YYYY-MM-DD
+            format."
           schema:
             type: string
       responses:
@@ -1340,24 +1715,150 @@ paths:
                 properties:
                   id:
                     type: number
-                    description: The unique identifier for the allow policy.
+                  content:
+                    type: string
+                  disposition:
+                    type: string
+                    enum:
+                      - MALICIOUS
+                      - MALICIOUS-BEC
+                      - SUSPICIOUS
+                      - SPOOF
+                      - SPAM
+                      - BULK
+                      - ENCRYPTED
+                      - EXTERNAL
+                      - UNKNOWN
+                      - NONE
+                  fields:
+                    type: object
+                    properties:
+                      to:
+                        type: array
+                        items:
+                          type: string
+                      from:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      occurred_at:
+                        type: string
+                      postfix_id:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      ts:
+                        type: string
+                        description: "@deprecated Deprecated, use `occurred_at` instead"
+                    required:
+                      - to
+                  priority:
+                    type: string
+                  title:
+                    type: string
+                  created_at:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  tags:
+                    oneOf:
+                      - type: array
+                        items:
+                          type: object
+                          properties:
+                            category:
+                              type: string
+                            value:
+                              type: string
+                          required:
+                            - category
+                            - value
+                    nullable: true
+                  ts:
+                    type: string
+                    description: "@deprecated Deprecated, use `created_at` instead"
+                  updated_at:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                required:
+                  - id
+                  - content
+                  - disposition
+                  - fields
+                  - priority
+                  - title
+      x-distilled-pagination-class: ReportListResponsesSinglePage
+  /accounts/{account_id}/email-security/settings/allow_policies/{policyId}:
+    get:
+      operationId: getSettingAllowPolicy
+      description: "Retrieves details for a specific allow policy including its
+        pattern, dispositions that are exempted, and whether it applies to all
+        detections.  @example ```ts const allowPolicy = await
+        client.emailSecurity.settings.allowPolicies.get(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: policyId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Allow policy identifier
                   created_at:
                     type: string
+                  last_modified:
+                    type: string
+                    description: "@deprecated Deprecated, use `modified_at` instead. End of life:
+                      November 1, 2026."
+                  comments:
+                    oneOf:
+                      - type: string
+                    nullable: true
                   is_acceptable_sender:
                     type: boolean
-                    description: "Messages from this sender will be exempted from Spam, Spoof and
-                      Bulk dispositions. Note: This will not exempt messages
-                      with Malicious or Suspicious dispositions."
+                    description: Messages from this sender will be exempted from Spam, Spoof and
+                      Bulk dispositions. Note - This will not exempt messages
+                      with Malicious or Suspicious dispositions.
                   is_exempt_recipient:
                     type: boolean
-                    description: Messages to this recipient will bypass all detections.
+                    description: Messages to this recipient will bypass all detections
+                  is_recipient:
+                    type: boolean
+                    description: "@deprecated Deprecated as of July 1, 2025. Use
+                      `is_exempt_recipient` instead. End of life: July 1, 2026."
                   is_regex:
                     type: boolean
+                  is_sender:
+                    type: boolean
+                    description: "@deprecated Deprecated as of July 1, 2025. Use `is_trusted_sender`
+                      instead. End of life: July 1, 2026."
+                  is_spoof:
+                    type: boolean
+                    description: "@deprecated Deprecated as of July 1, 2025. Use
+                      `is_acceptable_sender` instead. End of life: July 1,
+                      2026."
                   is_trusted_sender:
                     type: boolean
                     description: Messages from this sender will bypass all detections and link
-                      following.
-                  last_modified:
+                      following
+                  modified_at:
                     type: string
                   pattern:
                     type: string
@@ -1368,50 +1869,36 @@ paths:
                       - DOMAIN
                       - IP
                       - UNKNOWN
+                    description: "Type of pattern matching. Note: UNKNOWN is deprecated and cannot
+                      be used when creating or updating policies, but may be
+                      returned for existing entries."
                   verify_sender:
                     type: boolean
                     description: Enforce DMARC, SPF or DKIM authentication. When on, Email Security
                       only honors policies that pass authentication.
-                  comments:
-                    oneOf:
-                      - type: string
-                    nullable: true
-                  is_recipient:
-                    type: boolean
-                    description: "@deprecated"
-                  is_sender:
-                    type: boolean
-                    description: "@deprecated"
-                  is_spoof:
-                    type: boolean
-                    description: "@deprecated"
                 required:
                   - id
                   - created_at
-                  - is_acceptable_sender
-                  - is_exempt_recipient
-                  - is_regex
-                  - is_trusted_sender
                   - last_modified
-                  - pattern
-                  - pattern_type
-                  - verify_sender
       x-distilled-response-path: result
     patch:
       operationId: patchSettingAllowPolicy
-      description: "Update an email allow policy  @example ```ts const response =
-        await client.emailSecurity.settings.allowPolicies.edit( 2401, {
-        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      description: "Updates an existing allow policy. Only provided fields will be
+        modified. Changes take effect for new emails matching the
+        pattern.  @example ```ts const response = await
+        client.emailSecurity.settings.allowPolicies.edit(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
         - name: policyId
           in: path
           required: true
           schema:
-            type: number
+            type: string
         - name: account_id
           in: path
           required: true
-          description: "Path param: Account Identifier"
+          description: "Path param: Identifier."
           schema:
             type: string
       requestBody:
@@ -1425,36 +1912,37 @@ paths:
                   oneOf:
                     - type: string
                   nullable: true
-                  description: "Body param:"
+                  description: Body param
                 is_acceptable_sender:
-                  oneOf:
-                    - type: boolean
-                  nullable: true
+                  type: boolean
                   description: "Body param: Messages from this sender will be exempted from Spam,
-                    Spoof and Bulk dispositions. Note: This will not exempt
+                    Spoof and Bulk dispositions. Note - This will not exempt
                     messages with Malicious or Suspicious dispositions."
                 is_exempt_recipient:
-                  oneOf:
-                    - type: boolean
-                  nullable: true
-                  description: "Body param: Messages to this recipient will bypass all
-                    detections."
+                  type: boolean
+                  description: "Body param: Messages to this recipient will bypass all detections"
+                is_recipient:
+                  type: boolean
+                  description: "@deprecated Body param: Deprecated as of July 1, 2025. Use
+                    `is_exempt_recipient` instead. End of life: July 1, 2026."
                 is_regex:
-                  oneOf:
-                    - type: boolean
-                  nullable: true
-                  description: "Body param:"
+                  type: boolean
+                  description: Body param
+                is_sender:
+                  type: boolean
+                  description: "@deprecated Body param: Deprecated as of July 1, 2025. Use
+                    `is_trusted_sender` instead. End of life: July 1, 2026."
+                is_spoof:
+                  type: boolean
+                  description: "@deprecated Body param: Deprecated as of July 1, 2025. Use
+                    `is_acceptable_sender` instead. End of life: July 1, 2026."
                 is_trusted_sender:
-                  oneOf:
-                    - type: boolean
-                  nullable: true
+                  type: boolean
                   description: "Body param: Messages from this sender will bypass all detections
-                    and link following."
+                    and link following"
                 pattern:
-                  oneOf:
-                    - type: string
-                  nullable: true
-                  description: "Body param:"
+                  type: string
+                  description: Body param
                 pattern_type:
                   type: string
                   enum:
@@ -1462,12 +1950,11 @@ paths:
                     - DOMAIN
                     - IP
                     - UNKNOWN
-                  nullable: true
-                  description: "Body param:"
+                  description: "Body param: Type of pattern matching. Note: UNKNOWN is deprecated
+                    and cannot be used when creating or updating policies, but
+                    may be returned for existing entries."
                 verify_sender:
-                  oneOf:
-                    - type: boolean
-                  nullable: true
+                  type: boolean
                   description: "Body param: Enforce DMARC, SPF or DKIM authentication. When on,
                     Email Security only honors policies that pass
                     authentication."
@@ -1480,25 +1967,46 @@ paths:
                 type: object
                 properties:
                   id:
-                    type: number
-                    description: The unique identifier for the allow policy.
+                    type: string
+                    description: Allow policy identifier
                   created_at:
                     type: string
+                  last_modified:
+                    type: string
+                    description: "@deprecated Deprecated, use `modified_at` instead. End of life:
+                      November 1, 2026."
+                  comments:
+                    oneOf:
+                      - type: string
+                    nullable: true
                   is_acceptable_sender:
                     type: boolean
-                    description: "Messages from this sender will be exempted from Spam, Spoof and
-                      Bulk dispositions. Note: This will not exempt messages
-                      with Malicious or Suspicious dispositions."
+                    description: Messages from this sender will be exempted from Spam, Spoof and
+                      Bulk dispositions. Note - This will not exempt messages
+                      with Malicious or Suspicious dispositions.
                   is_exempt_recipient:
                     type: boolean
-                    description: Messages to this recipient will bypass all detections.
+                    description: Messages to this recipient will bypass all detections
+                  is_recipient:
+                    type: boolean
+                    description: "@deprecated Deprecated as of July 1, 2025. Use
+                      `is_exempt_recipient` instead. End of life: July 1, 2026."
                   is_regex:
                     type: boolean
+                  is_sender:
+                    type: boolean
+                    description: "@deprecated Deprecated as of July 1, 2025. Use `is_trusted_sender`
+                      instead. End of life: July 1, 2026."
+                  is_spoof:
+                    type: boolean
+                    description: "@deprecated Deprecated as of July 1, 2025. Use
+                      `is_acceptable_sender` instead. End of life: July 1,
+                      2026."
                   is_trusted_sender:
                     type: boolean
                     description: Messages from this sender will bypass all detections and link
-                      following.
-                  last_modified:
+                      following
+                  modified_at:
                     type: string
                   pattern:
                     type: string
@@ -1509,50 +2017,36 @@ paths:
                       - DOMAIN
                       - IP
                       - UNKNOWN
+                    description: "Type of pattern matching. Note: UNKNOWN is deprecated and cannot
+                      be used when creating or updating policies, but may be
+                      returned for existing entries."
                   verify_sender:
                     type: boolean
                     description: Enforce DMARC, SPF or DKIM authentication. When on, Email Security
                       only honors policies that pass authentication.
-                  comments:
-                    oneOf:
-                      - type: string
-                    nullable: true
-                  is_recipient:
-                    type: boolean
-                    description: "@deprecated"
-                  is_sender:
-                    type: boolean
-                    description: "@deprecated"
-                  is_spoof:
-                    type: boolean
-                    description: "@deprecated"
                 required:
                   - id
                   - created_at
-                  - is_acceptable_sender
-                  - is_exempt_recipient
-                  - is_regex
-                  - is_trusted_sender
                   - last_modified
-                  - pattern
-                  - pattern_type
-                  - verify_sender
       x-distilled-response-path: result
     delete:
       operationId: deleteSettingAllowPolicy
-      description: "Delete an email allow policy  @example ```ts const allowPolicy =
-        await client.emailSecurity.settings.allowPolicies.delete( 2401, {
-        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      description: "Removes an allow policy. After deletion, emails matching this
+        pattern will be subject to normal security scanning and disposition
+        actions.  @example ```ts const allowPolicy = await
+        client.emailSecurity.settings.allowPolicies.delete(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
         - name: policyId
           in: path
           required: true
           schema:
-            type: number
+            type: string
         - name: account_id
           in: path
           required: true
-          description: Account Identifier
+          description: Identifier.
           schema:
             type: string
       responses:
@@ -1564,24 +2058,26 @@ paths:
                 type: object
                 properties:
                   id:
-                    type: number
-                    description: The unique identifier for the allow policy.
+                    type: string
+                    description: Allow policy identifier
                 required:
                   - id
       x-distilled-response-path: result
   /accounts/{account_id}/email-security/settings/allow_policies:
     get:
       operationId: listSettingAllowPolicies
-      description: "Lists, searches, and sorts an account’s email allow
-        policies.  @example ```ts // Automatically fetches more pages as needed.
-        for await (const allowPolicyListResponse of
+      description: "Returns a paginated list of email allow policies. These policies
+        exempt matching emails from security detection, allowing them to bypass
+        disposition actions. Supports filtering by pattern type and policy
+        attributes.  @example ```ts // Automatically fetches more pages as
+        needed. for await (const allowPolicyListResponse of
         client.emailSecurity.settings.allowPolicies.list( { account_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
       parameters:
         - name: account_id
           in: path
           required: true
-          description: "Path param: Account Identifier"
+          description: "Path param: Identifier."
           schema:
             type: string
         - name: page
@@ -1606,43 +2102,29 @@ paths:
         - name: is_acceptable_sender
           in: query
           required: false
-          description: "Query param:"
+          description: "Query param: Filter to show only policies where messages from the
+            sender are exempted from Spam, Spoof, and Bulk dispositions (not
+            Malicious or Suspicious)."
           schema:
             type: boolean
         - name: is_exempt_recipient
           in: query
           required: false
-          description: "Query param:"
-          schema:
-            type: boolean
-        - name: is_recipient
-          in: query
-          required: false
-          description: "Query param:"
-          schema:
-            type: boolean
-        - name: is_sender
-          in: query
-          required: false
-          description: "Query param:"
-          schema:
-            type: boolean
-        - name: is_spoof
-          in: query
-          required: false
-          description: "Query param:"
+          description: "Query param: Filter to show only policies where messages to the
+            recipient bypass all detections."
           schema:
             type: boolean
         - name: is_trusted_sender
           in: query
           required: false
-          description: "Query param:"
+          description: "Query param: Filter to show only policies where messages from the
+            sender bypass all detections and link following."
           schema:
             type: boolean
         - name: order
           in: query
           required: false
-          description: "Query param: The field to sort by."
+          description: "Query param: Field to sort by."
           schema:
             type: string
             enum:
@@ -1651,13 +2133,15 @@ paths:
         - name: pattern
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
         - name: pattern_type
           in: query
           required: false
-          description: "Query param:"
+          description: "Query param: Type of pattern matching. Note: UNKNOWN is deprecated
+            and cannot be used when creating or updating policies, but may be
+            returned for existing entries."
           schema:
             type: string
             enum:
@@ -1668,16 +2152,15 @@ paths:
         - name: search
           in: query
           required: false
-          description: "Query param: Allows searching in multiple properties of a record
-            simultaneously. This parameter is intended for human users, not
-            automation. Its exact behavior is intentionally left unspecified and
-            is subject to change in the future."
+          description: "Query param: Search term for filtering records. Behavior may
+            change."
           schema:
             type: string
         - name: verify_sender
           in: query
           required: false
-          description: "Query param:"
+          description: "Query param: Filter to show only policies that enforce DMARC, SPF,
+            or DKIM authentication."
           schema:
             type: boolean
       responses:
@@ -1689,25 +2172,46 @@ paths:
                 type: object
                 properties:
                   id:
-                    type: number
-                    description: The unique identifier for the allow policy.
+                    type: string
+                    description: Allow policy identifier
                   created_at:
                     type: string
+                  last_modified:
+                    type: string
+                    description: "@deprecated Deprecated, use `modified_at` instead. End of life:
+                      November 1, 2026."
+                  comments:
+                    oneOf:
+                      - type: string
+                    nullable: true
                   is_acceptable_sender:
                     type: boolean
-                    description: "Messages from this sender will be exempted from Spam, Spoof and
-                      Bulk dispositions. Note: This will not exempt messages
-                      with Malicious or Suspicious dispositions."
+                    description: Messages from this sender will be exempted from Spam, Spoof and
+                      Bulk dispositions. Note - This will not exempt messages
+                      with Malicious or Suspicious dispositions.
                   is_exempt_recipient:
                     type: boolean
-                    description: Messages to this recipient will bypass all detections.
+                    description: Messages to this recipient will bypass all detections
+                  is_recipient:
+                    type: boolean
+                    description: "@deprecated Deprecated as of July 1, 2025. Use
+                      `is_exempt_recipient` instead. End of life: July 1, 2026."
                   is_regex:
                     type: boolean
+                  is_sender:
+                    type: boolean
+                    description: "@deprecated Deprecated as of July 1, 2025. Use `is_trusted_sender`
+                      instead. End of life: July 1, 2026."
+                  is_spoof:
+                    type: boolean
+                    description: "@deprecated Deprecated as of July 1, 2025. Use
+                      `is_acceptable_sender` instead. End of life: July 1,
+                      2026."
                   is_trusted_sender:
                     type: boolean
                     description: Messages from this sender will bypass all detections and link
-                      following.
-                  last_modified:
+                      following
+                  modified_at:
                     type: string
                   pattern:
                     type: string
@@ -1718,39 +2222,25 @@ paths:
                       - DOMAIN
                       - IP
                       - UNKNOWN
+                    description: "Type of pattern matching. Note: UNKNOWN is deprecated and cannot
+                      be used when creating or updating policies, but may be
+                      returned for existing entries."
                   verify_sender:
                     type: boolean
                     description: Enforce DMARC, SPF or DKIM authentication. When on, Email Security
                       only honors policies that pass authentication.
-                  comments:
-                    oneOf:
-                      - type: string
-                    nullable: true
-                  is_recipient:
-                    type: boolean
-                    description: "@deprecated"
-                  is_sender:
-                    type: boolean
-                    description: "@deprecated"
-                  is_spoof:
-                    type: boolean
-                    description: "@deprecated"
                 required:
                   - id
                   - created_at
-                  - is_acceptable_sender
-                  - is_exempt_recipient
-                  - is_regex
-                  - is_trusted_sender
                   - last_modified
-                  - pattern
-                  - pattern_type
-                  - verify_sender
       x-distilled-pagination-class: AllowPolicyListResponsesV4PagePaginationArray
     post:
       operationId: createSettingAllowPolicy
-      description: "Create an email allow policy  @example ```ts const allowPolicy =
-        await client.emailSecurity.settings.allowPolicies.create({ account_id:
+      description: "Creates a new allow policy that exempts matching emails from
+        security detections. Use with caution as this bypasses email security
+        scanning. Policies can match on sender patterns and apply to specific
+        detections or all detections.  @example ```ts const allowPolicy = await
+        client.emailSecurity.settings.allowPolicies.create({ account_id:
         '023e105f4ecef8ad9ca31a8372d0c353', is_acceptable_sender: false,
         is_exempt_recipient: false, is_regex: false, is_trusted_sender: true,
         pattern: 'test@example.com', pattern_type: 'EMAIL', verify_sender: true,
@@ -1759,7 +2249,7 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param: Account Identifier"
+          description: "Path param: Identifier."
           schema:
             type: string
       requestBody:
@@ -1772,22 +2262,21 @@ paths:
                 is_acceptable_sender:
                   type: boolean
                   description: "Body param: Messages from this sender will be exempted from Spam,
-                    Spoof and Bulk dispositions. Note: This will not exempt
+                    Spoof and Bulk dispositions. Note - This will not exempt
                     messages with Malicious or Suspicious dispositions."
                 is_exempt_recipient:
                   type: boolean
-                  description: "Body param: Messages to this recipient will bypass all
-                    detections."
+                  description: "Body param: Messages to this recipient will bypass all detections"
                 is_regex:
                   type: boolean
-                  description: "Body param:"
+                  description: Body param
                 is_trusted_sender:
                   type: boolean
                   description: "Body param: Messages from this sender will bypass all detections
-                    and link following."
+                    and link following"
                 pattern:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 pattern_type:
                   type: string
                   enum:
@@ -1795,7 +2284,9 @@ paths:
                     - DOMAIN
                     - IP
                     - UNKNOWN
-                  description: "Body param:"
+                  description: "Body param: Type of pattern matching. Note: UNKNOWN is deprecated
+                    and cannot be used when creating or updating policies, but
+                    may be returned for existing entries."
                 verify_sender:
                   type: boolean
                   description: "Body param: Enforce DMARC, SPF or DKIM authentication. When on,
@@ -1805,16 +2296,19 @@ paths:
                   oneOf:
                     - type: string
                   nullable: true
-                  description: "Body param:"
+                  description: Body param
                 is_recipient:
                   type: boolean
-                  description: "@deprecated Body param:"
+                  description: "@deprecated Body param: Deprecated as of July 1, 2025. Use
+                    `is_exempt_recipient` instead. End of life: July 1, 2026."
                 is_sender:
                   type: boolean
-                  description: "@deprecated Body param:"
+                  description: "@deprecated Body param: Deprecated as of July 1, 2025. Use
+                    `is_trusted_sender` instead. End of life: July 1, 2026."
                 is_spoof:
                   type: boolean
-                  description: "@deprecated Body param:"
+                  description: "@deprecated Body param: Deprecated as of July 1, 2025. Use
+                    `is_acceptable_sender` instead. End of life: July 1, 2026."
               required:
                 - is_acceptable_sender
                 - is_exempt_recipient
@@ -1832,25 +2326,46 @@ paths:
                 type: object
                 properties:
                   id:
-                    type: number
-                    description: The unique identifier for the allow policy.
+                    type: string
+                    description: Allow policy identifier
                   created_at:
                     type: string
+                  last_modified:
+                    type: string
+                    description: "@deprecated Deprecated, use `modified_at` instead. End of life:
+                      November 1, 2026."
+                  comments:
+                    oneOf:
+                      - type: string
+                    nullable: true
                   is_acceptable_sender:
                     type: boolean
-                    description: "Messages from this sender will be exempted from Spam, Spoof and
-                      Bulk dispositions. Note: This will not exempt messages
-                      with Malicious or Suspicious dispositions."
+                    description: Messages from this sender will be exempted from Spam, Spoof and
+                      Bulk dispositions. Note - This will not exempt messages
+                      with Malicious or Suspicious dispositions.
                   is_exempt_recipient:
                     type: boolean
-                    description: Messages to this recipient will bypass all detections.
+                    description: Messages to this recipient will bypass all detections
+                  is_recipient:
+                    type: boolean
+                    description: "@deprecated Deprecated as of July 1, 2025. Use
+                      `is_exempt_recipient` instead. End of life: July 1, 2026."
                   is_regex:
                     type: boolean
+                  is_sender:
+                    type: boolean
+                    description: "@deprecated Deprecated as of July 1, 2025. Use `is_trusted_sender`
+                      instead. End of life: July 1, 2026."
+                  is_spoof:
+                    type: boolean
+                    description: "@deprecated Deprecated as of July 1, 2025. Use
+                      `is_acceptable_sender` instead. End of life: July 1,
+                      2026."
                   is_trusted_sender:
                     type: boolean
                     description: Messages from this sender will bypass all detections and link
-                      following.
-                  last_modified:
+                      following
+                  modified_at:
                     type: string
                   pattern:
                     type: string
@@ -1861,51 +2376,36 @@ paths:
                       - DOMAIN
                       - IP
                       - UNKNOWN
+                    description: "Type of pattern matching. Note: UNKNOWN is deprecated and cannot
+                      be used when creating or updating policies, but may be
+                      returned for existing entries."
                   verify_sender:
                     type: boolean
                     description: Enforce DMARC, SPF or DKIM authentication. When on, Email Security
                       only honors policies that pass authentication.
-                  comments:
-                    oneOf:
-                      - type: string
-                    nullable: true
-                  is_recipient:
-                    type: boolean
-                    description: "@deprecated"
-                  is_sender:
-                    type: boolean
-                    description: "@deprecated"
-                  is_spoof:
-                    type: boolean
-                    description: "@deprecated"
                 required:
                   - id
                   - created_at
-                  - is_acceptable_sender
-                  - is_exempt_recipient
-                  - is_regex
-                  - is_trusted_sender
                   - last_modified
-                  - pattern
-                  - pattern_type
-                  - verify_sender
       x-distilled-response-path: result
   /accounts/{account_id}/email-security/settings/block_senders/{patternId}:
     get:
       operationId: getSettingBlockSender
-      description: "Get a blocked email sender  @example ```ts const blockSender =
-        await client.emailSecurity.settings.blockSenders.get( 2402, {
-        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      description: "Retrieves details for a specific blocked sender pattern including
+        its pattern type, value, and metadata.  @example ```ts const blockSender
+        = await client.emailSecurity.settings.blockSenders.get(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
         - name: patternId
           in: path
           required: true
           schema:
-            type: number
+            type: string
         - name: account_id
           in: path
           required: true
-          description: Account Identifier
+          description: Identifier.
           schema:
             type: string
       responses:
@@ -1917,13 +2417,21 @@ paths:
                 type: object
                 properties:
                   id:
-                    type: number
-                    description: The unique identifier for the allow policy.
+                    type: string
+                    description: Blocked sender pattern identifier
+                  comments:
+                    oneOf:
+                      - type: string
+                    nullable: true
                   created_at:
                     type: string
                   is_regex:
                     type: boolean
                   last_modified:
+                    type: string
+                    description: "@deprecated Deprecated, use `modified_at` instead. End of life:
+                      November 1, 2026."
+                  modified_at:
                     type: string
                   pattern:
                     type: string
@@ -1934,33 +2442,28 @@ paths:
                       - DOMAIN
                       - IP
                       - UNKNOWN
-                  comments:
-                    oneOf:
-                      - type: string
-                    nullable: true
-                required:
-                  - id
-                  - created_at
-                  - is_regex
-                  - last_modified
-                  - pattern
-                  - pattern_type
+                    description: "Type of pattern matching. Note: UNKNOWN is deprecated and cannot
+                      be used when creating or updating policies, but may be
+                      returned for existing entries."
       x-distilled-response-path: result
     patch:
       operationId: patchSettingBlockSender
-      description: "Update a blocked email sender  @example ```ts const response =
-        await client.emailSecurity.settings.blockSenders.edit( 2402, {
-        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      description: "Updates an existing blocked sender pattern. Only provided fields
+        will be modified. The pattern will continue blocking emails until
+        deleted.  @example ```ts const response = await
+        client.emailSecurity.settings.blockSenders.edit(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
         - name: patternId
           in: path
           required: true
           schema:
-            type: number
+            type: string
         - name: account_id
           in: path
           required: true
-          description: "Path param: Account Identifier"
+          description: "Path param: Identifier."
           schema:
             type: string
       requestBody:
@@ -1974,17 +2477,13 @@ paths:
                   oneOf:
                     - type: string
                   nullable: true
-                  description: "Body param:"
+                  description: Body param
                 is_regex:
-                  oneOf:
-                    - type: boolean
-                  nullable: true
-                  description: "Body param:"
+                  type: boolean
+                  description: Body param
                 pattern:
-                  oneOf:
-                    - type: string
-                  nullable: true
-                  description: "Body param:"
+                  type: string
+                  description: Body param
                 pattern_type:
                   type: string
                   enum:
@@ -1992,8 +2491,9 @@ paths:
                     - DOMAIN
                     - IP
                     - UNKNOWN
-                  nullable: true
-                  description: "Body param:"
+                  description: "Body param: Type of pattern matching. Note: UNKNOWN is deprecated
+                    and cannot be used when creating or updating policies, but
+                    may be returned for existing entries."
       responses:
         "200":
           description: Success
@@ -2003,13 +2503,21 @@ paths:
                 type: object
                 properties:
                   id:
-                    type: number
-                    description: The unique identifier for the allow policy.
+                    type: string
+                    description: Blocked sender pattern identifier
+                  comments:
+                    oneOf:
+                      - type: string
+                    nullable: true
                   created_at:
                     type: string
                   is_regex:
                     type: boolean
                   last_modified:
+                    type: string
+                    description: "@deprecated Deprecated, use `modified_at` instead. End of life:
+                      November 1, 2026."
+                  modified_at:
                     type: string
                   pattern:
                     type: string
@@ -2020,33 +2528,28 @@ paths:
                       - DOMAIN
                       - IP
                       - UNKNOWN
-                  comments:
-                    oneOf:
-                      - type: string
-                    nullable: true
-                required:
-                  - id
-                  - created_at
-                  - is_regex
-                  - last_modified
-                  - pattern
-                  - pattern_type
+                    description: "Type of pattern matching. Note: UNKNOWN is deprecated and cannot
+                      be used when creating or updating policies, but may be
+                      returned for existing entries."
       x-distilled-response-path: result
     delete:
       operationId: deleteSettingBlockSender
-      description: "Delete a blocked email sender  @example ```ts const blockSender =
-        await client.emailSecurity.settings.blockSenders.delete( 2402, {
-        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      description: "Removes a blocked sender pattern. After deletion, emails from this
+        sender will no longer be automatically blocked based on this
+        rule.  @example ```ts const blockSender = await
+        client.emailSecurity.settings.blockSenders.delete(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
         - name: patternId
           in: path
           required: true
           schema:
-            type: number
+            type: string
         - name: account_id
           in: path
           required: true
-          description: Account Identifier
+          description: Identifier.
           schema:
             type: string
       responses:
@@ -2058,23 +2561,26 @@ paths:
                 type: object
                 properties:
                   id:
-                    type: number
-                    description: The unique identifier for the allow policy.
+                    type: string
+                    description: Blocked sender pattern identifier
                 required:
                   - id
       x-distilled-response-path: result
   /accounts/{account_id}/email-security/settings/block_senders:
     get:
       operationId: listSettingBlockSenders
-      description: "List blocked email senders  @example ```ts // Automatically
-        fetches more pages as needed. for await (const blockSenderListResponse
-        of client.emailSecurity.settings.blockSenders.list( { account_id:
+      description: "Returns a paginated list of blocked email sender patterns. These
+        patterns prevent emails from matching senders from being delivered.
+        Supports filtering by pattern type and searching across
+        patterns.  @example ```ts // Automatically fetches more pages as needed.
+        for await (const blockSenderListResponse of
+        client.emailSecurity.settings.blockSenders.list( { account_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
       parameters:
         - name: account_id
           in: path
           required: true
-          description: "Path param: Account Identifier"
+          description: "Path param: Identifier."
           schema:
             type: string
         - name: page
@@ -2099,7 +2605,7 @@ paths:
         - name: order
           in: query
           required: false
-          description: "Query param: The field to sort by."
+          description: "Query param: Field to sort by."
           schema:
             type: string
             enum:
@@ -2108,13 +2614,13 @@ paths:
         - name: pattern
           in: query
           required: false
-          description: "Query param:"
+          description: "Query param: Filter by pattern value."
           schema:
             type: string
         - name: pattern_type
           in: query
           required: false
-          description: "Query param:"
+          description: "Query param: Filter by pattern type."
           schema:
             type: string
             enum:
@@ -2125,10 +2631,8 @@ paths:
         - name: search
           in: query
           required: false
-          description: "Query param: Allows searching in multiple properties of a record
-            simultaneously. This parameter is intended for human users, not
-            automation. Its exact behavior is intentionally left unspecified and
-            is subject to change in the future."
+          description: "Query param: Search term for filtering records. Behavior may
+            change."
           schema:
             type: string
       responses:
@@ -2140,13 +2644,21 @@ paths:
                 type: object
                 properties:
                   id:
-                    type: number
-                    description: The unique identifier for the allow policy.
+                    type: string
+                    description: Blocked sender pattern identifier
+                  comments:
+                    oneOf:
+                      - type: string
+                    nullable: true
                   created_at:
                     type: string
                   is_regex:
                     type: boolean
                   last_modified:
+                    type: string
+                    description: "@deprecated Deprecated, use `modified_at` instead. End of life:
+                      November 1, 2026."
+                  modified_at:
                     type: string
                   pattern:
                     type: string
@@ -2157,29 +2669,23 @@ paths:
                       - DOMAIN
                       - IP
                       - UNKNOWN
-                  comments:
-                    oneOf:
-                      - type: string
-                    nullable: true
-                required:
-                  - id
-                  - created_at
-                  - is_regex
-                  - last_modified
-                  - pattern
-                  - pattern_type
+                    description: "Type of pattern matching. Note: UNKNOWN is deprecated and cannot
+                      be used when creating or updating policies, but may be
+                      returned for existing entries."
       x-distilled-pagination-class: BlockSenderListResponsesV4PagePaginationArray
     post:
       operationId: createSettingBlockSender
-      description: "Create a blocked email sender  @example ```ts const blockSender =
-        await client.emailSecurity.settings.blockSenders.create({ account_id:
-        '023e105f4ecef8ad9ca31a8372d0c353', is_regex: false, pattern:
-        'test@example.com', pattern_type: 'EMAIL', }); ```"
+      description: "Creates a new blocked sender pattern. Emails matching this pattern
+        will be blocked from delivery. Patterns can be email addresses, domains,
+        or IP addresses, and support regular expressions.  @example ```ts const
+        blockSender = await client.emailSecurity.settings.blockSenders.create({
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353', is_regex: false,
+        pattern: 'test@example.com', pattern_type: 'EMAIL', }); ```"
       parameters:
         - name: account_id
           in: path
           required: true
-          description: "Path param: Account Identifier"
+          description: "Path param: Identifier."
           schema:
             type: string
       requestBody:
@@ -2191,10 +2697,10 @@ paths:
               properties:
                 is_regex:
                   type: boolean
-                  description: "Body param:"
+                  description: Body param
                 pattern:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 pattern_type:
                   type: string
                   enum:
@@ -2202,12 +2708,14 @@ paths:
                     - DOMAIN
                     - IP
                     - UNKNOWN
-                  description: "Body param:"
+                  description: "Body param: Type of pattern matching. Note: UNKNOWN is deprecated
+                    and cannot be used when creating or updating policies, but
+                    may be returned for existing entries."
                 comments:
                   oneOf:
                     - type: string
                   nullable: true
-                  description: "Body param:"
+                  description: Body param
               required:
                 - is_regex
                 - pattern
@@ -2221,13 +2729,21 @@ paths:
                 type: object
                 properties:
                   id:
-                    type: number
-                    description: The unique identifier for the allow policy.
+                    type: string
+                    description: Blocked sender pattern identifier
+                  comments:
+                    oneOf:
+                      - type: string
+                    nullable: true
                   created_at:
                     type: string
                   is_regex:
                     type: boolean
                   last_modified:
+                    type: string
+                    description: "@deprecated Deprecated, use `modified_at` instead. End of life:
+                      November 1, 2026."
+                  modified_at:
                     type: string
                   pattern:
                     type: string
@@ -2238,34 +2754,29 @@ paths:
                       - DOMAIN
                       - IP
                       - UNKNOWN
-                  comments:
-                    oneOf:
-                      - type: string
-                    nullable: true
-                required:
-                  - id
-                  - created_at
-                  - is_regex
-                  - last_modified
-                  - pattern
-                  - pattern_type
+                    description: "Type of pattern matching. Note: UNKNOWN is deprecated and cannot
+                      be used when creating or updating policies, but may be
+                      returned for existing entries."
       x-distilled-response-path: result
   /accounts/{account_id}/email-security/settings/domains/{domainId}:
     get:
       operationId: getSettingDomain
-      description: "Get an email domain  @example ```ts const domain = await
-        client.emailSecurity.settings.domains.get(2400, { account_id:
-        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      description: "Retrieves detailed information for a specific protected email
+        domain including its delivery configuration, SPF/DMARC status, and
+        authorization state.  @example ```ts const domain = await
+        client.emailSecurity.settings.domains.get(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
         - name: domainId
           in: path
           required: true
           schema:
-            type: number
+            type: string
         - name: account_id
           in: path
           required: true
-          description: Account Identifier
+          description: Identifier.
           schema:
             type: string
       responses:
@@ -2277,8 +2788,8 @@ paths:
                 type: object
                 properties:
                   id:
-                    type: number
-                    description: The unique identifier for the domain.
+                    type: string
+                    description: Domain identifier
                   allowed_delivery_modes:
                     type: array
                     items:
@@ -2289,8 +2800,28 @@ paths:
                         - JOURNAL
                         - API
                         - RETRO_SCAN
+                  authorization:
+                    type: object
+                    properties:
+                      authorized:
+                        type: boolean
+                      timestamp:
+                        type: string
+                      status_message:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                    required:
+                      - authorized
+                      - timestamp
                   created_at:
                     type: string
+                  dmarc_status:
+                    type: string
+                    enum:
+                      - none
+                      - good
+                      - invalid
                   domain:
                     type: string
                   drop_dispositions:
@@ -2308,70 +2839,24 @@ paths:
                         - EXTERNAL
                         - UNKNOWN
                         - NONE
-                  ip_restrictions:
-                    type: array
-                    items:
-                      type: string
-                  last_modified:
-                    type: string
-                  lookback_hops:
-                    type: number
-                  regions:
-                    type: array
-                    items:
-                      type: string
-                      enum:
-                        - GLOBAL
-                        - AU
-                        - DE
-                        - IN
-                        - US
-                  transport:
-                    type: string
-                  authorization:
-                    oneOf:
-                      - type: object
-                        properties:
-                          authorized:
-                            type: boolean
-                          timestamp:
-                            type: string
-                          status_message:
-                            oneOf:
-                              - type: string
-                            nullable: true
-                        required:
-                          - authorized
-                          - timestamp
-                    nullable: true
-                  dmarc_status:
-                    type: string
-                    enum:
-                      - none
-                      - good
-                      - invalid
-                    nullable: true
                   emails_processed:
-                    oneOf:
-                      - type: object
-                        properties:
-                          timestamp:
-                            type: string
-                          total_emails_processed:
-                            type: number
-                          total_emails_processed_previous:
-                            type: number
-                        required:
-                          - timestamp
-                          - total_emails_processed
-                          - total_emails_processed_previous
-                    nullable: true
+                    type: object
+                    properties:
+                      timestamp:
+                        type: string
+                      total_emails_processed:
+                        type: number
+                      total_emails_processed_previous:
+                        type: number
+                    required:
+                      - timestamp
+                      - total_emails_processed
+                      - total_emails_processed_previous
                   folder:
                     type: string
                     enum:
                       - AllItems
                       - Inbox
-                    nullable: true
                   inbox_provider:
                     type: string
                     enum:
@@ -2382,10 +2867,32 @@ paths:
                     oneOf:
                       - type: string
                     nullable: true
+                  ip_restrictions:
+                    type: array
+                    items:
+                      type: string
+                  last_modified:
+                    type: string
+                    description: "@deprecated Deprecated, use `modified_at` instead. End of life:
+                      November 1, 2026."
+                  lookback_hops:
+                    type: number
+                  modified_at:
+                    type: string
                   o365_tenant_id:
                     oneOf:
                       - type: string
                     nullable: true
+                  regions:
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                        - GLOBAL
+                        - AU
+                        - DE
+                        - IN
+                        - US
                   require_tls_inbound:
                     oneOf:
                       - type: boolean
@@ -2402,49 +2909,43 @@ paths:
                       - neutral
                       - open
                       - invalid
-                    nullable: true
-                required:
-                  - id
-                  - allowed_delivery_modes
-                  - created_at
-                  - domain
-                  - drop_dispositions
-                  - ip_restrictions
-                  - last_modified
-                  - lookback_hops
-                  - regions
-                  - transport
+                  status:
+                    type: string
+                    enum:
+                      - pending
+                      - active
+                      - failed
+                      - timeout
+                  transport:
+                    type: string
       x-distilled-response-path: result
     patch:
       operationId: patchSettingDomain
-      description: "Update an email domain  @example ```ts const response = await
-        client.emailSecurity.settings.domains.edit(2400, { account_id:
-        '023e105f4ecef8ad9ca31a8372d0c353', ip_restrictions: ['192.0.2.0/24',
-        '2001:db8::/32'], }); ```"
+      description: "Updates configuration for a protected email domain. Only provided
+        fields will be modified. Changes affect delivery mode, security
+        settings, and regional processing.  @example ```ts const response =
+        await client.emailSecurity.settings.domains.edit(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
         - name: domainId
           in: path
           required: true
           schema:
-            type: number
+            type: string
         - name: account_id
           in: path
           required: true
-          description: "Path param: Account Identifier"
+          description: "Path param: Identifier."
           schema:
             type: string
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
               type: object
               properties:
-                ip_restrictions:
-                  type: array
-                  items:
-                    type: string
-                  description: "Body param:"
                 allowed_delivery_modes:
                   type: array
                   items:
@@ -2455,10 +2956,10 @@ paths:
                       - JOURNAL
                       - API
                       - RETRO_SCAN
-                  description: "Body param:"
+                  description: Body param
                 domain:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 drop_dispositions:
                   type: array
                   items:
@@ -2474,19 +2975,26 @@ paths:
                       - EXTERNAL
                       - UNKNOWN
                       - NONE
-                  description: "Body param:"
+                  description: Body param
                 folder:
                   type: string
                   enum:
                     - AllItems
                     - Inbox
-                  description: "Body param:"
+                  description: Body param
                 integration_id:
-                  type: string
-                  description: "Body param:"
+                  oneOf:
+                    - type: string
+                  nullable: true
+                  description: Body param
+                ip_restrictions:
+                  type: array
+                  items:
+                    type: string
+                  description: Body param
                 lookback_hops:
                   type: number
-                  description: "Body param:"
+                  description: Body param
                 regions:
                   type: array
                   items:
@@ -2497,18 +3005,16 @@ paths:
                       - DE
                       - IN
                       - US
-                  description: "Body param:"
+                  description: Body param
                 require_tls_inbound:
                   type: boolean
-                  description: "Body param:"
+                  description: Body param
                 require_tls_outbound:
                   type: boolean
-                  description: "Body param:"
+                  description: Body param
                 transport:
                   type: string
-                  description: "Body param:"
-              required:
-                - ip_restrictions
+                  description: Body param
       responses:
         "200":
           description: Success
@@ -2518,8 +3024,8 @@ paths:
                 type: object
                 properties:
                   id:
-                    type: number
-                    description: The unique identifier for the domain.
+                    type: string
+                    description: Domain identifier
                   allowed_delivery_modes:
                     type: array
                     items:
@@ -2530,8 +3036,28 @@ paths:
                         - JOURNAL
                         - API
                         - RETRO_SCAN
+                  authorization:
+                    type: object
+                    properties:
+                      authorized:
+                        type: boolean
+                      timestamp:
+                        type: string
+                      status_message:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                    required:
+                      - authorized
+                      - timestamp
                   created_at:
                     type: string
+                  dmarc_status:
+                    type: string
+                    enum:
+                      - none
+                      - good
+                      - invalid
                   domain:
                     type: string
                   drop_dispositions:
@@ -2549,70 +3075,24 @@ paths:
                         - EXTERNAL
                         - UNKNOWN
                         - NONE
-                  ip_restrictions:
-                    type: array
-                    items:
-                      type: string
-                  last_modified:
-                    type: string
-                  lookback_hops:
-                    type: number
-                  regions:
-                    type: array
-                    items:
-                      type: string
-                      enum:
-                        - GLOBAL
-                        - AU
-                        - DE
-                        - IN
-                        - US
-                  transport:
-                    type: string
-                  authorization:
-                    oneOf:
-                      - type: object
-                        properties:
-                          authorized:
-                            type: boolean
-                          timestamp:
-                            type: string
-                          status_message:
-                            oneOf:
-                              - type: string
-                            nullable: true
-                        required:
-                          - authorized
-                          - timestamp
-                    nullable: true
-                  dmarc_status:
-                    type: string
-                    enum:
-                      - none
-                      - good
-                      - invalid
-                    nullable: true
                   emails_processed:
-                    oneOf:
-                      - type: object
-                        properties:
-                          timestamp:
-                            type: string
-                          total_emails_processed:
-                            type: number
-                          total_emails_processed_previous:
-                            type: number
-                        required:
-                          - timestamp
-                          - total_emails_processed
-                          - total_emails_processed_previous
-                    nullable: true
+                    type: object
+                    properties:
+                      timestamp:
+                        type: string
+                      total_emails_processed:
+                        type: number
+                      total_emails_processed_previous:
+                        type: number
+                    required:
+                      - timestamp
+                      - total_emails_processed
+                      - total_emails_processed_previous
                   folder:
                     type: string
                     enum:
                       - AllItems
                       - Inbox
-                    nullable: true
                   inbox_provider:
                     type: string
                     enum:
@@ -2623,10 +3103,32 @@ paths:
                     oneOf:
                       - type: string
                     nullable: true
+                  ip_restrictions:
+                    type: array
+                    items:
+                      type: string
+                  last_modified:
+                    type: string
+                    description: "@deprecated Deprecated, use `modified_at` instead. End of life:
+                      November 1, 2026."
+                  lookback_hops:
+                    type: number
+                  modified_at:
+                    type: string
                   o365_tenant_id:
                     oneOf:
                       - type: string
                     nullable: true
+                  regions:
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                        - GLOBAL
+                        - AU
+                        - DE
+                        - IN
+                        - US
                   require_tls_inbound:
                     oneOf:
                       - type: boolean
@@ -2643,34 +3145,34 @@ paths:
                       - neutral
                       - open
                       - invalid
-                    nullable: true
-                required:
-                  - id
-                  - allowed_delivery_modes
-                  - created_at
-                  - domain
-                  - drop_dispositions
-                  - ip_restrictions
-                  - last_modified
-                  - lookback_hops
-                  - regions
-                  - transport
+                  status:
+                    type: string
+                    enum:
+                      - pending
+                      - active
+                      - failed
+                      - timeout
+                  transport:
+                    type: string
       x-distilled-response-path: result
     delete:
       operationId: deleteSettingDomain
-      description: "Unprotect an email domain  @example ```ts const domain = await
-        client.emailSecurity.settings.domains.delete(2400, { account_id:
-        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      description: "Removes email security protection from a domain. After deletion,
+        emails for this domain will no longer be processed by Email Security.
+        This action cannot be undone.  @example ```ts const domain = await
+        client.emailSecurity.settings.domains.delete(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
         - name: domainId
           in: path
           required: true
           schema:
-            type: number
+            type: string
         - name: account_id
           in: path
           required: true
-          description: Account Identifier
+          description: Identifier.
           schema:
             type: string
       responses:
@@ -2682,23 +3184,26 @@ paths:
                 type: object
                 properties:
                   id:
-                    type: number
-                    description: The unique identifier for the domain.
+                    type: string
+                    description: Domain identifier
                 required:
                   - id
       x-distilled-response-path: result
   /accounts/{account_id}/email-security/settings/domains:
     get:
       operationId: listSettingDomains
-      description: "Lists, searches, and sorts an account’s email domains.  @example
-        ```ts // Automatically fetches more pages as needed. for await (const
-        domainListResponse of client.emailSecurity.settings.domains.list( {
-        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      description: "Returns a paginated list of email domains protected by Email
+        Security. Includes domain configuration, delivery modes, and
+        authorization status. Supports filtering by delivery mode and
+        integration ID.  @example ```ts // Automatically fetches more pages as
+        needed. for await (const domainListResponse of
+        client.emailSecurity.settings.domains.list( { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
       parameters:
         - name: account_id
           in: path
           required: true
-          description: "Path param: Account Identifier"
+          description: "Path param: Identifier."
           schema:
             type: string
         - name: page
@@ -2714,8 +3219,7 @@ paths:
         - name: active_delivery_mode
           in: query
           required: false
-          description: "Query param: Filters response to domains with the currently active
-            delivery mode."
+          description: "Query param: Currently active delivery mode to filter by."
           schema:
             type: string
             enum:
@@ -2727,8 +3231,7 @@ paths:
         - name: allowed_delivery_mode
           in: query
           required: false
-          description: "Query param: Filters response to domains with the provided
-            delivery mode."
+          description: "Query param: Delivery mode to filter by."
           schema:
             type: string
             enum:
@@ -2749,8 +3252,7 @@ paths:
         - name: domain
           in: query
           required: false
-          description: "Query param: Filters results by the provided domains, allowing for
-            multiple occurrences."
+          description: "Query param: Domain names to filter by."
           schema:
             type: array
             items:
@@ -2758,14 +3260,13 @@ paths:
         - name: integration_id
           in: query
           required: false
-          description: "Query param: Filters response to domains with the provided
-            integration ID."
+          description: "Query param: Integration ID to filter by."
           schema:
             type: string
         - name: order
           in: query
           required: false
-          description: "Query param: The field to sort by."
+          description: "Query param: Field to sort by."
           schema:
             type: string
             enum:
@@ -2774,12 +3275,21 @@ paths:
         - name: search
           in: query
           required: false
-          description: "Query param: Allows searching in multiple properties of a record
-            simultaneously. This parameter is intended for human users, not
-            automation. Its exact behavior is intentionally left unspecified and
-            is subject to change in the future."
+          description: "Query param: Search term for filtering records. Behavior may
+            change."
           schema:
             type: string
+        - name: status
+          in: query
+          required: false
+          description: "Query param: Filters response to domains with the provided status."
+          schema:
+            type: string
+            enum:
+              - pending
+              - active
+              - failed
+              - timeout
       responses:
         "200":
           description: Success
@@ -2789,8 +3299,8 @@ paths:
                 type: object
                 properties:
                   id:
-                    type: number
-                    description: The unique identifier for the domain.
+                    type: string
+                    description: Domain identifier
                   allowed_delivery_modes:
                     type: array
                     items:
@@ -2801,8 +3311,28 @@ paths:
                         - JOURNAL
                         - API
                         - RETRO_SCAN
+                  authorization:
+                    type: object
+                    properties:
+                      authorized:
+                        type: boolean
+                      timestamp:
+                        type: string
+                      status_message:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                    required:
+                      - authorized
+                      - timestamp
                   created_at:
                     type: string
+                  dmarc_status:
+                    type: string
+                    enum:
+                      - none
+                      - good
+                      - invalid
                   domain:
                     type: string
                   drop_dispositions:
@@ -2820,70 +3350,24 @@ paths:
                         - EXTERNAL
                         - UNKNOWN
                         - NONE
-                  ip_restrictions:
-                    type: array
-                    items:
-                      type: string
-                  last_modified:
-                    type: string
-                  lookback_hops:
-                    type: number
-                  regions:
-                    type: array
-                    items:
-                      type: string
-                      enum:
-                        - GLOBAL
-                        - AU
-                        - DE
-                        - IN
-                        - US
-                  transport:
-                    type: string
-                  authorization:
-                    oneOf:
-                      - type: object
-                        properties:
-                          authorized:
-                            type: boolean
-                          timestamp:
-                            type: string
-                          status_message:
-                            oneOf:
-                              - type: string
-                            nullable: true
-                        required:
-                          - authorized
-                          - timestamp
-                    nullable: true
-                  dmarc_status:
-                    type: string
-                    enum:
-                      - none
-                      - good
-                      - invalid
-                    nullable: true
                   emails_processed:
-                    oneOf:
-                      - type: object
-                        properties:
-                          timestamp:
-                            type: string
-                          total_emails_processed:
-                            type: number
-                          total_emails_processed_previous:
-                            type: number
-                        required:
-                          - timestamp
-                          - total_emails_processed
-                          - total_emails_processed_previous
-                    nullable: true
+                    type: object
+                    properties:
+                      timestamp:
+                        type: string
+                      total_emails_processed:
+                        type: number
+                      total_emails_processed_previous:
+                        type: number
+                    required:
+                      - timestamp
+                      - total_emails_processed
+                      - total_emails_processed_previous
                   folder:
                     type: string
                     enum:
                       - AllItems
                       - Inbox
-                    nullable: true
                   inbox_provider:
                     type: string
                     enum:
@@ -2894,10 +3378,32 @@ paths:
                     oneOf:
                       - type: string
                     nullable: true
+                  ip_restrictions:
+                    type: array
+                    items:
+                      type: string
+                  last_modified:
+                    type: string
+                    description: "@deprecated Deprecated, use `modified_at` instead. End of life:
+                      November 1, 2026."
+                  lookback_hops:
+                    type: number
+                  modified_at:
+                    type: string
                   o365_tenant_id:
                     oneOf:
                       - type: string
                     nullable: true
+                  regions:
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                        - GLOBAL
+                        - AU
+                        - DE
+                        - IN
+                        - US
                   require_tls_inbound:
                     oneOf:
                       - type: boolean
@@ -2914,63 +3420,35 @@ paths:
                       - neutral
                       - open
                       - invalid
-                    nullable: true
-                required:
-                  - id
-                  - allowed_delivery_modes
-                  - created_at
-                  - domain
-                  - drop_dispositions
-                  - ip_restrictions
-                  - last_modified
-                  - lookback_hops
-                  - regions
-                  - transport
+                  status:
+                    type: string
+                    enum:
+                      - pending
+                      - active
+                      - failed
+                      - timeout
+                  transport:
+                    type: string
       x-distilled-pagination-class: DomainListResponsesV4PagePaginationArray
-    delete:
-      operationId: bulkDeleteSettingDomains
-      description: "Unprotect multiple email domains  @example ```ts // Automatically
-        fetches more pages as needed. for await (const domainBulkDeleteResponse
-        of client.emailSecurity.settings.domains.bulkDelete( { account_id:
-        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
-      parameters:
-        - name: account_id
-          in: path
-          required: true
-          description: Account Identifier
-          schema:
-            type: string
-      responses:
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  id:
-                    type: number
-                    description: The unique identifier for the domain.
-                required:
-                  - id
-      x-distilled-pagination-class: DomainBulkDeleteResponsesSinglePage
-  /accounts/{account_id}/email-security/settings/impersonation_registry/{displayNameId}:
+  /accounts/{account_id}/email-security/settings/impersonation_registry/{impersonationRegistryId}:
     get:
       operationId: getSettingImpersonationRegistry
-      description: "Get an entry in impersonation registry  @example ```ts const
-        impersonationRegistry = await
-        client.emailSecurity.settings.impersonationRegistry.get( 2403, {
-        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      description: "Retrieves details for a specific impersonation registry entry
+        including the protected identity, email pattern, and synchronization
+        source if directory-synced.  @example ```ts const impersonationRegistry
+        = await client.emailSecurity.settings.impersonationRegistry.get(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
-        - name: displayNameId
+        - name: impersonationRegistryId
           in: path
           required: true
           schema:
-            type: number
+            type: string
         - name: account_id
           in: path
           required: true
-          description: Account Identifier
+          description: Identifier.
           schema:
             type: string
       responses:
@@ -2982,21 +3460,14 @@ paths:
                 type: object
                 properties:
                   id:
-                    type: number
-                  created_at:
                     type: string
-                  email:
-                    type: string
-                  is_email_regex:
-                    type: boolean
-                  last_modified:
-                    type: string
-                  name:
-                    type: string
+                    description: Impersonation registry entry identifier
                   comments:
                     oneOf:
                       - type: string
                     nullable: true
+                  created_at:
+                    type: string
                   directory_id:
                     oneOf:
                       - type: number
@@ -3005,39 +3476,49 @@ paths:
                     oneOf:
                       - type: number
                     nullable: true
+                  email:
+                    type: string
                   external_directory_node_id:
                     oneOf:
                       - type: string
                     nullable: true
                     description: "@deprecated"
+                  is_email_regex:
+                    type: boolean
+                  last_modified:
+                    type: string
+                    description: "@deprecated Deprecated, use `modified_at` instead. End of life:
+                      November 1, 2026."
+                  modified_at:
+                    type: string
+                  name:
+                    type: string
                   provenance:
-                    oneOf:
-                      - type: string
-                    nullable: true
-                required:
-                  - id
-                  - created_at
-                  - email
-                  - is_email_regex
-                  - last_modified
-                  - name
+                    type: string
+                    enum:
+                      - A1S_INTERNAL
+                      - SNOOPY-CASB_OFFICE_365
+                      - SNOOPY-OFFICE_365
+                      - SNOOPY-GOOGLE_DIRECTORY
       x-distilled-response-path: result
     patch:
       operationId: patchSettingImpersonationRegistry
-      description: "Update an entry in impersonation registry  @example ```ts const
-        response = await
-        client.emailSecurity.settings.impersonationRegistry.edit( 2403, {
-        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      description: "Updates an existing impersonation registry entry. Only provided
+        fields will be modified. Directory-synced entries can't be
+        updated.  @example ```ts const response = await
+        client.emailSecurity.settings.impersonationRegistry.edit(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
-        - name: displayNameId
+        - name: impersonationRegistryId
           in: path
           required: true
           schema:
-            type: number
+            type: string
         - name: account_id
           in: path
           required: true
-          description: "Path param: Account Identifier"
+          description: "Path param: Identifier."
           schema:
             type: string
       requestBody:
@@ -3047,21 +3528,43 @@ paths:
             schema:
               type: object
               properties:
+                comments:
+                  oneOf:
+                    - type: string
+                  nullable: true
+                  description: Body param
+                directory_id:
+                  oneOf:
+                    - type: number
+                  nullable: true
+                  description: Body param
+                directory_node_id:
+                  oneOf:
+                    - type: number
+                  nullable: true
+                  description: Body param
                 email:
+                  type: string
+                  description: Body param
+                external_directory_node_id:
                   oneOf:
                     - type: string
                   nullable: true
-                  description: "Body param:"
+                  description: "@deprecated Body param"
                 is_email_regex:
-                  oneOf:
-                    - type: boolean
-                  nullable: true
-                  description: "Body param:"
+                  type: boolean
+                  description: Body param
                 name:
-                  oneOf:
-                    - type: string
-                  nullable: true
-                  description: "Body param:"
+                  type: string
+                  description: Body param
+                provenance:
+                  type: string
+                  enum:
+                    - A1S_INTERNAL
+                    - SNOOPY-CASB_OFFICE_365
+                    - SNOOPY-OFFICE_365
+                    - SNOOPY-GOOGLE_DIRECTORY
+                  description: Body param
       responses:
         "200":
           description: Success
@@ -3071,21 +3574,14 @@ paths:
                 type: object
                 properties:
                   id:
-                    type: number
-                  created_at:
                     type: string
-                  email:
-                    type: string
-                  is_email_regex:
-                    type: boolean
-                  last_modified:
-                    type: string
-                  name:
-                    type: string
+                    description: Impersonation registry entry identifier
                   comments:
                     oneOf:
                       - type: string
                     nullable: true
+                  created_at:
+                    type: string
                   directory_id:
                     oneOf:
                       - type: number
@@ -3094,39 +3590,49 @@ paths:
                     oneOf:
                       - type: number
                     nullable: true
+                  email:
+                    type: string
                   external_directory_node_id:
                     oneOf:
                       - type: string
                     nullable: true
                     description: "@deprecated"
+                  is_email_regex:
+                    type: boolean
+                  last_modified:
+                    type: string
+                    description: "@deprecated Deprecated, use `modified_at` instead. End of life:
+                      November 1, 2026."
+                  modified_at:
+                    type: string
+                  name:
+                    type: string
                   provenance:
-                    oneOf:
-                      - type: string
-                    nullable: true
-                required:
-                  - id
-                  - created_at
-                  - email
-                  - is_email_regex
-                  - last_modified
-                  - name
+                    type: string
+                    enum:
+                      - A1S_INTERNAL
+                      - SNOOPY-CASB_OFFICE_365
+                      - SNOOPY-OFFICE_365
+                      - SNOOPY-GOOGLE_DIRECTORY
       x-distilled-response-path: result
     delete:
       operationId: deleteSettingImpersonationRegistry
-      description: "Delete an entry from impersonation registry  @example ```ts const
-        impersonationRegistry = await
-        client.emailSecurity.settings.impersonationRegistry.delete( 2403, {
-        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      description: "Removes an entry from the impersonation registry. After deletion,
+        this identity will no longer be protected from impersonation.  @example
+        ```ts const impersonationRegistry = await
+        client.emailSecurity.settings.impersonationRegistry.delete(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
-        - name: displayNameId
+        - name: impersonationRegistryId
           in: path
           required: true
           schema:
-            type: number
+            type: string
         - name: account_id
           in: path
           required: true
-          description: Account Identifier
+          description: Identifier.
           schema:
             type: string
       responses:
@@ -3138,23 +3644,27 @@ paths:
                 type: object
                 properties:
                   id:
-                    type: number
+                    type: string
+                    description: Impersonation registry entry identifier
                 required:
                   - id
       x-distilled-response-path: result
   /accounts/{account_id}/email-security/settings/impersonation_registry:
     get:
       operationId: listSettingImpersonationRegistries
-      description: "Lists, searches, and sorts entries in the impersonation
-        registry.  @example ```ts // Automatically fetches more pages as needed.
-        for await (const impersonationRegistryListResponse of
+      description: "Returns a paginated list of protected identities in the
+        impersonation registry. These entries define identities and email
+        addresses to protect from impersonation attacks. Can be manually added
+        or automatically synced from directory integrations.  @example ```ts //
+        Automatically fetches more pages as needed. for await (const
+        impersonationRegistryListResponse of
         client.emailSecurity.settings.impersonationRegistry.list( { account_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
       parameters:
         - name: account_id
           in: path
           required: true
-          description: "Path param: Account Identifier"
+          description: "Path param: Identifier."
           schema:
             type: string
         - name: page
@@ -3179,7 +3689,7 @@ paths:
         - name: order
           in: query
           required: false
-          description: "Query param: The field to sort by."
+          description: "Query param: Field to sort by."
           schema:
             type: string
             enum:
@@ -3189,7 +3699,7 @@ paths:
         - name: provenance
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
             enum:
@@ -3200,10 +3710,8 @@ paths:
         - name: search
           in: query
           required: false
-          description: "Query param: Allows searching in multiple properties of a record
-            simultaneously. This parameter is intended for human users, not
-            automation. Its exact behavior is intentionally left unspecified and
-            is subject to change in the future."
+          description: "Query param: Search term for filtering records. Behavior may
+            change."
           schema:
             type: string
       responses:
@@ -3215,21 +3723,14 @@ paths:
                 type: object
                 properties:
                   id:
-                    type: number
-                  created_at:
                     type: string
-                  email:
-                    type: string
-                  is_email_regex:
-                    type: boolean
-                  last_modified:
-                    type: string
-                  name:
-                    type: string
+                    description: Impersonation registry entry identifier
                   comments:
                     oneOf:
                       - type: string
                     nullable: true
+                  created_at:
+                    type: string
                   directory_id:
                     oneOf:
                       - type: number
@@ -3238,35 +3739,46 @@ paths:
                     oneOf:
                       - type: number
                     nullable: true
+                  email:
+                    type: string
                   external_directory_node_id:
                     oneOf:
                       - type: string
                     nullable: true
                     description: "@deprecated"
+                  is_email_regex:
+                    type: boolean
+                  last_modified:
+                    type: string
+                    description: "@deprecated Deprecated, use `modified_at` instead. End of life:
+                      November 1, 2026."
+                  modified_at:
+                    type: string
+                  name:
+                    type: string
                   provenance:
-                    oneOf:
-                      - type: string
-                    nullable: true
-                required:
-                  - id
-                  - created_at
-                  - email
-                  - is_email_regex
-                  - last_modified
-                  - name
+                    type: string
+                    enum:
+                      - A1S_INTERNAL
+                      - SNOOPY-CASB_OFFICE_365
+                      - SNOOPY-OFFICE_365
+                      - SNOOPY-GOOGLE_DIRECTORY
       x-distilled-pagination-class: ImpersonationRegistryListResponsesV4PagePaginationArray
     post:
       operationId: createSettingImpersonationRegistry
-      description: "Create an entry in impersonation registry  @example ```ts const
-        impersonationRegistry = await
+      description: "Creates a new entry in the impersonation registry to protect
+        against impersonation. Emails attempting to impersonate this identity
+        will be flagged. Supports regex patterns for flexible email
+        matching.  @example ```ts const impersonationRegistry = await
         client.emailSecurity.settings.impersonationRegistry.create( {
-        account_id: '023e105f4ecef8ad9ca31a8372d0c353', email: 'email',
-        is_email_regex: true, name: 'name', }, ); ```"
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353', email:
+        'john.doe@example.com', is_email_regex: false, name: 'John Doe', }, );
+        ```"
       parameters:
         - name: account_id
           in: path
           required: true
-          description: "Path param: Account Identifier"
+          description: "Path param: Identifier."
           schema:
             type: string
       requestBody:
@@ -3278,13 +3790,41 @@ paths:
               properties:
                 email:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 is_email_regex:
                   type: boolean
-                  description: "Body param:"
+                  description: Body param
                 name:
                   type: string
-                  description: "Body param:"
+                  description: Body param
+                comments:
+                  oneOf:
+                    - type: string
+                  nullable: true
+                  description: Body param
+                directory_id:
+                  oneOf:
+                    - type: number
+                  nullable: true
+                  description: Body param
+                directory_node_id:
+                  oneOf:
+                    - type: number
+                  nullable: true
+                  description: Body param
+                external_directory_node_id:
+                  oneOf:
+                    - type: string
+                  nullable: true
+                  description: "@deprecated Body param"
+                provenance:
+                  type: string
+                  enum:
+                    - A1S_INTERNAL
+                    - SNOOPY-CASB_OFFICE_365
+                    - SNOOPY-OFFICE_365
+                    - SNOOPY-GOOGLE_DIRECTORY
+                  description: Body param
               required:
                 - email
                 - is_email_regex
@@ -3298,21 +3838,14 @@ paths:
                 type: object
                 properties:
                   id:
-                    type: number
-                  created_at:
                     type: string
-                  email:
-                    type: string
-                  is_email_regex:
-                    type: boolean
-                  last_modified:
-                    type: string
-                  name:
-                    type: string
+                    description: Impersonation registry entry identifier
                   comments:
                     oneOf:
                       - type: string
                     nullable: true
+                  created_at:
+                    type: string
                   directory_id:
                     oneOf:
                       - type: number
@@ -3321,39 +3854,50 @@ paths:
                     oneOf:
                       - type: number
                     nullable: true
+                  email:
+                    type: string
                   external_directory_node_id:
                     oneOf:
                       - type: string
                     nullable: true
                     description: "@deprecated"
+                  is_email_regex:
+                    type: boolean
+                  last_modified:
+                    type: string
+                    description: "@deprecated Deprecated, use `modified_at` instead. End of life:
+                      November 1, 2026."
+                  modified_at:
+                    type: string
+                  name:
+                    type: string
                   provenance:
-                    oneOf:
-                      - type: string
-                    nullable: true
-                required:
-                  - id
-                  - created_at
-                  - email
-                  - is_email_regex
-                  - last_modified
-                  - name
+                    type: string
+                    enum:
+                      - A1S_INTERNAL
+                      - SNOOPY-CASB_OFFICE_365
+                      - SNOOPY-OFFICE_365
+                      - SNOOPY-GOOGLE_DIRECTORY
       x-distilled-response-path: result
   /accounts/{account_id}/email-security/settings/trusted_domains/{trustedDomainId}:
     get:
       operationId: getSettingTrustedDomain
-      description: "Get a trusted email domain  @example ```ts const trustedDomain =
-        await client.emailSecurity.settings.trustedDomains.get( 2401, {
-        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      description: "Retrieves details for a specific trusted domain pattern including
+        its pattern value, whether it uses regex matching, and which detection
+        types it affects.  @example ```ts const trustedDomain = await
+        client.emailSecurity.settings.trustedDomains.get(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
         - name: trustedDomainId
           in: path
           required: true
           schema:
-            type: number
+            type: string
         - name: account_id
           in: path
           required: true
-          description: Account Identifier
+          description: Identifier.
           schema:
             type: string
       responses:
@@ -3365,8 +3909,12 @@ paths:
                 type: object
                 properties:
                   id:
-                    type: number
-                    description: The unique identifier for the trusted domain.
+                    type: string
+                    description: Trusted domain identifier
+                  comments:
+                    oneOf:
+                      - type: string
+                    nullable: true
                   created_at:
                     type: string
                   is_recent:
@@ -3382,36 +3930,31 @@ paths:
                       domains from triggering a Spoof disposition.
                   last_modified:
                     type: string
+                    description: "@deprecated Deprecated, use `modified_at` instead. End of life:
+                      November 1, 2026."
+                  modified_at:
+                    type: string
                   pattern:
                     type: string
-                  comments:
-                    oneOf:
-                      - type: string
-                    nullable: true
-                required:
-                  - id
-                  - created_at
-                  - is_recent
-                  - is_regex
-                  - is_similarity
-                  - last_modified
-                  - pattern
       x-distilled-response-path: result
     patch:
       operationId: patchSettingTrustedDomain
-      description: "Update a trusted email domain  @example ```ts const response =
-        await client.emailSecurity.settings.trustedDomains.edit( 2401, {
-        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      description: "Updates an existing trusted domain pattern. Only provided fields
+        will be modified. Changes take effect for new emails matching the
+        pattern.  @example ```ts const response = await
+        client.emailSecurity.settings.trustedDomains.edit(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
         - name: trustedDomainId
           in: path
           required: true
           schema:
-            type: number
+            type: string
         - name: account_id
           in: path
           required: true
-          description: "Path param: Account Identifier"
+          description: "Path param: Identifier."
           schema:
             type: string
       requestBody:
@@ -3422,15 +3965,17 @@ paths:
               type: object
               properties:
                 comments:
-                  type: string
-                  description: "Body param:"
+                  oneOf:
+                    - type: string
+                  nullable: true
+                  description: Body param
                 is_recent:
                   type: boolean
                   description: "Body param: Select to prevent recently registered domains from
                     triggering a Suspicious or Malicious disposition."
                 is_regex:
                   type: boolean
-                  description: "Body param:"
+                  description: Body param
                 is_similarity:
                   type: boolean
                   description: "Body param: Select for partner or other approved domains that have
@@ -3438,7 +3983,7 @@ paths:
                     domains from triggering a Spoof disposition."
                 pattern:
                   type: string
-                  description: "Body param:"
+                  description: Body param
       responses:
         "200":
           description: Success
@@ -3448,8 +3993,12 @@ paths:
                 type: object
                 properties:
                   id:
-                    type: number
-                    description: The unique identifier for the trusted domain.
+                    type: string
+                    description: Trusted domain identifier
+                  comments:
+                    oneOf:
+                      - type: string
+                    nullable: true
                   created_at:
                     type: string
                   is_recent:
@@ -3465,36 +4014,31 @@ paths:
                       domains from triggering a Spoof disposition.
                   last_modified:
                     type: string
+                    description: "@deprecated Deprecated, use `modified_at` instead. End of life:
+                      November 1, 2026."
+                  modified_at:
+                    type: string
                   pattern:
                     type: string
-                  comments:
-                    oneOf:
-                      - type: string
-                    nullable: true
-                required:
-                  - id
-                  - created_at
-                  - is_recent
-                  - is_regex
-                  - is_similarity
-                  - last_modified
-                  - pattern
       x-distilled-response-path: result
     delete:
       operationId: deleteSettingTrustedDomain
-      description: "Delete a trusted email domain  @example ```ts const trustedDomain
-        = await client.emailSecurity.settings.trustedDomains.delete( 2401, {
-        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      description: "Removes a trusted domain pattern. After deletion, emails from this
+        domain will be subject to normal recent domain and similarity
+        checks.  @example ```ts const trustedDomain = await
+        client.emailSecurity.settings.trustedDomains.delete(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
         - name: trustedDomainId
           in: path
           required: true
           schema:
-            type: number
+            type: string
         - name: account_id
           in: path
           required: true
-          description: Account Identifier
+          description: Identifier.
           schema:
             type: string
       responses:
@@ -3506,24 +4050,26 @@ paths:
                 type: object
                 properties:
                   id:
-                    type: number
-                    description: The unique identifier for the trusted domain.
+                    type: string
+                    description: Trusted domain identifier
                 required:
                   - id
       x-distilled-response-path: result
   /accounts/{account_id}/email-security/settings/trusted_domains:
     get:
       operationId: listSettingTrustedDomains
-      description: "Lists, searches, and sorts an account’s trusted email
-        domains.  @example ```ts // Automatically fetches more pages as needed.
-        for await (const trustedDomainListResponse of
+      description: "Returns a paginated list of trusted domain patterns. Trusted
+        domains prevent false positives for recently registered domains and
+        lookalike domain detections. Patterns can use regular expressions for
+        flexible matching.  @example ```ts // Automatically fetches more pages
+        as needed. for await (const trustedDomainListResponse of
         client.emailSecurity.settings.trustedDomains.list( { account_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
       parameters:
         - name: account_id
           in: path
           required: true
-          description: "Path param: Account Identifier"
+          description: "Path param: Identifier."
           schema:
             type: string
         - name: page
@@ -3548,19 +4094,23 @@ paths:
         - name: is_recent
           in: query
           required: false
-          description: "Query param:"
+          description: "Query param: Filter to show only recently registered domains that
+            are trusted to prevent triggering Suspicious or Malicious
+            dispositions."
           schema:
             type: boolean
         - name: is_similarity
           in: query
           required: false
-          description: "Query param:"
+          description: "Query param: Filter to show only proximity domains (partner or
+            approved domains with similar spelling to connected domains) that
+            prevent Spoof dispositions."
           schema:
             type: boolean
         - name: order
           in: query
           required: false
-          description: "Query param: The field to sort by."
+          description: "Query param: Field to sort by."
           schema:
             type: string
             enum:
@@ -3569,16 +4119,14 @@ paths:
         - name: pattern
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
         - name: search
           in: query
           required: false
-          description: "Query param: Allows searching in multiple properties of a record
-            simultaneously. This parameter is intended for human users, not
-            automation. Its exact behavior is intentionally left unspecified and
-            is subject to change in the future."
+          description: "Query param: Search term for filtering records. Behavior may
+            change."
           schema:
             type: string
       responses:
@@ -3590,8 +4138,12 @@ paths:
                 type: object
                 properties:
                   id:
-                    type: number
-                    description: The unique identifier for the trusted domain.
+                    type: string
+                    description: Trusted domain identifier
+                  comments:
+                    oneOf:
+                      - type: string
+                    nullable: true
                   created_at:
                     type: string
                   is_recent:
@@ -3607,33 +4159,27 @@ paths:
                       domains from triggering a Spoof disposition.
                   last_modified:
                     type: string
+                    description: "@deprecated Deprecated, use `modified_at` instead. End of life:
+                      November 1, 2026."
+                  modified_at:
+                    type: string
                   pattern:
                     type: string
-                  comments:
-                    oneOf:
-                      - type: string
-                    nullable: true
-                required:
-                  - id
-                  - created_at
-                  - is_recent
-                  - is_regex
-                  - is_similarity
-                  - last_modified
-                  - pattern
       x-distilled-pagination-class: TrustedDomainListResponsesV4PagePaginationArray
     post:
       operationId: createSettingTrustedDomain
-      description: "Create a trusted email domain  @example ```ts const trustedDomain
-        = await client.emailSecurity.settings.trustedDomains.create( {
-        account_id: '023e105f4ecef8ad9ca31a8372d0c353', is_recent: true,
-        is_regex: false, is_similarity: false, pattern: 'example.com', }, );
-        ```"
+      description: "Creates a new trusted domain pattern. Use for partner domains or
+        approved senders that should bypass recent domain registration and
+        similarity checks. Configure whether it prevents recent domain or spoof
+        dispositions.  @example ```ts const trustedDomain = await
+        client.emailSecurity.settings.trustedDomains.create( { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', is_recent: true, is_regex: false,
+        is_similarity: false, pattern: 'example.com', }, ); ```"
       parameters:
         - name: account_id
           in: path
           required: true
-          description: "Path param: Account Identifier"
+          description: "Path param: Identifier."
           schema:
             type: string
       requestBody:
@@ -3649,7 +4195,7 @@ paths:
                     triggering a Suspicious or Malicious disposition."
                 is_regex:
                   type: boolean
-                  description: "Body param:"
+                  description: Body param
                 is_similarity:
                   type: boolean
                   description: "Body param: Select for partner or other approved domains that have
@@ -3657,12 +4203,12 @@ paths:
                     domains from triggering a Spoof disposition."
                 pattern:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 comments:
                   oneOf:
                     - type: string
                   nullable: true
-                  description: "Body param:"
+                  description: Body param
               required:
                 - is_recent
                 - is_regex
@@ -3674,91 +4220,52 @@ paths:
           content:
             application/json:
               schema:
-                oneOf:
-                  - type: object
-                    properties:
-                      id:
-                        type: number
-                        description: The unique identifier for the trusted domain.
-                      created_at:
-                        type: string
-                      is_recent:
-                        type: boolean
-                        description: Select to prevent recently registered domains from triggering a
-                          Suspicious or Malicious disposition.
-                      is_regex:
-                        type: boolean
-                      is_similarity:
-                        type: boolean
-                        description: Select for partner or other approved domains that have similar
-                          spelling to your connected domains. Prevents listed
-                          domains from triggering a Spoof disposition.
-                      last_modified:
-                        type: string
-                      pattern:
-                        type: string
-                      comments:
-                        oneOf:
-                          - type: string
-                        nullable: true
-                    required:
-                      - id
-                      - created_at
-                      - is_recent
-                      - is_regex
-                      - is_similarity
-                      - last_modified
-                      - pattern
-                  - type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: number
-                          description: The unique identifier for the trusted domain.
-                        created_at:
-                          type: string
-                        is_recent:
-                          type: boolean
-                          description: Select to prevent recently registered domains from triggering a
-                            Suspicious or Malicious disposition.
-                        is_regex:
-                          type: boolean
-                        is_similarity:
-                          type: boolean
-                          description: Select for partner or other approved domains that have similar
-                            spelling to your connected domains. Prevents listed
-                            domains from triggering a Spoof disposition.
-                        last_modified:
-                          type: string
-                        pattern:
-                          type: string
-                        comments:
-                          oneOf:
-                            - type: string
-                          nullable: true
-                      required:
-                        - id
-                        - created_at
-                        - is_recent
-                        - is_regex
-                        - is_similarity
-                        - last_modified
-                        - pattern
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Trusted domain identifier
+                  comments:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  created_at:
+                    type: string
+                  is_recent:
+                    type: boolean
+                    description: Select to prevent recently registered domains from triggering a
+                      Suspicious or Malicious disposition.
+                  is_regex:
+                    type: boolean
+                  is_similarity:
+                    type: boolean
+                    description: Select for partner or other approved domains that have similar
+                      spelling to your connected domains. Prevents listed
+                      domains from triggering a Spoof disposition.
+                  last_modified:
+                    type: string
+                    description: "@deprecated Deprecated, use `modified_at` instead. End of life:
+                      November 1, 2026."
+                  modified_at:
+                    type: string
+                  pattern:
+                    type: string
       x-distilled-response-path: result
   /accounts/{account_id}/email-security/submissions:
     get:
       operationId: listSubmissions
-      description: "This endpoint returns information for submissions to made to
-        reclassify emails.  @example ```ts // Automatically fetches more pages
-        as needed. for await (const submissionListResponse of
+      description: "Returns information for submissions made to reclassify emails.
+        Shows the status, outcome, and disposition changes for reclassification
+        requests made by users or the security team. Useful for tracking false
+        positive/negative reports.  @example ```ts // Automatically fetches more
+        pages as needed. for await (const submissionListResponse of
         client.emailSecurity.submissions.list( { account_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
       parameters:
         - name: account_id
           in: path
           required: true
-          description: "Path param: Account Identifier"
+          description: "Path param: Identifier."
           schema:
             type: string
         - name: page
@@ -3777,10 +4284,19 @@ paths:
           description: "Query param: The end of the search date range. Defaults to `now`."
           schema:
             type: string
+        - name: escalated_from_user
+          in: query
+          required: false
+          description: "Query param: When true, return only submissions that were
+            escalated by an end user (vs. by the security team). When false,
+            return only submissions that were not escalated by an end user. When
+            omitted, no filter is applied."
+          schema:
+            type: boolean
         - name: original_disposition
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
             enum:
@@ -3793,7 +4309,7 @@ paths:
         - name: outcome_disposition
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
             enum:
@@ -3806,7 +4322,7 @@ paths:
         - name: query
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             oneOf:
               - type: string
@@ -3814,7 +4330,7 @@ paths:
         - name: requested_disposition
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
             enum:
@@ -3834,19 +4350,19 @@ paths:
         - name: status
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
         - name: submission_id
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
         - name: type
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
             enum:
@@ -3860,28 +4376,59 @@ paths:
               schema:
                 type: object
                 properties:
-                  requested_ts:
+                  requested_at:
                     type: string
+                    description: When the submission was requested (UTC).
                   submission_id:
                     type: string
-                  original_disposition:
+                  customer_status:
+                    type: string
+                    enum:
+                      - escalated
+                      - reviewed
+                      - unreviewed
+                    nullable: true
+                  escalated_as:
                     type: string
                     enum:
                       - MALICIOUS
-                      - MALICIOUS-BEC
                       - SUSPICIOUS
                       - SPOOF
                       - SPAM
                       - BULK
-                      - ENCRYPTED
-                      - EXTERNAL
-                      - UNKNOWN
+                      - NONE
+                    nullable: true
+                  escalated_at:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  escalated_by:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  escalated_submission_id:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  original_disposition:
+                    type: string
+                    enum:
+                      - MALICIOUS
+                      - SUSPICIOUS
+                      - SPOOF
+                      - SPAM
+                      - BULK
                       - NONE
                     nullable: true
                   original_edf_hash:
                     oneOf:
                       - type: string
                     nullable: true
+                  original_postfix_id:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: The postfix ID of the original message that was submitted
                   outcome:
                     oneOf:
                       - type: string
@@ -3890,14 +4437,10 @@ paths:
                     type: string
                     enum:
                       - MALICIOUS
-                      - MALICIOUS-BEC
                       - SUSPICIOUS
                       - SPOOF
                       - SPAM
                       - BULK
-                      - ENCRYPTED
-                      - EXTERNAL
-                      - UNKNOWN
                       - NONE
                     nullable: true
                   requested_by:
@@ -3908,16 +4451,15 @@ paths:
                     type: string
                     enum:
                       - MALICIOUS
-                      - MALICIOUS-BEC
                       - SUSPICIOUS
                       - SPOOF
                       - SPAM
                       - BULK
-                      - ENCRYPTED
-                      - EXTERNAL
-                      - UNKNOWN
                       - NONE
                     nullable: true
+                  requested_ts:
+                    type: string
+                    description: "@deprecated Deprecated, use `requested_at` instead"
                   status:
                     oneOf:
                       - type: string
@@ -3927,10 +4469,13 @@ paths:
                       - type: string
                     nullable: true
                   type:
-                    oneOf:
-                      - type: string
+                    type: string
+                    enum:
+                      - Team
+                      - User
                     nullable: true
+                    description: Whether the submission was created by a team member or an end user.
                 required:
-                  - requested_ts
+                  - requested_at
                   - submission_id
       x-distilled-pagination-class: SubmissionListResponsesV4PagePaginationArray

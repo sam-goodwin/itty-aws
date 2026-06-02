@@ -6,18 +6,17 @@
  *
  * @example
  * ```ts
- * import { SensitiveString } from "@distilled.cloud/core/sensitive";
+ * import { SensitiveString, SensitiveOutputString } from "@distilled.cloud/core/sensitive";
  *
- * const Password = Schema.Struct({ plain_text: SensitiveString });
+ * // Inputs: use Sensitive* — accepts plain string OR Redacted (convenience).
+ * const CreateInput = Schema.Struct({ plain_text: SensitiveString });
+ * API.create({ plain_text: "my-secret" });             // ok
+ * API.create({ plain_text: Redacted.make("my-secret") }); // also ok
  *
- * // Users can pass raw strings (convenient):
- * API.createPassword({ plain_text: "my-secret" })
- *
- * // Or Redacted values (explicit):
- * API.createPassword({ plain_text: Redacted.make("my-secret") })
- *
- * // Response values are always Redacted (safe):
- * console.log(result.plain_text); // logs "<redacted>"
+ * // Outputs: use SensitiveOutput* — decoded type is strictly Redacted, so
+ * // consumers never need to coerce.
+ * const CreateOutput = Schema.Struct({ plain_text: SensitiveOutputString });
+ * console.log(result.plain_text); // Redacted<string>, logs "<redacted>"
  * ```
  */
 import * as Redacted from "effect/Redacted";
@@ -25,16 +24,16 @@ import * as S from "effect/Schema";
 import * as SchemaTransformation from "effect/SchemaTransformation";
 
 /**
- * Sensitive - Marks data as sensitive, wrapping in Effect's Redacted type.
+ * Sensitive (input-friendly) - Marks data as sensitive, wrapping in Redacted.
  *
- * This schema provides a convenient way to handle sensitive data:
- * - TypeScript type: `A | Redacted.Redacted<A>` (accepts both for inputs)
- * - Decode (responses): Always wraps wire value in Redacted
- * - Encode (requests): Accepts BOTH raw values and Redacted, extracts the raw value
+ * Use for **request body** / **input** fields. The decoded TypeScript type is
+ * `A | Redacted<A>` so callers can pass either a plain value or a Redacted one.
+ * On the wire, plain values are sent through and Redacted values are unwrapped
+ * back to their underlying value. Decoded responses are always Redacted.
  *
- * The union type allows users to conveniently pass plain values for inputs while
- * still getting proper Redacted types for outputs. Response values will always
- * be Redacted, which prevents accidental logging.
+ * For **output** / **response** fields use {@link SensitiveOutput} instead —
+ * its decoded type is strictly `Redacted<A>`, removing the need for callers to
+ * narrow / coerce on every read site.
  */
 export const Sensitive = <A>(
   schema: S.Schema<A>,
@@ -56,19 +55,65 @@ export const Sensitive = <A>(
     });
 
 /**
- * Sensitive string - a string marked as sensitive.
- * Wire format is plain string, TypeScript type is string | Redacted<string>.
- * At runtime, decoded values are always Redacted<string>.
+ * Sensitive string (input-friendly).
+ * Wire format: plain string. Decoded TypeScript type: `string | Redacted<string>`.
+ * Decoded runtime values are always `Redacted<string>`.
+ *
+ * Prefer {@link SensitiveOutputString} on response schemas — its static type
+ * matches the runtime (strict `Redacted<string>`).
  */
 export const SensitiveString = Sensitive(S.String).annotate({
   identifier: "SensitiveString",
 });
 
 /**
- * Sensitive nullable string - a nullable string marked as sensitive.
- * Wire format is plain string | null, TypeScript type is string | null | Redacted<string>.
- * At runtime, decoded non-null values are always Redacted<string>.
+ * Sensitive nullable string (input-friendly).
+ * Wire format: `string | null`. Decoded type: `string | null | Redacted<string>`.
+ * Prefer {@link SensitiveOutputNullableString} on response schemas.
  */
 export const SensitiveNullableString = S.NullOr(SensitiveString).annotate({
   identifier: "SensitiveNullableString",
+});
+
+/**
+ * SensitiveOutput - strict variant of {@link Sensitive} for response fields.
+ *
+ * Decoded TypeScript type is `Redacted<A>` (no union). Wire format is the
+ * underlying `A`. Use on response schemas so consumers don't have to narrow
+ * `string | Redacted<string>` at every read site.
+ */
+export const SensitiveOutput = <A>(
+  schema: S.Schema<A>,
+): S.Schema<Redacted.Redacted<A>> =>
+  schema
+    .pipe(
+      S.decodeTo(
+        S.Redacted(S.toType(schema)),
+        SchemaTransformation.transform({
+          decode: (a) => Redacted.make(a),
+          encode: (v) => Redacted.value(v),
+        }),
+      ),
+    )
+    .annotate({
+      identifier: `SensitiveOutput<${schema.ast.annotations?.identifier ?? "unknown"}>`,
+    });
+
+/**
+ * SensitiveOutput string - strict variant of {@link SensitiveString} for
+ * response fields. Decoded type is `Redacted<string>`.
+ */
+export const SensitiveOutputString = SensitiveOutput(S.String).annotate({
+  identifier: "SensitiveOutputString",
+});
+
+/**
+ * SensitiveOutput nullable string - strict variant of
+ * {@link SensitiveNullableString} for response fields. Decoded type is
+ * `Redacted<string> | null`.
+ */
+export const SensitiveOutputNullableString = S.NullOr(
+  SensitiveOutputString,
+).annotate({
+  identifier: "SensitiveOutputNullableString",
 });

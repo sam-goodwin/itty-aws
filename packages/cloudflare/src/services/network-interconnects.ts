@@ -108,9 +108,9 @@ export const getCni: API.OperationMethod<
 export interface ListCnisRequest {
   /** Path param: Customer account tag */
   accountId: string;
-  /** Query param: */
+  /** Query param */
   cursor?: number | null;
-  /** Query param: */
+  /** Query param */
   limit?: number | null;
   /** Query param: If specified, only show CNIs associated with the specified slot */
   slot?: string | null;
@@ -221,11 +221,11 @@ export interface CreateCniRequest {
   accountId: string;
   /** Body param: Customer account tag */
   account: string;
-  /** Body param: */
+  /** Body param */
   interconnect: string;
-  /** Body param: */
+  /** Body param */
   magic: { conduitName: string; description: string; mtu: number };
-  /** Body param: */
+  /** Body param */
   bgp?: {
     customerAsn: number;
     extraPrefixes: string[];
@@ -345,7 +345,7 @@ export interface UpdateCniRequest {
   cni: string;
   /** Path param: Customer account tag */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   id: string;
   /** Body param: Customer account tag */
   account: string;
@@ -353,11 +353,11 @@ export interface UpdateCniRequest {
   custIp: string;
   /** Body param: Interconnect identifier hosting this CNI */
   interconnect: string;
-  /** Body param: */
+  /** Body param */
   magic: { conduitName: string; description: string; mtu: number };
   /** Body param: Cloudflare end of the point-to-point link */
   p2pIp: string;
-  /** Body param: */
+  /** Body param */
   bgp?: {
     customerAsn: number;
     extraPrefixes: string[];
@@ -569,6 +569,7 @@ export type GetInterconnectResponse =
         | "10G"
         | "20G"
         | "50G"
+        | (string & {})
         | null;
     };
 
@@ -606,19 +607,22 @@ export const GetInterconnectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union(
       owner: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       speed: Schema.optional(
         Schema.Union([
-          Schema.Literals([
-            "50M",
-            "100M",
-            "200M",
-            "300M",
-            "400M",
-            "500M",
-            "1G",
-            "2G",
-            "5G",
-            "10G",
-            "20G",
-            "50G",
+          Schema.Union([
+            Schema.Literals([
+              "50M",
+              "100M",
+              "200M",
+              "300M",
+              "400M",
+              "500M",
+              "1G",
+              "2G",
+              "5G",
+              "10G",
+              "20G",
+              "50G",
+            ]),
+            Schema.String,
           ]),
           Schema.Null,
         ]),
@@ -643,9 +647,9 @@ export const getInterconnect: API.OperationMethod<
 export interface ListInterconnectsRequest {
   /** Path param: Customer account tag */
   accountId: string;
-  /** Query param: */
+  /** Query param */
   cursor?: number | null;
-  /** Query param: */
+  /** Query param */
   limit?: number | null;
   /** Query param: If specified, only show interconnects located at the given site */
   site?: string | null;
@@ -703,6 +707,7 @@ export interface ListInterconnectsResponse {
           | "10G"
           | "20G"
           | "50G"
+          | (string & {})
           | null;
       }
   )[];
@@ -745,19 +750,22 @@ export const ListInterconnectsResponse =
           owner: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           speed: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "50M",
-                "100M",
-                "200M",
-                "300M",
-                "400M",
-                "500M",
-                "1G",
-                "2G",
-                "5G",
-                "10G",
-                "20G",
-                "50G",
+              Schema.Union([
+                Schema.Literals([
+                  "50M",
+                  "100M",
+                  "200M",
+                  "300M",
+                  "400M",
+                  "500M",
+                  "1G",
+                  "2G",
+                  "5G",
+                  "10G",
+                  "20G",
+                  "50G",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -784,29 +792,68 @@ export const listInterconnects: API.OperationMethod<
 export interface CreateInterconnectRequest {
   /** Path param: Customer account tag */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   account: string;
-  /** Body param: */
-  slotId: string;
-  /** Body param: */
+  /** Body param */
+  slotId?: string;
+  /** Body param */
   type: string;
-  /** Body param: */
+  /** Body param */
   speed?: string | null;
+  /** Body param: Bandwidth structure as visible through the customer-facing API. */
+  bandwidth?:
+    | "50M"
+    | "100M"
+    | "200M"
+    | "300M"
+    | "400M"
+    | "500M"
+    | "1G"
+    | "2G"
+    | "5G"
+    | "10G"
+    | "20G"
+    | "50G"
+    | (string & {});
+  /** Body param: Pairing key provided by GCP */
+  pairingKey?: string;
 }
 
 export const CreateInterconnectRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     account: Schema.String,
-    slotId: Schema.String,
+    slotId: Schema.optional(Schema.String),
     type: Schema.String,
     speed: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    bandwidth: Schema.optional(
+      Schema.Union([
+        Schema.Literals([
+          "50M",
+          "100M",
+          "200M",
+          "300M",
+          "400M",
+          "500M",
+          "1G",
+          "2G",
+          "5G",
+          "10G",
+          "20G",
+          "50G",
+        ]),
+        Schema.String,
+      ]),
+    ),
+    pairingKey: Schema.optional(Schema.String),
   }).pipe(
     Schema.encodeKeys({
       account: "account",
       slotId: "slot_id",
       type: "type",
       speed: "speed",
+      bandwidth: "bandwidth",
+      pairingKey: "pairing_key",
     }),
     T.Http({
       method: "POST",
@@ -844,6 +891,7 @@ export type CreateInterconnectResponse =
         | "10G"
         | "20G"
         | "50G"
+        | (string & {})
         | null;
     };
 
@@ -881,19 +929,22 @@ export const CreateInterconnectResponse =
       owner: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       speed: Schema.optional(
         Schema.Union([
-          Schema.Literals([
-            "50M",
-            "100M",
-            "200M",
-            "300M",
-            "400M",
-            "500M",
-            "1G",
-            "2G",
-            "5G",
-            "10G",
-            "20G",
-            "50G",
+          Schema.Union([
+            Schema.Literals([
+              "50M",
+              "100M",
+              "200M",
+              "300M",
+              "400M",
+              "500M",
+              "1G",
+              "2G",
+              "5G",
+              "10G",
+              "20G",
+              "50G",
+            ]),
+            Schema.String,
           ]),
           Schema.Null,
         ]),
@@ -1080,7 +1131,7 @@ export const getSetting: API.OperationMethod<
 export interface PutSettingRequest {
   /** Path param: Account tag to update settings for */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   defaultAsn?: number | null;
 }
 
@@ -1174,9 +1225,9 @@ export interface ListSlotsRequest {
   accountId: string;
   /** Query param: If specified, only show slots with the given text in their address field */
   addressContains?: string | null;
-  /** Query param: */
+  /** Query param */
   cursor?: number | null;
-  /** Query param: */
+  /** Query param */
   limit?: number | null;
   /** Query param: If specified, only show slots with a specific occupied/unoccupied state */
   occupied?: boolean | null;

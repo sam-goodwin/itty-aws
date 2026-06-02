@@ -1,9 +1,9 @@
+import { ConfigError } from "@distilled.cloud/core/errors";
 import * as EffectConfig from "effect/Config";
 import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
 import * as Redacted from "effect/Redacted";
-import { ConfigError } from "@distilled.cloud/core/errors";
 
 export const DEFAULT_API_BASE_URL = "https://cloud.mongodb.com";
 
@@ -27,17 +27,15 @@ const envConfig = EffectConfig.all({
 export const CredentialsFromEnv = Layer.effect(
   Credentials,
   Effect.gen(function* () {
-    const { clientId, clientSecret, apiBaseUrl } = yield* envConfig
-      .asEffect()
-      .pipe(
-        Effect.mapError(
-          () =>
-            new ConfigError({
-              message:
-                "MONGODB_ATLAS_CLIENT_ID and MONGODB_ATLAS_CLIENT_SECRET environment variables are required",
-            }),
-        ),
-      );
+    const { clientId, clientSecret, apiBaseUrl } = yield* envConfig.pipe(
+      Effect.mapError(
+        () =>
+          new ConfigError({
+            message:
+              "MONGODB_ATLAS_CLIENT_ID and MONGODB_ATLAS_CLIENT_SECRET environment variables are required",
+          }),
+      ),
+    );
 
     // Exchange service account credentials for OAuth2 access token
     const res = yield* Effect.tryPromise(() =>

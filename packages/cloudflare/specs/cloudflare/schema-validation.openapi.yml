@@ -9,7 +9,8 @@ paths:
   /zones/{zone_id}/schema_validation/schemas/{schemaId}:
     get:
       operationId: getSchema
-      description: "Get details of a schema  @example ```ts const publicSchema = await
+      description: "Gets the contents and metadata of a specific OpenAPI schema
+        uploaded to API Shield.  @example ```ts const publicSchema = await
         client.schemaValidation.schemas.get(
         'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { zone_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
@@ -68,8 +69,9 @@ paths:
       x-distilled-response-path: result
     patch:
       operationId: patchSchema
-      description: "Edit details of a schema to enable validation  @example ```ts
-        const publicSchema = await client.schemaValidation.schemas.edit(
+      description: "Modifies an existing OpenAPI schema in API Shield, updating the
+        validation rules for associated API operations.  @example ```ts const
+        publicSchema = await client.schemaValidation.schemas.edit(
         'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { zone_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
@@ -130,8 +132,9 @@ paths:
       x-distilled-response-path: result
     delete:
       operationId: deleteSchema
-      description: "Delete a schema  @example ```ts const schema = await
-        client.schemaValidation.schemas.delete(
+      description: "Permanently removes an uploaded OpenAPI schema from API Shield.
+        Operations using this schema will lose their validation rules.  @example
+        ```ts const schema = await client.schemaValidation.schemas.delete(
         'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { zone_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
@@ -163,10 +166,10 @@ paths:
   /zones/{zone_id}/schema_validation/schemas:
     get:
       operationId: listSchemas
-      description: "List all uploaded schemas  @example ```ts // Automatically fetches
-        more pages as needed. for await (const publicSchema of
-        client.schemaValidation.schemas.list( { zone_id:
-        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      description: "Lists all OpenAPI schemas uploaded to API Shield with pagination
+        support.  @example ```ts // Automatically fetches more pages as needed.
+        for await (const publicSchema of client.schemaValidation.schemas.list( {
+        zone_id: '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
       parameters:
         - name: zone_id
           in: path
@@ -233,7 +236,9 @@ paths:
       x-distilled-pagination-class: PublicSchemasV4PagePaginationArray
     post:
       operationId: createSchema
-      description: "Upload a schema  @example ```ts const publicSchema = await
+      description: "Uploads a new OpenAPI schema for API Shield schema validation. The
+        schema defines expected request/response formats for API
+        endpoints.  @example ```ts const publicSchema = await
         client.schemaValidation.schemas.create({ zone_id:
         '023e105f4ecef8ad9ca31a8372d0c353', kind: 'openapi_v3', name: 'petstore
         schema', source: '<schema file contents>', validation_enabled: true, });
@@ -309,8 +314,9 @@ paths:
   /zones/{zone_id}/schema_validation/settings:
     get:
       operationId: getSetting
-      description: "Get global schema validation settings  @example ```ts const
-        setting = await client.schemaValidation.settings.get({ zone_id:
+      description: "Retrieves the current global schema validation settings for a
+        zone.  @example ```ts const setting = await
+        client.schemaValidation.settings.get({ zone_id:
         '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
       parameters:
         - name: zone_id
@@ -352,8 +358,9 @@ paths:
       x-distilled-response-path: result
     put:
       operationId: putSetting
-      description: "Update global schema validation settings  @example ```ts const
-        setting = await client.schemaValidation.settings.update({ zone_id:
+      description: "Fully updates global schema validation settings for a zone,
+        replacing existing configuration.  @example ```ts const setting = await
+        client.schemaValidation.settings.update({ zone_id:
         '023e105f4ecef8ad9ca31a8372d0c353',
         validation_default_mitigation_action: 'block', }); ```"
       parameters:
@@ -425,8 +432,9 @@ paths:
       x-distilled-response-path: result
     patch:
       operationId: patchSetting
-      description: "Edit global schema validation settings  @example ```ts const
-        response = await client.schemaValidation.settings.edit({ zone_id:
+      description: "Partially updates global schema validation settings for a zone
+        using PATCH semantics.  @example ```ts const response = await
+        client.schemaValidation.settings.edit({ zone_id:
         '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
       parameters:
         - name: zone_id
@@ -496,8 +504,9 @@ paths:
   /zones/{zone_id}/schema_validation/settings/operations/{operationId}:
     get:
       operationId: getSettingOperation
-      description: "Get per-operation schema validation setting  @example ```ts const
-        operation = await client.schemaValidation.settings.operations.get(
+      description: "Retrieves the schema validation settings configured for a specific
+        API operation.  @example ```ts const operation = await
+        client.schemaValidation.settings.operations.get(
         'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { zone_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
@@ -542,8 +551,8 @@ paths:
       x-distilled-response-path: result
     put:
       operationId: putSettingOperation
-      description: "Update per-operation schema validation setting  @example ```ts
-        const operation = await
+      description: "Fully updates schema validation settings for a specific API
+        operation.  @example ```ts const operation = await
         client.schemaValidation.settings.operations.update(
         'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { zone_id:
         '023e105f4ecef8ad9ca31a8372d0c353', mitigation_action: 'block', }, );
@@ -612,9 +621,9 @@ paths:
       x-distilled-response-path: result
     delete:
       operationId: deleteSettingOperation
-      description: "Delete per-operation schema validation setting  @example ```ts
-        const operation = await
-        client.schemaValidation.settings.operations.delete(
+      description: "Removes custom schema validation settings for a specific API
+        operation, reverting to zone-level defaults.  @example ```ts const
+        operation = await client.schemaValidation.settings.operations.delete(
         'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { zone_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
@@ -644,9 +653,9 @@ paths:
   /zones/{zone_id}/schema_validation/settings/operations:
     get:
       operationId: listSettingOperations
-      description: "List per-operation schema validation settings  @example ```ts //
-        Automatically fetches more pages as needed. for await (const
-        operationListResponse of
+      description: "Lists all per-operation schema validation settings configured for
+        the zone.  @example ```ts // Automatically fetches more pages as needed.
+        for await (const operationListResponse of
         client.schemaValidation.settings.operations.list( { zone_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
       parameters:
@@ -696,8 +705,9 @@ paths:
       x-distilled-pagination-class: OperationListResponsesV4PagePaginationArray
     patch:
       operationId: bulkPatchSettingOperations
-      description: "Bulk edit per-operation schema validation settings  @example ```ts
-        const response = await
+      description: "Updates schema validation settings for multiple API operations in
+        a single request. Efficient for applying consistent validation rules
+        across endpoints.  @example ```ts const response = await
         client.schemaValidation.settings.operations.bulkEdit( { zone_id:
         '023e105f4ecef8ad9ca31a8372d0c353', body: {
         '3818d821-5901-4147-a474-f5f5aec1d54e': {},

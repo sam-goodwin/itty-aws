@@ -2,7 +2,7 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
-import { SensitiveNullableString } from "../sensitive.ts";
+import { SensitiveOutputNullableString } from "../sensitive.ts";
 
 // Input Schema
 export const ListRolesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -21,6 +21,7 @@ export type ListRolesInput = typeof ListRolesInput.Type;
 
 // Output Schema
 export const ListRolesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.String,
   current_page: Schema.Number,
   next_page: Schema.NullOr(Schema.Number),
   next_page_url: Schema.NullOr(Schema.String),
@@ -34,7 +35,8 @@ export const ListRolesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       private_access_host_url: Schema.String,
       private_connection_service_name: Schema.String,
       username: Schema.String,
-      password: SensitiveNullableString,
+      base_username: Schema.String,
+      password: SensitiveOutputNullableString,
       database_name: Schema.String,
       created_at: Schema.String,
       updated_at: Schema.String,

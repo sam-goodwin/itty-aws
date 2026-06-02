@@ -20,6 +20,7 @@ export type ListOauthApplicationsInput = typeof ListOauthApplicationsInput.Type;
 // Output Schema
 export const ListOauthApplicationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.String,
     current_page: Schema.Number,
     next_page: Schema.NullOr(Schema.Number),
     next_page_url: Schema.NullOr(Schema.String),
@@ -33,7 +34,7 @@ export const ListOauthApplicationsOutput =
         domain: Schema.String,
         created_at: Schema.String,
         updated_at: Schema.String,
-        scopes: Schema.Array(Schema.String),
+        scopes: Schema.String,
         avatar: Schema.String,
         client_id: Schema.String,
         tokens: Schema.Number,

@@ -21,6 +21,7 @@ export type ListReadOnlyRegionsInput = typeof ListReadOnlyRegionsInput.Type;
 // Output Schema
 export const ListReadOnlyRegionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.String,
     current_page: Schema.Number,
     next_page: Schema.NullOr(Schema.Number),
     next_page_url: Schema.NullOr(Schema.String),
@@ -32,7 +33,7 @@ export const ListReadOnlyRegionsOutput =
         display_name: Schema.String,
         created_at: Schema.String,
         updated_at: Schema.String,
-        ready_at: Schema.String,
+        ready_at: Schema.NullOr(Schema.String),
         ready: Schema.Boolean,
         actor: Schema.Struct({
           id: Schema.String,
@@ -48,6 +49,8 @@ export const ListReadOnlyRegionsOutput =
           location: Schema.String,
           slug: Schema.String,
           current_default: Schema.Boolean,
+          mysql_supported: Schema.Boolean,
+          postgresql_supported: Schema.Boolean,
         }),
       }),
     ),

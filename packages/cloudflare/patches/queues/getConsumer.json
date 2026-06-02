@@ -4,5 +4,10 @@
     "QueueNotFound": [{ "code": 11000 }],
     "ConsumerNotFound": [{ "code": 11006 }],
     "InvalidRoute": [{ "code": 7003 }]
+  },
+  "response": {
+    "properties": {
+      "script_name": { "wireKey": "script" }
+    }
   }
 }

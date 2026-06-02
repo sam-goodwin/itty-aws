@@ -210,8 +210,7 @@ paths:
           description: Success
           content:
             application/json:
-              schema:
-                type: string
+              schema: {}
   /zones/{zone_id}/logs/received:
     get:
       operationId: getReceived
@@ -319,8 +318,7 @@ paths:
           description: Success
           content:
             application/json:
-              schema:
-                type: string
+              schema: {}
   /zones/{zone_id}/logs/received/fields:
     get:
       operationId: getReceivedField

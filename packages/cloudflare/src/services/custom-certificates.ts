@@ -36,27 +36,21 @@ export const GetCustomCertificateRequest =
 export interface GetCustomCertificateResponse {
   /** Identifier. */
   id: string;
-  /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates */
-  bundleMethod: "ubiquitous" | "optimal" | "force";
-  /** When the certificate from the authority expires. */
-  expiresOn: string;
-  hosts: string[];
-  /** The certificate authority that issued the certificate. */
-  issuer: string;
-  /** When the certificate was last modified. */
-  modifiedOn: string;
-  /** The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always */
-  priority: number;
-  /** The type of hash used for the certificate. */
-  signature: string;
-  /** Status of the zone's custom SSL. */
-  status: "active" | "expired" | "deleted" | "pending" | "initializing";
-  /** When the certificate was uploaded to Cloudflare. */
-  uploadedOn: string;
   /** Identifier. */
   zoneId: string;
+  /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates */
+  bundleMethod?: "ubiquitous" | "optimal" | "force" | (string & {}) | null;
+  /** The identifier for the Custom CSR that was used. */
+  customCsrId?: string | null;
+  /** When the certificate from the authority expires. */
+  expiresOn?: string | null;
   /** Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency whil */
-  geoRestrictions?: { label?: "us" | "eu" | "highest_security" | null } | null;
+  geoRestrictions?: {
+    label?: "us" | "eu" | "highest_security" | (string & {}) | null;
+  } | null;
+  hosts?: string[] | null;
+  /** The certificate authority that issued the certificate. */
+  issuer?: string | null;
   keylessServer?: {
     id: string;
     createdOn: string;
@@ -66,38 +60,54 @@ export interface GetCustomCertificateResponse {
     name: string;
     permissions: string[];
     port: number;
-    status: "active" | "deleted";
+    status: "active" | "deleted" | (string & {});
     tunnel?: { privateIp: string; vnetId: string } | null;
   } | null;
-  /** Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency whil */
-  policy?: string | null;
+  /** When the certificate was last modified. */
+  modifiedOn?: string | null;
+  /** The policy restrictions returned by the API. This field is returned in responses when a policy has been set. The API accepts the "policy" field in requests but returns this field as "policy_restrictio */
+  policyRestrictions?: string | null;
+  /** The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always */
+  priority?: number | null;
+  /** The type of hash used for the certificate. */
+  signature?: string | null;
+  /** Status of the zone's custom SSL. */
+  status?:
+    | "active"
+    | "expired"
+    | "deleted"
+    | "pending"
+    | "initializing"
+    | (string & {})
+    | null;
+  /** When the certificate was uploaded to Cloudflare. */
+  uploadedOn?: string | null;
 }
 
 export const GetCustomCertificateResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
-    bundleMethod: Schema.Literals(["ubiquitous", "optimal", "force"]),
-    expiresOn: Schema.String,
-    hosts: Schema.Array(Schema.String),
-    issuer: Schema.String,
-    modifiedOn: Schema.String,
-    priority: Schema.Number,
-    signature: Schema.String,
-    status: Schema.Literals([
-      "active",
-      "expired",
-      "deleted",
-      "pending",
-      "initializing",
-    ]),
-    uploadedOn: Schema.String,
     zoneId: Schema.String,
+    bundleMethod: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals(["ubiquitous", "optimal", "force"]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
+    ),
+    customCsrId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     geoRestrictions: Schema.optional(
       Schema.Union([
         Schema.Struct({
           label: Schema.optional(
             Schema.Union([
-              Schema.Literals(["us", "eu", "highest_security"]),
+              Schema.Union([
+                Schema.Literals(["us", "eu", "highest_security"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -105,6 +115,10 @@ export const GetCustomCertificateResponse =
         Schema.Null,
       ]),
     ),
+    hosts: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    issuer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     keylessServer: Schema.optional(
       Schema.Union([
         Schema.Struct({
@@ -116,7 +130,10 @@ export const GetCustomCertificateResponse =
           name: Schema.String,
           permissions: Schema.Array(Schema.String),
           port: Schema.Number,
-          status: Schema.Literals(["active", "deleted"]),
+          status: Schema.Union([
+            Schema.Literals(["active", "deleted"]),
+            Schema.String,
+          ]),
           tunnel: Schema.optional(
             Schema.Union([
               Schema.Struct({
@@ -148,24 +165,46 @@ export const GetCustomCertificateResponse =
         Schema.Null,
       ]),
     ),
-    policy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    policyRestrictions: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    status: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals([
+            "active",
+            "expired",
+            "deleted",
+            "pending",
+            "initializing",
+          ]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
+    ),
+    uploadedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
     .pipe(
       Schema.encodeKeys({
         id: "id",
+        zoneId: "zone_id",
         bundleMethod: "bundle_method",
+        customCsrId: "custom_csr_id",
         expiresOn: "expires_on",
+        geoRestrictions: "geo_restrictions",
         hosts: "hosts",
         issuer: "issuer",
+        keylessServer: "keyless_server",
         modifiedOn: "modified_on",
+        policyRestrictions: "policy_restrictions",
         priority: "priority",
         signature: "signature",
         status: "status",
         uploadedOn: "uploaded_on",
-        zoneId: "zone_id",
-        geoRestrictions: "geo_restrictions",
-        keylessServer: "keyless_server",
-        policy: "policy",
       }),
     )
     .pipe(
@@ -191,9 +230,15 @@ export interface ListCustomCertificatesRequest {
   page?: number;
   perPage?: number;
   /** Query param: Whether to match all search requirements or at least one (any). */
-  match?: "any" | "all";
+  match?: "any" | "all" | (string & {});
   /** Query param: Status of the zone's custom SSL. */
-  status?: "active" | "expired" | "deleted" | "pending" | "initializing";
+  status?:
+    | "active"
+    | "expired"
+    | "deleted"
+    | "pending"
+    | "initializing"
+    | (string & {});
 }
 
 export const ListCustomCertificatesRequest =
@@ -201,16 +246,19 @@ export const ListCustomCertificatesRequest =
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
     perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-    match: Schema.optional(Schema.Literals(["any", "all"])).pipe(
-      T.HttpQuery("match"),
-    ),
+    match: Schema.optional(
+      Schema.Union([Schema.Literals(["any", "all"]), Schema.String]),
+    ).pipe(T.HttpQuery("match")),
     status: Schema.optional(
-      Schema.Literals([
-        "active",
-        "expired",
-        "deleted",
-        "pending",
-        "initializing",
+      Schema.Union([
+        Schema.Literals([
+          "active",
+          "expired",
+          "deleted",
+          "pending",
+          "initializing",
+        ]),
+        Schema.String,
       ]),
     ).pipe(T.HttpQuery("status")),
   }).pipe(
@@ -220,19 +268,15 @@ export const ListCustomCertificatesRequest =
 export interface ListCustomCertificatesResponse {
   result: {
     id: string;
-    bundleMethod: "ubiquitous" | "optimal" | "force";
-    expiresOn: string;
-    hosts: string[];
-    issuer: string;
-    modifiedOn: string;
-    priority: number;
-    signature: string;
-    status: "active" | "expired" | "deleted" | "pending" | "initializing";
-    uploadedOn: string;
     zoneId: string;
+    bundleMethod?: "ubiquitous" | "optimal" | "force" | (string & {}) | null;
+    customCsrId?: string | null;
+    expiresOn?: string | null;
     geoRestrictions?: {
-      label?: "us" | "eu" | "highest_security" | null;
+      label?: "us" | "eu" | "highest_security" | (string & {}) | null;
     } | null;
+    hosts?: string[] | null;
+    issuer?: string | null;
     keylessServer?: {
       id: string;
       createdOn: string;
@@ -242,10 +286,22 @@ export interface ListCustomCertificatesResponse {
       name: string;
       permissions: string[];
       port: number;
-      status: "active" | "deleted";
+      status: "active" | "deleted" | (string & {});
       tunnel?: { privateIp: string; vnetId: string } | null;
     } | null;
-    policy?: string | null;
+    modifiedOn?: string | null;
+    policyRestrictions?: string | null;
+    priority?: number | null;
+    signature?: string | null;
+    status?:
+      | "active"
+      | "expired"
+      | "deleted"
+      | "pending"
+      | "initializing"
+      | (string & {})
+      | null;
+    uploadedOn?: string | null;
   }[];
   resultInfo?: {
     count?: number | null;
@@ -260,28 +316,29 @@ export const ListCustomCertificatesResponse =
     result: Schema.Array(
       Schema.Struct({
         id: Schema.String,
-        bundleMethod: Schema.Literals(["ubiquitous", "optimal", "force"]),
-        expiresOn: Schema.String,
-        hosts: Schema.Array(Schema.String),
-        issuer: Schema.String,
-        modifiedOn: Schema.String,
-        priority: Schema.Number,
-        signature: Schema.String,
-        status: Schema.Literals([
-          "active",
-          "expired",
-          "deleted",
-          "pending",
-          "initializing",
-        ]),
-        uploadedOn: Schema.String,
         zoneId: Schema.String,
+        bundleMethod: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals(["ubiquitous", "optimal", "force"]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
+        ),
+        customCsrId: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         geoRestrictions: Schema.optional(
           Schema.Union([
             Schema.Struct({
               label: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["us", "eu", "highest_security"]),
+                  Schema.Union([
+                    Schema.Literals(["us", "eu", "highest_security"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -289,6 +346,10 @@ export const ListCustomCertificatesResponse =
             Schema.Null,
           ]),
         ),
+        hosts: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        issuer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         keylessServer: Schema.optional(
           Schema.Union([
             Schema.Struct({
@@ -300,7 +361,10 @@ export const ListCustomCertificatesResponse =
               name: Schema.String,
               permissions: Schema.Array(Schema.String),
               port: Schema.Number,
-              status: Schema.Literals(["active", "deleted"]),
+              status: Schema.Union([
+                Schema.Literals(["active", "deleted"]),
+                Schema.String,
+              ]),
               tunnel: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
@@ -332,23 +396,45 @@ export const ListCustomCertificatesResponse =
             Schema.Null,
           ]),
         ),
-        policy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        policyRestrictions: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        status: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals([
+                "active",
+                "expired",
+                "deleted",
+                "pending",
+                "initializing",
+              ]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
+        ),
+        uploadedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       }).pipe(
         Schema.encodeKeys({
           id: "id",
+          zoneId: "zone_id",
           bundleMethod: "bundle_method",
+          customCsrId: "custom_csr_id",
           expiresOn: "expires_on",
+          geoRestrictions: "geo_restrictions",
           hosts: "hosts",
           issuer: "issuer",
+          keylessServer: "keyless_server",
           modifiedOn: "modified_on",
+          policyRestrictions: "policy_restrictions",
           priority: "priority",
           signature: "signature",
           status: "status",
           uploadedOn: "uploaded_on",
-          zoneId: "zone_id",
-          geoRestrictions: "geo_restrictions",
-          keylessServer: "keyless_server",
-          policy: "policy",
         }),
       ),
     ),
@@ -401,42 +487,65 @@ export interface CreateCustomCertificateRequest {
   zoneId: string;
   /** Body param: The zone's SSL certificate or certificate and the intermediate(s). */
   certificate: string;
-  /** Body param: The zone's private key. */
-  privateKey: string;
   /** Body param: A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest i */
-  bundleMethod?: "ubiquitous" | "optimal" | "force";
+  bundleMethod?: "ubiquitous" | "optimal" | "force" | (string & {});
+  /** Body param: The identifier for the Custom CSR that was used. */
+  customCsrId?: string;
+  /** Body param: The environment to deploy the certificate to, defaults to production */
+  deploy?: "staging" | "production" | (string & {});
   /** Body param: Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some  */
-  geoRestrictions?: { label?: "us" | "eu" | "highest_security" };
+  geoRestrictions?: {
+    label?: "us" | "eu" | "highest_security" | (string & {});
+  };
   /** Body param: Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some  */
   policy?: string;
+  /** Body param: The zone's private key. Not required if custom_csr_id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare. */
+  privateKey?: string;
   /** Body param: The type 'legacy_custom' enables support for legacy clients which do not include SNI in the TLS handshake. */
-  type?: "legacy_custom" | "sni_custom";
+  type?: "legacy_custom" | "sni_custom" | (string & {});
 }
 
 export const CreateCustomCertificateRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     certificate: Schema.String,
-    privateKey: Schema.String,
     bundleMethod: Schema.optional(
-      Schema.Literals(["ubiquitous", "optimal", "force"]),
+      Schema.Union([
+        Schema.Literals(["ubiquitous", "optimal", "force"]),
+        Schema.String,
+      ]),
+    ),
+    customCsrId: Schema.optional(Schema.String),
+    deploy: Schema.optional(
+      Schema.Union([Schema.Literals(["staging", "production"]), Schema.String]),
     ),
     geoRestrictions: Schema.optional(
       Schema.Struct({
         label: Schema.optional(
-          Schema.Literals(["us", "eu", "highest_security"]),
+          Schema.Union([
+            Schema.Literals(["us", "eu", "highest_security"]),
+            Schema.String,
+          ]),
         ),
       }),
     ),
     policy: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.Literals(["legacy_custom", "sni_custom"])),
+    privateKey: Schema.optional(Schema.String),
+    type: Schema.optional(
+      Schema.Union([
+        Schema.Literals(["legacy_custom", "sni_custom"]),
+        Schema.String,
+      ]),
+    ),
   }).pipe(
     Schema.encodeKeys({
       certificate: "certificate",
-      privateKey: "private_key",
       bundleMethod: "bundle_method",
+      customCsrId: "custom_csr_id",
+      deploy: "deploy",
       geoRestrictions: "geo_restrictions",
       policy: "policy",
+      privateKey: "private_key",
       type: "type",
     }),
     T.Http({ method: "POST", path: "/zones/{zone_id}/custom_certificates" }),
@@ -445,27 +554,21 @@ export const CreateCustomCertificateRequest =
 export interface CreateCustomCertificateResponse {
   /** Identifier. */
   id: string;
-  /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates */
-  bundleMethod: "ubiquitous" | "optimal" | "force";
-  /** When the certificate from the authority expires. */
-  expiresOn: string;
-  hosts: string[];
-  /** The certificate authority that issued the certificate. */
-  issuer: string;
-  /** When the certificate was last modified. */
-  modifiedOn: string;
-  /** The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always */
-  priority: number;
-  /** The type of hash used for the certificate. */
-  signature: string;
-  /** Status of the zone's custom SSL. */
-  status: "active" | "expired" | "deleted" | "pending" | "initializing";
-  /** When the certificate was uploaded to Cloudflare. */
-  uploadedOn: string;
   /** Identifier. */
   zoneId: string;
+  /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates */
+  bundleMethod?: "ubiquitous" | "optimal" | "force" | (string & {}) | null;
+  /** The identifier for the Custom CSR that was used. */
+  customCsrId?: string | null;
+  /** When the certificate from the authority expires. */
+  expiresOn?: string | null;
   /** Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency whil */
-  geoRestrictions?: { label?: "us" | "eu" | "highest_security" | null } | null;
+  geoRestrictions?: {
+    label?: "us" | "eu" | "highest_security" | (string & {}) | null;
+  } | null;
+  hosts?: string[] | null;
+  /** The certificate authority that issued the certificate. */
+  issuer?: string | null;
   keylessServer?: {
     id: string;
     createdOn: string;
@@ -475,38 +578,54 @@ export interface CreateCustomCertificateResponse {
     name: string;
     permissions: string[];
     port: number;
-    status: "active" | "deleted";
+    status: "active" | "deleted" | (string & {});
     tunnel?: { privateIp: string; vnetId: string } | null;
   } | null;
-  /** Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency whil */
-  policy?: string | null;
+  /** When the certificate was last modified. */
+  modifiedOn?: string | null;
+  /** The policy restrictions returned by the API. This field is returned in responses when a policy has been set. The API accepts the "policy" field in requests but returns this field as "policy_restrictio */
+  policyRestrictions?: string | null;
+  /** The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always */
+  priority?: number | null;
+  /** The type of hash used for the certificate. */
+  signature?: string | null;
+  /** Status of the zone's custom SSL. */
+  status?:
+    | "active"
+    | "expired"
+    | "deleted"
+    | "pending"
+    | "initializing"
+    | (string & {})
+    | null;
+  /** When the certificate was uploaded to Cloudflare. */
+  uploadedOn?: string | null;
 }
 
 export const CreateCustomCertificateResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
-    bundleMethod: Schema.Literals(["ubiquitous", "optimal", "force"]),
-    expiresOn: Schema.String,
-    hosts: Schema.Array(Schema.String),
-    issuer: Schema.String,
-    modifiedOn: Schema.String,
-    priority: Schema.Number,
-    signature: Schema.String,
-    status: Schema.Literals([
-      "active",
-      "expired",
-      "deleted",
-      "pending",
-      "initializing",
-    ]),
-    uploadedOn: Schema.String,
     zoneId: Schema.String,
+    bundleMethod: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals(["ubiquitous", "optimal", "force"]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
+    ),
+    customCsrId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     geoRestrictions: Schema.optional(
       Schema.Union([
         Schema.Struct({
           label: Schema.optional(
             Schema.Union([
-              Schema.Literals(["us", "eu", "highest_security"]),
+              Schema.Union([
+                Schema.Literals(["us", "eu", "highest_security"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -514,6 +633,10 @@ export const CreateCustomCertificateResponse =
         Schema.Null,
       ]),
     ),
+    hosts: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    issuer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     keylessServer: Schema.optional(
       Schema.Union([
         Schema.Struct({
@@ -525,7 +648,10 @@ export const CreateCustomCertificateResponse =
           name: Schema.String,
           permissions: Schema.Array(Schema.String),
           port: Schema.Number,
-          status: Schema.Literals(["active", "deleted"]),
+          status: Schema.Union([
+            Schema.Literals(["active", "deleted"]),
+            Schema.String,
+          ]),
           tunnel: Schema.optional(
             Schema.Union([
               Schema.Struct({
@@ -557,24 +683,46 @@ export const CreateCustomCertificateResponse =
         Schema.Null,
       ]),
     ),
-    policy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    policyRestrictions: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    status: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals([
+            "active",
+            "expired",
+            "deleted",
+            "pending",
+            "initializing",
+          ]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
+    ),
+    uploadedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
     .pipe(
       Schema.encodeKeys({
         id: "id",
+        zoneId: "zone_id",
         bundleMethod: "bundle_method",
+        customCsrId: "custom_csr_id",
         expiresOn: "expires_on",
+        geoRestrictions: "geo_restrictions",
         hosts: "hosts",
         issuer: "issuer",
+        keylessServer: "keyless_server",
         modifiedOn: "modified_on",
+        policyRestrictions: "policy_restrictions",
         priority: "priority",
         signature: "signature",
         status: "status",
         uploadedOn: "uploaded_on",
-        zoneId: "zone_id",
-        geoRestrictions: "geo_restrictions",
-        keylessServer: "keyless_server",
-        policy: "policy",
       }),
     )
     .pipe(
@@ -599,14 +747,20 @@ export interface PatchCustomCertificateRequest {
   /** Path param: Identifier. */
   zoneId: string;
   /** Body param: A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest i */
-  bundleMethod?: "ubiquitous" | "optimal" | "force";
+  bundleMethod?: "ubiquitous" | "optimal" | "force" | (string & {});
   /** Body param: The zone's SSL certificate or certificate and the intermediate(s). */
   certificate?: string;
+  /** Body param: The identifier for the Custom CSR that was used. */
+  customCsrId?: string;
+  /** Body param: The environment to deploy the certificate to, defaults to production */
+  deploy?: "staging" | "production" | (string & {});
   /** Body param: Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some  */
-  geoRestrictions?: { label?: "us" | "eu" | "highest_security" };
+  geoRestrictions?: {
+    label?: "us" | "eu" | "highest_security" | (string & {});
+  };
   /** Body param: Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some  */
   policy?: string;
-  /** Body param: The zone's private key. */
+  /** Body param: The zone's private key. Not required if custom_csr_id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare. */
   privateKey?: string;
 }
 
@@ -615,13 +769,23 @@ export const PatchCustomCertificateRequest =
     customCertificateId: Schema.String.pipe(T.HttpPath("customCertificateId")),
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     bundleMethod: Schema.optional(
-      Schema.Literals(["ubiquitous", "optimal", "force"]),
+      Schema.Union([
+        Schema.Literals(["ubiquitous", "optimal", "force"]),
+        Schema.String,
+      ]),
     ),
     certificate: Schema.optional(Schema.String),
+    customCsrId: Schema.optional(Schema.String),
+    deploy: Schema.optional(
+      Schema.Union([Schema.Literals(["staging", "production"]), Schema.String]),
+    ),
     geoRestrictions: Schema.optional(
       Schema.Struct({
         label: Schema.optional(
-          Schema.Literals(["us", "eu", "highest_security"]),
+          Schema.Union([
+            Schema.Literals(["us", "eu", "highest_security"]),
+            Schema.String,
+          ]),
         ),
       }),
     ),
@@ -631,6 +795,8 @@ export const PatchCustomCertificateRequest =
     Schema.encodeKeys({
       bundleMethod: "bundle_method",
       certificate: "certificate",
+      customCsrId: "custom_csr_id",
+      deploy: "deploy",
       geoRestrictions: "geo_restrictions",
       policy: "policy",
       privateKey: "private_key",
@@ -644,27 +810,21 @@ export const PatchCustomCertificateRequest =
 export interface PatchCustomCertificateResponse {
   /** Identifier. */
   id: string;
-  /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates */
-  bundleMethod: "ubiquitous" | "optimal" | "force";
-  /** When the certificate from the authority expires. */
-  expiresOn: string;
-  hosts: string[];
-  /** The certificate authority that issued the certificate. */
-  issuer: string;
-  /** When the certificate was last modified. */
-  modifiedOn: string;
-  /** The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always */
-  priority: number;
-  /** The type of hash used for the certificate. */
-  signature: string;
-  /** Status of the zone's custom SSL. */
-  status: "active" | "expired" | "deleted" | "pending" | "initializing";
-  /** When the certificate was uploaded to Cloudflare. */
-  uploadedOn: string;
   /** Identifier. */
   zoneId: string;
+  /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates */
+  bundleMethod?: "ubiquitous" | "optimal" | "force" | (string & {}) | null;
+  /** The identifier for the Custom CSR that was used. */
+  customCsrId?: string | null;
+  /** When the certificate from the authority expires. */
+  expiresOn?: string | null;
   /** Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency whil */
-  geoRestrictions?: { label?: "us" | "eu" | "highest_security" | null } | null;
+  geoRestrictions?: {
+    label?: "us" | "eu" | "highest_security" | (string & {}) | null;
+  } | null;
+  hosts?: string[] | null;
+  /** The certificate authority that issued the certificate. */
+  issuer?: string | null;
   keylessServer?: {
     id: string;
     createdOn: string;
@@ -674,38 +834,54 @@ export interface PatchCustomCertificateResponse {
     name: string;
     permissions: string[];
     port: number;
-    status: "active" | "deleted";
+    status: "active" | "deleted" | (string & {});
     tunnel?: { privateIp: string; vnetId: string } | null;
   } | null;
-  /** Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency whil */
-  policy?: string | null;
+  /** When the certificate was last modified. */
+  modifiedOn?: string | null;
+  /** The policy restrictions returned by the API. This field is returned in responses when a policy has been set. The API accepts the "policy" field in requests but returns this field as "policy_restrictio */
+  policyRestrictions?: string | null;
+  /** The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always */
+  priority?: number | null;
+  /** The type of hash used for the certificate. */
+  signature?: string | null;
+  /** Status of the zone's custom SSL. */
+  status?:
+    | "active"
+    | "expired"
+    | "deleted"
+    | "pending"
+    | "initializing"
+    | (string & {})
+    | null;
+  /** When the certificate was uploaded to Cloudflare. */
+  uploadedOn?: string | null;
 }
 
 export const PatchCustomCertificateResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
-    bundleMethod: Schema.Literals(["ubiquitous", "optimal", "force"]),
-    expiresOn: Schema.String,
-    hosts: Schema.Array(Schema.String),
-    issuer: Schema.String,
-    modifiedOn: Schema.String,
-    priority: Schema.Number,
-    signature: Schema.String,
-    status: Schema.Literals([
-      "active",
-      "expired",
-      "deleted",
-      "pending",
-      "initializing",
-    ]),
-    uploadedOn: Schema.String,
     zoneId: Schema.String,
+    bundleMethod: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals(["ubiquitous", "optimal", "force"]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
+    ),
+    customCsrId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     geoRestrictions: Schema.optional(
       Schema.Union([
         Schema.Struct({
           label: Schema.optional(
             Schema.Union([
-              Schema.Literals(["us", "eu", "highest_security"]),
+              Schema.Union([
+                Schema.Literals(["us", "eu", "highest_security"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -713,6 +889,10 @@ export const PatchCustomCertificateResponse =
         Schema.Null,
       ]),
     ),
+    hosts: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    issuer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     keylessServer: Schema.optional(
       Schema.Union([
         Schema.Struct({
@@ -724,7 +904,10 @@ export const PatchCustomCertificateResponse =
           name: Schema.String,
           permissions: Schema.Array(Schema.String),
           port: Schema.Number,
-          status: Schema.Literals(["active", "deleted"]),
+          status: Schema.Union([
+            Schema.Literals(["active", "deleted"]),
+            Schema.String,
+          ]),
           tunnel: Schema.optional(
             Schema.Union([
               Schema.Struct({
@@ -756,24 +939,46 @@ export const PatchCustomCertificateResponse =
         Schema.Null,
       ]),
     ),
-    policy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    policyRestrictions: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    status: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals([
+            "active",
+            "expired",
+            "deleted",
+            "pending",
+            "initializing",
+          ]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
+    ),
+    uploadedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
     .pipe(
       Schema.encodeKeys({
         id: "id",
+        zoneId: "zone_id",
         bundleMethod: "bundle_method",
+        customCsrId: "custom_csr_id",
         expiresOn: "expires_on",
+        geoRestrictions: "geo_restrictions",
         hosts: "hosts",
         issuer: "issuer",
+        keylessServer: "keyless_server",
         modifiedOn: "modified_on",
+        policyRestrictions: "policy_restrictions",
         priority: "priority",
         signature: "signature",
         status: "status",
         uploadedOn: "uploaded_on",
-        zoneId: "zone_id",
-        geoRestrictions: "geo_restrictions",
-        keylessServer: "keyless_server",
-        policy: "policy",
       }),
     )
     .pipe(
@@ -864,19 +1069,15 @@ export const PutPrioritizeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface PutPrioritizeResponse {
   result: {
     id: string;
-    bundleMethod: "ubiquitous" | "optimal" | "force";
-    expiresOn: string;
-    hosts: string[];
-    issuer: string;
-    modifiedOn: string;
-    priority: number;
-    signature: string;
-    status: "active" | "expired" | "deleted" | "pending" | "initializing";
-    uploadedOn: string;
     zoneId: string;
+    bundleMethod?: "ubiquitous" | "optimal" | "force" | (string & {}) | null;
+    customCsrId?: string | null;
+    expiresOn?: string | null;
     geoRestrictions?: {
-      label?: "us" | "eu" | "highest_security" | null;
+      label?: "us" | "eu" | "highest_security" | (string & {}) | null;
     } | null;
+    hosts?: string[] | null;
+    issuer?: string | null;
     keylessServer?: {
       id: string;
       createdOn: string;
@@ -886,10 +1087,22 @@ export interface PutPrioritizeResponse {
       name: string;
       permissions: string[];
       port: number;
-      status: "active" | "deleted";
+      status: "active" | "deleted" | (string & {});
       tunnel?: { privateIp: string; vnetId: string } | null;
     } | null;
-    policy?: string | null;
+    modifiedOn?: string | null;
+    policyRestrictions?: string | null;
+    priority?: number | null;
+    signature?: string | null;
+    status?:
+      | "active"
+      | "expired"
+      | "deleted"
+      | "pending"
+      | "initializing"
+      | (string & {})
+      | null;
+    uploadedOn?: string | null;
   }[];
 }
 
@@ -897,28 +1110,27 @@ export const PutPrioritizeResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       id: Schema.String,
-      bundleMethod: Schema.Literals(["ubiquitous", "optimal", "force"]),
-      expiresOn: Schema.String,
-      hosts: Schema.Array(Schema.String),
-      issuer: Schema.String,
-      modifiedOn: Schema.String,
-      priority: Schema.Number,
-      signature: Schema.String,
-      status: Schema.Literals([
-        "active",
-        "expired",
-        "deleted",
-        "pending",
-        "initializing",
-      ]),
-      uploadedOn: Schema.String,
       zoneId: Schema.String,
+      bundleMethod: Schema.optional(
+        Schema.Union([
+          Schema.Union([
+            Schema.Literals(["ubiquitous", "optimal", "force"]),
+            Schema.String,
+          ]),
+          Schema.Null,
+        ]),
+      ),
+      customCsrId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       geoRestrictions: Schema.optional(
         Schema.Union([
           Schema.Struct({
             label: Schema.optional(
               Schema.Union([
-                Schema.Literals(["us", "eu", "highest_security"]),
+                Schema.Union([
+                  Schema.Literals(["us", "eu", "highest_security"]),
+                  Schema.String,
+                ]),
                 Schema.Null,
               ]),
             ),
@@ -926,6 +1138,10 @@ export const PutPrioritizeResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Null,
         ]),
       ),
+      hosts: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      issuer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       keylessServer: Schema.optional(
         Schema.Union([
           Schema.Struct({
@@ -937,7 +1153,10 @@ export const PutPrioritizeResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             name: Schema.String,
             permissions: Schema.Array(Schema.String),
             port: Schema.Number,
-            status: Schema.Literals(["active", "deleted"]),
+            status: Schema.Union([
+              Schema.Literals(["active", "deleted"]),
+              Schema.String,
+            ]),
             tunnel: Schema.optional(
               Schema.Union([
                 Schema.Struct({
@@ -969,23 +1188,45 @@ export const PutPrioritizeResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Null,
         ]),
       ),
-      policy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      policyRestrictions: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      status: Schema.optional(
+        Schema.Union([
+          Schema.Union([
+            Schema.Literals([
+              "active",
+              "expired",
+              "deleted",
+              "pending",
+              "initializing",
+            ]),
+            Schema.String,
+          ]),
+          Schema.Null,
+        ]),
+      ),
+      uploadedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(
       Schema.encodeKeys({
         id: "id",
+        zoneId: "zone_id",
         bundleMethod: "bundle_method",
+        customCsrId: "custom_csr_id",
         expiresOn: "expires_on",
+        geoRestrictions: "geo_restrictions",
         hosts: "hosts",
         issuer: "issuer",
+        keylessServer: "keyless_server",
         modifiedOn: "modified_on",
+        policyRestrictions: "policy_restrictions",
         priority: "priority",
         signature: "signature",
         status: "status",
         uploadedOn: "uploaded_on",
-        zoneId: "zone_id",
-        geoRestrictions: "geo_restrictions",
-        keylessServer: "keyless_server",
-        policy: "policy",
       }),
     ),
   ),

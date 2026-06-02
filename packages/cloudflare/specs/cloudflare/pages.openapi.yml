@@ -1101,7 +1101,7 @@ paths:
       operationId: patchProject
       description: "Set new attributes for an existing project. Modify environment
         variables. To delete an environment variable, set the key to
-        null.  @example ```ts const response = await client.pages.projects.edit(
+        null.  @example ```ts const project = await client.pages.projects.edit(
         'this-is-my-project-01', { account_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
@@ -2516,9 +2516,9 @@ paths:
     get:
       operationId: listProjects
       description: "Fetch a list of all user projects.  @example ```ts //
-        Automatically fetches more pages as needed. for await (const
-        projectListResponse of client.pages.projects.list( { account_id:
-        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+        Automatically fetches more pages as needed. for await (const project of
+        client.pages.projects.list({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', })) { // ... } ```"
       parameters:
         - name: account_id
           in: path
@@ -3582,7 +3582,7 @@ paths:
                   - production_branch
                   - production_script_name
                   - uses_functions
-      x-distilled-pagination-class: ProjectListResponsesV4PagePaginationArray
+      x-distilled-pagination-class: ProjectsV4PagePaginationArray
     post:
       operationId: createProject
       description: "Create a new project.  @example ```ts const project = await
@@ -5328,9 +5328,16 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: Identifier.
+          description: "Path param: Identifier."
           schema:
             type: string
+        - name: force
+          in: query
+          required: false
+          description: "Query param: Allow deletion of aliased non-production deployments
+            when a normal delete would be rejected."
+          schema:
+            type: boolean
       responses:
         "200":
           description: Success
@@ -5342,10 +5349,9 @@ paths:
     get:
       operationId: listProjectDeployments
       description: "Fetch a list of project deployments.  @example ```ts //
-        Automatically fetches more pages as needed. for await (const
-        deploymentListResponse of client.pages.projects.deployments.list(
-        'this-is-my-project-01', { account_id:
-        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+        Automatically fetches more pages as needed. for await (const deployment
+        of client.pages.projects.deployments.list( 'this-is-my-project-01', {
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
       parameters:
         - name: projectName
           in: path
@@ -5689,7 +5695,7 @@ paths:
                   - source
                   - stages
                   - url
-      x-distilled-pagination-class: DeploymentListResponsesV4PagePaginationArray
+      x-distilled-pagination-class: DeploymentsV4PagePaginationArray
     post:
       operationId: createProjectDeployment
       description: "Start a new deployment from production. The repository and account
@@ -6091,7 +6097,7 @@ paths:
   /accounts/{account_id}/pages/projects/{projectName}/deployments/{deploymentId}/retry:
     post:
       operationId: retryProjectDeployment
-      description: "Retry a previous deployment.  @example ```ts const response =
+      description: "Retry a previous deployment.  @example ```ts const deployment =
         await client.pages.projects.deployments.retry( 'this-is-my-project-01',
         '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
@@ -6430,7 +6436,7 @@ paths:
       operationId: rollbackProjectDeployment
       description: "Rollback the production deployment to a previous deployment. You
         can only rollback to succesful builds on production.  @example ```ts
-        const response = await client.pages.projects.deployments.rollback(
+        const deployment = await client.pages.projects.deployments.rollback(
         'this-is-my-project-01', '023e105f4ecef8ad9ca31a8372d0c353', {
         account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:

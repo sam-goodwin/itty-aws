@@ -22,11 +22,12 @@ export type ListMaintenanceSchedulesInput =
 // Output Schema
 export const ListMaintenanceSchedulesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.String,
     current_page: Schema.Number,
-    next_page: Schema.Number,
-    next_page_url: Schema.String,
-    prev_page: Schema.Number,
-    prev_page_url: Schema.String,
+    next_page: Schema.NullOr(Schema.Number),
+    next_page_url: Schema.NullOr(Schema.String),
+    prev_page: Schema.NullOr(Schema.Number),
+    prev_page_url: Schema.NullOr(Schema.String),
     data: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -42,11 +43,13 @@ export const ListMaintenanceSchedulesOutput =
         frequency_value: Schema.Number,
         frequency_unit: Schema.Literals(["day", "week", "month", "once"]),
         enabled: Schema.Boolean,
-        expires_at: Schema.String,
-        deadline_at: Schema.String,
+        expires_at: Schema.NullOr(Schema.String),
+        deadline_at: Schema.NullOr(Schema.String),
         required: Schema.Boolean,
         pending_vitess_version_update: Schema.Boolean,
-        pending_vitess_version: Schema.String,
+        pending_vitess_version: Schema.NullOr(Schema.String),
+        pending_mysql_version_update: Schema.Boolean,
+        pending_mysql_version: Schema.NullOr(Schema.String),
       }),
     ),
   });

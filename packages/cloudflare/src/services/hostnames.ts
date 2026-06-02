@@ -17,15 +17,16 @@ import { type DefaultErrors } from "../errors.ts";
 // =============================================================================
 
 export interface GetSettingTlsRequest {
-  settingId: "ciphers" | "min_tls_version" | "http2";
+  settingId: "ciphers" | "min_tls_version" | "http2" | (string & {});
   /** Identifier. */
   zoneId: string;
 }
 
 export const GetSettingTlsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  settingId: Schema.Literals(["ciphers", "min_tls_version", "http2"]).pipe(
-    T.HttpPath("settingId"),
-  ),
+  settingId: Schema.Union([
+    Schema.Literals(["ciphers", "min_tls_version", "http2"]),
+    Schema.String,
+  ]).pipe(T.HttpPath("settingId")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
 }).pipe(
   T.Http({
@@ -40,7 +41,7 @@ export interface GetSettingTlsResponse {
     hostname?: string | null;
     status?: string | null;
     updatedAt?: string | null;
-    value?: number | string | string[] | null;
+    value?: "1.0" | "1.1" | "1.2" | "1.3" | "on" | "off" | string[] | null;
   }[];
 }
 
@@ -54,8 +55,12 @@ export const GetSettingTlsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       value: Schema.optional(
         Schema.Union([
           Schema.Union([
-            Schema.Number,
-            Schema.String,
+            Schema.Literal("1.0"),
+            Schema.Literal("1.1"),
+            Schema.Literal("1.2"),
+            Schema.Literal("1.3"),
+            Schema.Literal("on"),
+            Schema.Literal("off"),
             Schema.Array(Schema.String),
           ]),
           Schema.Null,
@@ -91,23 +96,28 @@ export const getSettingTls: API.PaginatedOperationMethod<
 }));
 
 export interface PutSettingTlsRequest {
-  settingId: "ciphers" | "min_tls_version" | "http2";
+  settingId: "ciphers" | "min_tls_version" | "http2" | (string & {});
   hostname: string;
   /** Path param: Identifier. */
   zoneId: string;
-  /** Body param: The tls setting value. */
-  value: number | string | string[];
+  /** Body param: The TLS setting value. The type depends on the `setting_id` used in the request path:  - `ciphers`: an array of allowed cipher suite strings in BoringSSL format (e.g., `["ECDHE-RSA-AES128- */
+  value: "1.0" | "1.1" | "1.2" | "1.3" | "on" | "off" | string[];
 }
 
 export const PutSettingTlsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  settingId: Schema.Literals(["ciphers", "min_tls_version", "http2"]).pipe(
-    T.HttpPath("settingId"),
-  ),
+  settingId: Schema.Union([
+    Schema.Literals(["ciphers", "min_tls_version", "http2"]),
+    Schema.String,
+  ]).pipe(T.HttpPath("settingId")),
   hostname: Schema.String.pipe(T.HttpPath("hostname")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   value: Schema.Union([
-    Schema.Number,
-    Schema.String,
+    Schema.Literal("1.0"),
+    Schema.Literal("1.1"),
+    Schema.Literal("1.2"),
+    Schema.Literal("1.3"),
+    Schema.Literal("on"),
+    Schema.Literal("off"),
     Schema.Array(Schema.String),
   ]),
 }).pipe(
@@ -126,8 +136,8 @@ export interface PutSettingTlsResponse {
   status?: string | null;
   /** This is the time the tls setting was updated. */
   updatedAt?: string | null;
-  /** The tls setting value. */
-  value?: number | string | string[] | null;
+  /** The TLS setting value. The type depends on the `setting_id` used in the request path:  - `ciphers`: an array of allowed cipher suite strings in BoringSSL format (e.g., `["ECDHE-RSA-AES128-GCM-SHA256", */
+  value?: "1.0" | "1.1" | "1.2" | "1.3" | "on" | "off" | string[] | null;
 }
 
 export const PutSettingTlsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -137,7 +147,15 @@ export const PutSettingTlsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   value: Schema.optional(
     Schema.Union([
-      Schema.Union([Schema.Number, Schema.String, Schema.Array(Schema.String)]),
+      Schema.Union([
+        Schema.Literal("1.0"),
+        Schema.Literal("1.1"),
+        Schema.Literal("1.2"),
+        Schema.Literal("1.3"),
+        Schema.Literal("on"),
+        Schema.Literal("off"),
+        Schema.Array(Schema.String),
+      ]),
       Schema.Null,
     ]),
   ),
@@ -169,7 +187,7 @@ export const putSettingTls: API.OperationMethod<
 }));
 
 export interface DeleteSettingTlsRequest {
-  settingId: "ciphers" | "min_tls_version" | "http2";
+  settingId: "ciphers" | "min_tls_version" | "http2" | (string & {});
   hostname: string;
   /** Identifier. */
   zoneId: string;
@@ -177,9 +195,10 @@ export interface DeleteSettingTlsRequest {
 
 export const DeleteSettingTlsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    settingId: Schema.Literals(["ciphers", "min_tls_version", "http2"]).pipe(
-      T.HttpPath("settingId"),
-    ),
+    settingId: Schema.Union([
+      Schema.Literals(["ciphers", "min_tls_version", "http2"]),
+      Schema.String,
+    ]).pipe(T.HttpPath("settingId")),
     hostname: Schema.String.pipe(T.HttpPath("hostname")),
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   }).pipe(
@@ -198,8 +217,8 @@ export interface DeleteSettingTlsResponse {
   status?: string | null;
   /** This is the time the tls setting was updated. */
   updatedAt?: string | null;
-  /** The tls setting value. */
-  value?: number | string | string[] | null;
+  /** The TLS setting value. The type depends on the `setting_id` used in the request path:  - `ciphers`: an array of allowed cipher suite strings in BoringSSL format (e.g., `["ECDHE-RSA-AES128-GCM-SHA256", */
+  value?: "1.0" | "1.1" | "1.2" | "1.3" | "on" | "off" | string[] | null;
 }
 
 export const DeleteSettingTlsResponse =
@@ -211,8 +230,12 @@ export const DeleteSettingTlsResponse =
     value: Schema.optional(
       Schema.Union([
         Schema.Union([
-          Schema.Number,
-          Schema.String,
+          Schema.Literal("1.0"),
+          Schema.Literal("1.1"),
+          Schema.Literal("1.2"),
+          Schema.Literal("1.3"),
+          Schema.Literal("on"),
+          Schema.Literal("off"),
           Schema.Array(Schema.String),
         ]),
         Schema.Null,

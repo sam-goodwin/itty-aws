@@ -196,15 +196,15 @@ paths:
               properties:
                 description:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 title:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 token_sources:
                   type: array
                   items:
                     type: string
-                  description: "Body param:"
+                  description: Body param
       responses:
         "200":
           description: Success
@@ -213,6 +213,9 @@ paths:
               schema:
                 type: object
                 properties:
+                  id:
+                    type: string
+                    description: UUID.
                   description:
                     type: string
                   title:
@@ -554,23 +557,23 @@ paths:
                               - y
                   required:
                     - keys
-                  description: "Body param:"
+                  description: Body param
                 description:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 title:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 token_sources:
                   type: array
                   items:
                     type: string
-                  description: "Body param:"
+                  description: Body param
                 token_type:
                   type: string
                   enum:
                     - JWT
-                  description: "Body param:"
+                  description: Body param
               required:
                 - credentials
                 - description
@@ -853,7 +856,7 @@ paths:
                           - kty
                           - x
                           - y
-                  description: "Body param:"
+                  description: Body param
               required:
                 - keys
       responses:

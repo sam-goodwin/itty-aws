@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { Forbidden, NotFound } from "../errors.ts";
+import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const DeleteBranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -33,5 +33,5 @@ export type DeleteBranchOutput = typeof DeleteBranchOutput.Type;
 export const deleteBranch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DeleteBranchInput,
   outputSchema: DeleteBranchOutput,
-  errors: [Forbidden, NotFound] as const,
+  errors: [Forbidden, NotFound, UnprocessableEntity] as const,
 }));

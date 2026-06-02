@@ -42,18 +42,22 @@ export const GetSchemaRecommendationOutput =
     ]),
     created_at: Schema.String,
     updated_at: Schema.String,
-    applied_at: Schema.String,
-    dismissed_at: Schema.String,
-    closed_by_deploy_request: Schema.Struct({
-      id: Schema.String,
-      branch_id: Schema.String,
-      number: Schema.Number,
-    }),
-    dismissed_by: Schema.Struct({
-      id: Schema.String,
-      display_name: Schema.String,
-      avatar_url: Schema.String,
-    }),
+    applied_at: Schema.NullOr(Schema.String),
+    dismissed_at: Schema.NullOr(Schema.String),
+    closed_by_deploy_request: Schema.NullOr(
+      Schema.Struct({
+        id: Schema.String,
+        branch_id: Schema.String,
+        number: Schema.Number,
+      }),
+    ),
+    dismissed_by: Schema.NullOr(
+      Schema.Struct({
+        id: Schema.String,
+        display_name: Schema.String,
+        avatar_url: Schema.String,
+      }),
+    ),
   });
 export type GetSchemaRecommendationOutput =
   typeof GetSchemaRecommendationOutput.Type;

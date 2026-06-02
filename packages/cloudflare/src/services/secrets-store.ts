@@ -135,26 +135,95 @@ export const getQuota: API.OperationMethod<
 // Store
 // =============================================================================
 
+export interface GetStoreRequest {
+  storeId: string;
+  /** Account Identifier */
+  accountId: string;
+}
+
+export const GetStoreRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  storeId: Schema.String.pipe(T.HttpPath("storeId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/secrets_store/stores/{storeId}",
+  }),
+) as unknown as Schema.Schema<GetStoreRequest>;
+
+export interface GetStoreResponse {
+  /** Store Identifier */
+  id: string;
+  /** Whenthe secret was created. */
+  created: string;
+  /** When the secret was modified. */
+  modified: string;
+  /** The name of the store */
+  name: string;
+  /** Account Identifier */
+  accountId?: string | null;
+}
+
+export const GetStoreResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  created: Schema.String,
+  modified: Schema.String,
+  name: Schema.String,
+  accountId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      created: "created",
+      modified: "modified",
+      name: "name",
+      accountId: "account_id",
+    }),
+  )
+  .pipe(T.ResponsePath("result")) as unknown as Schema.Schema<GetStoreResponse>;
+
+export type GetStoreError = DefaultErrors;
+
+export const getStore: API.OperationMethod<
+  GetStoreRequest,
+  GetStoreResponse,
+  GetStoreError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetStoreRequest,
+  output: GetStoreResponse,
+  errors: [],
+}));
+
 export interface ListStoresRequest {
   /** Path param: Account Identifier */
   accountId: string;
   page?: number;
   perPage?: number;
   /** Query param: Direction to sort objects */
-  direction?: "asc" | "desc";
+  direction?: "asc" | "desc" | (string & {});
   /** Query param: Order secrets by values in the given field */
-  order?: "name" | "comment" | "created" | "modified" | "status";
+  order?:
+    | "name"
+    | "comment"
+    | "created"
+    | "modified"
+    | "status"
+    | (string & {});
 }
 
 export const ListStoresRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
   perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-  direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-    T.HttpQuery("direction"),
-  ),
+  direction: Schema.optional(
+    Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+  ).pipe(T.HttpQuery("direction")),
   order: Schema.optional(
-    Schema.Literals(["name", "comment", "created", "modified", "status"]),
+    Schema.Union([
+      Schema.Literals(["name", "comment", "created", "modified", "status"]),
+      Schema.String,
+    ]),
   ).pipe(T.HttpQuery("order")),
 }).pipe(
   T.Http({
@@ -164,7 +233,13 @@ export const ListStoresRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<ListStoresRequest>;
 
 export interface ListStoresResponse {
-  result: { id: string; created: string; modified: string; name: string }[];
+  result: {
+    id: string;
+    created: string;
+    modified: string;
+    name: string;
+    accountId?: string | null;
+  }[];
   resultInfo?: {
     count?: number | null;
     page?: number | null;
@@ -180,7 +255,16 @@ export const ListStoresResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       created: Schema.String,
       modified: Schema.String,
       name: Schema.String,
-    }),
+      accountId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        created: "created",
+        modified: "modified",
+        name: "name",
+        accountId: "account_id",
+      }),
+    ),
   ),
   resultInfo: Schema.optional(
     Schema.Union([
@@ -279,13 +363,16 @@ export const createStore: API.OperationMethod<
 
 export interface DeleteStoreRequest {
   storeId: string;
-  /** Account Identifier */
+  /** Path param: Account Identifier */
   accountId: string;
+  /** Query param: When true, cascade-deletes all secrets in the store before deleting the store itself. Required when deleting a non-empty store. Without this parameter, attempting to delete a non-empty st */
+  force?: boolean;
 }
 
 export const DeleteStoreRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   storeId: Schema.String.pipe(T.HttpPath("storeId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -293,25 +380,12 @@ export const DeleteStoreRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   }),
 ) as unknown as Schema.Schema<DeleteStoreRequest>;
 
-export interface DeleteStoreResponse {
-  /** Store Identifier */
-  id?: string | null;
-  /** Whenthe secret was created. */
-  created?: string | null;
-  /** When the secret was modified. */
-  modified?: string | null;
-  /** The name of the store */
-  name?: string | null;
-}
+export type DeleteStoreResponse = unknown;
 
-export const DeleteStoreResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-}).pipe(
-  T.ResponsePath("result"),
-) as unknown as Schema.Schema<DeleteStoreResponse>;
+export const DeleteStoreResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<DeleteStoreResponse>;
 
 export type DeleteStoreError =
   | DefaultErrors
@@ -361,11 +435,13 @@ export interface GetStoreSecretResponse {
   modified: string;
   /** The name of the secret */
   name: string;
-  status: "pending" | "active" | "deleted";
+  status: "pending" | "active" | "deleted" | (string & {});
   /** Store Identifier */
   storeId: string;
   /** Freeform text describing the secret */
   comment?: string | null;
+  /** The list of services that can use this secret. */
+  scopes?: string[] | null;
 }
 
 export const GetStoreSecretResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -374,9 +450,15 @@ export const GetStoreSecretResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     created: Schema.String,
     modified: Schema.String,
     name: Schema.String,
-    status: Schema.Literals(["pending", "active", "deleted"]),
+    status: Schema.Union([
+      Schema.Literals(["pending", "active", "deleted"]),
+      Schema.String,
+    ]),
     storeId: Schema.String,
     comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    scopes: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
   },
 )
   .pipe(
@@ -388,6 +470,7 @@ export const GetStoreSecretResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       status: "status",
       storeId: "store_id",
       comment: "comment",
+      scopes: "scopes",
     }),
   )
   .pipe(
@@ -419,9 +502,15 @@ export interface ListStoreSecretsRequest {
   page?: number;
   perPage?: number;
   /** Query param: Direction to sort objects */
-  direction?: "asc" | "desc";
+  direction?: "asc" | "desc" | (string & {});
   /** Query param: Order secrets by values in the given field */
-  order?: "name" | "comment" | "created" | "modified" | "status";
+  order?:
+    | "name"
+    | "comment"
+    | "created"
+    | "modified"
+    | "status"
+    | (string & {});
   /** Query param: Only secrets with the given scopes will be returned */
   scopes?: string[][];
   /** Query param: Search secrets using a filter string, filtering across name and comment */
@@ -434,11 +523,14 @@ export const ListStoreSecretsRequest =
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
     perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-    direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-      T.HttpQuery("direction"),
-    ),
+    direction: Schema.optional(
+      Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+    ).pipe(T.HttpQuery("direction")),
     order: Schema.optional(
-      Schema.Literals(["name", "comment", "created", "modified", "status"]),
+      Schema.Union([
+        Schema.Literals(["name", "comment", "created", "modified", "status"]),
+        Schema.String,
+      ]),
     ).pipe(T.HttpQuery("order")),
     scopes: Schema.optional(Schema.Array(Schema.Array(Schema.String))).pipe(
       T.HttpQuery("scopes"),
@@ -457,9 +549,10 @@ export interface ListStoreSecretsResponse {
     created: string;
     modified: string;
     name: string;
-    status: "pending" | "active" | "deleted";
+    status: "pending" | "active" | "deleted" | (string & {});
     storeId: string;
     comment?: string | null;
+    scopes?: string[] | null;
   }[];
   resultInfo?: {
     count?: number | null;
@@ -477,9 +570,15 @@ export const ListStoreSecretsResponse =
         created: Schema.String,
         modified: Schema.String,
         name: Schema.String,
-        status: Schema.Literals(["pending", "active", "deleted"]),
+        status: Schema.Union([
+          Schema.Literals(["pending", "active", "deleted"]),
+          Schema.String,
+        ]),
         storeId: Schema.String,
         comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        scopes: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
       }).pipe(
         Schema.encodeKeys({
           id: "id",
@@ -489,6 +588,7 @@ export const ListStoreSecretsResponse =
           status: "status",
           storeId: "store_id",
           comment: "comment",
+          scopes: "scopes",
         }),
       ),
     ),
@@ -543,7 +643,7 @@ export interface CreateStoreSecretRequest {
   storeId: string;
   /** Path param: Account Identifier */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   body: { name: string; scopes: string[]; value: string; comment?: string }[];
 }
 
@@ -572,9 +672,10 @@ export interface CreateStoreSecretResponse {
     created: string;
     modified: string;
     name: string;
-    status: "pending" | "active" | "deleted";
+    status: "pending" | "active" | "deleted" | (string & {});
     storeId: string;
     comment?: string | null;
+    scopes?: string[] | null;
   }[];
 }
 
@@ -586,9 +687,15 @@ export const CreateStoreSecretResponse =
         created: Schema.String,
         modified: Schema.String,
         name: Schema.String,
-        status: Schema.Literals(["pending", "active", "deleted"]),
+        status: Schema.Union([
+          Schema.Literals(["pending", "active", "deleted"]),
+          Schema.String,
+        ]),
         storeId: Schema.String,
         comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        scopes: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
       }).pipe(
         Schema.encodeKeys({
           id: "id",
@@ -598,6 +705,7 @@ export const CreateStoreSecretResponse =
           status: "status",
           storeId: "store_id",
           comment: "comment",
+          scopes: "scopes",
         }),
       ),
     ),
@@ -641,6 +749,8 @@ export interface PatchStoreSecretRequest {
   comment?: string;
   /** Body param: The list of services that can use this secret. */
   scopes?: string[];
+  /** Body param: The value of the secret. Maximum 64 KiB (65,536 bytes). Note that this is 'write only' - no API response will provide this value, it is only used to create/modify secrets. */
+  value?: string;
 }
 
 export const PatchStoreSecretRequest =
@@ -650,6 +760,7 @@ export const PatchStoreSecretRequest =
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     comment: Schema.optional(Schema.String),
     scopes: Schema.optional(Schema.Array(Schema.String)),
+    value: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -666,11 +777,13 @@ export interface PatchStoreSecretResponse {
   modified: string;
   /** The name of the secret */
   name: string;
-  status: "pending" | "active" | "deleted";
+  status: "pending" | "active" | "deleted" | (string & {});
   /** Store Identifier */
   storeId: string;
   /** Freeform text describing the secret */
   comment?: string | null;
+  /** The list of services that can use this secret. */
+  scopes?: string[] | null;
 }
 
 export const PatchStoreSecretResponse =
@@ -679,9 +792,15 @@ export const PatchStoreSecretResponse =
     created: Schema.String,
     modified: Schema.String,
     name: Schema.String,
-    status: Schema.Literals(["pending", "active", "deleted"]),
+    status: Schema.Union([
+      Schema.Literals(["pending", "active", "deleted"]),
+      Schema.String,
+    ]),
     storeId: Schema.String,
     comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    scopes: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
   })
     .pipe(
       Schema.encodeKeys({
@@ -692,6 +811,7 @@ export const PatchStoreSecretResponse =
         status: "status",
         storeId: "store_id",
         comment: "comment",
+        scopes: "scopes",
       }),
     )
     .pipe(
@@ -735,51 +855,12 @@ export const DeleteStoreSecretRequest =
     }),
   ) as unknown as Schema.Schema<DeleteStoreSecretRequest>;
 
-export interface DeleteStoreSecretResponse {
-  /** Secret identifier tag. */
-  id?: string | null;
-  /** Whenthe secret was created. */
-  created?: string | null;
-  /** When the secret was modified. */
-  modified?: string | null;
-  /** The name of the secret */
-  name?: string | null;
-  status?: "pending" | "active" | "deleted" | null;
-  /** Store Identifier */
-  storeId?: string | null;
-  /** Freeform text describing the secret */
-  comment?: string | null;
-}
+export type DeleteStoreSecretResponse = unknown;
 
 export const DeleteStoreSecretResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    status: Schema.optional(
-      Schema.Union([
-        Schema.Literals(["pending", "active", "deleted"]),
-        Schema.Null,
-      ]),
-    ),
-    storeId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        created: "created",
-        modified: "modified",
-        name: "name",
-        status: "status",
-        storeId: "store_id",
-        comment: "comment",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<DeleteStoreSecretResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<DeleteStoreSecretResponse>;
 
 export type DeleteStoreSecretError =
   | DefaultErrors
@@ -816,42 +897,12 @@ export const BulkDeleteStoreSecretsRequest =
     }),
   ) as unknown as Schema.Schema<BulkDeleteStoreSecretsRequest>;
 
-export interface BulkDeleteStoreSecretsResponse {
-  result: {
-    id: string;
-    created: string;
-    modified: string;
-    name: string;
-    status: "pending" | "active" | "deleted";
-    storeId: string;
-    comment?: string | null;
-  }[];
-}
+export type BulkDeleteStoreSecretsResponse = unknown;
 
 export const BulkDeleteStoreSecretsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        created: Schema.String,
-        modified: Schema.String,
-        name: Schema.String,
-        status: Schema.Literals(["pending", "active", "deleted"]),
-        storeId: Schema.String,
-        comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          created: "created",
-          modified: "modified",
-          name: "name",
-          status: "status",
-          storeId: "store_id",
-          comment: "comment",
-        }),
-      ),
-    ),
-  }) as unknown as Schema.Schema<BulkDeleteStoreSecretsResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<BulkDeleteStoreSecretsResponse>;
 
 export type BulkDeleteStoreSecretsError =
   | DefaultErrors
@@ -859,19 +910,15 @@ export type BulkDeleteStoreSecretsError =
   | InvalidAccountId
   | InvalidJsonBody;
 
-export const bulkDeleteStoreSecrets: API.PaginatedOperationMethod<
+export const bulkDeleteStoreSecrets: API.OperationMethod<
   BulkDeleteStoreSecretsRequest,
   BulkDeleteStoreSecretsResponse,
   BulkDeleteStoreSecretsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BulkDeleteStoreSecretsRequest,
   output: BulkDeleteStoreSecretsResponse,
   errors: [StoreNotFound, InvalidAccountId, InvalidJsonBody],
-  pagination: {
-    mode: "single",
-    items: "result",
-  } as const,
 }));
 
 export interface DuplicateStoreSecretRequest {
@@ -911,11 +958,13 @@ export interface DuplicateStoreSecretResponse {
   modified: string;
   /** The name of the secret */
   name: string;
-  status: "pending" | "active" | "deleted";
+  status: "pending" | "active" | "deleted" | (string & {});
   /** Store Identifier */
   storeId: string;
   /** Freeform text describing the secret */
   comment?: string | null;
+  /** The list of services that can use this secret. */
+  scopes?: string[] | null;
 }
 
 export const DuplicateStoreSecretResponse =
@@ -924,9 +973,15 @@ export const DuplicateStoreSecretResponse =
     created: Schema.String,
     modified: Schema.String,
     name: Schema.String,
-    status: Schema.Literals(["pending", "active", "deleted"]),
+    status: Schema.Union([
+      Schema.Literals(["pending", "active", "deleted"]),
+      Schema.String,
+    ]),
     storeId: Schema.String,
     comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    scopes: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
   })
     .pipe(
       Schema.encodeKeys({
@@ -937,6 +992,7 @@ export const DuplicateStoreSecretResponse =
         status: "status",
         storeId: "store_id",
         comment: "comment",
+        scopes: "scopes",
       }),
     )
     .pipe(

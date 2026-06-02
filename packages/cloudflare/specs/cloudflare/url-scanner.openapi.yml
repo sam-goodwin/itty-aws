@@ -793,6 +793,1341 @@ paths:
                                     - website
                             required:
                               - data
+                          agentReadiness:
+                            type: object
+                            properties:
+                              checks:
+                                type: object
+                                properties:
+                                  botAccessControl:
+                                    type: object
+                                    properties:
+                                      contentSignals:
+                                        type: object
+                                        properties:
+                                          status:
+                                            type: string
+                                          details: {}
+                                          durationMs:
+                                            type: number
+                                          evidence:
+                                            type: array
+                                            items:
+                                              type: object
+                                              properties:
+                                                action:
+                                                  type: string
+                                                label:
+                                                  type: string
+                                                finding:
+                                                  type: object
+                                                  properties:
+                                                    outcome:
+                                                      type: string
+                                                    summary:
+                                                      type: string
+                                                  required:
+                                                    - outcome
+                                                    - summary
+                                                request:
+                                                  type: object
+                                                  properties:
+                                                    method:
+                                                      type: string
+                                                    url:
+                                                      type: string
+                                                    headers: {}
+                                                  required:
+                                                    - method
+                                                    - url
+                                                response:
+                                                  type: object
+                                                  properties:
+                                                    status:
+                                                      type: number
+                                                    statusText:
+                                                      type: string
+                                                    bodyPreview:
+                                                      type: string
+                                                    bodySize:
+                                                      type: number
+                                                    headers: {}
+                                                    redirectedTo:
+                                                      type: string
+                                                  required:
+                                                    - status
+                                                    - statusText
+                                              required:
+                                                - action
+                                                - label
+                                          message:
+                                            type: string
+                                        required:
+                                          - status
+                                      robotsTxtAiRules:
+                                        type: object
+                                        properties:
+                                          status:
+                                            type: string
+                                          details: {}
+                                          durationMs:
+                                            type: number
+                                          evidence:
+                                            type: array
+                                            items:
+                                              type: object
+                                              properties:
+                                                action:
+                                                  type: string
+                                                label:
+                                                  type: string
+                                                finding:
+                                                  type: object
+                                                  properties:
+                                                    outcome:
+                                                      type: string
+                                                    summary:
+                                                      type: string
+                                                  required:
+                                                    - outcome
+                                                    - summary
+                                                request:
+                                                  type: object
+                                                  properties:
+                                                    method:
+                                                      type: string
+                                                    url:
+                                                      type: string
+                                                    headers: {}
+                                                  required:
+                                                    - method
+                                                    - url
+                                                response:
+                                                  type: object
+                                                  properties:
+                                                    status:
+                                                      type: number
+                                                    statusText:
+                                                      type: string
+                                                    bodyPreview:
+                                                      type: string
+                                                    bodySize:
+                                                      type: number
+                                                    headers: {}
+                                                    redirectedTo:
+                                                      type: string
+                                                  required:
+                                                    - status
+                                                    - statusText
+                                              required:
+                                                - action
+                                                - label
+                                          message:
+                                            type: string
+                                        required:
+                                          - status
+                                      webBotAuth:
+                                        type: object
+                                        properties:
+                                          status:
+                                            type: string
+                                          details: {}
+                                          durationMs:
+                                            type: number
+                                          evidence:
+                                            type: array
+                                            items:
+                                              type: object
+                                              properties:
+                                                action:
+                                                  type: string
+                                                label:
+                                                  type: string
+                                                finding:
+                                                  type: object
+                                                  properties:
+                                                    outcome:
+                                                      type: string
+                                                    summary:
+                                                      type: string
+                                                  required:
+                                                    - outcome
+                                                    - summary
+                                                request:
+                                                  type: object
+                                                  properties:
+                                                    method:
+                                                      type: string
+                                                    url:
+                                                      type: string
+                                                    headers: {}
+                                                  required:
+                                                    - method
+                                                    - url
+                                                response:
+                                                  type: object
+                                                  properties:
+                                                    status:
+                                                      type: number
+                                                    statusText:
+                                                      type: string
+                                                    bodyPreview:
+                                                      type: string
+                                                    bodySize:
+                                                      type: number
+                                                    headers: {}
+                                                    redirectedTo:
+                                                      type: string
+                                                  required:
+                                                    - status
+                                                    - statusText
+                                              required:
+                                                - action
+                                                - label
+                                          message:
+                                            type: string
+                                        required:
+                                          - status
+                                    required:
+                                      - contentSignals
+                                      - robotsTxtAiRules
+                                      - webBotAuth
+                                  commerce:
+                                    type: object
+                                    properties:
+                                      acp:
+                                        type: object
+                                        properties:
+                                          status:
+                                            type: string
+                                          details: {}
+                                          durationMs:
+                                            type: number
+                                          evidence:
+                                            type: array
+                                            items:
+                                              type: object
+                                              properties:
+                                                action:
+                                                  type: string
+                                                label:
+                                                  type: string
+                                                finding:
+                                                  type: object
+                                                  properties:
+                                                    outcome:
+                                                      type: string
+                                                    summary:
+                                                      type: string
+                                                  required:
+                                                    - outcome
+                                                    - summary
+                                                request:
+                                                  type: object
+                                                  properties:
+                                                    method:
+                                                      type: string
+                                                    url:
+                                                      type: string
+                                                    headers: {}
+                                                  required:
+                                                    - method
+                                                    - url
+                                                response:
+                                                  type: object
+                                                  properties:
+                                                    status:
+                                                      type: number
+                                                    statusText:
+                                                      type: string
+                                                    bodyPreview:
+                                                      type: string
+                                                    bodySize:
+                                                      type: number
+                                                    headers: {}
+                                                    redirectedTo:
+                                                      type: string
+                                                  required:
+                                                    - status
+                                                    - statusText
+                                              required:
+                                                - action
+                                                - label
+                                          message:
+                                            type: string
+                                        required:
+                                          - status
+                                      ap2:
+                                        type: object
+                                        properties:
+                                          status:
+                                            type: string
+                                          details: {}
+                                          durationMs:
+                                            type: number
+                                          evidence:
+                                            type: array
+                                            items:
+                                              type: object
+                                              properties:
+                                                action:
+                                                  type: string
+                                                label:
+                                                  type: string
+                                                finding:
+                                                  type: object
+                                                  properties:
+                                                    outcome:
+                                                      type: string
+                                                    summary:
+                                                      type: string
+                                                  required:
+                                                    - outcome
+                                                    - summary
+                                                request:
+                                                  type: object
+                                                  properties:
+                                                    method:
+                                                      type: string
+                                                    url:
+                                                      type: string
+                                                    headers: {}
+                                                  required:
+                                                    - method
+                                                    - url
+                                                response:
+                                                  type: object
+                                                  properties:
+                                                    status:
+                                                      type: number
+                                                    statusText:
+                                                      type: string
+                                                    bodyPreview:
+                                                      type: string
+                                                    bodySize:
+                                                      type: number
+                                                    headers: {}
+                                                    redirectedTo:
+                                                      type: string
+                                                  required:
+                                                    - status
+                                                    - statusText
+                                              required:
+                                                - action
+                                                - label
+                                          message:
+                                            type: string
+                                        required:
+                                          - status
+                                      mpp:
+                                        type: object
+                                        properties:
+                                          status:
+                                            type: string
+                                          details: {}
+                                          durationMs:
+                                            type: number
+                                          evidence:
+                                            type: array
+                                            items:
+                                              type: object
+                                              properties:
+                                                action:
+                                                  type: string
+                                                label:
+                                                  type: string
+                                                finding:
+                                                  type: object
+                                                  properties:
+                                                    outcome:
+                                                      type: string
+                                                    summary:
+                                                      type: string
+                                                  required:
+                                                    - outcome
+                                                    - summary
+                                                request:
+                                                  type: object
+                                                  properties:
+                                                    method:
+                                                      type: string
+                                                    url:
+                                                      type: string
+                                                    headers: {}
+                                                  required:
+                                                    - method
+                                                    - url
+                                                response:
+                                                  type: object
+                                                  properties:
+                                                    status:
+                                                      type: number
+                                                    statusText:
+                                                      type: string
+                                                    bodyPreview:
+                                                      type: string
+                                                    bodySize:
+                                                      type: number
+                                                    headers: {}
+                                                    redirectedTo:
+                                                      type: string
+                                                  required:
+                                                    - status
+                                                    - statusText
+                                              required:
+                                                - action
+                                                - label
+                                          message:
+                                            type: string
+                                        required:
+                                          - status
+                                      ucp:
+                                        type: object
+                                        properties:
+                                          status:
+                                            type: string
+                                          details: {}
+                                          durationMs:
+                                            type: number
+                                          evidence:
+                                            type: array
+                                            items:
+                                              type: object
+                                              properties:
+                                                action:
+                                                  type: string
+                                                label:
+                                                  type: string
+                                                finding:
+                                                  type: object
+                                                  properties:
+                                                    outcome:
+                                                      type: string
+                                                    summary:
+                                                      type: string
+                                                  required:
+                                                    - outcome
+                                                    - summary
+                                                request:
+                                                  type: object
+                                                  properties:
+                                                    method:
+                                                      type: string
+                                                    url:
+                                                      type: string
+                                                    headers: {}
+                                                  required:
+                                                    - method
+                                                    - url
+                                                response:
+                                                  type: object
+                                                  properties:
+                                                    status:
+                                                      type: number
+                                                    statusText:
+                                                      type: string
+                                                    bodyPreview:
+                                                      type: string
+                                                    bodySize:
+                                                      type: number
+                                                    headers: {}
+                                                    redirectedTo:
+                                                      type: string
+                                                  required:
+                                                    - status
+                                                    - statusText
+                                              required:
+                                                - action
+                                                - label
+                                          message:
+                                            type: string
+                                        required:
+                                          - status
+                                      x402:
+                                        type: object
+                                        properties:
+                                          status:
+                                            type: string
+                                          details: {}
+                                          durationMs:
+                                            type: number
+                                          evidence:
+                                            type: array
+                                            items:
+                                              type: object
+                                              properties:
+                                                action:
+                                                  type: string
+                                                label:
+                                                  type: string
+                                                finding:
+                                                  type: object
+                                                  properties:
+                                                    outcome:
+                                                      type: string
+                                                    summary:
+                                                      type: string
+                                                  required:
+                                                    - outcome
+                                                    - summary
+                                                request:
+                                                  type: object
+                                                  properties:
+                                                    method:
+                                                      type: string
+                                                    url:
+                                                      type: string
+                                                    headers: {}
+                                                  required:
+                                                    - method
+                                                    - url
+                                                response:
+                                                  type: object
+                                                  properties:
+                                                    status:
+                                                      type: number
+                                                    statusText:
+                                                      type: string
+                                                    bodyPreview:
+                                                      type: string
+                                                    bodySize:
+                                                      type: number
+                                                    headers: {}
+                                                    redirectedTo:
+                                                      type: string
+                                                  required:
+                                                    - status
+                                                    - statusText
+                                              required:
+                                                - action
+                                                - label
+                                          message:
+                                            type: string
+                                        required:
+                                          - status
+                                    required:
+                                      - acp
+                                      - ap2
+                                      - mpp
+                                      - ucp
+                                      - x402
+                                  contentAccessibility:
+                                    type: object
+                                    properties:
+                                      markdownNegotiation:
+                                        type: object
+                                        properties:
+                                          status:
+                                            type: string
+                                          details: {}
+                                          durationMs:
+                                            type: number
+                                          evidence:
+                                            type: array
+                                            items:
+                                              type: object
+                                              properties:
+                                                action:
+                                                  type: string
+                                                label:
+                                                  type: string
+                                                finding:
+                                                  type: object
+                                                  properties:
+                                                    outcome:
+                                                      type: string
+                                                    summary:
+                                                      type: string
+                                                  required:
+                                                    - outcome
+                                                    - summary
+                                                request:
+                                                  type: object
+                                                  properties:
+                                                    method:
+                                                      type: string
+                                                    url:
+                                                      type: string
+                                                    headers: {}
+                                                  required:
+                                                    - method
+                                                    - url
+                                                response:
+                                                  type: object
+                                                  properties:
+                                                    status:
+                                                      type: number
+                                                    statusText:
+                                                      type: string
+                                                    bodyPreview:
+                                                      type: string
+                                                    bodySize:
+                                                      type: number
+                                                    headers: {}
+                                                    redirectedTo:
+                                                      type: string
+                                                  required:
+                                                    - status
+                                                    - statusText
+                                              required:
+                                                - action
+                                                - label
+                                          message:
+                                            type: string
+                                        required:
+                                          - status
+                                    required:
+                                      - markdownNegotiation
+                                  discoverability:
+                                    type: object
+                                    properties:
+                                      linkHeaders:
+                                        type: object
+                                        properties:
+                                          status:
+                                            type: string
+                                          details: {}
+                                          durationMs:
+                                            type: number
+                                          evidence:
+                                            type: array
+                                            items:
+                                              type: object
+                                              properties:
+                                                action:
+                                                  type: string
+                                                label:
+                                                  type: string
+                                                finding:
+                                                  type: object
+                                                  properties:
+                                                    outcome:
+                                                      type: string
+                                                    summary:
+                                                      type: string
+                                                  required:
+                                                    - outcome
+                                                    - summary
+                                                request:
+                                                  type: object
+                                                  properties:
+                                                    method:
+                                                      type: string
+                                                    url:
+                                                      type: string
+                                                    headers: {}
+                                                  required:
+                                                    - method
+                                                    - url
+                                                response:
+                                                  type: object
+                                                  properties:
+                                                    status:
+                                                      type: number
+                                                    statusText:
+                                                      type: string
+                                                    bodyPreview:
+                                                      type: string
+                                                    bodySize:
+                                                      type: number
+                                                    headers: {}
+                                                    redirectedTo:
+                                                      type: string
+                                                  required:
+                                                    - status
+                                                    - statusText
+                                              required:
+                                                - action
+                                                - label
+                                          message:
+                                            type: string
+                                        required:
+                                          - status
+                                      robotsTxt:
+                                        type: object
+                                        properties:
+                                          status:
+                                            type: string
+                                          details: {}
+                                          durationMs:
+                                            type: number
+                                          evidence:
+                                            type: array
+                                            items:
+                                              type: object
+                                              properties:
+                                                action:
+                                                  type: string
+                                                label:
+                                                  type: string
+                                                finding:
+                                                  type: object
+                                                  properties:
+                                                    outcome:
+                                                      type: string
+                                                    summary:
+                                                      type: string
+                                                  required:
+                                                    - outcome
+                                                    - summary
+                                                request:
+                                                  type: object
+                                                  properties:
+                                                    method:
+                                                      type: string
+                                                    url:
+                                                      type: string
+                                                    headers: {}
+                                                  required:
+                                                    - method
+                                                    - url
+                                                response:
+                                                  type: object
+                                                  properties:
+                                                    status:
+                                                      type: number
+                                                    statusText:
+                                                      type: string
+                                                    bodyPreview:
+                                                      type: string
+                                                    bodySize:
+                                                      type: number
+                                                    headers: {}
+                                                    redirectedTo:
+                                                      type: string
+                                                  required:
+                                                    - status
+                                                    - statusText
+                                              required:
+                                                - action
+                                                - label
+                                          message:
+                                            type: string
+                                        required:
+                                          - status
+                                      sitemap:
+                                        type: object
+                                        properties:
+                                          status:
+                                            type: string
+                                          details: {}
+                                          durationMs:
+                                            type: number
+                                          evidence:
+                                            type: array
+                                            items:
+                                              type: object
+                                              properties:
+                                                action:
+                                                  type: string
+                                                label:
+                                                  type: string
+                                                finding:
+                                                  type: object
+                                                  properties:
+                                                    outcome:
+                                                      type: string
+                                                    summary:
+                                                      type: string
+                                                  required:
+                                                    - outcome
+                                                    - summary
+                                                request:
+                                                  type: object
+                                                  properties:
+                                                    method:
+                                                      type: string
+                                                    url:
+                                                      type: string
+                                                    headers: {}
+                                                  required:
+                                                    - method
+                                                    - url
+                                                response:
+                                                  type: object
+                                                  properties:
+                                                    status:
+                                                      type: number
+                                                    statusText:
+                                                      type: string
+                                                    bodyPreview:
+                                                      type: string
+                                                    bodySize:
+                                                      type: number
+                                                    headers: {}
+                                                    redirectedTo:
+                                                      type: string
+                                                  required:
+                                                    - status
+                                                    - statusText
+                                              required:
+                                                - action
+                                                - label
+                                          message:
+                                            type: string
+                                        required:
+                                          - status
+                                    required:
+                                      - linkHeaders
+                                      - robotsTxt
+                                      - sitemap
+                                  discovery:
+                                    type: object
+                                    properties:
+                                      a2aAgentCard:
+                                        type: object
+                                        properties:
+                                          status:
+                                            type: string
+                                          details: {}
+                                          durationMs:
+                                            type: number
+                                          evidence:
+                                            type: array
+                                            items:
+                                              type: object
+                                              properties:
+                                                action:
+                                                  type: string
+                                                label:
+                                                  type: string
+                                                finding:
+                                                  type: object
+                                                  properties:
+                                                    outcome:
+                                                      type: string
+                                                    summary:
+                                                      type: string
+                                                  required:
+                                                    - outcome
+                                                    - summary
+                                                request:
+                                                  type: object
+                                                  properties:
+                                                    method:
+                                                      type: string
+                                                    url:
+                                                      type: string
+                                                    headers: {}
+                                                  required:
+                                                    - method
+                                                    - url
+                                                response:
+                                                  type: object
+                                                  properties:
+                                                    status:
+                                                      type: number
+                                                    statusText:
+                                                      type: string
+                                                    bodyPreview:
+                                                      type: string
+                                                    bodySize:
+                                                      type: number
+                                                    headers: {}
+                                                    redirectedTo:
+                                                      type: string
+                                                  required:
+                                                    - status
+                                                    - statusText
+                                              required:
+                                                - action
+                                                - label
+                                          message:
+                                            type: string
+                                        required:
+                                          - status
+                                      agentSkills:
+                                        type: object
+                                        properties:
+                                          status:
+                                            type: string
+                                          details: {}
+                                          durationMs:
+                                            type: number
+                                          evidence:
+                                            type: array
+                                            items:
+                                              type: object
+                                              properties:
+                                                action:
+                                                  type: string
+                                                label:
+                                                  type: string
+                                                finding:
+                                                  type: object
+                                                  properties:
+                                                    outcome:
+                                                      type: string
+                                                    summary:
+                                                      type: string
+                                                  required:
+                                                    - outcome
+                                                    - summary
+                                                request:
+                                                  type: object
+                                                  properties:
+                                                    method:
+                                                      type: string
+                                                    url:
+                                                      type: string
+                                                    headers: {}
+                                                  required:
+                                                    - method
+                                                    - url
+                                                response:
+                                                  type: object
+                                                  properties:
+                                                    status:
+                                                      type: number
+                                                    statusText:
+                                                      type: string
+                                                    bodyPreview:
+                                                      type: string
+                                                    bodySize:
+                                                      type: number
+                                                    headers: {}
+                                                    redirectedTo:
+                                                      type: string
+                                                  required:
+                                                    - status
+                                                    - statusText
+                                              required:
+                                                - action
+                                                - label
+                                          message:
+                                            type: string
+                                        required:
+                                          - status
+                                      apiCatalog:
+                                        type: object
+                                        properties:
+                                          status:
+                                            type: string
+                                          details: {}
+                                          durationMs:
+                                            type: number
+                                          evidence:
+                                            type: array
+                                            items:
+                                              type: object
+                                              properties:
+                                                action:
+                                                  type: string
+                                                label:
+                                                  type: string
+                                                finding:
+                                                  type: object
+                                                  properties:
+                                                    outcome:
+                                                      type: string
+                                                    summary:
+                                                      type: string
+                                                  required:
+                                                    - outcome
+                                                    - summary
+                                                request:
+                                                  type: object
+                                                  properties:
+                                                    method:
+                                                      type: string
+                                                    url:
+                                                      type: string
+                                                    headers: {}
+                                                  required:
+                                                    - method
+                                                    - url
+                                                response:
+                                                  type: object
+                                                  properties:
+                                                    status:
+                                                      type: number
+                                                    statusText:
+                                                      type: string
+                                                    bodyPreview:
+                                                      type: string
+                                                    bodySize:
+                                                      type: number
+                                                    headers: {}
+                                                    redirectedTo:
+                                                      type: string
+                                                  required:
+                                                    - status
+                                                    - statusText
+                                              required:
+                                                - action
+                                                - label
+                                          message:
+                                            type: string
+                                        required:
+                                          - status
+                                      mcpServerCard:
+                                        type: object
+                                        properties:
+                                          status:
+                                            type: string
+                                          details: {}
+                                          durationMs:
+                                            type: number
+                                          evidence:
+                                            type: array
+                                            items:
+                                              type: object
+                                              properties:
+                                                action:
+                                                  type: string
+                                                label:
+                                                  type: string
+                                                finding:
+                                                  type: object
+                                                  properties:
+                                                    outcome:
+                                                      type: string
+                                                    summary:
+                                                      type: string
+                                                  required:
+                                                    - outcome
+                                                    - summary
+                                                request:
+                                                  type: object
+                                                  properties:
+                                                    method:
+                                                      type: string
+                                                    url:
+                                                      type: string
+                                                    headers: {}
+                                                  required:
+                                                    - method
+                                                    - url
+                                                response:
+                                                  type: object
+                                                  properties:
+                                                    status:
+                                                      type: number
+                                                    statusText:
+                                                      type: string
+                                                    bodyPreview:
+                                                      type: string
+                                                    bodySize:
+                                                      type: number
+                                                    headers: {}
+                                                    redirectedTo:
+                                                      type: string
+                                                  required:
+                                                    - status
+                                                    - statusText
+                                              required:
+                                                - action
+                                                - label
+                                          message:
+                                            type: string
+                                        required:
+                                          - status
+                                      oauthDiscovery:
+                                        type: object
+                                        properties:
+                                          status:
+                                            type: string
+                                          details: {}
+                                          durationMs:
+                                            type: number
+                                          evidence:
+                                            type: array
+                                            items:
+                                              type: object
+                                              properties:
+                                                action:
+                                                  type: string
+                                                label:
+                                                  type: string
+                                                finding:
+                                                  type: object
+                                                  properties:
+                                                    outcome:
+                                                      type: string
+                                                    summary:
+                                                      type: string
+                                                  required:
+                                                    - outcome
+                                                    - summary
+                                                request:
+                                                  type: object
+                                                  properties:
+                                                    method:
+                                                      type: string
+                                                    url:
+                                                      type: string
+                                                    headers: {}
+                                                  required:
+                                                    - method
+                                                    - url
+                                                response:
+                                                  type: object
+                                                  properties:
+                                                    status:
+                                                      type: number
+                                                    statusText:
+                                                      type: string
+                                                    bodyPreview:
+                                                      type: string
+                                                    bodySize:
+                                                      type: number
+                                                    headers: {}
+                                                    redirectedTo:
+                                                      type: string
+                                                  required:
+                                                    - status
+                                                    - statusText
+                                              required:
+                                                - action
+                                                - label
+                                          message:
+                                            type: string
+                                        required:
+                                          - status
+                                      oauthProtectedResource:
+                                        type: object
+                                        properties:
+                                          status:
+                                            type: string
+                                          details: {}
+                                          durationMs:
+                                            type: number
+                                          evidence:
+                                            type: array
+                                            items:
+                                              type: object
+                                              properties:
+                                                action:
+                                                  type: string
+                                                label:
+                                                  type: string
+                                                finding:
+                                                  type: object
+                                                  properties:
+                                                    outcome:
+                                                      type: string
+                                                    summary:
+                                                      type: string
+                                                  required:
+                                                    - outcome
+                                                    - summary
+                                                request:
+                                                  type: object
+                                                  properties:
+                                                    method:
+                                                      type: string
+                                                    url:
+                                                      type: string
+                                                    headers: {}
+                                                  required:
+                                                    - method
+                                                    - url
+                                                response:
+                                                  type: object
+                                                  properties:
+                                                    status:
+                                                      type: number
+                                                    statusText:
+                                                      type: string
+                                                    bodyPreview:
+                                                      type: string
+                                                    bodySize:
+                                                      type: number
+                                                    headers: {}
+                                                    redirectedTo:
+                                                      type: string
+                                                  required:
+                                                    - status
+                                                    - statusText
+                                              required:
+                                                - action
+                                                - label
+                                          message:
+                                            type: string
+                                        required:
+                                          - status
+                                      webMcp:
+                                        type: object
+                                        properties:
+                                          status:
+                                            type: string
+                                          details: {}
+                                          durationMs:
+                                            type: number
+                                          evidence:
+                                            type: array
+                                            items:
+                                              type: object
+                                              properties:
+                                                action:
+                                                  type: string
+                                                label:
+                                                  type: string
+                                                finding:
+                                                  type: object
+                                                  properties:
+                                                    outcome:
+                                                      type: string
+                                                    summary:
+                                                      type: string
+                                                  required:
+                                                    - outcome
+                                                    - summary
+                                                request:
+                                                  type: object
+                                                  properties:
+                                                    method:
+                                                      type: string
+                                                    url:
+                                                      type: string
+                                                    headers: {}
+                                                  required:
+                                                    - method
+                                                    - url
+                                                response:
+                                                  type: object
+                                                  properties:
+                                                    status:
+                                                      type: number
+                                                    statusText:
+                                                      type: string
+                                                    bodyPreview:
+                                                      type: string
+                                                    bodySize:
+                                                      type: number
+                                                    headers: {}
+                                                    redirectedTo:
+                                                      type: string
+                                                  required:
+                                                    - status
+                                                    - statusText
+                                              required:
+                                                - action
+                                                - label
+                                          message:
+                                            type: string
+                                        required:
+                                          - status
+                                    required:
+                                      - a2aAgentCard
+                                      - agentSkills
+                                      - apiCatalog
+                                      - mcpServerCard
+                                      - oauthDiscovery
+                                      - oauthProtectedResource
+                                      - webMcp
+                                required:
+                                  - botAccessControl
+                                  - commerce
+                                  - contentAccessibility
+                                  - discoverability
+                                  - discovery
+                              level:
+                                type: number
+                              levelName:
+                                type: string
+                              commerceSignals:
+                                type: array
+                                items:
+                                  type: string
+                              isCommerce:
+                                type: boolean
+                              nextLevel:
+                                type: object
+                                properties:
+                                  name:
+                                    type: string
+                                  requirements:
+                                    type: array
+                                    items:
+                                      type: object
+                                      properties:
+                                        check:
+                                          type: string
+                                        description:
+                                          type: string
+                                        prompt:
+                                          type: string
+                                        skillUrl:
+                                          type: string
+                                        specUrls:
+                                          type: array
+                                          items:
+                                            type: string
+                                      required:
+                                        - check
+                                        - description
+                                        - prompt
+                                        - skillUrl
+                                        - specUrls
+                                  target:
+                                    type: number
+                                required:
+                                  - name
+                                  - requirements
+                                  - target
+                            required:
+                              - checks
+                              - level
+                              - levelName
+                          phishing_v2:
+                            type: object
+                            properties:
+                              data:
+                                type: array
+                                items:
+                                  type: string
+                            required:
+                              - data
+                          robotsTxt:
+                            type: object
+                            properties:
+                              data:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    rules:
+                                      type: object
+                                      properties:
+                                        "*":
+                                          type: object
+                                          properties:
+                                            allow:
+                                              type: array
+                                              items:
+                                                type: string
+                                            disallow:
+                                              type: array
+                                              items:
+                                                type: string
+                                            contentSignal:
+                                              type: object
+                                              properties:
+                                                ai-input:
+                                                  type: string
+                                                ai-train:
+                                                  type: string
+                                                search:
+                                                  type: string
+                                            crawlDelay:
+                                              type: number
+                                          required:
+                                            - allow
+                                            - disallow
+                                      required:
+                                        - "*"
+                                    sitemaps:
+                                      type: array
+                                      items:
+                                        type: string
+                                    hash:
+                                      type: string
+                                  required:
+                                    - rules
+                                    - sitemaps
+                            required:
+                              - data
                           urlCategories:
                             type: object
                             properties:
@@ -1467,7 +2802,10 @@ paths:
               properties:
                 url:
                   type: string
-                  description: "Body param:"
+                  description: Body param
+                agentReadiness:
+                  type: boolean
+                  description: "Body param: Enable agent readiness checks."
                 country:
                   type: string
                   enum:
@@ -1669,14 +3007,14 @@ paths:
                   description: "Body param: Country to geo egress from"
                 customagent:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 customHeaders:
                   type: object
                   additionalProperties: true
                   description: "Body param: Set custom headers."
                 referer:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 screenshotsResolutions:
                   type: array
                   items:
@@ -1768,6 +3106,9 @@ paths:
                 properties:
                   url:
                     type: string
+                  agentReadiness:
+                    type: boolean
+                    description: Enable agent readiness checks.
                   customagent:
                     type: string
                   customHeaders:
