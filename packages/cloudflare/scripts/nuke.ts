@@ -98,10 +98,26 @@ interface NukeConfig {
 
 const PKG_DIR = nodePath.resolve(import.meta.dir, "..");
 
+// Built-in exclusions that always apply, even when no nuke-config.json exists.
+// These are protected because they back persistent Alchemy state used across
+// projects — destroying them would brick state tracking for every user.
+const BUILTIN_EXCLUDES: ExcludeRule[] = [
+  {
+    type: "WorkerScript",
+    ids: ["alchemy-state-store", "alchemy-state-service"],
+    reason: "Alchemy state store/service — never nuke",
+  },
+];
+
 function loadNukeConfig(): NukeConfig {
   const p = nodePath.join(PKG_DIR, "nuke-config.json");
-  if (!fs.existsSync(p)) return {};
-  return JSON.parse(fs.readFileSync(p, "utf-8"));
+  const userConfig: NukeConfig = fs.existsSync(p)
+    ? JSON.parse(fs.readFileSync(p, "utf-8"))
+    : {};
+  return {
+    ...userConfig,
+    exclude: [...BUILTIN_EXCLUDES, ...(userConfig.exclude ?? [])],
+  };
 }
 
 function matchGlob(pattern: string, value: string): boolean {
