@@ -1,0 +1,90 @@
+import * as Schema from "effect/Schema";
+import { API } from "../../platform-client.ts";
+import * as T from "../../traits.ts";
+import {
+  BadRequest,
+  Forbidden,
+  NotFound,
+  Conflict,
+  UnprocessableEntity,
+} from "../../errors.ts";
+
+// Input Schema
+export const PlatformCreateApplicationDomainInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    applicationID: Schema.String.pipe(T.PathParam()),
+    name: Schema.String,
+    proxy_path: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/platform/applications/{applicationID}/domains",
+    }),
+  );
+export type PlatformCreateApplicationDomainInput =
+  typeof PlatformCreateApplicationDomainInput.Type;
+
+// Output Schema
+export const PlatformCreateApplicationDomainOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    object: Schema.Literals(["domain"]),
+    id: Schema.String,
+    name: Schema.String,
+    is_satellite: Schema.optional(Schema.Boolean),
+    is_provider_domain: Schema.optional(Schema.Boolean),
+    frontend_api_url: Schema.String,
+    development_origin: Schema.String,
+    accounts_portal_url: Schema.optional(Schema.String),
+    proxy_url: Schema.optional(Schema.String),
+    cname_targets: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          host: Schema.optional(Schema.String),
+          value: Schema.optional(Schema.String),
+          required: Schema.optional(Schema.Boolean),
+        }),
+      ),
+    ),
+    created_at: Schema.String,
+    updated_at: Schema.String,
+    application: Schema.optional(
+      Schema.Struct({
+        object: Schema.Literals(["application"]),
+        id: Schema.String,
+        created_at: Schema.String,
+        updated_at: Schema.String,
+      }),
+    ),
+    instance: Schema.optional(
+      Schema.Struct({
+        object: Schema.Literals(["instance"]),
+        id: Schema.String,
+        environment_type: Schema.Literals(["production", "development"]),
+        created_at: Schema.String,
+        updated_at: Schema.String,
+      }),
+    ),
+  });
+export type PlatformCreateApplicationDomainOutput =
+  typeof PlatformCreateApplicationDomainOutput.Type;
+
+// The operation
+/**
+ * Create application domain
+ *
+ * Create a provider domain for an application's production instance.
+ *
+ * @param applicationID - Application ID.
+ */
+export const PlatformCreateApplicationDomain =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: PlatformCreateApplicationDomainInput,
+    outputSchema: PlatformCreateApplicationDomainOutput,
+    errors: [
+      BadRequest,
+      Forbidden,
+      NotFound,
+      Conflict,
+      UnprocessableEntity,
+    ] as const,
+  }));
