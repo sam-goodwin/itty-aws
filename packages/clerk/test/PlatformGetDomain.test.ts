@@ -1,7 +1,7 @@
 import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
-import { PlatformGetDomain } from "../src/operations/platform/PlatformGetDomain";
-import { PlatformListDomains } from "../src/operations/platform/PlatformListDomains";
+import { getDomain as PlatformGetDomain } from "../src/operations/platform/domains/getDomain";
+import { listDomains as PlatformListDomains } from "../src/operations/platform/domains/listDomains";
 import { runEffect, testRunId } from "./setup";
 
 const NON_EXISTENT_DOMAIN = `dmn_does_not_exist_${testRunId}`;

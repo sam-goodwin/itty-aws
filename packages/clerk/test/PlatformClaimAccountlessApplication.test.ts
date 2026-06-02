@@ -1,7 +1,7 @@
 import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
-import { PlatformClaimAccountlessApplication } from "../src/operations/platform/PlatformClaimAccountlessApplication";
-import { PlatformDeleteApplication } from "../src/operations/platform/PlatformDeleteApplication";
+import { claimAccountlessApplication as PlatformClaimAccountlessApplication } from "../src/operations/platform/applications/claimAccountlessApplication";
+import { deleteApplication as PlatformDeleteApplication } from "../src/operations/platform/applications/deleteApplication";
 import { runEffect, testRunId } from "./setup";
 
 const applicationName = (suffix: string): string =>

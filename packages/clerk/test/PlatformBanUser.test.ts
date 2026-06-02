@@ -1,9 +1,9 @@
 import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
-import { PlatformBanUser } from "../src/operations/platform/PlatformBanUser";
-import { PlatformListApplications } from "../src/operations/platform/PlatformListApplications";
-import { PlatformListInstanceUsers } from "../src/operations/platform/PlatformListInstanceUsers";
-import { PlatformUnbanUser } from "../src/operations/platform/PlatformUnbanUser";
+import { banUser as PlatformBanUser } from "../src/operations/platform/users/banUser";
+import { listApplications as PlatformListApplications } from "../src/operations/platform/applications/listApplications";
+import { listInstanceUsers as PlatformListInstanceUsers } from "../src/operations/platform/users/listInstanceUsers";
+import { unbanUser as PlatformUnbanUser } from "../src/operations/platform/users/unbanUser";
 import { runEffect, testRunId } from "./setup";
 
 const NON_EXISTENT_FOREIGN_APP = `app_2ForeignNotOwned${testRunId}`;

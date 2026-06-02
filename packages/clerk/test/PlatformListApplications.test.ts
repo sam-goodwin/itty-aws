@@ -1,6 +1,6 @@
 import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
-import { PlatformListApplications } from "../src/operations/platform/PlatformListApplications";
+import { listApplications as PlatformListApplications } from "../src/operations/platform/applications/listApplications";
 import { runEffect } from "./setup";
 
 describe("PlatformListApplications", () => {

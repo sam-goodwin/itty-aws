@@ -1,7 +1,7 @@
 import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
-import { PlatformDeleteApplicationLogo } from "../src/operations/platform/PlatformDeleteApplicationLogo";
-import { PlatformListApplications } from "../src/operations/platform/PlatformListApplications";
+import { deleteApplicationLogo as PlatformDeleteApplicationLogo } from "../src/operations/platform/applications/deleteApplicationLogo";
+import { listApplications as PlatformListApplications } from "../src/operations/platform/applications/listApplications";
 import { runEffect, testRunId } from "./setup";
 
 // Reasonably-formed-but-fake IDs used to provoke specific 4xx responses.

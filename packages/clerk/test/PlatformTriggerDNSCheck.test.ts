@@ -1,8 +1,8 @@
 import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
-import { PlatformListApplicationDomains } from "../src/operations/platform/PlatformListApplicationDomains";
-import { PlatformListApplications } from "../src/operations/platform/PlatformListApplications";
-import { PlatformTriggerDNSCheck } from "../src/operations/platform/PlatformTriggerDNSCheck";
+import { listApplicationDomains as PlatformListApplicationDomains } from "../src/operations/platform/domains/listApplicationDomains";
+import { listApplications as PlatformListApplications } from "../src/operations/platform/applications/listApplications";
+import { triggerDNSCheck as PlatformTriggerDNSCheck } from "../src/operations/platform/domains/triggerDNSCheck";
 import { runEffect, testRunId } from "./setup";
 
 const NON_EXISTENT_APP = `app_does_not_exist_${testRunId}`;

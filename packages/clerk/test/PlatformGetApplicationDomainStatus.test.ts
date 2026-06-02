@@ -1,8 +1,8 @@
 import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
-import { PlatformGetApplicationDomainStatus } from "../src/operations/platform/PlatformGetApplicationDomainStatus";
-import { PlatformListApplicationDomains } from "../src/operations/platform/PlatformListApplicationDomains";
-import { PlatformListApplications } from "../src/operations/platform/PlatformListApplications";
+import { getApplicationDomainStatus as PlatformGetApplicationDomainStatus } from "../src/operations/platform/domains/getApplicationDomainStatus";
+import { listApplicationDomains as PlatformListApplicationDomains } from "../src/operations/platform/domains/listApplicationDomains";
+import { listApplications as PlatformListApplications } from "../src/operations/platform/applications/listApplications";
 import { runEffect, testRunId } from "./setup";
 
 const NON_EXISTENT_APP = `app_does_not_exist_${testRunId}`;

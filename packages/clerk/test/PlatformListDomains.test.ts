@@ -1,6 +1,6 @@
 import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
-import { PlatformListDomains } from "../src/operations/platform/PlatformListDomains";
+import { listDomains as PlatformListDomains } from "../src/operations/platform/domains/listDomains";
 import { runEffect, testRunId } from "./setup";
 
 const FOREIGN_DOMAIN_CURSOR = `dmn_foreign_workspace_${testRunId}`;

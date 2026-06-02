@@ -1,8 +1,8 @@
 import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
-import { PlatformCreateRedirectURL } from "../src/operations/platform/PlatformCreateRedirectURL";
-import { PlatformDeleteRedirectURL } from "../src/operations/platform/PlatformDeleteRedirectURL";
-import { PlatformListApplications } from "../src/operations/platform/PlatformListApplications";
+import { createRedirectURL as PlatformCreateRedirectURL } from "../src/operations/platform/redirectUrls/createRedirectURL";
+import { deleteRedirectURL as PlatformDeleteRedirectURL } from "../src/operations/platform/redirectUrls/deleteRedirectURL";
+import { listApplications as PlatformListApplications } from "../src/operations/platform/applications/listApplications";
 import { runEffect, testRunId } from "./setup";
 
 const NON_EXISTENT_FOREIGN_APP = `app_2ForeignNotOwned${testRunId}`;

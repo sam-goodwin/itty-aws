@@ -1,8 +1,8 @@
 import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
-import { PlatformCreateApplication } from "../src/operations/platform/PlatformCreateApplication";
-import { PlatformDeleteApplication } from "../src/operations/platform/PlatformDeleteApplication";
-import { PlatformUpdateApplication } from "../src/operations/platform/PlatformUpdateApplication";
+import { createApplication as PlatformCreateApplication } from "../src/operations/platform/applications/createApplication";
+import { deleteApplication as PlatformDeleteApplication } from "../src/operations/platform/applications/deleteApplication";
+import { updateApplication as PlatformUpdateApplication } from "../src/operations/platform/applications/updateApplication";
 import { runEffect, testRunId } from "./setup";
 
 const NON_EXISTENT_FOREIGN_APP = `app_2ForeignNotOwned${testRunId}`;

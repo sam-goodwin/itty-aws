@@ -1,6 +1,6 @@
 import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
-import { PlatformListApplicationTransfers } from "../src/operations/platform/PlatformListApplicationTransfers";
+import { listApplicationTransfers as PlatformListApplicationTransfers } from "../src/operations/platform/applicationTransfers/listApplicationTransfers";
 import { runEffect, testRunId } from "./setup";
 
 const FOREIGN_TRANSFER_CURSOR = `apptr_foreign_workspace_${testRunId}`;
@@ -20,12 +20,9 @@ describe("PlatformListApplicationTransfers", () => {
           expect(typeof transfer.id).toBe("string");
           expect(typeof transfer.code).toBe("string");
           expect(typeof transfer.application_id).toBe("string");
-          expect([
-            "pending",
-            "completed",
-            "canceled",
-            "expired",
-          ]).toContain(transfer.status);
+          expect(["pending", "completed", "canceled", "expired"]).toContain(
+            transfer.status,
+          );
           expect(typeof transfer.expires_at).toBe("string");
           expect(typeof transfer.created_at).toBe("string");
         }

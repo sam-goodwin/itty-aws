@@ -1,9 +1,9 @@
 import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
-import { PlatformCancelApplicationTransfer } from "../src/operations/platform/PlatformCancelApplicationTransfer";
-import { PlatformCreateApplicationTransfer } from "../src/operations/platform/PlatformCreateApplicationTransfer";
-import { PlatformGetApplicationTransfer } from "../src/operations/platform/PlatformGetApplicationTransfer";
-import { PlatformListApplications } from "../src/operations/platform/PlatformListApplications";
+import { cancelApplicationTransfer as PlatformCancelApplicationTransfer } from "../src/operations/platform/applicationTransfers/cancelApplicationTransfer";
+import { createApplicationTransfer as PlatformCreateApplicationTransfer } from "../src/operations/platform/applicationTransfers/createApplicationTransfer";
+import { getApplicationTransfer as PlatformGetApplicationTransfer } from "../src/operations/platform/applicationTransfers/getApplicationTransfer";
+import { listApplications as PlatformListApplications } from "../src/operations/platform/applications/listApplications";
 import { runEffect, testRunId } from "./setup";
 
 const NON_EXISTENT_APP = `app_does_not_exist_${testRunId}`;

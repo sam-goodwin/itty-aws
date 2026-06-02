@@ -1,7 +1,7 @@
 import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
-import { PlatformListApplications } from "../src/operations/platform/PlatformListApplications";
-import { PlatformPatchConfig } from "../src/operations/platform/PlatformPatchConfig";
+import { listApplications as PlatformListApplications } from "../src/operations/platform/applications/listApplications";
+import { patchConfig as PlatformPatchConfig } from "../src/operations/platform/config/patchConfig";
 import { runEffect, testRunId } from "./setup";
 
 const NON_EXISTENT_FOREIGN_APP = `app_2ForeignNotOwned${testRunId}`;

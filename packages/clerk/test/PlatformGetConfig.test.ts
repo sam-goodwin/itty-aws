@@ -1,7 +1,7 @@
 import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
-import { PlatformGetConfig } from "../src/operations/platform/PlatformGetConfig";
-import { PlatformListApplications } from "../src/operations/platform/PlatformListApplications";
+import { getConfig as PlatformGetConfig } from "../src/operations/platform/config/getConfig";
+import { listApplications as PlatformListApplications } from "../src/operations/platform/applications/listApplications";
 import { runEffect, testRunId } from "./setup";
 
 const NON_EXISTENT_APP = `app_does_not_exist_${testRunId}`;

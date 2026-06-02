@@ -1,9 +1,9 @@
 import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
-import { PlatformCreateJWTTemplate } from "../src/operations/platform/PlatformCreateJWTTemplate";
-import { PlatformDeleteJWTTemplate } from "../src/operations/platform/PlatformDeleteJWTTemplate";
-import { PlatformListApplications } from "../src/operations/platform/PlatformListApplications";
-import { PlatformUpdateJWTTemplate } from "../src/operations/platform/PlatformUpdateJWTTemplate";
+import { createJWTTemplate as PlatformCreateJWTTemplate } from "../src/operations/platform/jwtTemplates/createJWTTemplate";
+import { deleteJWTTemplate as PlatformDeleteJWTTemplate } from "../src/operations/platform/jwtTemplates/deleteJWTTemplate";
+import { listApplications as PlatformListApplications } from "../src/operations/platform/applications/listApplications";
+import { updateJWTTemplate as PlatformUpdateJWTTemplate } from "../src/operations/platform/jwtTemplates/updateJWTTemplate";
 import { runEffect, testRunId } from "./setup";
 
 const NON_EXISTENT_APP = `app_does_not_exist_${testRunId}`;

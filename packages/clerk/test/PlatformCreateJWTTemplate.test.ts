@@ -1,8 +1,8 @@
 import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
-import { PlatformCreateJWTTemplate } from "../src/operations/platform/PlatformCreateJWTTemplate";
-import { PlatformDeleteJWTTemplate } from "../src/operations/platform/PlatformDeleteJWTTemplate";
-import { PlatformListApplications } from "../src/operations/platform/PlatformListApplications";
+import { createJWTTemplate as PlatformCreateJWTTemplate } from "../src/operations/platform/jwtTemplates/createJWTTemplate";
+import { deleteJWTTemplate as PlatformDeleteJWTTemplate } from "../src/operations/platform/jwtTemplates/deleteJWTTemplate";
+import { listApplications as PlatformListApplications } from "../src/operations/platform/applications/listApplications";
 import { runEffect, testRunId } from "./setup";
 
 const NON_EXISTENT_FOREIGN_APP = `app_2ForeignNotOwned${testRunId}`;
