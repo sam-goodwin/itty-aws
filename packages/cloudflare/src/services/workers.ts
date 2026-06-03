@@ -7596,12 +7596,12 @@ export interface QueryObservabilityTelemetryResponse {
     granularity: number;
     query: {
       id: string;
-      adhoc: boolean;
-      created: string;
-      createdBy: string;
-      description: string | null;
-      name: string;
-      parameters: {
+      adhoc?: boolean | null;
+      created?: string | null;
+      createdBy?: string | null;
+      description?: string | null;
+      name?: string | null;
+      parameters?: {
         calculations?:
           | {
               operator:
@@ -7733,9 +7733,9 @@ export interface QueryObservabilityTelemetryResponse {
           value: string;
           order?: "asc" | "desc" | (string & {}) | null;
         } | null;
-      };
-      updated: string;
-      updatedBy: string;
+      } | null;
+      updated?: string | null;
+      updatedBy?: string | null;
     };
     status: "STARTED" | "COMPLETED" | (string & {});
     timeframe: { from: number; to: number };
@@ -8001,227 +8001,243 @@ export const QueryObservabilityTelemetryResponse =
       granularity: Schema.Number,
       query: Schema.Struct({
         id: Schema.String,
-        adhoc: Schema.Boolean,
-        created: Schema.String,
-        createdBy: Schema.String,
-        description: Schema.Union([Schema.String, Schema.Null]),
-        name: Schema.String,
-        parameters: Schema.Struct({
-          calculations: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  operator: Schema.Union([
-                    Schema.Literals([
-                      "uniq",
-                      "count",
-                      "max",
-                      "min",
-                      "sum",
-                      "avg",
-                      "median",
-                      "p001",
-                      "p01",
-                      "p05",
-                      "p10",
-                      "p25",
-                      "p75",
-                      "p90",
-                      "p95",
-                      "p99",
-                      "p999",
-                      "stddev",
-                      "variance",
-                      "COUNT_DISTINCT",
-                      "COUNT",
-                      "MAX",
-                      "MIN",
-                      "SUM",
-                      "AVG",
-                      "MEDIAN",
-                      "P001",
-                      "P01",
-                      "P05",
-                      "P10",
-                      "P25",
-                      "P75",
-                      "P90",
-                      "P95",
-                      "P99",
-                      "P999",
-                      "STDDEV",
-                      "VARIANCE",
-                    ]),
+        adhoc: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        createdBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        description: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        parameters: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              calculations: Schema.optional(
+                Schema.Union([
+                  Schema.Array(
+                    Schema.Struct({
+                      operator: Schema.Union([
+                        Schema.Literals([
+                          "uniq",
+                          "count",
+                          "max",
+                          "min",
+                          "sum",
+                          "avg",
+                          "median",
+                          "p001",
+                          "p01",
+                          "p05",
+                          "p10",
+                          "p25",
+                          "p75",
+                          "p90",
+                          "p95",
+                          "p99",
+                          "p999",
+                          "stddev",
+                          "variance",
+                          "COUNT_DISTINCT",
+                          "COUNT",
+                          "MAX",
+                          "MIN",
+                          "SUM",
+                          "AVG",
+                          "MEDIAN",
+                          "P001",
+                          "P01",
+                          "P05",
+                          "P10",
+                          "P25",
+                          "P75",
+                          "P90",
+                          "P95",
+                          "P99",
+                          "P999",
+                          "STDDEV",
+                          "VARIANCE",
+                        ]),
+                        Schema.String,
+                      ]),
+                      alias: Schema.optional(
+                        Schema.Union([Schema.String, Schema.Null]),
+                      ),
+                      key: Schema.optional(
+                        Schema.Union([Schema.String, Schema.Null]),
+                      ),
+                      keyType: Schema.optional(
+                        Schema.Union([
+                          Schema.Union([
+                            Schema.Literals(["string", "number", "boolean"]),
+                            Schema.String,
+                          ]),
+                          Schema.Null,
+                        ]),
+                      ),
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              datasets: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
+              filterCombination: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["and", "or", "AND", "OR"]),
                     Schema.String,
                   ]),
-                  alias: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  key: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  keyType: Schema.optional(
+                  Schema.Null,
+                ]),
+              ),
+              filters: Schema.optional(
+                Schema.Union([
+                  Schema.Array(
                     Schema.Union([
-                      Schema.Union([
+                      Schema.Struct({
+                        filterCombination: Schema.Union([
+                          Schema.Literals(["and", "or", "AND", "OR"]),
+                          Schema.String,
+                        ]),
+                        filters: Schema.Array(Schema.Unknown),
+                        kind: Schema.Literal("group"),
+                      }),
+                      Schema.Struct({
+                        key: Schema.String,
+                        operation: Schema.Union([
+                          Schema.Literals([
+                            "includes",
+                            "not_includes",
+                            "starts_with",
+                            "ends_with",
+                            "regex",
+                            "exists",
+                            "is_null",
+                            "in",
+                            "not_in",
+                            "eq",
+                            "neq",
+                            "gt",
+                            "gte",
+                            "lt",
+                            "lte",
+                            "=",
+                            "!=",
+                            ">",
+                            ">=",
+                            "<",
+                            "<=",
+                            "INCLUDES",
+                            "DOES_NOT_INCLUDE",
+                            "MATCH_REGEX",
+                            "EXISTS",
+                            "DOES_NOT_EXIST",
+                            "IN",
+                            "NOT_IN",
+                            "STARTS_WITH",
+                            "ENDS_WITH",
+                          ]),
+                          Schema.String,
+                        ]),
+                        type: Schema.Union([
+                          Schema.Literals(["string", "number", "boolean"]),
+                          Schema.String,
+                        ]),
+                        kind: Schema.optional(
+                          Schema.Union([Schema.Literal("filter"), Schema.Null]),
+                        ),
+                        value: Schema.optional(
+                          Schema.Union([
+                            Schema.Union([
+                              Schema.String,
+                              Schema.Number,
+                              Schema.Boolean,
+                            ]),
+                            Schema.Null,
+                          ]),
+                        ),
+                      }),
+                    ]),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              groupBys: Schema.optional(
+                Schema.Union([
+                  Schema.Array(
+                    Schema.Struct({
+                      type: Schema.Union([
                         Schema.Literals(["string", "number", "boolean"]),
                         Schema.String,
                       ]),
-                      Schema.Null,
-                    ]),
+                      value: Schema.String,
+                    }),
                   ),
-                }),
+                  Schema.Null,
+                ]),
               ),
-              Schema.Null,
-            ]),
-          ),
-          datasets: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-          filterCombination: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["and", "or", "AND", "OR"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-          filters: Schema.optional(
-            Schema.Union([
-              Schema.Array(
+              havings: Schema.optional(
+                Schema.Union([
+                  Schema.Array(
+                    Schema.Struct({
+                      key: Schema.String,
+                      operation: Schema.Union([
+                        Schema.Literals([
+                          "eq",
+                          "neq",
+                          "gt",
+                          "gte",
+                          "lt",
+                          "lte",
+                        ]),
+                        Schema.String,
+                      ]),
+                      value: Schema.Number,
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              limit: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              needle: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    filterCombination: Schema.Union([
-                      Schema.Literals(["and", "or", "AND", "OR"]),
-                      Schema.String,
-                    ]),
-                    filters: Schema.Array(Schema.Unknown),
-                    kind: Schema.Literal("group"),
-                  }),
-                  Schema.Struct({
-                    key: Schema.String,
-                    operation: Schema.Union([
-                      Schema.Literals([
-                        "includes",
-                        "not_includes",
-                        "starts_with",
-                        "ends_with",
-                        "regex",
-                        "exists",
-                        "is_null",
-                        "in",
-                        "not_in",
-                        "eq",
-                        "neq",
-                        "gt",
-                        "gte",
-                        "lt",
-                        "lte",
-                        "=",
-                        "!=",
-                        ">",
-                        ">=",
-                        "<",
-                        "<=",
-                        "INCLUDES",
-                        "DOES_NOT_INCLUDE",
-                        "MATCH_REGEX",
-                        "EXISTS",
-                        "DOES_NOT_EXIST",
-                        "IN",
-                        "NOT_IN",
-                        "STARTS_WITH",
-                        "ENDS_WITH",
-                      ]),
-                      Schema.String,
-                    ]),
-                    type: Schema.Union([
-                      Schema.Literals(["string", "number", "boolean"]),
-                      Schema.String,
-                    ]),
-                    kind: Schema.optional(
-                      Schema.Union([Schema.Literal("filter"), Schema.Null]),
+                    value: Schema.Unknown,
+                    isRegex: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
-                    value: Schema.optional(
+                    matchCase: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }),
+                  Schema.Null,
+                ]),
+              ),
+              orderBy: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    value: Schema.String,
+                    order: Schema.optional(
                       Schema.Union([
                         Schema.Union([
+                          Schema.Literals(["asc", "desc"]),
                           Schema.String,
-                          Schema.Number,
-                          Schema.Boolean,
                         ]),
                         Schema.Null,
                       ]),
                     ),
                   }),
+                  Schema.Null,
                 ]),
               ),
-              Schema.Null,
-            ]),
-          ),
-          groupBys: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  type: Schema.Union([
-                    Schema.Literals(["string", "number", "boolean"]),
-                    Schema.String,
-                  ]),
-                  value: Schema.String,
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          havings: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  key: Schema.String,
-                  operation: Schema.Union([
-                    Schema.Literals(["eq", "neq", "gt", "gte", "lt", "lte"]),
-                    Schema.String,
-                  ]),
-                  value: Schema.Number,
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          limit: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          needle: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                value: Schema.Unknown,
-                isRegex: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                matchCase: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-          orderBy: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                value: Schema.String,
-                order: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["asc", "desc"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        updated: Schema.String,
-        updatedBy: Schema.String,
+            }),
+            Schema.Null,
+          ]),
+        ),
+        updated: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        updatedBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       }),
       status: Schema.Union([
         Schema.Literals(["STARTED", "COMPLETED"]),

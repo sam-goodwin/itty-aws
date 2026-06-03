@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Cloudflare WORKERS API
+  title: Cloudflare Workers API
   version: 0.0.0
 servers:
   - url: https://api.cloudflare.com/client/v4
@@ -8072,14 +8072,6 @@ paths:
                             type: string
                         required:
                           - id
-                          - adhoc
-                          - created
-                          - createdBy
-                          - description
-                          - name
-                          - parameters
-                          - updated
-                          - updatedBy
                         description: A saved query definition with its parameters, metadata, and
                           ownership information.
                       status:

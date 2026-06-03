@@ -17,6 +17,14 @@
       "run.created": { "optional": true },
       "run.environmentId": { "optional": true },
       "run.workspaceId": { "optional": true },
+      "run.query.adhoc": { "optional": true },
+      "run.query.created": { "optional": true },
+      "run.query.createdBy": { "optional": true },
+      "run.query.updated": { "optional": true },
+      "run.query.updatedBy": { "optional": true },
+      "run.query.description": { "optional": true },
+      "run.query.name": { "optional": true },
+      "run.query.parameters": { "optional": true },
       "events.statistics": {
         "optional": true,
         "definition": { "kind": "unknown" }
