@@ -2,12 +2,12 @@
 /**
  * Error Discovery Agent
  *
- * Uses the Claude Agent SDK to autonomously discover undocumented API errors
+ * Uses the selected agent provider to autonomously discover undocumented API errors
  * by making real requests to production APIs, then patches the SDK specs
  * to add the newly discovered error types.
  *
- * Authentication: uses your Claude Max plan via the Claude Code CLI auth.
- * Make sure you're logged in with `claude` before running.
+ * Select the provider with DISTILLED_AGENT=codex or DISTILLED_AGENT=claude.
+ * Make sure the selected provider is authenticated before running.
  *
  * Usage:
  *   bun scripts/error-discovery.ts <package-name>
