@@ -104,11 +104,7 @@ export function getConfiguredAgentProvider(): AgentProvider | undefined {
 function resolveAgentProvider(
   provider: AgentProvider | undefined,
 ): AgentProvider {
-  const resolved = provider ?? getConfiguredAgentProvider();
-  if (resolved) return resolved;
-  throw new Error(
-    `No agent provider selected. Set ${AGENT_PROVIDER_ENV}=codex or ${AGENT_PROVIDER_ENV}=claude, or pass provider to runAgent().`,
-  );
+  return provider ?? getConfiguredAgentProvider() ?? "claude";
 }
 
 function providerLabel(provider: AgentProvider): string {
@@ -474,7 +470,7 @@ function logCodexItem(
 export interface AgentOptions {
   /** The prompt to send to the agent. */
   readonly prompt: string;
-  /** Agent provider to use. Defaults to DISTILLED_AGENT when set. */
+  /** Agent provider to use. Defaults to DISTILLED_AGENT when set, otherwise Claude. */
   readonly provider?: AgentProvider;
   /** Working directory for the agent (defaults to process.cwd()). */
   readonly cwd?: string;
@@ -550,7 +546,8 @@ export class AgentStatsAccumulator {
  * from the run and optionally accumulates into a shared stats tracker.
  *
  * Select the provider with `DISTILLED_AGENT=codex` or `DISTILLED_AGENT=claude`,
- * or pass `provider` directly in `AgentOptions`. The provider is required.
+ * or pass `provider` directly in `AgentOptions`. Defaults to Claude for
+ * compatibility with existing scripts.
  */
 export const runAgent = (
   opts: AgentOptions,
@@ -735,6 +732,9 @@ async function runCodexAgent(opts: AgentOptions): Promise<AgentRunStats> {
       }
       if (event.type === "turn.failed") {
         failure = event.error.message;
+      }
+      if (event.type === "error") {
+        failure = event.message;
       }
       logCodexEvent(event);
     }
