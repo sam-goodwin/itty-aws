@@ -1079,7 +1079,7 @@ export const ConnectDevtoolBrowserRequest = /*@__PURE__*/ Schema.Struct({
 export type ConnectDevtoolBrowserResponse = unknown;
 
 export const ConnectDevtoolBrowserResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<ConnectDevtoolBrowserResponse>;
+  Schema.Unknown as unknown as Schema.Schema<ConnectDevtoolBrowserResponse>;
 
 export type ConnectDevtoolBrowserError = DefaultErrors;
 
@@ -1120,7 +1120,7 @@ export const LaunchDevtoolBrowserRequest = /*@__PURE__*/ Schema.Struct({
 export type LaunchDevtoolBrowserResponse = unknown;
 
 export const LaunchDevtoolBrowserResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<LaunchDevtoolBrowserResponse>;
+  Schema.Unknown as unknown as Schema.Schema<LaunchDevtoolBrowserResponse>;
 
 export type LaunchDevtoolBrowserError = DefaultErrors;
 
@@ -1306,7 +1306,7 @@ export const GetDevtoolBrowserPageRequest = /*@__PURE__*/ Schema.Struct({
 export type GetDevtoolBrowserPageResponse = unknown;
 
 export const GetDevtoolBrowserPageResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<GetDevtoolBrowserPageResponse>;
+  Schema.Unknown as unknown as Schema.Schema<GetDevtoolBrowserPageResponse>;
 
 export type GetDevtoolBrowserPageError = DefaultErrors;
 
@@ -3221,7 +3221,7 @@ export const CreatePdfRequest = /*@__PURE__*/ Schema.Struct({
 export type CreatePdfResponse = unknown;
 
 export const CreatePdfResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<CreatePdfResponse>;
+  Schema.Unknown as unknown as Schema.Schema<CreatePdfResponse>;
 
 export type CreatePdfError = DefaultErrors;
 

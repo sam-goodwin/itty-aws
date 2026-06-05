@@ -30,7 +30,7 @@ import { applyAllPatches } from "../src/json-patch.ts";
 const annotatePureExportConst = (definition: string) =>
   definition.replace(
     /^export const ([^=]+?)\s*=\s*/m,
-    "export const $1 = /*@__PURE__*/ ",
+    `export const $1 = ${definition.includes("(") ? "/*@__PURE__*/ " : ""}`,
   );
 
 /** Quote a property name if it's not a valid JS identifier. */
@@ -886,7 +886,7 @@ function generateInputSchema3(
       // properties as fields, instead of degenerating to an empty body.
       if (bodySchema.allOf && bodySchema.allOf.length > 0) {
         const mergedProps: Record<string, SchemaObject> = {
-          ...(bodySchema.properties ?? {}),
+          ...bodySchema.properties,
         };
         const mergedRequired: string[] = [...(bodySchema.required ?? [])];
         for (const subSchema of bodySchema.allOf) {

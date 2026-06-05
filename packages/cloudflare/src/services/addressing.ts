@@ -1668,7 +1668,7 @@ export const GetLoaDocumentRequest = /*@__PURE__*/ Schema.Struct({
 export type GetLoaDocumentResponse = unknown;
 
 export const GetLoaDocumentResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<GetLoaDocumentResponse>;
+  Schema.Unknown as unknown as Schema.Schema<GetLoaDocumentResponse>;
 
 export type GetLoaDocumentError =
   | DefaultErrors

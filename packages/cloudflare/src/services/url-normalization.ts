@@ -130,7 +130,7 @@ export const DeleteUrlNormalizationRequest = /*@__PURE__*/ Schema.Struct({
 export type DeleteUrlNormalizationResponse = unknown;
 
 export const DeleteUrlNormalizationResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteUrlNormalizationResponse>;
+  Schema.Unknown as unknown as Schema.Schema<DeleteUrlNormalizationResponse>;
 
 export type DeleteUrlNormalizationError = DefaultErrors;
 

@@ -2552,7 +2552,7 @@ export const GetBucketObjectRequest = /*@__PURE__*/ Schema.Struct({
 export type GetBucketObjectResponse = unknown;
 
 export const GetBucketObjectResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<GetBucketObjectResponse>;
+  Schema.Unknown as unknown as Schema.Schema<GetBucketObjectResponse>;
 
 export type GetBucketObjectError = DefaultErrors;
 
@@ -3484,7 +3484,7 @@ export const PutObjectRequest = /*@__PURE__*/ Schema.Struct({
 
 export type PutObjectResponse = unknown;
 
-export const PutObjectResponse = /*@__PURE__*/ Schema.Unknown.pipe(
+export const PutObjectResponse = Schema.Unknown.pipe(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<PutObjectResponse>;
 
@@ -3651,7 +3651,7 @@ export const DeleteObjectRequest = /*@__PURE__*/ Schema.Struct({
 
 export type DeleteObjectResponse = unknown;
 
-export const DeleteObjectResponse = /*@__PURE__*/ Schema.Unknown.pipe(
+export const DeleteObjectResponse = Schema.Unknown.pipe(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<DeleteObjectResponse>;
 

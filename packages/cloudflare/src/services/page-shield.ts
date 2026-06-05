@@ -918,7 +918,7 @@ export const DeletePolicyRequest = /*@__PURE__*/ Schema.Struct({
 export type DeletePolicyResponse = unknown;
 
 export const DeletePolicyResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeletePolicyResponse>;
+  Schema.Unknown as unknown as Schema.Schema<DeletePolicyResponse>;
 
 export type DeletePolicyError = DefaultErrors;
 

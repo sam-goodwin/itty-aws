@@ -1643,11 +1643,13 @@ function generateOperationSchemaAst(
     const responsePathPipe = responsePath
       ? `.pipe(T.ResponsePath("${responsePath}"))`
       : "";
+    const annotation =
+      schema.includes("(") || !!responsePath ? "/*@__PURE__*/ " : "";
 
     lines.push(`export type ${responseTypeName} = ${tsType};`);
     lines.push("");
     lines.push(
-      `export const ${responseTypeName} = /*@__PURE__*/ ${schema}${responsePathPipe} as unknown as Schema.Schema<${responseTypeName}>;`,
+      `export const ${responseTypeName} = ${annotation}${schema}${responsePathPipe} as unknown as Schema.Schema<${responseTypeName}>;`,
     );
     lines.push("");
   } else if (
@@ -1724,7 +1726,7 @@ function generateOperationSchemaAst(
     lines.push(`export type ${responseTypeName} = unknown;`);
     lines.push("");
     lines.push(
-      `export const ${responseTypeName} = /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<${responseTypeName}>;`,
+      `export const ${responseTypeName} = Schema.Unknown as unknown as Schema.Schema<${responseTypeName}>;`,
     );
     lines.push("");
   }
@@ -2145,7 +2147,7 @@ function generateAccountOrZoneOperationSchema(
     lines.push(`export type ${responseTypeName} = unknown;`);
     lines.push("");
     lines.push(
-      `export const ${responseTypeName} = /*@__PURE__*/ Schema.Unknown${responsePathPipe} as unknown as Schema.Schema<${responseTypeName}>;`,
+      `export const ${responseTypeName} = Schema.Unknown${responsePathPipe} as unknown as Schema.Schema<${responseTypeName}>;`,
     );
     lines.push("");
   }
@@ -2440,7 +2442,7 @@ function generateOperationSchema(
     lines.push(`export type ${responseTypeName} = unknown;`);
     lines.push("");
     lines.push(
-      `export const ${responseTypeName} = /*@__PURE__*/ Schema.Unknown${responsePathPipe} as unknown as Schema.Schema<${responseTypeName}>;`,
+      `export const ${responseTypeName} = Schema.Unknown${responsePathPipe} as unknown as Schema.Schema<${responseTypeName}>;`,
     );
     lines.push("");
   }

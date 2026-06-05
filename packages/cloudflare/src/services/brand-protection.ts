@@ -186,7 +186,7 @@ export const DeleteLogoRequest = /*@__PURE__*/ Schema.Struct({
 export type DeleteLogoResponse = unknown;
 
 export const DeleteLogoResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteLogoResponse>;
+  Schema.Unknown as unknown as Schema.Schema<DeleteLogoResponse>;
 
 export type DeleteLogoError = DefaultErrors;
 
@@ -479,7 +479,7 @@ export const CreateQueryRequest = /*@__PURE__*/ Schema.Struct({
 export type CreateQueryResponse = unknown;
 
 export const CreateQueryResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<CreateQueryResponse>;
+  Schema.Unknown as unknown as Schema.Schema<CreateQueryResponse>;
 
 export type CreateQueryError = DefaultErrors;
 
@@ -520,7 +520,7 @@ export const DeleteQueryRequest = /*@__PURE__*/ Schema.Struct({
 export type DeleteQueryResponse = unknown;
 
 export const DeleteQueryResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteQueryResponse>;
+  Schema.Unknown as unknown as Schema.Schema<DeleteQueryResponse>;
 
 export type DeleteQueryError = DefaultErrors;
 
@@ -557,7 +557,7 @@ export const BulkQueryRequest = /*@__PURE__*/ Schema.Struct({
 export type BulkQueryResponse = unknown;
 
 export const BulkQueryResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<BulkQueryResponse>;
+  Schema.Unknown as unknown as Schema.Schema<BulkQueryResponse>;
 
 export type BulkQueryError = DefaultErrors;
 

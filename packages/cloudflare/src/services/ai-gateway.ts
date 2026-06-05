@@ -7492,7 +7492,7 @@ export const RequestLogRequest = /*@__PURE__*/ Schema.Struct({
 export type RequestLogResponse = unknown;
 
 export const RequestLogResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<RequestLogResponse>;
+  Schema.Unknown as unknown as Schema.Schema<RequestLogResponse>;
 
 export type RequestLogError = DefaultErrors;
 
@@ -7527,7 +7527,7 @@ export const ResponseLogRequest = /*@__PURE__*/ Schema.Struct({
 export type ResponseLogResponse = unknown;
 
 export const ResponseLogResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<ResponseLogResponse>;
+  Schema.Unknown as unknown as Schema.Schema<ResponseLogResponse>;
 
 export type ResponseLogError = DefaultErrors;
 

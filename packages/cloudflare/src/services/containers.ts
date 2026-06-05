@@ -2309,10 +2309,9 @@ export const DeleteContainerApplicationRequest = /*@__PURE__*/ Schema.Struct({
 
 export type DeleteContainerApplicationResponse = unknown;
 
-export const DeleteContainerApplicationResponse =
-  /*@__PURE__*/ Schema.Unknown.pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<DeleteContainerApplicationResponse>;
+export const DeleteContainerApplicationResponse = Schema.Unknown.pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<DeleteContainerApplicationResponse>;
 
 export type DeleteContainerApplicationError =
   | DefaultErrors

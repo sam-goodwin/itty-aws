@@ -1187,7 +1187,7 @@ export const DeleteDirectoryServiceRequest = /*@__PURE__*/ Schema.Struct({
 export type DeleteDirectoryServiceResponse = unknown;
 
 export const DeleteDirectoryServiceResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteDirectoryServiceResponse>;
+  Schema.Unknown as unknown as Schema.Schema<DeleteDirectoryServiceResponse>;
 
 export type DeleteDirectoryServiceError = DefaultErrors | VpcServiceNotFound;
 

@@ -36,7 +36,7 @@ export const GetBinaryStorageRequest = /*@__PURE__*/ Schema.Struct({
 export type GetBinaryStorageResponse = unknown;
 
 export const GetBinaryStorageResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<GetBinaryStorageResponse>;
+  Schema.Unknown as unknown as Schema.Schema<GetBinaryStorageResponse>;
 
 export type GetBinaryStorageError = DefaultErrors;
 

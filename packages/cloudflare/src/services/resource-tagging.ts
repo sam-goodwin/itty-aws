@@ -1153,7 +1153,7 @@ export const DeleteAccountTagRequest = /*@__PURE__*/ Schema.Struct({
 export type DeleteAccountTagResponse = unknown;
 
 export const DeleteAccountTagResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteAccountTagResponse>;
+  Schema.Unknown as unknown as Schema.Schema<DeleteAccountTagResponse>;
 
 export type DeleteAccountTagError = DefaultErrors;
 
@@ -3063,7 +3063,7 @@ export const DeleteZoneTagRequest = /*@__PURE__*/ Schema.Struct({
 export type DeleteZoneTagResponse = unknown;
 
 export const DeleteZoneTagResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteZoneTagResponse>;
+  Schema.Unknown as unknown as Schema.Schema<DeleteZoneTagResponse>;
 
 export type DeleteZoneTagError = DefaultErrors;
 

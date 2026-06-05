@@ -822,7 +822,7 @@ export const DeletePipelineRequest = /*@__PURE__*/ Schema.Struct({
 export type DeletePipelineResponse = unknown;
 
 export const DeletePipelineResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeletePipelineResponse>;
+  Schema.Unknown as unknown as Schema.Schema<DeletePipelineResponse>;
 
 export type DeletePipelineError = DefaultErrors | PipelineNotExists;
 

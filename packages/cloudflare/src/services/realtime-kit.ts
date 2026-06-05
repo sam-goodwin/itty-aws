@@ -12083,7 +12083,7 @@ export const GenerateSummaryOfTranscriptsSessionRequest =
 export type GenerateSummaryOfTranscriptsSessionResponse = unknown;
 
 export const GenerateSummaryOfTranscriptsSessionResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<GenerateSummaryOfTranscriptsSessionResponse>;
+  Schema.Unknown as unknown as Schema.Schema<GenerateSummaryOfTranscriptsSessionResponse>;
 
 export type GenerateSummaryOfTranscriptsSessionError = DefaultErrors;
 
@@ -12135,7 +12135,7 @@ export const StartTrackRecordingRecordingRequest = /*@__PURE__*/ Schema.Struct({
 export type StartTrackRecordingRecordingResponse = unknown;
 
 export const StartTrackRecordingRecordingResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<StartTrackRecordingRecordingResponse>;
+  Schema.Unknown as unknown as Schema.Schema<StartTrackRecordingRecordingResponse>;
 
 export type StartTrackRecordingRecordingError = DefaultErrors;
 

@@ -75756,7 +75756,7 @@ export const DeleteAccessInfrastructureTargetRequest =
 export type DeleteAccessInfrastructureTargetResponse = unknown;
 
 export const DeleteAccessInfrastructureTargetResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteAccessInfrastructureTargetResponse>;
+  Schema.Unknown as unknown as Schema.Schema<DeleteAccessInfrastructureTargetResponse>;
 
 export type DeleteAccessInfrastructureTargetError = DefaultErrors;
 
@@ -75789,7 +75789,7 @@ export const BulkDeleteAccessInfrastructureTargetsRequest =
 export type BulkDeleteAccessInfrastructureTargetsResponse = unknown;
 
 export const BulkDeleteAccessInfrastructureTargetsResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<BulkDeleteAccessInfrastructureTargetsResponse>;
+  Schema.Unknown as unknown as Schema.Schema<BulkDeleteAccessInfrastructureTargetsResponse>;
 
 export type BulkDeleteAccessInfrastructureTargetsError = DefaultErrors;
 
@@ -97122,7 +97122,7 @@ export const GetDexCommandDownloadRequest = /*@__PURE__*/ Schema.Struct({
 export type GetDexCommandDownloadResponse = unknown;
 
 export const GetDexCommandDownloadResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<GetDexCommandDownloadResponse>;
+  Schema.Unknown as unknown as Schema.Schema<GetDexCommandDownloadResponse>;
 
 export type GetDexCommandDownloadError = DefaultErrors;
 
@@ -100762,7 +100762,7 @@ export const DeleteDlpDatasetRequest = /*@__PURE__*/ Schema.Struct({
 export type DeleteDlpDatasetResponse = unknown;
 
 export const DeleteDlpDatasetResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteDlpDatasetResponse>;
+  Schema.Unknown as unknown as Schema.Schema<DeleteDlpDatasetResponse>;
 
 export type DeleteDlpDatasetError = DefaultErrors;
 
@@ -141734,7 +141734,7 @@ export const GetPemAccessSamlCertificateRequest = /*@__PURE__*/ Schema.Struct({
 export type GetPemAccessSamlCertificateResponse = unknown;
 
 export const GetPemAccessSamlCertificateResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<GetPemAccessSamlCertificateResponse>;
+  Schema.Unknown as unknown as Schema.Schema<GetPemAccessSamlCertificateResponse>;
 
 export type GetPemAccessSamlCertificateError = DefaultErrors;
 
@@ -147908,7 +147908,7 @@ export const BulkDeleteV2AccessInfrastructureTargetsRequest =
 export type BulkDeleteV2AccessInfrastructureTargetsResponse = unknown;
 
 export const BulkDeleteV2AccessInfrastructureTargetsResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<BulkDeleteV2AccessInfrastructureTargetsResponse>;
+  Schema.Unknown as unknown as Schema.Schema<BulkDeleteV2AccessInfrastructureTargetsResponse>;
 
 export type BulkDeleteV2AccessInfrastructureTargetsError = DefaultErrors;
 

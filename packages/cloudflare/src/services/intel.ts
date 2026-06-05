@@ -2189,7 +2189,7 @@ export const DataIndicatorFeedRequest = /*@__PURE__*/ Schema.Struct({
 export type DataIndicatorFeedResponse = string;
 
 export const DataIndicatorFeedResponse =
-  /*@__PURE__*/ Schema.String as unknown as Schema.Schema<DataIndicatorFeedResponse>;
+  Schema.String as unknown as Schema.Schema<DataIndicatorFeedResponse>;
 
 export type DataIndicatorFeedError = DefaultErrors;
 

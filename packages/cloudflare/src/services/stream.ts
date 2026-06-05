@@ -560,7 +560,7 @@ export const GetCaptionLanguageVttRequest = /*@__PURE__*/ Schema.Struct({
 export type GetCaptionLanguageVttResponse = string;
 
 export const GetCaptionLanguageVttResponse =
-  /*@__PURE__*/ Schema.String as unknown as Schema.Schema<GetCaptionLanguageVttResponse>;
+  Schema.String as unknown as Schema.Schema<GetCaptionLanguageVttResponse>;
 
 export type GetCaptionLanguageVttError = DefaultErrors;
 
@@ -1470,7 +1470,7 @@ export const GetEmbedRequest = /*@__PURE__*/ Schema.Struct({
 export type GetEmbedResponse = string;
 
 export const GetEmbedResponse =
-  /*@__PURE__*/ Schema.String as unknown as Schema.Schema<GetEmbedResponse>;
+  Schema.String as unknown as Schema.Schema<GetEmbedResponse>;
 
 export type GetEmbedError = DefaultErrors;
 
@@ -1940,7 +1940,7 @@ export const DeleteLiveInputRequest = /*@__PURE__*/ Schema.Struct({
 export type DeleteLiveInputResponse = unknown;
 
 export const DeleteLiveInputResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteLiveInputResponse>;
+  Schema.Unknown as unknown as Schema.Schema<DeleteLiveInputResponse>;
 
 export type DeleteLiveInputError = DefaultErrors;
 
@@ -2145,7 +2145,7 @@ export const DeleteLiveInputOutputRequest = /*@__PURE__*/ Schema.Struct({
 export type DeleteLiveInputOutputResponse = unknown;
 
 export const DeleteLiveInputOutputResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteLiveInputOutputResponse>;
+  Schema.Unknown as unknown as Schema.Schema<DeleteLiveInputOutputResponse>;
 
 export type DeleteLiveInputOutputError = DefaultErrors;
 
@@ -2744,7 +2744,7 @@ export const CreateStreamRequest = /*@__PURE__*/ Schema.Struct({
 export type CreateStreamResponse = unknown;
 
 export const CreateStreamResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<CreateStreamResponse>;
+  Schema.Unknown as unknown as Schema.Schema<CreateStreamResponse>;
 
 export type CreateStreamError = DefaultErrors;
 
@@ -2778,7 +2778,7 @@ export const DeleteStreamRequest = /*@__PURE__*/ Schema.Struct({
 export type DeleteStreamResponse = unknown;
 
 export const DeleteStreamResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteStreamResponse>;
+  Schema.Unknown as unknown as Schema.Schema<DeleteStreamResponse>;
 
 export type DeleteStreamError = DefaultErrors;
 

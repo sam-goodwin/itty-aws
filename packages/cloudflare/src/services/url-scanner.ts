@@ -35,7 +35,7 @@ export const GetResponsRequest = /*@__PURE__*/ Schema.Struct({
 export type GetResponsResponse = string;
 
 export const GetResponsResponse =
-  /*@__PURE__*/ Schema.String as unknown as Schema.Schema<GetResponsResponse>;
+  Schema.String as unknown as Schema.Schema<GetResponsResponse>;
 
 export type GetResponsError = DefaultErrors;
 
@@ -3612,7 +3612,7 @@ export const DomScanRequest = /*@__PURE__*/ Schema.Struct({
 export type DomScanResponse = string;
 
 export const DomScanResponse =
-  /*@__PURE__*/ Schema.String as unknown as Schema.Schema<DomScanResponse>;
+  Schema.String as unknown as Schema.Schema<DomScanResponse>;
 
 export type DomScanError = DefaultErrors;
 
@@ -3835,7 +3835,7 @@ export const ScreenshotScanRequest = /*@__PURE__*/ Schema.Struct({
 export type ScreenshotScanResponse = unknown;
 
 export const ScreenshotScanResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<ScreenshotScanResponse>;
+  Schema.Unknown as unknown as Schema.Schema<ScreenshotScanResponse>;
 
 export type ScreenshotScanError = DefaultErrors;
 

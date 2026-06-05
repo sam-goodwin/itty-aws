@@ -273,7 +273,7 @@ export const GetRayidRequest = /*@__PURE__*/ Schema.Struct({
 export type GetRayidResponse = unknown;
 
 export const GetRayidResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<GetRayidResponse>;
+  Schema.Unknown as unknown as Schema.Schema<GetRayidResponse>;
 
 export type GetRayidError = DefaultErrors;
 
@@ -331,7 +331,7 @@ export const GetReceivedRequest = /*@__PURE__*/ Schema.Struct({
 export type GetReceivedResponse = unknown;
 
 export const GetReceivedResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<GetReceivedResponse>;
+  Schema.Unknown as unknown as Schema.Schema<GetReceivedResponse>;
 
 export type GetReceivedError = DefaultErrors;
 

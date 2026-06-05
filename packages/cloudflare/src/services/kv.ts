@@ -800,7 +800,7 @@ export const GetNamespaceValueRequest = /*@__PURE__*/ Schema.Struct({
 export type GetNamespaceValueResponse = unknown;
 
 export const GetNamespaceValueResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<GetNamespaceValueResponse>;
+  Schema.Unknown as unknown as Schema.Schema<GetNamespaceValueResponse>;
 
 export type GetNamespaceValueError =
   | DefaultErrors

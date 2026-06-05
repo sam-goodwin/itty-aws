@@ -15958,7 +15958,7 @@ export const GetDatasetRequest = /*@__PURE__*/ Schema.Struct({
 export type GetDatasetResponse = string;
 
 export const GetDatasetResponse =
-  /*@__PURE__*/ Schema.String as unknown as Schema.Schema<GetDatasetResponse>;
+  Schema.String as unknown as Schema.Schema<GetDatasetResponse>;
 
 export type GetDatasetError = DefaultErrors;
 

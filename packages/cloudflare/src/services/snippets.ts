@@ -35,7 +35,7 @@ export const GetContentRequest = /*@__PURE__*/ Schema.Struct({
 export type GetContentResponse = unknown;
 
 export const GetContentResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<GetContentResponse>;
+  Schema.Unknown as unknown as Schema.Schema<GetContentResponse>;
 
 export type GetContentError = DefaultErrors;
 

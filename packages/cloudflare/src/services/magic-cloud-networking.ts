@@ -7322,7 +7322,7 @@ export const ExportOnRampRequest = /*@__PURE__*/ Schema.Struct({
 export type ExportOnRampResponse = unknown;
 
 export const ExportOnRampResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<ExportOnRampResponse>;
+  Schema.Unknown as unknown as Schema.Schema<ExportOnRampResponse>;
 
 export type ExportOnRampError = DefaultErrors;
 
@@ -10521,7 +10521,7 @@ export const ExportResourceRequest = /*@__PURE__*/ Schema.Struct({
 export type ExportResourceResponse = unknown;
 
 export const ExportResourceResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<ExportResourceResponse>;
+  Schema.Unknown as unknown as Schema.Schema<ExportResourceResponse>;
 
 export type ExportResourceError = DefaultErrors;
 

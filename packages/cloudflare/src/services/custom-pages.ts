@@ -469,7 +469,7 @@ export const DeleteAssetForZoneRequest = /*@__PURE__*/ Schema.Struct({
 export type DeleteAssetResponse = unknown;
 
 export const DeleteAssetResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteAssetResponse>;
+  Schema.Unknown as unknown as Schema.Schema<DeleteAssetResponse>;
 
 export type DeleteAssetError = DefaultErrors;
 

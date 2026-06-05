@@ -502,7 +502,7 @@ export const DeleteCniRequest = /*@__PURE__*/ Schema.Struct({
 export type DeleteCniResponse = unknown;
 
 export const DeleteCniResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteCniResponse>;
+  Schema.Unknown as unknown as Schema.Schema<DeleteCniResponse>;
 
 export type DeleteCniError = DefaultErrors;
 
@@ -973,7 +973,7 @@ export const DeleteInterconnectRequest = /*@__PURE__*/ Schema.Struct({
 export type DeleteInterconnectResponse = unknown;
 
 export const DeleteInterconnectResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteInterconnectResponse>;
+  Schema.Unknown as unknown as Schema.Schema<DeleteInterconnectResponse>;
 
 export type DeleteInterconnectError = DefaultErrors;
 
@@ -1059,7 +1059,7 @@ export const LoaInterconnectRequest = /*@__PURE__*/ Schema.Struct({
 export type LoaInterconnectResponse = unknown;
 
 export const LoaInterconnectResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<LoaInterconnectResponse>;
+  Schema.Unknown as unknown as Schema.Schema<LoaInterconnectResponse>;
 
 export type LoaInterconnectError = DefaultErrors;
 

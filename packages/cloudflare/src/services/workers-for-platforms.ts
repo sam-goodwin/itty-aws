@@ -3118,7 +3118,7 @@ export const GetDispatchNamespaceScriptContentRequest =
 export type GetDispatchNamespaceScriptContentResponse = unknown;
 
 export const GetDispatchNamespaceScriptContentResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<GetDispatchNamespaceScriptContentResponse>;
+  Schema.Unknown as unknown as Schema.Schema<GetDispatchNamespaceScriptContentResponse>;
 
 export type GetDispatchNamespaceScriptContentError = DefaultErrors;
 

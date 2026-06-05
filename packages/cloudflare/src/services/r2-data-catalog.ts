@@ -1193,7 +1193,7 @@ export const DisableR2DataCatalogRequest = /*@__PURE__*/ Schema.Struct({
 export type DisableR2DataCatalogResponse = unknown;
 
 export const DisableR2DataCatalogResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DisableR2DataCatalogResponse>;
+  Schema.Unknown as unknown as Schema.Schema<DisableR2DataCatalogResponse>;
 
 export type DisableR2DataCatalogError =
   | DefaultErrors

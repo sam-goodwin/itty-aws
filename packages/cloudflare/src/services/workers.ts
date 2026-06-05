@@ -9307,7 +9307,7 @@ export const GetScriptRequest = /*@__PURE__*/ Schema.Struct({
 export type GetScriptResponse = string;
 
 export const GetScriptResponse =
-  /*@__PURE__*/ Schema.String as unknown as Schema.Schema<GetScriptResponse>;
+  Schema.String as unknown as Schema.Schema<GetScriptResponse>;
 
 export type GetScriptError = DefaultErrors | WorkerNotFound | InvalidRoute;
 
@@ -11718,7 +11718,7 @@ export const GetScriptContentRequest = /*@__PURE__*/ Schema.Struct({
 export type GetScriptContentResponse = unknown;
 
 export const GetScriptContentResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<GetScriptContentResponse>;
+  Schema.Unknown as unknown as Schema.Schema<GetScriptContentResponse>;
 
 export type GetScriptContentError = DefaultErrors | WorkerNotFound;
 
@@ -20737,7 +20737,7 @@ export const DeleteSubdomainRequest = /*@__PURE__*/ Schema.Struct({
 export type DeleteSubdomainResponse = unknown;
 
 export const DeleteSubdomainResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteSubdomainResponse>;
+  Schema.Unknown as unknown as Schema.Schema<DeleteSubdomainResponse>;
 
 export type DeleteSubdomainError = DefaultErrors | InvalidRoute;
 

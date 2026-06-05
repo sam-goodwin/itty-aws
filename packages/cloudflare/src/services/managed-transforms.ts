@@ -224,7 +224,7 @@ export const DeleteManagedTransformRequest = /*@__PURE__*/ Schema.Struct({
 export type DeleteManagedTransformResponse = unknown;
 
 export const DeleteManagedTransformResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteManagedTransformResponse>;
+  Schema.Unknown as unknown as Schema.Schema<DeleteManagedTransformResponse>;
 
 export type DeleteManagedTransformError = DefaultErrors;
 

@@ -50433,7 +50433,7 @@ export const DeleteRulesetForZoneRequest = /*@__PURE__*/ Schema.Struct({
 export type DeleteRulesetResponse = unknown;
 
 export const DeleteRulesetResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteRulesetResponse>;
+  Schema.Unknown as unknown as Schema.Schema<DeleteRulesetResponse>;
 
 export type DeleteRulesetError = DefaultErrors;
 
@@ -54929,7 +54929,7 @@ export const DeleteVersionForZoneRequest = /*@__PURE__*/ Schema.Struct({
 export type DeleteVersionResponse = unknown;
 
 export const DeleteVersionResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteVersionResponse>;
+  Schema.Unknown as unknown as Schema.Schema<DeleteVersionResponse>;
 
 export type DeleteVersionError = DefaultErrors;
 

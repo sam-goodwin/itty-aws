@@ -8755,7 +8755,7 @@ export const StopPcapRequest = /*@__PURE__*/ Schema.Struct({
 export type StopPcapResponse = unknown;
 
 export const StopPcapResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<StopPcapResponse>;
+  Schema.Unknown as unknown as Schema.Schema<StopPcapResponse>;
 
 export type StopPcapError = DefaultErrors;
 
@@ -8793,7 +8793,7 @@ export const GetPcapDownloadRequest = /*@__PURE__*/ Schema.Struct({
 export type GetPcapDownloadResponse = unknown;
 
 export const GetPcapDownloadResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<GetPcapDownloadResponse>;
+  Schema.Unknown as unknown as Schema.Schema<GetPcapDownloadResponse>;
 
 export type GetPcapDownloadError = DefaultErrors;
 
@@ -8963,7 +8963,7 @@ export const DeletePcapOwnershipRequest = /*@__PURE__*/ Schema.Struct({
 export type DeletePcapOwnershipResponse = unknown;
 
 export const DeletePcapOwnershipResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeletePcapOwnershipResponse>;
+  Schema.Unknown as unknown as Schema.Schema<DeletePcapOwnershipResponse>;
 
 export type DeletePcapOwnershipError = DefaultErrors;
 

@@ -1222,7 +1222,7 @@ export const PutOrganizationProfileRequest = /*@__PURE__*/ Schema.Struct({
 export type PutOrganizationProfileResponse = unknown;
 
 export const PutOrganizationProfileResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<PutOrganizationProfileResponse>;
+  Schema.Unknown as unknown as Schema.Schema<PutOrganizationProfileResponse>;
 
 export type PutOrganizationProfileError = DefaultErrors;
 

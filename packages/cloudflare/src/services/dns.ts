@@ -24952,7 +24952,7 @@ export const ExportRecordRequest = /*@__PURE__*/ Schema.Struct({
 export type ExportRecordResponse = string;
 
 export const ExportRecordResponse =
-  /*@__PURE__*/ Schema.String as unknown as Schema.Schema<ExportRecordResponse>;
+  Schema.String as unknown as Schema.Schema<ExportRecordResponse>;
 
 export type ExportRecordError = DefaultErrors;
 

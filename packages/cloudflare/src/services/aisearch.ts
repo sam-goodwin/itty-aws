@@ -14446,7 +14446,7 @@ export const DownloadNamespaceInstanceItemRequest = /*@__PURE__*/ Schema.Struct(
 export type DownloadNamespaceInstanceItemResponse = unknown;
 
 export const DownloadNamespaceInstanceItemResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DownloadNamespaceInstanceItemResponse>;
+  Schema.Unknown as unknown as Schema.Schema<DownloadNamespaceInstanceItemResponse>;
 
 export type DownloadNamespaceInstanceItemError = DefaultErrors;
 

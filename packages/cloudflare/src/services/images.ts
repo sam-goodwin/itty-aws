@@ -460,7 +460,7 @@ export const GetV1BlobRequest = /*@__PURE__*/ Schema.Struct({
 export type GetV1BlobResponse = unknown;
 
 export const GetV1BlobResponse =
-  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<GetV1BlobResponse>;
+  Schema.Unknown as unknown as Schema.Schema<GetV1BlobResponse>;
 
 export type GetV1BlobError =
   | DefaultErrors
