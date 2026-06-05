@@ -10,7 +10,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const CopilotSettingsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -23,7 +23,7 @@ export type CopilotSettingsCreateOrUpdateInput =
 
 // Output Schema
 export const CopilotSettingsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -52,13 +52,13 @@ export type CopilotSettingsCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const CopilotSettingsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CopilotSettingsCreateOrUpdateInput,
     outputSchema: CopilotSettingsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const CopilotSettingsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -69,8 +69,7 @@ export const CopilotSettingsDeleteInput =
 export type CopilotSettingsDeleteInput = typeof CopilotSettingsDeleteInput.Type;
 
 // Output Schema
-export const CopilotSettingsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CopilotSettingsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type CopilotSettingsDeleteOutput =
   typeof CopilotSettingsDeleteOutput.Type;
 
@@ -80,15 +79,13 @@ export type CopilotSettingsDeleteOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const CopilotSettingsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CopilotSettingsDeleteInput,
-    outputSchema: CopilotSettingsDeleteOutput,
-  }),
-);
+export const CopilotSettingsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CopilotSettingsDeleteInput,
+  outputSchema: CopilotSettingsDeleteOutput,
+}));
 // Input Schema
 export const CopilotSettingsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -100,7 +97,7 @@ export type CopilotSettingsGetInput = typeof CopilotSettingsGetInput.Type;
 
 // Output Schema
 export const CopilotSettingsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -127,13 +124,13 @@ export type CopilotSettingsGetOutput = typeof CopilotSettingsGetOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const CopilotSettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CopilotSettingsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: CopilotSettingsGetInput,
   outputSchema: CopilotSettingsGetOutput,
 }));
 // Input Schema
 export const CopilotSettingsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -145,7 +142,7 @@ export type CopilotSettingsUpdateInput = typeof CopilotSettingsUpdateInput.Type;
 
 // Output Schema
 export const CopilotSettingsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -173,14 +170,12 @@ export type CopilotSettingsUpdateOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const CopilotSettingsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CopilotSettingsUpdateInput,
-    outputSchema: CopilotSettingsUpdateOutput,
-  }),
-);
+export const CopilotSettingsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CopilotSettingsUpdateInput,
+  outputSchema: CopilotSettingsUpdateOutput,
+}));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -191,7 +186,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -222,7 +217,7 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));

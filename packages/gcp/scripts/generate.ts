@@ -18,7 +18,7 @@ import * as path from "node:path";
 const annotatePureExportConst = (definition: string) =>
   definition.replace(
     /^export const ([^=]+?)\s*=\s*/m,
-    "export const $1 = /*@__PURE__*/ /*#__PURE__*/ ",
+    "export const $1 = /*@__PURE__*/ ",
   );
 
 // =============================================================================
@@ -589,11 +589,11 @@ function generateSchema(
     // the cycle; non-recursive ones can use `Schema.Struct` directly.
     if (isRecursive) {
       lines.push(
-        `export const ${name}: Schema.Schema<${name}> = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({`,
+        `export const ${name}: Schema.Schema<${name}> = /*@__PURE__*/ Schema.suspend(() => Schema.Struct({`,
       );
     } else {
       lines.push(
-        `export const ${name}: Schema.Schema<${name}> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({`,
+        `export const ${name}: Schema.Schema<${name}> = /*@__PURE__*/ Schema.Struct({`,
       );
     }
     for (const [propName, propSchema] of Object.entries(schema.properties)) {
@@ -620,9 +620,7 @@ function generateSchema(
       // generated `interface Name` mirrors the struct fields), so the
       // explicit type annotation on `export const` is enough — no cast
       // needed.
-      lines.push(
-        `}).annotate({ identifier: ${JSON.stringify(name)} });`,
-      );
+      lines.push(`}).annotate({ identifier: ${JSON.stringify(name)} });`);
     }
   } else if (schema.type === "object" && schema.additionalProperties) {
     // Map type
@@ -638,21 +636,19 @@ function generateSchema(
     );
     lines.push(`export type ${name} = Record<string, ${valType}>;`);
     lines.push(
-      `export const ${name}: Schema.Schema<${name}> = /*@__PURE__*/ /*#__PURE__*/ Schema.Record(Schema.String, ${valSchema}) as any as Schema.Schema<${name}>;`,
+      `export const ${name}: Schema.Schema<${name}> = /*@__PURE__*/ Schema.Record(Schema.String, ${valSchema}) as any as Schema.Schema<${name}>;`,
     );
   } else if (schema.enum) {
     // Enum type - open union
     const literals = schema.enum.map((v) => JSON.stringify(v)).join(" | ");
     lines.push(`export type ${name} = ${literals} | (string & {});`);
-    lines.push(
-      `export const ${name} = /*@__PURE__*/ /*#__PURE__*/ Schema.String;`,
-    );
+    lines.push(`export const ${name} = /*@__PURE__*/ Schema.String;`);
   } else {
     // Simple type alias
     const tsType = schemaTypeToTs(schema);
     lines.push(`export type ${name} = ${tsType};`);
     lines.push(
-      `export const ${name} = /*@__PURE__*/ /*#__PURE__*/ ${schemaTypeToSchemaExpr(schema)};`,
+      `export const ${name} = /*@__PURE__*/ ${schemaTypeToSchemaExpr(schema)};`,
     );
   }
 
@@ -1009,9 +1005,7 @@ function generateOperation(
   lines.push("");
 
   // Generate request schema
-  lines.push(
-    `export const ${inputName} = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({`,
-  );
+  lines.push(`export const ${inputName} = /*@__PURE__*/ Schema.Struct({`);
   for (const [paramName, param] of opParams) {
     const schemaExpr = paramTypeToSchemaExpr(param);
     const traitPipe =
@@ -1044,12 +1038,12 @@ function generateOperation(
   if (resolvedResponseRef) {
     lines.push(`export type ${outputName} = ${resolvedResponseRef};`);
     lines.push(
-      `export const ${outputName} = /*@__PURE__*/ /*#__PURE__*/ ${resolvedResponseRef};`,
+      `export const ${outputName} = /*@__PURE__*/ ${resolvedResponseRef};`,
     );
   } else {
     lines.push(`export interface ${outputName} {}`);
     lines.push(
-      `export const ${outputName}: Schema.Schema<${outputName}> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}) as any as Schema.Schema<${outputName}>;`,
+      `export const ${outputName}: Schema.Schema<${outputName}> = /*@__PURE__*/ Schema.Struct({}) as any as Schema.Schema<${outputName}>;`,
     );
   }
   lines.push("");
@@ -1080,7 +1074,7 @@ function generateOperation(
 
   if (isPaginated) {
     lines.push(
-      `export const ${fnName}: API.PaginatedOperationMethod<${inputName}, ${outputName}, ${errorTypeName}, Credentials | HttpClient.HttpClient> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({`,
+      `export const ${fnName}: API.PaginatedOperationMethod<${inputName}, ${outputName}, ${errorTypeName}, Credentials | HttpClient.HttpClient> = /*@__PURE__*/ API.makePaginated(() => ({`,
     );
     lines.push(`  input: ${inputName},`);
     lines.push(`  output: ${outputName},`);
@@ -1095,7 +1089,7 @@ function generateOperation(
     lines.push(`}));`);
   } else {
     lines.push(
-      `export const ${fnName}: API.OperationMethod<${inputName}, ${outputName}, ${errorTypeName}, Credentials | HttpClient.HttpClient> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({`,
+      `export const ${fnName}: API.OperationMethod<${inputName}, ${outputName}, ${errorTypeName}, Credentials | HttpClient.HttpClient> = /*@__PURE__*/ API.make(() => ({`,
     );
     lines.push(`  input: ${inputName},`);
     lines.push(`  output: ${outputName},`);

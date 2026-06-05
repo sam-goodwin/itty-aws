@@ -8,10 +8,10 @@
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
-import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 import { SensitiveString } from "../sensitive.ts";
+import * as T from "../traits.ts";
 
 // =============================================================================
 // Hostname
@@ -23,7 +23,7 @@ export interface GetHostnameRequest {
   zoneId: string;
 }
 
-export const GetHostnameRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetHostnameRequest = /*@__PURE__*/ Schema.Struct({
   hostname: Schema.String.pipe(T.HttpPath("hostname")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
 }).pipe(
@@ -82,7 +82,7 @@ export interface GetHostnameResponse {
   updatedAt?: string | null;
 }
 
-export const GetHostnameResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetHostnameResponse = /*@__PURE__*/ Schema.Struct({
   certId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   certStatus: Schema.optional(
     Schema.Union([
@@ -159,7 +159,7 @@ export const getHostname: API.OperationMethod<
   GetHostnameResponse,
   GetHostnameError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetHostnameRequest,
   output: GetHostnameResponse,
   errors: [],
@@ -172,7 +172,7 @@ export interface PutHostnameRequest {
   config: { certId?: string; enabled?: boolean | null; hostname?: string }[];
 }
 
-export const PutHostnameRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PutHostnameRequest = /*@__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   config: Schema.Array(
     Schema.Struct({
@@ -233,7 +233,7 @@ export interface PutHostnameResponse {
   }[];
 }
 
-export const PutHostnameResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PutHostnameResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       certId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -318,7 +318,7 @@ export const putHostname: API.PaginatedOperationMethod<
   PutHostnameResponse,
   PutHostnameError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: PutHostnameRequest,
   output: PutHostnameResponse,
   errors: [],
@@ -339,7 +339,7 @@ export interface GetHostnameCertificateRequest {
 }
 
 export const GetHostnameCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     certificateId: Schema.String.pipe(T.HttpPath("certificateId")),
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   }).pipe(
@@ -378,7 +378,7 @@ export interface GetHostnameCertificateResponse {
 }
 
 export const GetHostnameCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -427,7 +427,7 @@ export const getHostnameCertificate: API.OperationMethod<
   GetHostnameCertificateResponse,
   GetHostnameCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetHostnameCertificateRequest,
   output: GetHostnameCertificateResponse,
   errors: [],
@@ -439,7 +439,7 @@ export interface ListHostnameCertificatesRequest {
 }
 
 export const ListHostnameCertificatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   }).pipe(
     T.Http({
@@ -471,7 +471,7 @@ export interface ListHostnameCertificatesResponse {
 }
 
 export const ListHostnameCertificatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     result: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -524,7 +524,7 @@ export const listHostnameCertificates: API.PaginatedOperationMethod<
   ListHostnameCertificatesResponse,
   ListHostnameCertificatesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHostnameCertificatesRequest,
   output: ListHostnameCertificatesResponse,
   errors: [],
@@ -544,7 +544,7 @@ export interface CreateHostnameCertificateRequest {
 }
 
 export const CreateHostnameCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     certificate: Schema.String,
     privateKey: Schema.String,
@@ -588,7 +588,7 @@ export interface CreateHostnameCertificateResponse {
 }
 
 export const CreateHostnameCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -637,7 +637,7 @@ export const createHostnameCertificate: API.OperationMethod<
   CreateHostnameCertificateResponse,
   CreateHostnameCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateHostnameCertificateRequest,
   output: CreateHostnameCertificateResponse,
   errors: [],
@@ -650,7 +650,7 @@ export interface DeleteHostnameCertificateRequest {
 }
 
 export const DeleteHostnameCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     certificateId: Schema.String.pipe(T.HttpPath("certificateId")),
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   }).pipe(
@@ -689,7 +689,7 @@ export interface DeleteHostnameCertificateResponse {
 }
 
 export const DeleteHostnameCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -738,7 +738,7 @@ export const deleteHostnameCertificate: API.OperationMethod<
   DeleteHostnameCertificateResponse,
   DeleteHostnameCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteHostnameCertificateRequest,
   output: DeleteHostnameCertificateResponse,
   errors: [],
@@ -755,7 +755,7 @@ export interface GetOriginTlsClientAuthRequest {
 }
 
 export const GetOriginTlsClientAuthRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     certificateId: Schema.String.pipe(T.HttpPath("certificateId")),
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   }).pipe(
@@ -796,7 +796,7 @@ export interface GetOriginTlsClientAuthResponse {
 }
 
 export const GetOriginTlsClientAuthResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -847,7 +847,7 @@ export const getOriginTlsClientAuth: API.OperationMethod<
   GetOriginTlsClientAuthResponse,
   GetOriginTlsClientAuthError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOriginTlsClientAuthRequest,
   output: GetOriginTlsClientAuthResponse,
   errors: [],
@@ -859,7 +859,7 @@ export interface ListOriginTlsClientAuthsRequest {
 }
 
 export const ListOriginTlsClientAuthsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   }).pipe(
     T.Http({ method: "GET", path: "/zones/{zone_id}/origin_tls_client_auth" }),
@@ -889,7 +889,7 @@ export interface ListOriginTlsClientAuthsResponse {
 }
 
 export const ListOriginTlsClientAuthsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     result: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -944,7 +944,7 @@ export const listOriginTlsClientAuths: API.PaginatedOperationMethod<
   ListOriginTlsClientAuthsResponse,
   ListOriginTlsClientAuthsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOriginTlsClientAuthsRequest,
   output: ListOriginTlsClientAuthsResponse,
   errors: [],
@@ -964,7 +964,7 @@ export interface CreateOriginTlsClientAuthRequest {
 }
 
 export const CreateOriginTlsClientAuthRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     certificate: Schema.String,
     privateKey: Schema.String,
@@ -1007,7 +1007,7 @@ export interface CreateOriginTlsClientAuthResponse {
 }
 
 export const CreateOriginTlsClientAuthResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1058,7 +1058,7 @@ export const createOriginTlsClientAuth: API.OperationMethod<
   CreateOriginTlsClientAuthResponse,
   CreateOriginTlsClientAuthError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOriginTlsClientAuthRequest,
   output: CreateOriginTlsClientAuthResponse,
   errors: [],
@@ -1071,7 +1071,7 @@ export interface DeleteOriginTlsClientAuthRequest {
 }
 
 export const DeleteOriginTlsClientAuthRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     certificateId: Schema.String.pipe(T.HttpPath("certificateId")),
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   }).pipe(
@@ -1112,7 +1112,7 @@ export interface DeleteOriginTlsClientAuthResponse {
 }
 
 export const DeleteOriginTlsClientAuthResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1163,7 +1163,7 @@ export const deleteOriginTlsClientAuth: API.OperationMethod<
   DeleteOriginTlsClientAuthResponse,
   DeleteOriginTlsClientAuthError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOriginTlsClientAuthRequest,
   output: DeleteOriginTlsClientAuthResponse,
   errors: [],
@@ -1178,7 +1178,7 @@ export interface GetSettingRequest {
   zoneId: string;
 }
 
-export const GetSettingRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetSettingRequest = /*@__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
 }).pipe(
   T.Http({
@@ -1192,7 +1192,7 @@ export interface GetSettingResponse {
   enabled?: boolean | null;
 }
 
-export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetSettingResponse = /*@__PURE__*/ Schema.Struct({
   enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
 }).pipe(
   T.ResponsePath("result"),
@@ -1205,7 +1205,7 @@ export const getSetting: API.OperationMethod<
   GetSettingResponse,
   GetSettingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSettingRequest,
   output: GetSettingResponse,
   errors: [],
@@ -1218,7 +1218,7 @@ export interface PutSettingRequest {
   enabled: boolean;
 }
 
-export const PutSettingRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PutSettingRequest = /*@__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   enabled: Schema.Boolean,
 }).pipe(
@@ -1233,7 +1233,7 @@ export interface PutSettingResponse {
   enabled?: boolean | null;
 }
 
-export const PutSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PutSettingResponse = /*@__PURE__*/ Schema.Struct({
   enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
 }).pipe(
   T.ResponsePath("result"),
@@ -1246,7 +1246,7 @@ export const putSetting: API.OperationMethod<
   PutSettingResponse,
   PutSettingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutSettingRequest,
   output: PutSettingResponse,
   errors: [],
@@ -1263,7 +1263,7 @@ export interface GetZoneCertificateRequest {
 }
 
 export const GetZoneCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     certificateId: Schema.String.pipe(T.HttpPath("certificateId")),
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   }).pipe(
@@ -1304,7 +1304,7 @@ export interface GetZoneCertificateResponse {
 }
 
 export const GetZoneCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1355,7 +1355,7 @@ export const getZoneCertificate: API.OperationMethod<
   GetZoneCertificateResponse,
   GetZoneCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetZoneCertificateRequest,
   output: GetZoneCertificateResponse,
   errors: [],
@@ -1367,7 +1367,7 @@ export interface ListZoneCertificatesRequest {
 }
 
 export const ListZoneCertificatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   }).pipe(
     T.Http({ method: "GET", path: "/zones/{zone_id}/origin_tls_client_auth" }),
@@ -1397,7 +1397,7 @@ export interface ListZoneCertificatesResponse {
 }
 
 export const ListZoneCertificatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     result: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1452,7 +1452,7 @@ export const listZoneCertificates: API.PaginatedOperationMethod<
   ListZoneCertificatesResponse,
   ListZoneCertificatesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListZoneCertificatesRequest,
   output: ListZoneCertificatesResponse,
   errors: [],
@@ -1472,7 +1472,7 @@ export interface CreateZoneCertificateRequest {
 }
 
 export const CreateZoneCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     certificate: Schema.String,
     privateKey: Schema.String,
@@ -1515,7 +1515,7 @@ export interface CreateZoneCertificateResponse {
 }
 
 export const CreateZoneCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1566,7 +1566,7 @@ export const createZoneCertificate: API.OperationMethod<
   CreateZoneCertificateResponse,
   CreateZoneCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateZoneCertificateRequest,
   output: CreateZoneCertificateResponse,
   errors: [],
@@ -1579,7 +1579,7 @@ export interface DeleteZoneCertificateRequest {
 }
 
 export const DeleteZoneCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     certificateId: Schema.String.pipe(T.HttpPath("certificateId")),
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   }).pipe(
@@ -1620,7 +1620,7 @@ export interface DeleteZoneCertificateResponse {
 }
 
 export const DeleteZoneCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1671,7 +1671,7 @@ export const deleteZoneCertificate: API.OperationMethod<
   DeleteZoneCertificateResponse,
   DeleteZoneCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteZoneCertificateRequest,
   output: DeleteZoneCertificateResponse,
   errors: [],

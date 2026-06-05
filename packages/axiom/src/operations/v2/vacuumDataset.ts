@@ -3,17 +3,17 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
-export const VacuumDatasetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VacuumDatasetInput = /*@__PURE__*/ Schema.Struct({
   dataset_id: Schema.String.pipe(T.PathParam()),
 }).pipe(T.Http({ method: "POST", path: "/v2/datasets/{dataset_id}/vacuum" }));
 export type VacuumDatasetInput = typeof VacuumDatasetInput.Type;
 
 // Output Schema
-export const VacuumDatasetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VacuumDatasetOutput = /*@__PURE__*/ Schema.Void;
 export type VacuumDatasetOutput = typeof VacuumDatasetOutput.Type;
 
 // The operation
-export const vacuumDataset = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const vacuumDataset = /*@__PURE__*/ API.make(() => ({
   inputSchema: VacuumDatasetInput,
   outputSchema: VacuumDatasetOutput,
 }));

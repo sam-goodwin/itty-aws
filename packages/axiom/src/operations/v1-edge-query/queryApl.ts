@@ -3,7 +3,7 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
-export const QueryAplInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueryAplInput = /*@__PURE__*/ Schema.Struct({
   format: Schema.Literals(["legacy", "tabular", "tabular-rows"]),
   nocache: Schema.optional(Schema.Boolean),
   saveAsKind: Schema.optional(Schema.String),
@@ -67,7 +67,7 @@ export const QueryAplInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type QueryAplInput = typeof QueryAplInput.Type;
 
 // Output Schema
-export const QueryAplOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+export const QueryAplOutput = /*@__PURE__*/ Schema.Unknown;
 export type QueryAplOutput = typeof QueryAplOutput.Type;
 
 // The operation
@@ -78,7 +78,7 @@ export type QueryAplOutput = typeof QueryAplOutput.Type;
  * @param apl-source-id - contains the id of the source, for example dashboard_id
  * @param totals - Include a totals table (only supported in MetricsDB)
  */
-export const queryApl = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const queryApl = /*@__PURE__*/ API.make(() => ({
   inputSchema: QueryAplInput,
   outputSchema: QueryAplOutput,
 }));

@@ -1,16 +1,16 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
-import * as T from "../../traits.ts";
 import { Forbidden } from "../../errors.ts";
+import * as T from "../../traits.ts";
 
 // Input Schema
-export const GetDatasetsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(T.Http({ method: "GET", path: "/v2/datasets" }));
+export const GetDatasetsInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({ method: "GET", path: "/v2/datasets" }),
+);
 export type GetDatasetsInput = typeof GetDatasetsInput.Type;
 
 // Output Schema
-export const GetDatasetsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const GetDatasetsOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     canWrite: Schema.optional(Schema.Boolean),
     created: Schema.String,
@@ -37,7 +37,7 @@ export type GetDatasetsOutput = typeof GetDatasetsOutput.Type;
 /**
  * Get list of datasets
  */
-export const getDatasets = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getDatasets = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetDatasetsInput,
   outputSchema: GetDatasetsOutput,
   errors: [Forbidden] as const,

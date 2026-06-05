@@ -8,9 +8,9 @@
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
-import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
+import * as T from "../traits.ts";
 
 // =============================================================================
 // Configuration
@@ -23,7 +23,7 @@ export interface GetConfigurationRequest {
 }
 
 export const GetConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configId: Schema.String.pipe(T.HttpPath("configId")),
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   }).pipe(
@@ -79,7 +79,7 @@ export interface GetConfigurationResponse {
 }
 
 export const GetConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     createdAt: Schema.String,
     credentials: Schema.Struct({
@@ -150,7 +150,7 @@ export const getConfiguration: API.OperationMethod<
   GetConfigurationResponse,
   GetConfigurationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConfigurationRequest,
   output: GetConfigurationResponse,
   errors: [],
@@ -164,7 +164,7 @@ export interface ListConfigurationsRequest {
 }
 
 export const ListConfigurationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
     perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
@@ -225,7 +225,7 @@ export interface ListConfigurationsResponse {
 }
 
 export const ListConfigurationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     result: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -318,7 +318,7 @@ export const listConfigurations: API.PaginatedOperationMethod<
   ListConfigurationsResponse,
   ListConfigurationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfigurationsRequest,
   output: ListConfigurationsResponse,
   errors: [],
@@ -380,7 +380,7 @@ export interface CreateConfigurationRequest {
 }
 
 export const CreateConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     credentials: Schema.Struct({
       keys: Schema.Array(
@@ -485,7 +485,7 @@ export interface CreateConfigurationResponse {
 }
 
 export const CreateConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     createdAt: Schema.String,
     credentials: Schema.Struct({
@@ -556,7 +556,7 @@ export const createConfiguration: API.OperationMethod<
   CreateConfigurationResponse,
   CreateConfigurationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConfigurationRequest,
   output: CreateConfigurationResponse,
   errors: [],
@@ -575,7 +575,7 @@ export interface PatchConfigurationRequest {
 }
 
 export const PatchConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configId: Schema.String.pipe(T.HttpPath("configId")),
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     description: Schema.optional(Schema.String),
@@ -602,7 +602,7 @@ export interface PatchConfigurationResponse {
 }
 
 export const PatchConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     title: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -629,7 +629,7 @@ export const patchConfiguration: API.OperationMethod<
   PatchConfigurationResponse,
   PatchConfigurationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchConfigurationRequest,
   output: PatchConfigurationResponse,
   errors: [],
@@ -642,7 +642,7 @@ export interface DeleteConfigurationRequest {
 }
 
 export const DeleteConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configId: Schema.String.pipe(T.HttpPath("configId")),
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   }).pipe(
@@ -658,7 +658,7 @@ export interface DeleteConfigurationResponse {
 }
 
 export const DeleteConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }).pipe(
     T.ResponsePath("result"),
@@ -671,7 +671,7 @@ export const deleteConfiguration: API.OperationMethod<
   DeleteConfigurationResponse,
   DeleteConfigurationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConfigurationRequest,
   output: DeleteConfigurationResponse,
   errors: [],
@@ -721,7 +721,7 @@ export interface PutConfigurationCredentialRequest {
 }
 
 export const PutConfigurationCredentialRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configId: Schema.String.pipe(T.HttpPath("configId")),
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     keys: Schema.Array(
@@ -818,7 +818,7 @@ export interface PutConfigurationCredentialResponse {
 }
 
 export const PutConfigurationCredentialResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     errors: Schema.Array(
       Schema.Struct({
         code: Schema.Number,
@@ -918,7 +918,7 @@ export const putConfigurationCredential: API.OperationMethod<
   PutConfigurationCredentialResponse,
   PutConfigurationCredentialError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutConfigurationCredentialRequest,
   output: PutConfigurationCredentialResponse,
   errors: [],
@@ -934,7 +934,7 @@ export interface GetRuleRequest {
   zoneId: string;
 }
 
-export const GetRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetRuleRequest = /*@__PURE__*/ Schema.Struct({
   ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
 }).pipe(
@@ -966,7 +966,7 @@ export interface GetRuleResponse {
   lastUpdated?: string | null;
 }
 
-export const GetRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetRuleResponse = /*@__PURE__*/ Schema.Struct({
   action: Schema.Union([Schema.Literals(["log", "block"]), Schema.String]),
   description: Schema.String,
   enabled: Schema.Boolean,
@@ -1024,7 +1024,7 @@ export const getRule: API.OperationMethod<
   GetRuleResponse,
   GetRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRuleRequest,
   output: GetRuleResponse,
   errors: [],
@@ -1051,7 +1051,7 @@ export interface ListRulesRequest {
   tokenConfiguration?: string[];
 }
 
-export const ListRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListRulesRequest = /*@__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
   perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
@@ -1093,7 +1093,7 @@ export interface ListRulesResponse {
   } | null;
 }
 
-export const ListRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListRulesResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       action: Schema.Union([Schema.Literals(["log", "block"]), Schema.String]),
@@ -1173,7 +1173,7 @@ export const listRules: API.PaginatedOperationMethod<
   ListRulesResponse,
   ListRulesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRulesRequest,
   output: ListRulesResponse,
   errors: [],
@@ -1206,7 +1206,7 @@ export interface CreateRuleRequest {
   title: string;
 }
 
-export const CreateRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateRuleRequest = /*@__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   action: Schema.Union([Schema.Literals(["log", "block"]), Schema.String]),
   description: Schema.String,
@@ -1261,7 +1261,7 @@ export interface CreateRuleResponse {
   lastUpdated?: string | null;
 }
 
-export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateRuleResponse = /*@__PURE__*/ Schema.Struct({
   action: Schema.Union([Schema.Literals(["log", "block"]), Schema.String]),
   description: Schema.String,
   enabled: Schema.Boolean,
@@ -1321,7 +1321,7 @@ export const createRule: API.OperationMethod<
   CreateRuleResponse,
   CreateRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRuleRequest,
   output: CreateRuleResponse,
   errors: [],
@@ -1350,7 +1350,7 @@ export interface PatchRuleRequest {
   title?: string;
 }
 
-export const PatchRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchRuleRequest = /*@__PURE__*/ Schema.Struct({
   ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   action: Schema.optional(
@@ -1426,7 +1426,7 @@ export interface PatchRuleResponse {
   lastUpdated?: string | null;
 }
 
-export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchRuleResponse = /*@__PURE__*/ Schema.Struct({
   action: Schema.Union([Schema.Literals(["log", "block"]), Schema.String]),
   description: Schema.String,
   enabled: Schema.Boolean,
@@ -1486,7 +1486,7 @@ export const patchRule: API.OperationMethod<
   PatchRuleResponse,
   PatchRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchRuleRequest,
   output: PatchRuleResponse,
   errors: [],
@@ -1498,7 +1498,7 @@ export interface DeleteRuleRequest {
   zoneId: string;
 }
 
-export const DeleteRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteRuleRequest = /*@__PURE__*/ Schema.Struct({
   ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
 }).pipe(
@@ -1511,7 +1511,7 @@ export const DeleteRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteRuleResponse = unknown;
 
 export const DeleteRuleResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
+  /*@__PURE__*/ Schema.Unknown.pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteRuleResponse>;
 
@@ -1522,7 +1522,7 @@ export const deleteRule: API.OperationMethod<
   DeleteRuleResponse,
   DeleteRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRuleRequest,
   output: DeleteRuleResponse,
   errors: [],
@@ -1545,45 +1545,40 @@ export interface BulkCreateRulesRequest {
   }[];
 }
 
-export const BulkCreateRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    body: Schema.Array(
-      Schema.Struct({
-        action: Schema.Union([
-          Schema.Literals(["log", "block"]),
-          Schema.String,
-        ]),
-        description: Schema.String,
-        enabled: Schema.Boolean,
-        expression: Schema.String,
-        selector: Schema.Struct({
-          exclude: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  operationIds: Schema.optional(Schema.Array(Schema.String)),
-                }).pipe(Schema.encodeKeys({ operationIds: "operation_ids" })),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          include: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  host: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        title: Schema.String,
+export const BulkCreateRulesRequest = /*@__PURE__*/ Schema.Struct({
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  body: Schema.Array(
+    Schema.Struct({
+      action: Schema.Union([Schema.Literals(["log", "block"]), Schema.String]),
+      description: Schema.String,
+      enabled: Schema.Boolean,
+      expression: Schema.String,
+      selector: Schema.Struct({
+        exclude: Schema.optional(
+          Schema.Union([
+            Schema.Array(
+              Schema.Struct({
+                operationIds: Schema.optional(Schema.Array(Schema.String)),
+              }).pipe(Schema.encodeKeys({ operationIds: "operation_ids" })),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        include: Schema.optional(
+          Schema.Union([
+            Schema.Array(
+              Schema.Struct({
+                host: Schema.optional(Schema.Array(Schema.String)),
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
       }),
-    ).pipe(T.HttpBody()),
-  },
-).pipe(
+      title: Schema.String,
+    }),
+  ).pipe(T.HttpBody()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/zones/{zone_id}/token_validation/rules/bulk",
@@ -1608,7 +1603,7 @@ export interface BulkCreateRulesResponse {
 }
 
 export const BulkCreateRulesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     result: Schema.Array(
       Schema.Struct({
         action: Schema.Union([
@@ -1673,7 +1668,7 @@ export const bulkCreateRules: API.PaginatedOperationMethod<
   BulkCreateRulesResponse,
   BulkCreateRulesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: BulkCreateRulesRequest,
   output: BulkCreateRulesResponse,
   errors: [],
@@ -1702,7 +1697,7 @@ export interface BulkPatchRulesRequest {
   }[];
 }
 
-export const BulkPatchRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BulkPatchRulesRequest = /*@__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   body: Schema.Array(
     Schema.Struct({
@@ -1777,65 +1772,58 @@ export interface BulkPatchRulesResponse {
   }[];
 }
 
-export const BulkPatchRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    result: Schema.Array(
-      Schema.Struct({
-        action: Schema.Union([
-          Schema.Literals(["log", "block"]),
-          Schema.String,
-        ]),
-        description: Schema.String,
-        enabled: Schema.Boolean,
-        expression: Schema.String,
-        selector: Schema.Struct({
-          exclude: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  operationIds: Schema.optional(
-                    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                  ),
-                }).pipe(Schema.encodeKeys({ operationIds: "operation_ids" })),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          include: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  host: Schema.optional(
-                    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                  ),
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        title: Schema.String,
-        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        lastUpdated: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
+export const BulkPatchRulesResponse = /*@__PURE__*/ Schema.Struct({
+  result: Schema.Array(
+    Schema.Struct({
+      action: Schema.Union([Schema.Literals(["log", "block"]), Schema.String]),
+      description: Schema.String,
+      enabled: Schema.Boolean,
+      expression: Schema.String,
+      selector: Schema.Struct({
+        exclude: Schema.optional(
+          Schema.Union([
+            Schema.Array(
+              Schema.Struct({
+                operationIds: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
+              }).pipe(Schema.encodeKeys({ operationIds: "operation_ids" })),
+            ),
+            Schema.Null,
+          ]),
         ),
-      }).pipe(
-        Schema.encodeKeys({
-          action: "action",
-          description: "description",
-          enabled: "enabled",
-          expression: "expression",
-          selector: "selector",
-          title: "title",
-          id: "id",
-          createdAt: "created_at",
-          lastUpdated: "last_updated",
-        }),
-      ),
+        include: Schema.optional(
+          Schema.Union([
+            Schema.Array(
+              Schema.Struct({
+                host: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+      }),
+      title: Schema.String,
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      lastUpdated: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        action: "action",
+        description: "description",
+        enabled: "enabled",
+        expression: "expression",
+        selector: "selector",
+        title: "title",
+        id: "id",
+        createdAt: "created_at",
+        lastUpdated: "last_updated",
+      }),
     ),
-  },
-) as unknown as Schema.Schema<BulkPatchRulesResponse>;
+  ),
+}) as unknown as Schema.Schema<BulkPatchRulesResponse>;
 
 export type BulkPatchRulesError = DefaultErrors;
 
@@ -1844,7 +1832,7 @@ export const bulkPatchRules: API.PaginatedOperationMethod<
   BulkPatchRulesResponse,
   BulkPatchRulesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: BulkPatchRulesRequest,
   output: BulkPatchRulesResponse,
   errors: [],

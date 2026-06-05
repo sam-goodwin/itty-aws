@@ -6,12 +6,12 @@
  */
 import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
-import * as T from "../traits.ts";
 import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
+import * as T from "../traits.ts";
 
 // Input Schema
 export const ConnectCoreV1DeleteNamespacedPodProxyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "DELETE",
       path: "/api/v1/namespaces/{namespace}/pods/{name}/proxy",
@@ -22,7 +22,7 @@ export type ConnectCoreV1DeleteNamespacedPodProxyInput =
 
 // Output Schema
 export const ConnectCoreV1DeleteNamespacedPodProxyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+  /*@__PURE__*/ Schema.String;
 export type ConnectCoreV1DeleteNamespacedPodProxyOutput =
   typeof ConnectCoreV1DeleteNamespacedPodProxyOutput.Type;
 
@@ -31,13 +31,13 @@ export type ConnectCoreV1DeleteNamespacedPodProxyOutput =
  * connect DELETE requests to proxy of Pod
  */
 export const connectCoreV1DeleteNamespacedPodProxy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1DeleteNamespacedPodProxyInput,
     outputSchema: ConnectCoreV1DeleteNamespacedPodProxyOutput,
   }));
 // Input Schema
 export const ConnectCoreV1DeleteNamespacedPodProxyWithPathInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "DELETE",
       path: "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}",
@@ -48,7 +48,7 @@ export type ConnectCoreV1DeleteNamespacedPodProxyWithPathInput =
 
 // Output Schema
 export const ConnectCoreV1DeleteNamespacedPodProxyWithPathOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+  /*@__PURE__*/ Schema.String;
 export type ConnectCoreV1DeleteNamespacedPodProxyWithPathOutput =
   typeof ConnectCoreV1DeleteNamespacedPodProxyWithPathOutput.Type;
 
@@ -57,13 +57,13 @@ export type ConnectCoreV1DeleteNamespacedPodProxyWithPathOutput =
  * connect DELETE requests to proxy of Pod
  */
 export const connectCoreV1DeleteNamespacedPodProxyWithPath =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1DeleteNamespacedPodProxyWithPathInput,
     outputSchema: ConnectCoreV1DeleteNamespacedPodProxyWithPathOutput,
   }));
 // Input Schema
 export const ConnectCoreV1DeleteNamespacedServiceProxyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "DELETE",
       path: "/api/v1/namespaces/{namespace}/services/{name}/proxy",
@@ -74,7 +74,7 @@ export type ConnectCoreV1DeleteNamespacedServiceProxyInput =
 
 // Output Schema
 export const ConnectCoreV1DeleteNamespacedServiceProxyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+  /*@__PURE__*/ Schema.String;
 export type ConnectCoreV1DeleteNamespacedServiceProxyOutput =
   typeof ConnectCoreV1DeleteNamespacedServiceProxyOutput.Type;
 
@@ -83,13 +83,13 @@ export type ConnectCoreV1DeleteNamespacedServiceProxyOutput =
  * connect DELETE requests to proxy of Service
  */
 export const connectCoreV1DeleteNamespacedServiceProxy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1DeleteNamespacedServiceProxyInput,
     outputSchema: ConnectCoreV1DeleteNamespacedServiceProxyOutput,
   }));
 // Input Schema
 export const ConnectCoreV1DeleteNamespacedServiceProxyWithPathInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "DELETE",
       path: "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}",
@@ -100,7 +100,7 @@ export type ConnectCoreV1DeleteNamespacedServiceProxyWithPathInput =
 
 // Output Schema
 export const ConnectCoreV1DeleteNamespacedServiceProxyWithPathOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+  /*@__PURE__*/ Schema.String;
 export type ConnectCoreV1DeleteNamespacedServiceProxyWithPathOutput =
   typeof ConnectCoreV1DeleteNamespacedServiceProxyWithPathOutput.Type;
 
@@ -109,21 +109,20 @@ export type ConnectCoreV1DeleteNamespacedServiceProxyWithPathOutput =
  * connect DELETE requests to proxy of Service
  */
 export const connectCoreV1DeleteNamespacedServiceProxyWithPath =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1DeleteNamespacedServiceProxyWithPathInput,
     outputSchema: ConnectCoreV1DeleteNamespacedServiceProxyWithPathOutput,
   }));
 // Input Schema
 export const ConnectCoreV1DeleteNodeProxyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "DELETE", path: "/api/v1/nodes/{name}/proxy" }),
   );
 export type ConnectCoreV1DeleteNodeProxyInput =
   typeof ConnectCoreV1DeleteNodeProxyInput.Type;
 
 // Output Schema
-export const ConnectCoreV1DeleteNodeProxyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+export const ConnectCoreV1DeleteNodeProxyOutput = /*@__PURE__*/ Schema.String;
 export type ConnectCoreV1DeleteNodeProxyOutput =
   typeof ConnectCoreV1DeleteNodeProxyOutput.Type;
 
@@ -132,13 +131,13 @@ export type ConnectCoreV1DeleteNodeProxyOutput =
  * connect DELETE requests to proxy of Node
  */
 export const connectCoreV1DeleteNodeProxy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1DeleteNodeProxyInput,
     outputSchema: ConnectCoreV1DeleteNodeProxyOutput,
   }));
 // Input Schema
 export const ConnectCoreV1DeleteNodeProxyWithPathInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "DELETE", path: "/api/v1/nodes/{name}/proxy/{path}" }),
   );
 export type ConnectCoreV1DeleteNodeProxyWithPathInput =
@@ -146,7 +145,7 @@ export type ConnectCoreV1DeleteNodeProxyWithPathInput =
 
 // Output Schema
 export const ConnectCoreV1DeleteNodeProxyWithPathOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+  /*@__PURE__*/ Schema.String;
 export type ConnectCoreV1DeleteNodeProxyWithPathOutput =
   typeof ConnectCoreV1DeleteNodeProxyWithPathOutput.Type;
 
@@ -155,13 +154,13 @@ export type ConnectCoreV1DeleteNodeProxyWithPathOutput =
  * connect DELETE requests to proxy of Node
  */
 export const connectCoreV1DeleteNodeProxyWithPath =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1DeleteNodeProxyWithPathInput,
     outputSchema: ConnectCoreV1DeleteNodeProxyWithPathOutput,
   }));
 // Input Schema
 export const ConnectCoreV1GetNamespacedPodAttachInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/namespaces/{namespace}/pods/{name}/attach",
@@ -172,7 +171,7 @@ export type ConnectCoreV1GetNamespacedPodAttachInput =
 
 // Output Schema
 export const ConnectCoreV1GetNamespacedPodAttachOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+  /*@__PURE__*/ Schema.String;
 export type ConnectCoreV1GetNamespacedPodAttachOutput =
   typeof ConnectCoreV1GetNamespacedPodAttachOutput.Type;
 
@@ -181,13 +180,13 @@ export type ConnectCoreV1GetNamespacedPodAttachOutput =
  * connect GET requests to attach of Pod
  */
 export const connectCoreV1GetNamespacedPodAttach =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1GetNamespacedPodAttachInput,
     outputSchema: ConnectCoreV1GetNamespacedPodAttachOutput,
   }));
 // Input Schema
 export const ConnectCoreV1GetNamespacedPodExecInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/namespaces/{namespace}/pods/{name}/exec",
@@ -198,7 +197,7 @@ export type ConnectCoreV1GetNamespacedPodExecInput =
 
 // Output Schema
 export const ConnectCoreV1GetNamespacedPodExecOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+  /*@__PURE__*/ Schema.String;
 export type ConnectCoreV1GetNamespacedPodExecOutput =
   typeof ConnectCoreV1GetNamespacedPodExecOutput.Type;
 
@@ -207,13 +206,13 @@ export type ConnectCoreV1GetNamespacedPodExecOutput =
  * connect GET requests to exec of Pod
  */
 export const connectCoreV1GetNamespacedPodExec =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1GetNamespacedPodExecInput,
     outputSchema: ConnectCoreV1GetNamespacedPodExecOutput,
   }));
 // Input Schema
 export const ConnectCoreV1GetNamespacedPodPortforwardInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/namespaces/{namespace}/pods/{name}/portforward",
@@ -224,7 +223,7 @@ export type ConnectCoreV1GetNamespacedPodPortforwardInput =
 
 // Output Schema
 export const ConnectCoreV1GetNamespacedPodPortforwardOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+  /*@__PURE__*/ Schema.String;
 export type ConnectCoreV1GetNamespacedPodPortforwardOutput =
   typeof ConnectCoreV1GetNamespacedPodPortforwardOutput.Type;
 
@@ -233,13 +232,13 @@ export type ConnectCoreV1GetNamespacedPodPortforwardOutput =
  * connect GET requests to portforward of Pod
  */
 export const connectCoreV1GetNamespacedPodPortforward =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1GetNamespacedPodPortforwardInput,
     outputSchema: ConnectCoreV1GetNamespacedPodPortforwardOutput,
   }));
 // Input Schema
 export const ConnectCoreV1GetNamespacedPodProxyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/namespaces/{namespace}/pods/{name}/proxy",
@@ -250,7 +249,7 @@ export type ConnectCoreV1GetNamespacedPodProxyInput =
 
 // Output Schema
 export const ConnectCoreV1GetNamespacedPodProxyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+  /*@__PURE__*/ Schema.String;
 export type ConnectCoreV1GetNamespacedPodProxyOutput =
   typeof ConnectCoreV1GetNamespacedPodProxyOutput.Type;
 
@@ -259,13 +258,13 @@ export type ConnectCoreV1GetNamespacedPodProxyOutput =
  * connect GET requests to proxy of Pod
  */
 export const connectCoreV1GetNamespacedPodProxy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1GetNamespacedPodProxyInput,
     outputSchema: ConnectCoreV1GetNamespacedPodProxyOutput,
   }));
 // Input Schema
 export const ConnectCoreV1GetNamespacedPodProxyWithPathInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}",
@@ -276,7 +275,7 @@ export type ConnectCoreV1GetNamespacedPodProxyWithPathInput =
 
 // Output Schema
 export const ConnectCoreV1GetNamespacedPodProxyWithPathOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+  /*@__PURE__*/ Schema.String;
 export type ConnectCoreV1GetNamespacedPodProxyWithPathOutput =
   typeof ConnectCoreV1GetNamespacedPodProxyWithPathOutput.Type;
 
@@ -285,13 +284,13 @@ export type ConnectCoreV1GetNamespacedPodProxyWithPathOutput =
  * connect GET requests to proxy of Pod
  */
 export const connectCoreV1GetNamespacedPodProxyWithPath =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1GetNamespacedPodProxyWithPathInput,
     outputSchema: ConnectCoreV1GetNamespacedPodProxyWithPathOutput,
   }));
 // Input Schema
 export const ConnectCoreV1GetNamespacedServiceProxyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/namespaces/{namespace}/services/{name}/proxy",
@@ -302,7 +301,7 @@ export type ConnectCoreV1GetNamespacedServiceProxyInput =
 
 // Output Schema
 export const ConnectCoreV1GetNamespacedServiceProxyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+  /*@__PURE__*/ Schema.String;
 export type ConnectCoreV1GetNamespacedServiceProxyOutput =
   typeof ConnectCoreV1GetNamespacedServiceProxyOutput.Type;
 
@@ -311,13 +310,13 @@ export type ConnectCoreV1GetNamespacedServiceProxyOutput =
  * connect GET requests to proxy of Service
  */
 export const connectCoreV1GetNamespacedServiceProxy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1GetNamespacedServiceProxyInput,
     outputSchema: ConnectCoreV1GetNamespacedServiceProxyOutput,
   }));
 // Input Schema
 export const ConnectCoreV1GetNamespacedServiceProxyWithPathInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}",
@@ -328,7 +327,7 @@ export type ConnectCoreV1GetNamespacedServiceProxyWithPathInput =
 
 // Output Schema
 export const ConnectCoreV1GetNamespacedServiceProxyWithPathOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+  /*@__PURE__*/ Schema.String;
 export type ConnectCoreV1GetNamespacedServiceProxyWithPathOutput =
   typeof ConnectCoreV1GetNamespacedServiceProxyWithPathOutput.Type;
 
@@ -337,21 +336,20 @@ export type ConnectCoreV1GetNamespacedServiceProxyWithPathOutput =
  * connect GET requests to proxy of Service
  */
 export const connectCoreV1GetNamespacedServiceProxyWithPath =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1GetNamespacedServiceProxyWithPathInput,
     outputSchema: ConnectCoreV1GetNamespacedServiceProxyWithPathOutput,
   }));
 // Input Schema
 export const ConnectCoreV1GetNodeProxyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/nodes/{name}/proxy" }),
   );
 export type ConnectCoreV1GetNodeProxyInput =
   typeof ConnectCoreV1GetNodeProxyInput.Type;
 
 // Output Schema
-export const ConnectCoreV1GetNodeProxyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+export const ConnectCoreV1GetNodeProxyOutput = /*@__PURE__*/ Schema.String;
 export type ConnectCoreV1GetNodeProxyOutput =
   typeof ConnectCoreV1GetNodeProxyOutput.Type;
 
@@ -359,15 +357,13 @@ export type ConnectCoreV1GetNodeProxyOutput =
 /**
  * connect GET requests to proxy of Node
  */
-export const connectCoreV1GetNodeProxy = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectCoreV1GetNodeProxyInput,
-    outputSchema: ConnectCoreV1GetNodeProxyOutput,
-  }),
-);
+export const connectCoreV1GetNodeProxy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectCoreV1GetNodeProxyInput,
+  outputSchema: ConnectCoreV1GetNodeProxyOutput,
+}));
 // Input Schema
 export const ConnectCoreV1GetNodeProxyWithPathInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/nodes/{name}/proxy/{path}" }),
   );
 export type ConnectCoreV1GetNodeProxyWithPathInput =
@@ -375,7 +371,7 @@ export type ConnectCoreV1GetNodeProxyWithPathInput =
 
 // Output Schema
 export const ConnectCoreV1GetNodeProxyWithPathOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+  /*@__PURE__*/ Schema.String;
 export type ConnectCoreV1GetNodeProxyWithPathOutput =
   typeof ConnectCoreV1GetNodeProxyWithPathOutput.Type;
 
@@ -384,13 +380,13 @@ export type ConnectCoreV1GetNodeProxyWithPathOutput =
  * connect GET requests to proxy of Node
  */
 export const connectCoreV1GetNodeProxyWithPath =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1GetNodeProxyWithPathInput,
     outputSchema: ConnectCoreV1GetNodeProxyWithPathOutput,
   }));
 // Input Schema
 export const ConnectCoreV1PatchNamespacedPodProxyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PATCH",
       path: "/api/v1/namespaces/{namespace}/pods/{name}/proxy",
@@ -401,7 +397,7 @@ export type ConnectCoreV1PatchNamespacedPodProxyInput =
 
 // Output Schema
 export const ConnectCoreV1PatchNamespacedPodProxyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+  /*@__PURE__*/ Schema.String;
 export type ConnectCoreV1PatchNamespacedPodProxyOutput =
   typeof ConnectCoreV1PatchNamespacedPodProxyOutput.Type;
 
@@ -410,13 +406,13 @@ export type ConnectCoreV1PatchNamespacedPodProxyOutput =
  * connect PATCH requests to proxy of Pod
  */
 export const connectCoreV1PatchNamespacedPodProxy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1PatchNamespacedPodProxyInput,
     outputSchema: ConnectCoreV1PatchNamespacedPodProxyOutput,
   }));
 // Input Schema
 export const ConnectCoreV1PatchNamespacedPodProxyWithPathInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PATCH",
       path: "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}",
@@ -427,7 +423,7 @@ export type ConnectCoreV1PatchNamespacedPodProxyWithPathInput =
 
 // Output Schema
 export const ConnectCoreV1PatchNamespacedPodProxyWithPathOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+  /*@__PURE__*/ Schema.String;
 export type ConnectCoreV1PatchNamespacedPodProxyWithPathOutput =
   typeof ConnectCoreV1PatchNamespacedPodProxyWithPathOutput.Type;
 
@@ -436,13 +432,13 @@ export type ConnectCoreV1PatchNamespacedPodProxyWithPathOutput =
  * connect PATCH requests to proxy of Pod
  */
 export const connectCoreV1PatchNamespacedPodProxyWithPath =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1PatchNamespacedPodProxyWithPathInput,
     outputSchema: ConnectCoreV1PatchNamespacedPodProxyWithPathOutput,
   }));
 // Input Schema
 export const ConnectCoreV1PatchNamespacedServiceProxyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PATCH",
       path: "/api/v1/namespaces/{namespace}/services/{name}/proxy",
@@ -453,7 +449,7 @@ export type ConnectCoreV1PatchNamespacedServiceProxyInput =
 
 // Output Schema
 export const ConnectCoreV1PatchNamespacedServiceProxyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+  /*@__PURE__*/ Schema.String;
 export type ConnectCoreV1PatchNamespacedServiceProxyOutput =
   typeof ConnectCoreV1PatchNamespacedServiceProxyOutput.Type;
 
@@ -462,13 +458,13 @@ export type ConnectCoreV1PatchNamespacedServiceProxyOutput =
  * connect PATCH requests to proxy of Service
  */
 export const connectCoreV1PatchNamespacedServiceProxy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1PatchNamespacedServiceProxyInput,
     outputSchema: ConnectCoreV1PatchNamespacedServiceProxyOutput,
   }));
 // Input Schema
 export const ConnectCoreV1PatchNamespacedServiceProxyWithPathInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PATCH",
       path: "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}",
@@ -479,7 +475,7 @@ export type ConnectCoreV1PatchNamespacedServiceProxyWithPathInput =
 
 // Output Schema
 export const ConnectCoreV1PatchNamespacedServiceProxyWithPathOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+  /*@__PURE__*/ Schema.String;
 export type ConnectCoreV1PatchNamespacedServiceProxyWithPathOutput =
   typeof ConnectCoreV1PatchNamespacedServiceProxyWithPathOutput.Type;
 
@@ -488,21 +484,20 @@ export type ConnectCoreV1PatchNamespacedServiceProxyWithPathOutput =
  * connect PATCH requests to proxy of Service
  */
 export const connectCoreV1PatchNamespacedServiceProxyWithPath =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1PatchNamespacedServiceProxyWithPathInput,
     outputSchema: ConnectCoreV1PatchNamespacedServiceProxyWithPathOutput,
   }));
 // Input Schema
 export const ConnectCoreV1PatchNodeProxyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "PATCH", path: "/api/v1/nodes/{name}/proxy" }),
   );
 export type ConnectCoreV1PatchNodeProxyInput =
   typeof ConnectCoreV1PatchNodeProxyInput.Type;
 
 // Output Schema
-export const ConnectCoreV1PatchNodeProxyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+export const ConnectCoreV1PatchNodeProxyOutput = /*@__PURE__*/ Schema.String;
 export type ConnectCoreV1PatchNodeProxyOutput =
   typeof ConnectCoreV1PatchNodeProxyOutput.Type;
 
@@ -510,15 +505,13 @@ export type ConnectCoreV1PatchNodeProxyOutput =
 /**
  * connect PATCH requests to proxy of Node
  */
-export const connectCoreV1PatchNodeProxy = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectCoreV1PatchNodeProxyInput,
-    outputSchema: ConnectCoreV1PatchNodeProxyOutput,
-  }),
-);
+export const connectCoreV1PatchNodeProxy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectCoreV1PatchNodeProxyInput,
+  outputSchema: ConnectCoreV1PatchNodeProxyOutput,
+}));
 // Input Schema
 export const ConnectCoreV1PatchNodeProxyWithPathInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "PATCH", path: "/api/v1/nodes/{name}/proxy/{path}" }),
   );
 export type ConnectCoreV1PatchNodeProxyWithPathInput =
@@ -526,7 +519,7 @@ export type ConnectCoreV1PatchNodeProxyWithPathInput =
 
 // Output Schema
 export const ConnectCoreV1PatchNodeProxyWithPathOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+  /*@__PURE__*/ Schema.String;
 export type ConnectCoreV1PatchNodeProxyWithPathOutput =
   typeof ConnectCoreV1PatchNodeProxyWithPathOutput.Type;
 
@@ -535,13 +528,13 @@ export type ConnectCoreV1PatchNodeProxyWithPathOutput =
  * connect PATCH requests to proxy of Node
  */
 export const connectCoreV1PatchNodeProxyWithPath =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1PatchNodeProxyWithPathInput,
     outputSchema: ConnectCoreV1PatchNodeProxyWithPathOutput,
   }));
 // Input Schema
 export const ConnectCoreV1PostNamespacedPodAttachInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/api/v1/namespaces/{namespace}/pods/{name}/attach",
@@ -552,7 +545,7 @@ export type ConnectCoreV1PostNamespacedPodAttachInput =
 
 // Output Schema
 export const ConnectCoreV1PostNamespacedPodAttachOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+  /*@__PURE__*/ Schema.String;
 export type ConnectCoreV1PostNamespacedPodAttachOutput =
   typeof ConnectCoreV1PostNamespacedPodAttachOutput.Type;
 
@@ -561,13 +554,13 @@ export type ConnectCoreV1PostNamespacedPodAttachOutput =
  * connect POST requests to attach of Pod
  */
 export const connectCoreV1PostNamespacedPodAttach =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1PostNamespacedPodAttachInput,
     outputSchema: ConnectCoreV1PostNamespacedPodAttachOutput,
   }));
 // Input Schema
 export const ConnectCoreV1PostNamespacedPodExecInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/api/v1/namespaces/{namespace}/pods/{name}/exec",
@@ -578,7 +571,7 @@ export type ConnectCoreV1PostNamespacedPodExecInput =
 
 // Output Schema
 export const ConnectCoreV1PostNamespacedPodExecOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+  /*@__PURE__*/ Schema.String;
 export type ConnectCoreV1PostNamespacedPodExecOutput =
   typeof ConnectCoreV1PostNamespacedPodExecOutput.Type;
 
@@ -587,13 +580,13 @@ export type ConnectCoreV1PostNamespacedPodExecOutput =
  * connect POST requests to exec of Pod
  */
 export const connectCoreV1PostNamespacedPodExec =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1PostNamespacedPodExecInput,
     outputSchema: ConnectCoreV1PostNamespacedPodExecOutput,
   }));
 // Input Schema
 export const ConnectCoreV1PostNamespacedPodPortforwardInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/api/v1/namespaces/{namespace}/pods/{name}/portforward",
@@ -604,7 +597,7 @@ export type ConnectCoreV1PostNamespacedPodPortforwardInput =
 
 // Output Schema
 export const ConnectCoreV1PostNamespacedPodPortforwardOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+  /*@__PURE__*/ Schema.String;
 export type ConnectCoreV1PostNamespacedPodPortforwardOutput =
   typeof ConnectCoreV1PostNamespacedPodPortforwardOutput.Type;
 
@@ -613,13 +606,13 @@ export type ConnectCoreV1PostNamespacedPodPortforwardOutput =
  * connect POST requests to portforward of Pod
  */
 export const connectCoreV1PostNamespacedPodPortforward =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1PostNamespacedPodPortforwardInput,
     outputSchema: ConnectCoreV1PostNamespacedPodPortforwardOutput,
   }));
 // Input Schema
 export const ConnectCoreV1PostNamespacedPodProxyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/api/v1/namespaces/{namespace}/pods/{name}/proxy",
@@ -630,7 +623,7 @@ export type ConnectCoreV1PostNamespacedPodProxyInput =
 
 // Output Schema
 export const ConnectCoreV1PostNamespacedPodProxyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+  /*@__PURE__*/ Schema.String;
 export type ConnectCoreV1PostNamespacedPodProxyOutput =
   typeof ConnectCoreV1PostNamespacedPodProxyOutput.Type;
 
@@ -639,13 +632,13 @@ export type ConnectCoreV1PostNamespacedPodProxyOutput =
  * connect POST requests to proxy of Pod
  */
 export const connectCoreV1PostNamespacedPodProxy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1PostNamespacedPodProxyInput,
     outputSchema: ConnectCoreV1PostNamespacedPodProxyOutput,
   }));
 // Input Schema
 export const ConnectCoreV1PostNamespacedPodProxyWithPathInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}",
@@ -656,7 +649,7 @@ export type ConnectCoreV1PostNamespacedPodProxyWithPathInput =
 
 // Output Schema
 export const ConnectCoreV1PostNamespacedPodProxyWithPathOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+  /*@__PURE__*/ Schema.String;
 export type ConnectCoreV1PostNamespacedPodProxyWithPathOutput =
   typeof ConnectCoreV1PostNamespacedPodProxyWithPathOutput.Type;
 
@@ -665,13 +658,13 @@ export type ConnectCoreV1PostNamespacedPodProxyWithPathOutput =
  * connect POST requests to proxy of Pod
  */
 export const connectCoreV1PostNamespacedPodProxyWithPath =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1PostNamespacedPodProxyWithPathInput,
     outputSchema: ConnectCoreV1PostNamespacedPodProxyWithPathOutput,
   }));
 // Input Schema
 export const ConnectCoreV1PostNamespacedServiceProxyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/api/v1/namespaces/{namespace}/services/{name}/proxy",
@@ -682,7 +675,7 @@ export type ConnectCoreV1PostNamespacedServiceProxyInput =
 
 // Output Schema
 export const ConnectCoreV1PostNamespacedServiceProxyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+  /*@__PURE__*/ Schema.String;
 export type ConnectCoreV1PostNamespacedServiceProxyOutput =
   typeof ConnectCoreV1PostNamespacedServiceProxyOutput.Type;
 
@@ -691,13 +684,13 @@ export type ConnectCoreV1PostNamespacedServiceProxyOutput =
  * connect POST requests to proxy of Service
  */
 export const connectCoreV1PostNamespacedServiceProxy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1PostNamespacedServiceProxyInput,
     outputSchema: ConnectCoreV1PostNamespacedServiceProxyOutput,
   }));
 // Input Schema
 export const ConnectCoreV1PostNamespacedServiceProxyWithPathInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}",
@@ -708,7 +701,7 @@ export type ConnectCoreV1PostNamespacedServiceProxyWithPathInput =
 
 // Output Schema
 export const ConnectCoreV1PostNamespacedServiceProxyWithPathOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+  /*@__PURE__*/ Schema.String;
 export type ConnectCoreV1PostNamespacedServiceProxyWithPathOutput =
   typeof ConnectCoreV1PostNamespacedServiceProxyWithPathOutput.Type;
 
@@ -717,21 +710,20 @@ export type ConnectCoreV1PostNamespacedServiceProxyWithPathOutput =
  * connect POST requests to proxy of Service
  */
 export const connectCoreV1PostNamespacedServiceProxyWithPath =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1PostNamespacedServiceProxyWithPathInput,
     outputSchema: ConnectCoreV1PostNamespacedServiceProxyWithPathOutput,
   }));
 // Input Schema
 export const ConnectCoreV1PostNodeProxyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "POST", path: "/api/v1/nodes/{name}/proxy" }),
   );
 export type ConnectCoreV1PostNodeProxyInput =
   typeof ConnectCoreV1PostNodeProxyInput.Type;
 
 // Output Schema
-export const ConnectCoreV1PostNodeProxyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+export const ConnectCoreV1PostNodeProxyOutput = /*@__PURE__*/ Schema.String;
 export type ConnectCoreV1PostNodeProxyOutput =
   typeof ConnectCoreV1PostNodeProxyOutput.Type;
 
@@ -739,15 +731,13 @@ export type ConnectCoreV1PostNodeProxyOutput =
 /**
  * connect POST requests to proxy of Node
  */
-export const connectCoreV1PostNodeProxy = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectCoreV1PostNodeProxyInput,
-    outputSchema: ConnectCoreV1PostNodeProxyOutput,
-  }),
-);
+export const connectCoreV1PostNodeProxy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectCoreV1PostNodeProxyInput,
+  outputSchema: ConnectCoreV1PostNodeProxyOutput,
+}));
 // Input Schema
 export const ConnectCoreV1PostNodeProxyWithPathInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "POST", path: "/api/v1/nodes/{name}/proxy/{path}" }),
   );
 export type ConnectCoreV1PostNodeProxyWithPathInput =
@@ -755,7 +745,7 @@ export type ConnectCoreV1PostNodeProxyWithPathInput =
 
 // Output Schema
 export const ConnectCoreV1PostNodeProxyWithPathOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+  /*@__PURE__*/ Schema.String;
 export type ConnectCoreV1PostNodeProxyWithPathOutput =
   typeof ConnectCoreV1PostNodeProxyWithPathOutput.Type;
 
@@ -764,13 +754,13 @@ export type ConnectCoreV1PostNodeProxyWithPathOutput =
  * connect POST requests to proxy of Node
  */
 export const connectCoreV1PostNodeProxyWithPath =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1PostNodeProxyWithPathInput,
     outputSchema: ConnectCoreV1PostNodeProxyWithPathOutput,
   }));
 // Input Schema
 export const ConnectCoreV1PutNamespacedPodProxyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PUT",
       path: "/api/v1/namespaces/{namespace}/pods/{name}/proxy",
@@ -781,7 +771,7 @@ export type ConnectCoreV1PutNamespacedPodProxyInput =
 
 // Output Schema
 export const ConnectCoreV1PutNamespacedPodProxyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+  /*@__PURE__*/ Schema.String;
 export type ConnectCoreV1PutNamespacedPodProxyOutput =
   typeof ConnectCoreV1PutNamespacedPodProxyOutput.Type;
 
@@ -790,13 +780,13 @@ export type ConnectCoreV1PutNamespacedPodProxyOutput =
  * connect PUT requests to proxy of Pod
  */
 export const connectCoreV1PutNamespacedPodProxy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1PutNamespacedPodProxyInput,
     outputSchema: ConnectCoreV1PutNamespacedPodProxyOutput,
   }));
 // Input Schema
 export const ConnectCoreV1PutNamespacedPodProxyWithPathInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PUT",
       path: "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}",
@@ -807,7 +797,7 @@ export type ConnectCoreV1PutNamespacedPodProxyWithPathInput =
 
 // Output Schema
 export const ConnectCoreV1PutNamespacedPodProxyWithPathOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+  /*@__PURE__*/ Schema.String;
 export type ConnectCoreV1PutNamespacedPodProxyWithPathOutput =
   typeof ConnectCoreV1PutNamespacedPodProxyWithPathOutput.Type;
 
@@ -816,13 +806,13 @@ export type ConnectCoreV1PutNamespacedPodProxyWithPathOutput =
  * connect PUT requests to proxy of Pod
  */
 export const connectCoreV1PutNamespacedPodProxyWithPath =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1PutNamespacedPodProxyWithPathInput,
     outputSchema: ConnectCoreV1PutNamespacedPodProxyWithPathOutput,
   }));
 // Input Schema
 export const ConnectCoreV1PutNamespacedServiceProxyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PUT",
       path: "/api/v1/namespaces/{namespace}/services/{name}/proxy",
@@ -833,7 +823,7 @@ export type ConnectCoreV1PutNamespacedServiceProxyInput =
 
 // Output Schema
 export const ConnectCoreV1PutNamespacedServiceProxyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+  /*@__PURE__*/ Schema.String;
 export type ConnectCoreV1PutNamespacedServiceProxyOutput =
   typeof ConnectCoreV1PutNamespacedServiceProxyOutput.Type;
 
@@ -842,13 +832,13 @@ export type ConnectCoreV1PutNamespacedServiceProxyOutput =
  * connect PUT requests to proxy of Service
  */
 export const connectCoreV1PutNamespacedServiceProxy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1PutNamespacedServiceProxyInput,
     outputSchema: ConnectCoreV1PutNamespacedServiceProxyOutput,
   }));
 // Input Schema
 export const ConnectCoreV1PutNamespacedServiceProxyWithPathInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PUT",
       path: "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}",
@@ -859,7 +849,7 @@ export type ConnectCoreV1PutNamespacedServiceProxyWithPathInput =
 
 // Output Schema
 export const ConnectCoreV1PutNamespacedServiceProxyWithPathOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+  /*@__PURE__*/ Schema.String;
 export type ConnectCoreV1PutNamespacedServiceProxyWithPathOutput =
   typeof ConnectCoreV1PutNamespacedServiceProxyWithPathOutput.Type;
 
@@ -868,21 +858,20 @@ export type ConnectCoreV1PutNamespacedServiceProxyWithPathOutput =
  * connect PUT requests to proxy of Service
  */
 export const connectCoreV1PutNamespacedServiceProxyWithPath =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1PutNamespacedServiceProxyWithPathInput,
     outputSchema: ConnectCoreV1PutNamespacedServiceProxyWithPathOutput,
   }));
 // Input Schema
 export const ConnectCoreV1PutNodeProxyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "PUT", path: "/api/v1/nodes/{name}/proxy" }),
   );
 export type ConnectCoreV1PutNodeProxyInput =
   typeof ConnectCoreV1PutNodeProxyInput.Type;
 
 // Output Schema
-export const ConnectCoreV1PutNodeProxyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+export const ConnectCoreV1PutNodeProxyOutput = /*@__PURE__*/ Schema.String;
 export type ConnectCoreV1PutNodeProxyOutput =
   typeof ConnectCoreV1PutNodeProxyOutput.Type;
 
@@ -890,15 +879,13 @@ export type ConnectCoreV1PutNodeProxyOutput =
 /**
  * connect PUT requests to proxy of Node
  */
-export const connectCoreV1PutNodeProxy = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectCoreV1PutNodeProxyInput,
-    outputSchema: ConnectCoreV1PutNodeProxyOutput,
-  }),
-);
+export const connectCoreV1PutNodeProxy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectCoreV1PutNodeProxyInput,
+  outputSchema: ConnectCoreV1PutNodeProxyOutput,
+}));
 // Input Schema
 export const ConnectCoreV1PutNodeProxyWithPathInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "PUT", path: "/api/v1/nodes/{name}/proxy/{path}" }),
   );
 export type ConnectCoreV1PutNodeProxyWithPathInput =
@@ -906,7 +893,7 @@ export type ConnectCoreV1PutNodeProxyWithPathInput =
 
 // Output Schema
 export const ConnectCoreV1PutNodeProxyWithPathOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+  /*@__PURE__*/ Schema.String;
 export type ConnectCoreV1PutNodeProxyWithPathOutput =
   typeof ConnectCoreV1PutNodeProxyWithPathOutput.Type;
 
@@ -915,13 +902,13 @@ export type ConnectCoreV1PutNodeProxyWithPathOutput =
  * connect PUT requests to proxy of Node
  */
 export const connectCoreV1PutNodeProxyWithPath =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1PutNodeProxyWithPathInput,
     outputSchema: ConnectCoreV1PutNodeProxyWithPathOutput,
   }));
 // Input Schema
 export const CreateCoreV1NamespaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(T.Http({ method: "POST", path: "/api/v1/namespaces" }));
@@ -929,7 +916,7 @@ export type CreateCoreV1NamespaceInput = typeof CreateCoreV1NamespaceInput.Type;
 
 // Output Schema
 export const CreateCoreV1NamespaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1008,16 +995,14 @@ export type CreateCoreV1NamespaceOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createCoreV1Namespace = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateCoreV1NamespaceInput,
-    outputSchema: CreateCoreV1NamespaceOutput,
-    errors: [Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const createCoreV1Namespace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateCoreV1NamespaceInput,
+  outputSchema: CreateCoreV1NamespaceOutput,
+  errors: [Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const CreateCoreV1NamespacedBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "POST", path: "/api/v1/namespaces/{namespace}/bindings" }),
   );
 export type CreateCoreV1NamespacedBindingInput =
@@ -1025,7 +1010,7 @@ export type CreateCoreV1NamespacedBindingInput =
 
 // Output Schema
 export const CreateCoreV1NamespacedBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1090,14 +1075,14 @@ export type CreateCoreV1NamespacedBindingOutput =
  * create a Binding
  */
 export const createCoreV1NamespacedBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1NamespacedBindingInput,
     outputSchema: CreateCoreV1NamespacedBindingOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateCoreV1NamespacedConfigMapInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -1111,7 +1096,7 @@ export type CreateCoreV1NamespacedConfigMapInput =
 
 // Output Schema
 export const CreateCoreV1NamespacedConfigMapOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     binaryData: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     data: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -1173,14 +1158,14 @@ export type CreateCoreV1NamespacedConfigMapOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createCoreV1NamespacedConfigMap =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1NamespacedConfigMapInput,
     outputSchema: CreateCoreV1NamespacedConfigMapOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateCoreV1NamespacedEndpointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -1194,7 +1179,7 @@ export type CreateCoreV1NamespacedEndpointsInput =
 
 // Output Schema
 export const CreateCoreV1NamespacedEndpointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1309,14 +1294,14 @@ export type CreateCoreV1NamespacedEndpointsOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createCoreV1NamespacedEndpoints =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1NamespacedEndpointsInput,
     outputSchema: CreateCoreV1NamespacedEndpointsOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateCoreV1NamespacedEventInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -1327,7 +1312,7 @@ export type CreateCoreV1NamespacedEventInput =
 
 // Output Schema
 export const CreateCoreV1NamespacedEventOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     action: Schema.optional(Schema.String),
     apiVersion: Schema.optional(Schema.String),
     count: Schema.optional(Schema.Number),
@@ -1423,16 +1408,14 @@ export type CreateCoreV1NamespacedEventOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createCoreV1NamespacedEvent = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateCoreV1NamespacedEventInput,
-    outputSchema: CreateCoreV1NamespacedEventOutput,
-    errors: [Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const createCoreV1NamespacedEvent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateCoreV1NamespacedEventInput,
+  outputSchema: CreateCoreV1NamespacedEventOutput,
+  errors: [Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const CreateCoreV1NamespacedLimitRangeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -1446,7 +1429,7 @@ export type CreateCoreV1NamespacedLimitRangeInput =
 
 // Output Schema
 export const CreateCoreV1NamespacedLimitRangeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1525,14 +1508,14 @@ export type CreateCoreV1NamespacedLimitRangeOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createCoreV1NamespacedLimitRange =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1NamespacedLimitRangeInput,
     outputSchema: CreateCoreV1NamespacedLimitRangeOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateCoreV1NamespacedPersistentVolumeClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -1546,7 +1529,7 @@ export type CreateCoreV1NamespacedPersistentVolumeClaimInput =
 
 // Output Schema
 export const CreateCoreV1NamespacedPersistentVolumeClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1687,14 +1670,14 @@ export type CreateCoreV1NamespacedPersistentVolumeClaimOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createCoreV1NamespacedPersistentVolumeClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1NamespacedPersistentVolumeClaimInput,
     outputSchema: CreateCoreV1NamespacedPersistentVolumeClaimOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateCoreV1NamespacedPodInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -1705,7 +1688,7 @@ export type CreateCoreV1NamespacedPodInput =
 
 // Output Schema
 export const CreateCoreV1NamespacedPodOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -4510,16 +4493,14 @@ export type CreateCoreV1NamespacedPodOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createCoreV1NamespacedPod = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateCoreV1NamespacedPodInput,
-    outputSchema: CreateCoreV1NamespacedPodOutput,
-    errors: [Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const createCoreV1NamespacedPod = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateCoreV1NamespacedPodInput,
+  outputSchema: CreateCoreV1NamespacedPodOutput,
+  errors: [Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const CreateCoreV1NamespacedPodBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/api/v1/namespaces/{namespace}/pods/{name}/binding",
@@ -4530,7 +4511,7 @@ export type CreateCoreV1NamespacedPodBindingInput =
 
 // Output Schema
 export const CreateCoreV1NamespacedPodBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -4595,14 +4576,14 @@ export type CreateCoreV1NamespacedPodBindingOutput =
  * create binding of a Pod
  */
 export const createCoreV1NamespacedPodBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1NamespacedPodBindingInput,
     outputSchema: CreateCoreV1NamespacedPodBindingOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateCoreV1NamespacedPodEvictionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/api/v1/namespaces/{namespace}/pods/{name}/eviction",
@@ -4613,7 +4594,7 @@ export type CreateCoreV1NamespacedPodEvictionInput =
 
 // Output Schema
 export const CreateCoreV1NamespacedPodEvictionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     deleteOptions: Schema.optional(
       Schema.Struct({
@@ -4688,14 +4669,14 @@ export type CreateCoreV1NamespacedPodEvictionOutput =
  * create eviction of a Pod
  */
 export const createCoreV1NamespacedPodEviction =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1NamespacedPodEvictionInput,
     outputSchema: CreateCoreV1NamespacedPodEvictionOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateCoreV1NamespacedPodTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -4709,7 +4690,7 @@ export type CreateCoreV1NamespacedPodTemplateInput =
 
 // Output Schema
 export const CreateCoreV1NamespacedPodTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -7127,14 +7108,14 @@ export type CreateCoreV1NamespacedPodTemplateOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createCoreV1NamespacedPodTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1NamespacedPodTemplateInput,
     outputSchema: CreateCoreV1NamespacedPodTemplateOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateCoreV1NamespacedReplicationControllerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -7148,7 +7129,7 @@ export type CreateCoreV1NamespacedReplicationControllerInput =
 
 // Output Schema
 export const CreateCoreV1NamespacedReplicationControllerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -9699,14 +9680,14 @@ export type CreateCoreV1NamespacedReplicationControllerOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createCoreV1NamespacedReplicationController =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1NamespacedReplicationControllerInput,
     outputSchema: CreateCoreV1NamespacedReplicationControllerOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateCoreV1NamespacedResourceQuotaInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -9720,7 +9701,7 @@ export type CreateCoreV1NamespacedResourceQuotaInput =
 
 // Output Schema
 export const CreateCoreV1NamespacedResourceQuotaOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -9804,14 +9785,14 @@ export type CreateCoreV1NamespacedResourceQuotaOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createCoreV1NamespacedResourceQuota =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1NamespacedResourceQuotaInput,
     outputSchema: CreateCoreV1NamespacedResourceQuotaOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateCoreV1NamespacedSecretInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -9822,7 +9803,7 @@ export type CreateCoreV1NamespacedSecretInput =
 
 // Output Schema
 export const CreateCoreV1NamespacedSecretOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     data: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     immutable: Schema.optional(Schema.Boolean),
@@ -9885,14 +9866,14 @@ export type CreateCoreV1NamespacedSecretOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createCoreV1NamespacedSecret =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1NamespacedSecretInput,
     outputSchema: CreateCoreV1NamespacedSecretOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateCoreV1NamespacedServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -9903,7 +9884,7 @@ export type CreateCoreV1NamespacedServiceInput =
 
 // Output Schema
 export const CreateCoreV1NamespacedServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -10043,14 +10024,14 @@ export type CreateCoreV1NamespacedServiceOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createCoreV1NamespacedService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1NamespacedServiceInput,
     outputSchema: CreateCoreV1NamespacedServiceOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateCoreV1NamespacedServiceAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -10064,7 +10045,7 @@ export type CreateCoreV1NamespacedServiceAccountInput =
 
 // Output Schema
 export const CreateCoreV1NamespacedServiceAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     automountServiceAccountToken: Schema.optional(Schema.Boolean),
     imagePullSecrets: Schema.optional(
@@ -10144,14 +10125,14 @@ export type CreateCoreV1NamespacedServiceAccountOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createCoreV1NamespacedServiceAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1NamespacedServiceAccountInput,
     outputSchema: CreateCoreV1NamespacedServiceAccountOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateCoreV1NamespacedServiceAccountTokenInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/api/v1/namespaces/{namespace}/serviceaccounts/{name}/token",
@@ -10162,7 +10143,7 @@ export type CreateCoreV1NamespacedServiceAccountTokenInput =
 
 // Output Schema
 export const CreateCoreV1NamespacedServiceAccountTokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -10238,238 +10219,232 @@ export type CreateCoreV1NamespacedServiceAccountTokenOutput =
  * create token of a ServiceAccount
  */
 export const createCoreV1NamespacedServiceAccountToken =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1NamespacedServiceAccountTokenInput,
     outputSchema: CreateCoreV1NamespacedServiceAccountTokenOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
-export const CreateCoreV1NodeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateCoreV1NodeInput = /*@__PURE__*/ Schema.Struct({
   dryRun: Schema.optional(Schema.String),
   fieldValidation: Schema.optional(Schema.String),
 }).pipe(T.Http({ method: "POST", path: "/api/v1/nodes" }));
 export type CreateCoreV1NodeInput = typeof CreateCoreV1NodeInput.Type;
 
 // Output Schema
-export const CreateCoreV1NodeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    apiVersion: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
+export const CreateCoreV1NodeOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  metadata: Schema.optional(
+    Schema.Struct({
+      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      creationTimestamp: Schema.optional(Schema.String),
+      deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+      deletionTimestamp: Schema.optional(Schema.String),
+      finalizers: Schema.optional(Schema.Array(Schema.String)),
+      generateName: Schema.optional(Schema.String),
+      generation: Schema.optional(Schema.Number),
+      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      managedFields: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            apiVersion: Schema.optional(Schema.String),
+            fieldsType: Schema.optional(Schema.String),
+            fieldsV1: Schema.optional(Schema.Unknown),
+            manager: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            subresource: Schema.optional(Schema.String),
+            time: Schema.optional(Schema.String),
+          }),
         ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
+      ),
+      name: Schema.optional(Schema.String),
+      namespace: Schema.optional(Schema.String),
+      ownerReferences: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            apiVersion: Schema.String,
+            blockOwnerDeletion: Schema.optional(Schema.Boolean),
+            controller: Schema.optional(Schema.Boolean),
+            kind: Schema.String,
+            name: Schema.String,
+            uid: Schema.String,
+          }),
         ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
+      ),
+      resourceVersion: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      uid: Schema.optional(Schema.String),
+    }),
+  ),
+  spec: Schema.optional(
+    Schema.Struct({
+      configSource: Schema.optional(
+        Schema.Struct({
+          configMap: Schema.optional(
             Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
+              kubeletConfigKey: Schema.String,
               name: Schema.String,
-              uid: Schema.String,
+              namespace: Schema.String,
+              resourceVersion: Schema.optional(Schema.String),
+              uid: Schema.optional(Schema.String),
             }),
           ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
-    ),
-    spec: Schema.optional(
-      Schema.Struct({
-        configSource: Schema.optional(
+        }),
+      ),
+      externalID: Schema.optional(Schema.String),
+      podCIDR: Schema.optional(Schema.String),
+      podCIDRs: Schema.optional(Schema.Array(Schema.String)),
+      providerID: Schema.optional(Schema.String),
+      taints: Schema.optional(
+        Schema.Array(
           Schema.Struct({
-            configMap: Schema.optional(
-              Schema.Struct({
-                kubeletConfigKey: Schema.String,
-                name: Schema.String,
-                namespace: Schema.String,
-                resourceVersion: Schema.optional(Schema.String),
-                uid: Schema.optional(Schema.String),
-              }),
-            ),
+            effect: Schema.String,
+            key: Schema.String,
+            timeAdded: Schema.optional(Schema.String),
+            value: Schema.optional(Schema.String),
           }),
         ),
-        externalID: Schema.optional(Schema.String),
-        podCIDR: Schema.optional(Schema.String),
-        podCIDRs: Schema.optional(Schema.Array(Schema.String)),
-        providerID: Schema.optional(Schema.String),
-        taints: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              effect: Schema.String,
-              key: Schema.String,
-              timeAdded: Schema.optional(Schema.String),
-              value: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        unschedulable: Schema.optional(Schema.Boolean),
-      }),
-    ),
-    status: Schema.optional(
-      Schema.Struct({
-        addresses: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              address: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        allocatable: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        capacity: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastHeartbeatTime: Schema.optional(Schema.String),
-              lastTransitionTime: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        config: Schema.optional(
+      ),
+      unschedulable: Schema.optional(Schema.Boolean),
+    }),
+  ),
+  status: Schema.optional(
+    Schema.Struct({
+      addresses: Schema.optional(
+        Schema.Array(
           Schema.Struct({
-            active: Schema.optional(
-              Schema.Struct({
-                configMap: Schema.optional(
-                  Schema.Struct({
-                    kubeletConfigKey: Schema.String,
-                    name: Schema.String,
-                    namespace: Schema.String,
-                    resourceVersion: Schema.optional(Schema.String),
-                    uid: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-            assigned: Schema.optional(
-              Schema.Struct({
-                configMap: Schema.optional(
-                  Schema.Struct({
-                    kubeletConfigKey: Schema.String,
-                    name: Schema.String,
-                    namespace: Schema.String,
-                    resourceVersion: Schema.optional(Schema.String),
-                    uid: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-            error: Schema.optional(Schema.String),
-            lastKnownGood: Schema.optional(
-              Schema.Struct({
-                configMap: Schema.optional(
-                  Schema.Struct({
-                    kubeletConfigKey: Schema.String,
-                    name: Schema.String,
-                    namespace: Schema.String,
-                    resourceVersion: Schema.optional(Schema.String),
-                    uid: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
+            address: Schema.String,
+            type: Schema.String,
           }),
         ),
-        daemonEndpoints: Schema.optional(
+      ),
+      allocatable: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      capacity: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      conditions: Schema.optional(
+        Schema.Array(
           Schema.Struct({
-            kubeletEndpoint: Schema.optional(
-              Schema.Struct({
-                Port: Schema.Number,
-              }),
-            ),
+            lastHeartbeatTime: Schema.optional(Schema.String),
+            lastTransitionTime: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            reason: Schema.optional(Schema.String),
+            status: Schema.String,
+            type: Schema.String,
           }),
         ),
-        declaredFeatures: Schema.optional(Schema.Array(Schema.String)),
-        features: Schema.optional(
-          Schema.Struct({
-            supplementalGroupsPolicy: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        images: Schema.optional(
-          Schema.Array(
+      ),
+      config: Schema.optional(
+        Schema.Struct({
+          active: Schema.optional(
             Schema.Struct({
-              names: Schema.optional(Schema.Array(Schema.String)),
-              sizeBytes: Schema.optional(Schema.Number),
-            }),
-          ),
-        ),
-        nodeInfo: Schema.optional(
-          Schema.Struct({
-            architecture: Schema.String,
-            bootID: Schema.String,
-            containerRuntimeVersion: Schema.String,
-            kernelVersion: Schema.String,
-            kubeProxyVersion: Schema.String,
-            kubeletVersion: Schema.String,
-            machineID: Schema.String,
-            operatingSystem: Schema.String,
-            osImage: Schema.String,
-            swap: Schema.optional(
-              Schema.Struct({
-                capacity: Schema.optional(Schema.Number),
-              }),
-            ),
-            systemUUID: Schema.String,
-          }),
-        ),
-        phase: Schema.optional(Schema.String),
-        runtimeHandlers: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              features: Schema.optional(
+              configMap: Schema.optional(
                 Schema.Struct({
-                  recursiveReadOnlyMounts: Schema.optional(Schema.Boolean),
-                  userNamespaces: Schema.optional(Schema.Boolean),
+                  kubeletConfigKey: Schema.String,
+                  name: Schema.String,
+                  namespace: Schema.String,
+                  resourceVersion: Schema.optional(Schema.String),
+                  uid: Schema.optional(Schema.String),
                 }),
               ),
-              name: Schema.optional(Schema.String),
             }),
           ),
-        ),
-        volumesAttached: Schema.optional(
-          Schema.Array(
+          assigned: Schema.optional(
             Schema.Struct({
-              devicePath: Schema.String,
-              name: Schema.String,
+              configMap: Schema.optional(
+                Schema.Struct({
+                  kubeletConfigKey: Schema.String,
+                  name: Schema.String,
+                  namespace: Schema.String,
+                  resourceVersion: Schema.optional(Schema.String),
+                  uid: Schema.optional(Schema.String),
+                }),
+              ),
             }),
           ),
+          error: Schema.optional(Schema.String),
+          lastKnownGood: Schema.optional(
+            Schema.Struct({
+              configMap: Schema.optional(
+                Schema.Struct({
+                  kubeletConfigKey: Schema.String,
+                  name: Schema.String,
+                  namespace: Schema.String,
+                  resourceVersion: Schema.optional(Schema.String),
+                  uid: Schema.optional(Schema.String),
+                }),
+              ),
+            }),
+          ),
+        }),
+      ),
+      daemonEndpoints: Schema.optional(
+        Schema.Struct({
+          kubeletEndpoint: Schema.optional(
+            Schema.Struct({
+              Port: Schema.Number,
+            }),
+          ),
+        }),
+      ),
+      declaredFeatures: Schema.optional(Schema.Array(Schema.String)),
+      features: Schema.optional(
+        Schema.Struct({
+          supplementalGroupsPolicy: Schema.optional(Schema.Boolean),
+        }),
+      ),
+      images: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            names: Schema.optional(Schema.Array(Schema.String)),
+            sizeBytes: Schema.optional(Schema.Number),
+          }),
         ),
-        volumesInUse: Schema.optional(Schema.Array(Schema.String)),
-      }),
-    ),
-  },
-);
+      ),
+      nodeInfo: Schema.optional(
+        Schema.Struct({
+          architecture: Schema.String,
+          bootID: Schema.String,
+          containerRuntimeVersion: Schema.String,
+          kernelVersion: Schema.String,
+          kubeProxyVersion: Schema.String,
+          kubeletVersion: Schema.String,
+          machineID: Schema.String,
+          operatingSystem: Schema.String,
+          osImage: Schema.String,
+          swap: Schema.optional(
+            Schema.Struct({
+              capacity: Schema.optional(Schema.Number),
+            }),
+          ),
+          systemUUID: Schema.String,
+        }),
+      ),
+      phase: Schema.optional(Schema.String),
+      runtimeHandlers: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            features: Schema.optional(
+              Schema.Struct({
+                recursiveReadOnlyMounts: Schema.optional(Schema.Boolean),
+                userNamespaces: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            name: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      volumesAttached: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            devicePath: Schema.String,
+            name: Schema.String,
+          }),
+        ),
+      ),
+      volumesInUse: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ),
+});
 export type CreateCoreV1NodeOutput = typeof CreateCoreV1NodeOutput.Type;
 
 // The operation
@@ -10479,14 +10454,14 @@ export type CreateCoreV1NodeOutput = typeof CreateCoreV1NodeOutput.Type;
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createCoreV1Node = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createCoreV1Node = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateCoreV1NodeInput,
   outputSchema: CreateCoreV1NodeOutput,
   errors: [Conflict, UnprocessableEntity] as const,
 }));
 // Input Schema
 export const CreateCoreV1PersistentVolumeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(T.Http({ method: "POST", path: "/api/v1/persistentvolumes" }));
@@ -10495,7 +10470,7 @@ export type CreateCoreV1PersistentVolumeInput =
 
 // Output Schema
 export const CreateCoreV1PersistentVolumeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -10879,14 +10854,14 @@ export type CreateCoreV1PersistentVolumeOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createCoreV1PersistentVolume =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1PersistentVolumeInput,
     outputSchema: CreateCoreV1PersistentVolumeOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const DeleteCoreV1CollectionNamespacedConfigMapInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -10899,7 +10874,7 @@ export type DeleteCoreV1CollectionNamespacedConfigMapInput =
 
 // Output Schema
 export const DeleteCoreV1CollectionNamespacedConfigMapOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -10948,13 +10923,13 @@ export type DeleteCoreV1CollectionNamespacedConfigMapOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteCoreV1CollectionNamespacedConfigMap =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1CollectionNamespacedConfigMapInput,
     outputSchema: DeleteCoreV1CollectionNamespacedConfigMapOutput,
   }));
 // Input Schema
 export const DeleteCoreV1CollectionNamespacedEndpointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -10967,7 +10942,7 @@ export type DeleteCoreV1CollectionNamespacedEndpointsInput =
 
 // Output Schema
 export const DeleteCoreV1CollectionNamespacedEndpointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -11016,13 +10991,13 @@ export type DeleteCoreV1CollectionNamespacedEndpointsOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteCoreV1CollectionNamespacedEndpoints =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1CollectionNamespacedEndpointsInput,
     outputSchema: DeleteCoreV1CollectionNamespacedEndpointsOutput,
   }));
 // Input Schema
 export const DeleteCoreV1CollectionNamespacedEventInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({ method: "DELETE", path: "/api/v1/namespaces/{namespace}/events" }),
@@ -11032,7 +11007,7 @@ export type DeleteCoreV1CollectionNamespacedEventInput =
 
 // Output Schema
 export const DeleteCoreV1CollectionNamespacedEventOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -11081,13 +11056,13 @@ export type DeleteCoreV1CollectionNamespacedEventOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteCoreV1CollectionNamespacedEvent =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1CollectionNamespacedEventInput,
     outputSchema: DeleteCoreV1CollectionNamespacedEventOutput,
   }));
 // Input Schema
 export const DeleteCoreV1CollectionNamespacedLimitRangeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -11100,7 +11075,7 @@ export type DeleteCoreV1CollectionNamespacedLimitRangeInput =
 
 // Output Schema
 export const DeleteCoreV1CollectionNamespacedLimitRangeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -11149,13 +11124,13 @@ export type DeleteCoreV1CollectionNamespacedLimitRangeOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteCoreV1CollectionNamespacedLimitRange =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1CollectionNamespacedLimitRangeInput,
     outputSchema: DeleteCoreV1CollectionNamespacedLimitRangeOutput,
   }));
 // Input Schema
 export const DeleteCoreV1CollectionNamespacedPersistentVolumeClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -11168,7 +11143,7 @@ export type DeleteCoreV1CollectionNamespacedPersistentVolumeClaimInput =
 
 // Output Schema
 export const DeleteCoreV1CollectionNamespacedPersistentVolumeClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -11217,13 +11192,13 @@ export type DeleteCoreV1CollectionNamespacedPersistentVolumeClaimOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteCoreV1CollectionNamespacedPersistentVolumeClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1CollectionNamespacedPersistentVolumeClaimInput,
     outputSchema: DeleteCoreV1CollectionNamespacedPersistentVolumeClaimOutput,
   }));
 // Input Schema
 export const DeleteCoreV1CollectionNamespacedPodInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({ method: "DELETE", path: "/api/v1/namespaces/{namespace}/pods" }),
@@ -11233,7 +11208,7 @@ export type DeleteCoreV1CollectionNamespacedPodInput =
 
 // Output Schema
 export const DeleteCoreV1CollectionNamespacedPodOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -11282,13 +11257,13 @@ export type DeleteCoreV1CollectionNamespacedPodOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteCoreV1CollectionNamespacedPod =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1CollectionNamespacedPodInput,
     outputSchema: DeleteCoreV1CollectionNamespacedPodOutput,
   }));
 // Input Schema
 export const DeleteCoreV1CollectionNamespacedPodTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -11301,7 +11276,7 @@ export type DeleteCoreV1CollectionNamespacedPodTemplateInput =
 
 // Output Schema
 export const DeleteCoreV1CollectionNamespacedPodTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -11350,13 +11325,13 @@ export type DeleteCoreV1CollectionNamespacedPodTemplateOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteCoreV1CollectionNamespacedPodTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1CollectionNamespacedPodTemplateInput,
     outputSchema: DeleteCoreV1CollectionNamespacedPodTemplateOutput,
   }));
 // Input Schema
 export const DeleteCoreV1CollectionNamespacedReplicationControllerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -11369,7 +11344,7 @@ export type DeleteCoreV1CollectionNamespacedReplicationControllerInput =
 
 // Output Schema
 export const DeleteCoreV1CollectionNamespacedReplicationControllerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -11418,13 +11393,13 @@ export type DeleteCoreV1CollectionNamespacedReplicationControllerOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteCoreV1CollectionNamespacedReplicationController =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1CollectionNamespacedReplicationControllerInput,
     outputSchema: DeleteCoreV1CollectionNamespacedReplicationControllerOutput,
   }));
 // Input Schema
 export const DeleteCoreV1CollectionNamespacedResourceQuotaInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -11437,7 +11412,7 @@ export type DeleteCoreV1CollectionNamespacedResourceQuotaInput =
 
 // Output Schema
 export const DeleteCoreV1CollectionNamespacedResourceQuotaOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -11486,13 +11461,13 @@ export type DeleteCoreV1CollectionNamespacedResourceQuotaOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteCoreV1CollectionNamespacedResourceQuota =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1CollectionNamespacedResourceQuotaInput,
     outputSchema: DeleteCoreV1CollectionNamespacedResourceQuotaOutput,
   }));
 // Input Schema
 export const DeleteCoreV1CollectionNamespacedSecretInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -11505,7 +11480,7 @@ export type DeleteCoreV1CollectionNamespacedSecretInput =
 
 // Output Schema
 export const DeleteCoreV1CollectionNamespacedSecretOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -11554,13 +11529,13 @@ export type DeleteCoreV1CollectionNamespacedSecretOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteCoreV1CollectionNamespacedSecret =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1CollectionNamespacedSecretInput,
     outputSchema: DeleteCoreV1CollectionNamespacedSecretOutput,
   }));
 // Input Schema
 export const DeleteCoreV1CollectionNamespacedServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -11573,7 +11548,7 @@ export type DeleteCoreV1CollectionNamespacedServiceInput =
 
 // Output Schema
 export const DeleteCoreV1CollectionNamespacedServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -11622,13 +11597,13 @@ export type DeleteCoreV1CollectionNamespacedServiceOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteCoreV1CollectionNamespacedService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1CollectionNamespacedServiceInput,
     outputSchema: DeleteCoreV1CollectionNamespacedServiceOutput,
   }));
 // Input Schema
 export const DeleteCoreV1CollectionNamespacedServiceAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -11641,7 +11616,7 @@ export type DeleteCoreV1CollectionNamespacedServiceAccountInput =
 
 // Output Schema
 export const DeleteCoreV1CollectionNamespacedServiceAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -11690,13 +11665,13 @@ export type DeleteCoreV1CollectionNamespacedServiceAccountOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteCoreV1CollectionNamespacedServiceAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1CollectionNamespacedServiceAccountInput,
     outputSchema: DeleteCoreV1CollectionNamespacedServiceAccountOutput,
   }));
 // Input Schema
 export const DeleteCoreV1CollectionNodeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(T.Http({ method: "DELETE", path: "/api/v1/nodes" }));
 export type DeleteCoreV1CollectionNodeInput =
@@ -11704,7 +11679,7 @@ export type DeleteCoreV1CollectionNodeInput =
 
 // Output Schema
 export const DeleteCoreV1CollectionNodeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -11752,15 +11727,13 @@ export type DeleteCoreV1CollectionNodeOutput =
  *
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
-export const deleteCoreV1CollectionNode = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteCoreV1CollectionNodeInput,
-    outputSchema: DeleteCoreV1CollectionNodeOutput,
-  }),
-);
+export const deleteCoreV1CollectionNode = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteCoreV1CollectionNodeInput,
+  outputSchema: DeleteCoreV1CollectionNodeOutput,
+}));
 // Input Schema
 export const DeleteCoreV1CollectionPersistentVolumeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(T.Http({ method: "DELETE", path: "/api/v1/persistentvolumes" }));
 export type DeleteCoreV1CollectionPersistentVolumeInput =
@@ -11768,7 +11741,7 @@ export type DeleteCoreV1CollectionPersistentVolumeInput =
 
 // Output Schema
 export const DeleteCoreV1CollectionPersistentVolumeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -11817,20 +11790,20 @@ export type DeleteCoreV1CollectionPersistentVolumeOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteCoreV1CollectionPersistentVolume =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1CollectionPersistentVolumeInput,
     outputSchema: DeleteCoreV1CollectionPersistentVolumeOutput,
   }));
 // Input Schema
 export const DeleteCoreV1NamespaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(T.Http({ method: "DELETE", path: "/api/v1/namespaces/{name}" }));
 export type DeleteCoreV1NamespaceInput = typeof DeleteCoreV1NamespaceInput.Type;
 
 // Output Schema
 export const DeleteCoreV1NamespaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -11878,16 +11851,14 @@ export type DeleteCoreV1NamespaceOutput =
  *
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
-export const deleteCoreV1Namespace = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteCoreV1NamespaceInput,
-    outputSchema: DeleteCoreV1NamespaceOutput,
-    errors: [NotFound, Conflict] as const,
-  }),
-);
+export const deleteCoreV1Namespace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteCoreV1NamespaceInput,
+  outputSchema: DeleteCoreV1NamespaceOutput,
+  errors: [NotFound, Conflict] as const,
+}));
 // Input Schema
 export const DeleteCoreV1NamespacedConfigMapInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -11900,7 +11871,7 @@ export type DeleteCoreV1NamespacedConfigMapInput =
 
 // Output Schema
 export const DeleteCoreV1NamespacedConfigMapOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -11949,14 +11920,14 @@ export type DeleteCoreV1NamespacedConfigMapOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteCoreV1NamespacedConfigMap =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1NamespacedConfigMapInput,
     outputSchema: DeleteCoreV1NamespacedConfigMapOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteCoreV1NamespacedEndpointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -11969,7 +11940,7 @@ export type DeleteCoreV1NamespacedEndpointsInput =
 
 // Output Schema
 export const DeleteCoreV1NamespacedEndpointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -12018,14 +11989,14 @@ export type DeleteCoreV1NamespacedEndpointsOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteCoreV1NamespacedEndpoints =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1NamespacedEndpointsInput,
     outputSchema: DeleteCoreV1NamespacedEndpointsOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteCoreV1NamespacedEventInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -12038,7 +12009,7 @@ export type DeleteCoreV1NamespacedEventInput =
 
 // Output Schema
 export const DeleteCoreV1NamespacedEventOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -12086,16 +12057,14 @@ export type DeleteCoreV1NamespacedEventOutput =
  *
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
-export const deleteCoreV1NamespacedEvent = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteCoreV1NamespacedEventInput,
-    outputSchema: DeleteCoreV1NamespacedEventOutput,
-    errors: [NotFound, Conflict] as const,
-  }),
-);
+export const deleteCoreV1NamespacedEvent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteCoreV1NamespacedEventInput,
+  outputSchema: DeleteCoreV1NamespacedEventOutput,
+  errors: [NotFound, Conflict] as const,
+}));
 // Input Schema
 export const DeleteCoreV1NamespacedLimitRangeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -12108,7 +12077,7 @@ export type DeleteCoreV1NamespacedLimitRangeInput =
 
 // Output Schema
 export const DeleteCoreV1NamespacedLimitRangeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -12157,14 +12126,14 @@ export type DeleteCoreV1NamespacedLimitRangeOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteCoreV1NamespacedLimitRange =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1NamespacedLimitRangeInput,
     outputSchema: DeleteCoreV1NamespacedLimitRangeOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteCoreV1NamespacedPersistentVolumeClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -12177,7 +12146,7 @@ export type DeleteCoreV1NamespacedPersistentVolumeClaimInput =
 
 // Output Schema
 export const DeleteCoreV1NamespacedPersistentVolumeClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -12317,14 +12286,14 @@ export type DeleteCoreV1NamespacedPersistentVolumeClaimOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteCoreV1NamespacedPersistentVolumeClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1NamespacedPersistentVolumeClaimInput,
     outputSchema: DeleteCoreV1NamespacedPersistentVolumeClaimOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteCoreV1NamespacedPodInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -12337,7 +12306,7 @@ export type DeleteCoreV1NamespacedPodInput =
 
 // Output Schema
 export const DeleteCoreV1NamespacedPodOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -15141,16 +15110,14 @@ export type DeleteCoreV1NamespacedPodOutput =
  *
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
-export const deleteCoreV1NamespacedPod = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteCoreV1NamespacedPodInput,
-    outputSchema: DeleteCoreV1NamespacedPodOutput,
-    errors: [NotFound, Conflict] as const,
-  }),
-);
+export const deleteCoreV1NamespacedPod = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteCoreV1NamespacedPodInput,
+  outputSchema: DeleteCoreV1NamespacedPodOutput,
+  errors: [NotFound, Conflict] as const,
+}));
 // Input Schema
 export const DeleteCoreV1NamespacedPodTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -15163,7 +15130,7 @@ export type DeleteCoreV1NamespacedPodTemplateInput =
 
 // Output Schema
 export const DeleteCoreV1NamespacedPodTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -17580,14 +17547,14 @@ export type DeleteCoreV1NamespacedPodTemplateOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteCoreV1NamespacedPodTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1NamespacedPodTemplateInput,
     outputSchema: DeleteCoreV1NamespacedPodTemplateOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteCoreV1NamespacedReplicationControllerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -17600,7 +17567,7 @@ export type DeleteCoreV1NamespacedReplicationControllerInput =
 
 // Output Schema
 export const DeleteCoreV1NamespacedReplicationControllerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -17649,14 +17616,14 @@ export type DeleteCoreV1NamespacedReplicationControllerOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteCoreV1NamespacedReplicationController =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1NamespacedReplicationControllerInput,
     outputSchema: DeleteCoreV1NamespacedReplicationControllerOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteCoreV1NamespacedResourceQuotaInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -17669,7 +17636,7 @@ export type DeleteCoreV1NamespacedResourceQuotaInput =
 
 // Output Schema
 export const DeleteCoreV1NamespacedResourceQuotaOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -17752,14 +17719,14 @@ export type DeleteCoreV1NamespacedResourceQuotaOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteCoreV1NamespacedResourceQuota =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1NamespacedResourceQuotaInput,
     outputSchema: DeleteCoreV1NamespacedResourceQuotaOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteCoreV1NamespacedSecretInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -17772,7 +17739,7 @@ export type DeleteCoreV1NamespacedSecretInput =
 
 // Output Schema
 export const DeleteCoreV1NamespacedSecretOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -17821,14 +17788,14 @@ export type DeleteCoreV1NamespacedSecretOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteCoreV1NamespacedSecret =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1NamespacedSecretInput,
     outputSchema: DeleteCoreV1NamespacedSecretOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteCoreV1NamespacedServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -17841,7 +17808,7 @@ export type DeleteCoreV1NamespacedServiceInput =
 
 // Output Schema
 export const DeleteCoreV1NamespacedServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -17980,14 +17947,14 @@ export type DeleteCoreV1NamespacedServiceOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteCoreV1NamespacedService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1NamespacedServiceInput,
     outputSchema: DeleteCoreV1NamespacedServiceOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteCoreV1NamespacedServiceAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -18000,7 +17967,7 @@ export type DeleteCoreV1NamespacedServiceAccountInput =
 
 // Output Schema
 export const DeleteCoreV1NamespacedServiceAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     automountServiceAccountToken: Schema.optional(Schema.Boolean),
     imagePullSecrets: Schema.optional(
@@ -18079,59 +18046,57 @@ export type DeleteCoreV1NamespacedServiceAccountOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteCoreV1NamespacedServiceAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1NamespacedServiceAccountInput,
     outputSchema: DeleteCoreV1NamespacedServiceAccountOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
-export const DeleteCoreV1NodeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteCoreV1NodeInput = /*@__PURE__*/ Schema.Struct({
   dryRun: Schema.optional(Schema.String),
 }).pipe(T.Http({ method: "DELETE", path: "/api/v1/nodes/{name}" }));
 export type DeleteCoreV1NodeInput = typeof DeleteCoreV1NodeInput.Type;
 
 // Output Schema
-export const DeleteCoreV1NodeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    apiVersion: Schema.optional(Schema.String),
-    code: Schema.optional(Schema.Number),
-    details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
-    ),
-    kind: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
-    metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
+export const DeleteCoreV1NodeOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  code: Schema.optional(Schema.Number),
+  details: Schema.optional(
+    Schema.Struct({
+      causes: Schema.optional(
+        Schema.Array(
           Schema.Struct({
-            selector: Schema.String,
+            field: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            reason: Schema.optional(Schema.String),
           }),
         ),
-      }),
-    ),
-    reason: Schema.optional(Schema.String),
-    status: Schema.optional(Schema.String),
-  },
-);
+      ),
+      group: Schema.optional(Schema.String),
+      kind: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      retryAfterSeconds: Schema.optional(Schema.Number),
+      uid: Schema.optional(Schema.String),
+    }),
+  ),
+  kind: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+  metadata: Schema.optional(
+    Schema.Struct({
+      continue: Schema.optional(Schema.String),
+      remainingItemCount: Schema.optional(Schema.Number),
+      resourceVersion: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      shardInfo: Schema.optional(
+        Schema.Struct({
+          selector: Schema.String,
+        }),
+      ),
+    }),
+  ),
+  reason: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+});
 export type DeleteCoreV1NodeOutput = typeof DeleteCoreV1NodeOutput.Type;
 
 // The operation
@@ -18140,14 +18105,14 @@ export type DeleteCoreV1NodeOutput = typeof DeleteCoreV1NodeOutput.Type;
  *
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
-export const deleteCoreV1Node = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteCoreV1Node = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteCoreV1NodeInput,
   outputSchema: DeleteCoreV1NodeOutput,
   errors: [NotFound, Conflict] as const,
 }));
 // Input Schema
 export const DeleteCoreV1PersistentVolumeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({ method: "DELETE", path: "/api/v1/persistentvolumes/{name}" }),
@@ -18157,7 +18122,7 @@ export type DeleteCoreV1PersistentVolumeInput =
 
 // Output Schema
 export const DeleteCoreV1PersistentVolumeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -18540,19 +18505,19 @@ export type DeleteCoreV1PersistentVolumeOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteCoreV1PersistentVolume =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1PersistentVolumeInput,
     outputSchema: DeleteCoreV1PersistentVolumeOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
-export const GetAPIVersionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(T.Http({ method: "GET", path: "/apis/" }));
+export const GetAPIVersionsInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({ method: "GET", path: "/apis/" }),
+);
 export type GetAPIVersionsInput = typeof GetAPIVersionsInput.Type;
 
 // Output Schema
-export const GetAPIVersionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetAPIVersionsOutput = /*@__PURE__*/ Schema.Struct({
   apiVersion: Schema.optional(Schema.String),
   groups: Schema.Array(
     Schema.Struct({
@@ -18589,18 +18554,18 @@ export type GetAPIVersionsOutput = typeof GetAPIVersionsOutput.Type;
 /**
  * get available API versions
  */
-export const getAPIVersions = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getAPIVersions = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetAPIVersionsInput,
   outputSchema: GetAPIVersionsOutput,
 }));
 // Input Schema
-export const GetCodeVersionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(T.Http({ method: "GET", path: "/version/" }));
+export const GetCodeVersionInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({ method: "GET", path: "/version/" }),
+);
 export type GetCodeVersionInput = typeof GetCodeVersionInput.Type;
 
 // Output Schema
-export const GetCodeVersionOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetCodeVersionOutput = /*@__PURE__*/ Schema.Struct({
   buildDate: Schema.String,
   compiler: Schema.String,
   emulationMajor: Schema.optional(Schema.String),
@@ -18621,20 +18586,20 @@ export type GetCodeVersionOutput = typeof GetCodeVersionOutput.Type;
 /**
  * get the version information for this server
  */
-export const getCodeVersion = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getCodeVersion = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetCodeVersionInput,
   outputSchema: GetCodeVersionOutput,
 }));
 // Input Schema
 export const GetCoreAPIVersionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/" }),
   );
 export type GetCoreAPIVersionsInput = typeof GetCoreAPIVersionsInput.Type;
 
 // Output Schema
 export const GetCoreAPIVersionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     serverAddressByClientCIDRs: Schema.Array(
@@ -18651,20 +18616,20 @@ export type GetCoreAPIVersionsOutput = typeof GetCoreAPIVersionsOutput.Type;
 /**
  * get available API versions
  */
-export const getCoreAPIVersions = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getCoreAPIVersions = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetCoreAPIVersionsInput,
   outputSchema: GetCoreAPIVersionsOutput,
 }));
 // Input Schema
 export const GetCoreV1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/" }),
   );
 export type GetCoreV1APIResourcesInput = typeof GetCoreV1APIResourcesInput.Type;
 
 // Output Schema
 export const GetCoreV1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -18690,15 +18655,13 @@ export type GetCoreV1APIResourcesOutput =
 /**
  * get available resources
  */
-export const getCoreV1APIResources = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetCoreV1APIResourcesInput,
-    outputSchema: GetCoreV1APIResourcesOutput,
-  }),
-);
+export const getCoreV1APIResources = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetCoreV1APIResourcesInput,
+  outputSchema: GetCoreV1APIResourcesOutput,
+}));
 // Input Schema
 export const GetServiceAccountIssuerOpenIDConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/.well-known/openid-configuration/" }),
   );
 export type GetServiceAccountIssuerOpenIDConfigurationInput =
@@ -18706,7 +18669,7 @@ export type GetServiceAccountIssuerOpenIDConfigurationInput =
 
 // Output Schema
 export const GetServiceAccountIssuerOpenIDConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+  /*@__PURE__*/ Schema.String;
 export type GetServiceAccountIssuerOpenIDConfigurationOutput =
   typeof GetServiceAccountIssuerOpenIDConfigurationOutput.Type;
 
@@ -18715,13 +18678,13 @@ export type GetServiceAccountIssuerOpenIDConfigurationOutput =
  * get service account issuer OpenID configuration, also known as the 'OIDC discovery doc'
  */
 export const getServiceAccountIssuerOpenIDConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetServiceAccountIssuerOpenIDConfigurationInput,
     outputSchema: GetServiceAccountIssuerOpenIDConfigurationOutput,
   }));
 // Input Schema
 export const GetServiceAccountIssuerOpenIDKeysetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/openid/v1/jwks/" }),
   );
 export type GetServiceAccountIssuerOpenIDKeysetInput =
@@ -18729,7 +18692,7 @@ export type GetServiceAccountIssuerOpenIDKeysetInput =
 
 // Output Schema
 export const GetServiceAccountIssuerOpenIDKeysetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+  /*@__PURE__*/ Schema.String;
 export type GetServiceAccountIssuerOpenIDKeysetOutput =
   typeof GetServiceAccountIssuerOpenIDKeysetOutput.Type;
 
@@ -18738,13 +18701,13 @@ export type GetServiceAccountIssuerOpenIDKeysetOutput =
  * get service account issuer OpenID JSON Web Key Set (contains public token verification keys)
  */
 export const getServiceAccountIssuerOpenIDKeyset =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetServiceAccountIssuerOpenIDKeysetInput,
     outputSchema: GetServiceAccountIssuerOpenIDKeysetOutput,
   }));
 // Input Schema
 export const ListCoreV1ComponentStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/componentstatuses" }),
   );
 export type ListCoreV1ComponentStatusInput =
@@ -18752,7 +18715,7 @@ export type ListCoreV1ComponentStatusInput =
 
 // Output Schema
 export const ListCoreV1ComponentStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -18838,15 +18801,13 @@ export type ListCoreV1ComponentStatusOutput =
 /**
  * list objects of kind ComponentStatus
  */
-export const listCoreV1ComponentStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListCoreV1ComponentStatusInput,
-    outputSchema: ListCoreV1ComponentStatusOutput,
-  }),
-);
+export const listCoreV1ComponentStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListCoreV1ComponentStatusInput,
+  outputSchema: ListCoreV1ComponentStatusOutput,
+}));
 // Input Schema
 export const ListCoreV1ConfigMapForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/configmaps" }),
   );
 export type ListCoreV1ConfigMapForAllNamespacesInput =
@@ -18854,7 +18815,7 @@ export type ListCoreV1ConfigMapForAllNamespacesInput =
 
 // Output Schema
 export const ListCoreV1ConfigMapForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -18936,13 +18897,13 @@ export type ListCoreV1ConfigMapForAllNamespacesOutput =
  * list or watch objects of kind ConfigMap
  */
 export const listCoreV1ConfigMapForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoreV1ConfigMapForAllNamespacesInput,
     outputSchema: ListCoreV1ConfigMapForAllNamespacesOutput,
   }));
 // Input Schema
 export const ListCoreV1EndpointsForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/endpoints" }),
   );
 export type ListCoreV1EndpointsForAllNamespacesInput =
@@ -18950,7 +18911,7 @@ export type ListCoreV1EndpointsForAllNamespacesInput =
 
 // Output Schema
 export const ListCoreV1EndpointsForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -19083,13 +19044,13 @@ export type ListCoreV1EndpointsForAllNamespacesOutput =
  * list or watch objects of kind Endpoints
  */
 export const listCoreV1EndpointsForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoreV1EndpointsForAllNamespacesInput,
     outputSchema: ListCoreV1EndpointsForAllNamespacesOutput,
   }));
 // Input Schema
 export const ListCoreV1EventForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/events" }),
   );
 export type ListCoreV1EventForAllNamespacesInput =
@@ -19097,7 +19058,7 @@ export type ListCoreV1EventForAllNamespacesInput =
 
 // Output Schema
 export const ListCoreV1EventForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -19212,13 +19173,13 @@ export type ListCoreV1EventForAllNamespacesOutput =
  * list or watch objects of kind Event
  */
 export const listCoreV1EventForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoreV1EventForAllNamespacesInput,
     outputSchema: ListCoreV1EventForAllNamespacesOutput,
   }));
 // Input Schema
 export const ListCoreV1LimitRangeForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/limitranges" }),
   );
 export type ListCoreV1LimitRangeForAllNamespacesInput =
@@ -19226,7 +19187,7 @@ export type ListCoreV1LimitRangeForAllNamespacesInput =
 
 // Output Schema
 export const ListCoreV1LimitRangeForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -19327,20 +19288,20 @@ export type ListCoreV1LimitRangeForAllNamespacesOutput =
  * list or watch objects of kind LimitRange
  */
 export const listCoreV1LimitRangeForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoreV1LimitRangeForAllNamespacesInput,
     outputSchema: ListCoreV1LimitRangeForAllNamespacesOutput,
   }));
 // Input Schema
 export const ListCoreV1NamespaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/namespaces" }),
   );
 export type ListCoreV1NamespaceInput = typeof ListCoreV1NamespaceInput.Type;
 
 // Output Schema
 export const ListCoreV1NamespaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -19436,13 +19397,13 @@ export type ListCoreV1NamespaceOutput = typeof ListCoreV1NamespaceOutput.Type;
 /**
  * list or watch objects of kind Namespace
  */
-export const listCoreV1Namespace = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listCoreV1Namespace = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListCoreV1NamespaceInput,
   outputSchema: ListCoreV1NamespaceOutput,
 }));
 // Input Schema
 export const ListCoreV1NamespacedConfigMapInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/namespaces/{namespace}/configmaps",
@@ -19453,7 +19414,7 @@ export type ListCoreV1NamespacedConfigMapInput =
 
 // Output Schema
 export const ListCoreV1NamespacedConfigMapOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -19535,13 +19496,13 @@ export type ListCoreV1NamespacedConfigMapOutput =
  * list or watch objects of kind ConfigMap
  */
 export const listCoreV1NamespacedConfigMap =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoreV1NamespacedConfigMapInput,
     outputSchema: ListCoreV1NamespacedConfigMapOutput,
   }));
 // Input Schema
 export const ListCoreV1NamespacedEndpointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/namespaces/{namespace}/endpoints" }),
   );
 export type ListCoreV1NamespacedEndpointsInput =
@@ -19549,7 +19510,7 @@ export type ListCoreV1NamespacedEndpointsInput =
 
 // Output Schema
 export const ListCoreV1NamespacedEndpointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -19682,13 +19643,13 @@ export type ListCoreV1NamespacedEndpointsOutput =
  * list or watch objects of kind Endpoints
  */
 export const listCoreV1NamespacedEndpoints =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoreV1NamespacedEndpointsInput,
     outputSchema: ListCoreV1NamespacedEndpointsOutput,
   }));
 // Input Schema
 export const ListCoreV1NamespacedEventInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/namespaces/{namespace}/events" }),
   );
 export type ListCoreV1NamespacedEventInput =
@@ -19696,7 +19657,7 @@ export type ListCoreV1NamespacedEventInput =
 
 // Output Schema
 export const ListCoreV1NamespacedEventOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -19810,15 +19771,13 @@ export type ListCoreV1NamespacedEventOutput =
 /**
  * list or watch objects of kind Event
  */
-export const listCoreV1NamespacedEvent = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListCoreV1NamespacedEventInput,
-    outputSchema: ListCoreV1NamespacedEventOutput,
-  }),
-);
+export const listCoreV1NamespacedEvent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListCoreV1NamespacedEventInput,
+  outputSchema: ListCoreV1NamespacedEventOutput,
+}));
 // Input Schema
 export const ListCoreV1NamespacedLimitRangeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/namespaces/{namespace}/limitranges",
@@ -19829,7 +19788,7 @@ export type ListCoreV1NamespacedLimitRangeInput =
 
 // Output Schema
 export const ListCoreV1NamespacedLimitRangeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -19930,13 +19889,13 @@ export type ListCoreV1NamespacedLimitRangeOutput =
  * list or watch objects of kind LimitRange
  */
 export const listCoreV1NamespacedLimitRange =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoreV1NamespacedLimitRangeInput,
     outputSchema: ListCoreV1NamespacedLimitRangeOutput,
   }));
 // Input Schema
 export const ListCoreV1NamespacedPersistentVolumeClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/namespaces/{namespace}/persistentvolumeclaims",
@@ -19947,7 +19906,7 @@ export type ListCoreV1NamespacedPersistentVolumeClaimInput =
 
 // Output Schema
 export const ListCoreV1NamespacedPersistentVolumeClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -20108,13 +20067,13 @@ export type ListCoreV1NamespacedPersistentVolumeClaimOutput =
  * list or watch objects of kind PersistentVolumeClaim
  */
 export const listCoreV1NamespacedPersistentVolumeClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoreV1NamespacedPersistentVolumeClaimInput,
     outputSchema: ListCoreV1NamespacedPersistentVolumeClaimOutput,
   }));
 // Input Schema
 export const ListCoreV1NamespacedPodInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/namespaces/{namespace}/pods" }),
   );
 export type ListCoreV1NamespacedPodInput =
@@ -20122,7 +20081,7 @@ export type ListCoreV1NamespacedPodInput =
 
 // Output Schema
 export const ListCoreV1NamespacedPodOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -23003,15 +22962,13 @@ export type ListCoreV1NamespacedPodOutput =
 /**
  * list or watch objects of kind Pod
  */
-export const listCoreV1NamespacedPod = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListCoreV1NamespacedPodInput,
-    outputSchema: ListCoreV1NamespacedPodOutput,
-  }),
-);
+export const listCoreV1NamespacedPod = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListCoreV1NamespacedPodInput,
+  outputSchema: ListCoreV1NamespacedPodOutput,
+}));
 // Input Schema
 export const ListCoreV1NamespacedPodTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/namespaces/{namespace}/podtemplates",
@@ -23022,7 +22979,7 @@ export type ListCoreV1NamespacedPodTemplateInput =
 
 // Output Schema
 export const ListCoreV1NamespacedPodTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -25564,13 +25521,13 @@ export type ListCoreV1NamespacedPodTemplateOutput =
  * list or watch objects of kind PodTemplate
  */
 export const listCoreV1NamespacedPodTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoreV1NamespacedPodTemplateInput,
     outputSchema: ListCoreV1NamespacedPodTemplateOutput,
   }));
 // Input Schema
 export const ListCoreV1NamespacedReplicationControllerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/namespaces/{namespace}/replicationcontrollers",
@@ -25581,7 +25538,7 @@ export type ListCoreV1NamespacedReplicationControllerInput =
 
 // Output Schema
 export const ListCoreV1NamespacedReplicationControllerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -28284,13 +28241,13 @@ export type ListCoreV1NamespacedReplicationControllerOutput =
  * list or watch objects of kind ReplicationController
  */
 export const listCoreV1NamespacedReplicationController =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoreV1NamespacedReplicationControllerInput,
     outputSchema: ListCoreV1NamespacedReplicationControllerOutput,
   }));
 // Input Schema
 export const ListCoreV1NamespacedResourceQuotaInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/namespaces/{namespace}/resourcequotas",
@@ -28301,7 +28258,7 @@ export type ListCoreV1NamespacedResourceQuotaInput =
 
 // Output Schema
 export const ListCoreV1NamespacedResourceQuotaOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -28403,13 +28360,13 @@ export type ListCoreV1NamespacedResourceQuotaOutput =
  * list or watch objects of kind ResourceQuota
  */
 export const listCoreV1NamespacedResourceQuota =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoreV1NamespacedResourceQuotaInput,
     outputSchema: ListCoreV1NamespacedResourceQuotaOutput,
   }));
 // Input Schema
 export const ListCoreV1NamespacedSecretInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/namespaces/{namespace}/secrets" }),
   );
 export type ListCoreV1NamespacedSecretInput =
@@ -28417,7 +28374,7 @@ export type ListCoreV1NamespacedSecretInput =
 
 // Output Schema
 export const ListCoreV1NamespacedSecretOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -28499,15 +28456,13 @@ export type ListCoreV1NamespacedSecretOutput =
 /**
  * list or watch objects of kind Secret
  */
-export const listCoreV1NamespacedSecret = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListCoreV1NamespacedSecretInput,
-    outputSchema: ListCoreV1NamespacedSecretOutput,
-  }),
-);
+export const listCoreV1NamespacedSecret = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListCoreV1NamespacedSecretInput,
+  outputSchema: ListCoreV1NamespacedSecretOutput,
+}));
 // Input Schema
 export const ListCoreV1NamespacedServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/namespaces/{namespace}/services" }),
   );
 export type ListCoreV1NamespacedServiceInput =
@@ -28515,7 +28470,7 @@ export type ListCoreV1NamespacedServiceInput =
 
 // Output Schema
 export const ListCoreV1NamespacedServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -28676,15 +28631,13 @@ export type ListCoreV1NamespacedServiceOutput =
 /**
  * list or watch objects of kind Service
  */
-export const listCoreV1NamespacedService = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListCoreV1NamespacedServiceInput,
-    outputSchema: ListCoreV1NamespacedServiceOutput,
-  }),
-);
+export const listCoreV1NamespacedService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListCoreV1NamespacedServiceInput,
+  outputSchema: ListCoreV1NamespacedServiceOutput,
+}));
 // Input Schema
 export const ListCoreV1NamespacedServiceAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/namespaces/{namespace}/serviceaccounts",
@@ -28695,7 +28648,7 @@ export type ListCoreV1NamespacedServiceAccountInput =
 
 // Output Schema
 export const ListCoreV1NamespacedServiceAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -28793,18 +28746,18 @@ export type ListCoreV1NamespacedServiceAccountOutput =
  * list or watch objects of kind ServiceAccount
  */
 export const listCoreV1NamespacedServiceAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoreV1NamespacedServiceAccountInput,
     outputSchema: ListCoreV1NamespacedServiceAccountOutput,
   }));
 // Input Schema
-export const ListCoreV1NodeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(T.Http({ method: "GET", path: "/api/v1/nodes" }));
+export const ListCoreV1NodeInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({ method: "GET", path: "/api/v1/nodes" }),
+);
 export type ListCoreV1NodeInput = typeof ListCoreV1NodeInput.Type;
 
 // Output Schema
-export const ListCoreV1NodeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListCoreV1NodeOutput = /*@__PURE__*/ Schema.Struct({
   apiVersion: Schema.optional(Schema.String),
   items: Schema.Array(
     Schema.Struct({
@@ -29048,13 +29001,13 @@ export type ListCoreV1NodeOutput = typeof ListCoreV1NodeOutput.Type;
 /**
  * list or watch objects of kind Node
  */
-export const listCoreV1Node = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listCoreV1Node = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListCoreV1NodeInput,
   outputSchema: ListCoreV1NodeOutput,
 }));
 // Input Schema
 export const ListCoreV1PersistentVolumeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/persistentvolumes" }),
   );
 export type ListCoreV1PersistentVolumeInput =
@@ -29062,7 +29015,7 @@ export type ListCoreV1PersistentVolumeInput =
 
 // Output Schema
 export const ListCoreV1PersistentVolumeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -29469,15 +29422,13 @@ export type ListCoreV1PersistentVolumeOutput =
 /**
  * list or watch objects of kind PersistentVolume
  */
-export const listCoreV1PersistentVolume = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListCoreV1PersistentVolumeInput,
-    outputSchema: ListCoreV1PersistentVolumeOutput,
-  }),
-);
+export const listCoreV1PersistentVolume = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListCoreV1PersistentVolumeInput,
+  outputSchema: ListCoreV1PersistentVolumeOutput,
+}));
 // Input Schema
 export const ListCoreV1PersistentVolumeClaimForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/persistentvolumeclaims" }),
   );
 export type ListCoreV1PersistentVolumeClaimForAllNamespacesInput =
@@ -29485,7 +29436,7 @@ export type ListCoreV1PersistentVolumeClaimForAllNamespacesInput =
 
 // Output Schema
 export const ListCoreV1PersistentVolumeClaimForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -29646,13 +29597,13 @@ export type ListCoreV1PersistentVolumeClaimForAllNamespacesOutput =
  * list or watch objects of kind PersistentVolumeClaim
  */
 export const listCoreV1PersistentVolumeClaimForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoreV1PersistentVolumeClaimForAllNamespacesInput,
     outputSchema: ListCoreV1PersistentVolumeClaimForAllNamespacesOutput,
   }));
 // Input Schema
 export const ListCoreV1PodForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/pods" }),
   );
 export type ListCoreV1PodForAllNamespacesInput =
@@ -29660,7 +29611,7 @@ export type ListCoreV1PodForAllNamespacesInput =
 
 // Output Schema
 export const ListCoreV1PodForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -32542,13 +32493,13 @@ export type ListCoreV1PodForAllNamespacesOutput =
  * list or watch objects of kind Pod
  */
 export const listCoreV1PodForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoreV1PodForAllNamespacesInput,
     outputSchema: ListCoreV1PodForAllNamespacesOutput,
   }));
 // Input Schema
 export const ListCoreV1PodTemplateForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/podtemplates" }),
   );
 export type ListCoreV1PodTemplateForAllNamespacesInput =
@@ -32556,7 +32507,7 @@ export type ListCoreV1PodTemplateForAllNamespacesInput =
 
 // Output Schema
 export const ListCoreV1PodTemplateForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -35098,13 +35049,13 @@ export type ListCoreV1PodTemplateForAllNamespacesOutput =
  * list or watch objects of kind PodTemplate
  */
 export const listCoreV1PodTemplateForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoreV1PodTemplateForAllNamespacesInput,
     outputSchema: ListCoreV1PodTemplateForAllNamespacesOutput,
   }));
 // Input Schema
 export const ListCoreV1ReplicationControllerForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/replicationcontrollers" }),
   );
 export type ListCoreV1ReplicationControllerForAllNamespacesInput =
@@ -35112,7 +35063,7 @@ export type ListCoreV1ReplicationControllerForAllNamespacesInput =
 
 // Output Schema
 export const ListCoreV1ReplicationControllerForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -37815,13 +37766,13 @@ export type ListCoreV1ReplicationControllerForAllNamespacesOutput =
  * list or watch objects of kind ReplicationController
  */
 export const listCoreV1ReplicationControllerForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoreV1ReplicationControllerForAllNamespacesInput,
     outputSchema: ListCoreV1ReplicationControllerForAllNamespacesOutput,
   }));
 // Input Schema
 export const ListCoreV1ResourceQuotaForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/resourcequotas" }),
   );
 export type ListCoreV1ResourceQuotaForAllNamespacesInput =
@@ -37829,7 +37780,7 @@ export type ListCoreV1ResourceQuotaForAllNamespacesInput =
 
 // Output Schema
 export const ListCoreV1ResourceQuotaForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -37931,13 +37882,13 @@ export type ListCoreV1ResourceQuotaForAllNamespacesOutput =
  * list or watch objects of kind ResourceQuota
  */
 export const listCoreV1ResourceQuotaForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoreV1ResourceQuotaForAllNamespacesInput,
     outputSchema: ListCoreV1ResourceQuotaForAllNamespacesOutput,
   }));
 // Input Schema
 export const ListCoreV1SecretForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/secrets" }),
   );
 export type ListCoreV1SecretForAllNamespacesInput =
@@ -37945,7 +37896,7 @@ export type ListCoreV1SecretForAllNamespacesInput =
 
 // Output Schema
 export const ListCoreV1SecretForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -38028,13 +37979,13 @@ export type ListCoreV1SecretForAllNamespacesOutput =
  * list or watch objects of kind Secret
  */
 export const listCoreV1SecretForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoreV1SecretForAllNamespacesInput,
     outputSchema: ListCoreV1SecretForAllNamespacesOutput,
   }));
 // Input Schema
 export const ListCoreV1ServiceAccountForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/serviceaccounts" }),
   );
 export type ListCoreV1ServiceAccountForAllNamespacesInput =
@@ -38042,7 +37993,7 @@ export type ListCoreV1ServiceAccountForAllNamespacesInput =
 
 // Output Schema
 export const ListCoreV1ServiceAccountForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -38140,13 +38091,13 @@ export type ListCoreV1ServiceAccountForAllNamespacesOutput =
  * list or watch objects of kind ServiceAccount
  */
 export const listCoreV1ServiceAccountForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoreV1ServiceAccountForAllNamespacesInput,
     outputSchema: ListCoreV1ServiceAccountForAllNamespacesOutput,
   }));
 // Input Schema
 export const ListCoreV1ServiceForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/services" }),
   );
 export type ListCoreV1ServiceForAllNamespacesInput =
@@ -38154,7 +38105,7 @@ export type ListCoreV1ServiceForAllNamespacesInput =
 
 // Output Schema
 export const ListCoreV1ServiceForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -38316,44 +38267,44 @@ export type ListCoreV1ServiceForAllNamespacesOutput =
  * list or watch objects of kind Service
  */
 export const listCoreV1ServiceForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoreV1ServiceForAllNamespacesInput,
     outputSchema: ListCoreV1ServiceForAllNamespacesOutput,
   }));
 // Input Schema
-export const LogFileHandlerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(T.Http({ method: "GET", path: "/logs/{logpath}" }));
+export const LogFileHandlerInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({ method: "GET", path: "/logs/{logpath}" }),
+);
 export type LogFileHandlerInput = typeof LogFileHandlerInput.Type;
 
 // Output Schema
-export const LogFileHandlerOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const LogFileHandlerOutput = /*@__PURE__*/ Schema.Void;
 export type LogFileHandlerOutput = typeof LogFileHandlerOutput.Type;
 
 // The operation
-export const logFileHandler = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const logFileHandler = /*@__PURE__*/ API.make(() => ({
   inputSchema: LogFileHandlerInput,
   outputSchema: LogFileHandlerOutput,
 }));
 // Input Schema
 export const LogFileListHandlerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/logs/" }),
   );
 export type LogFileListHandlerInput = typeof LogFileListHandlerInput.Type;
 
 // Output Schema
-export const LogFileListHandlerOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const LogFileListHandlerOutput = /*@__PURE__*/ Schema.Void;
 export type LogFileListHandlerOutput = typeof LogFileListHandlerOutput.Type;
 
 // The operation
-export const logFileListHandler = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const logFileListHandler = /*@__PURE__*/ API.make(() => ({
   inputSchema: LogFileListHandlerInput,
   outputSchema: LogFileListHandlerOutput,
 }));
 // Input Schema
 export const PatchCoreV1NamespaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(T.Http({ method: "PATCH", path: "/api/v1/namespaces/{name}" }));
@@ -38361,7 +38312,7 @@ export type PatchCoreV1NamespaceInput = typeof PatchCoreV1NamespaceInput.Type;
 
 // Output Schema
 export const PatchCoreV1NamespaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -38439,16 +38390,14 @@ export type PatchCoreV1NamespaceOutput = typeof PatchCoreV1NamespaceOutput.Type;
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchCoreV1Namespace = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PatchCoreV1NamespaceInput,
-    outputSchema: PatchCoreV1NamespaceOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const patchCoreV1Namespace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchCoreV1NamespaceInput,
+  outputSchema: PatchCoreV1NamespaceOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const PatchCoreV1NamespaceStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -38459,7 +38408,7 @@ export type PatchCoreV1NamespaceStatusInput =
 
 // Output Schema
 export const PatchCoreV1NamespaceStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -38538,16 +38487,14 @@ export type PatchCoreV1NamespaceStatusOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchCoreV1NamespaceStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PatchCoreV1NamespaceStatusInput,
-    outputSchema: PatchCoreV1NamespaceStatusOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const patchCoreV1NamespaceStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchCoreV1NamespaceStatusInput,
+  outputSchema: PatchCoreV1NamespaceStatusOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const PatchCoreV1NamespacedConfigMapInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -38561,7 +38508,7 @@ export type PatchCoreV1NamespacedConfigMapInput =
 
 // Output Schema
 export const PatchCoreV1NamespacedConfigMapOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     binaryData: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     data: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -38623,14 +38570,14 @@ export type PatchCoreV1NamespacedConfigMapOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchCoreV1NamespacedConfigMap =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedConfigMapInput,
     outputSchema: PatchCoreV1NamespacedConfigMapOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCoreV1NamespacedEndpointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -38644,7 +38591,7 @@ export type PatchCoreV1NamespacedEndpointsInput =
 
 // Output Schema
 export const PatchCoreV1NamespacedEndpointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -38759,14 +38706,14 @@ export type PatchCoreV1NamespacedEndpointsOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchCoreV1NamespacedEndpoints =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedEndpointsInput,
     outputSchema: PatchCoreV1NamespacedEndpointsOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCoreV1NamespacedEventInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -38780,7 +38727,7 @@ export type PatchCoreV1NamespacedEventInput =
 
 // Output Schema
 export const PatchCoreV1NamespacedEventOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     action: Schema.optional(Schema.String),
     apiVersion: Schema.optional(Schema.String),
     count: Schema.optional(Schema.Number),
@@ -38876,16 +38823,14 @@ export type PatchCoreV1NamespacedEventOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchCoreV1NamespacedEvent = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PatchCoreV1NamespacedEventInput,
-    outputSchema: PatchCoreV1NamespacedEventOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const patchCoreV1NamespacedEvent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchCoreV1NamespacedEventInput,
+  outputSchema: PatchCoreV1NamespacedEventOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const PatchCoreV1NamespacedLimitRangeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -38899,7 +38844,7 @@ export type PatchCoreV1NamespacedLimitRangeInput =
 
 // Output Schema
 export const PatchCoreV1NamespacedLimitRangeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -38978,14 +38923,14 @@ export type PatchCoreV1NamespacedLimitRangeOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchCoreV1NamespacedLimitRange =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedLimitRangeInput,
     outputSchema: PatchCoreV1NamespacedLimitRangeOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCoreV1NamespacedPersistentVolumeClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -38999,7 +38944,7 @@ export type PatchCoreV1NamespacedPersistentVolumeClaimInput =
 
 // Output Schema
 export const PatchCoreV1NamespacedPersistentVolumeClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -39140,14 +39085,14 @@ export type PatchCoreV1NamespacedPersistentVolumeClaimOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchCoreV1NamespacedPersistentVolumeClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedPersistentVolumeClaimInput,
     outputSchema: PatchCoreV1NamespacedPersistentVolumeClaimOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCoreV1NamespacedPersistentVolumeClaimStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -39161,7 +39106,7 @@ export type PatchCoreV1NamespacedPersistentVolumeClaimStatusInput =
 
 // Output Schema
 export const PatchCoreV1NamespacedPersistentVolumeClaimStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -39302,14 +39247,14 @@ export type PatchCoreV1NamespacedPersistentVolumeClaimStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchCoreV1NamespacedPersistentVolumeClaimStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedPersistentVolumeClaimStatusInput,
     outputSchema: PatchCoreV1NamespacedPersistentVolumeClaimStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCoreV1NamespacedPodInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -39323,7 +39268,7 @@ export type PatchCoreV1NamespacedPodInput =
 
 // Output Schema
 export const PatchCoreV1NamespacedPodOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -42128,16 +42073,14 @@ export type PatchCoreV1NamespacedPodOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchCoreV1NamespacedPod = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PatchCoreV1NamespacedPodInput,
-    outputSchema: PatchCoreV1NamespacedPodOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const patchCoreV1NamespacedPod = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchCoreV1NamespacedPodInput,
+  outputSchema: PatchCoreV1NamespacedPodOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const PatchCoreV1NamespacedPodEphemeralcontainersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -42151,7 +42094,7 @@ export type PatchCoreV1NamespacedPodEphemeralcontainersInput =
 
 // Output Schema
 export const PatchCoreV1NamespacedPodEphemeralcontainersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -44957,14 +44900,14 @@ export type PatchCoreV1NamespacedPodEphemeralcontainersOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchCoreV1NamespacedPodEphemeralcontainers =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedPodEphemeralcontainersInput,
     outputSchema: PatchCoreV1NamespacedPodEphemeralcontainersOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCoreV1NamespacedPodResizeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -44978,7 +44921,7 @@ export type PatchCoreV1NamespacedPodResizeInput =
 
 // Output Schema
 export const PatchCoreV1NamespacedPodResizeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -47784,14 +47727,14 @@ export type PatchCoreV1NamespacedPodResizeOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchCoreV1NamespacedPodResize =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedPodResizeInput,
     outputSchema: PatchCoreV1NamespacedPodResizeOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCoreV1NamespacedPodStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -47805,7 +47748,7 @@ export type PatchCoreV1NamespacedPodStatusInput =
 
 // Output Schema
 export const PatchCoreV1NamespacedPodStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -50611,14 +50554,14 @@ export type PatchCoreV1NamespacedPodStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchCoreV1NamespacedPodStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedPodStatusInput,
     outputSchema: PatchCoreV1NamespacedPodStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCoreV1NamespacedPodTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -50632,7 +50575,7 @@ export type PatchCoreV1NamespacedPodTemplateInput =
 
 // Output Schema
 export const PatchCoreV1NamespacedPodTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -53050,14 +52993,14 @@ export type PatchCoreV1NamespacedPodTemplateOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchCoreV1NamespacedPodTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedPodTemplateInput,
     outputSchema: PatchCoreV1NamespacedPodTemplateOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCoreV1NamespacedReplicationControllerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -53071,7 +53014,7 @@ export type PatchCoreV1NamespacedReplicationControllerInput =
 
 // Output Schema
 export const PatchCoreV1NamespacedReplicationControllerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -55622,14 +55565,14 @@ export type PatchCoreV1NamespacedReplicationControllerOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchCoreV1NamespacedReplicationController =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedReplicationControllerInput,
     outputSchema: PatchCoreV1NamespacedReplicationControllerOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCoreV1NamespacedReplicationControllerScaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -55643,7 +55586,7 @@ export type PatchCoreV1NamespacedReplicationControllerScaleInput =
 
 // Output Schema
 export const PatchCoreV1NamespacedReplicationControllerScaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -55713,14 +55656,14 @@ export type PatchCoreV1NamespacedReplicationControllerScaleOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchCoreV1NamespacedReplicationControllerScale =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedReplicationControllerScaleInput,
     outputSchema: PatchCoreV1NamespacedReplicationControllerScaleOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCoreV1NamespacedReplicationControllerStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -55734,7 +55677,7 @@ export type PatchCoreV1NamespacedReplicationControllerStatusInput =
 
 // Output Schema
 export const PatchCoreV1NamespacedReplicationControllerStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -58285,14 +58228,14 @@ export type PatchCoreV1NamespacedReplicationControllerStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchCoreV1NamespacedReplicationControllerStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedReplicationControllerStatusInput,
     outputSchema: PatchCoreV1NamespacedReplicationControllerStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCoreV1NamespacedResourceQuotaInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -58306,7 +58249,7 @@ export type PatchCoreV1NamespacedResourceQuotaInput =
 
 // Output Schema
 export const PatchCoreV1NamespacedResourceQuotaOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -58390,14 +58333,14 @@ export type PatchCoreV1NamespacedResourceQuotaOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchCoreV1NamespacedResourceQuota =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedResourceQuotaInput,
     outputSchema: PatchCoreV1NamespacedResourceQuotaOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCoreV1NamespacedResourceQuotaStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -58411,7 +58354,7 @@ export type PatchCoreV1NamespacedResourceQuotaStatusInput =
 
 // Output Schema
 export const PatchCoreV1NamespacedResourceQuotaStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -58495,14 +58438,14 @@ export type PatchCoreV1NamespacedResourceQuotaStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchCoreV1NamespacedResourceQuotaStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedResourceQuotaStatusInput,
     outputSchema: PatchCoreV1NamespacedResourceQuotaStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCoreV1NamespacedSecretInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -58516,7 +58459,7 @@ export type PatchCoreV1NamespacedSecretInput =
 
 // Output Schema
 export const PatchCoreV1NamespacedSecretOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     data: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     immutable: Schema.optional(Schema.Boolean),
@@ -58578,16 +58521,14 @@ export type PatchCoreV1NamespacedSecretOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchCoreV1NamespacedSecret = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PatchCoreV1NamespacedSecretInput,
-    outputSchema: PatchCoreV1NamespacedSecretOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const patchCoreV1NamespacedSecret = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchCoreV1NamespacedSecretInput,
+  outputSchema: PatchCoreV1NamespacedSecretOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const PatchCoreV1NamespacedServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -58601,7 +58542,7 @@ export type PatchCoreV1NamespacedServiceInput =
 
 // Output Schema
 export const PatchCoreV1NamespacedServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -58741,14 +58682,14 @@ export type PatchCoreV1NamespacedServiceOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchCoreV1NamespacedService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedServiceInput,
     outputSchema: PatchCoreV1NamespacedServiceOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCoreV1NamespacedServiceAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -58762,7 +58703,7 @@ export type PatchCoreV1NamespacedServiceAccountInput =
 
 // Output Schema
 export const PatchCoreV1NamespacedServiceAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     automountServiceAccountToken: Schema.optional(Schema.Boolean),
     imagePullSecrets: Schema.optional(
@@ -58842,14 +58783,14 @@ export type PatchCoreV1NamespacedServiceAccountOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchCoreV1NamespacedServiceAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedServiceAccountInput,
     outputSchema: PatchCoreV1NamespacedServiceAccountOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCoreV1NamespacedServiceStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -58863,7 +58804,7 @@ export type PatchCoreV1NamespacedServiceStatusInput =
 
 // Output Schema
 export const PatchCoreV1NamespacedServiceStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -59003,20 +58944,20 @@ export type PatchCoreV1NamespacedServiceStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchCoreV1NamespacedServiceStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedServiceStatusInput,
     outputSchema: PatchCoreV1NamespacedServiceStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
-export const PatchCoreV1NodeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchCoreV1NodeInput = /*@__PURE__*/ Schema.Struct({
   dryRun: Schema.optional(Schema.String),
   fieldValidation: Schema.optional(Schema.String),
 }).pipe(T.Http({ method: "PATCH", path: "/api/v1/nodes/{name}" }));
 export type PatchCoreV1NodeInput = typeof PatchCoreV1NodeInput.Type;
 
 // Output Schema
-export const PatchCoreV1NodeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchCoreV1NodeOutput = /*@__PURE__*/ Schema.Struct({
   apiVersion: Schema.optional(Schema.String),
   kind: Schema.optional(Schema.String),
   metadata: Schema.optional(
@@ -59238,14 +59179,14 @@ export type PatchCoreV1NodeOutput = typeof PatchCoreV1NodeOutput.Type;
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchCoreV1Node = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const patchCoreV1Node = /*@__PURE__*/ API.make(() => ({
   inputSchema: PatchCoreV1NodeInput,
   outputSchema: PatchCoreV1NodeOutput,
   errors: [NotFound, Conflict, UnprocessableEntity] as const,
 }));
 // Input Schema
 export const PatchCoreV1NodeStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(T.Http({ method: "PATCH", path: "/api/v1/nodes/{name}/status" }));
@@ -59253,7 +59194,7 @@ export type PatchCoreV1NodeStatusInput = typeof PatchCoreV1NodeStatusInput.Type;
 
 // Output Schema
 export const PatchCoreV1NodeStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -59480,16 +59421,14 @@ export type PatchCoreV1NodeStatusOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchCoreV1NodeStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PatchCoreV1NodeStatusInput,
-    outputSchema: PatchCoreV1NodeStatusOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const patchCoreV1NodeStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchCoreV1NodeStatusInput,
+  outputSchema: PatchCoreV1NodeStatusOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const PatchCoreV1PersistentVolumeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -59500,7 +59439,7 @@ export type PatchCoreV1PersistentVolumeInput =
 
 // Output Schema
 export const PatchCoreV1PersistentVolumeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -59883,16 +59822,14 @@ export type PatchCoreV1PersistentVolumeOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchCoreV1PersistentVolume = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PatchCoreV1PersistentVolumeInput,
-    outputSchema: PatchCoreV1PersistentVolumeOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const patchCoreV1PersistentVolume = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchCoreV1PersistentVolumeInput,
+  outputSchema: PatchCoreV1PersistentVolumeOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const PatchCoreV1PersistentVolumeStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -59906,7 +59843,7 @@ export type PatchCoreV1PersistentVolumeStatusInput =
 
 // Output Schema
 export const PatchCoreV1PersistentVolumeStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -60290,14 +60227,14 @@ export type PatchCoreV1PersistentVolumeStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchCoreV1PersistentVolumeStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1PersistentVolumeStatusInput,
     outputSchema: PatchCoreV1PersistentVolumeStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReadCoreV1ComponentStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/componentstatuses/{name}" }),
   );
 export type ReadCoreV1ComponentStatusInput =
@@ -60305,7 +60242,7 @@ export type ReadCoreV1ComponentStatusInput =
 
 // Output Schema
 export const ReadCoreV1ComponentStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     conditions: Schema.optional(
       Schema.Array(
@@ -60370,23 +60307,21 @@ export type ReadCoreV1ComponentStatusOutput =
 /**
  * read the specified ComponentStatus
  */
-export const readCoreV1ComponentStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReadCoreV1ComponentStatusInput,
-    outputSchema: ReadCoreV1ComponentStatusOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const readCoreV1ComponentStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadCoreV1ComponentStatusInput,
+  outputSchema: ReadCoreV1ComponentStatusOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export const ReadCoreV1NamespaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/namespaces/{name}" }),
   );
 export type ReadCoreV1NamespaceInput = typeof ReadCoreV1NamespaceInput.Type;
 
 // Output Schema
 export const ReadCoreV1NamespaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -60461,14 +60396,14 @@ export type ReadCoreV1NamespaceOutput = typeof ReadCoreV1NamespaceOutput.Type;
 /**
  * read the specified Namespace
  */
-export const readCoreV1Namespace = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const readCoreV1Namespace = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReadCoreV1NamespaceInput,
   outputSchema: ReadCoreV1NamespaceOutput,
   errors: [NotFound] as const,
 }));
 // Input Schema
 export const ReadCoreV1NamespaceStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/namespaces/{name}/status" }),
   );
 export type ReadCoreV1NamespaceStatusInput =
@@ -60476,7 +60411,7 @@ export type ReadCoreV1NamespaceStatusInput =
 
 // Output Schema
 export const ReadCoreV1NamespaceStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -60552,16 +60487,14 @@ export type ReadCoreV1NamespaceStatusOutput =
 /**
  * read status of the specified Namespace
  */
-export const readCoreV1NamespaceStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReadCoreV1NamespaceStatusInput,
-    outputSchema: ReadCoreV1NamespaceStatusOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const readCoreV1NamespaceStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadCoreV1NamespaceStatusInput,
+  outputSchema: ReadCoreV1NamespaceStatusOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export const ReadCoreV1NamespacedConfigMapInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/namespaces/{namespace}/configmaps/{name}",
@@ -60572,7 +60505,7 @@ export type ReadCoreV1NamespacedConfigMapInput =
 
 // Output Schema
 export const ReadCoreV1NamespacedConfigMapOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     binaryData: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     data: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -60631,14 +60564,14 @@ export type ReadCoreV1NamespacedConfigMapOutput =
  * read the specified ConfigMap
  */
 export const readCoreV1NamespacedConfigMap =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedConfigMapInput,
     outputSchema: ReadCoreV1NamespacedConfigMapOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCoreV1NamespacedEndpointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/namespaces/{namespace}/endpoints/{name}",
@@ -60649,7 +60582,7 @@ export type ReadCoreV1NamespacedEndpointsInput =
 
 // Output Schema
 export const ReadCoreV1NamespacedEndpointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -60761,14 +60694,14 @@ export type ReadCoreV1NamespacedEndpointsOutput =
  * read the specified Endpoints
  */
 export const readCoreV1NamespacedEndpoints =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedEndpointsInput,
     outputSchema: ReadCoreV1NamespacedEndpointsOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCoreV1NamespacedEventInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/namespaces/{namespace}/events/{name}",
@@ -60779,7 +60712,7 @@ export type ReadCoreV1NamespacedEventInput =
 
 // Output Schema
 export const ReadCoreV1NamespacedEventOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     action: Schema.optional(Schema.String),
     apiVersion: Schema.optional(Schema.String),
     count: Schema.optional(Schema.Number),
@@ -60872,16 +60805,14 @@ export type ReadCoreV1NamespacedEventOutput =
 /**
  * read the specified Event
  */
-export const readCoreV1NamespacedEvent = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReadCoreV1NamespacedEventInput,
-    outputSchema: ReadCoreV1NamespacedEventOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const readCoreV1NamespacedEvent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadCoreV1NamespacedEventInput,
+  outputSchema: ReadCoreV1NamespacedEventOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export const ReadCoreV1NamespacedLimitRangeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/namespaces/{namespace}/limitranges/{name}",
@@ -60892,7 +60823,7 @@ export type ReadCoreV1NamespacedLimitRangeInput =
 
 // Output Schema
 export const ReadCoreV1NamespacedLimitRangeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -60968,14 +60899,14 @@ export type ReadCoreV1NamespacedLimitRangeOutput =
  * read the specified LimitRange
  */
 export const readCoreV1NamespacedLimitRange =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedLimitRangeInput,
     outputSchema: ReadCoreV1NamespacedLimitRangeOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCoreV1NamespacedPersistentVolumeClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}",
@@ -60986,7 +60917,7 @@ export type ReadCoreV1NamespacedPersistentVolumeClaimInput =
 
 // Output Schema
 export const ReadCoreV1NamespacedPersistentVolumeClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -61124,14 +61055,14 @@ export type ReadCoreV1NamespacedPersistentVolumeClaimOutput =
  * read the specified PersistentVolumeClaim
  */
 export const readCoreV1NamespacedPersistentVolumeClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedPersistentVolumeClaimInput,
     outputSchema: ReadCoreV1NamespacedPersistentVolumeClaimOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCoreV1NamespacedPersistentVolumeClaimStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status",
@@ -61142,7 +61073,7 @@ export type ReadCoreV1NamespacedPersistentVolumeClaimStatusInput =
 
 // Output Schema
 export const ReadCoreV1NamespacedPersistentVolumeClaimStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -61280,14 +61211,14 @@ export type ReadCoreV1NamespacedPersistentVolumeClaimStatusOutput =
  * read status of the specified PersistentVolumeClaim
  */
 export const readCoreV1NamespacedPersistentVolumeClaimStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedPersistentVolumeClaimStatusInput,
     outputSchema: ReadCoreV1NamespacedPersistentVolumeClaimStatusOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCoreV1NamespacedPodInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/namespaces/{namespace}/pods/{name}",
@@ -61298,7 +61229,7 @@ export type ReadCoreV1NamespacedPodInput =
 
 // Output Schema
 export const ReadCoreV1NamespacedPodOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -64100,16 +64031,14 @@ export type ReadCoreV1NamespacedPodOutput =
 /**
  * read the specified Pod
  */
-export const readCoreV1NamespacedPod = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReadCoreV1NamespacedPodInput,
-    outputSchema: ReadCoreV1NamespacedPodOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const readCoreV1NamespacedPod = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadCoreV1NamespacedPodInput,
+  outputSchema: ReadCoreV1NamespacedPodOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export const ReadCoreV1NamespacedPodEphemeralcontainersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/namespaces/{namespace}/pods/{name}/ephemeralcontainers",
@@ -64120,7 +64049,7 @@ export type ReadCoreV1NamespacedPodEphemeralcontainersInput =
 
 // Output Schema
 export const ReadCoreV1NamespacedPodEphemeralcontainersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -66923,14 +66852,14 @@ export type ReadCoreV1NamespacedPodEphemeralcontainersOutput =
  * read ephemeralcontainers of the specified Pod
  */
 export const readCoreV1NamespacedPodEphemeralcontainers =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedPodEphemeralcontainersInput,
     outputSchema: ReadCoreV1NamespacedPodEphemeralcontainersOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCoreV1NamespacedPodLogInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/namespaces/{namespace}/pods/{name}/log",
@@ -66940,8 +66869,7 @@ export type ReadCoreV1NamespacedPodLogInput =
   typeof ReadCoreV1NamespacedPodLogInput.Type;
 
 // Output Schema
-export const ReadCoreV1NamespacedPodLogOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+export const ReadCoreV1NamespacedPodLogOutput = /*@__PURE__*/ Schema.String;
 export type ReadCoreV1NamespacedPodLogOutput =
   typeof ReadCoreV1NamespacedPodLogOutput.Type;
 
@@ -66949,16 +66877,14 @@ export type ReadCoreV1NamespacedPodLogOutput =
 /**
  * read log of the specified Pod
  */
-export const readCoreV1NamespacedPodLog = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReadCoreV1NamespacedPodLogInput,
-    outputSchema: ReadCoreV1NamespacedPodLogOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const readCoreV1NamespacedPodLog = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadCoreV1NamespacedPodLogInput,
+  outputSchema: ReadCoreV1NamespacedPodLogOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export const ReadCoreV1NamespacedPodResizeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/namespaces/{namespace}/pods/{name}/resize",
@@ -66969,7 +66895,7 @@ export type ReadCoreV1NamespacedPodResizeInput =
 
 // Output Schema
 export const ReadCoreV1NamespacedPodResizeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -69772,14 +69698,14 @@ export type ReadCoreV1NamespacedPodResizeOutput =
  * read resize of the specified Pod
  */
 export const readCoreV1NamespacedPodResize =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedPodResizeInput,
     outputSchema: ReadCoreV1NamespacedPodResizeOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCoreV1NamespacedPodStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/namespaces/{namespace}/pods/{name}/status",
@@ -69790,7 +69716,7 @@ export type ReadCoreV1NamespacedPodStatusInput =
 
 // Output Schema
 export const ReadCoreV1NamespacedPodStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -72593,14 +72519,14 @@ export type ReadCoreV1NamespacedPodStatusOutput =
  * read status of the specified Pod
  */
 export const readCoreV1NamespacedPodStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedPodStatusInput,
     outputSchema: ReadCoreV1NamespacedPodStatusOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCoreV1NamespacedPodTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/namespaces/{namespace}/podtemplates/{name}",
@@ -72611,7 +72537,7 @@ export type ReadCoreV1NamespacedPodTemplateInput =
 
 // Output Schema
 export const ReadCoreV1NamespacedPodTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -75026,14 +74952,14 @@ export type ReadCoreV1NamespacedPodTemplateOutput =
  * read the specified PodTemplate
  */
 export const readCoreV1NamespacedPodTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedPodTemplateInput,
     outputSchema: ReadCoreV1NamespacedPodTemplateOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCoreV1NamespacedReplicationControllerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}",
@@ -75044,7 +74970,7 @@ export type ReadCoreV1NamespacedReplicationControllerInput =
 
 // Output Schema
 export const ReadCoreV1NamespacedReplicationControllerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -77592,14 +77518,14 @@ export type ReadCoreV1NamespacedReplicationControllerOutput =
  * read the specified ReplicationController
  */
 export const readCoreV1NamespacedReplicationController =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedReplicationControllerInput,
     outputSchema: ReadCoreV1NamespacedReplicationControllerOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCoreV1NamespacedReplicationControllerScaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale",
@@ -77610,7 +77536,7 @@ export type ReadCoreV1NamespacedReplicationControllerScaleInput =
 
 // Output Schema
 export const ReadCoreV1NamespacedReplicationControllerScaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -77677,14 +77603,14 @@ export type ReadCoreV1NamespacedReplicationControllerScaleOutput =
  * read scale of the specified ReplicationController
  */
 export const readCoreV1NamespacedReplicationControllerScale =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedReplicationControllerScaleInput,
     outputSchema: ReadCoreV1NamespacedReplicationControllerScaleOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCoreV1NamespacedReplicationControllerStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status",
@@ -77695,7 +77621,7 @@ export type ReadCoreV1NamespacedReplicationControllerStatusInput =
 
 // Output Schema
 export const ReadCoreV1NamespacedReplicationControllerStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -80243,14 +80169,14 @@ export type ReadCoreV1NamespacedReplicationControllerStatusOutput =
  * read status of the specified ReplicationController
  */
 export const readCoreV1NamespacedReplicationControllerStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedReplicationControllerStatusInput,
     outputSchema: ReadCoreV1NamespacedReplicationControllerStatusOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCoreV1NamespacedResourceQuotaInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/namespaces/{namespace}/resourcequotas/{name}",
@@ -80261,7 +80187,7 @@ export type ReadCoreV1NamespacedResourceQuotaInput =
 
 // Output Schema
 export const ReadCoreV1NamespacedResourceQuotaOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -80342,14 +80268,14 @@ export type ReadCoreV1NamespacedResourceQuotaOutput =
  * read the specified ResourceQuota
  */
 export const readCoreV1NamespacedResourceQuota =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedResourceQuotaInput,
     outputSchema: ReadCoreV1NamespacedResourceQuotaOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCoreV1NamespacedResourceQuotaStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/namespaces/{namespace}/resourcequotas/{name}/status",
@@ -80360,7 +80286,7 @@ export type ReadCoreV1NamespacedResourceQuotaStatusInput =
 
 // Output Schema
 export const ReadCoreV1NamespacedResourceQuotaStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -80441,14 +80367,14 @@ export type ReadCoreV1NamespacedResourceQuotaStatusOutput =
  * read status of the specified ResourceQuota
  */
 export const readCoreV1NamespacedResourceQuotaStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedResourceQuotaStatusInput,
     outputSchema: ReadCoreV1NamespacedResourceQuotaStatusOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCoreV1NamespacedSecretInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/namespaces/{namespace}/secrets/{name}",
@@ -80459,7 +80385,7 @@ export type ReadCoreV1NamespacedSecretInput =
 
 // Output Schema
 export const ReadCoreV1NamespacedSecretOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     data: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     immutable: Schema.optional(Schema.Boolean),
@@ -80518,16 +80444,14 @@ export type ReadCoreV1NamespacedSecretOutput =
 /**
  * read the specified Secret
  */
-export const readCoreV1NamespacedSecret = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReadCoreV1NamespacedSecretInput,
-    outputSchema: ReadCoreV1NamespacedSecretOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const readCoreV1NamespacedSecret = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadCoreV1NamespacedSecretInput,
+  outputSchema: ReadCoreV1NamespacedSecretOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export const ReadCoreV1NamespacedServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/namespaces/{namespace}/services/{name}",
@@ -80538,7 +80462,7 @@ export type ReadCoreV1NamespacedServiceInput =
 
 // Output Schema
 export const ReadCoreV1NamespacedServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -80674,16 +80598,14 @@ export type ReadCoreV1NamespacedServiceOutput =
 /**
  * read the specified Service
  */
-export const readCoreV1NamespacedService = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReadCoreV1NamespacedServiceInput,
-    outputSchema: ReadCoreV1NamespacedServiceOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const readCoreV1NamespacedService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadCoreV1NamespacedServiceInput,
+  outputSchema: ReadCoreV1NamespacedServiceOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export const ReadCoreV1NamespacedServiceAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/namespaces/{namespace}/serviceaccounts/{name}",
@@ -80694,7 +80616,7 @@ export type ReadCoreV1NamespacedServiceAccountInput =
 
 // Output Schema
 export const ReadCoreV1NamespacedServiceAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     automountServiceAccountToken: Schema.optional(Schema.Boolean),
     imagePullSecrets: Schema.optional(
@@ -80771,14 +80693,14 @@ export type ReadCoreV1NamespacedServiceAccountOutput =
  * read the specified ServiceAccount
  */
 export const readCoreV1NamespacedServiceAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedServiceAccountInput,
     outputSchema: ReadCoreV1NamespacedServiceAccountOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCoreV1NamespacedServiceStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/namespaces/{namespace}/services/{name}/status",
@@ -80789,7 +80711,7 @@ export type ReadCoreV1NamespacedServiceStatusInput =
 
 // Output Schema
 export const ReadCoreV1NamespacedServiceStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -80926,19 +80848,19 @@ export type ReadCoreV1NamespacedServiceStatusOutput =
  * read status of the specified Service
  */
 export const readCoreV1NamespacedServiceStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedServiceStatusInput,
     outputSchema: ReadCoreV1NamespacedServiceStatusOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
-export const ReadCoreV1NodeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(T.Http({ method: "GET", path: "/api/v1/nodes/{name}" }));
+export const ReadCoreV1NodeInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({ method: "GET", path: "/api/v1/nodes/{name}" }),
+);
 export type ReadCoreV1NodeInput = typeof ReadCoreV1NodeInput.Type;
 
 // Output Schema
-export const ReadCoreV1NodeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReadCoreV1NodeOutput = /*@__PURE__*/ Schema.Struct({
   apiVersion: Schema.optional(Schema.String),
   kind: Schema.optional(Schema.String),
   metadata: Schema.optional(
@@ -81157,21 +81079,21 @@ export type ReadCoreV1NodeOutput = typeof ReadCoreV1NodeOutput.Type;
 /**
  * read the specified Node
  */
-export const readCoreV1Node = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const readCoreV1Node = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReadCoreV1NodeInput,
   outputSchema: ReadCoreV1NodeOutput,
   errors: [NotFound] as const,
 }));
 // Input Schema
 export const ReadCoreV1NodeStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/nodes/{name}/status" }),
   );
 export type ReadCoreV1NodeStatusInput = typeof ReadCoreV1NodeStatusInput.Type;
 
 // Output Schema
 export const ReadCoreV1NodeStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -81394,16 +81316,14 @@ export type ReadCoreV1NodeStatusOutput = typeof ReadCoreV1NodeStatusOutput.Type;
 /**
  * read status of the specified Node
  */
-export const readCoreV1NodeStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReadCoreV1NodeStatusInput,
-    outputSchema: ReadCoreV1NodeStatusOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const readCoreV1NodeStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadCoreV1NodeStatusInput,
+  outputSchema: ReadCoreV1NodeStatusOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export const ReadCoreV1PersistentVolumeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/persistentvolumes/{name}" }),
   );
 export type ReadCoreV1PersistentVolumeInput =
@@ -81411,7 +81331,7 @@ export type ReadCoreV1PersistentVolumeInput =
 
 // Output Schema
 export const ReadCoreV1PersistentVolumeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -81791,16 +81711,14 @@ export type ReadCoreV1PersistentVolumeOutput =
 /**
  * read the specified PersistentVolume
  */
-export const readCoreV1PersistentVolume = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReadCoreV1PersistentVolumeInput,
-    outputSchema: ReadCoreV1PersistentVolumeOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const readCoreV1PersistentVolume = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadCoreV1PersistentVolumeInput,
+  outputSchema: ReadCoreV1PersistentVolumeOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export const ReadCoreV1PersistentVolumeStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/persistentvolumes/{name}/status" }),
   );
 export type ReadCoreV1PersistentVolumeStatusInput =
@@ -81808,7 +81726,7 @@ export type ReadCoreV1PersistentVolumeStatusInput =
 
 // Output Schema
 export const ReadCoreV1PersistentVolumeStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -82189,14 +82107,14 @@ export type ReadCoreV1PersistentVolumeStatusOutput =
  * read status of the specified PersistentVolume
  */
 export const readCoreV1PersistentVolumeStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1PersistentVolumeStatusInput,
     outputSchema: ReadCoreV1PersistentVolumeStatusOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NamespaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(T.Http({ method: "PUT", path: "/api/v1/namespaces/{name}" }));
@@ -82205,7 +82123,7 @@ export type ReplaceCoreV1NamespaceInput =
 
 // Output Schema
 export const ReplaceCoreV1NamespaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -82284,16 +82202,14 @@ export type ReplaceCoreV1NamespaceOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceCoreV1Namespace = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplaceCoreV1NamespaceInput,
-    outputSchema: ReplaceCoreV1NamespaceOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const replaceCoreV1Namespace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplaceCoreV1NamespaceInput,
+  outputSchema: ReplaceCoreV1NamespaceOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const ReplaceCoreV1NamespaceFinalizeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "PUT", path: "/api/v1/namespaces/{name}/finalize" }),
   );
 export type ReplaceCoreV1NamespaceFinalizeInput =
@@ -82301,7 +82217,7 @@ export type ReplaceCoreV1NamespaceFinalizeInput =
 
 // Output Schema
 export const ReplaceCoreV1NamespaceFinalizeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -82378,14 +82294,14 @@ export type ReplaceCoreV1NamespaceFinalizeOutput =
  * replace finalize of the specified Namespace
  */
 export const replaceCoreV1NamespaceFinalize =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespaceFinalizeInput,
     outputSchema: ReplaceCoreV1NamespaceFinalizeOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NamespaceStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(T.Http({ method: "PUT", path: "/api/v1/namespaces/{name}/status" }));
@@ -82394,7 +82310,7 @@ export type ReplaceCoreV1NamespaceStatusInput =
 
 // Output Schema
 export const ReplaceCoreV1NamespaceStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -82474,14 +82390,14 @@ export type ReplaceCoreV1NamespaceStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1NamespaceStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespaceStatusInput,
     outputSchema: ReplaceCoreV1NamespaceStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NamespacedConfigMapInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -82495,7 +82411,7 @@ export type ReplaceCoreV1NamespacedConfigMapInput =
 
 // Output Schema
 export const ReplaceCoreV1NamespacedConfigMapOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     binaryData: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     data: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -82557,14 +82473,14 @@ export type ReplaceCoreV1NamespacedConfigMapOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1NamespacedConfigMap =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedConfigMapInput,
     outputSchema: ReplaceCoreV1NamespacedConfigMapOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NamespacedEndpointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -82578,7 +82494,7 @@ export type ReplaceCoreV1NamespacedEndpointsInput =
 
 // Output Schema
 export const ReplaceCoreV1NamespacedEndpointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -82693,14 +82609,14 @@ export type ReplaceCoreV1NamespacedEndpointsOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1NamespacedEndpoints =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedEndpointsInput,
     outputSchema: ReplaceCoreV1NamespacedEndpointsOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NamespacedEventInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -82714,7 +82630,7 @@ export type ReplaceCoreV1NamespacedEventInput =
 
 // Output Schema
 export const ReplaceCoreV1NamespacedEventOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     action: Schema.optional(Schema.String),
     apiVersion: Schema.optional(Schema.String),
     count: Schema.optional(Schema.Number),
@@ -82811,14 +82727,14 @@ export type ReplaceCoreV1NamespacedEventOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1NamespacedEvent =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedEventInput,
     outputSchema: ReplaceCoreV1NamespacedEventOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NamespacedLimitRangeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -82832,7 +82748,7 @@ export type ReplaceCoreV1NamespacedLimitRangeInput =
 
 // Output Schema
 export const ReplaceCoreV1NamespacedLimitRangeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -82911,14 +82827,14 @@ export type ReplaceCoreV1NamespacedLimitRangeOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1NamespacedLimitRange =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedLimitRangeInput,
     outputSchema: ReplaceCoreV1NamespacedLimitRangeOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NamespacedPersistentVolumeClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -82932,7 +82848,7 @@ export type ReplaceCoreV1NamespacedPersistentVolumeClaimInput =
 
 // Output Schema
 export const ReplaceCoreV1NamespacedPersistentVolumeClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -83073,14 +82989,14 @@ export type ReplaceCoreV1NamespacedPersistentVolumeClaimOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1NamespacedPersistentVolumeClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedPersistentVolumeClaimInput,
     outputSchema: ReplaceCoreV1NamespacedPersistentVolumeClaimOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NamespacedPersistentVolumeClaimStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -83094,7 +83010,7 @@ export type ReplaceCoreV1NamespacedPersistentVolumeClaimStatusInput =
 
 // Output Schema
 export const ReplaceCoreV1NamespacedPersistentVolumeClaimStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -83235,14 +83151,14 @@ export type ReplaceCoreV1NamespacedPersistentVolumeClaimStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1NamespacedPersistentVolumeClaimStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedPersistentVolumeClaimStatusInput,
     outputSchema: ReplaceCoreV1NamespacedPersistentVolumeClaimStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NamespacedPodInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -83256,7 +83172,7 @@ export type ReplaceCoreV1NamespacedPodInput =
 
 // Output Schema
 export const ReplaceCoreV1NamespacedPodOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -86061,16 +85977,14 @@ export type ReplaceCoreV1NamespacedPodOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceCoreV1NamespacedPod = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplaceCoreV1NamespacedPodInput,
-    outputSchema: ReplaceCoreV1NamespacedPodOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const replaceCoreV1NamespacedPod = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplaceCoreV1NamespacedPodInput,
+  outputSchema: ReplaceCoreV1NamespacedPodOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const ReplaceCoreV1NamespacedPodEphemeralcontainersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -86084,7 +85998,7 @@ export type ReplaceCoreV1NamespacedPodEphemeralcontainersInput =
 
 // Output Schema
 export const ReplaceCoreV1NamespacedPodEphemeralcontainersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -88890,14 +88804,14 @@ export type ReplaceCoreV1NamespacedPodEphemeralcontainersOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1NamespacedPodEphemeralcontainers =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedPodEphemeralcontainersInput,
     outputSchema: ReplaceCoreV1NamespacedPodEphemeralcontainersOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NamespacedPodResizeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -88911,7 +88825,7 @@ export type ReplaceCoreV1NamespacedPodResizeInput =
 
 // Output Schema
 export const ReplaceCoreV1NamespacedPodResizeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -91717,14 +91631,14 @@ export type ReplaceCoreV1NamespacedPodResizeOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1NamespacedPodResize =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedPodResizeInput,
     outputSchema: ReplaceCoreV1NamespacedPodResizeOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NamespacedPodStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -91738,7 +91652,7 @@ export type ReplaceCoreV1NamespacedPodStatusInput =
 
 // Output Schema
 export const ReplaceCoreV1NamespacedPodStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -94544,14 +94458,14 @@ export type ReplaceCoreV1NamespacedPodStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1NamespacedPodStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedPodStatusInput,
     outputSchema: ReplaceCoreV1NamespacedPodStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NamespacedPodTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -94565,7 +94479,7 @@ export type ReplaceCoreV1NamespacedPodTemplateInput =
 
 // Output Schema
 export const ReplaceCoreV1NamespacedPodTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -96983,14 +96897,14 @@ export type ReplaceCoreV1NamespacedPodTemplateOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1NamespacedPodTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedPodTemplateInput,
     outputSchema: ReplaceCoreV1NamespacedPodTemplateOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NamespacedReplicationControllerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -97004,7 +96918,7 @@ export type ReplaceCoreV1NamespacedReplicationControllerInput =
 
 // Output Schema
 export const ReplaceCoreV1NamespacedReplicationControllerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -99555,14 +99469,14 @@ export type ReplaceCoreV1NamespacedReplicationControllerOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1NamespacedReplicationController =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedReplicationControllerInput,
     outputSchema: ReplaceCoreV1NamespacedReplicationControllerOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NamespacedReplicationControllerScaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -99576,7 +99490,7 @@ export type ReplaceCoreV1NamespacedReplicationControllerScaleInput =
 
 // Output Schema
 export const ReplaceCoreV1NamespacedReplicationControllerScaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -99646,14 +99560,14 @@ export type ReplaceCoreV1NamespacedReplicationControllerScaleOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1NamespacedReplicationControllerScale =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedReplicationControllerScaleInput,
     outputSchema: ReplaceCoreV1NamespacedReplicationControllerScaleOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NamespacedReplicationControllerStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -99667,7 +99581,7 @@ export type ReplaceCoreV1NamespacedReplicationControllerStatusInput =
 
 // Output Schema
 export const ReplaceCoreV1NamespacedReplicationControllerStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -102218,14 +102132,14 @@ export type ReplaceCoreV1NamespacedReplicationControllerStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1NamespacedReplicationControllerStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedReplicationControllerStatusInput,
     outputSchema: ReplaceCoreV1NamespacedReplicationControllerStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NamespacedResourceQuotaInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -102239,7 +102153,7 @@ export type ReplaceCoreV1NamespacedResourceQuotaInput =
 
 // Output Schema
 export const ReplaceCoreV1NamespacedResourceQuotaOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -102323,14 +102237,14 @@ export type ReplaceCoreV1NamespacedResourceQuotaOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1NamespacedResourceQuota =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedResourceQuotaInput,
     outputSchema: ReplaceCoreV1NamespacedResourceQuotaOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NamespacedResourceQuotaStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -102344,7 +102258,7 @@ export type ReplaceCoreV1NamespacedResourceQuotaStatusInput =
 
 // Output Schema
 export const ReplaceCoreV1NamespacedResourceQuotaStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -102428,14 +102342,14 @@ export type ReplaceCoreV1NamespacedResourceQuotaStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1NamespacedResourceQuotaStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedResourceQuotaStatusInput,
     outputSchema: ReplaceCoreV1NamespacedResourceQuotaStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NamespacedSecretInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -102449,7 +102363,7 @@ export type ReplaceCoreV1NamespacedSecretInput =
 
 // Output Schema
 export const ReplaceCoreV1NamespacedSecretOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     data: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     immutable: Schema.optional(Schema.Boolean),
@@ -102512,14 +102426,14 @@ export type ReplaceCoreV1NamespacedSecretOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1NamespacedSecret =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedSecretInput,
     outputSchema: ReplaceCoreV1NamespacedSecretOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NamespacedServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -102533,7 +102447,7 @@ export type ReplaceCoreV1NamespacedServiceInput =
 
 // Output Schema
 export const ReplaceCoreV1NamespacedServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -102673,14 +102587,14 @@ export type ReplaceCoreV1NamespacedServiceOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1NamespacedService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedServiceInput,
     outputSchema: ReplaceCoreV1NamespacedServiceOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NamespacedServiceAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -102694,7 +102608,7 @@ export type ReplaceCoreV1NamespacedServiceAccountInput =
 
 // Output Schema
 export const ReplaceCoreV1NamespacedServiceAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     automountServiceAccountToken: Schema.optional(Schema.Boolean),
     imagePullSecrets: Schema.optional(
@@ -102774,14 +102688,14 @@ export type ReplaceCoreV1NamespacedServiceAccountOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1NamespacedServiceAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedServiceAccountInput,
     outputSchema: ReplaceCoreV1NamespacedServiceAccountOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NamespacedServiceStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -102795,7 +102709,7 @@ export type ReplaceCoreV1NamespacedServiceStatusInput =
 
 // Output Schema
 export const ReplaceCoreV1NamespacedServiceStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -102935,23 +102849,21 @@ export type ReplaceCoreV1NamespacedServiceStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1NamespacedServiceStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedServiceStatusInput,
     outputSchema: ReplaceCoreV1NamespacedServiceStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
-export const ReplaceCoreV1NodeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    dryRun: Schema.optional(Schema.String),
-    fieldValidation: Schema.optional(Schema.String),
-  },
-).pipe(T.Http({ method: "PUT", path: "/api/v1/nodes/{name}" }));
+export const ReplaceCoreV1NodeInput = /*@__PURE__*/ Schema.Struct({
+  dryRun: Schema.optional(Schema.String),
+  fieldValidation: Schema.optional(Schema.String),
+}).pipe(T.Http({ method: "PUT", path: "/api/v1/nodes/{name}" }));
 export type ReplaceCoreV1NodeInput = typeof ReplaceCoreV1NodeInput.Type;
 
 // Output Schema
 export const ReplaceCoreV1NodeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -103177,14 +103089,14 @@ export type ReplaceCoreV1NodeOutput = typeof ReplaceCoreV1NodeOutput.Type;
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceCoreV1Node = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const replaceCoreV1Node = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReplaceCoreV1NodeInput,
   outputSchema: ReplaceCoreV1NodeOutput,
   errors: [NotFound, Conflict, UnprocessableEntity] as const,
 }));
 // Input Schema
 export const ReplaceCoreV1NodeStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(T.Http({ method: "PUT", path: "/api/v1/nodes/{name}/status" }));
@@ -103193,7 +103105,7 @@ export type ReplaceCoreV1NodeStatusInput =
 
 // Output Schema
 export const ReplaceCoreV1NodeStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -103420,16 +103332,14 @@ export type ReplaceCoreV1NodeStatusOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceCoreV1NodeStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplaceCoreV1NodeStatusInput,
-    outputSchema: ReplaceCoreV1NodeStatusOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const replaceCoreV1NodeStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplaceCoreV1NodeStatusInput,
+  outputSchema: ReplaceCoreV1NodeStatusOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const ReplaceCoreV1PersistentVolumeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(T.Http({ method: "PUT", path: "/api/v1/persistentvolumes/{name}" }));
@@ -103438,7 +103348,7 @@ export type ReplaceCoreV1PersistentVolumeInput =
 
 // Output Schema
 export const ReplaceCoreV1PersistentVolumeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -103822,14 +103732,14 @@ export type ReplaceCoreV1PersistentVolumeOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1PersistentVolume =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1PersistentVolumeInput,
     outputSchema: ReplaceCoreV1PersistentVolumeOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1PersistentVolumeStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -103840,7 +103750,7 @@ export type ReplaceCoreV1PersistentVolumeStatusInput =
 
 // Output Schema
 export const ReplaceCoreV1PersistentVolumeStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -104224,14 +104134,14 @@ export type ReplaceCoreV1PersistentVolumeStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1PersistentVolumeStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1PersistentVolumeStatusInput,
     outputSchema: ReplaceCoreV1PersistentVolumeStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const WatchCoreV1ConfigMapListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/watch/configmaps" }),
   );
 export type WatchCoreV1ConfigMapListForAllNamespacesInput =
@@ -104239,7 +104149,7 @@ export type WatchCoreV1ConfigMapListForAllNamespacesInput =
 
 // Output Schema
 export const WatchCoreV1ConfigMapListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -104251,13 +104161,13 @@ export type WatchCoreV1ConfigMapListForAllNamespacesOutput =
  * watch individual changes to a list of ConfigMap. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchCoreV1ConfigMapListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1ConfigMapListForAllNamespacesInput,
     outputSchema: WatchCoreV1ConfigMapListForAllNamespacesOutput,
   }));
 // Input Schema
 export const WatchCoreV1EndpointsListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/watch/endpoints" }),
   );
 export type WatchCoreV1EndpointsListForAllNamespacesInput =
@@ -104265,7 +104175,7 @@ export type WatchCoreV1EndpointsListForAllNamespacesInput =
 
 // Output Schema
 export const WatchCoreV1EndpointsListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -104277,13 +104187,13 @@ export type WatchCoreV1EndpointsListForAllNamespacesOutput =
  * watch individual changes to a list of Endpoints. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchCoreV1EndpointsListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1EndpointsListForAllNamespacesInput,
     outputSchema: WatchCoreV1EndpointsListForAllNamespacesOutput,
   }));
 // Input Schema
 export const WatchCoreV1EventListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/watch/events" }),
   );
 export type WatchCoreV1EventListForAllNamespacesInput =
@@ -104291,7 +104201,7 @@ export type WatchCoreV1EventListForAllNamespacesInput =
 
 // Output Schema
 export const WatchCoreV1EventListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -104303,13 +104213,13 @@ export type WatchCoreV1EventListForAllNamespacesOutput =
  * watch individual changes to a list of Event. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchCoreV1EventListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1EventListForAllNamespacesInput,
     outputSchema: WatchCoreV1EventListForAllNamespacesOutput,
   }));
 // Input Schema
 export const WatchCoreV1LimitRangeListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/watch/limitranges" }),
   );
 export type WatchCoreV1LimitRangeListForAllNamespacesInput =
@@ -104317,7 +104227,7 @@ export type WatchCoreV1LimitRangeListForAllNamespacesInput =
 
 // Output Schema
 export const WatchCoreV1LimitRangeListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -104329,20 +104239,20 @@ export type WatchCoreV1LimitRangeListForAllNamespacesOutput =
  * watch individual changes to a list of LimitRange. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchCoreV1LimitRangeListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1LimitRangeListForAllNamespacesInput,
     outputSchema: WatchCoreV1LimitRangeListForAllNamespacesOutput,
   }));
 // Input Schema
 export const WatchCoreV1NamespaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/watch/namespaces/{name}" }),
   );
 export type WatchCoreV1NamespaceInput = typeof WatchCoreV1NamespaceInput.Type;
 
 // Output Schema
 export const WatchCoreV1NamespaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -104352,15 +104262,13 @@ export type WatchCoreV1NamespaceOutput = typeof WatchCoreV1NamespaceOutput.Type;
 /**
  * watch changes to an object of kind Namespace. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
-export const watchCoreV1Namespace = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WatchCoreV1NamespaceInput,
-    outputSchema: WatchCoreV1NamespaceOutput,
-  }),
-);
+export const watchCoreV1Namespace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchCoreV1NamespaceInput,
+  outputSchema: WatchCoreV1NamespaceOutput,
+}));
 // Input Schema
 export const WatchCoreV1NamespaceListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/watch/namespaces" }),
   );
 export type WatchCoreV1NamespaceListInput =
@@ -104368,7 +104276,7 @@ export type WatchCoreV1NamespaceListInput =
 
 // Output Schema
 export const WatchCoreV1NamespaceListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -104379,15 +104287,13 @@ export type WatchCoreV1NamespaceListOutput =
 /**
  * watch individual changes to a list of Namespace. deprecated: use the 'watch' parameter with a list operation instead.
  */
-export const watchCoreV1NamespaceList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WatchCoreV1NamespaceListInput,
-    outputSchema: WatchCoreV1NamespaceListOutput,
-  }),
-);
+export const watchCoreV1NamespaceList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchCoreV1NamespaceListInput,
+  outputSchema: WatchCoreV1NamespaceListOutput,
+}));
 // Input Schema
 export const WatchCoreV1NamespacedConfigMapInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/watch/namespaces/{namespace}/configmaps/{name}",
@@ -104398,7 +104304,7 @@ export type WatchCoreV1NamespacedConfigMapInput =
 
 // Output Schema
 export const WatchCoreV1NamespacedConfigMapOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -104410,13 +104316,13 @@ export type WatchCoreV1NamespacedConfigMapOutput =
  * watch changes to an object of kind ConfigMap. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchCoreV1NamespacedConfigMap =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1NamespacedConfigMapInput,
     outputSchema: WatchCoreV1NamespacedConfigMapOutput,
   }));
 // Input Schema
 export const WatchCoreV1NamespacedConfigMapListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/watch/namespaces/{namespace}/configmaps",
@@ -104427,7 +104333,7 @@ export type WatchCoreV1NamespacedConfigMapListInput =
 
 // Output Schema
 export const WatchCoreV1NamespacedConfigMapListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -104439,13 +104345,13 @@ export type WatchCoreV1NamespacedConfigMapListOutput =
  * watch individual changes to a list of ConfigMap. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchCoreV1NamespacedConfigMapList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1NamespacedConfigMapListInput,
     outputSchema: WatchCoreV1NamespacedConfigMapListOutput,
   }));
 // Input Schema
 export const WatchCoreV1NamespacedEndpointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/watch/namespaces/{namespace}/endpoints/{name}",
@@ -104456,7 +104362,7 @@ export type WatchCoreV1NamespacedEndpointsInput =
 
 // Output Schema
 export const WatchCoreV1NamespacedEndpointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -104468,13 +104374,13 @@ export type WatchCoreV1NamespacedEndpointsOutput =
  * watch changes to an object of kind Endpoints. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchCoreV1NamespacedEndpoints =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1NamespacedEndpointsInput,
     outputSchema: WatchCoreV1NamespacedEndpointsOutput,
   }));
 // Input Schema
 export const WatchCoreV1NamespacedEndpointsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/watch/namespaces/{namespace}/endpoints",
@@ -104485,7 +104391,7 @@ export type WatchCoreV1NamespacedEndpointsListInput =
 
 // Output Schema
 export const WatchCoreV1NamespacedEndpointsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -104497,13 +104403,13 @@ export type WatchCoreV1NamespacedEndpointsListOutput =
  * watch individual changes to a list of Endpoints. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchCoreV1NamespacedEndpointsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1NamespacedEndpointsListInput,
     outputSchema: WatchCoreV1NamespacedEndpointsListOutput,
   }));
 // Input Schema
 export const WatchCoreV1NamespacedEventInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/watch/namespaces/{namespace}/events/{name}",
@@ -104514,7 +104420,7 @@ export type WatchCoreV1NamespacedEventInput =
 
 // Output Schema
 export const WatchCoreV1NamespacedEventOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -104525,15 +104431,13 @@ export type WatchCoreV1NamespacedEventOutput =
 /**
  * watch changes to an object of kind Event. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
-export const watchCoreV1NamespacedEvent = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WatchCoreV1NamespacedEventInput,
-    outputSchema: WatchCoreV1NamespacedEventOutput,
-  }),
-);
+export const watchCoreV1NamespacedEvent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchCoreV1NamespacedEventInput,
+  outputSchema: WatchCoreV1NamespacedEventOutput,
+}));
 // Input Schema
 export const WatchCoreV1NamespacedEventListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/watch/namespaces/{namespace}/events",
@@ -104544,7 +104448,7 @@ export type WatchCoreV1NamespacedEventListInput =
 
 // Output Schema
 export const WatchCoreV1NamespacedEventListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -104556,13 +104460,13 @@ export type WatchCoreV1NamespacedEventListOutput =
  * watch individual changes to a list of Event. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchCoreV1NamespacedEventList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1NamespacedEventListInput,
     outputSchema: WatchCoreV1NamespacedEventListOutput,
   }));
 // Input Schema
 export const WatchCoreV1NamespacedLimitRangeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/watch/namespaces/{namespace}/limitranges/{name}",
@@ -104573,7 +104477,7 @@ export type WatchCoreV1NamespacedLimitRangeInput =
 
 // Output Schema
 export const WatchCoreV1NamespacedLimitRangeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -104585,13 +104489,13 @@ export type WatchCoreV1NamespacedLimitRangeOutput =
  * watch changes to an object of kind LimitRange. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchCoreV1NamespacedLimitRange =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1NamespacedLimitRangeInput,
     outputSchema: WatchCoreV1NamespacedLimitRangeOutput,
   }));
 // Input Schema
 export const WatchCoreV1NamespacedLimitRangeListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/watch/namespaces/{namespace}/limitranges",
@@ -104602,7 +104506,7 @@ export type WatchCoreV1NamespacedLimitRangeListInput =
 
 // Output Schema
 export const WatchCoreV1NamespacedLimitRangeListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -104614,13 +104518,13 @@ export type WatchCoreV1NamespacedLimitRangeListOutput =
  * watch individual changes to a list of LimitRange. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchCoreV1NamespacedLimitRangeList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1NamespacedLimitRangeListInput,
     outputSchema: WatchCoreV1NamespacedLimitRangeListOutput,
   }));
 // Input Schema
 export const WatchCoreV1NamespacedPersistentVolumeClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/watch/namespaces/{namespace}/persistentvolumeclaims/{name}",
@@ -104631,7 +104535,7 @@ export type WatchCoreV1NamespacedPersistentVolumeClaimInput =
 
 // Output Schema
 export const WatchCoreV1NamespacedPersistentVolumeClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -104643,13 +104547,13 @@ export type WatchCoreV1NamespacedPersistentVolumeClaimOutput =
  * watch changes to an object of kind PersistentVolumeClaim. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchCoreV1NamespacedPersistentVolumeClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1NamespacedPersistentVolumeClaimInput,
     outputSchema: WatchCoreV1NamespacedPersistentVolumeClaimOutput,
   }));
 // Input Schema
 export const WatchCoreV1NamespacedPersistentVolumeClaimListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/watch/namespaces/{namespace}/persistentvolumeclaims",
@@ -104660,7 +104564,7 @@ export type WatchCoreV1NamespacedPersistentVolumeClaimListInput =
 
 // Output Schema
 export const WatchCoreV1NamespacedPersistentVolumeClaimListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -104672,13 +104576,13 @@ export type WatchCoreV1NamespacedPersistentVolumeClaimListOutput =
  * watch individual changes to a list of PersistentVolumeClaim. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchCoreV1NamespacedPersistentVolumeClaimList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1NamespacedPersistentVolumeClaimListInput,
     outputSchema: WatchCoreV1NamespacedPersistentVolumeClaimListOutput,
   }));
 // Input Schema
 export const WatchCoreV1NamespacedPodInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/watch/namespaces/{namespace}/pods/{name}",
@@ -104689,7 +104593,7 @@ export type WatchCoreV1NamespacedPodInput =
 
 // Output Schema
 export const WatchCoreV1NamespacedPodOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -104700,15 +104604,13 @@ export type WatchCoreV1NamespacedPodOutput =
 /**
  * watch changes to an object of kind Pod. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
-export const watchCoreV1NamespacedPod = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WatchCoreV1NamespacedPodInput,
-    outputSchema: WatchCoreV1NamespacedPodOutput,
-  }),
-);
+export const watchCoreV1NamespacedPod = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchCoreV1NamespacedPodInput,
+  outputSchema: WatchCoreV1NamespacedPodOutput,
+}));
 // Input Schema
 export const WatchCoreV1NamespacedPodListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/watch/namespaces/{namespace}/pods",
@@ -104719,7 +104621,7 @@ export type WatchCoreV1NamespacedPodListInput =
 
 // Output Schema
 export const WatchCoreV1NamespacedPodListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -104731,13 +104633,13 @@ export type WatchCoreV1NamespacedPodListOutput =
  * watch individual changes to a list of Pod. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchCoreV1NamespacedPodList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1NamespacedPodListInput,
     outputSchema: WatchCoreV1NamespacedPodListOutput,
   }));
 // Input Schema
 export const WatchCoreV1NamespacedPodTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/watch/namespaces/{namespace}/podtemplates/{name}",
@@ -104748,7 +104650,7 @@ export type WatchCoreV1NamespacedPodTemplateInput =
 
 // Output Schema
 export const WatchCoreV1NamespacedPodTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -104760,13 +104662,13 @@ export type WatchCoreV1NamespacedPodTemplateOutput =
  * watch changes to an object of kind PodTemplate. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchCoreV1NamespacedPodTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1NamespacedPodTemplateInput,
     outputSchema: WatchCoreV1NamespacedPodTemplateOutput,
   }));
 // Input Schema
 export const WatchCoreV1NamespacedPodTemplateListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/watch/namespaces/{namespace}/podtemplates",
@@ -104777,7 +104679,7 @@ export type WatchCoreV1NamespacedPodTemplateListInput =
 
 // Output Schema
 export const WatchCoreV1NamespacedPodTemplateListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -104789,13 +104691,13 @@ export type WatchCoreV1NamespacedPodTemplateListOutput =
  * watch individual changes to a list of PodTemplate. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchCoreV1NamespacedPodTemplateList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1NamespacedPodTemplateListInput,
     outputSchema: WatchCoreV1NamespacedPodTemplateListOutput,
   }));
 // Input Schema
 export const WatchCoreV1NamespacedReplicationControllerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/watch/namespaces/{namespace}/replicationcontrollers/{name}",
@@ -104806,7 +104708,7 @@ export type WatchCoreV1NamespacedReplicationControllerInput =
 
 // Output Schema
 export const WatchCoreV1NamespacedReplicationControllerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -104818,13 +104720,13 @@ export type WatchCoreV1NamespacedReplicationControllerOutput =
  * watch changes to an object of kind ReplicationController. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchCoreV1NamespacedReplicationController =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1NamespacedReplicationControllerInput,
     outputSchema: WatchCoreV1NamespacedReplicationControllerOutput,
   }));
 // Input Schema
 export const WatchCoreV1NamespacedReplicationControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/watch/namespaces/{namespace}/replicationcontrollers",
@@ -104835,7 +104737,7 @@ export type WatchCoreV1NamespacedReplicationControllerListInput =
 
 // Output Schema
 export const WatchCoreV1NamespacedReplicationControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -104847,13 +104749,13 @@ export type WatchCoreV1NamespacedReplicationControllerListOutput =
  * watch individual changes to a list of ReplicationController. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchCoreV1NamespacedReplicationControllerList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1NamespacedReplicationControllerListInput,
     outputSchema: WatchCoreV1NamespacedReplicationControllerListOutput,
   }));
 // Input Schema
 export const WatchCoreV1NamespacedResourceQuotaInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/watch/namespaces/{namespace}/resourcequotas/{name}",
@@ -104864,7 +104766,7 @@ export type WatchCoreV1NamespacedResourceQuotaInput =
 
 // Output Schema
 export const WatchCoreV1NamespacedResourceQuotaOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -104876,13 +104778,13 @@ export type WatchCoreV1NamespacedResourceQuotaOutput =
  * watch changes to an object of kind ResourceQuota. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchCoreV1NamespacedResourceQuota =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1NamespacedResourceQuotaInput,
     outputSchema: WatchCoreV1NamespacedResourceQuotaOutput,
   }));
 // Input Schema
 export const WatchCoreV1NamespacedResourceQuotaListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/watch/namespaces/{namespace}/resourcequotas",
@@ -104893,7 +104795,7 @@ export type WatchCoreV1NamespacedResourceQuotaListInput =
 
 // Output Schema
 export const WatchCoreV1NamespacedResourceQuotaListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -104905,13 +104807,13 @@ export type WatchCoreV1NamespacedResourceQuotaListOutput =
  * watch individual changes to a list of ResourceQuota. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchCoreV1NamespacedResourceQuotaList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1NamespacedResourceQuotaListInput,
     outputSchema: WatchCoreV1NamespacedResourceQuotaListOutput,
   }));
 // Input Schema
 export const WatchCoreV1NamespacedSecretInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/watch/namespaces/{namespace}/secrets/{name}",
@@ -104922,7 +104824,7 @@ export type WatchCoreV1NamespacedSecretInput =
 
 // Output Schema
 export const WatchCoreV1NamespacedSecretOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -104933,15 +104835,13 @@ export type WatchCoreV1NamespacedSecretOutput =
 /**
  * watch changes to an object of kind Secret. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
-export const watchCoreV1NamespacedSecret = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WatchCoreV1NamespacedSecretInput,
-    outputSchema: WatchCoreV1NamespacedSecretOutput,
-  }),
-);
+export const watchCoreV1NamespacedSecret = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchCoreV1NamespacedSecretInput,
+  outputSchema: WatchCoreV1NamespacedSecretOutput,
+}));
 // Input Schema
 export const WatchCoreV1NamespacedSecretListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/watch/namespaces/{namespace}/secrets",
@@ -104952,7 +104852,7 @@ export type WatchCoreV1NamespacedSecretListInput =
 
 // Output Schema
 export const WatchCoreV1NamespacedSecretListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -104964,13 +104864,13 @@ export type WatchCoreV1NamespacedSecretListOutput =
  * watch individual changes to a list of Secret. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchCoreV1NamespacedSecretList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1NamespacedSecretListInput,
     outputSchema: WatchCoreV1NamespacedSecretListOutput,
   }));
 // Input Schema
 export const WatchCoreV1NamespacedServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/watch/namespaces/{namespace}/services/{name}",
@@ -104981,7 +104881,7 @@ export type WatchCoreV1NamespacedServiceInput =
 
 // Output Schema
 export const WatchCoreV1NamespacedServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -104993,13 +104893,13 @@ export type WatchCoreV1NamespacedServiceOutput =
  * watch changes to an object of kind Service. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchCoreV1NamespacedService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1NamespacedServiceInput,
     outputSchema: WatchCoreV1NamespacedServiceOutput,
   }));
 // Input Schema
 export const WatchCoreV1NamespacedServiceAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/watch/namespaces/{namespace}/serviceaccounts/{name}",
@@ -105010,7 +104910,7 @@ export type WatchCoreV1NamespacedServiceAccountInput =
 
 // Output Schema
 export const WatchCoreV1NamespacedServiceAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -105022,13 +104922,13 @@ export type WatchCoreV1NamespacedServiceAccountOutput =
  * watch changes to an object of kind ServiceAccount. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchCoreV1NamespacedServiceAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1NamespacedServiceAccountInput,
     outputSchema: WatchCoreV1NamespacedServiceAccountOutput,
   }));
 // Input Schema
 export const WatchCoreV1NamespacedServiceAccountListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/watch/namespaces/{namespace}/serviceaccounts",
@@ -105039,7 +104939,7 @@ export type WatchCoreV1NamespacedServiceAccountListInput =
 
 // Output Schema
 export const WatchCoreV1NamespacedServiceAccountListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -105051,13 +104951,13 @@ export type WatchCoreV1NamespacedServiceAccountListOutput =
  * watch individual changes to a list of ServiceAccount. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchCoreV1NamespacedServiceAccountList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1NamespacedServiceAccountListInput,
     outputSchema: WatchCoreV1NamespacedServiceAccountListOutput,
   }));
 // Input Schema
 export const WatchCoreV1NamespacedServiceListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/api/v1/watch/namespaces/{namespace}/services",
@@ -105068,7 +104968,7 @@ export type WatchCoreV1NamespacedServiceListInput =
 
 // Output Schema
 export const WatchCoreV1NamespacedServiceListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -105080,18 +104980,18 @@ export type WatchCoreV1NamespacedServiceListOutput =
  * watch individual changes to a list of Service. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchCoreV1NamespacedServiceList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1NamespacedServiceListInput,
     outputSchema: WatchCoreV1NamespacedServiceListOutput,
   }));
 // Input Schema
-export const WatchCoreV1NodeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(T.Http({ method: "GET", path: "/api/v1/watch/nodes/{name}" }));
+export const WatchCoreV1NodeInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({ method: "GET", path: "/api/v1/watch/nodes/{name}" }),
+);
 export type WatchCoreV1NodeInput = typeof WatchCoreV1NodeInput.Type;
 
 // Output Schema
-export const WatchCoreV1NodeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatchCoreV1NodeOutput = /*@__PURE__*/ Schema.Struct({
   object: Schema.Unknown,
   type: Schema.String,
 });
@@ -105101,20 +105001,20 @@ export type WatchCoreV1NodeOutput = typeof WatchCoreV1NodeOutput.Type;
 /**
  * watch changes to an object of kind Node. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
-export const watchCoreV1Node = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const watchCoreV1Node = /*@__PURE__*/ API.make(() => ({
   inputSchema: WatchCoreV1NodeInput,
   outputSchema: WatchCoreV1NodeOutput,
 }));
 // Input Schema
 export const WatchCoreV1NodeListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/watch/nodes" }),
   );
 export type WatchCoreV1NodeListInput = typeof WatchCoreV1NodeListInput.Type;
 
 // Output Schema
 export const WatchCoreV1NodeListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -105124,13 +105024,13 @@ export type WatchCoreV1NodeListOutput = typeof WatchCoreV1NodeListOutput.Type;
 /**
  * watch individual changes to a list of Node. deprecated: use the 'watch' parameter with a list operation instead.
  */
-export const watchCoreV1NodeList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const watchCoreV1NodeList = /*@__PURE__*/ API.make(() => ({
   inputSchema: WatchCoreV1NodeListInput,
   outputSchema: WatchCoreV1NodeListOutput,
 }));
 // Input Schema
 export const WatchCoreV1PersistentVolumeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/watch/persistentvolumes/{name}" }),
   );
 export type WatchCoreV1PersistentVolumeInput =
@@ -105138,7 +105038,7 @@ export type WatchCoreV1PersistentVolumeInput =
 
 // Output Schema
 export const WatchCoreV1PersistentVolumeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -105149,15 +105049,13 @@ export type WatchCoreV1PersistentVolumeOutput =
 /**
  * watch changes to an object of kind PersistentVolume. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
-export const watchCoreV1PersistentVolume = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WatchCoreV1PersistentVolumeInput,
-    outputSchema: WatchCoreV1PersistentVolumeOutput,
-  }),
-);
+export const watchCoreV1PersistentVolume = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchCoreV1PersistentVolumeInput,
+  outputSchema: WatchCoreV1PersistentVolumeOutput,
+}));
 // Input Schema
 export const WatchCoreV1PersistentVolumeClaimListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/watch/persistentvolumeclaims" }),
   );
 export type WatchCoreV1PersistentVolumeClaimListForAllNamespacesInput =
@@ -105165,7 +105063,7 @@ export type WatchCoreV1PersistentVolumeClaimListForAllNamespacesInput =
 
 // Output Schema
 export const WatchCoreV1PersistentVolumeClaimListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -105177,13 +105075,13 @@ export type WatchCoreV1PersistentVolumeClaimListForAllNamespacesOutput =
  * watch individual changes to a list of PersistentVolumeClaim. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchCoreV1PersistentVolumeClaimListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1PersistentVolumeClaimListForAllNamespacesInput,
     outputSchema: WatchCoreV1PersistentVolumeClaimListForAllNamespacesOutput,
   }));
 // Input Schema
 export const WatchCoreV1PersistentVolumeListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/watch/persistentvolumes" }),
   );
 export type WatchCoreV1PersistentVolumeListInput =
@@ -105191,7 +105089,7 @@ export type WatchCoreV1PersistentVolumeListInput =
 
 // Output Schema
 export const WatchCoreV1PersistentVolumeListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -105203,13 +105101,13 @@ export type WatchCoreV1PersistentVolumeListOutput =
  * watch individual changes to a list of PersistentVolume. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchCoreV1PersistentVolumeList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1PersistentVolumeListInput,
     outputSchema: WatchCoreV1PersistentVolumeListOutput,
   }));
 // Input Schema
 export const WatchCoreV1PodListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/watch/pods" }),
   );
 export type WatchCoreV1PodListForAllNamespacesInput =
@@ -105217,7 +105115,7 @@ export type WatchCoreV1PodListForAllNamespacesInput =
 
 // Output Schema
 export const WatchCoreV1PodListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -105229,13 +105127,13 @@ export type WatchCoreV1PodListForAllNamespacesOutput =
  * watch individual changes to a list of Pod. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchCoreV1PodListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1PodListForAllNamespacesInput,
     outputSchema: WatchCoreV1PodListForAllNamespacesOutput,
   }));
 // Input Schema
 export const WatchCoreV1PodTemplateListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/watch/podtemplates" }),
   );
 export type WatchCoreV1PodTemplateListForAllNamespacesInput =
@@ -105243,7 +105141,7 @@ export type WatchCoreV1PodTemplateListForAllNamespacesInput =
 
 // Output Schema
 export const WatchCoreV1PodTemplateListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -105255,13 +105153,13 @@ export type WatchCoreV1PodTemplateListForAllNamespacesOutput =
  * watch individual changes to a list of PodTemplate. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchCoreV1PodTemplateListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1PodTemplateListForAllNamespacesInput,
     outputSchema: WatchCoreV1PodTemplateListForAllNamespacesOutput,
   }));
 // Input Schema
 export const WatchCoreV1ReplicationControllerListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/watch/replicationcontrollers" }),
   );
 export type WatchCoreV1ReplicationControllerListForAllNamespacesInput =
@@ -105269,7 +105167,7 @@ export type WatchCoreV1ReplicationControllerListForAllNamespacesInput =
 
 // Output Schema
 export const WatchCoreV1ReplicationControllerListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -105281,13 +105179,13 @@ export type WatchCoreV1ReplicationControllerListForAllNamespacesOutput =
  * watch individual changes to a list of ReplicationController. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchCoreV1ReplicationControllerListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1ReplicationControllerListForAllNamespacesInput,
     outputSchema: WatchCoreV1ReplicationControllerListForAllNamespacesOutput,
   }));
 // Input Schema
 export const WatchCoreV1ResourceQuotaListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/watch/resourcequotas" }),
   );
 export type WatchCoreV1ResourceQuotaListForAllNamespacesInput =
@@ -105295,7 +105193,7 @@ export type WatchCoreV1ResourceQuotaListForAllNamespacesInput =
 
 // Output Schema
 export const WatchCoreV1ResourceQuotaListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -105307,13 +105205,13 @@ export type WatchCoreV1ResourceQuotaListForAllNamespacesOutput =
  * watch individual changes to a list of ResourceQuota. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchCoreV1ResourceQuotaListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1ResourceQuotaListForAllNamespacesInput,
     outputSchema: WatchCoreV1ResourceQuotaListForAllNamespacesOutput,
   }));
 // Input Schema
 export const WatchCoreV1SecretListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/watch/secrets" }),
   );
 export type WatchCoreV1SecretListForAllNamespacesInput =
@@ -105321,7 +105219,7 @@ export type WatchCoreV1SecretListForAllNamespacesInput =
 
 // Output Schema
 export const WatchCoreV1SecretListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -105333,13 +105231,13 @@ export type WatchCoreV1SecretListForAllNamespacesOutput =
  * watch individual changes to a list of Secret. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchCoreV1SecretListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1SecretListForAllNamespacesInput,
     outputSchema: WatchCoreV1SecretListForAllNamespacesOutput,
   }));
 // Input Schema
 export const WatchCoreV1ServiceAccountListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/watch/serviceaccounts" }),
   );
 export type WatchCoreV1ServiceAccountListForAllNamespacesInput =
@@ -105347,7 +105245,7 @@ export type WatchCoreV1ServiceAccountListForAllNamespacesInput =
 
 // Output Schema
 export const WatchCoreV1ServiceAccountListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -105359,13 +105257,13 @@ export type WatchCoreV1ServiceAccountListForAllNamespacesOutput =
  * watch individual changes to a list of ServiceAccount. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchCoreV1ServiceAccountListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1ServiceAccountListForAllNamespacesInput,
     outputSchema: WatchCoreV1ServiceAccountListForAllNamespacesOutput,
   }));
 // Input Schema
 export const WatchCoreV1ServiceListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/watch/services" }),
   );
 export type WatchCoreV1ServiceListForAllNamespacesInput =
@@ -105373,7 +105271,7 @@ export type WatchCoreV1ServiceListForAllNamespacesInput =
 
 // Output Schema
 export const WatchCoreV1ServiceListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -105385,7 +105283,7 @@ export type WatchCoreV1ServiceListForAllNamespacesOutput =
  * watch individual changes to a list of Service. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchCoreV1ServiceListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1ServiceListForAllNamespacesInput,
     outputSchema: WatchCoreV1ServiceListForAllNamespacesOutput,
   }));

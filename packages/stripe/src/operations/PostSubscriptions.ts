@@ -3,205 +3,199 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const PostSubscriptionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    add_invoice_items: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          discounts: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                coupon: Schema.optional(Schema.String),
-                discount: Schema.optional(Schema.String),
-                promotion_code: Schema.optional(Schema.String),
-              }),
+export const PostSubscriptionsInput = /*@__PURE__*/ Schema.Struct({
+  add_invoice_items: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        discounts: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              coupon: Schema.optional(Schema.String),
+              discount: Schema.optional(Schema.String),
+              promotion_code: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        period: Schema.optional(
+          Schema.Struct({
+            end: Schema.Struct({
+              timestamp: Schema.optional(Schema.Number),
+              type: Schema.Literals(["min_item_period_end", "timestamp"]),
+            }),
+            start: Schema.Struct({
+              timestamp: Schema.optional(Schema.Number),
+              type: Schema.Literals([
+                "max_item_period_start",
+                "now",
+                "timestamp",
+              ]),
+            }),
+          }),
+        ),
+        price: Schema.optional(Schema.String),
+        price_data: Schema.optional(
+          Schema.Struct({
+            currency: Schema.String,
+            product: Schema.String,
+            tax_behavior: Schema.optional(
+              Schema.Literals(["exclusive", "inclusive", "unspecified"]),
             ),
-          ),
-          metadata: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          period: Schema.optional(
-            Schema.Struct({
-              end: Schema.Struct({
-                timestamp: Schema.optional(Schema.Number),
-                type: Schema.Literals(["min_item_period_end", "timestamp"]),
-              }),
-              start: Schema.Struct({
-                timestamp: Schema.optional(Schema.Number),
-                type: Schema.Literals([
-                  "max_item_period_start",
-                  "now",
-                  "timestamp",
-                ]),
-              }),
-            }),
-          ),
-          price: Schema.optional(Schema.String),
-          price_data: Schema.optional(
-            Schema.Struct({
-              currency: Schema.String,
-              product: Schema.String,
-              tax_behavior: Schema.optional(
-                Schema.Literals(["exclusive", "inclusive", "unspecified"]),
-              ),
-              unit_amount: Schema.optional(Schema.Number),
-              unit_amount_decimal: Schema.optional(Schema.String),
-            }),
-          ),
-          quantity: Schema.optional(Schema.Number),
-          tax_rates: Schema.optional(Schema.Unknown),
+            unit_amount: Schema.optional(Schema.Number),
+            unit_amount_decimal: Schema.optional(Schema.String),
+          }),
+        ),
+        quantity: Schema.optional(Schema.Number),
+        tax_rates: Schema.optional(Schema.Unknown),
+      }),
+    ),
+  ),
+  application_fee_percent: Schema.optional(Schema.Unknown),
+  automatic_tax: Schema.optional(
+    Schema.Struct({
+      enabled: Schema.Boolean,
+      liability: Schema.optional(
+        Schema.Struct({
+          account: Schema.optional(Schema.String),
+          type: Schema.Literals(["account", "self"]),
         }),
       ),
-    ),
-    application_fee_percent: Schema.optional(Schema.Unknown),
-    automatic_tax: Schema.optional(
-      Schema.Struct({
-        enabled: Schema.Boolean,
-        liability: Schema.optional(
-          Schema.Struct({
-            account: Schema.optional(Schema.String),
-            type: Schema.Literals(["account", "self"]),
-          }),
-        ),
-      }),
-    ),
-    backdate_start_date: Schema.optional(Schema.Number),
-    billing_cycle_anchor: Schema.optional(Schema.Number),
-    billing_cycle_anchor_config: Schema.optional(
-      Schema.Struct({
-        day_of_month: Schema.Number,
-        hour: Schema.optional(Schema.Number),
-        minute: Schema.optional(Schema.Number),
-        month: Schema.optional(Schema.Number),
-        second: Schema.optional(Schema.Number),
-      }),
-    ),
-    billing_mode: Schema.optional(
-      Schema.Struct({
-        flexible: Schema.optional(
-          Schema.Struct({
-            proration_discounts: Schema.optional(
-              Schema.Literals(["included", "itemized"]),
-            ),
-          }),
-        ),
-        type: Schema.Literals(["classic", "flexible"]),
-      }),
-    ),
-    billing_thresholds: Schema.optional(Schema.Unknown),
-    cancel_at: Schema.optional(Schema.Unknown),
-    cancel_at_period_end: Schema.optional(Schema.Boolean),
-    collection_method: Schema.optional(
-      Schema.Literals(["charge_automatically", "send_invoice"]),
-    ),
-    currency: Schema.optional(Schema.String),
-    customer: Schema.optional(Schema.String),
-    customer_account: Schema.optional(Schema.String),
-    days_until_due: Schema.optional(Schema.Number),
-    default_payment_method: Schema.optional(Schema.String),
-    default_source: Schema.optional(Schema.String),
-    default_tax_rates: Schema.optional(Schema.Unknown),
-    description: Schema.optional(Schema.String),
-    discounts: Schema.optional(Schema.Unknown),
-    expand: Schema.optional(Schema.Array(Schema.String)),
-    invoice_settings: Schema.optional(
-      Schema.Struct({
-        account_tax_ids: Schema.optional(Schema.Unknown),
-        issuer: Schema.optional(
-          Schema.Struct({
-            account: Schema.optional(Schema.String),
-            type: Schema.Literals(["account", "self"]),
-          }),
-        ),
-      }),
-    ),
-    items: Schema.optional(
-      Schema.Array(
+    }),
+  ),
+  backdate_start_date: Schema.optional(Schema.Number),
+  billing_cycle_anchor: Schema.optional(Schema.Number),
+  billing_cycle_anchor_config: Schema.optional(
+    Schema.Struct({
+      day_of_month: Schema.Number,
+      hour: Schema.optional(Schema.Number),
+      minute: Schema.optional(Schema.Number),
+      month: Schema.optional(Schema.Number),
+      second: Schema.optional(Schema.Number),
+    }),
+  ),
+  billing_mode: Schema.optional(
+    Schema.Struct({
+      flexible: Schema.optional(
         Schema.Struct({
-          billing_thresholds: Schema.optional(Schema.Unknown),
-          discounts: Schema.optional(Schema.Unknown),
-          metadata: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
+          proration_discounts: Schema.optional(
+            Schema.Literals(["included", "itemized"]),
           ),
-          plan: Schema.optional(Schema.String),
-          price: Schema.optional(Schema.String),
-          price_data: Schema.optional(
-            Schema.Struct({
-              currency: Schema.String,
-              product: Schema.String,
-              recurring: Schema.Struct({
-                interval: Schema.Literals(["day", "month", "week", "year"]),
-                interval_count: Schema.optional(Schema.Number),
-              }),
-              tax_behavior: Schema.optional(
-                Schema.Literals(["exclusive", "inclusive", "unspecified"]),
-              ),
-              unit_amount: Schema.optional(Schema.Number),
-              unit_amount_decimal: Schema.optional(Schema.String),
-            }),
-          ),
-          quantity: Schema.optional(Schema.Number),
-          tax_rates: Schema.optional(Schema.Unknown),
         }),
       ),
-    ),
-    metadata: Schema.optional(Schema.Unknown),
-    off_session: Schema.optional(Schema.Boolean),
-    on_behalf_of: Schema.optional(Schema.Unknown),
-    payment_behavior: Schema.optional(
-      Schema.Literals([
-        "allow_incomplete",
-        "default_incomplete",
-        "error_if_incomplete",
-        "pending_if_incomplete",
-      ]),
-    ),
-    payment_settings: Schema.optional(
+      type: Schema.Literals(["classic", "flexible"]),
+    }),
+  ),
+  billing_thresholds: Schema.optional(Schema.Unknown),
+  cancel_at: Schema.optional(Schema.Unknown),
+  cancel_at_period_end: Schema.optional(Schema.Boolean),
+  collection_method: Schema.optional(
+    Schema.Literals(["charge_automatically", "send_invoice"]),
+  ),
+  currency: Schema.optional(Schema.String),
+  customer: Schema.optional(Schema.String),
+  customer_account: Schema.optional(Schema.String),
+  days_until_due: Schema.optional(Schema.Number),
+  default_payment_method: Schema.optional(Schema.String),
+  default_source: Schema.optional(Schema.String),
+  default_tax_rates: Schema.optional(Schema.Unknown),
+  description: Schema.optional(Schema.String),
+  discounts: Schema.optional(Schema.Unknown),
+  expand: Schema.optional(Schema.Array(Schema.String)),
+  invoice_settings: Schema.optional(
+    Schema.Struct({
+      account_tax_ids: Schema.optional(Schema.Unknown),
+      issuer: Schema.optional(
+        Schema.Struct({
+          account: Schema.optional(Schema.String),
+          type: Schema.Literals(["account", "self"]),
+        }),
+      ),
+    }),
+  ),
+  items: Schema.optional(
+    Schema.Array(
       Schema.Struct({
-        payment_method_options: Schema.optional(
+        billing_thresholds: Schema.optional(Schema.Unknown),
+        discounts: Schema.optional(Schema.Unknown),
+        metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        plan: Schema.optional(Schema.String),
+        price: Schema.optional(Schema.String),
+        price_data: Schema.optional(
           Schema.Struct({
-            acss_debit: Schema.optional(Schema.Unknown),
-            bancontact: Schema.optional(Schema.Unknown),
-            card: Schema.optional(Schema.Unknown),
-            customer_balance: Schema.optional(Schema.Unknown),
-            konbini: Schema.optional(Schema.Unknown),
-            payto: Schema.optional(Schema.Unknown),
-            sepa_debit: Schema.optional(Schema.Unknown),
-            us_bank_account: Schema.optional(Schema.Unknown),
+            currency: Schema.String,
+            product: Schema.String,
+            recurring: Schema.Struct({
+              interval: Schema.Literals(["day", "month", "week", "year"]),
+              interval_count: Schema.optional(Schema.Number),
+            }),
+            tax_behavior: Schema.optional(
+              Schema.Literals(["exclusive", "inclusive", "unspecified"]),
+            ),
+            unit_amount: Schema.optional(Schema.Number),
+            unit_amount_decimal: Schema.optional(Schema.String),
           }),
         ),
-        payment_method_types: Schema.optional(Schema.Unknown),
-        save_default_payment_method: Schema.optional(
-          Schema.Literals(["off", "on_subscription"]),
-        ),
+        quantity: Schema.optional(Schema.Number),
+        tax_rates: Schema.optional(Schema.Unknown),
       }),
     ),
-    pending_invoice_item_interval: Schema.optional(Schema.Unknown),
-    proration_behavior: Schema.optional(
-      Schema.Literals(["always_invoice", "create_prorations", "none"]),
-    ),
-    transfer_data: Schema.optional(
-      Schema.Struct({
-        amount_percent: Schema.optional(Schema.Number),
-        destination: Schema.String,
-      }),
-    ),
-    trial_end: Schema.optional(Schema.Unknown),
-    trial_from_plan: Schema.optional(Schema.Boolean),
-    trial_period_days: Schema.optional(Schema.Number),
-    trial_settings: Schema.optional(
-      Schema.Struct({
-        end_behavior: Schema.Struct({
-          missing_payment_method: Schema.Literals([
-            "cancel",
-            "create_invoice",
-            "pause",
-          ]),
+  ),
+  metadata: Schema.optional(Schema.Unknown),
+  off_session: Schema.optional(Schema.Boolean),
+  on_behalf_of: Schema.optional(Schema.Unknown),
+  payment_behavior: Schema.optional(
+    Schema.Literals([
+      "allow_incomplete",
+      "default_incomplete",
+      "error_if_incomplete",
+      "pending_if_incomplete",
+    ]),
+  ),
+  payment_settings: Schema.optional(
+    Schema.Struct({
+      payment_method_options: Schema.optional(
+        Schema.Struct({
+          acss_debit: Schema.optional(Schema.Unknown),
+          bancontact: Schema.optional(Schema.Unknown),
+          card: Schema.optional(Schema.Unknown),
+          customer_balance: Schema.optional(Schema.Unknown),
+          konbini: Schema.optional(Schema.Unknown),
+          payto: Schema.optional(Schema.Unknown),
+          sepa_debit: Schema.optional(Schema.Unknown),
+          us_bank_account: Schema.optional(Schema.Unknown),
         }),
+      ),
+      payment_method_types: Schema.optional(Schema.Unknown),
+      save_default_payment_method: Schema.optional(
+        Schema.Literals(["off", "on_subscription"]),
+      ),
+    }),
+  ),
+  pending_invoice_item_interval: Schema.optional(Schema.Unknown),
+  proration_behavior: Schema.optional(
+    Schema.Literals(["always_invoice", "create_prorations", "none"]),
+  ),
+  transfer_data: Schema.optional(
+    Schema.Struct({
+      amount_percent: Schema.optional(Schema.Number),
+      destination: Schema.String,
+    }),
+  ),
+  trial_end: Schema.optional(Schema.Unknown),
+  trial_from_plan: Schema.optional(Schema.Boolean),
+  trial_period_days: Schema.optional(Schema.Number),
+  trial_settings: Schema.optional(
+    Schema.Struct({
+      end_behavior: Schema.Struct({
+        missing_payment_method: Schema.Literals([
+          "cancel",
+          "create_invoice",
+          "pause",
+        ]),
       }),
-    ),
-  },
-).pipe(
+    }),
+  ),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/v1/subscriptions",
@@ -212,7 +206,7 @@ export type PostSubscriptionsInput = typeof PostSubscriptionsInput.Type;
 
 // Output Schema
 export const PostSubscriptionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     application: Schema.Unknown,
     application_fee_percent: Schema.NullOr(Schema.Number),
     automatic_tax: Schema.Struct({
@@ -523,7 +517,7 @@ export type PostSubscriptionsOutput = typeof PostSubscriptionsOutput.Type;
  * <p>To start subscriptions where the first invoice always begins in a <code>draft</code> status, use <a href="/docs/billing/subscriptions/subscription-schedules#managing">subscription schedules</a> instead.
  * Schedules provide the flexibility to model more complex billing configurations that change over time.</p>
  */
-export const PostSubscriptions = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostSubscriptions = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostSubscriptionsInput,
   outputSchema: PostSubscriptionsOutput,
 }));

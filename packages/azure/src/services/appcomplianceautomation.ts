@@ -10,7 +10,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const EvidenceCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
     evidenceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -25,7 +25,7 @@ export type EvidenceCreateOrUpdateInput =
 
 // Output Schema
 export const EvidenceCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -55,14 +55,12 @@ export type EvidenceCreateOrUpdateOutput =
  * @param reportName - Report Name.
  * @param evidenceName - The evidence name.
  */
-export const EvidenceCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EvidenceCreateOrUpdateInput,
-    outputSchema: EvidenceCreateOrUpdateOutput,
-  }),
-);
+export const EvidenceCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EvidenceCreateOrUpdateInput,
+  outputSchema: EvidenceCreateOrUpdateOutput,
+}));
 // Input Schema
-export const EvidenceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EvidenceDeleteInput = /*@__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   evidenceName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -75,7 +73,7 @@ export const EvidenceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type EvidenceDeleteInput = typeof EvidenceDeleteInput.Type;
 
 // Output Schema
-export const EvidenceDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const EvidenceDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type EvidenceDeleteOutput = typeof EvidenceDeleteOutput.Type;
 
 // The operation
@@ -86,12 +84,12 @@ export type EvidenceDeleteOutput = typeof EvidenceDeleteOutput.Type;
  * @param reportName - Report Name.
  * @param evidenceName - The evidence name.
  */
-export const EvidenceDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EvidenceDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: EvidenceDeleteInput,
   outputSchema: EvidenceDeleteOutput,
 }));
 // Input Schema
-export const EvidenceDownloadInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EvidenceDownloadInput = /*@__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   evidenceName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -104,15 +102,13 @@ export const EvidenceDownloadInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type EvidenceDownloadInput = typeof EvidenceDownloadInput.Type;
 
 // Output Schema
-export const EvidenceDownloadOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    evidenceFile: Schema.optional(
-      Schema.Struct({
-        url: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const EvidenceDownloadOutput = /*@__PURE__*/ Schema.Struct({
+  evidenceFile: Schema.optional(
+    Schema.Struct({
+      url: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type EvidenceDownloadOutput = typeof EvidenceDownloadOutput.Type;
 
 // The operation
@@ -123,12 +119,12 @@ export type EvidenceDownloadOutput = typeof EvidenceDownloadOutput.Type;
  * @param reportName - Report Name.
  * @param evidenceName - The evidence name.
  */
-export const EvidenceDownload = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EvidenceDownload = /*@__PURE__*/ API.make(() => ({
   inputSchema: EvidenceDownloadInput,
   outputSchema: EvidenceDownloadOutput,
 }));
 // Input Schema
-export const EvidenceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EvidenceGetInput = /*@__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   evidenceName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -141,7 +137,7 @@ export const EvidenceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type EvidenceGetInput = typeof EvidenceGetInput.Type;
 
 // Output Schema
-export const EvidenceGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EvidenceGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -170,13 +166,13 @@ export type EvidenceGetOutput = typeof EvidenceGetOutput.Type;
  * @param reportName - Report Name.
  * @param evidenceName - The evidence name.
  */
-export const EvidenceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EvidenceGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: EvidenceGetInput,
   outputSchema: EvidenceGetOutput,
 }));
 // Input Schema
 export const EvidenceListByReportInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -189,7 +185,7 @@ export type EvidenceListByReportInput = typeof EvidenceListByReportInput.Type;
 
 // Output Schema
 export const EvidenceListByReportOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -232,14 +228,12 @@ export type EvidenceListByReportOutput = typeof EvidenceListByReportOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param reportName - Report Name.
  */
-export const EvidenceListByReport = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EvidenceListByReportInput,
-    outputSchema: EvidenceListByReportOutput,
-  }),
-);
+export const EvidenceListByReport = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EvidenceListByReportInput,
+  outputSchema: EvidenceListByReportOutput,
+}));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -250,7 +244,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -281,13 +275,13 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
 export const ProviderActionsCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -302,7 +296,7 @@ export type ProviderActionsCheckNameAvailabilityInput =
 
 // Output Schema
 export const ProviderActionsCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
@@ -319,13 +313,13 @@ export type ProviderActionsCheckNameAvailabilityOutput =
  * @param type - The resource type.
  */
 export const ProviderActionsCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProviderActionsCheckNameAvailabilityInput,
     outputSchema: ProviderActionsCheckNameAvailabilityOutput,
   }));
 // Input Schema
 export const ProviderActionsGetCollectionCountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -338,7 +332,7 @@ export type ProviderActionsGetCollectionCountInput =
 
 // Output Schema
 export const ProviderActionsGetCollectionCountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
   });
 export type ProviderActionsGetCollectionCountOutput =
@@ -351,13 +345,13 @@ export type ProviderActionsGetCollectionCountOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const ProviderActionsGetCollectionCount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProviderActionsGetCollectionCountInput,
     outputSchema: ProviderActionsGetCollectionCountOutput,
   }));
 // Input Schema
 export const ProviderActionsGetOverviewStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -370,7 +364,7 @@ export type ProviderActionsGetOverviewStatusInput =
 
 // Output Schema
 export const ProviderActionsGetOverviewStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     statusList: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -390,13 +384,13 @@ export type ProviderActionsGetOverviewStatusOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const ProviderActionsGetOverviewStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProviderActionsGetOverviewStatusInput,
     outputSchema: ProviderActionsGetOverviewStatusOutput,
   }));
 // Input Schema
 export const ProviderActionsListInUseStorageAccountsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -409,7 +403,7 @@ export type ProviderActionsListInUseStorageAccountsInput =
 
 // Output Schema
 export const ProviderActionsListInUseStorageAccountsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     storageAccountList: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -431,13 +425,13 @@ export type ProviderActionsListInUseStorageAccountsOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const ProviderActionsListInUseStorageAccounts =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProviderActionsListInUseStorageAccountsInput,
     outputSchema: ProviderActionsListInUseStorageAccountsOutput,
   }));
 // Input Schema
 export const ProviderActionsOnboardInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -450,7 +444,7 @@ export type ProviderActionsOnboardInput =
 
 // Output Schema
 export const ProviderActionsOnboardOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionIds: Schema.optional(Schema.Array(Schema.String)),
   });
 export type ProviderActionsOnboardOutput =
@@ -462,15 +456,13 @@ export type ProviderActionsOnboardOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const ProviderActionsOnboard = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProviderActionsOnboardInput,
-    outputSchema: ProviderActionsOnboardOutput,
-  }),
-);
+export const ProviderActionsOnboard = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProviderActionsOnboardInput,
+  outputSchema: ProviderActionsOnboardOutput,
+}));
 // Input Schema
 export const ProviderActionsTriggerEvaluationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -483,7 +475,7 @@ export type ProviderActionsTriggerEvaluationInput =
 
 // Output Schema
 export const ProviderActionsTriggerEvaluationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         triggerTime: Schema.optional(Schema.String),
@@ -517,13 +509,13 @@ export type ProviderActionsTriggerEvaluationOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const ProviderActionsTriggerEvaluation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProviderActionsTriggerEvaluationInput,
     outputSchema: ProviderActionsTriggerEvaluationOutput,
   }));
 // Input Schema
 export const ReportCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -536,7 +528,7 @@ export type ReportCreateOrUpdateInput = typeof ReportCreateOrUpdateInput.Type;
 
 // Output Schema
 export const ReportCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -564,14 +556,12 @@ export type ReportCreateOrUpdateOutput = typeof ReportCreateOrUpdateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param reportName - Report Name.
  */
-export const ReportCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReportCreateOrUpdateInput,
-    outputSchema: ReportCreateOrUpdateOutput,
-  }),
-);
+export const ReportCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReportCreateOrUpdateInput,
+  outputSchema: ReportCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ReportDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReportDeleteInput = /*@__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -583,7 +573,7 @@ export const ReportDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ReportDeleteInput = typeof ReportDeleteInput.Type;
 
 // Output Schema
-export const ReportDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ReportDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ReportDeleteOutput = typeof ReportDeleteOutput.Type;
 
 // The operation
@@ -593,12 +583,12 @@ export type ReportDeleteOutput = typeof ReportDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param reportName - Report Name.
  */
-export const ReportDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReportDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReportDeleteInput,
   outputSchema: ReportDeleteOutput,
 }));
 // Input Schema
-export const ReportFixInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReportFixInput = /*@__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -610,7 +600,7 @@ export const ReportFixInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ReportFixInput = typeof ReportFixInput.Type;
 
 // Output Schema
-export const ReportFixOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReportFixOutput = /*@__PURE__*/ Schema.Struct({
   result: Schema.optional(Schema.Literals(["Succeeded", "Failed"])),
   reason: Schema.optional(Schema.String),
 });
@@ -623,12 +613,12 @@ export type ReportFixOutput = typeof ReportFixOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param reportName - Report Name.
  */
-export const ReportFix = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReportFix = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReportFixInput,
   outputSchema: ReportFixOutput,
 }));
 // Input Schema
-export const ReportGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReportGetInput = /*@__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -640,7 +630,7 @@ export const ReportGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ReportGetInput = typeof ReportGetInput.Type;
 
 // Output Schema
-export const ReportGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReportGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -668,13 +658,13 @@ export type ReportGetOutput = typeof ReportGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param reportName - Report Name.
  */
-export const ReportGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReportGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReportGetInput,
   outputSchema: ReportGetOutput,
 }));
 // Input Schema
 export const ReportGetScopingQuestionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -688,7 +678,7 @@ export type ReportGetScopingQuestionsInput =
 
 // Output Schema
 export const ReportGetScopingQuestionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     questions: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -748,14 +738,12 @@ export type ReportGetScopingQuestionsOutput =
  * @param api-version - The API version to use for this operation.
  * @param reportName - Report Name.
  */
-export const ReportGetScopingQuestions = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReportGetScopingQuestionsInput,
-    outputSchema: ReportGetScopingQuestionsOutput,
-  }),
-);
+export const ReportGetScopingQuestions = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReportGetScopingQuestionsInput,
+  outputSchema: ReportGetScopingQuestionsOutput,
+}));
 // Input Schema
-export const ReportListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReportListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -766,7 +754,7 @@ export const ReportListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ReportListInput = typeof ReportListInput.Type;
 
 // Output Schema
-export const ReportListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReportListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -798,13 +786,13 @@ export type ReportListOutput = typeof ReportListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const ReportList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReportList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReportListInput,
   outputSchema: ReportListOutput,
 }));
 // Input Schema
 export const ReportNestedResourceCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
     name: Schema.optional(Schema.String),
@@ -820,7 +808,7 @@ export type ReportNestedResourceCheckNameAvailabilityInput =
 
 // Output Schema
 export const ReportNestedResourceCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
@@ -838,13 +826,13 @@ export type ReportNestedResourceCheckNameAvailabilityOutput =
  * @param type - The resource type.
  */
 export const ReportNestedResourceCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReportNestedResourceCheckNameAvailabilityInput,
     outputSchema: ReportNestedResourceCheckNameAvailabilityOutput,
   }));
 // Input Schema
 export const ReportSyncCertRecordInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -857,7 +845,7 @@ export type ReportSyncCertRecordInput = typeof ReportSyncCertRecordInput.Type;
 
 // Output Schema
 export const ReportSyncCertRecordOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     certRecord: Schema.optional(
       Schema.Struct({
         offerGuid: Schema.optional(Schema.String),
@@ -883,14 +871,12 @@ export type ReportSyncCertRecordOutput = typeof ReportSyncCertRecordOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param reportName - Report Name.
  */
-export const ReportSyncCertRecord = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReportSyncCertRecordInput,
-    outputSchema: ReportSyncCertRecordOutput,
-  }),
-);
+export const ReportSyncCertRecord = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReportSyncCertRecordInput,
+  outputSchema: ReportSyncCertRecordOutput,
+}));
 // Input Schema
-export const ReportUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReportUpdateInput = /*@__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -902,7 +888,7 @@ export const ReportUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ReportUpdateInput = typeof ReportUpdateInput.Type;
 
 // Output Schema
-export const ReportUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReportUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -930,12 +916,12 @@ export type ReportUpdateOutput = typeof ReportUpdateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param reportName - Report Name.
  */
-export const ReportUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReportUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReportUpdateInput,
   outputSchema: ReportUpdateOutput,
 }));
 // Input Schema
-export const ReportVerifyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReportVerifyInput = /*@__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -947,7 +933,7 @@ export const ReportVerifyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ReportVerifyInput = typeof ReportVerifyInput.Type;
 
 // Output Schema
-export const ReportVerifyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReportVerifyOutput = /*@__PURE__*/ Schema.Struct({
   result: Schema.optional(Schema.Literals(["Succeeded", "Failed"])),
   reason: Schema.optional(Schema.String),
 });
@@ -960,13 +946,13 @@ export type ReportVerifyOutput = typeof ReportVerifyOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param reportName - Report Name.
  */
-export const ReportVerify = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReportVerify = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReportVerifyInput,
   outputSchema: ReportVerifyOutput,
 }));
 // Input Schema
 export const ScopingConfigurationCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
     scopingConfigurationName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -981,7 +967,7 @@ export type ScopingConfigurationCreateOrUpdateInput =
 
 // Output Schema
 export const ScopingConfigurationCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1012,13 +998,13 @@ export type ScopingConfigurationCreateOrUpdateOutput =
  * @param scopingConfigurationName - The scoping configuration of the specific report.
  */
 export const ScopingConfigurationCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ScopingConfigurationCreateOrUpdateInput,
     outputSchema: ScopingConfigurationCreateOrUpdateOutput,
   }));
 // Input Schema
 export const ScopingConfigurationDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
     scopingConfigurationName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1032,8 +1018,7 @@ export type ScopingConfigurationDeleteInput =
   typeof ScopingConfigurationDeleteInput.Type;
 
 // Output Schema
-export const ScopingConfigurationDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ScopingConfigurationDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ScopingConfigurationDeleteOutput =
   typeof ScopingConfigurationDeleteOutput.Type;
 
@@ -1045,15 +1030,13 @@ export type ScopingConfigurationDeleteOutput =
  * @param reportName - Report Name.
  * @param scopingConfigurationName - The scoping configuration of the specific report.
  */
-export const ScopingConfigurationDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ScopingConfigurationDeleteInput,
-    outputSchema: ScopingConfigurationDeleteOutput,
-  }),
-);
+export const ScopingConfigurationDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ScopingConfigurationDeleteInput,
+  outputSchema: ScopingConfigurationDeleteOutput,
+}));
 // Input Schema
 export const ScopingConfigurationGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
     scopingConfigurationName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1068,7 +1051,7 @@ export type ScopingConfigurationGetInput =
 
 // Output Schema
 export const ScopingConfigurationGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1098,15 +1081,13 @@ export type ScopingConfigurationGetOutput =
  * @param reportName - Report Name.
  * @param scopingConfigurationName - The scoping configuration of the specific report.
  */
-export const ScopingConfigurationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ScopingConfigurationGetInput,
-    outputSchema: ScopingConfigurationGetOutput,
-  }),
-);
+export const ScopingConfigurationGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ScopingConfigurationGetInput,
+  outputSchema: ScopingConfigurationGetOutput,
+}));
 // Input Schema
 export const ScopingConfigurationListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -1120,7 +1101,7 @@ export type ScopingConfigurationListInput =
 
 // Output Schema
 export const ScopingConfigurationListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1164,14 +1145,12 @@ export type ScopingConfigurationListOutput =
  * @param api-version - The API version to use for this operation.
  * @param reportName - Report Name.
  */
-export const ScopingConfigurationList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ScopingConfigurationListInput,
-    outputSchema: ScopingConfigurationListOutput,
-  }),
-);
+export const ScopingConfigurationList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ScopingConfigurationListInput,
+  outputSchema: ScopingConfigurationListOutput,
+}));
 // Input Schema
-export const SnapshotDownloadInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SnapshotDownloadInput = /*@__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   snapshotName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -1184,59 +1163,57 @@ export const SnapshotDownloadInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SnapshotDownloadInput = typeof SnapshotDownloadInput.Type;
 
 // Output Schema
-export const SnapshotDownloadOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    resourceList: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          subscriptionId: Schema.optional(Schema.String),
-          resourceGroup: Schema.optional(Schema.String),
-          resourceType: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
-    complianceReport: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          categoryName: Schema.optional(Schema.String),
-          controlFamilyName: Schema.optional(Schema.String),
-          controlId: Schema.optional(Schema.String),
-          controlName: Schema.optional(Schema.String),
-          controlStatus: Schema.optional(
-            Schema.Literals([
-              "Passed",
-              "Failed",
-              "NotApplicable",
-              "PendingApproval",
-            ]),
-          ),
-          responsibilityTitle: Schema.optional(Schema.String),
-          responsibilityDescription: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          resourceType: Schema.optional(Schema.String),
-          resourceOrigin: Schema.optional(
-            Schema.Literals(["Azure", "AWS", "GCP"]),
-          ),
-          resourceStatus: Schema.optional(
-            Schema.Literals(["Healthy", "Unhealthy"]),
-          ),
-          resourceStatusChangeDate: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
-    compliancePdfReport: Schema.optional(
+export const SnapshotDownloadOutput = /*@__PURE__*/ Schema.Struct({
+  resourceList: Schema.optional(
+    Schema.Array(
       Schema.Struct({
-        sasUri: Schema.optional(Schema.String),
+        subscriptionId: Schema.optional(Schema.String),
+        resourceGroup: Schema.optional(Schema.String),
+        resourceType: Schema.optional(Schema.String),
+        resourceId: Schema.optional(Schema.String),
       }),
     ),
-    complianceDetailedPdfReport: Schema.optional(
+  ),
+  complianceReport: Schema.optional(
+    Schema.Array(
       Schema.Struct({
-        sasUri: Schema.optional(Schema.String),
+        categoryName: Schema.optional(Schema.String),
+        controlFamilyName: Schema.optional(Schema.String),
+        controlId: Schema.optional(Schema.String),
+        controlName: Schema.optional(Schema.String),
+        controlStatus: Schema.optional(
+          Schema.Literals([
+            "Passed",
+            "Failed",
+            "NotApplicable",
+            "PendingApproval",
+          ]),
+        ),
+        responsibilityTitle: Schema.optional(Schema.String),
+        responsibilityDescription: Schema.optional(Schema.String),
+        resourceId: Schema.optional(Schema.String),
+        resourceType: Schema.optional(Schema.String),
+        resourceOrigin: Schema.optional(
+          Schema.Literals(["Azure", "AWS", "GCP"]),
+        ),
+        resourceStatus: Schema.optional(
+          Schema.Literals(["Healthy", "Unhealthy"]),
+        ),
+        resourceStatusChangeDate: Schema.optional(Schema.String),
       }),
     ),
-  },
-);
+  ),
+  compliancePdfReport: Schema.optional(
+    Schema.Struct({
+      sasUri: Schema.optional(Schema.String),
+    }),
+  ),
+  complianceDetailedPdfReport: Schema.optional(
+    Schema.Struct({
+      sasUri: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type SnapshotDownloadOutput = typeof SnapshotDownloadOutput.Type;
 
 // The operation
@@ -1247,12 +1224,12 @@ export type SnapshotDownloadOutput = typeof SnapshotDownloadOutput.Type;
  * @param reportName - Report Name.
  * @param snapshotName - Snapshot Name.
  */
-export const SnapshotDownload = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SnapshotDownload = /*@__PURE__*/ API.make(() => ({
   inputSchema: SnapshotDownloadInput,
   outputSchema: SnapshotDownloadOutput,
 }));
 // Input Schema
-export const SnapshotGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SnapshotGetInput = /*@__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   snapshotName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -1265,7 +1242,7 @@ export const SnapshotGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SnapshotGetInput = typeof SnapshotGetInput.Type;
 
 // Output Schema
-export const SnapshotGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SnapshotGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1294,12 +1271,12 @@ export type SnapshotGetOutput = typeof SnapshotGetOutput.Type;
  * @param reportName - Report Name.
  * @param snapshotName - Snapshot Name.
  */
-export const SnapshotGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SnapshotGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SnapshotGetInput,
   outputSchema: SnapshotGetOutput,
 }));
 // Input Schema
-export const SnapshotListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SnapshotListInput = /*@__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -1311,7 +1288,7 @@ export const SnapshotListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SnapshotListInput = typeof SnapshotListInput.Type;
 
 // Output Schema
-export const SnapshotListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SnapshotListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -1344,13 +1321,13 @@ export type SnapshotListOutput = typeof SnapshotListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param reportName - Report Name.
  */
-export const SnapshotList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SnapshotList = /*@__PURE__*/ API.make(() => ({
   inputSchema: SnapshotListInput,
   outputSchema: SnapshotListOutput,
 }));
 // Input Schema
 export const WebhookCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
     webhookName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1364,7 +1341,7 @@ export type WebhookCreateOrUpdateInput = typeof WebhookCreateOrUpdateInput.Type;
 
 // Output Schema
 export const WebhookCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1394,14 +1371,12 @@ export type WebhookCreateOrUpdateOutput =
  * @param reportName - Report Name.
  * @param webhookName - Webhook Name.
  */
-export const WebhookCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebhookCreateOrUpdateInput,
-    outputSchema: WebhookCreateOrUpdateOutput,
-  }),
-);
+export const WebhookCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebhookCreateOrUpdateInput,
+  outputSchema: WebhookCreateOrUpdateOutput,
+}));
 // Input Schema
-export const WebhookDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhookDeleteInput = /*@__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   webhookName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -1414,7 +1389,7 @@ export const WebhookDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WebhookDeleteInput = typeof WebhookDeleteInput.Type;
 
 // Output Schema
-export const WebhookDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebhookDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WebhookDeleteOutput = typeof WebhookDeleteOutput.Type;
 
 // The operation
@@ -1425,12 +1400,12 @@ export type WebhookDeleteOutput = typeof WebhookDeleteOutput.Type;
  * @param reportName - Report Name.
  * @param webhookName - Webhook Name.
  */
-export const WebhookDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebhookDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebhookDeleteInput,
   outputSchema: WebhookDeleteOutput,
 }));
 // Input Schema
-export const WebhookGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhookGetInput = /*@__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   webhookName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -1443,7 +1418,7 @@ export const WebhookGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WebhookGetInput = typeof WebhookGetInput.Type;
 
 // Output Schema
-export const WebhookGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhookGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1472,12 +1447,12 @@ export type WebhookGetOutput = typeof WebhookGetOutput.Type;
  * @param reportName - Report Name.
  * @param webhookName - Webhook Name.
  */
-export const WebhookGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebhookGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebhookGetInput,
   outputSchema: WebhookGetOutput,
 }));
 // Input Schema
-export const WebhookListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhookListInput = /*@__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -1489,7 +1464,7 @@ export const WebhookListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WebhookListInput = typeof WebhookListInput.Type;
 
 // Output Schema
-export const WebhookListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhookListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -1522,12 +1497,12 @@ export type WebhookListOutput = typeof WebhookListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param reportName - Report Name.
  */
-export const WebhookList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebhookList = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebhookListInput,
   outputSchema: WebhookListOutput,
 }));
 // Input Schema
-export const WebhookUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhookUpdateInput = /*@__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   webhookName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -1540,7 +1515,7 @@ export const WebhookUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WebhookUpdateInput = typeof WebhookUpdateInput.Type;
 
 // Output Schema
-export const WebhookUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhookUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1569,7 +1544,7 @@ export type WebhookUpdateOutput = typeof WebhookUpdateOutput.Type;
  * @param reportName - Report Name.
  * @param webhookName - Webhook Name.
  */
-export const WebhookUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebhookUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebhookUpdateInput,
   outputSchema: WebhookUpdateOutput,
 }));

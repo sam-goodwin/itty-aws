@@ -1,16 +1,16 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
-import * as T from "../../traits.ts";
 import { NotFound } from "../../errors.ts";
+import * as T from "../../traits.ts";
 
 // Input Schema
-export const GetDashboardInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetDashboardInput = /*@__PURE__*/ Schema.Struct({
   uid: Schema.String.pipe(T.PathParam()),
 }).pipe(T.Http({ method: "GET", path: "/v2/dashboards/uid/{uid}" }));
 export type GetDashboardInput = typeof GetDashboardInput.Type;
 
 // Output Schema
-export const GetDashboardOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetDashboardOutput = /*@__PURE__*/ Schema.Struct({
   createdAt: Schema.String,
   createdBy: Schema.String,
   dashboard: Schema.Struct({
@@ -70,7 +70,7 @@ export type GetDashboardOutput = typeof GetDashboardOutput.Type;
  *
  * Get a dashboard by UID.
  */
-export const getDashboard = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getDashboard = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetDashboardInput,
   outputSchema: GetDashboardOutput,
   errors: [NotFound] as const,

@@ -3,13 +3,13 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
-export const ListGroupsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(T.Http({ method: "GET", path: "/v2/rbac/groups" }));
+export const ListGroupsInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({ method: "GET", path: "/v2/rbac/groups" }),
+);
 export type ListGroupsInput = typeof ListGroupsInput.Type;
 
 // Output Schema
-export const ListGroupsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const ListGroupsOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     description: Schema.optional(Schema.String),
     isManaged: Schema.optional(Schema.Boolean),
@@ -27,7 +27,7 @@ export type ListGroupsOutput = typeof ListGroupsOutput.Type;
  *
  * Retrieves all groups in the organization.
  */
-export const listGroups = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listGroups = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListGroupsInput,
   outputSchema: ListGroupsOutput,
 }));

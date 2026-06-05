@@ -1,10 +1,10 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
-import * as T from "../../traits.ts";
 import { BadRequest, Conflict } from "../../errors.ts";
+import * as T from "../../traits.ts";
 
 // Input Schema
-export const CreateDashboardInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateDashboardInput = /*@__PURE__*/ Schema.Struct({
   dashboard: Schema.Struct({
     name: Schema.String,
     owner: Schema.String,
@@ -56,7 +56,7 @@ export const CreateDashboardInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateDashboardInput = typeof CreateDashboardInput.Type;
 
 // Output Schema
-export const CreateDashboardOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateDashboardOutput = /*@__PURE__*/ Schema.Struct({
   dashboard: Schema.Struct({
     createdAt: Schema.String,
     createdBy: Schema.String,
@@ -120,7 +120,7 @@ export type CreateDashboardOutput = typeof CreateDashboardOutput.Type;
  *
  * Create a dashboard from a dashboard document payload.
  */
-export const createDashboard = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createDashboard = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateDashboardInput,
   outputSchema: CreateDashboardOutput,
   errors: [BadRequest, Conflict] as const,

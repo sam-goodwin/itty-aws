@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const PostAppsSecretsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostAppsSecretsInput = /*@__PURE__*/ Schema.Struct({
   expand: Schema.optional(Schema.Array(Schema.String)),
   expires_at: Schema.optional(Schema.Number),
   name: Schema.String,
@@ -22,7 +22,7 @@ export const PostAppsSecretsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PostAppsSecretsInput = typeof PostAppsSecretsInput.Type;
 
 // Output Schema
-export const PostAppsSecretsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostAppsSecretsOutput = /*@__PURE__*/ Schema.Struct({
   created: Schema.Number,
   deleted: Schema.optional(Schema.Boolean),
   expires_at: Schema.NullOr(Schema.Number),
@@ -44,7 +44,7 @@ export type PostAppsSecretsOutput = typeof PostAppsSecretsOutput.Type;
  *
  * <p>Create or replace a secret in the secret store.</p>
  */
-export const PostAppsSecrets = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostAppsSecrets = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostAppsSecretsInput,
   outputSchema: PostAppsSecretsOutput,
 }));

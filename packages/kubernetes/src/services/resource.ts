@@ -6,12 +6,12 @@
  */
 import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
-import * as T from "../traits.ts";
 import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
+import * as T from "../traits.ts";
 
 // Input Schema
 export const CreateResourceV1DeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -22,7 +22,7 @@ export type CreateResourceV1DeviceClassInput =
 
 // Output Schema
 export const CreateResourceV1DeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -106,16 +106,14 @@ export type CreateResourceV1DeviceClassOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createResourceV1DeviceClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateResourceV1DeviceClassInput,
-    outputSchema: CreateResourceV1DeviceClassOutput,
-    errors: [Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const createResourceV1DeviceClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateResourceV1DeviceClassInput,
+  outputSchema: CreateResourceV1DeviceClassOutput,
+  errors: [Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const CreateResourceV1NamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -129,7 +127,7 @@ export type CreateResourceV1NamespacedResourceClaimInput =
 
 // Output Schema
 export const CreateResourceV1NamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -424,14 +422,14 @@ export type CreateResourceV1NamespacedResourceClaimOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createResourceV1NamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateResourceV1NamespacedResourceClaimInput,
     outputSchema: CreateResourceV1NamespacedResourceClaimOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateResourceV1NamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -445,7 +443,7 @@ export type CreateResourceV1NamespacedResourceClaimTemplateInput =
 
 // Output Schema
 export const CreateResourceV1NamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -661,14 +659,14 @@ export type CreateResourceV1NamespacedResourceClaimTemplateOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createResourceV1NamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateResourceV1NamespacedResourceClaimTemplateInput,
     outputSchema: CreateResourceV1NamespacedResourceClaimTemplateOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateResourceV1ResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -679,7 +677,7 @@ export type CreateResourceV1ResourceSliceInput =
 
 // Output Schema
 export const CreateResourceV1ResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -897,14 +895,14 @@ export type CreateResourceV1ResourceSliceOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createResourceV1ResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateResourceV1ResourceSliceInput,
     outputSchema: CreateResourceV1ResourceSliceOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateResourceV1alpha3DeviceTaintRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -918,7 +916,7 @@ export type CreateResourceV1alpha3DeviceTaintRuleInput =
 
 // Output Schema
 export const CreateResourceV1alpha3DeviceTaintRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1008,14 +1006,14 @@ export type CreateResourceV1alpha3DeviceTaintRuleOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createResourceV1alpha3DeviceTaintRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateResourceV1alpha3DeviceTaintRuleInput,
     outputSchema: CreateResourceV1alpha3DeviceTaintRuleOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateResourceV1alpha3ResourcePoolStatusRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -1029,7 +1027,7 @@ export type CreateResourceV1alpha3ResourcePoolStatusRequestInput =
 
 // Output Schema
 export const CreateResourceV1alpha3ResourcePoolStatusRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.Struct({
@@ -1122,13 +1120,13 @@ export type CreateResourceV1alpha3ResourcePoolStatusRequestOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createResourceV1alpha3ResourcePoolStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateResourceV1alpha3ResourcePoolStatusRequestInput,
     outputSchema: CreateResourceV1alpha3ResourcePoolStatusRequestOutput,
   }));
 // Input Schema
 export const CreateResourceV1beta1DeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -1142,7 +1140,7 @@ export type CreateResourceV1beta1DeviceClassInput =
 
 // Output Schema
 export const CreateResourceV1beta1DeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1227,14 +1225,14 @@ export type CreateResourceV1beta1DeviceClassOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createResourceV1beta1DeviceClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateResourceV1beta1DeviceClassInput,
     outputSchema: CreateResourceV1beta1DeviceClassOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateResourceV1beta1NamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -1248,7 +1246,7 @@ export type CreateResourceV1beta1NamespacedResourceClaimInput =
 
 // Output Schema
 export const CreateResourceV1beta1NamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1539,14 +1537,14 @@ export type CreateResourceV1beta1NamespacedResourceClaimOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createResourceV1beta1NamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateResourceV1beta1NamespacedResourceClaimInput,
     outputSchema: CreateResourceV1beta1NamespacedResourceClaimOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateResourceV1beta1NamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -1560,7 +1558,7 @@ export type CreateResourceV1beta1NamespacedResourceClaimTemplateInput =
 
 // Output Schema
 export const CreateResourceV1beta1NamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1772,14 +1770,14 @@ export type CreateResourceV1beta1NamespacedResourceClaimTemplateOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createResourceV1beta1NamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateResourceV1beta1NamespacedResourceClaimTemplateInput,
     outputSchema: CreateResourceV1beta1NamespacedResourceClaimTemplateOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateResourceV1beta1ResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -1793,7 +1791,7 @@ export type CreateResourceV1beta1ResourceSliceInput =
 
 // Output Schema
 export const CreateResourceV1beta1ResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -2021,14 +2019,14 @@ export type CreateResourceV1beta1ResourceSliceOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createResourceV1beta1ResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateResourceV1beta1ResourceSliceInput,
     outputSchema: CreateResourceV1beta1ResourceSliceOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateResourceV1beta2DeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -2042,7 +2040,7 @@ export type CreateResourceV1beta2DeviceClassInput =
 
 // Output Schema
 export const CreateResourceV1beta2DeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -2127,14 +2125,14 @@ export type CreateResourceV1beta2DeviceClassOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createResourceV1beta2DeviceClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateResourceV1beta2DeviceClassInput,
     outputSchema: CreateResourceV1beta2DeviceClassOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateResourceV1beta2DeviceTaintRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -2148,7 +2146,7 @@ export type CreateResourceV1beta2DeviceTaintRuleInput =
 
 // Output Schema
 export const CreateResourceV1beta2DeviceTaintRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -2238,14 +2236,14 @@ export type CreateResourceV1beta2DeviceTaintRuleOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createResourceV1beta2DeviceTaintRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateResourceV1beta2DeviceTaintRuleInput,
     outputSchema: CreateResourceV1beta2DeviceTaintRuleOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateResourceV1beta2NamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -2259,7 +2257,7 @@ export type CreateResourceV1beta2NamespacedResourceClaimInput =
 
 // Output Schema
 export const CreateResourceV1beta2NamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -2554,14 +2552,14 @@ export type CreateResourceV1beta2NamespacedResourceClaimOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createResourceV1beta2NamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateResourceV1beta2NamespacedResourceClaimInput,
     outputSchema: CreateResourceV1beta2NamespacedResourceClaimOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateResourceV1beta2NamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -2575,7 +2573,7 @@ export type CreateResourceV1beta2NamespacedResourceClaimTemplateInput =
 
 // Output Schema
 export const CreateResourceV1beta2NamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -2791,14 +2789,14 @@ export type CreateResourceV1beta2NamespacedResourceClaimTemplateOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createResourceV1beta2NamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateResourceV1beta2NamespacedResourceClaimTemplateInput,
     outputSchema: CreateResourceV1beta2NamespacedResourceClaimTemplateOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateResourceV1beta2ResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -2812,7 +2810,7 @@ export type CreateResourceV1beta2ResourceSliceInput =
 
 // Output Schema
 export const CreateResourceV1beta2ResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -3030,14 +3028,14 @@ export type CreateResourceV1beta2ResourceSliceOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createResourceV1beta2ResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateResourceV1beta2ResourceSliceInput,
     outputSchema: CreateResourceV1beta2ResourceSliceOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const DeleteResourceV1CollectionDeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -3050,7 +3048,7 @@ export type DeleteResourceV1CollectionDeviceClassInput =
 
 // Output Schema
 export const DeleteResourceV1CollectionDeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -3099,13 +3097,13 @@ export type DeleteResourceV1CollectionDeviceClassOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteResourceV1CollectionDeviceClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1CollectionDeviceClassInput,
     outputSchema: DeleteResourceV1CollectionDeviceClassOutput,
   }));
 // Input Schema
 export const DeleteResourceV1CollectionNamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -3118,7 +3116,7 @@ export type DeleteResourceV1CollectionNamespacedResourceClaimInput =
 
 // Output Schema
 export const DeleteResourceV1CollectionNamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -3167,13 +3165,13 @@ export type DeleteResourceV1CollectionNamespacedResourceClaimOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteResourceV1CollectionNamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1CollectionNamespacedResourceClaimInput,
     outputSchema: DeleteResourceV1CollectionNamespacedResourceClaimOutput,
   }));
 // Input Schema
 export const DeleteResourceV1CollectionNamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -3186,7 +3184,7 @@ export type DeleteResourceV1CollectionNamespacedResourceClaimTemplateInput =
 
 // Output Schema
 export const DeleteResourceV1CollectionNamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -3235,14 +3233,14 @@ export type DeleteResourceV1CollectionNamespacedResourceClaimTemplateOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteResourceV1CollectionNamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1CollectionNamespacedResourceClaimTemplateInput,
     outputSchema:
       DeleteResourceV1CollectionNamespacedResourceClaimTemplateOutput,
   }));
 // Input Schema
 export const DeleteResourceV1CollectionResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -3255,7 +3253,7 @@ export type DeleteResourceV1CollectionResourceSliceInput =
 
 // Output Schema
 export const DeleteResourceV1CollectionResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -3304,13 +3302,13 @@ export type DeleteResourceV1CollectionResourceSliceOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteResourceV1CollectionResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1CollectionResourceSliceInput,
     outputSchema: DeleteResourceV1CollectionResourceSliceOutput,
   }));
 // Input Schema
 export const DeleteResourceV1DeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -3323,7 +3321,7 @@ export type DeleteResourceV1DeviceClassInput =
 
 // Output Schema
 export const DeleteResourceV1DeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -3406,16 +3404,14 @@ export type DeleteResourceV1DeviceClassOutput =
  *
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
-export const deleteResourceV1DeviceClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteResourceV1DeviceClassInput,
-    outputSchema: DeleteResourceV1DeviceClassOutput,
-    errors: [NotFound, Conflict] as const,
-  }),
-);
+export const deleteResourceV1DeviceClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteResourceV1DeviceClassInput,
+  outputSchema: DeleteResourceV1DeviceClassOutput,
+  errors: [NotFound, Conflict] as const,
+}));
 // Input Schema
 export const DeleteResourceV1NamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -3428,7 +3424,7 @@ export type DeleteResourceV1NamespacedResourceClaimInput =
 
 // Output Schema
 export const DeleteResourceV1NamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -3722,14 +3718,14 @@ export type DeleteResourceV1NamespacedResourceClaimOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteResourceV1NamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1NamespacedResourceClaimInput,
     outputSchema: DeleteResourceV1NamespacedResourceClaimOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteResourceV1NamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -3742,7 +3738,7 @@ export type DeleteResourceV1NamespacedResourceClaimTemplateInput =
 
 // Output Schema
 export const DeleteResourceV1NamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -3957,14 +3953,14 @@ export type DeleteResourceV1NamespacedResourceClaimTemplateOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteResourceV1NamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1NamespacedResourceClaimTemplateInput,
     outputSchema: DeleteResourceV1NamespacedResourceClaimTemplateOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteResourceV1ResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -3977,7 +3973,7 @@ export type DeleteResourceV1ResourceSliceInput =
 
 // Output Schema
 export const DeleteResourceV1ResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -4194,14 +4190,14 @@ export type DeleteResourceV1ResourceSliceOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteResourceV1ResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1ResourceSliceInput,
     outputSchema: DeleteResourceV1ResourceSliceOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteResourceV1alpha3CollectionDeviceTaintRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -4214,7 +4210,7 @@ export type DeleteResourceV1alpha3CollectionDeviceTaintRuleInput =
 
 // Output Schema
 export const DeleteResourceV1alpha3CollectionDeviceTaintRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -4263,13 +4259,13 @@ export type DeleteResourceV1alpha3CollectionDeviceTaintRuleOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteResourceV1alpha3CollectionDeviceTaintRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1alpha3CollectionDeviceTaintRuleInput,
     outputSchema: DeleteResourceV1alpha3CollectionDeviceTaintRuleOutput,
   }));
 // Input Schema
 export const DeleteResourceV1alpha3CollectionResourcePoolStatusRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -4282,7 +4278,7 @@ export type DeleteResourceV1alpha3CollectionResourcePoolStatusRequestInput =
 
 // Output Schema
 export const DeleteResourceV1alpha3CollectionResourcePoolStatusRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -4331,14 +4327,14 @@ export type DeleteResourceV1alpha3CollectionResourcePoolStatusRequestOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteResourceV1alpha3CollectionResourcePoolStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1alpha3CollectionResourcePoolStatusRequestInput,
     outputSchema:
       DeleteResourceV1alpha3CollectionResourcePoolStatusRequestOutput,
   }));
 // Input Schema
 export const DeleteResourceV1alpha3DeviceTaintRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -4351,7 +4347,7 @@ export type DeleteResourceV1alpha3DeviceTaintRuleInput =
 
 // Output Schema
 export const DeleteResourceV1alpha3DeviceTaintRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -4440,14 +4436,14 @@ export type DeleteResourceV1alpha3DeviceTaintRuleOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteResourceV1alpha3DeviceTaintRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1alpha3DeviceTaintRuleInput,
     outputSchema: DeleteResourceV1alpha3DeviceTaintRuleOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteResourceV1alpha3ResourcePoolStatusRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -4460,7 +4456,7 @@ export type DeleteResourceV1alpha3ResourcePoolStatusRequestInput =
 
 // Output Schema
 export const DeleteResourceV1alpha3ResourcePoolStatusRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.Struct({
@@ -4552,13 +4548,13 @@ export type DeleteResourceV1alpha3ResourcePoolStatusRequestOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteResourceV1alpha3ResourcePoolStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1alpha3ResourcePoolStatusRequestInput,
     outputSchema: DeleteResourceV1alpha3ResourcePoolStatusRequestOutput,
   }));
 // Input Schema
 export const DeleteResourceV1beta1CollectionDeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -4571,7 +4567,7 @@ export type DeleteResourceV1beta1CollectionDeviceClassInput =
 
 // Output Schema
 export const DeleteResourceV1beta1CollectionDeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -4620,13 +4616,13 @@ export type DeleteResourceV1beta1CollectionDeviceClassOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteResourceV1beta1CollectionDeviceClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1beta1CollectionDeviceClassInput,
     outputSchema: DeleteResourceV1beta1CollectionDeviceClassOutput,
   }));
 // Input Schema
 export const DeleteResourceV1beta1CollectionNamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -4639,7 +4635,7 @@ export type DeleteResourceV1beta1CollectionNamespacedResourceClaimInput =
 
 // Output Schema
 export const DeleteResourceV1beta1CollectionNamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -4688,13 +4684,13 @@ export type DeleteResourceV1beta1CollectionNamespacedResourceClaimOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteResourceV1beta1CollectionNamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1beta1CollectionNamespacedResourceClaimInput,
     outputSchema: DeleteResourceV1beta1CollectionNamespacedResourceClaimOutput,
   }));
 // Input Schema
 export const DeleteResourceV1beta1CollectionNamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -4707,7 +4703,7 @@ export type DeleteResourceV1beta1CollectionNamespacedResourceClaimTemplateInput 
 
 // Output Schema
 export const DeleteResourceV1beta1CollectionNamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -4756,7 +4752,7 @@ export type DeleteResourceV1beta1CollectionNamespacedResourceClaimTemplateOutput
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteResourceV1beta1CollectionNamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteResourceV1beta1CollectionNamespacedResourceClaimTemplateInput,
     outputSchema:
@@ -4764,7 +4760,7 @@ export const deleteResourceV1beta1CollectionNamespacedResourceClaimTemplate =
   }));
 // Input Schema
 export const DeleteResourceV1beta1CollectionResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -4777,7 +4773,7 @@ export type DeleteResourceV1beta1CollectionResourceSliceInput =
 
 // Output Schema
 export const DeleteResourceV1beta1CollectionResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -4826,13 +4822,13 @@ export type DeleteResourceV1beta1CollectionResourceSliceOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteResourceV1beta1CollectionResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1beta1CollectionResourceSliceInput,
     outputSchema: DeleteResourceV1beta1CollectionResourceSliceOutput,
   }));
 // Input Schema
 export const DeleteResourceV1beta1DeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -4845,7 +4841,7 @@ export type DeleteResourceV1beta1DeviceClassInput =
 
 // Output Schema
 export const DeleteResourceV1beta1DeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -4929,14 +4925,14 @@ export type DeleteResourceV1beta1DeviceClassOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteResourceV1beta1DeviceClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1beta1DeviceClassInput,
     outputSchema: DeleteResourceV1beta1DeviceClassOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteResourceV1beta1NamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -4949,7 +4945,7 @@ export type DeleteResourceV1beta1NamespacedResourceClaimInput =
 
 // Output Schema
 export const DeleteResourceV1beta1NamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -5239,14 +5235,14 @@ export type DeleteResourceV1beta1NamespacedResourceClaimOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteResourceV1beta1NamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1beta1NamespacedResourceClaimInput,
     outputSchema: DeleteResourceV1beta1NamespacedResourceClaimOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteResourceV1beta1NamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -5259,7 +5255,7 @@ export type DeleteResourceV1beta1NamespacedResourceClaimTemplateInput =
 
 // Output Schema
 export const DeleteResourceV1beta1NamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -5470,14 +5466,14 @@ export type DeleteResourceV1beta1NamespacedResourceClaimTemplateOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteResourceV1beta1NamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1beta1NamespacedResourceClaimTemplateInput,
     outputSchema: DeleteResourceV1beta1NamespacedResourceClaimTemplateOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteResourceV1beta1ResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -5490,7 +5486,7 @@ export type DeleteResourceV1beta1ResourceSliceInput =
 
 // Output Schema
 export const DeleteResourceV1beta1ResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -5717,14 +5713,14 @@ export type DeleteResourceV1beta1ResourceSliceOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteResourceV1beta1ResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1beta1ResourceSliceInput,
     outputSchema: DeleteResourceV1beta1ResourceSliceOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteResourceV1beta2CollectionDeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -5737,7 +5733,7 @@ export type DeleteResourceV1beta2CollectionDeviceClassInput =
 
 // Output Schema
 export const DeleteResourceV1beta2CollectionDeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -5786,13 +5782,13 @@ export type DeleteResourceV1beta2CollectionDeviceClassOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteResourceV1beta2CollectionDeviceClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1beta2CollectionDeviceClassInput,
     outputSchema: DeleteResourceV1beta2CollectionDeviceClassOutput,
   }));
 // Input Schema
 export const DeleteResourceV1beta2CollectionDeviceTaintRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -5805,7 +5801,7 @@ export type DeleteResourceV1beta2CollectionDeviceTaintRuleInput =
 
 // Output Schema
 export const DeleteResourceV1beta2CollectionDeviceTaintRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -5854,13 +5850,13 @@ export type DeleteResourceV1beta2CollectionDeviceTaintRuleOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteResourceV1beta2CollectionDeviceTaintRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1beta2CollectionDeviceTaintRuleInput,
     outputSchema: DeleteResourceV1beta2CollectionDeviceTaintRuleOutput,
   }));
 // Input Schema
 export const DeleteResourceV1beta2CollectionNamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -5873,7 +5869,7 @@ export type DeleteResourceV1beta2CollectionNamespacedResourceClaimInput =
 
 // Output Schema
 export const DeleteResourceV1beta2CollectionNamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -5922,13 +5918,13 @@ export type DeleteResourceV1beta2CollectionNamespacedResourceClaimOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteResourceV1beta2CollectionNamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1beta2CollectionNamespacedResourceClaimInput,
     outputSchema: DeleteResourceV1beta2CollectionNamespacedResourceClaimOutput,
   }));
 // Input Schema
 export const DeleteResourceV1beta2CollectionNamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -5941,7 +5937,7 @@ export type DeleteResourceV1beta2CollectionNamespacedResourceClaimTemplateInput 
 
 // Output Schema
 export const DeleteResourceV1beta2CollectionNamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -5990,7 +5986,7 @@ export type DeleteResourceV1beta2CollectionNamespacedResourceClaimTemplateOutput
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteResourceV1beta2CollectionNamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteResourceV1beta2CollectionNamespacedResourceClaimTemplateInput,
     outputSchema:
@@ -5998,7 +5994,7 @@ export const deleteResourceV1beta2CollectionNamespacedResourceClaimTemplate =
   }));
 // Input Schema
 export const DeleteResourceV1beta2CollectionResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -6011,7 +6007,7 @@ export type DeleteResourceV1beta2CollectionResourceSliceInput =
 
 // Output Schema
 export const DeleteResourceV1beta2CollectionResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -6060,13 +6056,13 @@ export type DeleteResourceV1beta2CollectionResourceSliceOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteResourceV1beta2CollectionResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1beta2CollectionResourceSliceInput,
     outputSchema: DeleteResourceV1beta2CollectionResourceSliceOutput,
   }));
 // Input Schema
 export const DeleteResourceV1beta2DeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -6079,7 +6075,7 @@ export type DeleteResourceV1beta2DeviceClassInput =
 
 // Output Schema
 export const DeleteResourceV1beta2DeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -6163,14 +6159,14 @@ export type DeleteResourceV1beta2DeviceClassOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteResourceV1beta2DeviceClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1beta2DeviceClassInput,
     outputSchema: DeleteResourceV1beta2DeviceClassOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteResourceV1beta2DeviceTaintRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -6183,7 +6179,7 @@ export type DeleteResourceV1beta2DeviceTaintRuleInput =
 
 // Output Schema
 export const DeleteResourceV1beta2DeviceTaintRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -6272,14 +6268,14 @@ export type DeleteResourceV1beta2DeviceTaintRuleOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteResourceV1beta2DeviceTaintRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1beta2DeviceTaintRuleInput,
     outputSchema: DeleteResourceV1beta2DeviceTaintRuleOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteResourceV1beta2NamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -6292,7 +6288,7 @@ export type DeleteResourceV1beta2NamespacedResourceClaimInput =
 
 // Output Schema
 export const DeleteResourceV1beta2NamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -6586,14 +6582,14 @@ export type DeleteResourceV1beta2NamespacedResourceClaimOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteResourceV1beta2NamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1beta2NamespacedResourceClaimInput,
     outputSchema: DeleteResourceV1beta2NamespacedResourceClaimOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteResourceV1beta2NamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -6606,7 +6602,7 @@ export type DeleteResourceV1beta2NamespacedResourceClaimTemplateInput =
 
 // Output Schema
 export const DeleteResourceV1beta2NamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -6821,14 +6817,14 @@ export type DeleteResourceV1beta2NamespacedResourceClaimTemplateOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteResourceV1beta2NamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1beta2NamespacedResourceClaimTemplateInput,
     outputSchema: DeleteResourceV1beta2NamespacedResourceClaimTemplateOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteResourceV1beta2ResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -6841,7 +6837,7 @@ export type DeleteResourceV1beta2ResourceSliceInput =
 
 // Output Schema
 export const DeleteResourceV1beta2ResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -7058,21 +7054,21 @@ export type DeleteResourceV1beta2ResourceSliceOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteResourceV1beta2ResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1beta2ResourceSliceInput,
     outputSchema: DeleteResourceV1beta2ResourceSliceOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const GetResourceAPIGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/resource.k8s.io/" }),
   );
 export type GetResourceAPIGroupInput = typeof GetResourceAPIGroupInput.Type;
 
 // Output Schema
 export const GetResourceAPIGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     name: Schema.String,
@@ -7103,13 +7099,13 @@ export type GetResourceAPIGroupOutput = typeof GetResourceAPIGroupOutput.Type;
 /**
  * get information of a group
  */
-export const getResourceAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getResourceAPIGroup = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetResourceAPIGroupInput,
   outputSchema: GetResourceAPIGroupOutput,
 }));
 // Input Schema
 export const GetResourceV1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/resource.k8s.io/v1/" }),
   );
 export type GetResourceV1APIResourcesInput =
@@ -7117,7 +7113,7 @@ export type GetResourceV1APIResourcesInput =
 
 // Output Schema
 export const GetResourceV1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -7143,15 +7139,13 @@ export type GetResourceV1APIResourcesOutput =
 /**
  * get available resources
  */
-export const getResourceV1APIResources = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetResourceV1APIResourcesInput,
-    outputSchema: GetResourceV1APIResourcesOutput,
-  }),
-);
+export const getResourceV1APIResources = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetResourceV1APIResourcesInput,
+  outputSchema: GetResourceV1APIResourcesOutput,
+}));
 // Input Schema
 export const GetResourceV1alpha3APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/resource.k8s.io/v1alpha3/" }),
   );
 export type GetResourceV1alpha3APIResourcesInput =
@@ -7159,7 +7153,7 @@ export type GetResourceV1alpha3APIResourcesInput =
 
 // Output Schema
 export const GetResourceV1alpha3APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -7186,13 +7180,13 @@ export type GetResourceV1alpha3APIResourcesOutput =
  * get available resources
  */
 export const getResourceV1alpha3APIResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetResourceV1alpha3APIResourcesInput,
     outputSchema: GetResourceV1alpha3APIResourcesOutput,
   }));
 // Input Schema
 export const GetResourceV1beta1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/resource.k8s.io/v1beta1/" }),
   );
 export type GetResourceV1beta1APIResourcesInput =
@@ -7200,7 +7194,7 @@ export type GetResourceV1beta1APIResourcesInput =
 
 // Output Schema
 export const GetResourceV1beta1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -7227,13 +7221,13 @@ export type GetResourceV1beta1APIResourcesOutput =
  * get available resources
  */
 export const getResourceV1beta1APIResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetResourceV1beta1APIResourcesInput,
     outputSchema: GetResourceV1beta1APIResourcesOutput,
   }));
 // Input Schema
 export const GetResourceV1beta2APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/resource.k8s.io/v1beta2/" }),
   );
 export type GetResourceV1beta2APIResourcesInput =
@@ -7241,7 +7235,7 @@ export type GetResourceV1beta2APIResourcesInput =
 
 // Output Schema
 export const GetResourceV1beta2APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -7268,13 +7262,13 @@ export type GetResourceV1beta2APIResourcesOutput =
  * get available resources
  */
 export const getResourceV1beta2APIResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetResourceV1beta2APIResourcesInput,
     outputSchema: GetResourceV1beta2APIResourcesOutput,
   }));
 // Input Schema
 export const ListResourceV1DeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/resource.k8s.io/v1/deviceclasses" }),
   );
 export type ListResourceV1DeviceClassInput =
@@ -7282,7 +7276,7 @@ export type ListResourceV1DeviceClassInput =
 
 // Output Schema
 export const ListResourceV1DeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -7384,15 +7378,13 @@ export type ListResourceV1DeviceClassOutput =
 /**
  * list or watch objects of kind DeviceClass
  */
-export const listResourceV1DeviceClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListResourceV1DeviceClassInput,
-    outputSchema: ListResourceV1DeviceClassOutput,
-  }),
-);
+export const listResourceV1DeviceClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListResourceV1DeviceClassInput,
+  outputSchema: ListResourceV1DeviceClassOutput,
+}));
 // Input Schema
 export const ListResourceV1NamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1/namespaces/{namespace}/resourceclaims",
@@ -7403,7 +7395,7 @@ export type ListResourceV1NamespacedResourceClaimInput =
 
 // Output Schema
 export const ListResourceV1NamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -7726,13 +7718,13 @@ export type ListResourceV1NamespacedResourceClaimOutput =
  * list or watch objects of kind ResourceClaim
  */
 export const listResourceV1NamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListResourceV1NamespacedResourceClaimInput,
     outputSchema: ListResourceV1NamespacedResourceClaimOutput,
   }));
 // Input Schema
 export const ListResourceV1NamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1/namespaces/{namespace}/resourceclaimtemplates",
@@ -7743,7 +7735,7 @@ export type ListResourceV1NamespacedResourceClaimTemplateInput =
 
 // Output Schema
 export const ListResourceV1NamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -7983,13 +7975,13 @@ export type ListResourceV1NamespacedResourceClaimTemplateOutput =
  * list or watch objects of kind ResourceClaimTemplate
  */
 export const listResourceV1NamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListResourceV1NamespacedResourceClaimTemplateInput,
     outputSchema: ListResourceV1NamespacedResourceClaimTemplateOutput,
   }));
 // Input Schema
 export const ListResourceV1ResourceClaimForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/resource.k8s.io/v1/resourceclaims" }),
   );
 export type ListResourceV1ResourceClaimForAllNamespacesInput =
@@ -7997,7 +7989,7 @@ export type ListResourceV1ResourceClaimForAllNamespacesInput =
 
 // Output Schema
 export const ListResourceV1ResourceClaimForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -8320,13 +8312,13 @@ export type ListResourceV1ResourceClaimForAllNamespacesOutput =
  * list or watch objects of kind ResourceClaim
  */
 export const listResourceV1ResourceClaimForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListResourceV1ResourceClaimForAllNamespacesInput,
     outputSchema: ListResourceV1ResourceClaimForAllNamespacesOutput,
   }));
 // Input Schema
 export const ListResourceV1ResourceClaimTemplateForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1/resourceclaimtemplates",
@@ -8337,7 +8329,7 @@ export type ListResourceV1ResourceClaimTemplateForAllNamespacesInput =
 
 // Output Schema
 export const ListResourceV1ResourceClaimTemplateForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -8577,13 +8569,13 @@ export type ListResourceV1ResourceClaimTemplateForAllNamespacesOutput =
  * list or watch objects of kind ResourceClaimTemplate
  */
 export const listResourceV1ResourceClaimTemplateForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListResourceV1ResourceClaimTemplateForAllNamespacesInput,
     outputSchema: ListResourceV1ResourceClaimTemplateForAllNamespacesOutput,
   }));
 // Input Schema
 export const ListResourceV1ResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/resource.k8s.io/v1/resourceslices" }),
   );
 export type ListResourceV1ResourceSliceInput =
@@ -8591,7 +8583,7 @@ export type ListResourceV1ResourceSliceInput =
 
 // Output Schema
 export const ListResourceV1ResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -8832,15 +8824,13 @@ export type ListResourceV1ResourceSliceOutput =
 /**
  * list or watch objects of kind ResourceSlice
  */
-export const listResourceV1ResourceSlice = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListResourceV1ResourceSliceInput,
-    outputSchema: ListResourceV1ResourceSliceOutput,
-  }),
-);
+export const listResourceV1ResourceSlice = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListResourceV1ResourceSliceInput,
+  outputSchema: ListResourceV1ResourceSliceOutput,
+}));
 // Input Schema
 export const ListResourceV1alpha3DeviceTaintRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1alpha3/devicetaintrules",
@@ -8851,7 +8841,7 @@ export type ListResourceV1alpha3DeviceTaintRuleInput =
 
 // Output Schema
 export const ListResourceV1alpha3DeviceTaintRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -8959,13 +8949,13 @@ export type ListResourceV1alpha3DeviceTaintRuleOutput =
  * list or watch objects of kind DeviceTaintRule
  */
 export const listResourceV1alpha3DeviceTaintRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListResourceV1alpha3DeviceTaintRuleInput,
     outputSchema: ListResourceV1alpha3DeviceTaintRuleOutput,
   }));
 // Input Schema
 export const ListResourceV1alpha3ResourcePoolStatusRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1alpha3/resourcepoolstatusrequests",
@@ -8976,7 +8966,7 @@ export type ListResourceV1alpha3ResourcePoolStatusRequestInput =
 
 // Output Schema
 export const ListResourceV1alpha3ResourcePoolStatusRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -9087,13 +9077,13 @@ export type ListResourceV1alpha3ResourcePoolStatusRequestOutput =
  * list or watch objects of kind ResourcePoolStatusRequest
  */
 export const listResourceV1alpha3ResourcePoolStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListResourceV1alpha3ResourcePoolStatusRequestInput,
     outputSchema: ListResourceV1alpha3ResourcePoolStatusRequestOutput,
   }));
 // Input Schema
 export const ListResourceV1beta1DeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta1/deviceclasses",
@@ -9104,7 +9094,7 @@ export type ListResourceV1beta1DeviceClassInput =
 
 // Output Schema
 export const ListResourceV1beta1DeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -9207,13 +9197,13 @@ export type ListResourceV1beta1DeviceClassOutput =
  * list or watch objects of kind DeviceClass
  */
 export const listResourceV1beta1DeviceClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListResourceV1beta1DeviceClassInput,
     outputSchema: ListResourceV1beta1DeviceClassOutput,
   }));
 // Input Schema
 export const ListResourceV1beta1NamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta1/namespaces/{namespace}/resourceclaims",
@@ -9224,7 +9214,7 @@ export type ListResourceV1beta1NamespacedResourceClaimInput =
 
 // Output Schema
 export const ListResourceV1beta1NamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -9543,13 +9533,13 @@ export type ListResourceV1beta1NamespacedResourceClaimOutput =
  * list or watch objects of kind ResourceClaim
  */
 export const listResourceV1beta1NamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListResourceV1beta1NamespacedResourceClaimInput,
     outputSchema: ListResourceV1beta1NamespacedResourceClaimOutput,
   }));
 // Input Schema
 export const ListResourceV1beta1NamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta1/namespaces/{namespace}/resourceclaimtemplates",
@@ -9560,7 +9550,7 @@ export type ListResourceV1beta1NamespacedResourceClaimTemplateInput =
 
 // Output Schema
 export const ListResourceV1beta1NamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -9794,13 +9784,13 @@ export type ListResourceV1beta1NamespacedResourceClaimTemplateOutput =
  * list or watch objects of kind ResourceClaimTemplate
  */
 export const listResourceV1beta1NamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListResourceV1beta1NamespacedResourceClaimTemplateInput,
     outputSchema: ListResourceV1beta1NamespacedResourceClaimTemplateOutput,
   }));
 // Input Schema
 export const ListResourceV1beta1ResourceClaimForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta1/resourceclaims",
@@ -9811,7 +9801,7 @@ export type ListResourceV1beta1ResourceClaimForAllNamespacesInput =
 
 // Output Schema
 export const ListResourceV1beta1ResourceClaimForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -10130,13 +10120,13 @@ export type ListResourceV1beta1ResourceClaimForAllNamespacesOutput =
  * list or watch objects of kind ResourceClaim
  */
 export const listResourceV1beta1ResourceClaimForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListResourceV1beta1ResourceClaimForAllNamespacesInput,
     outputSchema: ListResourceV1beta1ResourceClaimForAllNamespacesOutput,
   }));
 // Input Schema
 export const ListResourceV1beta1ResourceClaimTemplateForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta1/resourceclaimtemplates",
@@ -10147,7 +10137,7 @@ export type ListResourceV1beta1ResourceClaimTemplateForAllNamespacesInput =
 
 // Output Schema
 export const ListResourceV1beta1ResourceClaimTemplateForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -10381,14 +10371,14 @@ export type ListResourceV1beta1ResourceClaimTemplateForAllNamespacesOutput =
  * list or watch objects of kind ResourceClaimTemplate
  */
 export const listResourceV1beta1ResourceClaimTemplateForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListResourceV1beta1ResourceClaimTemplateForAllNamespacesInput,
     outputSchema:
       ListResourceV1beta1ResourceClaimTemplateForAllNamespacesOutput,
   }));
 // Input Schema
 export const ListResourceV1beta1ResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta1/resourceslices",
@@ -10399,7 +10389,7 @@ export type ListResourceV1beta1ResourceSliceInput =
 
 // Output Schema
 export const ListResourceV1beta1ResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -10649,13 +10639,13 @@ export type ListResourceV1beta1ResourceSliceOutput =
  * list or watch objects of kind ResourceSlice
  */
 export const listResourceV1beta1ResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListResourceV1beta1ResourceSliceInput,
     outputSchema: ListResourceV1beta1ResourceSliceOutput,
   }));
 // Input Schema
 export const ListResourceV1beta2DeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/deviceclasses",
@@ -10666,7 +10656,7 @@ export type ListResourceV1beta2DeviceClassInput =
 
 // Output Schema
 export const ListResourceV1beta2DeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -10769,13 +10759,13 @@ export type ListResourceV1beta2DeviceClassOutput =
  * list or watch objects of kind DeviceClass
  */
 export const listResourceV1beta2DeviceClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListResourceV1beta2DeviceClassInput,
     outputSchema: ListResourceV1beta2DeviceClassOutput,
   }));
 // Input Schema
 export const ListResourceV1beta2DeviceTaintRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/devicetaintrules",
@@ -10786,7 +10776,7 @@ export type ListResourceV1beta2DeviceTaintRuleInput =
 
 // Output Schema
 export const ListResourceV1beta2DeviceTaintRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -10894,13 +10884,13 @@ export type ListResourceV1beta2DeviceTaintRuleOutput =
  * list or watch objects of kind DeviceTaintRule
  */
 export const listResourceV1beta2DeviceTaintRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListResourceV1beta2DeviceTaintRuleInput,
     outputSchema: ListResourceV1beta2DeviceTaintRuleOutput,
   }));
 // Input Schema
 export const ListResourceV1beta2NamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/namespaces/{namespace}/resourceclaims",
@@ -10911,7 +10901,7 @@ export type ListResourceV1beta2NamespacedResourceClaimInput =
 
 // Output Schema
 export const ListResourceV1beta2NamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -11234,13 +11224,13 @@ export type ListResourceV1beta2NamespacedResourceClaimOutput =
  * list or watch objects of kind ResourceClaim
  */
 export const listResourceV1beta2NamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListResourceV1beta2NamespacedResourceClaimInput,
     outputSchema: ListResourceV1beta2NamespacedResourceClaimOutput,
   }));
 // Input Schema
 export const ListResourceV1beta2NamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/namespaces/{namespace}/resourceclaimtemplates",
@@ -11251,7 +11241,7 @@ export type ListResourceV1beta2NamespacedResourceClaimTemplateInput =
 
 // Output Schema
 export const ListResourceV1beta2NamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -11491,13 +11481,13 @@ export type ListResourceV1beta2NamespacedResourceClaimTemplateOutput =
  * list or watch objects of kind ResourceClaimTemplate
  */
 export const listResourceV1beta2NamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListResourceV1beta2NamespacedResourceClaimTemplateInput,
     outputSchema: ListResourceV1beta2NamespacedResourceClaimTemplateOutput,
   }));
 // Input Schema
 export const ListResourceV1beta2ResourceClaimForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/resourceclaims",
@@ -11508,7 +11498,7 @@ export type ListResourceV1beta2ResourceClaimForAllNamespacesInput =
 
 // Output Schema
 export const ListResourceV1beta2ResourceClaimForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -11831,13 +11821,13 @@ export type ListResourceV1beta2ResourceClaimForAllNamespacesOutput =
  * list or watch objects of kind ResourceClaim
  */
 export const listResourceV1beta2ResourceClaimForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListResourceV1beta2ResourceClaimForAllNamespacesInput,
     outputSchema: ListResourceV1beta2ResourceClaimForAllNamespacesOutput,
   }));
 // Input Schema
 export const ListResourceV1beta2ResourceClaimTemplateForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/resourceclaimtemplates",
@@ -11848,7 +11838,7 @@ export type ListResourceV1beta2ResourceClaimTemplateForAllNamespacesInput =
 
 // Output Schema
 export const ListResourceV1beta2ResourceClaimTemplateForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -12088,14 +12078,14 @@ export type ListResourceV1beta2ResourceClaimTemplateForAllNamespacesOutput =
  * list or watch objects of kind ResourceClaimTemplate
  */
 export const listResourceV1beta2ResourceClaimTemplateForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListResourceV1beta2ResourceClaimTemplateForAllNamespacesInput,
     outputSchema:
       ListResourceV1beta2ResourceClaimTemplateForAllNamespacesOutput,
   }));
 // Input Schema
 export const ListResourceV1beta2ResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/resourceslices",
@@ -12106,7 +12096,7 @@ export type ListResourceV1beta2ResourceSliceInput =
 
 // Output Schema
 export const ListResourceV1beta2ResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -12348,13 +12338,13 @@ export type ListResourceV1beta2ResourceSliceOutput =
  * list or watch objects of kind ResourceSlice
  */
 export const listResourceV1beta2ResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListResourceV1beta2ResourceSliceInput,
     outputSchema: ListResourceV1beta2ResourceSliceOutput,
   }));
 // Input Schema
 export const PatchResourceV1DeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -12368,7 +12358,7 @@ export type PatchResourceV1DeviceClassInput =
 
 // Output Schema
 export const PatchResourceV1DeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -12452,16 +12442,14 @@ export type PatchResourceV1DeviceClassOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchResourceV1DeviceClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PatchResourceV1DeviceClassInput,
-    outputSchema: PatchResourceV1DeviceClassOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const patchResourceV1DeviceClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchResourceV1DeviceClassInput,
+  outputSchema: PatchResourceV1DeviceClassOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const PatchResourceV1NamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -12475,7 +12463,7 @@ export type PatchResourceV1NamespacedResourceClaimInput =
 
 // Output Schema
 export const PatchResourceV1NamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -12770,14 +12758,14 @@ export type PatchResourceV1NamespacedResourceClaimOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchResourceV1NamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1NamespacedResourceClaimInput,
     outputSchema: PatchResourceV1NamespacedResourceClaimOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchResourceV1NamespacedResourceClaimStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -12791,7 +12779,7 @@ export type PatchResourceV1NamespacedResourceClaimStatusInput =
 
 // Output Schema
 export const PatchResourceV1NamespacedResourceClaimStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -13086,14 +13074,14 @@ export type PatchResourceV1NamespacedResourceClaimStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchResourceV1NamespacedResourceClaimStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1NamespacedResourceClaimStatusInput,
     outputSchema: PatchResourceV1NamespacedResourceClaimStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchResourceV1NamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -13107,7 +13095,7 @@ export type PatchResourceV1NamespacedResourceClaimTemplateInput =
 
 // Output Schema
 export const PatchResourceV1NamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -13323,14 +13311,14 @@ export type PatchResourceV1NamespacedResourceClaimTemplateOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchResourceV1NamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1NamespacedResourceClaimTemplateInput,
     outputSchema: PatchResourceV1NamespacedResourceClaimTemplateOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchResourceV1ResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -13344,7 +13332,7 @@ export type PatchResourceV1ResourceSliceInput =
 
 // Output Schema
 export const PatchResourceV1ResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -13562,14 +13550,14 @@ export type PatchResourceV1ResourceSliceOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchResourceV1ResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1ResourceSliceInput,
     outputSchema: PatchResourceV1ResourceSliceOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchResourceV1alpha3DeviceTaintRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -13583,7 +13571,7 @@ export type PatchResourceV1alpha3DeviceTaintRuleInput =
 
 // Output Schema
 export const PatchResourceV1alpha3DeviceTaintRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -13673,14 +13661,14 @@ export type PatchResourceV1alpha3DeviceTaintRuleOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchResourceV1alpha3DeviceTaintRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1alpha3DeviceTaintRuleInput,
     outputSchema: PatchResourceV1alpha3DeviceTaintRuleOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchResourceV1alpha3DeviceTaintRuleStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -13694,7 +13682,7 @@ export type PatchResourceV1alpha3DeviceTaintRuleStatusInput =
 
 // Output Schema
 export const PatchResourceV1alpha3DeviceTaintRuleStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -13784,14 +13772,14 @@ export type PatchResourceV1alpha3DeviceTaintRuleStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchResourceV1alpha3DeviceTaintRuleStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1alpha3DeviceTaintRuleStatusInput,
     outputSchema: PatchResourceV1alpha3DeviceTaintRuleStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchResourceV1alpha3ResourcePoolStatusRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -13805,7 +13793,7 @@ export type PatchResourceV1alpha3ResourcePoolStatusRequestInput =
 
 // Output Schema
 export const PatchResourceV1alpha3ResourcePoolStatusRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.Struct({
@@ -13898,13 +13886,13 @@ export type PatchResourceV1alpha3ResourcePoolStatusRequestOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchResourceV1alpha3ResourcePoolStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1alpha3ResourcePoolStatusRequestInput,
     outputSchema: PatchResourceV1alpha3ResourcePoolStatusRequestOutput,
   }));
 // Input Schema
 export const PatchResourceV1alpha3ResourcePoolStatusRequestStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -13918,7 +13906,7 @@ export type PatchResourceV1alpha3ResourcePoolStatusRequestStatusInput =
 
 // Output Schema
 export const PatchResourceV1alpha3ResourcePoolStatusRequestStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.Struct({
@@ -14011,13 +13999,13 @@ export type PatchResourceV1alpha3ResourcePoolStatusRequestStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchResourceV1alpha3ResourcePoolStatusRequestStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1alpha3ResourcePoolStatusRequestStatusInput,
     outputSchema: PatchResourceV1alpha3ResourcePoolStatusRequestStatusOutput,
   }));
 // Input Schema
 export const PatchResourceV1beta1DeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -14031,7 +14019,7 @@ export type PatchResourceV1beta1DeviceClassInput =
 
 // Output Schema
 export const PatchResourceV1beta1DeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -14116,14 +14104,14 @@ export type PatchResourceV1beta1DeviceClassOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchResourceV1beta1DeviceClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1beta1DeviceClassInput,
     outputSchema: PatchResourceV1beta1DeviceClassOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchResourceV1beta1NamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -14137,7 +14125,7 @@ export type PatchResourceV1beta1NamespacedResourceClaimInput =
 
 // Output Schema
 export const PatchResourceV1beta1NamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -14428,14 +14416,14 @@ export type PatchResourceV1beta1NamespacedResourceClaimOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchResourceV1beta1NamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1beta1NamespacedResourceClaimInput,
     outputSchema: PatchResourceV1beta1NamespacedResourceClaimOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchResourceV1beta1NamespacedResourceClaimStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -14449,7 +14437,7 @@ export type PatchResourceV1beta1NamespacedResourceClaimStatusInput =
 
 // Output Schema
 export const PatchResourceV1beta1NamespacedResourceClaimStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -14740,14 +14728,14 @@ export type PatchResourceV1beta1NamespacedResourceClaimStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchResourceV1beta1NamespacedResourceClaimStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1beta1NamespacedResourceClaimStatusInput,
     outputSchema: PatchResourceV1beta1NamespacedResourceClaimStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchResourceV1beta1NamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -14761,7 +14749,7 @@ export type PatchResourceV1beta1NamespacedResourceClaimTemplateInput =
 
 // Output Schema
 export const PatchResourceV1beta1NamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -14973,14 +14961,14 @@ export type PatchResourceV1beta1NamespacedResourceClaimTemplateOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchResourceV1beta1NamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1beta1NamespacedResourceClaimTemplateInput,
     outputSchema: PatchResourceV1beta1NamespacedResourceClaimTemplateOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchResourceV1beta1ResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -14994,7 +14982,7 @@ export type PatchResourceV1beta1ResourceSliceInput =
 
 // Output Schema
 export const PatchResourceV1beta1ResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -15222,14 +15210,14 @@ export type PatchResourceV1beta1ResourceSliceOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchResourceV1beta1ResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1beta1ResourceSliceInput,
     outputSchema: PatchResourceV1beta1ResourceSliceOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchResourceV1beta2DeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -15243,7 +15231,7 @@ export type PatchResourceV1beta2DeviceClassInput =
 
 // Output Schema
 export const PatchResourceV1beta2DeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -15328,14 +15316,14 @@ export type PatchResourceV1beta2DeviceClassOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchResourceV1beta2DeviceClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1beta2DeviceClassInput,
     outputSchema: PatchResourceV1beta2DeviceClassOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchResourceV1beta2DeviceTaintRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -15349,7 +15337,7 @@ export type PatchResourceV1beta2DeviceTaintRuleInput =
 
 // Output Schema
 export const PatchResourceV1beta2DeviceTaintRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -15439,14 +15427,14 @@ export type PatchResourceV1beta2DeviceTaintRuleOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchResourceV1beta2DeviceTaintRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1beta2DeviceTaintRuleInput,
     outputSchema: PatchResourceV1beta2DeviceTaintRuleOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchResourceV1beta2DeviceTaintRuleStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -15460,7 +15448,7 @@ export type PatchResourceV1beta2DeviceTaintRuleStatusInput =
 
 // Output Schema
 export const PatchResourceV1beta2DeviceTaintRuleStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -15550,14 +15538,14 @@ export type PatchResourceV1beta2DeviceTaintRuleStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchResourceV1beta2DeviceTaintRuleStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1beta2DeviceTaintRuleStatusInput,
     outputSchema: PatchResourceV1beta2DeviceTaintRuleStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchResourceV1beta2NamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -15571,7 +15559,7 @@ export type PatchResourceV1beta2NamespacedResourceClaimInput =
 
 // Output Schema
 export const PatchResourceV1beta2NamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -15866,14 +15854,14 @@ export type PatchResourceV1beta2NamespacedResourceClaimOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchResourceV1beta2NamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1beta2NamespacedResourceClaimInput,
     outputSchema: PatchResourceV1beta2NamespacedResourceClaimOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchResourceV1beta2NamespacedResourceClaimStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -15887,7 +15875,7 @@ export type PatchResourceV1beta2NamespacedResourceClaimStatusInput =
 
 // Output Schema
 export const PatchResourceV1beta2NamespacedResourceClaimStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -16182,14 +16170,14 @@ export type PatchResourceV1beta2NamespacedResourceClaimStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchResourceV1beta2NamespacedResourceClaimStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1beta2NamespacedResourceClaimStatusInput,
     outputSchema: PatchResourceV1beta2NamespacedResourceClaimStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchResourceV1beta2NamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -16203,7 +16191,7 @@ export type PatchResourceV1beta2NamespacedResourceClaimTemplateInput =
 
 // Output Schema
 export const PatchResourceV1beta2NamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -16419,14 +16407,14 @@ export type PatchResourceV1beta2NamespacedResourceClaimTemplateOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchResourceV1beta2NamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1beta2NamespacedResourceClaimTemplateInput,
     outputSchema: PatchResourceV1beta2NamespacedResourceClaimTemplateOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchResourceV1beta2ResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -16440,7 +16428,7 @@ export type PatchResourceV1beta2ResourceSliceInput =
 
 // Output Schema
 export const PatchResourceV1beta2ResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -16658,14 +16646,14 @@ export type PatchResourceV1beta2ResourceSliceOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchResourceV1beta2ResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1beta2ResourceSliceInput,
     outputSchema: PatchResourceV1beta2ResourceSliceOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReadResourceV1DeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1/deviceclasses/{name}",
@@ -16676,7 +16664,7 @@ export type ReadResourceV1DeviceClassInput =
 
 // Output Schema
 export const ReadResourceV1DeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -16757,16 +16745,14 @@ export type ReadResourceV1DeviceClassOutput =
 /**
  * read the specified DeviceClass
  */
-export const readResourceV1DeviceClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReadResourceV1DeviceClassInput,
-    outputSchema: ReadResourceV1DeviceClassOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const readResourceV1DeviceClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadResourceV1DeviceClassInput,
+  outputSchema: ReadResourceV1DeviceClassOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export const ReadResourceV1NamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1/namespaces/{namespace}/resourceclaims/{name}",
@@ -16777,7 +16763,7 @@ export type ReadResourceV1NamespacedResourceClaimInput =
 
 // Output Schema
 export const ReadResourceV1NamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -17069,14 +17055,14 @@ export type ReadResourceV1NamespacedResourceClaimOutput =
  * read the specified ResourceClaim
  */
 export const readResourceV1NamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1NamespacedResourceClaimInput,
     outputSchema: ReadResourceV1NamespacedResourceClaimOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadResourceV1NamespacedResourceClaimStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1/namespaces/{namespace}/resourceclaims/{name}/status",
@@ -17087,7 +17073,7 @@ export type ReadResourceV1NamespacedResourceClaimStatusInput =
 
 // Output Schema
 export const ReadResourceV1NamespacedResourceClaimStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -17379,14 +17365,14 @@ export type ReadResourceV1NamespacedResourceClaimStatusOutput =
  * read status of the specified ResourceClaim
  */
 export const readResourceV1NamespacedResourceClaimStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1NamespacedResourceClaimStatusInput,
     outputSchema: ReadResourceV1NamespacedResourceClaimStatusOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadResourceV1NamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1/namespaces/{namespace}/resourceclaimtemplates/{name}",
@@ -17397,7 +17383,7 @@ export type ReadResourceV1NamespacedResourceClaimTemplateInput =
 
 // Output Schema
 export const ReadResourceV1NamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -17610,14 +17596,14 @@ export type ReadResourceV1NamespacedResourceClaimTemplateOutput =
  * read the specified ResourceClaimTemplate
  */
 export const readResourceV1NamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1NamespacedResourceClaimTemplateInput,
     outputSchema: ReadResourceV1NamespacedResourceClaimTemplateOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadResourceV1ResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1/resourceslices/{name}",
@@ -17628,7 +17614,7 @@ export type ReadResourceV1ResourceSliceInput =
 
 // Output Schema
 export const ReadResourceV1ResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -17842,16 +17828,14 @@ export type ReadResourceV1ResourceSliceOutput =
 /**
  * read the specified ResourceSlice
  */
-export const readResourceV1ResourceSlice = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReadResourceV1ResourceSliceInput,
-    outputSchema: ReadResourceV1ResourceSliceOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const readResourceV1ResourceSlice = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadResourceV1ResourceSliceInput,
+  outputSchema: ReadResourceV1ResourceSliceOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export const ReadResourceV1alpha3DeviceTaintRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1alpha3/devicetaintrules/{name}",
@@ -17862,7 +17846,7 @@ export type ReadResourceV1alpha3DeviceTaintRuleInput =
 
 // Output Schema
 export const ReadResourceV1alpha3DeviceTaintRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -17949,14 +17933,14 @@ export type ReadResourceV1alpha3DeviceTaintRuleOutput =
  * read the specified DeviceTaintRule
  */
 export const readResourceV1alpha3DeviceTaintRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1alpha3DeviceTaintRuleInput,
     outputSchema: ReadResourceV1alpha3DeviceTaintRuleOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadResourceV1alpha3DeviceTaintRuleStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1alpha3/devicetaintrules/{name}/status",
@@ -17967,7 +17951,7 @@ export type ReadResourceV1alpha3DeviceTaintRuleStatusInput =
 
 // Output Schema
 export const ReadResourceV1alpha3DeviceTaintRuleStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -18054,14 +18038,14 @@ export type ReadResourceV1alpha3DeviceTaintRuleStatusOutput =
  * read status of the specified DeviceTaintRule
  */
 export const readResourceV1alpha3DeviceTaintRuleStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1alpha3DeviceTaintRuleStatusInput,
     outputSchema: ReadResourceV1alpha3DeviceTaintRuleStatusOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadResourceV1alpha3ResourcePoolStatusRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1alpha3/resourcepoolstatusrequests/{name}",
@@ -18072,7 +18056,7 @@ export type ReadResourceV1alpha3ResourcePoolStatusRequestInput =
 
 // Output Schema
 export const ReadResourceV1alpha3ResourcePoolStatusRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.Struct({
@@ -18162,13 +18146,13 @@ export type ReadResourceV1alpha3ResourcePoolStatusRequestOutput =
  * read the specified ResourcePoolStatusRequest
  */
 export const readResourceV1alpha3ResourcePoolStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1alpha3ResourcePoolStatusRequestInput,
     outputSchema: ReadResourceV1alpha3ResourcePoolStatusRequestOutput,
   }));
 // Input Schema
 export const ReadResourceV1alpha3ResourcePoolStatusRequestStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1alpha3/resourcepoolstatusrequests/{name}/status",
@@ -18179,7 +18163,7 @@ export type ReadResourceV1alpha3ResourcePoolStatusRequestStatusInput =
 
 // Output Schema
 export const ReadResourceV1alpha3ResourcePoolStatusRequestStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.Struct({
@@ -18269,13 +18253,13 @@ export type ReadResourceV1alpha3ResourcePoolStatusRequestStatusOutput =
  * read status of the specified ResourcePoolStatusRequest
  */
 export const readResourceV1alpha3ResourcePoolStatusRequestStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1alpha3ResourcePoolStatusRequestStatusInput,
     outputSchema: ReadResourceV1alpha3ResourcePoolStatusRequestStatusOutput,
   }));
 // Input Schema
 export const ReadResourceV1beta1DeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta1/deviceclasses/{name}",
@@ -18286,7 +18270,7 @@ export type ReadResourceV1beta1DeviceClassInput =
 
 // Output Schema
 export const ReadResourceV1beta1DeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -18368,14 +18352,14 @@ export type ReadResourceV1beta1DeviceClassOutput =
  * read the specified DeviceClass
  */
 export const readResourceV1beta1DeviceClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1beta1DeviceClassInput,
     outputSchema: ReadResourceV1beta1DeviceClassOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadResourceV1beta1NamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta1/namespaces/{namespace}/resourceclaims/{name}",
@@ -18386,7 +18370,7 @@ export type ReadResourceV1beta1NamespacedResourceClaimInput =
 
 // Output Schema
 export const ReadResourceV1beta1NamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -18674,14 +18658,14 @@ export type ReadResourceV1beta1NamespacedResourceClaimOutput =
  * read the specified ResourceClaim
  */
 export const readResourceV1beta1NamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1beta1NamespacedResourceClaimInput,
     outputSchema: ReadResourceV1beta1NamespacedResourceClaimOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadResourceV1beta1NamespacedResourceClaimStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta1/namespaces/{namespace}/resourceclaims/{name}/status",
@@ -18692,7 +18676,7 @@ export type ReadResourceV1beta1NamespacedResourceClaimStatusInput =
 
 // Output Schema
 export const ReadResourceV1beta1NamespacedResourceClaimStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -18980,14 +18964,14 @@ export type ReadResourceV1beta1NamespacedResourceClaimStatusOutput =
  * read status of the specified ResourceClaim
  */
 export const readResourceV1beta1NamespacedResourceClaimStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1beta1NamespacedResourceClaimStatusInput,
     outputSchema: ReadResourceV1beta1NamespacedResourceClaimStatusOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadResourceV1beta1NamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta1/namespaces/{namespace}/resourceclaimtemplates/{name}",
@@ -18998,7 +18982,7 @@ export type ReadResourceV1beta1NamespacedResourceClaimTemplateInput =
 
 // Output Schema
 export const ReadResourceV1beta1NamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -19207,14 +19191,14 @@ export type ReadResourceV1beta1NamespacedResourceClaimTemplateOutput =
  * read the specified ResourceClaimTemplate
  */
 export const readResourceV1beta1NamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1beta1NamespacedResourceClaimTemplateInput,
     outputSchema: ReadResourceV1beta1NamespacedResourceClaimTemplateOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadResourceV1beta1ResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta1/resourceslices/{name}",
@@ -19225,7 +19209,7 @@ export type ReadResourceV1beta1ResourceSliceInput =
 
 // Output Schema
 export const ReadResourceV1beta1ResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -19450,14 +19434,14 @@ export type ReadResourceV1beta1ResourceSliceOutput =
  * read the specified ResourceSlice
  */
 export const readResourceV1beta1ResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1beta1ResourceSliceInput,
     outputSchema: ReadResourceV1beta1ResourceSliceOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadResourceV1beta2DeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/deviceclasses/{name}",
@@ -19468,7 +19452,7 @@ export type ReadResourceV1beta2DeviceClassInput =
 
 // Output Schema
 export const ReadResourceV1beta2DeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -19550,14 +19534,14 @@ export type ReadResourceV1beta2DeviceClassOutput =
  * read the specified DeviceClass
  */
 export const readResourceV1beta2DeviceClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1beta2DeviceClassInput,
     outputSchema: ReadResourceV1beta2DeviceClassOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadResourceV1beta2DeviceTaintRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/devicetaintrules/{name}",
@@ -19568,7 +19552,7 @@ export type ReadResourceV1beta2DeviceTaintRuleInput =
 
 // Output Schema
 export const ReadResourceV1beta2DeviceTaintRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -19655,14 +19639,14 @@ export type ReadResourceV1beta2DeviceTaintRuleOutput =
  * read the specified DeviceTaintRule
  */
 export const readResourceV1beta2DeviceTaintRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1beta2DeviceTaintRuleInput,
     outputSchema: ReadResourceV1beta2DeviceTaintRuleOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadResourceV1beta2DeviceTaintRuleStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/devicetaintrules/{name}/status",
@@ -19673,7 +19657,7 @@ export type ReadResourceV1beta2DeviceTaintRuleStatusInput =
 
 // Output Schema
 export const ReadResourceV1beta2DeviceTaintRuleStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -19760,14 +19744,14 @@ export type ReadResourceV1beta2DeviceTaintRuleStatusOutput =
  * read status of the specified DeviceTaintRule
  */
 export const readResourceV1beta2DeviceTaintRuleStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1beta2DeviceTaintRuleStatusInput,
     outputSchema: ReadResourceV1beta2DeviceTaintRuleStatusOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadResourceV1beta2NamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/namespaces/{namespace}/resourceclaims/{name}",
@@ -19778,7 +19762,7 @@ export type ReadResourceV1beta2NamespacedResourceClaimInput =
 
 // Output Schema
 export const ReadResourceV1beta2NamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -20070,14 +20054,14 @@ export type ReadResourceV1beta2NamespacedResourceClaimOutput =
  * read the specified ResourceClaim
  */
 export const readResourceV1beta2NamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1beta2NamespacedResourceClaimInput,
     outputSchema: ReadResourceV1beta2NamespacedResourceClaimOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadResourceV1beta2NamespacedResourceClaimStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/namespaces/{namespace}/resourceclaims/{name}/status",
@@ -20088,7 +20072,7 @@ export type ReadResourceV1beta2NamespacedResourceClaimStatusInput =
 
 // Output Schema
 export const ReadResourceV1beta2NamespacedResourceClaimStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -20380,14 +20364,14 @@ export type ReadResourceV1beta2NamespacedResourceClaimStatusOutput =
  * read status of the specified ResourceClaim
  */
 export const readResourceV1beta2NamespacedResourceClaimStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1beta2NamespacedResourceClaimStatusInput,
     outputSchema: ReadResourceV1beta2NamespacedResourceClaimStatusOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadResourceV1beta2NamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/namespaces/{namespace}/resourceclaimtemplates/{name}",
@@ -20398,7 +20382,7 @@ export type ReadResourceV1beta2NamespacedResourceClaimTemplateInput =
 
 // Output Schema
 export const ReadResourceV1beta2NamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -20611,14 +20595,14 @@ export type ReadResourceV1beta2NamespacedResourceClaimTemplateOutput =
  * read the specified ResourceClaimTemplate
  */
 export const readResourceV1beta2NamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1beta2NamespacedResourceClaimTemplateInput,
     outputSchema: ReadResourceV1beta2NamespacedResourceClaimTemplateOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadResourceV1beta2ResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/resourceslices/{name}",
@@ -20629,7 +20613,7 @@ export type ReadResourceV1beta2ResourceSliceInput =
 
 // Output Schema
 export const ReadResourceV1beta2ResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -20844,14 +20828,14 @@ export type ReadResourceV1beta2ResourceSliceOutput =
  * read the specified ResourceSlice
  */
 export const readResourceV1beta2ResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1beta2ResourceSliceInput,
     outputSchema: ReadResourceV1beta2ResourceSliceOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReplaceResourceV1DeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -20865,7 +20849,7 @@ export type ReplaceResourceV1DeviceClassInput =
 
 // Output Schema
 export const ReplaceResourceV1DeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -20950,14 +20934,14 @@ export type ReplaceResourceV1DeviceClassOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceResourceV1DeviceClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1DeviceClassInput,
     outputSchema: ReplaceResourceV1DeviceClassOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceResourceV1NamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -20971,7 +20955,7 @@ export type ReplaceResourceV1NamespacedResourceClaimInput =
 
 // Output Schema
 export const ReplaceResourceV1NamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -21266,14 +21250,14 @@ export type ReplaceResourceV1NamespacedResourceClaimOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceResourceV1NamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1NamespacedResourceClaimInput,
     outputSchema: ReplaceResourceV1NamespacedResourceClaimOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceResourceV1NamespacedResourceClaimStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -21287,7 +21271,7 @@ export type ReplaceResourceV1NamespacedResourceClaimStatusInput =
 
 // Output Schema
 export const ReplaceResourceV1NamespacedResourceClaimStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -21582,14 +21566,14 @@ export type ReplaceResourceV1NamespacedResourceClaimStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceResourceV1NamespacedResourceClaimStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1NamespacedResourceClaimStatusInput,
     outputSchema: ReplaceResourceV1NamespacedResourceClaimStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceResourceV1NamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -21603,7 +21587,7 @@ export type ReplaceResourceV1NamespacedResourceClaimTemplateInput =
 
 // Output Schema
 export const ReplaceResourceV1NamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -21819,14 +21803,14 @@ export type ReplaceResourceV1NamespacedResourceClaimTemplateOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceResourceV1NamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1NamespacedResourceClaimTemplateInput,
     outputSchema: ReplaceResourceV1NamespacedResourceClaimTemplateOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceResourceV1ResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -21840,7 +21824,7 @@ export type ReplaceResourceV1ResourceSliceInput =
 
 // Output Schema
 export const ReplaceResourceV1ResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -22058,14 +22042,14 @@ export type ReplaceResourceV1ResourceSliceOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceResourceV1ResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1ResourceSliceInput,
     outputSchema: ReplaceResourceV1ResourceSliceOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceResourceV1alpha3DeviceTaintRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -22079,7 +22063,7 @@ export type ReplaceResourceV1alpha3DeviceTaintRuleInput =
 
 // Output Schema
 export const ReplaceResourceV1alpha3DeviceTaintRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -22169,14 +22153,14 @@ export type ReplaceResourceV1alpha3DeviceTaintRuleOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceResourceV1alpha3DeviceTaintRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1alpha3DeviceTaintRuleInput,
     outputSchema: ReplaceResourceV1alpha3DeviceTaintRuleOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceResourceV1alpha3DeviceTaintRuleStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -22190,7 +22174,7 @@ export type ReplaceResourceV1alpha3DeviceTaintRuleStatusInput =
 
 // Output Schema
 export const ReplaceResourceV1alpha3DeviceTaintRuleStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -22280,14 +22264,14 @@ export type ReplaceResourceV1alpha3DeviceTaintRuleStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceResourceV1alpha3DeviceTaintRuleStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1alpha3DeviceTaintRuleStatusInput,
     outputSchema: ReplaceResourceV1alpha3DeviceTaintRuleStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceResourceV1alpha3ResourcePoolStatusRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -22301,7 +22285,7 @@ export type ReplaceResourceV1alpha3ResourcePoolStatusRequestInput =
 
 // Output Schema
 export const ReplaceResourceV1alpha3ResourcePoolStatusRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.Struct({
@@ -22394,13 +22378,13 @@ export type ReplaceResourceV1alpha3ResourcePoolStatusRequestOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceResourceV1alpha3ResourcePoolStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1alpha3ResourcePoolStatusRequestInput,
     outputSchema: ReplaceResourceV1alpha3ResourcePoolStatusRequestOutput,
   }));
 // Input Schema
 export const ReplaceResourceV1alpha3ResourcePoolStatusRequestStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -22414,7 +22398,7 @@ export type ReplaceResourceV1alpha3ResourcePoolStatusRequestStatusInput =
 
 // Output Schema
 export const ReplaceResourceV1alpha3ResourcePoolStatusRequestStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.Struct({
@@ -22507,13 +22491,13 @@ export type ReplaceResourceV1alpha3ResourcePoolStatusRequestStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceResourceV1alpha3ResourcePoolStatusRequestStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1alpha3ResourcePoolStatusRequestStatusInput,
     outputSchema: ReplaceResourceV1alpha3ResourcePoolStatusRequestStatusOutput,
   }));
 // Input Schema
 export const ReplaceResourceV1beta1DeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -22527,7 +22511,7 @@ export type ReplaceResourceV1beta1DeviceClassInput =
 
 // Output Schema
 export const ReplaceResourceV1beta1DeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -22612,14 +22596,14 @@ export type ReplaceResourceV1beta1DeviceClassOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceResourceV1beta1DeviceClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1beta1DeviceClassInput,
     outputSchema: ReplaceResourceV1beta1DeviceClassOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceResourceV1beta1NamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -22633,7 +22617,7 @@ export type ReplaceResourceV1beta1NamespacedResourceClaimInput =
 
 // Output Schema
 export const ReplaceResourceV1beta1NamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -22924,14 +22908,14 @@ export type ReplaceResourceV1beta1NamespacedResourceClaimOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceResourceV1beta1NamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1beta1NamespacedResourceClaimInput,
     outputSchema: ReplaceResourceV1beta1NamespacedResourceClaimOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceResourceV1beta1NamespacedResourceClaimStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -22945,7 +22929,7 @@ export type ReplaceResourceV1beta1NamespacedResourceClaimStatusInput =
 
 // Output Schema
 export const ReplaceResourceV1beta1NamespacedResourceClaimStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -23236,14 +23220,14 @@ export type ReplaceResourceV1beta1NamespacedResourceClaimStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceResourceV1beta1NamespacedResourceClaimStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1beta1NamespacedResourceClaimStatusInput,
     outputSchema: ReplaceResourceV1beta1NamespacedResourceClaimStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceResourceV1beta1NamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -23257,7 +23241,7 @@ export type ReplaceResourceV1beta1NamespacedResourceClaimTemplateInput =
 
 // Output Schema
 export const ReplaceResourceV1beta1NamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -23469,14 +23453,14 @@ export type ReplaceResourceV1beta1NamespacedResourceClaimTemplateOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceResourceV1beta1NamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1beta1NamespacedResourceClaimTemplateInput,
     outputSchema: ReplaceResourceV1beta1NamespacedResourceClaimTemplateOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceResourceV1beta1ResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -23490,7 +23474,7 @@ export type ReplaceResourceV1beta1ResourceSliceInput =
 
 // Output Schema
 export const ReplaceResourceV1beta1ResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -23718,14 +23702,14 @@ export type ReplaceResourceV1beta1ResourceSliceOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceResourceV1beta1ResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1beta1ResourceSliceInput,
     outputSchema: ReplaceResourceV1beta1ResourceSliceOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceResourceV1beta2DeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -23739,7 +23723,7 @@ export type ReplaceResourceV1beta2DeviceClassInput =
 
 // Output Schema
 export const ReplaceResourceV1beta2DeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -23824,14 +23808,14 @@ export type ReplaceResourceV1beta2DeviceClassOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceResourceV1beta2DeviceClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1beta2DeviceClassInput,
     outputSchema: ReplaceResourceV1beta2DeviceClassOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceResourceV1beta2DeviceTaintRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -23845,7 +23829,7 @@ export type ReplaceResourceV1beta2DeviceTaintRuleInput =
 
 // Output Schema
 export const ReplaceResourceV1beta2DeviceTaintRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -23935,14 +23919,14 @@ export type ReplaceResourceV1beta2DeviceTaintRuleOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceResourceV1beta2DeviceTaintRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1beta2DeviceTaintRuleInput,
     outputSchema: ReplaceResourceV1beta2DeviceTaintRuleOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceResourceV1beta2DeviceTaintRuleStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -23956,7 +23940,7 @@ export type ReplaceResourceV1beta2DeviceTaintRuleStatusInput =
 
 // Output Schema
 export const ReplaceResourceV1beta2DeviceTaintRuleStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -24046,14 +24030,14 @@ export type ReplaceResourceV1beta2DeviceTaintRuleStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceResourceV1beta2DeviceTaintRuleStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1beta2DeviceTaintRuleStatusInput,
     outputSchema: ReplaceResourceV1beta2DeviceTaintRuleStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceResourceV1beta2NamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -24067,7 +24051,7 @@ export type ReplaceResourceV1beta2NamespacedResourceClaimInput =
 
 // Output Schema
 export const ReplaceResourceV1beta2NamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -24362,14 +24346,14 @@ export type ReplaceResourceV1beta2NamespacedResourceClaimOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceResourceV1beta2NamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1beta2NamespacedResourceClaimInput,
     outputSchema: ReplaceResourceV1beta2NamespacedResourceClaimOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceResourceV1beta2NamespacedResourceClaimStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -24383,7 +24367,7 @@ export type ReplaceResourceV1beta2NamespacedResourceClaimStatusInput =
 
 // Output Schema
 export const ReplaceResourceV1beta2NamespacedResourceClaimStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -24678,14 +24662,14 @@ export type ReplaceResourceV1beta2NamespacedResourceClaimStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceResourceV1beta2NamespacedResourceClaimStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1beta2NamespacedResourceClaimStatusInput,
     outputSchema: ReplaceResourceV1beta2NamespacedResourceClaimStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceResourceV1beta2NamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -24699,7 +24683,7 @@ export type ReplaceResourceV1beta2NamespacedResourceClaimTemplateInput =
 
 // Output Schema
 export const ReplaceResourceV1beta2NamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -24915,14 +24899,14 @@ export type ReplaceResourceV1beta2NamespacedResourceClaimTemplateOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceResourceV1beta2NamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1beta2NamespacedResourceClaimTemplateInput,
     outputSchema: ReplaceResourceV1beta2NamespacedResourceClaimTemplateOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceResourceV1beta2ResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -24936,7 +24920,7 @@ export type ReplaceResourceV1beta2ResourceSliceInput =
 
 // Output Schema
 export const ReplaceResourceV1beta2ResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -25154,14 +25138,14 @@ export type ReplaceResourceV1beta2ResourceSliceOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceResourceV1beta2ResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1beta2ResourceSliceInput,
     outputSchema: ReplaceResourceV1beta2ResourceSliceOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const WatchResourceV1DeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1/watch/deviceclasses/{name}",
@@ -25172,7 +25156,7 @@ export type WatchResourceV1DeviceClassInput =
 
 // Output Schema
 export const WatchResourceV1DeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -25183,15 +25167,13 @@ export type WatchResourceV1DeviceClassOutput =
 /**
  * watch changes to an object of kind DeviceClass. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
-export const watchResourceV1DeviceClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WatchResourceV1DeviceClassInput,
-    outputSchema: WatchResourceV1DeviceClassOutput,
-  }),
-);
+export const watchResourceV1DeviceClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchResourceV1DeviceClassInput,
+  outputSchema: WatchResourceV1DeviceClassOutput,
+}));
 // Input Schema
 export const WatchResourceV1DeviceClassListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1/watch/deviceclasses",
@@ -25202,7 +25184,7 @@ export type WatchResourceV1DeviceClassListInput =
 
 // Output Schema
 export const WatchResourceV1DeviceClassListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -25214,13 +25196,13 @@ export type WatchResourceV1DeviceClassListOutput =
  * watch individual changes to a list of DeviceClass. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchResourceV1DeviceClassList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1DeviceClassListInput,
     outputSchema: WatchResourceV1DeviceClassListOutput,
   }));
 // Input Schema
 export const WatchResourceV1NamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1/watch/namespaces/{namespace}/resourceclaims/{name}",
@@ -25231,7 +25213,7 @@ export type WatchResourceV1NamespacedResourceClaimInput =
 
 // Output Schema
 export const WatchResourceV1NamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -25243,13 +25225,13 @@ export type WatchResourceV1NamespacedResourceClaimOutput =
  * watch changes to an object of kind ResourceClaim. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchResourceV1NamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1NamespacedResourceClaimInput,
     outputSchema: WatchResourceV1NamespacedResourceClaimOutput,
   }));
 // Input Schema
 export const WatchResourceV1NamespacedResourceClaimListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1/watch/namespaces/{namespace}/resourceclaims",
@@ -25260,7 +25242,7 @@ export type WatchResourceV1NamespacedResourceClaimListInput =
 
 // Output Schema
 export const WatchResourceV1NamespacedResourceClaimListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -25272,13 +25254,13 @@ export type WatchResourceV1NamespacedResourceClaimListOutput =
  * watch individual changes to a list of ResourceClaim. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchResourceV1NamespacedResourceClaimList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1NamespacedResourceClaimListInput,
     outputSchema: WatchResourceV1NamespacedResourceClaimListOutput,
   }));
 // Input Schema
 export const WatchResourceV1NamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1/watch/namespaces/{namespace}/resourceclaimtemplates/{name}",
@@ -25289,7 +25271,7 @@ export type WatchResourceV1NamespacedResourceClaimTemplateInput =
 
 // Output Schema
 export const WatchResourceV1NamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -25301,13 +25283,13 @@ export type WatchResourceV1NamespacedResourceClaimTemplateOutput =
  * watch changes to an object of kind ResourceClaimTemplate. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchResourceV1NamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1NamespacedResourceClaimTemplateInput,
     outputSchema: WatchResourceV1NamespacedResourceClaimTemplateOutput,
   }));
 // Input Schema
 export const WatchResourceV1NamespacedResourceClaimTemplateListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1/watch/namespaces/{namespace}/resourceclaimtemplates",
@@ -25318,7 +25300,7 @@ export type WatchResourceV1NamespacedResourceClaimTemplateListInput =
 
 // Output Schema
 export const WatchResourceV1NamespacedResourceClaimTemplateListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -25330,13 +25312,13 @@ export type WatchResourceV1NamespacedResourceClaimTemplateListOutput =
  * watch individual changes to a list of ResourceClaimTemplate. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchResourceV1NamespacedResourceClaimTemplateList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1NamespacedResourceClaimTemplateListInput,
     outputSchema: WatchResourceV1NamespacedResourceClaimTemplateListOutput,
   }));
 // Input Schema
 export const WatchResourceV1ResourceClaimListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1/watch/resourceclaims",
@@ -25347,7 +25329,7 @@ export type WatchResourceV1ResourceClaimListForAllNamespacesInput =
 
 // Output Schema
 export const WatchResourceV1ResourceClaimListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -25359,13 +25341,13 @@ export type WatchResourceV1ResourceClaimListForAllNamespacesOutput =
  * watch individual changes to a list of ResourceClaim. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchResourceV1ResourceClaimListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1ResourceClaimListForAllNamespacesInput,
     outputSchema: WatchResourceV1ResourceClaimListForAllNamespacesOutput,
   }));
 // Input Schema
 export const WatchResourceV1ResourceClaimTemplateListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1/watch/resourceclaimtemplates",
@@ -25376,7 +25358,7 @@ export type WatchResourceV1ResourceClaimTemplateListForAllNamespacesInput =
 
 // Output Schema
 export const WatchResourceV1ResourceClaimTemplateListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -25388,14 +25370,14 @@ export type WatchResourceV1ResourceClaimTemplateListForAllNamespacesOutput =
  * watch individual changes to a list of ResourceClaimTemplate. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchResourceV1ResourceClaimTemplateListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1ResourceClaimTemplateListForAllNamespacesInput,
     outputSchema:
       WatchResourceV1ResourceClaimTemplateListForAllNamespacesOutput,
   }));
 // Input Schema
 export const WatchResourceV1ResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1/watch/resourceslices/{name}",
@@ -25406,7 +25388,7 @@ export type WatchResourceV1ResourceSliceInput =
 
 // Output Schema
 export const WatchResourceV1ResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -25418,13 +25400,13 @@ export type WatchResourceV1ResourceSliceOutput =
  * watch changes to an object of kind ResourceSlice. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchResourceV1ResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1ResourceSliceInput,
     outputSchema: WatchResourceV1ResourceSliceOutput,
   }));
 // Input Schema
 export const WatchResourceV1ResourceSliceListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1/watch/resourceslices",
@@ -25435,7 +25417,7 @@ export type WatchResourceV1ResourceSliceListInput =
 
 // Output Schema
 export const WatchResourceV1ResourceSliceListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -25447,13 +25429,13 @@ export type WatchResourceV1ResourceSliceListOutput =
  * watch individual changes to a list of ResourceSlice. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchResourceV1ResourceSliceList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1ResourceSliceListInput,
     outputSchema: WatchResourceV1ResourceSliceListOutput,
   }));
 // Input Schema
 export const WatchResourceV1alpha3DeviceTaintRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1alpha3/watch/devicetaintrules/{name}",
@@ -25464,7 +25446,7 @@ export type WatchResourceV1alpha3DeviceTaintRuleInput =
 
 // Output Schema
 export const WatchResourceV1alpha3DeviceTaintRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -25476,13 +25458,13 @@ export type WatchResourceV1alpha3DeviceTaintRuleOutput =
  * watch changes to an object of kind DeviceTaintRule. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchResourceV1alpha3DeviceTaintRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1alpha3DeviceTaintRuleInput,
     outputSchema: WatchResourceV1alpha3DeviceTaintRuleOutput,
   }));
 // Input Schema
 export const WatchResourceV1alpha3DeviceTaintRuleListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1alpha3/watch/devicetaintrules",
@@ -25493,7 +25475,7 @@ export type WatchResourceV1alpha3DeviceTaintRuleListInput =
 
 // Output Schema
 export const WatchResourceV1alpha3DeviceTaintRuleListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -25505,13 +25487,13 @@ export type WatchResourceV1alpha3DeviceTaintRuleListOutput =
  * watch individual changes to a list of DeviceTaintRule. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchResourceV1alpha3DeviceTaintRuleList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1alpha3DeviceTaintRuleListInput,
     outputSchema: WatchResourceV1alpha3DeviceTaintRuleListOutput,
   }));
 // Input Schema
 export const WatchResourceV1alpha3ResourcePoolStatusRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1alpha3/watch/resourcepoolstatusrequests/{name}",
@@ -25522,7 +25504,7 @@ export type WatchResourceV1alpha3ResourcePoolStatusRequestInput =
 
 // Output Schema
 export const WatchResourceV1alpha3ResourcePoolStatusRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -25534,13 +25516,13 @@ export type WatchResourceV1alpha3ResourcePoolStatusRequestOutput =
  * watch changes to an object of kind ResourcePoolStatusRequest. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchResourceV1alpha3ResourcePoolStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1alpha3ResourcePoolStatusRequestInput,
     outputSchema: WatchResourceV1alpha3ResourcePoolStatusRequestOutput,
   }));
 // Input Schema
 export const WatchResourceV1alpha3ResourcePoolStatusRequestListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1alpha3/watch/resourcepoolstatusrequests",
@@ -25551,7 +25533,7 @@ export type WatchResourceV1alpha3ResourcePoolStatusRequestListInput =
 
 // Output Schema
 export const WatchResourceV1alpha3ResourcePoolStatusRequestListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -25563,13 +25545,13 @@ export type WatchResourceV1alpha3ResourcePoolStatusRequestListOutput =
  * watch individual changes to a list of ResourcePoolStatusRequest. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchResourceV1alpha3ResourcePoolStatusRequestList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1alpha3ResourcePoolStatusRequestListInput,
     outputSchema: WatchResourceV1alpha3ResourcePoolStatusRequestListOutput,
   }));
 // Input Schema
 export const WatchResourceV1beta1DeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta1/watch/deviceclasses/{name}",
@@ -25580,7 +25562,7 @@ export type WatchResourceV1beta1DeviceClassInput =
 
 // Output Schema
 export const WatchResourceV1beta1DeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -25592,13 +25574,13 @@ export type WatchResourceV1beta1DeviceClassOutput =
  * watch changes to an object of kind DeviceClass. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchResourceV1beta1DeviceClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1beta1DeviceClassInput,
     outputSchema: WatchResourceV1beta1DeviceClassOutput,
   }));
 // Input Schema
 export const WatchResourceV1beta1DeviceClassListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta1/watch/deviceclasses",
@@ -25609,7 +25591,7 @@ export type WatchResourceV1beta1DeviceClassListInput =
 
 // Output Schema
 export const WatchResourceV1beta1DeviceClassListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -25621,13 +25603,13 @@ export type WatchResourceV1beta1DeviceClassListOutput =
  * watch individual changes to a list of DeviceClass. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchResourceV1beta1DeviceClassList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1beta1DeviceClassListInput,
     outputSchema: WatchResourceV1beta1DeviceClassListOutput,
   }));
 // Input Schema
 export const WatchResourceV1beta1NamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta1/watch/namespaces/{namespace}/resourceclaims/{name}",
@@ -25638,7 +25620,7 @@ export type WatchResourceV1beta1NamespacedResourceClaimInput =
 
 // Output Schema
 export const WatchResourceV1beta1NamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -25650,13 +25632,13 @@ export type WatchResourceV1beta1NamespacedResourceClaimOutput =
  * watch changes to an object of kind ResourceClaim. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchResourceV1beta1NamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1beta1NamespacedResourceClaimInput,
     outputSchema: WatchResourceV1beta1NamespacedResourceClaimOutput,
   }));
 // Input Schema
 export const WatchResourceV1beta1NamespacedResourceClaimListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta1/watch/namespaces/{namespace}/resourceclaims",
@@ -25667,7 +25649,7 @@ export type WatchResourceV1beta1NamespacedResourceClaimListInput =
 
 // Output Schema
 export const WatchResourceV1beta1NamespacedResourceClaimListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -25679,13 +25661,13 @@ export type WatchResourceV1beta1NamespacedResourceClaimListOutput =
  * watch individual changes to a list of ResourceClaim. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchResourceV1beta1NamespacedResourceClaimList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1beta1NamespacedResourceClaimListInput,
     outputSchema: WatchResourceV1beta1NamespacedResourceClaimListOutput,
   }));
 // Input Schema
 export const WatchResourceV1beta1NamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta1/watch/namespaces/{namespace}/resourceclaimtemplates/{name}",
@@ -25696,7 +25678,7 @@ export type WatchResourceV1beta1NamespacedResourceClaimTemplateInput =
 
 // Output Schema
 export const WatchResourceV1beta1NamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -25708,13 +25690,13 @@ export type WatchResourceV1beta1NamespacedResourceClaimTemplateOutput =
  * watch changes to an object of kind ResourceClaimTemplate. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchResourceV1beta1NamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1beta1NamespacedResourceClaimTemplateInput,
     outputSchema: WatchResourceV1beta1NamespacedResourceClaimTemplateOutput,
   }));
 // Input Schema
 export const WatchResourceV1beta1NamespacedResourceClaimTemplateListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta1/watch/namespaces/{namespace}/resourceclaimtemplates",
@@ -25725,7 +25707,7 @@ export type WatchResourceV1beta1NamespacedResourceClaimTemplateListInput =
 
 // Output Schema
 export const WatchResourceV1beta1NamespacedResourceClaimTemplateListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -25737,13 +25719,13 @@ export type WatchResourceV1beta1NamespacedResourceClaimTemplateListOutput =
  * watch individual changes to a list of ResourceClaimTemplate. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchResourceV1beta1NamespacedResourceClaimTemplateList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1beta1NamespacedResourceClaimTemplateListInput,
     outputSchema: WatchResourceV1beta1NamespacedResourceClaimTemplateListOutput,
   }));
 // Input Schema
 export const WatchResourceV1beta1ResourceClaimListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta1/watch/resourceclaims",
@@ -25754,7 +25736,7 @@ export type WatchResourceV1beta1ResourceClaimListForAllNamespacesInput =
 
 // Output Schema
 export const WatchResourceV1beta1ResourceClaimListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -25766,13 +25748,13 @@ export type WatchResourceV1beta1ResourceClaimListForAllNamespacesOutput =
  * watch individual changes to a list of ResourceClaim. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchResourceV1beta1ResourceClaimListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1beta1ResourceClaimListForAllNamespacesInput,
     outputSchema: WatchResourceV1beta1ResourceClaimListForAllNamespacesOutput,
   }));
 // Input Schema
 export const WatchResourceV1beta1ResourceClaimTemplateListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta1/watch/resourceclaimtemplates",
@@ -25783,7 +25765,7 @@ export type WatchResourceV1beta1ResourceClaimTemplateListForAllNamespacesInput =
 
 // Output Schema
 export const WatchResourceV1beta1ResourceClaimTemplateListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -25795,7 +25777,7 @@ export type WatchResourceV1beta1ResourceClaimTemplateListForAllNamespacesOutput 
  * watch individual changes to a list of ResourceClaimTemplate. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchResourceV1beta1ResourceClaimTemplateListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WatchResourceV1beta1ResourceClaimTemplateListForAllNamespacesInput,
     outputSchema:
@@ -25803,7 +25785,7 @@ export const watchResourceV1beta1ResourceClaimTemplateListForAllNamespaces =
   }));
 // Input Schema
 export const WatchResourceV1beta1ResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta1/watch/resourceslices/{name}",
@@ -25814,7 +25796,7 @@ export type WatchResourceV1beta1ResourceSliceInput =
 
 // Output Schema
 export const WatchResourceV1beta1ResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -25826,13 +25808,13 @@ export type WatchResourceV1beta1ResourceSliceOutput =
  * watch changes to an object of kind ResourceSlice. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchResourceV1beta1ResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1beta1ResourceSliceInput,
     outputSchema: WatchResourceV1beta1ResourceSliceOutput,
   }));
 // Input Schema
 export const WatchResourceV1beta1ResourceSliceListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta1/watch/resourceslices",
@@ -25843,7 +25825,7 @@ export type WatchResourceV1beta1ResourceSliceListInput =
 
 // Output Schema
 export const WatchResourceV1beta1ResourceSliceListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -25855,13 +25837,13 @@ export type WatchResourceV1beta1ResourceSliceListOutput =
  * watch individual changes to a list of ResourceSlice. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchResourceV1beta1ResourceSliceList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1beta1ResourceSliceListInput,
     outputSchema: WatchResourceV1beta1ResourceSliceListOutput,
   }));
 // Input Schema
 export const WatchResourceV1beta2DeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/watch/deviceclasses/{name}",
@@ -25872,7 +25854,7 @@ export type WatchResourceV1beta2DeviceClassInput =
 
 // Output Schema
 export const WatchResourceV1beta2DeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -25884,13 +25866,13 @@ export type WatchResourceV1beta2DeviceClassOutput =
  * watch changes to an object of kind DeviceClass. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchResourceV1beta2DeviceClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1beta2DeviceClassInput,
     outputSchema: WatchResourceV1beta2DeviceClassOutput,
   }));
 // Input Schema
 export const WatchResourceV1beta2DeviceClassListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/watch/deviceclasses",
@@ -25901,7 +25883,7 @@ export type WatchResourceV1beta2DeviceClassListInput =
 
 // Output Schema
 export const WatchResourceV1beta2DeviceClassListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -25913,13 +25895,13 @@ export type WatchResourceV1beta2DeviceClassListOutput =
  * watch individual changes to a list of DeviceClass. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchResourceV1beta2DeviceClassList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1beta2DeviceClassListInput,
     outputSchema: WatchResourceV1beta2DeviceClassListOutput,
   }));
 // Input Schema
 export const WatchResourceV1beta2DeviceTaintRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/watch/devicetaintrules/{name}",
@@ -25930,7 +25912,7 @@ export type WatchResourceV1beta2DeviceTaintRuleInput =
 
 // Output Schema
 export const WatchResourceV1beta2DeviceTaintRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -25942,13 +25924,13 @@ export type WatchResourceV1beta2DeviceTaintRuleOutput =
  * watch changes to an object of kind DeviceTaintRule. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchResourceV1beta2DeviceTaintRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1beta2DeviceTaintRuleInput,
     outputSchema: WatchResourceV1beta2DeviceTaintRuleOutput,
   }));
 // Input Schema
 export const WatchResourceV1beta2DeviceTaintRuleListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/watch/devicetaintrules",
@@ -25959,7 +25941,7 @@ export type WatchResourceV1beta2DeviceTaintRuleListInput =
 
 // Output Schema
 export const WatchResourceV1beta2DeviceTaintRuleListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -25971,13 +25953,13 @@ export type WatchResourceV1beta2DeviceTaintRuleListOutput =
  * watch individual changes to a list of DeviceTaintRule. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchResourceV1beta2DeviceTaintRuleList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1beta2DeviceTaintRuleListInput,
     outputSchema: WatchResourceV1beta2DeviceTaintRuleListOutput,
   }));
 // Input Schema
 export const WatchResourceV1beta2NamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/watch/namespaces/{namespace}/resourceclaims/{name}",
@@ -25988,7 +25970,7 @@ export type WatchResourceV1beta2NamespacedResourceClaimInput =
 
 // Output Schema
 export const WatchResourceV1beta2NamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -26000,13 +25982,13 @@ export type WatchResourceV1beta2NamespacedResourceClaimOutput =
  * watch changes to an object of kind ResourceClaim. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchResourceV1beta2NamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1beta2NamespacedResourceClaimInput,
     outputSchema: WatchResourceV1beta2NamespacedResourceClaimOutput,
   }));
 // Input Schema
 export const WatchResourceV1beta2NamespacedResourceClaimListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/watch/namespaces/{namespace}/resourceclaims",
@@ -26017,7 +25999,7 @@ export type WatchResourceV1beta2NamespacedResourceClaimListInput =
 
 // Output Schema
 export const WatchResourceV1beta2NamespacedResourceClaimListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -26029,13 +26011,13 @@ export type WatchResourceV1beta2NamespacedResourceClaimListOutput =
  * watch individual changes to a list of ResourceClaim. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchResourceV1beta2NamespacedResourceClaimList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1beta2NamespacedResourceClaimListInput,
     outputSchema: WatchResourceV1beta2NamespacedResourceClaimListOutput,
   }));
 // Input Schema
 export const WatchResourceV1beta2NamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/watch/namespaces/{namespace}/resourceclaimtemplates/{name}",
@@ -26046,7 +26028,7 @@ export type WatchResourceV1beta2NamespacedResourceClaimTemplateInput =
 
 // Output Schema
 export const WatchResourceV1beta2NamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -26058,13 +26040,13 @@ export type WatchResourceV1beta2NamespacedResourceClaimTemplateOutput =
  * watch changes to an object of kind ResourceClaimTemplate. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchResourceV1beta2NamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1beta2NamespacedResourceClaimTemplateInput,
     outputSchema: WatchResourceV1beta2NamespacedResourceClaimTemplateOutput,
   }));
 // Input Schema
 export const WatchResourceV1beta2NamespacedResourceClaimTemplateListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/watch/namespaces/{namespace}/resourceclaimtemplates",
@@ -26075,7 +26057,7 @@ export type WatchResourceV1beta2NamespacedResourceClaimTemplateListInput =
 
 // Output Schema
 export const WatchResourceV1beta2NamespacedResourceClaimTemplateListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -26087,13 +26069,13 @@ export type WatchResourceV1beta2NamespacedResourceClaimTemplateListOutput =
  * watch individual changes to a list of ResourceClaimTemplate. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchResourceV1beta2NamespacedResourceClaimTemplateList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1beta2NamespacedResourceClaimTemplateListInput,
     outputSchema: WatchResourceV1beta2NamespacedResourceClaimTemplateListOutput,
   }));
 // Input Schema
 export const WatchResourceV1beta2ResourceClaimListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/watch/resourceclaims",
@@ -26104,7 +26086,7 @@ export type WatchResourceV1beta2ResourceClaimListForAllNamespacesInput =
 
 // Output Schema
 export const WatchResourceV1beta2ResourceClaimListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -26116,13 +26098,13 @@ export type WatchResourceV1beta2ResourceClaimListForAllNamespacesOutput =
  * watch individual changes to a list of ResourceClaim. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchResourceV1beta2ResourceClaimListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1beta2ResourceClaimListForAllNamespacesInput,
     outputSchema: WatchResourceV1beta2ResourceClaimListForAllNamespacesOutput,
   }));
 // Input Schema
 export const WatchResourceV1beta2ResourceClaimTemplateListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/watch/resourceclaimtemplates",
@@ -26133,7 +26115,7 @@ export type WatchResourceV1beta2ResourceClaimTemplateListForAllNamespacesInput =
 
 // Output Schema
 export const WatchResourceV1beta2ResourceClaimTemplateListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -26145,7 +26127,7 @@ export type WatchResourceV1beta2ResourceClaimTemplateListForAllNamespacesOutput 
  * watch individual changes to a list of ResourceClaimTemplate. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchResourceV1beta2ResourceClaimTemplateListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WatchResourceV1beta2ResourceClaimTemplateListForAllNamespacesInput,
     outputSchema:
@@ -26153,7 +26135,7 @@ export const watchResourceV1beta2ResourceClaimTemplateListForAllNamespaces =
   }));
 // Input Schema
 export const WatchResourceV1beta2ResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/watch/resourceslices/{name}",
@@ -26164,7 +26146,7 @@ export type WatchResourceV1beta2ResourceSliceInput =
 
 // Output Schema
 export const WatchResourceV1beta2ResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -26176,13 +26158,13 @@ export type WatchResourceV1beta2ResourceSliceOutput =
  * watch changes to an object of kind ResourceSlice. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchResourceV1beta2ResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1beta2ResourceSliceInput,
     outputSchema: WatchResourceV1beta2ResourceSliceOutput,
   }));
 // Input Schema
 export const WatchResourceV1beta2ResourceSliceListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/watch/resourceslices",
@@ -26193,7 +26175,7 @@ export type WatchResourceV1beta2ResourceSliceListInput =
 
 // Output Schema
 export const WatchResourceV1beta2ResourceSliceListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -26205,7 +26187,7 @@ export type WatchResourceV1beta2ResourceSliceListOutput =
  * watch individual changes to a list of ResourceSlice. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchResourceV1beta2ResourceSliceList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1beta2ResourceSliceListInput,
     outputSchema: WatchResourceV1beta2ResourceSliceListOutput,
   }));

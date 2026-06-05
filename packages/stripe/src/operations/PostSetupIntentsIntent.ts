@@ -1,11 +1,11 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
-import * as T from "../traits.ts";
 import { SensitiveNullableString } from "../sensitive.ts";
+import * as T from "../traits.ts";
 
 // Input Schema
 export const PostSetupIntentsIntentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     intent: Schema.String.pipe(T.PathParam()),
     attach_to_self: Schema.optional(Schema.Boolean),
     customer: Schema.optional(Schema.String),
@@ -684,7 +684,7 @@ export type PostSetupIntentsIntentInput =
 
 // Output Schema
 export const PostSetupIntentsIntentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     application: Schema.Unknown,
     attach_to_self: Schema.optional(Schema.Boolean),
     automatic_payment_methods: Schema.Unknown,
@@ -788,9 +788,7 @@ export type PostSetupIntentsIntentOutput =
  *
  * <p>Updates a SetupIntent object.</p>
  */
-export const PostSetupIntentsIntent = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostSetupIntentsIntentInput,
-    outputSchema: PostSetupIntentsIntentOutput,
-  }),
-);
+export const PostSetupIntentsIntent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostSetupIntentsIntentInput,
+  outputSchema: PostSetupIntentsIntentOutput,
+}));

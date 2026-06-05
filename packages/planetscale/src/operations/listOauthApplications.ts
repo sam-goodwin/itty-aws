@@ -1,11 +1,11 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
-import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
+import * as T from "../traits.ts";
 
 // Input Schema
 export const ListOauthApplicationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     page: Schema.optional(Schema.Number),
     per_page: Schema.optional(Schema.Number),
@@ -19,7 +19,7 @@ export type ListOauthApplicationsInput = typeof ListOauthApplicationsInput.Type;
 
 // Output Schema
 export const ListOauthApplicationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.String,
     current_page: Schema.Number,
     next_page: Schema.NullOr(Schema.Number),
@@ -57,7 +57,7 @@ export type ListOauthApplicationsOutput =
  * @param per_page - If provided, specifies the number of returned results
  */
 export const listOauthApplications =
-  /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  /*@__PURE__*/ API.makePaginated(() => ({
     inputSchema: ListOauthApplicationsInput,
     outputSchema: ListOauthApplicationsOutput,
     errors: [Forbidden, NotFound] as const,

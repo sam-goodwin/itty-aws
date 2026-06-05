@@ -1,16 +1,16 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
-import * as T from "../../traits.ts";
 import { NotFound } from "../../errors.ts";
+import * as T from "../../traits.ts";
 
 // Input Schema
-export const GetUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetUserInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
 }).pipe(T.Http({ method: "GET", path: "/v2/users/{id}" }));
 export type GetUserInput = typeof GetUserInput.Type;
 
 // Output Schema
-export const GetUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetUserOutput = /*@__PURE__*/ Schema.Struct({
   email: Schema.String,
   id: Schema.String,
   name: Schema.String,
@@ -27,7 +27,7 @@ export type GetUserOutput = typeof GetUserOutput.Type;
 /**
  * Get user by ID
  */
-export const getUser = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getUser = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetUserInput,
   outputSchema: GetUserOutput,
   errors: [NotFound] as const,

@@ -4,11 +4,11 @@
 // ==========================================================================
 
 import * as Schema from "effect/Schema";
+import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
-import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { DefaultErrors } from "../errors.ts";
-import type * as HttpClient from "effect/unstable/http/HttpClient";
+import * as T from "../traits.ts";
 
 // Service metadata
 const svc = T.Service({
@@ -30,7 +30,7 @@ export interface StaticRouteConfig {
 }
 
 export const StaticRouteConfig: Schema.Schema<StaticRouteConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     routeConfig: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     lastUpdated: Schema.optional(Schema.String),
   }).annotate({ identifier: "StaticRouteConfig" });
@@ -43,7 +43,7 @@ export interface StaticEndpointConfig {
 }
 
 export const StaticEndpointConfig: Schema.Schema<StaticEndpointConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lastUpdated: Schema.optional(Schema.String),
     endpointConfig: Schema.optional(
       Schema.Record(Schema.String, Schema.Unknown),
@@ -62,7 +62,7 @@ export interface UpdateFailureState {
 }
 
 export const UpdateFailureState: Schema.Schema<UpdateFailureState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     failedConfiguration: Schema.optional(
       Schema.Record(Schema.String, Schema.Unknown),
     ),
@@ -93,7 +93,7 @@ export interface DynamicEndpointConfig {
 }
 
 export const DynamicEndpointConfig: Schema.Schema<DynamicEndpointConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lastUpdated: Schema.optional(Schema.String),
     clientStatus: Schema.optional(Schema.String),
     endpointConfig: Schema.optional(
@@ -111,7 +111,7 @@ export interface EndpointsConfigDump {
 }
 
 export const EndpointsConfigDump: Schema.Schema<EndpointsConfigDump> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     staticEndpointConfigs: Schema.optional(Schema.Array(StaticEndpointConfig)),
     dynamicEndpointConfigs: Schema.optional(
       Schema.Array(DynamicEndpointConfig),
@@ -121,7 +121,7 @@ export const EndpointsConfigDump: Schema.Schema<EndpointsConfigDump> =
 export interface NullMatch {}
 
 export const NullMatch: Schema.Schema<NullMatch> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "NullMatch",
   });
 
@@ -130,7 +130,7 @@ export interface OrMatcher {
 }
 
 export const OrMatcher: Schema.Schema<OrMatcher> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       valueMatchers: Schema.optional(Schema.Array(ValueMatcher)),
     }),
@@ -144,7 +144,7 @@ export interface DoubleRange {
 }
 
 export const DoubleRange: Schema.Schema<DoubleRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     end: Schema.optional(Schema.Number),
     start: Schema.optional(Schema.Number),
   }).annotate({ identifier: "DoubleRange" });
@@ -157,7 +157,7 @@ export interface DoubleMatcher {
 }
 
 export const DoubleMatcher: Schema.Schema<DoubleMatcher> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     range: Schema.optional(DoubleRange),
     exact: Schema.optional(Schema.Number),
   }).annotate({ identifier: "DoubleMatcher" });
@@ -168,7 +168,7 @@ export interface GoogleRE2 {
 }
 
 export const GoogleRE2: Schema.Schema<GoogleRE2> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxProgramSize: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleRE2" });
 
@@ -180,7 +180,7 @@ export interface RegexMatcher {
 }
 
 export const RegexMatcher: Schema.Schema<RegexMatcher> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     regex: Schema.optional(Schema.String),
     googleRe2: Schema.optional(GoogleRE2),
   }).annotate({ identifier: "RegexMatcher" });
@@ -193,7 +193,7 @@ export interface TypedExtensionConfig {
 }
 
 export const TypedExtensionConfig: Schema.Schema<TypedExtensionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     typedConfig: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }).annotate({ identifier: "TypedExtensionConfig" });
@@ -216,7 +216,7 @@ export interface StringMatcher {
 }
 
 export const StringMatcher: Schema.Schema<StringMatcher> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     contains: Schema.optional(Schema.String),
     safeRegex: Schema.optional(RegexMatcher),
     ignoreCase: Schema.optional(Schema.Boolean),
@@ -244,7 +244,7 @@ export interface ValueMatcher {
 }
 
 export const ValueMatcher: Schema.Schema<ValueMatcher> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       listMatch: Schema.optional(ListMatcher),
       nullMatch: Schema.optional(NullMatch),
@@ -264,7 +264,7 @@ export interface ListMatcher {
 }
 
 export const ListMatcher: Schema.Schema<ListMatcher> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       oneOf: Schema.optional(ValueMatcher),
     }),
@@ -280,7 +280,7 @@ export interface StaticListener {
 }
 
 export const StaticListener: Schema.Schema<StaticListener> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     listener: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     lastUpdated: Schema.optional(Schema.String),
   }).annotate({ identifier: "StaticListener" });
@@ -295,7 +295,7 @@ export interface Locality {
 }
 
 export const Locality: Schema.Schema<Locality> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     zone: Schema.optional(Schema.String),
     subZone: Schema.optional(Schema.String),
     region: Schema.optional(Schema.String),
@@ -311,7 +311,7 @@ export interface DynamicListenerState {
 }
 
 export const DynamicListenerState: Schema.Schema<DynamicListenerState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     versionInfo: Schema.optional(Schema.String),
     listener: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     lastUpdated: Schema.optional(Schema.String),
@@ -325,7 +325,7 @@ export interface StaticCluster {
 }
 
 export const StaticCluster: Schema.Schema<StaticCluster> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cluster: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     lastUpdated: Schema.optional(Schema.String),
   }).annotate({ identifier: "StaticCluster" });
@@ -335,7 +335,7 @@ export interface ContextParams {
 }
 
 export const ContextParams: Schema.Schema<ContextParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     params: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).annotate({ identifier: "ContextParams" });
 
@@ -346,7 +346,7 @@ export interface SemanticVersion {
 }
 
 export const SemanticVersion: Schema.Schema<SemanticVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     minorNumber: Schema.optional(Schema.Number),
     majorNumber: Schema.optional(Schema.Number),
     patch: Schema.optional(Schema.Number),
@@ -360,7 +360,7 @@ export interface BuildVersion {
 }
 
 export const BuildVersion: Schema.Schema<BuildVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     version: Schema.optional(SemanticVersion),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }).annotate({ identifier: "BuildVersion" });
@@ -375,7 +375,7 @@ export interface InlineScopedRouteConfigs {
 }
 
 export const InlineScopedRouteConfigs: Schema.Schema<InlineScopedRouteConfigs> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scopedRouteConfigs: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     ),
@@ -405,7 +405,7 @@ export interface DynamicRouteConfig {
 }
 
 export const DynamicRouteConfig: Schema.Schema<DynamicRouteConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     routeConfig: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     clientStatus: Schema.optional(Schema.String),
     lastUpdated: Schema.optional(Schema.String),
@@ -429,7 +429,7 @@ export interface Extension {
 }
 
 export const Extension: Schema.Schema<Extension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     category: Schema.optional(Schema.String),
     typeDescriptor: Schema.optional(Schema.String),
@@ -444,7 +444,7 @@ export interface PathSegment {
 }
 
 export const PathSegment: Schema.Schema<PathSegment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
   }).annotate({ identifier: "PathSegment" });
 
@@ -456,7 +456,7 @@ export interface StructMatcher {
 }
 
 export const StructMatcher: Schema.Schema<StructMatcher> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     path: Schema.optional(Schema.Array(PathSegment)),
     value: Schema.optional(ValueMatcher),
   }).annotate({ identifier: "StructMatcher" });
@@ -469,7 +469,7 @@ export interface EnvoyInternalAddress {
 }
 
 export const EnvoyInternalAddress: Schema.Schema<EnvoyInternalAddress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serverListenerName: Schema.optional(Schema.String),
     endpointId: Schema.optional(Schema.String),
   }).annotate({ identifier: "EnvoyInternalAddress" });
@@ -490,7 +490,7 @@ export interface SocketAddress {
 }
 
 export const SocketAddress: Schema.Schema<SocketAddress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     address: Schema.optional(Schema.String),
     portValue: Schema.optional(Schema.Number),
     resolverName: Schema.optional(Schema.String),
@@ -524,7 +524,7 @@ export interface DynamicListener {
 }
 
 export const DynamicListener: Schema.Schema<DynamicListener> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     drainingState: Schema.optional(DynamicListenerState),
     clientStatus: Schema.optional(Schema.String),
     activeState: Schema.optional(DynamicListenerState),
@@ -541,7 +541,7 @@ export interface Pipe {
 }
 
 export const Pipe: Schema.Schema<Pipe> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     path: Schema.optional(Schema.String),
     mode: Schema.optional(Schema.Number),
   }).annotate({ identifier: "Pipe" });
@@ -554,7 +554,7 @@ export interface Address {
 }
 
 export const Address: Schema.Schema<Address> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     socketAddress: Schema.optional(SocketAddress),
     envoyInternalAddress: Schema.optional(EnvoyInternalAddress),
     pipe: Schema.optional(Pipe),
@@ -586,7 +586,7 @@ export interface Node {
 }
 
 export const Node: Schema.Schema<Node> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     dynamicParameters: Schema.optional(
       Schema.Record(Schema.String, ContextParams),
@@ -610,7 +610,7 @@ export interface NodeMatcher {
 }
 
 export const NodeMatcher: Schema.Schema<NodeMatcher> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nodeId: Schema.optional(StringMatcher),
     nodeMetadatas: Schema.optional(Schema.Array(StructMatcher)),
   }).annotate({ identifier: "NodeMatcher" });
@@ -625,7 +625,7 @@ export interface ClientStatusRequest {
 }
 
 export const ClientStatusRequest: Schema.Schema<ClientStatusRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     node: Schema.optional(Node),
     nodeMatchers: Schema.optional(Schema.Array(NodeMatcher)),
     excludeResourceContents: Schema.optional(Schema.Boolean),
@@ -653,7 +653,7 @@ export interface DynamicCluster {
 }
 
 export const DynamicCluster: Schema.Schema<DynamicCluster> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     versionInfo: Schema.optional(Schema.String),
     errorState: Schema.optional(UpdateFailureState),
     cluster: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -673,7 +673,7 @@ export interface ClustersConfigDump {
 }
 
 export const ClustersConfigDump: Schema.Schema<ClustersConfigDump> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dynamicWarmingClusters: Schema.optional(Schema.Array(DynamicCluster)),
     versionInfo: Schema.optional(Schema.String),
     staticClusters: Schema.optional(Schema.Array(StaticCluster)),
@@ -690,7 +690,7 @@ export interface ListenersConfigDump {
 }
 
 export const ListenersConfigDump: Schema.Schema<ListenersConfigDump> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     staticListeners: Schema.optional(Schema.Array(StaticListener)),
     versionInfo: Schema.optional(Schema.String),
     dynamicListeners: Schema.optional(Schema.Array(DynamicListener)),
@@ -704,7 +704,7 @@ export interface RoutesConfigDump {
 }
 
 export const RoutesConfigDump: Schema.Schema<RoutesConfigDump> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     staticRouteConfigs: Schema.optional(Schema.Array(StaticRouteConfig)),
     dynamicRouteConfigs: Schema.optional(Schema.Array(DynamicRouteConfig)),
   }).annotate({ identifier: "RoutesConfigDump" });
@@ -733,7 +733,7 @@ export interface DynamicScopedRouteConfigs {
 }
 
 export const DynamicScopedRouteConfigs: Schema.Schema<DynamicScopedRouteConfigs> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scopedRouteConfigs: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     ),
@@ -752,7 +752,7 @@ export interface ScopedRoutesConfigDump {
 }
 
 export const ScopedRoutesConfigDump: Schema.Schema<ScopedRoutesConfigDump> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     inlineScopedRouteConfigs: Schema.optional(
       Schema.Array(InlineScopedRouteConfigs),
     ),
@@ -786,7 +786,7 @@ export interface PerXdsConfig {
 }
 
 export const PerXdsConfig: Schema.Schema<PerXdsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     listenerConfig: Schema.optional(ListenersConfigDump),
     clusterConfig: Schema.optional(ClustersConfigDump),
@@ -832,7 +832,7 @@ export interface GenericXdsConfig {
 }
 
 export const GenericXdsConfig: Schema.Schema<GenericXdsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     xdsConfig: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     lastUpdated: Schema.optional(Schema.String),
     clientStatus: Schema.optional(Schema.String),
@@ -856,7 +856,7 @@ export interface ClientConfig {
 }
 
 export const ClientConfig: Schema.Schema<ClientConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     node: Schema.optional(Node),
     clientScope: Schema.optional(Schema.String),
     xdsConfig: Schema.optional(Schema.Array(PerXdsConfig)),
@@ -869,7 +869,7 @@ export interface ClientStatusResponse {
 }
 
 export const ClientStatusResponse: Schema.Schema<ClientStatusResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     config: Schema.optional(Schema.Array(ClientConfig)),
   }).annotate({ identifier: "ClientStatusResponse" });
 
@@ -933,7 +933,7 @@ export interface Client_statusDiscoveryRequest {
 }
 
 export const Client_statusDiscoveryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(ClientStatusRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -946,7 +946,7 @@ export const Client_statusDiscoveryRequest =
 
 export type Client_statusDiscoveryResponse = ClientStatusResponse;
 export const Client_statusDiscoveryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ClientStatusResponse;
+  /*@__PURE__*/ ClientStatusResponse;
 
 export type Client_statusDiscoveryError =
   | DefaultErrors
@@ -960,7 +960,7 @@ export const client_statusDiscovery: API.OperationMethod<
   Client_statusDiscoveryResponse,
   Client_statusDiscoveryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: Client_statusDiscoveryRequest,
   output: Client_statusDiscoveryResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

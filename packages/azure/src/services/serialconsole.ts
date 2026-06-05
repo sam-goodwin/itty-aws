@@ -6,11 +6,11 @@
  */
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
-import * as T from "../traits.ts";
 import { SensitiveString } from "../sensitive.ts";
+import * as T from "../traits.ts";
 
 // Input Schema
-export const DisableConsoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DisableConsoleInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   default: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -23,7 +23,7 @@ export const DisableConsoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DisableConsoleInput = typeof DisableConsoleInput.Type;
 
 // Output Schema
-export const DisableConsoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DisableConsoleOutput = /*@__PURE__*/ Schema.Struct({
   properties: Schema.optional(
     Schema.Struct({
       disabled: Schema.optional(Schema.Boolean),
@@ -42,12 +42,12 @@ export type DisableConsoleOutput = typeof DisableConsoleOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param default - Default parameter. Leave the value as "default".
  */
-export const DisableConsole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DisableConsole = /*@__PURE__*/ API.make(() => ({
   inputSchema: DisableConsoleInput,
   outputSchema: DisableConsoleOutput,
 }));
 // Input Schema
-export const EnableConsoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EnableConsoleInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   default: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -60,7 +60,7 @@ export const EnableConsoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type EnableConsoleInput = typeof EnableConsoleInput.Type;
 
 // Output Schema
-export const EnableConsoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EnableConsoleOutput = /*@__PURE__*/ Schema.Struct({
   properties: Schema.optional(
     Schema.Struct({
       disabled: Schema.optional(Schema.Boolean),
@@ -79,12 +79,12 @@ export type EnableConsoleOutput = typeof EnableConsoleOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param default - Default parameter. Leave the value as "default".
  */
-export const EnableConsole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EnableConsole = /*@__PURE__*/ API.make(() => ({
   inputSchema: EnableConsoleInput,
   outputSchema: EnableConsoleOutput,
 }));
 // Input Schema
-export const GetConsoleStatusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetConsoleStatusInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   default: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -97,15 +97,13 @@ export const GetConsoleStatusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetConsoleStatusInput = typeof GetConsoleStatusInput.Type;
 
 // Output Schema
-export const GetConsoleStatusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    properties: Schema.optional(
-      Schema.Struct({
-        disabled: Schema.optional(Schema.Boolean),
-      }),
-    ),
-  },
-);
+export const GetConsoleStatusOutput = /*@__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.Struct({
+      disabled: Schema.optional(Schema.Boolean),
+    }),
+  ),
+});
 export type GetConsoleStatusOutput = typeof GetConsoleStatusOutput.Type;
 
 // The operation
@@ -118,12 +116,12 @@ export type GetConsoleStatusOutput = typeof GetConsoleStatusOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param default - Default parameter. Leave the value as "default".
  */
-export const GetConsoleStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetConsoleStatus = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetConsoleStatusInput,
   outputSchema: GetConsoleStatusOutput,
 }));
 // Input Schema
-export const ListOperationsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListOperationsInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -134,7 +132,7 @@ export const ListOperationsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListOperationsInput = typeof ListOperationsInput.Type;
 
 // Output Schema
-export const ListOperationsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListOperationsOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -160,13 +158,13 @@ export type ListOperationsOutput = typeof ListOperationsOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const ListOperations = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ListOperations = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListOperationsInput,
   outputSchema: ListOperationsOutput,
 }));
 // Input Schema
 export const SerialPortsConnectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
@@ -184,7 +182,7 @@ export type SerialPortsConnectInput = typeof SerialPortsConnectInput.Type;
 
 // Output Schema
 export const SerialPortsConnectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     connectionString: Schema.optional(SensitiveString),
   });
 export type SerialPortsConnectOutput = typeof SerialPortsConnectOutput.Type;
@@ -201,22 +199,20 @@ export type SerialPortsConnectOutput = typeof SerialPortsConnectOutput.Type;
  * @param parentResource - The name of the parent resource.
  * @param serialPort - The name of the serial port to connect to.
  */
-export const SerialPortsConnect = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SerialPortsConnect = /*@__PURE__*/ API.make(() => ({
   inputSchema: SerialPortsConnectInput,
   outputSchema: SerialPortsConnectOutput,
 }));
 // Input Schema
-export const SerialPortsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
-    parentResourceType: Schema.String.pipe(T.PathParam()),
-    parentResource: Schema.String.pipe(T.PathParam()),
-    serialPort: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const SerialPortsCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
+  parentResourceType: Schema.String.pipe(T.PathParam()),
+  parentResource: Schema.String.pipe(T.PathParam()),
+  serialPort: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourceType}/{parentResource}/providers/Microsoft.SerialConsole/serialPorts/{serialPort}",
@@ -226,7 +222,7 @@ export type SerialPortsCreateInput = typeof SerialPortsCreateInput.Type;
 
 // Output Schema
 export const SerialPortsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -259,12 +255,12 @@ export type SerialPortsCreateOutput = typeof SerialPortsCreateOutput.Type;
  * @param parentResource - The name of the parent resource.
  * @param serialPort - The name of the serial port to connect to.
  */
-export const SerialPortsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SerialPortsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SerialPortsCreateInput,
   outputSchema: SerialPortsCreateOutput,
 }));
 // Input Schema
-export const SerialPortsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SerialPortsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
@@ -281,7 +277,7 @@ export const SerialPortsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SerialPortsGetInput = typeof SerialPortsGetInput.Type;
 
 // Output Schema
-export const SerialPortsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SerialPortsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -314,12 +310,12 @@ export type SerialPortsGetOutput = typeof SerialPortsGetOutput.Type;
  * @param parentResource - The name of the parent resource.
  * @param serialPort - The name of the serial port to connect to.
  */
-export const SerialPortsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SerialPortsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SerialPortsGetInput,
   outputSchema: SerialPortsGetOutput,
 }));
 // Input Schema
-export const SerialPortsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SerialPortsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
@@ -335,7 +331,7 @@ export const SerialPortsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SerialPortsListInput = typeof SerialPortsListInput.Type;
 
 // Output Schema
-export const SerialPortsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SerialPortsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -383,13 +379,13 @@ export type SerialPortsListOutput = typeof SerialPortsListOutput.Type;
  * @param parentResourceType - The resource type of the parent resource. For example: 'virtualMachines' or 'virtualMachineScaleSets'
  * @param parentResource - The name of the parent resource.
  */
-export const SerialPortsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SerialPortsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: SerialPortsListInput,
   outputSchema: SerialPortsListOutput,
 }));
 // Input Schema
 export const SerialPortsListBySubscriptionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -403,7 +399,7 @@ export type SerialPortsListBySubscriptionsInput =
 
 // Output Schema
 export const SerialPortsListBySubscriptionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -449,7 +445,7 @@ export type SerialPortsListBySubscriptionsOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const SerialPortsListBySubscriptions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SerialPortsListBySubscriptionsInput,
     outputSchema: SerialPortsListBySubscriptionsOutput,
   }));

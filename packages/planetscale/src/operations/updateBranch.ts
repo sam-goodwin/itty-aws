@@ -1,10 +1,10 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
-import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
+import * as T from "../traits.ts";
 
 // Input Schema
-export const UpdateBranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateBranchInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -18,7 +18,7 @@ export const UpdateBranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateBranchInput = typeof UpdateBranchInput.Type;
 
 // Output Schema
-export const UpdateBranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateBranchOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   created_at: Schema.String,
@@ -97,7 +97,7 @@ export type UpdateBranchOutput = typeof UpdateBranchOutput.Type;
  * @param branch - The name of the branch
  * @param new_name - The name to update the branch
  */
-export const updateBranch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateBranch = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateBranchInput,
   outputSchema: UpdateBranchOutput,
   errors: [Forbidden, NotFound] as const,

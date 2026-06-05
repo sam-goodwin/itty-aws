@@ -3,13 +3,13 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
-export const GetUsersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+export const GetUsersInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/v2/users" }),
 );
 export type GetUsersInput = typeof GetUsersInput.Type;
 
 // Output Schema
-export const GetUsersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const GetUsersOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     email: Schema.String,
     id: Schema.String,
@@ -28,7 +28,7 @@ export type GetUsersOutput = typeof GetUsersOutput.Type;
 /**
  * Get users
  */
-export const getUsers = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getUsers = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetUsersInput,
   outputSchema: GetUsersOutput,
 }));

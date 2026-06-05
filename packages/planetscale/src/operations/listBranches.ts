@@ -1,10 +1,10 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
-import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
+import * as T from "../traits.ts";
 
 // Input Schema
-export const ListBranchesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListBranchesInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   q: Schema.optional(Schema.String),
@@ -22,7 +22,7 @@ export const ListBranchesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListBranchesInput = typeof ListBranchesInput.Type;
 
 // Output Schema
-export const ListBranchesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListBranchesOutput = /*@__PURE__*/ Schema.Struct({
   type: Schema.String,
   current_page: Schema.Number,
   next_page: Schema.NullOr(Schema.Number),
@@ -117,16 +117,14 @@ export type ListBranchesOutput = typeof ListBranchesOutput.Type;
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
  */
-export const listBranches = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
-  () => ({
-    inputSchema: ListBranchesInput,
-    outputSchema: ListBranchesOutput,
-    errors: [Forbidden, NotFound] as const,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "next_page",
-      items: "data",
-    },
-  }),
-);
+export const listBranches = /*@__PURE__*/ API.makePaginated(() => ({
+  inputSchema: ListBranchesInput,
+  outputSchema: ListBranchesOutput,
+  errors: [Forbidden, NotFound] as const,
+  pagination: {
+    mode: "page",
+    inputToken: "page",
+    outputToken: "next_page",
+    items: "data",
+  },
+}));

@@ -1,10 +1,10 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
-import * as T from "../../traits.ts";
 import { BadRequest, UnprocessableEntity } from "../../errors.ts";
+import * as T from "../../traits.ts";
 
 // Input Schema
-export const CreateAnnotationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateAnnotationInput = /*@__PURE__*/ Schema.Struct({
   datasets: Schema.Array(Schema.String),
   description: Schema.optional(Schema.String),
   endTime: Schema.optional(Schema.String),
@@ -16,25 +16,23 @@ export const CreateAnnotationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateAnnotationInput = typeof CreateAnnotationInput.Type;
 
 // Output Schema
-export const CreateAnnotationOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    datasets: Schema.Array(Schema.String),
-    description: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.NullOr(Schema.String)),
-    id: Schema.String,
-    time: Schema.String,
-    title: Schema.optional(Schema.String),
-    type: Schema.String,
-    url: Schema.optional(Schema.String),
-  },
-);
+export const CreateAnnotationOutput = /*@__PURE__*/ Schema.Struct({
+  datasets: Schema.Array(Schema.String),
+  description: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.NullOr(Schema.String)),
+  id: Schema.String,
+  time: Schema.String,
+  title: Schema.optional(Schema.String),
+  type: Schema.String,
+  url: Schema.optional(Schema.String),
+});
 export type CreateAnnotationOutput = typeof CreateAnnotationOutput.Type;
 
 // The operation
 /**
  * Create annotation
  */
-export const createAnnotation = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createAnnotation = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateAnnotationInput,
   outputSchema: CreateAnnotationOutput,
   errors: [BadRequest, UnprocessableEntity] as const,

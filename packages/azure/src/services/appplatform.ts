@@ -10,7 +10,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const ApiPortalCustomDomainsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}/domains/{domainName}",
@@ -21,7 +21,7 @@ export type ApiPortalCustomDomainsCreateOrUpdateInput =
 
 // Output Schema
 export const ApiPortalCustomDomainsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -48,13 +48,13 @@ export type ApiPortalCustomDomainsCreateOrUpdateOutput =
  * Create or update the API portal custom domain.
  */
 export const ApiPortalCustomDomainsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ApiPortalCustomDomainsCreateOrUpdateInput,
     outputSchema: ApiPortalCustomDomainsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const ApiPortalCustomDomainsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}/domains/{domainName}",
@@ -64,8 +64,7 @@ export type ApiPortalCustomDomainsDeleteInput =
   typeof ApiPortalCustomDomainsDeleteInput.Type;
 
 // Output Schema
-export const ApiPortalCustomDomainsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ApiPortalCustomDomainsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ApiPortalCustomDomainsDeleteOutput =
   typeof ApiPortalCustomDomainsDeleteOutput.Type;
 
@@ -74,13 +73,13 @@ export type ApiPortalCustomDomainsDeleteOutput =
  * Delete the API portal custom domain.
  */
 export const ApiPortalCustomDomainsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ApiPortalCustomDomainsDeleteInput,
     outputSchema: ApiPortalCustomDomainsDeleteOutput,
   }));
 // Input Schema
 export const ApiPortalCustomDomainsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}/domains/{domainName}",
@@ -91,7 +90,7 @@ export type ApiPortalCustomDomainsGetInput =
 
 // Output Schema
 export const ApiPortalCustomDomainsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -117,15 +116,13 @@ export type ApiPortalCustomDomainsGetOutput =
 /**
  * Get the API portal custom domain.
  */
-export const ApiPortalCustomDomainsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApiPortalCustomDomainsGetInput,
-    outputSchema: ApiPortalCustomDomainsGetOutput,
-  }),
-);
+export const ApiPortalCustomDomainsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApiPortalCustomDomainsGetInput,
+  outputSchema: ApiPortalCustomDomainsGetOutput,
+}));
 // Input Schema
 export const ApiPortalCustomDomainsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}/domains",
@@ -136,7 +133,7 @@ export type ApiPortalCustomDomainsListInput =
 
 // Output Schema
 export const ApiPortalCustomDomainsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -179,15 +176,13 @@ export type ApiPortalCustomDomainsListOutput =
 /**
  * Handle requests to list all API portal custom domains.
  */
-export const ApiPortalCustomDomainsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApiPortalCustomDomainsListInput,
-    outputSchema: ApiPortalCustomDomainsListOutput,
-  }),
-);
+export const ApiPortalCustomDomainsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApiPortalCustomDomainsListInput,
+  outputSchema: ApiPortalCustomDomainsListOutput,
+}));
 // Input Schema
 export const ApiPortalsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}",
@@ -198,7 +193,7 @@ export type ApiPortalsCreateOrUpdateInput =
 
 // Output Schema
 export const ApiPortalsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -224,16 +219,12 @@ export type ApiPortalsCreateOrUpdateOutput =
 /**
  * Create the default API portal or update the existing API portal.
  */
-export const ApiPortalsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApiPortalsCreateOrUpdateInput,
-    outputSchema: ApiPortalsCreateOrUpdateOutput,
-  }),
-);
+export const ApiPortalsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApiPortalsCreateOrUpdateInput,
+  outputSchema: ApiPortalsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ApiPortalsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ApiPortalsDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}",
@@ -242,21 +233,19 @@ export const ApiPortalsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ApiPortalsDeleteInput = typeof ApiPortalsDeleteInput.Type;
 
 // Output Schema
-export const ApiPortalsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ApiPortalsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ApiPortalsDeleteOutput = typeof ApiPortalsDeleteOutput.Type;
 
 // The operation
 /**
  * Delete the default API portal.
  */
-export const ApiPortalsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApiPortalsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApiPortalsDeleteInput,
   outputSchema: ApiPortalsDeleteOutput,
 }));
 // Input Schema
-export const ApiPortalsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ApiPortalsGetInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}",
@@ -265,7 +254,7 @@ export const ApiPortalsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ApiPortalsGetInput = typeof ApiPortalsGetInput.Type;
 
 // Output Schema
-export const ApiPortalsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiPortalsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -290,14 +279,12 @@ export type ApiPortalsGetOutput = typeof ApiPortalsGetOutput.Type;
 /**
  * Get the API portal and its properties.
  */
-export const ApiPortalsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApiPortalsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApiPortalsGetInput,
   outputSchema: ApiPortalsGetOutput,
 }));
 // Input Schema
-export const ApiPortalsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ApiPortalsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals",
@@ -306,7 +293,7 @@ export const ApiPortalsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ApiPortalsListInput = typeof ApiPortalsListInput.Type;
 
 // Output Schema
-export const ApiPortalsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiPortalsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -348,13 +335,13 @@ export type ApiPortalsListOutput = typeof ApiPortalsListOutput.Type;
 /**
  * Handles requests to list all resources in a Service.
  */
-export const ApiPortalsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApiPortalsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApiPortalsListInput,
   outputSchema: ApiPortalsListOutput,
 }));
 // Input Schema
 export const ApiPortalsValidateDomainInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}/validateDomain",
@@ -365,7 +352,7 @@ export type ApiPortalsValidateDomainInput =
 
 // Output Schema
 export const ApiPortalsValidateDomainOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     isValid: Schema.optional(Schema.Boolean),
     message: Schema.optional(Schema.String),
   });
@@ -376,15 +363,13 @@ export type ApiPortalsValidateDomainOutput =
 /**
  * Check the domains are valid as well as not in use.
  */
-export const ApiPortalsValidateDomain = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApiPortalsValidateDomainInput,
-    outputSchema: ApiPortalsValidateDomainOutput,
-  }),
-);
+export const ApiPortalsValidateDomain = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApiPortalsValidateDomainInput,
+  outputSchema: ApiPortalsValidateDomainOutput,
+}));
 // Input Schema
 export const ApmsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apms/{apmName}",
@@ -394,7 +379,7 @@ export type ApmsCreateOrUpdateInput = typeof ApmsCreateOrUpdateInput.Type;
 
 // Output Schema
 export const ApmsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -419,14 +404,12 @@ export type ApmsCreateOrUpdateOutput = typeof ApmsCreateOrUpdateOutput.Type;
 /**
  * Create or update an APM.
  */
-export const ApmsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApmsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApmsCreateOrUpdateInput,
   outputSchema: ApmsCreateOrUpdateOutput,
 }));
 // Input Schema
-export const ApmsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ApmsDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apms/{apmName}",
@@ -435,19 +418,19 @@ export const ApmsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ApmsDeleteInput = typeof ApmsDeleteInput.Type;
 
 // Output Schema
-export const ApmsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ApmsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ApmsDeleteOutput = typeof ApmsDeleteOutput.Type;
 
 // The operation
 /**
  * Operation to delete an APM
  */
-export const ApmsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApmsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApmsDeleteInput,
   outputSchema: ApmsDeleteOutput,
 }));
 // Input Schema
-export const ApmsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+export const ApmsGetInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apms/{apmName}",
@@ -456,7 +439,7 @@ export const ApmsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
 export type ApmsGetInput = typeof ApmsGetInput.Type;
 
 // Output Schema
-export const ApmsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApmsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -481,12 +464,12 @@ export type ApmsGetOutput = typeof ApmsGetOutput.Type;
 /**
  * Get the APM by name.
  */
-export const ApmsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApmsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApmsGetInput,
   outputSchema: ApmsGetOutput,
 }));
 // Input Schema
-export const ApmsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+export const ApmsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apms",
@@ -495,7 +478,7 @@ export const ApmsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
 export type ApmsListInput = typeof ApmsListInput.Type;
 
 // Output Schema
-export const ApmsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApmsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -537,13 +520,13 @@ export type ApmsListOutput = typeof ApmsListOutput.Type;
 /**
  * Get collection of APMs.
  */
-export const ApmsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApmsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApmsListInput,
   outputSchema: ApmsListOutput,
 }));
 // Input Schema
 export const ApmsListSecretKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apms/{apmName}/listSecretKeys",
@@ -553,7 +536,7 @@ export type ApmsListSecretKeysInput = typeof ApmsListSecretKeysInput.Type;
 
 // Output Schema
 export const ApmsListSecretKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Array(Schema.String)),
   });
 export type ApmsListSecretKeysOutput = typeof ApmsListSecretKeysOutput.Type;
@@ -562,13 +545,13 @@ export type ApmsListSecretKeysOutput = typeof ApmsListSecretKeysOutput.Type;
 /**
  * List keys of APM sensitive properties.
  */
-export const ApmsListSecretKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApmsListSecretKeys = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApmsListSecretKeysInput,
   outputSchema: ApmsListSecretKeysOutput,
 }));
 // Input Schema
 export const ApplicationAcceleratorsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}",
@@ -579,7 +562,7 @@ export type ApplicationAcceleratorsCreateOrUpdateInput =
 
 // Output Schema
 export const ApplicationAcceleratorsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -606,13 +589,13 @@ export type ApplicationAcceleratorsCreateOrUpdateOutput =
  * Create or update the application accelerator.
  */
 export const ApplicationAcceleratorsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ApplicationAcceleratorsCreateOrUpdateInput,
     outputSchema: ApplicationAcceleratorsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const ApplicationAcceleratorsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}",
@@ -622,8 +605,7 @@ export type ApplicationAcceleratorsDeleteInput =
   typeof ApplicationAcceleratorsDeleteInput.Type;
 
 // Output Schema
-export const ApplicationAcceleratorsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ApplicationAcceleratorsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ApplicationAcceleratorsDeleteOutput =
   typeof ApplicationAcceleratorsDeleteOutput.Type;
 
@@ -632,13 +614,13 @@ export type ApplicationAcceleratorsDeleteOutput =
  * Delete the application accelerator.
  */
 export const ApplicationAcceleratorsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ApplicationAcceleratorsDeleteInput,
     outputSchema: ApplicationAcceleratorsDeleteOutput,
   }));
 // Input Schema
 export const ApplicationAcceleratorsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}",
@@ -649,7 +631,7 @@ export type ApplicationAcceleratorsGetInput =
 
 // Output Schema
 export const ApplicationAcceleratorsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -675,15 +657,13 @@ export type ApplicationAcceleratorsGetOutput =
 /**
  * Get the application accelerator.
  */
-export const ApplicationAcceleratorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApplicationAcceleratorsGetInput,
-    outputSchema: ApplicationAcceleratorsGetOutput,
-  }),
-);
+export const ApplicationAcceleratorsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApplicationAcceleratorsGetInput,
+  outputSchema: ApplicationAcceleratorsGetOutput,
+}));
 // Input Schema
 export const ApplicationAcceleratorsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators",
@@ -694,7 +674,7 @@ export type ApplicationAcceleratorsListInput =
 
 // Output Schema
 export const ApplicationAcceleratorsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -737,15 +717,13 @@ export type ApplicationAcceleratorsListOutput =
 /**
  * Handle requests to list all application accelerator.
  */
-export const ApplicationAcceleratorsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApplicationAcceleratorsListInput,
-    outputSchema: ApplicationAcceleratorsListOutput,
-  }),
-);
+export const ApplicationAcceleratorsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApplicationAcceleratorsListInput,
+  outputSchema: ApplicationAcceleratorsListOutput,
+}));
 // Input Schema
 export const ApplicationLiveViewsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationLiveViews/{applicationLiveViewName}",
@@ -756,7 +734,7 @@ export type ApplicationLiveViewsCreateOrUpdateInput =
 
 // Output Schema
 export const ApplicationLiveViewsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -783,13 +761,13 @@ export type ApplicationLiveViewsCreateOrUpdateOutput =
  * Create the default Application Live View or update the existing Application Live View.
  */
 export const ApplicationLiveViewsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ApplicationLiveViewsCreateOrUpdateInput,
     outputSchema: ApplicationLiveViewsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const ApplicationLiveViewsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationLiveViews/{applicationLiveViewName}",
@@ -799,8 +777,7 @@ export type ApplicationLiveViewsDeleteInput =
   typeof ApplicationLiveViewsDeleteInput.Type;
 
 // Output Schema
-export const ApplicationLiveViewsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ApplicationLiveViewsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ApplicationLiveViewsDeleteOutput =
   typeof ApplicationLiveViewsDeleteOutput.Type;
 
@@ -808,15 +785,13 @@ export type ApplicationLiveViewsDeleteOutput =
 /**
  * Disable the default Application Live View.
  */
-export const ApplicationLiveViewsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApplicationLiveViewsDeleteInput,
-    outputSchema: ApplicationLiveViewsDeleteOutput,
-  }),
-);
+export const ApplicationLiveViewsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApplicationLiveViewsDeleteInput,
+  outputSchema: ApplicationLiveViewsDeleteOutput,
+}));
 // Input Schema
 export const ApplicationLiveViewsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationLiveViews/{applicationLiveViewName}",
@@ -827,7 +802,7 @@ export type ApplicationLiveViewsGetInput =
 
 // Output Schema
 export const ApplicationLiveViewsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -853,15 +828,13 @@ export type ApplicationLiveViewsGetOutput =
 /**
  * Get the Application Live  and its properties.
  */
-export const ApplicationLiveViewsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApplicationLiveViewsGetInput,
-    outputSchema: ApplicationLiveViewsGetOutput,
-  }),
-);
+export const ApplicationLiveViewsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApplicationLiveViewsGetInput,
+  outputSchema: ApplicationLiveViewsGetOutput,
+}));
 // Input Schema
 export const ApplicationLiveViewsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationLiveViews",
@@ -872,7 +845,7 @@ export type ApplicationLiveViewsListInput =
 
 // Output Schema
 export const ApplicationLiveViewsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -915,15 +888,13 @@ export type ApplicationLiveViewsListOutput =
 /**
  * Handles requests to list all resources in a Service.
  */
-export const ApplicationLiveViewsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApplicationLiveViewsListInput,
-    outputSchema: ApplicationLiveViewsListOutput,
-  }),
-);
+export const ApplicationLiveViewsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApplicationLiveViewsListInput,
+  outputSchema: ApplicationLiveViewsListOutput,
+}));
 // Input Schema
 export const AppsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}",
@@ -933,7 +904,7 @@ export type AppsCreateOrUpdateInput = typeof AppsCreateOrUpdateInput.Type;
 
 // Output Schema
 export const AppsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -958,14 +929,12 @@ export type AppsCreateOrUpdateOutput = typeof AppsCreateOrUpdateOutput.Type;
 /**
  * Create a new App or update an exiting App.
  */
-export const AppsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AppsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: AppsCreateOrUpdateInput,
   outputSchema: AppsCreateOrUpdateOutput,
 }));
 // Input Schema
-export const AppsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AppsDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}",
@@ -974,19 +943,19 @@ export const AppsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type AppsDeleteInput = typeof AppsDeleteInput.Type;
 
 // Output Schema
-export const AppsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AppsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type AppsDeleteOutput = typeof AppsDeleteOutput.Type;
 
 // The operation
 /**
  * Operation to delete an App.
  */
-export const AppsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AppsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: AppsDeleteInput,
   outputSchema: AppsDeleteOutput,
 }));
 // Input Schema
-export const AppsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AppsGetInput = /*@__PURE__*/ Schema.Struct({
   syncStatus: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
@@ -997,7 +966,7 @@ export const AppsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type AppsGetInput = typeof AppsGetInput.Type;
 
 // Output Schema
-export const AppsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AppsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1024,13 +993,13 @@ export type AppsGetOutput = typeof AppsGetOutput.Type;
  *
  * @param syncStatus - Indicates whether sync status
  */
-export const AppsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AppsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AppsGetInput,
   outputSchema: AppsGetOutput,
 }));
 // Input Schema
 export const AppsGetResourceUploadUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/getResourceUploadUrl",
@@ -1041,7 +1010,7 @@ export type AppsGetResourceUploadUrlInput =
 
 // Output Schema
 export const AppsGetResourceUploadUrlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     relativePath: Schema.optional(Schema.String),
     uploadUrl: Schema.optional(Schema.String),
   });
@@ -1052,14 +1021,12 @@ export type AppsGetResourceUploadUrlOutput =
 /**
  * Get an resource upload URL for an App, which may be artifacts or source archive.
  */
-export const AppsGetResourceUploadUrl = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AppsGetResourceUploadUrlInput,
-    outputSchema: AppsGetResourceUploadUrlOutput,
-  }),
-);
+export const AppsGetResourceUploadUrl = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppsGetResourceUploadUrlInput,
+  outputSchema: AppsGetResourceUploadUrlOutput,
+}));
 // Input Schema
-export const AppsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+export const AppsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps",
@@ -1068,7 +1035,7 @@ export const AppsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
 export type AppsListInput = typeof AppsListInput.Type;
 
 // Output Schema
-export const AppsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AppsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1110,13 +1077,13 @@ export type AppsListOutput = typeof AppsListOutput.Type;
 /**
  * Handles requests to list all resources in a Service.
  */
-export const AppsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AppsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: AppsListInput,
   outputSchema: AppsListOutput,
 }));
 // Input Schema
 export const AppsSetActiveDeploymentsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/setActiveDeployments",
@@ -1127,7 +1094,7 @@ export type AppsSetActiveDeploymentsInput =
 
 // Output Schema
 export const AppsSetActiveDeploymentsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1153,16 +1120,12 @@ export type AppsSetActiveDeploymentsOutput =
 /**
  * Set existing Deployment under the app as active
  */
-export const AppsSetActiveDeployments = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AppsSetActiveDeploymentsInput,
-    outputSchema: AppsSetActiveDeploymentsOutput,
-  }),
-);
+export const AppsSetActiveDeployments = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppsSetActiveDeploymentsInput,
+  outputSchema: AppsSetActiveDeploymentsOutput,
+}));
 // Input Schema
-export const AppsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AppsUpdateInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}",
@@ -1171,7 +1134,7 @@ export const AppsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type AppsUpdateInput = typeof AppsUpdateInput.Type;
 
 // Output Schema
-export const AppsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AppsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1196,13 +1159,13 @@ export type AppsUpdateOutput = typeof AppsUpdateOutput.Type;
 /**
  * Operation to update an exiting App.
  */
-export const AppsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AppsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: AppsUpdateInput,
   outputSchema: AppsUpdateOutput,
 }));
 // Input Schema
 export const AppsValidateDomainInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/validateDomain",
@@ -1212,7 +1175,7 @@ export type AppsValidateDomainInput = typeof AppsValidateDomainInput.Type;
 
 // Output Schema
 export const AppsValidateDomainOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     isValid: Schema.optional(Schema.Boolean),
     message: Schema.optional(Schema.String),
   });
@@ -1222,13 +1185,13 @@ export type AppsValidateDomainOutput = typeof AppsValidateDomainOutput.Type;
 /**
  * Check the resource name is valid as well as not in use.
  */
-export const AppsValidateDomain = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AppsValidateDomain = /*@__PURE__*/ API.make(() => ({
   inputSchema: AppsValidateDomainInput,
   outputSchema: AppsValidateDomainOutput,
 }));
 // Input Schema
 export const BindingsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/bindings/{bindingName}",
@@ -1239,7 +1202,7 @@ export type BindingsCreateOrUpdateInput =
 
 // Output Schema
 export const BindingsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1265,16 +1228,12 @@ export type BindingsCreateOrUpdateOutput =
 /**
  * Create a new Binding or update an exiting Binding.
  */
-export const BindingsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BindingsCreateOrUpdateInput,
-    outputSchema: BindingsCreateOrUpdateOutput,
-  }),
-);
+export const BindingsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BindingsCreateOrUpdateInput,
+  outputSchema: BindingsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const BindingsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const BindingsDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/bindings/{bindingName}",
@@ -1283,21 +1242,19 @@ export const BindingsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type BindingsDeleteInput = typeof BindingsDeleteInput.Type;
 
 // Output Schema
-export const BindingsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const BindingsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type BindingsDeleteOutput = typeof BindingsDeleteOutput.Type;
 
 // The operation
 /**
  * Operation to delete a Binding.
  */
-export const BindingsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BindingsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: BindingsDeleteInput,
   outputSchema: BindingsDeleteOutput,
 }));
 // Input Schema
-export const BindingsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const BindingsGetInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/bindings/{bindingName}",
@@ -1306,7 +1263,7 @@ export const BindingsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type BindingsGetInput = typeof BindingsGetInput.Type;
 
 // Output Schema
-export const BindingsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BindingsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1331,14 +1288,12 @@ export type BindingsGetOutput = typeof BindingsGetOutput.Type;
 /**
  * Get a Binding and its properties.
  */
-export const BindingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BindingsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: BindingsGetInput,
   outputSchema: BindingsGetOutput,
 }));
 // Input Schema
-export const BindingsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const BindingsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/bindings",
@@ -1347,7 +1302,7 @@ export const BindingsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type BindingsListInput = typeof BindingsListInput.Type;
 
 // Output Schema
-export const BindingsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BindingsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1389,14 +1344,12 @@ export type BindingsListOutput = typeof BindingsListOutput.Type;
 /**
  * Handles requests to list all resources in an App.
  */
-export const BindingsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BindingsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: BindingsListInput,
   outputSchema: BindingsListOutput,
 }));
 // Input Schema
-export const BindingsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const BindingsUpdateInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/bindings/{bindingName}",
@@ -1405,7 +1358,7 @@ export const BindingsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type BindingsUpdateInput = typeof BindingsUpdateInput.Type;
 
 // Output Schema
-export const BindingsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BindingsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1430,13 +1383,13 @@ export type BindingsUpdateOutput = typeof BindingsUpdateOutput.Type;
 /**
  * Operation to update an exiting Binding.
  */
-export const BindingsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BindingsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: BindingsUpdateInput,
   outputSchema: BindingsUpdateOutput,
 }));
 // Input Schema
 export const BuildpackBindingCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}/buildpackBindings/{buildpackBindingName}",
@@ -1447,7 +1400,7 @@ export type BuildpackBindingCreateOrUpdateInput =
 
 // Output Schema
 export const BuildpackBindingCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1474,13 +1427,13 @@ export type BuildpackBindingCreateOrUpdateOutput =
  * Create or update a buildpack binding.
  */
 export const BuildpackBindingCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BuildpackBindingCreateOrUpdateInput,
     outputSchema: BuildpackBindingCreateOrUpdateOutput,
   }));
 // Input Schema
 export const BuildpackBindingDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}/buildpackBindings/{buildpackBindingName}",
@@ -1490,8 +1443,7 @@ export type BuildpackBindingDeleteInput =
   typeof BuildpackBindingDeleteInput.Type;
 
 // Output Schema
-export const BuildpackBindingDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const BuildpackBindingDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type BuildpackBindingDeleteOutput =
   typeof BuildpackBindingDeleteOutput.Type;
 
@@ -1499,15 +1451,13 @@ export type BuildpackBindingDeleteOutput =
 /**
  * Operation to delete a Buildpack Binding
  */
-export const BuildpackBindingDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BuildpackBindingDeleteInput,
-    outputSchema: BuildpackBindingDeleteOutput,
-  }),
-);
+export const BuildpackBindingDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BuildpackBindingDeleteInput,
+  outputSchema: BuildpackBindingDeleteOutput,
+}));
 // Input Schema
 export const BuildpackBindingGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}/buildpackBindings/{buildpackBindingName}",
@@ -1517,7 +1467,7 @@ export type BuildpackBindingGetInput = typeof BuildpackBindingGetInput.Type;
 
 // Output Schema
 export const BuildpackBindingGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1542,13 +1492,13 @@ export type BuildpackBindingGetOutput = typeof BuildpackBindingGetOutput.Type;
 /**
  * Get a buildpack binding by name.
  */
-export const BuildpackBindingGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BuildpackBindingGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: BuildpackBindingGetInput,
   outputSchema: BuildpackBindingGetOutput,
 }));
 // Input Schema
 export const BuildpackBindingListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}/buildpackBindings",
@@ -1558,7 +1508,7 @@ export type BuildpackBindingListInput = typeof BuildpackBindingListInput.Type;
 
 // Output Schema
 export const BuildpackBindingListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1600,15 +1550,13 @@ export type BuildpackBindingListOutput = typeof BuildpackBindingListOutput.Type;
 /**
  * Handles requests to list all buildpack bindings in a builder.
  */
-export const BuildpackBindingList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BuildpackBindingListInput,
-    outputSchema: BuildpackBindingListOutput,
-  }),
-);
+export const BuildpackBindingList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BuildpackBindingListInput,
+  outputSchema: BuildpackBindingListOutput,
+}));
 // Input Schema
 export const BuildpackBindingListForClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildpackBindings",
@@ -1619,7 +1567,7 @@ export type BuildpackBindingListForClusterInput =
 
 // Output Schema
 export const BuildpackBindingListForClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1663,13 +1611,13 @@ export type BuildpackBindingListForClusterOutput =
  * Get collection of buildpack bindings under all builders.
  */
 export const BuildpackBindingListForCluster =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BuildpackBindingListForClusterInput,
     outputSchema: BuildpackBindingListForClusterOutput,
   }));
 // Input Schema
 export const BuildServiceAgentPoolGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/agentPools/{agentPoolName}",
@@ -1680,7 +1628,7 @@ export type BuildServiceAgentPoolGetInput =
 
 // Output Schema
 export const BuildServiceAgentPoolGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1706,15 +1654,13 @@ export type BuildServiceAgentPoolGetOutput =
 /**
  * Get build service agent pool.
  */
-export const BuildServiceAgentPoolGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BuildServiceAgentPoolGetInput,
-    outputSchema: BuildServiceAgentPoolGetOutput,
-  }),
-);
+export const BuildServiceAgentPoolGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BuildServiceAgentPoolGetInput,
+  outputSchema: BuildServiceAgentPoolGetOutput,
+}));
 // Input Schema
 export const BuildServiceAgentPoolListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/agentPools",
@@ -1725,7 +1671,7 @@ export type BuildServiceAgentPoolListInput =
 
 // Output Schema
 export const BuildServiceAgentPoolListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1768,15 +1714,13 @@ export type BuildServiceAgentPoolListOutput =
 /**
  * List build service agent pool.
  */
-export const BuildServiceAgentPoolList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BuildServiceAgentPoolListInput,
-    outputSchema: BuildServiceAgentPoolListOutput,
-  }),
-);
+export const BuildServiceAgentPoolList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BuildServiceAgentPoolListInput,
+  outputSchema: BuildServiceAgentPoolListOutput,
+}));
 // Input Schema
 export const BuildServiceAgentPoolUpdatePutInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/agentPools/{agentPoolName}",
@@ -1787,7 +1731,7 @@ export type BuildServiceAgentPoolUpdatePutInput =
 
 // Output Schema
 export const BuildServiceAgentPoolUpdatePutOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1814,13 +1758,13 @@ export type BuildServiceAgentPoolUpdatePutOutput =
  * Create or update build service agent pool.
  */
 export const BuildServiceAgentPoolUpdatePut =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BuildServiceAgentPoolUpdatePutInput,
     outputSchema: BuildServiceAgentPoolUpdatePutOutput,
   }));
 // Input Schema
 export const BuildServiceBuilderCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}",
@@ -1831,7 +1775,7 @@ export type BuildServiceBuilderCreateOrUpdateInput =
 
 // Output Schema
 export const BuildServiceBuilderCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1858,13 +1802,13 @@ export type BuildServiceBuilderCreateOrUpdateOutput =
  * Create or update a KPack builder.
  */
 export const BuildServiceBuilderCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BuildServiceBuilderCreateOrUpdateInput,
     outputSchema: BuildServiceBuilderCreateOrUpdateOutput,
   }));
 // Input Schema
 export const BuildServiceBuilderDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}",
@@ -1874,8 +1818,7 @@ export type BuildServiceBuilderDeleteInput =
   typeof BuildServiceBuilderDeleteInput.Type;
 
 // Output Schema
-export const BuildServiceBuilderDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const BuildServiceBuilderDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type BuildServiceBuilderDeleteOutput =
   typeof BuildServiceBuilderDeleteOutput.Type;
 
@@ -1883,15 +1826,13 @@ export type BuildServiceBuilderDeleteOutput =
 /**
  * Delete a KPack builder.
  */
-export const BuildServiceBuilderDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BuildServiceBuilderDeleteInput,
-    outputSchema: BuildServiceBuilderDeleteOutput,
-  }),
-);
+export const BuildServiceBuilderDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BuildServiceBuilderDeleteInput,
+  outputSchema: BuildServiceBuilderDeleteOutput,
+}));
 // Input Schema
 export const BuildServiceBuilderGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}",
@@ -1902,7 +1843,7 @@ export type BuildServiceBuilderGetInput =
 
 // Output Schema
 export const BuildServiceBuilderGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1928,15 +1869,13 @@ export type BuildServiceBuilderGetOutput =
 /**
  * Get a KPack builder.
  */
-export const BuildServiceBuilderGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BuildServiceBuilderGetInput,
-    outputSchema: BuildServiceBuilderGetOutput,
-  }),
-);
+export const BuildServiceBuilderGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BuildServiceBuilderGetInput,
+  outputSchema: BuildServiceBuilderGetOutput,
+}));
 // Input Schema
 export const BuildServiceBuilderListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders",
@@ -1947,7 +1886,7 @@ export type BuildServiceBuilderListInput =
 
 // Output Schema
 export const BuildServiceBuilderListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1990,15 +1929,13 @@ export type BuildServiceBuilderListOutput =
 /**
  * List KPack builders result.
  */
-export const BuildServiceBuilderList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BuildServiceBuilderListInput,
-    outputSchema: BuildServiceBuilderListOutput,
-  }),
-);
+export const BuildServiceBuilderList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BuildServiceBuilderListInput,
+  outputSchema: BuildServiceBuilderListOutput,
+}));
 // Input Schema
 export const BuildServiceBuilderListDeploymentsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}/listUsingDeployments",
@@ -2009,7 +1946,7 @@ export type BuildServiceBuilderListDeploymentsInput =
 
 // Output Schema
 export const BuildServiceBuilderListDeploymentsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deployments: Schema.optional(Schema.Array(Schema.String)),
   });
 export type BuildServiceBuilderListDeploymentsOutput =
@@ -2020,13 +1957,13 @@ export type BuildServiceBuilderListDeploymentsOutput =
  * List deployments that are using the builder.
  */
 export const BuildServiceBuilderListDeployments =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BuildServiceBuilderListDeploymentsInput,
     outputSchema: BuildServiceBuilderListDeploymentsOutput,
   }));
 // Input Schema
 export const BuildServiceCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}",
@@ -2037,7 +1974,7 @@ export type BuildServiceCreateOrUpdateInput =
 
 // Output Schema
 export const BuildServiceCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2063,15 +2000,13 @@ export type BuildServiceCreateOrUpdateOutput =
 /**
  * Create a build service resource.
  */
-export const BuildServiceCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BuildServiceCreateOrUpdateInput,
-    outputSchema: BuildServiceCreateOrUpdateOutput,
-  }),
-);
+export const BuildServiceCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BuildServiceCreateOrUpdateInput,
+  outputSchema: BuildServiceCreateOrUpdateOutput,
+}));
 // Input Schema
 export const BuildServiceCreateOrUpdateBuildInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds/{buildName}",
@@ -2082,7 +2017,7 @@ export type BuildServiceCreateOrUpdateBuildInput =
 
 // Output Schema
 export const BuildServiceCreateOrUpdateBuildOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2109,13 +2044,13 @@ export type BuildServiceCreateOrUpdateBuildOutput =
  * Create or update a KPack build.
  */
 export const BuildServiceCreateOrUpdateBuild =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BuildServiceCreateOrUpdateBuildInput,
     outputSchema: BuildServiceCreateOrUpdateBuildOutput,
   }));
 // Input Schema
 export const BuildServiceDeleteBuildInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds/{buildName}",
@@ -2125,8 +2060,7 @@ export type BuildServiceDeleteBuildInput =
   typeof BuildServiceDeleteBuildInput.Type;
 
 // Output Schema
-export const BuildServiceDeleteBuildOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const BuildServiceDeleteBuildOutput = /*@__PURE__*/ Schema.Void;
 export type BuildServiceDeleteBuildOutput =
   typeof BuildServiceDeleteBuildOutput.Type;
 
@@ -2134,15 +2068,13 @@ export type BuildServiceDeleteBuildOutput =
 /**
  * delete a KPack build.
  */
-export const BuildServiceDeleteBuild = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BuildServiceDeleteBuildInput,
-    outputSchema: BuildServiceDeleteBuildOutput,
-  }),
-);
+export const BuildServiceDeleteBuild = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BuildServiceDeleteBuildInput,
+  outputSchema: BuildServiceDeleteBuildOutput,
+}));
 // Input Schema
 export const BuildServiceGetBuildInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds/{buildName}",
@@ -2152,7 +2084,7 @@ export type BuildServiceGetBuildInput = typeof BuildServiceGetBuildInput.Type;
 
 // Output Schema
 export const BuildServiceGetBuildOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2177,15 +2109,13 @@ export type BuildServiceGetBuildOutput = typeof BuildServiceGetBuildOutput.Type;
 /**
  * Get a KPack build.
  */
-export const BuildServiceGetBuild = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BuildServiceGetBuildInput,
-    outputSchema: BuildServiceGetBuildOutput,
-  }),
-);
+export const BuildServiceGetBuild = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BuildServiceGetBuildInput,
+  outputSchema: BuildServiceGetBuildOutput,
+}));
 // Input Schema
 export const BuildServiceGetBuildResultInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds/{buildName}/results/{buildResultName}",
@@ -2196,7 +2126,7 @@ export type BuildServiceGetBuildResultInput =
 
 // Output Schema
 export const BuildServiceGetBuildResultOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2222,15 +2152,13 @@ export type BuildServiceGetBuildResultOutput =
 /**
  * Get a KPack build result.
  */
-export const BuildServiceGetBuildResult = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BuildServiceGetBuildResultInput,
-    outputSchema: BuildServiceGetBuildResultOutput,
-  }),
-);
+export const BuildServiceGetBuildResult = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BuildServiceGetBuildResultInput,
+  outputSchema: BuildServiceGetBuildResultOutput,
+}));
 // Input Schema
 export const BuildServiceGetBuildResultLogInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds/{buildName}/results/{buildResultName}/getLogFileUrl",
@@ -2241,7 +2169,7 @@ export type BuildServiceGetBuildResultLogInput =
 
 // Output Schema
 export const BuildServiceGetBuildResultLogOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     blobUrl: Schema.optional(Schema.String),
   });
 export type BuildServiceGetBuildResultLogOutput =
@@ -2252,13 +2180,13 @@ export type BuildServiceGetBuildResultLogOutput =
  * Get a KPack build result log download URL.
  */
 export const BuildServiceGetBuildResultLog =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BuildServiceGetBuildResultLogInput,
     outputSchema: BuildServiceGetBuildResultLogOutput,
   }));
 // Input Schema
 export const BuildServiceGetBuildServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}",
@@ -2269,7 +2197,7 @@ export type BuildServiceGetBuildServiceInput =
 
 // Output Schema
 export const BuildServiceGetBuildServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2295,15 +2223,13 @@ export type BuildServiceGetBuildServiceOutput =
 /**
  * Get a build service resource.
  */
-export const BuildServiceGetBuildService = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BuildServiceGetBuildServiceInput,
-    outputSchema: BuildServiceGetBuildServiceOutput,
-  }),
-);
+export const BuildServiceGetBuildService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BuildServiceGetBuildServiceInput,
+  outputSchema: BuildServiceGetBuildServiceOutput,
+}));
 // Input Schema
 export const BuildServiceGetResourceUploadUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/getResourceUploadUrl",
@@ -2314,7 +2240,7 @@ export type BuildServiceGetResourceUploadUrlInput =
 
 // Output Schema
 export const BuildServiceGetResourceUploadUrlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     relativePath: Schema.optional(Schema.String),
     uploadUrl: Schema.optional(Schema.String),
   });
@@ -2326,13 +2252,13 @@ export type BuildServiceGetResourceUploadUrlOutput =
  * Get an resource upload URL for build service, which may be artifacts or source archive.
  */
 export const BuildServiceGetResourceUploadUrl =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BuildServiceGetResourceUploadUrlInput,
     outputSchema: BuildServiceGetResourceUploadUrlOutput,
   }));
 // Input Schema
 export const BuildServiceGetSupportedBuildpackInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/supportedBuildpacks/{buildpackName}",
@@ -2343,7 +2269,7 @@ export type BuildServiceGetSupportedBuildpackInput =
 
 // Output Schema
 export const BuildServiceGetSupportedBuildpackOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2370,13 +2296,13 @@ export type BuildServiceGetSupportedBuildpackOutput =
  * Get the supported buildpack resource.
  */
 export const BuildServiceGetSupportedBuildpack =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BuildServiceGetSupportedBuildpackInput,
     outputSchema: BuildServiceGetSupportedBuildpackOutput,
   }));
 // Input Schema
 export const BuildServiceGetSupportedStackInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/supportedStacks/{stackName}",
@@ -2387,7 +2313,7 @@ export type BuildServiceGetSupportedStackInput =
 
 // Output Schema
 export const BuildServiceGetSupportedStackOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2414,13 +2340,13 @@ export type BuildServiceGetSupportedStackOutput =
  * Get the supported stack resource.
  */
 export const BuildServiceGetSupportedStack =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BuildServiceGetSupportedStackInput,
     outputSchema: BuildServiceGetSupportedStackOutput,
   }));
 // Input Schema
 export const BuildServiceListBuildResultsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds/{buildName}/results",
@@ -2431,7 +2357,7 @@ export type BuildServiceListBuildResultsInput =
 
 // Output Schema
 export const BuildServiceListBuildResultsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2475,13 +2401,13 @@ export type BuildServiceListBuildResultsOutput =
  * List KPack build results.
  */
 export const BuildServiceListBuildResults =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BuildServiceListBuildResultsInput,
     outputSchema: BuildServiceListBuildResultsOutput,
   }));
 // Input Schema
 export const BuildServiceListBuildsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds",
@@ -2492,7 +2418,7 @@ export type BuildServiceListBuildsInput =
 
 // Output Schema
 export const BuildServiceListBuildsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2535,15 +2461,13 @@ export type BuildServiceListBuildsOutput =
 /**
  * List KPack builds.
  */
-export const BuildServiceListBuilds = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BuildServiceListBuildsInput,
-    outputSchema: BuildServiceListBuildsOutput,
-  }),
-);
+export const BuildServiceListBuilds = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BuildServiceListBuildsInput,
+  outputSchema: BuildServiceListBuildsOutput,
+}));
 // Input Schema
 export const BuildServiceListBuildServicesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices",
@@ -2554,7 +2478,7 @@ export type BuildServiceListBuildServicesInput =
 
 // Output Schema
 export const BuildServiceListBuildServicesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2598,13 +2522,13 @@ export type BuildServiceListBuildServicesOutput =
  * List build services resource.
  */
 export const BuildServiceListBuildServices =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BuildServiceListBuildServicesInput,
     outputSchema: BuildServiceListBuildServicesOutput,
   }));
 // Input Schema
 export const BuildServiceListSupportedBuildpacksInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/supportedBuildpacks",
@@ -2615,7 +2539,7 @@ export type BuildServiceListSupportedBuildpacksInput =
 
 // Output Schema
 export const BuildServiceListSupportedBuildpacksOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2659,13 +2583,13 @@ export type BuildServiceListSupportedBuildpacksOutput =
  * Get all supported buildpacks.
  */
 export const BuildServiceListSupportedBuildpacks =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BuildServiceListSupportedBuildpacksInput,
     outputSchema: BuildServiceListSupportedBuildpacksOutput,
   }));
 // Input Schema
 export const BuildServiceListSupportedStacksInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/supportedStacks",
@@ -2676,7 +2600,7 @@ export type BuildServiceListSupportedStacksInput =
 
 // Output Schema
 export const BuildServiceListSupportedStacksOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2720,13 +2644,13 @@ export type BuildServiceListSupportedStacksOutput =
  * Get all supported stacks.
  */
 export const BuildServiceListSupportedStacks =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BuildServiceListSupportedStacksInput,
     outputSchema: BuildServiceListSupportedStacksOutput,
   }));
 // Input Schema
 export const CertificatesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/certificates/{certificateName}",
@@ -2737,7 +2661,7 @@ export type CertificatesCreateOrUpdateInput =
 
 // Output Schema
 export const CertificatesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2763,15 +2687,13 @@ export type CertificatesCreateOrUpdateOutput =
 /**
  * Create or update certificate resource.
  */
-export const CertificatesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CertificatesCreateOrUpdateInput,
-    outputSchema: CertificatesCreateOrUpdateOutput,
-  }),
-);
+export const CertificatesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CertificatesCreateOrUpdateInput,
+  outputSchema: CertificatesCreateOrUpdateOutput,
+}));
 // Input Schema
 export const CertificatesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/certificates/{certificateName}",
@@ -2780,21 +2702,19 @@ export const CertificatesDeleteInput =
 export type CertificatesDeleteInput = typeof CertificatesDeleteInput.Type;
 
 // Output Schema
-export const CertificatesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CertificatesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type CertificatesDeleteOutput = typeof CertificatesDeleteOutput.Type;
 
 // The operation
 /**
  * Delete the certificate resource.
  */
-export const CertificatesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CertificatesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: CertificatesDeleteInput,
   outputSchema: CertificatesDeleteOutput,
 }));
 // Input Schema
-export const CertificatesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const CertificatesGetInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/certificates/{certificateName}",
@@ -2803,7 +2723,7 @@ export const CertificatesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type CertificatesGetInput = typeof CertificatesGetInput.Type;
 
 // Output Schema
-export const CertificatesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CertificatesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2828,14 +2748,12 @@ export type CertificatesGetOutput = typeof CertificatesGetOutput.Type;
 /**
  * Get the certificate resource.
  */
-export const CertificatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CertificatesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: CertificatesGetInput,
   outputSchema: CertificatesGetOutput,
 }));
 // Input Schema
-export const CertificatesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const CertificatesListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/certificates",
@@ -2844,58 +2762,54 @@ export const CertificatesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type CertificatesListInput = typeof CertificatesListInput.Type;
 
 // Output Schema
-export const CertificatesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const CertificatesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  },
-);
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type CertificatesListOutput = typeof CertificatesListOutput.Type;
 
 // The operation
 /**
  * List all the certificates of one user.
  */
-export const CertificatesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CertificatesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: CertificatesListInput,
   outputSchema: CertificatesListOutput,
 }));
 // Input Schema
-export const ConfigServersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ConfigServersGetInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configServers/default",
@@ -2904,40 +2818,38 @@ export const ConfigServersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ConfigServersGetInput = typeof ConfigServersGetInput.Type;
 
 // Output Schema
-export const ConfigServersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const ConfigServersGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type ConfigServersGetOutput = typeof ConfigServersGetOutput.Type;
 
 // The operation
 /**
  * Get the config server and its properties.
  */
-export const ConfigServersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConfigServersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConfigServersGetInput,
   outputSchema: ConfigServersGetOutput,
 }));
 // Input Schema
 export const ConfigServersUpdatePatchInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configServers/default",
@@ -2948,7 +2860,7 @@ export type ConfigServersUpdatePatchInput =
 
 // Output Schema
 export const ConfigServersUpdatePatchOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2974,15 +2886,13 @@ export type ConfigServersUpdatePatchOutput =
 /**
  * Update the config server.
  */
-export const ConfigServersUpdatePatch = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConfigServersUpdatePatchInput,
-    outputSchema: ConfigServersUpdatePatchOutput,
-  }),
-);
+export const ConfigServersUpdatePatch = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigServersUpdatePatchInput,
+  outputSchema: ConfigServersUpdatePatchOutput,
+}));
 // Input Schema
 export const ConfigServersUpdatePutInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configServers/default",
@@ -2993,7 +2903,7 @@ export type ConfigServersUpdatePutInput =
 
 // Output Schema
 export const ConfigServersUpdatePutOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3019,15 +2929,13 @@ export type ConfigServersUpdatePutOutput =
 /**
  * Update the config server.
  */
-export const ConfigServersUpdatePut = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConfigServersUpdatePutInput,
-    outputSchema: ConfigServersUpdatePutOutput,
-  }),
-);
+export const ConfigServersUpdatePut = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigServersUpdatePutInput,
+  outputSchema: ConfigServersUpdatePutOutput,
+}));
 // Input Schema
 export const ConfigServersValidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configServers/validate",
@@ -3037,7 +2945,7 @@ export type ConfigServersValidateInput = typeof ConfigServersValidateInput.Type;
 
 // Output Schema
 export const ConfigServersValidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     isValid: Schema.optional(Schema.Boolean),
     details: Schema.optional(
       Schema.Array(
@@ -3056,15 +2964,13 @@ export type ConfigServersValidateOutput =
 /**
  * Check if the config server settings are valid.
  */
-export const ConfigServersValidate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConfigServersValidateInput,
-    outputSchema: ConfigServersValidateOutput,
-  }),
-);
+export const ConfigServersValidate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigServersValidateInput,
+  outputSchema: ConfigServersValidateOutput,
+}));
 // Input Schema
 export const ConfigurationServicesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configurationServices/{configurationServiceName}",
@@ -3075,7 +2981,7 @@ export type ConfigurationServicesCreateOrUpdateInput =
 
 // Output Schema
 export const ConfigurationServicesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3102,13 +3008,13 @@ export type ConfigurationServicesCreateOrUpdateOutput =
  * Create the default Application Configuration Service or update the existing Application Configuration Service.
  */
 export const ConfigurationServicesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationServicesCreateOrUpdateInput,
     outputSchema: ConfigurationServicesCreateOrUpdateOutput,
   }));
 // Input Schema
 export const ConfigurationServicesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configurationServices/{configurationServiceName}",
@@ -3118,8 +3024,7 @@ export type ConfigurationServicesDeleteInput =
   typeof ConfigurationServicesDeleteInput.Type;
 
 // Output Schema
-export const ConfigurationServicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ConfigurationServicesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ConfigurationServicesDeleteOutput =
   typeof ConfigurationServicesDeleteOutput.Type;
 
@@ -3127,15 +3032,13 @@ export type ConfigurationServicesDeleteOutput =
 /**
  * Disable the default Application Configuration Service.
  */
-export const ConfigurationServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConfigurationServicesDeleteInput,
-    outputSchema: ConfigurationServicesDeleteOutput,
-  }),
-);
+export const ConfigurationServicesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigurationServicesDeleteInput,
+  outputSchema: ConfigurationServicesDeleteOutput,
+}));
 // Input Schema
 export const ConfigurationServicesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configurationServices/{configurationServiceName}",
@@ -3146,7 +3049,7 @@ export type ConfigurationServicesGetInput =
 
 // Output Schema
 export const ConfigurationServicesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3172,15 +3075,13 @@ export type ConfigurationServicesGetOutput =
 /**
  * Get the Application Configuration Service and its properties.
  */
-export const ConfigurationServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConfigurationServicesGetInput,
-    outputSchema: ConfigurationServicesGetOutput,
-  }),
-);
+export const ConfigurationServicesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigurationServicesGetInput,
+  outputSchema: ConfigurationServicesGetOutput,
+}));
 // Input Schema
 export const ConfigurationServicesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configurationServices",
@@ -3191,7 +3092,7 @@ export type ConfigurationServicesListInput =
 
 // Output Schema
 export const ConfigurationServicesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3234,15 +3135,13 @@ export type ConfigurationServicesListOutput =
 /**
  * Handles requests to list all resources in a Service.
  */
-export const ConfigurationServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConfigurationServicesListInput,
-    outputSchema: ConfigurationServicesListOutput,
-  }),
-);
+export const ConfigurationServicesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigurationServicesListInput,
+  outputSchema: ConfigurationServicesListOutput,
+}));
 // Input Schema
 export const ConfigurationServicesValidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configurationServices/{configurationServiceName}/validate",
@@ -3253,7 +3152,7 @@ export type ConfigurationServicesValidateInput =
 
 // Output Schema
 export const ConfigurationServicesValidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gitPropertyValidationResult: Schema.optional(
       Schema.Struct({
         isValid: Schema.optional(Schema.Boolean),
@@ -3276,13 +3175,13 @@ export type ConfigurationServicesValidateOutput =
  * Check if the Application Configuration Service settings are valid.
  */
 export const ConfigurationServicesValidate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationServicesValidateInput,
     outputSchema: ConfigurationServicesValidateOutput,
   }));
 // Input Schema
 export const ConfigurationServicesValidateResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configurationServices/{configurationServiceName}/validateResource",
@@ -3293,7 +3192,7 @@ export type ConfigurationServicesValidateResourceInput =
 
 // Output Schema
 export const ConfigurationServicesValidateResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gitPropertyValidationResult: Schema.optional(
       Schema.Struct({
         isValid: Schema.optional(Schema.Boolean),
@@ -3316,13 +3215,13 @@ export type ConfigurationServicesValidateResourceOutput =
  * Check if the Application Configuration Service resource is valid.
  */
 export const ConfigurationServicesValidateResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationServicesValidateResourceInput,
     outputSchema: ConfigurationServicesValidateResourceOutput,
   }));
 // Input Schema
 export const ContainerRegistriesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/containerRegistries/{containerRegistryName}",
@@ -3333,7 +3232,7 @@ export type ContainerRegistriesCreateOrUpdateInput =
 
 // Output Schema
 export const ContainerRegistriesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3360,13 +3259,13 @@ export type ContainerRegistriesCreateOrUpdateOutput =
  * Create or update container registry resource.
  */
 export const ContainerRegistriesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ContainerRegistriesCreateOrUpdateInput,
     outputSchema: ContainerRegistriesCreateOrUpdateOutput,
   }));
 // Input Schema
 export const ContainerRegistriesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/containerRegistries/{containerRegistryName}",
@@ -3376,8 +3275,7 @@ export type ContainerRegistriesDeleteInput =
   typeof ContainerRegistriesDeleteInput.Type;
 
 // Output Schema
-export const ContainerRegistriesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ContainerRegistriesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ContainerRegistriesDeleteOutput =
   typeof ContainerRegistriesDeleteOutput.Type;
 
@@ -3385,15 +3283,13 @@ export type ContainerRegistriesDeleteOutput =
 /**
  * Delete a container registry resource.
  */
-export const ContainerRegistriesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ContainerRegistriesDeleteInput,
-    outputSchema: ContainerRegistriesDeleteOutput,
-  }),
-);
+export const ContainerRegistriesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ContainerRegistriesDeleteInput,
+  outputSchema: ContainerRegistriesDeleteOutput,
+}));
 // Input Schema
 export const ContainerRegistriesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/containerRegistries/{containerRegistryName}",
@@ -3404,7 +3300,7 @@ export type ContainerRegistriesGetInput =
 
 // Output Schema
 export const ContainerRegistriesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3430,15 +3326,13 @@ export type ContainerRegistriesGetOutput =
 /**
  * Get the container registries resource.
  */
-export const ContainerRegistriesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ContainerRegistriesGetInput,
-    outputSchema: ContainerRegistriesGetOutput,
-  }),
-);
+export const ContainerRegistriesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ContainerRegistriesGetInput,
+  outputSchema: ContainerRegistriesGetOutput,
+}));
 // Input Schema
 export const ContainerRegistriesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/containerRegistries",
@@ -3449,7 +3343,7 @@ export type ContainerRegistriesListInput =
 
 // Output Schema
 export const ContainerRegistriesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3492,15 +3386,13 @@ export type ContainerRegistriesListOutput =
 /**
  * List container registries resource.
  */
-export const ContainerRegistriesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ContainerRegistriesListInput,
-    outputSchema: ContainerRegistriesListOutput,
-  }),
-);
+export const ContainerRegistriesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ContainerRegistriesListInput,
+  outputSchema: ContainerRegistriesListOutput,
+}));
 // Input Schema
 export const ContainerRegistriesValidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/containerRegistries/{containerRegistryName}/validate",
@@ -3511,7 +3403,7 @@ export type ContainerRegistriesValidateInput =
 
 // Output Schema
 export const ContainerRegistriesValidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     isValid: Schema.optional(Schema.Boolean),
     message: Schema.optional(Schema.String),
   });
@@ -3522,15 +3414,13 @@ export type ContainerRegistriesValidateOutput =
 /**
  * Check if the container registry properties are valid.
  */
-export const ContainerRegistriesValidate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ContainerRegistriesValidateInput,
-    outputSchema: ContainerRegistriesValidateOutput,
-  }),
-);
+export const ContainerRegistriesValidate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ContainerRegistriesValidateInput,
+  outputSchema: ContainerRegistriesValidateOutput,
+}));
 // Input Schema
 export const CustomDomainsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/domains/{domainName}",
@@ -3541,7 +3431,7 @@ export type CustomDomainsCreateOrUpdateInput =
 
 // Output Schema
 export const CustomDomainsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3567,15 +3457,13 @@ export type CustomDomainsCreateOrUpdateOutput =
 /**
  * Create or update custom domain of one lifecycle application.
  */
-export const CustomDomainsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CustomDomainsCreateOrUpdateInput,
-    outputSchema: CustomDomainsCreateOrUpdateOutput,
-  }),
-);
+export const CustomDomainsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CustomDomainsCreateOrUpdateInput,
+  outputSchema: CustomDomainsCreateOrUpdateOutput,
+}));
 // Input Schema
 export const CustomDomainsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/domains/{domainName}",
@@ -3584,22 +3472,19 @@ export const CustomDomainsDeleteInput =
 export type CustomDomainsDeleteInput = typeof CustomDomainsDeleteInput.Type;
 
 // Output Schema
-export const CustomDomainsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CustomDomainsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type CustomDomainsDeleteOutput = typeof CustomDomainsDeleteOutput.Type;
 
 // The operation
 /**
  * Delete the custom domain of one lifecycle application.
  */
-export const CustomDomainsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CustomDomainsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: CustomDomainsDeleteInput,
   outputSchema: CustomDomainsDeleteOutput,
 }));
 // Input Schema
-export const CustomDomainsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const CustomDomainsGetInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/domains/{domainName}",
@@ -3608,41 +3493,37 @@ export const CustomDomainsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type CustomDomainsGetInput = typeof CustomDomainsGetInput.Type;
 
 // Output Schema
-export const CustomDomainsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const CustomDomainsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type CustomDomainsGetOutput = typeof CustomDomainsGetOutput.Type;
 
 // The operation
 /**
  * Get the custom domain of one lifecycle application.
  */
-export const CustomDomainsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CustomDomainsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: CustomDomainsGetInput,
   outputSchema: CustomDomainsGetOutput,
 }));
 // Input Schema
-export const CustomDomainsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const CustomDomainsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/domains",
@@ -3652,7 +3533,7 @@ export type CustomDomainsListInput = typeof CustomDomainsListInput.Type;
 
 // Output Schema
 export const CustomDomainsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3694,13 +3575,13 @@ export type CustomDomainsListOutput = typeof CustomDomainsListOutput.Type;
 /**
  * List the custom domains of one lifecycle application.
  */
-export const CustomDomainsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CustomDomainsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: CustomDomainsListInput,
   outputSchema: CustomDomainsListOutput,
 }));
 // Input Schema
 export const CustomDomainsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/domains/{domainName}",
@@ -3710,7 +3591,7 @@ export type CustomDomainsUpdateInput = typeof CustomDomainsUpdateInput.Type;
 
 // Output Schema
 export const CustomDomainsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3735,13 +3616,13 @@ export type CustomDomainsUpdateOutput = typeof CustomDomainsUpdateOutput.Type;
 /**
  * Update custom domain of one lifecycle application.
  */
-export const CustomDomainsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CustomDomainsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: CustomDomainsUpdateInput,
   outputSchema: CustomDomainsUpdateOutput,
 }));
 // Input Schema
 export const CustomizedAcceleratorsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/customizedAccelerators/{customizedAcceleratorName}",
@@ -3752,7 +3633,7 @@ export type CustomizedAcceleratorsCreateOrUpdateInput =
 
 // Output Schema
 export const CustomizedAcceleratorsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3779,13 +3660,13 @@ export type CustomizedAcceleratorsCreateOrUpdateOutput =
  * Create or update the customized accelerator.
  */
 export const CustomizedAcceleratorsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CustomizedAcceleratorsCreateOrUpdateInput,
     outputSchema: CustomizedAcceleratorsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const CustomizedAcceleratorsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/customizedAccelerators/{customizedAcceleratorName}",
@@ -3795,8 +3676,7 @@ export type CustomizedAcceleratorsDeleteInput =
   typeof CustomizedAcceleratorsDeleteInput.Type;
 
 // Output Schema
-export const CustomizedAcceleratorsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CustomizedAcceleratorsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type CustomizedAcceleratorsDeleteOutput =
   typeof CustomizedAcceleratorsDeleteOutput.Type;
 
@@ -3805,13 +3685,13 @@ export type CustomizedAcceleratorsDeleteOutput =
  * Delete the customized accelerator.
  */
 export const CustomizedAcceleratorsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CustomizedAcceleratorsDeleteInput,
     outputSchema: CustomizedAcceleratorsDeleteOutput,
   }));
 // Input Schema
 export const CustomizedAcceleratorsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/customizedAccelerators/{customizedAcceleratorName}",
@@ -3822,7 +3702,7 @@ export type CustomizedAcceleratorsGetInput =
 
 // Output Schema
 export const CustomizedAcceleratorsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3848,15 +3728,13 @@ export type CustomizedAcceleratorsGetOutput =
 /**
  * Get the customized accelerator.
  */
-export const CustomizedAcceleratorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CustomizedAcceleratorsGetInput,
-    outputSchema: CustomizedAcceleratorsGetOutput,
-  }),
-);
+export const CustomizedAcceleratorsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CustomizedAcceleratorsGetInput,
+  outputSchema: CustomizedAcceleratorsGetOutput,
+}));
 // Input Schema
 export const CustomizedAcceleratorsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/customizedAccelerators",
@@ -3867,7 +3745,7 @@ export type CustomizedAcceleratorsListInput =
 
 // Output Schema
 export const CustomizedAcceleratorsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3910,15 +3788,13 @@ export type CustomizedAcceleratorsListOutput =
 /**
  * Handle requests to list all customized accelerators.
  */
-export const CustomizedAcceleratorsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CustomizedAcceleratorsListInput,
-    outputSchema: CustomizedAcceleratorsListOutput,
-  }),
-);
+export const CustomizedAcceleratorsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CustomizedAcceleratorsListInput,
+  outputSchema: CustomizedAcceleratorsListOutput,
+}));
 // Input Schema
 export const CustomizedAcceleratorsValidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/customizedAccelerators/{customizedAcceleratorName}/validate",
@@ -3929,7 +3805,7 @@ export type CustomizedAcceleratorsValidateInput =
 
 // Output Schema
 export const CustomizedAcceleratorsValidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.Literals(["Valid", "Invalid"])),
     errorMessage: Schema.optional(Schema.String),
   });
@@ -3941,13 +3817,13 @@ export type CustomizedAcceleratorsValidateOutput =
  * Check the customized accelerator are valid.
  */
 export const CustomizedAcceleratorsValidate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CustomizedAcceleratorsValidateInput,
     outputSchema: CustomizedAcceleratorsValidateOutput,
   }));
 // Input Schema
 export const DeploymentsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}",
@@ -3958,7 +3834,7 @@ export type DeploymentsCreateOrUpdateInput =
 
 // Output Schema
 export const DeploymentsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3984,16 +3860,12 @@ export type DeploymentsCreateOrUpdateOutput =
 /**
  * Create a new Deployment or update an exiting Deployment.
  */
-export const DeploymentsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeploymentsCreateOrUpdateInput,
-    outputSchema: DeploymentsCreateOrUpdateOutput,
-  }),
-);
+export const DeploymentsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeploymentsCreateOrUpdateInput,
+  outputSchema: DeploymentsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const DeploymentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const DeploymentsDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}",
@@ -4002,20 +3874,20 @@ export const DeploymentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type DeploymentsDeleteInput = typeof DeploymentsDeleteInput.Type;
 
 // Output Schema
-export const DeploymentsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeploymentsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type DeploymentsDeleteOutput = typeof DeploymentsDeleteOutput.Type;
 
 // The operation
 /**
  * Operation to delete a Deployment.
  */
-export const DeploymentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeploymentsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeploymentsDeleteInput,
   outputSchema: DeploymentsDeleteOutput,
 }));
 // Input Schema
 export const DeploymentsDisableRemoteDebuggingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/disableRemoteDebugging",
@@ -4026,7 +3898,7 @@ export type DeploymentsDisableRemoteDebuggingInput =
 
 // Output Schema
 export const DeploymentsDisableRemoteDebuggingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     port: Schema.optional(Schema.Number),
     enabled: Schema.optional(Schema.Boolean),
   });
@@ -4038,13 +3910,13 @@ export type DeploymentsDisableRemoteDebuggingOutput =
  * Disable remote debugging.
  */
 export const DeploymentsDisableRemoteDebugging =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeploymentsDisableRemoteDebuggingInput,
     outputSchema: DeploymentsDisableRemoteDebuggingOutput,
   }));
 // Input Schema
 export const DeploymentsEnableRemoteDebuggingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/enableRemoteDebugging",
@@ -4055,7 +3927,7 @@ export type DeploymentsEnableRemoteDebuggingInput =
 
 // Output Schema
 export const DeploymentsEnableRemoteDebuggingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     port: Schema.optional(Schema.Number),
     enabled: Schema.optional(Schema.Boolean),
   });
@@ -4067,13 +3939,13 @@ export type DeploymentsEnableRemoteDebuggingOutput =
  * Enable remote debugging.
  */
 export const DeploymentsEnableRemoteDebugging =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeploymentsEnableRemoteDebuggingInput,
     outputSchema: DeploymentsEnableRemoteDebuggingOutput,
   }));
 // Input Schema
 export const DeploymentsGenerateHeapDumpInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/generateHeapDump",
@@ -4083,8 +3955,7 @@ export type DeploymentsGenerateHeapDumpInput =
   typeof DeploymentsGenerateHeapDumpInput.Type;
 
 // Output Schema
-export const DeploymentsGenerateHeapDumpOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeploymentsGenerateHeapDumpOutput = /*@__PURE__*/ Schema.Void;
 export type DeploymentsGenerateHeapDumpOutput =
   typeof DeploymentsGenerateHeapDumpOutput.Type;
 
@@ -4092,15 +3963,13 @@ export type DeploymentsGenerateHeapDumpOutput =
 /**
  * Generate Heap Dump
  */
-export const DeploymentsGenerateHeapDump = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeploymentsGenerateHeapDumpInput,
-    outputSchema: DeploymentsGenerateHeapDumpOutput,
-  }),
-);
+export const DeploymentsGenerateHeapDump = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeploymentsGenerateHeapDumpInput,
+  outputSchema: DeploymentsGenerateHeapDumpOutput,
+}));
 // Input Schema
 export const DeploymentsGenerateThreadDumpInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/generateThreadDump",
@@ -4110,8 +3979,7 @@ export type DeploymentsGenerateThreadDumpInput =
   typeof DeploymentsGenerateThreadDumpInput.Type;
 
 // Output Schema
-export const DeploymentsGenerateThreadDumpOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeploymentsGenerateThreadDumpOutput = /*@__PURE__*/ Schema.Void;
 export type DeploymentsGenerateThreadDumpOutput =
   typeof DeploymentsGenerateThreadDumpOutput.Type;
 
@@ -4120,14 +3988,12 @@ export type DeploymentsGenerateThreadDumpOutput =
  * Generate Thread Dump
  */
 export const DeploymentsGenerateThreadDump =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeploymentsGenerateThreadDumpInput,
     outputSchema: DeploymentsGenerateThreadDumpOutput,
   }));
 // Input Schema
-export const DeploymentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const DeploymentsGetInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}",
@@ -4136,7 +4002,7 @@ export const DeploymentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type DeploymentsGetInput = typeof DeploymentsGetInput.Type;
 
 // Output Schema
-export const DeploymentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeploymentsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4161,13 +4027,13 @@ export type DeploymentsGetOutput = typeof DeploymentsGetOutput.Type;
 /**
  * Get a Deployment and its properties.
  */
-export const DeploymentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeploymentsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeploymentsGetInput,
   outputSchema: DeploymentsGetOutput,
 }));
 // Input Schema
 export const DeploymentsGetLogFileUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/getLogFileUrl",
@@ -4178,7 +4044,7 @@ export type DeploymentsGetLogFileUrlInput =
 
 // Output Schema
 export const DeploymentsGetLogFileUrlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     url: Schema.String,
   });
 export type DeploymentsGetLogFileUrlOutput =
@@ -4188,15 +4054,13 @@ export type DeploymentsGetLogFileUrlOutput =
 /**
  * Get deployment log file URL
  */
-export const DeploymentsGetLogFileUrl = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeploymentsGetLogFileUrlInput,
-    outputSchema: DeploymentsGetLogFileUrlOutput,
-  }),
-);
+export const DeploymentsGetLogFileUrl = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeploymentsGetLogFileUrlInput,
+  outputSchema: DeploymentsGetLogFileUrlOutput,
+}));
 // Input Schema
 export const DeploymentsGetRemoteDebuggingConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/getRemoteDebuggingConfig",
@@ -4207,7 +4071,7 @@ export type DeploymentsGetRemoteDebuggingConfigInput =
 
 // Output Schema
 export const DeploymentsGetRemoteDebuggingConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     port: Schema.optional(Schema.Number),
     enabled: Schema.optional(Schema.Boolean),
   });
@@ -4219,12 +4083,12 @@ export type DeploymentsGetRemoteDebuggingConfigOutput =
  * Get remote debugging config.
  */
 export const DeploymentsGetRemoteDebuggingConfig =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeploymentsGetRemoteDebuggingConfigInput,
     outputSchema: DeploymentsGetRemoteDebuggingConfigOutput,
   }));
 // Input Schema
-export const DeploymentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeploymentsListInput = /*@__PURE__*/ Schema.Struct({
   version: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
@@ -4235,7 +4099,7 @@ export const DeploymentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeploymentsListInput = typeof DeploymentsListInput.Type;
 
 // Output Schema
-export const DeploymentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeploymentsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -4279,13 +4143,13 @@ export type DeploymentsListOutput = typeof DeploymentsListOutput.Type;
  *
  * @param version - Version of the deployments to be listed
  */
-export const DeploymentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeploymentsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeploymentsListInput,
   outputSchema: DeploymentsListOutput,
 }));
 // Input Schema
 export const DeploymentsListForClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
     $expand: Schema.optional(Schema.String),
   }).pipe(
@@ -4299,7 +4163,7 @@ export type DeploymentsListForClusterInput =
 
 // Output Schema
 export const DeploymentsListForClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4345,15 +4209,13 @@ export type DeploymentsListForClusterOutput =
  * @param version - Version of the deployments to be listed
  * @param $expand - The expand expression to apply on the operation.
  */
-export const DeploymentsListForCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeploymentsListForClusterInput,
-    outputSchema: DeploymentsListForClusterOutput,
-  }),
-);
+export const DeploymentsListForCluster = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeploymentsListForClusterInput,
+  outputSchema: DeploymentsListForClusterOutput,
+}));
 // Input Schema
 export const DeploymentsRestartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/restart",
@@ -4362,21 +4224,19 @@ export const DeploymentsRestartInput =
 export type DeploymentsRestartInput = typeof DeploymentsRestartInput.Type;
 
 // Output Schema
-export const DeploymentsRestartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeploymentsRestartOutput = /*@__PURE__*/ Schema.Void;
 export type DeploymentsRestartOutput = typeof DeploymentsRestartOutput.Type;
 
 // The operation
 /**
  * Restart the deployment.
  */
-export const DeploymentsRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeploymentsRestart = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeploymentsRestartInput,
   outputSchema: DeploymentsRestartOutput,
 }));
 // Input Schema
-export const DeploymentsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const DeploymentsStartInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/start",
@@ -4385,20 +4245,20 @@ export const DeploymentsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type DeploymentsStartInput = typeof DeploymentsStartInput.Type;
 
 // Output Schema
-export const DeploymentsStartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeploymentsStartOutput = /*@__PURE__*/ Schema.Void;
 export type DeploymentsStartOutput = typeof DeploymentsStartOutput.Type;
 
 // The operation
 /**
  * Start the deployment.
  */
-export const DeploymentsStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeploymentsStart = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeploymentsStartInput,
   outputSchema: DeploymentsStartOutput,
 }));
 // Input Schema
 export const DeploymentsStartJFRInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/startJFR",
@@ -4407,22 +4267,19 @@ export const DeploymentsStartJFRInput =
 export type DeploymentsStartJFRInput = typeof DeploymentsStartJFRInput.Type;
 
 // Output Schema
-export const DeploymentsStartJFROutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeploymentsStartJFROutput = /*@__PURE__*/ Schema.Void;
 export type DeploymentsStartJFROutput = typeof DeploymentsStartJFROutput.Type;
 
 // The operation
 /**
  * Start JFR
  */
-export const DeploymentsStartJFR = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeploymentsStartJFR = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeploymentsStartJFRInput,
   outputSchema: DeploymentsStartJFROutput,
 }));
 // Input Schema
-export const DeploymentsStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const DeploymentsStopInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/stop",
@@ -4431,21 +4288,19 @@ export const DeploymentsStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type DeploymentsStopInput = typeof DeploymentsStopInput.Type;
 
 // Output Schema
-export const DeploymentsStopOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeploymentsStopOutput = /*@__PURE__*/ Schema.Void;
 export type DeploymentsStopOutput = typeof DeploymentsStopOutput.Type;
 
 // The operation
 /**
  * Stop the deployment.
  */
-export const DeploymentsStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeploymentsStop = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeploymentsStopInput,
   outputSchema: DeploymentsStopOutput,
 }));
 // Input Schema
-export const DeploymentsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const DeploymentsUpdateInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}",
@@ -4455,7 +4310,7 @@ export type DeploymentsUpdateInput = typeof DeploymentsUpdateInput.Type;
 
 // Output Schema
 export const DeploymentsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4480,13 +4335,13 @@ export type DeploymentsUpdateOutput = typeof DeploymentsUpdateOutput.Type;
 /**
  * Operation to update an exiting Deployment.
  */
-export const DeploymentsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeploymentsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeploymentsUpdateInput,
   outputSchema: DeploymentsUpdateOutput,
 }));
 // Input Schema
 export const DevToolPortalsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/DevToolPortals/{devToolPortalName}",
@@ -4497,7 +4352,7 @@ export type DevToolPortalsCreateOrUpdateInput =
 
 // Output Schema
 export const DevToolPortalsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4524,13 +4379,13 @@ export type DevToolPortalsCreateOrUpdateOutput =
  * Create the default Dev Tool Portal or update the existing Dev Tool Portal.
  */
 export const DevToolPortalsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DevToolPortalsCreateOrUpdateInput,
     outputSchema: DevToolPortalsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const DevToolPortalsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/DevToolPortals/{devToolPortalName}",
@@ -4539,24 +4394,19 @@ export const DevToolPortalsDeleteInput =
 export type DevToolPortalsDeleteInput = typeof DevToolPortalsDeleteInput.Type;
 
 // Output Schema
-export const DevToolPortalsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DevToolPortalsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type DevToolPortalsDeleteOutput = typeof DevToolPortalsDeleteOutput.Type;
 
 // The operation
 /**
  * Disable the default Dev Tool Portal.
  */
-export const DevToolPortalsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DevToolPortalsDeleteInput,
-    outputSchema: DevToolPortalsDeleteOutput,
-  }),
-);
+export const DevToolPortalsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DevToolPortalsDeleteInput,
+  outputSchema: DevToolPortalsDeleteOutput,
+}));
 // Input Schema
-export const DevToolPortalsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const DevToolPortalsGetInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/DevToolPortals/{devToolPortalName}",
@@ -4566,7 +4416,7 @@ export type DevToolPortalsGetInput = typeof DevToolPortalsGetInput.Type;
 
 // Output Schema
 export const DevToolPortalsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4591,13 +4441,13 @@ export type DevToolPortalsGetOutput = typeof DevToolPortalsGetOutput.Type;
 /**
  * Get the Application Live  and its properties.
  */
-export const DevToolPortalsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DevToolPortalsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DevToolPortalsGetInput,
   outputSchema: DevToolPortalsGetOutput,
 }));
 // Input Schema
 export const DevToolPortalsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/devToolPortals",
@@ -4607,7 +4457,7 @@ export type DevToolPortalsListInput = typeof DevToolPortalsListInput.Type;
 
 // Output Schema
 export const DevToolPortalsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4649,13 +4499,13 @@ export type DevToolPortalsListOutput = typeof DevToolPortalsListOutput.Type;
 /**
  * Handles requests to list all resources in a Service.
  */
-export const DevToolPortalsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DevToolPortalsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: DevToolPortalsListInput,
   outputSchema: DevToolPortalsListOutput,
 }));
 // Input Schema
 export const GatewayCustomDomainsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/domains/{domainName}",
@@ -4666,7 +4516,7 @@ export type GatewayCustomDomainsCreateOrUpdateInput =
 
 // Output Schema
 export const GatewayCustomDomainsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4693,13 +4543,13 @@ export type GatewayCustomDomainsCreateOrUpdateOutput =
  * Create or update the Spring Cloud Gateway custom domain.
  */
 export const GatewayCustomDomainsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GatewayCustomDomainsCreateOrUpdateInput,
     outputSchema: GatewayCustomDomainsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const GatewayCustomDomainsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/domains/{domainName}",
@@ -4709,8 +4559,7 @@ export type GatewayCustomDomainsDeleteInput =
   typeof GatewayCustomDomainsDeleteInput.Type;
 
 // Output Schema
-export const GatewayCustomDomainsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GatewayCustomDomainsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type GatewayCustomDomainsDeleteOutput =
   typeof GatewayCustomDomainsDeleteOutput.Type;
 
@@ -4718,15 +4567,13 @@ export type GatewayCustomDomainsDeleteOutput =
 /**
  * Delete the Spring Cloud Gateway custom domain.
  */
-export const GatewayCustomDomainsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GatewayCustomDomainsDeleteInput,
-    outputSchema: GatewayCustomDomainsDeleteOutput,
-  }),
-);
+export const GatewayCustomDomainsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GatewayCustomDomainsDeleteInput,
+  outputSchema: GatewayCustomDomainsDeleteOutput,
+}));
 // Input Schema
 export const GatewayCustomDomainsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/domains/{domainName}",
@@ -4737,7 +4584,7 @@ export type GatewayCustomDomainsGetInput =
 
 // Output Schema
 export const GatewayCustomDomainsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4763,15 +4610,13 @@ export type GatewayCustomDomainsGetOutput =
 /**
  * Get the Spring Cloud Gateway custom domain.
  */
-export const GatewayCustomDomainsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GatewayCustomDomainsGetInput,
-    outputSchema: GatewayCustomDomainsGetOutput,
-  }),
-);
+export const GatewayCustomDomainsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GatewayCustomDomainsGetInput,
+  outputSchema: GatewayCustomDomainsGetOutput,
+}));
 // Input Schema
 export const GatewayCustomDomainsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/domains",
@@ -4782,7 +4627,7 @@ export type GatewayCustomDomainsListInput =
 
 // Output Schema
 export const GatewayCustomDomainsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4825,15 +4670,13 @@ export type GatewayCustomDomainsListOutput =
 /**
  * Handle requests to list all Spring Cloud Gateway custom domains.
  */
-export const GatewayCustomDomainsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GatewayCustomDomainsListInput,
-    outputSchema: GatewayCustomDomainsListOutput,
-  }),
-);
+export const GatewayCustomDomainsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GatewayCustomDomainsListInput,
+  outputSchema: GatewayCustomDomainsListOutput,
+}));
 // Input Schema
 export const GatewayRouteConfigsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/routeConfigs/{routeConfigName}",
@@ -4844,7 +4687,7 @@ export type GatewayRouteConfigsCreateOrUpdateInput =
 
 // Output Schema
 export const GatewayRouteConfigsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4871,13 +4714,13 @@ export type GatewayRouteConfigsCreateOrUpdateOutput =
  * Create the default Spring Cloud Gateway route configs or update the existing Spring Cloud Gateway route configs.
  */
 export const GatewayRouteConfigsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GatewayRouteConfigsCreateOrUpdateInput,
     outputSchema: GatewayRouteConfigsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const GatewayRouteConfigsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/routeConfigs/{routeConfigName}",
@@ -4887,8 +4730,7 @@ export type GatewayRouteConfigsDeleteInput =
   typeof GatewayRouteConfigsDeleteInput.Type;
 
 // Output Schema
-export const GatewayRouteConfigsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GatewayRouteConfigsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type GatewayRouteConfigsDeleteOutput =
   typeof GatewayRouteConfigsDeleteOutput.Type;
 
@@ -4896,15 +4738,13 @@ export type GatewayRouteConfigsDeleteOutput =
 /**
  * Delete the Spring Cloud Gateway route config.
  */
-export const GatewayRouteConfigsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GatewayRouteConfigsDeleteInput,
-    outputSchema: GatewayRouteConfigsDeleteOutput,
-  }),
-);
+export const GatewayRouteConfigsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GatewayRouteConfigsDeleteInput,
+  outputSchema: GatewayRouteConfigsDeleteOutput,
+}));
 // Input Schema
 export const GatewayRouteConfigsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/routeConfigs/{routeConfigName}",
@@ -4915,7 +4755,7 @@ export type GatewayRouteConfigsGetInput =
 
 // Output Schema
 export const GatewayRouteConfigsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4941,15 +4781,13 @@ export type GatewayRouteConfigsGetOutput =
 /**
  * Get the Spring Cloud Gateway route configs.
  */
-export const GatewayRouteConfigsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GatewayRouteConfigsGetInput,
-    outputSchema: GatewayRouteConfigsGetOutput,
-  }),
-);
+export const GatewayRouteConfigsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GatewayRouteConfigsGetInput,
+  outputSchema: GatewayRouteConfigsGetOutput,
+}));
 // Input Schema
 export const GatewayRouteConfigsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/routeConfigs",
@@ -4960,7 +4798,7 @@ export type GatewayRouteConfigsListInput =
 
 // Output Schema
 export const GatewayRouteConfigsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5003,15 +4841,13 @@ export type GatewayRouteConfigsListOutput =
 /**
  * Handle requests to list all Spring Cloud Gateway route configs.
  */
-export const GatewayRouteConfigsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GatewayRouteConfigsListInput,
-    outputSchema: GatewayRouteConfigsListOutput,
-  }),
-);
+export const GatewayRouteConfigsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GatewayRouteConfigsListInput,
+  outputSchema: GatewayRouteConfigsListOutput,
+}));
 // Input Schema
 export const GatewaysCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}",
@@ -5022,7 +4858,7 @@ export type GatewaysCreateOrUpdateInput =
 
 // Output Schema
 export const GatewaysCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5048,16 +4884,12 @@ export type GatewaysCreateOrUpdateOutput =
 /**
  * Create the default Spring Cloud Gateway or update the existing Spring Cloud Gateway.
  */
-export const GatewaysCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GatewaysCreateOrUpdateInput,
-    outputSchema: GatewaysCreateOrUpdateOutput,
-  }),
-);
+export const GatewaysCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GatewaysCreateOrUpdateInput,
+  outputSchema: GatewaysCreateOrUpdateOutput,
+}));
 // Input Schema
-export const GatewaysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const GatewaysDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}",
@@ -5066,21 +4898,19 @@ export const GatewaysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GatewaysDeleteInput = typeof GatewaysDeleteInput.Type;
 
 // Output Schema
-export const GatewaysDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GatewaysDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type GatewaysDeleteOutput = typeof GatewaysDeleteOutput.Type;
 
 // The operation
 /**
  * Disable the default Spring Cloud Gateway.
  */
-export const GatewaysDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GatewaysDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: GatewaysDeleteInput,
   outputSchema: GatewaysDeleteOutput,
 }));
 // Input Schema
-export const GatewaysGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const GatewaysGetInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}",
@@ -5089,7 +4919,7 @@ export const GatewaysGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GatewaysGetInput = typeof GatewaysGetInput.Type;
 
 // Output Schema
-export const GatewaysGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GatewaysGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5114,14 +4944,12 @@ export type GatewaysGetOutput = typeof GatewaysGetOutput.Type;
 /**
  * Get the Spring Cloud Gateway and its properties.
  */
-export const GatewaysGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GatewaysGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: GatewaysGetInput,
   outputSchema: GatewaysGetOutput,
 }));
 // Input Schema
-export const GatewaysListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const GatewaysListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways",
@@ -5130,7 +4958,7 @@ export const GatewaysListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GatewaysListInput = typeof GatewaysListInput.Type;
 
 // Output Schema
-export const GatewaysListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GatewaysListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -5172,13 +5000,13 @@ export type GatewaysListOutput = typeof GatewaysListOutput.Type;
 /**
  * Handles requests to list all resources in a Service.
  */
-export const GatewaysList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GatewaysList = /*@__PURE__*/ API.make(() => ({
   inputSchema: GatewaysListInput,
   outputSchema: GatewaysListOutput,
 }));
 // Input Schema
 export const GatewaysListEnvSecretsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/listEnvSecrets",
@@ -5189,7 +5017,7 @@ export type GatewaysListEnvSecretsInput =
 
 // Output Schema
 export const GatewaysListEnvSecretsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(Schema.String, Schema.String);
+  /*@__PURE__*/ Schema.Record(Schema.String, Schema.String);
 export type GatewaysListEnvSecretsOutput =
   typeof GatewaysListEnvSecretsOutput.Type;
 
@@ -5197,16 +5025,12 @@ export type GatewaysListEnvSecretsOutput =
 /**
  * List sensitive environment variables of Spring Cloud Gateway.
  */
-export const GatewaysListEnvSecrets = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GatewaysListEnvSecretsInput,
-    outputSchema: GatewaysListEnvSecretsOutput,
-  }),
-);
+export const GatewaysListEnvSecrets = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GatewaysListEnvSecretsInput,
+  outputSchema: GatewaysListEnvSecretsOutput,
+}));
 // Input Schema
-export const GatewaysRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const GatewaysRestartInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/restart",
@@ -5215,20 +5039,20 @@ export const GatewaysRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GatewaysRestartInput = typeof GatewaysRestartInput.Type;
 
 // Output Schema
-export const GatewaysRestartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GatewaysRestartOutput = /*@__PURE__*/ Schema.Void;
 export type GatewaysRestartOutput = typeof GatewaysRestartOutput.Type;
 
 // The operation
 /**
  * Restart the Spring Cloud Gateway.
  */
-export const GatewaysRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GatewaysRestart = /*@__PURE__*/ API.make(() => ({
   inputSchema: GatewaysRestartInput,
   outputSchema: GatewaysRestartOutput,
 }));
 // Input Schema
 export const GatewaysValidateDomainInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/validateDomain",
@@ -5239,7 +5063,7 @@ export type GatewaysValidateDomainInput =
 
 // Output Schema
 export const GatewaysValidateDomainOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     isValid: Schema.optional(Schema.Boolean),
     message: Schema.optional(Schema.String),
   });
@@ -5250,15 +5074,13 @@ export type GatewaysValidateDomainOutput =
 /**
  * Check the domains are valid as well as not in use.
  */
-export const GatewaysValidateDomain = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GatewaysValidateDomainInput,
-    outputSchema: GatewaysValidateDomainOutput,
-  }),
-);
+export const GatewaysValidateDomain = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GatewaysValidateDomainInput,
+  outputSchema: GatewaysValidateDomainOutput,
+}));
 // Input Schema
 export const MonitoringSettingsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/monitoringSettings/default",
@@ -5268,7 +5090,7 @@ export type MonitoringSettingsGetInput = typeof MonitoringSettingsGetInput.Type;
 
 // Output Schema
 export const MonitoringSettingsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5294,15 +5116,13 @@ export type MonitoringSettingsGetOutput =
 /**
  * Get the Monitoring Setting and its properties.
  */
-export const MonitoringSettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MonitoringSettingsGetInput,
-    outputSchema: MonitoringSettingsGetOutput,
-  }),
-);
+export const MonitoringSettingsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MonitoringSettingsGetInput,
+  outputSchema: MonitoringSettingsGetOutput,
+}));
 // Input Schema
 export const MonitoringSettingsUpdatePatchInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/monitoringSettings/default",
@@ -5313,7 +5133,7 @@ export type MonitoringSettingsUpdatePatchInput =
 
 // Output Schema
 export const MonitoringSettingsUpdatePatchOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5340,13 +5160,13 @@ export type MonitoringSettingsUpdatePatchOutput =
  * Update the Monitoring Setting.
  */
 export const MonitoringSettingsUpdatePatch =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MonitoringSettingsUpdatePatchInput,
     outputSchema: MonitoringSettingsUpdatePatchOutput,
   }));
 // Input Schema
 export const MonitoringSettingsUpdatePutInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/monitoringSettings/default",
@@ -5357,7 +5177,7 @@ export type MonitoringSettingsUpdatePutInput =
 
 // Output Schema
 export const MonitoringSettingsUpdatePutOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5383,16 +5203,12 @@ export type MonitoringSettingsUpdatePutOutput =
 /**
  * Update the Monitoring Setting.
  */
-export const MonitoringSettingsUpdatePut = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MonitoringSettingsUpdatePutInput,
-    outputSchema: MonitoringSettingsUpdatePutOutput,
-  }),
-);
+export const MonitoringSettingsUpdatePut = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MonitoringSettingsUpdatePutInput,
+  outputSchema: MonitoringSettingsUpdatePutOutput,
+}));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.AppPlatform/operations",
@@ -5401,7 +5217,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -5476,13 +5292,13 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 /**
  * Lists all of the available REST API operations of the Microsoft.AppPlatform provider.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
 export const PredefinedAcceleratorsDisableInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/predefinedAccelerators/{predefinedAcceleratorName}/disable",
@@ -5492,8 +5308,7 @@ export type PredefinedAcceleratorsDisableInput =
   typeof PredefinedAcceleratorsDisableInput.Type;
 
 // Output Schema
-export const PredefinedAcceleratorsDisableOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PredefinedAcceleratorsDisableOutput = /*@__PURE__*/ Schema.Void;
 export type PredefinedAcceleratorsDisableOutput =
   typeof PredefinedAcceleratorsDisableOutput.Type;
 
@@ -5502,13 +5317,13 @@ export type PredefinedAcceleratorsDisableOutput =
  * Disable predefined accelerator.
  */
 export const PredefinedAcceleratorsDisable =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PredefinedAcceleratorsDisableInput,
     outputSchema: PredefinedAcceleratorsDisableOutput,
   }));
 // Input Schema
 export const PredefinedAcceleratorsEnableInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/predefinedAccelerators/{predefinedAcceleratorName}/enable",
@@ -5518,8 +5333,7 @@ export type PredefinedAcceleratorsEnableInput =
   typeof PredefinedAcceleratorsEnableInput.Type;
 
 // Output Schema
-export const PredefinedAcceleratorsEnableOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PredefinedAcceleratorsEnableOutput = /*@__PURE__*/ Schema.Void;
 export type PredefinedAcceleratorsEnableOutput =
   typeof PredefinedAcceleratorsEnableOutput.Type;
 
@@ -5528,13 +5342,13 @@ export type PredefinedAcceleratorsEnableOutput =
  * Enable predefined accelerator.
  */
 export const PredefinedAcceleratorsEnable =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PredefinedAcceleratorsEnableInput,
     outputSchema: PredefinedAcceleratorsEnableOutput,
   }));
 // Input Schema
 export const PredefinedAcceleratorsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/predefinedAccelerators/{predefinedAcceleratorName}",
@@ -5545,7 +5359,7 @@ export type PredefinedAcceleratorsGetInput =
 
 // Output Schema
 export const PredefinedAcceleratorsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5571,15 +5385,13 @@ export type PredefinedAcceleratorsGetOutput =
 /**
  * Get the predefined accelerator.
  */
-export const PredefinedAcceleratorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PredefinedAcceleratorsGetInput,
-    outputSchema: PredefinedAcceleratorsGetOutput,
-  }),
-);
+export const PredefinedAcceleratorsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PredefinedAcceleratorsGetInput,
+  outputSchema: PredefinedAcceleratorsGetOutput,
+}));
 // Input Schema
 export const PredefinedAcceleratorsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/predefinedAccelerators",
@@ -5590,7 +5402,7 @@ export type PredefinedAcceleratorsListInput =
 
 // Output Schema
 export const PredefinedAcceleratorsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5633,15 +5445,13 @@ export type PredefinedAcceleratorsListOutput =
 /**
  * Handle requests to list all predefined accelerators.
  */
-export const PredefinedAcceleratorsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PredefinedAcceleratorsListInput,
-    outputSchema: PredefinedAcceleratorsListOutput,
-  }),
-);
+export const PredefinedAcceleratorsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PredefinedAcceleratorsListInput,
+  outputSchema: PredefinedAcceleratorsListOutput,
+}));
 // Input Schema
 export const RuntimeVersionsListRuntimeVersionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.AppPlatform/runtimeVersions",
@@ -5652,7 +5462,7 @@ export type RuntimeVersionsListRuntimeVersionsInput =
 
 // Output Schema
 export const RuntimeVersionsListRuntimeVersionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5673,13 +5483,13 @@ export type RuntimeVersionsListRuntimeVersionsOutput =
  * Lists all of the available runtime versions supported by Microsoft.AppPlatform provider.
  */
 export const RuntimeVersionsListRuntimeVersions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RuntimeVersionsListRuntimeVersionsInput,
     outputSchema: RuntimeVersionsListRuntimeVersionsOutput,
   }));
 // Input Schema
 export const ServiceRegistriesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/serviceRegistries/{serviceRegistryName}",
@@ -5690,7 +5500,7 @@ export type ServiceRegistriesCreateOrUpdateInput =
 
 // Output Schema
 export const ServiceRegistriesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5717,13 +5527,13 @@ export type ServiceRegistriesCreateOrUpdateOutput =
  * Create the default Service Registry or update the existing Service Registry.
  */
 export const ServiceRegistriesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServiceRegistriesCreateOrUpdateInput,
     outputSchema: ServiceRegistriesCreateOrUpdateOutput,
   }));
 // Input Schema
 export const ServiceRegistriesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/serviceRegistries/{serviceRegistryName}",
@@ -5733,8 +5543,7 @@ export type ServiceRegistriesDeleteInput =
   typeof ServiceRegistriesDeleteInput.Type;
 
 // Output Schema
-export const ServiceRegistriesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ServiceRegistriesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ServiceRegistriesDeleteOutput =
   typeof ServiceRegistriesDeleteOutput.Type;
 
@@ -5742,15 +5551,13 @@ export type ServiceRegistriesDeleteOutput =
 /**
  * Disable the default Service Registry.
  */
-export const ServiceRegistriesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServiceRegistriesDeleteInput,
-    outputSchema: ServiceRegistriesDeleteOutput,
-  }),
-);
+export const ServiceRegistriesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServiceRegistriesDeleteInput,
+  outputSchema: ServiceRegistriesDeleteOutput,
+}));
 // Input Schema
 export const ServiceRegistriesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/serviceRegistries/{serviceRegistryName}",
@@ -5760,7 +5567,7 @@ export type ServiceRegistriesGetInput = typeof ServiceRegistriesGetInput.Type;
 
 // Output Schema
 export const ServiceRegistriesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5785,15 +5592,13 @@ export type ServiceRegistriesGetOutput = typeof ServiceRegistriesGetOutput.Type;
 /**
  * Get the Service Registry and its properties.
  */
-export const ServiceRegistriesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServiceRegistriesGetInput,
-    outputSchema: ServiceRegistriesGetOutput,
-  }),
-);
+export const ServiceRegistriesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServiceRegistriesGetInput,
+  outputSchema: ServiceRegistriesGetOutput,
+}));
 // Input Schema
 export const ServiceRegistriesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/serviceRegistries",
@@ -5803,7 +5608,7 @@ export type ServiceRegistriesListInput = typeof ServiceRegistriesListInput.Type;
 
 // Output Schema
 export const ServiceRegistriesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5846,15 +5651,13 @@ export type ServiceRegistriesListOutput =
 /**
  * Handles requests to list all resources in a Service.
  */
-export const ServiceRegistriesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServiceRegistriesListInput,
-    outputSchema: ServiceRegistriesListOutput,
-  }),
-);
+export const ServiceRegistriesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServiceRegistriesListInput,
+  outputSchema: ServiceRegistriesListOutput,
+}));
 // Input Schema
 export const ServicesCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -5867,7 +5670,7 @@ export type ServicesCheckNameAvailabilityInput =
 
 // Output Schema
 export const ServicesCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -5882,13 +5685,13 @@ export type ServicesCheckNameAvailabilityOutput =
  * @param location - the region
  */
 export const ServicesCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServicesCheckNameAvailabilityInput,
     outputSchema: ServicesCheckNameAvailabilityOutput,
   }));
 // Input Schema
 export const ServicesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}",
@@ -5899,7 +5702,7 @@ export type ServicesCreateOrUpdateInput =
 
 // Output Schema
 export const ServicesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5925,16 +5728,12 @@ export type ServicesCreateOrUpdateOutput =
 /**
  * Create a new Service or update an exiting Service.
  */
-export const ServicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServicesCreateOrUpdateInput,
-    outputSchema: ServicesCreateOrUpdateOutput,
-  }),
-);
+export const ServicesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServicesCreateOrUpdateInput,
+  outputSchema: ServicesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ServicesDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}",
@@ -5943,20 +5742,20 @@ export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ServicesDeleteInput = typeof ServicesDeleteInput.Type;
 
 // Output Schema
-export const ServicesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ServicesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ServicesDeleteOutput = typeof ServicesDeleteOutput.Type;
 
 // The operation
 /**
  * Operation to delete a Service.
  */
-export const ServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServicesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServicesDeleteInput,
   outputSchema: ServicesDeleteOutput,
 }));
 // Input Schema
 export const ServicesDisableApmGloballyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/disableApmGlobally",
@@ -5966,8 +5765,7 @@ export type ServicesDisableApmGloballyInput =
   typeof ServicesDisableApmGloballyInput.Type;
 
 // Output Schema
-export const ServicesDisableApmGloballyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ServicesDisableApmGloballyOutput = /*@__PURE__*/ Schema.Void;
 export type ServicesDisableApmGloballyOutput =
   typeof ServicesDisableApmGloballyOutput.Type;
 
@@ -5975,15 +5773,13 @@ export type ServicesDisableApmGloballyOutput =
 /**
  * Disable an APM globally.
  */
-export const ServicesDisableApmGlobally = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServicesDisableApmGloballyInput,
-    outputSchema: ServicesDisableApmGloballyOutput,
-  }),
-);
+export const ServicesDisableApmGlobally = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServicesDisableApmGloballyInput,
+  outputSchema: ServicesDisableApmGloballyOutput,
+}));
 // Input Schema
 export const ServicesDisableTestEndpointInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/disableTestEndpoint",
@@ -5993,8 +5789,7 @@ export type ServicesDisableTestEndpointInput =
   typeof ServicesDisableTestEndpointInput.Type;
 
 // Output Schema
-export const ServicesDisableTestEndpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ServicesDisableTestEndpointOutput = /*@__PURE__*/ Schema.Void;
 export type ServicesDisableTestEndpointOutput =
   typeof ServicesDisableTestEndpointOutput.Type;
 
@@ -6002,15 +5797,13 @@ export type ServicesDisableTestEndpointOutput =
 /**
  * Disable test endpoint functionality for a Service.
  */
-export const ServicesDisableTestEndpoint = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServicesDisableTestEndpointInput,
-    outputSchema: ServicesDisableTestEndpointOutput,
-  }),
-);
+export const ServicesDisableTestEndpoint = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServicesDisableTestEndpointInput,
+  outputSchema: ServicesDisableTestEndpointOutput,
+}));
 // Input Schema
 export const ServicesEnableApmGloballyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/enableApmGlobally",
@@ -6020,8 +5813,7 @@ export type ServicesEnableApmGloballyInput =
   typeof ServicesEnableApmGloballyInput.Type;
 
 // Output Schema
-export const ServicesEnableApmGloballyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ServicesEnableApmGloballyOutput = /*@__PURE__*/ Schema.Void;
 export type ServicesEnableApmGloballyOutput =
   typeof ServicesEnableApmGloballyOutput.Type;
 
@@ -6029,15 +5821,13 @@ export type ServicesEnableApmGloballyOutput =
 /**
  * Enable an APM globally.
  */
-export const ServicesEnableApmGlobally = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServicesEnableApmGloballyInput,
-    outputSchema: ServicesEnableApmGloballyOutput,
-  }),
-);
+export const ServicesEnableApmGlobally = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServicesEnableApmGloballyInput,
+  outputSchema: ServicesEnableApmGloballyOutput,
+}));
 // Input Schema
 export const ServicesEnableTestEndpointInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/enableTestEndpoint",
@@ -6048,7 +5838,7 @@ export type ServicesEnableTestEndpointInput =
 
 // Output Schema
 export const ServicesEnableTestEndpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     primaryKey: Schema.optional(Schema.String),
     secondaryKey: Schema.optional(Schema.String),
     primaryTestEndpoint: Schema.optional(Schema.String),
@@ -6062,15 +5852,13 @@ export type ServicesEnableTestEndpointOutput =
 /**
  * Enable test endpoint functionality for a Service.
  */
-export const ServicesEnableTestEndpoint = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServicesEnableTestEndpointInput,
-    outputSchema: ServicesEnableTestEndpointOutput,
-  }),
-);
+export const ServicesEnableTestEndpoint = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServicesEnableTestEndpointInput,
+  outputSchema: ServicesEnableTestEndpointOutput,
+}));
 // Input Schema
 export const ServicesFlushVnetDnsSettingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/flushVirtualNetworkDnsSettings",
@@ -6080,8 +5868,7 @@ export type ServicesFlushVnetDnsSettingInput =
   typeof ServicesFlushVnetDnsSettingInput.Type;
 
 // Output Schema
-export const ServicesFlushVnetDnsSettingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ServicesFlushVnetDnsSettingOutput = /*@__PURE__*/ Schema.Void;
 export type ServicesFlushVnetDnsSettingOutput =
   typeof ServicesFlushVnetDnsSettingOutput.Type;
 
@@ -6089,16 +5876,12 @@ export type ServicesFlushVnetDnsSettingOutput =
 /**
  * Flush Virtual Network DNS settings for a VNET injected Service.
  */
-export const ServicesFlushVnetDnsSetting = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServicesFlushVnetDnsSettingInput,
-    outputSchema: ServicesFlushVnetDnsSettingOutput,
-  }),
-);
+export const ServicesFlushVnetDnsSetting = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServicesFlushVnetDnsSettingInput,
+  outputSchema: ServicesFlushVnetDnsSettingOutput,
+}));
 // Input Schema
-export const ServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ServicesGetInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}",
@@ -6107,7 +5890,7 @@ export const ServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ServicesGetInput = typeof ServicesGetInput.Type;
 
 // Output Schema
-export const ServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6132,14 +5915,12 @@ export type ServicesGetOutput = typeof ServicesGetOutput.Type;
 /**
  * Get a Service and its properties.
  */
-export const ServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServicesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServicesGetInput,
   outputSchema: ServicesGetOutput,
 }));
 // Input Schema
-export const ServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ServicesListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring",
@@ -6148,7 +5929,7 @@ export const ServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ServicesListInput = typeof ServicesListInput.Type;
 
 // Output Schema
-export const ServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -6190,13 +5971,13 @@ export type ServicesListOutput = typeof ServicesListOutput.Type;
 /**
  * Handles requests to list all resources in a resource group.
  */
-export const ServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServicesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServicesListInput,
   outputSchema: ServicesListOutput,
 }));
 // Input Schema
 export const ServicesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AppPlatform/Spring",
@@ -6207,7 +5988,7 @@ export type ServicesListBySubscriptionInput =
 
 // Output Schema
 export const ServicesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6250,15 +6031,13 @@ export type ServicesListBySubscriptionOutput =
 /**
  * Handles requests to list all resources in a subscription.
  */
-export const ServicesListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServicesListBySubscriptionInput,
-    outputSchema: ServicesListBySubscriptionOutput,
-  }),
-);
+export const ServicesListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServicesListBySubscriptionInput,
+  outputSchema: ServicesListBySubscriptionOutput,
+}));
 // Input Schema
 export const ServicesListGloballyEnabledApmsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/listGloballyEnabledApms",
@@ -6269,7 +6048,7 @@ export type ServicesListGloballyEnabledApmsInput =
 
 // Output Schema
 export const ServicesListGloballyEnabledApmsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Array(Schema.String)),
   });
 export type ServicesListGloballyEnabledApmsOutput =
@@ -6280,13 +6059,13 @@ export type ServicesListGloballyEnabledApmsOutput =
  * List globally enabled APMs for a Service.
  */
 export const ServicesListGloballyEnabledApms =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServicesListGloballyEnabledApmsInput,
     outputSchema: ServicesListGloballyEnabledApmsOutput,
   }));
 // Input Schema
 export const ServicesListSupportedApmTypesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/supportedApmTypes",
@@ -6297,7 +6076,7 @@ export type ServicesListSupportedApmTypesInput =
 
 // Output Schema
 export const ServicesListSupportedApmTypesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6315,13 +6094,13 @@ export type ServicesListSupportedApmTypesOutput =
  * List supported APM types for a Service.
  */
 export const ServicesListSupportedApmTypes =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServicesListSupportedApmTypesInput,
     outputSchema: ServicesListSupportedApmTypesOutput,
   }));
 // Input Schema
 export const ServicesListSupportedServerVersionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/supportedServerVersions",
@@ -6332,7 +6111,7 @@ export type ServicesListSupportedServerVersionsInput =
 
 // Output Schema
 export const ServicesListSupportedServerVersionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6352,13 +6131,13 @@ export type ServicesListSupportedServerVersionsOutput =
  * Lists all of the available server versions supported by Microsoft.AppPlatform provider.
  */
 export const ServicesListSupportedServerVersions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServicesListSupportedServerVersionsInput,
     outputSchema: ServicesListSupportedServerVersionsOutput,
   }));
 // Input Schema
 export const ServicesListTestKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/listTestKeys",
@@ -6368,7 +6147,7 @@ export type ServicesListTestKeysInput = typeof ServicesListTestKeysInput.Type;
 
 // Output Schema
 export const ServicesListTestKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     primaryKey: Schema.optional(Schema.String),
     secondaryKey: Schema.optional(Schema.String),
     primaryTestEndpoint: Schema.optional(Schema.String),
@@ -6381,15 +6160,13 @@ export type ServicesListTestKeysOutput = typeof ServicesListTestKeysOutput.Type;
 /**
  * List test keys for a Service.
  */
-export const ServicesListTestKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServicesListTestKeysInput,
-    outputSchema: ServicesListTestKeysOutput,
-  }),
-);
+export const ServicesListTestKeys = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServicesListTestKeysInput,
+  outputSchema: ServicesListTestKeysOutput,
+}));
 // Input Schema
 export const ServicesRegenerateTestKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/regenerateTestKey",
@@ -6400,7 +6177,7 @@ export type ServicesRegenerateTestKeyInput =
 
 // Output Schema
 export const ServicesRegenerateTestKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     primaryKey: Schema.optional(Schema.String),
     secondaryKey: Schema.optional(Schema.String),
     primaryTestEndpoint: Schema.optional(Schema.String),
@@ -6414,16 +6191,12 @@ export type ServicesRegenerateTestKeyOutput =
 /**
  * Regenerate a test key for a Service.
  */
-export const ServicesRegenerateTestKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServicesRegenerateTestKeyInput,
-    outputSchema: ServicesRegenerateTestKeyOutput,
-  }),
-);
+export const ServicesRegenerateTestKey = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServicesRegenerateTestKeyInput,
+  outputSchema: ServicesRegenerateTestKeyOutput,
+}));
 // Input Schema
-export const ServicesStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ServicesStartInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/start",
@@ -6432,21 +6205,19 @@ export const ServicesStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ServicesStartInput = typeof ServicesStartInput.Type;
 
 // Output Schema
-export const ServicesStartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ServicesStartOutput = /*@__PURE__*/ Schema.Void;
 export type ServicesStartOutput = typeof ServicesStartOutput.Type;
 
 // The operation
 /**
  * Start a Service.
  */
-export const ServicesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServicesStart = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServicesStartInput,
   outputSchema: ServicesStartOutput,
 }));
 // Input Schema
-export const ServicesStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ServicesStopInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/stop",
@@ -6455,21 +6226,19 @@ export const ServicesStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ServicesStopInput = typeof ServicesStopInput.Type;
 
 // Output Schema
-export const ServicesStopOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ServicesStopOutput = /*@__PURE__*/ Schema.Void;
 export type ServicesStopOutput = typeof ServicesStopOutput.Type;
 
 // The operation
 /**
  * Stop a Service.
  */
-export const ServicesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServicesStop = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServicesStopInput,
   outputSchema: ServicesStopOutput,
 }));
 // Input Schema
-export const ServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ServicesUpdateInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}",
@@ -6478,7 +6247,7 @@ export const ServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ServicesUpdateInput = typeof ServicesUpdateInput.Type;
 
 // Output Schema
-export const ServicesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6503,12 +6272,12 @@ export type ServicesUpdateOutput = typeof ServicesUpdateOutput.Type;
 /**
  * Operation to update an exiting Service.
  */
-export const ServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServicesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServicesUpdateInput,
   outputSchema: ServicesUpdateOutput,
 }));
 // Input Schema
-export const SkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+export const SkusListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.AppPlatform/skus",
@@ -6517,7 +6286,7 @@ export const SkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
 export type SkusListInput = typeof SkusListInput.Type;
 
 // Output Schema
-export const SkusListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SkusListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -6586,13 +6355,13 @@ export type SkusListOutput = typeof SkusListOutput.Type;
 /**
  * Lists all of the available skus of the Microsoft.AppPlatform provider.
  */
-export const SkusList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SkusList = /*@__PURE__*/ API.make(() => ({
   inputSchema: SkusListInput,
   outputSchema: SkusListOutput,
 }));
 // Input Schema
 export const StoragesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/storages/{storageName}",
@@ -6603,7 +6372,7 @@ export type StoragesCreateOrUpdateInput =
 
 // Output Schema
 export const StoragesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6629,16 +6398,12 @@ export type StoragesCreateOrUpdateOutput =
 /**
  * Create or update storage resource.
  */
-export const StoragesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StoragesCreateOrUpdateInput,
-    outputSchema: StoragesCreateOrUpdateOutput,
-  }),
-);
+export const StoragesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StoragesCreateOrUpdateInput,
+  outputSchema: StoragesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const StoragesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const StoragesDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/storages/{storageName}",
@@ -6647,21 +6412,19 @@ export const StoragesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type StoragesDeleteInput = typeof StoragesDeleteInput.Type;
 
 // Output Schema
-export const StoragesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const StoragesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type StoragesDeleteOutput = typeof StoragesDeleteOutput.Type;
 
 // The operation
 /**
  * Delete the storage resource.
  */
-export const StoragesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StoragesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: StoragesDeleteInput,
   outputSchema: StoragesDeleteOutput,
 }));
 // Input Schema
-export const StoragesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const StoragesGetInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/storages/{storageName}",
@@ -6670,7 +6433,7 @@ export const StoragesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type StoragesGetInput = typeof StoragesGetInput.Type;
 
 // Output Schema
-export const StoragesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const StoragesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6695,14 +6458,12 @@ export type StoragesGetOutput = typeof StoragesGetOutput.Type;
 /**
  * Get the storage resource.
  */
-export const StoragesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StoragesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: StoragesGetInput,
   outputSchema: StoragesGetOutput,
 }));
 // Input Schema
-export const StoragesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const StoragesListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/storages",
@@ -6711,7 +6472,7 @@ export const StoragesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type StoragesListInput = typeof StoragesListInput.Type;
 
 // Output Schema
-export const StoragesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const StoragesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -6753,7 +6514,7 @@ export type StoragesListOutput = typeof StoragesListOutput.Type;
 /**
  * List all the storages of one Azure Spring Apps resource.
  */
-export const StoragesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StoragesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: StoragesListInput,
   outputSchema: StoragesListOutput,
 }));

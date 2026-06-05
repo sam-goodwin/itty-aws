@@ -9,14 +9,12 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GeoCatalogsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    catalogName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const GeoCatalogsCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  catalogName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/geoCatalogs/{catalogName}",
@@ -26,7 +24,7 @@ export type GeoCatalogsCreateInput = typeof GeoCatalogsCreateInput.Type;
 
 // Output Schema
 export const GeoCatalogsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -56,19 +54,17 @@ export type GeoCatalogsCreateOutput = typeof GeoCatalogsCreateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param catalogName - The name of the catalog
  */
-export const GeoCatalogsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GeoCatalogsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: GeoCatalogsCreateInput,
   outputSchema: GeoCatalogsCreateOutput,
 }));
 // Input Schema
-export const GeoCatalogsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    catalogName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const GeoCatalogsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  catalogName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/geoCatalogs/{catalogName}",
@@ -77,7 +73,7 @@ export const GeoCatalogsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GeoCatalogsDeleteInput = typeof GeoCatalogsDeleteInput.Type;
 
 // Output Schema
-export const GeoCatalogsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GeoCatalogsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type GeoCatalogsDeleteOutput = typeof GeoCatalogsDeleteOutput.Type;
 
 // The operation
@@ -89,12 +85,12 @@ export type GeoCatalogsDeleteOutput = typeof GeoCatalogsDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param catalogName - The name of the catalog
  */
-export const GeoCatalogsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GeoCatalogsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: GeoCatalogsDeleteInput,
   outputSchema: GeoCatalogsDeleteOutput,
 }));
 // Input Schema
-export const GeoCatalogsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GeoCatalogsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   catalogName: Schema.String.pipe(T.PathParam()),
@@ -108,7 +104,7 @@ export const GeoCatalogsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GeoCatalogsGetInput = typeof GeoCatalogsGetInput.Type;
 
 // Output Schema
-export const GeoCatalogsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GeoCatalogsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -138,13 +134,13 @@ export type GeoCatalogsGetOutput = typeof GeoCatalogsGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param catalogName - The name of the catalog
  */
-export const GeoCatalogsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GeoCatalogsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: GeoCatalogsGetInput,
   outputSchema: GeoCatalogsGetOutput,
 }));
 // Input Schema
 export const GeoCatalogsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -159,7 +155,7 @@ export type GeoCatalogsListByResourceGroupInput =
 
 // Output Schema
 export const GeoCatalogsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -205,13 +201,13 @@ export type GeoCatalogsListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const GeoCatalogsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GeoCatalogsListByResourceGroupInput,
     outputSchema: GeoCatalogsListByResourceGroupOutput,
   }));
 // Input Schema
 export const GeoCatalogsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -225,7 +221,7 @@ export type GeoCatalogsListBySubscriptionInput =
 
 // Output Schema
 export const GeoCatalogsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -270,19 +266,17 @@ export type GeoCatalogsListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const GeoCatalogsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GeoCatalogsListBySubscriptionInput,
     outputSchema: GeoCatalogsListBySubscriptionOutput,
   }));
 // Input Schema
-export const GeoCatalogsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    catalogName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const GeoCatalogsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  catalogName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/geoCatalogs/{catalogName}",
@@ -292,7 +286,7 @@ export type GeoCatalogsUpdateInput = typeof GeoCatalogsUpdateInput.Type;
 
 // Output Schema
 export const GeoCatalogsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -322,7 +316,7 @@ export type GeoCatalogsUpdateOutput = typeof GeoCatalogsUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param catalogName - The name of the catalog
  */
-export const GeoCatalogsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GeoCatalogsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: GeoCatalogsUpdateInput,
   outputSchema: GeoCatalogsUpdateOutput,
 }));

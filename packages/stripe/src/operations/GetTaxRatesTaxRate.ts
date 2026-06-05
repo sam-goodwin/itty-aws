@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const GetTaxRatesTaxRateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tax_rate: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -18,7 +18,7 @@ export type GetTaxRatesTaxRateInput = typeof GetTaxRatesTaxRateInput.Type;
 
 // Output Schema
 export const GetTaxRatesTaxRateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     active: Schema.Boolean,
     country: Schema.NullOr(Schema.String),
     created: Schema.Number,
@@ -74,7 +74,7 @@ export type GetTaxRatesTaxRateOutput = typeof GetTaxRatesTaxRateOutput.Type;
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetTaxRatesTaxRate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetTaxRatesTaxRate = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetTaxRatesTaxRateInput,
   outputSchema: GetTaxRatesTaxRateOutput,
 }));

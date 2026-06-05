@@ -1,20 +1,20 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
-import * as T from "../../traits.ts";
 import { NotFound } from "../../errors.ts";
+import * as T from "../../traits.ts";
 
 // Input Schema
-export const DeleteStarredInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteStarredInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
 }).pipe(T.Http({ method: "DELETE", path: "/v2/apl-starred-queries/{id}" }));
 export type DeleteStarredInput = typeof DeleteStarredInput.Type;
 
 // Output Schema
-export const DeleteStarredOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeleteStarredOutput = /*@__PURE__*/ Schema.Void;
 export type DeleteStarredOutput = typeof DeleteStarredOutput.Type;
 
 // The operation
-export const deleteStarred = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteStarred = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteStarredInput,
   outputSchema: DeleteStarredOutput,
   errors: [NotFound] as const,

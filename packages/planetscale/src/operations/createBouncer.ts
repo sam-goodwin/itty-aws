@@ -1,10 +1,10 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
-import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
+import * as T from "../traits.ts";
 
 // Input Schema
-export const CreateBouncerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateBouncerInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -21,7 +21,7 @@ export const CreateBouncerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateBouncerInput = typeof CreateBouncerInput.Type;
 
 // Output Schema
-export const CreateBouncerOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateBouncerOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   sku: Schema.Struct({
@@ -97,7 +97,7 @@ export type CreateBouncerOutput = typeof CreateBouncerOutput.Type;
  * @param bouncer_size - The size SKU for the bouncer
  * @param replicas_per_cell - The number of replica servers per cell
  */
-export const createBouncer = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createBouncer = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateBouncerInput,
   outputSchema: CreateBouncerOutput,
   errors: [Forbidden, NotFound] as const,

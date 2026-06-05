@@ -8,9 +8,9 @@
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
-import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
+import * as T from "../traits.ts";
 
 // =============================================================================
 // LoadBalancer
@@ -21,12 +21,10 @@ export interface GetLoadBalancerRequest {
   zoneId: string;
 }
 
-export const GetLoadBalancerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    loadBalancerId: Schema.String.pipe(T.HttpPath("loadBalancerId")),
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  },
-).pipe(
+export const GetLoadBalancerRequest = /*@__PURE__*/ Schema.Struct({
+  loadBalancerId: Schema.String.pipe(T.HttpPath("loadBalancerId")),
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/zones/{zone_id}/load_balancers/{loadBalancerId}",
@@ -188,7 +186,7 @@ export interface GetLoadBalancerResponse {
 }
 
 export const GetLoadBalancerResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     adaptiveRouting: Schema.optional(
       Schema.Union([
@@ -666,7 +664,7 @@ export const getLoadBalancer: API.OperationMethod<
   GetLoadBalancerResponse,
   GetLoadBalancerError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLoadBalancerRequest,
   output: GetLoadBalancerResponse,
   errors: [],
@@ -677,7 +675,7 @@ export interface ListLoadBalancersRequest {
 }
 
 export const ListLoadBalancersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   }).pipe(
     T.Http({ method: "GET", path: "/zones/{zone_id}/load_balancers" }),
@@ -827,7 +825,7 @@ export interface ListLoadBalancersResponse {
 }
 
 export const ListLoadBalancersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     result: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1332,7 +1330,7 @@ export const listLoadBalancers: API.PaginatedOperationMethod<
   ListLoadBalancersResponse,
   ListLoadBalancersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLoadBalancersRequest,
   output: ListLoadBalancersResponse,
   errors: [],
@@ -1460,7 +1458,7 @@ export interface CreateLoadBalancerRequest {
 }
 
 export const CreateLoadBalancerRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     defaultPools: Schema.Array(Schema.String),
     fallbackPool: Schema.String,
@@ -1907,7 +1905,7 @@ export interface CreateLoadBalancerResponse {
 }
 
 export const CreateLoadBalancerResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     adaptiveRouting: Schema.optional(
       Schema.Union([
@@ -2385,7 +2383,7 @@ export const createLoadBalancer: API.OperationMethod<
   CreateLoadBalancerResponse,
   CreateLoadBalancerError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLoadBalancerRequest,
   output: CreateLoadBalancerResponse,
   errors: [],
@@ -2512,7 +2510,7 @@ export interface UpdateLoadBalancerRequest {
 }
 
 export const UpdateLoadBalancerRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     loadBalancerId: Schema.String.pipe(T.HttpPath("loadBalancerId")),
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     defaultPools: Schema.Array(Schema.String),
@@ -2965,7 +2963,7 @@ export interface UpdateLoadBalancerResponse {
 }
 
 export const UpdateLoadBalancerResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     adaptiveRouting: Schema.optional(
       Schema.Union([
@@ -3443,7 +3441,7 @@ export const updateLoadBalancer: API.OperationMethod<
   UpdateLoadBalancerResponse,
   UpdateLoadBalancerError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLoadBalancerRequest,
   output: UpdateLoadBalancerResponse,
   errors: [],
@@ -3568,7 +3566,7 @@ export interface PatchLoadBalancerRequest {
 }
 
 export const PatchLoadBalancerRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     loadBalancerId: Schema.String.pipe(T.HttpPath("loadBalancerId")),
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     adaptiveRouting: Schema.optional(
@@ -4019,7 +4017,7 @@ export interface PatchLoadBalancerResponse {
 }
 
 export const PatchLoadBalancerResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     adaptiveRouting: Schema.optional(
       Schema.Union([
@@ -4497,7 +4495,7 @@ export const patchLoadBalancer: API.OperationMethod<
   PatchLoadBalancerResponse,
   PatchLoadBalancerError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchLoadBalancerRequest,
   output: PatchLoadBalancerResponse,
   errors: [],
@@ -4509,7 +4507,7 @@ export interface DeleteLoadBalancerRequest {
 }
 
 export const DeleteLoadBalancerRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     loadBalancerId: Schema.String.pipe(T.HttpPath("loadBalancerId")),
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   }).pipe(
@@ -4524,7 +4522,7 @@ export interface DeleteLoadBalancerResponse {
 }
 
 export const DeleteLoadBalancerResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }).pipe(
     T.ResponsePath("result"),
@@ -4537,7 +4535,7 @@ export const deleteLoadBalancer: API.OperationMethod<
   DeleteLoadBalancerResponse,
   DeleteLoadBalancerError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLoadBalancerRequest,
   output: DeleteLoadBalancerResponse,
   errors: [],
@@ -4553,7 +4551,7 @@ export interface GetMonitorRequest {
   accountId: string;
 }
 
-export const GetMonitorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetMonitorRequest = /*@__PURE__*/ Schema.Struct({
   monitorId: Schema.String.pipe(T.HttpPath("monitorId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -4609,7 +4607,7 @@ export interface GetMonitorResponse {
     | null;
 }
 
-export const GetMonitorResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetMonitorResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   allowInsecure: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
   consecutiveDown: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -4681,7 +4679,7 @@ export const getMonitor: API.OperationMethod<
   GetMonitorResponse,
   GetMonitorError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMonitorRequest,
   output: GetMonitorResponse,
   errors: [],
@@ -4692,7 +4690,7 @@ export interface ListMonitorsRequest {
   accountId: string;
 }
 
-export const ListMonitorsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListMonitorsRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
   T.Http({
@@ -4733,7 +4731,7 @@ export interface ListMonitorsResponse {
   }[];
 }
 
-export const ListMonitorsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListMonitorsResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -4818,7 +4816,7 @@ export const listMonitors: API.PaginatedOperationMethod<
   ListMonitorsResponse,
   ListMonitorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMonitorsRequest,
   output: ListMonitorsResponse,
   errors: [],
@@ -4872,7 +4870,7 @@ export interface CreateMonitorRequest {
     | (string & {});
 }
 
-export const CreateMonitorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateMonitorRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   allowInsecure: Schema.optional(Schema.Boolean),
   consecutiveDown: Schema.optional(Schema.Number),
@@ -4973,7 +4971,7 @@ export interface CreateMonitorResponse {
     | null;
 }
 
-export const CreateMonitorResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateMonitorResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   allowInsecure: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
   consecutiveDown: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -5045,7 +5043,7 @@ export const createMonitor: API.OperationMethod<
   CreateMonitorResponse,
   CreateMonitorError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMonitorRequest,
   output: CreateMonitorResponse,
   errors: [],
@@ -5096,7 +5094,7 @@ export interface UpdateMonitorRequest {
     | (string & {});
 }
 
-export const UpdateMonitorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateMonitorRequest = /*@__PURE__*/ Schema.Struct({
   monitorId: Schema.String.pipe(T.HttpPath("monitorId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   allowInsecure: Schema.optional(Schema.Boolean),
@@ -5198,7 +5196,7 @@ export interface UpdateMonitorResponse {
     | null;
 }
 
-export const UpdateMonitorResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateMonitorResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   allowInsecure: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
   consecutiveDown: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -5270,7 +5268,7 @@ export const updateMonitor: API.OperationMethod<
   UpdateMonitorResponse,
   UpdateMonitorError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMonitorRequest,
   output: UpdateMonitorResponse,
   errors: [],
@@ -5321,7 +5319,7 @@ export interface PatchMonitorRequest {
     | (string & {});
 }
 
-export const PatchMonitorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchMonitorRequest = /*@__PURE__*/ Schema.Struct({
   monitorId: Schema.String.pipe(T.HttpPath("monitorId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   allowInsecure: Schema.optional(Schema.Boolean),
@@ -5423,7 +5421,7 @@ export interface PatchMonitorResponse {
     | null;
 }
 
-export const PatchMonitorResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchMonitorResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   allowInsecure: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
   consecutiveDown: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -5495,7 +5493,7 @@ export const patchMonitor: API.OperationMethod<
   PatchMonitorResponse,
   PatchMonitorError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchMonitorRequest,
   output: PatchMonitorResponse,
   errors: [],
@@ -5507,7 +5505,7 @@ export interface DeleteMonitorRequest {
   accountId: string;
 }
 
-export const DeleteMonitorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteMonitorRequest = /*@__PURE__*/ Schema.Struct({
   monitorId: Schema.String.pipe(T.HttpPath("monitorId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -5521,7 +5519,7 @@ export interface DeleteMonitorResponse {
   id?: string | null;
 }
 
-export const DeleteMonitorResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteMonitorResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
 }).pipe(
   T.ResponsePath("result"),
@@ -5534,7 +5532,7 @@ export const deleteMonitor: API.OperationMethod<
   DeleteMonitorResponse,
   DeleteMonitorError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMonitorRequest,
   output: DeleteMonitorResponse,
   errors: [],
@@ -5550,12 +5548,10 @@ export interface GetMonitorGroupRequest {
   accountId: string;
 }
 
-export const GetMonitorGroupRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    monitorGroupId: Schema.String.pipe(T.HttpPath("monitorGroupId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  },
-).pipe(
+export const GetMonitorGroupRequest = /*@__PURE__*/ Schema.Struct({
+  monitorGroupId: Schema.String.pipe(T.HttpPath("monitorGroupId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/accounts/{account_id}/load_balancers/monitor_groups/{monitorGroupId}",
@@ -5583,7 +5579,7 @@ export interface GetMonitorGroupResponse {
 }
 
 export const GetMonitorGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     description: Schema.String,
     members: Schema.Array(
@@ -5628,7 +5624,7 @@ export const getMonitorGroup: API.OperationMethod<
   GetMonitorGroupResponse,
   GetMonitorGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMonitorGroupRequest,
   output: GetMonitorGroupResponse,
   errors: [],
@@ -5640,7 +5636,7 @@ export interface ListMonitorGroupsRequest {
 }
 
 export const ListMonitorGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
   }).pipe(
     T.Http({
@@ -5667,7 +5663,7 @@ export interface ListMonitorGroupsResponse {
 }
 
 export const ListMonitorGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     result: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -5716,7 +5712,7 @@ export const listMonitorGroups: API.PaginatedOperationMethod<
   ListMonitorGroupsResponse,
   ListMonitorGroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMonitorGroupsRequest,
   output: ListMonitorGroupsResponse,
   errors: [],
@@ -5741,7 +5737,7 @@ export interface CreateMonitorGroupRequest {
 }
 
 export const CreateMonitorGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     description: Schema.String,
     members: Schema.Array(
@@ -5787,7 +5783,7 @@ export interface CreateMonitorGroupResponse {
 }
 
 export const CreateMonitorGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     description: Schema.String,
     members: Schema.Array(
@@ -5832,7 +5828,7 @@ export const createMonitorGroup: API.OperationMethod<
   CreateMonitorGroupResponse,
   CreateMonitorGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMonitorGroupRequest,
   output: CreateMonitorGroupResponse,
   errors: [],
@@ -5854,7 +5850,7 @@ export interface UpdateMonitorGroupRequest {
 }
 
 export const UpdateMonitorGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     monitorGroupId: Schema.String.pipe(T.HttpPath("monitorGroupId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     description: Schema.String,
@@ -5901,7 +5897,7 @@ export interface UpdateMonitorGroupResponse {
 }
 
 export const UpdateMonitorGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     description: Schema.String,
     members: Schema.Array(
@@ -5946,7 +5942,7 @@ export const updateMonitorGroup: API.OperationMethod<
   UpdateMonitorGroupResponse,
   UpdateMonitorGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMonitorGroupRequest,
   output: UpdateMonitorGroupResponse,
   errors: [],
@@ -5968,7 +5964,7 @@ export interface PatchMonitorGroupRequest {
 }
 
 export const PatchMonitorGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     monitorGroupId: Schema.String.pipe(T.HttpPath("monitorGroupId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     description: Schema.String,
@@ -6015,7 +6011,7 @@ export interface PatchMonitorGroupResponse {
 }
 
 export const PatchMonitorGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     description: Schema.String,
     members: Schema.Array(
@@ -6060,7 +6056,7 @@ export const patchMonitorGroup: API.OperationMethod<
   PatchMonitorGroupResponse,
   PatchMonitorGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchMonitorGroupRequest,
   output: PatchMonitorGroupResponse,
   errors: [],
@@ -6073,7 +6069,7 @@ export interface DeleteMonitorGroupRequest {
 }
 
 export const DeleteMonitorGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     monitorGroupId: Schema.String.pipe(T.HttpPath("monitorGroupId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
   }).pipe(
@@ -6104,7 +6100,7 @@ export interface DeleteMonitorGroupResponse {
 }
 
 export const DeleteMonitorGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     description: Schema.String,
     members: Schema.Array(
@@ -6149,7 +6145,7 @@ export const deleteMonitorGroup: API.OperationMethod<
   DeleteMonitorGroupResponse,
   DeleteMonitorGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMonitorGroupRequest,
   output: DeleteMonitorGroupResponse,
   errors: [],
@@ -6166,7 +6162,7 @@ export interface GetMonitorGroupReferenceRequest {
 }
 
 export const GetMonitorGroupReferenceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     monitorGroupId: Schema.String.pipe(T.HttpPath("monitorGroupId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
   }).pipe(
@@ -6186,7 +6182,7 @@ export interface GetMonitorGroupReferenceResponse {
 }
 
 export const GetMonitorGroupReferenceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     result: Schema.Array(
       Schema.Struct({
         referenceType: Schema.optional(
@@ -6223,7 +6219,7 @@ export const getMonitorGroupReference: API.PaginatedOperationMethod<
   GetMonitorGroupReferenceResponse,
   GetMonitorGroupReferenceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetMonitorGroupReferenceRequest,
   output: GetMonitorGroupReferenceResponse,
   errors: [],
@@ -6283,7 +6279,7 @@ export interface CreateMonitorPreviewRequest {
 }
 
 export const CreateMonitorPreviewRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     monitorId: Schema.String.pipe(T.HttpPath("monitorId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     allowInsecure: Schema.optional(Schema.Boolean),
@@ -6346,7 +6342,7 @@ export interface CreateMonitorPreviewResponse {
 }
 
 export const CreateMonitorPreviewResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pools: Schema.optional(
       Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
     ),
@@ -6364,7 +6360,7 @@ export const createMonitorPreview: API.OperationMethod<
   CreateMonitorPreviewResponse,
   CreateMonitorPreviewError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMonitorPreviewRequest,
   output: CreateMonitorPreviewResponse,
   errors: [],
@@ -6381,7 +6377,7 @@ export interface GetMonitorReferenceRequest {
 }
 
 export const GetMonitorReferenceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     monitorId: Schema.String.pipe(T.HttpPath("monitorId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
   }).pipe(
@@ -6401,7 +6397,7 @@ export interface GetMonitorReferenceResponse {
 }
 
 export const GetMonitorReferenceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     result: Schema.Array(
       Schema.Struct({
         referenceType: Schema.optional(
@@ -6438,7 +6434,7 @@ export const getMonitorReference: API.PaginatedOperationMethod<
   GetMonitorReferenceResponse,
   GetMonitorReferenceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetMonitorReferenceRequest,
   output: GetMonitorReferenceResponse,
   errors: [],
@@ -6458,7 +6454,7 @@ export interface GetPoolRequest {
   accountId: string;
 }
 
-export const GetPoolRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPoolRequest = /*@__PURE__*/ Schema.Struct({
   poolId: Schema.String.pipe(T.HttpPath("poolId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -6552,7 +6548,7 @@ export interface GetPoolResponse {
     | null;
 }
 
-export const GetPoolResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPoolResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   checkRegions: Schema.optional(
     Schema.Union([
@@ -6758,7 +6754,7 @@ export const getPool: API.OperationMethod<
   GetPoolResponse,
   GetPoolError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPoolRequest,
   output: GetPoolResponse,
   errors: [],
@@ -6771,7 +6767,7 @@ export interface ListPoolsRequest {
   monitor?: string;
 }
 
-export const ListPoolsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListPoolsRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   monitor: Schema.optional(Schema.String).pipe(T.HttpQuery("monitor")),
 }).pipe(
@@ -6851,7 +6847,7 @@ export interface ListPoolsResponse {
   }[];
 }
 
-export const ListPoolsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListPoolsResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -7070,7 +7066,7 @@ export const listPools: API.PaginatedOperationMethod<
   ListPoolsResponse,
   ListPoolsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPoolsRequest,
   output: ListPoolsResponse,
   errors: [],
@@ -7135,7 +7131,7 @@ export interface CreatePoolRequest {
   } | null;
 }
 
-export const CreatePoolRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreatePoolRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   name: Schema.String,
   origins: Schema.Array(
@@ -7350,7 +7346,7 @@ export interface CreatePoolResponse {
     | null;
 }
 
-export const CreatePoolResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreatePoolResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   checkRegions: Schema.optional(
     Schema.Union([
@@ -7558,7 +7554,7 @@ export const createPool: API.OperationMethod<
   CreatePoolResponse,
   CreatePoolError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePoolRequest,
   output: CreatePoolResponse,
   errors: [],
@@ -7640,7 +7636,7 @@ export interface UpdatePoolRequest {
   } | null;
 }
 
-export const UpdatePoolRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdatePoolRequest = /*@__PURE__*/ Schema.Struct({
   poolId: Schema.String.pipe(T.HttpPath("poolId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   name: Schema.String,
@@ -7883,7 +7879,7 @@ export interface UpdatePoolResponse {
     | null;
 }
 
-export const UpdatePoolResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdatePoolResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   checkRegions: Schema.optional(
     Schema.Union([
@@ -8091,7 +8087,7 @@ export const updatePool: API.OperationMethod<
   UpdatePoolResponse,
   UpdatePoolError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePoolRequest,
   output: UpdatePoolResponse,
   errors: [],
@@ -8173,7 +8169,7 @@ export interface PatchPoolRequest {
   }[];
 }
 
-export const PatchPoolRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchPoolRequest = /*@__PURE__*/ Schema.Struct({
   poolId: Schema.String.pipe(T.HttpPath("poolId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   checkRegions: Schema.optional(
@@ -8418,7 +8414,7 @@ export interface PatchPoolResponse {
     | null;
 }
 
-export const PatchPoolResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchPoolResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   checkRegions: Schema.optional(
     Schema.Union([
@@ -8626,7 +8622,7 @@ export const patchPool: API.OperationMethod<
   PatchPoolResponse,
   PatchPoolError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchPoolRequest,
   output: PatchPoolResponse,
   errors: [],
@@ -8638,7 +8634,7 @@ export interface DeletePoolRequest {
   accountId: string;
 }
 
-export const DeletePoolRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeletePoolRequest = /*@__PURE__*/ Schema.Struct({
   poolId: Schema.String.pipe(T.HttpPath("poolId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -8652,7 +8648,7 @@ export interface DeletePoolResponse {
   id?: string | null;
 }
 
-export const DeletePoolResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeletePoolResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
 }).pipe(
   T.ResponsePath("result"),
@@ -8665,7 +8661,7 @@ export const deletePool: API.OperationMethod<
   DeletePoolResponse,
   DeletePoolError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePoolRequest,
   output: DeletePoolResponse,
   errors: [],
@@ -8678,7 +8674,7 @@ export interface BulkPatchPoolsRequest {
   notificationEmail?: "";
 }
 
-export const BulkPatchPoolsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BulkPatchPoolsRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   notificationEmail: Schema.optional(Schema.Literal("")),
 }).pipe(
@@ -8759,230 +8755,217 @@ export interface BulkPatchPoolsResponse {
   }[];
 }
 
-export const BulkPatchPoolsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    result: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        checkRegions: Schema.optional(
-          Schema.Union([
-            Schema.Array(
+export const BulkPatchPoolsResponse = /*@__PURE__*/ Schema.Struct({
+  result: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      checkRegions: Schema.optional(
+        Schema.Union([
+          Schema.Array(
+            Schema.Union([
+              Schema.Literals([
+                "WNAM",
+                "ENAM",
+                "WEU",
+                "EEU",
+                "NSAM",
+                "SSAM",
+                "OC",
+                "ME",
+                "NAF",
+                "SAF",
+                "SAS",
+                "SEAS",
+                "NEAS",
+                "ALL_REGIONS",
+              ]),
+              Schema.String,
+            ]),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      disabledAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      latitude: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      loadShedding: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            defaultPercent: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            defaultPolicy: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "WNAM",
-                  "ENAM",
-                  "WEU",
-                  "EEU",
-                  "NSAM",
-                  "SSAM",
-                  "OC",
-                  "ME",
-                  "NAF",
-                  "SAF",
-                  "SAS",
-                  "SEAS",
-                  "NEAS",
-                  "ALL_REGIONS",
+                Schema.Union([
+                  Schema.Literals(["random", "hash"]),
+                  Schema.String,
                 ]),
-                Schema.String,
+                Schema.Null,
               ]),
             ),
-            Schema.Null,
-          ]),
-        ),
-        createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        description: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        disabledAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-        latitude: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        loadShedding: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              defaultPercent: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              defaultPolicy: Schema.optional(
+            sessionPercent: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            sessionPolicy: Schema.optional(
+              Schema.Union([Schema.Literal("hash"), Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              defaultPercent: "default_percent",
+              defaultPolicy: "default_policy",
+              sessionPercent: "session_percent",
+              sessionPolicy: "session_policy",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      longitude: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      minimumOrigins: Schema.optional(
+        Schema.Union([Schema.Number, Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      monitor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      monitorGroup: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      networks: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      notificationEmail: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      notificationFilter: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            origin: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  disable: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  healthy: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+            pool: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  disable: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  healthy: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Null,
+        ]),
+      ),
+      originSteering: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            policy: Schema.optional(
+              Schema.Union([
                 Schema.Union([
-                  Schema.Union([
-                    Schema.Literals(["random", "hash"]),
-                    Schema.String,
+                  Schema.Literals([
+                    "random",
+                    "hash",
+                    "least_outstanding_requests",
+                    "least_connections",
                   ]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Null,
+        ]),
+      ),
+      origins: Schema.optional(
+        Schema.Union([
+          Schema.Array(
+            Schema.Struct({
+              address: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              disabledAt: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              enabled: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              flattenCname: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              header: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    host: Schema.optional(
+                      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                    ),
+                  }).pipe(Schema.encodeKeys({ host: "Host" })),
                   Schema.Null,
                 ]),
               ),
-              sessionPercent: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
+              name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+              port: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+              virtualNetworkId: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
               ),
-              sessionPolicy: Schema.optional(
-                Schema.Union([Schema.Literal("hash"), Schema.Null]),
+              weight: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
               ),
             }).pipe(
               Schema.encodeKeys({
-                defaultPercent: "default_percent",
-                defaultPolicy: "default_policy",
-                sessionPercent: "session_percent",
-                sessionPolicy: "session_policy",
+                address: "address",
+                disabledAt: "disabled_at",
+                enabled: "enabled",
+                flattenCname: "flatten_cname",
+                header: "header",
+                name: "name",
+                port: "port",
+                virtualNetworkId: "virtual_network_id",
+                weight: "weight",
               }),
             ),
-            Schema.Null,
-          ]),
-        ),
-        longitude: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        minimumOrigins: Schema.optional(
-          Schema.Union([Schema.Number, Schema.Null]),
-        ),
-        modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        monitor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        monitorGroup: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        networks: Schema.optional(
-          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-        ),
-        notificationEmail: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        notificationFilter: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              origin: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    disable: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                    healthy: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                  }),
-                  Schema.Null,
-                ]),
-              ),
-              pool: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    disable: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                    healthy: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                  }),
-                  Schema.Null,
-                ]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        originSteering: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              policy: Schema.optional(
-                Schema.Union([
-                  Schema.Union([
-                    Schema.Literals([
-                      "random",
-                      "hash",
-                      "least_outstanding_requests",
-                      "least_connections",
-                    ]),
-                    Schema.String,
-                  ]),
-                  Schema.Null,
-                ]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        origins: Schema.optional(
-          Schema.Union([
-            Schema.Array(
-              Schema.Struct({
-                address: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                disabledAt: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                enabled: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                flattenCname: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                header: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      host: Schema.optional(
-                        Schema.Union([
-                          Schema.Array(Schema.String),
-                          Schema.Null,
-                        ]),
-                      ),
-                    }).pipe(Schema.encodeKeys({ host: "Host" })),
-                    Schema.Null,
-                  ]),
-                ),
-                name: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                port: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                virtualNetworkId: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                weight: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  address: "address",
-                  disabledAt: "disabled_at",
-                  enabled: "enabled",
-                  flattenCname: "flatten_cname",
-                  header: "header",
-                  name: "name",
-                  port: "port",
-                  virtualNetworkId: "virtual_network_id",
-                  weight: "weight",
-                }),
-              ),
-            ),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          checkRegions: "check_regions",
-          createdOn: "created_on",
-          description: "description",
-          disabledAt: "disabled_at",
-          enabled: "enabled",
-          latitude: "latitude",
-          loadShedding: "load_shedding",
-          longitude: "longitude",
-          minimumOrigins: "minimum_origins",
-          modifiedOn: "modified_on",
-          monitor: "monitor",
-          monitorGroup: "monitor_group",
-          name: "name",
-          networks: "networks",
-          notificationEmail: "notification_email",
-          notificationFilter: "notification_filter",
-          originSteering: "origin_steering",
-          origins: "origins",
-        }),
+          ),
+          Schema.Null,
+        ]),
       ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        checkRegions: "check_regions",
+        createdOn: "created_on",
+        description: "description",
+        disabledAt: "disabled_at",
+        enabled: "enabled",
+        latitude: "latitude",
+        loadShedding: "load_shedding",
+        longitude: "longitude",
+        minimumOrigins: "minimum_origins",
+        modifiedOn: "modified_on",
+        monitor: "monitor",
+        monitorGroup: "monitor_group",
+        name: "name",
+        networks: "networks",
+        notificationEmail: "notification_email",
+        notificationFilter: "notification_filter",
+        originSteering: "origin_steering",
+        origins: "origins",
+      }),
     ),
-  },
-) as unknown as Schema.Schema<BulkPatchPoolsResponse>;
+  ),
+}) as unknown as Schema.Schema<BulkPatchPoolsResponse>;
 
 export type BulkPatchPoolsError = DefaultErrors;
 
@@ -8991,7 +8974,7 @@ export const bulkPatchPools: API.PaginatedOperationMethod<
   BulkPatchPoolsResponse,
   BulkPatchPoolsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: BulkPatchPoolsRequest,
   output: BulkPatchPoolsResponse,
   errors: [],
@@ -9011,7 +8994,7 @@ export interface GetPoolHealthRequest {
   accountId: string;
 }
 
-export const GetPoolHealthRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPoolHealthRequest = /*@__PURE__*/ Schema.Struct({
   poolId: Schema.String.pipe(T.HttpPath("poolId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -9040,7 +9023,7 @@ export interface GetPoolHealthResponse {
   } | null;
 }
 
-export const GetPoolHealthResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPoolHealthResponse = /*@__PURE__*/ Schema.Struct({
   poolId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   popHealth: Schema.optional(
     Schema.Union([
@@ -9098,7 +9081,7 @@ export const getPoolHealth: API.OperationMethod<
   GetPoolHealthResponse,
   GetPoolHealthError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPoolHealthRequest,
   output: GetPoolHealthResponse,
   errors: [],
@@ -9150,7 +9133,7 @@ export interface CreatePoolHealthRequest {
 }
 
 export const CreatePoolHealthRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     poolId: Schema.String.pipe(T.HttpPath("poolId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     allowInsecure: Schema.optional(Schema.Boolean),
@@ -9213,7 +9196,7 @@ export interface CreatePoolHealthResponse {
 }
 
 export const CreatePoolHealthResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pools: Schema.optional(
       Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
     ),
@@ -9231,7 +9214,7 @@ export const createPoolHealth: API.OperationMethod<
   CreatePoolHealthResponse,
   CreatePoolHealthError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePoolHealthRequest,
   output: CreatePoolHealthResponse,
   errors: [],
@@ -9248,7 +9231,7 @@ export interface GetPoolReferenceRequest {
 }
 
 export const GetPoolReferenceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     poolId: Schema.String.pipe(T.HttpPath("poolId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
   }).pipe(
@@ -9268,7 +9251,7 @@ export interface GetPoolReferenceResponse {
 }
 
 export const GetPoolReferenceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     result: Schema.Array(
       Schema.Struct({
         referenceType: Schema.optional(
@@ -9305,7 +9288,7 @@ export const getPoolReference: API.PaginatedOperationMethod<
   GetPoolReferenceResponse,
   GetPoolReferenceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetPoolReferenceRequest,
   output: GetPoolReferenceResponse,
   errors: [],
@@ -9325,7 +9308,7 @@ export interface GetPreviewRequest {
   accountId: string;
 }
 
-export const GetPreviewRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPreviewRequest = /*@__PURE__*/ Schema.Struct({
   previewId: Schema.String.pipe(T.HttpPath("previewId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -9337,7 +9320,7 @@ export const GetPreviewRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type GetPreviewResponse = Record<string, unknown>;
 
-export const GetPreviewResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
+export const GetPreviewResponse = /*@__PURE__*/ Schema.Record(
   Schema.String,
   Schema.Unknown,
 ).pipe(
@@ -9351,7 +9334,7 @@ export const getPreview: API.OperationMethod<
   GetPreviewResponse,
   GetPreviewError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPreviewRequest,
   output: GetPreviewResponse,
   errors: [],
@@ -9381,7 +9364,7 @@ export interface GetRegionRequest {
   accountId: string;
 }
 
-export const GetRegionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetRegionRequest = /*@__PURE__*/ Schema.Struct({
   regionId: Schema.Union([
     Schema.Literals([
       "WNAM",
@@ -9411,7 +9394,7 @@ export const GetRegionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetRegionResponse = unknown;
 
 export const GetRegionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
+  /*@__PURE__*/ Schema.Unknown.pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetRegionResponse>;
 
@@ -9422,7 +9405,7 @@ export const getRegion: API.OperationMethod<
   GetRegionResponse,
   GetRegionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRegionRequest,
   output: GetRegionResponse,
   errors: [],
@@ -9439,7 +9422,7 @@ export interface ListRegionsRequest {
   subdivisionCodeA2?: string;
 }
 
-export const ListRegionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListRegionsRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   countryCodeA2: Schema.optional(Schema.String).pipe(
     T.HttpQuery("country_code_a2"),
@@ -9460,7 +9443,7 @@ export const ListRegionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListRegionsResponse = unknown;
 
 export const ListRegionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
+  /*@__PURE__*/ Schema.Unknown.pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<ListRegionsResponse>;
 
@@ -9471,7 +9454,7 @@ export const listRegions: API.OperationMethod<
   ListRegionsResponse,
   ListRegionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListRegionsRequest,
   output: ListRegionsResponse,
   errors: [],
@@ -9492,7 +9475,7 @@ export interface ListSearchesRequest {
   references?: "" | "*" | "referral" | "referrer" | (string & {});
 }
 
-export const ListSearchesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListSearchesRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
   perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
@@ -9539,7 +9522,7 @@ export interface ListSearchesResponse {
   } | null;
 }
 
-export const ListSearchesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListSearchesResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Struct({
     items: Schema.optional(
       Schema.Union([
@@ -9624,7 +9607,7 @@ export const listSearches: API.PaginatedOperationMethod<
   ListSearchesResponse,
   ListSearchesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSearchesRequest,
   output: ListSearchesResponse,
   errors: [],

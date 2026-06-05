@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const GetIssuingAuthorizationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     card: Schema.optional(Schema.String),
     cardholder: Schema.optional(Schema.String),
     created: Schema.optional(Schema.String),
@@ -27,7 +27,7 @@ export type GetIssuingAuthorizationsInput =
 
 // Output Schema
 export const GetIssuingAuthorizationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         amount: Schema.Number,
@@ -1302,9 +1302,7 @@ export type GetIssuingAuthorizationsOutput =
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  * @param status - Only return authorizations with the given status. One of `pending`, `closed`, or `reversed`.
  */
-export const GetIssuingAuthorizations = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetIssuingAuthorizationsInput,
-    outputSchema: GetIssuingAuthorizationsOutput,
-  }),
-);
+export const GetIssuingAuthorizations = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetIssuingAuthorizationsInput,
+  outputSchema: GetIssuingAuthorizationsOutput,
+}));

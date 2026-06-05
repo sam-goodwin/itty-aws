@@ -8,9 +8,9 @@
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
-import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
+import * as T from "../traits.ts";
 
 // =============================================================================
 // Errors
@@ -44,7 +44,7 @@ export interface GetAbuseReportRequest {
   accountId: string;
 }
 
-export const GetAbuseReportRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetAbuseReportRequest = /*@__PURE__*/ Schema.Struct({
   reportParam: Schema.String.pipe(T.HttpPath("reportParam")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -97,64 +97,60 @@ export interface GetAbuseReportResponse {
   urls?: string[] | null;
 }
 
-export const GetAbuseReportResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.String,
-    cdate: Schema.String,
-    domain: Schema.String,
-    mitigationSummary: Schema.Struct({
-      acceptedUrlCount: Schema.Number,
-      activeCount: Schema.Number,
-      externalHostNotified: Schema.Boolean,
-      inReviewCount: Schema.Number,
-      pendingCount: Schema.Number,
-    }).pipe(
-      Schema.encodeKeys({
-        acceptedUrlCount: "accepted_url_count",
-        activeCount: "active_count",
-        externalHostNotified: "external_host_notified",
-        inReviewCount: "in_review_count",
-        pendingCount: "pending_count",
+export const GetAbuseReportResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  cdate: Schema.String,
+  domain: Schema.String,
+  mitigationSummary: Schema.Struct({
+    acceptedUrlCount: Schema.Number,
+    activeCount: Schema.Number,
+    externalHostNotified: Schema.Boolean,
+    inReviewCount: Schema.Number,
+    pendingCount: Schema.Number,
+  }).pipe(
+    Schema.encodeKeys({
+      acceptedUrlCount: "accepted_url_count",
+      activeCount: "active_count",
+      externalHostNotified: "external_host_notified",
+      inReviewCount: "in_review_count",
+      pendingCount: "pending_count",
+    }),
+  ),
+  status: Schema.Union([
+    Schema.Literals(["accepted", "in_review"]),
+    Schema.String,
+  ]),
+  type: Schema.Union([
+    Schema.Literals([
+      "PHISH",
+      "GEN",
+      "THREAT",
+      "DMCA",
+      "EMER",
+      "TM",
+      "REG_WHO",
+      "NCSEI",
+      "NETWORK",
+    ]),
+    Schema.String,
+  ]),
+  justification: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  originalWork: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  submitter: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        company: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        telephone: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       }),
-    ),
-    status: Schema.Union([
-      Schema.Literals(["accepted", "in_review"]),
-      Schema.String,
+      Schema.Null,
     ]),
-    type: Schema.Union([
-      Schema.Literals([
-        "PHISH",
-        "GEN",
-        "THREAT",
-        "DMCA",
-        "EMER",
-        "TM",
-        "REG_WHO",
-        "NCSEI",
-        "NETWORK",
-      ]),
-      Schema.String,
-    ]),
-    justification: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    originalWork: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    submitter: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          company: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          telephone: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }),
-        Schema.Null,
-      ]),
-    ),
-    urls: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-  },
-)
+  ),
+  urls: Schema.optional(
+    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+  ),
+})
   .pipe(
     Schema.encodeKeys({
       id: "id",
@@ -183,7 +179,7 @@ export const getAbuseReport: API.OperationMethod<
   GetAbuseReportResponse,
   GetAbuseReportError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAbuseReportRequest,
   output: GetAbuseReportResponse,
   errors: [InvalidAccountId, AbuseReportNotFound],
@@ -227,7 +223,7 @@ export interface ListAbuseReportsRequest {
 }
 
 export const ListAbuseReportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
     perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
@@ -323,7 +319,7 @@ export interface ListAbuseReportsResponse {
 }
 
 export const ListAbuseReportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     result: Schema.Struct({
       items: Schema.optional(
         Schema.Union([
@@ -447,7 +443,7 @@ export const listAbuseReports: API.PaginatedOperationMethod<
   ListAbuseReportsResponse,
   ListAbuseReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAbuseReportsRequest,
   output: ListAbuseReportsResponse,
   errors: [InvalidAccountId],
@@ -569,7 +565,7 @@ export interface CreateAbuseReportRequest {
 }
 
 export const CreateAbuseReportRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportParam: Schema.String.pipe(T.HttpPath("reportParam")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     act: Schema.Union([
@@ -717,7 +713,7 @@ export const CreateAbuseReportRequest =
 export type CreateAbuseReportResponse = string;
 
 export const CreateAbuseReportResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String.pipe(
+  /*@__PURE__*/ Schema.String.pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateAbuseReportResponse>;
 
@@ -728,7 +724,7 @@ export const createAbuseReport: API.OperationMethod<
   CreateAbuseReportResponse,
   CreateAbuseReportError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAbuseReportRequest,
   output: CreateAbuseReportResponse,
   errors: [InvalidRequest],
@@ -781,67 +777,65 @@ export interface ListMitigationsRequest {
     | (string & {});
 }
 
-export const ListMitigationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    reportId: Schema.String.pipe(T.HttpPath("reportId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-    effectiveAfter: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("effective_after"),
-    ),
-    effectiveBefore: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("effective_before"),
-    ),
-    entityType: Schema.optional(
-      Schema.Union([
-        Schema.Literals(["url_pattern", "account", "zone"]),
-        Schema.String,
+export const ListMitigationsRequest = /*@__PURE__*/ Schema.Struct({
+  reportId: Schema.String.pipe(T.HttpPath("reportId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+  effectiveAfter: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("effective_after"),
+  ),
+  effectiveBefore: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("effective_before"),
+  ),
+  entityType: Schema.optional(
+    Schema.Union([
+      Schema.Literals(["url_pattern", "account", "zone"]),
+      Schema.String,
+    ]),
+  ).pipe(T.HttpQuery("entity_type")),
+  sort: Schema.optional(
+    Schema.Union([
+      Schema.Literals([
+        "type,asc",
+        "type,desc",
+        "effective_date,asc",
+        "effective_date,desc",
+        "status,asc",
+        "status,desc",
+        "entity_type,asc",
+        "entity_type,desc",
       ]),
-    ).pipe(T.HttpQuery("entity_type")),
-    sort: Schema.optional(
-      Schema.Union([
-        Schema.Literals([
-          "type,asc",
-          "type,desc",
-          "effective_date,asc",
-          "effective_date,desc",
-          "status,asc",
-          "status,desc",
-          "entity_type,asc",
-          "entity_type,desc",
-        ]),
-        Schema.String,
+      Schema.String,
+    ]),
+  ).pipe(T.HttpQuery("sort")),
+  status: Schema.optional(
+    Schema.Union([
+      Schema.Literals([
+        "pending",
+        "active",
+        "in_review",
+        "cancelled",
+        "removed",
       ]),
-    ).pipe(T.HttpQuery("sort")),
-    status: Schema.optional(
-      Schema.Union([
-        Schema.Literals([
-          "pending",
-          "active",
-          "in_review",
-          "cancelled",
-          "removed",
-        ]),
-        Schema.String,
+      Schema.String,
+    ]),
+  ).pipe(T.HttpQuery("status")),
+  type: Schema.optional(
+    Schema.Union([
+      Schema.Literals([
+        "legal_block",
+        "misleading_interstitial",
+        "phishing_interstitial",
+        "network_block",
+        "rate_limit_cache",
+        "account_suspend",
+        "redirect_video_stream",
       ]),
-    ).pipe(T.HttpQuery("status")),
-    type: Schema.optional(
-      Schema.Union([
-        Schema.Literals([
-          "legal_block",
-          "misleading_interstitial",
-          "phishing_interstitial",
-          "network_block",
-          "rate_limit_cache",
-          "account_suspend",
-          "redirect_video_stream",
-        ]),
-        Schema.String,
-      ]),
-    ).pipe(T.HttpQuery("type")),
-  },
-).pipe(
+      Schema.String,
+    ]),
+  ).pipe(T.HttpQuery("type")),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/accounts/{account_id}/abuse-reports/{reportId}/mitigations",
@@ -886,7 +880,7 @@ export interface ListMitigationsResponse {
 }
 
 export const ListMitigationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     result: Schema.Struct({
       items: Schema.optional(
         Schema.Union([
@@ -971,7 +965,7 @@ export const listMitigations: API.PaginatedOperationMethod<
   ListMitigationsResponse,
   ListMitigationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMitigationsRequest,
   output: ListMitigationsResponse,
   errors: [],
@@ -996,7 +990,7 @@ export interface ReviewMitigationRequest {
 }
 
 export const ReviewMitigationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportId: Schema.String.pipe(T.HttpPath("reportId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     appeals: Schema.Array(
@@ -1041,7 +1035,7 @@ export interface ReviewMitigationResponse {
 }
 
 export const ReviewMitigationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     result: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -1093,7 +1087,7 @@ export const reviewMitigation: API.PaginatedOperationMethod<
   ReviewMitigationResponse,
   ReviewMitigationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ReviewMitigationRequest,
   output: ReviewMitigationResponse,
   errors: [],

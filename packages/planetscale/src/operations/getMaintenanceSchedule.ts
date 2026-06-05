@@ -1,11 +1,11 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
-import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
+import * as T from "../traits.ts";
 
 // Input Schema
 export const GetMaintenanceScheduleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
@@ -20,7 +20,7 @@ export type GetMaintenanceScheduleInput =
 
 // Output Schema
 export const GetMaintenanceScheduleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     name: Schema.String,
     created_at: Schema.String,
@@ -53,10 +53,8 @@ export type GetMaintenanceScheduleOutput =
  * @param organization - Organization name slug from `list_organizations`. Example: `acme`.
  * @param database - Database name slug from `list_databases`. Example: `app-db`.
  */
-export const getMaintenanceSchedule = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetMaintenanceScheduleInput,
-    outputSchema: GetMaintenanceScheduleOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const getMaintenanceSchedule = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetMaintenanceScheduleInput,
+  outputSchema: GetMaintenanceScheduleOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

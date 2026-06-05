@@ -10,7 +10,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const CdnPeeringPrefixesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
     peeringLocation: Schema.String,
@@ -25,7 +25,7 @@ export type CdnPeeringPrefixesListInput =
 
 // Output Schema
 export const CdnPeeringPrefixesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -70,15 +70,13 @@ export type CdnPeeringPrefixesListOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param peeringLocation - The peering location.
  */
-export const CdnPeeringPrefixesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CdnPeeringPrefixesListInput,
-    outputSchema: CdnPeeringPrefixesListOutput,
-  }),
-);
+export const CdnPeeringPrefixesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CdnPeeringPrefixesListInput,
+  outputSchema: CdnPeeringPrefixesListOutput,
+}));
 // Input Schema
 export const CheckServiceProviderAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -92,7 +90,7 @@ export type CheckServiceProviderAvailabilityInput =
 
 // Output Schema
 export const CheckServiceProviderAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Available", "Unavailable"]);
+  /*@__PURE__*/ Schema.Literals(["Available", "Unavailable"]);
 export type CheckServiceProviderAvailabilityOutput =
   typeof CheckServiceProviderAvailabilityOutput.Type;
 
@@ -104,13 +102,13 @@ export type CheckServiceProviderAvailabilityOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const CheckServiceProviderAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CheckServiceProviderAvailabilityInput,
     outputSchema: CheckServiceProviderAvailabilityOutput,
   }));
 // Input Schema
 export const ConnectionMonitorTestsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringServiceName: Schema.String.pipe(T.PathParam()),
@@ -127,7 +125,7 @@ export type ConnectionMonitorTestsCreateOrUpdateInput =
 
 // Output Schema
 export const ConnectionMonitorTestsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -160,13 +158,13 @@ export type ConnectionMonitorTestsCreateOrUpdateOutput =
  * @param connectionMonitorTestName - The name of the connection monitor test
  */
 export const ConnectionMonitorTestsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectionMonitorTestsCreateOrUpdateInput,
     outputSchema: ConnectionMonitorTestsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const ConnectionMonitorTestsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringServiceName: Schema.String.pipe(T.PathParam()),
@@ -182,8 +180,7 @@ export type ConnectionMonitorTestsDeleteInput =
   typeof ConnectionMonitorTestsDeleteInput.Type;
 
 // Output Schema
-export const ConnectionMonitorTestsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ConnectionMonitorTestsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ConnectionMonitorTestsDeleteOutput =
   typeof ConnectionMonitorTestsDeleteOutput.Type;
 
@@ -198,13 +195,13 @@ export type ConnectionMonitorTestsDeleteOutput =
  * @param connectionMonitorTestName - The name of the connection monitor test
  */
 export const ConnectionMonitorTestsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectionMonitorTestsDeleteInput,
     outputSchema: ConnectionMonitorTestsDeleteOutput,
   }));
 // Input Schema
 export const ConnectionMonitorTestsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringServiceName: Schema.String.pipe(T.PathParam()),
@@ -221,7 +218,7 @@ export type ConnectionMonitorTestsGetInput =
 
 // Output Schema
 export const ConnectionMonitorTestsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -253,15 +250,13 @@ export type ConnectionMonitorTestsGetOutput =
  * @param peeringServiceName - The name of the peering.
  * @param connectionMonitorTestName - The name of the connection monitor test
  */
-export const ConnectionMonitorTestsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectionMonitorTestsGetInput,
-    outputSchema: ConnectionMonitorTestsGetOutput,
-  }),
-);
+export const ConnectionMonitorTestsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectionMonitorTestsGetInput,
+  outputSchema: ConnectionMonitorTestsGetOutput,
+}));
 // Input Schema
 export const ConnectionMonitorTestsListByPeeringServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringServiceName: Schema.String.pipe(T.PathParam()),
@@ -277,7 +272,7 @@ export type ConnectionMonitorTestsListByPeeringServiceInput =
 
 // Output Schema
 export const ConnectionMonitorTestsListByPeeringServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -324,13 +319,13 @@ export type ConnectionMonitorTestsListByPeeringServiceOutput =
  * @param peeringServiceName - The name of the peering.
  */
 export const ConnectionMonitorTestsListByPeeringService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectionMonitorTestsListByPeeringServiceInput,
     outputSchema: ConnectionMonitorTestsListByPeeringServiceOutput,
   }));
 // Input Schema
 export const LegacyPeeringsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
     peeringLocation: Schema.String,
@@ -359,7 +354,7 @@ export type LegacyPeeringsListInput = typeof LegacyPeeringsListInput.Type;
 
 // Output Schema
 export const LegacyPeeringsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -406,13 +401,13 @@ export type LegacyPeeringsListOutput = typeof LegacyPeeringsListOutput.Type;
  * @param asn - The ASN number associated with a legacy peering.
  * @param directPeeringType - The direct peering type.
  */
-export const LegacyPeeringsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LegacyPeeringsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: LegacyPeeringsListInput,
   outputSchema: LegacyPeeringsListOutput,
 }));
 // Input Schema
 export const LookingGlassInvokeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
     command: Schema.Literals(["Traceroute", "Ping", "BgpRoute"]),
@@ -429,7 +424,7 @@ export type LookingGlassInvokeInput = typeof LookingGlassInvokeInput.Type;
 
 // Output Schema
 export const LookingGlassInvokeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     command: Schema.optional(
       Schema.Literals(["Traceroute", "Ping", "BgpRoute"]),
     ),
@@ -448,12 +443,12 @@ export type LookingGlassInvokeOutput = typeof LookingGlassInvokeOutput.Type;
  * @param sourceLocation - The location of the source.
  * @param destinationIP - The IP address of the destination.
  */
-export const LookingGlassInvoke = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LookingGlassInvoke = /*@__PURE__*/ API.make(() => ({
   inputSchema: LookingGlassInvokeInput,
   outputSchema: LookingGlassInvokeOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({ method: "GET", path: "/providers/Microsoft.Peering/operations" }),
@@ -461,7 +456,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -518,13 +513,13 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
 export const PeerAsnsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     peerAsnName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -539,7 +534,7 @@ export type PeerAsnsCreateOrUpdateInput =
 
 // Output Schema
 export const PeerAsnsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -569,14 +564,12 @@ export type PeerAsnsCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param peerAsnName - The peer ASN name.
  */
-export const PeerAsnsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PeerAsnsCreateOrUpdateInput,
-    outputSchema: PeerAsnsCreateOrUpdateOutput,
-  }),
-);
+export const PeerAsnsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PeerAsnsCreateOrUpdateInput,
+  outputSchema: PeerAsnsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const PeerAsnsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PeerAsnsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   peerAsnName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -589,7 +582,7 @@ export const PeerAsnsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PeerAsnsDeleteInput = typeof PeerAsnsDeleteInput.Type;
 
 // Output Schema
-export const PeerAsnsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PeerAsnsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type PeerAsnsDeleteOutput = typeof PeerAsnsDeleteOutput.Type;
 
 // The operation
@@ -600,12 +593,12 @@ export type PeerAsnsDeleteOutput = typeof PeerAsnsDeleteOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param peerAsnName - The peer ASN name.
  */
-export const PeerAsnsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PeerAsnsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: PeerAsnsDeleteInput,
   outputSchema: PeerAsnsDeleteOutput,
 }));
 // Input Schema
-export const PeerAsnsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PeerAsnsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   peerAsnName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -618,7 +611,7 @@ export const PeerAsnsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PeerAsnsGetInput = typeof PeerAsnsGetInput.Type;
 
 // Output Schema
-export const PeerAsnsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PeerAsnsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -647,13 +640,13 @@ export type PeerAsnsGetOutput = typeof PeerAsnsGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param peerAsnName - The peer ASN name.
  */
-export const PeerAsnsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PeerAsnsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: PeerAsnsGetInput,
   outputSchema: PeerAsnsGetOutput,
 }));
 // Input Schema
 export const PeerAsnsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -667,7 +660,7 @@ export type PeerAsnsListBySubscriptionInput =
 
 // Output Schema
 export const PeerAsnsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -711,15 +704,13 @@ export type PeerAsnsListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const PeerAsnsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PeerAsnsListBySubscriptionInput,
-    outputSchema: PeerAsnsListBySubscriptionOutput,
-  }),
-);
+export const PeerAsnsListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PeerAsnsListBySubscriptionInput,
+  outputSchema: PeerAsnsListBySubscriptionOutput,
+}));
 // Input Schema
 export const PeeringLocationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
     kind: Schema.Literals(["Direct", "Exchange"]),
@@ -746,7 +737,7 @@ export type PeeringLocationsListInput = typeof PeeringLocationsListInput.Type;
 
 // Output Schema
 export const PeeringLocationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -791,15 +782,13 @@ export type PeeringLocationsListOutput = typeof PeeringLocationsListOutput.Type;
  * @param kind - The kind of the peering.
  * @param directPeeringType - The type of direct peering.
  */
-export const PeeringLocationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PeeringLocationsListInput,
-    outputSchema: PeeringLocationsListOutput,
-  }),
-);
+export const PeeringLocationsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PeeringLocationsListInput,
+  outputSchema: PeeringLocationsListOutput,
+}));
 // Input Schema
 export const PeeringsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringName: Schema.String.pipe(T.PathParam()),
@@ -815,7 +804,7 @@ export type PeeringsCreateOrUpdateInput =
 
 // Output Schema
 export const PeeringsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -846,14 +835,12 @@ export type PeeringsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param peeringName - The name of the peering.
  */
-export const PeeringsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PeeringsCreateOrUpdateInput,
-    outputSchema: PeeringsCreateOrUpdateOutput,
-  }),
-);
+export const PeeringsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PeeringsCreateOrUpdateInput,
+  outputSchema: PeeringsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const PeeringsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PeeringsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   peeringName: Schema.String.pipe(T.PathParam()),
@@ -867,7 +854,7 @@ export const PeeringsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PeeringsDeleteInput = typeof PeeringsDeleteInput.Type;
 
 // Output Schema
-export const PeeringsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PeeringsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type PeeringsDeleteOutput = typeof PeeringsDeleteOutput.Type;
 
 // The operation
@@ -879,13 +866,13 @@ export type PeeringsDeleteOutput = typeof PeeringsDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param peeringName - The name of the peering.
  */
-export const PeeringsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PeeringsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: PeeringsDeleteInput,
   outputSchema: PeeringsDeleteOutput,
 }));
 // Input Schema
 export const PeeringServiceCountriesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -899,7 +886,7 @@ export type PeeringServiceCountriesListInput =
 
 // Output Schema
 export const PeeringServiceCountriesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -943,15 +930,13 @@ export type PeeringServiceCountriesListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const PeeringServiceCountriesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PeeringServiceCountriesListInput,
-    outputSchema: PeeringServiceCountriesListOutput,
-  }),
-);
+export const PeeringServiceCountriesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PeeringServiceCountriesListInput,
+  outputSchema: PeeringServiceCountriesListOutput,
+}));
 // Input Schema
 export const PeeringServiceLocationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
     country: Schema.optional(Schema.String),
@@ -966,7 +951,7 @@ export type PeeringServiceLocationsListInput =
 
 // Output Schema
 export const PeeringServiceLocationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1011,15 +996,13 @@ export type PeeringServiceLocationsListOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param country - The country of interest, in which the locations are to be present.
  */
-export const PeeringServiceLocationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PeeringServiceLocationsListInput,
-    outputSchema: PeeringServiceLocationsListOutput,
-  }),
-);
+export const PeeringServiceLocationsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PeeringServiceLocationsListInput,
+  outputSchema: PeeringServiceLocationsListOutput,
+}));
 // Input Schema
 export const PeeringServiceProvidersListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -1033,7 +1016,7 @@ export type PeeringServiceProvidersListInput =
 
 // Output Schema
 export const PeeringServiceProvidersListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1077,15 +1060,13 @@ export type PeeringServiceProvidersListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const PeeringServiceProvidersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PeeringServiceProvidersListInput,
-    outputSchema: PeeringServiceProvidersListOutput,
-  }),
-);
+export const PeeringServiceProvidersList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PeeringServiceProvidersListInput,
+  outputSchema: PeeringServiceProvidersListOutput,
+}));
 // Input Schema
 export const PeeringServicesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringServiceName: Schema.String.pipe(T.PathParam()),
@@ -1101,7 +1082,7 @@ export type PeeringServicesCreateOrUpdateInput =
 
 // Output Schema
 export const PeeringServicesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1133,13 +1114,13 @@ export type PeeringServicesCreateOrUpdateOutput =
  * @param peeringServiceName - The name of the peering.
  */
 export const PeeringServicesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PeeringServicesCreateOrUpdateInput,
     outputSchema: PeeringServicesCreateOrUpdateOutput,
   }));
 // Input Schema
 export const PeeringServicesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringServiceName: Schema.String.pipe(T.PathParam()),
@@ -1153,8 +1134,7 @@ export const PeeringServicesDeleteInput =
 export type PeeringServicesDeleteInput = typeof PeeringServicesDeleteInput.Type;
 
 // Output Schema
-export const PeeringServicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PeeringServicesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type PeeringServicesDeleteOutput =
   typeof PeeringServicesDeleteOutput.Type;
 
@@ -1167,15 +1147,13 @@ export type PeeringServicesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param peeringServiceName - The name of the peering.
  */
-export const PeeringServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PeeringServicesDeleteInput,
-    outputSchema: PeeringServicesDeleteOutput,
-  }),
-);
+export const PeeringServicesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PeeringServicesDeleteInput,
+  outputSchema: PeeringServicesDeleteOutput,
+}));
 // Input Schema
 export const PeeringServicesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringServiceName: Schema.String.pipe(T.PathParam()),
@@ -1190,7 +1168,7 @@ export type PeeringServicesGetInput = typeof PeeringServicesGetInput.Type;
 
 // Output Schema
 export const PeeringServicesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1220,13 +1198,13 @@ export type PeeringServicesGetOutput = typeof PeeringServicesGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param peeringServiceName - The name of the peering.
  */
-export const PeeringServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PeeringServicesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: PeeringServicesGetInput,
   outputSchema: PeeringServicesGetOutput,
 }));
 // Input Schema
 export const PeeringServicesInitializeConnectionMonitorInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -1240,7 +1218,7 @@ export type PeeringServicesInitializeConnectionMonitorInput =
 
 // Output Schema
 export const PeeringServicesInitializeConnectionMonitorOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type PeeringServicesInitializeConnectionMonitorOutput =
   typeof PeeringServicesInitializeConnectionMonitorOutput.Type;
 
@@ -1252,13 +1230,13 @@ export type PeeringServicesInitializeConnectionMonitorOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const PeeringServicesInitializeConnectionMonitor =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PeeringServicesInitializeConnectionMonitorInput,
     outputSchema: PeeringServicesInitializeConnectionMonitorOutput,
   }));
 // Input Schema
 export const PeeringServicesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1273,7 +1251,7 @@ export type PeeringServicesListByResourceGroupInput =
 
 // Output Schema
 export const PeeringServicesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1319,13 +1297,13 @@ export type PeeringServicesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const PeeringServicesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PeeringServicesListByResourceGroupInput,
     outputSchema: PeeringServicesListByResourceGroupOutput,
   }));
 // Input Schema
 export const PeeringServicesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -1339,7 +1317,7 @@ export type PeeringServicesListBySubscriptionInput =
 
 // Output Schema
 export const PeeringServicesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1384,13 +1362,13 @@ export type PeeringServicesListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const PeeringServicesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PeeringServicesListBySubscriptionInput,
     outputSchema: PeeringServicesListBySubscriptionOutput,
   }));
 // Input Schema
 export const PeeringServicesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringServiceName: Schema.String.pipe(T.PathParam()),
@@ -1405,7 +1383,7 @@ export type PeeringServicesUpdateInput = typeof PeeringServicesUpdateInput.Type;
 
 // Output Schema
 export const PeeringServicesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1436,14 +1414,12 @@ export type PeeringServicesUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param peeringServiceName - The name of the peering.
  */
-export const PeeringServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PeeringServicesUpdateInput,
-    outputSchema: PeeringServicesUpdateOutput,
-  }),
-);
+export const PeeringServicesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PeeringServicesUpdateInput,
+  outputSchema: PeeringServicesUpdateOutput,
+}));
 // Input Schema
-export const PeeringsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PeeringsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   peeringName: Schema.String.pipe(T.PathParam()),
@@ -1457,7 +1433,7 @@ export const PeeringsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PeeringsGetInput = typeof PeeringsGetInput.Type;
 
 // Output Schema
-export const PeeringsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PeeringsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1487,13 +1463,13 @@ export type PeeringsGetOutput = typeof PeeringsGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param peeringName - The name of the peering.
  */
-export const PeeringsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PeeringsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: PeeringsGetInput,
   outputSchema: PeeringsGetOutput,
 }));
 // Input Schema
 export const PeeringsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1508,7 +1484,7 @@ export type PeeringsListByResourceGroupInput =
 
 // Output Schema
 export const PeeringsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1553,15 +1529,13 @@ export type PeeringsListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const PeeringsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PeeringsListByResourceGroupInput,
-    outputSchema: PeeringsListByResourceGroupOutput,
-  }),
-);
+export const PeeringsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PeeringsListByResourceGroupInput,
+  outputSchema: PeeringsListByResourceGroupOutput,
+}));
 // Input Schema
 export const PeeringsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -1575,7 +1549,7 @@ export type PeeringsListBySubscriptionInput =
 
 // Output Schema
 export const PeeringsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1619,14 +1593,12 @@ export type PeeringsListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const PeeringsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PeeringsListBySubscriptionInput,
-    outputSchema: PeeringsListBySubscriptionOutput,
-  }),
-);
+export const PeeringsListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PeeringsListBySubscriptionInput,
+  outputSchema: PeeringsListBySubscriptionOutput,
+}));
 // Input Schema
-export const PeeringsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PeeringsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   peeringName: Schema.String.pipe(T.PathParam()),
@@ -1640,7 +1612,7 @@ export const PeeringsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PeeringsUpdateInput = typeof PeeringsUpdateInput.Type;
 
 // Output Schema
-export const PeeringsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PeeringsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1670,13 +1642,13 @@ export type PeeringsUpdateOutput = typeof PeeringsUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param peeringName - The name of the peering.
  */
-export const PeeringsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PeeringsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: PeeringsUpdateInput,
   outputSchema: PeeringsUpdateOutput,
 }));
 // Input Schema
 export const PrefixesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringServiceName: Schema.String.pipe(T.PathParam()),
@@ -1693,7 +1665,7 @@ export type PrefixesCreateOrUpdateInput =
 
 // Output Schema
 export const PrefixesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1725,14 +1697,12 @@ export type PrefixesCreateOrUpdateOutput =
  * @param peeringServiceName - The name of the peering.
  * @param prefixName - The name of the prefix.
  */
-export const PrefixesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrefixesCreateOrUpdateInput,
-    outputSchema: PrefixesCreateOrUpdateOutput,
-  }),
-);
+export const PrefixesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrefixesCreateOrUpdateInput,
+  outputSchema: PrefixesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const PrefixesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PrefixesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   peeringServiceName: Schema.String.pipe(T.PathParam()),
@@ -1747,7 +1717,7 @@ export const PrefixesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PrefixesDeleteInput = typeof PrefixesDeleteInput.Type;
 
 // Output Schema
-export const PrefixesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PrefixesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type PrefixesDeleteOutput = typeof PrefixesDeleteOutput.Type;
 
 // The operation
@@ -1760,12 +1730,12 @@ export type PrefixesDeleteOutput = typeof PrefixesDeleteOutput.Type;
  * @param peeringServiceName - The name of the peering.
  * @param prefixName - The name of the prefix.
  */
-export const PrefixesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrefixesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: PrefixesDeleteInput,
   outputSchema: PrefixesDeleteOutput,
 }));
 // Input Schema
-export const PrefixesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PrefixesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   peeringServiceName: Schema.String.pipe(T.PathParam()),
@@ -1781,7 +1751,7 @@ export const PrefixesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PrefixesGetInput = typeof PrefixesGetInput.Type;
 
 // Output Schema
-export const PrefixesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PrefixesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1813,13 +1783,13 @@ export type PrefixesGetOutput = typeof PrefixesGetOutput.Type;
  * @param prefixName - The name of the prefix.
  * @param $expand - The properties to be expanded.
  */
-export const PrefixesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrefixesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: PrefixesGetInput,
   outputSchema: PrefixesGetOutput,
 }));
 // Input Schema
 export const PrefixesListByPeeringServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringServiceName: Schema.String.pipe(T.PathParam()),
@@ -1836,7 +1806,7 @@ export type PrefixesListByPeeringServiceInput =
 
 // Output Schema
 export const PrefixesListByPeeringServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1884,13 +1854,13 @@ export type PrefixesListByPeeringServiceOutput =
  * @param $expand - The properties to be expanded.
  */
 export const PrefixesListByPeeringService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrefixesListByPeeringServiceInput,
     outputSchema: PrefixesListByPeeringServiceOutput,
   }));
 // Input Schema
 export const ReceivedRoutesListByPeeringInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringName: Schema.String.pipe(T.PathParam()),
@@ -1911,7 +1881,7 @@ export type ReceivedRoutesListByPeeringInput =
 
 // Output Schema
 export const ReceivedRoutesListByPeeringOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         prefix: Schema.optional(Schema.String),
@@ -1942,15 +1912,13 @@ export type ReceivedRoutesListByPeeringOutput =
  * @param rpkiValidationState - The optional RPKI validation state that can be used to filter the routes.
  * @param $skipToken - The optional page continuation token that is used in the event of paginated result.
  */
-export const ReceivedRoutesListByPeering = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReceivedRoutesListByPeeringInput,
-    outputSchema: ReceivedRoutesListByPeeringOutput,
-  }),
-);
+export const ReceivedRoutesListByPeering = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReceivedRoutesListByPeeringInput,
+  outputSchema: ReceivedRoutesListByPeeringOutput,
+}));
 // Input Schema
 export const RegisteredAsnsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringName: Schema.String.pipe(T.PathParam()),
@@ -1967,7 +1935,7 @@ export type RegisteredAsnsCreateOrUpdateInput =
 
 // Output Schema
 export const RegisteredAsnsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2000,13 +1968,13 @@ export type RegisteredAsnsCreateOrUpdateOutput =
  * @param registeredAsnName - The name of the registered ASN.
  */
 export const RegisteredAsnsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RegisteredAsnsCreateOrUpdateInput,
     outputSchema: RegisteredAsnsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const RegisteredAsnsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringName: Schema.String.pipe(T.PathParam()),
@@ -2021,8 +1989,7 @@ export const RegisteredAsnsDeleteInput =
 export type RegisteredAsnsDeleteInput = typeof RegisteredAsnsDeleteInput.Type;
 
 // Output Schema
-export const RegisteredAsnsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const RegisteredAsnsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type RegisteredAsnsDeleteOutput = typeof RegisteredAsnsDeleteOutput.Type;
 
 // The operation
@@ -2035,22 +2002,18 @@ export type RegisteredAsnsDeleteOutput = typeof RegisteredAsnsDeleteOutput.Type;
  * @param peeringName - The name of the peering.
  * @param registeredAsnName - The name of the registered ASN.
  */
-export const RegisteredAsnsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RegisteredAsnsDeleteInput,
-    outputSchema: RegisteredAsnsDeleteOutput,
-  }),
-);
+export const RegisteredAsnsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RegisteredAsnsDeleteInput,
+  outputSchema: RegisteredAsnsDeleteOutput,
+}));
 // Input Schema
-export const RegisteredAsnsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    peeringName: Schema.String.pipe(T.PathParam()),
-    registeredAsnName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const RegisteredAsnsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  peeringName: Schema.String.pipe(T.PathParam()),
+  registeredAsnName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}/registeredAsns/{registeredAsnName}",
@@ -2060,7 +2023,7 @@ export type RegisteredAsnsGetInput = typeof RegisteredAsnsGetInput.Type;
 
 // Output Schema
 export const RegisteredAsnsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2091,13 +2054,13 @@ export type RegisteredAsnsGetOutput = typeof RegisteredAsnsGetOutput.Type;
  * @param peeringName - The name of the peering.
  * @param registeredAsnName - The name of the registered ASN.
  */
-export const RegisteredAsnsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RegisteredAsnsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RegisteredAsnsGetInput,
   outputSchema: RegisteredAsnsGetOutput,
 }));
 // Input Schema
 export const RegisteredAsnsListByPeeringInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringName: Schema.String.pipe(T.PathParam()),
@@ -2113,7 +2076,7 @@ export type RegisteredAsnsListByPeeringInput =
 
 // Output Schema
 export const RegisteredAsnsListByPeeringOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2159,15 +2122,13 @@ export type RegisteredAsnsListByPeeringOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param peeringName - The name of the peering.
  */
-export const RegisteredAsnsListByPeering = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RegisteredAsnsListByPeeringInput,
-    outputSchema: RegisteredAsnsListByPeeringOutput,
-  }),
-);
+export const RegisteredAsnsListByPeering = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RegisteredAsnsListByPeeringInput,
+  outputSchema: RegisteredAsnsListByPeeringOutput,
+}));
 // Input Schema
 export const RegisteredPrefixesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringName: Schema.String.pipe(T.PathParam()),
@@ -2184,7 +2145,7 @@ export type RegisteredPrefixesCreateOrUpdateInput =
 
 // Output Schema
 export const RegisteredPrefixesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2217,13 +2178,13 @@ export type RegisteredPrefixesCreateOrUpdateOutput =
  * @param registeredPrefixName - The name of the registered prefix.
  */
 export const RegisteredPrefixesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RegisteredPrefixesCreateOrUpdateInput,
     outputSchema: RegisteredPrefixesCreateOrUpdateOutput,
   }));
 // Input Schema
 export const RegisteredPrefixesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringName: Schema.String.pipe(T.PathParam()),
@@ -2239,8 +2200,7 @@ export type RegisteredPrefixesDeleteInput =
   typeof RegisteredPrefixesDeleteInput.Type;
 
 // Output Schema
-export const RegisteredPrefixesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const RegisteredPrefixesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type RegisteredPrefixesDeleteOutput =
   typeof RegisteredPrefixesDeleteOutput.Type;
 
@@ -2254,15 +2214,13 @@ export type RegisteredPrefixesDeleteOutput =
  * @param peeringName - The name of the peering.
  * @param registeredPrefixName - The name of the registered prefix.
  */
-export const RegisteredPrefixesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RegisteredPrefixesDeleteInput,
-    outputSchema: RegisteredPrefixesDeleteOutput,
-  }),
-);
+export const RegisteredPrefixesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RegisteredPrefixesDeleteInput,
+  outputSchema: RegisteredPrefixesDeleteOutput,
+}));
 // Input Schema
 export const RegisteredPrefixesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringName: Schema.String.pipe(T.PathParam()),
@@ -2278,7 +2236,7 @@ export type RegisteredPrefixesGetInput = typeof RegisteredPrefixesGetInput.Type;
 
 // Output Schema
 export const RegisteredPrefixesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2310,15 +2268,13 @@ export type RegisteredPrefixesGetOutput =
  * @param peeringName - The name of the peering.
  * @param registeredPrefixName - The name of the registered prefix.
  */
-export const RegisteredPrefixesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RegisteredPrefixesGetInput,
-    outputSchema: RegisteredPrefixesGetOutput,
-  }),
-);
+export const RegisteredPrefixesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RegisteredPrefixesGetInput,
+  outputSchema: RegisteredPrefixesGetOutput,
+}));
 // Input Schema
 export const RegisteredPrefixesListByPeeringInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringName: Schema.String.pipe(T.PathParam()),
@@ -2334,7 +2290,7 @@ export type RegisteredPrefixesListByPeeringInput =
 
 // Output Schema
 export const RegisteredPrefixesListByPeeringOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2381,13 +2337,13 @@ export type RegisteredPrefixesListByPeeringOutput =
  * @param peeringName - The name of the peering.
  */
 export const RegisteredPrefixesListByPeering =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RegisteredPrefixesListByPeeringInput,
     outputSchema: RegisteredPrefixesListByPeeringOutput,
   }));
 // Input Schema
 export const RegisteredPrefixesValidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringName: Schema.String.pipe(T.PathParam()),
@@ -2404,7 +2360,7 @@ export type RegisteredPrefixesValidateInput =
 
 // Output Schema
 export const RegisteredPrefixesValidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2436,15 +2392,13 @@ export type RegisteredPrefixesValidateOutput =
  * @param peeringName - The name of the peering.
  * @param registeredPrefixName - The name of the registered prefix.
  */
-export const RegisteredPrefixesValidate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RegisteredPrefixesValidateInput,
-    outputSchema: RegisteredPrefixesValidateOutput,
-  }),
-);
+export const RegisteredPrefixesValidate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RegisteredPrefixesValidateInput,
+  outputSchema: RegisteredPrefixesValidateOutput,
+}));
 // Input Schema
 export const RpUnbilledPrefixesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringName: Schema.String.pipe(T.PathParam()),
@@ -2461,7 +2415,7 @@ export type RpUnbilledPrefixesListInput =
 
 // Output Schema
 export const RpUnbilledPrefixesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         prefix: Schema.optional(Schema.String),
@@ -2484,9 +2438,7 @@ export type RpUnbilledPrefixesListOutput =
  * @param peeringName - The name of the peering.
  * @param consolidate - Flag to enable consolidation prefixes
  */
-export const RpUnbilledPrefixesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RpUnbilledPrefixesListInput,
-    outputSchema: RpUnbilledPrefixesListOutput,
-  }),
-);
+export const RpUnbilledPrefixesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RpUnbilledPrefixesListInput,
+  outputSchema: RpUnbilledPrefixesListOutput,
+}));

@@ -1,11 +1,11 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
-import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
+import * as T from "../traits.ts";
 
 // Input Schema
 export const DeleteQueryPatternsReportInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     branch: Schema.String.pipe(T.PathParam()),
@@ -20,8 +20,7 @@ export type DeleteQueryPatternsReportInput =
   typeof DeleteQueryPatternsReportInput.Type;
 
 // Output Schema
-export const DeleteQueryPatternsReportOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeleteQueryPatternsReportOutput = /*@__PURE__*/ Schema.Void;
 export type DeleteQueryPatternsReportOutput =
   typeof DeleteQueryPatternsReportOutput.Type;
 
@@ -34,10 +33,8 @@ export type DeleteQueryPatternsReportOutput =
  * @param branch - The name of the branch
  * @param id - The ID of the query patterns report
  */
-export const deleteQueryPatternsReport = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteQueryPatternsReportInput,
-    outputSchema: DeleteQueryPatternsReportOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const deleteQueryPatternsReport = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteQueryPatternsReportInput,
+  outputSchema: DeleteQueryPatternsReportOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

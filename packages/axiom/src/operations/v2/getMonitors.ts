@@ -3,13 +3,13 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
-export const GetMonitorsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(T.Http({ method: "GET", path: "/v2/monitors" }));
+export const GetMonitorsInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({ method: "GET", path: "/v2/monitors" }),
+);
 export type GetMonitorsInput = typeof GetMonitorsInput.Type;
 
 // Output Schema
-export const GetMonitorsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const GetMonitorsOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     alertOnNoData: Schema.optional(Schema.Boolean),
     aplQuery: Schema.optional(Schema.String),
@@ -53,7 +53,7 @@ export type GetMonitorsOutput = typeof GetMonitorsOutput.Type;
 /**
  * Lists all configured monitors. Returns an array of monitor configurations including their IDs and current status.
  */
-export const getMonitors = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getMonitors = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetMonitorsInput,
   outputSchema: GetMonitorsOutput,
 }));

@@ -1,10 +1,10 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
-import * as T from "../../traits.ts";
 import { UnprocessableEntity } from "../../errors.ts";
+import * as T from "../../traits.ts";
 
 // Input Schema
-export const CreateGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateGroupInput = /*@__PURE__*/ Schema.Struct({
   description: Schema.optional(Schema.String),
   isManaged: Schema.optional(Schema.Boolean),
   members: Schema.optional(Schema.Array(Schema.String)),
@@ -14,7 +14,7 @@ export const CreateGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateGroupInput = typeof CreateGroupInput.Type;
 
 // Output Schema
-export const CreateGroupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateGroupOutput = /*@__PURE__*/ Schema.Struct({
   description: Schema.optional(Schema.String),
   isManaged: Schema.optional(Schema.Boolean),
   members: Schema.optional(Schema.Array(Schema.String)),
@@ -30,7 +30,7 @@ export type CreateGroupOutput = typeof CreateGroupOutput.Type;
  *
  * Creates a new group in the organization.
  */
-export const createGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createGroup = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateGroupInput,
   outputSchema: CreateGroupOutput,
   errors: [UnprocessableEntity] as const,

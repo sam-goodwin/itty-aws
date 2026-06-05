@@ -1,10 +1,10 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
-import * as T from "../../traits.ts";
 import { BadRequest, Conflict } from "../../errors.ts";
+import * as T from "../../traits.ts";
 
 // Input Schema
-export const UpdateDashboardInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateDashboardInput = /*@__PURE__*/ Schema.Struct({
   uid: Schema.String.pipe(T.PathParam()),
   dashboard: Schema.Struct({
     name: Schema.String,
@@ -56,7 +56,7 @@ export const UpdateDashboardInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateDashboardInput = typeof UpdateDashboardInput.Type;
 
 // Output Schema
-export const UpdateDashboardOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateDashboardOutput = /*@__PURE__*/ Schema.Struct({
   dashboard: Schema.Struct({
     createdAt: Schema.String,
     createdBy: Schema.String,
@@ -120,7 +120,7 @@ export type UpdateDashboardOutput = typeof UpdateDashboardOutput.Type;
  *
  * Update a dashboard by UID.
  */
-export const updateDashboard = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateDashboard = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateDashboardInput,
   outputSchema: UpdateDashboardOutput,
   errors: [BadRequest, Conflict] as const,

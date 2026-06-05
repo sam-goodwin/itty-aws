@@ -1,16 +1,16 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
-import * as T from "../../traits.ts";
 import { NotFound } from "../../errors.ts";
+import * as T from "../../traits.ts";
 
 // Input Schema
-export const DeleteRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteRoleInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
 }).pipe(T.Http({ method: "DELETE", path: "/v2/rbac/roles/{id}" }));
 export type DeleteRoleInput = typeof DeleteRoleInput.Type;
 
 // Output Schema
-export const DeleteRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeleteRoleOutput = /*@__PURE__*/ Schema.Void;
 export type DeleteRoleOutput = typeof DeleteRoleOutput.Type;
 
 // The operation
@@ -21,7 +21,7 @@ export type DeleteRoleOutput = typeof DeleteRoleOutput.Type;
  *
  * @param id - Unique identifier of the role to delete
  */
-export const deleteRole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteRole = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteRoleInput,
   outputSchema: DeleteRoleOutput,
   errors: [NotFound] as const,

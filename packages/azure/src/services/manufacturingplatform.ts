@@ -10,7 +10,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const ManufacturingDataServicesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mdsResourceName: Schema.String.pipe(T.PathParam()),
@@ -26,7 +26,7 @@ export type ManufacturingDataServicesCreateOrUpdateInput =
 
 // Output Schema
 export const ManufacturingDataServicesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -58,13 +58,13 @@ export type ManufacturingDataServicesCreateOrUpdateOutput =
  * @param mdsResourceName - Name.
  */
 export const ManufacturingDataServicesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ManufacturingDataServicesCreateOrUpdateInput,
     outputSchema: ManufacturingDataServicesCreateOrUpdateOutput,
   }));
 // Input Schema
 export const ManufacturingDataServicesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mdsResourceName: Schema.String.pipe(T.PathParam()),
@@ -79,8 +79,7 @@ export type ManufacturingDataServicesDeleteInput =
   typeof ManufacturingDataServicesDeleteInput.Type;
 
 // Output Schema
-export const ManufacturingDataServicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ManufacturingDataServicesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ManufacturingDataServicesDeleteOutput =
   typeof ManufacturingDataServicesDeleteOutput.Type;
 
@@ -94,13 +93,13 @@ export type ManufacturingDataServicesDeleteOutput =
  * @param mdsResourceName - Name.
  */
 export const ManufacturingDataServicesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ManufacturingDataServicesDeleteInput,
     outputSchema: ManufacturingDataServicesDeleteOutput,
   }));
 // Input Schema
 export const ManufacturingDataServicesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mdsResourceName: Schema.String.pipe(T.PathParam()),
@@ -116,7 +115,7 @@ export type ManufacturingDataServicesGetInput =
 
 // Output Schema
 export const ManufacturingDataServicesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -148,13 +147,13 @@ export type ManufacturingDataServicesGetOutput =
  * @param mdsResourceName - Name.
  */
 export const ManufacturingDataServicesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ManufacturingDataServicesGetInput,
     outputSchema: ManufacturingDataServicesGetOutput,
   }));
 // Input Schema
 export const ManufacturingDataServicesListAvailableVersionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mdsResourceName: Schema.String.pipe(T.PathParam()),
@@ -170,7 +169,7 @@ export type ManufacturingDataServicesListAvailableVersionsInput =
 
 // Output Schema
 export const ManufacturingDataServicesListAvailableVersionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     versions: Schema.Array(
       Schema.Struct({
         version: Schema.String,
@@ -193,13 +192,13 @@ export type ManufacturingDataServicesListAvailableVersionsOutput =
  * @param mdsResourceName - Name.
  */
 export const ManufacturingDataServicesListAvailableVersions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ManufacturingDataServicesListAvailableVersionsInput,
     outputSchema: ManufacturingDataServicesListAvailableVersionsOutput,
   }));
 // Input Schema
 export const ManufacturingDataServicesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -214,7 +213,7 @@ export type ManufacturingDataServicesListByResourceGroupInput =
 
 // Output Schema
 export const ManufacturingDataServicesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -260,13 +259,13 @@ export type ManufacturingDataServicesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const ManufacturingDataServicesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ManufacturingDataServicesListByResourceGroupInput,
     outputSchema: ManufacturingDataServicesListByResourceGroupOutput,
   }));
 // Input Schema
 export const ManufacturingDataServicesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -280,7 +279,7 @@ export type ManufacturingDataServicesListBySubscriptionInput =
 
 // Output Schema
 export const ManufacturingDataServicesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -325,13 +324,13 @@ export type ManufacturingDataServicesListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const ManufacturingDataServicesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ManufacturingDataServicesListBySubscriptionInput,
     outputSchema: ManufacturingDataServicesListBySubscriptionOutput,
   }));
 // Input Schema
 export const ManufacturingDataServicesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mdsResourceName: Schema.String.pipe(T.PathParam()),
@@ -347,7 +346,7 @@ export type ManufacturingDataServicesUpdateInput =
 
 // Output Schema
 export const ManufacturingDataServicesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -379,12 +378,12 @@ export type ManufacturingDataServicesUpdateOutput =
  * @param mdsResourceName - Name.
  */
 export const ManufacturingDataServicesUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ManufacturingDataServicesUpdateInput,
     outputSchema: ManufacturingDataServicesUpdateOutput,
   }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -395,7 +394,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -426,7 +425,7 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));

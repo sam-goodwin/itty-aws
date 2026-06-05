@@ -6,11 +6,11 @@
  */
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
-import * as T from "../traits.ts";
 import { SensitiveString } from "../sensitive.ts";
+import * as T from "../traits.ts";
 
 // Input Schema
-export const BillingInfoGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BillingInfoGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   monitorName: Schema.String.pipe(T.PathParam()),
@@ -24,7 +24,7 @@ export const BillingInfoGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type BillingInfoGetInput = typeof BillingInfoGetInput.Type;
 
 // Output Schema
-export const BillingInfoGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BillingInfoGetOutput = /*@__PURE__*/ Schema.Struct({
   marketplaceSaasInfo: Schema.optional(
     Schema.Struct({
       marketplaceSubscriptionId: Schema.optional(Schema.String),
@@ -53,13 +53,13 @@ export type BillingInfoGetOutput = typeof BillingInfoGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param monitorName - Monitor resource name
  */
-export const BillingInfoGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BillingInfoGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: BillingInfoGetInput,
   outputSchema: BillingInfoGetOutput,
 }));
 // Input Schema
 export const CreationSupportedGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
     datadogOrganizationId: Schema.String,
@@ -73,7 +73,7 @@ export type CreationSupportedGetInput = typeof CreationSupportedGetInput.Type;
 
 // Output Schema
 export const CreationSupportedGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         name: Schema.optional(Schema.String),
@@ -91,15 +91,13 @@ export type CreationSupportedGetOutput = typeof CreationSupportedGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param datadogOrganizationId - Datadog Organization Id
  */
-export const CreationSupportedGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreationSupportedGetInput,
-    outputSchema: CreationSupportedGetOutput,
-  }),
-);
+export const CreationSupportedGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreationSupportedGetInput,
+  outputSchema: CreationSupportedGetOutput,
+}));
 // Input Schema
 export const CreationSupportedListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
     datadogOrganizationId: Schema.String,
@@ -113,7 +111,7 @@ export type CreationSupportedListInput = typeof CreationSupportedListInput.Type;
 
 // Output Schema
 export const CreationSupportedListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         properties: Schema.optional(
@@ -137,15 +135,13 @@ export type CreationSupportedListOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param datadogOrganizationId - Datadog Organization Id
  */
-export const CreationSupportedList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreationSupportedListInput,
-    outputSchema: CreationSupportedListOutput,
-  }),
-);
+export const CreationSupportedList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreationSupportedListInput,
+  outputSchema: CreationSupportedListOutput,
+}));
 // Input Schema
 export const MarketplaceAgreementsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -159,7 +155,7 @@ export type MarketplaceAgreementsCreateOrUpdateInput =
 
 // Output Schema
 export const MarketplaceAgreementsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -201,13 +197,13 @@ export type MarketplaceAgreementsCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const MarketplaceAgreementsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MarketplaceAgreementsCreateOrUpdateInput,
     outputSchema: MarketplaceAgreementsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const MarketplaceAgreementsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -221,7 +217,7 @@ export type MarketplaceAgreementsListInput =
 
 // Output Schema
 export const MarketplaceAgreementsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -277,15 +273,13 @@ export type MarketplaceAgreementsListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const MarketplaceAgreementsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MarketplaceAgreementsListInput,
-    outputSchema: MarketplaceAgreementsListOutput,
-  }),
-);
+export const MarketplaceAgreementsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MarketplaceAgreementsListInput,
+  outputSchema: MarketplaceAgreementsListOutput,
+}));
 // Input Schema
 export const MonitoredSubscriptionsCreateorUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -302,7 +296,7 @@ export type MonitoredSubscriptionsCreateorUpdateInput =
 
 // Output Schema
 export const MonitoredSubscriptionsCreateorUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -335,13 +329,13 @@ export type MonitoredSubscriptionsCreateorUpdateOutput =
  * @param configurationName - The configuration name. Only 'default' value is supported.
  */
 export const MonitoredSubscriptionsCreateorUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MonitoredSubscriptionsCreateorUpdateInput,
     outputSchema: MonitoredSubscriptionsCreateorUpdateOutput,
   }));
 // Input Schema
 export const MonitoredSubscriptionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -357,8 +351,7 @@ export type MonitoredSubscriptionsDeleteInput =
   typeof MonitoredSubscriptionsDeleteInput.Type;
 
 // Output Schema
-export const MonitoredSubscriptionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const MonitoredSubscriptionsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type MonitoredSubscriptionsDeleteOutput =
   typeof MonitoredSubscriptionsDeleteOutput.Type;
 
@@ -373,13 +366,13 @@ export type MonitoredSubscriptionsDeleteOutput =
  * @param configurationName - The configuration name. Only 'default' value is supported.
  */
 export const MonitoredSubscriptionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MonitoredSubscriptionsDeleteInput,
     outputSchema: MonitoredSubscriptionsDeleteOutput,
   }));
 // Input Schema
 export const MonitoredSubscriptionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -396,7 +389,7 @@ export type MonitoredSubscriptionsGetInput =
 
 // Output Schema
 export const MonitoredSubscriptionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -428,15 +421,13 @@ export type MonitoredSubscriptionsGetOutput =
  * @param monitorName - Monitor resource name
  * @param configurationName - The configuration name. Only 'default' value is supported.
  */
-export const MonitoredSubscriptionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MonitoredSubscriptionsGetInput,
-    outputSchema: MonitoredSubscriptionsGetOutput,
-  }),
-);
+export const MonitoredSubscriptionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MonitoredSubscriptionsGetInput,
+  outputSchema: MonitoredSubscriptionsGetOutput,
+}));
 // Input Schema
 export const MonitoredSubscriptionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -452,7 +443,7 @@ export type MonitoredSubscriptionsListInput =
 
 // Output Schema
 export const MonitoredSubscriptionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -498,15 +489,13 @@ export type MonitoredSubscriptionsListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param monitorName - Monitor resource name
  */
-export const MonitoredSubscriptionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MonitoredSubscriptionsListInput,
-    outputSchema: MonitoredSubscriptionsListOutput,
-  }),
-);
+export const MonitoredSubscriptionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MonitoredSubscriptionsListInput,
+  outputSchema: MonitoredSubscriptionsListOutput,
+}));
 // Input Schema
 export const MonitoredSubscriptionsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -523,7 +512,7 @@ export type MonitoredSubscriptionsUpdateInput =
 
 // Output Schema
 export const MonitoredSubscriptionsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -556,12 +545,12 @@ export type MonitoredSubscriptionsUpdateOutput =
  * @param configurationName - The configuration name. Only 'default' value is supported.
  */
 export const MonitoredSubscriptionsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MonitoredSubscriptionsUpdateInput,
     outputSchema: MonitoredSubscriptionsUpdateOutput,
   }));
 // Input Schema
-export const MonitorsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MonitorsCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   monitorName: Schema.String.pipe(T.PathParam()),
@@ -575,7 +564,7 @@ export const MonitorsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type MonitorsCreateInput = typeof MonitorsCreateInput.Type;
 
 // Output Schema
-export const MonitorsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MonitorsCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -605,12 +594,12 @@ export type MonitorsCreateOutput = typeof MonitorsCreateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param monitorName - Monitor resource name
  */
-export const MonitorsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MonitorsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: MonitorsCreateInput,
   outputSchema: MonitorsCreateOutput,
 }));
 // Input Schema
-export const MonitorsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MonitorsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   monitorName: Schema.String.pipe(T.PathParam()),
@@ -624,7 +613,7 @@ export const MonitorsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type MonitorsDeleteInput = typeof MonitorsDeleteInput.Type;
 
 // Output Schema
-export const MonitorsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const MonitorsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type MonitorsDeleteOutput = typeof MonitorsDeleteOutput.Type;
 
 // The operation
@@ -636,12 +625,12 @@ export type MonitorsDeleteOutput = typeof MonitorsDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param monitorName - Monitor resource name
  */
-export const MonitorsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MonitorsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: MonitorsDeleteInput,
   outputSchema: MonitorsDeleteOutput,
 }));
 // Input Schema
-export const MonitorsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MonitorsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   monitorName: Schema.String.pipe(T.PathParam()),
@@ -655,7 +644,7 @@ export const MonitorsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type MonitorsGetInput = typeof MonitorsGetInput.Type;
 
 // Output Schema
-export const MonitorsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MonitorsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -685,13 +674,13 @@ export type MonitorsGetOutput = typeof MonitorsGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param monitorName - Monitor resource name
  */
-export const MonitorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MonitorsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: MonitorsGetInput,
   outputSchema: MonitorsGetOutput,
 }));
 // Input Schema
 export const MonitorsGetDefaultKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -706,7 +695,7 @@ export type MonitorsGetDefaultKeyInput = typeof MonitorsGetDefaultKeyInput.Type;
 
 // Output Schema
 export const MonitorsGetDefaultKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     createdBy: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     key: Schema.String,
@@ -724,14 +713,12 @@ export type MonitorsGetDefaultKeyOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param monitorName - Monitor resource name
  */
-export const MonitorsGetDefaultKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MonitorsGetDefaultKeyInput,
-    outputSchema: MonitorsGetDefaultKeyOutput,
-  }),
-);
+export const MonitorsGetDefaultKey = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MonitorsGetDefaultKeyInput,
+  outputSchema: MonitorsGetDefaultKeyOutput,
+}));
 // Input Schema
-export const MonitorsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MonitorsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -743,7 +730,7 @@ export const MonitorsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type MonitorsListInput = typeof MonitorsListInput.Type;
 
 // Output Schema
-export const MonitorsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MonitorsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -776,13 +763,13 @@ export type MonitorsListOutput = typeof MonitorsListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const MonitorsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MonitorsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: MonitorsListInput,
   outputSchema: MonitorsListOutput,
 }));
 // Input Schema
 export const MonitorsListApiKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -797,7 +784,7 @@ export type MonitorsListApiKeysInput = typeof MonitorsListApiKeysInput.Type;
 
 // Output Schema
 export const MonitorsListApiKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -819,13 +806,13 @@ export type MonitorsListApiKeysOutput = typeof MonitorsListApiKeysOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param monitorName - Monitor resource name
  */
-export const MonitorsListApiKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MonitorsListApiKeys = /*@__PURE__*/ API.make(() => ({
   inputSchema: MonitorsListApiKeysInput,
   outputSchema: MonitorsListApiKeysOutput,
 }));
 // Input Schema
 export const MonitorsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -840,7 +827,7 @@ export type MonitorsListByResourceGroupInput =
 
 // Output Schema
 export const MonitorsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -885,21 +872,17 @@ export type MonitorsListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const MonitorsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MonitorsListByResourceGroupInput,
-    outputSchema: MonitorsListByResourceGroupOutput,
-  }),
-);
+export const MonitorsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MonitorsListByResourceGroupInput,
+  outputSchema: MonitorsListByResourceGroupOutput,
+}));
 // Input Schema
-export const MonitorsListHostsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    monitorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const MonitorsListHostsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  monitorName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/listHosts",
@@ -909,7 +892,7 @@ export type MonitorsListHostsInput = typeof MonitorsListHostsInput.Type;
 
 // Output Schema
 export const MonitorsListHostsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         name: Schema.optional(Schema.String),
@@ -947,13 +930,13 @@ export type MonitorsListHostsOutput = typeof MonitorsListHostsOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param monitorName - Monitor resource name
  */
-export const MonitorsListHosts = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MonitorsListHosts = /*@__PURE__*/ API.make(() => ({
   inputSchema: MonitorsListHostsInput,
   outputSchema: MonitorsListHostsOutput,
 }));
 // Input Schema
 export const MonitorsListLinkedResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -969,7 +952,7 @@ export type MonitorsListLinkedResourcesInput =
 
 // Output Schema
 export const MonitorsListLinkedResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -990,15 +973,13 @@ export type MonitorsListLinkedResourcesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param monitorName - Monitor resource name
  */
-export const MonitorsListLinkedResources = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MonitorsListLinkedResourcesInput,
-    outputSchema: MonitorsListLinkedResourcesOutput,
-  }),
-);
+export const MonitorsListLinkedResources = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MonitorsListLinkedResourcesInput,
+  outputSchema: MonitorsListLinkedResourcesOutput,
+}));
 // Input Schema
 export const MonitorsListMonitoredResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -1014,7 +995,7 @@ export type MonitorsListMonitoredResourcesInput =
 
 // Output Schema
 export const MonitorsListMonitoredResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1039,13 +1020,13 @@ export type MonitorsListMonitoredResourcesOutput =
  * @param monitorName - Monitor resource name
  */
 export const MonitorsListMonitoredResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MonitorsListMonitoredResourcesInput,
     outputSchema: MonitorsListMonitoredResourcesOutput,
   }));
 // Input Schema
 export const MonitorsRefreshSetPasswordLinkInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -1061,7 +1042,7 @@ export type MonitorsRefreshSetPasswordLinkInput =
 
 // Output Schema
 export const MonitorsRefreshSetPasswordLinkOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     setPasswordLink: Schema.optional(SensitiveString),
   });
 export type MonitorsRefreshSetPasswordLinkOutput =
@@ -1077,13 +1058,13 @@ export type MonitorsRefreshSetPasswordLinkOutput =
  * @param monitorName - Monitor resource name
  */
 export const MonitorsRefreshSetPasswordLink =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MonitorsRefreshSetPasswordLinkInput,
     outputSchema: MonitorsRefreshSetPasswordLinkOutput,
   }));
 // Input Schema
 export const MonitorsSetDefaultKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -1097,8 +1078,7 @@ export const MonitorsSetDefaultKeyInput =
 export type MonitorsSetDefaultKeyInput = typeof MonitorsSetDefaultKeyInput.Type;
 
 // Output Schema
-export const MonitorsSetDefaultKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const MonitorsSetDefaultKeyOutput = /*@__PURE__*/ Schema.Void;
 export type MonitorsSetDefaultKeyOutput =
   typeof MonitorsSetDefaultKeyOutput.Type;
 
@@ -1111,14 +1091,12 @@ export type MonitorsSetDefaultKeyOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param monitorName - Monitor resource name
  */
-export const MonitorsSetDefaultKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MonitorsSetDefaultKeyInput,
-    outputSchema: MonitorsSetDefaultKeyOutput,
-  }),
-);
+export const MonitorsSetDefaultKey = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MonitorsSetDefaultKeyInput,
+  outputSchema: MonitorsSetDefaultKeyOutput,
+}));
 // Input Schema
-export const MonitorsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MonitorsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   monitorName: Schema.String.pipe(T.PathParam()),
@@ -1132,7 +1110,7 @@ export const MonitorsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type MonitorsUpdateInput = typeof MonitorsUpdateInput.Type;
 
 // Output Schema
-export const MonitorsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MonitorsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1162,12 +1140,12 @@ export type MonitorsUpdateOutput = typeof MonitorsUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param monitorName - Monitor resource name
  */
-export const MonitorsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MonitorsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: MonitorsUpdateInput,
   outputSchema: MonitorsUpdateOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({ method: "GET", path: "/providers/Microsoft.Datadog/operations" }),
@@ -1175,7 +1153,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -1200,13 +1178,13 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
 export const OrganizationsResubscribeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -1222,7 +1200,7 @@ export type OrganizationsResubscribeInput =
 
 // Output Schema
 export const OrganizationsResubscribeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1253,15 +1231,13 @@ export type OrganizationsResubscribeOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param monitorName - Monitor resource name
  */
-export const OrganizationsResubscribe = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OrganizationsResubscribeInput,
-    outputSchema: OrganizationsResubscribeOutput,
-  }),
-);
+export const OrganizationsResubscribe = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OrganizationsResubscribeInput,
+  outputSchema: OrganizationsResubscribeOutput,
+}));
 // Input Schema
 export const SingleSignOnConfigurationsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -1278,7 +1254,7 @@ export type SingleSignOnConfigurationsCreateOrUpdateInput =
 
 // Output Schema
 export const SingleSignOnConfigurationsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1311,13 +1287,13 @@ export type SingleSignOnConfigurationsCreateOrUpdateOutput =
  * @param configurationName - Configuration name
  */
 export const SingleSignOnConfigurationsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SingleSignOnConfigurationsCreateOrUpdateInput,
     outputSchema: SingleSignOnConfigurationsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const SingleSignOnConfigurationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -1334,7 +1310,7 @@ export type SingleSignOnConfigurationsGetInput =
 
 // Output Schema
 export const SingleSignOnConfigurationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1367,13 +1343,13 @@ export type SingleSignOnConfigurationsGetOutput =
  * @param configurationName - Configuration name
  */
 export const SingleSignOnConfigurationsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SingleSignOnConfigurationsGetInput,
     outputSchema: SingleSignOnConfigurationsGetOutput,
   }));
 // Input Schema
 export const SingleSignOnConfigurationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -1389,7 +1365,7 @@ export type SingleSignOnConfigurationsListInput =
 
 // Output Schema
 export const SingleSignOnConfigurationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1436,13 +1412,13 @@ export type SingleSignOnConfigurationsListOutput =
  * @param monitorName - Monitor resource name
  */
 export const SingleSignOnConfigurationsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SingleSignOnConfigurationsListInput,
     outputSchema: SingleSignOnConfigurationsListOutput,
   }));
 // Input Schema
 export const TagRulesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -1459,7 +1435,7 @@ export type TagRulesCreateOrUpdateInput =
 
 // Output Schema
 export const TagRulesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1491,14 +1467,12 @@ export type TagRulesCreateOrUpdateOutput =
  * @param monitorName - Monitor resource name
  * @param ruleSetName - Rule set name
  */
-export const TagRulesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TagRulesCreateOrUpdateInput,
-    outputSchema: TagRulesCreateOrUpdateOutput,
-  }),
-);
+export const TagRulesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TagRulesCreateOrUpdateInput,
+  outputSchema: TagRulesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const TagRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TagRulesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   monitorName: Schema.String.pipe(T.PathParam()),
@@ -1513,7 +1487,7 @@ export const TagRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TagRulesGetInput = typeof TagRulesGetInput.Type;
 
 // Output Schema
-export const TagRulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TagRulesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1544,12 +1518,12 @@ export type TagRulesGetOutput = typeof TagRulesGetOutput.Type;
  * @param monitorName - Monitor resource name
  * @param ruleSetName - Rule set name
  */
-export const TagRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TagRulesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TagRulesGetInput,
   outputSchema: TagRulesGetOutput,
 }));
 // Input Schema
-export const TagRulesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TagRulesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   monitorName: Schema.String.pipe(T.PathParam()),
@@ -1563,7 +1537,7 @@ export const TagRulesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TagRulesListInput = typeof TagRulesListInput.Type;
 
 // Output Schema
-export const TagRulesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TagRulesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -1598,7 +1572,7 @@ export type TagRulesListOutput = typeof TagRulesListOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param monitorName - Monitor resource name
  */
-export const TagRulesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TagRulesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: TagRulesListInput,
   outputSchema: TagRulesListOutput,
 }));

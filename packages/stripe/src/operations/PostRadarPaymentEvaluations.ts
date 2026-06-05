@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostRadarPaymentEvaluationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     client_device_metadata_details: Schema.optional(
       Schema.Struct({
         radar_session: Schema.String,
@@ -93,7 +93,7 @@ export type PostRadarPaymentEvaluationsInput =
 
 // Output Schema
 export const PostRadarPaymentEvaluationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     client_device_metadata_details: Schema.optional(
       Schema.Struct({
         radar_session: Schema.String,
@@ -217,9 +217,7 @@ export type PostRadarPaymentEvaluationsOutput =
  *
  * <p>Request a Radar API fraud risk score from Stripe for a payment before sending it for external processor authorization.</p>
  */
-export const PostRadarPaymentEvaluations = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostRadarPaymentEvaluationsInput,
-    outputSchema: PostRadarPaymentEvaluationsOutput,
-  }),
-);
+export const PostRadarPaymentEvaluations = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostRadarPaymentEvaluationsInput,
+  outputSchema: PostRadarPaymentEvaluationsOutput,
+}));

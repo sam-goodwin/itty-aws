@@ -6,12 +6,12 @@
  */
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
-import * as T from "../traits.ts";
 import { SensitiveString } from "../sensitive.ts";
+import * as T from "../traits.ts";
 
 // Input Schema
 export const AzureDataTransferListApprovedSchemasInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -24,7 +24,7 @@ export type AzureDataTransferListApprovedSchemasInput =
 
 // Output Schema
 export const AzureDataTransferListApprovedSchemasOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -50,13 +50,13 @@ export type AzureDataTransferListApprovedSchemasOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const AzureDataTransferListApprovedSchemas =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AzureDataTransferListApprovedSchemasInput,
     outputSchema: AzureDataTransferListApprovedSchemasOutput,
   }));
 // Input Schema
 export const AzureDataTransferValidateSchemaInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -69,7 +69,7 @@ export type AzureDataTransferValidateSchemaInput =
 
 // Output Schema
 export const AzureDataTransferValidateSchemaOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.Literals(["Succeeded", "Failed"])),
     message: Schema.optional(Schema.String),
   });
@@ -83,13 +83,13 @@ export type AzureDataTransferValidateSchemaOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const AzureDataTransferValidateSchema =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AzureDataTransferValidateSchemaInput,
     outputSchema: AzureDataTransferValidateSchemaOutput,
   }));
 // Input Schema
 export const ConnectionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
@@ -105,7 +105,7 @@ export type ConnectionsCreateOrUpdateInput =
 
 // Output Schema
 export const ConnectionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -136,21 +136,17 @@ export type ConnectionsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param connectionName - The name for the connection to perform the operation on.
  */
-export const ConnectionsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectionsCreateOrUpdateInput,
-    outputSchema: ConnectionsCreateOrUpdateOutput,
-  }),
-);
+export const ConnectionsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectionsCreateOrUpdateInput,
+  outputSchema: ConnectionsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ConnectionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    connectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const ConnectionsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  connectionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}",
@@ -159,7 +155,7 @@ export const ConnectionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ConnectionsDeleteInput = typeof ConnectionsDeleteInput.Type;
 
 // Output Schema
-export const ConnectionsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ConnectionsDeleteOutput = typeof ConnectionsDeleteOutput.Type;
 
 // The operation
@@ -171,12 +167,12 @@ export type ConnectionsDeleteOutput = typeof ConnectionsDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param connectionName - The name for the connection to perform the operation on.
  */
-export const ConnectionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectionsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectionsDeleteInput,
   outputSchema: ConnectionsDeleteOutput,
 }));
 // Input Schema
-export const ConnectionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectionsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   connectionName: Schema.String.pipe(T.PathParam()),
@@ -190,7 +186,7 @@ export const ConnectionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ConnectionsGetInput = typeof ConnectionsGetInput.Type;
 
 // Output Schema
-export const ConnectionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectionsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -220,12 +216,12 @@ export type ConnectionsGetOutput = typeof ConnectionsGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param connectionName - The name for the connection to perform the operation on.
  */
-export const ConnectionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectionsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectionsGetInput,
   outputSchema: ConnectionsGetOutput,
 }));
 // Input Schema
-export const ConnectionsLinkInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectionsLinkInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   connectionName: Schema.String.pipe(T.PathParam()),
@@ -239,7 +235,7 @@ export const ConnectionsLinkInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ConnectionsLinkInput = typeof ConnectionsLinkInput.Type;
 
 // Output Schema
-export const ConnectionsLinkOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectionsLinkOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -269,13 +265,13 @@ export type ConnectionsLinkOutput = typeof ConnectionsLinkOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param connectionName - The name for the connection to perform the operation on.
  */
-export const ConnectionsLink = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectionsLink = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectionsLinkInput,
   outputSchema: ConnectionsLinkOutput,
 }));
 // Input Schema
 export const ConnectionsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -290,7 +286,7 @@ export type ConnectionsListByResourceGroupInput =
 
 // Output Schema
 export const ConnectionsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -336,13 +332,13 @@ export type ConnectionsListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const ConnectionsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectionsListByResourceGroupInput,
     outputSchema: ConnectionsListByResourceGroupOutput,
   }));
 // Input Schema
 export const ConnectionsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -356,7 +352,7 @@ export type ConnectionsListBySubscriptionInput =
 
 // Output Schema
 export const ConnectionsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -401,19 +397,17 @@ export type ConnectionsListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const ConnectionsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectionsListBySubscriptionInput,
     outputSchema: ConnectionsListBySubscriptionOutput,
   }));
 // Input Schema
-export const ConnectionsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    connectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const ConnectionsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  connectionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}",
@@ -423,7 +417,7 @@ export type ConnectionsUpdateInput = typeof ConnectionsUpdateInput.Type;
 
 // Output Schema
 export const ConnectionsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -453,13 +447,13 @@ export type ConnectionsUpdateOutput = typeof ConnectionsUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param connectionName - The name for the connection to perform the operation on.
  */
-export const ConnectionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectionsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectionsUpdateInput,
   outputSchema: ConnectionsUpdateOutput,
 }));
 // Input Schema
 export const FlowsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
@@ -475,7 +469,7 @@ export type FlowsCreateOrUpdateInput = typeof FlowsCreateOrUpdateInput.Type;
 
 // Output Schema
 export const FlowsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -506,12 +500,12 @@ export type FlowsCreateOrUpdateOutput = typeof FlowsCreateOrUpdateOutput.Type;
  * @param connectionName - The name for the connection to perform the operation on.
  * @param flowName - The name for the flow to perform the operation on.
  */
-export const FlowsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FlowsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: FlowsCreateOrUpdateInput,
   outputSchema: FlowsCreateOrUpdateOutput,
 }));
 // Input Schema
-export const FlowsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FlowsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   connectionName: Schema.String.pipe(T.PathParam()),
@@ -526,7 +520,7 @@ export const FlowsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type FlowsDeleteInput = typeof FlowsDeleteInput.Type;
 
 // Output Schema
-export const FlowsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const FlowsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type FlowsDeleteOutput = typeof FlowsDeleteOutput.Type;
 
 // The operation
@@ -539,12 +533,12 @@ export type FlowsDeleteOutput = typeof FlowsDeleteOutput.Type;
  * @param connectionName - The name for the connection to perform the operation on.
  * @param flowName - The name for the flow to perform the operation on.
  */
-export const FlowsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FlowsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: FlowsDeleteInput,
   outputSchema: FlowsDeleteOutput,
 }));
 // Input Schema
-export const FlowsDisableInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FlowsDisableInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   connectionName: Schema.String.pipe(T.PathParam()),
@@ -559,7 +553,7 @@ export const FlowsDisableInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type FlowsDisableInput = typeof FlowsDisableInput.Type;
 
 // Output Schema
-export const FlowsDisableOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FlowsDisableOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -590,12 +584,12 @@ export type FlowsDisableOutput = typeof FlowsDisableOutput.Type;
  * @param connectionName - The name for the connection to perform the operation on.
  * @param flowName - The name for the flow to perform the operation on.
  */
-export const FlowsDisable = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FlowsDisable = /*@__PURE__*/ API.make(() => ({
   inputSchema: FlowsDisableInput,
   outputSchema: FlowsDisableOutput,
 }));
 // Input Schema
-export const FlowsEnableInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FlowsEnableInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   connectionName: Schema.String.pipe(T.PathParam()),
@@ -610,7 +604,7 @@ export const FlowsEnableInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type FlowsEnableInput = typeof FlowsEnableInput.Type;
 
 // Output Schema
-export const FlowsEnableOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FlowsEnableOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -641,13 +635,13 @@ export type FlowsEnableOutput = typeof FlowsEnableOutput.Type;
  * @param connectionName - The name for the connection to perform the operation on.
  * @param flowName - The name for the flow to perform the operation on.
  */
-export const FlowsEnable = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FlowsEnable = /*@__PURE__*/ API.make(() => ({
   inputSchema: FlowsEnableInput,
   outputSchema: FlowsEnableOutput,
 }));
 // Input Schema
 export const FlowsGeneratePassphraseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
@@ -664,7 +658,7 @@ export type FlowsGeneratePassphraseInput =
 
 // Output Schema
 export const FlowsGeneratePassphraseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -696,14 +690,12 @@ export type FlowsGeneratePassphraseOutput =
  * @param connectionName - The name for the connection to perform the operation on.
  * @param flowName - The name for the flow to perform the operation on.
  */
-export const FlowsGeneratePassphrase = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FlowsGeneratePassphraseInput,
-    outputSchema: FlowsGeneratePassphraseOutput,
-  }),
-);
+export const FlowsGeneratePassphrase = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FlowsGeneratePassphraseInput,
+  outputSchema: FlowsGeneratePassphraseOutput,
+}));
 // Input Schema
-export const FlowsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FlowsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   connectionName: Schema.String.pipe(T.PathParam()),
@@ -718,7 +710,7 @@ export const FlowsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type FlowsGetInput = typeof FlowsGetInput.Type;
 
 // Output Schema
-export const FlowsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FlowsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -749,13 +741,13 @@ export type FlowsGetOutput = typeof FlowsGetOutput.Type;
  * @param connectionName - The name for the connection to perform the operation on.
  * @param flowName - The name for the flow to perform the operation on.
  */
-export const FlowsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FlowsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: FlowsGetInput,
   outputSchema: FlowsGetOutput,
 }));
 // Input Schema
 export const FlowsGetDestinationEndpointPortsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
@@ -772,7 +764,7 @@ export type FlowsGetDestinationEndpointPortsInput =
 
 // Output Schema
 export const FlowsGetDestinationEndpointPortsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ports: Schema.optional(Schema.Array(Schema.Number)),
   });
 export type FlowsGetDestinationEndpointPortsOutput =
@@ -789,13 +781,13 @@ export type FlowsGetDestinationEndpointPortsOutput =
  * @param flowName - The name for the flow to perform the operation on.
  */
 export const FlowsGetDestinationEndpointPorts =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FlowsGetDestinationEndpointPortsInput,
     outputSchema: FlowsGetDestinationEndpointPortsOutput,
   }));
 // Input Schema
 export const FlowsGetDestinationEndpointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
@@ -812,7 +804,7 @@ export type FlowsGetDestinationEndpointsInput =
 
 // Output Schema
 export const FlowsGetDestinationEndpointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endpoints: Schema.optional(Schema.Array(Schema.String)),
   });
 export type FlowsGetDestinationEndpointsOutput =
@@ -829,13 +821,13 @@ export type FlowsGetDestinationEndpointsOutput =
  * @param flowName - The name for the flow to perform the operation on.
  */
 export const FlowsGetDestinationEndpoints =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FlowsGetDestinationEndpointsInput,
     outputSchema: FlowsGetDestinationEndpointsOutput,
   }));
 // Input Schema
 export const FlowsGetSourceAddressesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
@@ -852,7 +844,7 @@ export type FlowsGetSourceAddressesInput =
 
 // Output Schema
 export const FlowsGetSourceAddressesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sourceAddresses: Schema.optional(Schema.Array(Schema.String)),
   });
 export type FlowsGetSourceAddressesOutput =
@@ -868,15 +860,13 @@ export type FlowsGetSourceAddressesOutput =
  * @param connectionName - The name for the connection to perform the operation on.
  * @param flowName - The name for the flow to perform the operation on.
  */
-export const FlowsGetSourceAddresses = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FlowsGetSourceAddressesInput,
-    outputSchema: FlowsGetSourceAddressesOutput,
-  }),
-);
+export const FlowsGetSourceAddresses = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FlowsGetSourceAddressesInput,
+  outputSchema: FlowsGetSourceAddressesOutput,
+}));
 // Input Schema
 export const FlowsGetStreamConnectionStringInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
@@ -893,7 +883,7 @@ export type FlowsGetStreamConnectionStringInput =
 
 // Output Schema
 export const FlowsGetStreamConnectionStringOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     connectionString: Schema.optional(SensitiveString),
   });
 export type FlowsGetStreamConnectionStringOutput =
@@ -910,12 +900,12 @@ export type FlowsGetStreamConnectionStringOutput =
  * @param flowName - The name for the flow to perform the operation on.
  */
 export const FlowsGetStreamConnectionString =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FlowsGetStreamConnectionStringInput,
     outputSchema: FlowsGetStreamConnectionStringOutput,
   }));
 // Input Schema
-export const FlowsLinkInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FlowsLinkInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   connectionName: Schema.String.pipe(T.PathParam()),
@@ -930,7 +920,7 @@ export const FlowsLinkInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type FlowsLinkInput = typeof FlowsLinkInput.Type;
 
 // Output Schema
-export const FlowsLinkOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FlowsLinkOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -961,13 +951,13 @@ export type FlowsLinkOutput = typeof FlowsLinkOutput.Type;
  * @param connectionName - The name for the connection to perform the operation on.
  * @param flowName - The name for the flow to perform the operation on.
  */
-export const FlowsLink = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FlowsLink = /*@__PURE__*/ API.make(() => ({
   inputSchema: FlowsLinkInput,
   outputSchema: FlowsLinkOutput,
 }));
 // Input Schema
 export const FlowsListByConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
@@ -982,7 +972,7 @@ export type FlowsListByConnectionInput = typeof FlowsListByConnectionInput.Type;
 
 // Output Schema
 export const FlowsListByConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1028,15 +1018,13 @@ export type FlowsListByConnectionOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param connectionName - The name for the connection to perform the operation on.
  */
-export const FlowsListByConnection = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FlowsListByConnectionInput,
-    outputSchema: FlowsListByConnectionOutput,
-  }),
-);
+export const FlowsListByConnection = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FlowsListByConnectionInput,
+  outputSchema: FlowsListByConnectionOutput,
+}));
 // Input Schema
 export const FlowsSetDestinationEndpointPortsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
@@ -1053,7 +1041,7 @@ export type FlowsSetDestinationEndpointPortsInput =
 
 // Output Schema
 export const FlowsSetDestinationEndpointPortsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1086,13 +1074,13 @@ export type FlowsSetDestinationEndpointPortsOutput =
  * @param flowName - The name for the flow to perform the operation on.
  */
 export const FlowsSetDestinationEndpointPorts =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FlowsSetDestinationEndpointPortsInput,
     outputSchema: FlowsSetDestinationEndpointPortsOutput,
   }));
 // Input Schema
 export const FlowsSetDestinationEndpointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
@@ -1109,7 +1097,7 @@ export type FlowsSetDestinationEndpointsInput =
 
 // Output Schema
 export const FlowsSetDestinationEndpointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1142,13 +1130,13 @@ export type FlowsSetDestinationEndpointsOutput =
  * @param flowName - The name for the flow to perform the operation on.
  */
 export const FlowsSetDestinationEndpoints =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FlowsSetDestinationEndpointsInput,
     outputSchema: FlowsSetDestinationEndpointsOutput,
   }));
 // Input Schema
 export const FlowsSetPassphraseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
@@ -1164,7 +1152,7 @@ export type FlowsSetPassphraseInput = typeof FlowsSetPassphraseInput.Type;
 
 // Output Schema
 export const FlowsSetPassphraseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1195,13 +1183,13 @@ export type FlowsSetPassphraseOutput = typeof FlowsSetPassphraseOutput.Type;
  * @param connectionName - The name for the connection to perform the operation on.
  * @param flowName - The name for the flow to perform the operation on.
  */
-export const FlowsSetPassphrase = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FlowsSetPassphrase = /*@__PURE__*/ API.make(() => ({
   inputSchema: FlowsSetPassphraseInput,
   outputSchema: FlowsSetPassphraseOutput,
 }));
 // Input Schema
 export const FlowsSetSourceAddressesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
@@ -1218,7 +1206,7 @@ export type FlowsSetSourceAddressesInput =
 
 // Output Schema
 export const FlowsSetSourceAddressesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1250,14 +1238,12 @@ export type FlowsSetSourceAddressesOutput =
  * @param connectionName - The name for the connection to perform the operation on.
  * @param flowName - The name for the flow to perform the operation on.
  */
-export const FlowsSetSourceAddresses = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FlowsSetSourceAddressesInput,
-    outputSchema: FlowsSetSourceAddressesOutput,
-  }),
-);
+export const FlowsSetSourceAddresses = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FlowsSetSourceAddressesInput,
+  outputSchema: FlowsSetSourceAddressesOutput,
+}));
 // Input Schema
-export const FlowsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FlowsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   connectionName: Schema.String.pipe(T.PathParam()),
@@ -1272,7 +1258,7 @@ export const FlowsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type FlowsUpdateInput = typeof FlowsUpdateInput.Type;
 
 // Output Schema
-export const FlowsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FlowsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1303,13 +1289,13 @@ export type FlowsUpdateOutput = typeof FlowsUpdateOutput.Type;
  * @param connectionName - The name for the connection to perform the operation on.
  * @param flowName - The name for the flow to perform the operation on.
  */
-export const FlowsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FlowsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: FlowsUpdateInput,
   outputSchema: FlowsUpdateOutput,
 }));
 // Input Schema
 export const ListFlowsByPipelineListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     pipelineName: Schema.String.pipe(T.PathParam()),
@@ -1325,7 +1311,7 @@ export type ListFlowsByPipelineListInput =
 
 // Output Schema
 export const ListFlowsByPipelineListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1379,15 +1365,13 @@ export type ListFlowsByPipelineListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param pipelineName - The name of the pipeline on which to operate.
  */
-export const ListFlowsByPipelineList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListFlowsByPipelineListInput,
-    outputSchema: ListFlowsByPipelineListOutput,
-  }),
-);
+export const ListFlowsByPipelineList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListFlowsByPipelineListInput,
+  outputSchema: ListFlowsByPipelineListOutput,
+}));
 // Input Schema
 export const ListPendingConnectionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
@@ -1403,7 +1387,7 @@ export type ListPendingConnectionsListInput =
 
 // Output Schema
 export const ListPendingConnectionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         subscriptionId: Schema.optional(Schema.String),
@@ -1515,15 +1499,13 @@ export type ListPendingConnectionsListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param connectionName - The name for the connection to perform the operation on.
  */
-export const ListPendingConnectionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListPendingConnectionsListInput,
-    outputSchema: ListPendingConnectionsListOutput,
-  }),
-);
+export const ListPendingConnectionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListPendingConnectionsListInput,
+  outputSchema: ListPendingConnectionsListOutput,
+}));
 // Input Schema
 export const ListPendingFlowsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
@@ -1538,7 +1520,7 @@ export type ListPendingFlowsListInput = typeof ListPendingFlowsListInput.Type;
 
 // Output Schema
 export const ListPendingFlowsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         subscriptionId: Schema.optional(Schema.String),
@@ -1682,14 +1664,12 @@ export type ListPendingFlowsListOutput = typeof ListPendingFlowsListOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param connectionName - The name for the connection to perform the operation on.
  */
-export const ListPendingFlowsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListPendingFlowsListInput,
-    outputSchema: ListPendingFlowsListOutput,
-  }),
-);
+export const ListPendingFlowsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListPendingFlowsListInput,
+  outputSchema: ListPendingFlowsListOutput,
+}));
 // Input Schema
-export const ListSchemasListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListSchemasListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   pipelineName: Schema.String.pipe(T.PathParam()),
@@ -1703,7 +1683,7 @@ export const ListSchemasListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListSchemasListInput = typeof ListSchemasListInput.Type;
 
 // Output Schema
-export const ListSchemasListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListSchemasListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1730,12 +1710,12 @@ export type ListSchemasListOutput = typeof ListSchemasListOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param pipelineName - The name of the pipeline on which to operate.
  */
-export const ListSchemasList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ListSchemasList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListSchemasListInput,
   outputSchema: ListSchemasListOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -1746,7 +1726,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1777,13 +1757,13 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
 export const PipelinesApproveConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     pipelineName: Schema.String.pipe(T.PathParam()),
@@ -1799,7 +1779,7 @@ export type PipelinesApproveConnectionInput =
 
 // Output Schema
 export const PipelinesApproveConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1830,15 +1810,13 @@ export type PipelinesApproveConnectionOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param pipelineName - The name of the pipeline on which to operate.
  */
-export const PipelinesApproveConnection = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PipelinesApproveConnectionInput,
-    outputSchema: PipelinesApproveConnectionOutput,
-  }),
-);
+export const PipelinesApproveConnection = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PipelinesApproveConnectionInput,
+  outputSchema: PipelinesApproveConnectionOutput,
+}));
 // Input Schema
 export const PipelinesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     pipelineName: Schema.String.pipe(T.PathParam()),
@@ -1854,7 +1832,7 @@ export type PipelinesCreateOrUpdateInput =
 
 // Output Schema
 export const PipelinesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1885,14 +1863,12 @@ export type PipelinesCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param pipelineName - The name of the pipeline on which to operate.
  */
-export const PipelinesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PipelinesCreateOrUpdateInput,
-    outputSchema: PipelinesCreateOrUpdateOutput,
-  }),
-);
+export const PipelinesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PipelinesCreateOrUpdateInput,
+  outputSchema: PipelinesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const PipelinesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PipelinesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   pipelineName: Schema.String.pipe(T.PathParam()),
@@ -1906,7 +1882,7 @@ export const PipelinesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PipelinesDeleteInput = typeof PipelinesDeleteInput.Type;
 
 // Output Schema
-export const PipelinesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PipelinesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type PipelinesDeleteOutput = typeof PipelinesDeleteOutput.Type;
 
 // The operation
@@ -1918,13 +1894,13 @@ export type PipelinesDeleteOutput = typeof PipelinesDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param pipelineName - The name of the pipeline on which to operate.
  */
-export const PipelinesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PipelinesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: PipelinesDeleteInput,
   outputSchema: PipelinesDeleteOutput,
 }));
 // Input Schema
 export const PipelinesExecuteActionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     pipelineName: Schema.String.pipe(T.PathParam()),
@@ -1940,7 +1916,7 @@ export type PipelinesExecuteActionInput =
 
 // Output Schema
 export const PipelinesExecuteActionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1971,14 +1947,12 @@ export type PipelinesExecuteActionOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param pipelineName - The name of the pipeline on which to operate.
  */
-export const PipelinesExecuteAction = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PipelinesExecuteActionInput,
-    outputSchema: PipelinesExecuteActionOutput,
-  }),
-);
+export const PipelinesExecuteAction = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PipelinesExecuteActionInput,
+  outputSchema: PipelinesExecuteActionOutput,
+}));
 // Input Schema
-export const PipelinesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PipelinesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   pipelineName: Schema.String.pipe(T.PathParam()),
@@ -1992,7 +1966,7 @@ export const PipelinesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PipelinesGetInput = typeof PipelinesGetInput.Type;
 
 // Output Schema
-export const PipelinesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PipelinesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2022,13 +1996,13 @@ export type PipelinesGetOutput = typeof PipelinesGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param pipelineName - The name of the pipeline on which to operate.
  */
-export const PipelinesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PipelinesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: PipelinesGetInput,
   outputSchema: PipelinesGetOutput,
 }));
 // Input Schema
 export const PipelinesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -2043,7 +2017,7 @@ export type PipelinesListByResourceGroupInput =
 
 // Output Schema
 export const PipelinesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2089,13 +2063,13 @@ export type PipelinesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const PipelinesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PipelinesListByResourceGroupInput,
     outputSchema: PipelinesListByResourceGroupOutput,
   }));
 // Input Schema
 export const PipelinesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -2109,7 +2083,7 @@ export type PipelinesListBySubscriptionInput =
 
 // Output Schema
 export const PipelinesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2153,15 +2127,13 @@ export type PipelinesListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const PipelinesListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PipelinesListBySubscriptionInput,
-    outputSchema: PipelinesListBySubscriptionOutput,
-  }),
-);
+export const PipelinesListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PipelinesListBySubscriptionInput,
+  outputSchema: PipelinesListBySubscriptionOutput,
+}));
 // Input Schema
 export const PipelinesRejectConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     pipelineName: Schema.String.pipe(T.PathParam()),
@@ -2177,7 +2149,7 @@ export type PipelinesRejectConnectionInput =
 
 // Output Schema
 export const PipelinesRejectConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2208,14 +2180,12 @@ export type PipelinesRejectConnectionOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param pipelineName - The name of the pipeline on which to operate.
  */
-export const PipelinesRejectConnection = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PipelinesRejectConnectionInput,
-    outputSchema: PipelinesRejectConnectionOutput,
-  }),
-);
+export const PipelinesRejectConnection = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PipelinesRejectConnectionInput,
+  outputSchema: PipelinesRejectConnectionOutput,
+}));
 // Input Schema
-export const PipelinesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PipelinesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   pipelineName: Schema.String.pipe(T.PathParam()),
@@ -2229,7 +2199,7 @@ export const PipelinesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PipelinesUpdateInput = typeof PipelinesUpdateInput.Type;
 
 // Output Schema
-export const PipelinesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PipelinesUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2259,7 +2229,7 @@ export type PipelinesUpdateOutput = typeof PipelinesUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param pipelineName - The name of the pipeline on which to operate.
  */
-export const PipelinesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PipelinesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: PipelinesUpdateInput,
   outputSchema: PipelinesUpdateOutput,
 }));

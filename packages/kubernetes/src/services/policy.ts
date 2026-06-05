@@ -6,12 +6,12 @@
  */
 import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
-import * as T from "../traits.ts";
 import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
+import * as T from "../traits.ts";
 
 // Input Schema
 export const CreatePolicyV1NamespacedPodDisruptionBudgetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -25,7 +25,7 @@ export type CreatePolicyV1NamespacedPodDisruptionBudgetInput =
 
 // Output Schema
 export const CreatePolicyV1NamespacedPodDisruptionBudgetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -131,14 +131,14 @@ export type CreatePolicyV1NamespacedPodDisruptionBudgetOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createPolicyV1NamespacedPodDisruptionBudget =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreatePolicyV1NamespacedPodDisruptionBudgetInput,
     outputSchema: CreatePolicyV1NamespacedPodDisruptionBudgetOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const DeletePolicyV1CollectionNamespacedPodDisruptionBudgetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -151,7 +151,7 @@ export type DeletePolicyV1CollectionNamespacedPodDisruptionBudgetInput =
 
 // Output Schema
 export const DeletePolicyV1CollectionNamespacedPodDisruptionBudgetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -200,13 +200,13 @@ export type DeletePolicyV1CollectionNamespacedPodDisruptionBudgetOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deletePolicyV1CollectionNamespacedPodDisruptionBudget =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeletePolicyV1CollectionNamespacedPodDisruptionBudgetInput,
     outputSchema: DeletePolicyV1CollectionNamespacedPodDisruptionBudgetOutput,
   }));
 // Input Schema
 export const DeletePolicyV1NamespacedPodDisruptionBudgetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -219,7 +219,7 @@ export type DeletePolicyV1NamespacedPodDisruptionBudgetInput =
 
 // Output Schema
 export const DeletePolicyV1NamespacedPodDisruptionBudgetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -268,20 +268,20 @@ export type DeletePolicyV1NamespacedPodDisruptionBudgetOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deletePolicyV1NamespacedPodDisruptionBudget =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeletePolicyV1NamespacedPodDisruptionBudgetInput,
     outputSchema: DeletePolicyV1NamespacedPodDisruptionBudgetOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
-export const GetPolicyAPIGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(T.Http({ method: "GET", path: "/apis/policy/" }));
+export const GetPolicyAPIGroupInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({ method: "GET", path: "/apis/policy/" }),
+);
 export type GetPolicyAPIGroupInput = typeof GetPolicyAPIGroupInput.Type;
 
 // Output Schema
 export const GetPolicyAPIGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     name: Schema.String,
@@ -312,13 +312,13 @@ export type GetPolicyAPIGroupOutput = typeof GetPolicyAPIGroupOutput.Type;
 /**
  * get information of a group
  */
-export const getPolicyAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getPolicyAPIGroup = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetPolicyAPIGroupInput,
   outputSchema: GetPolicyAPIGroupOutput,
 }));
 // Input Schema
 export const GetPolicyV1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/policy/v1/" }),
   );
 export type GetPolicyV1APIResourcesInput =
@@ -326,7 +326,7 @@ export type GetPolicyV1APIResourcesInput =
 
 // Output Schema
 export const GetPolicyV1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -352,15 +352,13 @@ export type GetPolicyV1APIResourcesOutput =
 /**
  * get available resources
  */
-export const getPolicyV1APIResources = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetPolicyV1APIResourcesInput,
-    outputSchema: GetPolicyV1APIResourcesOutput,
-  }),
-);
+export const getPolicyV1APIResources = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetPolicyV1APIResourcesInput,
+  outputSchema: GetPolicyV1APIResourcesOutput,
+}));
 // Input Schema
 export const ListPolicyV1NamespacedPodDisruptionBudgetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets",
@@ -371,7 +369,7 @@ export type ListPolicyV1NamespacedPodDisruptionBudgetInput =
 
 // Output Schema
 export const ListPolicyV1NamespacedPodDisruptionBudgetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -495,13 +493,13 @@ export type ListPolicyV1NamespacedPodDisruptionBudgetOutput =
  * list or watch objects of kind PodDisruptionBudget
  */
 export const listPolicyV1NamespacedPodDisruptionBudget =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListPolicyV1NamespacedPodDisruptionBudgetInput,
     outputSchema: ListPolicyV1NamespacedPodDisruptionBudgetOutput,
   }));
 // Input Schema
 export const ListPolicyV1PodDisruptionBudgetForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/policy/v1/poddisruptionbudgets" }),
   );
 export type ListPolicyV1PodDisruptionBudgetForAllNamespacesInput =
@@ -509,7 +507,7 @@ export type ListPolicyV1PodDisruptionBudgetForAllNamespacesInput =
 
 // Output Schema
 export const ListPolicyV1PodDisruptionBudgetForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -633,13 +631,13 @@ export type ListPolicyV1PodDisruptionBudgetForAllNamespacesOutput =
  * list or watch objects of kind PodDisruptionBudget
  */
 export const listPolicyV1PodDisruptionBudgetForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListPolicyV1PodDisruptionBudgetForAllNamespacesInput,
     outputSchema: ListPolicyV1PodDisruptionBudgetForAllNamespacesOutput,
   }));
 // Input Schema
 export const PatchPolicyV1NamespacedPodDisruptionBudgetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -653,7 +651,7 @@ export type PatchPolicyV1NamespacedPodDisruptionBudgetInput =
 
 // Output Schema
 export const PatchPolicyV1NamespacedPodDisruptionBudgetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -759,14 +757,14 @@ export type PatchPolicyV1NamespacedPodDisruptionBudgetOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchPolicyV1NamespacedPodDisruptionBudget =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchPolicyV1NamespacedPodDisruptionBudgetInput,
     outputSchema: PatchPolicyV1NamespacedPodDisruptionBudgetOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchPolicyV1NamespacedPodDisruptionBudgetStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -780,7 +778,7 @@ export type PatchPolicyV1NamespacedPodDisruptionBudgetStatusInput =
 
 // Output Schema
 export const PatchPolicyV1NamespacedPodDisruptionBudgetStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -886,14 +884,14 @@ export type PatchPolicyV1NamespacedPodDisruptionBudgetStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchPolicyV1NamespacedPodDisruptionBudgetStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchPolicyV1NamespacedPodDisruptionBudgetStatusInput,
     outputSchema: PatchPolicyV1NamespacedPodDisruptionBudgetStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReadPolicyV1NamespacedPodDisruptionBudgetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}",
@@ -904,7 +902,7 @@ export type ReadPolicyV1NamespacedPodDisruptionBudgetInput =
 
 // Output Schema
 export const ReadPolicyV1NamespacedPodDisruptionBudgetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1007,14 +1005,14 @@ export type ReadPolicyV1NamespacedPodDisruptionBudgetOutput =
  * read the specified PodDisruptionBudget
  */
 export const readPolicyV1NamespacedPodDisruptionBudget =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadPolicyV1NamespacedPodDisruptionBudgetInput,
     outputSchema: ReadPolicyV1NamespacedPodDisruptionBudgetOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadPolicyV1NamespacedPodDisruptionBudgetStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}/status",
@@ -1025,7 +1023,7 @@ export type ReadPolicyV1NamespacedPodDisruptionBudgetStatusInput =
 
 // Output Schema
 export const ReadPolicyV1NamespacedPodDisruptionBudgetStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1128,14 +1126,14 @@ export type ReadPolicyV1NamespacedPodDisruptionBudgetStatusOutput =
  * read status of the specified PodDisruptionBudget
  */
 export const readPolicyV1NamespacedPodDisruptionBudgetStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadPolicyV1NamespacedPodDisruptionBudgetStatusInput,
     outputSchema: ReadPolicyV1NamespacedPodDisruptionBudgetStatusOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReplacePolicyV1NamespacedPodDisruptionBudgetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -1149,7 +1147,7 @@ export type ReplacePolicyV1NamespacedPodDisruptionBudgetInput =
 
 // Output Schema
 export const ReplacePolicyV1NamespacedPodDisruptionBudgetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1255,14 +1253,14 @@ export type ReplacePolicyV1NamespacedPodDisruptionBudgetOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replacePolicyV1NamespacedPodDisruptionBudget =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplacePolicyV1NamespacedPodDisruptionBudgetInput,
     outputSchema: ReplacePolicyV1NamespacedPodDisruptionBudgetOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplacePolicyV1NamespacedPodDisruptionBudgetStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -1276,7 +1274,7 @@ export type ReplacePolicyV1NamespacedPodDisruptionBudgetStatusInput =
 
 // Output Schema
 export const ReplacePolicyV1NamespacedPodDisruptionBudgetStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1382,14 +1380,14 @@ export type ReplacePolicyV1NamespacedPodDisruptionBudgetStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replacePolicyV1NamespacedPodDisruptionBudgetStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplacePolicyV1NamespacedPodDisruptionBudgetStatusInput,
     outputSchema: ReplacePolicyV1NamespacedPodDisruptionBudgetStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const WatchPolicyV1NamespacedPodDisruptionBudgetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}",
@@ -1400,7 +1398,7 @@ export type WatchPolicyV1NamespacedPodDisruptionBudgetInput =
 
 // Output Schema
 export const WatchPolicyV1NamespacedPodDisruptionBudgetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -1412,13 +1410,13 @@ export type WatchPolicyV1NamespacedPodDisruptionBudgetOutput =
  * watch changes to an object of kind PodDisruptionBudget. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchPolicyV1NamespacedPodDisruptionBudget =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchPolicyV1NamespacedPodDisruptionBudgetInput,
     outputSchema: WatchPolicyV1NamespacedPodDisruptionBudgetOutput,
   }));
 // Input Schema
 export const WatchPolicyV1NamespacedPodDisruptionBudgetListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets",
@@ -1429,7 +1427,7 @@ export type WatchPolicyV1NamespacedPodDisruptionBudgetListInput =
 
 // Output Schema
 export const WatchPolicyV1NamespacedPodDisruptionBudgetListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -1441,13 +1439,13 @@ export type WatchPolicyV1NamespacedPodDisruptionBudgetListOutput =
  * watch individual changes to a list of PodDisruptionBudget. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchPolicyV1NamespacedPodDisruptionBudgetList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchPolicyV1NamespacedPodDisruptionBudgetListInput,
     outputSchema: WatchPolicyV1NamespacedPodDisruptionBudgetListOutput,
   }));
 // Input Schema
 export const WatchPolicyV1PodDisruptionBudgetListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/policy/v1/watch/poddisruptionbudgets",
@@ -1458,7 +1456,7 @@ export type WatchPolicyV1PodDisruptionBudgetListForAllNamespacesInput =
 
 // Output Schema
 export const WatchPolicyV1PodDisruptionBudgetListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -1470,7 +1468,7 @@ export type WatchPolicyV1PodDisruptionBudgetListForAllNamespacesOutput =
  * watch individual changes to a list of PodDisruptionBudget. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchPolicyV1PodDisruptionBudgetListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchPolicyV1PodDisruptionBudgetListForAllNamespacesInput,
     outputSchema: WatchPolicyV1PodDisruptionBudgetListForAllNamespacesOutput,
   }));

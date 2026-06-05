@@ -1,10 +1,10 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
-import * as T from "../../traits.ts";
 import { BadRequest, NotFound, UnprocessableEntity } from "../../errors.ts";
+import * as T from "../../traits.ts";
 
 // Input Schema
-export const IngestToDatasetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IngestToDatasetInput = /*@__PURE__*/ Schema.Struct({
   "dataset-id": Schema.String.pipe(T.PathParam()),
   "timestamp-field": Schema.optional(Schema.String),
   "timestamp-format": Schema.optional(Schema.String),
@@ -13,7 +13,7 @@ export const IngestToDatasetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type IngestToDatasetInput = typeof IngestToDatasetInput.Type;
 
 // Output Schema
-export const IngestToDatasetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IngestToDatasetOutput = /*@__PURE__*/ Schema.Struct({
   blocksCreated: Schema.Number,
   failed: Schema.Number,
   failures: Schema.optional(
@@ -39,7 +39,7 @@ export type IngestToDatasetOutput = typeof IngestToDatasetOutput.Type;
  * @param X-Axiom-CSV-Fields - A list of optional comma separated fields to use for CSV ingestion. If not specified, the first line of the CSV will be used as the field names.
  * @param X-Axiom-Event-Labels - An optional JSON encoded object with additional labels to add to all events in the request
  */
-export const ingestToDataset = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ingestToDataset = /*@__PURE__*/ API.make(() => ({
   inputSchema: IngestToDatasetInput,
   outputSchema: IngestToDatasetOutput,
   errors: [BadRequest, NotFound, UnprocessableEntity] as const,

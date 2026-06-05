@@ -6,12 +6,12 @@
  */
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
-import * as T from "../traits.ts";
 import { SensitiveString } from "../sensitive.ts";
+import * as T from "../traits.ts";
 
 // Input Schema
 export const OffersGenerateAccessTokenInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     offerId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -25,7 +25,7 @@ export type OffersGenerateAccessTokenInput =
 
 // Output Schema
 export const OffersGenerateAccessTokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     diskId: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
     accessToken: SensitiveString,
@@ -40,14 +40,12 @@ export type OffersGenerateAccessTokenOutput =
  * @param api-version - The API version to use for this operation.
  * @param offerId - Id of the offer
  */
-export const OffersGenerateAccessToken = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OffersGenerateAccessTokenInput,
-    outputSchema: OffersGenerateAccessTokenOutput,
-  }),
-);
+export const OffersGenerateAccessToken = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OffersGenerateAccessTokenInput,
+  outputSchema: OffersGenerateAccessTokenOutput,
+}));
 // Input Schema
-export const OffersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OffersGetInput = /*@__PURE__*/ Schema.Struct({
   offerId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -59,7 +57,7 @@ export const OffersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OffersGetInput = typeof OffersGetInput.Type;
 
 // Output Schema
-export const OffersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OffersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -87,13 +85,13 @@ export type OffersGetOutput = typeof OffersGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param offerId - Id of the offer
  */
-export const OffersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OffersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: OffersGetInput,
   outputSchema: OffersGetOutput,
 }));
 // Input Schema
 export const OffersGetAccessTokenInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     offerId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -106,7 +104,7 @@ export type OffersGetAccessTokenInput = typeof OffersGetAccessTokenInput.Type;
 
 // Output Schema
 export const OffersGetAccessTokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     diskId: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
     accessToken: SensitiveString,
@@ -120,14 +118,12 @@ export type OffersGetAccessTokenOutput = typeof OffersGetAccessTokenOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param offerId - Id of the offer
  */
-export const OffersGetAccessToken = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OffersGetAccessTokenInput,
-    outputSchema: OffersGetAccessTokenOutput,
-  }),
-);
+export const OffersGetAccessToken = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OffersGetAccessTokenInput,
+  outputSchema: OffersGetAccessTokenOutput,
+}));
 // Input Schema
-export const OffersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OffersListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
   $top: Schema.optional(Schema.Number),
   skip: Schema.optional(Schema.Number),
@@ -143,7 +139,7 @@ export const OffersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OffersListInput = typeof OffersListInput.Type;
 
 // Output Schema
-export const OffersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OffersListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -180,13 +176,13 @@ export type OffersListOutput = typeof OffersListOutput.Type;
  * @param $filter - Filter the result list using the given expression.
  * @param $skipToken - Skip over when retrieving results.
  */
-export const OffersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OffersList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OffersListInput,
   outputSchema: OffersListOutput,
 }));
 // Input Schema
 export const OffersListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -200,7 +196,7 @@ export type OffersListBySubscriptionInput =
 
 // Output Schema
 export const OffersListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -244,14 +240,12 @@ export type OffersListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const OffersListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OffersListBySubscriptionInput,
-    outputSchema: OffersListBySubscriptionOutput,
-  }),
-);
+export const OffersListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OffersListBySubscriptionInput,
+  outputSchema: OffersListBySubscriptionOutput,
+}));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -262,7 +256,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -293,12 +287,12 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
-export const PublishersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PublishersGetInput = /*@__PURE__*/ Schema.Struct({
   publisherName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -310,7 +304,7 @@ export const PublishersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PublishersGetInput = typeof PublishersGetInput.Type;
 
 // Output Schema
-export const PublishersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PublishersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -338,12 +332,12 @@ export type PublishersGetOutput = typeof PublishersGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param publisherName - Name of the publisher
  */
-export const PublishersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PublishersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: PublishersGetInput,
   outputSchema: PublishersGetOutput,
 }));
 // Input Schema
-export const PublishersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PublishersListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
   $top: Schema.optional(Schema.Number),
   skip: Schema.optional(Schema.Number),
@@ -359,7 +353,7 @@ export const PublishersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PublishersListInput = typeof PublishersListInput.Type;
 
 // Output Schema
-export const PublishersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PublishersListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -396,13 +390,13 @@ export type PublishersListOutput = typeof PublishersListOutput.Type;
  * @param $filter - Filter the result list using the given expression.
  * @param $skipToken - Skip over when retrieving results.
  */
-export const PublishersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PublishersList = /*@__PURE__*/ API.make(() => ({
   inputSchema: PublishersListInput,
   outputSchema: PublishersListOutput,
 }));
 // Input Schema
 export const PublishersListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -416,7 +410,7 @@ export type PublishersListBySubscriptionInput =
 
 // Output Schema
 export const PublishersListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -461,7 +455,7 @@ export type PublishersListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const PublishersListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PublishersListBySubscriptionInput,
     outputSchema: PublishersListBySubscriptionOutput,
   }));

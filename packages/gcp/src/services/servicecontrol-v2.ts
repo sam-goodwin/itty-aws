@@ -4,11 +4,11 @@
 // ==========================================================================
 
 import * as Schema from "effect/Schema";
+import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
-import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { DefaultErrors } from "../errors.ts";
-import type * as HttpClient from "effect/unstable/http/HttpClient";
+import * as T from "../traits.ts";
 
 // Service metadata
 const svc = T.Service({
@@ -36,7 +36,7 @@ export interface Peer {
 }
 
 export const Peer: Schema.Schema<Peer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ip: Schema.optional(Schema.String),
     port: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -50,7 +50,7 @@ export interface Oauth {
 }
 
 export const Oauth: Schema.Schema<Oauth> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     clientId: Schema.optional(Schema.String),
   }).annotate({ identifier: "Oauth" });
 
@@ -70,7 +70,7 @@ export interface Auth {
 }
 
 export const Auth: Schema.Schema<Auth> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     principal: Schema.optional(Schema.String),
     audiences: Schema.optional(Schema.Array(Schema.String)),
     presenter: Schema.optional(Schema.String),
@@ -109,7 +109,7 @@ export interface Request {
 }
 
 export const Request: Schema.Schema<Request> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     method: Schema.optional(Schema.String),
     headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -139,7 +139,7 @@ export interface Response {
 }
 
 export const Response: Schema.Schema<Response> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
     size: Schema.optional(Schema.String),
     headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -175,7 +175,7 @@ export interface Resource {
 }
 
 export const Resource: Schema.Schema<Resource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -202,7 +202,7 @@ export interface Api {
 }
 
 export const Api: Schema.Schema<Api> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     operation: Schema.optional(Schema.String),
     protocol: Schema.optional(Schema.String),
@@ -229,7 +229,7 @@ export interface AttributeContext {
 }
 
 export const AttributeContext: Schema.Schema<AttributeContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     origin: Schema.optional(Peer),
     source: Schema.optional(Peer),
     destination: Schema.optional(Peer),
@@ -256,7 +256,7 @@ export interface ResourceInfo {
 }
 
 export const ResourceInfo: Schema.Schema<ResourceInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     permission: Schema.optional(Schema.String),
@@ -276,7 +276,7 @@ export interface CheckRequest {
 }
 
 export const CheckRequest: Schema.Schema<CheckRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceConfigId: Schema.optional(Schema.String),
     attributes: Schema.optional(AttributeContext),
     resources: Schema.optional(Schema.Array(ResourceInfo)),
@@ -293,7 +293,7 @@ export interface Status {
 }
 
 export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
     details: Schema.optional(
@@ -311,7 +311,7 @@ export interface CheckResponse {
 }
 
 export const CheckResponse: Schema.Schema<CheckResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(Status),
     headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     dynamicMetadata: Schema.optional(
@@ -327,7 +327,7 @@ export interface ReportRequest {
 }
 
 export const ReportRequest: Schema.Schema<ReportRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceConfigId: Schema.optional(Schema.String),
     operations: Schema.optional(Schema.Array(AttributeContext)),
   }).annotate({ identifier: "ReportRequest" });
@@ -338,7 +338,7 @@ export interface ReportResponse {
 }
 
 export const ReportResponse: Schema.Schema<ReportResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     extensions: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }).annotate({ identifier: "ReportResponse" });
 
@@ -350,7 +350,7 @@ export interface ResourceLocation {
 }
 
 export const ResourceLocation: Schema.Schema<ResourceLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     currentLocations: Schema.optional(Schema.Array(Schema.String)),
     originalLocations: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ResourceLocation" });
@@ -363,7 +363,7 @@ export interface FirstPartyPrincipal {
 }
 
 export const FirstPartyPrincipal: Schema.Schema<FirstPartyPrincipal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     principalEmail: Schema.optional(Schema.String),
     serviceMetadata: Schema.optional(
       Schema.Record(Schema.String, Schema.Unknown),
@@ -376,7 +376,7 @@ export interface ThirdPartyPrincipal {
 }
 
 export const ThirdPartyPrincipal: Schema.Schema<ThirdPartyPrincipal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     thirdPartyClaims: Schema.optional(
       Schema.Record(Schema.String, Schema.Unknown),
     ),
@@ -392,7 +392,7 @@ export interface ServiceAccountDelegationInfo {
 }
 
 export const ServiceAccountDelegationInfo: Schema.Schema<ServiceAccountDelegationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     principalSubject: Schema.optional(Schema.String),
     firstPartyPrincipal: Schema.optional(FirstPartyPrincipal),
     thirdPartyPrincipal: Schema.optional(ThirdPartyPrincipal),
@@ -408,7 +408,7 @@ export interface ServiceMetadata {
 }
 
 export const ServiceMetadata: Schema.Schema<ServiceMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     principalSubject: Schema.optional(Schema.String),
     serviceDomain: Schema.optional(Schema.String),
     jobMetadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -422,7 +422,7 @@ export interface ServiceDelegationHistory {
 }
 
 export const ServiceDelegationHistory: Schema.Schema<ServiceDelegationHistory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     originalPrincipal: Schema.optional(Schema.String),
     serviceMetadata: Schema.optional(Schema.Array(ServiceMetadata)),
   }).annotate({ identifier: "ServiceDelegationHistory" });
@@ -433,7 +433,7 @@ export interface OAuthInfo {
 }
 
 export const OAuthInfo: Schema.Schema<OAuthInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     oauthClientId: Schema.optional(Schema.String),
   }).annotate({ identifier: "OAuthInfo" });
 
@@ -459,7 +459,7 @@ export interface AuthenticationInfo {
 }
 
 export const AuthenticationInfo: Schema.Schema<AuthenticationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     principalEmail: Schema.optional(Schema.String),
     authoritySelector: Schema.optional(Schema.String),
     thirdPartyPrincipal: Schema.optional(
@@ -497,7 +497,7 @@ export interface AuthorizationInfo {
 }
 
 export const AuthorizationInfo: Schema.Schema<AuthorizationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.optional(Schema.String),
     permission: Schema.optional(Schema.String),
     granted: Schema.optional(Schema.Boolean),
@@ -524,7 +524,7 @@ export interface ViolationInfo {
 }
 
 export const ViolationInfo: Schema.Schema<ViolationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     constraint: Schema.optional(Schema.String),
     errorMessage: Schema.optional(Schema.String),
     checkedValue: Schema.optional(Schema.String),
@@ -546,7 +546,7 @@ export interface OrgPolicyViolationInfo {
 }
 
 export const OrgPolicyViolationInfo: Schema.Schema<OrgPolicyViolationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     resourceType: Schema.optional(Schema.String),
     resourceTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -559,7 +559,7 @@ export interface PolicyViolationInfo {
 }
 
 export const PolicyViolationInfo: Schema.Schema<PolicyViolationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     orgPolicyViolationInfo: Schema.optional(OrgPolicyViolationInfo),
   }).annotate({ identifier: "PolicyViolationInfo" });
 
@@ -577,7 +577,7 @@ export interface RequestMetadata {
 }
 
 export const RequestMetadata: Schema.Schema<RequestMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     callerIp: Schema.optional(Schema.String),
     callerSuppliedUserAgent: Schema.optional(Schema.String),
     callerNetwork: Schema.optional(Schema.String),
@@ -619,7 +619,7 @@ export interface AuditLog {
 }
 
 export const AuditLog: Schema.Schema<AuditLog> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.optional(Schema.String),
     methodName: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
@@ -645,7 +645,7 @@ export interface SpanContext {
 }
 
 export const SpanContext: Schema.Schema<SpanContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     spanName: Schema.optional(Schema.String),
   }).annotate({ identifier: "SpanContext" });
 
@@ -683,7 +683,7 @@ export interface V2HttpRequest {
 }
 
 export const V2HttpRequest: Schema.Schema<V2HttpRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestMethod: Schema.optional(Schema.String),
     requestUrl: Schema.optional(Schema.String),
     requestSize: Schema.optional(Schema.String),
@@ -713,7 +713,7 @@ export interface V2LogEntryOperation {
 }
 
 export const V2LogEntryOperation: Schema.Schema<V2LogEntryOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     producer: Schema.optional(Schema.String),
     first: Schema.optional(Schema.Boolean),
@@ -730,7 +730,7 @@ export interface V2LogEntrySourceLocation {
 }
 
 export const V2LogEntrySourceLocation: Schema.Schema<V2LogEntrySourceLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     file: Schema.optional(Schema.String),
     line: Schema.optional(Schema.String),
     function: Schema.optional(Schema.String),
@@ -776,7 +776,7 @@ export interface V2LogEntry {
 }
 
 export const V2LogEntry: Schema.Schema<V2LogEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     timestamp: Schema.optional(Schema.String),
     severity: Schema.optional(Schema.String),
@@ -820,7 +820,7 @@ export interface V2ResourceEvent {
 }
 
 export const V2ResourceEvent: Schema.Schema<V2ResourceEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     type: Schema.optional(Schema.String),
     destinations: Schema.optional(Schema.String),
@@ -891,7 +891,7 @@ export interface CheckServicesRequest {
   body?: CheckRequest;
 }
 
-export const CheckServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CheckServicesRequest = /*@__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.HttpPath("serviceName")),
   body: Schema.optional(CheckRequest).pipe(T.HttpBody()),
 }).pipe(
@@ -904,7 +904,7 @@ export const CheckServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<CheckServicesRequest>;
 
 export type CheckServicesResponse = CheckResponse;
-export const CheckServicesResponse = /*@__PURE__*/ /*#__PURE__*/ CheckResponse;
+export const CheckServicesResponse = /*@__PURE__*/ CheckResponse;
 
 export type CheckServicesError =
   | DefaultErrors
@@ -919,7 +919,7 @@ export const checkServices: API.OperationMethod<
   CheckServicesResponse,
   CheckServicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CheckServicesRequest,
   output: CheckServicesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -932,7 +932,7 @@ export interface ReportServicesRequest {
   body?: ReportRequest;
 }
 
-export const ReportServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReportServicesRequest = /*@__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.HttpPath("serviceName")),
   body: Schema.optional(ReportRequest).pipe(T.HttpBody()),
 }).pipe(
@@ -945,8 +945,7 @@ export const ReportServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<ReportServicesRequest>;
 
 export type ReportServicesResponse = ReportResponse;
-export const ReportServicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ReportResponse;
+export const ReportServicesResponse = /*@__PURE__*/ ReportResponse;
 
 export type ReportServicesError =
   | DefaultErrors
@@ -961,7 +960,7 @@ export const reportServices: API.OperationMethod<
   ReportServicesResponse,
   ReportServicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReportServicesRequest,
   output: ReportServicesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

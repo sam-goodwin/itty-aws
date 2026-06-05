@@ -10,7 +10,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const AgentsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageMoverName: Schema.String.pipe(T.PathParam()),
@@ -26,7 +26,7 @@ export type AgentsCreateOrUpdateInput = typeof AgentsCreateOrUpdateInput.Type;
 
 // Output Schema
 export const AgentsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -57,14 +57,12 @@ export type AgentsCreateOrUpdateOutput = typeof AgentsCreateOrUpdateOutput.Type;
  * @param storageMoverName - The name of the Storage Mover resource.
  * @param agentName - The name of the Agent resource.
  */
-export const AgentsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AgentsCreateOrUpdateInput,
-    outputSchema: AgentsCreateOrUpdateOutput,
-  }),
-);
+export const AgentsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AgentsCreateOrUpdateInput,
+  outputSchema: AgentsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const AgentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AgentsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageMoverName: Schema.String.pipe(T.PathParam()),
@@ -79,7 +77,7 @@ export const AgentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type AgentsDeleteInput = typeof AgentsDeleteInput.Type;
 
 // Output Schema
-export const AgentsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AgentsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type AgentsDeleteOutput = typeof AgentsDeleteOutput.Type;
 
 // The operation
@@ -92,12 +90,12 @@ export type AgentsDeleteOutput = typeof AgentsDeleteOutput.Type;
  * @param storageMoverName - The name of the Storage Mover resource.
  * @param agentName - The name of the Agent resource.
  */
-export const AgentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AgentsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: AgentsDeleteInput,
   outputSchema: AgentsDeleteOutput,
 }));
 // Input Schema
-export const AgentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AgentsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageMoverName: Schema.String.pipe(T.PathParam()),
@@ -112,7 +110,7 @@ export const AgentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type AgentsGetInput = typeof AgentsGetInput.Type;
 
 // Output Schema
-export const AgentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AgentsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -143,12 +141,12 @@ export type AgentsGetOutput = typeof AgentsGetOutput.Type;
  * @param storageMoverName - The name of the Storage Mover resource.
  * @param agentName - The name of the Agent resource.
  */
-export const AgentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AgentsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AgentsGetInput,
   outputSchema: AgentsGetOutput,
 }));
 // Input Schema
-export const AgentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AgentsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageMoverName: Schema.String.pipe(T.PathParam()),
@@ -162,7 +160,7 @@ export const AgentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type AgentsListInput = typeof AgentsListInput.Type;
 
 // Output Schema
-export const AgentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AgentsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -197,12 +195,12 @@ export type AgentsListOutput = typeof AgentsListOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param storageMoverName - The name of the Storage Mover resource.
  */
-export const AgentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AgentsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: AgentsListInput,
   outputSchema: AgentsListOutput,
 }));
 // Input Schema
-export const AgentsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AgentsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageMoverName: Schema.String.pipe(T.PathParam()),
@@ -217,7 +215,7 @@ export const AgentsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type AgentsUpdateInput = typeof AgentsUpdateInput.Type;
 
 // Output Schema
-export const AgentsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AgentsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -248,13 +246,13 @@ export type AgentsUpdateOutput = typeof AgentsUpdateOutput.Type;
  * @param storageMoverName - The name of the Storage Mover resource.
  * @param agentName - The name of the Agent resource.
  */
-export const AgentsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AgentsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: AgentsUpdateInput,
   outputSchema: AgentsUpdateOutput,
 }));
 // Input Schema
 export const ConnectionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageMoverName: Schema.String.pipe(T.PathParam()),
@@ -271,7 +269,7 @@ export type ConnectionsCreateOrUpdateInput =
 
 // Output Schema
 export const ConnectionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -303,22 +301,18 @@ export type ConnectionsCreateOrUpdateOutput =
  * @param storageMoverName - The name of the Storage Mover resource.
  * @param connectionName - The name of the Connection resource.
  */
-export const ConnectionsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectionsCreateOrUpdateInput,
-    outputSchema: ConnectionsCreateOrUpdateOutput,
-  }),
-);
+export const ConnectionsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectionsCreateOrUpdateInput,
+  outputSchema: ConnectionsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ConnectionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    storageMoverName: Schema.String.pipe(T.PathParam()),
-    connectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const ConnectionsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  storageMoverName: Schema.String.pipe(T.PathParam()),
+  connectionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/connections/{connectionName}",
@@ -327,7 +321,7 @@ export const ConnectionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ConnectionsDeleteInput = typeof ConnectionsDeleteInput.Type;
 
 // Output Schema
-export const ConnectionsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ConnectionsDeleteOutput = typeof ConnectionsDeleteOutput.Type;
 
 // The operation
@@ -341,12 +335,12 @@ export type ConnectionsDeleteOutput = typeof ConnectionsDeleteOutput.Type;
  * @param storageMoverName - The name of the Storage Mover resource.
  * @param connectionName - The name of the Connection resource.
  */
-export const ConnectionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectionsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectionsDeleteInput,
   outputSchema: ConnectionsDeleteOutput,
 }));
 // Input Schema
-export const ConnectionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectionsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageMoverName: Schema.String.pipe(T.PathParam()),
@@ -361,7 +355,7 @@ export const ConnectionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ConnectionsGetInput = typeof ConnectionsGetInput.Type;
 
 // Output Schema
-export const ConnectionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectionsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -392,12 +386,12 @@ export type ConnectionsGetOutput = typeof ConnectionsGetOutput.Type;
  * @param storageMoverName - The name of the Storage Mover resource.
  * @param connectionName - The name of the Connection resource.
  */
-export const ConnectionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectionsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectionsGetInput,
   outputSchema: ConnectionsGetOutput,
 }));
 // Input Schema
-export const ConnectionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectionsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageMoverName: Schema.String.pipe(T.PathParam()),
@@ -411,7 +405,7 @@ export const ConnectionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ConnectionsListInput = typeof ConnectionsListInput.Type;
 
 // Output Schema
-export const ConnectionsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectionsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -446,13 +440,13 @@ export type ConnectionsListOutput = typeof ConnectionsListOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param storageMoverName - The name of the Storage Mover resource.
  */
-export const ConnectionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectionsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectionsListInput,
   outputSchema: ConnectionsListOutput,
 }));
 // Input Schema
 export const EndpointsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageMoverName: Schema.String.pipe(T.PathParam()),
@@ -469,7 +463,7 @@ export type EndpointsCreateOrUpdateInput =
 
 // Output Schema
 export const EndpointsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -501,14 +495,12 @@ export type EndpointsCreateOrUpdateOutput =
  * @param storageMoverName - The name of the Storage Mover resource.
  * @param endpointName - The name of the Endpoint resource.
  */
-export const EndpointsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EndpointsCreateOrUpdateInput,
-    outputSchema: EndpointsCreateOrUpdateOutput,
-  }),
-);
+export const EndpointsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EndpointsCreateOrUpdateInput,
+  outputSchema: EndpointsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const EndpointsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EndpointsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageMoverName: Schema.String.pipe(T.PathParam()),
@@ -523,7 +515,7 @@ export const EndpointsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type EndpointsDeleteInput = typeof EndpointsDeleteInput.Type;
 
 // Output Schema
-export const EndpointsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const EndpointsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type EndpointsDeleteOutput = typeof EndpointsDeleteOutput.Type;
 
 // The operation
@@ -536,12 +528,12 @@ export type EndpointsDeleteOutput = typeof EndpointsDeleteOutput.Type;
  * @param storageMoverName - The name of the Storage Mover resource.
  * @param endpointName - The name of the Endpoint resource.
  */
-export const EndpointsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EndpointsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: EndpointsDeleteInput,
   outputSchema: EndpointsDeleteOutput,
 }));
 // Input Schema
-export const EndpointsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EndpointsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageMoverName: Schema.String.pipe(T.PathParam()),
@@ -556,7 +548,7 @@ export const EndpointsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type EndpointsGetInput = typeof EndpointsGetInput.Type;
 
 // Output Schema
-export const EndpointsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EndpointsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -587,12 +579,12 @@ export type EndpointsGetOutput = typeof EndpointsGetOutput.Type;
  * @param storageMoverName - The name of the Storage Mover resource.
  * @param endpointName - The name of the Endpoint resource.
  */
-export const EndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EndpointsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: EndpointsGetInput,
   outputSchema: EndpointsGetOutput,
 }));
 // Input Schema
-export const EndpointsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EndpointsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageMoverName: Schema.String.pipe(T.PathParam()),
@@ -606,7 +598,7 @@ export const EndpointsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type EndpointsListInput = typeof EndpointsListInput.Type;
 
 // Output Schema
-export const EndpointsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EndpointsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -641,12 +633,12 @@ export type EndpointsListOutput = typeof EndpointsListOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param storageMoverName - The name of the Storage Mover resource.
  */
-export const EndpointsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EndpointsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: EndpointsListInput,
   outputSchema: EndpointsListOutput,
 }));
 // Input Schema
-export const EndpointsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EndpointsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageMoverName: Schema.String.pipe(T.PathParam()),
@@ -661,7 +653,7 @@ export const EndpointsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type EndpointsUpdateInput = typeof EndpointsUpdateInput.Type;
 
 // Output Schema
-export const EndpointsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EndpointsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -692,13 +684,13 @@ export type EndpointsUpdateOutput = typeof EndpointsUpdateOutput.Type;
  * @param storageMoverName - The name of the Storage Mover resource.
  * @param endpointName - The name of the Endpoint resource.
  */
-export const EndpointsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EndpointsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: EndpointsUpdateInput,
   outputSchema: EndpointsUpdateOutput,
 }));
 // Input Schema
 export const JobDefinitionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageMoverName: Schema.String.pipe(T.PathParam()),
@@ -716,7 +708,7 @@ export type JobDefinitionsCreateOrUpdateInput =
 
 // Output Schema
 export const JobDefinitionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -750,13 +742,13 @@ export type JobDefinitionsCreateOrUpdateOutput =
  * @param jobDefinitionName - The name of the Job Definition resource.
  */
 export const JobDefinitionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: JobDefinitionsCreateOrUpdateInput,
     outputSchema: JobDefinitionsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const JobDefinitionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageMoverName: Schema.String.pipe(T.PathParam()),
@@ -772,8 +764,7 @@ export const JobDefinitionsDeleteInput =
 export type JobDefinitionsDeleteInput = typeof JobDefinitionsDeleteInput.Type;
 
 // Output Schema
-export const JobDefinitionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const JobDefinitionsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type JobDefinitionsDeleteOutput = typeof JobDefinitionsDeleteOutput.Type;
 
 // The operation
@@ -787,23 +778,19 @@ export type JobDefinitionsDeleteOutput = typeof JobDefinitionsDeleteOutput.Type;
  * @param projectName - The name of the Project resource.
  * @param jobDefinitionName - The name of the Job Definition resource.
  */
-export const JobDefinitionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: JobDefinitionsDeleteInput,
-    outputSchema: JobDefinitionsDeleteOutput,
-  }),
-);
+export const JobDefinitionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: JobDefinitionsDeleteInput,
+  outputSchema: JobDefinitionsDeleteOutput,
+}));
 // Input Schema
-export const JobDefinitionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    storageMoverName: Schema.String.pipe(T.PathParam()),
-    projectName: Schema.String.pipe(T.PathParam()),
-    jobDefinitionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const JobDefinitionsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  storageMoverName: Schema.String.pipe(T.PathParam()),
+  projectName: Schema.String.pipe(T.PathParam()),
+  jobDefinitionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}",
@@ -813,7 +800,7 @@ export type JobDefinitionsGetInput = typeof JobDefinitionsGetInput.Type;
 
 // Output Schema
 export const JobDefinitionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -845,13 +832,13 @@ export type JobDefinitionsGetOutput = typeof JobDefinitionsGetOutput.Type;
  * @param projectName - The name of the Project resource.
  * @param jobDefinitionName - The name of the Job Definition resource.
  */
-export const JobDefinitionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const JobDefinitionsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: JobDefinitionsGetInput,
   outputSchema: JobDefinitionsGetOutput,
 }));
 // Input Schema
 export const JobDefinitionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageMoverName: Schema.String.pipe(T.PathParam()),
@@ -867,7 +854,7 @@ export type JobDefinitionsListInput = typeof JobDefinitionsListInput.Type;
 
 // Output Schema
 export const JobDefinitionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -913,13 +900,13 @@ export type JobDefinitionsListOutput = typeof JobDefinitionsListOutput.Type;
  * @param storageMoverName - The name of the Storage Mover resource.
  * @param projectName - The name of the Project resource.
  */
-export const JobDefinitionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const JobDefinitionsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: JobDefinitionsListInput,
   outputSchema: JobDefinitionsListOutput,
 }));
 // Input Schema
 export const JobDefinitionsStartJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageMoverName: Schema.String.pipe(T.PathParam()),
@@ -937,7 +924,7 @@ export type JobDefinitionsStartJobInput =
 
 // Output Schema
 export const JobDefinitionsStartJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     jobRunResourceId: Schema.optional(Schema.String),
   });
 export type JobDefinitionsStartJobOutput =
@@ -954,15 +941,13 @@ export type JobDefinitionsStartJobOutput =
  * @param projectName - The name of the Project resource.
  * @param jobDefinitionName - The name of the Job Definition resource.
  */
-export const JobDefinitionsStartJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: JobDefinitionsStartJobInput,
-    outputSchema: JobDefinitionsStartJobOutput,
-  }),
-);
+export const JobDefinitionsStartJob = /*@__PURE__*/ API.make(() => ({
+  inputSchema: JobDefinitionsStartJobInput,
+  outputSchema: JobDefinitionsStartJobOutput,
+}));
 // Input Schema
 export const JobDefinitionsStopJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageMoverName: Schema.String.pipe(T.PathParam()),
@@ -979,7 +964,7 @@ export type JobDefinitionsStopJobInput = typeof JobDefinitionsStopJobInput.Type;
 
 // Output Schema
 export const JobDefinitionsStopJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     jobRunResourceId: Schema.optional(Schema.String),
   });
 export type JobDefinitionsStopJobOutput =
@@ -996,15 +981,13 @@ export type JobDefinitionsStopJobOutput =
  * @param projectName - The name of the Project resource.
  * @param jobDefinitionName - The name of the Job Definition resource.
  */
-export const JobDefinitionsStopJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: JobDefinitionsStopJobInput,
-    outputSchema: JobDefinitionsStopJobOutput,
-  }),
-);
+export const JobDefinitionsStopJob = /*@__PURE__*/ API.make(() => ({
+  inputSchema: JobDefinitionsStopJobInput,
+  outputSchema: JobDefinitionsStopJobOutput,
+}));
 // Input Schema
 export const JobDefinitionsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageMoverName: Schema.String.pipe(T.PathParam()),
@@ -1021,7 +1004,7 @@ export type JobDefinitionsUpdateInput = typeof JobDefinitionsUpdateInput.Type;
 
 // Output Schema
 export const JobDefinitionsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1053,14 +1036,12 @@ export type JobDefinitionsUpdateOutput = typeof JobDefinitionsUpdateOutput.Type;
  * @param projectName - The name of the Project resource.
  * @param jobDefinitionName - The name of the Job Definition resource.
  */
-export const JobDefinitionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: JobDefinitionsUpdateInput,
-    outputSchema: JobDefinitionsUpdateOutput,
-  }),
-);
+export const JobDefinitionsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: JobDefinitionsUpdateInput,
+  outputSchema: JobDefinitionsUpdateOutput,
+}));
 // Input Schema
-export const JobRunsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobRunsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageMoverName: Schema.String.pipe(T.PathParam()),
@@ -1077,7 +1058,7 @@ export const JobRunsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type JobRunsGetInput = typeof JobRunsGetInput.Type;
 
 // Output Schema
-export const JobRunsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobRunsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1110,12 +1091,12 @@ export type JobRunsGetOutput = typeof JobRunsGetOutput.Type;
  * @param jobDefinitionName - The name of the Job Definition resource.
  * @param jobRunName - The name of the Job Run resource.
  */
-export const JobRunsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const JobRunsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: JobRunsGetInput,
   outputSchema: JobRunsGetOutput,
 }));
 // Input Schema
-export const JobRunsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobRunsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageMoverName: Schema.String.pipe(T.PathParam()),
@@ -1131,7 +1112,7 @@ export const JobRunsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type JobRunsListInput = typeof JobRunsListInput.Type;
 
 // Output Schema
-export const JobRunsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobRunsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -1168,12 +1149,12 @@ export type JobRunsListOutput = typeof JobRunsListOutput.Type;
  * @param projectName - The name of the Project resource.
  * @param jobDefinitionName - The name of the Job Definition resource.
  */
-export const JobRunsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const JobRunsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: JobRunsListInput,
   outputSchema: JobRunsListOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -1184,7 +1165,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1215,13 +1196,13 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
 export const ProjectsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageMoverName: Schema.String.pipe(T.PathParam()),
@@ -1238,7 +1219,7 @@ export type ProjectsCreateOrUpdateInput =
 
 // Output Schema
 export const ProjectsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1270,14 +1251,12 @@ export type ProjectsCreateOrUpdateOutput =
  * @param storageMoverName - The name of the Storage Mover resource.
  * @param projectName - The name of the Project resource.
  */
-export const ProjectsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProjectsCreateOrUpdateInput,
-    outputSchema: ProjectsCreateOrUpdateOutput,
-  }),
-);
+export const ProjectsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProjectsCreateOrUpdateInput,
+  outputSchema: ProjectsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ProjectsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProjectsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageMoverName: Schema.String.pipe(T.PathParam()),
@@ -1292,7 +1271,7 @@ export const ProjectsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ProjectsDeleteInput = typeof ProjectsDeleteInput.Type;
 
 // Output Schema
-export const ProjectsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ProjectsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ProjectsDeleteOutput = typeof ProjectsDeleteOutput.Type;
 
 // The operation
@@ -1305,12 +1284,12 @@ export type ProjectsDeleteOutput = typeof ProjectsDeleteOutput.Type;
  * @param storageMoverName - The name of the Storage Mover resource.
  * @param projectName - The name of the Project resource.
  */
-export const ProjectsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProjectsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProjectsDeleteInput,
   outputSchema: ProjectsDeleteOutput,
 }));
 // Input Schema
-export const ProjectsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProjectsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageMoverName: Schema.String.pipe(T.PathParam()),
@@ -1325,7 +1304,7 @@ export const ProjectsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ProjectsGetInput = typeof ProjectsGetInput.Type;
 
 // Output Schema
-export const ProjectsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProjectsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1356,12 +1335,12 @@ export type ProjectsGetOutput = typeof ProjectsGetOutput.Type;
  * @param storageMoverName - The name of the Storage Mover resource.
  * @param projectName - The name of the Project resource.
  */
-export const ProjectsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProjectsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProjectsGetInput,
   outputSchema: ProjectsGetOutput,
 }));
 // Input Schema
-export const ProjectsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProjectsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageMoverName: Schema.String.pipe(T.PathParam()),
@@ -1375,7 +1354,7 @@ export const ProjectsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ProjectsListInput = typeof ProjectsListInput.Type;
 
 // Output Schema
-export const ProjectsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProjectsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -1410,12 +1389,12 @@ export type ProjectsListOutput = typeof ProjectsListOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param storageMoverName - The name of the Storage Mover resource.
  */
-export const ProjectsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProjectsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProjectsListInput,
   outputSchema: ProjectsListOutput,
 }));
 // Input Schema
-export const ProjectsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProjectsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageMoverName: Schema.String.pipe(T.PathParam()),
@@ -1430,7 +1409,7 @@ export const ProjectsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ProjectsUpdateInput = typeof ProjectsUpdateInput.Type;
 
 // Output Schema
-export const ProjectsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProjectsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1461,13 +1440,13 @@ export type ProjectsUpdateOutput = typeof ProjectsUpdateOutput.Type;
  * @param storageMoverName - The name of the Storage Mover resource.
  * @param projectName - The name of the Project resource.
  */
-export const ProjectsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProjectsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProjectsUpdateInput,
   outputSchema: ProjectsUpdateOutput,
 }));
 // Input Schema
 export const StorageMoversCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageMoverName: Schema.String.pipe(T.PathParam()),
@@ -1483,7 +1462,7 @@ export type StorageMoversCreateOrUpdateInput =
 
 // Output Schema
 export const StorageMoversCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1514,15 +1493,13 @@ export type StorageMoversCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param storageMoverName - The name of the Storage Mover resource.
  */
-export const StorageMoversCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageMoversCreateOrUpdateInput,
-    outputSchema: StorageMoversCreateOrUpdateOutput,
-  }),
-);
+export const StorageMoversCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageMoversCreateOrUpdateInput,
+  outputSchema: StorageMoversCreateOrUpdateOutput,
+}));
 // Input Schema
 export const StorageMoversDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageMoverName: Schema.String.pipe(T.PathParam()),
@@ -1536,8 +1513,7 @@ export const StorageMoversDeleteInput =
 export type StorageMoversDeleteInput = typeof StorageMoversDeleteInput.Type;
 
 // Output Schema
-export const StorageMoversDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const StorageMoversDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type StorageMoversDeleteOutput = typeof StorageMoversDeleteOutput.Type;
 
 // The operation
@@ -1549,12 +1525,12 @@ export type StorageMoversDeleteOutput = typeof StorageMoversDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param storageMoverName - The name of the Storage Mover resource.
  */
-export const StorageMoversDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StorageMoversDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: StorageMoversDeleteInput,
   outputSchema: StorageMoversDeleteOutput,
 }));
 // Input Schema
-export const StorageMoversGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const StorageMoversGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageMoverName: Schema.String.pipe(T.PathParam()),
@@ -1568,27 +1544,25 @@ export const StorageMoversGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type StorageMoversGetInput = typeof StorageMoversGetInput.Type;
 
 // Output Schema
-export const StorageMoversGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const StorageMoversGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type StorageMoversGetOutput = typeof StorageMoversGetOutput.Type;
 
 // The operation
@@ -1600,18 +1574,16 @@ export type StorageMoversGetOutput = typeof StorageMoversGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param storageMoverName - The name of the Storage Mover resource.
  */
-export const StorageMoversGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StorageMoversGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: StorageMoversGetInput,
   outputSchema: StorageMoversGetOutput,
 }));
 // Input Schema
-export const StorageMoversListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const StorageMoversListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers",
@@ -1621,7 +1593,7 @@ export type StorageMoversListInput = typeof StorageMoversListInput.Type;
 
 // Output Schema
 export const StorageMoversListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1665,13 +1637,13 @@ export type StorageMoversListOutput = typeof StorageMoversListOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const StorageMoversList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StorageMoversList = /*@__PURE__*/ API.make(() => ({
   inputSchema: StorageMoversListInput,
   outputSchema: StorageMoversListOutput,
 }));
 // Input Schema
 export const StorageMoversListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -1685,7 +1657,7 @@ export type StorageMoversListBySubscriptionInput =
 
 // Output Schema
 export const StorageMoversListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1730,13 +1702,13 @@ export type StorageMoversListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const StorageMoversListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageMoversListBySubscriptionInput,
     outputSchema: StorageMoversListBySubscriptionOutput,
   }));
 // Input Schema
 export const StorageMoversUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageMoverName: Schema.String.pipe(T.PathParam()),
@@ -1751,7 +1723,7 @@ export type StorageMoversUpdateInput = typeof StorageMoversUpdateInput.Type;
 
 // Output Schema
 export const StorageMoversUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1781,7 +1753,7 @@ export type StorageMoversUpdateOutput = typeof StorageMoversUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param storageMoverName - The name of the Storage Mover resource.
  */
-export const StorageMoversUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StorageMoversUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: StorageMoversUpdateInput,
   outputSchema: StorageMoversUpdateOutput,
 }));

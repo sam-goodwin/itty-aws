@@ -1,10 +1,10 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
-import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
+import * as T from "../traits.ts";
 
 // Input Schema
-export const WorkflowCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkflowCancelInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   number: Schema.Number.pipe(T.PathParam()),
@@ -17,7 +17,7 @@ export const WorkflowCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WorkflowCancelInput = typeof WorkflowCancelInput.Type;
 
 // Output Schema
-export const WorkflowCancelOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkflowCancelOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   number: Schema.Number,
@@ -154,7 +154,7 @@ export type WorkflowCancelOutput = typeof WorkflowCancelOutput.Type;
  * @param database - The name of the database the workflow belongs to
  * @param number - The sequence number of the workflow
  */
-export const workflowCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const workflowCancel = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkflowCancelInput,
   outputSchema: WorkflowCancelOutput,
   errors: [Forbidden, NotFound] as const,

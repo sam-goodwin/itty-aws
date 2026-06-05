@@ -10,7 +10,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const BgpPeersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bgpPeerName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -24,7 +24,7 @@ export type BgpPeersCreateOrUpdateInput =
 
 // Output Schema
 export const BgpPeersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -53,14 +53,12 @@ export type BgpPeersCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param bgpPeerName - The name of the BgpPeer
  */
-export const BgpPeersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BgpPeersCreateOrUpdateInput,
-    outputSchema: BgpPeersCreateOrUpdateOutput,
-  }),
-);
+export const BgpPeersCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BgpPeersCreateOrUpdateInput,
+  outputSchema: BgpPeersCreateOrUpdateOutput,
+}));
 // Input Schema
-export const BgpPeersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BgpPeersDeleteInput = /*@__PURE__*/ Schema.Struct({
   bgpPeerName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -72,7 +70,7 @@ export const BgpPeersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type BgpPeersDeleteInput = typeof BgpPeersDeleteInput.Type;
 
 // Output Schema
-export const BgpPeersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const BgpPeersDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type BgpPeersDeleteOutput = typeof BgpPeersDeleteOutput.Type;
 
 // The operation
@@ -82,12 +80,12 @@ export type BgpPeersDeleteOutput = typeof BgpPeersDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param bgpPeerName - The name of the BgpPeer
  */
-export const BgpPeersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BgpPeersDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: BgpPeersDeleteInput,
   outputSchema: BgpPeersDeleteOutput,
 }));
 // Input Schema
-export const BgpPeersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BgpPeersGetInput = /*@__PURE__*/ Schema.Struct({
   bgpPeerName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -99,7 +97,7 @@ export const BgpPeersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type BgpPeersGetInput = typeof BgpPeersGetInput.Type;
 
 // Output Schema
-export const BgpPeersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BgpPeersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -127,12 +125,12 @@ export type BgpPeersGetOutput = typeof BgpPeersGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param bgpPeerName - The name of the BgpPeer
  */
-export const BgpPeersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BgpPeersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: BgpPeersGetInput,
   outputSchema: BgpPeersGetOutput,
 }));
 // Input Schema
-export const BgpPeersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BgpPeersListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -143,7 +141,7 @@ export const BgpPeersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type BgpPeersListInput = typeof BgpPeersListInput.Type;
 
 // Output Schema
-export const BgpPeersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BgpPeersListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -175,13 +173,13 @@ export type BgpPeersListOutput = typeof BgpPeersListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const BgpPeersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BgpPeersList = /*@__PURE__*/ API.make(() => ({
   inputSchema: BgpPeersListInput,
   outputSchema: BgpPeersListOutput,
 }));
 // Input Schema
 export const LoadBalancersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     loadBalancerName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -195,7 +193,7 @@ export type LoadBalancersCreateOrUpdateInput =
 
 // Output Schema
 export const LoadBalancersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -224,15 +222,13 @@ export type LoadBalancersCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param loadBalancerName - The name of the LoadBalancer
  */
-export const LoadBalancersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LoadBalancersCreateOrUpdateInput,
-    outputSchema: LoadBalancersCreateOrUpdateOutput,
-  }),
-);
+export const LoadBalancersCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LoadBalancersCreateOrUpdateInput,
+  outputSchema: LoadBalancersCreateOrUpdateOutput,
+}));
 // Input Schema
 export const LoadBalancersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     loadBalancerName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -244,8 +240,7 @@ export const LoadBalancersDeleteInput =
 export type LoadBalancersDeleteInput = typeof LoadBalancersDeleteInput.Type;
 
 // Output Schema
-export const LoadBalancersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const LoadBalancersDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type LoadBalancersDeleteOutput = typeof LoadBalancersDeleteOutput.Type;
 
 // The operation
@@ -255,12 +250,12 @@ export type LoadBalancersDeleteOutput = typeof LoadBalancersDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param loadBalancerName - The name of the LoadBalancer
  */
-export const LoadBalancersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LoadBalancersDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: LoadBalancersDeleteInput,
   outputSchema: LoadBalancersDeleteOutput,
 }));
 // Input Schema
-export const LoadBalancersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LoadBalancersGetInput = /*@__PURE__*/ Schema.Struct({
   loadBalancerName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -272,27 +267,25 @@ export const LoadBalancersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type LoadBalancersGetInput = typeof LoadBalancersGetInput.Type;
 
 // Output Schema
-export const LoadBalancersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const LoadBalancersGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type LoadBalancersGetOutput = typeof LoadBalancersGetOutput.Type;
 
 // The operation
@@ -302,16 +295,14 @@ export type LoadBalancersGetOutput = typeof LoadBalancersGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param loadBalancerName - The name of the LoadBalancer
  */
-export const LoadBalancersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LoadBalancersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: LoadBalancersGetInput,
   outputSchema: LoadBalancersGetOutput,
 }));
 // Input Schema
-export const LoadBalancersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    "api-version": Schema.String,
-  },
-).pipe(
+export const LoadBalancersListInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/loadBalancers",
@@ -321,7 +312,7 @@ export type LoadBalancersListInput = typeof LoadBalancersListInput.Type;
 
 // Output Schema
 export const LoadBalancersListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -363,12 +354,12 @@ export type LoadBalancersListOutput = typeof LoadBalancersListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const LoadBalancersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LoadBalancersList = /*@__PURE__*/ API.make(() => ({
   inputSchema: LoadBalancersListInput,
   outputSchema: LoadBalancersListOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -379,7 +370,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -410,13 +401,13 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
 export const ServicesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -430,7 +421,7 @@ export type ServicesCreateOrUpdateInput =
 
 // Output Schema
 export const ServicesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -459,14 +450,12 @@ export type ServicesCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param serviceName - The name of the the service
  */
-export const ServicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServicesCreateOrUpdateInput,
-    outputSchema: ServicesCreateOrUpdateOutput,
-  }),
-);
+export const ServicesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServicesCreateOrUpdateInput,
+  outputSchema: ServicesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesDeleteInput = /*@__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -478,7 +467,7 @@ export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ServicesDeleteInput = typeof ServicesDeleteInput.Type;
 
 // Output Schema
-export const ServicesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ServicesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ServicesDeleteOutput = typeof ServicesDeleteOutput.Type;
 
 // The operation
@@ -488,12 +477,12 @@ export type ServicesDeleteOutput = typeof ServicesDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param serviceName - The name of the the service
  */
-export const ServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServicesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServicesDeleteInput,
   outputSchema: ServicesDeleteOutput,
 }));
 // Input Schema
-export const ServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesGetInput = /*@__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -505,7 +494,7 @@ export const ServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ServicesGetInput = typeof ServicesGetInput.Type;
 
 // Output Schema
-export const ServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -533,12 +522,12 @@ export type ServicesGetOutput = typeof ServicesGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param serviceName - The name of the the service
  */
-export const ServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServicesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServicesGetInput,
   outputSchema: ServicesGetOutput,
 }));
 // Input Schema
-export const ServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -549,7 +538,7 @@ export const ServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ServicesListInput = typeof ServicesListInput.Type;
 
 // Output Schema
-export const ServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -581,13 +570,13 @@ export type ServicesListOutput = typeof ServicesListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const ServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServicesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServicesListInput,
   outputSchema: ServicesListOutput,
 }));
 // Input Schema
 export const StorageClassCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     storageClassName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -601,7 +590,7 @@ export type StorageClassCreateOrUpdateInput =
 
 // Output Schema
 export const StorageClassCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -630,15 +619,13 @@ export type StorageClassCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param storageClassName - The name of the the storage class
  */
-export const StorageClassCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageClassCreateOrUpdateInput,
-    outputSchema: StorageClassCreateOrUpdateOutput,
-  }),
-);
+export const StorageClassCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageClassCreateOrUpdateInput,
+  outputSchema: StorageClassCreateOrUpdateOutput,
+}));
 // Input Schema
 export const StorageClassDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     storageClassName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -650,7 +637,7 @@ export const StorageClassDeleteInput =
 export type StorageClassDeleteInput = typeof StorageClassDeleteInput.Type;
 
 // Output Schema
-export const StorageClassDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const StorageClassDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type StorageClassDeleteOutput = typeof StorageClassDeleteOutput.Type;
 
 // The operation
@@ -660,12 +647,12 @@ export type StorageClassDeleteOutput = typeof StorageClassDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param storageClassName - The name of the the storage class
  */
-export const StorageClassDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StorageClassDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: StorageClassDeleteInput,
   outputSchema: StorageClassDeleteOutput,
 }));
 // Input Schema
-export const StorageClassGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const StorageClassGetInput = /*@__PURE__*/ Schema.Struct({
   storageClassName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -677,7 +664,7 @@ export const StorageClassGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type StorageClassGetInput = typeof StorageClassGetInput.Type;
 
 // Output Schema
-export const StorageClassGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const StorageClassGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -705,12 +692,12 @@ export type StorageClassGetOutput = typeof StorageClassGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param storageClassName - The name of the the storage class
  */
-export const StorageClassGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StorageClassGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: StorageClassGetInput,
   outputSchema: StorageClassGetOutput,
 }));
 // Input Schema
-export const StorageClassListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const StorageClassListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -721,42 +708,30 @@ export const StorageClassListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type StorageClassListInput = typeof StorageClassListInput.Type;
 
 // Output Schema
-export const StorageClassListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  },
-);
+export const StorageClassListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type StorageClassListOutput = typeof StorageClassListOutput.Type;
 
 // The operation
@@ -765,13 +740,13 @@ export type StorageClassListOutput = typeof StorageClassListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const StorageClassList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StorageClassList = /*@__PURE__*/ API.make(() => ({
   inputSchema: StorageClassListInput,
   outputSchema: StorageClassListOutput,
 }));
 // Input Schema
 export const StorageClassUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     storageClassName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -784,7 +759,7 @@ export type StorageClassUpdateInput = typeof StorageClassUpdateInput.Type;
 
 // Output Schema
 export const StorageClassUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -812,7 +787,7 @@ export type StorageClassUpdateOutput = typeof StorageClassUpdateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param storageClassName - The name of the the storage class
  */
-export const StorageClassUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StorageClassUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: StorageClassUpdateInput,
   outputSchema: StorageClassUpdateOutput,
 }));

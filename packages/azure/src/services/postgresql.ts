@@ -10,7 +10,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const AdministratorsMicrosoftEntraCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
@@ -27,7 +27,7 @@ export type AdministratorsMicrosoftEntraCreateOrUpdateInput =
 
 // Output Schema
 export const AdministratorsMicrosoftEntraCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type AdministratorsMicrosoftEntraCreateOrUpdateOutput =
   typeof AdministratorsMicrosoftEntraCreateOrUpdateOutput.Type;
 
@@ -42,13 +42,13 @@ export type AdministratorsMicrosoftEntraCreateOrUpdateOutput =
  * @param objectId - Object identifier of the Microsoft Entra principal.
  */
 export const AdministratorsMicrosoftEntraCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AdministratorsMicrosoftEntraCreateOrUpdateInput,
     outputSchema: AdministratorsMicrosoftEntraCreateOrUpdateOutput,
   }));
 // Input Schema
 export const AdministratorsMicrosoftEntraDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
@@ -65,7 +65,7 @@ export type AdministratorsMicrosoftEntraDeleteInput =
 
 // Output Schema
 export const AdministratorsMicrosoftEntraDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type AdministratorsMicrosoftEntraDeleteOutput =
   typeof AdministratorsMicrosoftEntraDeleteOutput.Type;
 
@@ -80,13 +80,13 @@ export type AdministratorsMicrosoftEntraDeleteOutput =
  * @param objectId - Object identifier of the Microsoft Entra principal.
  */
 export const AdministratorsMicrosoftEntraDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AdministratorsMicrosoftEntraDeleteInput,
     outputSchema: AdministratorsMicrosoftEntraDeleteOutput,
   }));
 // Input Schema
 export const AdministratorsMicrosoftEntraGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
@@ -103,7 +103,7 @@ export type AdministratorsMicrosoftEntraGetInput =
 
 // Output Schema
 export const AdministratorsMicrosoftEntraGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -136,13 +136,13 @@ export type AdministratorsMicrosoftEntraGetOutput =
  * @param objectId - Object identifier of the Microsoft Entra principal.
  */
 export const AdministratorsMicrosoftEntraGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AdministratorsMicrosoftEntraGetInput,
     outputSchema: AdministratorsMicrosoftEntraGetOutput,
   }));
 // Input Schema
 export const AdministratorsMicrosoftEntraListByServerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
@@ -158,7 +158,7 @@ export type AdministratorsMicrosoftEntraListByServerInput =
 
 // Output Schema
 export const AdministratorsMicrosoftEntraListByServerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -205,13 +205,13 @@ export type AdministratorsMicrosoftEntraListByServerOutput =
  * @param serverName - The name of the server.
  */
 export const AdministratorsMicrosoftEntraListByServer =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AdministratorsMicrosoftEntraListByServerInput,
     outputSchema: AdministratorsMicrosoftEntraListByServerOutput,
   }));
 // Input Schema
 export const AdvancedThreatProtectionSettingsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
@@ -228,7 +228,7 @@ export type AdvancedThreatProtectionSettingsGetInput =
 
 // Output Schema
 export const AdvancedThreatProtectionSettingsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -261,13 +261,13 @@ export type AdvancedThreatProtectionSettingsGetOutput =
  * @param threatProtectionName - Name of the advanced threat protection settings.
  */
 export const AdvancedThreatProtectionSettingsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AdvancedThreatProtectionSettingsGetInput,
     outputSchema: AdvancedThreatProtectionSettingsGetOutput,
   }));
 // Input Schema
 export const AdvancedThreatProtectionSettingsListByServerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
@@ -283,7 +283,7 @@ export type AdvancedThreatProtectionSettingsListByServerInput =
 
 // Output Schema
 export const AdvancedThreatProtectionSettingsListByServerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -330,13 +330,13 @@ export type AdvancedThreatProtectionSettingsListByServerOutput =
  * @param serverName - The name of the server.
  */
 export const AdvancedThreatProtectionSettingsListByServer =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AdvancedThreatProtectionSettingsListByServerInput,
     outputSchema: AdvancedThreatProtectionSettingsListByServerOutput,
   }));
 // Input Schema
 export const BackupsAutomaticAndOnDemandCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
@@ -353,7 +353,7 @@ export type BackupsAutomaticAndOnDemandCreateInput =
 
 // Output Schema
 export const BackupsAutomaticAndOnDemandCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type BackupsAutomaticAndOnDemandCreateOutput =
   typeof BackupsAutomaticAndOnDemandCreateOutput.Type;
 
@@ -368,13 +368,13 @@ export type BackupsAutomaticAndOnDemandCreateOutput =
  * @param backupName - Name of the backup.
  */
 export const BackupsAutomaticAndOnDemandCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BackupsAutomaticAndOnDemandCreateInput,
     outputSchema: BackupsAutomaticAndOnDemandCreateOutput,
   }));
 // Input Schema
 export const BackupsAutomaticAndOnDemandDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
@@ -391,7 +391,7 @@ export type BackupsAutomaticAndOnDemandDeleteInput =
 
 // Output Schema
 export const BackupsAutomaticAndOnDemandDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type BackupsAutomaticAndOnDemandDeleteOutput =
   typeof BackupsAutomaticAndOnDemandDeleteOutput.Type;
 
@@ -406,13 +406,13 @@ export type BackupsAutomaticAndOnDemandDeleteOutput =
  * @param backupName - Name of the backup.
  */
 export const BackupsAutomaticAndOnDemandDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BackupsAutomaticAndOnDemandDeleteInput,
     outputSchema: BackupsAutomaticAndOnDemandDeleteOutput,
   }));
 // Input Schema
 export const BackupsAutomaticAndOnDemandGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
@@ -429,7 +429,7 @@ export type BackupsAutomaticAndOnDemandGetInput =
 
 // Output Schema
 export const BackupsAutomaticAndOnDemandGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -462,13 +462,13 @@ export type BackupsAutomaticAndOnDemandGetOutput =
  * @param backupName - Name of the backup.
  */
 export const BackupsAutomaticAndOnDemandGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BackupsAutomaticAndOnDemandGetInput,
     outputSchema: BackupsAutomaticAndOnDemandGetOutput,
   }));
 // Input Schema
 export const BackupsAutomaticAndOnDemandListByServerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
@@ -484,7 +484,7 @@ export type BackupsAutomaticAndOnDemandListByServerInput =
 
 // Output Schema
 export const BackupsAutomaticAndOnDemandListByServerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -531,13 +531,13 @@ export type BackupsAutomaticAndOnDemandListByServerOutput =
  * @param serverName - The name of the server.
  */
 export const BackupsAutomaticAndOnDemandListByServer =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BackupsAutomaticAndOnDemandListByServerInput,
     outputSchema: BackupsAutomaticAndOnDemandListByServerOutput,
   }));
 // Input Schema
 export const BackupsLongTermRetentionCheckPrerequisitesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
@@ -553,7 +553,7 @@ export type BackupsLongTermRetentionCheckPrerequisitesInput =
 
 // Output Schema
 export const BackupsLongTermRetentionCheckPrerequisitesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.Struct({
       numberOfContainers: Schema.Number,
     }),
@@ -571,13 +571,13 @@ export type BackupsLongTermRetentionCheckPrerequisitesOutput =
  * @param serverName - The name of the server.
  */
 export const BackupsLongTermRetentionCheckPrerequisites =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BackupsLongTermRetentionCheckPrerequisitesInput,
     outputSchema: BackupsLongTermRetentionCheckPrerequisitesOutput,
   }));
 // Input Schema
 export const BackupsLongTermRetentionGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
@@ -594,7 +594,7 @@ export type BackupsLongTermRetentionGetInput =
 
 // Output Schema
 export const BackupsLongTermRetentionGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -626,15 +626,13 @@ export type BackupsLongTermRetentionGetOutput =
  * @param serverName - The name of the server.
  * @param backupName - The name of the backup.
  */
-export const BackupsLongTermRetentionGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BackupsLongTermRetentionGetInput,
-    outputSchema: BackupsLongTermRetentionGetOutput,
-  }),
-);
+export const BackupsLongTermRetentionGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BackupsLongTermRetentionGetInput,
+  outputSchema: BackupsLongTermRetentionGetOutput,
+}));
 // Input Schema
 export const BackupsLongTermRetentionListByServerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
@@ -650,7 +648,7 @@ export type BackupsLongTermRetentionListByServerInput =
 
 // Output Schema
 export const BackupsLongTermRetentionListByServerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -697,13 +695,13 @@ export type BackupsLongTermRetentionListByServerOutput =
  * @param serverName - The name of the server.
  */
 export const BackupsLongTermRetentionListByServer =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BackupsLongTermRetentionListByServerInput,
     outputSchema: BackupsLongTermRetentionListByServerOutput,
   }));
 // Input Schema
 export const BackupsLongTermRetentionStartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
@@ -719,7 +717,7 @@ export type BackupsLongTermRetentionStartInput =
 
 // Output Schema
 export const BackupsLongTermRetentionStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         datasourceSizeInBytes: Schema.optional(Schema.Number),
@@ -753,13 +751,13 @@ export type BackupsLongTermRetentionStartOutput =
  * @param serverName - The name of the server.
  */
 export const BackupsLongTermRetentionStart =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BackupsLongTermRetentionStartInput,
     outputSchema: BackupsLongTermRetentionStartOutput,
   }));
 // Input Schema
 export const CapabilitiesByLocationListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -774,7 +772,7 @@ export type CapabilitiesByLocationListInput =
 
 // Output Schema
 export const CapabilitiesByLocationListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         status: Schema.optional(
@@ -796,15 +794,13 @@ export type CapabilitiesByLocationListOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param locationName - The name of the location.
  */
-export const CapabilitiesByLocationList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CapabilitiesByLocationListInput,
-    outputSchema: CapabilitiesByLocationListOutput,
-  }),
-);
+export const CapabilitiesByLocationList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CapabilitiesByLocationListInput,
+  outputSchema: CapabilitiesByLocationListOutput,
+}));
 // Input Schema
 export const CapabilitiesByServerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
@@ -820,7 +816,7 @@ export type CapabilitiesByServerListInput =
 
 // Output Schema
 export const CapabilitiesByServerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         status: Schema.optional(
@@ -843,15 +839,13 @@ export type CapabilitiesByServerListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param serverName - The name of the server.
  */
-export const CapabilitiesByServerList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CapabilitiesByServerListInput,
-    outputSchema: CapabilitiesByServerListOutput,
-  }),
-);
+export const CapabilitiesByServerList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CapabilitiesByServerListInput,
+  outputSchema: CapabilitiesByServerListOutput,
+}));
 // Input Schema
 export const CapturedLogsListByServerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
@@ -867,7 +861,7 @@ export type CapturedLogsListByServerInput =
 
 // Output Schema
 export const CapturedLogsListByServerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -913,22 +907,18 @@ export type CapturedLogsListByServerOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param serverName - The name of the server.
  */
-export const CapturedLogsListByServer = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CapturedLogsListByServerInput,
-    outputSchema: CapturedLogsListByServerOutput,
-  }),
-);
+export const CapturedLogsListByServer = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CapturedLogsListByServerInput,
+  outputSchema: CapturedLogsListByServerOutput,
+}));
 // Input Schema
-export const ConfigurationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    serverName: Schema.String.pipe(T.PathParam()),
-    configurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const ConfigurationsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
+  configurationName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/configurations/{configurationName}",
@@ -938,7 +928,7 @@ export type ConfigurationsGetInput = typeof ConfigurationsGetInput.Type;
 
 // Output Schema
 export const ConfigurationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -969,13 +959,13 @@ export type ConfigurationsGetOutput = typeof ConfigurationsGetOutput.Type;
  * @param serverName - The name of the server.
  * @param configurationName - Name of the configuration (also known as server parameter).
  */
-export const ConfigurationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConfigurationsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConfigurationsGetInput,
   outputSchema: ConfigurationsGetOutput,
 }));
 // Input Schema
 export const ConfigurationsListByServerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
@@ -991,7 +981,7 @@ export type ConfigurationsListByServerInput =
 
 // Output Schema
 export const ConfigurationsListByServerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1037,22 +1027,18 @@ export type ConfigurationsListByServerOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param serverName - The name of the server.
  */
-export const ConfigurationsListByServer = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConfigurationsListByServerInput,
-    outputSchema: ConfigurationsListByServerOutput,
-  }),
-);
+export const ConfigurationsListByServer = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigurationsListByServerInput,
+  outputSchema: ConfigurationsListByServerOutput,
+}));
 // Input Schema
-export const ConfigurationsPutInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    serverName: Schema.String.pipe(T.PathParam()),
-    configurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const ConfigurationsPutInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
+  configurationName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/configurations/{configurationName}",
@@ -1061,7 +1047,7 @@ export const ConfigurationsPutInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ConfigurationsPutInput = typeof ConfigurationsPutInput.Type;
 
 // Output Schema
-export const ConfigurationsPutOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ConfigurationsPutOutput = /*@__PURE__*/ Schema.Void;
 export type ConfigurationsPutOutput = typeof ConfigurationsPutOutput.Type;
 
 // The operation
@@ -1074,13 +1060,13 @@ export type ConfigurationsPutOutput = typeof ConfigurationsPutOutput.Type;
  * @param serverName - The name of the server.
  * @param configurationName - Name of the configuration (also known as server parameter).
  */
-export const ConfigurationsPut = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConfigurationsPut = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConfigurationsPutInput,
   outputSchema: ConfigurationsPutOutput,
 }));
 // Input Schema
 export const ConfigurationsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
@@ -1095,8 +1081,7 @@ export const ConfigurationsUpdateInput =
 export type ConfigurationsUpdateInput = typeof ConfigurationsUpdateInput.Type;
 
 // Output Schema
-export const ConfigurationsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ConfigurationsUpdateOutput = /*@__PURE__*/ Schema.Void;
 export type ConfigurationsUpdateOutput = typeof ConfigurationsUpdateOutput.Type;
 
 // The operation
@@ -1109,14 +1094,12 @@ export type ConfigurationsUpdateOutput = typeof ConfigurationsUpdateOutput.Type;
  * @param serverName - The name of the server.
  * @param configurationName - Name of the configuration (also known as server parameter).
  */
-export const ConfigurationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConfigurationsUpdateInput,
-    outputSchema: ConfigurationsUpdateOutput,
-  }),
-);
+export const ConfigurationsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigurationsUpdateInput,
+  outputSchema: ConfigurationsUpdateOutput,
+}));
 // Input Schema
-export const DatabasesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatabasesCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
@@ -1131,7 +1114,7 @@ export const DatabasesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DatabasesCreateInput = typeof DatabasesCreateInput.Type;
 
 // Output Schema
-export const DatabasesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DatabasesCreateOutput = /*@__PURE__*/ Schema.Void;
 export type DatabasesCreateOutput = typeof DatabasesCreateOutput.Type;
 
 // The operation
@@ -1144,12 +1127,12 @@ export type DatabasesCreateOutput = typeof DatabasesCreateOutput.Type;
  * @param serverName - The name of the server.
  * @param databaseName - Name of the database (case-sensitive). Exact database names can be retrieved by getting the list of all existing databases in a server.
  */
-export const DatabasesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatabasesCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatabasesCreateInput,
   outputSchema: DatabasesCreateOutput,
 }));
 // Input Schema
-export const DatabasesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatabasesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
@@ -1164,7 +1147,7 @@ export const DatabasesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DatabasesDeleteInput = typeof DatabasesDeleteInput.Type;
 
 // Output Schema
-export const DatabasesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DatabasesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type DatabasesDeleteOutput = typeof DatabasesDeleteOutput.Type;
 
 // The operation
@@ -1177,12 +1160,12 @@ export type DatabasesDeleteOutput = typeof DatabasesDeleteOutput.Type;
  * @param serverName - The name of the server.
  * @param databaseName - Name of the database (case-sensitive). Exact database names can be retrieved by getting the list of all existing databases in a server.
  */
-export const DatabasesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatabasesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatabasesDeleteInput,
   outputSchema: DatabasesDeleteOutput,
 }));
 // Input Schema
-export const DatabasesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatabasesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
@@ -1197,7 +1180,7 @@ export const DatabasesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DatabasesGetInput = typeof DatabasesGetInput.Type;
 
 // Output Schema
-export const DatabasesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatabasesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1228,13 +1211,13 @@ export type DatabasesGetOutput = typeof DatabasesGetOutput.Type;
  * @param serverName - The name of the server.
  * @param databaseName - Name of the database (case-sensitive). Exact database names can be retrieved by getting the list of all existing databases in a server.
  */
-export const DatabasesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatabasesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatabasesGetInput,
   outputSchema: DatabasesGetOutput,
 }));
 // Input Schema
 export const DatabasesListByServerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
@@ -1249,7 +1232,7 @@ export type DatabasesListByServerInput = typeof DatabasesListByServerInput.Type;
 
 // Output Schema
 export const DatabasesListByServerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1295,15 +1278,13 @@ export type DatabasesListByServerOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param serverName - The name of the server.
  */
-export const DatabasesListByServer = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DatabasesListByServerInput,
-    outputSchema: DatabasesListByServerOutput,
-  }),
-);
+export const DatabasesListByServer = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatabasesListByServerInput,
+  outputSchema: DatabasesListByServerOutput,
+}));
 // Input Schema
 export const FirewallRulesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
@@ -1319,8 +1300,7 @@ export type FirewallRulesCreateOrUpdateInput =
   typeof FirewallRulesCreateOrUpdateInput.Type;
 
 // Output Schema
-export const FirewallRulesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const FirewallRulesCreateOrUpdateOutput = /*@__PURE__*/ Schema.Void;
 export type FirewallRulesCreateOrUpdateOutput =
   typeof FirewallRulesCreateOrUpdateOutput.Type;
 
@@ -1334,15 +1314,13 @@ export type FirewallRulesCreateOrUpdateOutput =
  * @param serverName - The name of the server.
  * @param firewallRuleName - Name of the firewall rule.
  */
-export const FirewallRulesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FirewallRulesCreateOrUpdateInput,
-    outputSchema: FirewallRulesCreateOrUpdateOutput,
-  }),
-);
+export const FirewallRulesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FirewallRulesCreateOrUpdateInput,
+  outputSchema: FirewallRulesCreateOrUpdateOutput,
+}));
 // Input Schema
 export const FirewallRulesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
@@ -1357,8 +1335,7 @@ export const FirewallRulesDeleteInput =
 export type FirewallRulesDeleteInput = typeof FirewallRulesDeleteInput.Type;
 
 // Output Schema
-export const FirewallRulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const FirewallRulesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type FirewallRulesDeleteOutput = typeof FirewallRulesDeleteOutput.Type;
 
 // The operation
@@ -1371,12 +1348,12 @@ export type FirewallRulesDeleteOutput = typeof FirewallRulesDeleteOutput.Type;
  * @param serverName - The name of the server.
  * @param firewallRuleName - Name of the firewall rule.
  */
-export const FirewallRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FirewallRulesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: FirewallRulesDeleteInput,
   outputSchema: FirewallRulesDeleteOutput,
 }));
 // Input Schema
-export const FirewallRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FirewallRulesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
@@ -1391,27 +1368,25 @@ export const FirewallRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type FirewallRulesGetInput = typeof FirewallRulesGetInput.Type;
 
 // Output Schema
-export const FirewallRulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const FirewallRulesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type FirewallRulesGetOutput = typeof FirewallRulesGetOutput.Type;
 
 // The operation
@@ -1424,13 +1399,13 @@ export type FirewallRulesGetOutput = typeof FirewallRulesGetOutput.Type;
  * @param serverName - The name of the server.
  * @param firewallRuleName - Name of the firewall rule.
  */
-export const FirewallRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FirewallRulesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: FirewallRulesGetInput,
   outputSchema: FirewallRulesGetOutput,
 }));
 // Input Schema
 export const FirewallRulesListByServerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
@@ -1446,7 +1421,7 @@ export type FirewallRulesListByServerInput =
 
 // Output Schema
 export const FirewallRulesListByServerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1492,14 +1467,12 @@ export type FirewallRulesListByServerOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param serverName - The name of the server.
  */
-export const FirewallRulesListByServer = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FirewallRulesListByServerInput,
-    outputSchema: FirewallRulesListByServerOutput,
-  }),
-);
+export const FirewallRulesListByServer = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FirewallRulesListByServerInput,
+  outputSchema: FirewallRulesListByServerOutput,
+}));
 // Input Schema
-export const MigrationsCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MigrationsCancelInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
@@ -1514,27 +1487,25 @@ export const MigrationsCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type MigrationsCancelInput = typeof MigrationsCancelInput.Type;
 
 // Output Schema
-export const MigrationsCancelOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const MigrationsCancelOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type MigrationsCancelOutput = typeof MigrationsCancelOutput.Type;
 
 // The operation
@@ -1547,13 +1518,13 @@ export type MigrationsCancelOutput = typeof MigrationsCancelOutput.Type;
  * @param serverName - The name of the server.
  * @param migrationName - Name of migration.
  */
-export const MigrationsCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MigrationsCancel = /*@__PURE__*/ API.make(() => ({
   inputSchema: MigrationsCancelInput,
   outputSchema: MigrationsCancelOutput,
 }));
 // Input Schema
 export const MigrationsCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
@@ -1569,7 +1540,7 @@ export type MigrationsCheckNameAvailabilityInput =
 
 // Output Schema
 export const MigrationsCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String,
     type: Schema.String,
     nameAvailable: Schema.optional(Schema.Boolean),
@@ -1591,12 +1562,12 @@ export type MigrationsCheckNameAvailabilityOutput =
  * @param serverName - The name of the server.
  */
 export const MigrationsCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MigrationsCheckNameAvailabilityInput,
     outputSchema: MigrationsCheckNameAvailabilityOutput,
   }));
 // Input Schema
-export const MigrationsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MigrationsCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
@@ -1611,27 +1582,25 @@ export const MigrationsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type MigrationsCreateInput = typeof MigrationsCreateInput.Type;
 
 // Output Schema
-export const MigrationsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const MigrationsCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type MigrationsCreateOutput = typeof MigrationsCreateOutput.Type;
 
 // The operation
@@ -1644,12 +1613,12 @@ export type MigrationsCreateOutput = typeof MigrationsCreateOutput.Type;
  * @param serverName - The name of the server.
  * @param migrationName - Name of migration.
  */
-export const MigrationsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MigrationsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: MigrationsCreateInput,
   outputSchema: MigrationsCreateOutput,
 }));
 // Input Schema
-export const MigrationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MigrationsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
@@ -1664,7 +1633,7 @@ export const MigrationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type MigrationsGetInput = typeof MigrationsGetInput.Type;
 
 // Output Schema
-export const MigrationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MigrationsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1695,13 +1664,13 @@ export type MigrationsGetOutput = typeof MigrationsGetOutput.Type;
  * @param serverName - The name of the server.
  * @param migrationName - Name of migration.
  */
-export const MigrationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MigrationsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: MigrationsGetInput,
   outputSchema: MigrationsGetOutput,
 }));
 // Input Schema
 export const MigrationsListByTargetServerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
@@ -1718,7 +1687,7 @@ export type MigrationsListByTargetServerInput =
 
 // Output Schema
 export const MigrationsListByTargetServerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1766,12 +1735,12 @@ export type MigrationsListByTargetServerOutput =
  * @param migrationListFilter - Migration list filter. Indicates if the request should retrieve only active migrations or all migrations. Defaults to Active.
  */
 export const MigrationsListByTargetServer =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MigrationsListByTargetServerInput,
     outputSchema: MigrationsListByTargetServerOutput,
   }));
 // Input Schema
-export const MigrationsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MigrationsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
@@ -1786,27 +1755,25 @@ export const MigrationsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type MigrationsUpdateInput = typeof MigrationsUpdateInput.Type;
 
 // Output Schema
-export const MigrationsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const MigrationsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type MigrationsUpdateOutput = typeof MigrationsUpdateOutput.Type;
 
 // The operation
@@ -1819,13 +1786,13 @@ export type MigrationsUpdateOutput = typeof MigrationsUpdateOutput.Type;
  * @param serverName - The name of the server.
  * @param migrationName - Name of migration.
  */
-export const MigrationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MigrationsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: MigrationsUpdateInput,
   outputSchema: MigrationsUpdateOutput,
 }));
 // Input Schema
 export const NameAvailabilityCheckGloballyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
     name: Schema.optional(Schema.String),
@@ -1841,7 +1808,7 @@ export type NameAvailabilityCheckGloballyInput =
 
 // Output Schema
 export const NameAvailabilityCheckGloballyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
@@ -1859,13 +1826,13 @@ export type NameAvailabilityCheckGloballyOutput =
  * @param type - The resource type.
  */
 export const NameAvailabilityCheckGlobally =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NameAvailabilityCheckGloballyInput,
     outputSchema: NameAvailabilityCheckGloballyOutput,
   }));
 // Input Schema
 export const NameAvailabilityCheckWithLocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1882,7 +1849,7 @@ export type NameAvailabilityCheckWithLocationInput =
 
 // Output Schema
 export const NameAvailabilityCheckWithLocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
@@ -1901,12 +1868,12 @@ export type NameAvailabilityCheckWithLocationOutput =
  * @param type - The resource type.
  */
 export const NameAvailabilityCheckWithLocation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NameAvailabilityCheckWithLocationInput,
     outputSchema: NameAvailabilityCheckWithLocationOutput,
   }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -1917,7 +1884,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -1980,13 +1947,13 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
 export const PrivateDnsZoneSuffixGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1998,8 +1965,7 @@ export type PrivateDnsZoneSuffixGetInput =
   typeof PrivateDnsZoneSuffixGetInput.Type;
 
 // Output Schema
-export const PrivateDnsZoneSuffixGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+export const PrivateDnsZoneSuffixGetOutput = /*@__PURE__*/ Schema.String;
 export type PrivateDnsZoneSuffixGetOutput =
   typeof PrivateDnsZoneSuffixGetOutput.Type;
 
@@ -2009,15 +1975,13 @@ export type PrivateDnsZoneSuffixGetOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const PrivateDnsZoneSuffixGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateDnsZoneSuffixGetInput,
-    outputSchema: PrivateDnsZoneSuffixGetOutput,
-  }),
-);
+export const PrivateDnsZoneSuffixGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateDnsZoneSuffixGetInput,
+  outputSchema: PrivateDnsZoneSuffixGetOutput,
+}));
 // Input Schema
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
@@ -2033,8 +1997,7 @@ export type PrivateEndpointConnectionsDeleteInput =
   typeof PrivateEndpointConnectionsDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
 
@@ -2049,13 +2012,13 @@ export type PrivateEndpointConnectionsDeleteOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  */
 export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsDeleteInput,
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
 // Input Schema
 export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
@@ -2072,7 +2035,7 @@ export type PrivateEndpointConnectionsGetInput =
 
 // Output Schema
 export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2105,13 +2068,13 @@ export type PrivateEndpointConnectionsGetOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  */
 export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsGetInput,
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
 // Input Schema
 export const PrivateEndpointConnectionsListByServerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
@@ -2127,7 +2090,7 @@ export type PrivateEndpointConnectionsListByServerInput =
 
 // Output Schema
 export const PrivateEndpointConnectionsListByServerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2174,13 +2137,13 @@ export type PrivateEndpointConnectionsListByServerOutput =
  * @param serverName - The name of the server.
  */
 export const PrivateEndpointConnectionsListByServer =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsListByServerInput,
     outputSchema: PrivateEndpointConnectionsListByServerOutput,
   }));
 // Input Schema
 export const PrivateEndpointConnectionsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
@@ -2216,8 +2179,7 @@ export type PrivateEndpointConnectionsUpdateInput =
   typeof PrivateEndpointConnectionsUpdateInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionsUpdateOutput = /*@__PURE__*/ Schema.Void;
 export type PrivateEndpointConnectionsUpdateOutput =
   typeof PrivateEndpointConnectionsUpdateOutput.Type;
 
@@ -2233,13 +2195,13 @@ export type PrivateEndpointConnectionsUpdateOutput =
  * @param properties - Resource properties.
  */
 export const PrivateEndpointConnectionsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsUpdateInput,
     outputSchema: PrivateEndpointConnectionsUpdateOutput,
   }));
 // Input Schema
 export const PrivateLinkResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
@@ -2256,7 +2218,7 @@ export type PrivateLinkResourcesGetInput =
 
 // Output Schema
 export const PrivateLinkResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2288,15 +2250,13 @@ export type PrivateLinkResourcesGetOutput =
  * @param serverName - The name of the server.
  * @param groupName - The name of the private link resource.
  */
-export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkResourcesGetInput,
-    outputSchema: PrivateLinkResourcesGetOutput,
-  }),
-);
+export const PrivateLinkResourcesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkResourcesGetInput,
+  outputSchema: PrivateLinkResourcesGetOutput,
+}));
 // Input Schema
 export const PrivateLinkResourcesListByServerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
@@ -2312,7 +2272,7 @@ export type PrivateLinkResourcesListByServerInput =
 
 // Output Schema
 export const PrivateLinkResourcesListByServerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2359,12 +2319,12 @@ export type PrivateLinkResourcesListByServerOutput =
  * @param serverName - The name of the server.
  */
 export const PrivateLinkResourcesListByServer =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkResourcesListByServerInput,
     outputSchema: PrivateLinkResourcesListByServerOutput,
   }));
 // Input Schema
-export const QuotaUsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QuotaUsagesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   locationName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -2377,7 +2337,7 @@ export const QuotaUsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type QuotaUsagesListInput = typeof QuotaUsagesListInput.Type;
 
 // Output Schema
-export const QuotaUsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QuotaUsagesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       name: Schema.optional(
@@ -2404,13 +2364,13 @@ export type QuotaUsagesListOutput = typeof QuotaUsagesListOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param locationName - The name of the location.
  */
-export const QuotaUsagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const QuotaUsagesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: QuotaUsagesListInput,
   outputSchema: QuotaUsagesListOutput,
 }));
 // Input Schema
 export const ReplicasListByServerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
@@ -2425,7 +2385,7 @@ export type ReplicasListByServerInput = typeof ReplicasListByServerInput.Type;
 
 // Output Schema
 export const ReplicasListByServerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2470,15 +2430,13 @@ export type ReplicasListByServerOutput = typeof ReplicasListByServerOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param serverName - The name of the server.
  */
-export const ReplicasListByServer = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicasListByServerInput,
-    outputSchema: ReplicasListByServerOutput,
-  }),
-);
+export const ReplicasListByServer = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicasListByServerInput,
+  outputSchema: ReplicasListByServerOutput,
+}));
 // Input Schema
 export const ServersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
@@ -2492,8 +2450,7 @@ export const ServersCreateOrUpdateInput =
 export type ServersCreateOrUpdateInput = typeof ServersCreateOrUpdateInput.Type;
 
 // Output Schema
-export const ServersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ServersCreateOrUpdateOutput = /*@__PURE__*/ Schema.Void;
 export type ServersCreateOrUpdateOutput =
   typeof ServersCreateOrUpdateOutput.Type;
 
@@ -2506,14 +2463,12 @@ export type ServersCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param serverName - The name of the server.
  */
-export const ServersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServersCreateOrUpdateInput,
-    outputSchema: ServersCreateOrUpdateOutput,
-  }),
-);
+export const ServersCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServersCreateOrUpdateInput,
+  outputSchema: ServersCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ServersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServersDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
@@ -2527,7 +2482,7 @@ export const ServersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ServersDeleteInput = typeof ServersDeleteInput.Type;
 
 // Output Schema
-export const ServersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ServersDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ServersDeleteOutput = typeof ServersDeleteOutput.Type;
 
 // The operation
@@ -2539,12 +2494,12 @@ export type ServersDeleteOutput = typeof ServersDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param serverName - The name of the server.
  */
-export const ServersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServersDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServersDeleteInput,
   outputSchema: ServersDeleteOutput,
 }));
 // Input Schema
-export const ServersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServersGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
@@ -2558,7 +2513,7 @@ export const ServersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ServersGetInput = typeof ServersGetInput.Type;
 
 // Output Schema
-export const ServersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2588,13 +2543,13 @@ export type ServersGetOutput = typeof ServersGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param serverName - The name of the server.
  */
-export const ServersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServersGetInput,
   outputSchema: ServersGetOutput,
 }));
 // Input Schema
 export const ServersListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -2609,7 +2564,7 @@ export type ServersListByResourceGroupInput =
 
 // Output Schema
 export const ServersListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2654,15 +2609,13 @@ export type ServersListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ServersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServersListByResourceGroupInput,
-    outputSchema: ServersListByResourceGroupOutput,
-  }),
-);
+export const ServersListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServersListByResourceGroupInput,
+  outputSchema: ServersListByResourceGroupOutput,
+}));
 // Input Schema
 export const ServersListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -2676,7 +2629,7 @@ export type ServersListBySubscriptionInput =
 
 // Output Schema
 export const ServersListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2720,14 +2673,12 @@ export type ServersListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ServersListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServersListBySubscriptionInput,
-    outputSchema: ServersListBySubscriptionOutput,
-  }),
-);
+export const ServersListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServersListBySubscriptionInput,
+  outputSchema: ServersListBySubscriptionOutput,
+}));
 // Input Schema
-export const ServersRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServersRestartInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
@@ -2741,7 +2692,7 @@ export const ServersRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ServersRestartInput = typeof ServersRestartInput.Type;
 
 // Output Schema
-export const ServersRestartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ServersRestartOutput = /*@__PURE__*/ Schema.Void;
 export type ServersRestartOutput = typeof ServersRestartOutput.Type;
 
 // The operation
@@ -2753,12 +2704,12 @@ export type ServersRestartOutput = typeof ServersRestartOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param serverName - The name of the server.
  */
-export const ServersRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServersRestart = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServersRestartInput,
   outputSchema: ServersRestartOutput,
 }));
 // Input Schema
-export const ServersStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServersStartInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
@@ -2772,7 +2723,7 @@ export const ServersStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ServersStartInput = typeof ServersStartInput.Type;
 
 // Output Schema
-export const ServersStartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ServersStartOutput = /*@__PURE__*/ Schema.Void;
 export type ServersStartOutput = typeof ServersStartOutput.Type;
 
 // The operation
@@ -2784,12 +2735,12 @@ export type ServersStartOutput = typeof ServersStartOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param serverName - The name of the server.
  */
-export const ServersStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServersStart = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServersStartInput,
   outputSchema: ServersStartOutput,
 }));
 // Input Schema
-export const ServersStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServersStopInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
@@ -2803,7 +2754,7 @@ export const ServersStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ServersStopInput = typeof ServersStopInput.Type;
 
 // Output Schema
-export const ServersStopOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ServersStopOutput = /*@__PURE__*/ Schema.Void;
 export type ServersStopOutput = typeof ServersStopOutput.Type;
 
 // The operation
@@ -2815,12 +2766,12 @@ export type ServersStopOutput = typeof ServersStopOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param serverName - The name of the server.
  */
-export const ServersStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServersStop = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServersStopInput,
   outputSchema: ServersStopOutput,
 }));
 // Input Schema
-export const ServersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServersUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
@@ -2834,7 +2785,7 @@ export const ServersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ServersUpdateInput = typeof ServersUpdateInput.Type;
 
 // Output Schema
-export const ServersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ServersUpdateOutput = /*@__PURE__*/ Schema.Void;
 export type ServersUpdateOutput = typeof ServersUpdateOutput.Type;
 
 // The operation
@@ -2846,13 +2797,13 @@ export type ServersUpdateOutput = typeof ServersUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param serverName - The name of the server.
  */
-export const ServersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServersUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServersUpdateInput,
   outputSchema: ServersUpdateOutput,
 }));
 // Input Schema
 export const ServerThreatProtectionSettingsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
@@ -2869,7 +2820,7 @@ export type ServerThreatProtectionSettingsCreateOrUpdateInput =
 
 // Output Schema
 export const ServerThreatProtectionSettingsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type ServerThreatProtectionSettingsCreateOrUpdateOutput =
   typeof ServerThreatProtectionSettingsCreateOrUpdateOutput.Type;
 
@@ -2884,12 +2835,12 @@ export type ServerThreatProtectionSettingsCreateOrUpdateOutput =
  * @param threatProtectionName - Name of the advanced threat protection settings.
  */
 export const ServerThreatProtectionSettingsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServerThreatProtectionSettingsCreateOrUpdateInput,
     outputSchema: ServerThreatProtectionSettingsCreateOrUpdateOutput,
   }));
 // Input Schema
-export const TuningOptionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TuningOptionsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
@@ -2904,27 +2855,25 @@ export const TuningOptionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TuningOptionsGetInput = typeof TuningOptionsGetInput.Type;
 
 // Output Schema
-export const TuningOptionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const TuningOptionsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type TuningOptionsGetOutput = typeof TuningOptionsGetOutput.Type;
 
 // The operation
@@ -2937,13 +2886,13 @@ export type TuningOptionsGetOutput = typeof TuningOptionsGetOutput.Type;
  * @param serverName - The name of the server.
  * @param tuningOption - The name of the tuning option.
  */
-export const TuningOptionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TuningOptionsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TuningOptionsGetInput,
   outputSchema: TuningOptionsGetOutput,
 }));
 // Input Schema
 export const TuningOptionsListByServerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
@@ -2959,7 +2908,7 @@ export type TuningOptionsListByServerInput =
 
 // Output Schema
 export const TuningOptionsListByServerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3005,15 +2954,13 @@ export type TuningOptionsListByServerOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param serverName - The name of the server.
  */
-export const TuningOptionsListByServer = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TuningOptionsListByServerInput,
-    outputSchema: TuningOptionsListByServerOutput,
-  }),
-);
+export const TuningOptionsListByServer = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TuningOptionsListByServerInput,
+  outputSchema: TuningOptionsListByServerOutput,
+}));
 // Input Schema
 export const TuningOptionsListRecommendationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
@@ -3033,7 +2980,7 @@ export type TuningOptionsListRecommendationsInput =
 
 // Output Schema
 export const TuningOptionsListRecommendationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3082,13 +3029,13 @@ export type TuningOptionsListRecommendationsOutput =
  * @param recommendationType - Recommendations list filter. Retrieves recommendations based on type.
  */
 export const TuningOptionsListRecommendations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TuningOptionsListRecommendationsInput,
     outputSchema: TuningOptionsListRecommendationsOutput,
   }));
 // Input Schema
 export const VirtualEndpointsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
@@ -3104,8 +3051,7 @@ export type VirtualEndpointsCreateInput =
   typeof VirtualEndpointsCreateInput.Type;
 
 // Output Schema
-export const VirtualEndpointsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualEndpointsCreateOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualEndpointsCreateOutput =
   typeof VirtualEndpointsCreateOutput.Type;
 
@@ -3119,15 +3065,13 @@ export type VirtualEndpointsCreateOutput =
  * @param serverName - The name of the server.
  * @param virtualEndpointName - Base name of the virtual endpoints.
  */
-export const VirtualEndpointsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualEndpointsCreateInput,
-    outputSchema: VirtualEndpointsCreateOutput,
-  }),
-);
+export const VirtualEndpointsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualEndpointsCreateInput,
+  outputSchema: VirtualEndpointsCreateOutput,
+}));
 // Input Schema
 export const VirtualEndpointsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
@@ -3143,8 +3087,7 @@ export type VirtualEndpointsDeleteInput =
   typeof VirtualEndpointsDeleteInput.Type;
 
 // Output Schema
-export const VirtualEndpointsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualEndpointsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualEndpointsDeleteOutput =
   typeof VirtualEndpointsDeleteOutput.Type;
 
@@ -3158,15 +3101,13 @@ export type VirtualEndpointsDeleteOutput =
  * @param serverName - The name of the server.
  * @param virtualEndpointName - Base name of the virtual endpoints.
  */
-export const VirtualEndpointsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualEndpointsDeleteInput,
-    outputSchema: VirtualEndpointsDeleteOutput,
-  }),
-);
+export const VirtualEndpointsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualEndpointsDeleteInput,
+  outputSchema: VirtualEndpointsDeleteOutput,
+}));
 // Input Schema
 export const VirtualEndpointsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
@@ -3182,7 +3123,7 @@ export type VirtualEndpointsGetInput = typeof VirtualEndpointsGetInput.Type;
 
 // Output Schema
 export const VirtualEndpointsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3213,13 +3154,13 @@ export type VirtualEndpointsGetOutput = typeof VirtualEndpointsGetOutput.Type;
  * @param serverName - The name of the server.
  * @param virtualEndpointName - Base name of the virtual endpoints.
  */
-export const VirtualEndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VirtualEndpointsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: VirtualEndpointsGetInput,
   outputSchema: VirtualEndpointsGetOutput,
 }));
 // Input Schema
 export const VirtualEndpointsListByServerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
@@ -3235,7 +3176,7 @@ export type VirtualEndpointsListByServerInput =
 
 // Output Schema
 export const VirtualEndpointsListByServerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3282,13 +3223,13 @@ export type VirtualEndpointsListByServerOutput =
  * @param serverName - The name of the server.
  */
 export const VirtualEndpointsListByServer =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualEndpointsListByServerInput,
     outputSchema: VirtualEndpointsListByServerOutput,
   }));
 // Input Schema
 export const VirtualEndpointsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
@@ -3304,8 +3245,7 @@ export type VirtualEndpointsUpdateInput =
   typeof VirtualEndpointsUpdateInput.Type;
 
 // Output Schema
-export const VirtualEndpointsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualEndpointsUpdateOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualEndpointsUpdateOutput =
   typeof VirtualEndpointsUpdateOutput.Type;
 
@@ -3319,15 +3259,13 @@ export type VirtualEndpointsUpdateOutput =
  * @param serverName - The name of the server.
  * @param virtualEndpointName - Base name of the virtual endpoints.
  */
-export const VirtualEndpointsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualEndpointsUpdateInput,
-    outputSchema: VirtualEndpointsUpdateOutput,
-  }),
-);
+export const VirtualEndpointsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualEndpointsUpdateInput,
+  outputSchema: VirtualEndpointsUpdateOutput,
+}));
 // Input Schema
 export const VirtualNetworkSubnetUsageListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -3342,7 +3280,7 @@ export type VirtualNetworkSubnetUsageListInput =
 
 // Output Schema
 export const VirtualNetworkSubnetUsageListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     delegatedSubnetsUsage: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3366,7 +3304,7 @@ export type VirtualNetworkSubnetUsageListOutput =
  * @param locationName - The name of the location.
  */
 export const VirtualNetworkSubnetUsageList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualNetworkSubnetUsageListInput,
     outputSchema: VirtualNetworkSubnetUsageListOutput,
   }));

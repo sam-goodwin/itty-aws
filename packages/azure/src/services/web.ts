@@ -6,12 +6,12 @@
  */
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
-import * as T from "../traits.ts";
 import { SensitiveString } from "../sensitive.ts";
+import * as T from "../traits.ts";
 
 // Input Schema
 export const AppServiceEnvironmentsApproveOrRejectPrivateEndpointConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -28,7 +28,7 @@ export type AppServiceEnvironmentsApproveOrRejectPrivateEndpointConnectionInput 
 
 // Output Schema
 export const AppServiceEnvironmentsApproveOrRejectPrivateEndpointConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -63,7 +63,7 @@ export type AppServiceEnvironmentsApproveOrRejectPrivateEndpointConnectionOutput
  * @param privateEndpointConnectionName - Name of the private endpoint connection.
  */
 export const AppServiceEnvironmentsApproveOrRejectPrivateEndpointConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       AppServiceEnvironmentsApproveOrRejectPrivateEndpointConnectionInput,
     outputSchema:
@@ -71,7 +71,7 @@ export const AppServiceEnvironmentsApproveOrRejectPrivateEndpointConnection =
   }));
 // Input Schema
 export const AppServiceEnvironmentsChangeVnetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -87,7 +87,7 @@ export type AppServiceEnvironmentsChangeVnetInput =
 
 // Output Schema
 export const AppServiceEnvironmentsChangeVnetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -136,13 +136,13 @@ export type AppServiceEnvironmentsChangeVnetOutput =
  * @param name - Name of the App Service Environment.
  */
 export const AppServiceEnvironmentsChangeVnet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceEnvironmentsChangeVnetInput,
     outputSchema: AppServiceEnvironmentsChangeVnetOutput,
   }));
 // Input Schema
 export const AppServiceEnvironmentsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -158,7 +158,7 @@ export type AppServiceEnvironmentsCreateOrUpdateInput =
 
 // Output Schema
 export const AppServiceEnvironmentsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -192,13 +192,13 @@ export type AppServiceEnvironmentsCreateOrUpdateOutput =
  * @param name - Name of the App Service Environment.
  */
 export const AppServiceEnvironmentsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceEnvironmentsCreateOrUpdateInput,
     outputSchema: AppServiceEnvironmentsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const AppServiceEnvironmentsCreateOrUpdateMultiRolePoolInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -214,7 +214,7 @@ export type AppServiceEnvironmentsCreateOrUpdateMultiRolePoolInput =
 
 // Output Schema
 export const AppServiceEnvironmentsCreateOrUpdateMultiRolePoolOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -248,13 +248,13 @@ export type AppServiceEnvironmentsCreateOrUpdateMultiRolePoolOutput =
  * @param name - Name of the App Service Environment.
  */
 export const AppServiceEnvironmentsCreateOrUpdateMultiRolePool =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceEnvironmentsCreateOrUpdateMultiRolePoolInput,
     outputSchema: AppServiceEnvironmentsCreateOrUpdateMultiRolePoolOutput,
   }));
 // Input Schema
 export const AppServiceEnvironmentsCreateOrUpdateWorkerPoolInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -271,7 +271,7 @@ export type AppServiceEnvironmentsCreateOrUpdateWorkerPoolInput =
 
 // Output Schema
 export const AppServiceEnvironmentsCreateOrUpdateWorkerPoolOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -306,13 +306,13 @@ export type AppServiceEnvironmentsCreateOrUpdateWorkerPoolOutput =
  * @param workerPoolName - Name of the worker pool.
  */
 export const AppServiceEnvironmentsCreateOrUpdateWorkerPool =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceEnvironmentsCreateOrUpdateWorkerPoolInput,
     outputSchema: AppServiceEnvironmentsCreateOrUpdateWorkerPoolOutput,
   }));
 // Input Schema
 export const AppServiceEnvironmentsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -328,8 +328,7 @@ export type AppServiceEnvironmentsDeleteInput =
   typeof AppServiceEnvironmentsDeleteInput.Type;
 
 // Output Schema
-export const AppServiceEnvironmentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AppServiceEnvironmentsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type AppServiceEnvironmentsDeleteOutput =
   typeof AppServiceEnvironmentsDeleteOutput.Type;
 
@@ -346,13 +345,13 @@ export type AppServiceEnvironmentsDeleteOutput =
  * @param forceDelete - Specify <code>true</code> to force the deletion even if the App Service Environment contains resources. The default is <code>false</code>.
  */
 export const AppServiceEnvironmentsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceEnvironmentsDeleteInput,
     outputSchema: AppServiceEnvironmentsDeleteOutput,
   }));
 // Input Schema
 export const AppServiceEnvironmentsDeleteAseCustomDnsSuffixConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -368,7 +367,7 @@ export type AppServiceEnvironmentsDeleteAseCustomDnsSuffixConfigurationInput =
 
 // Output Schema
 export const AppServiceEnvironmentsDeleteAseCustomDnsSuffixConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+  /*@__PURE__*/ Schema.Unknown;
 export type AppServiceEnvironmentsDeleteAseCustomDnsSuffixConfigurationOutput =
   typeof AppServiceEnvironmentsDeleteAseCustomDnsSuffixConfigurationOutput.Type;
 
@@ -382,7 +381,7 @@ export type AppServiceEnvironmentsDeleteAseCustomDnsSuffixConfigurationOutput =
  * @param name - Name of the App Service Environment.
  */
 export const AppServiceEnvironmentsDeleteAseCustomDnsSuffixConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       AppServiceEnvironmentsDeleteAseCustomDnsSuffixConfigurationInput,
     outputSchema:
@@ -390,7 +389,7 @@ export const AppServiceEnvironmentsDeleteAseCustomDnsSuffixConfiguration =
   }));
 // Input Schema
 export const AppServiceEnvironmentsDeletePrivateEndpointConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -407,7 +406,7 @@ export type AppServiceEnvironmentsDeletePrivateEndpointConnectionInput =
 
 // Output Schema
 export const AppServiceEnvironmentsDeletePrivateEndpointConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+  /*@__PURE__*/ Schema.Unknown;
 export type AppServiceEnvironmentsDeletePrivateEndpointConnectionOutput =
   typeof AppServiceEnvironmentsDeletePrivateEndpointConnectionOutput.Type;
 
@@ -424,13 +423,13 @@ export type AppServiceEnvironmentsDeletePrivateEndpointConnectionOutput =
  * @param privateEndpointConnectionName - Name of the private endpoint connection.
  */
 export const AppServiceEnvironmentsDeletePrivateEndpointConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceEnvironmentsDeletePrivateEndpointConnectionInput,
     outputSchema: AppServiceEnvironmentsDeletePrivateEndpointConnectionOutput,
   }));
 // Input Schema
 export const AppServiceEnvironmentsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -446,7 +445,7 @@ export type AppServiceEnvironmentsGetInput =
 
 // Output Schema
 export const AppServiceEnvironmentsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -479,15 +478,13 @@ export type AppServiceEnvironmentsGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the App Service Environment.
  */
-export const AppServiceEnvironmentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AppServiceEnvironmentsGetInput,
-    outputSchema: AppServiceEnvironmentsGetOutput,
-  }),
-);
+export const AppServiceEnvironmentsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppServiceEnvironmentsGetInput,
+  outputSchema: AppServiceEnvironmentsGetOutput,
+}));
 // Input Schema
 export const AppServiceEnvironmentsGetAseCustomDnsSuffixConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -503,7 +500,7 @@ export type AppServiceEnvironmentsGetAseCustomDnsSuffixConfigurationInput =
 
 // Output Schema
 export const AppServiceEnvironmentsGetAseCustomDnsSuffixConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -535,14 +532,14 @@ export type AppServiceEnvironmentsGetAseCustomDnsSuffixConfigurationOutput =
  * @param name - Name of the App Service Environment.
  */
 export const AppServiceEnvironmentsGetAseCustomDnsSuffixConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceEnvironmentsGetAseCustomDnsSuffixConfigurationInput,
     outputSchema:
       AppServiceEnvironmentsGetAseCustomDnsSuffixConfigurationOutput,
   }));
 // Input Schema
 export const AppServiceEnvironmentsGetAseV3NetworkingConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -558,7 +555,7 @@ export type AppServiceEnvironmentsGetAseV3NetworkingConfigurationInput =
 
 // Output Schema
 export const AppServiceEnvironmentsGetAseV3NetworkingConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -592,13 +589,13 @@ export type AppServiceEnvironmentsGetAseV3NetworkingConfigurationOutput =
  * @param name - Name of the App Service Environment.
  */
 export const AppServiceEnvironmentsGetAseV3NetworkingConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceEnvironmentsGetAseV3NetworkingConfigurationInput,
     outputSchema: AppServiceEnvironmentsGetAseV3NetworkingConfigurationOutput,
   }));
 // Input Schema
 export const AppServiceEnvironmentsGetDiagnosticsItemInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -615,7 +612,7 @@ export type AppServiceEnvironmentsGetDiagnosticsItemInput =
 
 // Output Schema
 export const AppServiceEnvironmentsGetDiagnosticsItemOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     diagnosticsOutput: Schema.optional(Schema.String),
   });
@@ -634,13 +631,13 @@ export type AppServiceEnvironmentsGetDiagnosticsItemOutput =
  * @param name - Name of the app.
  */
 export const AppServiceEnvironmentsGetDiagnosticsItem =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceEnvironmentsGetDiagnosticsItemInput,
     outputSchema: AppServiceEnvironmentsGetDiagnosticsItemOutput,
   }));
 // Input Schema
 export const AppServiceEnvironmentsGetInboundNetworkDependenciesEndpointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -656,7 +653,7 @@ export type AppServiceEnvironmentsGetInboundNetworkDependenciesEndpointsInput =
 
 // Output Schema
 export const AppServiceEnvironmentsGetInboundNetworkDependenciesEndpointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         description: Schema.optional(Schema.String),
@@ -681,7 +678,7 @@ export type AppServiceEnvironmentsGetInboundNetworkDependenciesEndpointsOutput =
  * @param name - Name of the App Service Environment.
  */
 export const AppServiceEnvironmentsGetInboundNetworkDependenciesEndpoints =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       AppServiceEnvironmentsGetInboundNetworkDependenciesEndpointsInput,
     outputSchema:
@@ -689,7 +686,7 @@ export const AppServiceEnvironmentsGetInboundNetworkDependenciesEndpoints =
   }));
 // Input Schema
 export const AppServiceEnvironmentsGetMultiRolePoolInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -705,7 +702,7 @@ export type AppServiceEnvironmentsGetMultiRolePoolInput =
 
 // Output Schema
 export const AppServiceEnvironmentsGetMultiRolePoolOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -739,13 +736,13 @@ export type AppServiceEnvironmentsGetMultiRolePoolOutput =
  * @param name - Name of the App Service Environment.
  */
 export const AppServiceEnvironmentsGetMultiRolePool =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceEnvironmentsGetMultiRolePoolInput,
     outputSchema: AppServiceEnvironmentsGetMultiRolePoolOutput,
   }));
 // Input Schema
 export const AppServiceEnvironmentsGetOutboundNetworkDependenciesEndpointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -761,7 +758,7 @@ export type AppServiceEnvironmentsGetOutboundNetworkDependenciesEndpointsInput =
 
 // Output Schema
 export const AppServiceEnvironmentsGetOutboundNetworkDependenciesEndpointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         category: Schema.optional(Schema.String),
@@ -801,7 +798,7 @@ export type AppServiceEnvironmentsGetOutboundNetworkDependenciesEndpointsOutput 
  * @param name - Name of the App Service Environment.
  */
 export const AppServiceEnvironmentsGetOutboundNetworkDependenciesEndpoints =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       AppServiceEnvironmentsGetOutboundNetworkDependenciesEndpointsInput,
     outputSchema:
@@ -809,7 +806,7 @@ export const AppServiceEnvironmentsGetOutboundNetworkDependenciesEndpoints =
   }));
 // Input Schema
 export const AppServiceEnvironmentsGetPrivateEndpointConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -826,7 +823,7 @@ export type AppServiceEnvironmentsGetPrivateEndpointConnectionInput =
 
 // Output Schema
 export const AppServiceEnvironmentsGetPrivateEndpointConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -861,13 +858,13 @@ export type AppServiceEnvironmentsGetPrivateEndpointConnectionOutput =
  * @param privateEndpointConnectionName - Name of the private endpoint connection.
  */
 export const AppServiceEnvironmentsGetPrivateEndpointConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceEnvironmentsGetPrivateEndpointConnectionInput,
     outputSchema: AppServiceEnvironmentsGetPrivateEndpointConnectionOutput,
   }));
 // Input Schema
 export const AppServiceEnvironmentsGetPrivateEndpointConnectionListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -883,7 +880,7 @@ export type AppServiceEnvironmentsGetPrivateEndpointConnectionListInput =
 
 // Output Schema
 export const AppServiceEnvironmentsGetPrivateEndpointConnectionListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -932,13 +929,13 @@ export type AppServiceEnvironmentsGetPrivateEndpointConnectionListOutput =
  * @param name - Name of the App Service Environment.
  */
 export const AppServiceEnvironmentsGetPrivateEndpointConnectionList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceEnvironmentsGetPrivateEndpointConnectionListInput,
     outputSchema: AppServiceEnvironmentsGetPrivateEndpointConnectionListOutput,
   }));
 // Input Schema
 export const AppServiceEnvironmentsGetPrivateLinkResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -954,7 +951,7 @@ export type AppServiceEnvironmentsGetPrivateLinkResourcesInput =
 
 // Output Schema
 export const AppServiceEnvironmentsGetPrivateLinkResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -983,13 +980,13 @@ export type AppServiceEnvironmentsGetPrivateLinkResourcesOutput =
  * @param name - Name of the App Service Environment.
  */
 export const AppServiceEnvironmentsGetPrivateLinkResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceEnvironmentsGetPrivateLinkResourcesInput,
     outputSchema: AppServiceEnvironmentsGetPrivateLinkResourcesOutput,
   }));
 // Input Schema
 export const AppServiceEnvironmentsGetVipInfoInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -1005,7 +1002,7 @@ export type AppServiceEnvironmentsGetVipInfoInput =
 
 // Output Schema
 export const AppServiceEnvironmentsGetVipInfoOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1039,13 +1036,13 @@ export type AppServiceEnvironmentsGetVipInfoOutput =
  * @param name - Name of the App Service Environment.
  */
 export const AppServiceEnvironmentsGetVipInfo =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceEnvironmentsGetVipInfoInput,
     outputSchema: AppServiceEnvironmentsGetVipInfoOutput,
   }));
 // Input Schema
 export const AppServiceEnvironmentsGetWorkerPoolInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -1062,7 +1059,7 @@ export type AppServiceEnvironmentsGetWorkerPoolInput =
 
 // Output Schema
 export const AppServiceEnvironmentsGetWorkerPoolOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1097,13 +1094,13 @@ export type AppServiceEnvironmentsGetWorkerPoolOutput =
  * @param workerPoolName - Name of the worker pool.
  */
 export const AppServiceEnvironmentsGetWorkerPool =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceEnvironmentsGetWorkerPoolInput,
     outputSchema: AppServiceEnvironmentsGetWorkerPoolOutput,
   }));
 // Input Schema
 export const AppServiceEnvironmentsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -1117,7 +1114,7 @@ export type AppServiceEnvironmentsListInput =
 
 // Output Schema
 export const AppServiceEnvironmentsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1163,15 +1160,13 @@ export type AppServiceEnvironmentsListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const AppServiceEnvironmentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AppServiceEnvironmentsListInput,
-    outputSchema: AppServiceEnvironmentsListOutput,
-  }),
-);
+export const AppServiceEnvironmentsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppServiceEnvironmentsListInput,
+  outputSchema: AppServiceEnvironmentsListOutput,
+}));
 // Input Schema
 export const AppServiceEnvironmentsListAppServicePlansInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -1187,7 +1182,7 @@ export type AppServiceEnvironmentsListAppServicePlansInput =
 
 // Output Schema
 export const AppServiceEnvironmentsListAppServicePlansOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1236,13 +1231,13 @@ export type AppServiceEnvironmentsListAppServicePlansOutput =
  * @param name - Name of the App Service Environment.
  */
 export const AppServiceEnvironmentsListAppServicePlans =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceEnvironmentsListAppServicePlansInput,
     outputSchema: AppServiceEnvironmentsListAppServicePlansOutput,
   }));
 // Input Schema
 export const AppServiceEnvironmentsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1257,7 +1252,7 @@ export type AppServiceEnvironmentsListByResourceGroupInput =
 
 // Output Schema
 export const AppServiceEnvironmentsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1305,13 +1300,13 @@ export type AppServiceEnvironmentsListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const AppServiceEnvironmentsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceEnvironmentsListByResourceGroupInput,
     outputSchema: AppServiceEnvironmentsListByResourceGroupOutput,
   }));
 // Input Schema
 export const AppServiceEnvironmentsListCapacitiesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -1327,7 +1322,7 @@ export type AppServiceEnvironmentsListCapacitiesInput =
 
 // Output Schema
 export const AppServiceEnvironmentsListCapacitiesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         name: Schema.optional(Schema.String),
@@ -1377,13 +1372,13 @@ export type AppServiceEnvironmentsListCapacitiesOutput =
  * @param name - Name of the App Service Environment.
  */
 export const AppServiceEnvironmentsListCapacities =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceEnvironmentsListCapacitiesInput,
     outputSchema: AppServiceEnvironmentsListCapacitiesOutput,
   }));
 // Input Schema
 export const AppServiceEnvironmentsListDiagnosticsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -1399,7 +1394,7 @@ export type AppServiceEnvironmentsListDiagnosticsInput =
 
 // Output Schema
 export const AppServiceEnvironmentsListDiagnosticsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       name: Schema.optional(Schema.String),
       diagnosticsOutput: Schema.optional(Schema.String),
@@ -1420,13 +1415,13 @@ export type AppServiceEnvironmentsListDiagnosticsOutput =
  * @param name - Name of the App Service Environment.
  */
 export const AppServiceEnvironmentsListDiagnostics =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceEnvironmentsListDiagnosticsInput,
     outputSchema: AppServiceEnvironmentsListDiagnosticsOutput,
   }));
 // Input Schema
 export const AppServiceEnvironmentsListMultiRoleMetricDefinitionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -1442,7 +1437,7 @@ export type AppServiceEnvironmentsListMultiRoleMetricDefinitionsInput =
 
 // Output Schema
 export const AppServiceEnvironmentsListMultiRoleMetricDefinitionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1468,13 +1463,13 @@ export type AppServiceEnvironmentsListMultiRoleMetricDefinitionsOutput =
  * @param name - Name of the App Service Environment.
  */
 export const AppServiceEnvironmentsListMultiRoleMetricDefinitions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceEnvironmentsListMultiRoleMetricDefinitionsInput,
     outputSchema: AppServiceEnvironmentsListMultiRoleMetricDefinitionsOutput,
   }));
 // Input Schema
 export const AppServiceEnvironmentsListMultiRolePoolInstanceMetricDefinitionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -1491,7 +1486,7 @@ export type AppServiceEnvironmentsListMultiRolePoolInstanceMetricDefinitionsInpu
 
 // Output Schema
 export const AppServiceEnvironmentsListMultiRolePoolInstanceMetricDefinitionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1518,7 +1513,7 @@ export type AppServiceEnvironmentsListMultiRolePoolInstanceMetricDefinitionsOutp
  * @param instance - Name of the instance in the multi-role pool.
  */
 export const AppServiceEnvironmentsListMultiRolePoolInstanceMetricDefinitions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       AppServiceEnvironmentsListMultiRolePoolInstanceMetricDefinitionsInput,
     outputSchema:
@@ -1526,7 +1521,7 @@ export const AppServiceEnvironmentsListMultiRolePoolInstanceMetricDefinitions =
   }));
 // Input Schema
 export const AppServiceEnvironmentsListMultiRolePoolsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -1542,7 +1537,7 @@ export type AppServiceEnvironmentsListMultiRolePoolsInput =
 
 // Output Schema
 export const AppServiceEnvironmentsListMultiRolePoolsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1591,13 +1586,13 @@ export type AppServiceEnvironmentsListMultiRolePoolsOutput =
  * @param name - Name of the App Service Environment.
  */
 export const AppServiceEnvironmentsListMultiRolePools =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceEnvironmentsListMultiRolePoolsInput,
     outputSchema: AppServiceEnvironmentsListMultiRolePoolsOutput,
   }));
 // Input Schema
 export const AppServiceEnvironmentsListMultiRolePoolSkusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -1613,7 +1608,7 @@ export type AppServiceEnvironmentsListMultiRolePoolSkusInput =
 
 // Output Schema
 export const AppServiceEnvironmentsListMultiRolePoolSkusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         resourceType: Schema.optional(Schema.String),
@@ -1673,13 +1668,13 @@ export type AppServiceEnvironmentsListMultiRolePoolSkusOutput =
  * @param name - Name of the App Service Environment.
  */
 export const AppServiceEnvironmentsListMultiRolePoolSkus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceEnvironmentsListMultiRolePoolSkusInput,
     outputSchema: AppServiceEnvironmentsListMultiRolePoolSkusOutput,
   }));
 // Input Schema
 export const AppServiceEnvironmentsListMultiRoleUsagesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -1695,7 +1690,7 @@ export type AppServiceEnvironmentsListMultiRoleUsagesInput =
 
 // Output Schema
 export const AppServiceEnvironmentsListMultiRoleUsagesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1721,13 +1716,13 @@ export type AppServiceEnvironmentsListMultiRoleUsagesOutput =
  * @param name - Name of the App Service Environment.
  */
 export const AppServiceEnvironmentsListMultiRoleUsages =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceEnvironmentsListMultiRoleUsagesInput,
     outputSchema: AppServiceEnvironmentsListMultiRoleUsagesOutput,
   }));
 // Input Schema
 export const AppServiceEnvironmentsListOperationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -1743,7 +1738,7 @@ export type AppServiceEnvironmentsListOperationsInput =
 
 // Output Schema
 export const AppServiceEnvironmentsListOperationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
       name: Schema.optional(Schema.String),
@@ -1791,13 +1786,13 @@ export type AppServiceEnvironmentsListOperationsOutput =
  * @param name - Name of the App Service Environment.
  */
 export const AppServiceEnvironmentsListOperations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceEnvironmentsListOperationsInput,
     outputSchema: AppServiceEnvironmentsListOperationsOutput,
   }));
 // Input Schema
 export const AppServiceEnvironmentsListUsagesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -1814,7 +1809,7 @@ export type AppServiceEnvironmentsListUsagesInput =
 
 // Output Schema
 export const AppServiceEnvironmentsListUsagesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         unit: Schema.optional(Schema.String),
@@ -1847,13 +1842,13 @@ export type AppServiceEnvironmentsListUsagesOutput =
  * @param $filter - Return only usages/metrics specified in the filter. Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
  */
 export const AppServiceEnvironmentsListUsages =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceEnvironmentsListUsagesInput,
     outputSchema: AppServiceEnvironmentsListUsagesOutput,
   }));
 // Input Schema
 export const AppServiceEnvironmentsListWebAppsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -1870,7 +1865,7 @@ export type AppServiceEnvironmentsListWebAppsInput =
 
 // Output Schema
 export const AppServiceEnvironmentsListWebAppsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1920,13 +1915,13 @@ export type AppServiceEnvironmentsListWebAppsOutput =
  * @param propertiesToInclude - Comma separated list of app properties to include.
  */
 export const AppServiceEnvironmentsListWebApps =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceEnvironmentsListWebAppsInput,
     outputSchema: AppServiceEnvironmentsListWebAppsOutput,
   }));
 // Input Schema
 export const AppServiceEnvironmentsListWebWorkerMetricDefinitionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -1943,7 +1938,7 @@ export type AppServiceEnvironmentsListWebWorkerMetricDefinitionsInput =
 
 // Output Schema
 export const AppServiceEnvironmentsListWebWorkerMetricDefinitionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1970,13 +1965,13 @@ export type AppServiceEnvironmentsListWebWorkerMetricDefinitionsOutput =
  * @param workerPoolName - Name of the worker pool.
  */
 export const AppServiceEnvironmentsListWebWorkerMetricDefinitions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceEnvironmentsListWebWorkerMetricDefinitionsInput,
     outputSchema: AppServiceEnvironmentsListWebWorkerMetricDefinitionsOutput,
   }));
 // Input Schema
 export const AppServiceEnvironmentsListWebWorkerUsagesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -1993,7 +1988,7 @@ export type AppServiceEnvironmentsListWebWorkerUsagesInput =
 
 // Output Schema
 export const AppServiceEnvironmentsListWebWorkerUsagesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2020,13 +2015,13 @@ export type AppServiceEnvironmentsListWebWorkerUsagesOutput =
  * @param workerPoolName - Name of the worker pool.
  */
 export const AppServiceEnvironmentsListWebWorkerUsages =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceEnvironmentsListWebWorkerUsagesInput,
     outputSchema: AppServiceEnvironmentsListWebWorkerUsagesOutput,
   }));
 // Input Schema
 export const AppServiceEnvironmentsListWorkerPoolInstanceMetricDefinitionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -2044,7 +2039,7 @@ export type AppServiceEnvironmentsListWorkerPoolInstanceMetricDefinitionsInput =
 
 // Output Schema
 export const AppServiceEnvironmentsListWorkerPoolInstanceMetricDefinitionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2072,7 +2067,7 @@ export type AppServiceEnvironmentsListWorkerPoolInstanceMetricDefinitionsOutput 
  * @param instance - Name of the instance in the worker pool.
  */
 export const AppServiceEnvironmentsListWorkerPoolInstanceMetricDefinitions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       AppServiceEnvironmentsListWorkerPoolInstanceMetricDefinitionsInput,
     outputSchema:
@@ -2080,7 +2075,7 @@ export const AppServiceEnvironmentsListWorkerPoolInstanceMetricDefinitions =
   }));
 // Input Schema
 export const AppServiceEnvironmentsListWorkerPoolsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -2096,7 +2091,7 @@ export type AppServiceEnvironmentsListWorkerPoolsInput =
 
 // Output Schema
 export const AppServiceEnvironmentsListWorkerPoolsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2145,13 +2140,13 @@ export type AppServiceEnvironmentsListWorkerPoolsOutput =
  * @param name - Name of the App Service Environment.
  */
 export const AppServiceEnvironmentsListWorkerPools =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceEnvironmentsListWorkerPoolsInput,
     outputSchema: AppServiceEnvironmentsListWorkerPoolsOutput,
   }));
 // Input Schema
 export const AppServiceEnvironmentsListWorkerPoolSkusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -2168,7 +2163,7 @@ export type AppServiceEnvironmentsListWorkerPoolSkusInput =
 
 // Output Schema
 export const AppServiceEnvironmentsListWorkerPoolSkusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         resourceType: Schema.optional(Schema.String),
@@ -2229,13 +2224,13 @@ export type AppServiceEnvironmentsListWorkerPoolSkusOutput =
  * @param workerPoolName - Name of the worker pool.
  */
 export const AppServiceEnvironmentsListWorkerPoolSkus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceEnvironmentsListWorkerPoolSkusInput,
     outputSchema: AppServiceEnvironmentsListWorkerPoolSkusOutput,
   }));
 // Input Schema
 export const AppServiceEnvironmentsRebootInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -2250,8 +2245,7 @@ export type AppServiceEnvironmentsRebootInput =
   typeof AppServiceEnvironmentsRebootInput.Type;
 
 // Output Schema
-export const AppServiceEnvironmentsRebootOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AppServiceEnvironmentsRebootOutput = /*@__PURE__*/ Schema.Void;
 export type AppServiceEnvironmentsRebootOutput =
   typeof AppServiceEnvironmentsRebootOutput.Type;
 
@@ -2267,13 +2261,13 @@ export type AppServiceEnvironmentsRebootOutput =
  * @param name - Name of the App Service Environment.
  */
 export const AppServiceEnvironmentsReboot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceEnvironmentsRebootInput,
     outputSchema: AppServiceEnvironmentsRebootOutput,
   }));
 // Input Schema
 export const AppServiceEnvironmentsResumeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -2289,7 +2283,7 @@ export type AppServiceEnvironmentsResumeInput =
 
 // Output Schema
 export const AppServiceEnvironmentsResumeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2338,13 +2332,13 @@ export type AppServiceEnvironmentsResumeOutput =
  * @param name - Name of the App Service Environment.
  */
 export const AppServiceEnvironmentsResume =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceEnvironmentsResumeInput,
     outputSchema: AppServiceEnvironmentsResumeOutput,
   }));
 // Input Schema
 export const AppServiceEnvironmentsSuspendInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -2360,7 +2354,7 @@ export type AppServiceEnvironmentsSuspendInput =
 
 // Output Schema
 export const AppServiceEnvironmentsSuspendOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2409,13 +2403,13 @@ export type AppServiceEnvironmentsSuspendOutput =
  * @param name - Name of the App Service Environment.
  */
 export const AppServiceEnvironmentsSuspend =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceEnvironmentsSuspendInput,
     outputSchema: AppServiceEnvironmentsSuspendOutput,
   }));
 // Input Schema
 export const AppServiceEnvironmentsTestUpgradeAvailableNotificationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -2431,7 +2425,7 @@ export type AppServiceEnvironmentsTestUpgradeAvailableNotificationInput =
 
 // Output Schema
 export const AppServiceEnvironmentsTestUpgradeAvailableNotificationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type AppServiceEnvironmentsTestUpgradeAvailableNotificationOutput =
   typeof AppServiceEnvironmentsTestUpgradeAvailableNotificationOutput.Type;
 
@@ -2445,13 +2439,13 @@ export type AppServiceEnvironmentsTestUpgradeAvailableNotificationOutput =
  * @param name - Name of the App Service Environment.
  */
 export const AppServiceEnvironmentsTestUpgradeAvailableNotification =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceEnvironmentsTestUpgradeAvailableNotificationInput,
     outputSchema: AppServiceEnvironmentsTestUpgradeAvailableNotificationOutput,
   }));
 // Input Schema
 export const AppServiceEnvironmentsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -2467,7 +2461,7 @@ export type AppServiceEnvironmentsUpdateInput =
 
 // Output Schema
 export const AppServiceEnvironmentsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2501,13 +2495,13 @@ export type AppServiceEnvironmentsUpdateOutput =
  * @param name - Name of the App Service Environment.
  */
 export const AppServiceEnvironmentsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceEnvironmentsUpdateInput,
     outputSchema: AppServiceEnvironmentsUpdateOutput,
   }));
 // Input Schema
 export const AppServiceEnvironmentsUpdateAseCustomDnsSuffixConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -2523,7 +2517,7 @@ export type AppServiceEnvironmentsUpdateAseCustomDnsSuffixConfigurationInput =
 
 // Output Schema
 export const AppServiceEnvironmentsUpdateAseCustomDnsSuffixConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2555,7 +2549,7 @@ export type AppServiceEnvironmentsUpdateAseCustomDnsSuffixConfigurationOutput =
  * @param name - Name of the App Service Environment.
  */
 export const AppServiceEnvironmentsUpdateAseCustomDnsSuffixConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       AppServiceEnvironmentsUpdateAseCustomDnsSuffixConfigurationInput,
     outputSchema:
@@ -2563,7 +2557,7 @@ export const AppServiceEnvironmentsUpdateAseCustomDnsSuffixConfiguration =
   }));
 // Input Schema
 export const AppServiceEnvironmentsUpdateAseNetworkingConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -2579,7 +2573,7 @@ export type AppServiceEnvironmentsUpdateAseNetworkingConfigurationInput =
 
 // Output Schema
 export const AppServiceEnvironmentsUpdateAseNetworkingConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2613,13 +2607,13 @@ export type AppServiceEnvironmentsUpdateAseNetworkingConfigurationOutput =
  * @param name - Name of the App Service Environment.
  */
 export const AppServiceEnvironmentsUpdateAseNetworkingConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceEnvironmentsUpdateAseNetworkingConfigurationInput,
     outputSchema: AppServiceEnvironmentsUpdateAseNetworkingConfigurationOutput,
   }));
 // Input Schema
 export const AppServiceEnvironmentsUpdateMultiRolePoolInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -2635,7 +2629,7 @@ export type AppServiceEnvironmentsUpdateMultiRolePoolInput =
 
 // Output Schema
 export const AppServiceEnvironmentsUpdateMultiRolePoolOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2669,13 +2663,13 @@ export type AppServiceEnvironmentsUpdateMultiRolePoolOutput =
  * @param name - Name of the App Service Environment.
  */
 export const AppServiceEnvironmentsUpdateMultiRolePool =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceEnvironmentsUpdateMultiRolePoolInput,
     outputSchema: AppServiceEnvironmentsUpdateMultiRolePoolOutput,
   }));
 // Input Schema
 export const AppServiceEnvironmentsUpdateWorkerPoolInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -2692,7 +2686,7 @@ export type AppServiceEnvironmentsUpdateWorkerPoolInput =
 
 // Output Schema
 export const AppServiceEnvironmentsUpdateWorkerPoolOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2727,13 +2721,13 @@ export type AppServiceEnvironmentsUpdateWorkerPoolOutput =
  * @param workerPoolName - Name of the worker pool.
  */
 export const AppServiceEnvironmentsUpdateWorkerPool =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceEnvironmentsUpdateWorkerPoolInput,
     outputSchema: AppServiceEnvironmentsUpdateWorkerPoolOutput,
   }));
 // Input Schema
 export const AppServiceEnvironmentsUpgradeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -2748,8 +2742,7 @@ export type AppServiceEnvironmentsUpgradeInput =
   typeof AppServiceEnvironmentsUpgradeInput.Type;
 
 // Output Schema
-export const AppServiceEnvironmentsUpgradeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AppServiceEnvironmentsUpgradeOutput = /*@__PURE__*/ Schema.Void;
 export type AppServiceEnvironmentsUpgradeOutput =
   typeof AppServiceEnvironmentsUpgradeOutput.Type;
 
@@ -2765,13 +2758,13 @@ export type AppServiceEnvironmentsUpgradeOutput =
  * @param name - Name of the App Service Environment.
  */
 export const AppServiceEnvironmentsUpgrade =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServiceEnvironmentsUpgradeInput,
     outputSchema: AppServiceEnvironmentsUpgradeOutput,
   }));
 // Input Schema
 export const AppServicePlansCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -2787,7 +2780,7 @@ export type AppServicePlansCreateOrUpdateInput =
 
 // Output Schema
 export const AppServicePlansCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2821,13 +2814,13 @@ export type AppServicePlansCreateOrUpdateOutput =
  * @param name - Name of the App Service plan.
  */
 export const AppServicePlansCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServicePlansCreateOrUpdateInput,
     outputSchema: AppServicePlansCreateOrUpdateOutput,
   }));
 // Input Schema
 export const AppServicePlansCreateOrUpdateVnetRouteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -2845,7 +2838,7 @@ export type AppServicePlansCreateOrUpdateVnetRouteInput =
 
 // Output Schema
 export const AppServicePlansCreateOrUpdateVnetRouteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2881,13 +2874,13 @@ export type AppServicePlansCreateOrUpdateVnetRouteOutput =
  * @param routeName - Name of the Virtual Network route.
  */
 export const AppServicePlansCreateOrUpdateVnetRoute =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServicePlansCreateOrUpdateVnetRouteInput,
     outputSchema: AppServicePlansCreateOrUpdateVnetRouteOutput,
   }));
 // Input Schema
 export const AppServicePlansDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -2901,8 +2894,7 @@ export const AppServicePlansDeleteInput =
 export type AppServicePlansDeleteInput = typeof AppServicePlansDeleteInput.Type;
 
 // Output Schema
-export const AppServicePlansDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AppServicePlansDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type AppServicePlansDeleteOutput =
   typeof AppServicePlansDeleteOutput.Type;
 
@@ -2917,15 +2909,13 @@ export type AppServicePlansDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the App Service plan.
  */
-export const AppServicePlansDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AppServicePlansDeleteInput,
-    outputSchema: AppServicePlansDeleteOutput,
-  }),
-);
+export const AppServicePlansDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppServicePlansDeleteInput,
+  outputSchema: AppServicePlansDeleteOutput,
+}));
 // Input Schema
 export const AppServicePlansDeleteHybridConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -2943,7 +2933,7 @@ export type AppServicePlansDeleteHybridConnectionInput =
 
 // Output Schema
 export const AppServicePlansDeleteHybridConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type AppServicePlansDeleteHybridConnectionOutput =
   typeof AppServicePlansDeleteHybridConnectionOutput.Type;
 
@@ -2961,13 +2951,13 @@ export type AppServicePlansDeleteHybridConnectionOutput =
  * @param relayName - Name of the Service Bus relay.
  */
 export const AppServicePlansDeleteHybridConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServicePlansDeleteHybridConnectionInput,
     outputSchema: AppServicePlansDeleteHybridConnectionOutput,
   }));
 // Input Schema
 export const AppServicePlansDeleteVnetRouteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -2984,8 +2974,7 @@ export type AppServicePlansDeleteVnetRouteInput =
   typeof AppServicePlansDeleteVnetRouteInput.Type;
 
 // Output Schema
-export const AppServicePlansDeleteVnetRouteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AppServicePlansDeleteVnetRouteOutput = /*@__PURE__*/ Schema.Void;
 export type AppServicePlansDeleteVnetRouteOutput =
   typeof AppServicePlansDeleteVnetRouteOutput.Type;
 
@@ -3003,13 +2992,13 @@ export type AppServicePlansDeleteVnetRouteOutput =
  * @param routeName - Name of the Virtual Network route.
  */
 export const AppServicePlansDeleteVnetRoute =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServicePlansDeleteVnetRouteInput,
     outputSchema: AppServicePlansDeleteVnetRouteOutput,
   }));
 // Input Schema
 export const AppServicePlansGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -3024,7 +3013,7 @@ export type AppServicePlansGetInput = typeof AppServicePlansGetInput.Type;
 
 // Output Schema
 export const AppServicePlansGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3056,13 +3045,13 @@ export type AppServicePlansGetOutput = typeof AppServicePlansGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the App Service plan.
  */
-export const AppServicePlansGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AppServicePlansGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AppServicePlansGetInput,
   outputSchema: AppServicePlansGetOutput,
 }));
 // Input Schema
 export const AppServicePlansGetHybridConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -3080,7 +3069,7 @@ export type AppServicePlansGetHybridConnectionInput =
 
 // Output Schema
 export const AppServicePlansGetHybridConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3116,13 +3105,13 @@ export type AppServicePlansGetHybridConnectionOutput =
  * @param relayName - Name of the Service Bus relay.
  */
 export const AppServicePlansGetHybridConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServicePlansGetHybridConnectionInput,
     outputSchema: AppServicePlansGetHybridConnectionOutput,
   }));
 // Input Schema
 export const AppServicePlansGetHybridConnectionPlanLimitInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -3138,7 +3127,7 @@ export type AppServicePlansGetHybridConnectionPlanLimitInput =
 
 // Output Schema
 export const AppServicePlansGetHybridConnectionPlanLimitOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3172,13 +3161,13 @@ export type AppServicePlansGetHybridConnectionPlanLimitOutput =
  * @param name - Name of the App Service plan.
  */
 export const AppServicePlansGetHybridConnectionPlanLimit =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServicePlansGetHybridConnectionPlanLimitInput,
     outputSchema: AppServicePlansGetHybridConnectionPlanLimitOutput,
   }));
 // Input Schema
 export const AppServicePlansGetRouteForVnetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -3196,7 +3185,7 @@ export type AppServicePlansGetRouteForVnetInput =
 
 // Output Schema
 export const AppServicePlansGetRouteForVnetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
       name: Schema.optional(Schema.String),
@@ -3234,13 +3223,13 @@ export type AppServicePlansGetRouteForVnetOutput =
  * @param routeName - Name of the Virtual Network route.
  */
 export const AppServicePlansGetRouteForVnet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServicePlansGetRouteForVnetInput,
     outputSchema: AppServicePlansGetRouteForVnetOutput,
   }));
 // Input Schema
 export const AppServicePlansGetServerFarmInstanceDetailsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -3256,7 +3245,7 @@ export type AppServicePlansGetServerFarmInstanceDetailsInput =
 
 // Output Schema
 export const AppServicePlansGetServerFarmInstanceDetailsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serverFarmName: Schema.optional(Schema.String),
     instances: Schema.optional(
       Schema.Array(
@@ -3284,13 +3273,13 @@ export type AppServicePlansGetServerFarmInstanceDetailsOutput =
  * @param name - Name of the App Service plan.
  */
 export const AppServicePlansGetServerFarmInstanceDetails =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServicePlansGetServerFarmInstanceDetailsInput,
     outputSchema: AppServicePlansGetServerFarmInstanceDetailsOutput,
   }));
 // Input Schema
 export const AppServicePlansGetServerFarmRdpPasswordInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -3306,7 +3295,7 @@ export type AppServicePlansGetServerFarmRdpPasswordInput =
 
 // Output Schema
 export const AppServicePlansGetServerFarmRdpPasswordOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rdpPassword: Schema.optional(SensitiveString),
     rdpPasswordExpiry: Schema.optional(SensitiveString),
   });
@@ -3325,13 +3314,13 @@ export type AppServicePlansGetServerFarmRdpPasswordOutput =
  * @param name - Name of the App Service plan.
  */
 export const AppServicePlansGetServerFarmRdpPassword =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServicePlansGetServerFarmRdpPasswordInput,
     outputSchema: AppServicePlansGetServerFarmRdpPasswordOutput,
   }));
 // Input Schema
 export const AppServicePlansGetServerFarmSkusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -3347,7 +3336,7 @@ export type AppServicePlansGetServerFarmSkusInput =
 
 // Output Schema
 export const AppServicePlansGetServerFarmSkusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+  /*@__PURE__*/ Schema.Unknown;
 export type AppServicePlansGetServerFarmSkusOutput =
   typeof AppServicePlansGetServerFarmSkusOutput.Type;
 
@@ -3363,13 +3352,13 @@ export type AppServicePlansGetServerFarmSkusOutput =
  * @param name - Name of the App Service plan.
  */
 export const AppServicePlansGetServerFarmSkus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServicePlansGetServerFarmSkusInput,
     outputSchema: AppServicePlansGetServerFarmSkusOutput,
   }));
 // Input Schema
 export const AppServicePlansGetVnetFromServerFarmInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -3386,7 +3375,7 @@ export type AppServicePlansGetVnetFromServerFarmInput =
 
 // Output Schema
 export const AppServicePlansGetVnetFromServerFarmOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3421,13 +3410,13 @@ export type AppServicePlansGetVnetFromServerFarmOutput =
  * @param vnetName - Name of the Virtual Network.
  */
 export const AppServicePlansGetVnetFromServerFarm =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServicePlansGetVnetFromServerFarmInput,
     outputSchema: AppServicePlansGetVnetFromServerFarmOutput,
   }));
 // Input Schema
 export const AppServicePlansGetVnetGatewayInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -3445,7 +3434,7 @@ export type AppServicePlansGetVnetGatewayInput =
 
 // Output Schema
 export const AppServicePlansGetVnetGatewayOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3481,13 +3470,13 @@ export type AppServicePlansGetVnetGatewayOutput =
  * @param gatewayName - Name of the gateway. Only the 'primary' gateway is supported.
  */
 export const AppServicePlansGetVnetGateway =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServicePlansGetVnetGatewayInput,
     outputSchema: AppServicePlansGetVnetGatewayOutput,
   }));
 // Input Schema
 export const AppServicePlansListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
     detailed: Schema.optional(Schema.Boolean),
@@ -3501,7 +3490,7 @@ export type AppServicePlansListInput = typeof AppServicePlansListInput.Type;
 
 // Output Schema
 export const AppServicePlansListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3548,13 +3537,13 @@ export type AppServicePlansListOutput = typeof AppServicePlansListOutput.Type;
  * @param detailed - Specify <code>true</code> to return all App Service plan properties. The default is <code>false</code>, which returns a subset of the properties.
 Retrieval of all properties may increase the API latency.
  */
-export const AppServicePlansList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AppServicePlansList = /*@__PURE__*/ API.make(() => ({
   inputSchema: AppServicePlansListInput,
   outputSchema: AppServicePlansListOutput,
 }));
 // Input Schema
 export const AppServicePlansListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -3569,7 +3558,7 @@ export type AppServicePlansListByResourceGroupInput =
 
 // Output Schema
 export const AppServicePlansListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3617,13 +3606,13 @@ export type AppServicePlansListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const AppServicePlansListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServicePlansListByResourceGroupInput,
     outputSchema: AppServicePlansListByResourceGroupOutput,
   }));
 // Input Schema
 export const AppServicePlansListCapabilitiesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -3639,7 +3628,7 @@ export type AppServicePlansListCapabilitiesInput =
 
 // Output Schema
 export const AppServicePlansListCapabilitiesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       name: Schema.optional(Schema.String),
       value: Schema.optional(Schema.String),
@@ -3661,13 +3650,13 @@ export type AppServicePlansListCapabilitiesOutput =
  * @param name - Name of the App Service plan.
  */
 export const AppServicePlansListCapabilities =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServicePlansListCapabilitiesInput,
     outputSchema: AppServicePlansListCapabilitiesOutput,
   }));
 // Input Schema
 export const AppServicePlansListHybridConnectionKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -3685,7 +3674,7 @@ export type AppServicePlansListHybridConnectionKeysInput =
 
 // Output Schema
 export const AppServicePlansListHybridConnectionKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -3708,13 +3697,13 @@ export type AppServicePlansListHybridConnectionKeysOutput =
  * @param relayName - Name of the Service Bus relay.
  */
 export const AppServicePlansListHybridConnectionKeys =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServicePlansListHybridConnectionKeysInput,
     outputSchema: AppServicePlansListHybridConnectionKeysOutput,
   }));
 // Input Schema
 export const AppServicePlansListHybridConnectionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -3730,7 +3719,7 @@ export type AppServicePlansListHybridConnectionsInput =
 
 // Output Schema
 export const AppServicePlansListHybridConnectionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3779,13 +3768,13 @@ export type AppServicePlansListHybridConnectionsOutput =
  * @param name - Name of the App Service plan.
  */
 export const AppServicePlansListHybridConnections =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServicePlansListHybridConnectionsInput,
     outputSchema: AppServicePlansListHybridConnectionsOutput,
   }));
 // Input Schema
 export const AppServicePlansListRoutesForVnetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -3802,7 +3791,7 @@ export type AppServicePlansListRoutesForVnetInput =
 
 // Output Schema
 export const AppServicePlansListRoutesForVnetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
       name: Schema.optional(Schema.String),
@@ -3839,13 +3828,13 @@ export type AppServicePlansListRoutesForVnetOutput =
  * @param vnetName - Name of the Virtual Network.
  */
 export const AppServicePlansListRoutesForVnet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServicePlansListRoutesForVnetInput,
     outputSchema: AppServicePlansListRoutesForVnetOutput,
   }));
 // Input Schema
 export const AppServicePlansListUsagesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -3862,7 +3851,7 @@ export type AppServicePlansListUsagesInput =
 
 // Output Schema
 export const AppServicePlansListUsagesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         unit: Schema.optional(Schema.String),
@@ -3894,15 +3883,13 @@ export type AppServicePlansListUsagesOutput =
  * @param name - Name of the App Service plan.
  * @param $filter - Return only usages/metrics specified in the filter. Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or name.value eq 'Metric2').
  */
-export const AppServicePlansListUsages = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AppServicePlansListUsagesInput,
-    outputSchema: AppServicePlansListUsagesOutput,
-  }),
-);
+export const AppServicePlansListUsages = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppServicePlansListUsagesInput,
+  outputSchema: AppServicePlansListUsagesOutput,
+}));
 // Input Schema
 export const AppServicePlansListVnetsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -3918,7 +3905,7 @@ export type AppServicePlansListVnetsInput =
 
 // Output Schema
 export const AppServicePlansListVnetsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
       name: Schema.optional(Schema.String),
@@ -3953,15 +3940,13 @@ export type AppServicePlansListVnetsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the App Service plan.
  */
-export const AppServicePlansListVnets = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AppServicePlansListVnetsInput,
-    outputSchema: AppServicePlansListVnetsOutput,
-  }),
-);
+export const AppServicePlansListVnets = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppServicePlansListVnetsInput,
+  outputSchema: AppServicePlansListVnetsOutput,
+}));
 // Input Schema
 export const AppServicePlansListWebAppsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -3980,7 +3965,7 @@ export type AppServicePlansListWebAppsInput =
 
 // Output Schema
 export const AppServicePlansListWebAppsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4031,15 +4016,13 @@ export type AppServicePlansListWebAppsOutput =
  * @param $filter - Supported filter: $filter=state eq running. Returns only web apps that are currently running
  * @param $top - List page size. If specified, results are paged.
  */
-export const AppServicePlansListWebApps = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AppServicePlansListWebAppsInput,
-    outputSchema: AppServicePlansListWebAppsOutput,
-  }),
-);
+export const AppServicePlansListWebApps = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppServicePlansListWebAppsInput,
+  outputSchema: AppServicePlansListWebAppsOutput,
+}));
 // Input Schema
 export const AppServicePlansListWebAppsByHybridConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -4057,7 +4040,7 @@ export type AppServicePlansListWebAppsByHybridConnectionInput =
 
 // Output Schema
 export const AppServicePlansListWebAppsByHybridConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(Schema.String),
     nextLink: Schema.optional(Schema.String),
   });
@@ -4078,13 +4061,13 @@ export type AppServicePlansListWebAppsByHybridConnectionOutput =
  * @param relayName - Name of the Service Bus relay.
  */
 export const AppServicePlansListWebAppsByHybridConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServicePlansListWebAppsByHybridConnectionInput,
     outputSchema: AppServicePlansListWebAppsByHybridConnectionOutput,
   }));
 // Input Schema
 export const AppServicePlansRebootWorkerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -4100,8 +4083,7 @@ export type AppServicePlansRebootWorkerInput =
   typeof AppServicePlansRebootWorkerInput.Type;
 
 // Output Schema
-export const AppServicePlansRebootWorkerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AppServicePlansRebootWorkerOutput = /*@__PURE__*/ Schema.Void;
 export type AppServicePlansRebootWorkerOutput =
   typeof AppServicePlansRebootWorkerOutput.Type;
 
@@ -4117,15 +4099,13 @@ export type AppServicePlansRebootWorkerOutput =
  * @param name - App Service plan.
  * @param workerName - Name of worker machine, which typically starts with RD.
  */
-export const AppServicePlansRebootWorker = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AppServicePlansRebootWorkerInput,
-    outputSchema: AppServicePlansRebootWorkerOutput,
-  }),
-);
+export const AppServicePlansRebootWorker = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppServicePlansRebootWorkerInput,
+  outputSchema: AppServicePlansRebootWorkerOutput,
+}));
 // Input Schema
 export const AppServicePlansRecycleManagedInstanceWorkerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -4142,7 +4122,7 @@ export type AppServicePlansRecycleManagedInstanceWorkerInput =
 
 // Output Schema
 export const AppServicePlansRecycleManagedInstanceWorkerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.optional(
@@ -4189,13 +4169,13 @@ export type AppServicePlansRecycleManagedInstanceWorkerOutput =
  * @param workerName - Name of worker machine, which typically starts with RD.
  */
 export const AppServicePlansRecycleManagedInstanceWorker =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServicePlansRecycleManagedInstanceWorkerInput,
     outputSchema: AppServicePlansRecycleManagedInstanceWorkerOutput,
   }));
 // Input Schema
 export const AppServicePlansRestartWebAppsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -4211,8 +4191,7 @@ export type AppServicePlansRestartWebAppsInput =
   typeof AppServicePlansRestartWebAppsInput.Type;
 
 // Output Schema
-export const AppServicePlansRestartWebAppsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AppServicePlansRestartWebAppsOutput = /*@__PURE__*/ Schema.Void;
 export type AppServicePlansRestartWebAppsOutput =
   typeof AppServicePlansRestartWebAppsOutput.Type;
 
@@ -4229,13 +4208,13 @@ export type AppServicePlansRestartWebAppsOutput =
  * @param softRestart - Specify <code>true</code> to perform a soft restart, applies the configuration settings and restarts the apps if necessary. The default is <code>false</code>, which always restarts and reprovisions the apps
  */
 export const AppServicePlansRestartWebApps =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServicePlansRestartWebAppsInput,
     outputSchema: AppServicePlansRestartWebAppsOutput,
   }));
 // Input Schema
 export const AppServicePlansUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -4250,7 +4229,7 @@ export type AppServicePlansUpdateInput = typeof AppServicePlansUpdateInput.Type;
 
 // Output Schema
 export const AppServicePlansUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4283,15 +4262,13 @@ export type AppServicePlansUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the App Service plan.
  */
-export const AppServicePlansUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AppServicePlansUpdateInput,
-    outputSchema: AppServicePlansUpdateOutput,
-  }),
-);
+export const AppServicePlansUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppServicePlansUpdateInput,
+  outputSchema: AppServicePlansUpdateOutput,
+}));
 // Input Schema
 export const AppServicePlansUpdateVnetGatewayInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -4309,7 +4286,7 @@ export type AppServicePlansUpdateVnetGatewayInput =
 
 // Output Schema
 export const AppServicePlansUpdateVnetGatewayOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4345,13 +4322,13 @@ export type AppServicePlansUpdateVnetGatewayOutput =
  * @param gatewayName - Name of the gateway. Only the 'primary' gateway is supported.
  */
 export const AppServicePlansUpdateVnetGateway =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServicePlansUpdateVnetGatewayInput,
     outputSchema: AppServicePlansUpdateVnetGatewayOutput,
   }));
 // Input Schema
 export const AppServicePlansUpdateVnetRouteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -4369,7 +4346,7 @@ export type AppServicePlansUpdateVnetRouteInput =
 
 // Output Schema
 export const AppServicePlansUpdateVnetRouteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4405,13 +4382,13 @@ export type AppServicePlansUpdateVnetRouteOutput =
  * @param routeName - Name of the Virtual Network route.
  */
 export const AppServicePlansUpdateVnetRoute =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppServicePlansUpdateVnetRouteInput,
     outputSchema: AppServicePlansUpdateVnetRouteOutput,
   }));
 // Input Schema
 export const CertificatesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -4427,7 +4404,7 @@ export type CertificatesCreateOrUpdateInput =
 
 // Output Schema
 export const CertificatesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4460,15 +4437,13 @@ export type CertificatesCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the certificate.
  */
-export const CertificatesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CertificatesCreateOrUpdateInput,
-    outputSchema: CertificatesCreateOrUpdateOutput,
-  }),
-);
+export const CertificatesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CertificatesCreateOrUpdateInput,
+  outputSchema: CertificatesCreateOrUpdateOutput,
+}));
 // Input Schema
 export const CertificatesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -4482,7 +4457,7 @@ export const CertificatesDeleteInput =
 export type CertificatesDeleteInput = typeof CertificatesDeleteInput.Type;
 
 // Output Schema
-export const CertificatesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CertificatesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type CertificatesDeleteOutput = typeof CertificatesDeleteOutput.Type;
 
 // The operation
@@ -4496,12 +4471,12 @@ export type CertificatesDeleteOutput = typeof CertificatesDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the certificate.
  */
-export const CertificatesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CertificatesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: CertificatesDeleteInput,
   outputSchema: CertificatesDeleteOutput,
 }));
 // Input Schema
-export const CertificatesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CertificatesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -4515,7 +4490,7 @@ export const CertificatesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CertificatesGetInput = typeof CertificatesGetInput.Type;
 
 // Output Schema
-export const CertificatesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CertificatesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4547,12 +4522,12 @@ export type CertificatesGetOutput = typeof CertificatesGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the certificate.
  */
-export const CertificatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CertificatesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: CertificatesGetInput,
   outputSchema: CertificatesGetOutput,
 }));
 // Input Schema
-export const CertificatesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CertificatesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
   $filter: Schema.optional(Schema.String),
@@ -4565,42 +4540,30 @@ export const CertificatesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CertificatesListInput = typeof CertificatesListInput.Type;
 
 // Output Schema
-export const CertificatesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  },
-);
+export const CertificatesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type CertificatesListOutput = typeof CertificatesListOutput.Type;
 
 // The operation
@@ -4613,13 +4576,13 @@ export type CertificatesListOutput = typeof CertificatesListOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param $filter - Return only information specified in the filter (using OData syntax). For example: $filter=KeyVaultId eq 'KeyVaultId'
  */
-export const CertificatesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CertificatesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: CertificatesListInput,
   outputSchema: CertificatesListOutput,
 }));
 // Input Schema
 export const CertificatesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -4634,7 +4597,7 @@ export type CertificatesListByResourceGroupInput =
 
 // Output Schema
 export const CertificatesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4682,13 +4645,13 @@ export type CertificatesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const CertificatesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CertificatesListByResourceGroupInput,
     outputSchema: CertificatesListByResourceGroupOutput,
   }));
 // Input Schema
 export const CertificatesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -4703,7 +4666,7 @@ export type CertificatesUpdateInput = typeof CertificatesUpdateInput.Type;
 
 // Output Schema
 export const CertificatesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4735,13 +4698,13 @@ export type CertificatesUpdateOutput = typeof CertificatesUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the certificate.
  */
-export const CertificatesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CertificatesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: CertificatesUpdateInput,
   outputSchema: CertificatesUpdateOutput,
 }));
 // Input Schema
 export const CheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -4754,7 +4717,7 @@ export type CheckNameAvailabilityInput = typeof CheckNameAvailabilityInput.Type;
 
 // Output Schema
 export const CheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
@@ -4771,15 +4734,13 @@ export type CheckNameAvailabilityOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const CheckNameAvailability = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CheckNameAvailabilityInput,
-    outputSchema: CheckNameAvailabilityOutput,
-  }),
-);
+export const CheckNameAvailability = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CheckNameAvailabilityInput,
+  outputSchema: CheckNameAvailabilityOutput,
+}));
 // Input Schema
 export const DeletedWebAppsGetDeletedWebAppByLocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     deletedSiteId: Schema.String.pipe(T.PathParam()),
@@ -4795,7 +4756,7 @@ export type DeletedWebAppsGetDeletedWebAppByLocationInput =
 
 // Output Schema
 export const DeletedWebAppsGetDeletedWebAppByLocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4829,13 +4790,13 @@ export type DeletedWebAppsGetDeletedWebAppByLocationOutput =
  * @param deletedSiteId - The numeric ID of the deleted app, e.g. 12345
  */
 export const DeletedWebAppsGetDeletedWebAppByLocation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeletedWebAppsGetDeletedWebAppByLocationInput,
     outputSchema: DeletedWebAppsGetDeletedWebAppByLocationOutput,
   }));
 // Input Schema
 export const DeletedWebAppsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -4848,7 +4809,7 @@ export type DeletedWebAppsListInput = typeof DeletedWebAppsListInput.Type;
 
 // Output Schema
 export const DeletedWebAppsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4893,13 +4854,13 @@ export type DeletedWebAppsListOutput = typeof DeletedWebAppsListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const DeletedWebAppsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeletedWebAppsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeletedWebAppsListInput,
   outputSchema: DeletedWebAppsListOutput,
 }));
 // Input Schema
 export const DeletedWebAppsListByLocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -4914,7 +4875,7 @@ export type DeletedWebAppsListByLocationInput =
 
 // Output Schema
 export const DeletedWebAppsListByLocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4962,13 +4923,13 @@ export type DeletedWebAppsListByLocationOutput =
  * @param location - The name of the Azure region.
  */
 export const DeletedWebAppsListByLocation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeletedWebAppsListByLocationInput,
     outputSchema: DeletedWebAppsListByLocationOutput,
   }));
 // Input Schema
 export const DiagnosticsExecuteSiteAnalysisInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -4989,7 +4950,7 @@ export type DiagnosticsExecuteSiteAnalysisInput =
 
 // Output Schema
 export const DiagnosticsExecuteSiteAnalysisOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -5015,13 +4976,13 @@ export type DiagnosticsExecuteSiteAnalysisOutput =
  * @param timeGrain - Time Grain
  */
 export const DiagnosticsExecuteSiteAnalysis =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DiagnosticsExecuteSiteAnalysisInput,
     outputSchema: DiagnosticsExecuteSiteAnalysisOutput,
   }));
 // Input Schema
 export const DiagnosticsExecuteSiteAnalysisSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -5043,7 +5004,7 @@ export type DiagnosticsExecuteSiteAnalysisSlotInput =
 
 // Output Schema
 export const DiagnosticsExecuteSiteAnalysisSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -5070,13 +5031,13 @@ export type DiagnosticsExecuteSiteAnalysisSlotOutput =
  * @param timeGrain - Time Grain
  */
 export const DiagnosticsExecuteSiteAnalysisSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DiagnosticsExecuteSiteAnalysisSlotInput,
     outputSchema: DiagnosticsExecuteSiteAnalysisSlotOutput,
   }));
 // Input Schema
 export const DiagnosticsExecuteSiteDetectorInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -5097,7 +5058,7 @@ export type DiagnosticsExecuteSiteDetectorInput =
 
 // Output Schema
 export const DiagnosticsExecuteSiteDetectorOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -5123,13 +5084,13 @@ export type DiagnosticsExecuteSiteDetectorOutput =
  * @param timeGrain - Time Grain
  */
 export const DiagnosticsExecuteSiteDetector =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DiagnosticsExecuteSiteDetectorInput,
     outputSchema: DiagnosticsExecuteSiteDetectorOutput,
   }));
 // Input Schema
 export const DiagnosticsExecuteSiteDetectorSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -5151,7 +5112,7 @@ export type DiagnosticsExecuteSiteDetectorSlotInput =
 
 // Output Schema
 export const DiagnosticsExecuteSiteDetectorSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -5178,13 +5139,13 @@ export type DiagnosticsExecuteSiteDetectorSlotOutput =
  * @param timeGrain - Time Grain
  */
 export const DiagnosticsExecuteSiteDetectorSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DiagnosticsExecuteSiteDetectorSlotInput,
     outputSchema: DiagnosticsExecuteSiteDetectorSlotOutput,
   }));
 // Input Schema
 export const DiagnosticsGetHostingEnvironmentDetectorResponseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -5204,7 +5165,7 @@ export type DiagnosticsGetHostingEnvironmentDetectorResponseInput =
 
 // Output Schema
 export const DiagnosticsGetHostingEnvironmentDetectorResponseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5242,13 +5203,13 @@ export type DiagnosticsGetHostingEnvironmentDetectorResponseOutput =
  * @param timeGrain - Time Grain
  */
 export const DiagnosticsGetHostingEnvironmentDetectorResponse =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DiagnosticsGetHostingEnvironmentDetectorResponseInput,
     outputSchema: DiagnosticsGetHostingEnvironmentDetectorResponseOutput,
   }));
 // Input Schema
 export const DiagnosticsGetSiteAnalysisInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -5266,7 +5227,7 @@ export type DiagnosticsGetSiteAnalysisInput =
 
 // Output Schema
 export const DiagnosticsGetSiteAnalysisOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5301,15 +5262,13 @@ export type DiagnosticsGetSiteAnalysisOutput =
  * @param diagnosticCategory - Diagnostic Category
  * @param analysisName - Analysis Name
  */
-export const DiagnosticsGetSiteAnalysis = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DiagnosticsGetSiteAnalysisInput,
-    outputSchema: DiagnosticsGetSiteAnalysisOutput,
-  }),
-);
+export const DiagnosticsGetSiteAnalysis = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DiagnosticsGetSiteAnalysisInput,
+  outputSchema: DiagnosticsGetSiteAnalysisOutput,
+}));
 // Input Schema
 export const DiagnosticsGetSiteAnalysisSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -5328,7 +5287,7 @@ export type DiagnosticsGetSiteAnalysisSlotInput =
 
 // Output Schema
 export const DiagnosticsGetSiteAnalysisSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5365,13 +5324,13 @@ export type DiagnosticsGetSiteAnalysisSlotOutput =
  * @param analysisName - Analysis Name
  */
 export const DiagnosticsGetSiteAnalysisSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DiagnosticsGetSiteAnalysisSlotInput,
     outputSchema: DiagnosticsGetSiteAnalysisSlotOutput,
   }));
 // Input Schema
 export const DiagnosticsGetSiteDetectorInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -5389,7 +5348,7 @@ export type DiagnosticsGetSiteDetectorInput =
 
 // Output Schema
 export const DiagnosticsGetSiteDetectorOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5424,15 +5383,13 @@ export type DiagnosticsGetSiteDetectorOutput =
  * @param diagnosticCategory - Diagnostic Category
  * @param detectorName - Detector Name
  */
-export const DiagnosticsGetSiteDetector = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DiagnosticsGetSiteDetectorInput,
-    outputSchema: DiagnosticsGetSiteDetectorOutput,
-  }),
-);
+export const DiagnosticsGetSiteDetector = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DiagnosticsGetSiteDetectorInput,
+  outputSchema: DiagnosticsGetSiteDetectorOutput,
+}));
 // Input Schema
 export const DiagnosticsGetSiteDetectorResponseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -5452,7 +5409,7 @@ export type DiagnosticsGetSiteDetectorResponseInput =
 
 // Output Schema
 export const DiagnosticsGetSiteDetectorResponseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5490,13 +5447,13 @@ export type DiagnosticsGetSiteDetectorResponseOutput =
  * @param timeGrain - Time Grain
  */
 export const DiagnosticsGetSiteDetectorResponse =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DiagnosticsGetSiteDetectorResponseInput,
     outputSchema: DiagnosticsGetSiteDetectorResponseOutput,
   }));
 // Input Schema
 export const DiagnosticsGetSiteDetectorResponseSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -5517,7 +5474,7 @@ export type DiagnosticsGetSiteDetectorResponseSlotInput =
 
 // Output Schema
 export const DiagnosticsGetSiteDetectorResponseSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5556,13 +5513,13 @@ export type DiagnosticsGetSiteDetectorResponseSlotOutput =
  * @param timeGrain - Time Grain
  */
 export const DiagnosticsGetSiteDetectorResponseSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DiagnosticsGetSiteDetectorResponseSlotInput,
     outputSchema: DiagnosticsGetSiteDetectorResponseSlotOutput,
   }));
 // Input Schema
 export const DiagnosticsGetSiteDetectorSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -5581,7 +5538,7 @@ export type DiagnosticsGetSiteDetectorSlotInput =
 
 // Output Schema
 export const DiagnosticsGetSiteDetectorSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5618,13 +5575,13 @@ export type DiagnosticsGetSiteDetectorSlotOutput =
  * @param detectorName - Detector Name
  */
 export const DiagnosticsGetSiteDetectorSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DiagnosticsGetSiteDetectorSlotInput,
     outputSchema: DiagnosticsGetSiteDetectorSlotOutput,
   }));
 // Input Schema
 export const DiagnosticsGetSiteDiagnosticCategoryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -5641,7 +5598,7 @@ export type DiagnosticsGetSiteDiagnosticCategoryInput =
 
 // Output Schema
 export const DiagnosticsGetSiteDiagnosticCategoryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5676,13 +5633,13 @@ export type DiagnosticsGetSiteDiagnosticCategoryOutput =
  * @param diagnosticCategory - Diagnostic Category
  */
 export const DiagnosticsGetSiteDiagnosticCategory =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DiagnosticsGetSiteDiagnosticCategoryInput,
     outputSchema: DiagnosticsGetSiteDiagnosticCategoryOutput,
   }));
 // Input Schema
 export const DiagnosticsGetSiteDiagnosticCategorySlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -5700,7 +5657,7 @@ export type DiagnosticsGetSiteDiagnosticCategorySlotInput =
 
 // Output Schema
 export const DiagnosticsGetSiteDiagnosticCategorySlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5736,13 +5693,13 @@ export type DiagnosticsGetSiteDiagnosticCategorySlotOutput =
  * @param diagnosticCategory - Diagnostic Category
  */
 export const DiagnosticsGetSiteDiagnosticCategorySlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DiagnosticsGetSiteDiagnosticCategorySlotInput,
     outputSchema: DiagnosticsGetSiteDiagnosticCategorySlotOutput,
   }));
 // Input Schema
 export const DiagnosticsListHostingEnvironmentDetectorResponsesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -5758,7 +5715,7 @@ export type DiagnosticsListHostingEnvironmentDetectorResponsesInput =
 
 // Output Schema
 export const DiagnosticsListHostingEnvironmentDetectorResponsesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5807,13 +5764,13 @@ export type DiagnosticsListHostingEnvironmentDetectorResponsesOutput =
  * @param name - App Service Environment Name
  */
 export const DiagnosticsListHostingEnvironmentDetectorResponses =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DiagnosticsListHostingEnvironmentDetectorResponsesInput,
     outputSchema: DiagnosticsListHostingEnvironmentDetectorResponsesOutput,
   }));
 // Input Schema
 export const DiagnosticsListSiteAnalysesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -5830,7 +5787,7 @@ export type DiagnosticsListSiteAnalysesInput =
 
 // Output Schema
 export const DiagnosticsListSiteAnalysesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5879,15 +5836,13 @@ export type DiagnosticsListSiteAnalysesOutput =
  * @param siteName - Site Name
  * @param diagnosticCategory - Diagnostic Category
  */
-export const DiagnosticsListSiteAnalyses = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DiagnosticsListSiteAnalysesInput,
-    outputSchema: DiagnosticsListSiteAnalysesOutput,
-  }),
-);
+export const DiagnosticsListSiteAnalyses = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DiagnosticsListSiteAnalysesInput,
+  outputSchema: DiagnosticsListSiteAnalysesOutput,
+}));
 // Input Schema
 export const DiagnosticsListSiteAnalysesSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -5905,7 +5860,7 @@ export type DiagnosticsListSiteAnalysesSlotInput =
 
 // Output Schema
 export const DiagnosticsListSiteAnalysesSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5956,13 +5911,13 @@ export type DiagnosticsListSiteAnalysesSlotOutput =
  * @param diagnosticCategory - Diagnostic Category
  */
 export const DiagnosticsListSiteAnalysesSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DiagnosticsListSiteAnalysesSlotInput,
     outputSchema: DiagnosticsListSiteAnalysesSlotOutput,
   }));
 // Input Schema
 export const DiagnosticsListSiteDetectorResponsesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -5978,7 +5933,7 @@ export type DiagnosticsListSiteDetectorResponsesInput =
 
 // Output Schema
 export const DiagnosticsListSiteDetectorResponsesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6027,13 +5982,13 @@ export type DiagnosticsListSiteDetectorResponsesOutput =
  * @param siteName - Site Name
  */
 export const DiagnosticsListSiteDetectorResponses =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DiagnosticsListSiteDetectorResponsesInput,
     outputSchema: DiagnosticsListSiteDetectorResponsesOutput,
   }));
 // Input Schema
 export const DiagnosticsListSiteDetectorResponsesSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -6050,7 +6005,7 @@ export type DiagnosticsListSiteDetectorResponsesSlotInput =
 
 // Output Schema
 export const DiagnosticsListSiteDetectorResponsesSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6100,13 +6055,13 @@ export type DiagnosticsListSiteDetectorResponsesSlotOutput =
  * @param slot - Slot Name
  */
 export const DiagnosticsListSiteDetectorResponsesSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DiagnosticsListSiteDetectorResponsesSlotInput,
     outputSchema: DiagnosticsListSiteDetectorResponsesSlotOutput,
   }));
 // Input Schema
 export const DiagnosticsListSiteDetectorsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -6123,7 +6078,7 @@ export type DiagnosticsListSiteDetectorsInput =
 
 // Output Schema
 export const DiagnosticsListSiteDetectorsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6173,13 +6128,13 @@ export type DiagnosticsListSiteDetectorsOutput =
  * @param diagnosticCategory - Diagnostic Category
  */
 export const DiagnosticsListSiteDetectors =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DiagnosticsListSiteDetectorsInput,
     outputSchema: DiagnosticsListSiteDetectorsOutput,
   }));
 // Input Schema
 export const DiagnosticsListSiteDetectorsSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -6197,7 +6152,7 @@ export type DiagnosticsListSiteDetectorsSlotInput =
 
 // Output Schema
 export const DiagnosticsListSiteDetectorsSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6248,13 +6203,13 @@ export type DiagnosticsListSiteDetectorsSlotOutput =
  * @param diagnosticCategory - Diagnostic Category
  */
 export const DiagnosticsListSiteDetectorsSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DiagnosticsListSiteDetectorsSlotInput,
     outputSchema: DiagnosticsListSiteDetectorsSlotOutput,
   }));
 // Input Schema
 export const DiagnosticsListSiteDiagnosticCategoriesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -6270,7 +6225,7 @@ export type DiagnosticsListSiteDiagnosticCategoriesInput =
 
 // Output Schema
 export const DiagnosticsListSiteDiagnosticCategoriesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6319,13 +6274,13 @@ export type DiagnosticsListSiteDiagnosticCategoriesOutput =
  * @param siteName - Site Name
  */
 export const DiagnosticsListSiteDiagnosticCategories =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DiagnosticsListSiteDiagnosticCategoriesInput,
     outputSchema: DiagnosticsListSiteDiagnosticCategoriesOutput,
   }));
 // Input Schema
 export const DiagnosticsListSiteDiagnosticCategoriesSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -6342,7 +6297,7 @@ export type DiagnosticsListSiteDiagnosticCategoriesSlotInput =
 
 // Output Schema
 export const DiagnosticsListSiteDiagnosticCategoriesSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6392,16 +6347,14 @@ export type DiagnosticsListSiteDiagnosticCategoriesSlotOutput =
  * @param slot - Slot Name
  */
 export const DiagnosticsListSiteDiagnosticCategoriesSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DiagnosticsListSiteDiagnosticCategoriesSlotInput,
     outputSchema: DiagnosticsListSiteDiagnosticCategoriesSlotOutput,
   }));
 // Input Schema
-export const GetPublishingUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    "api-version": Schema.String,
-  },
-).pipe(
+export const GetPublishingUserInput = /*@__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Web/publishingUsers/web",
@@ -6411,7 +6364,7 @@ export type GetPublishingUserInput = typeof GetPublishingUserInput.Type;
 
 // Output Schema
 export const GetPublishingUserOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6440,12 +6393,12 @@ export type GetPublishingUserOutput = typeof GetPublishingUserOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const GetPublishingUser = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetPublishingUser = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetPublishingUserInput,
   outputSchema: GetPublishingUserOutput,
 }));
 // Input Schema
-export const GetSourceControlInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetSourceControlInput = /*@__PURE__*/ Schema.Struct({
   sourceControlType: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -6457,27 +6410,25 @@ export const GetSourceControlInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetSourceControlInput = typeof GetSourceControlInput.Type;
 
 // Output Schema
-export const GetSourceControlOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const GetSourceControlOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type GetSourceControlOutput = typeof GetSourceControlOutput.Type;
 
 // The operation
@@ -6489,13 +6440,13 @@ export type GetSourceControlOutput = typeof GetSourceControlOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param sourceControlType - Type of source control
  */
-export const GetSourceControl = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetSourceControl = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetSourceControlInput,
   outputSchema: GetSourceControlOutput,
 }));
 // Input Schema
 export const GetSubscriptionDeploymentLocationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -6509,7 +6460,7 @@ export type GetSubscriptionDeploymentLocationsInput =
 
 // Output Schema
 export const GetSubscriptionDeploymentLocationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locations: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6656,13 +6607,13 @@ export type GetSubscriptionDeploymentLocationsOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const GetSubscriptionDeploymentLocations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetSubscriptionDeploymentLocationsInput,
     outputSchema: GetSubscriptionDeploymentLocationsOutput,
   }));
 // Input Schema
 export const GetUsagesInLocationListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -6677,7 +6628,7 @@ export type GetUsagesInLocationListInput =
 
 // Output Schema
 export const GetUsagesInLocationListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         unit: Schema.optional(Schema.String),
@@ -6707,15 +6658,13 @@ export type GetUsagesInLocationListOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param location - The name of the Azure region.
  */
-export const GetUsagesInLocationList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetUsagesInLocationListInput,
-    outputSchema: GetUsagesInLocationListOutput,
-  }),
-);
+export const GetUsagesInLocationList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetUsagesInLocationListInput,
+  outputSchema: GetUsagesInLocationListOutput,
+}));
 // Input Schema
 export const GlobalGetDeletedWebAppInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     deletedSiteId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -6730,7 +6679,7 @@ export type GlobalGetDeletedWebAppInput =
 
 // Output Schema
 export const GlobalGetDeletedWebAppOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6762,15 +6711,13 @@ export type GlobalGetDeletedWebAppOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param deletedSiteId - The numeric ID of the deleted app, e.g. 12345
  */
-export const GlobalGetDeletedWebApp = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GlobalGetDeletedWebAppInput,
-    outputSchema: GlobalGetDeletedWebAppOutput,
-  }),
-);
+export const GlobalGetDeletedWebApp = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GlobalGetDeletedWebAppInput,
+  outputSchema: GlobalGetDeletedWebAppOutput,
+}));
 // Input Schema
 export const GlobalGetDeletedWebAppSnapshotsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     deletedSiteId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -6785,7 +6732,7 @@ export type GlobalGetDeletedWebAppSnapshotsInput =
 
 // Output Schema
 export const GlobalGetDeletedWebAppSnapshotsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
       name: Schema.optional(Schema.String),
@@ -6807,13 +6754,13 @@ export type GlobalGetDeletedWebAppSnapshotsOutput =
  * @param deletedSiteId - The numeric ID of the deleted app, e.g. 12345
  */
 export const GlobalGetDeletedWebAppSnapshots =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GlobalGetDeletedWebAppSnapshotsInput,
     outputSchema: GlobalGetDeletedWebAppSnapshotsOutput,
   }));
 // Input Schema
 export const GlobalGetSubscriptionOperationWithAsyncResponseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6829,7 +6776,7 @@ export type GlobalGetSubscriptionOperationWithAsyncResponseInput =
 
 // Output Schema
 export const GlobalGetSubscriptionOperationWithAsyncResponseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type GlobalGetSubscriptionOperationWithAsyncResponseOutput =
   typeof GlobalGetSubscriptionOperationWithAsyncResponseOutput.Type;
 
@@ -6845,13 +6792,13 @@ export type GlobalGetSubscriptionOperationWithAsyncResponseOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const GlobalGetSubscriptionOperationWithAsyncResponse =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GlobalGetSubscriptionOperationWithAsyncResponseInput,
     outputSchema: GlobalGetSubscriptionOperationWithAsyncResponseOutput,
   }));
 // Input Schema
 export const KubeEnvironmentsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -6867,7 +6814,7 @@ export type KubeEnvironmentsCreateOrUpdateInput =
 
 // Output Schema
 export const KubeEnvironmentsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6901,13 +6848,13 @@ export type KubeEnvironmentsCreateOrUpdateOutput =
  * @param name - Name of the Kubernetes Environment.
  */
 export const KubeEnvironmentsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: KubeEnvironmentsCreateOrUpdateInput,
     outputSchema: KubeEnvironmentsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const KubeEnvironmentsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -6922,8 +6869,7 @@ export type KubeEnvironmentsDeleteInput =
   typeof KubeEnvironmentsDeleteInput.Type;
 
 // Output Schema
-export const KubeEnvironmentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const KubeEnvironmentsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type KubeEnvironmentsDeleteOutput =
   typeof KubeEnvironmentsDeleteOutput.Type;
 
@@ -6938,15 +6884,13 @@ export type KubeEnvironmentsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the Kubernetes Environment.
  */
-export const KubeEnvironmentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: KubeEnvironmentsDeleteInput,
-    outputSchema: KubeEnvironmentsDeleteOutput,
-  }),
-);
+export const KubeEnvironmentsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: KubeEnvironmentsDeleteInput,
+  outputSchema: KubeEnvironmentsDeleteOutput,
+}));
 // Input Schema
 export const KubeEnvironmentsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -6961,7 +6905,7 @@ export type KubeEnvironmentsGetInput = typeof KubeEnvironmentsGetInput.Type;
 
 // Output Schema
 export const KubeEnvironmentsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6993,13 +6937,13 @@ export type KubeEnvironmentsGetOutput = typeof KubeEnvironmentsGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the Kubernetes Environment.
  */
-export const KubeEnvironmentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const KubeEnvironmentsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: KubeEnvironmentsGetInput,
   outputSchema: KubeEnvironmentsGetOutput,
 }));
 // Input Schema
 export const KubeEnvironmentsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -7014,7 +6958,7 @@ export type KubeEnvironmentsListByResourceGroupInput =
 
 // Output Schema
 export const KubeEnvironmentsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7062,13 +7006,13 @@ export type KubeEnvironmentsListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const KubeEnvironmentsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: KubeEnvironmentsListByResourceGroupInput,
     outputSchema: KubeEnvironmentsListByResourceGroupOutput,
   }));
 // Input Schema
 export const KubeEnvironmentsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -7082,7 +7026,7 @@ export type KubeEnvironmentsListBySubscriptionInput =
 
 // Output Schema
 export const KubeEnvironmentsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7129,13 +7073,13 @@ export type KubeEnvironmentsListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const KubeEnvironmentsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: KubeEnvironmentsListBySubscriptionInput,
     outputSchema: KubeEnvironmentsListBySubscriptionOutput,
   }));
 // Input Schema
 export const KubeEnvironmentsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -7151,7 +7095,7 @@ export type KubeEnvironmentsUpdateInput =
 
 // Output Schema
 export const KubeEnvironmentsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7184,14 +7128,12 @@ export type KubeEnvironmentsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the Kubernetes Environment.
  */
-export const KubeEnvironmentsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: KubeEnvironmentsUpdateInput,
-    outputSchema: KubeEnvironmentsUpdateOutput,
-  }),
-);
+export const KubeEnvironmentsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: KubeEnvironmentsUpdateInput,
+  outputSchema: KubeEnvironmentsUpdateOutput,
+}));
 // Input Schema
-export const ListAseRegionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListAseRegionsInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -7203,7 +7145,7 @@ export const ListAseRegionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListAseRegionsInput = typeof ListAseRegionsInput.Type;
 
 // Output Schema
-export const ListAseRegionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListAseRegionsOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -7225,19 +7167,17 @@ export type ListAseRegionsOutput = typeof ListAseRegionsOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ListAseRegions = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ListAseRegions = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListAseRegionsInput,
   outputSchema: ListAseRegionsOutput,
 }));
 // Input Schema
-export const ListBillingMetersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    billingLocation: Schema.optional(Schema.String),
-    osType: Schema.optional(Schema.String),
-  },
-).pipe(
+export const ListBillingMetersInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  billingLocation: Schema.optional(Schema.String),
+  osType: Schema.optional(Schema.String),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Web/billingMeters",
@@ -7247,7 +7187,7 @@ export type ListBillingMetersInput = typeof ListBillingMetersInput.Type;
 
 // Output Schema
 export const ListBillingMetersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7271,13 +7211,13 @@ export type ListBillingMetersOutput = typeof ListBillingMetersOutput.Type;
  * @param billingLocation - Azure Location of billable resource
  * @param osType - App Service OS type meters used for
  */
-export const ListBillingMeters = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ListBillingMeters = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListBillingMetersInput,
   outputSchema: ListBillingMetersOutput,
 }));
 // Input Schema
 export const ListCustomHostNameSitesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
     hostname: Schema.optional(Schema.String),
@@ -7292,7 +7232,7 @@ export type ListCustomHostNameSitesInput =
 
 // Output Schema
 export const ListCustomHostNameSitesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7314,14 +7254,12 @@ export type ListCustomHostNameSitesOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param hostname - Specific hostname
  */
-export const ListCustomHostNameSites = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListCustomHostNameSitesInput,
-    outputSchema: ListCustomHostNameSitesOutput,
-  }),
-);
+export const ListCustomHostNameSites = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListCustomHostNameSitesInput,
+  outputSchema: ListCustomHostNameSitesOutput,
+}));
 // Input Schema
-export const ListGeoRegionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListGeoRegionsInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
   sku: Schema.optional(
@@ -7355,7 +7293,7 @@ export const ListGeoRegionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListGeoRegionsInput = typeof ListGeoRegionsInput.Type;
 
 // Output Schema
-export const ListGeoRegionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListGeoRegionsOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -7382,13 +7320,13 @@ export type ListGeoRegionsOutput = typeof ListGeoRegionsOutput.Type;
  * @param linuxDynamicWorkersEnabled - Specify <code>true</code> if you want to filter to only regions that support Linux Consumption Workers.
  * @param customModeWorkersEnabled - Specify <code>true</code> if you want to filter to only regions that support App Service Plans with <code>IsCustomMode</code> set to <code>true</code>.
  */
-export const ListGeoRegions = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ListGeoRegions = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListGeoRegionsInput,
   outputSchema: ListGeoRegionsOutput,
 }));
 // Input Schema
 export const ListPremierAddOnOffersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -7402,7 +7340,7 @@ export type ListPremierAddOnOffersInput =
 
 // Output Schema
 export const ListPremierAddOnOffersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7425,15 +7363,13 @@ export type ListPremierAddOnOffersOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ListPremierAddOnOffers = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListPremierAddOnOffersInput,
-    outputSchema: ListPremierAddOnOffersOutput,
-  }),
-);
+export const ListPremierAddOnOffers = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListPremierAddOnOffersInput,
+  outputSchema: ListPremierAddOnOffersOutput,
+}));
 // Input Schema
 export const ListSiteIdentifiersAssignedToHostNameInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -7447,7 +7383,7 @@ export type ListSiteIdentifiersAssignedToHostNameInput =
 
 // Output Schema
 export const ListSiteIdentifiersAssignedToHostNameOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7494,12 +7430,12 @@ export type ListSiteIdentifiersAssignedToHostNameOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const ListSiteIdentifiersAssignedToHostName =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListSiteIdentifiersAssignedToHostNameInput,
     outputSchema: ListSiteIdentifiersAssignedToHostNameOutput,
   }));
 // Input Schema
-export const ListSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListSkusInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -7511,7 +7447,7 @@ export const ListSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListSkusInput = typeof ListSkusInput.Type;
 
 // Output Schema
-export const ListSkusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListSkusOutput = /*@__PURE__*/ Schema.Struct({
   resourceType: Schema.optional(Schema.String),
   skus: Schema.optional(
     Schema.Array(
@@ -7554,13 +7490,13 @@ export type ListSkusOutput = typeof ListSkusOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ListSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ListSkus = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListSkusInput,
   outputSchema: ListSkusOutput,
 }));
 // Input Schema
 export const ListSourceControlsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
   }).pipe(
     T.Http({ method: "GET", path: "/providers/Microsoft.Web/sourcecontrols" }),
@@ -7569,7 +7505,7 @@ export type ListSourceControlsInput = typeof ListSourceControlsInput.Type;
 
 // Output Schema
 export const ListSourceControlsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7613,12 +7549,12 @@ export type ListSourceControlsOutput = typeof ListSourceControlsOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const ListSourceControls = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ListSourceControls = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListSourceControlsInput,
   outputSchema: ListSourceControlsOutput,
 }));
 // Input Schema
-export const MoveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MoveInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -7631,7 +7567,7 @@ export const MoveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type MoveInput = typeof MoveInput.Type;
 
 // Output Schema
-export const MoveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const MoveOutput = /*@__PURE__*/ Schema.Void;
 export type MoveOutput = typeof MoveOutput.Type;
 
 // The operation
@@ -7644,13 +7580,13 @@ export type MoveOutput = typeof MoveOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const Move = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const Move = /*@__PURE__*/ API.make(() => ({
   inputSchema: MoveInput,
   outputSchema: MoveOutput,
 }));
 // Input Schema
 export const ProviderGetAvailableStacksInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
     osTypeSelected: Schema.optional(
       Schema.Literals([
@@ -7669,7 +7605,7 @@ export type ProviderGetAvailableStacksInput =
 
 // Output Schema
 export const ProviderGetAvailableStacksOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7691,15 +7627,13 @@ export type ProviderGetAvailableStacksOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const ProviderGetAvailableStacks = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProviderGetAvailableStacksInput,
-    outputSchema: ProviderGetAvailableStacksOutput,
-  }),
-);
+export const ProviderGetAvailableStacks = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProviderGetAvailableStacksInput,
+  outputSchema: ProviderGetAvailableStacksOutput,
+}));
 // Input Schema
 export const ProviderGetAvailableStacksOnPremInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
     osTypeSelected: Schema.optional(
@@ -7722,7 +7656,7 @@ export type ProviderGetAvailableStacksOnPremInput =
 
 // Output Schema
 export const ProviderGetAvailableStacksOnPremOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7746,13 +7680,13 @@ export type ProviderGetAvailableStacksOnPremOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const ProviderGetAvailableStacksOnPrem =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProviderGetAvailableStacksOnPremInput,
     outputSchema: ProviderGetAvailableStacksOnPremOutput,
   }));
 // Input Schema
 export const ProviderGetFunctionAppStacksInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
     stackOsType: Schema.optional(Schema.Literals(["Windows", "Linux", "All"])),
   }).pipe(
@@ -7766,7 +7700,7 @@ export type ProviderGetFunctionAppStacksInput =
 
 // Output Schema
 export const ProviderGetFunctionAppStacksOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7790,13 +7724,13 @@ export type ProviderGetFunctionAppStacksOutput =
  * @param stackOsType - Stack OS Type
  */
 export const ProviderGetFunctionAppStacks =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProviderGetFunctionAppStacksInput,
     outputSchema: ProviderGetFunctionAppStacksOutput,
   }));
 // Input Schema
 export const ProviderGetFunctionAppStacksForLocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
     stackOsType: Schema.optional(Schema.Literals(["Windows", "Linux", "All"])),
@@ -7811,7 +7745,7 @@ export type ProviderGetFunctionAppStacksForLocationInput =
 
 // Output Schema
 export const ProviderGetFunctionAppStacksForLocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7836,13 +7770,13 @@ export type ProviderGetFunctionAppStacksForLocationOutput =
  * @param stackOsType - Stack OS Type
  */
 export const ProviderGetFunctionAppStacksForLocation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProviderGetFunctionAppStacksForLocationInput,
     outputSchema: ProviderGetFunctionAppStacksForLocationOutput,
   }));
 // Input Schema
 export const ProviderGetWebAppStacksInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
     stackOsType: Schema.optional(Schema.Literals(["Windows", "Linux", "All"])),
   }).pipe(
@@ -7853,7 +7787,7 @@ export type ProviderGetWebAppStacksInput =
 
 // Output Schema
 export const ProviderGetWebAppStacksOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7876,15 +7810,13 @@ export type ProviderGetWebAppStacksOutput =
  * @param api-version - The API version to use for this operation.
  * @param stackOsType - Stack OS Type
  */
-export const ProviderGetWebAppStacks = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProviderGetWebAppStacksInput,
-    outputSchema: ProviderGetWebAppStacksOutput,
-  }),
-);
+export const ProviderGetWebAppStacks = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProviderGetWebAppStacksInput,
+  outputSchema: ProviderGetWebAppStacksOutput,
+}));
 // Input Schema
 export const ProviderGetWebAppStacksForLocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
     stackOsType: Schema.optional(Schema.Literals(["Windows", "Linux", "All"])),
@@ -7899,7 +7831,7 @@ export type ProviderGetWebAppStacksForLocationInput =
 
 // Output Schema
 export const ProviderGetWebAppStacksForLocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7924,13 +7856,13 @@ export type ProviderGetWebAppStacksForLocationOutput =
  * @param stackOsType - Stack OS Type
  */
 export const ProviderGetWebAppStacksForLocation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProviderGetWebAppStacksForLocationInput,
     outputSchema: ProviderGetWebAppStacksForLocationOutput,
   }));
 // Input Schema
 export const ProviderListOperationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
   }).pipe(
     T.Http({ method: "GET", path: "/providers/Microsoft.Web/operations" }),
@@ -7940,7 +7872,7 @@ export type ProviderListOperationsInput =
 
 // Output Schema
 export const ProviderListOperationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         name: Schema.optional(Schema.String),
@@ -8034,15 +7966,13 @@ export type ProviderListOperationsOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const ProviderListOperations = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProviderListOperationsInput,
-    outputSchema: ProviderListOperationsOutput,
-  }),
-);
+export const ProviderListOperations = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProviderListOperationsInput,
+  outputSchema: ProviderListOperationsOutput,
+}));
 // Input Schema
 export const RecommendationsDisableAllForHostingEnvironmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hostingEnvironmentName: Schema.String.pipe(T.PathParam()),
@@ -8059,7 +7989,7 @@ export type RecommendationsDisableAllForHostingEnvironmentInput =
 
 // Output Schema
 export const RecommendationsDisableAllForHostingEnvironmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type RecommendationsDisableAllForHostingEnvironmentOutput =
   typeof RecommendationsDisableAllForHostingEnvironmentOutput.Type;
 
@@ -8076,13 +8006,13 @@ export type RecommendationsDisableAllForHostingEnvironmentOutput =
  * @param environmentName - Name of the app.
  */
 export const RecommendationsDisableAllForHostingEnvironment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RecommendationsDisableAllForHostingEnvironmentInput,
     outputSchema: RecommendationsDisableAllForHostingEnvironmentOutput,
   }));
 // Input Schema
 export const RecommendationsDisableAllForWebAppInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -8098,7 +8028,7 @@ export type RecommendationsDisableAllForWebAppInput =
 
 // Output Schema
 export const RecommendationsDisableAllForWebAppOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type RecommendationsDisableAllForWebAppOutput =
   typeof RecommendationsDisableAllForWebAppOutput.Type;
 
@@ -8114,13 +8044,13 @@ export type RecommendationsDisableAllForWebAppOutput =
  * @param siteName - Name of the app.
  */
 export const RecommendationsDisableAllForWebApp =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RecommendationsDisableAllForWebAppInput,
     outputSchema: RecommendationsDisableAllForWebAppOutput,
   }));
 // Input Schema
 export const RecommendationsDisableRecommendationForHostingEnvironmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hostingEnvironmentName: Schema.String.pipe(T.PathParam()),
@@ -8138,7 +8068,7 @@ export type RecommendationsDisableRecommendationForHostingEnvironmentInput =
 
 // Output Schema
 export const RecommendationsDisableRecommendationForHostingEnvironmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type RecommendationsDisableRecommendationForHostingEnvironmentOutput =
   typeof RecommendationsDisableRecommendationForHostingEnvironmentOutput.Type;
 
@@ -8156,14 +8086,14 @@ export type RecommendationsDisableRecommendationForHostingEnvironmentOutput =
  * @param environmentName - Site name
  */
 export const RecommendationsDisableRecommendationForHostingEnvironment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RecommendationsDisableRecommendationForHostingEnvironmentInput,
     outputSchema:
       RecommendationsDisableRecommendationForHostingEnvironmentOutput,
   }));
 // Input Schema
 export const RecommendationsDisableRecommendationForSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -8180,7 +8110,7 @@ export type RecommendationsDisableRecommendationForSiteInput =
 
 // Output Schema
 export const RecommendationsDisableRecommendationForSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type RecommendationsDisableRecommendationForSiteOutput =
   typeof RecommendationsDisableRecommendationForSiteOutput.Type;
 
@@ -8197,13 +8127,13 @@ export type RecommendationsDisableRecommendationForSiteOutput =
  * @param name - Name of the recommendation.
  */
 export const RecommendationsDisableRecommendationForSite =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RecommendationsDisableRecommendationForSiteInput,
     outputSchema: RecommendationsDisableRecommendationForSiteOutput,
   }));
 // Input Schema
 export const RecommendationsDisableRecommendationForSubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -8218,7 +8148,7 @@ export type RecommendationsDisableRecommendationForSubscriptionInput =
 
 // Output Schema
 export const RecommendationsDisableRecommendationForSubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type RecommendationsDisableRecommendationForSubscriptionOutput =
   typeof RecommendationsDisableRecommendationForSubscriptionOutput.Type;
 
@@ -8233,13 +8163,13 @@ export type RecommendationsDisableRecommendationForSubscriptionOutput =
  * @param name - Rule name
  */
 export const RecommendationsDisableRecommendationForSubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RecommendationsDisableRecommendationForSubscriptionInput,
     outputSchema: RecommendationsDisableRecommendationForSubscriptionOutput,
   }));
 // Input Schema
 export const RecommendationsGetRuleDetailsByHostingEnvironmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hostingEnvironmentName: Schema.String.pipe(T.PathParam()),
@@ -8258,7 +8188,7 @@ export type RecommendationsGetRuleDetailsByHostingEnvironmentInput =
 
 // Output Schema
 export const RecommendationsGetRuleDetailsByHostingEnvironmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8295,13 +8225,13 @@ export type RecommendationsGetRuleDetailsByHostingEnvironmentOutput =
  * @param recommendationId - The GUID of the recommendation object if you query an expired one. You don't need to specify it to query an active entry.
  */
 export const RecommendationsGetRuleDetailsByHostingEnvironment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RecommendationsGetRuleDetailsByHostingEnvironmentInput,
     outputSchema: RecommendationsGetRuleDetailsByHostingEnvironmentOutput,
   }));
 // Input Schema
 export const RecommendationsGetRuleDetailsByWebAppInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -8320,7 +8250,7 @@ export type RecommendationsGetRuleDetailsByWebAppInput =
 
 // Output Schema
 export const RecommendationsGetRuleDetailsByWebAppOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8357,13 +8287,13 @@ export type RecommendationsGetRuleDetailsByWebAppOutput =
  * @param recommendationId - The GUID of the recommendation object if you query an expired one. You don't need to specify it to query an active entry.
  */
 export const RecommendationsGetRuleDetailsByWebApp =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RecommendationsGetRuleDetailsByWebAppInput,
     outputSchema: RecommendationsGetRuleDetailsByWebAppOutput,
   }));
 // Input Schema
 export const RecommendationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
     featured: Schema.optional(Schema.Boolean),
@@ -8378,7 +8308,7 @@ export type RecommendationsListInput = typeof RecommendationsListInput.Type;
 
 // Output Schema
 export const RecommendationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8402,13 +8332,13 @@ export type RecommendationsListOutput = typeof RecommendationsListOutput.Type;
  * @param featured - Specify <code>true</code> to return only the most critical recommendations. The default is <code>false</code>, which returns all recommendations.
  * @param $filter - Filter is specified by using OData syntax. Example: $filter=channel eq 'Api' or channel eq 'Notification' and startTime eq 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq duration'[PT1H|PT1M|P1D]
  */
-export const RecommendationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RecommendationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: RecommendationsListInput,
   outputSchema: RecommendationsListOutput,
 }));
 // Input Schema
 export const RecommendationsListHistoryForHostingEnvironmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hostingEnvironmentName: Schema.String.pipe(T.PathParam()),
@@ -8426,7 +8356,7 @@ export type RecommendationsListHistoryForHostingEnvironmentInput =
 
 // Output Schema
 export const RecommendationsListHistoryForHostingEnvironmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8454,13 +8384,13 @@ export type RecommendationsListHistoryForHostingEnvironmentOutput =
  * @param $filter - Filter is specified by using OData syntax. Example: $filter=channel eq 'Api' or channel eq 'Notification' and startTime eq 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq duration'[PT1H|PT1M|P1D]
  */
 export const RecommendationsListHistoryForHostingEnvironment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RecommendationsListHistoryForHostingEnvironmentInput,
     outputSchema: RecommendationsListHistoryForHostingEnvironmentOutput,
   }));
 // Input Schema
 export const RecommendationsListHistoryForWebAppInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -8478,7 +8408,7 @@ export type RecommendationsListHistoryForWebAppInput =
 
 // Output Schema
 export const RecommendationsListHistoryForWebAppOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8506,13 +8436,13 @@ export type RecommendationsListHistoryForWebAppOutput =
  * @param $filter - Filter is specified by using OData syntax. Example: $filter=channel eq 'Api' or channel eq 'Notification' and startTime eq 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq duration'[PT1H|PT1M|P1D]
  */
 export const RecommendationsListHistoryForWebApp =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RecommendationsListHistoryForWebAppInput,
     outputSchema: RecommendationsListHistoryForWebAppOutput,
   }));
 // Input Schema
 export const RecommendationsListRecommendedRulesForHostingEnvironmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hostingEnvironmentName: Schema.String.pipe(T.PathParam()),
@@ -8530,7 +8460,7 @@ export type RecommendationsListRecommendedRulesForHostingEnvironmentInput =
 
 // Output Schema
 export const RecommendationsListRecommendedRulesForHostingEnvironmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8558,14 +8488,14 @@ export type RecommendationsListRecommendedRulesForHostingEnvironmentOutput =
  * @param $filter - Return only channels specified in the filter. Filter is specified by using OData syntax. Example: $filter=channel eq 'Api' or channel eq 'Notification'
  */
 export const RecommendationsListRecommendedRulesForHostingEnvironment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RecommendationsListRecommendedRulesForHostingEnvironmentInput,
     outputSchema:
       RecommendationsListRecommendedRulesForHostingEnvironmentOutput,
   }));
 // Input Schema
 export const RecommendationsListRecommendedRulesForWebAppInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -8583,7 +8513,7 @@ export type RecommendationsListRecommendedRulesForWebAppInput =
 
 // Output Schema
 export const RecommendationsListRecommendedRulesForWebAppOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8611,13 +8541,13 @@ export type RecommendationsListRecommendedRulesForWebAppOutput =
  * @param $filter - Return only channels specified in the filter. Filter is specified by using OData syntax. Example: $filter=channel eq 'Api' or channel eq 'Notification'
  */
 export const RecommendationsListRecommendedRulesForWebApp =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RecommendationsListRecommendedRulesForWebAppInput,
     outputSchema: RecommendationsListRecommendedRulesForWebAppOutput,
   }));
 // Input Schema
 export const RecommendationsResetAllFiltersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -8630,8 +8560,7 @@ export type RecommendationsResetAllFiltersInput =
   typeof RecommendationsResetAllFiltersInput.Type;
 
 // Output Schema
-export const RecommendationsResetAllFiltersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const RecommendationsResetAllFiltersOutput = /*@__PURE__*/ Schema.Void;
 export type RecommendationsResetAllFiltersOutput =
   typeof RecommendationsResetAllFiltersOutput.Type;
 
@@ -8645,13 +8574,13 @@ export type RecommendationsResetAllFiltersOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const RecommendationsResetAllFilters =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RecommendationsResetAllFiltersInput,
     outputSchema: RecommendationsResetAllFiltersOutput,
   }));
 // Input Schema
 export const RecommendationsResetAllFiltersForHostingEnvironmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hostingEnvironmentName: Schema.String.pipe(T.PathParam()),
@@ -8668,7 +8597,7 @@ export type RecommendationsResetAllFiltersForHostingEnvironmentInput =
 
 // Output Schema
 export const RecommendationsResetAllFiltersForHostingEnvironmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type RecommendationsResetAllFiltersForHostingEnvironmentOutput =
   typeof RecommendationsResetAllFiltersForHostingEnvironmentOutput.Type;
 
@@ -8685,13 +8614,13 @@ export type RecommendationsResetAllFiltersForHostingEnvironmentOutput =
  * @param environmentName - Name of the app.
  */
 export const RecommendationsResetAllFiltersForHostingEnvironment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RecommendationsResetAllFiltersForHostingEnvironmentInput,
     outputSchema: RecommendationsResetAllFiltersForHostingEnvironmentOutput,
   }));
 // Input Schema
 export const RecommendationsResetAllFiltersForWebAppInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -8707,7 +8636,7 @@ export type RecommendationsResetAllFiltersForWebAppInput =
 
 // Output Schema
 export const RecommendationsResetAllFiltersForWebAppOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type RecommendationsResetAllFiltersForWebAppOutput =
   typeof RecommendationsResetAllFiltersForWebAppOutput.Type;
 
@@ -8723,13 +8652,13 @@ export type RecommendationsResetAllFiltersForWebAppOutput =
  * @param siteName - Name of the app.
  */
 export const RecommendationsResetAllFiltersForWebApp =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RecommendationsResetAllFiltersForWebAppInput,
     outputSchema: RecommendationsResetAllFiltersForWebAppOutput,
   }));
 // Input Schema
 export const RegionalCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -8744,7 +8673,7 @@ export type RegionalCheckNameAvailabilityInput =
 
 // Output Schema
 export const RegionalCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     hostName: Schema.optional(Schema.String),
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
@@ -8762,13 +8691,13 @@ export type RegionalCheckNameAvailabilityOutput =
  * @param location - The name of the Azure region.
  */
 export const RegionalCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RegionalCheckNameAvailabilityInput,
     outputSchema: RegionalCheckNameAvailabilityOutput,
   }));
 // Input Schema
 export const ResourceHealthMetadataGetBySiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -8784,7 +8713,7 @@ export type ResourceHealthMetadataGetBySiteInput =
 
 // Output Schema
 export const ResourceHealthMetadataGetBySiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8818,13 +8747,13 @@ export type ResourceHealthMetadataGetBySiteOutput =
  * @param name - Name of web app
  */
 export const ResourceHealthMetadataGetBySite =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ResourceHealthMetadataGetBySiteInput,
     outputSchema: ResourceHealthMetadataGetBySiteOutput,
   }));
 // Input Schema
 export const ResourceHealthMetadataGetBySiteSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -8841,7 +8770,7 @@ export type ResourceHealthMetadataGetBySiteSlotInput =
 
 // Output Schema
 export const ResourceHealthMetadataGetBySiteSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8876,13 +8805,13 @@ export type ResourceHealthMetadataGetBySiteSlotOutput =
  * @param slot - Name of web app slot. If not specified then will default to production slot.
  */
 export const ResourceHealthMetadataGetBySiteSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ResourceHealthMetadataGetBySiteSlotInput,
     outputSchema: ResourceHealthMetadataGetBySiteSlotOutput,
   }));
 // Input Schema
 export const ResourceHealthMetadataListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -8896,7 +8825,7 @@ export type ResourceHealthMetadataListInput =
 
 // Output Schema
 export const ResourceHealthMetadataListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8942,15 +8871,13 @@ export type ResourceHealthMetadataListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ResourceHealthMetadataList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ResourceHealthMetadataListInput,
-    outputSchema: ResourceHealthMetadataListOutput,
-  }),
-);
+export const ResourceHealthMetadataList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ResourceHealthMetadataListInput,
+  outputSchema: ResourceHealthMetadataListOutput,
+}));
 // Input Schema
 export const ResourceHealthMetadataListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -8965,7 +8892,7 @@ export type ResourceHealthMetadataListByResourceGroupInput =
 
 // Output Schema
 export const ResourceHealthMetadataListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -9013,13 +8940,13 @@ export type ResourceHealthMetadataListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const ResourceHealthMetadataListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ResourceHealthMetadataListByResourceGroupInput,
     outputSchema: ResourceHealthMetadataListByResourceGroupOutput,
   }));
 // Input Schema
 export const ResourceHealthMetadataListBySiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -9035,7 +8962,7 @@ export type ResourceHealthMetadataListBySiteInput =
 
 // Output Schema
 export const ResourceHealthMetadataListBySiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -9084,13 +9011,13 @@ export type ResourceHealthMetadataListBySiteOutput =
  * @param name - Name of web app
  */
 export const ResourceHealthMetadataListBySite =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ResourceHealthMetadataListBySiteInput,
     outputSchema: ResourceHealthMetadataListBySiteOutput,
   }));
 // Input Schema
 export const ResourceHealthMetadataListBySiteSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -9107,7 +9034,7 @@ export type ResourceHealthMetadataListBySiteSlotInput =
 
 // Output Schema
 export const ResourceHealthMetadataListBySiteSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -9157,13 +9084,13 @@ export type ResourceHealthMetadataListBySiteSlotOutput =
  * @param slot - Name of web app slot. If not specified then will default to production slot.
  */
 export const ResourceHealthMetadataListBySiteSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ResourceHealthMetadataListBySiteSlotInput,
     outputSchema: ResourceHealthMetadataListBySiteSlotOutput,
   }));
 // Input Schema
 export const SiteCertificatesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -9180,7 +9107,7 @@ export type SiteCertificatesCreateOrUpdateInput =
 
 // Output Schema
 export const SiteCertificatesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9213,13 +9140,13 @@ export type SiteCertificatesCreateOrUpdateOutput =
  * @param certificateName - Name of the certificate.
  */
 export const SiteCertificatesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SiteCertificatesCreateOrUpdateInput,
     outputSchema: SiteCertificatesCreateOrUpdateOutput,
   }));
 // Input Schema
 export const SiteCertificatesCreateOrUpdateSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -9237,7 +9164,7 @@ export type SiteCertificatesCreateOrUpdateSlotInput =
 
 // Output Schema
 export const SiteCertificatesCreateOrUpdateSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9271,13 +9198,13 @@ export type SiteCertificatesCreateOrUpdateSlotOutput =
  * @param certificateName - Name of the certificate.
  */
 export const SiteCertificatesCreateOrUpdateSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SiteCertificatesCreateOrUpdateSlotInput,
     outputSchema: SiteCertificatesCreateOrUpdateSlotOutput,
   }));
 // Input Schema
 export const SiteCertificatesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -9293,8 +9220,7 @@ export type SiteCertificatesDeleteInput =
   typeof SiteCertificatesDeleteInput.Type;
 
 // Output Schema
-export const SiteCertificatesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const SiteCertificatesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type SiteCertificatesDeleteOutput =
   typeof SiteCertificatesDeleteOutput.Type;
 
@@ -9308,15 +9234,13 @@ export type SiteCertificatesDeleteOutput =
  * @param name - Name of the site.
  * @param certificateName - Name of the certificate.
  */
-export const SiteCertificatesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SiteCertificatesDeleteInput,
-    outputSchema: SiteCertificatesDeleteOutput,
-  }),
-);
+export const SiteCertificatesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SiteCertificatesDeleteInput,
+  outputSchema: SiteCertificatesDeleteOutput,
+}));
 // Input Schema
 export const SiteCertificatesDeleteSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -9333,8 +9257,7 @@ export type SiteCertificatesDeleteSlotInput =
   typeof SiteCertificatesDeleteSlotInput.Type;
 
 // Output Schema
-export const SiteCertificatesDeleteSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const SiteCertificatesDeleteSlotOutput = /*@__PURE__*/ Schema.Void;
 export type SiteCertificatesDeleteSlotOutput =
   typeof SiteCertificatesDeleteSlotOutput.Type;
 
@@ -9349,15 +9272,13 @@ export type SiteCertificatesDeleteSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will create a binding for the production slot.
  * @param certificateName - Name of the certificate.
  */
-export const SiteCertificatesDeleteSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SiteCertificatesDeleteSlotInput,
-    outputSchema: SiteCertificatesDeleteSlotOutput,
-  }),
-);
+export const SiteCertificatesDeleteSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SiteCertificatesDeleteSlotInput,
+  outputSchema: SiteCertificatesDeleteSlotOutput,
+}));
 // Input Schema
 export const SiteCertificatesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -9373,7 +9294,7 @@ export type SiteCertificatesGetInput = typeof SiteCertificatesGetInput.Type;
 
 // Output Schema
 export const SiteCertificatesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9404,13 +9325,13 @@ export type SiteCertificatesGetOutput = typeof SiteCertificatesGetOutput.Type;
  * @param name - Name of the site.
  * @param certificateName - Name of the certificate.
  */
-export const SiteCertificatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SiteCertificatesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SiteCertificatesGetInput,
   outputSchema: SiteCertificatesGetOutput,
 }));
 // Input Schema
 export const SiteCertificatesGetSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -9428,7 +9349,7 @@ export type SiteCertificatesGetSlotInput =
 
 // Output Schema
 export const SiteCertificatesGetSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9461,15 +9382,13 @@ export type SiteCertificatesGetSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will create a binding for the production slot.
  * @param certificateName - Name of the certificate.
  */
-export const SiteCertificatesGetSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SiteCertificatesGetSlotInput,
-    outputSchema: SiteCertificatesGetSlotOutput,
-  }),
-);
+export const SiteCertificatesGetSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SiteCertificatesGetSlotInput,
+  outputSchema: SiteCertificatesGetSlotOutput,
+}));
 // Input Schema
 export const SiteCertificatesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -9484,7 +9403,7 @@ export type SiteCertificatesListInput = typeof SiteCertificatesListInput.Type;
 
 // Output Schema
 export const SiteCertificatesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -9529,15 +9448,13 @@ export type SiteCertificatesListOutput = typeof SiteCertificatesListOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the site.
  */
-export const SiteCertificatesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SiteCertificatesListInput,
-    outputSchema: SiteCertificatesListOutput,
-  }),
-);
+export const SiteCertificatesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SiteCertificatesListInput,
+  outputSchema: SiteCertificatesListOutput,
+}));
 // Input Schema
 export const SiteCertificatesListSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -9554,7 +9471,7 @@ export type SiteCertificatesListSlotInput =
 
 // Output Schema
 export const SiteCertificatesListSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -9601,15 +9518,13 @@ export type SiteCertificatesListSlotOutput =
  * @param name - Name of the site.
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will create a binding for the production slot.
  */
-export const SiteCertificatesListSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SiteCertificatesListSlotInput,
-    outputSchema: SiteCertificatesListSlotOutput,
-  }),
-);
+export const SiteCertificatesListSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SiteCertificatesListSlotInput,
+  outputSchema: SiteCertificatesListSlotOutput,
+}));
 // Input Schema
 export const SiteCertificatesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -9626,7 +9541,7 @@ export type SiteCertificatesUpdateInput =
 
 // Output Schema
 export const SiteCertificatesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9658,15 +9573,13 @@ export type SiteCertificatesUpdateOutput =
  * @param name - Name of the site.
  * @param certificateName - Name of the certificate.
  */
-export const SiteCertificatesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SiteCertificatesUpdateInput,
-    outputSchema: SiteCertificatesUpdateOutput,
-  }),
-);
+export const SiteCertificatesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SiteCertificatesUpdateInput,
+  outputSchema: SiteCertificatesUpdateOutput,
+}));
 // Input Schema
 export const SiteCertificatesUpdateSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -9684,7 +9597,7 @@ export type SiteCertificatesUpdateSlotInput =
 
 // Output Schema
 export const SiteCertificatesUpdateSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9717,15 +9630,13 @@ export type SiteCertificatesUpdateSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will create a binding for the production slot.
  * @param certificateName - Name of the certificate.
  */
-export const SiteCertificatesUpdateSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SiteCertificatesUpdateSlotInput,
-    outputSchema: SiteCertificatesUpdateSlotOutput,
-  }),
-);
+export const SiteCertificatesUpdateSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SiteCertificatesUpdateSlotInput,
+  outputSchema: SiteCertificatesUpdateSlotOutput,
+}));
 // Input Schema
 export const StaticSitesApproveOrRejectPrivateEndpointConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -9742,7 +9653,7 @@ export type StaticSitesApproveOrRejectPrivateEndpointConnectionInput =
 
 // Output Schema
 export const StaticSitesApproveOrRejectPrivateEndpointConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9777,13 +9688,13 @@ export type StaticSitesApproveOrRejectPrivateEndpointConnectionOutput =
  * @param privateEndpointConnectionName - Name of the private endpoint connection.
  */
 export const StaticSitesApproveOrRejectPrivateEndpointConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesApproveOrRejectPrivateEndpointConnectionInput,
     outputSchema: StaticSitesApproveOrRejectPrivateEndpointConnectionOutput,
   }));
 // Input Schema
 export const StaticSitesCreateOrUpdateBasicAuthInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -9800,7 +9711,7 @@ export type StaticSitesCreateOrUpdateBasicAuthInput =
 
 // Output Schema
 export const StaticSitesCreateOrUpdateBasicAuthOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9835,13 +9746,13 @@ export type StaticSitesCreateOrUpdateBasicAuthOutput =
  * @param basicAuthName - name of the basic auth entry.
  */
 export const StaticSitesCreateOrUpdateBasicAuth =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesCreateOrUpdateBasicAuthInput,
     outputSchema: StaticSitesCreateOrUpdateBasicAuthOutput,
   }));
 // Input Schema
 export const StaticSitesCreateOrUpdateBuildDatabaseConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -9859,7 +9770,7 @@ export type StaticSitesCreateOrUpdateBuildDatabaseConnectionInput =
 
 // Output Schema
 export const StaticSitesCreateOrUpdateBuildDatabaseConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9895,13 +9806,13 @@ export type StaticSitesCreateOrUpdateBuildDatabaseConnectionOutput =
  * @param databaseConnectionName - Name of the database connection.
  */
 export const StaticSitesCreateOrUpdateBuildDatabaseConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesCreateOrUpdateBuildDatabaseConnectionInput,
     outputSchema: StaticSitesCreateOrUpdateBuildDatabaseConnectionOutput,
   }));
 // Input Schema
 export const StaticSitesCreateOrUpdateDatabaseConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -9918,7 +9829,7 @@ export type StaticSitesCreateOrUpdateDatabaseConnectionInput =
 
 // Output Schema
 export const StaticSitesCreateOrUpdateDatabaseConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9953,13 +9864,13 @@ export type StaticSitesCreateOrUpdateDatabaseConnectionOutput =
  * @param databaseConnectionName - Name of the database connection.
  */
 export const StaticSitesCreateOrUpdateDatabaseConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesCreateOrUpdateDatabaseConnectionInput,
     outputSchema: StaticSitesCreateOrUpdateDatabaseConnectionOutput,
   }));
 // Input Schema
 export const StaticSitesCreateOrUpdateStaticSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -9975,7 +9886,7 @@ export type StaticSitesCreateOrUpdateStaticSiteInput =
 
 // Output Schema
 export const StaticSitesCreateOrUpdateStaticSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10009,13 +9920,13 @@ export type StaticSitesCreateOrUpdateStaticSiteOutput =
  * @param name - Name of the static site.
  */
 export const StaticSitesCreateOrUpdateStaticSite =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesCreateOrUpdateStaticSiteInput,
     outputSchema: StaticSitesCreateOrUpdateStaticSiteOutput,
   }));
 // Input Schema
 export const StaticSitesCreateOrUpdateStaticSiteAppSettingsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -10031,7 +9942,7 @@ export type StaticSitesCreateOrUpdateStaticSiteAppSettingsInput =
 
 // Output Schema
 export const StaticSitesCreateOrUpdateStaticSiteAppSettingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -10052,13 +9963,13 @@ export type StaticSitesCreateOrUpdateStaticSiteAppSettingsOutput =
  * @param name - Name of the static site.
  */
 export const StaticSitesCreateOrUpdateStaticSiteAppSettings =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesCreateOrUpdateStaticSiteAppSettingsInput,
     outputSchema: StaticSitesCreateOrUpdateStaticSiteAppSettingsOutput,
   }));
 // Input Schema
 export const StaticSitesCreateOrUpdateStaticSiteBuildAppSettingsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -10075,7 +9986,7 @@ export type StaticSitesCreateOrUpdateStaticSiteBuildAppSettingsInput =
 
 // Output Schema
 export const StaticSitesCreateOrUpdateStaticSiteBuildAppSettingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -10097,13 +10008,13 @@ export type StaticSitesCreateOrUpdateStaticSiteBuildAppSettingsOutput =
  * @param environmentName - The stage site identifier.
  */
 export const StaticSitesCreateOrUpdateStaticSiteBuildAppSettings =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesCreateOrUpdateStaticSiteBuildAppSettingsInput,
     outputSchema: StaticSitesCreateOrUpdateStaticSiteBuildAppSettingsOutput,
   }));
 // Input Schema
 export const StaticSitesCreateOrUpdateStaticSiteBuildFunctionAppSettingsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -10120,7 +10031,7 @@ export type StaticSitesCreateOrUpdateStaticSiteBuildFunctionAppSettingsInput =
 
 // Output Schema
 export const StaticSitesCreateOrUpdateStaticSiteBuildFunctionAppSettingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -10142,7 +10053,7 @@ export type StaticSitesCreateOrUpdateStaticSiteBuildFunctionAppSettingsOutput =
  * @param environmentName - The stage site identifier.
  */
 export const StaticSitesCreateOrUpdateStaticSiteBuildFunctionAppSettings =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       StaticSitesCreateOrUpdateStaticSiteBuildFunctionAppSettingsInput,
     outputSchema:
@@ -10150,7 +10061,7 @@ export const StaticSitesCreateOrUpdateStaticSiteBuildFunctionAppSettings =
   }));
 // Input Schema
 export const StaticSitesCreateOrUpdateStaticSiteCustomDomainInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -10167,7 +10078,7 @@ export type StaticSitesCreateOrUpdateStaticSiteCustomDomainInput =
 
 // Output Schema
 export const StaticSitesCreateOrUpdateStaticSiteCustomDomainOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10202,13 +10113,13 @@ export type StaticSitesCreateOrUpdateStaticSiteCustomDomainOutput =
  * @param domainName - The custom domain name.
  */
 export const StaticSitesCreateOrUpdateStaticSiteCustomDomain =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesCreateOrUpdateStaticSiteCustomDomainInput,
     outputSchema: StaticSitesCreateOrUpdateStaticSiteCustomDomainOutput,
   }));
 // Input Schema
 export const StaticSitesCreateOrUpdateStaticSiteFunctionAppSettingsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -10224,7 +10135,7 @@ export type StaticSitesCreateOrUpdateStaticSiteFunctionAppSettingsInput =
 
 // Output Schema
 export const StaticSitesCreateOrUpdateStaticSiteFunctionAppSettingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -10245,13 +10156,13 @@ export type StaticSitesCreateOrUpdateStaticSiteFunctionAppSettingsOutput =
  * @param name - Name of the static site.
  */
 export const StaticSitesCreateOrUpdateStaticSiteFunctionAppSettings =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesCreateOrUpdateStaticSiteFunctionAppSettingsInput,
     outputSchema: StaticSitesCreateOrUpdateStaticSiteFunctionAppSettingsOutput,
   }));
 // Input Schema
 export const StaticSitesCreateUserRolesInvitationLinkInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -10267,7 +10178,7 @@ export type StaticSitesCreateUserRolesInvitationLinkInput =
 
 // Output Schema
 export const StaticSitesCreateUserRolesInvitationLinkOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -10288,13 +10199,13 @@ export type StaticSitesCreateUserRolesInvitationLinkOutput =
  * @param name - Name of the static site.
  */
 export const StaticSitesCreateUserRolesInvitationLink =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesCreateUserRolesInvitationLinkInput,
     outputSchema: StaticSitesCreateUserRolesInvitationLinkOutput,
   }));
 // Input Schema
 export const StaticSitesCreateZipDeploymentForStaticSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -10310,7 +10221,7 @@ export type StaticSitesCreateZipDeploymentForStaticSiteInput =
 
 // Output Schema
 export const StaticSitesCreateZipDeploymentForStaticSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type StaticSitesCreateZipDeploymentForStaticSiteOutput =
   typeof StaticSitesCreateZipDeploymentForStaticSiteOutput.Type;
 
@@ -10326,13 +10237,13 @@ export type StaticSitesCreateZipDeploymentForStaticSiteOutput =
  * @param name - Name of the static site.
  */
 export const StaticSitesCreateZipDeploymentForStaticSite =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesCreateZipDeploymentForStaticSiteInput,
     outputSchema: StaticSitesCreateZipDeploymentForStaticSiteOutput,
   }));
 // Input Schema
 export const StaticSitesCreateZipDeploymentForStaticSiteBuildInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -10349,7 +10260,7 @@ export type StaticSitesCreateZipDeploymentForStaticSiteBuildInput =
 
 // Output Schema
 export const StaticSitesCreateZipDeploymentForStaticSiteBuildOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type StaticSitesCreateZipDeploymentForStaticSiteBuildOutput =
   typeof StaticSitesCreateZipDeploymentForStaticSiteBuildOutput.Type;
 
@@ -10366,13 +10277,13 @@ export type StaticSitesCreateZipDeploymentForStaticSiteBuildOutput =
  * @param environmentName - The stage site identifier.
  */
 export const StaticSitesCreateZipDeploymentForStaticSiteBuild =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesCreateZipDeploymentForStaticSiteBuildInput,
     outputSchema: StaticSitesCreateZipDeploymentForStaticSiteBuildOutput,
   }));
 // Input Schema
 export const StaticSitesDeleteBuildDatabaseConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -10390,7 +10301,7 @@ export type StaticSitesDeleteBuildDatabaseConnectionInput =
 
 // Output Schema
 export const StaticSitesDeleteBuildDatabaseConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type StaticSitesDeleteBuildDatabaseConnectionOutput =
   typeof StaticSitesDeleteBuildDatabaseConnectionOutput.Type;
 
@@ -10406,13 +10317,13 @@ export type StaticSitesDeleteBuildDatabaseConnectionOutput =
  * @param databaseConnectionName - Name of the database connection.
  */
 export const StaticSitesDeleteBuildDatabaseConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesDeleteBuildDatabaseConnectionInput,
     outputSchema: StaticSitesDeleteBuildDatabaseConnectionOutput,
   }));
 // Input Schema
 export const StaticSitesDeleteDatabaseConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -10429,7 +10340,7 @@ export type StaticSitesDeleteDatabaseConnectionInput =
 
 // Output Schema
 export const StaticSitesDeleteDatabaseConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type StaticSitesDeleteDatabaseConnectionOutput =
   typeof StaticSitesDeleteDatabaseConnectionOutput.Type;
 
@@ -10444,13 +10355,13 @@ export type StaticSitesDeleteDatabaseConnectionOutput =
  * @param databaseConnectionName - Name of the database connection.
  */
 export const StaticSitesDeleteDatabaseConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesDeleteDatabaseConnectionInput,
     outputSchema: StaticSitesDeleteDatabaseConnectionOutput,
   }));
 // Input Schema
 export const StaticSitesDeletePrivateEndpointConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -10467,7 +10378,7 @@ export type StaticSitesDeletePrivateEndpointConnectionInput =
 
 // Output Schema
 export const StaticSitesDeletePrivateEndpointConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+  /*@__PURE__*/ Schema.Unknown;
 export type StaticSitesDeletePrivateEndpointConnectionOutput =
   typeof StaticSitesDeletePrivateEndpointConnectionOutput.Type;
 
@@ -10484,13 +10395,13 @@ export type StaticSitesDeletePrivateEndpointConnectionOutput =
  * @param privateEndpointConnectionName - Name of the private endpoint connection.
  */
 export const StaticSitesDeletePrivateEndpointConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesDeletePrivateEndpointConnectionInput,
     outputSchema: StaticSitesDeletePrivateEndpointConnectionOutput,
   }));
 // Input Schema
 export const StaticSitesDeleteStaticSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -10505,8 +10416,7 @@ export type StaticSitesDeleteStaticSiteInput =
   typeof StaticSitesDeleteStaticSiteInput.Type;
 
 // Output Schema
-export const StaticSitesDeleteStaticSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const StaticSitesDeleteStaticSiteOutput = /*@__PURE__*/ Schema.Void;
 export type StaticSitesDeleteStaticSiteOutput =
   typeof StaticSitesDeleteStaticSiteOutput.Type;
 
@@ -10521,15 +10431,13 @@ export type StaticSitesDeleteStaticSiteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the static site.
  */
-export const StaticSitesDeleteStaticSite = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StaticSitesDeleteStaticSiteInput,
-    outputSchema: StaticSitesDeleteStaticSiteOutput,
-  }),
-);
+export const StaticSitesDeleteStaticSite = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StaticSitesDeleteStaticSiteInput,
+  outputSchema: StaticSitesDeleteStaticSiteOutput,
+}));
 // Input Schema
 export const StaticSitesDeleteStaticSiteBuildInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -10545,8 +10453,7 @@ export type StaticSitesDeleteStaticSiteBuildInput =
   typeof StaticSitesDeleteStaticSiteBuildInput.Type;
 
 // Output Schema
-export const StaticSitesDeleteStaticSiteBuildOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const StaticSitesDeleteStaticSiteBuildOutput = /*@__PURE__*/ Schema.Void;
 export type StaticSitesDeleteStaticSiteBuildOutput =
   typeof StaticSitesDeleteStaticSiteBuildOutput.Type;
 
@@ -10563,13 +10470,13 @@ export type StaticSitesDeleteStaticSiteBuildOutput =
  * @param environmentName - The stage site identifier.
  */
 export const StaticSitesDeleteStaticSiteBuild =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesDeleteStaticSiteBuildInput,
     outputSchema: StaticSitesDeleteStaticSiteBuildOutput,
   }));
 // Input Schema
 export const StaticSitesDeleteStaticSiteCustomDomainInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -10586,7 +10493,7 @@ export type StaticSitesDeleteStaticSiteCustomDomainInput =
 
 // Output Schema
 export const StaticSitesDeleteStaticSiteCustomDomainOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type StaticSitesDeleteStaticSiteCustomDomainOutput =
   typeof StaticSitesDeleteStaticSiteCustomDomainOutput.Type;
 
@@ -10603,13 +10510,13 @@ export type StaticSitesDeleteStaticSiteCustomDomainOutput =
  * @param domainName - The custom domain name.
  */
 export const StaticSitesDeleteStaticSiteCustomDomain =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesDeleteStaticSiteCustomDomainInput,
     outputSchema: StaticSitesDeleteStaticSiteCustomDomainOutput,
   }));
 // Input Schema
 export const StaticSitesDeleteStaticSiteUserInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -10626,8 +10533,7 @@ export type StaticSitesDeleteStaticSiteUserInput =
   typeof StaticSitesDeleteStaticSiteUserInput.Type;
 
 // Output Schema
-export const StaticSitesDeleteStaticSiteUserOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const StaticSitesDeleteStaticSiteUserOutput = /*@__PURE__*/ Schema.Void;
 export type StaticSitesDeleteStaticSiteUserOutput =
   typeof StaticSitesDeleteStaticSiteUserOutput.Type;
 
@@ -10642,13 +10548,13 @@ export type StaticSitesDeleteStaticSiteUserOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const StaticSitesDeleteStaticSiteUser =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesDeleteStaticSiteUserInput,
     outputSchema: StaticSitesDeleteStaticSiteUserOutput,
   }));
 // Input Schema
 export const StaticSitesDetachStaticSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -10663,8 +10569,7 @@ export type StaticSitesDetachStaticSiteInput =
   typeof StaticSitesDetachStaticSiteInput.Type;
 
 // Output Schema
-export const StaticSitesDetachStaticSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const StaticSitesDetachStaticSiteOutput = /*@__PURE__*/ Schema.Void;
 export type StaticSitesDetachStaticSiteOutput =
   typeof StaticSitesDetachStaticSiteOutput.Type;
 
@@ -10679,15 +10584,13 @@ export type StaticSitesDetachStaticSiteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the static site.
  */
-export const StaticSitesDetachStaticSite = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StaticSitesDetachStaticSiteInput,
-    outputSchema: StaticSitesDetachStaticSiteOutput,
-  }),
-);
+export const StaticSitesDetachStaticSite = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StaticSitesDetachStaticSiteInput,
+  outputSchema: StaticSitesDetachStaticSiteOutput,
+}));
 // Input Schema
 export const StaticSitesDetachUserProvidedFunctionAppFromStaticSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -10704,7 +10607,7 @@ export type StaticSitesDetachUserProvidedFunctionAppFromStaticSiteInput =
 
 // Output Schema
 export const StaticSitesDetachUserProvidedFunctionAppFromStaticSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type StaticSitesDetachUserProvidedFunctionAppFromStaticSiteOutput =
   typeof StaticSitesDetachUserProvidedFunctionAppFromStaticSiteOutput.Type;
 
@@ -10721,13 +10624,13 @@ export type StaticSitesDetachUserProvidedFunctionAppFromStaticSiteOutput =
  * @param functionAppName - Name of the function app registered with the static site.
  */
 export const StaticSitesDetachUserProvidedFunctionAppFromStaticSite =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesDetachUserProvidedFunctionAppFromStaticSiteInput,
     outputSchema: StaticSitesDetachUserProvidedFunctionAppFromStaticSiteOutput,
   }));
 // Input Schema
 export const StaticSitesDetachUserProvidedFunctionAppFromStaticSiteBuildInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -10745,7 +10648,7 @@ export type StaticSitesDetachUserProvidedFunctionAppFromStaticSiteBuildInput =
 
 // Output Schema
 export const StaticSitesDetachUserProvidedFunctionAppFromStaticSiteBuildOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type StaticSitesDetachUserProvidedFunctionAppFromStaticSiteBuildOutput =
   typeof StaticSitesDetachUserProvidedFunctionAppFromStaticSiteBuildOutput.Type;
 
@@ -10763,7 +10666,7 @@ export type StaticSitesDetachUserProvidedFunctionAppFromStaticSiteBuildOutput =
  * @param functionAppName - Name of the function app registered with the static site build.
  */
 export const StaticSitesDetachUserProvidedFunctionAppFromStaticSiteBuild =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       StaticSitesDetachUserProvidedFunctionAppFromStaticSiteBuildInput,
     outputSchema:
@@ -10771,7 +10674,7 @@ export const StaticSitesDetachUserProvidedFunctionAppFromStaticSiteBuild =
   }));
 // Input Schema
 export const StaticSitesGetBasicAuthInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -10788,7 +10691,7 @@ export type StaticSitesGetBasicAuthInput =
 
 // Output Schema
 export const StaticSitesGetBasicAuthOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10822,15 +10725,13 @@ export type StaticSitesGetBasicAuthOutput =
  * @param name - Name of the static site.
  * @param basicAuthName - name of the basic auth entry.
  */
-export const StaticSitesGetBasicAuth = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StaticSitesGetBasicAuthInput,
-    outputSchema: StaticSitesGetBasicAuthOutput,
-  }),
-);
+export const StaticSitesGetBasicAuth = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StaticSitesGetBasicAuthInput,
+  outputSchema: StaticSitesGetBasicAuthOutput,
+}));
 // Input Schema
 export const StaticSitesGetBuildDatabaseConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -10848,7 +10749,7 @@ export type StaticSitesGetBuildDatabaseConnectionInput =
 
 // Output Schema
 export const StaticSitesGetBuildDatabaseConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10882,13 +10783,13 @@ export type StaticSitesGetBuildDatabaseConnectionOutput =
  * @param databaseConnectionName - Name of the database connection.
  */
 export const StaticSitesGetBuildDatabaseConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesGetBuildDatabaseConnectionInput,
     outputSchema: StaticSitesGetBuildDatabaseConnectionOutput,
   }));
 // Input Schema
 export const StaticSitesGetBuildDatabaseConnectionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -10905,7 +10806,7 @@ export type StaticSitesGetBuildDatabaseConnectionsInput =
 
 // Output Schema
 export const StaticSitesGetBuildDatabaseConnectionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -10953,13 +10854,13 @@ export type StaticSitesGetBuildDatabaseConnectionsOutput =
  * @param environmentName - The stage site identifier.
  */
 export const StaticSitesGetBuildDatabaseConnections =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesGetBuildDatabaseConnectionsInput,
     outputSchema: StaticSitesGetBuildDatabaseConnectionsOutput,
   }));
 // Input Schema
 export const StaticSitesGetBuildDatabaseConnectionsWithDetailsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -10976,7 +10877,7 @@ export type StaticSitesGetBuildDatabaseConnectionsWithDetailsInput =
 
 // Output Schema
 export const StaticSitesGetBuildDatabaseConnectionsWithDetailsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -11024,13 +10925,13 @@ export type StaticSitesGetBuildDatabaseConnectionsWithDetailsOutput =
  * @param environmentName - The stage site identifier.
  */
 export const StaticSitesGetBuildDatabaseConnectionsWithDetails =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesGetBuildDatabaseConnectionsWithDetailsInput,
     outputSchema: StaticSitesGetBuildDatabaseConnectionsWithDetailsOutput,
   }));
 // Input Schema
 export const StaticSitesGetBuildDatabaseConnectionWithDetailsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -11048,7 +10949,7 @@ export type StaticSitesGetBuildDatabaseConnectionWithDetailsInput =
 
 // Output Schema
 export const StaticSitesGetBuildDatabaseConnectionWithDetailsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11082,13 +10983,13 @@ export type StaticSitesGetBuildDatabaseConnectionWithDetailsOutput =
  * @param databaseConnectionName - Name of the database connection.
  */
 export const StaticSitesGetBuildDatabaseConnectionWithDetails =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesGetBuildDatabaseConnectionWithDetailsInput,
     outputSchema: StaticSitesGetBuildDatabaseConnectionWithDetailsOutput,
   }));
 // Input Schema
 export const StaticSitesGetDatabaseConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -11105,7 +11006,7 @@ export type StaticSitesGetDatabaseConnectionInput =
 
 // Output Schema
 export const StaticSitesGetDatabaseConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11138,13 +11039,13 @@ export type StaticSitesGetDatabaseConnectionOutput =
  * @param databaseConnectionName - Name of the database connection.
  */
 export const StaticSitesGetDatabaseConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesGetDatabaseConnectionInput,
     outputSchema: StaticSitesGetDatabaseConnectionOutput,
   }));
 // Input Schema
 export const StaticSitesGetDatabaseConnectionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -11160,7 +11061,7 @@ export type StaticSitesGetDatabaseConnectionsInput =
 
 // Output Schema
 export const StaticSitesGetDatabaseConnectionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -11207,13 +11108,13 @@ export type StaticSitesGetDatabaseConnectionsOutput =
  * @param name - Name of the static site
  */
 export const StaticSitesGetDatabaseConnections =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesGetDatabaseConnectionsInput,
     outputSchema: StaticSitesGetDatabaseConnectionsOutput,
   }));
 // Input Schema
 export const StaticSitesGetDatabaseConnectionsWithDetailsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -11229,7 +11130,7 @@ export type StaticSitesGetDatabaseConnectionsWithDetailsInput =
 
 // Output Schema
 export const StaticSitesGetDatabaseConnectionsWithDetailsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -11276,13 +11177,13 @@ export type StaticSitesGetDatabaseConnectionsWithDetailsOutput =
  * @param name - Name of the static site.
  */
 export const StaticSitesGetDatabaseConnectionsWithDetails =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesGetDatabaseConnectionsWithDetailsInput,
     outputSchema: StaticSitesGetDatabaseConnectionsWithDetailsOutput,
   }));
 // Input Schema
 export const StaticSitesGetDatabaseConnectionWithDetailsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -11299,7 +11200,7 @@ export type StaticSitesGetDatabaseConnectionWithDetailsInput =
 
 // Output Schema
 export const StaticSitesGetDatabaseConnectionWithDetailsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11332,13 +11233,13 @@ export type StaticSitesGetDatabaseConnectionWithDetailsOutput =
  * @param databaseConnectionName - Name of the database connection.
  */
 export const StaticSitesGetDatabaseConnectionWithDetails =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesGetDatabaseConnectionWithDetailsInput,
     outputSchema: StaticSitesGetDatabaseConnectionWithDetailsOutput,
   }));
 // Input Schema
 export const StaticSitesGetLinkedBackendInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -11355,7 +11256,7 @@ export type StaticSitesGetLinkedBackendInput =
 
 // Output Schema
 export const StaticSitesGetLinkedBackendOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11387,15 +11288,13 @@ export type StaticSitesGetLinkedBackendOutput =
  * @param name - Name of the static site
  * @param linkedBackendName - Name of the linked backend that should be retrieved
  */
-export const StaticSitesGetLinkedBackend = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StaticSitesGetLinkedBackendInput,
-    outputSchema: StaticSitesGetLinkedBackendOutput,
-  }),
-);
+export const StaticSitesGetLinkedBackend = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StaticSitesGetLinkedBackendInput,
+  outputSchema: StaticSitesGetLinkedBackendOutput,
+}));
 // Input Schema
 export const StaticSitesGetLinkedBackendForBuildInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -11413,7 +11312,7 @@ export type StaticSitesGetLinkedBackendForBuildInput =
 
 // Output Schema
 export const StaticSitesGetLinkedBackendForBuildOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11447,13 +11346,13 @@ export type StaticSitesGetLinkedBackendForBuildOutput =
  * @param linkedBackendName - Name of the linked backend that should be retrieved
  */
 export const StaticSitesGetLinkedBackendForBuild =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesGetLinkedBackendForBuildInput,
     outputSchema: StaticSitesGetLinkedBackendForBuildOutput,
   }));
 // Input Schema
 export const StaticSitesGetLinkedBackendsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -11469,7 +11368,7 @@ export type StaticSitesGetLinkedBackendsInput =
 
 // Output Schema
 export const StaticSitesGetLinkedBackendsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -11516,13 +11415,13 @@ export type StaticSitesGetLinkedBackendsOutput =
  * @param name - Name of the static site
  */
 export const StaticSitesGetLinkedBackends =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesGetLinkedBackendsInput,
     outputSchema: StaticSitesGetLinkedBackendsOutput,
   }));
 // Input Schema
 export const StaticSitesGetLinkedBackendsForBuildInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -11539,7 +11438,7 @@ export type StaticSitesGetLinkedBackendsForBuildInput =
 
 // Output Schema
 export const StaticSitesGetLinkedBackendsForBuildOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -11587,13 +11486,13 @@ export type StaticSitesGetLinkedBackendsForBuildOutput =
  * @param environmentName - The stage site identifier
  */
 export const StaticSitesGetLinkedBackendsForBuild =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesGetLinkedBackendsForBuildInput,
     outputSchema: StaticSitesGetLinkedBackendsForBuildOutput,
   }));
 // Input Schema
 export const StaticSitesGetPrivateEndpointConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -11610,7 +11509,7 @@ export type StaticSitesGetPrivateEndpointConnectionInput =
 
 // Output Schema
 export const StaticSitesGetPrivateEndpointConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11645,13 +11544,13 @@ export type StaticSitesGetPrivateEndpointConnectionOutput =
  * @param privateEndpointConnectionName - Name of the private endpoint connection.
  */
 export const StaticSitesGetPrivateEndpointConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesGetPrivateEndpointConnectionInput,
     outputSchema: StaticSitesGetPrivateEndpointConnectionOutput,
   }));
 // Input Schema
 export const StaticSitesGetPrivateEndpointConnectionListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -11667,7 +11566,7 @@ export type StaticSitesGetPrivateEndpointConnectionListInput =
 
 // Output Schema
 export const StaticSitesGetPrivateEndpointConnectionListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -11716,13 +11615,13 @@ export type StaticSitesGetPrivateEndpointConnectionListOutput =
  * @param name - Name of the static site.
  */
 export const StaticSitesGetPrivateEndpointConnectionList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesGetPrivateEndpointConnectionListInput,
     outputSchema: StaticSitesGetPrivateEndpointConnectionListOutput,
   }));
 // Input Schema
 export const StaticSitesGetPrivateLinkResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -11738,7 +11637,7 @@ export type StaticSitesGetPrivateLinkResourcesInput =
 
 // Output Schema
 export const StaticSitesGetPrivateLinkResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -11767,13 +11666,13 @@ export type StaticSitesGetPrivateLinkResourcesOutput =
  * @param name - Name of the static site.
  */
 export const StaticSitesGetPrivateLinkResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesGetPrivateLinkResourcesInput,
     outputSchema: StaticSitesGetPrivateLinkResourcesOutput,
   }));
 // Input Schema
 export const StaticSitesGetStaticSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -11789,7 +11688,7 @@ export type StaticSitesGetStaticSiteInput =
 
 // Output Schema
 export const StaticSitesGetStaticSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11822,15 +11721,13 @@ export type StaticSitesGetStaticSiteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the static site.
  */
-export const StaticSitesGetStaticSite = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StaticSitesGetStaticSiteInput,
-    outputSchema: StaticSitesGetStaticSiteOutput,
-  }),
-);
+export const StaticSitesGetStaticSite = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StaticSitesGetStaticSiteInput,
+  outputSchema: StaticSitesGetStaticSiteOutput,
+}));
 // Input Schema
 export const StaticSitesGetStaticSiteBuildInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -11847,7 +11744,7 @@ export type StaticSitesGetStaticSiteBuildInput =
 
 // Output Schema
 export const StaticSitesGetStaticSiteBuildOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11882,13 +11779,13 @@ export type StaticSitesGetStaticSiteBuildOutput =
  * @param environmentName - The stage site identifier.
  */
 export const StaticSitesGetStaticSiteBuild =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesGetStaticSiteBuildInput,
     outputSchema: StaticSitesGetStaticSiteBuildOutput,
   }));
 // Input Schema
 export const StaticSitesGetStaticSiteBuildsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -11904,7 +11801,7 @@ export type StaticSitesGetStaticSiteBuildsInput =
 
 // Output Schema
 export const StaticSitesGetStaticSiteBuildsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -11953,13 +11850,13 @@ export type StaticSitesGetStaticSiteBuildsOutput =
  * @param name - Name of the static site.
  */
 export const StaticSitesGetStaticSiteBuilds =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesGetStaticSiteBuildsInput,
     outputSchema: StaticSitesGetStaticSiteBuildsOutput,
   }));
 // Input Schema
 export const StaticSitesGetStaticSiteCustomDomainInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -11976,7 +11873,7 @@ export type StaticSitesGetStaticSiteCustomDomainInput =
 
 // Output Schema
 export const StaticSitesGetStaticSiteCustomDomainOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12011,13 +11908,13 @@ export type StaticSitesGetStaticSiteCustomDomainOutput =
  * @param domainName - The custom domain name.
  */
 export const StaticSitesGetStaticSiteCustomDomain =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesGetStaticSiteCustomDomainInput,
     outputSchema: StaticSitesGetStaticSiteCustomDomainOutput,
   }));
 // Input Schema
 export const StaticSitesGetStaticSitesByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -12032,7 +11929,7 @@ export type StaticSitesGetStaticSitesByResourceGroupInput =
 
 // Output Schema
 export const StaticSitesGetStaticSitesByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -12080,13 +11977,13 @@ export type StaticSitesGetStaticSitesByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const StaticSitesGetStaticSitesByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesGetStaticSitesByResourceGroupInput,
     outputSchema: StaticSitesGetStaticSitesByResourceGroupOutput,
   }));
 // Input Schema
 export const StaticSitesGetUserProvidedFunctionAppForStaticSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -12103,7 +12000,7 @@ export type StaticSitesGetUserProvidedFunctionAppForStaticSiteInput =
 
 // Output Schema
 export const StaticSitesGetUserProvidedFunctionAppForStaticSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12138,13 +12035,13 @@ export type StaticSitesGetUserProvidedFunctionAppForStaticSiteOutput =
  * @param functionAppName - Name of the function app registered with the static site.
  */
 export const StaticSitesGetUserProvidedFunctionAppForStaticSite =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesGetUserProvidedFunctionAppForStaticSiteInput,
     outputSchema: StaticSitesGetUserProvidedFunctionAppForStaticSiteOutput,
   }));
 // Input Schema
 export const StaticSitesGetUserProvidedFunctionAppForStaticSiteBuildInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -12162,7 +12059,7 @@ export type StaticSitesGetUserProvidedFunctionAppForStaticSiteBuildInput =
 
 // Output Schema
 export const StaticSitesGetUserProvidedFunctionAppForStaticSiteBuildOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12198,13 +12095,13 @@ export type StaticSitesGetUserProvidedFunctionAppForStaticSiteBuildOutput =
  * @param functionAppName - Name of the function app registered with the static site build.
  */
 export const StaticSitesGetUserProvidedFunctionAppForStaticSiteBuild =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesGetUserProvidedFunctionAppForStaticSiteBuildInput,
     outputSchema: StaticSitesGetUserProvidedFunctionAppForStaticSiteBuildOutput,
   }));
 // Input Schema
 export const StaticSitesGetUserProvidedFunctionAppsForStaticSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -12220,7 +12117,7 @@ export type StaticSitesGetUserProvidedFunctionAppsForStaticSiteInput =
 
 // Output Schema
 export const StaticSitesGetUserProvidedFunctionAppsForStaticSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -12269,13 +12166,13 @@ export type StaticSitesGetUserProvidedFunctionAppsForStaticSiteOutput =
  * @param name - Name of the static site.
  */
 export const StaticSitesGetUserProvidedFunctionAppsForStaticSite =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesGetUserProvidedFunctionAppsForStaticSiteInput,
     outputSchema: StaticSitesGetUserProvidedFunctionAppsForStaticSiteOutput,
   }));
 // Input Schema
 export const StaticSitesGetUserProvidedFunctionAppsForStaticSiteBuildInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -12292,7 +12189,7 @@ export type StaticSitesGetUserProvidedFunctionAppsForStaticSiteBuildInput =
 
 // Output Schema
 export const StaticSitesGetUserProvidedFunctionAppsForStaticSiteBuildOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -12342,14 +12239,14 @@ export type StaticSitesGetUserProvidedFunctionAppsForStaticSiteBuildOutput =
  * @param environmentName - The stage site identifier.
  */
 export const StaticSitesGetUserProvidedFunctionAppsForStaticSiteBuild =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesGetUserProvidedFunctionAppsForStaticSiteBuildInput,
     outputSchema:
       StaticSitesGetUserProvidedFunctionAppsForStaticSiteBuildOutput,
   }));
 // Input Schema
 export const StaticSitesLinkBackendInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -12366,7 +12263,7 @@ export type StaticSitesLinkBackendInput =
 
 // Output Schema
 export const StaticSitesLinkBackendOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12398,15 +12295,13 @@ export type StaticSitesLinkBackendOutput =
  * @param name - Name of the static site
  * @param linkedBackendName - Name of the linked backend that should be retrieved
  */
-export const StaticSitesLinkBackend = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StaticSitesLinkBackendInput,
-    outputSchema: StaticSitesLinkBackendOutput,
-  }),
-);
+export const StaticSitesLinkBackend = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StaticSitesLinkBackendInput,
+  outputSchema: StaticSitesLinkBackendOutput,
+}));
 // Input Schema
 export const StaticSitesLinkBackendToBuildInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -12424,7 +12319,7 @@ export type StaticSitesLinkBackendToBuildInput =
 
 // Output Schema
 export const StaticSitesLinkBackendToBuildOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12458,12 +12353,12 @@ export type StaticSitesLinkBackendToBuildOutput =
  * @param linkedBackendName - Name of the linked backend that should be retrieved
  */
 export const StaticSitesLinkBackendToBuild =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesLinkBackendToBuildInput,
     outputSchema: StaticSitesLinkBackendToBuildOutput,
   }));
 // Input Schema
-export const StaticSitesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const StaticSitesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -12475,7 +12370,7 @@ export const StaticSitesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type StaticSitesListInput = typeof StaticSitesListInput.Type;
 
 // Output Schema
-export const StaticSitesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const StaticSitesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -12510,13 +12405,13 @@ export type StaticSitesListOutput = typeof StaticSitesListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const StaticSitesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StaticSitesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: StaticSitesListInput,
   outputSchema: StaticSitesListOutput,
 }));
 // Input Schema
 export const StaticSitesListBasicAuthInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -12532,7 +12427,7 @@ export type StaticSitesListBasicAuthInput =
 
 // Output Schema
 export const StaticSitesListBasicAuthOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -12580,15 +12475,13 @@ export type StaticSitesListBasicAuthOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the static site.
  */
-export const StaticSitesListBasicAuth = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StaticSitesListBasicAuthInput,
-    outputSchema: StaticSitesListBasicAuthOutput,
-  }),
-);
+export const StaticSitesListBasicAuth = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StaticSitesListBasicAuthInput,
+  outputSchema: StaticSitesListBasicAuthOutput,
+}));
 // Input Schema
 export const StaticSitesListStaticSiteAppSettingsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -12604,7 +12497,7 @@ export type StaticSitesListStaticSiteAppSettingsInput =
 
 // Output Schema
 export const StaticSitesListStaticSiteAppSettingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -12625,13 +12518,13 @@ export type StaticSitesListStaticSiteAppSettingsOutput =
  * @param name - Name of the static site.
  */
 export const StaticSitesListStaticSiteAppSettings =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesListStaticSiteAppSettingsInput,
     outputSchema: StaticSitesListStaticSiteAppSettingsOutput,
   }));
 // Input Schema
 export const StaticSitesListStaticSiteBuildAppSettingsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -12648,7 +12541,7 @@ export type StaticSitesListStaticSiteBuildAppSettingsInput =
 
 // Output Schema
 export const StaticSitesListStaticSiteBuildAppSettingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -12670,13 +12563,13 @@ export type StaticSitesListStaticSiteBuildAppSettingsOutput =
  * @param environmentName - The stage site identifier.
  */
 export const StaticSitesListStaticSiteBuildAppSettings =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesListStaticSiteBuildAppSettingsInput,
     outputSchema: StaticSitesListStaticSiteBuildAppSettingsOutput,
   }));
 // Input Schema
 export const StaticSitesListStaticSiteBuildFunctionAppSettingsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -12693,7 +12586,7 @@ export type StaticSitesListStaticSiteBuildFunctionAppSettingsInput =
 
 // Output Schema
 export const StaticSitesListStaticSiteBuildFunctionAppSettingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -12715,13 +12608,13 @@ export type StaticSitesListStaticSiteBuildFunctionAppSettingsOutput =
  * @param environmentName - The stage site identifier.
  */
 export const StaticSitesListStaticSiteBuildFunctionAppSettings =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesListStaticSiteBuildFunctionAppSettingsInput,
     outputSchema: StaticSitesListStaticSiteBuildFunctionAppSettingsOutput,
   }));
 // Input Schema
 export const StaticSitesListStaticSiteBuildFunctionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -12738,7 +12631,7 @@ export type StaticSitesListStaticSiteBuildFunctionsInput =
 
 // Output Schema
 export const StaticSitesListStaticSiteBuildFunctionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -12765,13 +12658,13 @@ export type StaticSitesListStaticSiteBuildFunctionsOutput =
  * @param environmentName - The stage site identifier.
  */
 export const StaticSitesListStaticSiteBuildFunctions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesListStaticSiteBuildFunctionsInput,
     outputSchema: StaticSitesListStaticSiteBuildFunctionsOutput,
   }));
 // Input Schema
 export const StaticSitesListStaticSiteConfiguredRolesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -12787,7 +12680,7 @@ export type StaticSitesListStaticSiteConfiguredRolesInput =
 
 // Output Schema
 export const StaticSitesListStaticSiteConfiguredRolesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -12808,13 +12701,13 @@ export type StaticSitesListStaticSiteConfiguredRolesOutput =
  * @param name - Name of the static site.
  */
 export const StaticSitesListStaticSiteConfiguredRoles =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesListStaticSiteConfiguredRolesInput,
     outputSchema: StaticSitesListStaticSiteConfiguredRolesOutput,
   }));
 // Input Schema
 export const StaticSitesListStaticSiteCustomDomainsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -12830,7 +12723,7 @@ export type StaticSitesListStaticSiteCustomDomainsInput =
 
 // Output Schema
 export const StaticSitesListStaticSiteCustomDomainsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -12879,13 +12772,13 @@ export type StaticSitesListStaticSiteCustomDomainsOutput =
  * @param name - Name of the static site.
  */
 export const StaticSitesListStaticSiteCustomDomains =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesListStaticSiteCustomDomainsInput,
     outputSchema: StaticSitesListStaticSiteCustomDomainsOutput,
   }));
 // Input Schema
 export const StaticSitesListStaticSiteFunctionAppSettingsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -12901,7 +12794,7 @@ export type StaticSitesListStaticSiteFunctionAppSettingsInput =
 
 // Output Schema
 export const StaticSitesListStaticSiteFunctionAppSettingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -12922,13 +12815,13 @@ export type StaticSitesListStaticSiteFunctionAppSettingsOutput =
  * @param name - Name of the static site.
  */
 export const StaticSitesListStaticSiteFunctionAppSettings =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesListStaticSiteFunctionAppSettingsInput,
     outputSchema: StaticSitesListStaticSiteFunctionAppSettingsOutput,
   }));
 // Input Schema
 export const StaticSitesListStaticSiteFunctionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -12944,7 +12837,7 @@ export type StaticSitesListStaticSiteFunctionsInput =
 
 // Output Schema
 export const StaticSitesListStaticSiteFunctionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -12970,13 +12863,13 @@ export type StaticSitesListStaticSiteFunctionsOutput =
  * @param name - Name of the static site.
  */
 export const StaticSitesListStaticSiteFunctions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesListStaticSiteFunctionsInput,
     outputSchema: StaticSitesListStaticSiteFunctionsOutput,
   }));
 // Input Schema
 export const StaticSitesListStaticSiteSecretsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -12992,7 +12885,7 @@ export type StaticSitesListStaticSiteSecretsInput =
 
 // Output Schema
 export const StaticSitesListStaticSiteSecretsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -13013,13 +12906,13 @@ export type StaticSitesListStaticSiteSecretsOutput =
  * @param name - Name of the static site.
  */
 export const StaticSitesListStaticSiteSecrets =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesListStaticSiteSecretsInput,
     outputSchema: StaticSitesListStaticSiteSecretsOutput,
   }));
 // Input Schema
 export const StaticSitesListStaticSiteUsersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -13036,7 +12929,7 @@ export type StaticSitesListStaticSiteUsersInput =
 
 // Output Schema
 export const StaticSitesListStaticSiteUsersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -13062,13 +12955,13 @@ export type StaticSitesListStaticSiteUsersOutput =
  * @param authprovider - The auth provider for the users.
  */
 export const StaticSitesListStaticSiteUsers =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesListStaticSiteUsersInput,
     outputSchema: StaticSitesListStaticSiteUsersOutput,
   }));
 // Input Schema
 export const StaticSitesPreviewWorkflowInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -13083,7 +12976,7 @@ export type StaticSitesPreviewWorkflowInput =
 
 // Output Schema
 export const StaticSitesPreviewWorkflowOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -13102,15 +12995,13 @@ export type StaticSitesPreviewWorkflowOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param location - The name of the Azure region.
  */
-export const StaticSitesPreviewWorkflow = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StaticSitesPreviewWorkflowInput,
-    outputSchema: StaticSitesPreviewWorkflowOutput,
-  }),
-);
+export const StaticSitesPreviewWorkflow = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StaticSitesPreviewWorkflowInput,
+  outputSchema: StaticSitesPreviewWorkflowOutput,
+}));
 // Input Schema
 export const StaticSitesRegisterUserProvidedFunctionAppWithStaticSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -13128,7 +13019,7 @@ export type StaticSitesRegisterUserProvidedFunctionAppWithStaticSiteInput =
 
 // Output Schema
 export const StaticSitesRegisterUserProvidedFunctionAppWithStaticSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -13164,14 +13055,14 @@ export type StaticSitesRegisterUserProvidedFunctionAppWithStaticSiteOutput =
  * @param isForced - Specify <code>true</code> to force the update of the auth configuration on the function app even if an AzureStaticWebApps provider is already configured on the function app. The default is <code>false</code>.
  */
 export const StaticSitesRegisterUserProvidedFunctionAppWithStaticSite =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesRegisterUserProvidedFunctionAppWithStaticSiteInput,
     outputSchema:
       StaticSitesRegisterUserProvidedFunctionAppWithStaticSiteOutput,
   }));
 // Input Schema
 export const StaticSitesRegisterUserProvidedFunctionAppWithStaticSiteBuildInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -13190,7 +13081,7 @@ export type StaticSitesRegisterUserProvidedFunctionAppWithStaticSiteBuildInput =
 
 // Output Schema
 export const StaticSitesRegisterUserProvidedFunctionAppWithStaticSiteBuildOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -13227,7 +13118,7 @@ export type StaticSitesRegisterUserProvidedFunctionAppWithStaticSiteBuildOutput 
  * @param isForced - Specify <code>true</code> to force the update of the auth configuration on the function app even if an AzureStaticWebApps provider is already configured on the function app. The default is <code>false</code>.
  */
 export const StaticSitesRegisterUserProvidedFunctionAppWithStaticSiteBuild =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       StaticSitesRegisterUserProvidedFunctionAppWithStaticSiteBuildInput,
     outputSchema:
@@ -13235,7 +13126,7 @@ export const StaticSitesRegisterUserProvidedFunctionAppWithStaticSiteBuild =
   }));
 // Input Schema
 export const StaticSitesResetStaticSiteApiKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -13250,8 +13141,7 @@ export type StaticSitesResetStaticSiteApiKeyInput =
   typeof StaticSitesResetStaticSiteApiKeyInput.Type;
 
 // Output Schema
-export const StaticSitesResetStaticSiteApiKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const StaticSitesResetStaticSiteApiKeyOutput = /*@__PURE__*/ Schema.Void;
 export type StaticSitesResetStaticSiteApiKeyOutput =
   typeof StaticSitesResetStaticSiteApiKeyOutput.Type;
 
@@ -13267,13 +13157,13 @@ export type StaticSitesResetStaticSiteApiKeyOutput =
  * @param name - Name of the static site.
  */
 export const StaticSitesResetStaticSiteApiKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesResetStaticSiteApiKeyInput,
     outputSchema: StaticSitesResetStaticSiteApiKeyOutput,
   }));
 // Input Schema
 export const StaticSitesUnlinkBackendInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -13290,8 +13180,7 @@ export type StaticSitesUnlinkBackendInput =
   typeof StaticSitesUnlinkBackendInput.Type;
 
 // Output Schema
-export const StaticSitesUnlinkBackendOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const StaticSitesUnlinkBackendOutput = /*@__PURE__*/ Schema.Void;
 export type StaticSitesUnlinkBackendOutput =
   typeof StaticSitesUnlinkBackendOutput.Type;
 
@@ -13306,15 +13195,13 @@ export type StaticSitesUnlinkBackendOutput =
  * @param linkedBackendName - Name of the linked backend that should be retrieved
  * @param isCleaningAuthConfig - Decides if Easy Auth configuration will be removed from backend configuration
  */
-export const StaticSitesUnlinkBackend = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StaticSitesUnlinkBackendInput,
-    outputSchema: StaticSitesUnlinkBackendOutput,
-  }),
-);
+export const StaticSitesUnlinkBackend = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StaticSitesUnlinkBackendInput,
+  outputSchema: StaticSitesUnlinkBackendOutput,
+}));
 // Input Schema
 export const StaticSitesUnlinkBackendFromBuildInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -13333,7 +13220,7 @@ export type StaticSitesUnlinkBackendFromBuildInput =
 
 // Output Schema
 export const StaticSitesUnlinkBackendFromBuildOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type StaticSitesUnlinkBackendFromBuildOutput =
   typeof StaticSitesUnlinkBackendFromBuildOutput.Type;
 
@@ -13350,13 +13237,13 @@ export type StaticSitesUnlinkBackendFromBuildOutput =
  * @param isCleaningAuthConfig - Decides if auth will be removed from backend configuration
  */
 export const StaticSitesUnlinkBackendFromBuild =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesUnlinkBackendFromBuildInput,
     outputSchema: StaticSitesUnlinkBackendFromBuildOutput,
   }));
 // Input Schema
 export const StaticSitesUpdateBuildDatabaseConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -13374,7 +13261,7 @@ export type StaticSitesUpdateBuildDatabaseConnectionInput =
 
 // Output Schema
 export const StaticSitesUpdateBuildDatabaseConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -13410,13 +13297,13 @@ export type StaticSitesUpdateBuildDatabaseConnectionOutput =
  * @param databaseConnectionName - Name of the database connection.
  */
 export const StaticSitesUpdateBuildDatabaseConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesUpdateBuildDatabaseConnectionInput,
     outputSchema: StaticSitesUpdateBuildDatabaseConnectionOutput,
   }));
 // Input Schema
 export const StaticSitesUpdateDatabaseConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -13433,7 +13320,7 @@ export type StaticSitesUpdateDatabaseConnectionInput =
 
 // Output Schema
 export const StaticSitesUpdateDatabaseConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -13468,13 +13355,13 @@ export type StaticSitesUpdateDatabaseConnectionOutput =
  * @param databaseConnectionName - Name of the database connection.
  */
 export const StaticSitesUpdateDatabaseConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesUpdateDatabaseConnectionInput,
     outputSchema: StaticSitesUpdateDatabaseConnectionOutput,
   }));
 // Input Schema
 export const StaticSitesUpdateStaticSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -13490,7 +13377,7 @@ export type StaticSitesUpdateStaticSiteInput =
 
 // Output Schema
 export const StaticSitesUpdateStaticSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -13523,15 +13410,13 @@ export type StaticSitesUpdateStaticSiteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the static site.
  */
-export const StaticSitesUpdateStaticSite = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StaticSitesUpdateStaticSiteInput,
-    outputSchema: StaticSitesUpdateStaticSiteOutput,
-  }),
-);
+export const StaticSitesUpdateStaticSite = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StaticSitesUpdateStaticSiteInput,
+  outputSchema: StaticSitesUpdateStaticSiteOutput,
+}));
 // Input Schema
 export const StaticSitesUpdateStaticSiteUserInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -13549,7 +13434,7 @@ export type StaticSitesUpdateStaticSiteUserInput =
 
 // Output Schema
 export const StaticSitesUpdateStaticSiteUserOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -13569,13 +13454,13 @@ export type StaticSitesUpdateStaticSiteUserOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const StaticSitesUpdateStaticSiteUser =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesUpdateStaticSiteUserInput,
     outputSchema: StaticSitesUpdateStaticSiteUserOutput,
   }));
 // Input Schema
 export const StaticSitesValidateBackendInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -13591,8 +13476,7 @@ export type StaticSitesValidateBackendInput =
   typeof StaticSitesValidateBackendInput.Type;
 
 // Output Schema
-export const StaticSitesValidateBackendOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const StaticSitesValidateBackendOutput = /*@__PURE__*/ Schema.Void;
 export type StaticSitesValidateBackendOutput =
   typeof StaticSitesValidateBackendOutput.Type;
 
@@ -13606,15 +13490,13 @@ export type StaticSitesValidateBackendOutput =
  * @param name - Name of the static site
  * @param linkedBackendName - Name of the linked backend that should be retrieved
  */
-export const StaticSitesValidateBackend = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StaticSitesValidateBackendInput,
-    outputSchema: StaticSitesValidateBackendOutput,
-  }),
-);
+export const StaticSitesValidateBackend = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StaticSitesValidateBackendInput,
+  outputSchema: StaticSitesValidateBackendOutput,
+}));
 // Input Schema
 export const StaticSitesValidateBackendForBuildInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -13632,7 +13514,7 @@ export type StaticSitesValidateBackendForBuildInput =
 
 // Output Schema
 export const StaticSitesValidateBackendForBuildOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type StaticSitesValidateBackendForBuildOutput =
   typeof StaticSitesValidateBackendForBuildOutput.Type;
 
@@ -13648,13 +13530,13 @@ export type StaticSitesValidateBackendForBuildOutput =
  * @param linkedBackendName - Name of the linked backend that should be retrieved
  */
 export const StaticSitesValidateBackendForBuild =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesValidateBackendForBuildInput,
     outputSchema: StaticSitesValidateBackendForBuildOutput,
   }));
 // Input Schema
 export const StaticSitesValidateCustomDomainCanBeAddedToStaticSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -13671,7 +13553,7 @@ export type StaticSitesValidateCustomDomainCanBeAddedToStaticSiteInput =
 
 // Output Schema
 export const StaticSitesValidateCustomDomainCanBeAddedToStaticSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type StaticSitesValidateCustomDomainCanBeAddedToStaticSiteOutput =
   typeof StaticSitesValidateCustomDomainCanBeAddedToStaticSiteOutput.Type;
 
@@ -13688,13 +13570,13 @@ export type StaticSitesValidateCustomDomainCanBeAddedToStaticSiteOutput =
  * @param domainName - The custom domain name.
  */
 export const StaticSitesValidateCustomDomainCanBeAddedToStaticSite =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StaticSitesValidateCustomDomainCanBeAddedToStaticSiteInput,
     outputSchema: StaticSitesValidateCustomDomainCanBeAddedToStaticSiteOutput,
   }));
 // Input Schema
 export const UpdatePublishingUserInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -13706,7 +13588,7 @@ export type UpdatePublishingUserInput = typeof UpdatePublishingUserInput.Type;
 
 // Output Schema
 export const UpdatePublishingUserOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -13735,15 +13617,13 @@ export type UpdatePublishingUserOutput = typeof UpdatePublishingUserOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const UpdatePublishingUser = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdatePublishingUserInput,
-    outputSchema: UpdatePublishingUserOutput,
-  }),
-);
+export const UpdatePublishingUser = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdatePublishingUserInput,
+  outputSchema: UpdatePublishingUserOutput,
+}));
 // Input Schema
 export const UpdateSourceControlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sourceControlType: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -13756,7 +13636,7 @@ export type UpdateSourceControlInput = typeof UpdateSourceControlInput.Type;
 
 // Output Schema
 export const UpdateSourceControlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -13786,12 +13666,12 @@ export type UpdateSourceControlOutput = typeof UpdateSourceControlOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param sourceControlType - Type of source control
  */
-export const UpdateSourceControl = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UpdateSourceControl = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateSourceControlInput,
   outputSchema: UpdateSourceControlOutput,
 }));
 // Input Schema
-export const ValidateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ValidateInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -13804,7 +13684,7 @@ export const ValidateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ValidateInput = typeof ValidateInput.Type;
 
 // Output Schema
-export const ValidateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ValidateOutput = /*@__PURE__*/ Schema.Struct({
   status: Schema.optional(Schema.String),
   error: Schema.optional(
     Schema.Struct({
@@ -13825,12 +13705,12 @@ export type ValidateOutput = typeof ValidateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const Validate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const Validate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ValidateInput,
   outputSchema: ValidateOutput,
 }));
 // Input Schema
-export const ValidateMoveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ValidateMoveInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -13843,7 +13723,7 @@ export const ValidateMoveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ValidateMoveInput = typeof ValidateMoveInput.Type;
 
 // Output Schema
-export const ValidateMoveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ValidateMoveOutput = /*@__PURE__*/ Schema.Void;
 export type ValidateMoveOutput = typeof ValidateMoveOutput.Type;
 
 // The operation
@@ -13856,13 +13736,13 @@ export type ValidateMoveOutput = typeof ValidateMoveOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ValidateMove = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ValidateMove = /*@__PURE__*/ API.make(() => ({
   inputSchema: ValidateMoveInput,
   outputSchema: ValidateMoveOutput,
 }));
 // Input Schema
 export const VerifyHostingEnvironmentVnetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -13876,7 +13756,7 @@ export type VerifyHostingEnvironmentVnetInput =
 
 // Output Schema
 export const VerifyHostingEnvironmentVnetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -13895,13 +13775,13 @@ export type VerifyHostingEnvironmentVnetOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const VerifyHostingEnvironmentVnet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VerifyHostingEnvironmentVnetInput,
     outputSchema: VerifyHostingEnvironmentVnetOutput,
   }));
 // Input Schema
 export const WebAppsAddPremierAddOnInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -13918,7 +13798,7 @@ export type WebAppsAddPremierAddOnInput =
 
 // Output Schema
 export const WebAppsAddPremierAddOnOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -13952,15 +13832,13 @@ export type WebAppsAddPremierAddOnOutput =
  * @param name - Name of the app.
  * @param premierAddOnName - Add-on name.
  */
-export const WebAppsAddPremierAddOn = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsAddPremierAddOnInput,
-    outputSchema: WebAppsAddPremierAddOnOutput,
-  }),
-);
+export const WebAppsAddPremierAddOn = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsAddPremierAddOnInput,
+  outputSchema: WebAppsAddPremierAddOnOutput,
+}));
 // Input Schema
 export const WebAppsAddPremierAddOnSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -13978,7 +13856,7 @@ export type WebAppsAddPremierAddOnSlotInput =
 
 // Output Schema
 export const WebAppsAddPremierAddOnSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14013,15 +13891,13 @@ export type WebAppsAddPremierAddOnSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get the named add-on for the production slot.
  * @param premierAddOnName - Add-on name.
  */
-export const WebAppsAddPremierAddOnSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsAddPremierAddOnSlotInput,
-    outputSchema: WebAppsAddPremierAddOnSlotOutput,
-  }),
-);
+export const WebAppsAddPremierAddOnSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsAddPremierAddOnSlotInput,
+  outputSchema: WebAppsAddPremierAddOnSlotOutput,
+}));
 // Input Schema
 export const WebAppsAnalyzeCustomHostnameInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -14038,7 +13914,7 @@ export type WebAppsAnalyzeCustomHostnameInput =
 
 // Output Schema
 export const WebAppsAnalyzeCustomHostnameOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -14060,13 +13936,13 @@ export type WebAppsAnalyzeCustomHostnameOutput =
  * @param hostName - Custom hostname.
  */
 export const WebAppsAnalyzeCustomHostname =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsAnalyzeCustomHostnameInput,
     outputSchema: WebAppsAnalyzeCustomHostnameOutput,
   }));
 // Input Schema
 export const WebAppsAnalyzeCustomHostnameSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -14084,7 +13960,7 @@ export type WebAppsAnalyzeCustomHostnameSlotInput =
 
 // Output Schema
 export const WebAppsAnalyzeCustomHostnameSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -14107,13 +13983,13 @@ export type WebAppsAnalyzeCustomHostnameSlotOutput =
  * @param hostName - Custom hostname.
  */
 export const WebAppsAnalyzeCustomHostnameSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsAnalyzeCustomHostnameSlotInput,
     outputSchema: WebAppsAnalyzeCustomHostnameSlotOutput,
   }));
 // Input Schema
 export const WebAppsApplySlotConfigToProductionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -14129,7 +14005,7 @@ export type WebAppsApplySlotConfigToProductionInput =
 
 // Output Schema
 export const WebAppsApplySlotConfigToProductionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type WebAppsApplySlotConfigToProductionOutput =
   typeof WebAppsApplySlotConfigToProductionOutput.Type;
 
@@ -14145,13 +14021,13 @@ export type WebAppsApplySlotConfigToProductionOutput =
  * @param name - Name of the app.
  */
 export const WebAppsApplySlotConfigToProduction =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsApplySlotConfigToProductionInput,
     outputSchema: WebAppsApplySlotConfigToProductionOutput,
   }));
 // Input Schema
 export const WebAppsApplySlotConfigurationSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -14168,7 +14044,7 @@ export type WebAppsApplySlotConfigurationSlotInput =
 
 // Output Schema
 export const WebAppsApplySlotConfigurationSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type WebAppsApplySlotConfigurationSlotOutput =
   typeof WebAppsApplySlotConfigurationSlotOutput.Type;
 
@@ -14185,13 +14061,13 @@ export type WebAppsApplySlotConfigurationSlotOutput =
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
 export const WebAppsApplySlotConfigurationSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsApplySlotConfigurationSlotInput,
     outputSchema: WebAppsApplySlotConfigurationSlotOutput,
   }));
 // Input Schema
 export const WebAppsApproveOrRejectPrivateEndpointConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -14208,7 +14084,7 @@ export type WebAppsApproveOrRejectPrivateEndpointConnectionInput =
 
 // Output Schema
 export const WebAppsApproveOrRejectPrivateEndpointConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14243,13 +14119,13 @@ export type WebAppsApproveOrRejectPrivateEndpointConnectionOutput =
  * @param privateEndpointConnectionName - Name of the private endpoint connection.
  */
 export const WebAppsApproveOrRejectPrivateEndpointConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsApproveOrRejectPrivateEndpointConnectionInput,
     outputSchema: WebAppsApproveOrRejectPrivateEndpointConnectionOutput,
   }));
 // Input Schema
 export const WebAppsApproveOrRejectPrivateEndpointConnectionSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -14267,7 +14143,7 @@ export type WebAppsApproveOrRejectPrivateEndpointConnectionSlotInput =
 
 // Output Schema
 export const WebAppsApproveOrRejectPrivateEndpointConnectionSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14303,12 +14179,12 @@ export type WebAppsApproveOrRejectPrivateEndpointConnectionSlotOutput =
  * @param privateEndpointConnectionName - Name of the private endpoint connection.
  */
 export const WebAppsApproveOrRejectPrivateEndpointConnectionSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsApproveOrRejectPrivateEndpointConnectionSlotInput,
     outputSchema: WebAppsApproveOrRejectPrivateEndpointConnectionSlotOutput,
   }));
 // Input Schema
-export const WebAppsBackupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebAppsBackupInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -14322,7 +14198,7 @@ export const WebAppsBackupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WebAppsBackupInput = typeof WebAppsBackupInput.Type;
 
 // Output Schema
-export const WebAppsBackupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebAppsBackupOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -14354,20 +14230,18 @@ export type WebAppsBackupOutput = typeof WebAppsBackupOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsBackup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebAppsBackup = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebAppsBackupInput,
   outputSchema: WebAppsBackupOutput,
 }));
 // Input Schema
-export const WebAppsBackupSlotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const WebAppsBackupSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/backup",
@@ -14377,7 +14251,7 @@ export type WebAppsBackupSlotInput = typeof WebAppsBackupSlotInput.Type;
 
 // Output Schema
 export const WebAppsBackupSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14410,13 +14284,13 @@ export type WebAppsBackupSlotOutput = typeof WebAppsBackupSlotOutput.Type;
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsBackupSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebAppsBackupSlot = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebAppsBackupSlotInput,
   outputSchema: WebAppsBackupSlotOutput,
 }));
 // Input Schema
 export const WebAppsCreateDeploymentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -14433,7 +14307,7 @@ export type WebAppsCreateDeploymentInput =
 
 // Output Schema
 export const WebAppsCreateDeploymentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14467,15 +14341,13 @@ export type WebAppsCreateDeploymentOutput =
  * @param name - Name of the app.
  * @param id - Deployment ID.
  */
-export const WebAppsCreateDeployment = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsCreateDeploymentInput,
-    outputSchema: WebAppsCreateDeploymentOutput,
-  }),
-);
+export const WebAppsCreateDeployment = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsCreateDeploymentInput,
+  outputSchema: WebAppsCreateDeploymentOutput,
+}));
 // Input Schema
 export const WebAppsCreateDeploymentSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -14493,7 +14365,7 @@ export type WebAppsCreateDeploymentSlotInput =
 
 // Output Schema
 export const WebAppsCreateDeploymentSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14528,15 +14400,13 @@ export type WebAppsCreateDeploymentSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API gets a deployment for the production slot.
  * @param id - Deployment ID.
  */
-export const WebAppsCreateDeploymentSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsCreateDeploymentSlotInput,
-    outputSchema: WebAppsCreateDeploymentSlotOutput,
-  }),
-);
+export const WebAppsCreateDeploymentSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsCreateDeploymentSlotInput,
+  outputSchema: WebAppsCreateDeploymentSlotOutput,
+}));
 // Input Schema
 export const WebAppsCreateFunctionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -14552,7 +14422,7 @@ export type WebAppsCreateFunctionInput = typeof WebAppsCreateFunctionInput.Type;
 
 // Output Schema
 export const WebAppsCreateFunctionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14586,15 +14456,13 @@ export type WebAppsCreateFunctionOutput =
  * @param name - Site name.
  * @param functionName - Function name.
  */
-export const WebAppsCreateFunction = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsCreateFunctionInput,
-    outputSchema: WebAppsCreateFunctionOutput,
-  }),
-);
+export const WebAppsCreateFunction = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsCreateFunctionInput,
+  outputSchema: WebAppsCreateFunctionOutput,
+}));
 // Input Schema
 export const WebAppsCreateInstanceFunctionSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -14612,7 +14480,7 @@ export type WebAppsCreateInstanceFunctionSlotInput =
 
 // Output Schema
 export const WebAppsCreateInstanceFunctionSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14648,13 +14516,13 @@ export type WebAppsCreateInstanceFunctionSlotOutput =
  * @param functionName - Function name.
  */
 export const WebAppsCreateInstanceFunctionSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsCreateInstanceFunctionSlotInput,
     outputSchema: WebAppsCreateInstanceFunctionSlotOutput,
   }));
 // Input Schema
 export const WebAppsCreateInstanceMSDeployOperationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -14671,7 +14539,7 @@ export type WebAppsCreateInstanceMSDeployOperationInput =
 
 // Output Schema
 export const WebAppsCreateInstanceMSDeployOperationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14706,13 +14574,13 @@ export type WebAppsCreateInstanceMSDeployOperationOutput =
  * @param instanceId - ID of web app instance.
  */
 export const WebAppsCreateInstanceMSDeployOperation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsCreateInstanceMSDeployOperationInput,
     outputSchema: WebAppsCreateInstanceMSDeployOperationOutput,
   }));
 // Input Schema
 export const WebAppsCreateInstanceMSDeployOperationSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -14730,7 +14598,7 @@ export type WebAppsCreateInstanceMSDeployOperationSlotInput =
 
 // Output Schema
 export const WebAppsCreateInstanceMSDeployOperationSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14766,13 +14634,13 @@ export type WebAppsCreateInstanceMSDeployOperationSlotOutput =
  * @param instanceId - ID of web app instance.
  */
 export const WebAppsCreateInstanceMSDeployOperationSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsCreateInstanceMSDeployOperationSlotInput,
     outputSchema: WebAppsCreateInstanceMSDeployOperationSlotOutput,
   }));
 // Input Schema
 export const WebAppsCreateMSDeployOperationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -14788,7 +14656,7 @@ export type WebAppsCreateMSDeployOperationInput =
 
 // Output Schema
 export const WebAppsCreateMSDeployOperationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14822,13 +14690,13 @@ export type WebAppsCreateMSDeployOperationOutput =
  * @param name - Name of web app.
  */
 export const WebAppsCreateMSDeployOperation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsCreateMSDeployOperationInput,
     outputSchema: WebAppsCreateMSDeployOperationOutput,
   }));
 // Input Schema
 export const WebAppsCreateMSDeployOperationSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -14845,7 +14713,7 @@ export type WebAppsCreateMSDeployOperationSlotInput =
 
 // Output Schema
 export const WebAppsCreateMSDeployOperationSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14880,13 +14748,13 @@ export type WebAppsCreateMSDeployOperationSlotOutput =
  * @param slot - Name of web app slot. If not specified then will default to production slot.
  */
 export const WebAppsCreateMSDeployOperationSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsCreateMSDeployOperationSlotInput,
     outputSchema: WebAppsCreateMSDeployOperationSlotOutput,
   }));
 // Input Schema
 export const WebAppsCreateOneDeployOperationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -14902,7 +14770,7 @@ export type WebAppsCreateOneDeployOperationInput =
 
 // Output Schema
 export const WebAppsCreateOneDeployOperationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+  /*@__PURE__*/ Schema.Unknown;
 export type WebAppsCreateOneDeployOperationOutput =
   typeof WebAppsCreateOneDeployOperationOutput.Type;
 
@@ -14918,13 +14786,13 @@ export type WebAppsCreateOneDeployOperationOutput =
  * @param name - Name of the app.
  */
 export const WebAppsCreateOneDeployOperation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsCreateOneDeployOperationInput,
     outputSchema: WebAppsCreateOneDeployOperationOutput,
   }));
 // Input Schema
 export const WebAppsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -14939,7 +14807,7 @@ export type WebAppsCreateOrUpdateInput = typeof WebAppsCreateOrUpdateInput.Type;
 
 // Output Schema
 export const WebAppsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14972,15 +14840,13 @@ export type WebAppsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsCreateOrUpdateInput,
-    outputSchema: WebAppsCreateOrUpdateOutput,
-  }),
-);
+export const WebAppsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsCreateOrUpdateInput,
+  outputSchema: WebAppsCreateOrUpdateOutput,
+}));
 // Input Schema
 export const WebAppsCreateOrUpdateConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -14996,7 +14862,7 @@ export type WebAppsCreateOrUpdateConfigurationInput =
 
 // Output Schema
 export const WebAppsCreateOrUpdateConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -15030,13 +14896,13 @@ export type WebAppsCreateOrUpdateConfigurationOutput =
  * @param name - Name of the app.
  */
 export const WebAppsCreateOrUpdateConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsCreateOrUpdateConfigurationInput,
     outputSchema: WebAppsCreateOrUpdateConfigurationOutput,
   }));
 // Input Schema
 export const WebAppsCreateOrUpdateConfigurationSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -15053,7 +14919,7 @@ export type WebAppsCreateOrUpdateConfigurationSlotInput =
 
 // Output Schema
 export const WebAppsCreateOrUpdateConfigurationSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -15088,13 +14954,13 @@ export type WebAppsCreateOrUpdateConfigurationSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will return configuration for the production slot.
  */
 export const WebAppsCreateOrUpdateConfigurationSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsCreateOrUpdateConfigurationSlotInput,
     outputSchema: WebAppsCreateOrUpdateConfigurationSlotOutput,
   }));
 // Input Schema
 export const WebAppsCreateOrUpdateDomainOwnershipIdentifierInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -15111,7 +14977,7 @@ export type WebAppsCreateOrUpdateDomainOwnershipIdentifierInput =
 
 // Output Schema
 export const WebAppsCreateOrUpdateDomainOwnershipIdentifierOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -15146,13 +15012,13 @@ export type WebAppsCreateOrUpdateDomainOwnershipIdentifierOutput =
  * @param domainOwnershipIdentifierName - Name of domain ownership identifier.
  */
 export const WebAppsCreateOrUpdateDomainOwnershipIdentifier =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsCreateOrUpdateDomainOwnershipIdentifierInput,
     outputSchema: WebAppsCreateOrUpdateDomainOwnershipIdentifierOutput,
   }));
 // Input Schema
 export const WebAppsCreateOrUpdateDomainOwnershipIdentifierSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -15170,7 +15036,7 @@ export type WebAppsCreateOrUpdateDomainOwnershipIdentifierSlotInput =
 
 // Output Schema
 export const WebAppsCreateOrUpdateDomainOwnershipIdentifierSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -15206,13 +15072,13 @@ export type WebAppsCreateOrUpdateDomainOwnershipIdentifierSlotOutput =
  * @param domainOwnershipIdentifierName - Name of domain ownership identifier.
  */
 export const WebAppsCreateOrUpdateDomainOwnershipIdentifierSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsCreateOrUpdateDomainOwnershipIdentifierSlotInput,
     outputSchema: WebAppsCreateOrUpdateDomainOwnershipIdentifierSlotOutput,
   }));
 // Input Schema
 export const WebAppsCreateOrUpdateFunctionSecretInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -15230,7 +15096,7 @@ export type WebAppsCreateOrUpdateFunctionSecretInput =
 
 // Output Schema
 export const WebAppsCreateOrUpdateFunctionSecretOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
   });
@@ -15248,13 +15114,13 @@ export type WebAppsCreateOrUpdateFunctionSecretOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const WebAppsCreateOrUpdateFunctionSecret =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsCreateOrUpdateFunctionSecretInput,
     outputSchema: WebAppsCreateOrUpdateFunctionSecretOutput,
   }));
 // Input Schema
 export const WebAppsCreateOrUpdateFunctionSecretSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -15273,7 +15139,7 @@ export type WebAppsCreateOrUpdateFunctionSecretSlotInput =
 
 // Output Schema
 export const WebAppsCreateOrUpdateFunctionSecretSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
   });
@@ -15291,13 +15157,13 @@ export type WebAppsCreateOrUpdateFunctionSecretSlotOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const WebAppsCreateOrUpdateFunctionSecretSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsCreateOrUpdateFunctionSecretSlotInput,
     outputSchema: WebAppsCreateOrUpdateFunctionSecretSlotOutput,
   }));
 // Input Schema
 export const WebAppsCreateOrUpdateHostNameBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -15314,7 +15180,7 @@ export type WebAppsCreateOrUpdateHostNameBindingInput =
 
 // Output Schema
 export const WebAppsCreateOrUpdateHostNameBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -15349,13 +15215,13 @@ export type WebAppsCreateOrUpdateHostNameBindingOutput =
  * @param hostName - Hostname in the hostname binding.
  */
 export const WebAppsCreateOrUpdateHostNameBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsCreateOrUpdateHostNameBindingInput,
     outputSchema: WebAppsCreateOrUpdateHostNameBindingOutput,
   }));
 // Input Schema
 export const WebAppsCreateOrUpdateHostNameBindingSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -15373,7 +15239,7 @@ export type WebAppsCreateOrUpdateHostNameBindingSlotInput =
 
 // Output Schema
 export const WebAppsCreateOrUpdateHostNameBindingSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -15409,13 +15275,13 @@ export type WebAppsCreateOrUpdateHostNameBindingSlotOutput =
  * @param hostName - Hostname in the hostname binding.
  */
 export const WebAppsCreateOrUpdateHostNameBindingSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsCreateOrUpdateHostNameBindingSlotInput,
     outputSchema: WebAppsCreateOrUpdateHostNameBindingSlotOutput,
   }));
 // Input Schema
 export const WebAppsCreateOrUpdateHostSecretInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -15433,7 +15299,7 @@ export type WebAppsCreateOrUpdateHostSecretInput =
 
 // Output Schema
 export const WebAppsCreateOrUpdateHostSecretOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
   });
@@ -15454,13 +15320,13 @@ export type WebAppsCreateOrUpdateHostSecretOutput =
  * @param keyName - The name of the key.
  */
 export const WebAppsCreateOrUpdateHostSecret =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsCreateOrUpdateHostSecretInput,
     outputSchema: WebAppsCreateOrUpdateHostSecretOutput,
   }));
 // Input Schema
 export const WebAppsCreateOrUpdateHostSecretSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -15479,7 +15345,7 @@ export type WebAppsCreateOrUpdateHostSecretSlotInput =
 
 // Output Schema
 export const WebAppsCreateOrUpdateHostSecretSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
   });
@@ -15501,13 +15367,13 @@ export type WebAppsCreateOrUpdateHostSecretSlotOutput =
  * @param keyName - The name of the key.
  */
 export const WebAppsCreateOrUpdateHostSecretSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsCreateOrUpdateHostSecretSlotInput,
     outputSchema: WebAppsCreateOrUpdateHostSecretSlotOutput,
   }));
 // Input Schema
 export const WebAppsCreateOrUpdateHybridConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -15525,7 +15391,7 @@ export type WebAppsCreateOrUpdateHybridConnectionInput =
 
 // Output Schema
 export const WebAppsCreateOrUpdateHybridConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -15561,13 +15427,13 @@ export type WebAppsCreateOrUpdateHybridConnectionOutput =
  * @param relayName - The relay name for this hybrid connection.
  */
 export const WebAppsCreateOrUpdateHybridConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsCreateOrUpdateHybridConnectionInput,
     outputSchema: WebAppsCreateOrUpdateHybridConnectionOutput,
   }));
 // Input Schema
 export const WebAppsCreateOrUpdateHybridConnectionSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -15586,7 +15452,7 @@ export type WebAppsCreateOrUpdateHybridConnectionSlotInput =
 
 // Output Schema
 export const WebAppsCreateOrUpdateHybridConnectionSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -15623,13 +15489,13 @@ export type WebAppsCreateOrUpdateHybridConnectionSlotOutput =
  * @param relayName - The relay name for this hybrid connection.
  */
 export const WebAppsCreateOrUpdateHybridConnectionSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsCreateOrUpdateHybridConnectionSlotInput,
     outputSchema: WebAppsCreateOrUpdateHybridConnectionSlotOutput,
   }));
 // Input Schema
 export const WebAppsCreateOrUpdatePublicCertificateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -15646,7 +15512,7 @@ export type WebAppsCreateOrUpdatePublicCertificateInput =
 
 // Output Schema
 export const WebAppsCreateOrUpdatePublicCertificateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -15681,13 +15547,13 @@ export type WebAppsCreateOrUpdatePublicCertificateOutput =
  * @param publicCertificateName - Public certificate name.
  */
 export const WebAppsCreateOrUpdatePublicCertificate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsCreateOrUpdatePublicCertificateInput,
     outputSchema: WebAppsCreateOrUpdatePublicCertificateOutput,
   }));
 // Input Schema
 export const WebAppsCreateOrUpdatePublicCertificateSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -15705,7 +15571,7 @@ export type WebAppsCreateOrUpdatePublicCertificateSlotInput =
 
 // Output Schema
 export const WebAppsCreateOrUpdatePublicCertificateSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -15741,13 +15607,13 @@ export type WebAppsCreateOrUpdatePublicCertificateSlotOutput =
  * @param publicCertificateName - Public certificate name.
  */
 export const WebAppsCreateOrUpdatePublicCertificateSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsCreateOrUpdatePublicCertificateSlotInput,
     outputSchema: WebAppsCreateOrUpdatePublicCertificateSlotOutput,
   }));
 // Input Schema
 export const WebAppsCreateOrUpdateRelayServiceConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -15764,7 +15630,7 @@ export type WebAppsCreateOrUpdateRelayServiceConnectionInput =
 
 // Output Schema
 export const WebAppsCreateOrUpdateRelayServiceConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -15799,13 +15665,13 @@ export type WebAppsCreateOrUpdateRelayServiceConnectionOutput =
  * @param entityName - Name of the hybrid connection.
  */
 export const WebAppsCreateOrUpdateRelayServiceConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsCreateOrUpdateRelayServiceConnectionInput,
     outputSchema: WebAppsCreateOrUpdateRelayServiceConnectionOutput,
   }));
 // Input Schema
 export const WebAppsCreateOrUpdateRelayServiceConnectionSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -15823,7 +15689,7 @@ export type WebAppsCreateOrUpdateRelayServiceConnectionSlotInput =
 
 // Output Schema
 export const WebAppsCreateOrUpdateRelayServiceConnectionSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -15859,13 +15725,13 @@ export type WebAppsCreateOrUpdateRelayServiceConnectionSlotOutput =
  * @param entityName - Name of the hybrid connection.
  */
 export const WebAppsCreateOrUpdateRelayServiceConnectionSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsCreateOrUpdateRelayServiceConnectionSlotInput,
     outputSchema: WebAppsCreateOrUpdateRelayServiceConnectionSlotOutput,
   }));
 // Input Schema
 export const WebAppsCreateOrUpdateSiteContainerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -15882,7 +15748,7 @@ export type WebAppsCreateOrUpdateSiteContainerInput =
 
 // Output Schema
 export const WebAppsCreateOrUpdateSiteContainerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -15915,13 +15781,13 @@ export type WebAppsCreateOrUpdateSiteContainerOutput =
  * @param containerName - Site Container Name
  */
 export const WebAppsCreateOrUpdateSiteContainer =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsCreateOrUpdateSiteContainerInput,
     outputSchema: WebAppsCreateOrUpdateSiteContainerOutput,
   }));
 // Input Schema
 export const WebAppsCreateOrUpdateSiteContainerSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -15939,7 +15805,7 @@ export type WebAppsCreateOrUpdateSiteContainerSlotInput =
 
 // Output Schema
 export const WebAppsCreateOrUpdateSiteContainerSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -15973,13 +15839,13 @@ export type WebAppsCreateOrUpdateSiteContainerSlotOutput =
  * @param containerName - Site Container Name
  */
 export const WebAppsCreateOrUpdateSiteContainerSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsCreateOrUpdateSiteContainerSlotInput,
     outputSchema: WebAppsCreateOrUpdateSiteContainerSlotOutput,
   }));
 // Input Schema
 export const WebAppsCreateOrUpdateSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -15996,7 +15862,7 @@ export type WebAppsCreateOrUpdateSlotInput =
 
 // Output Schema
 export const WebAppsCreateOrUpdateSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -16030,15 +15896,13 @@ export type WebAppsCreateOrUpdateSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsCreateOrUpdateSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsCreateOrUpdateSlotInput,
-    outputSchema: WebAppsCreateOrUpdateSlotOutput,
-  }),
-);
+export const WebAppsCreateOrUpdateSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsCreateOrUpdateSlotInput,
+  outputSchema: WebAppsCreateOrUpdateSlotOutput,
+}));
 // Input Schema
 export const WebAppsCreateOrUpdateSourceControlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -16054,7 +15918,7 @@ export type WebAppsCreateOrUpdateSourceControlInput =
 
 // Output Schema
 export const WebAppsCreateOrUpdateSourceControlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -16088,13 +15952,13 @@ export type WebAppsCreateOrUpdateSourceControlOutput =
  * @param name - Name of the app.
  */
 export const WebAppsCreateOrUpdateSourceControl =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsCreateOrUpdateSourceControlInput,
     outputSchema: WebAppsCreateOrUpdateSourceControlOutput,
   }));
 // Input Schema
 export const WebAppsCreateOrUpdateSourceControlSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -16111,7 +15975,7 @@ export type WebAppsCreateOrUpdateSourceControlSlotInput =
 
 // Output Schema
 export const WebAppsCreateOrUpdateSourceControlSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -16146,13 +16010,13 @@ export type WebAppsCreateOrUpdateSourceControlSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get the source control configuration for the production slot.
  */
 export const WebAppsCreateOrUpdateSourceControlSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsCreateOrUpdateSourceControlSlotInput,
     outputSchema: WebAppsCreateOrUpdateSourceControlSlotOutput,
   }));
 // Input Schema
 export const WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheckInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -16168,7 +16032,7 @@ export type WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheckInput =
 
 // Output Schema
 export const WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheckOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -16204,7 +16068,7 @@ in use by another App Service Plan other than the one this App is in.
  * @param name - Name of the app.
  */
 export const WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheck =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheckInput,
     outputSchema:
@@ -16212,7 +16076,7 @@ export const WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheck =
   }));
 // Input Schema
 export const WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheckSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -16229,7 +16093,7 @@ export type WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheckSlotInput
 
 // Output Schema
 export const WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheckSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -16266,7 +16130,7 @@ in use by another App Service Plan other than the one this App is in.
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get a gateway for the production slot's Virtual Network.
  */
 export const WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheckSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheckSlotInput,
     outputSchema:
@@ -16274,7 +16138,7 @@ export const WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheckSlot =
   }));
 // Input Schema
 export const WebAppsCreateOrUpdateVnetConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -16291,7 +16155,7 @@ export type WebAppsCreateOrUpdateVnetConnectionInput =
 
 // Output Schema
 export const WebAppsCreateOrUpdateVnetConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -16326,13 +16190,13 @@ export type WebAppsCreateOrUpdateVnetConnectionOutput =
  * @param vnetName - Name of the virtual network.
  */
 export const WebAppsCreateOrUpdateVnetConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsCreateOrUpdateVnetConnectionInput,
     outputSchema: WebAppsCreateOrUpdateVnetConnectionOutput,
   }));
 // Input Schema
 export const WebAppsCreateOrUpdateVnetConnectionGatewayInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -16350,7 +16214,7 @@ export type WebAppsCreateOrUpdateVnetConnectionGatewayInput =
 
 // Output Schema
 export const WebAppsCreateOrUpdateVnetConnectionGatewayOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -16386,13 +16250,13 @@ export type WebAppsCreateOrUpdateVnetConnectionGatewayOutput =
  * @param gatewayName - Name of the gateway. Currently, the only supported string is "primary".
  */
 export const WebAppsCreateOrUpdateVnetConnectionGateway =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsCreateOrUpdateVnetConnectionGatewayInput,
     outputSchema: WebAppsCreateOrUpdateVnetConnectionGatewayOutput,
   }));
 // Input Schema
 export const WebAppsCreateOrUpdateVnetConnectionGatewaySlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -16411,7 +16275,7 @@ export type WebAppsCreateOrUpdateVnetConnectionGatewaySlotInput =
 
 // Output Schema
 export const WebAppsCreateOrUpdateVnetConnectionGatewaySlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -16448,13 +16312,13 @@ export type WebAppsCreateOrUpdateVnetConnectionGatewaySlotOutput =
  * @param gatewayName - Name of the gateway. Currently, the only supported string is "primary".
  */
 export const WebAppsCreateOrUpdateVnetConnectionGatewaySlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsCreateOrUpdateVnetConnectionGatewaySlotInput,
     outputSchema: WebAppsCreateOrUpdateVnetConnectionGatewaySlotOutput,
   }));
 // Input Schema
 export const WebAppsCreateOrUpdateVnetConnectionSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -16472,7 +16336,7 @@ export type WebAppsCreateOrUpdateVnetConnectionSlotInput =
 
 // Output Schema
 export const WebAppsCreateOrUpdateVnetConnectionSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -16508,12 +16372,12 @@ export type WebAppsCreateOrUpdateVnetConnectionSlotOutput =
  * @param vnetName - Name of the virtual network.
  */
 export const WebAppsCreateOrUpdateVnetConnectionSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsCreateOrUpdateVnetConnectionSlotInput,
     outputSchema: WebAppsCreateOrUpdateVnetConnectionSlotOutput,
   }));
 // Input Schema
-export const WebAppsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebAppsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -16529,7 +16393,7 @@ export const WebAppsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WebAppsDeleteInput = typeof WebAppsDeleteInput.Type;
 
 // Output Schema
-export const WebAppsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsDeleteOutput = typeof WebAppsDeleteOutput.Type;
 
 // The operation
@@ -16545,13 +16409,13 @@ export type WebAppsDeleteOutput = typeof WebAppsDeleteOutput.Type;
  * @param deleteMetrics - If true, web app metrics are also deleted.
  * @param deleteEmptyServerFarm - Specify false if you want to keep empty App Service plan. By default, empty App Service plan is deleted.
  */
-export const WebAppsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebAppsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebAppsDeleteInput,
   outputSchema: WebAppsDeleteOutput,
 }));
 // Input Schema
 export const WebAppsDeleteBackupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -16566,8 +16430,7 @@ export const WebAppsDeleteBackupInput =
 export type WebAppsDeleteBackupInput = typeof WebAppsDeleteBackupInput.Type;
 
 // Output Schema
-export const WebAppsDeleteBackupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsDeleteBackupOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsDeleteBackupOutput = typeof WebAppsDeleteBackupOutput.Type;
 
 // The operation
@@ -16582,13 +16445,13 @@ export type WebAppsDeleteBackupOutput = typeof WebAppsDeleteBackupOutput.Type;
  * @param name - Name of the app.
  * @param backupId - ID of the backup.
  */
-export const WebAppsDeleteBackup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebAppsDeleteBackup = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebAppsDeleteBackupInput,
   outputSchema: WebAppsDeleteBackupOutput,
 }));
 // Input Schema
 export const WebAppsDeleteBackupConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -16603,8 +16466,7 @@ export type WebAppsDeleteBackupConfigurationInput =
   typeof WebAppsDeleteBackupConfigurationInput.Type;
 
 // Output Schema
-export const WebAppsDeleteBackupConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsDeleteBackupConfigurationOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsDeleteBackupConfigurationOutput =
   typeof WebAppsDeleteBackupConfigurationOutput.Type;
 
@@ -16620,13 +16482,13 @@ export type WebAppsDeleteBackupConfigurationOutput =
  * @param name - Name of the app.
  */
 export const WebAppsDeleteBackupConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsDeleteBackupConfigurationInput,
     outputSchema: WebAppsDeleteBackupConfigurationOutput,
   }));
 // Input Schema
 export const WebAppsDeleteBackupConfigurationSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -16643,7 +16505,7 @@ export type WebAppsDeleteBackupConfigurationSlotInput =
 
 // Output Schema
 export const WebAppsDeleteBackupConfigurationSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type WebAppsDeleteBackupConfigurationSlotOutput =
   typeof WebAppsDeleteBackupConfigurationSlotOutput.Type;
 
@@ -16660,13 +16522,13 @@ export type WebAppsDeleteBackupConfigurationSlotOutput =
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
 export const WebAppsDeleteBackupConfigurationSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsDeleteBackupConfigurationSlotInput,
     outputSchema: WebAppsDeleteBackupConfigurationSlotOutput,
   }));
 // Input Schema
 export const WebAppsDeleteBackupSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -16683,8 +16545,7 @@ export type WebAppsDeleteBackupSlotInput =
   typeof WebAppsDeleteBackupSlotInput.Type;
 
 // Output Schema
-export const WebAppsDeleteBackupSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsDeleteBackupSlotOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsDeleteBackupSlotOutput =
   typeof WebAppsDeleteBackupSlotOutput.Type;
 
@@ -16701,15 +16562,13 @@ export type WebAppsDeleteBackupSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get a backup of the production slot.
  * @param backupId - ID of the backup.
  */
-export const WebAppsDeleteBackupSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsDeleteBackupSlotInput,
-    outputSchema: WebAppsDeleteBackupSlotOutput,
-  }),
-);
+export const WebAppsDeleteBackupSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsDeleteBackupSlotInput,
+  outputSchema: WebAppsDeleteBackupSlotOutput,
+}));
 // Input Schema
 export const WebAppsDeleteContinuousWebJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -16725,8 +16584,7 @@ export type WebAppsDeleteContinuousWebJobInput =
   typeof WebAppsDeleteContinuousWebJobInput.Type;
 
 // Output Schema
-export const WebAppsDeleteContinuousWebJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsDeleteContinuousWebJobOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsDeleteContinuousWebJobOutput =
   typeof WebAppsDeleteContinuousWebJobOutput.Type;
 
@@ -16743,13 +16601,13 @@ export type WebAppsDeleteContinuousWebJobOutput =
  * @param webJobName - Name of Web Job.
  */
 export const WebAppsDeleteContinuousWebJob =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsDeleteContinuousWebJobInput,
     outputSchema: WebAppsDeleteContinuousWebJobOutput,
   }));
 // Input Schema
 export const WebAppsDeleteContinuousWebJobSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -16767,7 +16625,7 @@ export type WebAppsDeleteContinuousWebJobSlotInput =
 
 // Output Schema
 export const WebAppsDeleteContinuousWebJobSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type WebAppsDeleteContinuousWebJobSlotOutput =
   typeof WebAppsDeleteContinuousWebJobSlotOutput.Type;
 
@@ -16785,13 +16643,13 @@ export type WebAppsDeleteContinuousWebJobSlotOutput =
  * @param webJobName - Name of Web Job.
  */
 export const WebAppsDeleteContinuousWebJobSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsDeleteContinuousWebJobSlotInput,
     outputSchema: WebAppsDeleteContinuousWebJobSlotOutput,
   }));
 // Input Schema
 export const WebAppsDeleteDeploymentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -16807,8 +16665,7 @@ export type WebAppsDeleteDeploymentInput =
   typeof WebAppsDeleteDeploymentInput.Type;
 
 // Output Schema
-export const WebAppsDeleteDeploymentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsDeleteDeploymentOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsDeleteDeploymentOutput =
   typeof WebAppsDeleteDeploymentOutput.Type;
 
@@ -16824,15 +16681,13 @@ export type WebAppsDeleteDeploymentOutput =
  * @param name - Name of the app.
  * @param id - Deployment ID.
  */
-export const WebAppsDeleteDeployment = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsDeleteDeploymentInput,
-    outputSchema: WebAppsDeleteDeploymentOutput,
-  }),
-);
+export const WebAppsDeleteDeployment = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsDeleteDeploymentInput,
+  outputSchema: WebAppsDeleteDeploymentOutput,
+}));
 // Input Schema
 export const WebAppsDeleteDeploymentSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -16849,8 +16704,7 @@ export type WebAppsDeleteDeploymentSlotInput =
   typeof WebAppsDeleteDeploymentSlotInput.Type;
 
 // Output Schema
-export const WebAppsDeleteDeploymentSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsDeleteDeploymentSlotOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsDeleteDeploymentSlotOutput =
   typeof WebAppsDeleteDeploymentSlotOutput.Type;
 
@@ -16867,15 +16721,13 @@ export type WebAppsDeleteDeploymentSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API gets a deployment for the production slot.
  * @param id - Deployment ID.
  */
-export const WebAppsDeleteDeploymentSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsDeleteDeploymentSlotInput,
-    outputSchema: WebAppsDeleteDeploymentSlotOutput,
-  }),
-);
+export const WebAppsDeleteDeploymentSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsDeleteDeploymentSlotInput,
+  outputSchema: WebAppsDeleteDeploymentSlotOutput,
+}));
 // Input Schema
 export const WebAppsDeleteDomainOwnershipIdentifierInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -16892,7 +16744,7 @@ export type WebAppsDeleteDomainOwnershipIdentifierInput =
 
 // Output Schema
 export const WebAppsDeleteDomainOwnershipIdentifierOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type WebAppsDeleteDomainOwnershipIdentifierOutput =
   typeof WebAppsDeleteDomainOwnershipIdentifierOutput.Type;
 
@@ -16909,13 +16761,13 @@ export type WebAppsDeleteDomainOwnershipIdentifierOutput =
  * @param domainOwnershipIdentifierName - Name of domain ownership identifier.
  */
 export const WebAppsDeleteDomainOwnershipIdentifier =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsDeleteDomainOwnershipIdentifierInput,
     outputSchema: WebAppsDeleteDomainOwnershipIdentifierOutput,
   }));
 // Input Schema
 export const WebAppsDeleteDomainOwnershipIdentifierSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -16933,7 +16785,7 @@ export type WebAppsDeleteDomainOwnershipIdentifierSlotInput =
 
 // Output Schema
 export const WebAppsDeleteDomainOwnershipIdentifierSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type WebAppsDeleteDomainOwnershipIdentifierSlotOutput =
   typeof WebAppsDeleteDomainOwnershipIdentifierSlotOutput.Type;
 
@@ -16951,13 +16803,13 @@ export type WebAppsDeleteDomainOwnershipIdentifierSlotOutput =
  * @param domainOwnershipIdentifierName - Name of domain ownership identifier.
  */
 export const WebAppsDeleteDomainOwnershipIdentifierSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsDeleteDomainOwnershipIdentifierSlotInput,
     outputSchema: WebAppsDeleteDomainOwnershipIdentifierSlotOutput,
   }));
 // Input Schema
 export const WebAppsDeleteFunctionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -16972,8 +16824,7 @@ export const WebAppsDeleteFunctionInput =
 export type WebAppsDeleteFunctionInput = typeof WebAppsDeleteFunctionInput.Type;
 
 // Output Schema
-export const WebAppsDeleteFunctionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsDeleteFunctionOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsDeleteFunctionOutput =
   typeof WebAppsDeleteFunctionOutput.Type;
 
@@ -16989,15 +16840,13 @@ export type WebAppsDeleteFunctionOutput =
  * @param name - Site name.
  * @param functionName - Function name.
  */
-export const WebAppsDeleteFunction = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsDeleteFunctionInput,
-    outputSchema: WebAppsDeleteFunctionOutput,
-  }),
-);
+export const WebAppsDeleteFunction = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsDeleteFunctionInput,
+  outputSchema: WebAppsDeleteFunctionOutput,
+}));
 // Input Schema
 export const WebAppsDeleteFunctionSecretInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -17014,8 +16863,7 @@ export type WebAppsDeleteFunctionSecretInput =
   typeof WebAppsDeleteFunctionSecretInput.Type;
 
 // Output Schema
-export const WebAppsDeleteFunctionSecretOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsDeleteFunctionSecretOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsDeleteFunctionSecretOutput =
   typeof WebAppsDeleteFunctionSecretOutput.Type;
 
@@ -17029,15 +16877,13 @@ export type WebAppsDeleteFunctionSecretOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const WebAppsDeleteFunctionSecret = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsDeleteFunctionSecretInput,
-    outputSchema: WebAppsDeleteFunctionSecretOutput,
-  }),
-);
+export const WebAppsDeleteFunctionSecret = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsDeleteFunctionSecretInput,
+  outputSchema: WebAppsDeleteFunctionSecretOutput,
+}));
 // Input Schema
 export const WebAppsDeleteFunctionSecretSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -17055,8 +16901,7 @@ export type WebAppsDeleteFunctionSecretSlotInput =
   typeof WebAppsDeleteFunctionSecretSlotInput.Type;
 
 // Output Schema
-export const WebAppsDeleteFunctionSecretSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsDeleteFunctionSecretSlotOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsDeleteFunctionSecretSlotOutput =
   typeof WebAppsDeleteFunctionSecretSlotOutput.Type;
 
@@ -17071,13 +16916,13 @@ export type WebAppsDeleteFunctionSecretSlotOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const WebAppsDeleteFunctionSecretSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsDeleteFunctionSecretSlotInput,
     outputSchema: WebAppsDeleteFunctionSecretSlotOutput,
   }));
 // Input Schema
 export const WebAppsDeleteHostNameBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -17093,8 +16938,7 @@ export type WebAppsDeleteHostNameBindingInput =
   typeof WebAppsDeleteHostNameBindingInput.Type;
 
 // Output Schema
-export const WebAppsDeleteHostNameBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsDeleteHostNameBindingOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsDeleteHostNameBindingOutput =
   typeof WebAppsDeleteHostNameBindingOutput.Type;
 
@@ -17111,13 +16955,13 @@ export type WebAppsDeleteHostNameBindingOutput =
  * @param hostName - Hostname in the hostname binding.
  */
 export const WebAppsDeleteHostNameBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsDeleteHostNameBindingInput,
     outputSchema: WebAppsDeleteHostNameBindingOutput,
   }));
 // Input Schema
 export const WebAppsDeleteHostNameBindingSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -17134,8 +16978,7 @@ export type WebAppsDeleteHostNameBindingSlotInput =
   typeof WebAppsDeleteHostNameBindingSlotInput.Type;
 
 // Output Schema
-export const WebAppsDeleteHostNameBindingSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsDeleteHostNameBindingSlotOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsDeleteHostNameBindingSlotOutput =
   typeof WebAppsDeleteHostNameBindingSlotOutput.Type;
 
@@ -17153,13 +16996,13 @@ export type WebAppsDeleteHostNameBindingSlotOutput =
  * @param hostName - Hostname in the hostname binding.
  */
 export const WebAppsDeleteHostNameBindingSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsDeleteHostNameBindingSlotInput,
     outputSchema: WebAppsDeleteHostNameBindingSlotOutput,
   }));
 // Input Schema
 export const WebAppsDeleteHostSecretInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -17176,8 +17019,7 @@ export type WebAppsDeleteHostSecretInput =
   typeof WebAppsDeleteHostSecretInput.Type;
 
 // Output Schema
-export const WebAppsDeleteHostSecretOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsDeleteHostSecretOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsDeleteHostSecretOutput =
   typeof WebAppsDeleteHostSecretOutput.Type;
 
@@ -17194,15 +17036,13 @@ export type WebAppsDeleteHostSecretOutput =
  * @param keyType - The type of host key.
  * @param keyName - The name of the key.
  */
-export const WebAppsDeleteHostSecret = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsDeleteHostSecretInput,
-    outputSchema: WebAppsDeleteHostSecretOutput,
-  }),
-);
+export const WebAppsDeleteHostSecret = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsDeleteHostSecretInput,
+  outputSchema: WebAppsDeleteHostSecretOutput,
+}));
 // Input Schema
 export const WebAppsDeleteHostSecretSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -17220,8 +17060,7 @@ export type WebAppsDeleteHostSecretSlotInput =
   typeof WebAppsDeleteHostSecretSlotInput.Type;
 
 // Output Schema
-export const WebAppsDeleteHostSecretSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsDeleteHostSecretSlotOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsDeleteHostSecretSlotOutput =
   typeof WebAppsDeleteHostSecretSlotOutput.Type;
 
@@ -17239,15 +17078,13 @@ export type WebAppsDeleteHostSecretSlotOutput =
  * @param keyType - The type of host key.
  * @param keyName - The name of the key.
  */
-export const WebAppsDeleteHostSecretSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsDeleteHostSecretSlotInput,
-    outputSchema: WebAppsDeleteHostSecretSlotOutput,
-  }),
-);
+export const WebAppsDeleteHostSecretSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsDeleteHostSecretSlotInput,
+  outputSchema: WebAppsDeleteHostSecretSlotOutput,
+}));
 // Input Schema
 export const WebAppsDeleteHybridConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -17264,8 +17101,7 @@ export type WebAppsDeleteHybridConnectionInput =
   typeof WebAppsDeleteHybridConnectionInput.Type;
 
 // Output Schema
-export const WebAppsDeleteHybridConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsDeleteHybridConnectionOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsDeleteHybridConnectionOutput =
   typeof WebAppsDeleteHybridConnectionOutput.Type;
 
@@ -17283,13 +17119,13 @@ export type WebAppsDeleteHybridConnectionOutput =
  * @param relayName - The relay name for this hybrid connection.
  */
 export const WebAppsDeleteHybridConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsDeleteHybridConnectionInput,
     outputSchema: WebAppsDeleteHybridConnectionOutput,
   }));
 // Input Schema
 export const WebAppsDeleteHybridConnectionSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -17308,7 +17144,7 @@ export type WebAppsDeleteHybridConnectionSlotInput =
 
 // Output Schema
 export const WebAppsDeleteHybridConnectionSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type WebAppsDeleteHybridConnectionSlotOutput =
   typeof WebAppsDeleteHybridConnectionSlotOutput.Type;
 
@@ -17327,13 +17163,13 @@ export type WebAppsDeleteHybridConnectionSlotOutput =
  * @param relayName - The relay name for this hybrid connection.
  */
 export const WebAppsDeleteHybridConnectionSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsDeleteHybridConnectionSlotInput,
     outputSchema: WebAppsDeleteHybridConnectionSlotOutput,
   }));
 // Input Schema
 export const WebAppsDeleteInstanceFunctionSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -17351,7 +17187,7 @@ export type WebAppsDeleteInstanceFunctionSlotInput =
 
 // Output Schema
 export const WebAppsDeleteInstanceFunctionSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type WebAppsDeleteInstanceFunctionSlotOutput =
   typeof WebAppsDeleteInstanceFunctionSlotOutput.Type;
 
@@ -17369,13 +17205,13 @@ export type WebAppsDeleteInstanceFunctionSlotOutput =
  * @param functionName - Function name.
  */
 export const WebAppsDeleteInstanceFunctionSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsDeleteInstanceFunctionSlotInput,
     outputSchema: WebAppsDeleteInstanceFunctionSlotOutput,
   }));
 // Input Schema
 export const WebAppsDeleteInstanceProcessInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -17392,8 +17228,7 @@ export type WebAppsDeleteInstanceProcessInput =
   typeof WebAppsDeleteInstanceProcessInput.Type;
 
 // Output Schema
-export const WebAppsDeleteInstanceProcessOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsDeleteInstanceProcessOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsDeleteInstanceProcessOutput =
   typeof WebAppsDeleteInstanceProcessOutput.Type;
 
@@ -17411,13 +17246,13 @@ export type WebAppsDeleteInstanceProcessOutput =
  * @param processId - PID.
  */
 export const WebAppsDeleteInstanceProcess =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsDeleteInstanceProcessInput,
     outputSchema: WebAppsDeleteInstanceProcessOutput,
   }));
 // Input Schema
 export const WebAppsDeleteInstanceProcessSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -17435,8 +17270,7 @@ export type WebAppsDeleteInstanceProcessSlotInput =
   typeof WebAppsDeleteInstanceProcessSlotInput.Type;
 
 // Output Schema
-export const WebAppsDeleteInstanceProcessSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsDeleteInstanceProcessSlotOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsDeleteInstanceProcessSlotOutput =
   typeof WebAppsDeleteInstanceProcessSlotOutput.Type;
 
@@ -17455,13 +17289,13 @@ export type WebAppsDeleteInstanceProcessSlotOutput =
  * @param processId - PID.
  */
 export const WebAppsDeleteInstanceProcessSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsDeleteInstanceProcessSlotInput,
     outputSchema: WebAppsDeleteInstanceProcessSlotOutput,
   }));
 // Input Schema
 export const WebAppsDeletePremierAddOnInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -17477,8 +17311,7 @@ export type WebAppsDeletePremierAddOnInput =
   typeof WebAppsDeletePremierAddOnInput.Type;
 
 // Output Schema
-export const WebAppsDeletePremierAddOnOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsDeletePremierAddOnOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsDeletePremierAddOnOutput =
   typeof WebAppsDeletePremierAddOnOutput.Type;
 
@@ -17494,15 +17327,13 @@ export type WebAppsDeletePremierAddOnOutput =
  * @param name - Name of the app.
  * @param premierAddOnName - Add-on name.
  */
-export const WebAppsDeletePremierAddOn = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsDeletePremierAddOnInput,
-    outputSchema: WebAppsDeletePremierAddOnOutput,
-  }),
-);
+export const WebAppsDeletePremierAddOn = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsDeletePremierAddOnInput,
+  outputSchema: WebAppsDeletePremierAddOnOutput,
+}));
 // Input Schema
 export const WebAppsDeletePremierAddOnSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -17519,8 +17350,7 @@ export type WebAppsDeletePremierAddOnSlotInput =
   typeof WebAppsDeletePremierAddOnSlotInput.Type;
 
 // Output Schema
-export const WebAppsDeletePremierAddOnSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsDeletePremierAddOnSlotOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsDeletePremierAddOnSlotOutput =
   typeof WebAppsDeletePremierAddOnSlotOutput.Type;
 
@@ -17538,13 +17368,13 @@ export type WebAppsDeletePremierAddOnSlotOutput =
  * @param premierAddOnName - Add-on name.
  */
 export const WebAppsDeletePremierAddOnSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsDeletePremierAddOnSlotInput,
     outputSchema: WebAppsDeletePremierAddOnSlotOutput,
   }));
 // Input Schema
 export const WebAppsDeletePrivateEndpointConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -17561,7 +17391,7 @@ export type WebAppsDeletePrivateEndpointConnectionInput =
 
 // Output Schema
 export const WebAppsDeletePrivateEndpointConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+  /*@__PURE__*/ Schema.Unknown;
 export type WebAppsDeletePrivateEndpointConnectionOutput =
   typeof WebAppsDeletePrivateEndpointConnectionOutput.Type;
 
@@ -17578,13 +17408,13 @@ export type WebAppsDeletePrivateEndpointConnectionOutput =
  * @param privateEndpointConnectionName - Name of the private endpoint connection.
  */
 export const WebAppsDeletePrivateEndpointConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsDeletePrivateEndpointConnectionInput,
     outputSchema: WebAppsDeletePrivateEndpointConnectionOutput,
   }));
 // Input Schema
 export const WebAppsDeletePrivateEndpointConnectionSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -17602,7 +17432,7 @@ export type WebAppsDeletePrivateEndpointConnectionSlotInput =
 
 // Output Schema
 export const WebAppsDeletePrivateEndpointConnectionSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+  /*@__PURE__*/ Schema.Unknown;
 export type WebAppsDeletePrivateEndpointConnectionSlotOutput =
   typeof WebAppsDeletePrivateEndpointConnectionSlotOutput.Type;
 
@@ -17620,13 +17450,13 @@ export type WebAppsDeletePrivateEndpointConnectionSlotOutput =
  * @param privateEndpointConnectionName - Name of the private endpoint connection.
  */
 export const WebAppsDeletePrivateEndpointConnectionSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsDeletePrivateEndpointConnectionSlotInput,
     outputSchema: WebAppsDeletePrivateEndpointConnectionSlotOutput,
   }));
 // Input Schema
 export const WebAppsDeleteProcessInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -17641,8 +17471,7 @@ export const WebAppsDeleteProcessInput =
 export type WebAppsDeleteProcessInput = typeof WebAppsDeleteProcessInput.Type;
 
 // Output Schema
-export const WebAppsDeleteProcessOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsDeleteProcessOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsDeleteProcessOutput = typeof WebAppsDeleteProcessOutput.Type;
 
 // The operation
@@ -17657,15 +17486,13 @@ export type WebAppsDeleteProcessOutput = typeof WebAppsDeleteProcessOutput.Type;
  * @param name - Site name.
  * @param processId - PID.
  */
-export const WebAppsDeleteProcess = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsDeleteProcessInput,
-    outputSchema: WebAppsDeleteProcessOutput,
-  }),
-);
+export const WebAppsDeleteProcess = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsDeleteProcessInput,
+  outputSchema: WebAppsDeleteProcessOutput,
+}));
 // Input Schema
 export const WebAppsDeleteProcessSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -17682,8 +17509,7 @@ export type WebAppsDeleteProcessSlotInput =
   typeof WebAppsDeleteProcessSlotInput.Type;
 
 // Output Schema
-export const WebAppsDeleteProcessSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsDeleteProcessSlotOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsDeleteProcessSlotOutput =
   typeof WebAppsDeleteProcessSlotOutput.Type;
 
@@ -17700,15 +17526,13 @@ export type WebAppsDeleteProcessSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API returns deployments for the production slot.
  * @param processId - PID.
  */
-export const WebAppsDeleteProcessSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsDeleteProcessSlotInput,
-    outputSchema: WebAppsDeleteProcessSlotOutput,
-  }),
-);
+export const WebAppsDeleteProcessSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsDeleteProcessSlotInput,
+  outputSchema: WebAppsDeleteProcessSlotOutput,
+}));
 // Input Schema
 export const WebAppsDeletePublicCertificateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -17724,8 +17548,7 @@ export type WebAppsDeletePublicCertificateInput =
   typeof WebAppsDeletePublicCertificateInput.Type;
 
 // Output Schema
-export const WebAppsDeletePublicCertificateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsDeletePublicCertificateOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsDeletePublicCertificateOutput =
   typeof WebAppsDeletePublicCertificateOutput.Type;
 
@@ -17742,13 +17565,13 @@ export type WebAppsDeletePublicCertificateOutput =
  * @param publicCertificateName - Public certificate name.
  */
 export const WebAppsDeletePublicCertificate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsDeletePublicCertificateInput,
     outputSchema: WebAppsDeletePublicCertificateOutput,
   }));
 // Input Schema
 export const WebAppsDeletePublicCertificateSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -17766,7 +17589,7 @@ export type WebAppsDeletePublicCertificateSlotInput =
 
 // Output Schema
 export const WebAppsDeletePublicCertificateSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type WebAppsDeletePublicCertificateSlotOutput =
   typeof WebAppsDeletePublicCertificateSlotOutput.Type;
 
@@ -17784,13 +17607,13 @@ export type WebAppsDeletePublicCertificateSlotOutput =
  * @param publicCertificateName - Public certificate name.
  */
 export const WebAppsDeletePublicCertificateSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsDeletePublicCertificateSlotInput,
     outputSchema: WebAppsDeletePublicCertificateSlotOutput,
   }));
 // Input Schema
 export const WebAppsDeleteRelayServiceConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -17807,7 +17630,7 @@ export type WebAppsDeleteRelayServiceConnectionInput =
 
 // Output Schema
 export const WebAppsDeleteRelayServiceConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type WebAppsDeleteRelayServiceConnectionOutput =
   typeof WebAppsDeleteRelayServiceConnectionOutput.Type;
 
@@ -17824,13 +17647,13 @@ export type WebAppsDeleteRelayServiceConnectionOutput =
  * @param entityName - Name of the hybrid connection.
  */
 export const WebAppsDeleteRelayServiceConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsDeleteRelayServiceConnectionInput,
     outputSchema: WebAppsDeleteRelayServiceConnectionOutput,
   }));
 // Input Schema
 export const WebAppsDeleteRelayServiceConnectionSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -17848,7 +17671,7 @@ export type WebAppsDeleteRelayServiceConnectionSlotInput =
 
 // Output Schema
 export const WebAppsDeleteRelayServiceConnectionSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type WebAppsDeleteRelayServiceConnectionSlotOutput =
   typeof WebAppsDeleteRelayServiceConnectionSlotOutput.Type;
 
@@ -17866,13 +17689,13 @@ export type WebAppsDeleteRelayServiceConnectionSlotOutput =
  * @param entityName - Name of the hybrid connection.
  */
 export const WebAppsDeleteRelayServiceConnectionSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsDeleteRelayServiceConnectionSlotInput,
     outputSchema: WebAppsDeleteRelayServiceConnectionSlotOutput,
   }));
 // Input Schema
 export const WebAppsDeleteSiteContainerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -17888,8 +17711,7 @@ export type WebAppsDeleteSiteContainerInput =
   typeof WebAppsDeleteSiteContainerInput.Type;
 
 // Output Schema
-export const WebAppsDeleteSiteContainerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsDeleteSiteContainerOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsDeleteSiteContainerOutput =
   typeof WebAppsDeleteSiteContainerOutput.Type;
 
@@ -17903,15 +17725,13 @@ export type WebAppsDeleteSiteContainerOutput =
  * @param name - Name of the app.
  * @param containerName - Site Container Name
  */
-export const WebAppsDeleteSiteContainer = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsDeleteSiteContainerInput,
-    outputSchema: WebAppsDeleteSiteContainerOutput,
-  }),
-);
+export const WebAppsDeleteSiteContainer = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsDeleteSiteContainerInput,
+  outputSchema: WebAppsDeleteSiteContainerOutput,
+}));
 // Input Schema
 export const WebAppsDeleteSiteContainerSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -17928,8 +17748,7 @@ export type WebAppsDeleteSiteContainerSlotInput =
   typeof WebAppsDeleteSiteContainerSlotInput.Type;
 
 // Output Schema
-export const WebAppsDeleteSiteContainerSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsDeleteSiteContainerSlotOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsDeleteSiteContainerSlotOutput =
   typeof WebAppsDeleteSiteContainerSlotOutput.Type;
 
@@ -17945,13 +17764,13 @@ export type WebAppsDeleteSiteContainerSlotOutput =
  * @param containerName - Site Container Name
  */
 export const WebAppsDeleteSiteContainerSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsDeleteSiteContainerSlotInput,
     outputSchema: WebAppsDeleteSiteContainerSlotOutput,
   }));
 // Input Schema
 export const WebAppsDeleteSiteExtensionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -17967,8 +17786,7 @@ export type WebAppsDeleteSiteExtensionInput =
   typeof WebAppsDeleteSiteExtensionInput.Type;
 
 // Output Schema
-export const WebAppsDeleteSiteExtensionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsDeleteSiteExtensionOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsDeleteSiteExtensionOutput =
   typeof WebAppsDeleteSiteExtensionOutput.Type;
 
@@ -17984,15 +17802,13 @@ export type WebAppsDeleteSiteExtensionOutput =
  * @param name - Site name.
  * @param siteExtensionId - Site extension name.
  */
-export const WebAppsDeleteSiteExtension = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsDeleteSiteExtensionInput,
-    outputSchema: WebAppsDeleteSiteExtensionOutput,
-  }),
-);
+export const WebAppsDeleteSiteExtension = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsDeleteSiteExtensionInput,
+  outputSchema: WebAppsDeleteSiteExtensionOutput,
+}));
 // Input Schema
 export const WebAppsDeleteSiteExtensionSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -18009,8 +17825,7 @@ export type WebAppsDeleteSiteExtensionSlotInput =
   typeof WebAppsDeleteSiteExtensionSlotInput.Type;
 
 // Output Schema
-export const WebAppsDeleteSiteExtensionSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsDeleteSiteExtensionSlotOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsDeleteSiteExtensionSlotOutput =
   typeof WebAppsDeleteSiteExtensionSlotOutput.Type;
 
@@ -18028,22 +17843,20 @@ export type WebAppsDeleteSiteExtensionSlotOutput =
  * @param siteExtensionId - Site extension name.
  */
 export const WebAppsDeleteSiteExtensionSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsDeleteSiteExtensionSlotInput,
     outputSchema: WebAppsDeleteSiteExtensionSlotOutput,
   }));
 // Input Schema
-export const WebAppsDeleteSlotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    deleteMetrics: Schema.optional(Schema.Boolean),
-    deleteEmptyServerFarm: Schema.optional(Schema.Boolean),
-  },
-).pipe(
+export const WebAppsDeleteSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  deleteMetrics: Schema.optional(Schema.Boolean),
+  deleteEmptyServerFarm: Schema.optional(Schema.Boolean),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}",
@@ -18052,7 +17865,7 @@ export const WebAppsDeleteSlotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type WebAppsDeleteSlotInput = typeof WebAppsDeleteSlotInput.Type;
 
 // Output Schema
-export const WebAppsDeleteSlotOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsDeleteSlotOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsDeleteSlotOutput = typeof WebAppsDeleteSlotOutput.Type;
 
 // The operation
@@ -18069,13 +17882,13 @@ export type WebAppsDeleteSlotOutput = typeof WebAppsDeleteSlotOutput.Type;
  * @param deleteMetrics - If true, web app metrics are also deleted.
  * @param deleteEmptyServerFarm - Specify false if you want to keep empty App Service plan. By default, empty App Service plan is deleted.
  */
-export const WebAppsDeleteSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebAppsDeleteSlot = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebAppsDeleteSlotInput,
   outputSchema: WebAppsDeleteSlotOutput,
 }));
 // Input Schema
 export const WebAppsDeleteSourceControlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -18091,8 +17904,7 @@ export type WebAppsDeleteSourceControlInput =
   typeof WebAppsDeleteSourceControlInput.Type;
 
 // Output Schema
-export const WebAppsDeleteSourceControlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsDeleteSourceControlOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsDeleteSourceControlOutput =
   typeof WebAppsDeleteSourceControlOutput.Type;
 
@@ -18107,15 +17919,13 @@ export type WebAppsDeleteSourceControlOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsDeleteSourceControl = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsDeleteSourceControlInput,
-    outputSchema: WebAppsDeleteSourceControlOutput,
-  }),
-);
+export const WebAppsDeleteSourceControl = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsDeleteSourceControlInput,
+  outputSchema: WebAppsDeleteSourceControlOutput,
+}));
 // Input Schema
 export const WebAppsDeleteSourceControlSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -18132,8 +17942,7 @@ export type WebAppsDeleteSourceControlSlotInput =
   typeof WebAppsDeleteSourceControlSlotInput.Type;
 
 // Output Schema
-export const WebAppsDeleteSourceControlSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsDeleteSourceControlSlotOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsDeleteSourceControlSlotOutput =
   typeof WebAppsDeleteSourceControlSlotOutput.Type;
 
@@ -18150,13 +17959,13 @@ export type WebAppsDeleteSourceControlSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get the source control configuration for the production slot.
  */
 export const WebAppsDeleteSourceControlSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsDeleteSourceControlSlotInput,
     outputSchema: WebAppsDeleteSourceControlSlotOutput,
   }));
 // Input Schema
 export const WebAppsDeleteSwiftVirtualNetworkInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -18171,8 +17980,7 @@ export type WebAppsDeleteSwiftVirtualNetworkInput =
   typeof WebAppsDeleteSwiftVirtualNetworkInput.Type;
 
 // Output Schema
-export const WebAppsDeleteSwiftVirtualNetworkOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsDeleteSwiftVirtualNetworkOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsDeleteSwiftVirtualNetworkOutput =
   typeof WebAppsDeleteSwiftVirtualNetworkOutput.Type;
 
@@ -18188,13 +17996,13 @@ export type WebAppsDeleteSwiftVirtualNetworkOutput =
  * @param name - Name of the app.
  */
 export const WebAppsDeleteSwiftVirtualNetwork =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsDeleteSwiftVirtualNetworkInput,
     outputSchema: WebAppsDeleteSwiftVirtualNetworkOutput,
   }));
 // Input Schema
 export const WebAppsDeleteSwiftVirtualNetworkSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -18211,7 +18019,7 @@ export type WebAppsDeleteSwiftVirtualNetworkSlotInput =
 
 // Output Schema
 export const WebAppsDeleteSwiftVirtualNetworkSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type WebAppsDeleteSwiftVirtualNetworkSlotOutput =
   typeof WebAppsDeleteSwiftVirtualNetworkSlotOutput.Type;
 
@@ -18228,13 +18036,13 @@ export type WebAppsDeleteSwiftVirtualNetworkSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get a gateway for the production slot's Virtual Network.
  */
 export const WebAppsDeleteSwiftVirtualNetworkSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsDeleteSwiftVirtualNetworkSlotInput,
     outputSchema: WebAppsDeleteSwiftVirtualNetworkSlotOutput,
   }));
 // Input Schema
 export const WebAppsDeleteTriggeredWebJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -18250,8 +18058,7 @@ export type WebAppsDeleteTriggeredWebJobInput =
   typeof WebAppsDeleteTriggeredWebJobInput.Type;
 
 // Output Schema
-export const WebAppsDeleteTriggeredWebJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsDeleteTriggeredWebJobOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsDeleteTriggeredWebJobOutput =
   typeof WebAppsDeleteTriggeredWebJobOutput.Type;
 
@@ -18268,13 +18075,13 @@ export type WebAppsDeleteTriggeredWebJobOutput =
  * @param webJobName - Name of Web Job.
  */
 export const WebAppsDeleteTriggeredWebJob =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsDeleteTriggeredWebJobInput,
     outputSchema: WebAppsDeleteTriggeredWebJobOutput,
   }));
 // Input Schema
 export const WebAppsDeleteTriggeredWebJobSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -18291,8 +18098,7 @@ export type WebAppsDeleteTriggeredWebJobSlotInput =
   typeof WebAppsDeleteTriggeredWebJobSlotInput.Type;
 
 // Output Schema
-export const WebAppsDeleteTriggeredWebJobSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsDeleteTriggeredWebJobSlotOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsDeleteTriggeredWebJobSlotOutput =
   typeof WebAppsDeleteTriggeredWebJobSlotOutput.Type;
 
@@ -18310,13 +18116,13 @@ export type WebAppsDeleteTriggeredWebJobSlotOutput =
  * @param webJobName - Name of Web Job.
  */
 export const WebAppsDeleteTriggeredWebJobSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsDeleteTriggeredWebJobSlotInput,
     outputSchema: WebAppsDeleteTriggeredWebJobSlotOutput,
   }));
 // Input Schema
 export const WebAppsDeleteVnetConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -18332,8 +18138,7 @@ export type WebAppsDeleteVnetConnectionInput =
   typeof WebAppsDeleteVnetConnectionInput.Type;
 
 // Output Schema
-export const WebAppsDeleteVnetConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsDeleteVnetConnectionOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsDeleteVnetConnectionOutput =
   typeof WebAppsDeleteVnetConnectionOutput.Type;
 
@@ -18349,15 +18154,13 @@ export type WebAppsDeleteVnetConnectionOutput =
  * @param name - Name of the app.
  * @param vnetName - Name of the virtual network.
  */
-export const WebAppsDeleteVnetConnection = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsDeleteVnetConnectionInput,
-    outputSchema: WebAppsDeleteVnetConnectionOutput,
-  }),
-);
+export const WebAppsDeleteVnetConnection = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsDeleteVnetConnectionInput,
+  outputSchema: WebAppsDeleteVnetConnectionOutput,
+}));
 // Input Schema
 export const WebAppsDeleteVnetConnectionSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -18374,8 +18177,7 @@ export type WebAppsDeleteVnetConnectionSlotInput =
   typeof WebAppsDeleteVnetConnectionSlotInput.Type;
 
 // Output Schema
-export const WebAppsDeleteVnetConnectionSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsDeleteVnetConnectionSlotOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsDeleteVnetConnectionSlotOutput =
   typeof WebAppsDeleteVnetConnectionSlotOutput.Type;
 
@@ -18393,13 +18195,13 @@ export type WebAppsDeleteVnetConnectionSlotOutput =
  * @param vnetName - Name of the virtual network.
  */
 export const WebAppsDeleteVnetConnectionSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsDeleteVnetConnectionSlotInput,
     outputSchema: WebAppsDeleteVnetConnectionSlotOutput,
   }));
 // Input Schema
 export const WebAppsDeployWorkflowArtifactsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -18414,8 +18216,7 @@ export type WebAppsDeployWorkflowArtifactsInput =
   typeof WebAppsDeployWorkflowArtifactsInput.Type;
 
 // Output Schema
-export const WebAppsDeployWorkflowArtifactsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsDeployWorkflowArtifactsOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsDeployWorkflowArtifactsOutput =
   typeof WebAppsDeployWorkflowArtifactsOutput.Type;
 
@@ -18431,13 +18232,13 @@ export type WebAppsDeployWorkflowArtifactsOutput =
  * @param name - Name of the app.
  */
 export const WebAppsDeployWorkflowArtifacts =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsDeployWorkflowArtifactsInput,
     outputSchema: WebAppsDeployWorkflowArtifactsOutput,
   }));
 // Input Schema
 export const WebAppsDeployWorkflowArtifactsSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -18454,7 +18255,7 @@ export type WebAppsDeployWorkflowArtifactsSlotInput =
 
 // Output Schema
 export const WebAppsDeployWorkflowArtifactsSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type WebAppsDeployWorkflowArtifactsSlotOutput =
   typeof WebAppsDeployWorkflowArtifactsSlotOutput.Type;
 
@@ -18471,13 +18272,13 @@ export type WebAppsDeployWorkflowArtifactsSlotOutput =
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
 export const WebAppsDeployWorkflowArtifactsSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsDeployWorkflowArtifactsSlotInput,
     outputSchema: WebAppsDeployWorkflowArtifactsSlotOutput,
   }));
 // Input Schema
 export const WebAppsDiscoverBackupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -18492,7 +18293,7 @@ export type WebAppsDiscoverBackupInput = typeof WebAppsDiscoverBackupInput.Type;
 
 // Output Schema
 export const WebAppsDiscoverBackupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -18512,15 +18313,13 @@ export type WebAppsDiscoverBackupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsDiscoverBackup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsDiscoverBackupInput,
-    outputSchema: WebAppsDiscoverBackupOutput,
-  }),
-);
+export const WebAppsDiscoverBackup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsDiscoverBackupInput,
+  outputSchema: WebAppsDiscoverBackupOutput,
+}));
 // Input Schema
 export const WebAppsDiscoverBackupSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -18537,7 +18336,7 @@ export type WebAppsDiscoverBackupSlotInput =
 
 // Output Schema
 export const WebAppsDiscoverBackupSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -18558,15 +18357,13 @@ export type WebAppsDiscoverBackupSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsDiscoverBackupSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsDiscoverBackupSlotInput,
-    outputSchema: WebAppsDiscoverBackupSlotOutput,
-  }),
-);
+export const WebAppsDiscoverBackupSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsDiscoverBackupSlotInput,
+  outputSchema: WebAppsDiscoverBackupSlotOutput,
+}));
 // Input Schema
 export const WebAppsGenerateNewSitePublishingPasswordInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -18582,7 +18379,7 @@ export type WebAppsGenerateNewSitePublishingPasswordInput =
 
 // Output Schema
 export const WebAppsGenerateNewSitePublishingPasswordOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type WebAppsGenerateNewSitePublishingPasswordOutput =
   typeof WebAppsGenerateNewSitePublishingPasswordOutput.Type;
 
@@ -18598,13 +18395,13 @@ export type WebAppsGenerateNewSitePublishingPasswordOutput =
  * @param name - Name of the app.
  */
 export const WebAppsGenerateNewSitePublishingPassword =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGenerateNewSitePublishingPasswordInput,
     outputSchema: WebAppsGenerateNewSitePublishingPasswordOutput,
   }));
 // Input Schema
 export const WebAppsGenerateNewSitePublishingPasswordSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -18621,7 +18418,7 @@ export type WebAppsGenerateNewSitePublishingPasswordSlotInput =
 
 // Output Schema
 export const WebAppsGenerateNewSitePublishingPasswordSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type WebAppsGenerateNewSitePublishingPasswordSlotOutput =
   typeof WebAppsGenerateNewSitePublishingPasswordSlotOutput.Type;
 
@@ -18638,12 +18435,12 @@ export type WebAppsGenerateNewSitePublishingPasswordSlotOutput =
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
 export const WebAppsGenerateNewSitePublishingPasswordSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGenerateNewSitePublishingPasswordSlotInput,
     outputSchema: WebAppsGenerateNewSitePublishingPasswordSlotOutput,
   }));
 // Input Schema
-export const WebAppsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebAppsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -18657,7 +18454,7 @@ export const WebAppsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WebAppsGetInput = typeof WebAppsGetInput.Type;
 
 // Output Schema
-export const WebAppsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebAppsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -18689,13 +18486,13 @@ export type WebAppsGetOutput = typeof WebAppsGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebAppsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebAppsGetInput,
   outputSchema: WebAppsGetOutput,
 }));
 // Input Schema
 export const WebAppsGetAppSettingKeyVaultReferenceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -18712,7 +18509,7 @@ export type WebAppsGetAppSettingKeyVaultReferenceInput =
 
 // Output Schema
 export const WebAppsGetAppSettingKeyVaultReferenceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -18747,13 +18544,13 @@ export type WebAppsGetAppSettingKeyVaultReferenceOutput =
  * @param appSettingKey - App Setting key name.
  */
 export const WebAppsGetAppSettingKeyVaultReference =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetAppSettingKeyVaultReferenceInput,
     outputSchema: WebAppsGetAppSettingKeyVaultReferenceOutput,
   }));
 // Input Schema
 export const WebAppsGetAppSettingKeyVaultReferenceSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -18771,7 +18568,7 @@ export type WebAppsGetAppSettingKeyVaultReferenceSlotInput =
 
 // Output Schema
 export const WebAppsGetAppSettingKeyVaultReferenceSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -18806,13 +18603,13 @@ export type WebAppsGetAppSettingKeyVaultReferenceSlotOutput =
  * @param appSettingKey - App Setting key name.
  */
 export const WebAppsGetAppSettingKeyVaultReferenceSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetAppSettingKeyVaultReferenceSlotInput,
     outputSchema: WebAppsGetAppSettingKeyVaultReferenceSlotOutput,
   }));
 // Input Schema
 export const WebAppsGetAppSettingsKeyVaultReferencesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -18828,7 +18625,7 @@ export type WebAppsGetAppSettingsKeyVaultReferencesInput =
 
 // Output Schema
 export const WebAppsGetAppSettingsKeyVaultReferencesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -18877,13 +18674,13 @@ export type WebAppsGetAppSettingsKeyVaultReferencesOutput =
  * @param name - Name of the app.
  */
 export const WebAppsGetAppSettingsKeyVaultReferences =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetAppSettingsKeyVaultReferencesInput,
     outputSchema: WebAppsGetAppSettingsKeyVaultReferencesOutput,
   }));
 // Input Schema
 export const WebAppsGetAppSettingsKeyVaultReferencesSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -18900,7 +18697,7 @@ export type WebAppsGetAppSettingsKeyVaultReferencesSlotInput =
 
 // Output Schema
 export const WebAppsGetAppSettingsKeyVaultReferencesSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -18949,13 +18746,13 @@ export type WebAppsGetAppSettingsKeyVaultReferencesSlotOutput =
  * @param name - Name of the app.
  */
 export const WebAppsGetAppSettingsKeyVaultReferencesSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetAppSettingsKeyVaultReferencesSlotInput,
     outputSchema: WebAppsGetAppSettingsKeyVaultReferencesSlotOutput,
   }));
 // Input Schema
 export const WebAppsGetAuthSettingsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -18971,7 +18768,7 @@ export type WebAppsGetAuthSettingsInput =
 
 // Output Schema
 export const WebAppsGetAuthSettingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -18991,15 +18788,13 @@ export type WebAppsGetAuthSettingsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsGetAuthSettings = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetAuthSettingsInput,
-    outputSchema: WebAppsGetAuthSettingsOutput,
-  }),
-);
+export const WebAppsGetAuthSettings = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetAuthSettingsInput,
+  outputSchema: WebAppsGetAuthSettingsOutput,
+}));
 // Input Schema
 export const WebAppsGetAuthSettingsSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -19016,7 +18811,7 @@ export type WebAppsGetAuthSettingsSlotInput =
 
 // Output Schema
 export const WebAppsGetAuthSettingsSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -19037,15 +18832,13 @@ export type WebAppsGetAuthSettingsSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsGetAuthSettingsSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetAuthSettingsSlotInput,
-    outputSchema: WebAppsGetAuthSettingsSlotOutput,
-  }),
-);
+export const WebAppsGetAuthSettingsSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetAuthSettingsSlotInput,
+  outputSchema: WebAppsGetAuthSettingsSlotOutput,
+}));
 // Input Schema
 export const WebAppsGetAuthSettingsV2Input =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -19061,7 +18854,7 @@ export type WebAppsGetAuthSettingsV2Input =
 
 // Output Schema
 export const WebAppsGetAuthSettingsV2Output =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19094,15 +18887,13 @@ export type WebAppsGetAuthSettingsV2Output =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsGetAuthSettingsV2 = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetAuthSettingsV2Input,
-    outputSchema: WebAppsGetAuthSettingsV2Output,
-  }),
-);
+export const WebAppsGetAuthSettingsV2 = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetAuthSettingsV2Input,
+  outputSchema: WebAppsGetAuthSettingsV2Output,
+}));
 // Input Schema
 export const WebAppsGetAuthSettingsV2SlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -19119,7 +18910,7 @@ export type WebAppsGetAuthSettingsV2SlotInput =
 
 // Output Schema
 export const WebAppsGetAuthSettingsV2SlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19154,13 +18945,13 @@ export type WebAppsGetAuthSettingsV2SlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get the settings for the production slot.
  */
 export const WebAppsGetAuthSettingsV2Slot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetAuthSettingsV2SlotInput,
     outputSchema: WebAppsGetAuthSettingsV2SlotOutput,
   }));
 // Input Schema
 export const WebAppsGetAuthSettingsV2WithoutSecretsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -19176,7 +18967,7 @@ export type WebAppsGetAuthSettingsV2WithoutSecretsInput =
 
 // Output Schema
 export const WebAppsGetAuthSettingsV2WithoutSecretsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19210,13 +19001,13 @@ export type WebAppsGetAuthSettingsV2WithoutSecretsOutput =
  * @param name - Name of the app.
  */
 export const WebAppsGetAuthSettingsV2WithoutSecrets =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetAuthSettingsV2WithoutSecretsInput,
     outputSchema: WebAppsGetAuthSettingsV2WithoutSecretsOutput,
   }));
 // Input Schema
 export const WebAppsGetAuthSettingsV2WithoutSecretsSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -19233,7 +19024,7 @@ export type WebAppsGetAuthSettingsV2WithoutSecretsSlotInput =
 
 // Output Schema
 export const WebAppsGetAuthSettingsV2WithoutSecretsSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19266,13 +19057,13 @@ export type WebAppsGetAuthSettingsV2WithoutSecretsSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get the settings for the production slot.
  */
 export const WebAppsGetAuthSettingsV2WithoutSecretsSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetAuthSettingsV2WithoutSecretsSlotInput,
     outputSchema: WebAppsGetAuthSettingsV2WithoutSecretsSlotOutput,
   }));
 // Input Schema
 export const WebAppsGetBackupConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -19288,7 +19079,7 @@ export type WebAppsGetBackupConfigurationInput =
 
 // Output Schema
 export const WebAppsGetBackupConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -19309,13 +19100,13 @@ export type WebAppsGetBackupConfigurationOutput =
  * @param name - Name of the app.
  */
 export const WebAppsGetBackupConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetBackupConfigurationInput,
     outputSchema: WebAppsGetBackupConfigurationOutput,
   }));
 // Input Schema
 export const WebAppsGetBackupConfigurationSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -19332,7 +19123,7 @@ export type WebAppsGetBackupConfigurationSlotInput =
 
 // Output Schema
 export const WebAppsGetBackupConfigurationSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -19354,13 +19145,13 @@ export type WebAppsGetBackupConfigurationSlotOutput =
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
 export const WebAppsGetBackupConfigurationSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetBackupConfigurationSlotInput,
     outputSchema: WebAppsGetBackupConfigurationSlotOutput,
   }));
 // Input Schema
 export const WebAppsGetBackupStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -19377,7 +19168,7 @@ export type WebAppsGetBackupStatusInput =
 
 // Output Schema
 export const WebAppsGetBackupStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19411,15 +19202,13 @@ export type WebAppsGetBackupStatusOutput =
  * @param name - Name of the app.
  * @param backupId - ID of the backup.
  */
-export const WebAppsGetBackupStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetBackupStatusInput,
-    outputSchema: WebAppsGetBackupStatusOutput,
-  }),
-);
+export const WebAppsGetBackupStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetBackupStatusInput,
+  outputSchema: WebAppsGetBackupStatusOutput,
+}));
 // Input Schema
 export const WebAppsGetBackupStatusSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -19437,7 +19226,7 @@ export type WebAppsGetBackupStatusSlotInput =
 
 // Output Schema
 export const WebAppsGetBackupStatusSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19472,15 +19261,13 @@ export type WebAppsGetBackupStatusSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get a backup of the production slot.
  * @param backupId - ID of the backup.
  */
-export const WebAppsGetBackupStatusSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetBackupStatusSlotInput,
-    outputSchema: WebAppsGetBackupStatusSlotOutput,
-  }),
-);
+export const WebAppsGetBackupStatusSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetBackupStatusSlotInput,
+  outputSchema: WebAppsGetBackupStatusSlotOutput,
+}));
 // Input Schema
 export const WebAppsGetConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -19496,7 +19283,7 @@ export type WebAppsGetConfigurationInput =
 
 // Output Schema
 export const WebAppsGetConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19529,15 +19316,13 @@ export type WebAppsGetConfigurationOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsGetConfiguration = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetConfigurationInput,
-    outputSchema: WebAppsGetConfigurationOutput,
-  }),
-);
+export const WebAppsGetConfiguration = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetConfigurationInput,
+  outputSchema: WebAppsGetConfigurationOutput,
+}));
 // Input Schema
 export const WebAppsGetConfigurationSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -19554,7 +19339,7 @@ export type WebAppsGetConfigurationSlotInput =
 
 // Output Schema
 export const WebAppsGetConfigurationSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19588,15 +19373,13 @@ export type WebAppsGetConfigurationSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will return configuration for the production slot.
  */
-export const WebAppsGetConfigurationSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetConfigurationSlotInput,
-    outputSchema: WebAppsGetConfigurationSlotOutput,
-  }),
-);
+export const WebAppsGetConfigurationSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetConfigurationSlotInput,
+  outputSchema: WebAppsGetConfigurationSlotOutput,
+}));
 // Input Schema
 export const WebAppsGetConfigurationSnapshotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -19613,7 +19396,7 @@ export type WebAppsGetConfigurationSnapshotInput =
 
 // Output Schema
 export const WebAppsGetConfigurationSnapshotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19648,13 +19431,13 @@ export type WebAppsGetConfigurationSnapshotOutput =
  * @param snapshotId - The ID of the snapshot to read.
  */
 export const WebAppsGetConfigurationSnapshot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetConfigurationSnapshotInput,
     outputSchema: WebAppsGetConfigurationSnapshotOutput,
   }));
 // Input Schema
 export const WebAppsGetConfigurationSnapshotSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -19672,7 +19455,7 @@ export type WebAppsGetConfigurationSnapshotSlotInput =
 
 // Output Schema
 export const WebAppsGetConfigurationSnapshotSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19708,13 +19491,13 @@ export type WebAppsGetConfigurationSnapshotSlotOutput =
  * @param snapshotId - The ID of the snapshot to read.
  */
 export const WebAppsGetConfigurationSnapshotSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetConfigurationSnapshotSlotInput,
     outputSchema: WebAppsGetConfigurationSnapshotSlotOutput,
   }));
 // Input Schema
 export const WebAppsGetContainerLogsZipInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -19729,8 +19512,7 @@ export type WebAppsGetContainerLogsZipInput =
   typeof WebAppsGetContainerLogsZipInput.Type;
 
 // Output Schema
-export const WebAppsGetContainerLogsZipOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+export const WebAppsGetContainerLogsZipOutput = /*@__PURE__*/ Schema.Unknown;
 export type WebAppsGetContainerLogsZipOutput =
   typeof WebAppsGetContainerLogsZipOutput.Type;
 
@@ -19745,15 +19527,13 @@ export type WebAppsGetContainerLogsZipOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsGetContainerLogsZip = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetContainerLogsZipInput,
-    outputSchema: WebAppsGetContainerLogsZipOutput,
-  }),
-);
+export const WebAppsGetContainerLogsZip = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetContainerLogsZipInput,
+  outputSchema: WebAppsGetContainerLogsZipOutput,
+}));
 // Input Schema
 export const WebAppsGetContainerLogsZipSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -19770,7 +19550,7 @@ export type WebAppsGetContainerLogsZipSlotInput =
 
 // Output Schema
 export const WebAppsGetContainerLogsZipSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+  /*@__PURE__*/ Schema.Unknown;
 export type WebAppsGetContainerLogsZipSlotOutput =
   typeof WebAppsGetContainerLogsZipSlotOutput.Type;
 
@@ -19787,13 +19567,13 @@ export type WebAppsGetContainerLogsZipSlotOutput =
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
 export const WebAppsGetContainerLogsZipSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetContainerLogsZipSlotInput,
     outputSchema: WebAppsGetContainerLogsZipSlotOutput,
   }));
 // Input Schema
 export const WebAppsGetContinuousWebJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -19810,7 +19590,7 @@ export type WebAppsGetContinuousWebJobInput =
 
 // Output Schema
 export const WebAppsGetContinuousWebJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19844,15 +19624,13 @@ export type WebAppsGetContinuousWebJobOutput =
  * @param name - Site name.
  * @param webJobName - Name of Web Job.
  */
-export const WebAppsGetContinuousWebJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetContinuousWebJobInput,
-    outputSchema: WebAppsGetContinuousWebJobOutput,
-  }),
-);
+export const WebAppsGetContinuousWebJob = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetContinuousWebJobInput,
+  outputSchema: WebAppsGetContinuousWebJobOutput,
+}));
 // Input Schema
 export const WebAppsGetContinuousWebJobSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -19870,7 +19648,7 @@ export type WebAppsGetContinuousWebJobSlotInput =
 
 // Output Schema
 export const WebAppsGetContinuousWebJobSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19906,13 +19684,13 @@ export type WebAppsGetContinuousWebJobSlotOutput =
  * @param webJobName - Name of Web Job.
  */
 export const WebAppsGetContinuousWebJobSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetContinuousWebJobSlotInput,
     outputSchema: WebAppsGetContinuousWebJobSlotOutput,
   }));
 // Input Schema
 export const WebAppsGetDeploymentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -19928,7 +19706,7 @@ export type WebAppsGetDeploymentInput = typeof WebAppsGetDeploymentInput.Type;
 
 // Output Schema
 export const WebAppsGetDeploymentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19961,15 +19739,13 @@ export type WebAppsGetDeploymentOutput = typeof WebAppsGetDeploymentOutput.Type;
  * @param name - Name of the app.
  * @param id - Deployment ID.
  */
-export const WebAppsGetDeployment = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetDeploymentInput,
-    outputSchema: WebAppsGetDeploymentOutput,
-  }),
-);
+export const WebAppsGetDeployment = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetDeploymentInput,
+  outputSchema: WebAppsGetDeploymentOutput,
+}));
 // Input Schema
 export const WebAppsGetDeploymentSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -19987,7 +19763,7 @@ export type WebAppsGetDeploymentSlotInput =
 
 // Output Schema
 export const WebAppsGetDeploymentSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -20022,15 +19798,13 @@ export type WebAppsGetDeploymentSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API gets a deployment for the production slot.
  * @param id - Deployment ID.
  */
-export const WebAppsGetDeploymentSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetDeploymentSlotInput,
-    outputSchema: WebAppsGetDeploymentSlotOutput,
-  }),
-);
+export const WebAppsGetDeploymentSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetDeploymentSlotInput,
+  outputSchema: WebAppsGetDeploymentSlotOutput,
+}));
 // Input Schema
 export const WebAppsGetDiagnosticLogsConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -20046,7 +19820,7 @@ export type WebAppsGetDiagnosticLogsConfigurationInput =
 
 // Output Schema
 export const WebAppsGetDiagnosticLogsConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -20080,13 +19854,13 @@ export type WebAppsGetDiagnosticLogsConfigurationOutput =
  * @param name - Name of the app.
  */
 export const WebAppsGetDiagnosticLogsConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetDiagnosticLogsConfigurationInput,
     outputSchema: WebAppsGetDiagnosticLogsConfigurationOutput,
   }));
 // Input Schema
 export const WebAppsGetDiagnosticLogsConfigurationSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -20103,7 +19877,7 @@ export type WebAppsGetDiagnosticLogsConfigurationSlotInput =
 
 // Output Schema
 export const WebAppsGetDiagnosticLogsConfigurationSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -20138,13 +19912,13 @@ export type WebAppsGetDiagnosticLogsConfigurationSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get the logging configuration for the production slot.
  */
 export const WebAppsGetDiagnosticLogsConfigurationSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetDiagnosticLogsConfigurationSlotInput,
     outputSchema: WebAppsGetDiagnosticLogsConfigurationSlotOutput,
   }));
 // Input Schema
 export const WebAppsGetDomainOwnershipIdentifierInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -20161,7 +19935,7 @@ export type WebAppsGetDomainOwnershipIdentifierInput =
 
 // Output Schema
 export const WebAppsGetDomainOwnershipIdentifierOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -20196,13 +19970,13 @@ export type WebAppsGetDomainOwnershipIdentifierOutput =
  * @param domainOwnershipIdentifierName - Name of domain ownership identifier.
  */
 export const WebAppsGetDomainOwnershipIdentifier =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetDomainOwnershipIdentifierInput,
     outputSchema: WebAppsGetDomainOwnershipIdentifierOutput,
   }));
 // Input Schema
 export const WebAppsGetDomainOwnershipIdentifierSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -20220,7 +19994,7 @@ export type WebAppsGetDomainOwnershipIdentifierSlotInput =
 
 // Output Schema
 export const WebAppsGetDomainOwnershipIdentifierSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -20256,13 +20030,13 @@ export type WebAppsGetDomainOwnershipIdentifierSlotOutput =
  * @param domainOwnershipIdentifierName - Name of domain ownership identifier.
  */
 export const WebAppsGetDomainOwnershipIdentifierSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetDomainOwnershipIdentifierSlotInput,
     outputSchema: WebAppsGetDomainOwnershipIdentifierSlotOutput,
   }));
 // Input Schema
 export const WebAppsGetFtpAllowedInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -20277,7 +20051,7 @@ export type WebAppsGetFtpAllowedInput = typeof WebAppsGetFtpAllowedInput.Type;
 
 // Output Schema
 export const WebAppsGetFtpAllowedOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -20309,15 +20083,13 @@ export type WebAppsGetFtpAllowedOutput = typeof WebAppsGetFtpAllowedOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsGetFtpAllowed = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetFtpAllowedInput,
-    outputSchema: WebAppsGetFtpAllowedOutput,
-  }),
-);
+export const WebAppsGetFtpAllowed = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetFtpAllowedInput,
+  outputSchema: WebAppsGetFtpAllowedOutput,
+}));
 // Input Schema
 export const WebAppsGetFtpAllowedSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -20334,7 +20106,7 @@ export type WebAppsGetFtpAllowedSlotInput =
 
 // Output Schema
 export const WebAppsGetFtpAllowedSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -20367,15 +20139,13 @@ export type WebAppsGetFtpAllowedSlotOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsGetFtpAllowedSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetFtpAllowedSlotInput,
-    outputSchema: WebAppsGetFtpAllowedSlotOutput,
-  }),
-);
+export const WebAppsGetFtpAllowedSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetFtpAllowedSlotInput,
+  outputSchema: WebAppsGetFtpAllowedSlotOutput,
+}));
 // Input Schema
 export const WebAppsGetFunctionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -20391,7 +20161,7 @@ export type WebAppsGetFunctionInput = typeof WebAppsGetFunctionInput.Type;
 
 // Output Schema
 export const WebAppsGetFunctionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -20424,13 +20194,13 @@ export type WebAppsGetFunctionOutput = typeof WebAppsGetFunctionOutput.Type;
  * @param name - Site name.
  * @param functionName - Function name.
  */
-export const WebAppsGetFunction = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebAppsGetFunction = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebAppsGetFunctionInput,
   outputSchema: WebAppsGetFunctionOutput,
 }));
 // Input Schema
 export const WebAppsGetFunctionsAdminTokenInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -20445,8 +20215,7 @@ export type WebAppsGetFunctionsAdminTokenInput =
   typeof WebAppsGetFunctionsAdminTokenInput.Type;
 
 // Output Schema
-export const WebAppsGetFunctionsAdminTokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+export const WebAppsGetFunctionsAdminTokenOutput = /*@__PURE__*/ Schema.String;
 export type WebAppsGetFunctionsAdminTokenOutput =
   typeof WebAppsGetFunctionsAdminTokenOutput.Type;
 
@@ -20462,13 +20231,13 @@ export type WebAppsGetFunctionsAdminTokenOutput =
  * @param name - Name of the app.
  */
 export const WebAppsGetFunctionsAdminToken =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetFunctionsAdminTokenInput,
     outputSchema: WebAppsGetFunctionsAdminTokenOutput,
   }));
 // Input Schema
 export const WebAppsGetFunctionsAdminTokenSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -20485,7 +20254,7 @@ export type WebAppsGetFunctionsAdminTokenSlotInput =
 
 // Output Schema
 export const WebAppsGetFunctionsAdminTokenSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+  /*@__PURE__*/ Schema.String;
 export type WebAppsGetFunctionsAdminTokenSlotOutput =
   typeof WebAppsGetFunctionsAdminTokenSlotOutput.Type;
 
@@ -20502,13 +20271,13 @@ export type WebAppsGetFunctionsAdminTokenSlotOutput =
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
 export const WebAppsGetFunctionsAdminTokenSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetFunctionsAdminTokenSlotInput,
     outputSchema: WebAppsGetFunctionsAdminTokenSlotOutput,
   }));
 // Input Schema
 export const WebAppsGetHostNameBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -20525,7 +20294,7 @@ export type WebAppsGetHostNameBindingInput =
 
 // Output Schema
 export const WebAppsGetHostNameBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -20559,15 +20328,13 @@ export type WebAppsGetHostNameBindingOutput =
  * @param name - Name of the app.
  * @param hostName - Hostname in the hostname binding.
  */
-export const WebAppsGetHostNameBinding = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetHostNameBindingInput,
-    outputSchema: WebAppsGetHostNameBindingOutput,
-  }),
-);
+export const WebAppsGetHostNameBinding = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetHostNameBindingInput,
+  outputSchema: WebAppsGetHostNameBindingOutput,
+}));
 // Input Schema
 export const WebAppsGetHostNameBindingSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -20585,7 +20352,7 @@ export type WebAppsGetHostNameBindingSlotInput =
 
 // Output Schema
 export const WebAppsGetHostNameBindingSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -20621,13 +20388,13 @@ export type WebAppsGetHostNameBindingSlotOutput =
  * @param hostName - Hostname in the hostname binding.
  */
 export const WebAppsGetHostNameBindingSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetHostNameBindingSlotInput,
     outputSchema: WebAppsGetHostNameBindingSlotOutput,
   }));
 // Input Schema
 export const WebAppsGetHybridConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -20645,7 +20412,7 @@ export type WebAppsGetHybridConnectionInput =
 
 // Output Schema
 export const WebAppsGetHybridConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -20680,15 +20447,13 @@ export type WebAppsGetHybridConnectionOutput =
  * @param namespaceName - The namespace for this hybrid connection.
  * @param relayName - The relay name for this hybrid connection.
  */
-export const WebAppsGetHybridConnection = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetHybridConnectionInput,
-    outputSchema: WebAppsGetHybridConnectionOutput,
-  }),
-);
+export const WebAppsGetHybridConnection = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetHybridConnectionInput,
+  outputSchema: WebAppsGetHybridConnectionOutput,
+}));
 // Input Schema
 export const WebAppsGetHybridConnectionSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -20707,7 +20472,7 @@ export type WebAppsGetHybridConnectionSlotInput =
 
 // Output Schema
 export const WebAppsGetHybridConnectionSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -20744,13 +20509,13 @@ export type WebAppsGetHybridConnectionSlotOutput =
  * @param relayName - The relay name for this hybrid connection.
  */
 export const WebAppsGetHybridConnectionSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetHybridConnectionSlotInput,
     outputSchema: WebAppsGetHybridConnectionSlotOutput,
   }));
 // Input Schema
 export const WebAppsGetInstanceFunctionSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -20768,7 +20533,7 @@ export type WebAppsGetInstanceFunctionSlotInput =
 
 // Output Schema
 export const WebAppsGetInstanceFunctionSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -20804,13 +20569,13 @@ export type WebAppsGetInstanceFunctionSlotOutput =
  * @param functionName - Function name.
  */
 export const WebAppsGetInstanceFunctionSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetInstanceFunctionSlotInput,
     outputSchema: WebAppsGetInstanceFunctionSlotOutput,
   }));
 // Input Schema
 export const WebAppsGetInstanceInfoInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -20827,7 +20592,7 @@ export type WebAppsGetInstanceInfoInput =
 
 // Output Schema
 export const WebAppsGetInstanceInfoOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -20860,15 +20625,13 @@ export type WebAppsGetInstanceInfoOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsGetInstanceInfo = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetInstanceInfoInput,
-    outputSchema: WebAppsGetInstanceInfoOutput,
-  }),
-);
+export const WebAppsGetInstanceInfo = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetInstanceInfoInput,
+  outputSchema: WebAppsGetInstanceInfoOutput,
+}));
 // Input Schema
 export const WebAppsGetInstanceInfoSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -20886,7 +20649,7 @@ export type WebAppsGetInstanceInfoSlotInput =
 
 // Output Schema
 export const WebAppsGetInstanceInfoSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -20920,15 +20683,13 @@ export type WebAppsGetInstanceInfoSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. If a slot is not specified, the API gets the production slot instances.
  */
-export const WebAppsGetInstanceInfoSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetInstanceInfoSlotInput,
-    outputSchema: WebAppsGetInstanceInfoSlotOutput,
-  }),
-);
+export const WebAppsGetInstanceInfoSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetInstanceInfoSlotInput,
+  outputSchema: WebAppsGetInstanceInfoSlotOutput,
+}));
 // Input Schema
 export const WebAppsGetInstanceMSDeployLogInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -20945,7 +20706,7 @@ export type WebAppsGetInstanceMSDeployLogInput =
 
 // Output Schema
 export const WebAppsGetInstanceMSDeployLogOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -20967,13 +20728,13 @@ export type WebAppsGetInstanceMSDeployLogOutput =
  * @param instanceId - ID of web app instance.
  */
 export const WebAppsGetInstanceMSDeployLog =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetInstanceMSDeployLogInput,
     outputSchema: WebAppsGetInstanceMSDeployLogOutput,
   }));
 // Input Schema
 export const WebAppsGetInstanceMSDeployLogSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -20991,7 +20752,7 @@ export type WebAppsGetInstanceMSDeployLogSlotInput =
 
 // Output Schema
 export const WebAppsGetInstanceMSDeployLogSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -21014,13 +20775,13 @@ export type WebAppsGetInstanceMSDeployLogSlotOutput =
  * @param instanceId - ID of web app instance.
  */
 export const WebAppsGetInstanceMSDeployLogSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetInstanceMSDeployLogSlotInput,
     outputSchema: WebAppsGetInstanceMSDeployLogSlotOutput,
   }));
 // Input Schema
 export const WebAppsGetInstanceMsDeployStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -21037,7 +20798,7 @@ export type WebAppsGetInstanceMsDeployStatusInput =
 
 // Output Schema
 export const WebAppsGetInstanceMsDeployStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -21072,13 +20833,13 @@ export type WebAppsGetInstanceMsDeployStatusOutput =
  * @param instanceId - ID of web app instance.
  */
 export const WebAppsGetInstanceMsDeployStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetInstanceMsDeployStatusInput,
     outputSchema: WebAppsGetInstanceMsDeployStatusOutput,
   }));
 // Input Schema
 export const WebAppsGetInstanceMsDeployStatusSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -21096,7 +20857,7 @@ export type WebAppsGetInstanceMsDeployStatusSlotInput =
 
 // Output Schema
 export const WebAppsGetInstanceMsDeployStatusSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -21132,13 +20893,13 @@ export type WebAppsGetInstanceMsDeployStatusSlotOutput =
  * @param instanceId - ID of web app instance.
  */
 export const WebAppsGetInstanceMsDeployStatusSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetInstanceMsDeployStatusSlotInput,
     outputSchema: WebAppsGetInstanceMsDeployStatusSlotOutput,
   }));
 // Input Schema
 export const WebAppsGetInstanceProcessInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -21156,7 +20917,7 @@ export type WebAppsGetInstanceProcessInput =
 
 // Output Schema
 export const WebAppsGetInstanceProcessOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -21191,15 +20952,13 @@ export type WebAppsGetInstanceProcessOutput =
  * @param instanceId - ID of a specific scaled-out instance. This is the value of the name property in the JSON response from "GET api/sites/{siteName}/instances".
  * @param processId - PID.
  */
-export const WebAppsGetInstanceProcess = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetInstanceProcessInput,
-    outputSchema: WebAppsGetInstanceProcessOutput,
-  }),
-);
+export const WebAppsGetInstanceProcess = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetInstanceProcessInput,
+  outputSchema: WebAppsGetInstanceProcessOutput,
+}));
 // Input Schema
 export const WebAppsGetInstanceProcessDumpInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -21216,8 +20975,7 @@ export type WebAppsGetInstanceProcessDumpInput =
   typeof WebAppsGetInstanceProcessDumpInput.Type;
 
 // Output Schema
-export const WebAppsGetInstanceProcessDumpOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+export const WebAppsGetInstanceProcessDumpOutput = /*@__PURE__*/ Schema.Unknown;
 export type WebAppsGetInstanceProcessDumpOutput =
   typeof WebAppsGetInstanceProcessDumpOutput.Type;
 
@@ -21235,13 +20993,13 @@ export type WebAppsGetInstanceProcessDumpOutput =
  * @param processId - PID.
  */
 export const WebAppsGetInstanceProcessDump =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetInstanceProcessDumpInput,
     outputSchema: WebAppsGetInstanceProcessDumpOutput,
   }));
 // Input Schema
 export const WebAppsGetInstanceProcessDumpSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -21260,7 +21018,7 @@ export type WebAppsGetInstanceProcessDumpSlotInput =
 
 // Output Schema
 export const WebAppsGetInstanceProcessDumpSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+  /*@__PURE__*/ Schema.Unknown;
 export type WebAppsGetInstanceProcessDumpSlotOutput =
   typeof WebAppsGetInstanceProcessDumpSlotOutput.Type;
 
@@ -21279,13 +21037,13 @@ export type WebAppsGetInstanceProcessDumpSlotOutput =
  * @param processId - PID.
  */
 export const WebAppsGetInstanceProcessDumpSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetInstanceProcessDumpSlotInput,
     outputSchema: WebAppsGetInstanceProcessDumpSlotOutput,
   }));
 // Input Schema
 export const WebAppsGetInstanceProcessModuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -21304,7 +21062,7 @@ export type WebAppsGetInstanceProcessModuleInput =
 
 // Output Schema
 export const WebAppsGetInstanceProcessModuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -21341,13 +21099,13 @@ export type WebAppsGetInstanceProcessModuleOutput =
  * @param baseAddress - Module base address.
  */
 export const WebAppsGetInstanceProcessModule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetInstanceProcessModuleInput,
     outputSchema: WebAppsGetInstanceProcessModuleOutput,
   }));
 // Input Schema
 export const WebAppsGetInstanceProcessModuleSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -21367,7 +21125,7 @@ export type WebAppsGetInstanceProcessModuleSlotInput =
 
 // Output Schema
 export const WebAppsGetInstanceProcessModuleSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -21405,13 +21163,13 @@ export type WebAppsGetInstanceProcessModuleSlotOutput =
  * @param baseAddress - Module base address.
  */
 export const WebAppsGetInstanceProcessModuleSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetInstanceProcessModuleSlotInput,
     outputSchema: WebAppsGetInstanceProcessModuleSlotOutput,
   }));
 // Input Schema
 export const WebAppsGetInstanceProcessSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -21430,7 +21188,7 @@ export type WebAppsGetInstanceProcessSlotInput =
 
 // Output Schema
 export const WebAppsGetInstanceProcessSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -21467,13 +21225,13 @@ export type WebAppsGetInstanceProcessSlotOutput =
  * @param processId - PID.
  */
 export const WebAppsGetInstanceProcessSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetInstanceProcessSlotInput,
     outputSchema: WebAppsGetInstanceProcessSlotOutput,
   }));
 // Input Schema
 export const WebAppsGetInstanceWorkflowSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -21491,7 +21249,7 @@ export type WebAppsGetInstanceWorkflowSlotInput =
 
 // Output Schema
 export const WebAppsGetInstanceWorkflowSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -21525,13 +21283,13 @@ export type WebAppsGetInstanceWorkflowSlotOutput =
  * @param workflowName - Workflow name.
  */
 export const WebAppsGetInstanceWorkflowSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetInstanceWorkflowSlotInput,
     outputSchema: WebAppsGetInstanceWorkflowSlotOutput,
   }));
 // Input Schema
 export const WebAppsGetMigrateMySqlStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -21547,7 +21305,7 @@ export type WebAppsGetMigrateMySqlStatusInput =
 
 // Output Schema
 export const WebAppsGetMigrateMySqlStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -21581,13 +21339,13 @@ export type WebAppsGetMigrateMySqlStatusOutput =
  * @param name - Name of web app.
  */
 export const WebAppsGetMigrateMySqlStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetMigrateMySqlStatusInput,
     outputSchema: WebAppsGetMigrateMySqlStatusOutput,
   }));
 // Input Schema
 export const WebAppsGetMigrateMySqlStatusSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -21604,7 +21362,7 @@ export type WebAppsGetMigrateMySqlStatusSlotInput =
 
 // Output Schema
 export const WebAppsGetMigrateMySqlStatusSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -21639,13 +21397,13 @@ export type WebAppsGetMigrateMySqlStatusSlotOutput =
  * @param slot - Name of the deployment slot.
  */
 export const WebAppsGetMigrateMySqlStatusSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetMigrateMySqlStatusSlotInput,
     outputSchema: WebAppsGetMigrateMySqlStatusSlotOutput,
   }));
 // Input Schema
 export const WebAppsGetMSDeployLogInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -21660,7 +21418,7 @@ export type WebAppsGetMSDeployLogInput = typeof WebAppsGetMSDeployLogInput.Type;
 
 // Output Schema
 export const WebAppsGetMSDeployLogOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -21680,15 +21438,13 @@ export type WebAppsGetMSDeployLogOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of web app.
  */
-export const WebAppsGetMSDeployLog = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetMSDeployLogInput,
-    outputSchema: WebAppsGetMSDeployLogOutput,
-  }),
-);
+export const WebAppsGetMSDeployLog = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetMSDeployLogInput,
+  outputSchema: WebAppsGetMSDeployLogOutput,
+}));
 // Input Schema
 export const WebAppsGetMSDeployLogSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -21705,7 +21461,7 @@ export type WebAppsGetMSDeployLogSlotInput =
 
 // Output Schema
 export const WebAppsGetMSDeployLogSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -21726,15 +21482,13 @@ export type WebAppsGetMSDeployLogSlotOutput =
  * @param name - Name of web app.
  * @param slot - Name of web app slot. If not specified then will default to production slot.
  */
-export const WebAppsGetMSDeployLogSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetMSDeployLogSlotInput,
-    outputSchema: WebAppsGetMSDeployLogSlotOutput,
-  }),
-);
+export const WebAppsGetMSDeployLogSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetMSDeployLogSlotInput,
+  outputSchema: WebAppsGetMSDeployLogSlotOutput,
+}));
 // Input Schema
 export const WebAppsGetMSDeployStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -21750,7 +21504,7 @@ export type WebAppsGetMSDeployStatusInput =
 
 // Output Schema
 export const WebAppsGetMSDeployStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -21783,15 +21537,13 @@ export type WebAppsGetMSDeployStatusOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of web app.
  */
-export const WebAppsGetMSDeployStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetMSDeployStatusInput,
-    outputSchema: WebAppsGetMSDeployStatusOutput,
-  }),
-);
+export const WebAppsGetMSDeployStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetMSDeployStatusInput,
+  outputSchema: WebAppsGetMSDeployStatusOutput,
+}));
 // Input Schema
 export const WebAppsGetMSDeployStatusSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -21808,7 +21560,7 @@ export type WebAppsGetMSDeployStatusSlotInput =
 
 // Output Schema
 export const WebAppsGetMSDeployStatusSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -21843,13 +21595,13 @@ export type WebAppsGetMSDeployStatusSlotOutput =
  * @param slot - Name of web app slot. If not specified then will default to production slot.
  */
 export const WebAppsGetMSDeployStatusSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetMSDeployStatusSlotInput,
     outputSchema: WebAppsGetMSDeployStatusSlotOutput,
   }));
 // Input Schema
 export const WebAppsGetNetworkTraceOperationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -21866,7 +21618,7 @@ export type WebAppsGetNetworkTraceOperationInput =
 
 // Output Schema
 export const WebAppsGetNetworkTraceOperationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       path: Schema.optional(Schema.String),
       status: Schema.optional(Schema.String),
@@ -21889,13 +21641,13 @@ export type WebAppsGetNetworkTraceOperationOutput =
  * @param operationId - GUID of the operation.
  */
 export const WebAppsGetNetworkTraceOperation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetNetworkTraceOperationInput,
     outputSchema: WebAppsGetNetworkTraceOperationOutput,
   }));
 // Input Schema
 export const WebAppsGetNetworkTraceOperationSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -21913,7 +21665,7 @@ export type WebAppsGetNetworkTraceOperationSlotInput =
 
 // Output Schema
 export const WebAppsGetNetworkTraceOperationSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       path: Schema.optional(Schema.String),
       status: Schema.optional(Schema.String),
@@ -21937,13 +21689,13 @@ export type WebAppsGetNetworkTraceOperationSlotOutput =
  * @param operationId - GUID of the operation.
  */
 export const WebAppsGetNetworkTraceOperationSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetNetworkTraceOperationSlotInput,
     outputSchema: WebAppsGetNetworkTraceOperationSlotOutput,
   }));
 // Input Schema
 export const WebAppsGetNetworkTraceOperationSlotV2Input =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -21961,7 +21713,7 @@ export type WebAppsGetNetworkTraceOperationSlotV2Input =
 
 // Output Schema
 export const WebAppsGetNetworkTraceOperationSlotV2Output =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       path: Schema.optional(Schema.String),
       status: Schema.optional(Schema.String),
@@ -21985,13 +21737,13 @@ export type WebAppsGetNetworkTraceOperationSlotV2Output =
  * @param operationId - GUID of the operation.
  */
 export const WebAppsGetNetworkTraceOperationSlotV2 =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetNetworkTraceOperationSlotV2Input,
     outputSchema: WebAppsGetNetworkTraceOperationSlotV2Output,
   }));
 // Input Schema
 export const WebAppsGetNetworkTraceOperationV2Input =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -22008,7 +21760,7 @@ export type WebAppsGetNetworkTraceOperationV2Input =
 
 // Output Schema
 export const WebAppsGetNetworkTraceOperationV2Output =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       path: Schema.optional(Schema.String),
       status: Schema.optional(Schema.String),
@@ -22031,13 +21783,13 @@ export type WebAppsGetNetworkTraceOperationV2Output =
  * @param operationId - GUID of the operation.
  */
 export const WebAppsGetNetworkTraceOperationV2 =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetNetworkTraceOperationV2Input,
     outputSchema: WebAppsGetNetworkTraceOperationV2Output,
   }));
 // Input Schema
 export const WebAppsGetNetworkTracesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -22054,7 +21806,7 @@ export type WebAppsGetNetworkTracesInput =
 
 // Output Schema
 export const WebAppsGetNetworkTracesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       path: Schema.optional(Schema.String),
       status: Schema.optional(Schema.String),
@@ -22076,15 +21828,13 @@ export type WebAppsGetNetworkTracesOutput =
  * @param name - Name of the app.
  * @param operationId - GUID of the operation.
  */
-export const WebAppsGetNetworkTraces = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetNetworkTracesInput,
-    outputSchema: WebAppsGetNetworkTracesOutput,
-  }),
-);
+export const WebAppsGetNetworkTraces = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetNetworkTracesInput,
+  outputSchema: WebAppsGetNetworkTracesOutput,
+}));
 // Input Schema
 export const WebAppsGetNetworkTracesSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -22102,7 +21852,7 @@ export type WebAppsGetNetworkTracesSlotInput =
 
 // Output Schema
 export const WebAppsGetNetworkTracesSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       path: Schema.optional(Schema.String),
       status: Schema.optional(Schema.String),
@@ -22125,15 +21875,13 @@ export type WebAppsGetNetworkTracesSlotOutput =
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  * @param operationId - GUID of the operation.
  */
-export const WebAppsGetNetworkTracesSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetNetworkTracesSlotInput,
-    outputSchema: WebAppsGetNetworkTracesSlotOutput,
-  }),
-);
+export const WebAppsGetNetworkTracesSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetNetworkTracesSlotInput,
+  outputSchema: WebAppsGetNetworkTracesSlotOutput,
+}));
 // Input Schema
 export const WebAppsGetNetworkTracesSlotV2Input =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -22151,7 +21899,7 @@ export type WebAppsGetNetworkTracesSlotV2Input =
 
 // Output Schema
 export const WebAppsGetNetworkTracesSlotV2Output =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       path: Schema.optional(Schema.String),
       status: Schema.optional(Schema.String),
@@ -22175,13 +21923,13 @@ export type WebAppsGetNetworkTracesSlotV2Output =
  * @param operationId - GUID of the operation.
  */
 export const WebAppsGetNetworkTracesSlotV2 =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetNetworkTracesSlotV2Input,
     outputSchema: WebAppsGetNetworkTracesSlotV2Output,
   }));
 // Input Schema
 export const WebAppsGetNetworkTracesV2Input =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -22198,7 +21946,7 @@ export type WebAppsGetNetworkTracesV2Input =
 
 // Output Schema
 export const WebAppsGetNetworkTracesV2Output =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       path: Schema.optional(Schema.String),
       status: Schema.optional(Schema.String),
@@ -22220,15 +21968,13 @@ export type WebAppsGetNetworkTracesV2Output =
  * @param name - Name of the app.
  * @param operationId - GUID of the operation.
  */
-export const WebAppsGetNetworkTracesV2 = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetNetworkTracesV2Input,
-    outputSchema: WebAppsGetNetworkTracesV2Output,
-  }),
-);
+export const WebAppsGetNetworkTracesV2 = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetNetworkTracesV2Input,
+  outputSchema: WebAppsGetNetworkTracesV2Output,
+}));
 // Input Schema
 export const WebAppsGetOneDeployStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -22243,8 +21989,7 @@ export type WebAppsGetOneDeployStatusInput =
   typeof WebAppsGetOneDeployStatusInput.Type;
 
 // Output Schema
-export const WebAppsGetOneDeployStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+export const WebAppsGetOneDeployStatusOutput = /*@__PURE__*/ Schema.Unknown;
 export type WebAppsGetOneDeployStatusOutput =
   typeof WebAppsGetOneDeployStatusOutput.Type;
 
@@ -22259,15 +22004,13 @@ export type WebAppsGetOneDeployStatusOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsGetOneDeployStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetOneDeployStatusInput,
-    outputSchema: WebAppsGetOneDeployStatusOutput,
-  }),
-);
+export const WebAppsGetOneDeployStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetOneDeployStatusInput,
+  outputSchema: WebAppsGetOneDeployStatusOutput,
+}));
 // Input Schema
 export const WebAppsGetPremierAddOnInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -22284,7 +22027,7 @@ export type WebAppsGetPremierAddOnInput =
 
 // Output Schema
 export const WebAppsGetPremierAddOnOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -22318,15 +22061,13 @@ export type WebAppsGetPremierAddOnOutput =
  * @param name - Name of the app.
  * @param premierAddOnName - Add-on name.
  */
-export const WebAppsGetPremierAddOn = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetPremierAddOnInput,
-    outputSchema: WebAppsGetPremierAddOnOutput,
-  }),
-);
+export const WebAppsGetPremierAddOn = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetPremierAddOnInput,
+  outputSchema: WebAppsGetPremierAddOnOutput,
+}));
 // Input Schema
 export const WebAppsGetPremierAddOnSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -22344,7 +22085,7 @@ export type WebAppsGetPremierAddOnSlotInput =
 
 // Output Schema
 export const WebAppsGetPremierAddOnSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -22379,15 +22120,13 @@ export type WebAppsGetPremierAddOnSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get the named add-on for the production slot.
  * @param premierAddOnName - Add-on name.
  */
-export const WebAppsGetPremierAddOnSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetPremierAddOnSlotInput,
-    outputSchema: WebAppsGetPremierAddOnSlotOutput,
-  }),
-);
+export const WebAppsGetPremierAddOnSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetPremierAddOnSlotInput,
+  outputSchema: WebAppsGetPremierAddOnSlotOutput,
+}));
 // Input Schema
 export const WebAppsGetPrivateAccessInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -22403,7 +22142,7 @@ export type WebAppsGetPrivateAccessInput =
 
 // Output Schema
 export const WebAppsGetPrivateAccessOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -22436,15 +22175,13 @@ export type WebAppsGetPrivateAccessOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - The name of the web app.
  */
-export const WebAppsGetPrivateAccess = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetPrivateAccessInput,
-    outputSchema: WebAppsGetPrivateAccessOutput,
-  }),
-);
+export const WebAppsGetPrivateAccess = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetPrivateAccessInput,
+  outputSchema: WebAppsGetPrivateAccessOutput,
+}));
 // Input Schema
 export const WebAppsGetPrivateAccessSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -22461,7 +22198,7 @@ export type WebAppsGetPrivateAccessSlotInput =
 
 // Output Schema
 export const WebAppsGetPrivateAccessSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -22495,15 +22232,13 @@ export type WebAppsGetPrivateAccessSlotOutput =
  * @param name - The name of the web app.
  * @param slot - The name of the slot for the web app.
  */
-export const WebAppsGetPrivateAccessSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetPrivateAccessSlotInput,
-    outputSchema: WebAppsGetPrivateAccessSlotOutput,
-  }),
-);
+export const WebAppsGetPrivateAccessSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetPrivateAccessSlotInput,
+  outputSchema: WebAppsGetPrivateAccessSlotOutput,
+}));
 // Input Schema
 export const WebAppsGetPrivateEndpointConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -22520,7 +22255,7 @@ export type WebAppsGetPrivateEndpointConnectionInput =
 
 // Output Schema
 export const WebAppsGetPrivateEndpointConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -22555,13 +22290,13 @@ export type WebAppsGetPrivateEndpointConnectionOutput =
  * @param privateEndpointConnectionName - Name of the private endpoint connection.
  */
 export const WebAppsGetPrivateEndpointConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetPrivateEndpointConnectionInput,
     outputSchema: WebAppsGetPrivateEndpointConnectionOutput,
   }));
 // Input Schema
 export const WebAppsGetPrivateEndpointConnectionListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -22577,7 +22312,7 @@ export type WebAppsGetPrivateEndpointConnectionListInput =
 
 // Output Schema
 export const WebAppsGetPrivateEndpointConnectionListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -22626,13 +22361,13 @@ export type WebAppsGetPrivateEndpointConnectionListOutput =
  * @param name - Name of the site.
  */
 export const WebAppsGetPrivateEndpointConnectionList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetPrivateEndpointConnectionListInput,
     outputSchema: WebAppsGetPrivateEndpointConnectionListOutput,
   }));
 // Input Schema
 export const WebAppsGetPrivateEndpointConnectionListSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -22649,7 +22384,7 @@ export type WebAppsGetPrivateEndpointConnectionListSlotInput =
 
 // Output Schema
 export const WebAppsGetPrivateEndpointConnectionListSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -22699,13 +22434,13 @@ export type WebAppsGetPrivateEndpointConnectionListSlotOutput =
  * @param slot - Name of the site deployment slot.
  */
 export const WebAppsGetPrivateEndpointConnectionListSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetPrivateEndpointConnectionListSlotInput,
     outputSchema: WebAppsGetPrivateEndpointConnectionListSlotOutput,
   }));
 // Input Schema
 export const WebAppsGetPrivateEndpointConnectionSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -22723,7 +22458,7 @@ export type WebAppsGetPrivateEndpointConnectionSlotInput =
 
 // Output Schema
 export const WebAppsGetPrivateEndpointConnectionSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -22759,13 +22494,13 @@ export type WebAppsGetPrivateEndpointConnectionSlotOutput =
  * @param privateEndpointConnectionName - Name of the private endpoint connection.
  */
 export const WebAppsGetPrivateEndpointConnectionSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetPrivateEndpointConnectionSlotInput,
     outputSchema: WebAppsGetPrivateEndpointConnectionSlotOutput,
   }));
 // Input Schema
 export const WebAppsGetPrivateLinkResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -22781,7 +22516,7 @@ export type WebAppsGetPrivateLinkResourcesInput =
 
 // Output Schema
 export const WebAppsGetPrivateLinkResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -22810,13 +22545,13 @@ export type WebAppsGetPrivateLinkResourcesOutput =
  * @param name - Name of the app.
  */
 export const WebAppsGetPrivateLinkResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetPrivateLinkResourcesInput,
     outputSchema: WebAppsGetPrivateLinkResourcesOutput,
   }));
 // Input Schema
 export const WebAppsGetPrivateLinkResourcesSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -22833,7 +22568,7 @@ export type WebAppsGetPrivateLinkResourcesSlotInput =
 
 // Output Schema
 export const WebAppsGetPrivateLinkResourcesSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -22863,20 +22598,18 @@ export type WebAppsGetPrivateLinkResourcesSlotOutput =
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
 export const WebAppsGetPrivateLinkResourcesSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetPrivateLinkResourcesSlotInput,
     outputSchema: WebAppsGetPrivateLinkResourcesSlotOutput,
   }));
 // Input Schema
-export const WebAppsGetProcessInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    processId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const WebAppsGetProcessInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  processId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/processes/{processId}",
@@ -22886,7 +22619,7 @@ export type WebAppsGetProcessInput = typeof WebAppsGetProcessInput.Type;
 
 // Output Schema
 export const WebAppsGetProcessOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -22919,13 +22652,13 @@ export type WebAppsGetProcessOutput = typeof WebAppsGetProcessOutput.Type;
  * @param name - Site name.
  * @param processId - PID.
  */
-export const WebAppsGetProcess = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebAppsGetProcess = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebAppsGetProcessInput,
   outputSchema: WebAppsGetProcessOutput,
 }));
 // Input Schema
 export const WebAppsGetProcessDumpInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -22940,8 +22673,7 @@ export const WebAppsGetProcessDumpInput =
 export type WebAppsGetProcessDumpInput = typeof WebAppsGetProcessDumpInput.Type;
 
 // Output Schema
-export const WebAppsGetProcessDumpOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+export const WebAppsGetProcessDumpOutput = /*@__PURE__*/ Schema.Unknown;
 export type WebAppsGetProcessDumpOutput =
   typeof WebAppsGetProcessDumpOutput.Type;
 
@@ -22957,15 +22689,13 @@ export type WebAppsGetProcessDumpOutput =
  * @param name - Site name.
  * @param processId - PID.
  */
-export const WebAppsGetProcessDump = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetProcessDumpInput,
-    outputSchema: WebAppsGetProcessDumpOutput,
-  }),
-);
+export const WebAppsGetProcessDump = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetProcessDumpInput,
+  outputSchema: WebAppsGetProcessDumpOutput,
+}));
 // Input Schema
 export const WebAppsGetProcessDumpSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -22982,8 +22712,7 @@ export type WebAppsGetProcessDumpSlotInput =
   typeof WebAppsGetProcessDumpSlotInput.Type;
 
 // Output Schema
-export const WebAppsGetProcessDumpSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+export const WebAppsGetProcessDumpSlotOutput = /*@__PURE__*/ Schema.Unknown;
 export type WebAppsGetProcessDumpSlotOutput =
   typeof WebAppsGetProcessDumpSlotOutput.Type;
 
@@ -23000,15 +22729,13 @@ export type WebAppsGetProcessDumpSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API returns deployments for the production slot.
  * @param processId - PID.
  */
-export const WebAppsGetProcessDumpSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetProcessDumpSlotInput,
-    outputSchema: WebAppsGetProcessDumpSlotOutput,
-  }),
-);
+export const WebAppsGetProcessDumpSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetProcessDumpSlotInput,
+  outputSchema: WebAppsGetProcessDumpSlotOutput,
+}));
 // Input Schema
 export const WebAppsGetProcessModuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -23026,7 +22753,7 @@ export type WebAppsGetProcessModuleInput =
 
 // Output Schema
 export const WebAppsGetProcessModuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -23061,15 +22788,13 @@ export type WebAppsGetProcessModuleOutput =
  * @param processId - PID.
  * @param baseAddress - Module base address.
  */
-export const WebAppsGetProcessModule = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetProcessModuleInput,
-    outputSchema: WebAppsGetProcessModuleOutput,
-  }),
-);
+export const WebAppsGetProcessModule = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetProcessModuleInput,
+  outputSchema: WebAppsGetProcessModuleOutput,
+}));
 // Input Schema
 export const WebAppsGetProcessModuleSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -23088,7 +22813,7 @@ export type WebAppsGetProcessModuleSlotInput =
 
 // Output Schema
 export const WebAppsGetProcessModuleSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -23124,15 +22849,13 @@ export type WebAppsGetProcessModuleSlotOutput =
  * @param processId - PID.
  * @param baseAddress - Module base address.
  */
-export const WebAppsGetProcessModuleSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetProcessModuleSlotInput,
-    outputSchema: WebAppsGetProcessModuleSlotOutput,
-  }),
-);
+export const WebAppsGetProcessModuleSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetProcessModuleSlotInput,
+  outputSchema: WebAppsGetProcessModuleSlotOutput,
+}));
 // Input Schema
 export const WebAppsGetProcessSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -23149,7 +22872,7 @@ export type WebAppsGetProcessSlotInput = typeof WebAppsGetProcessSlotInput.Type;
 
 // Output Schema
 export const WebAppsGetProcessSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -23184,15 +22907,13 @@ export type WebAppsGetProcessSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API returns deployments for the production slot.
  * @param processId - PID.
  */
-export const WebAppsGetProcessSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetProcessSlotInput,
-    outputSchema: WebAppsGetProcessSlotOutput,
-  }),
-);
+export const WebAppsGetProcessSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetProcessSlotInput,
+  outputSchema: WebAppsGetProcessSlotOutput,
+}));
 // Input Schema
 export const WebAppsGetProductionSiteDeploymentStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -23209,7 +22930,7 @@ export type WebAppsGetProductionSiteDeploymentStatusInput =
 
 // Output Schema
 export const WebAppsGetProductionSiteDeploymentStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -23242,13 +22963,13 @@ export type WebAppsGetProductionSiteDeploymentStatusOutput =
  * @param deploymentStatusId - GUID of the deployment operation.
  */
 export const WebAppsGetProductionSiteDeploymentStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetProductionSiteDeploymentStatusInput,
     outputSchema: WebAppsGetProductionSiteDeploymentStatusOutput,
   }));
 // Input Schema
 export const WebAppsGetPublicCertificateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -23265,7 +22986,7 @@ export type WebAppsGetPublicCertificateInput =
 
 // Output Schema
 export const WebAppsGetPublicCertificateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -23299,15 +23020,13 @@ export type WebAppsGetPublicCertificateOutput =
  * @param name - Name of the app.
  * @param publicCertificateName - Public certificate name.
  */
-export const WebAppsGetPublicCertificate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetPublicCertificateInput,
-    outputSchema: WebAppsGetPublicCertificateOutput,
-  }),
-);
+export const WebAppsGetPublicCertificate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetPublicCertificateInput,
+  outputSchema: WebAppsGetPublicCertificateOutput,
+}));
 // Input Schema
 export const WebAppsGetPublicCertificateSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -23325,7 +23044,7 @@ export type WebAppsGetPublicCertificateSlotInput =
 
 // Output Schema
 export const WebAppsGetPublicCertificateSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -23361,13 +23080,13 @@ export type WebAppsGetPublicCertificateSlotOutput =
  * @param publicCertificateName - Public certificate name.
  */
 export const WebAppsGetPublicCertificateSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetPublicCertificateSlotInput,
     outputSchema: WebAppsGetPublicCertificateSlotOutput,
   }));
 // Input Schema
 export const WebAppsGetRelayServiceConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -23384,7 +23103,7 @@ export type WebAppsGetRelayServiceConnectionInput =
 
 // Output Schema
 export const WebAppsGetRelayServiceConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -23419,13 +23138,13 @@ export type WebAppsGetRelayServiceConnectionOutput =
  * @param entityName - Name of the hybrid connection.
  */
 export const WebAppsGetRelayServiceConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetRelayServiceConnectionInput,
     outputSchema: WebAppsGetRelayServiceConnectionOutput,
   }));
 // Input Schema
 export const WebAppsGetRelayServiceConnectionSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -23443,7 +23162,7 @@ export type WebAppsGetRelayServiceConnectionSlotInput =
 
 // Output Schema
 export const WebAppsGetRelayServiceConnectionSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -23479,13 +23198,13 @@ export type WebAppsGetRelayServiceConnectionSlotOutput =
  * @param entityName - Name of the hybrid connection.
  */
 export const WebAppsGetRelayServiceConnectionSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetRelayServiceConnectionSlotInput,
     outputSchema: WebAppsGetRelayServiceConnectionSlotOutput,
   }));
 // Input Schema
 export const WebAppsGetScmAllowedInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -23500,7 +23219,7 @@ export type WebAppsGetScmAllowedInput = typeof WebAppsGetScmAllowedInput.Type;
 
 // Output Schema
 export const WebAppsGetScmAllowedOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -23532,15 +23251,13 @@ export type WebAppsGetScmAllowedOutput = typeof WebAppsGetScmAllowedOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsGetScmAllowed = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetScmAllowedInput,
-    outputSchema: WebAppsGetScmAllowedOutput,
-  }),
-);
+export const WebAppsGetScmAllowed = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetScmAllowedInput,
+  outputSchema: WebAppsGetScmAllowedOutput,
+}));
 // Input Schema
 export const WebAppsGetScmAllowedSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -23557,7 +23274,7 @@ export type WebAppsGetScmAllowedSlotInput =
 
 // Output Schema
 export const WebAppsGetScmAllowedSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -23590,15 +23307,13 @@ export type WebAppsGetScmAllowedSlotOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsGetScmAllowedSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetScmAllowedSlotInput,
-    outputSchema: WebAppsGetScmAllowedSlotOutput,
-  }),
-);
+export const WebAppsGetScmAllowedSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetScmAllowedSlotInput,
+  outputSchema: WebAppsGetScmAllowedSlotOutput,
+}));
 // Input Schema
 export const WebAppsGetSiteConnectionStringKeyVaultReferenceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -23615,7 +23330,7 @@ export type WebAppsGetSiteConnectionStringKeyVaultReferenceInput =
 
 // Output Schema
 export const WebAppsGetSiteConnectionStringKeyVaultReferenceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -23649,13 +23364,13 @@ export type WebAppsGetSiteConnectionStringKeyVaultReferenceOutput =
  * @param name - Name of the app.
  */
 export const WebAppsGetSiteConnectionStringKeyVaultReference =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetSiteConnectionStringKeyVaultReferenceInput,
     outputSchema: WebAppsGetSiteConnectionStringKeyVaultReferenceOutput,
   }));
 // Input Schema
 export const WebAppsGetSiteConnectionStringKeyVaultReferencesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -23671,7 +23386,7 @@ export type WebAppsGetSiteConnectionStringKeyVaultReferencesInput =
 
 // Output Schema
 export const WebAppsGetSiteConnectionStringKeyVaultReferencesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -23720,13 +23435,13 @@ export type WebAppsGetSiteConnectionStringKeyVaultReferencesOutput =
  * @param name - Name of the app.
  */
 export const WebAppsGetSiteConnectionStringKeyVaultReferences =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetSiteConnectionStringKeyVaultReferencesInput,
     outputSchema: WebAppsGetSiteConnectionStringKeyVaultReferencesOutput,
   }));
 // Input Schema
 export const WebAppsGetSiteConnectionStringKeyVaultReferenceSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -23744,7 +23459,7 @@ export type WebAppsGetSiteConnectionStringKeyVaultReferenceSlotInput =
 
 // Output Schema
 export const WebAppsGetSiteConnectionStringKeyVaultReferenceSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -23778,13 +23493,13 @@ export type WebAppsGetSiteConnectionStringKeyVaultReferenceSlotOutput =
  * @param name - Name of the app.
  */
 export const WebAppsGetSiteConnectionStringKeyVaultReferenceSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetSiteConnectionStringKeyVaultReferenceSlotInput,
     outputSchema: WebAppsGetSiteConnectionStringKeyVaultReferenceSlotOutput,
   }));
 // Input Schema
 export const WebAppsGetSiteConnectionStringKeyVaultReferencesSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -23801,7 +23516,7 @@ export type WebAppsGetSiteConnectionStringKeyVaultReferencesSlotInput =
 
 // Output Schema
 export const WebAppsGetSiteConnectionStringKeyVaultReferencesSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -23850,13 +23565,13 @@ export type WebAppsGetSiteConnectionStringKeyVaultReferencesSlotOutput =
  * @param name - Name of the app.
  */
 export const WebAppsGetSiteConnectionStringKeyVaultReferencesSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetSiteConnectionStringKeyVaultReferencesSlotInput,
     outputSchema: WebAppsGetSiteConnectionStringKeyVaultReferencesSlotOutput,
   }));
 // Input Schema
 export const WebAppsGetSiteContainerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -23873,7 +23588,7 @@ export type WebAppsGetSiteContainerInput =
 
 // Output Schema
 export const WebAppsGetSiteContainerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -23905,15 +23620,13 @@ export type WebAppsGetSiteContainerOutput =
  * @param name - Name of the app.
  * @param containerName - Site Container Name
  */
-export const WebAppsGetSiteContainer = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetSiteContainerInput,
-    outputSchema: WebAppsGetSiteContainerOutput,
-  }),
-);
+export const WebAppsGetSiteContainer = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetSiteContainerInput,
+  outputSchema: WebAppsGetSiteContainerOutput,
+}));
 // Input Schema
 export const WebAppsGetSiteContainerSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -23931,7 +23644,7 @@ export type WebAppsGetSiteContainerSlotInput =
 
 // Output Schema
 export const WebAppsGetSiteContainerSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -23964,15 +23677,13 @@ export type WebAppsGetSiteContainerSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get the Site Container for the production slot.
  * @param containerName - Site Container Name
  */
-export const WebAppsGetSiteContainerSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetSiteContainerSlotInput,
-    outputSchema: WebAppsGetSiteContainerSlotOutput,
-  }),
-);
+export const WebAppsGetSiteContainerSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetSiteContainerSlotInput,
+  outputSchema: WebAppsGetSiteContainerSlotOutput,
+}));
 // Input Schema
 export const WebAppsGetSiteExtensionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -23989,7 +23700,7 @@ export type WebAppsGetSiteExtensionInput =
 
 // Output Schema
 export const WebAppsGetSiteExtensionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -24023,15 +23734,13 @@ export type WebAppsGetSiteExtensionOutput =
  * @param name - Site name.
  * @param siteExtensionId - Site extension name.
  */
-export const WebAppsGetSiteExtension = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetSiteExtensionInput,
-    outputSchema: WebAppsGetSiteExtensionOutput,
-  }),
-);
+export const WebAppsGetSiteExtension = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetSiteExtensionInput,
+  outputSchema: WebAppsGetSiteExtensionOutput,
+}));
 // Input Schema
 export const WebAppsGetSiteExtensionSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -24049,7 +23758,7 @@ export type WebAppsGetSiteExtensionSlotInput =
 
 // Output Schema
 export const WebAppsGetSiteExtensionSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -24084,15 +23793,13 @@ export type WebAppsGetSiteExtensionSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API uses the production slot.
  * @param siteExtensionId - Site extension name.
  */
-export const WebAppsGetSiteExtensionSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetSiteExtensionSlotInput,
-    outputSchema: WebAppsGetSiteExtensionSlotOutput,
-  }),
-);
+export const WebAppsGetSiteExtensionSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetSiteExtensionSlotInput,
+  outputSchema: WebAppsGetSiteExtensionSlotOutput,
+}));
 // Input Schema
 export const WebAppsGetSitePhpErrorLogFlagInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -24108,7 +23815,7 @@ export type WebAppsGetSitePhpErrorLogFlagInput =
 
 // Output Schema
 export const WebAppsGetSitePhpErrorLogFlagOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -24129,13 +23836,13 @@ export type WebAppsGetSitePhpErrorLogFlagOutput =
  * @param name - Name of the app.
  */
 export const WebAppsGetSitePhpErrorLogFlag =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetSitePhpErrorLogFlagInput,
     outputSchema: WebAppsGetSitePhpErrorLogFlagOutput,
   }));
 // Input Schema
 export const WebAppsGetSitePhpErrorLogFlagSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -24152,7 +23859,7 @@ export type WebAppsGetSitePhpErrorLogFlagSlotInput =
 
 // Output Schema
 export const WebAppsGetSitePhpErrorLogFlagSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -24174,12 +23881,12 @@ export type WebAppsGetSitePhpErrorLogFlagSlotOutput =
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
 export const WebAppsGetSitePhpErrorLogFlagSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetSitePhpErrorLogFlagSlotInput,
     outputSchema: WebAppsGetSitePhpErrorLogFlagSlotOutput,
   }));
 // Input Schema
-export const WebAppsGetSlotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebAppsGetSlotInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -24194,7 +23901,7 @@ export const WebAppsGetSlotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WebAppsGetSlotInput = typeof WebAppsGetSlotInput.Type;
 
 // Output Schema
-export const WebAppsGetSlotOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebAppsGetSlotOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -24227,13 +23934,13 @@ export type WebAppsGetSlotOutput = typeof WebAppsGetSlotOutput.Type;
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsGetSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebAppsGetSlot = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebAppsGetSlotInput,
   outputSchema: WebAppsGetSlotOutput,
 }));
 // Input Schema
 export const WebAppsGetSlotSiteDeploymentStatusSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -24251,7 +23958,7 @@ export type WebAppsGetSlotSiteDeploymentStatusSlotInput =
 
 // Output Schema
 export const WebAppsGetSlotSiteDeploymentStatusSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -24285,13 +23992,13 @@ export type WebAppsGetSlotSiteDeploymentStatusSlotOutput =
  * @param deploymentStatusId - GUID of the deployment operation.
  */
 export const WebAppsGetSlotSiteDeploymentStatusSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetSlotSiteDeploymentStatusSlotInput,
     outputSchema: WebAppsGetSlotSiteDeploymentStatusSlotOutput,
   }));
 // Input Schema
 export const WebAppsGetSourceControlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -24307,7 +24014,7 @@ export type WebAppsGetSourceControlInput =
 
 // Output Schema
 export const WebAppsGetSourceControlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -24340,15 +24047,13 @@ export type WebAppsGetSourceControlOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsGetSourceControl = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetSourceControlInput,
-    outputSchema: WebAppsGetSourceControlOutput,
-  }),
-);
+export const WebAppsGetSourceControl = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetSourceControlInput,
+  outputSchema: WebAppsGetSourceControlOutput,
+}));
 // Input Schema
 export const WebAppsGetSourceControlSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -24365,7 +24070,7 @@ export type WebAppsGetSourceControlSlotInput =
 
 // Output Schema
 export const WebAppsGetSourceControlSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -24399,15 +24104,13 @@ export type WebAppsGetSourceControlSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get the source control configuration for the production slot.
  */
-export const WebAppsGetSourceControlSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetSourceControlSlotInput,
-    outputSchema: WebAppsGetSourceControlSlotOutput,
-  }),
-);
+export const WebAppsGetSourceControlSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetSourceControlSlotInput,
+  outputSchema: WebAppsGetSourceControlSlotOutput,
+}));
 // Input Schema
 export const WebAppsGetSwiftVirtualNetworkConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -24423,7 +24126,7 @@ export type WebAppsGetSwiftVirtualNetworkConnectionInput =
 
 // Output Schema
 export const WebAppsGetSwiftVirtualNetworkConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -24457,13 +24160,13 @@ export type WebAppsGetSwiftVirtualNetworkConnectionOutput =
  * @param name - Name of the app.
  */
 export const WebAppsGetSwiftVirtualNetworkConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetSwiftVirtualNetworkConnectionInput,
     outputSchema: WebAppsGetSwiftVirtualNetworkConnectionOutput,
   }));
 // Input Schema
 export const WebAppsGetSwiftVirtualNetworkConnectionSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -24480,7 +24183,7 @@ export type WebAppsGetSwiftVirtualNetworkConnectionSlotInput =
 
 // Output Schema
 export const WebAppsGetSwiftVirtualNetworkConnectionSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -24515,13 +24218,13 @@ export type WebAppsGetSwiftVirtualNetworkConnectionSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get a gateway for the production slot's Virtual Network.
  */
 export const WebAppsGetSwiftVirtualNetworkConnectionSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetSwiftVirtualNetworkConnectionSlotInput,
     outputSchema: WebAppsGetSwiftVirtualNetworkConnectionSlotOutput,
   }));
 // Input Schema
 export const WebAppsGetTriggeredWebJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -24538,7 +24241,7 @@ export type WebAppsGetTriggeredWebJobInput =
 
 // Output Schema
 export const WebAppsGetTriggeredWebJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -24572,15 +24275,13 @@ export type WebAppsGetTriggeredWebJobOutput =
  * @param name - Site name.
  * @param webJobName - Name of Web Job.
  */
-export const WebAppsGetTriggeredWebJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetTriggeredWebJobInput,
-    outputSchema: WebAppsGetTriggeredWebJobOutput,
-  }),
-);
+export const WebAppsGetTriggeredWebJob = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetTriggeredWebJobInput,
+  outputSchema: WebAppsGetTriggeredWebJobOutput,
+}));
 // Input Schema
 export const WebAppsGetTriggeredWebJobHistoryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -24598,7 +24299,7 @@ export type WebAppsGetTriggeredWebJobHistoryInput =
 
 // Output Schema
 export const WebAppsGetTriggeredWebJobHistoryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -24634,13 +24335,13 @@ export type WebAppsGetTriggeredWebJobHistoryOutput =
  * @param id - History ID.
  */
 export const WebAppsGetTriggeredWebJobHistory =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetTriggeredWebJobHistoryInput,
     outputSchema: WebAppsGetTriggeredWebJobHistoryOutput,
   }));
 // Input Schema
 export const WebAppsGetTriggeredWebJobHistorySlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -24659,7 +24360,7 @@ export type WebAppsGetTriggeredWebJobHistorySlotInput =
 
 // Output Schema
 export const WebAppsGetTriggeredWebJobHistorySlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -24696,13 +24397,13 @@ export type WebAppsGetTriggeredWebJobHistorySlotOutput =
  * @param id - History ID.
  */
 export const WebAppsGetTriggeredWebJobHistorySlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetTriggeredWebJobHistorySlotInput,
     outputSchema: WebAppsGetTriggeredWebJobHistorySlotOutput,
   }));
 // Input Schema
 export const WebAppsGetTriggeredWebJobSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -24720,7 +24421,7 @@ export type WebAppsGetTriggeredWebJobSlotInput =
 
 // Output Schema
 export const WebAppsGetTriggeredWebJobSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -24756,13 +24457,13 @@ export type WebAppsGetTriggeredWebJobSlotOutput =
  * @param webJobName - Name of Web Job.
  */
 export const WebAppsGetTriggeredWebJobSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetTriggeredWebJobSlotInput,
     outputSchema: WebAppsGetTriggeredWebJobSlotOutput,
   }));
 // Input Schema
 export const WebAppsGetVnetConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -24779,7 +24480,7 @@ export type WebAppsGetVnetConnectionInput =
 
 // Output Schema
 export const WebAppsGetVnetConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -24813,15 +24514,13 @@ export type WebAppsGetVnetConnectionOutput =
  * @param name - Name of the app.
  * @param vnetName - Name of the virtual network.
  */
-export const WebAppsGetVnetConnection = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetVnetConnectionInput,
-    outputSchema: WebAppsGetVnetConnectionOutput,
-  }),
-);
+export const WebAppsGetVnetConnection = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetVnetConnectionInput,
+  outputSchema: WebAppsGetVnetConnectionOutput,
+}));
 // Input Schema
 export const WebAppsGetVnetConnectionGatewayInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -24839,7 +24538,7 @@ export type WebAppsGetVnetConnectionGatewayInput =
 
 // Output Schema
 export const WebAppsGetVnetConnectionGatewayOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -24875,13 +24574,13 @@ export type WebAppsGetVnetConnectionGatewayOutput =
  * @param gatewayName - Name of the gateway. Currently, the only supported string is "primary".
  */
 export const WebAppsGetVnetConnectionGateway =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetVnetConnectionGatewayInput,
     outputSchema: WebAppsGetVnetConnectionGatewayOutput,
   }));
 // Input Schema
 export const WebAppsGetVnetConnectionGatewaySlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -24900,7 +24599,7 @@ export type WebAppsGetVnetConnectionGatewaySlotInput =
 
 // Output Schema
 export const WebAppsGetVnetConnectionGatewaySlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -24937,13 +24636,13 @@ export type WebAppsGetVnetConnectionGatewaySlotOutput =
  * @param gatewayName - Name of the gateway. Currently, the only supported string is "primary".
  */
 export const WebAppsGetVnetConnectionGatewaySlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetVnetConnectionGatewaySlotInput,
     outputSchema: WebAppsGetVnetConnectionGatewaySlotOutput,
   }));
 // Input Schema
 export const WebAppsGetVnetConnectionSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -24961,7 +24660,7 @@ export type WebAppsGetVnetConnectionSlotInput =
 
 // Output Schema
 export const WebAppsGetVnetConnectionSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -24997,12 +24696,12 @@ export type WebAppsGetVnetConnectionSlotOutput =
  * @param vnetName - Name of the virtual network.
  */
 export const WebAppsGetVnetConnectionSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetVnetConnectionSlotInput,
     outputSchema: WebAppsGetVnetConnectionSlotOutput,
   }));
 // Input Schema
-export const WebAppsGetWebJobInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebAppsGetWebJobInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -25017,27 +24716,25 @@ export const WebAppsGetWebJobInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WebAppsGetWebJobInput = typeof WebAppsGetWebJobInput.Type;
 
 // Output Schema
-export const WebAppsGetWebJobOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const WebAppsGetWebJobOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type WebAppsGetWebJobOutput = typeof WebAppsGetWebJobOutput.Type;
 
 // The operation
@@ -25052,13 +24749,13 @@ export type WebAppsGetWebJobOutput = typeof WebAppsGetWebJobOutput.Type;
  * @param name - Site name.
  * @param webJobName - Name of the web job.
  */
-export const WebAppsGetWebJob = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebAppsGetWebJob = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebAppsGetWebJobInput,
   outputSchema: WebAppsGetWebJobOutput,
 }));
 // Input Schema
 export const WebAppsGetWebJobSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -25075,7 +24772,7 @@ export type WebAppsGetWebJobSlotInput = typeof WebAppsGetWebJobSlotInput.Type;
 
 // Output Schema
 export const WebAppsGetWebJobSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -25109,15 +24806,13 @@ export type WebAppsGetWebJobSlotOutput = typeof WebAppsGetWebJobSlotOutput.Type;
  * @param slot - Name of the deployment slot. If a slot is not specified, the API returns deployments for the production slot.
  * @param webJobName - Name of the web job.
  */
-export const WebAppsGetWebJobSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsGetWebJobSlotInput,
-    outputSchema: WebAppsGetWebJobSlotOutput,
-  }),
-);
+export const WebAppsGetWebJobSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsGetWebJobSlotInput,
+  outputSchema: WebAppsGetWebJobSlotOutput,
+}));
 // Input Schema
 export const WebAppsGetWebSiteContainerLogsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -25133,7 +24828,7 @@ export type WebAppsGetWebSiteContainerLogsInput =
 
 // Output Schema
 export const WebAppsGetWebSiteContainerLogsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+  /*@__PURE__*/ Schema.Unknown;
 export type WebAppsGetWebSiteContainerLogsOutput =
   typeof WebAppsGetWebSiteContainerLogsOutput.Type;
 
@@ -25149,13 +24844,13 @@ export type WebAppsGetWebSiteContainerLogsOutput =
  * @param name - Name of the app.
  */
 export const WebAppsGetWebSiteContainerLogs =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetWebSiteContainerLogsInput,
     outputSchema: WebAppsGetWebSiteContainerLogsOutput,
   }));
 // Input Schema
 export const WebAppsGetWebSiteContainerLogsSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -25172,7 +24867,7 @@ export type WebAppsGetWebSiteContainerLogsSlotInput =
 
 // Output Schema
 export const WebAppsGetWebSiteContainerLogsSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+  /*@__PURE__*/ Schema.Unknown;
 export type WebAppsGetWebSiteContainerLogsSlotOutput =
   typeof WebAppsGetWebSiteContainerLogsSlotOutput.Type;
 
@@ -25189,13 +24884,13 @@ export type WebAppsGetWebSiteContainerLogsSlotOutput =
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
 export const WebAppsGetWebSiteContainerLogsSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsGetWebSiteContainerLogsSlotInput,
     outputSchema: WebAppsGetWebSiteContainerLogsSlotOutput,
   }));
 // Input Schema
 export const WebAppsGetWorkflowInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -25211,7 +24906,7 @@ export type WebAppsGetWorkflowInput = typeof WebAppsGetWorkflowInput.Type;
 
 // Output Schema
 export const WebAppsGetWorkflowOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -25242,13 +24937,13 @@ export type WebAppsGetWorkflowOutput = typeof WebAppsGetWorkflowOutput.Type;
  * @param name - Site name.
  * @param workflowName - Workflow name.
  */
-export const WebAppsGetWorkflow = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebAppsGetWorkflow = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebAppsGetWorkflowInput,
   outputSchema: WebAppsGetWorkflowOutput,
 }));
 // Input Schema
 export const WebAppsInstallSiteExtensionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -25265,7 +24960,7 @@ export type WebAppsInstallSiteExtensionInput =
 
 // Output Schema
 export const WebAppsInstallSiteExtensionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -25299,15 +24994,13 @@ export type WebAppsInstallSiteExtensionOutput =
  * @param name - Site name.
  * @param siteExtensionId - Site extension name.
  */
-export const WebAppsInstallSiteExtension = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsInstallSiteExtensionInput,
-    outputSchema: WebAppsInstallSiteExtensionOutput,
-  }),
-);
+export const WebAppsInstallSiteExtension = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsInstallSiteExtensionInput,
+  outputSchema: WebAppsInstallSiteExtensionOutput,
+}));
 // Input Schema
 export const WebAppsInstallSiteExtensionSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -25325,7 +25018,7 @@ export type WebAppsInstallSiteExtensionSlotInput =
 
 // Output Schema
 export const WebAppsInstallSiteExtensionSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -25361,13 +25054,13 @@ export type WebAppsInstallSiteExtensionSlotOutput =
  * @param siteExtensionId - Site extension name.
  */
 export const WebAppsInstallSiteExtensionSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsInstallSiteExtensionSlotInput,
     outputSchema: WebAppsInstallSiteExtensionSlotOutput,
   }));
 // Input Schema
 export const WebAppsIsCloneableInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -25382,7 +25075,7 @@ export type WebAppsIsCloneableInput = typeof WebAppsIsCloneableInput.Type;
 
 // Output Schema
 export const WebAppsIsCloneableOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     result: Schema.optional(
       Schema.Literals(["Cloneable", "PartiallyCloneable", "NotCloneable"]),
     ),
@@ -25424,13 +25117,13 @@ export type WebAppsIsCloneableOutput = typeof WebAppsIsCloneableOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsIsCloneable = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebAppsIsCloneable = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebAppsIsCloneableInput,
   outputSchema: WebAppsIsCloneableOutput,
 }));
 // Input Schema
 export const WebAppsIsCloneableSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -25447,7 +25140,7 @@ export type WebAppsIsCloneableSlotInput =
 
 // Output Schema
 export const WebAppsIsCloneableSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     result: Schema.optional(
       Schema.Literals(["Cloneable", "PartiallyCloneable", "NotCloneable"]),
     ),
@@ -25491,14 +25184,12 @@ export type WebAppsIsCloneableSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsIsCloneableSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsIsCloneableSlotInput,
-    outputSchema: WebAppsIsCloneableSlotOutput,
-  }),
-);
+export const WebAppsIsCloneableSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsIsCloneableSlotInput,
+  outputSchema: WebAppsIsCloneableSlotOutput,
+}));
 // Input Schema
-export const WebAppsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebAppsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -25510,7 +25201,7 @@ export const WebAppsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WebAppsListInput = typeof WebAppsListInput.Type;
 
 // Output Schema
-export const WebAppsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebAppsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -25545,13 +25236,13 @@ export type WebAppsListOutput = typeof WebAppsListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WebAppsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebAppsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebAppsListInput,
   outputSchema: WebAppsListOutput,
 }));
 // Input Schema
 export const WebAppsListApplicationSettingsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -25567,7 +25258,7 @@ export type WebAppsListApplicationSettingsInput =
 
 // Output Schema
 export const WebAppsListApplicationSettingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -25588,13 +25279,13 @@ export type WebAppsListApplicationSettingsOutput =
  * @param name - Name of the app.
  */
 export const WebAppsListApplicationSettings =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListApplicationSettingsInput,
     outputSchema: WebAppsListApplicationSettingsOutput,
   }));
 // Input Schema
 export const WebAppsListApplicationSettingsSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -25611,7 +25302,7 @@ export type WebAppsListApplicationSettingsSlotInput =
 
 // Output Schema
 export const WebAppsListApplicationSettingsSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -25633,13 +25324,13 @@ export type WebAppsListApplicationSettingsSlotOutput =
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
 export const WebAppsListApplicationSettingsSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListApplicationSettingsSlotInput,
     outputSchema: WebAppsListApplicationSettingsSlotOutput,
   }));
 // Input Schema
 export const WebAppsListAzureStorageAccountsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -25655,7 +25346,7 @@ export type WebAppsListAzureStorageAccountsInput =
 
 // Output Schema
 export const WebAppsListAzureStorageAccountsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -25676,13 +25367,13 @@ export type WebAppsListAzureStorageAccountsOutput =
  * @param name - Name of the app.
  */
 export const WebAppsListAzureStorageAccounts =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListAzureStorageAccountsInput,
     outputSchema: WebAppsListAzureStorageAccountsOutput,
   }));
 // Input Schema
 export const WebAppsListAzureStorageAccountsSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -25699,7 +25390,7 @@ export type WebAppsListAzureStorageAccountsSlotInput =
 
 // Output Schema
 export const WebAppsListAzureStorageAccountsSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -25721,13 +25412,13 @@ export type WebAppsListAzureStorageAccountsSlotOutput =
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
 export const WebAppsListAzureStorageAccountsSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListAzureStorageAccountsSlotInput,
     outputSchema: WebAppsListAzureStorageAccountsSlotOutput,
   }));
 // Input Schema
 export const WebAppsListBackupsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -25742,7 +25433,7 @@ export type WebAppsListBackupsInput = typeof WebAppsListBackupsInput.Type;
 
 // Output Schema
 export const WebAppsListBackupsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -25789,13 +25480,13 @@ export type WebAppsListBackupsOutput = typeof WebAppsListBackupsOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsListBackups = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebAppsListBackups = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebAppsListBackupsInput,
   outputSchema: WebAppsListBackupsOutput,
 }));
 // Input Schema
 export const WebAppsListBackupsSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -25812,7 +25503,7 @@ export type WebAppsListBackupsSlotInput =
 
 // Output Schema
 export const WebAppsListBackupsSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -25861,15 +25552,13 @@ export type WebAppsListBackupsSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get a backup of the production slot.
  */
-export const WebAppsListBackupsSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsListBackupsSlotInput,
-    outputSchema: WebAppsListBackupsSlotOutput,
-  }),
-);
+export const WebAppsListBackupsSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListBackupsSlotInput,
+  outputSchema: WebAppsListBackupsSlotOutput,
+}));
 // Input Schema
 export const WebAppsListBackupStatusSecretsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -25886,7 +25575,7 @@ export type WebAppsListBackupStatusSecretsInput =
 
 // Output Schema
 export const WebAppsListBackupStatusSecretsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -25921,13 +25610,13 @@ export type WebAppsListBackupStatusSecretsOutput =
  * @param backupId - ID of the backup.
  */
 export const WebAppsListBackupStatusSecrets =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListBackupStatusSecretsInput,
     outputSchema: WebAppsListBackupStatusSecretsOutput,
   }));
 // Input Schema
 export const WebAppsListBackupStatusSecretsSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -25945,7 +25634,7 @@ export type WebAppsListBackupStatusSecretsSlotInput =
 
 // Output Schema
 export const WebAppsListBackupStatusSecretsSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -25981,13 +25670,13 @@ export type WebAppsListBackupStatusSecretsSlotOutput =
  * @param backupId - ID of the backup.
  */
 export const WebAppsListBackupStatusSecretsSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListBackupStatusSecretsSlotInput,
     outputSchema: WebAppsListBackupStatusSecretsSlotOutput,
   }));
 // Input Schema
 export const WebAppsListBasicPublishingCredentialsPoliciesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -26003,7 +25692,7 @@ export type WebAppsListBasicPublishingCredentialsPoliciesInput =
 
 // Output Schema
 export const WebAppsListBasicPublishingCredentialsPoliciesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -26052,13 +25741,13 @@ export type WebAppsListBasicPublishingCredentialsPoliciesOutput =
  * @param name - Name of the app.
  */
 export const WebAppsListBasicPublishingCredentialsPolicies =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListBasicPublishingCredentialsPoliciesInput,
     outputSchema: WebAppsListBasicPublishingCredentialsPoliciesOutput,
   }));
 // Input Schema
 export const WebAppsListBasicPublishingCredentialsPoliciesSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -26075,7 +25764,7 @@ export type WebAppsListBasicPublishingCredentialsPoliciesSlotInput =
 
 // Output Schema
 export const WebAppsListBasicPublishingCredentialsPoliciesSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -26124,13 +25813,13 @@ export type WebAppsListBasicPublishingCredentialsPoliciesSlotOutput =
  * @param name - Name of the app.
  */
 export const WebAppsListBasicPublishingCredentialsPoliciesSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListBasicPublishingCredentialsPoliciesSlotInput,
     outputSchema: WebAppsListBasicPublishingCredentialsPoliciesSlotOutput,
   }));
 // Input Schema
 export const WebAppsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -26146,7 +25835,7 @@ export type WebAppsListByResourceGroupInput =
 
 // Output Schema
 export const WebAppsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -26194,15 +25883,13 @@ export type WebAppsListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param includeSlots - Specify <strong>true</strong> to include deployment slots in results. The default is false, which only gives you the production slot of all apps.
  */
-export const WebAppsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsListByResourceGroupInput,
-    outputSchema: WebAppsListByResourceGroupOutput,
-  }),
-);
+export const WebAppsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListByResourceGroupInput,
+  outputSchema: WebAppsListByResourceGroupOutput,
+}));
 // Input Schema
 export const WebAppsListConfigurationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -26218,7 +25905,7 @@ export type WebAppsListConfigurationsInput =
 
 // Output Schema
 export const WebAppsListConfigurationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -26266,15 +25953,13 @@ export type WebAppsListConfigurationsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsListConfigurations = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsListConfigurationsInput,
-    outputSchema: WebAppsListConfigurationsOutput,
-  }),
-);
+export const WebAppsListConfigurations = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListConfigurationsInput,
+  outputSchema: WebAppsListConfigurationsOutput,
+}));
 // Input Schema
 export const WebAppsListConfigurationSnapshotInfoInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -26290,7 +25975,7 @@ export type WebAppsListConfigurationSnapshotInfoInput =
 
 // Output Schema
 export const WebAppsListConfigurationSnapshotInfoOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -26316,13 +26001,13 @@ export type WebAppsListConfigurationSnapshotInfoOutput =
  * @param name - Name of the app.
  */
 export const WebAppsListConfigurationSnapshotInfo =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListConfigurationSnapshotInfoInput,
     outputSchema: WebAppsListConfigurationSnapshotInfoOutput,
   }));
 // Input Schema
 export const WebAppsListConfigurationSnapshotInfoSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -26339,7 +26024,7 @@ export type WebAppsListConfigurationSnapshotInfoSlotInput =
 
 // Output Schema
 export const WebAppsListConfigurationSnapshotInfoSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -26366,13 +26051,13 @@ export type WebAppsListConfigurationSnapshotInfoSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will return configuration for the production slot.
  */
 export const WebAppsListConfigurationSnapshotInfoSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListConfigurationSnapshotInfoSlotInput,
     outputSchema: WebAppsListConfigurationSnapshotInfoSlotOutput,
   }));
 // Input Schema
 export const WebAppsListConfigurationsSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -26389,7 +26074,7 @@ export type WebAppsListConfigurationsSlotInput =
 
 // Output Schema
 export const WebAppsListConfigurationsSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -26439,13 +26124,13 @@ export type WebAppsListConfigurationsSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will return configuration for the production slot.
  */
 export const WebAppsListConfigurationsSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListConfigurationsSlotInput,
     outputSchema: WebAppsListConfigurationsSlotOutput,
   }));
 // Input Schema
 export const WebAppsListConnectionStringsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -26461,7 +26146,7 @@ export type WebAppsListConnectionStringsInput =
 
 // Output Schema
 export const WebAppsListConnectionStringsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -26482,13 +26167,13 @@ export type WebAppsListConnectionStringsOutput =
  * @param name - Name of the app.
  */
 export const WebAppsListConnectionStrings =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListConnectionStringsInput,
     outputSchema: WebAppsListConnectionStringsOutput,
   }));
 // Input Schema
 export const WebAppsListConnectionStringsSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -26505,7 +26190,7 @@ export type WebAppsListConnectionStringsSlotInput =
 
 // Output Schema
 export const WebAppsListConnectionStringsSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -26527,13 +26212,13 @@ export type WebAppsListConnectionStringsSlotOutput =
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
 export const WebAppsListConnectionStringsSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListConnectionStringsSlotInput,
     outputSchema: WebAppsListConnectionStringsSlotOutput,
   }));
 // Input Schema
 export const WebAppsListContinuousWebJobsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -26549,7 +26234,7 @@ export type WebAppsListContinuousWebJobsInput =
 
 // Output Schema
 export const WebAppsListContinuousWebJobsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -26598,13 +26283,13 @@ export type WebAppsListContinuousWebJobsOutput =
  * @param name - Site name.
  */
 export const WebAppsListContinuousWebJobs =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListContinuousWebJobsInput,
     outputSchema: WebAppsListContinuousWebJobsOutput,
   }));
 // Input Schema
 export const WebAppsListContinuousWebJobsSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -26621,7 +26306,7 @@ export type WebAppsListContinuousWebJobsSlotInput =
 
 // Output Schema
 export const WebAppsListContinuousWebJobsSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -26671,13 +26356,13 @@ export type WebAppsListContinuousWebJobsSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API deletes a deployment for the production slot.
  */
 export const WebAppsListContinuousWebJobsSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListContinuousWebJobsSlotInput,
     outputSchema: WebAppsListContinuousWebJobsSlotOutput,
   }));
 // Input Schema
 export const WebAppsListDeploymentLogInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -26694,7 +26379,7 @@ export type WebAppsListDeploymentLogInput =
 
 // Output Schema
 export const WebAppsListDeploymentLogOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -26728,15 +26413,13 @@ export type WebAppsListDeploymentLogOutput =
  * @param name - Name of the app.
  * @param id - Deployment ID.
  */
-export const WebAppsListDeploymentLog = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsListDeploymentLogInput,
-    outputSchema: WebAppsListDeploymentLogOutput,
-  }),
-);
+export const WebAppsListDeploymentLog = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListDeploymentLogInput,
+  outputSchema: WebAppsListDeploymentLogOutput,
+}));
 // Input Schema
 export const WebAppsListDeploymentLogSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -26754,7 +26437,7 @@ export type WebAppsListDeploymentLogSlotInput =
 
 // Output Schema
 export const WebAppsListDeploymentLogSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -26790,13 +26473,13 @@ export type WebAppsListDeploymentLogSlotOutput =
  * @param id - Deployment ID.
  */
 export const WebAppsListDeploymentLogSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListDeploymentLogSlotInput,
     outputSchema: WebAppsListDeploymentLogSlotOutput,
   }));
 // Input Schema
 export const WebAppsListDeploymentsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -26812,7 +26495,7 @@ export type WebAppsListDeploymentsInput =
 
 // Output Schema
 export const WebAppsListDeploymentsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -26860,15 +26543,13 @@ export type WebAppsListDeploymentsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsListDeployments = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsListDeploymentsInput,
-    outputSchema: WebAppsListDeploymentsOutput,
-  }),
-);
+export const WebAppsListDeployments = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListDeploymentsInput,
+  outputSchema: WebAppsListDeploymentsOutput,
+}));
 // Input Schema
 export const WebAppsListDeploymentsSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -26885,7 +26566,7 @@ export type WebAppsListDeploymentsSlotInput =
 
 // Output Schema
 export const WebAppsListDeploymentsSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -26934,15 +26615,13 @@ export type WebAppsListDeploymentsSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. If a slot is not specified, the API gets a deployment for the production slot.
  */
-export const WebAppsListDeploymentsSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsListDeploymentsSlotInput,
-    outputSchema: WebAppsListDeploymentsSlotOutput,
-  }),
-);
+export const WebAppsListDeploymentsSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListDeploymentsSlotInput,
+  outputSchema: WebAppsListDeploymentsSlotOutput,
+}));
 // Input Schema
 export const WebAppsListDomainOwnershipIdentifiersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -26958,7 +26637,7 @@ export type WebAppsListDomainOwnershipIdentifiersInput =
 
 // Output Schema
 export const WebAppsListDomainOwnershipIdentifiersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -27007,13 +26686,13 @@ export type WebAppsListDomainOwnershipIdentifiersOutput =
  * @param name - Name of the app.
  */
 export const WebAppsListDomainOwnershipIdentifiers =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListDomainOwnershipIdentifiersInput,
     outputSchema: WebAppsListDomainOwnershipIdentifiersOutput,
   }));
 // Input Schema
 export const WebAppsListDomainOwnershipIdentifiersSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -27030,7 +26709,7 @@ export type WebAppsListDomainOwnershipIdentifiersSlotInput =
 
 // Output Schema
 export const WebAppsListDomainOwnershipIdentifiersSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -27080,13 +26759,13 @@ export type WebAppsListDomainOwnershipIdentifiersSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will delete the binding for the production slot.
  */
 export const WebAppsListDomainOwnershipIdentifiersSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListDomainOwnershipIdentifiersSlotInput,
     outputSchema: WebAppsListDomainOwnershipIdentifiersSlotOutput,
   }));
 // Input Schema
 export const WebAppsListFunctionKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -27103,7 +26782,7 @@ export type WebAppsListFunctionKeysInput =
 
 // Output Schema
 export const WebAppsListFunctionKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -27124,15 +26803,13 @@ export type WebAppsListFunctionKeysOutput =
  * @param name - Site name.
  * @param functionName - Function name.
  */
-export const WebAppsListFunctionKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsListFunctionKeysInput,
-    outputSchema: WebAppsListFunctionKeysOutput,
-  }),
-);
+export const WebAppsListFunctionKeys = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListFunctionKeysInput,
+  outputSchema: WebAppsListFunctionKeysOutput,
+}));
 // Input Schema
 export const WebAppsListFunctionKeysSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -27150,7 +26827,7 @@ export type WebAppsListFunctionKeysSlotInput =
 
 // Output Schema
 export const WebAppsListFunctionKeysSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -27169,15 +26846,13 @@ export type WebAppsListFunctionKeysSlotOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const WebAppsListFunctionKeysSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsListFunctionKeysSlotInput,
-    outputSchema: WebAppsListFunctionKeysSlotOutput,
-  }),
-);
+export const WebAppsListFunctionKeysSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListFunctionKeysSlotInput,
+  outputSchema: WebAppsListFunctionKeysSlotOutput,
+}));
 // Input Schema
 export const WebAppsListFunctionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -27192,7 +26867,7 @@ export type WebAppsListFunctionsInput = typeof WebAppsListFunctionsInput.Type;
 
 // Output Schema
 export const WebAppsListFunctionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -27239,15 +26914,13 @@ export type WebAppsListFunctionsOutput = typeof WebAppsListFunctionsOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Site name.
  */
-export const WebAppsListFunctions = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsListFunctionsInput,
-    outputSchema: WebAppsListFunctionsOutput,
-  }),
-);
+export const WebAppsListFunctions = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListFunctionsInput,
+  outputSchema: WebAppsListFunctionsOutput,
+}));
 // Input Schema
 export const WebAppsListFunctionSecretsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -27264,7 +26937,7 @@ export type WebAppsListFunctionSecretsInput =
 
 // Output Schema
 export const WebAppsListFunctionSecretsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     trigger_url: Schema.optional(Schema.String),
   });
@@ -27283,15 +26956,13 @@ export type WebAppsListFunctionSecretsOutput =
  * @param name - Site name.
  * @param functionName - Function name.
  */
-export const WebAppsListFunctionSecrets = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsListFunctionSecretsInput,
-    outputSchema: WebAppsListFunctionSecretsOutput,
-  }),
-);
+export const WebAppsListFunctionSecrets = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListFunctionSecretsInput,
+  outputSchema: WebAppsListFunctionSecretsOutput,
+}));
 // Input Schema
 export const WebAppsListFunctionSecretsSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -27309,7 +26980,7 @@ export type WebAppsListFunctionSecretsSlotInput =
 
 // Output Schema
 export const WebAppsListFunctionSecretsSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     trigger_url: Schema.optional(Schema.String),
   });
@@ -27330,13 +27001,13 @@ export type WebAppsListFunctionSecretsSlotOutput =
  * @param functionName - Function name.
  */
 export const WebAppsListFunctionSecretsSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListFunctionSecretsSlotInput,
     outputSchema: WebAppsListFunctionSecretsSlotOutput,
   }));
 // Input Schema
 export const WebAppsListHostKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -27351,7 +27022,7 @@ export type WebAppsListHostKeysInput = typeof WebAppsListHostKeysInput.Type;
 
 // Output Schema
 export const WebAppsListHostKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     masterKey: Schema.optional(Schema.String),
     functionKeys: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     systemKeys: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -27369,13 +27040,13 @@ export type WebAppsListHostKeysOutput = typeof WebAppsListHostKeysOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsListHostKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebAppsListHostKeys = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebAppsListHostKeysInput,
   outputSchema: WebAppsListHostKeysOutput,
 }));
 // Input Schema
 export const WebAppsListHostKeysSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -27392,7 +27063,7 @@ export type WebAppsListHostKeysSlotInput =
 
 // Output Schema
 export const WebAppsListHostKeysSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     masterKey: Schema.optional(Schema.String),
     functionKeys: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     systemKeys: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -27412,15 +27083,13 @@ export type WebAppsListHostKeysSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsListHostKeysSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsListHostKeysSlotInput,
-    outputSchema: WebAppsListHostKeysSlotOutput,
-  }),
-);
+export const WebAppsListHostKeysSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListHostKeysSlotInput,
+  outputSchema: WebAppsListHostKeysSlotOutput,
+}));
 // Input Schema
 export const WebAppsListHostNameBindingsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -27436,7 +27105,7 @@ export type WebAppsListHostNameBindingsInput =
 
 // Output Schema
 export const WebAppsListHostNameBindingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -27484,15 +27153,13 @@ export type WebAppsListHostNameBindingsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsListHostNameBindings = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsListHostNameBindingsInput,
-    outputSchema: WebAppsListHostNameBindingsOutput,
-  }),
-);
+export const WebAppsListHostNameBindings = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListHostNameBindingsInput,
+  outputSchema: WebAppsListHostNameBindingsOutput,
+}));
 // Input Schema
 export const WebAppsListHostNameBindingsSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -27509,7 +27176,7 @@ export type WebAppsListHostNameBindingsSlotInput =
 
 // Output Schema
 export const WebAppsListHostNameBindingsSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -27559,13 +27226,13 @@ export type WebAppsListHostNameBindingsSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API the named binding for the production slot.
  */
 export const WebAppsListHostNameBindingsSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListHostNameBindingsSlotInput,
     outputSchema: WebAppsListHostNameBindingsSlotOutput,
   }));
 // Input Schema
 export const WebAppsListHybridConnectionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -27581,7 +27248,7 @@ export type WebAppsListHybridConnectionsInput =
 
 // Output Schema
 export const WebAppsListHybridConnectionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -27615,13 +27282,13 @@ export type WebAppsListHybridConnectionsOutput =
  * @param name - Name of the app.
  */
 export const WebAppsListHybridConnections =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListHybridConnectionsInput,
     outputSchema: WebAppsListHybridConnectionsOutput,
   }));
 // Input Schema
 export const WebAppsListHybridConnectionsSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -27638,7 +27305,7 @@ export type WebAppsListHybridConnectionsSlotInput =
 
 // Output Schema
 export const WebAppsListHybridConnectionsSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -27673,13 +27340,13 @@ export type WebAppsListHybridConnectionsSlotOutput =
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
 export const WebAppsListHybridConnectionsSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListHybridConnectionsSlotInput,
     outputSchema: WebAppsListHybridConnectionsSlotOutput,
   }));
 // Input Schema
 export const WebAppsListInstanceFunctionsSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -27696,7 +27363,7 @@ export type WebAppsListInstanceFunctionsSlotInput =
 
 // Output Schema
 export const WebAppsListInstanceFunctionsSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -27746,13 +27413,13 @@ export type WebAppsListInstanceFunctionsSlotOutput =
  * @param slot - Name of the deployment slot.
  */
 export const WebAppsListInstanceFunctionsSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListInstanceFunctionsSlotInput,
     outputSchema: WebAppsListInstanceFunctionsSlotOutput,
   }));
 // Input Schema
 export const WebAppsListInstanceIdentifiersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -27768,7 +27435,7 @@ export type WebAppsListInstanceIdentifiersInput =
 
 // Output Schema
 export const WebAppsListInstanceIdentifiersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -27817,13 +27484,13 @@ export type WebAppsListInstanceIdentifiersOutput =
  * @param name - Name of the app.
  */
 export const WebAppsListInstanceIdentifiers =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListInstanceIdentifiersInput,
     outputSchema: WebAppsListInstanceIdentifiersOutput,
   }));
 // Input Schema
 export const WebAppsListInstanceIdentifiersSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -27840,7 +27507,7 @@ export type WebAppsListInstanceIdentifiersSlotInput =
 
 // Output Schema
 export const WebAppsListInstanceIdentifiersSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -27890,13 +27557,13 @@ export type WebAppsListInstanceIdentifiersSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API gets the production slot instances.
  */
 export const WebAppsListInstanceIdentifiersSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListInstanceIdentifiersSlotInput,
     outputSchema: WebAppsListInstanceIdentifiersSlotOutput,
   }));
 // Input Schema
 export const WebAppsListInstanceProcessesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -27913,7 +27580,7 @@ export type WebAppsListInstanceProcessesInput =
 
 // Output Schema
 export const WebAppsListInstanceProcessesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -27963,13 +27630,13 @@ export type WebAppsListInstanceProcessesOutput =
  * @param instanceId - ID of a specific scaled-out instance. This is the value of the name property in the JSON response from "GET api/sites/{siteName}/instances".
  */
 export const WebAppsListInstanceProcesses =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListInstanceProcessesInput,
     outputSchema: WebAppsListInstanceProcessesOutput,
   }));
 // Input Schema
 export const WebAppsListInstanceProcessesSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -27987,7 +27654,7 @@ export type WebAppsListInstanceProcessesSlotInput =
 
 // Output Schema
 export const WebAppsListInstanceProcessesSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -28038,13 +27705,13 @@ export type WebAppsListInstanceProcessesSlotOutput =
  * @param instanceId - ID of a specific scaled-out instance. This is the value of the name property in the JSON response from "GET api/sites/{siteName}/instances".
  */
 export const WebAppsListInstanceProcessesSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListInstanceProcessesSlotInput,
     outputSchema: WebAppsListInstanceProcessesSlotOutput,
   }));
 // Input Schema
 export const WebAppsListInstanceProcessModulesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -28062,7 +27729,7 @@ export type WebAppsListInstanceProcessModulesInput =
 
 // Output Schema
 export const WebAppsListInstanceProcessModulesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -28113,13 +27780,13 @@ export type WebAppsListInstanceProcessModulesOutput =
  * @param processId - PID.
  */
 export const WebAppsListInstanceProcessModules =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListInstanceProcessModulesInput,
     outputSchema: WebAppsListInstanceProcessModulesOutput,
   }));
 // Input Schema
 export const WebAppsListInstanceProcessModulesSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -28138,7 +27805,7 @@ export type WebAppsListInstanceProcessModulesSlotInput =
 
 // Output Schema
 export const WebAppsListInstanceProcessModulesSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -28190,13 +27857,13 @@ export type WebAppsListInstanceProcessModulesSlotOutput =
  * @param processId - PID.
  */
 export const WebAppsListInstanceProcessModulesSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListInstanceProcessModulesSlotInput,
     outputSchema: WebAppsListInstanceProcessModulesSlotOutput,
   }));
 // Input Schema
 export const WebAppsListInstanceProcessThreadsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -28214,7 +27881,7 @@ export type WebAppsListInstanceProcessThreadsInput =
 
 // Output Schema
 export const WebAppsListInstanceProcessThreadsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -28242,13 +27909,13 @@ export type WebAppsListInstanceProcessThreadsOutput =
  * @param processId - PID.
  */
 export const WebAppsListInstanceProcessThreads =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListInstanceProcessThreadsInput,
     outputSchema: WebAppsListInstanceProcessThreadsOutput,
   }));
 // Input Schema
 export const WebAppsListInstanceProcessThreadsSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -28267,7 +27934,7 @@ export type WebAppsListInstanceProcessThreadsSlotInput =
 
 // Output Schema
 export const WebAppsListInstanceProcessThreadsSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -28296,13 +27963,13 @@ export type WebAppsListInstanceProcessThreadsSlotOutput =
  * @param processId - PID.
  */
 export const WebAppsListInstanceProcessThreadsSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListInstanceProcessThreadsSlotInput,
     outputSchema: WebAppsListInstanceProcessThreadsSlotOutput,
   }));
 // Input Schema
 export const WebAppsListInstanceWorkflowsSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -28319,7 +27986,7 @@ export type WebAppsListInstanceWorkflowsSlotInput =
 
 // Output Schema
 export const WebAppsListInstanceWorkflowsSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -28367,13 +28034,13 @@ export type WebAppsListInstanceWorkflowsSlotOutput =
  * @param slot - Name of the deployment slot.
  */
 export const WebAppsListInstanceWorkflowsSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListInstanceWorkflowsSlotInput,
     outputSchema: WebAppsListInstanceWorkflowsSlotOutput,
   }));
 // Input Schema
 export const WebAppsListMetadataInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -28388,7 +28055,7 @@ export type WebAppsListMetadataInput = typeof WebAppsListMetadataInput.Type;
 
 // Output Schema
 export const WebAppsListMetadataOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -28407,13 +28074,13 @@ export type WebAppsListMetadataOutput = typeof WebAppsListMetadataOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsListMetadata = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebAppsListMetadata = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebAppsListMetadataInput,
   outputSchema: WebAppsListMetadataOutput,
 }));
 // Input Schema
 export const WebAppsListMetadataSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -28430,7 +28097,7 @@ export type WebAppsListMetadataSlotInput =
 
 // Output Schema
 export const WebAppsListMetadataSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -28451,15 +28118,13 @@ export type WebAppsListMetadataSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsListMetadataSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsListMetadataSlotInput,
-    outputSchema: WebAppsListMetadataSlotOutput,
-  }),
-);
+export const WebAppsListMetadataSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListMetadataSlotInput,
+  outputSchema: WebAppsListMetadataSlotOutput,
+}));
 // Input Schema
 export const WebAppsListNetworkFeaturesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -28476,7 +28141,7 @@ export type WebAppsListNetworkFeaturesInput =
 
 // Output Schema
 export const WebAppsListNetworkFeaturesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -28510,15 +28175,13 @@ export type WebAppsListNetworkFeaturesOutput =
  * @param name - Name of the app.
  * @param view - The type of view. Only "summary" is supported at this time.
  */
-export const WebAppsListNetworkFeatures = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsListNetworkFeaturesInput,
-    outputSchema: WebAppsListNetworkFeaturesOutput,
-  }),
-);
+export const WebAppsListNetworkFeatures = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListNetworkFeaturesInput,
+  outputSchema: WebAppsListNetworkFeaturesOutput,
+}));
 // Input Schema
 export const WebAppsListNetworkFeaturesSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -28536,7 +28199,7 @@ export type WebAppsListNetworkFeaturesSlotInput =
 
 // Output Schema
 export const WebAppsListNetworkFeaturesSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -28572,13 +28235,13 @@ export type WebAppsListNetworkFeaturesSlotOutput =
  * @param view - The type of view. Only "summary" is supported at this time.
  */
 export const WebAppsListNetworkFeaturesSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListNetworkFeaturesSlotInput,
     outputSchema: WebAppsListNetworkFeaturesSlotOutput,
   }));
 // Input Schema
 export const WebAppsListPerfMonCountersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -28595,7 +28258,7 @@ export type WebAppsListPerfMonCountersInput =
 
 // Output Schema
 export const WebAppsListPerfMonCountersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         code: Schema.optional(Schema.String),
@@ -28636,15 +28299,13 @@ export type WebAppsListPerfMonCountersOutput =
  * @param name - Name of the app.
  * @param $filter - Return only usages/metrics specified in the filter. Filter conforms to odata syntax. Example: $filter=(startTime eq 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
  */
-export const WebAppsListPerfMonCounters = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsListPerfMonCountersInput,
-    outputSchema: WebAppsListPerfMonCountersOutput,
-  }),
-);
+export const WebAppsListPerfMonCounters = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListPerfMonCountersInput,
+  outputSchema: WebAppsListPerfMonCountersOutput,
+}));
 // Input Schema
 export const WebAppsListPerfMonCountersSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -28662,7 +28323,7 @@ export type WebAppsListPerfMonCountersSlotInput =
 
 // Output Schema
 export const WebAppsListPerfMonCountersSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         code: Schema.optional(Schema.String),
@@ -28705,13 +28366,13 @@ export type WebAppsListPerfMonCountersSlotOutput =
  * @param $filter - Return only usages/metrics specified in the filter. Filter conforms to odata syntax. Example: $filter=(startTime eq 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
  */
 export const WebAppsListPerfMonCountersSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListPerfMonCountersSlotInput,
     outputSchema: WebAppsListPerfMonCountersSlotOutput,
   }));
 // Input Schema
 export const WebAppsListPremierAddOnsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -28727,7 +28388,7 @@ export type WebAppsListPremierAddOnsInput =
 
 // Output Schema
 export const WebAppsListPremierAddOnsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -28760,15 +28421,13 @@ export type WebAppsListPremierAddOnsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsListPremierAddOns = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsListPremierAddOnsInput,
-    outputSchema: WebAppsListPremierAddOnsOutput,
-  }),
-);
+export const WebAppsListPremierAddOns = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListPremierAddOnsInput,
+  outputSchema: WebAppsListPremierAddOnsOutput,
+}));
 // Input Schema
 export const WebAppsListPremierAddOnsSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -28785,7 +28444,7 @@ export type WebAppsListPremierAddOnsSlotInput =
 
 // Output Schema
 export const WebAppsListPremierAddOnsSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -28820,13 +28479,13 @@ export type WebAppsListPremierAddOnsSlotOutput =
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
 export const WebAppsListPremierAddOnsSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListPremierAddOnsSlotInput,
     outputSchema: WebAppsListPremierAddOnsSlotOutput,
   }));
 // Input Schema
 export const WebAppsListProcessesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -28841,7 +28500,7 @@ export type WebAppsListProcessesInput = typeof WebAppsListProcessesInput.Type;
 
 // Output Schema
 export const WebAppsListProcessesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -28888,15 +28547,13 @@ export type WebAppsListProcessesOutput = typeof WebAppsListProcessesOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Site name.
  */
-export const WebAppsListProcesses = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsListProcessesInput,
-    outputSchema: WebAppsListProcessesOutput,
-  }),
-);
+export const WebAppsListProcesses = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListProcessesInput,
+  outputSchema: WebAppsListProcessesOutput,
+}));
 // Input Schema
 export const WebAppsListProcessesSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -28913,7 +28570,7 @@ export type WebAppsListProcessesSlotInput =
 
 // Output Schema
 export const WebAppsListProcessesSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -28962,15 +28619,13 @@ export type WebAppsListProcessesSlotOutput =
  * @param name - Site name.
  * @param slot - Name of the deployment slot. If a slot is not specified, the API returns deployments for the production slot.
  */
-export const WebAppsListProcessesSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsListProcessesSlotInput,
-    outputSchema: WebAppsListProcessesSlotOutput,
-  }),
-);
+export const WebAppsListProcessesSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListProcessesSlotInput,
+  outputSchema: WebAppsListProcessesSlotOutput,
+}));
 // Input Schema
 export const WebAppsListProcessModulesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -28987,7 +28642,7 @@ export type WebAppsListProcessModulesInput =
 
 // Output Schema
 export const WebAppsListProcessModulesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -29036,15 +28691,13 @@ export type WebAppsListProcessModulesOutput =
  * @param name - Site name.
  * @param processId - PID.
  */
-export const WebAppsListProcessModules = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsListProcessModulesInput,
-    outputSchema: WebAppsListProcessModulesOutput,
-  }),
-);
+export const WebAppsListProcessModules = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListProcessModulesInput,
+  outputSchema: WebAppsListProcessModulesOutput,
+}));
 // Input Schema
 export const WebAppsListProcessModulesSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -29062,7 +28715,7 @@ export type WebAppsListProcessModulesSlotInput =
 
 // Output Schema
 export const WebAppsListProcessModulesSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -29113,13 +28766,13 @@ export type WebAppsListProcessModulesSlotOutput =
  * @param processId - PID.
  */
 export const WebAppsListProcessModulesSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListProcessModulesSlotInput,
     outputSchema: WebAppsListProcessModulesSlotOutput,
   }));
 // Input Schema
 export const WebAppsListProcessThreadsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -29136,7 +28789,7 @@ export type WebAppsListProcessThreadsInput =
 
 // Output Schema
 export const WebAppsListProcessThreadsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -29162,15 +28815,13 @@ export type WebAppsListProcessThreadsOutput =
  * @param name - Site name.
  * @param processId - PID.
  */
-export const WebAppsListProcessThreads = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsListProcessThreadsInput,
-    outputSchema: WebAppsListProcessThreadsOutput,
-  }),
-);
+export const WebAppsListProcessThreads = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListProcessThreadsInput,
+  outputSchema: WebAppsListProcessThreadsOutput,
+}));
 // Input Schema
 export const WebAppsListProcessThreadsSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -29188,7 +28839,7 @@ export type WebAppsListProcessThreadsSlotInput =
 
 // Output Schema
 export const WebAppsListProcessThreadsSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -29216,13 +28867,13 @@ export type WebAppsListProcessThreadsSlotOutput =
  * @param processId - PID.
  */
 export const WebAppsListProcessThreadsSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListProcessThreadsSlotInput,
     outputSchema: WebAppsListProcessThreadsSlotOutput,
   }));
 // Input Schema
 export const WebAppsListProductionSiteDeploymentStatusesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -29238,7 +28889,7 @@ export type WebAppsListProductionSiteDeploymentStatusesInput =
 
 // Output Schema
 export const WebAppsListProductionSiteDeploymentStatusesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -29285,13 +28936,13 @@ export type WebAppsListProductionSiteDeploymentStatusesOutput =
  * @param name - Name of the app.
  */
 export const WebAppsListProductionSiteDeploymentStatuses =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListProductionSiteDeploymentStatusesInput,
     outputSchema: WebAppsListProductionSiteDeploymentStatusesOutput,
   }));
 // Input Schema
 export const WebAppsListPublicCertificatesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -29307,7 +28958,7 @@ export type WebAppsListPublicCertificatesInput =
 
 // Output Schema
 export const WebAppsListPublicCertificatesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -29356,13 +29007,13 @@ export type WebAppsListPublicCertificatesOutput =
  * @param name - Name of the app.
  */
 export const WebAppsListPublicCertificates =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListPublicCertificatesInput,
     outputSchema: WebAppsListPublicCertificatesOutput,
   }));
 // Input Schema
 export const WebAppsListPublicCertificatesSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -29379,7 +29030,7 @@ export type WebAppsListPublicCertificatesSlotInput =
 
 // Output Schema
 export const WebAppsListPublicCertificatesSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -29429,13 +29080,13 @@ export type WebAppsListPublicCertificatesSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API the named binding for the production slot.
  */
 export const WebAppsListPublicCertificatesSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListPublicCertificatesSlotInput,
     outputSchema: WebAppsListPublicCertificatesSlotOutput,
   }));
 // Input Schema
 export const WebAppsListPublishingCredentialsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -29451,7 +29102,7 @@ export type WebAppsListPublishingCredentialsInput =
 
 // Output Schema
 export const WebAppsListPublishingCredentialsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -29485,13 +29136,13 @@ export type WebAppsListPublishingCredentialsOutput =
  * @param name - Name of the app.
  */
 export const WebAppsListPublishingCredentials =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListPublishingCredentialsInput,
     outputSchema: WebAppsListPublishingCredentialsOutput,
   }));
 // Input Schema
 export const WebAppsListPublishingCredentialsSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -29508,7 +29159,7 @@ export type WebAppsListPublishingCredentialsSlotInput =
 
 // Output Schema
 export const WebAppsListPublishingCredentialsSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -29543,13 +29194,13 @@ export type WebAppsListPublishingCredentialsSlotOutput =
  * @param slot - If true, the password is included in the response. The default is false.
  */
 export const WebAppsListPublishingCredentialsSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListPublishingCredentialsSlotInput,
     outputSchema: WebAppsListPublishingCredentialsSlotOutput,
   }));
 // Input Schema
 export const WebAppsListPublishingProfileXmlWithSecretsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -29565,7 +29216,7 @@ export type WebAppsListPublishingProfileXmlWithSecretsInput =
 
 // Output Schema
 export const WebAppsListPublishingProfileXmlWithSecretsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+  /*@__PURE__*/ Schema.Unknown;
 export type WebAppsListPublishingProfileXmlWithSecretsOutput =
   typeof WebAppsListPublishingProfileXmlWithSecretsOutput.Type;
 
@@ -29581,13 +29232,13 @@ export type WebAppsListPublishingProfileXmlWithSecretsOutput =
  * @param name - Name of the app.
  */
 export const WebAppsListPublishingProfileXmlWithSecrets =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListPublishingProfileXmlWithSecretsInput,
     outputSchema: WebAppsListPublishingProfileXmlWithSecretsOutput,
   }));
 // Input Schema
 export const WebAppsListPublishingProfileXmlWithSecretsSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -29604,7 +29255,7 @@ export type WebAppsListPublishingProfileXmlWithSecretsSlotInput =
 
 // Output Schema
 export const WebAppsListPublishingProfileXmlWithSecretsSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+  /*@__PURE__*/ Schema.Unknown;
 export type WebAppsListPublishingProfileXmlWithSecretsSlotOutput =
   typeof WebAppsListPublishingProfileXmlWithSecretsSlotOutput.Type;
 
@@ -29621,13 +29272,13 @@ export type WebAppsListPublishingProfileXmlWithSecretsSlotOutput =
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
 export const WebAppsListPublishingProfileXmlWithSecretsSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListPublishingProfileXmlWithSecretsSlotInput,
     outputSchema: WebAppsListPublishingProfileXmlWithSecretsSlotOutput,
   }));
 // Input Schema
 export const WebAppsListRelayServiceConnectionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -29643,7 +29294,7 @@ export type WebAppsListRelayServiceConnectionsInput =
 
 // Output Schema
 export const WebAppsListRelayServiceConnectionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -29677,13 +29328,13 @@ export type WebAppsListRelayServiceConnectionsOutput =
  * @param name - Name of the app.
  */
 export const WebAppsListRelayServiceConnections =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListRelayServiceConnectionsInput,
     outputSchema: WebAppsListRelayServiceConnectionsOutput,
   }));
 // Input Schema
 export const WebAppsListRelayServiceConnectionsSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -29700,7 +29351,7 @@ export type WebAppsListRelayServiceConnectionsSlotInput =
 
 // Output Schema
 export const WebAppsListRelayServiceConnectionsSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -29735,13 +29386,13 @@ export type WebAppsListRelayServiceConnectionsSlotOutput =
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
 export const WebAppsListRelayServiceConnectionsSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListRelayServiceConnectionsSlotInput,
     outputSchema: WebAppsListRelayServiceConnectionsSlotOutput,
   }));
 // Input Schema
 export const WebAppsListSiteBackupsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -29757,7 +29408,7 @@ export type WebAppsListSiteBackupsInput =
 
 // Output Schema
 export const WebAppsListSiteBackupsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -29805,15 +29456,13 @@ export type WebAppsListSiteBackupsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsListSiteBackups = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsListSiteBackupsInput,
-    outputSchema: WebAppsListSiteBackupsOutput,
-  }),
-);
+export const WebAppsListSiteBackups = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListSiteBackupsInput,
+  outputSchema: WebAppsListSiteBackupsOutput,
+}));
 // Input Schema
 export const WebAppsListSiteBackupsSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -29830,7 +29479,7 @@ export type WebAppsListSiteBackupsSlotInput =
 
 // Output Schema
 export const WebAppsListSiteBackupsSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -29879,15 +29528,13 @@ export type WebAppsListSiteBackupsSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsListSiteBackupsSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsListSiteBackupsSlotInput,
-    outputSchema: WebAppsListSiteBackupsSlotOutput,
-  }),
-);
+export const WebAppsListSiteBackupsSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListSiteBackupsSlotInput,
+  outputSchema: WebAppsListSiteBackupsSlotOutput,
+}));
 // Input Schema
 export const WebAppsListSiteContainersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -29903,7 +29550,7 @@ export type WebAppsListSiteContainersInput =
 
 // Output Schema
 export const WebAppsListSiteContainersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -29949,15 +29596,13 @@ export type WebAppsListSiteContainersOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsListSiteContainers = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsListSiteContainersInput,
-    outputSchema: WebAppsListSiteContainersOutput,
-  }),
-);
+export const WebAppsListSiteContainers = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListSiteContainersInput,
+  outputSchema: WebAppsListSiteContainersOutput,
+}));
 // Input Schema
 export const WebAppsListSiteContainersSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -29974,7 +29619,7 @@ export type WebAppsListSiteContainersSlotInput =
 
 // Output Schema
 export const WebAppsListSiteContainersSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -30022,13 +29667,13 @@ export type WebAppsListSiteContainersSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get the Site Container for the production slot.
  */
 export const WebAppsListSiteContainersSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListSiteContainersSlotInput,
     outputSchema: WebAppsListSiteContainersSlotOutput,
   }));
 // Input Schema
 export const WebAppsListSiteExtensionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -30044,7 +29689,7 @@ export type WebAppsListSiteExtensionsInput =
 
 // Output Schema
 export const WebAppsListSiteExtensionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -30092,15 +29737,13 @@ export type WebAppsListSiteExtensionsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Site name.
  */
-export const WebAppsListSiteExtensions = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsListSiteExtensionsInput,
-    outputSchema: WebAppsListSiteExtensionsOutput,
-  }),
-);
+export const WebAppsListSiteExtensions = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListSiteExtensionsInput,
+  outputSchema: WebAppsListSiteExtensionsOutput,
+}));
 // Input Schema
 export const WebAppsListSiteExtensionsSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -30117,7 +29760,7 @@ export type WebAppsListSiteExtensionsSlotInput =
 
 // Output Schema
 export const WebAppsListSiteExtensionsSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -30167,13 +29810,13 @@ export type WebAppsListSiteExtensionsSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API uses the production slot.
  */
 export const WebAppsListSiteExtensionsSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListSiteExtensionsSlotInput,
     outputSchema: WebAppsListSiteExtensionsSlotOutput,
   }));
 // Input Schema
 export const WebAppsListSitePushSettingsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -30189,7 +29832,7 @@ export type WebAppsListSitePushSettingsInput =
 
 // Output Schema
 export const WebAppsListSitePushSettingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -30209,15 +29852,13 @@ export type WebAppsListSitePushSettingsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsListSitePushSettings = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsListSitePushSettingsInput,
-    outputSchema: WebAppsListSitePushSettingsOutput,
-  }),
-);
+export const WebAppsListSitePushSettings = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListSitePushSettingsInput,
+  outputSchema: WebAppsListSitePushSettingsOutput,
+}));
 // Input Schema
 export const WebAppsListSitePushSettingsSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -30234,7 +29875,7 @@ export type WebAppsListSitePushSettingsSlotInput =
 
 // Output Schema
 export const WebAppsListSitePushSettingsSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -30256,13 +29897,13 @@ export type WebAppsListSitePushSettingsSlotOutput =
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
 export const WebAppsListSitePushSettingsSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListSitePushSettingsSlotInput,
     outputSchema: WebAppsListSitePushSettingsSlotOutput,
   }));
 // Input Schema
 export const WebAppsListSlotConfigurationNamesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -30278,7 +29919,7 @@ export type WebAppsListSlotConfigurationNamesInput =
 
 // Output Schema
 export const WebAppsListSlotConfigurationNamesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -30312,13 +29953,13 @@ export type WebAppsListSlotConfigurationNamesOutput =
  * @param name - Name of the app.
  */
 export const WebAppsListSlotConfigurationNames =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListSlotConfigurationNamesInput,
     outputSchema: WebAppsListSlotConfigurationNamesOutput,
   }));
 // Input Schema
 export const WebAppsListSlotDifferencesFromProductionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -30334,7 +29975,7 @@ export type WebAppsListSlotDifferencesFromProductionInput =
 
 // Output Schema
 export const WebAppsListSlotDifferencesFromProductionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -30360,13 +30001,13 @@ export type WebAppsListSlotDifferencesFromProductionOutput =
  * @param name - Name of the app.
  */
 export const WebAppsListSlotDifferencesFromProduction =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListSlotDifferencesFromProductionInput,
     outputSchema: WebAppsListSlotDifferencesFromProductionOutput,
   }));
 // Input Schema
 export const WebAppsListSlotDifferencesSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -30383,7 +30024,7 @@ export type WebAppsListSlotDifferencesSlotInput =
 
 // Output Schema
 export const WebAppsListSlotDifferencesSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -30410,12 +30051,12 @@ export type WebAppsListSlotDifferencesSlotOutput =
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
 export const WebAppsListSlotDifferencesSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListSlotDifferencesSlotInput,
     outputSchema: WebAppsListSlotDifferencesSlotOutput,
   }));
 // Input Schema
-export const WebAppsListSlotsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebAppsListSlotsInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -30429,42 +30070,30 @@ export const WebAppsListSlotsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WebAppsListSlotsInput = typeof WebAppsListSlotsInput.Type;
 
 // Output Schema
-export const WebAppsListSlotsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  },
-);
+export const WebAppsListSlotsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WebAppsListSlotsOutput = typeof WebAppsListSlotsOutput.Type;
 
 // The operation
@@ -30478,13 +30107,13 @@ export type WebAppsListSlotsOutput = typeof WebAppsListSlotsOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsListSlots = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebAppsListSlots = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebAppsListSlotsInput,
   outputSchema: WebAppsListSlotsOutput,
 }));
 // Input Schema
 export const WebAppsListSlotSiteDeploymentStatusesSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -30501,7 +30130,7 @@ export type WebAppsListSlotSiteDeploymentStatusesSlotInput =
 
 // Output Schema
 export const WebAppsListSlotSiteDeploymentStatusesSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -30549,13 +30178,13 @@ export type WebAppsListSlotSiteDeploymentStatusesSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get the deployment status for the production slot.
  */
 export const WebAppsListSlotSiteDeploymentStatusesSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListSlotSiteDeploymentStatusesSlotInput,
     outputSchema: WebAppsListSlotSiteDeploymentStatusesSlotOutput,
   }));
 // Input Schema
 export const WebAppsListSnapshotsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -30570,7 +30199,7 @@ export type WebAppsListSnapshotsInput = typeof WebAppsListSnapshotsInput.Type;
 
 // Output Schema
 export const WebAppsListSnapshotsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -30594,15 +30223,13 @@ export type WebAppsListSnapshotsOutput = typeof WebAppsListSnapshotsOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsListSnapshots = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsListSnapshotsInput,
-    outputSchema: WebAppsListSnapshotsOutput,
-  }),
-);
+export const WebAppsListSnapshots = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListSnapshotsInput,
+  outputSchema: WebAppsListSnapshotsOutput,
+}));
 // Input Schema
 export const WebAppsListSnapshotsFromDRSecondaryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -30618,7 +30245,7 @@ export type WebAppsListSnapshotsFromDRSecondaryInput =
 
 // Output Schema
 export const WebAppsListSnapshotsFromDRSecondaryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -30644,13 +30271,13 @@ export type WebAppsListSnapshotsFromDRSecondaryOutput =
  * @param name - Name of the app.
  */
 export const WebAppsListSnapshotsFromDRSecondary =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListSnapshotsFromDRSecondaryInput,
     outputSchema: WebAppsListSnapshotsFromDRSecondaryOutput,
   }));
 // Input Schema
 export const WebAppsListSnapshotsFromDRSecondarySlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -30667,7 +30294,7 @@ export type WebAppsListSnapshotsFromDRSecondarySlotInput =
 
 // Output Schema
 export const WebAppsListSnapshotsFromDRSecondarySlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -30694,13 +30321,13 @@ export type WebAppsListSnapshotsFromDRSecondarySlotOutput =
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
 export const WebAppsListSnapshotsFromDRSecondarySlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListSnapshotsFromDRSecondarySlotInput,
     outputSchema: WebAppsListSnapshotsFromDRSecondarySlotOutput,
   }));
 // Input Schema
 export const WebAppsListSnapshotsSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -30717,7 +30344,7 @@ export type WebAppsListSnapshotsSlotInput =
 
 // Output Schema
 export const WebAppsListSnapshotsSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -30743,15 +30370,13 @@ export type WebAppsListSnapshotsSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsListSnapshotsSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsListSnapshotsSlotInput,
-    outputSchema: WebAppsListSnapshotsSlotOutput,
-  }),
-);
+export const WebAppsListSnapshotsSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListSnapshotsSlotInput,
+  outputSchema: WebAppsListSnapshotsSlotOutput,
+}));
 // Input Schema
 export const WebAppsListSyncFunctionTriggersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -30767,7 +30392,7 @@ export type WebAppsListSyncFunctionTriggersInput =
 
 // Output Schema
 export const WebAppsListSyncFunctionTriggersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     trigger_url: Schema.optional(Schema.String),
   });
@@ -30786,13 +30411,13 @@ export type WebAppsListSyncFunctionTriggersOutput =
  * @param name - Name of the app.
  */
 export const WebAppsListSyncFunctionTriggers =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListSyncFunctionTriggersInput,
     outputSchema: WebAppsListSyncFunctionTriggersOutput,
   }));
 // Input Schema
 export const WebAppsListSyncFunctionTriggersSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -30809,7 +30434,7 @@ export type WebAppsListSyncFunctionTriggersSlotInput =
 
 // Output Schema
 export const WebAppsListSyncFunctionTriggersSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     trigger_url: Schema.optional(Schema.String),
   });
@@ -30829,13 +30454,13 @@ export type WebAppsListSyncFunctionTriggersSlotOutput =
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
 export const WebAppsListSyncFunctionTriggersSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListSyncFunctionTriggersSlotInput,
     outputSchema: WebAppsListSyncFunctionTriggersSlotOutput,
   }));
 // Input Schema
 export const WebAppsListSyncStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -30849,8 +30474,7 @@ export const WebAppsListSyncStatusInput =
 export type WebAppsListSyncStatusInput = typeof WebAppsListSyncStatusInput.Type;
 
 // Output Schema
-export const WebAppsListSyncStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsListSyncStatusOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsListSyncStatusOutput =
   typeof WebAppsListSyncStatusOutput.Type;
 
@@ -30865,15 +30489,13 @@ export type WebAppsListSyncStatusOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsListSyncStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsListSyncStatusInput,
-    outputSchema: WebAppsListSyncStatusOutput,
-  }),
-);
+export const WebAppsListSyncStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListSyncStatusInput,
+  outputSchema: WebAppsListSyncStatusOutput,
+}));
 // Input Schema
 export const WebAppsListSyncStatusSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -30889,8 +30511,7 @@ export type WebAppsListSyncStatusSlotInput =
   typeof WebAppsListSyncStatusSlotInput.Type;
 
 // Output Schema
-export const WebAppsListSyncStatusSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsListSyncStatusSlotOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsListSyncStatusSlotOutput =
   typeof WebAppsListSyncStatusSlotOutput.Type;
 
@@ -30906,15 +30527,13 @@ export type WebAppsListSyncStatusSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsListSyncStatusSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsListSyncStatusSlotInput,
-    outputSchema: WebAppsListSyncStatusSlotOutput,
-  }),
-);
+export const WebAppsListSyncStatusSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListSyncStatusSlotInput,
+  outputSchema: WebAppsListSyncStatusSlotOutput,
+}));
 // Input Schema
 export const WebAppsListTriggeredWebJobHistoryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -30931,7 +30550,7 @@ export type WebAppsListTriggeredWebJobHistoryInput =
 
 // Output Schema
 export const WebAppsListTriggeredWebJobHistoryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -30981,13 +30600,13 @@ export type WebAppsListTriggeredWebJobHistoryOutput =
  * @param webJobName - Name of Web Job.
  */
 export const WebAppsListTriggeredWebJobHistory =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListTriggeredWebJobHistoryInput,
     outputSchema: WebAppsListTriggeredWebJobHistoryOutput,
   }));
 // Input Schema
 export const WebAppsListTriggeredWebJobHistorySlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -31005,7 +30624,7 @@ export type WebAppsListTriggeredWebJobHistorySlotInput =
 
 // Output Schema
 export const WebAppsListTriggeredWebJobHistorySlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -31056,13 +30675,13 @@ export type WebAppsListTriggeredWebJobHistorySlotOutput =
  * @param webJobName - Name of Web Job.
  */
 export const WebAppsListTriggeredWebJobHistorySlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListTriggeredWebJobHistorySlotInput,
     outputSchema: WebAppsListTriggeredWebJobHistorySlotOutput,
   }));
 // Input Schema
 export const WebAppsListTriggeredWebJobsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -31078,7 +30697,7 @@ export type WebAppsListTriggeredWebJobsInput =
 
 // Output Schema
 export const WebAppsListTriggeredWebJobsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -31126,15 +30745,13 @@ export type WebAppsListTriggeredWebJobsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Site name.
  */
-export const WebAppsListTriggeredWebJobs = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsListTriggeredWebJobsInput,
-    outputSchema: WebAppsListTriggeredWebJobsOutput,
-  }),
-);
+export const WebAppsListTriggeredWebJobs = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListTriggeredWebJobsInput,
+  outputSchema: WebAppsListTriggeredWebJobsOutput,
+}));
 // Input Schema
 export const WebAppsListTriggeredWebJobsSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -31151,7 +30768,7 @@ export type WebAppsListTriggeredWebJobsSlotInput =
 
 // Output Schema
 export const WebAppsListTriggeredWebJobsSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -31201,20 +30818,18 @@ export type WebAppsListTriggeredWebJobsSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API uses the production slot.
  */
 export const WebAppsListTriggeredWebJobsSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListTriggeredWebJobsSlotInput,
     outputSchema: WebAppsListTriggeredWebJobsSlotOutput,
   }));
 // Input Schema
-export const WebAppsListUsagesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $filter: Schema.optional(Schema.String),
-  },
-).pipe(
+export const WebAppsListUsagesInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/usages",
@@ -31224,7 +30839,7 @@ export type WebAppsListUsagesInput = typeof WebAppsListUsagesInput.Type;
 
 // Output Schema
 export const WebAppsListUsagesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         unit: Schema.optional(Schema.String),
@@ -31255,13 +30870,13 @@ export type WebAppsListUsagesOutput = typeof WebAppsListUsagesOutput.Type;
  * @param name - Name of the app.
  * @param $filter - Return only information specified in the filter (using OData syntax). For example: $filter=(name.value eq 'Metric1' or name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
  */
-export const WebAppsListUsages = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebAppsListUsages = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebAppsListUsagesInput,
   outputSchema: WebAppsListUsagesOutput,
 }));
 // Input Schema
 export const WebAppsListUsagesSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -31278,7 +30893,7 @@ export type WebAppsListUsagesSlotInput = typeof WebAppsListUsagesSlotInput.Type;
 
 // Output Schema
 export const WebAppsListUsagesSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         unit: Schema.optional(Schema.String),
@@ -31311,15 +30926,13 @@ export type WebAppsListUsagesSlotOutput =
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  * @param $filter - Return only information specified in the filter (using OData syntax). For example: $filter=(name.value eq 'Metric1' or name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
  */
-export const WebAppsListUsagesSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsListUsagesSlotInput,
-    outputSchema: WebAppsListUsagesSlotOutput,
-  }),
-);
+export const WebAppsListUsagesSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListUsagesSlotInput,
+  outputSchema: WebAppsListUsagesSlotOutput,
+}));
 // Input Schema
 export const WebAppsListVnetConnectionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -31335,7 +30948,7 @@ export type WebAppsListVnetConnectionsInput =
 
 // Output Schema
 export const WebAppsListVnetConnectionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
       name: Schema.optional(Schema.String),
@@ -31370,15 +30983,13 @@ export type WebAppsListVnetConnectionsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsListVnetConnections = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsListVnetConnectionsInput,
-    outputSchema: WebAppsListVnetConnectionsOutput,
-  }),
-);
+export const WebAppsListVnetConnections = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListVnetConnectionsInput,
+  outputSchema: WebAppsListVnetConnectionsOutput,
+}));
 // Input Schema
 export const WebAppsListVnetConnectionsSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -31395,7 +31006,7 @@ export type WebAppsListVnetConnectionsSlotInput =
 
 // Output Schema
 export const WebAppsListVnetConnectionsSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
       name: Schema.optional(Schema.String),
@@ -31432,13 +31043,13 @@ export type WebAppsListVnetConnectionsSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get the named virtual network for the production slot.
  */
 export const WebAppsListVnetConnectionsSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListVnetConnectionsSlotInput,
     outputSchema: WebAppsListVnetConnectionsSlotOutput,
   }));
 // Input Schema
 export const WebAppsListWebJobsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -31453,7 +31064,7 @@ export type WebAppsListWebJobsInput = typeof WebAppsListWebJobsInput.Type;
 
 // Output Schema
 export const WebAppsListWebJobsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -31500,13 +31111,13 @@ export type WebAppsListWebJobsOutput = typeof WebAppsListWebJobsOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Site name.
  */
-export const WebAppsListWebJobs = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebAppsListWebJobs = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebAppsListWebJobsInput,
   outputSchema: WebAppsListWebJobsOutput,
 }));
 // Input Schema
 export const WebAppsListWebJobsSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -31523,7 +31134,7 @@ export type WebAppsListWebJobsSlotInput =
 
 // Output Schema
 export const WebAppsListWebJobsSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -31572,15 +31183,13 @@ export type WebAppsListWebJobsSlotOutput =
  * @param name - Site name.
  * @param slot - Name of the deployment slot. If a slot is not specified, the API returns deployments for the production slot.
  */
-export const WebAppsListWebJobsSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsListWebJobsSlotInput,
-    outputSchema: WebAppsListWebJobsSlotOutput,
-  }),
-);
+export const WebAppsListWebJobsSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListWebJobsSlotInput,
+  outputSchema: WebAppsListWebJobsSlotOutput,
+}));
 // Input Schema
 export const WebAppsListWorkflowsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -31595,7 +31204,7 @@ export type WebAppsListWorkflowsInput = typeof WebAppsListWorkflowsInput.Type;
 
 // Output Schema
 export const WebAppsListWorkflowsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -31640,15 +31249,13 @@ export type WebAppsListWorkflowsOutput = typeof WebAppsListWorkflowsOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Site name.
  */
-export const WebAppsListWorkflows = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsListWorkflowsInput,
-    outputSchema: WebAppsListWorkflowsOutput,
-  }),
-);
+export const WebAppsListWorkflows = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsListWorkflowsInput,
+  outputSchema: WebAppsListWorkflowsOutput,
+}));
 // Input Schema
 export const WebAppsListWorkflowsConnectionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -31664,7 +31271,7 @@ export type WebAppsListWorkflowsConnectionsInput =
 
 // Output Schema
 export const WebAppsListWorkflowsConnectionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -31696,13 +31303,13 @@ export type WebAppsListWorkflowsConnectionsOutput =
  * @param name - Name of the app.
  */
 export const WebAppsListWorkflowsConnections =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListWorkflowsConnectionsInput,
     outputSchema: WebAppsListWorkflowsConnectionsOutput,
   }));
 // Input Schema
 export const WebAppsListWorkflowsConnectionsSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -31719,7 +31326,7 @@ export type WebAppsListWorkflowsConnectionsSlotInput =
 
 // Output Schema
 export const WebAppsListWorkflowsConnectionsSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -31752,13 +31359,13 @@ export type WebAppsListWorkflowsConnectionsSlotOutput =
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
 export const WebAppsListWorkflowsConnectionsSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsListWorkflowsConnectionsSlotInput,
     outputSchema: WebAppsListWorkflowsConnectionsSlotOutput,
   }));
 // Input Schema
 export const WebAppsMigrateMySqlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -31773,7 +31380,7 @@ export type WebAppsMigrateMySqlInput = typeof WebAppsMigrateMySqlInput.Type;
 
 // Output Schema
 export const WebAppsMigrateMySqlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.optional(
@@ -31817,13 +31424,13 @@ export type WebAppsMigrateMySqlOutput = typeof WebAppsMigrateMySqlOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsMigrateMySql = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebAppsMigrateMySql = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebAppsMigrateMySqlInput,
   outputSchema: WebAppsMigrateMySqlOutput,
 }));
 // Input Schema
 export const WebAppsMigrateStorageInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -31839,7 +31446,7 @@ export type WebAppsMigrateStorageInput = typeof WebAppsMigrateStorageInput.Type;
 
 // Output Schema
 export const WebAppsMigrateStorageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -31860,15 +31467,13 @@ export type WebAppsMigrateStorageOutput =
  * @param name - Name of the app.
  * @param subscriptionName - Azure subscription
  */
-export const WebAppsMigrateStorage = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsMigrateStorageInput,
-    outputSchema: WebAppsMigrateStorageOutput,
-  }),
-);
+export const WebAppsMigrateStorage = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsMigrateStorageInput,
+  outputSchema: WebAppsMigrateStorageOutput,
+}));
 // Input Schema
 export const WebAppsPutPrivateAccessVnetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -31884,7 +31489,7 @@ export type WebAppsPutPrivateAccessVnetInput =
 
 // Output Schema
 export const WebAppsPutPrivateAccessVnetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -31917,15 +31522,13 @@ export type WebAppsPutPrivateAccessVnetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - The name of the web app.
  */
-export const WebAppsPutPrivateAccessVnet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsPutPrivateAccessVnetInput,
-    outputSchema: WebAppsPutPrivateAccessVnetOutput,
-  }),
-);
+export const WebAppsPutPrivateAccessVnet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsPutPrivateAccessVnetInput,
+  outputSchema: WebAppsPutPrivateAccessVnetOutput,
+}));
 // Input Schema
 export const WebAppsPutPrivateAccessVnetSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -31942,7 +31545,7 @@ export type WebAppsPutPrivateAccessVnetSlotInput =
 
 // Output Schema
 export const WebAppsPutPrivateAccessVnetSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -31977,13 +31580,13 @@ export type WebAppsPutPrivateAccessVnetSlotOutput =
  * @param slot - The name of the slot for the web app.
  */
 export const WebAppsPutPrivateAccessVnetSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsPutPrivateAccessVnetSlotInput,
     outputSchema: WebAppsPutPrivateAccessVnetSlotOutput,
   }));
 // Input Schema
 export const WebAppsRecoverSiteConfigurationSnapshotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -32000,7 +31603,7 @@ export type WebAppsRecoverSiteConfigurationSnapshotInput =
 
 // Output Schema
 export const WebAppsRecoverSiteConfigurationSnapshotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type WebAppsRecoverSiteConfigurationSnapshotOutput =
   typeof WebAppsRecoverSiteConfigurationSnapshotOutput.Type;
 
@@ -32017,13 +31620,13 @@ export type WebAppsRecoverSiteConfigurationSnapshotOutput =
  * @param snapshotId - The ID of the snapshot to read.
  */
 export const WebAppsRecoverSiteConfigurationSnapshot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsRecoverSiteConfigurationSnapshotInput,
     outputSchema: WebAppsRecoverSiteConfigurationSnapshotOutput,
   }));
 // Input Schema
 export const WebAppsRecoverSiteConfigurationSnapshotSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -32041,7 +31644,7 @@ export type WebAppsRecoverSiteConfigurationSnapshotSlotInput =
 
 // Output Schema
 export const WebAppsRecoverSiteConfigurationSnapshotSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type WebAppsRecoverSiteConfigurationSnapshotSlotOutput =
   typeof WebAppsRecoverSiteConfigurationSnapshotSlotOutput.Type;
 
@@ -32059,13 +31662,13 @@ export type WebAppsRecoverSiteConfigurationSnapshotSlotOutput =
  * @param snapshotId - The ID of the snapshot to read.
  */
 export const WebAppsRecoverSiteConfigurationSnapshotSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsRecoverSiteConfigurationSnapshotSlotInput,
     outputSchema: WebAppsRecoverSiteConfigurationSnapshotSlotOutput,
   }));
 // Input Schema
 export const WebAppsResetProductionSlotConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -32080,8 +31683,7 @@ export type WebAppsResetProductionSlotConfigInput =
   typeof WebAppsResetProductionSlotConfigInput.Type;
 
 // Output Schema
-export const WebAppsResetProductionSlotConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsResetProductionSlotConfigOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsResetProductionSlotConfigOutput =
   typeof WebAppsResetProductionSlotConfigOutput.Type;
 
@@ -32097,13 +31699,13 @@ export type WebAppsResetProductionSlotConfigOutput =
  * @param name - Name of the app.
  */
 export const WebAppsResetProductionSlotConfig =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsResetProductionSlotConfigInput,
     outputSchema: WebAppsResetProductionSlotConfigOutput,
   }));
 // Input Schema
 export const WebAppsResetSlotConfigurationSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -32120,7 +31722,7 @@ export type WebAppsResetSlotConfigurationSlotInput =
 
 // Output Schema
 export const WebAppsResetSlotConfigurationSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type WebAppsResetSlotConfigurationSlotOutput =
   typeof WebAppsResetSlotConfigurationSlotOutput.Type;
 
@@ -32137,12 +31739,12 @@ export type WebAppsResetSlotConfigurationSlotOutput =
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
 export const WebAppsResetSlotConfigurationSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsResetSlotConfigurationSlotInput,
     outputSchema: WebAppsResetSlotConfigurationSlotOutput,
   }));
 // Input Schema
-export const WebAppsRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebAppsRestartInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -32158,7 +31760,7 @@ export const WebAppsRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WebAppsRestartInput = typeof WebAppsRestartInput.Type;
 
 // Output Schema
-export const WebAppsRestartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsRestartOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsRestartOutput = typeof WebAppsRestartOutput.Type;
 
 // The operation
@@ -32174,13 +31776,13 @@ export type WebAppsRestartOutput = typeof WebAppsRestartOutput.Type;
  * @param softRestart - Specify true to apply the configuration settings and restarts the app only if necessary. By default, the API always restarts and reprovisions the app.
  * @param synchronous - Specify true to block until the app is restarted. By default, it is set to false, and the API responds immediately (asynchronous).
  */
-export const WebAppsRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebAppsRestart = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebAppsRestartInput,
   outputSchema: WebAppsRestartOutput,
 }));
 // Input Schema
 export const WebAppsRestartSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -32197,7 +31799,7 @@ export const WebAppsRestartSlotInput =
 export type WebAppsRestartSlotInput = typeof WebAppsRestartSlotInput.Type;
 
 // Output Schema
-export const WebAppsRestartSlotOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsRestartSlotOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsRestartSlotOutput = typeof WebAppsRestartSlotOutput.Type;
 
 // The operation
@@ -32214,12 +31816,12 @@ export type WebAppsRestartSlotOutput = typeof WebAppsRestartSlotOutput.Type;
  * @param softRestart - Specify true to apply the configuration settings and restarts the app only if necessary. By default, the API always restarts and reprovisions the app.
  * @param synchronous - Specify true to block until the app is restarted. By default, it is set to false, and the API responds immediately (asynchronous).
  */
-export const WebAppsRestartSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebAppsRestartSlot = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebAppsRestartSlotInput,
   outputSchema: WebAppsRestartSlotOutput,
 }));
 // Input Schema
-export const WebAppsRestoreInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebAppsRestoreInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -32234,7 +31836,7 @@ export const WebAppsRestoreInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WebAppsRestoreInput = typeof WebAppsRestoreInput.Type;
 
 // Output Schema
-export const WebAppsRestoreOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsRestoreOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsRestoreOutput = typeof WebAppsRestoreOutput.Type;
 
 // The operation
@@ -32249,13 +31851,13 @@ export type WebAppsRestoreOutput = typeof WebAppsRestoreOutput.Type;
  * @param name - Name of the app.
  * @param backupId - ID of the backup.
  */
-export const WebAppsRestore = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebAppsRestore = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebAppsRestoreInput,
   outputSchema: WebAppsRestoreOutput,
 }));
 // Input Schema
 export const WebAppsRestoreFromBackupBlobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -32270,8 +31872,7 @@ export type WebAppsRestoreFromBackupBlobInput =
   typeof WebAppsRestoreFromBackupBlobInput.Type;
 
 // Output Schema
-export const WebAppsRestoreFromBackupBlobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsRestoreFromBackupBlobOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsRestoreFromBackupBlobOutput =
   typeof WebAppsRestoreFromBackupBlobOutput.Type;
 
@@ -32287,13 +31888,13 @@ export type WebAppsRestoreFromBackupBlobOutput =
  * @param name - Name of the app.
  */
 export const WebAppsRestoreFromBackupBlob =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsRestoreFromBackupBlobInput,
     outputSchema: WebAppsRestoreFromBackupBlobOutput,
   }));
 // Input Schema
 export const WebAppsRestoreFromBackupBlobSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -32309,8 +31910,7 @@ export type WebAppsRestoreFromBackupBlobSlotInput =
   typeof WebAppsRestoreFromBackupBlobSlotInput.Type;
 
 // Output Schema
-export const WebAppsRestoreFromBackupBlobSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsRestoreFromBackupBlobSlotOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsRestoreFromBackupBlobSlotOutput =
   typeof WebAppsRestoreFromBackupBlobSlotOutput.Type;
 
@@ -32327,13 +31927,13 @@ export type WebAppsRestoreFromBackupBlobSlotOutput =
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
 export const WebAppsRestoreFromBackupBlobSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsRestoreFromBackupBlobSlotInput,
     outputSchema: WebAppsRestoreFromBackupBlobSlotOutput,
   }));
 // Input Schema
 export const WebAppsRestoreFromDeletedAppInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -32348,8 +31948,7 @@ export type WebAppsRestoreFromDeletedAppInput =
   typeof WebAppsRestoreFromDeletedAppInput.Type;
 
 // Output Schema
-export const WebAppsRestoreFromDeletedAppOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsRestoreFromDeletedAppOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsRestoreFromDeletedAppOutput =
   typeof WebAppsRestoreFromDeletedAppOutput.Type;
 
@@ -32365,13 +31964,13 @@ export type WebAppsRestoreFromDeletedAppOutput =
  * @param name - Name of the app.
  */
 export const WebAppsRestoreFromDeletedApp =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsRestoreFromDeletedAppInput,
     outputSchema: WebAppsRestoreFromDeletedAppOutput,
   }));
 // Input Schema
 export const WebAppsRestoreFromDeletedAppSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -32387,8 +31986,7 @@ export type WebAppsRestoreFromDeletedAppSlotInput =
   typeof WebAppsRestoreFromDeletedAppSlotInput.Type;
 
 // Output Schema
-export const WebAppsRestoreFromDeletedAppSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsRestoreFromDeletedAppSlotOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsRestoreFromDeletedAppSlotOutput =
   typeof WebAppsRestoreFromDeletedAppSlotOutput.Type;
 
@@ -32405,13 +32003,13 @@ export type WebAppsRestoreFromDeletedAppSlotOutput =
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
 export const WebAppsRestoreFromDeletedAppSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsRestoreFromDeletedAppSlotInput,
     outputSchema: WebAppsRestoreFromDeletedAppSlotOutput,
   }));
 // Input Schema
 export const WebAppsRestoreSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -32427,7 +32025,7 @@ export const WebAppsRestoreSlotInput =
 export type WebAppsRestoreSlotInput = typeof WebAppsRestoreSlotInput.Type;
 
 // Output Schema
-export const WebAppsRestoreSlotOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsRestoreSlotOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsRestoreSlotOutput = typeof WebAppsRestoreSlotOutput.Type;
 
 // The operation
@@ -32443,13 +32041,13 @@ export type WebAppsRestoreSlotOutput = typeof WebAppsRestoreSlotOutput.Type;
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get a backup of the production slot.
  * @param backupId - ID of the backup.
  */
-export const WebAppsRestoreSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebAppsRestoreSlot = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebAppsRestoreSlotInput,
   outputSchema: WebAppsRestoreSlotOutput,
 }));
 // Input Schema
 export const WebAppsRestoreSnapshotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -32464,8 +32062,7 @@ export type WebAppsRestoreSnapshotInput =
   typeof WebAppsRestoreSnapshotInput.Type;
 
 // Output Schema
-export const WebAppsRestoreSnapshotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsRestoreSnapshotOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsRestoreSnapshotOutput =
   typeof WebAppsRestoreSnapshotOutput.Type;
 
@@ -32480,15 +32077,13 @@ export type WebAppsRestoreSnapshotOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsRestoreSnapshot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsRestoreSnapshotInput,
-    outputSchema: WebAppsRestoreSnapshotOutput,
-  }),
-);
+export const WebAppsRestoreSnapshot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsRestoreSnapshotInput,
+  outputSchema: WebAppsRestoreSnapshotOutput,
+}));
 // Input Schema
 export const WebAppsRestoreSnapshotSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -32504,8 +32099,7 @@ export type WebAppsRestoreSnapshotSlotInput =
   typeof WebAppsRestoreSnapshotSlotInput.Type;
 
 // Output Schema
-export const WebAppsRestoreSnapshotSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsRestoreSnapshotSlotOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsRestoreSnapshotSlotOutput =
   typeof WebAppsRestoreSnapshotSlotOutput.Type;
 
@@ -32521,15 +32115,13 @@ export type WebAppsRestoreSnapshotSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsRestoreSnapshotSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsRestoreSnapshotSlotInput,
-    outputSchema: WebAppsRestoreSnapshotSlotOutput,
-  }),
-);
+export const WebAppsRestoreSnapshotSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsRestoreSnapshotSlotInput,
+  outputSchema: WebAppsRestoreSnapshotSlotOutput,
+}));
 // Input Schema
 export const WebAppsRunTriggeredWebJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -32545,8 +32137,7 @@ export type WebAppsRunTriggeredWebJobInput =
   typeof WebAppsRunTriggeredWebJobInput.Type;
 
 // Output Schema
-export const WebAppsRunTriggeredWebJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsRunTriggeredWebJobOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsRunTriggeredWebJobOutput =
   typeof WebAppsRunTriggeredWebJobOutput.Type;
 
@@ -32562,15 +32153,13 @@ export type WebAppsRunTriggeredWebJobOutput =
  * @param name - Site name.
  * @param webJobName - Name of Web Job.
  */
-export const WebAppsRunTriggeredWebJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsRunTriggeredWebJobInput,
-    outputSchema: WebAppsRunTriggeredWebJobOutput,
-  }),
-);
+export const WebAppsRunTriggeredWebJob = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsRunTriggeredWebJobInput,
+  outputSchema: WebAppsRunTriggeredWebJobOutput,
+}));
 // Input Schema
 export const WebAppsRunTriggeredWebJobSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -32587,8 +32176,7 @@ export type WebAppsRunTriggeredWebJobSlotInput =
   typeof WebAppsRunTriggeredWebJobSlotInput.Type;
 
 // Output Schema
-export const WebAppsRunTriggeredWebJobSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsRunTriggeredWebJobSlotOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsRunTriggeredWebJobSlotOutput =
   typeof WebAppsRunTriggeredWebJobSlotOutput.Type;
 
@@ -32606,12 +32194,12 @@ export type WebAppsRunTriggeredWebJobSlotOutput =
  * @param webJobName - Name of Web Job.
  */
 export const WebAppsRunTriggeredWebJobSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsRunTriggeredWebJobSlotInput,
     outputSchema: WebAppsRunTriggeredWebJobSlotOutput,
   }));
 // Input Schema
-export const WebAppsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebAppsStartInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -32625,7 +32213,7 @@ export const WebAppsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WebAppsStartInput = typeof WebAppsStartInput.Type;
 
 // Output Schema
-export const WebAppsStartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsStartOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsStartOutput = typeof WebAppsStartOutput.Type;
 
 // The operation
@@ -32639,13 +32227,13 @@ export type WebAppsStartOutput = typeof WebAppsStartOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebAppsStart = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebAppsStartInput,
   outputSchema: WebAppsStartOutput,
 }));
 // Input Schema
 export const WebAppsStartContinuousWebJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -32661,8 +32249,7 @@ export type WebAppsStartContinuousWebJobInput =
   typeof WebAppsStartContinuousWebJobInput.Type;
 
 // Output Schema
-export const WebAppsStartContinuousWebJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsStartContinuousWebJobOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsStartContinuousWebJobOutput =
   typeof WebAppsStartContinuousWebJobOutput.Type;
 
@@ -32679,13 +32266,13 @@ export type WebAppsStartContinuousWebJobOutput =
  * @param webJobName - Name of Web Job.
  */
 export const WebAppsStartContinuousWebJob =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsStartContinuousWebJobInput,
     outputSchema: WebAppsStartContinuousWebJobOutput,
   }));
 // Input Schema
 export const WebAppsStartContinuousWebJobSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -32702,8 +32289,7 @@ export type WebAppsStartContinuousWebJobSlotInput =
   typeof WebAppsStartContinuousWebJobSlotInput.Type;
 
 // Output Schema
-export const WebAppsStartContinuousWebJobSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsStartContinuousWebJobSlotOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsStartContinuousWebJobSlotOutput =
   typeof WebAppsStartContinuousWebJobSlotOutput.Type;
 
@@ -32721,13 +32307,13 @@ export type WebAppsStartContinuousWebJobSlotOutput =
  * @param webJobName - Name of Web Job.
  */
 export const WebAppsStartContinuousWebJobSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsStartContinuousWebJobSlotInput,
     outputSchema: WebAppsStartContinuousWebJobSlotOutput,
   }));
 // Input Schema
 export const WebAppsStartNetworkTraceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -32746,7 +32332,7 @@ export type WebAppsStartNetworkTraceInput =
 
 // Output Schema
 export const WebAppsStartNetworkTraceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       path: Schema.optional(Schema.String),
       status: Schema.optional(Schema.String),
@@ -32770,15 +32356,13 @@ export type WebAppsStartNetworkTraceOutput =
  * @param maxFrameLength - The maximum frame length in bytes (Optional).
  * @param sasUrl - The Blob URL to store capture file.
  */
-export const WebAppsStartNetworkTrace = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsStartNetworkTraceInput,
-    outputSchema: WebAppsStartNetworkTraceOutput,
-  }),
-);
+export const WebAppsStartNetworkTrace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsStartNetworkTraceInput,
+  outputSchema: WebAppsStartNetworkTraceOutput,
+}));
 // Input Schema
 export const WebAppsStartNetworkTraceSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -32798,7 +32382,7 @@ export type WebAppsStartNetworkTraceSlotInput =
 
 // Output Schema
 export const WebAppsStartNetworkTraceSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       path: Schema.optional(Schema.String),
       status: Schema.optional(Schema.String),
@@ -32824,12 +32408,12 @@ export type WebAppsStartNetworkTraceSlotOutput =
  * @param sasUrl - The Blob URL to store capture file.
  */
 export const WebAppsStartNetworkTraceSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsStartNetworkTraceSlotInput,
     outputSchema: WebAppsStartNetworkTraceSlotOutput,
   }));
 // Input Schema
-export const WebAppsStartSlotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebAppsStartSlotInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -32844,7 +32428,7 @@ export const WebAppsStartSlotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WebAppsStartSlotInput = typeof WebAppsStartSlotInput.Type;
 
 // Output Schema
-export const WebAppsStartSlotOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsStartSlotOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsStartSlotOutput = typeof WebAppsStartSlotOutput.Type;
 
 // The operation
@@ -32859,13 +32443,13 @@ export type WebAppsStartSlotOutput = typeof WebAppsStartSlotOutput.Type;
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsStartSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebAppsStartSlot = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebAppsStartSlotInput,
   outputSchema: WebAppsStartSlotOutput,
 }));
 // Input Schema
 export const WebAppsStartWebSiteNetworkTraceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -32884,7 +32468,7 @@ export type WebAppsStartWebSiteNetworkTraceInput =
 
 // Output Schema
 export const WebAppsStartWebSiteNetworkTraceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+  /*@__PURE__*/ Schema.String;
 export type WebAppsStartWebSiteNetworkTraceOutput =
   typeof WebAppsStartWebSiteNetworkTraceOutput.Type;
 
@@ -32903,13 +32487,13 @@ export type WebAppsStartWebSiteNetworkTraceOutput =
  * @param sasUrl - The Blob URL to store capture file.
  */
 export const WebAppsStartWebSiteNetworkTrace =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsStartWebSiteNetworkTraceInput,
     outputSchema: WebAppsStartWebSiteNetworkTraceOutput,
   }));
 // Input Schema
 export const WebAppsStartWebSiteNetworkTraceOperationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -32928,7 +32512,7 @@ export type WebAppsStartWebSiteNetworkTraceOperationInput =
 
 // Output Schema
 export const WebAppsStartWebSiteNetworkTraceOperationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       path: Schema.optional(Schema.String),
       status: Schema.optional(Schema.String),
@@ -32953,13 +32537,13 @@ export type WebAppsStartWebSiteNetworkTraceOperationOutput =
  * @param sasUrl - The Blob URL to store capture file.
  */
 export const WebAppsStartWebSiteNetworkTraceOperation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsStartWebSiteNetworkTraceOperationInput,
     outputSchema: WebAppsStartWebSiteNetworkTraceOperationOutput,
   }));
 // Input Schema
 export const WebAppsStartWebSiteNetworkTraceOperationSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -32979,7 +32563,7 @@ export type WebAppsStartWebSiteNetworkTraceOperationSlotInput =
 
 // Output Schema
 export const WebAppsStartWebSiteNetworkTraceOperationSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       path: Schema.optional(Schema.String),
       status: Schema.optional(Schema.String),
@@ -33005,13 +32589,13 @@ export type WebAppsStartWebSiteNetworkTraceOperationSlotOutput =
  * @param sasUrl - The Blob URL to store capture file.
  */
 export const WebAppsStartWebSiteNetworkTraceOperationSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsStartWebSiteNetworkTraceOperationSlotInput,
     outputSchema: WebAppsStartWebSiteNetworkTraceOperationSlotOutput,
   }));
 // Input Schema
 export const WebAppsStartWebSiteNetworkTraceSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -33031,7 +32615,7 @@ export type WebAppsStartWebSiteNetworkTraceSlotInput =
 
 // Output Schema
 export const WebAppsStartWebSiteNetworkTraceSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+  /*@__PURE__*/ Schema.String;
 export type WebAppsStartWebSiteNetworkTraceSlotOutput =
   typeof WebAppsStartWebSiteNetworkTraceSlotOutput.Type;
 
@@ -33051,12 +32635,12 @@ export type WebAppsStartWebSiteNetworkTraceSlotOutput =
  * @param sasUrl - The Blob URL to store capture file.
  */
 export const WebAppsStartWebSiteNetworkTraceSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsStartWebSiteNetworkTraceSlotInput,
     outputSchema: WebAppsStartWebSiteNetworkTraceSlotOutput,
   }));
 // Input Schema
-export const WebAppsStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebAppsStopInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -33070,7 +32654,7 @@ export const WebAppsStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WebAppsStopInput = typeof WebAppsStopInput.Type;
 
 // Output Schema
-export const WebAppsStopOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsStopOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsStopOutput = typeof WebAppsStopOutput.Type;
 
 // The operation
@@ -33084,13 +32668,13 @@ export type WebAppsStopOutput = typeof WebAppsStopOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebAppsStop = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebAppsStopInput,
   outputSchema: WebAppsStopOutput,
 }));
 // Input Schema
 export const WebAppsStopContinuousWebJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -33106,8 +32690,7 @@ export type WebAppsStopContinuousWebJobInput =
   typeof WebAppsStopContinuousWebJobInput.Type;
 
 // Output Schema
-export const WebAppsStopContinuousWebJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsStopContinuousWebJobOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsStopContinuousWebJobOutput =
   typeof WebAppsStopContinuousWebJobOutput.Type;
 
@@ -33123,15 +32706,13 @@ export type WebAppsStopContinuousWebJobOutput =
  * @param name - Site name.
  * @param webJobName - Name of Web Job.
  */
-export const WebAppsStopContinuousWebJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsStopContinuousWebJobInput,
-    outputSchema: WebAppsStopContinuousWebJobOutput,
-  }),
-);
+export const WebAppsStopContinuousWebJob = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsStopContinuousWebJobInput,
+  outputSchema: WebAppsStopContinuousWebJobOutput,
+}));
 // Input Schema
 export const WebAppsStopContinuousWebJobSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -33148,8 +32729,7 @@ export type WebAppsStopContinuousWebJobSlotInput =
   typeof WebAppsStopContinuousWebJobSlotInput.Type;
 
 // Output Schema
-export const WebAppsStopContinuousWebJobSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsStopContinuousWebJobSlotOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsStopContinuousWebJobSlotOutput =
   typeof WebAppsStopContinuousWebJobSlotOutput.Type;
 
@@ -33167,13 +32747,13 @@ export type WebAppsStopContinuousWebJobSlotOutput =
  * @param webJobName - Name of Web Job.
  */
 export const WebAppsStopContinuousWebJobSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsStopContinuousWebJobSlotInput,
     outputSchema: WebAppsStopContinuousWebJobSlotOutput,
   }));
 // Input Schema
 export const WebAppsStopNetworkTraceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -33188,8 +32768,7 @@ export type WebAppsStopNetworkTraceInput =
   typeof WebAppsStopNetworkTraceInput.Type;
 
 // Output Schema
-export const WebAppsStopNetworkTraceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsStopNetworkTraceOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsStopNetworkTraceOutput =
   typeof WebAppsStopNetworkTraceOutput.Type;
 
@@ -33204,15 +32783,13 @@ export type WebAppsStopNetworkTraceOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsStopNetworkTrace = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsStopNetworkTraceInput,
-    outputSchema: WebAppsStopNetworkTraceOutput,
-  }),
-);
+export const WebAppsStopNetworkTrace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsStopNetworkTraceInput,
+  outputSchema: WebAppsStopNetworkTraceOutput,
+}));
 // Input Schema
 export const WebAppsStopNetworkTraceSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -33228,8 +32805,7 @@ export type WebAppsStopNetworkTraceSlotInput =
   typeof WebAppsStopNetworkTraceSlotInput.Type;
 
 // Output Schema
-export const WebAppsStopNetworkTraceSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsStopNetworkTraceSlotOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsStopNetworkTraceSlotOutput =
   typeof WebAppsStopNetworkTraceSlotOutput.Type;
 
@@ -33245,14 +32821,12 @@ export type WebAppsStopNetworkTraceSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsStopNetworkTraceSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsStopNetworkTraceSlotInput,
-    outputSchema: WebAppsStopNetworkTraceSlotOutput,
-  }),
-);
+export const WebAppsStopNetworkTraceSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsStopNetworkTraceSlotInput,
+  outputSchema: WebAppsStopNetworkTraceSlotOutput,
+}));
 // Input Schema
-export const WebAppsStopSlotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebAppsStopSlotInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -33267,7 +32841,7 @@ export const WebAppsStopSlotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WebAppsStopSlotInput = typeof WebAppsStopSlotInput.Type;
 
 // Output Schema
-export const WebAppsStopSlotOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsStopSlotOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsStopSlotOutput = typeof WebAppsStopSlotOutput.Type;
 
 // The operation
@@ -33282,13 +32856,13 @@ export type WebAppsStopSlotOutput = typeof WebAppsStopSlotOutput.Type;
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsStopSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebAppsStopSlot = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebAppsStopSlotInput,
   outputSchema: WebAppsStopSlotOutput,
 }));
 // Input Schema
 export const WebAppsStopWebSiteNetworkTraceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -33303,8 +32877,7 @@ export type WebAppsStopWebSiteNetworkTraceInput =
   typeof WebAppsStopWebSiteNetworkTraceInput.Type;
 
 // Output Schema
-export const WebAppsStopWebSiteNetworkTraceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsStopWebSiteNetworkTraceOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsStopWebSiteNetworkTraceOutput =
   typeof WebAppsStopWebSiteNetworkTraceOutput.Type;
 
@@ -33320,13 +32893,13 @@ export type WebAppsStopWebSiteNetworkTraceOutput =
  * @param name - Name of the app.
  */
 export const WebAppsStopWebSiteNetworkTrace =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsStopWebSiteNetworkTraceInput,
     outputSchema: WebAppsStopWebSiteNetworkTraceOutput,
   }));
 // Input Schema
 export const WebAppsStopWebSiteNetworkTraceSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -33343,7 +32916,7 @@ export type WebAppsStopWebSiteNetworkTraceSlotInput =
 
 // Output Schema
 export const WebAppsStopWebSiteNetworkTraceSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type WebAppsStopWebSiteNetworkTraceSlotOutput =
   typeof WebAppsStopWebSiteNetworkTraceSlotOutput.Type;
 
@@ -33360,13 +32933,13 @@ export type WebAppsStopWebSiteNetworkTraceSlotOutput =
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
 export const WebAppsStopWebSiteNetworkTraceSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsStopWebSiteNetworkTraceSlotInput,
     outputSchema: WebAppsStopWebSiteNetworkTraceSlotOutput,
   }));
 // Input Schema
 export const WebAppsSwapSlotSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -33381,8 +32954,7 @@ export const WebAppsSwapSlotSlotInput =
 export type WebAppsSwapSlotSlotInput = typeof WebAppsSwapSlotSlotInput.Type;
 
 // Output Schema
-export const WebAppsSwapSlotSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsSwapSlotSlotOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsSwapSlotSlotOutput = typeof WebAppsSwapSlotSlotOutput.Type;
 
 // The operation
@@ -33397,13 +32969,13 @@ export type WebAppsSwapSlotSlotOutput = typeof WebAppsSwapSlotSlotOutput.Type;
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsSwapSlotSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebAppsSwapSlotSlot = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebAppsSwapSlotSlotInput,
   outputSchema: WebAppsSwapSlotSlotOutput,
 }));
 // Input Schema
 export const WebAppsSwapSlotWithProductionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -33418,8 +32990,7 @@ export type WebAppsSwapSlotWithProductionInput =
   typeof WebAppsSwapSlotWithProductionInput.Type;
 
 // Output Schema
-export const WebAppsSwapSlotWithProductionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsSwapSlotWithProductionOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsSwapSlotWithProductionOutput =
   typeof WebAppsSwapSlotWithProductionOutput.Type;
 
@@ -33435,13 +33006,13 @@ export type WebAppsSwapSlotWithProductionOutput =
  * @param name - Name of the app.
  */
 export const WebAppsSwapSlotWithProduction =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsSwapSlotWithProductionInput,
     outputSchema: WebAppsSwapSlotWithProductionOutput,
   }));
 // Input Schema
 export const WebAppsSyncFunctionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -33455,8 +33026,7 @@ export const WebAppsSyncFunctionsInput =
 export type WebAppsSyncFunctionsInput = typeof WebAppsSyncFunctionsInput.Type;
 
 // Output Schema
-export const WebAppsSyncFunctionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsSyncFunctionsOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsSyncFunctionsOutput = typeof WebAppsSyncFunctionsOutput.Type;
 
 // The operation
@@ -33470,15 +33040,13 @@ export type WebAppsSyncFunctionsOutput = typeof WebAppsSyncFunctionsOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsSyncFunctions = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsSyncFunctionsInput,
-    outputSchema: WebAppsSyncFunctionsOutput,
-  }),
-);
+export const WebAppsSyncFunctions = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsSyncFunctionsInput,
+  outputSchema: WebAppsSyncFunctionsOutput,
+}));
 // Input Schema
 export const WebAppsSyncFunctionsSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -33494,8 +33062,7 @@ export type WebAppsSyncFunctionsSlotInput =
   typeof WebAppsSyncFunctionsSlotInput.Type;
 
 // Output Schema
-export const WebAppsSyncFunctionsSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsSyncFunctionsSlotOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsSyncFunctionsSlotOutput =
   typeof WebAppsSyncFunctionsSlotOutput.Type;
 
@@ -33511,15 +33078,13 @@ export type WebAppsSyncFunctionsSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsSyncFunctionsSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsSyncFunctionsSlotInput,
-    outputSchema: WebAppsSyncFunctionsSlotOutput,
-  }),
-);
+export const WebAppsSyncFunctionsSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsSyncFunctionsSlotInput,
+  outputSchema: WebAppsSyncFunctionsSlotOutput,
+}));
 // Input Schema
 export const WebAppsSyncFunctionTriggersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -33534,8 +33099,7 @@ export type WebAppsSyncFunctionTriggersInput =
   typeof WebAppsSyncFunctionTriggersInput.Type;
 
 // Output Schema
-export const WebAppsSyncFunctionTriggersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsSyncFunctionTriggersOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsSyncFunctionTriggersOutput =
   typeof WebAppsSyncFunctionTriggersOutput.Type;
 
@@ -33550,15 +33114,13 @@ export type WebAppsSyncFunctionTriggersOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsSyncFunctionTriggers = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsSyncFunctionTriggersInput,
-    outputSchema: WebAppsSyncFunctionTriggersOutput,
-  }),
-);
+export const WebAppsSyncFunctionTriggers = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsSyncFunctionTriggersInput,
+  outputSchema: WebAppsSyncFunctionTriggersOutput,
+}));
 // Input Schema
 export const WebAppsSyncFunctionTriggersSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -33574,8 +33136,7 @@ export type WebAppsSyncFunctionTriggersSlotInput =
   typeof WebAppsSyncFunctionTriggersSlotInput.Type;
 
 // Output Schema
-export const WebAppsSyncFunctionTriggersSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsSyncFunctionTriggersSlotOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsSyncFunctionTriggersSlotOutput =
   typeof WebAppsSyncFunctionTriggersSlotOutput.Type;
 
@@ -33592,13 +33153,13 @@ export type WebAppsSyncFunctionTriggersSlotOutput =
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
 export const WebAppsSyncFunctionTriggersSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsSyncFunctionTriggersSlotInput,
     outputSchema: WebAppsSyncFunctionTriggersSlotOutput,
   }));
 // Input Schema
 export const WebAppsSyncRepositoryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -33612,8 +33173,7 @@ export const WebAppsSyncRepositoryInput =
 export type WebAppsSyncRepositoryInput = typeof WebAppsSyncRepositoryInput.Type;
 
 // Output Schema
-export const WebAppsSyncRepositoryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsSyncRepositoryOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsSyncRepositoryOutput =
   typeof WebAppsSyncRepositoryOutput.Type;
 
@@ -33628,15 +33188,13 @@ export type WebAppsSyncRepositoryOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsSyncRepository = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsSyncRepositoryInput,
-    outputSchema: WebAppsSyncRepositoryOutput,
-  }),
-);
+export const WebAppsSyncRepository = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsSyncRepositoryInput,
+  outputSchema: WebAppsSyncRepositoryOutput,
+}));
 // Input Schema
 export const WebAppsSyncRepositorySlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -33652,8 +33210,7 @@ export type WebAppsSyncRepositorySlotInput =
   typeof WebAppsSyncRepositorySlotInput.Type;
 
 // Output Schema
-export const WebAppsSyncRepositorySlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WebAppsSyncRepositorySlotOutput = /*@__PURE__*/ Schema.Void;
 export type WebAppsSyncRepositorySlotOutput =
   typeof WebAppsSyncRepositorySlotOutput.Type;
 
@@ -33669,14 +33226,12 @@ export type WebAppsSyncRepositorySlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsSyncRepositorySlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsSyncRepositorySlotInput,
-    outputSchema: WebAppsSyncRepositorySlotOutput,
-  }),
-);
+export const WebAppsSyncRepositorySlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsSyncRepositorySlotInput,
+  outputSchema: WebAppsSyncRepositorySlotOutput,
+}));
 // Input Schema
-export const WebAppsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebAppsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -33690,7 +33245,7 @@ export const WebAppsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WebAppsUpdateInput = typeof WebAppsUpdateInput.Type;
 
 // Output Schema
-export const WebAppsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebAppsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -33722,13 +33277,13 @@ export type WebAppsUpdateOutput = typeof WebAppsUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebAppsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebAppsUpdateInput,
   outputSchema: WebAppsUpdateOutput,
 }));
 // Input Schema
 export const WebAppsUpdateApplicationSettingsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -33744,7 +33299,7 @@ export type WebAppsUpdateApplicationSettingsInput =
 
 // Output Schema
 export const WebAppsUpdateApplicationSettingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -33765,13 +33320,13 @@ export type WebAppsUpdateApplicationSettingsOutput =
  * @param name - Name of the app.
  */
 export const WebAppsUpdateApplicationSettings =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsUpdateApplicationSettingsInput,
     outputSchema: WebAppsUpdateApplicationSettingsOutput,
   }));
 // Input Schema
 export const WebAppsUpdateApplicationSettingsSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -33788,7 +33343,7 @@ export type WebAppsUpdateApplicationSettingsSlotInput =
 
 // Output Schema
 export const WebAppsUpdateApplicationSettingsSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -33810,13 +33365,13 @@ export type WebAppsUpdateApplicationSettingsSlotOutput =
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
 export const WebAppsUpdateApplicationSettingsSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsUpdateApplicationSettingsSlotInput,
     outputSchema: WebAppsUpdateApplicationSettingsSlotOutput,
   }));
 // Input Schema
 export const WebAppsUpdateAuthSettingsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -33832,7 +33387,7 @@ export type WebAppsUpdateAuthSettingsInput =
 
 // Output Schema
 export const WebAppsUpdateAuthSettingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -33852,15 +33407,13 @@ export type WebAppsUpdateAuthSettingsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsUpdateAuthSettings = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsUpdateAuthSettingsInput,
-    outputSchema: WebAppsUpdateAuthSettingsOutput,
-  }),
-);
+export const WebAppsUpdateAuthSettings = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsUpdateAuthSettingsInput,
+  outputSchema: WebAppsUpdateAuthSettingsOutput,
+}));
 // Input Schema
 export const WebAppsUpdateAuthSettingsSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -33877,7 +33430,7 @@ export type WebAppsUpdateAuthSettingsSlotInput =
 
 // Output Schema
 export const WebAppsUpdateAuthSettingsSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -33899,13 +33452,13 @@ export type WebAppsUpdateAuthSettingsSlotOutput =
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
 export const WebAppsUpdateAuthSettingsSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsUpdateAuthSettingsSlotInput,
     outputSchema: WebAppsUpdateAuthSettingsSlotOutput,
   }));
 // Input Schema
 export const WebAppsUpdateAuthSettingsV2Input =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -33921,7 +33474,7 @@ export type WebAppsUpdateAuthSettingsV2Input =
 
 // Output Schema
 export const WebAppsUpdateAuthSettingsV2Output =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -33954,15 +33507,13 @@ export type WebAppsUpdateAuthSettingsV2Output =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsUpdateAuthSettingsV2 = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsUpdateAuthSettingsV2Input,
-    outputSchema: WebAppsUpdateAuthSettingsV2Output,
-  }),
-);
+export const WebAppsUpdateAuthSettingsV2 = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsUpdateAuthSettingsV2Input,
+  outputSchema: WebAppsUpdateAuthSettingsV2Output,
+}));
 // Input Schema
 export const WebAppsUpdateAuthSettingsV2SlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -33979,7 +33530,7 @@ export type WebAppsUpdateAuthSettingsV2SlotInput =
 
 // Output Schema
 export const WebAppsUpdateAuthSettingsV2SlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -34014,13 +33565,13 @@ export type WebAppsUpdateAuthSettingsV2SlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get the settings for the production slot.
  */
 export const WebAppsUpdateAuthSettingsV2Slot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsUpdateAuthSettingsV2SlotInput,
     outputSchema: WebAppsUpdateAuthSettingsV2SlotOutput,
   }));
 // Input Schema
 export const WebAppsUpdateAzureStorageAccountsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -34036,7 +33587,7 @@ export type WebAppsUpdateAzureStorageAccountsInput =
 
 // Output Schema
 export const WebAppsUpdateAzureStorageAccountsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -34057,13 +33608,13 @@ export type WebAppsUpdateAzureStorageAccountsOutput =
  * @param name - Name of the app.
  */
 export const WebAppsUpdateAzureStorageAccounts =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsUpdateAzureStorageAccountsInput,
     outputSchema: WebAppsUpdateAzureStorageAccountsOutput,
   }));
 // Input Schema
 export const WebAppsUpdateAzureStorageAccountsSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -34080,7 +33631,7 @@ export type WebAppsUpdateAzureStorageAccountsSlotInput =
 
 // Output Schema
 export const WebAppsUpdateAzureStorageAccountsSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -34102,13 +33653,13 @@ export type WebAppsUpdateAzureStorageAccountsSlotOutput =
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
 export const WebAppsUpdateAzureStorageAccountsSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsUpdateAzureStorageAccountsSlotInput,
     outputSchema: WebAppsUpdateAzureStorageAccountsSlotOutput,
   }));
 // Input Schema
 export const WebAppsUpdateBackupConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -34124,7 +33675,7 @@ export type WebAppsUpdateBackupConfigurationInput =
 
 // Output Schema
 export const WebAppsUpdateBackupConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -34145,13 +33696,13 @@ export type WebAppsUpdateBackupConfigurationOutput =
  * @param name - Name of the app.
  */
 export const WebAppsUpdateBackupConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsUpdateBackupConfigurationInput,
     outputSchema: WebAppsUpdateBackupConfigurationOutput,
   }));
 // Input Schema
 export const WebAppsUpdateBackupConfigurationSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -34168,7 +33719,7 @@ export type WebAppsUpdateBackupConfigurationSlotInput =
 
 // Output Schema
 export const WebAppsUpdateBackupConfigurationSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -34190,13 +33741,13 @@ export type WebAppsUpdateBackupConfigurationSlotOutput =
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
 export const WebAppsUpdateBackupConfigurationSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsUpdateBackupConfigurationSlotInput,
     outputSchema: WebAppsUpdateBackupConfigurationSlotOutput,
   }));
 // Input Schema
 export const WebAppsUpdateConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -34212,7 +33763,7 @@ export type WebAppsUpdateConfigurationInput =
 
 // Output Schema
 export const WebAppsUpdateConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -34245,15 +33796,13 @@ export type WebAppsUpdateConfigurationOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsUpdateConfiguration = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsUpdateConfigurationInput,
-    outputSchema: WebAppsUpdateConfigurationOutput,
-  }),
-);
+export const WebAppsUpdateConfiguration = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsUpdateConfigurationInput,
+  outputSchema: WebAppsUpdateConfigurationOutput,
+}));
 // Input Schema
 export const WebAppsUpdateConfigurationSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -34270,7 +33819,7 @@ export type WebAppsUpdateConfigurationSlotInput =
 
 // Output Schema
 export const WebAppsUpdateConfigurationSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -34305,13 +33854,13 @@ export type WebAppsUpdateConfigurationSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will return configuration for the production slot.
  */
 export const WebAppsUpdateConfigurationSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsUpdateConfigurationSlotInput,
     outputSchema: WebAppsUpdateConfigurationSlotOutput,
   }));
 // Input Schema
 export const WebAppsUpdateConnectionStringsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -34327,7 +33876,7 @@ export type WebAppsUpdateConnectionStringsInput =
 
 // Output Schema
 export const WebAppsUpdateConnectionStringsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -34348,13 +33897,13 @@ export type WebAppsUpdateConnectionStringsOutput =
  * @param name - Name of the app.
  */
 export const WebAppsUpdateConnectionStrings =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsUpdateConnectionStringsInput,
     outputSchema: WebAppsUpdateConnectionStringsOutput,
   }));
 // Input Schema
 export const WebAppsUpdateConnectionStringsSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -34371,7 +33920,7 @@ export type WebAppsUpdateConnectionStringsSlotInput =
 
 // Output Schema
 export const WebAppsUpdateConnectionStringsSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -34393,13 +33942,13 @@ export type WebAppsUpdateConnectionStringsSlotOutput =
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
 export const WebAppsUpdateConnectionStringsSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsUpdateConnectionStringsSlotInput,
     outputSchema: WebAppsUpdateConnectionStringsSlotOutput,
   }));
 // Input Schema
 export const WebAppsUpdateDiagnosticLogsConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -34415,7 +33964,7 @@ export type WebAppsUpdateDiagnosticLogsConfigInput =
 
 // Output Schema
 export const WebAppsUpdateDiagnosticLogsConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -34449,13 +33998,13 @@ export type WebAppsUpdateDiagnosticLogsConfigOutput =
  * @param name - Name of the app.
  */
 export const WebAppsUpdateDiagnosticLogsConfig =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsUpdateDiagnosticLogsConfigInput,
     outputSchema: WebAppsUpdateDiagnosticLogsConfigOutput,
   }));
 // Input Schema
 export const WebAppsUpdateDiagnosticLogsConfigSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -34472,7 +34021,7 @@ export type WebAppsUpdateDiagnosticLogsConfigSlotInput =
 
 // Output Schema
 export const WebAppsUpdateDiagnosticLogsConfigSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -34507,13 +34056,13 @@ export type WebAppsUpdateDiagnosticLogsConfigSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get the logging configuration for the production slot.
  */
 export const WebAppsUpdateDiagnosticLogsConfigSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsUpdateDiagnosticLogsConfigSlotInput,
     outputSchema: WebAppsUpdateDiagnosticLogsConfigSlotOutput,
   }));
 // Input Schema
 export const WebAppsUpdateDomainOwnershipIdentifierInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -34530,7 +34079,7 @@ export type WebAppsUpdateDomainOwnershipIdentifierInput =
 
 // Output Schema
 export const WebAppsUpdateDomainOwnershipIdentifierOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -34565,13 +34114,13 @@ export type WebAppsUpdateDomainOwnershipIdentifierOutput =
  * @param domainOwnershipIdentifierName - Name of domain ownership identifier.
  */
 export const WebAppsUpdateDomainOwnershipIdentifier =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsUpdateDomainOwnershipIdentifierInput,
     outputSchema: WebAppsUpdateDomainOwnershipIdentifierOutput,
   }));
 // Input Schema
 export const WebAppsUpdateDomainOwnershipIdentifierSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -34589,7 +34138,7 @@ export type WebAppsUpdateDomainOwnershipIdentifierSlotInput =
 
 // Output Schema
 export const WebAppsUpdateDomainOwnershipIdentifierSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -34625,13 +34174,13 @@ export type WebAppsUpdateDomainOwnershipIdentifierSlotOutput =
  * @param domainOwnershipIdentifierName - Name of domain ownership identifier.
  */
 export const WebAppsUpdateDomainOwnershipIdentifierSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsUpdateDomainOwnershipIdentifierSlotInput,
     outputSchema: WebAppsUpdateDomainOwnershipIdentifierSlotOutput,
   }));
 // Input Schema
 export const WebAppsUpdateFtpAllowedInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -34647,7 +34196,7 @@ export type WebAppsUpdateFtpAllowedInput =
 
 // Output Schema
 export const WebAppsUpdateFtpAllowedOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -34680,15 +34229,13 @@ export type WebAppsUpdateFtpAllowedOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsUpdateFtpAllowed = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsUpdateFtpAllowedInput,
-    outputSchema: WebAppsUpdateFtpAllowedOutput,
-  }),
-);
+export const WebAppsUpdateFtpAllowed = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsUpdateFtpAllowedInput,
+  outputSchema: WebAppsUpdateFtpAllowedOutput,
+}));
 // Input Schema
 export const WebAppsUpdateFtpAllowedSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -34705,7 +34252,7 @@ export type WebAppsUpdateFtpAllowedSlotInput =
 
 // Output Schema
 export const WebAppsUpdateFtpAllowedSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -34738,15 +34285,13 @@ export type WebAppsUpdateFtpAllowedSlotOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsUpdateFtpAllowedSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsUpdateFtpAllowedSlotInput,
-    outputSchema: WebAppsUpdateFtpAllowedSlotOutput,
-  }),
-);
+export const WebAppsUpdateFtpAllowedSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsUpdateFtpAllowedSlotInput,
+  outputSchema: WebAppsUpdateFtpAllowedSlotOutput,
+}));
 // Input Schema
 export const WebAppsUpdateHybridConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -34764,7 +34309,7 @@ export type WebAppsUpdateHybridConnectionInput =
 
 // Output Schema
 export const WebAppsUpdateHybridConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -34800,13 +34345,13 @@ export type WebAppsUpdateHybridConnectionOutput =
  * @param relayName - The relay name for this hybrid connection.
  */
 export const WebAppsUpdateHybridConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsUpdateHybridConnectionInput,
     outputSchema: WebAppsUpdateHybridConnectionOutput,
   }));
 // Input Schema
 export const WebAppsUpdateHybridConnectionSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -34825,7 +34370,7 @@ export type WebAppsUpdateHybridConnectionSlotInput =
 
 // Output Schema
 export const WebAppsUpdateHybridConnectionSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -34862,13 +34407,13 @@ export type WebAppsUpdateHybridConnectionSlotOutput =
  * @param relayName - The relay name for this hybrid connection.
  */
 export const WebAppsUpdateHybridConnectionSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsUpdateHybridConnectionSlotInput,
     outputSchema: WebAppsUpdateHybridConnectionSlotOutput,
   }));
 // Input Schema
 export const WebAppsUpdateMachineKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -34883,8 +34428,7 @@ export type WebAppsUpdateMachineKeyInput =
   typeof WebAppsUpdateMachineKeyInput.Type;
 
 // Output Schema
-export const WebAppsUpdateMachineKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+export const WebAppsUpdateMachineKeyOutput = /*@__PURE__*/ Schema.Unknown;
 export type WebAppsUpdateMachineKeyOutput =
   typeof WebAppsUpdateMachineKeyOutput.Type;
 
@@ -34897,15 +34441,13 @@ export type WebAppsUpdateMachineKeyOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsUpdateMachineKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsUpdateMachineKeyInput,
-    outputSchema: WebAppsUpdateMachineKeyOutput,
-  }),
-);
+export const WebAppsUpdateMachineKey = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsUpdateMachineKeyInput,
+  outputSchema: WebAppsUpdateMachineKeyOutput,
+}));
 // Input Schema
 export const WebAppsUpdateMetadataInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -34920,7 +34462,7 @@ export type WebAppsUpdateMetadataInput = typeof WebAppsUpdateMetadataInput.Type;
 
 // Output Schema
 export const WebAppsUpdateMetadataOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -34940,15 +34482,13 @@ export type WebAppsUpdateMetadataOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsUpdateMetadata = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsUpdateMetadataInput,
-    outputSchema: WebAppsUpdateMetadataOutput,
-  }),
-);
+export const WebAppsUpdateMetadata = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsUpdateMetadataInput,
+  outputSchema: WebAppsUpdateMetadataOutput,
+}));
 // Input Schema
 export const WebAppsUpdateMetadataSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -34965,7 +34505,7 @@ export type WebAppsUpdateMetadataSlotInput =
 
 // Output Schema
 export const WebAppsUpdateMetadataSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -34986,15 +34526,13 @@ export type WebAppsUpdateMetadataSlotOutput =
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsUpdateMetadataSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsUpdateMetadataSlotInput,
-    outputSchema: WebAppsUpdateMetadataSlotOutput,
-  }),
-);
+export const WebAppsUpdateMetadataSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsUpdateMetadataSlotInput,
+  outputSchema: WebAppsUpdateMetadataSlotOutput,
+}));
 // Input Schema
 export const WebAppsUpdatePremierAddOnInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -35011,7 +34549,7 @@ export type WebAppsUpdatePremierAddOnInput =
 
 // Output Schema
 export const WebAppsUpdatePremierAddOnOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -35045,15 +34583,13 @@ export type WebAppsUpdatePremierAddOnOutput =
  * @param name - Name of the app.
  * @param premierAddOnName - Add-on name.
  */
-export const WebAppsUpdatePremierAddOn = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsUpdatePremierAddOnInput,
-    outputSchema: WebAppsUpdatePremierAddOnOutput,
-  }),
-);
+export const WebAppsUpdatePremierAddOn = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsUpdatePremierAddOnInput,
+  outputSchema: WebAppsUpdatePremierAddOnOutput,
+}));
 // Input Schema
 export const WebAppsUpdatePremierAddOnSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -35071,7 +34607,7 @@ export type WebAppsUpdatePremierAddOnSlotInput =
 
 // Output Schema
 export const WebAppsUpdatePremierAddOnSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -35107,13 +34643,13 @@ export type WebAppsUpdatePremierAddOnSlotOutput =
  * @param premierAddOnName - Add-on name.
  */
 export const WebAppsUpdatePremierAddOnSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsUpdatePremierAddOnSlotInput,
     outputSchema: WebAppsUpdatePremierAddOnSlotOutput,
   }));
 // Input Schema
 export const WebAppsUpdateRelayServiceConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -35130,7 +34666,7 @@ export type WebAppsUpdateRelayServiceConnectionInput =
 
 // Output Schema
 export const WebAppsUpdateRelayServiceConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -35165,13 +34701,13 @@ export type WebAppsUpdateRelayServiceConnectionOutput =
  * @param entityName - Name of the hybrid connection.
  */
 export const WebAppsUpdateRelayServiceConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsUpdateRelayServiceConnectionInput,
     outputSchema: WebAppsUpdateRelayServiceConnectionOutput,
   }));
 // Input Schema
 export const WebAppsUpdateRelayServiceConnectionSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -35189,7 +34725,7 @@ export type WebAppsUpdateRelayServiceConnectionSlotInput =
 
 // Output Schema
 export const WebAppsUpdateRelayServiceConnectionSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -35225,13 +34761,13 @@ export type WebAppsUpdateRelayServiceConnectionSlotOutput =
  * @param entityName - Name of the hybrid connection.
  */
 export const WebAppsUpdateRelayServiceConnectionSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsUpdateRelayServiceConnectionSlotInput,
     outputSchema: WebAppsUpdateRelayServiceConnectionSlotOutput,
   }));
 // Input Schema
 export const WebAppsUpdateScmAllowedInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -35247,7 +34783,7 @@ export type WebAppsUpdateScmAllowedInput =
 
 // Output Schema
 export const WebAppsUpdateScmAllowedOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -35280,15 +34816,13 @@ export type WebAppsUpdateScmAllowedOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsUpdateScmAllowed = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsUpdateScmAllowedInput,
-    outputSchema: WebAppsUpdateScmAllowedOutput,
-  }),
-);
+export const WebAppsUpdateScmAllowed = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsUpdateScmAllowedInput,
+  outputSchema: WebAppsUpdateScmAllowedOutput,
+}));
 // Input Schema
 export const WebAppsUpdateScmAllowedSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -35305,7 +34839,7 @@ export type WebAppsUpdateScmAllowedSlotInput =
 
 // Output Schema
 export const WebAppsUpdateScmAllowedSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -35338,15 +34872,13 @@ export type WebAppsUpdateScmAllowedSlotOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsUpdateScmAllowedSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsUpdateScmAllowedSlotInput,
-    outputSchema: WebAppsUpdateScmAllowedSlotOutput,
-  }),
-);
+export const WebAppsUpdateScmAllowedSlot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsUpdateScmAllowedSlotInput,
+  outputSchema: WebAppsUpdateScmAllowedSlotOutput,
+}));
 // Input Schema
 export const WebAppsUpdateSitePushSettingsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -35362,7 +34894,7 @@ export type WebAppsUpdateSitePushSettingsInput =
 
 // Output Schema
 export const WebAppsUpdateSitePushSettingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -35383,13 +34915,13 @@ export type WebAppsUpdateSitePushSettingsOutput =
  * @param name - Name of the app.
  */
 export const WebAppsUpdateSitePushSettings =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsUpdateSitePushSettingsInput,
     outputSchema: WebAppsUpdateSitePushSettingsOutput,
   }));
 // Input Schema
 export const WebAppsUpdateSitePushSettingsSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -35406,7 +34938,7 @@ export type WebAppsUpdateSitePushSettingsSlotInput =
 
 // Output Schema
 export const WebAppsUpdateSitePushSettingsSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -35428,20 +34960,18 @@ export type WebAppsUpdateSitePushSettingsSlotOutput =
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
 export const WebAppsUpdateSitePushSettingsSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsUpdateSitePushSettingsSlotInput,
     outputSchema: WebAppsUpdateSitePushSettingsSlotOutput,
   }));
 // Input Schema
-export const WebAppsUpdateSlotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    slot: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const WebAppsUpdateSlotInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  slot: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}",
@@ -35451,7 +34981,7 @@ export type WebAppsUpdateSlotInput = typeof WebAppsUpdateSlotInput.Type;
 
 // Output Schema
 export const WebAppsUpdateSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -35484,13 +35014,13 @@ export type WebAppsUpdateSlotOutput = typeof WebAppsUpdateSlotOutput.Type;
  * @param name - Name of the app.
  * @param slot - Name of the deployment slot. By default, this API returns the production slot.
  */
-export const WebAppsUpdateSlot = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebAppsUpdateSlot = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebAppsUpdateSlotInput,
   outputSchema: WebAppsUpdateSlotOutput,
 }));
 // Input Schema
 export const WebAppsUpdateSlotConfigurationNamesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -35506,7 +35036,7 @@ export type WebAppsUpdateSlotConfigurationNamesInput =
 
 // Output Schema
 export const WebAppsUpdateSlotConfigurationNamesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -35540,13 +35070,13 @@ export type WebAppsUpdateSlotConfigurationNamesOutput =
  * @param name - Name of the app.
  */
 export const WebAppsUpdateSlotConfigurationNames =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsUpdateSlotConfigurationNamesInput,
     outputSchema: WebAppsUpdateSlotConfigurationNamesOutput,
   }));
 // Input Schema
 export const WebAppsUpdateSourceControlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -35562,7 +35092,7 @@ export type WebAppsUpdateSourceControlInput =
 
 // Output Schema
 export const WebAppsUpdateSourceControlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -35595,15 +35125,13 @@ export type WebAppsUpdateSourceControlOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the app.
  */
-export const WebAppsUpdateSourceControl = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsUpdateSourceControlInput,
-    outputSchema: WebAppsUpdateSourceControlOutput,
-  }),
-);
+export const WebAppsUpdateSourceControl = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsUpdateSourceControlInput,
+  outputSchema: WebAppsUpdateSourceControlOutput,
+}));
 // Input Schema
 export const WebAppsUpdateSourceControlSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -35620,7 +35148,7 @@ export type WebAppsUpdateSourceControlSlotInput =
 
 // Output Schema
 export const WebAppsUpdateSourceControlSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -35655,13 +35183,13 @@ export type WebAppsUpdateSourceControlSlotOutput =
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get the source control configuration for the production slot.
  */
 export const WebAppsUpdateSourceControlSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsUpdateSourceControlSlotInput,
     outputSchema: WebAppsUpdateSourceControlSlotOutput,
   }));
 // Input Schema
 export const WebAppsUpdateSwiftVirtualNetworkConnectionWithCheckInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -35677,7 +35205,7 @@ export type WebAppsUpdateSwiftVirtualNetworkConnectionWithCheckInput =
 
 // Output Schema
 export const WebAppsUpdateSwiftVirtualNetworkConnectionWithCheckOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -35713,13 +35241,13 @@ in use by another App Service Plan other than the one this App is in.
  * @param name - Name of the app.
  */
 export const WebAppsUpdateSwiftVirtualNetworkConnectionWithCheck =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsUpdateSwiftVirtualNetworkConnectionWithCheckInput,
     outputSchema: WebAppsUpdateSwiftVirtualNetworkConnectionWithCheckOutput,
   }));
 // Input Schema
 export const WebAppsUpdateSwiftVirtualNetworkConnectionWithCheckSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -35736,7 +35264,7 @@ export type WebAppsUpdateSwiftVirtualNetworkConnectionWithCheckSlotInput =
 
 // Output Schema
 export const WebAppsUpdateSwiftVirtualNetworkConnectionWithCheckSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -35773,13 +35301,13 @@ in use by another App Service Plan other than the one this App is in.
  * @param slot - Name of the deployment slot. If a slot is not specified, the API will get a gateway for the production slot's Virtual Network.
  */
 export const WebAppsUpdateSwiftVirtualNetworkConnectionWithCheckSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsUpdateSwiftVirtualNetworkConnectionWithCheckSlotInput,
     outputSchema: WebAppsUpdateSwiftVirtualNetworkConnectionWithCheckSlotOutput,
   }));
 // Input Schema
 export const WebAppsUpdateVnetConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -35796,7 +35324,7 @@ export type WebAppsUpdateVnetConnectionInput =
 
 // Output Schema
 export const WebAppsUpdateVnetConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -35830,15 +35358,13 @@ export type WebAppsUpdateVnetConnectionOutput =
  * @param name - Name of the app.
  * @param vnetName - Name of the virtual network.
  */
-export const WebAppsUpdateVnetConnection = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppsUpdateVnetConnectionInput,
-    outputSchema: WebAppsUpdateVnetConnectionOutput,
-  }),
-);
+export const WebAppsUpdateVnetConnection = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppsUpdateVnetConnectionInput,
+  outputSchema: WebAppsUpdateVnetConnectionOutput,
+}));
 // Input Schema
 export const WebAppsUpdateVnetConnectionGatewayInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -35856,7 +35382,7 @@ export type WebAppsUpdateVnetConnectionGatewayInput =
 
 // Output Schema
 export const WebAppsUpdateVnetConnectionGatewayOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -35892,13 +35418,13 @@ export type WebAppsUpdateVnetConnectionGatewayOutput =
  * @param gatewayName - Name of the gateway. Currently, the only supported string is "primary".
  */
 export const WebAppsUpdateVnetConnectionGateway =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsUpdateVnetConnectionGatewayInput,
     outputSchema: WebAppsUpdateVnetConnectionGatewayOutput,
   }));
 // Input Schema
 export const WebAppsUpdateVnetConnectionGatewaySlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -35917,7 +35443,7 @@ export type WebAppsUpdateVnetConnectionGatewaySlotInput =
 
 // Output Schema
 export const WebAppsUpdateVnetConnectionGatewaySlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -35954,13 +35480,13 @@ export type WebAppsUpdateVnetConnectionGatewaySlotOutput =
  * @param gatewayName - Name of the gateway. Currently, the only supported string is "primary".
  */
 export const WebAppsUpdateVnetConnectionGatewaySlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsUpdateVnetConnectionGatewaySlotInput,
     outputSchema: WebAppsUpdateVnetConnectionGatewaySlotOutput,
   }));
 // Input Schema
 export const WebAppsUpdateVnetConnectionSlotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -35978,7 +35504,7 @@ export type WebAppsUpdateVnetConnectionSlotInput =
 
 // Output Schema
 export const WebAppsUpdateVnetConnectionSlotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -36014,13 +35540,13 @@ export type WebAppsUpdateVnetConnectionSlotOutput =
  * @param vnetName - Name of the virtual network.
  */
 export const WebAppsUpdateVnetConnectionSlot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppsUpdateVnetConnectionSlotInput,
     outputSchema: WebAppsUpdateVnetConnectionSlotOutput,
   }));
 // Input Schema
 export const WorkflowRunActionRepetitionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -36040,7 +35566,7 @@ export type WorkflowRunActionRepetitionsGetInput =
 
 // Output Schema
 export const WorkflowRunActionRepetitionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -36076,13 +35602,13 @@ export type WorkflowRunActionRepetitionsGetOutput =
  * @param repetitionName - The workflow repetition.
  */
 export const WorkflowRunActionRepetitionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkflowRunActionRepetitionsGetInput,
     outputSchema: WorkflowRunActionRepetitionsGetOutput,
   }));
 // Input Schema
 export const WorkflowRunActionRepetitionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -36101,7 +35627,7 @@ export type WorkflowRunActionRepetitionsListInput =
 
 // Output Schema
 export const WorkflowRunActionRepetitionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -36151,13 +35677,13 @@ export type WorkflowRunActionRepetitionsListOutput =
  * @param actionName - The workflow action name.
  */
 export const WorkflowRunActionRepetitionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkflowRunActionRepetitionsListInput,
     outputSchema: WorkflowRunActionRepetitionsListOutput,
   }));
 // Input Schema
 export const WorkflowRunActionRepetitionsListExpressionTracesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -36177,7 +35703,7 @@ export type WorkflowRunActionRepetitionsListExpressionTracesInput =
 
 // Output Schema
 export const WorkflowRunActionRepetitionsListExpressionTracesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Unknown),
     inputs: Schema.optional(
       Schema.Array(
@@ -36212,13 +35738,13 @@ export type WorkflowRunActionRepetitionsListExpressionTracesOutput =
  * @param repetitionName - The workflow repetition.
  */
 export const WorkflowRunActionRepetitionsListExpressionTraces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkflowRunActionRepetitionsListExpressionTracesInput,
     outputSchema: WorkflowRunActionRepetitionsListExpressionTracesOutput,
   }));
 // Input Schema
 export const WorkflowRunActionRepetitionsRequestHistoriesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -36239,7 +35765,7 @@ export type WorkflowRunActionRepetitionsRequestHistoriesGetInput =
 
 // Output Schema
 export const WorkflowRunActionRepetitionsRequestHistoriesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -36276,13 +35802,13 @@ export type WorkflowRunActionRepetitionsRequestHistoriesGetOutput =
  * @param requestHistoryName - The workflow repetition.
  */
 export const WorkflowRunActionRepetitionsRequestHistoriesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkflowRunActionRepetitionsRequestHistoriesGetInput,
     outputSchema: WorkflowRunActionRepetitionsRequestHistoriesGetOutput,
   }));
 // Input Schema
 export const WorkflowRunActionRepetitionsRequestHistoriesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -36302,7 +35828,7 @@ export type WorkflowRunActionRepetitionsRequestHistoriesListInput =
 
 // Output Schema
 export const WorkflowRunActionRepetitionsRequestHistoriesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -36353,13 +35879,13 @@ export type WorkflowRunActionRepetitionsRequestHistoriesListOutput =
  * @param repetitionName - The workflow repetition.
  */
 export const WorkflowRunActionRepetitionsRequestHistoriesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkflowRunActionRepetitionsRequestHistoriesListInput,
     outputSchema: WorkflowRunActionRepetitionsRequestHistoriesListOutput,
   }));
 // Input Schema
 export const WorkflowRunActionScopeRepetitionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -36379,7 +35905,7 @@ export type WorkflowRunActionScopeRepetitionsGetInput =
 
 // Output Schema
 export const WorkflowRunActionScopeRepetitionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -36415,13 +35941,13 @@ export type WorkflowRunActionScopeRepetitionsGetOutput =
  * @param repetitionName - The workflow repetition.
  */
 export const WorkflowRunActionScopeRepetitionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkflowRunActionScopeRepetitionsGetInput,
     outputSchema: WorkflowRunActionScopeRepetitionsGetOutput,
   }));
 // Input Schema
 export const WorkflowRunActionScopeRepetitionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -36440,7 +35966,7 @@ export type WorkflowRunActionScopeRepetitionsListInput =
 
 // Output Schema
 export const WorkflowRunActionScopeRepetitionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -36490,13 +36016,13 @@ export type WorkflowRunActionScopeRepetitionsListOutput =
  * @param actionName - The workflow action name.
  */
 export const WorkflowRunActionScopeRepetitionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkflowRunActionScopeRepetitionsListInput,
     outputSchema: WorkflowRunActionScopeRepetitionsListOutput,
   }));
 // Input Schema
 export const WorkflowRunActionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -36514,7 +36040,7 @@ export type WorkflowRunActionsGetInput = typeof WorkflowRunActionsGetInput.Type;
 
 // Output Schema
 export const WorkflowRunActionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -36548,15 +36074,13 @@ export type WorkflowRunActionsGetOutput =
  * @param runName - The workflow run name.
  * @param actionName - The workflow action name.
  */
-export const WorkflowRunActionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkflowRunActionsGetInput,
-    outputSchema: WorkflowRunActionsGetOutput,
-  }),
-);
+export const WorkflowRunActionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowRunActionsGetInput,
+  outputSchema: WorkflowRunActionsGetOutput,
+}));
 // Input Schema
 export const WorkflowRunActionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -36576,7 +36100,7 @@ export type WorkflowRunActionsListInput =
 
 // Output Schema
 export const WorkflowRunActionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -36626,15 +36150,13 @@ export type WorkflowRunActionsListOutput =
  * @param $top - The number of items to be included in the result.
  * @param $filter - The filter to apply on the operation. Options for filters include: Status.
  */
-export const WorkflowRunActionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkflowRunActionsListInput,
-    outputSchema: WorkflowRunActionsListOutput,
-  }),
-);
+export const WorkflowRunActionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowRunActionsListInput,
+  outputSchema: WorkflowRunActionsListOutput,
+}));
 // Input Schema
 export const WorkflowRunActionsListExpressionTracesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -36653,7 +36175,7 @@ export type WorkflowRunActionsListExpressionTracesInput =
 
 // Output Schema
 export const WorkflowRunActionsListExpressionTracesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Unknown),
     inputs: Schema.optional(
       Schema.Array(
@@ -36687,13 +36209,13 @@ export type WorkflowRunActionsListExpressionTracesOutput =
  * @param actionName - The workflow action name.
  */
 export const WorkflowRunActionsListExpressionTraces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkflowRunActionsListExpressionTracesInput,
     outputSchema: WorkflowRunActionsListExpressionTracesOutput,
   }));
 // Input Schema
 export const WorkflowRunsCancelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -36709,7 +36231,7 @@ export const WorkflowRunsCancelInput =
 export type WorkflowRunsCancelInput = typeof WorkflowRunsCancelInput.Type;
 
 // Output Schema
-export const WorkflowRunsCancelOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkflowRunsCancelOutput = /*@__PURE__*/ Schema.Void;
 export type WorkflowRunsCancelOutput = typeof WorkflowRunsCancelOutput.Type;
 
 // The operation
@@ -36723,12 +36245,12 @@ export type WorkflowRunsCancelOutput = typeof WorkflowRunsCancelOutput.Type;
  * @param workflowName - The workflow name.
  * @param runName - The workflow run name.
  */
-export const WorkflowRunsCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowRunsCancel = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkflowRunsCancelInput,
   outputSchema: WorkflowRunsCancelOutput,
 }));
 // Input Schema
-export const WorkflowRunsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkflowRunsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -36744,7 +36266,7 @@ export const WorkflowRunsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WorkflowRunsGetInput = typeof WorkflowRunsGetInput.Type;
 
 // Output Schema
-export const WorkflowRunsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkflowRunsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -36776,12 +36298,12 @@ export type WorkflowRunsGetOutput = typeof WorkflowRunsGetOutput.Type;
  * @param workflowName - The workflow name.
  * @param runName - The workflow run name.
  */
-export const WorkflowRunsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowRunsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkflowRunsGetInput,
   outputSchema: WorkflowRunsGetOutput,
 }));
 // Input Schema
-export const WorkflowRunsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkflowRunsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -36798,42 +36320,30 @@ export const WorkflowRunsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WorkflowRunsListInput = typeof WorkflowRunsListInput.Type;
 
 // Output Schema
-export const WorkflowRunsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  },
-);
+export const WorkflowRunsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type WorkflowRunsListOutput = typeof WorkflowRunsListOutput.Type;
 
 // The operation
@@ -36848,13 +36358,13 @@ export type WorkflowRunsListOutput = typeof WorkflowRunsListOutput.Type;
  * @param $top - The number of items to be included in the result.
  * @param $filter - The filter to apply on the operation. Options for filters include: Status, StartTime, and ClientTrackingId.
  */
-export const WorkflowRunsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowRunsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkflowRunsListInput,
   outputSchema: WorkflowRunsListOutput,
 }));
 // Input Schema
 export const WorkflowsRegenerateAccessKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -36870,8 +36380,7 @@ export type WorkflowsRegenerateAccessKeyInput =
   typeof WorkflowsRegenerateAccessKeyInput.Type;
 
 // Output Schema
-export const WorkflowsRegenerateAccessKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkflowsRegenerateAccessKeyOutput = /*@__PURE__*/ Schema.Void;
 export type WorkflowsRegenerateAccessKeyOutput =
   typeof WorkflowsRegenerateAccessKeyOutput.Type;
 
@@ -36886,20 +36395,18 @@ export type WorkflowsRegenerateAccessKeyOutput =
  * @param workflowName - The workflow name.
  */
 export const WorkflowsRegenerateAccessKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkflowsRegenerateAccessKeyInput,
     outputSchema: WorkflowsRegenerateAccessKeyOutput,
   }));
 // Input Schema
-export const WorkflowsValidateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    workflowName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const WorkflowsValidateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  workflowName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/validate",
@@ -36908,7 +36415,7 @@ export const WorkflowsValidateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type WorkflowsValidateInput = typeof WorkflowsValidateInput.Type;
 
 // Output Schema
-export const WorkflowsValidateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkflowsValidateOutput = /*@__PURE__*/ Schema.Void;
 export type WorkflowsValidateOutput = typeof WorkflowsValidateOutput.Type;
 
 // The operation
@@ -36921,13 +36428,13 @@ export type WorkflowsValidateOutput = typeof WorkflowsValidateOutput.Type;
  * @param name - Site name.
  * @param workflowName - The workflow name.
  */
-export const WorkflowsValidate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowsValidate = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkflowsValidateInput,
   outputSchema: WorkflowsValidateOutput,
 }));
 // Input Schema
 export const WorkflowTriggerHistoriesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -36946,7 +36453,7 @@ export type WorkflowTriggerHistoriesGetInput =
 
 // Output Schema
 export const WorkflowTriggerHistoriesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -36980,15 +36487,13 @@ export type WorkflowTriggerHistoriesGetOutput =
  * @param triggerName - The workflow trigger name.
  * @param historyName - The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
  */
-export const WorkflowTriggerHistoriesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkflowTriggerHistoriesGetInput,
-    outputSchema: WorkflowTriggerHistoriesGetOutput,
-  }),
-);
+export const WorkflowTriggerHistoriesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowTriggerHistoriesGetInput,
+  outputSchema: WorkflowTriggerHistoriesGetOutput,
+}));
 // Input Schema
 export const WorkflowTriggerHistoriesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -37008,7 +36513,7 @@ export type WorkflowTriggerHistoriesListInput =
 
 // Output Schema
 export const WorkflowTriggerHistoriesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -37059,13 +36564,13 @@ export type WorkflowTriggerHistoriesListOutput =
  * @param $filter - The filter to apply on the operation. Options for filters include: Status, StartTime, and ClientTrackingId.
  */
 export const WorkflowTriggerHistoriesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkflowTriggerHistoriesListInput,
     outputSchema: WorkflowTriggerHistoriesListOutput,
   }));
 // Input Schema
 export const WorkflowTriggerHistoriesResubmitInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -37083,8 +36588,7 @@ export type WorkflowTriggerHistoriesResubmitInput =
   typeof WorkflowTriggerHistoriesResubmitInput.Type;
 
 // Output Schema
-export const WorkflowTriggerHistoriesResubmitOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkflowTriggerHistoriesResubmitOutput = /*@__PURE__*/ Schema.Void;
 export type WorkflowTriggerHistoriesResubmitOutput =
   typeof WorkflowTriggerHistoriesResubmitOutput.Type;
 
@@ -37101,13 +36605,13 @@ export type WorkflowTriggerHistoriesResubmitOutput =
  * @param historyName - The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
  */
 export const WorkflowTriggerHistoriesResubmit =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkflowTriggerHistoriesResubmitInput,
     outputSchema: WorkflowTriggerHistoriesResubmitOutput,
   }));
 // Input Schema
 export const WorkflowTriggersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -37124,7 +36628,7 @@ export type WorkflowTriggersGetInput = typeof WorkflowTriggersGetInput.Type;
 
 // Output Schema
 export const WorkflowTriggersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -37156,13 +36660,13 @@ export type WorkflowTriggersGetOutput = typeof WorkflowTriggersGetOutput.Type;
  * @param workflowName - The workflow name.
  * @param triggerName - The workflow trigger name.
  */
-export const WorkflowTriggersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowTriggersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkflowTriggersGetInput,
   outputSchema: WorkflowTriggersGetOutput,
 }));
 // Input Schema
 export const WorkflowTriggersGetSchemaJsonInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -37180,7 +36684,7 @@ export type WorkflowTriggersGetSchemaJsonInput =
 
 // Output Schema
 export const WorkflowTriggersGetSchemaJsonOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     content: Schema.optional(Schema.String),
   });
@@ -37199,13 +36703,13 @@ export type WorkflowTriggersGetSchemaJsonOutput =
  * @param triggerName - The workflow trigger name.
  */
 export const WorkflowTriggersGetSchemaJson =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkflowTriggersGetSchemaJsonInput,
     outputSchema: WorkflowTriggersGetSchemaJsonOutput,
   }));
 // Input Schema
 export const WorkflowTriggersListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -37223,7 +36727,7 @@ export type WorkflowTriggersListInput = typeof WorkflowTriggersListInput.Type;
 
 // Output Schema
 export const WorkflowTriggersListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -37271,15 +36775,13 @@ export type WorkflowTriggersListOutput = typeof WorkflowTriggersListOutput.Type;
  * @param $top - The number of items to be included in the result.
  * @param $filter - The filter to apply on the operation.
  */
-export const WorkflowTriggersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkflowTriggersListInput,
-    outputSchema: WorkflowTriggersListOutput,
-  }),
-);
+export const WorkflowTriggersList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowTriggersListInput,
+  outputSchema: WorkflowTriggersListOutput,
+}));
 // Input Schema
 export const WorkflowTriggersListCallbackUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -37297,7 +36799,7 @@ export type WorkflowTriggersListCallbackUrlInput =
 
 // Output Schema
 export const WorkflowTriggersListCallbackUrlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     method: Schema.optional(Schema.String),
     basePath: Schema.optional(Schema.String),
@@ -37328,13 +36830,13 @@ export type WorkflowTriggersListCallbackUrlOutput =
  * @param triggerName - The workflow trigger name.
  */
 export const WorkflowTriggersListCallbackUrl =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkflowTriggersListCallbackUrlInput,
     outputSchema: WorkflowTriggersListCallbackUrlOutput,
   }));
 // Input Schema
 export const WorkflowTriggersRunInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -37350,8 +36852,7 @@ export const WorkflowTriggersRunInput =
 export type WorkflowTriggersRunInput = typeof WorkflowTriggersRunInput.Type;
 
 // Output Schema
-export const WorkflowTriggersRunOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkflowTriggersRunOutput = /*@__PURE__*/ Schema.Void;
 export type WorkflowTriggersRunOutput = typeof WorkflowTriggersRunOutput.Type;
 
 // The operation
@@ -37365,13 +36866,13 @@ export type WorkflowTriggersRunOutput = typeof WorkflowTriggersRunOutput.Type;
  * @param workflowName - The workflow name.
  * @param triggerName - The workflow trigger name.
  */
-export const WorkflowTriggersRun = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowTriggersRun = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkflowTriggersRunInput,
   outputSchema: WorkflowTriggersRunOutput,
 }));
 // Input Schema
 export const WorkflowVersionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -37388,7 +36889,7 @@ export type WorkflowVersionsGetInput = typeof WorkflowVersionsGetInput.Type;
 
 // Output Schema
 export const WorkflowVersionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -37420,13 +36921,13 @@ export type WorkflowVersionsGetOutput = typeof WorkflowVersionsGetOutput.Type;
  * @param workflowName - The workflow name.
  * @param versionId - The workflow versionId.
  */
-export const WorkflowVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowVersionsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkflowVersionsGetInput,
   outputSchema: WorkflowVersionsGetOutput,
 }));
 // Input Schema
 export const WorkflowVersionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -37443,7 +36944,7 @@ export type WorkflowVersionsListInput = typeof WorkflowVersionsListInput.Type;
 
 // Output Schema
 export const WorkflowVersionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -37490,9 +36991,7 @@ export type WorkflowVersionsListOutput = typeof WorkflowVersionsListOutput.Type;
  * @param workflowName - The workflow name.
  * @param $top - The number of items to be included in the result.
  */
-export const WorkflowVersionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkflowVersionsListInput,
-    outputSchema: WorkflowVersionsListOutput,
-  }),
-);
+export const WorkflowVersionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowVersionsListInput,
+  outputSchema: WorkflowVersionsListOutput,
+}));

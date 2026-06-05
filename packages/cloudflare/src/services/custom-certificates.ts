@@ -8,9 +8,9 @@
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
-import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
+import * as T from "../traits.ts";
 
 // =============================================================================
 // CustomCertificate
@@ -23,7 +23,7 @@ export interface GetCustomCertificateRequest {
 }
 
 export const GetCustomCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customCertificateId: Schema.String.pipe(T.HttpPath("customCertificateId")),
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   }).pipe(
@@ -85,7 +85,7 @@ export interface GetCustomCertificateResponse {
 }
 
 export const GetCustomCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     zoneId: Schema.String,
     bundleMethod: Schema.optional(
@@ -218,7 +218,7 @@ export const getCustomCertificate: API.OperationMethod<
   GetCustomCertificateResponse,
   GetCustomCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCustomCertificateRequest,
   output: GetCustomCertificateResponse,
   errors: [],
@@ -242,7 +242,7 @@ export interface ListCustomCertificatesRequest {
 }
 
 export const ListCustomCertificatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
     perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
@@ -312,7 +312,7 @@ export interface ListCustomCertificatesResponse {
 }
 
 export const ListCustomCertificatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     result: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -469,7 +469,7 @@ export const listCustomCertificates: API.PaginatedOperationMethod<
   ListCustomCertificatesResponse,
   ListCustomCertificatesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomCertificatesRequest,
   output: ListCustomCertificatesResponse,
   errors: [],
@@ -506,7 +506,7 @@ export interface CreateCustomCertificateRequest {
 }
 
 export const CreateCustomCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     certificate: Schema.String,
     bundleMethod: Schema.optional(
@@ -603,7 +603,7 @@ export interface CreateCustomCertificateResponse {
 }
 
 export const CreateCustomCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     zoneId: Schema.String,
     bundleMethod: Schema.optional(
@@ -736,7 +736,7 @@ export const createCustomCertificate: API.OperationMethod<
   CreateCustomCertificateResponse,
   CreateCustomCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCustomCertificateRequest,
   output: CreateCustomCertificateResponse,
   errors: [],
@@ -765,7 +765,7 @@ export interface PatchCustomCertificateRequest {
 }
 
 export const PatchCustomCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customCertificateId: Schema.String.pipe(T.HttpPath("customCertificateId")),
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     bundleMethod: Schema.optional(
@@ -859,7 +859,7 @@ export interface PatchCustomCertificateResponse {
 }
 
 export const PatchCustomCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     zoneId: Schema.String,
     bundleMethod: Schema.optional(
@@ -992,7 +992,7 @@ export const patchCustomCertificate: API.OperationMethod<
   PatchCustomCertificateResponse,
   PatchCustomCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchCustomCertificateRequest,
   output: PatchCustomCertificateResponse,
   errors: [],
@@ -1005,7 +1005,7 @@ export interface DeleteCustomCertificateRequest {
 }
 
 export const DeleteCustomCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customCertificateId: Schema.String.pipe(T.HttpPath("customCertificateId")),
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   }).pipe(
@@ -1021,7 +1021,7 @@ export interface DeleteCustomCertificateResponse {
 }
 
 export const DeleteCustomCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }).pipe(
     T.ResponsePath("result"),
@@ -1034,7 +1034,7 @@ export const deleteCustomCertificate: API.OperationMethod<
   DeleteCustomCertificateResponse,
   DeleteCustomCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCustomCertificateRequest,
   output: DeleteCustomCertificateResponse,
   errors: [],
@@ -1051,7 +1051,7 @@ export interface PutPrioritizeRequest {
   certificates: { id?: string; priority?: number }[];
 }
 
-export const PutPrioritizeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PutPrioritizeRequest = /*@__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   certificates: Schema.Array(
     Schema.Struct({
@@ -1106,7 +1106,7 @@ export interface PutPrioritizeResponse {
   }[];
 }
 
-export const PutPrioritizeResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PutPrioritizeResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       id: Schema.String,
@@ -1239,7 +1239,7 @@ export const putPrioritize: API.PaginatedOperationMethod<
   PutPrioritizeResponse,
   PutPrioritizeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: PutPrioritizeRequest,
   output: PutPrioritizeResponse,
   errors: [],

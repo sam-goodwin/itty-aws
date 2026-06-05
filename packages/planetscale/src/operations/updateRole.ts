@@ -1,11 +1,11 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
-import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 import { SensitiveOutputNullableString } from "../sensitive.ts";
+import * as T from "../traits.ts";
 
 // Input Schema
-export const UpdateRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateRoleInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -22,7 +22,7 @@ export const UpdateRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateRoleInput = typeof UpdateRoleInput.Type;
 
 // Output Schema
-export const UpdateRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateRoleOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   access_host_url: Schema.String,
@@ -90,7 +90,7 @@ export type UpdateRoleOutput = typeof UpdateRoleOutput.Type;
  * @param require_where_on_delete - Require WHERE clause on DELETE statements
  * @param require_where_on_update - Require WHERE clause on UPDATE statements
  */
-export const updateRole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateRole = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateRoleInput,
   outputSchema: UpdateRoleOutput,
   errors: [Forbidden, NotFound] as const,

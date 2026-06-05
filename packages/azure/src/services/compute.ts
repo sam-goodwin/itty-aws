@@ -6,12 +6,12 @@
  */
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
-import * as T from "../traits.ts";
 import { SensitiveString } from "../sensitive.ts";
+import * as T from "../traits.ts";
 
 // Input Schema
 export const AvailabilitySetsCancelMigrationToVirtualMachineScaleSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     availabilitySetName: Schema.String.pipe(T.PathParam()),
@@ -27,7 +27,7 @@ export type AvailabilitySetsCancelMigrationToVirtualMachineScaleSetInput =
 
 // Output Schema
 export const AvailabilitySetsCancelMigrationToVirtualMachineScaleSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type AvailabilitySetsCancelMigrationToVirtualMachineScaleSetOutput =
   typeof AvailabilitySetsCancelMigrationToVirtualMachineScaleSetOutput.Type;
 
@@ -41,13 +41,13 @@ export type AvailabilitySetsCancelMigrationToVirtualMachineScaleSetOutput =
  * @param availabilitySetName - The name of the availability set.
  */
 export const AvailabilitySetsCancelMigrationToVirtualMachineScaleSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AvailabilitySetsCancelMigrationToVirtualMachineScaleSetInput,
     outputSchema: AvailabilitySetsCancelMigrationToVirtualMachineScaleSetOutput,
   }));
 // Input Schema
 export const AvailabilitySetsConvertToVirtualMachineScaleSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     availabilitySetName: Schema.String.pipe(T.PathParam()),
@@ -63,7 +63,7 @@ export type AvailabilitySetsConvertToVirtualMachineScaleSetInput =
 
 // Output Schema
 export const AvailabilitySetsConvertToVirtualMachineScaleSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type AvailabilitySetsConvertToVirtualMachineScaleSetOutput =
   typeof AvailabilitySetsConvertToVirtualMachineScaleSetOutput.Type;
 
@@ -77,13 +77,13 @@ export type AvailabilitySetsConvertToVirtualMachineScaleSetOutput =
  * @param availabilitySetName - The name of the availability set.
  */
 export const AvailabilitySetsConvertToVirtualMachineScaleSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AvailabilitySetsConvertToVirtualMachineScaleSetInput,
     outputSchema: AvailabilitySetsConvertToVirtualMachineScaleSetOutput,
   }));
 // Input Schema
 export const AvailabilitySetsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     availabilitySetName: Schema.String.pipe(T.PathParam()),
@@ -99,7 +99,7 @@ export type AvailabilitySetsCreateOrUpdateInput =
 
 // Output Schema
 export const AvailabilitySetsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -131,13 +131,13 @@ export type AvailabilitySetsCreateOrUpdateOutput =
  * @param availabilitySetName - The name of the availability set.
  */
 export const AvailabilitySetsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AvailabilitySetsCreateOrUpdateInput,
     outputSchema: AvailabilitySetsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const AvailabilitySetsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     availabilitySetName: Schema.String.pipe(T.PathParam()),
@@ -152,8 +152,7 @@ export type AvailabilitySetsDeleteInput =
   typeof AvailabilitySetsDeleteInput.Type;
 
 // Output Schema
-export const AvailabilitySetsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AvailabilitySetsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type AvailabilitySetsDeleteOutput =
   typeof AvailabilitySetsDeleteOutput.Type;
 
@@ -166,15 +165,13 @@ export type AvailabilitySetsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param availabilitySetName - The name of the availability set.
  */
-export const AvailabilitySetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AvailabilitySetsDeleteInput,
-    outputSchema: AvailabilitySetsDeleteOutput,
-  }),
-);
+export const AvailabilitySetsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AvailabilitySetsDeleteInput,
+  outputSchema: AvailabilitySetsDeleteOutput,
+}));
 // Input Schema
 export const AvailabilitySetsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     availabilitySetName: Schema.String.pipe(T.PathParam()),
@@ -189,7 +186,7 @@ export type AvailabilitySetsGetInput = typeof AvailabilitySetsGetInput.Type;
 
 // Output Schema
 export const AvailabilitySetsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -219,13 +216,13 @@ export type AvailabilitySetsGetOutput = typeof AvailabilitySetsGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param availabilitySetName - The name of the availability set.
  */
-export const AvailabilitySetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AvailabilitySetsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AvailabilitySetsGetInput,
   outputSchema: AvailabilitySetsGetOutput,
 }));
 // Input Schema
 export const AvailabilitySetsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -239,7 +236,7 @@ export type AvailabilitySetsListInput = typeof AvailabilitySetsListInput.Type;
 
 // Output Schema
 export const AvailabilitySetsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -283,15 +280,13 @@ export type AvailabilitySetsListOutput = typeof AvailabilitySetsListOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const AvailabilitySetsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AvailabilitySetsListInput,
-    outputSchema: AvailabilitySetsListOutput,
-  }),
-);
+export const AvailabilitySetsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AvailabilitySetsListInput,
+  outputSchema: AvailabilitySetsListOutput,
+}));
 // Input Schema
 export const AvailabilitySetsListAvailableSizesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     availabilitySetName: Schema.String.pipe(T.PathParam()),
@@ -307,7 +302,7 @@ export type AvailabilitySetsListAvailableSizesInput =
 
 // Output Schema
 export const AvailabilitySetsListAvailableSizesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -335,13 +330,13 @@ export type AvailabilitySetsListAvailableSizesOutput =
  * @param availabilitySetName - The name of the availability set.
  */
 export const AvailabilitySetsListAvailableSizes =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AvailabilitySetsListAvailableSizesInput,
     outputSchema: AvailabilitySetsListAvailableSizesOutput,
   }));
 // Input Schema
 export const AvailabilitySetsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
@@ -356,7 +351,7 @@ export type AvailabilitySetsListBySubscriptionInput =
 
 // Output Schema
 export const AvailabilitySetsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -402,13 +397,13 @@ export type AvailabilitySetsListBySubscriptionOutput =
  * @param $expand - The expand expression to apply to the operation. Allowed values are 'instanceView'.
  */
 export const AvailabilitySetsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AvailabilitySetsListBySubscriptionInput,
     outputSchema: AvailabilitySetsListBySubscriptionOutput,
   }));
 // Input Schema
 export const AvailabilitySetsStartMigrationToVirtualMachineScaleSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     availabilitySetName: Schema.String.pipe(T.PathParam()),
@@ -424,7 +419,7 @@ export type AvailabilitySetsStartMigrationToVirtualMachineScaleSetInput =
 
 // Output Schema
 export const AvailabilitySetsStartMigrationToVirtualMachineScaleSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type AvailabilitySetsStartMigrationToVirtualMachineScaleSetOutput =
   typeof AvailabilitySetsStartMigrationToVirtualMachineScaleSetOutput.Type;
 
@@ -438,13 +433,13 @@ export type AvailabilitySetsStartMigrationToVirtualMachineScaleSetOutput =
  * @param availabilitySetName - The name of the availability set.
  */
 export const AvailabilitySetsStartMigrationToVirtualMachineScaleSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AvailabilitySetsStartMigrationToVirtualMachineScaleSetInput,
     outputSchema: AvailabilitySetsStartMigrationToVirtualMachineScaleSetOutput,
   }));
 // Input Schema
 export const AvailabilitySetsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     availabilitySetName: Schema.String.pipe(T.PathParam()),
@@ -460,7 +455,7 @@ export type AvailabilitySetsUpdateInput =
 
 // Output Schema
 export const AvailabilitySetsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -491,15 +486,13 @@ export type AvailabilitySetsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param availabilitySetName - The name of the availability set.
  */
-export const AvailabilitySetsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AvailabilitySetsUpdateInput,
-    outputSchema: AvailabilitySetsUpdateOutput,
-  }),
-);
+export const AvailabilitySetsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AvailabilitySetsUpdateInput,
+  outputSchema: AvailabilitySetsUpdateOutput,
+}));
 // Input Schema
 export const AvailabilitySetsValidateMigrationToVirtualMachineScaleSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     availabilitySetName: Schema.String.pipe(T.PathParam()),
@@ -515,7 +508,7 @@ export type AvailabilitySetsValidateMigrationToVirtualMachineScaleSetInput =
 
 // Output Schema
 export const AvailabilitySetsValidateMigrationToVirtualMachineScaleSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type AvailabilitySetsValidateMigrationToVirtualMachineScaleSetOutput =
   typeof AvailabilitySetsValidateMigrationToVirtualMachineScaleSetOutput.Type;
 
@@ -529,14 +522,14 @@ export type AvailabilitySetsValidateMigrationToVirtualMachineScaleSetOutput =
  * @param availabilitySetName - The name of the availability set.
  */
 export const AvailabilitySetsValidateMigrationToVirtualMachineScaleSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AvailabilitySetsValidateMigrationToVirtualMachineScaleSetInput,
     outputSchema:
       AvailabilitySetsValidateMigrationToVirtualMachineScaleSetOutput,
   }));
 // Input Schema
 export const CapacityReservationGroupsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     capacityReservationGroupName: Schema.String.pipe(T.PathParam()),
@@ -552,7 +545,7 @@ export type CapacityReservationGroupsCreateOrUpdateInput =
 
 // Output Schema
 export const CapacityReservationGroupsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -584,13 +577,13 @@ export type CapacityReservationGroupsCreateOrUpdateOutput =
  * @param capacityReservationGroupName - The name of the capacity reservation group.
  */
 export const CapacityReservationGroupsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CapacityReservationGroupsCreateOrUpdateInput,
     outputSchema: CapacityReservationGroupsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const CapacityReservationGroupsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     capacityReservationGroupName: Schema.String.pipe(T.PathParam()),
@@ -605,8 +598,7 @@ export type CapacityReservationGroupsDeleteInput =
   typeof CapacityReservationGroupsDeleteInput.Type;
 
 // Output Schema
-export const CapacityReservationGroupsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CapacityReservationGroupsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type CapacityReservationGroupsDeleteOutput =
   typeof CapacityReservationGroupsDeleteOutput.Type;
 
@@ -620,13 +612,13 @@ export type CapacityReservationGroupsDeleteOutput =
  * @param capacityReservationGroupName - The name of the capacity reservation group.
  */
 export const CapacityReservationGroupsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CapacityReservationGroupsDeleteInput,
     outputSchema: CapacityReservationGroupsDeleteOutput,
   }));
 // Input Schema
 export const CapacityReservationGroupsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     capacityReservationGroupName: Schema.String.pipe(T.PathParam()),
@@ -643,7 +635,7 @@ export type CapacityReservationGroupsGetInput =
 
 // Output Schema
 export const CapacityReservationGroupsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -676,13 +668,13 @@ export type CapacityReservationGroupsGetOutput =
  * @param $expand - The expand expression to apply on the operation. 'InstanceView' will retrieve the list of instance views of the capacity reservations under the capacity reservation group which is a snapshot of the runtime properties of a capacity reservation that is managed by the platform and can change outside of control plane operations.
  */
 export const CapacityReservationGroupsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CapacityReservationGroupsGetInput,
     outputSchema: CapacityReservationGroupsGetOutput,
   }));
 // Input Schema
 export const CapacityReservationGroupsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -703,7 +695,7 @@ export type CapacityReservationGroupsListByResourceGroupInput =
 
 // Output Schema
 export const CapacityReservationGroupsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -750,13 +742,13 @@ export type CapacityReservationGroupsListByResourceGroupOutput =
  * @param $expand - The expand expression to apply on the operation. Based on the expand param(s) specified we return Virtual Machine or ScaleSet VM Instance or both resource Ids which are associated to capacity reservation group in the response.
  */
 export const CapacityReservationGroupsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CapacityReservationGroupsListByResourceGroupInput,
     outputSchema: CapacityReservationGroupsListByResourceGroupOutput,
   }));
 // Input Schema
 export const CapacityReservationGroupsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
     $expand: Schema.optional(
@@ -783,7 +775,7 @@ export type CapacityReservationGroupsListBySubscriptionInput =
 
 // Output Schema
 export const CapacityReservationGroupsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -830,13 +822,13 @@ export type CapacityReservationGroupsListBySubscriptionOutput =
  * @param resourceIdsOnly - The query option to fetch Capacity Reservation Group Resource Ids. <br> 'CreatedInSubscription' enables fetching Resource Ids for all capacity reservation group resources created in the subscription. <br> 'SharedWithSubscription' enables fetching Resource Ids for all capacity reservation group resources shared with the subscription. <br> 'All' enables fetching Resource Ids for all capacity reservation group resources shared with the subscription and created in the subscription.
  */
 export const CapacityReservationGroupsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CapacityReservationGroupsListBySubscriptionInput,
     outputSchema: CapacityReservationGroupsListBySubscriptionOutput,
   }));
 // Input Schema
 export const CapacityReservationGroupsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     capacityReservationGroupName: Schema.String.pipe(T.PathParam()),
@@ -852,7 +844,7 @@ export type CapacityReservationGroupsUpdateInput =
 
 // Output Schema
 export const CapacityReservationGroupsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -884,13 +876,13 @@ export type CapacityReservationGroupsUpdateOutput =
  * @param capacityReservationGroupName - The name of the capacity reservation group.
  */
 export const CapacityReservationGroupsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CapacityReservationGroupsUpdateInput,
     outputSchema: CapacityReservationGroupsUpdateOutput,
   }));
 // Input Schema
 export const CapacityReservationsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     capacityReservationGroupName: Schema.String.pipe(T.PathParam()),
@@ -907,7 +899,7 @@ export type CapacityReservationsCreateOrUpdateInput =
 
 // Output Schema
 export const CapacityReservationsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -940,13 +932,13 @@ export type CapacityReservationsCreateOrUpdateOutput =
  * @param capacityReservationName - The name of the capacity reservation.
  */
 export const CapacityReservationsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CapacityReservationsCreateOrUpdateInput,
     outputSchema: CapacityReservationsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const CapacityReservationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     capacityReservationGroupName: Schema.String.pipe(T.PathParam()),
@@ -962,8 +954,7 @@ export type CapacityReservationsDeleteInput =
   typeof CapacityReservationsDeleteInput.Type;
 
 // Output Schema
-export const CapacityReservationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CapacityReservationsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type CapacityReservationsDeleteOutput =
   typeof CapacityReservationsDeleteOutput.Type;
 
@@ -977,15 +968,13 @@ export type CapacityReservationsDeleteOutput =
  * @param capacityReservationGroupName - The name of the capacity reservation group.
  * @param capacityReservationName - The name of the capacity reservation.
  */
-export const CapacityReservationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CapacityReservationsDeleteInput,
-    outputSchema: CapacityReservationsDeleteOutput,
-  }),
-);
+export const CapacityReservationsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CapacityReservationsDeleteInput,
+  outputSchema: CapacityReservationsDeleteOutput,
+}));
 // Input Schema
 export const CapacityReservationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     capacityReservationGroupName: Schema.String.pipe(T.PathParam()),
@@ -1003,7 +992,7 @@ export type CapacityReservationsGetInput =
 
 // Output Schema
 export const CapacityReservationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1036,15 +1025,13 @@ export type CapacityReservationsGetOutput =
  * @param capacityReservationName - The name of the capacity reservation.
  * @param $expand - The expand expression to apply on the operation. 'InstanceView' retrieves a snapshot of the runtime properties of the capacity reservation that is managed by the platform and can change outside of control plane operations.
  */
-export const CapacityReservationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CapacityReservationsGetInput,
-    outputSchema: CapacityReservationsGetOutput,
-  }),
-);
+export const CapacityReservationsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CapacityReservationsGetInput,
+  outputSchema: CapacityReservationsGetOutput,
+}));
 // Input Schema
 export const CapacityReservationsListByCapacityReservationGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     capacityReservationGroupName: Schema.String.pipe(T.PathParam()),
@@ -1066,7 +1053,7 @@ export type CapacityReservationsListByCapacityReservationGroupInput =
 
 // Output Schema
 export const CapacityReservationsListByCapacityReservationGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1114,13 +1101,13 @@ export type CapacityReservationsListByCapacityReservationGroupOutput =
  * @param $expand - The expand expression to apply on the operation. Based on the expand param(s) specified we return Virtual Machine or ScaleSet VM Instance or both resource Ids which are associated to capacity reservation group in the response.
  */
 export const CapacityReservationsListByCapacityReservationGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CapacityReservationsListByCapacityReservationGroupInput,
     outputSchema: CapacityReservationsListByCapacityReservationGroupOutput,
   }));
 // Input Schema
 export const CapacityReservationsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     capacityReservationGroupName: Schema.String.pipe(T.PathParam()),
@@ -1137,7 +1124,7 @@ export type CapacityReservationsUpdateInput =
 
 // Output Schema
 export const CapacityReservationsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1169,15 +1156,13 @@ export type CapacityReservationsUpdateOutput =
  * @param capacityReservationGroupName - The name of the capacity reservation group.
  * @param capacityReservationName - The name of the capacity reservation.
  */
-export const CapacityReservationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CapacityReservationsUpdateInput,
-    outputSchema: CapacityReservationsUpdateOutput,
-  }),
-);
+export const CapacityReservationsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CapacityReservationsUpdateInput,
+  outputSchema: CapacityReservationsUpdateOutput,
+}));
 // Input Schema
 export const ContainerServicesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     containerServiceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1191,7 +1176,7 @@ export type ContainerServicesCreateOrUpdateInput =
 
 // Output Schema
 export const ContainerServicesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1211,13 +1196,13 @@ export type ContainerServicesCreateOrUpdateOutput =
  * @param containerServiceName - The name of the container service in the specified subscription and resource group.
  */
 export const ContainerServicesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ContainerServicesCreateOrUpdateInput,
     outputSchema: ContainerServicesCreateOrUpdateOutput,
   }));
 // Input Schema
 export const ContainerServicesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     containerServiceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1230,8 +1215,7 @@ export type ContainerServicesDeleteInput =
   typeof ContainerServicesDeleteInput.Type;
 
 // Output Schema
-export const ContainerServicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ContainerServicesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ContainerServicesDeleteOutput =
   typeof ContainerServicesDeleteOutput.Type;
 
@@ -1244,15 +1228,13 @@ export type ContainerServicesDeleteOutput =
  * @param resourceGroupName - The name of the resource group.
  * @param containerServiceName - The name of the container service in the specified subscription and resource group.
  */
-export const ContainerServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ContainerServicesDeleteInput,
-    outputSchema: ContainerServicesDeleteOutput,
-  }),
-);
+export const ContainerServicesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ContainerServicesDeleteInput,
+  outputSchema: ContainerServicesDeleteOutput,
+}));
 // Input Schema
 export const ContainerServicesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     containerServiceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1265,7 +1247,7 @@ export type ContainerServicesGetInput = typeof ContainerServicesGetInput.Type;
 
 // Output Schema
 export const ContainerServicesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1283,15 +1265,13 @@ export type ContainerServicesGetOutput = typeof ContainerServicesGetOutput.Type;
  * @param resourceGroupName - The name of the resource group.
  * @param containerServiceName - The name of the container service in the specified subscription and resource group.
  */
-export const ContainerServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ContainerServicesGetInput,
-    outputSchema: ContainerServicesGetOutput,
-  }),
-);
+export const ContainerServicesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ContainerServicesGetInput,
+  outputSchema: ContainerServicesGetOutput,
+}));
 // Input Schema
 export const ContainerServicesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/containerServices",
@@ -1301,7 +1281,7 @@ export type ContainerServicesListInput = typeof ContainerServicesListInput.Type;
 
 // Output Schema
 export const ContainerServicesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1324,15 +1304,13 @@ export type ContainerServicesListOutput =
  *
  * Gets a list of container services in the specified subscription. The operation returns properties of each container service including state, orchestrator, number of masters and agents, and FQDNs of masters and agents.
  */
-export const ContainerServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ContainerServicesListInput,
-    outputSchema: ContainerServicesListOutput,
-  }),
-);
+export const ContainerServicesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ContainerServicesListInput,
+  outputSchema: ContainerServicesListOutput,
+}));
 // Input Schema
 export const ContainerServicesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1345,7 +1323,7 @@ export type ContainerServicesListByResourceGroupInput =
 
 // Output Schema
 export const ContainerServicesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1371,13 +1349,13 @@ export type ContainerServicesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group.
  */
 export const ContainerServicesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ContainerServicesListByResourceGroupInput,
     outputSchema: ContainerServicesListByResourceGroupOutput,
   }));
 // Input Schema
 export const DedicatedHostGroupsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hostGroupName: Schema.String.pipe(T.PathParam()),
@@ -1393,7 +1371,7 @@ export type DedicatedHostGroupsCreateOrUpdateInput =
 
 // Output Schema
 export const DedicatedHostGroupsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1425,13 +1403,13 @@ export type DedicatedHostGroupsCreateOrUpdateOutput =
  * @param hostGroupName - The name of the dedicated host group.
  */
 export const DedicatedHostGroupsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DedicatedHostGroupsCreateOrUpdateInput,
     outputSchema: DedicatedHostGroupsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const DedicatedHostGroupsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hostGroupName: Schema.String.pipe(T.PathParam()),
@@ -1446,8 +1424,7 @@ export type DedicatedHostGroupsDeleteInput =
   typeof DedicatedHostGroupsDeleteInput.Type;
 
 // Output Schema
-export const DedicatedHostGroupsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DedicatedHostGroupsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type DedicatedHostGroupsDeleteOutput =
   typeof DedicatedHostGroupsDeleteOutput.Type;
 
@@ -1460,15 +1437,13 @@ export type DedicatedHostGroupsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param hostGroupName - The name of the dedicated host group.
  */
-export const DedicatedHostGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DedicatedHostGroupsDeleteInput,
-    outputSchema: DedicatedHostGroupsDeleteOutput,
-  }),
-);
+export const DedicatedHostGroupsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DedicatedHostGroupsDeleteInput,
+  outputSchema: DedicatedHostGroupsDeleteOutput,
+}));
 // Input Schema
 export const DedicatedHostGroupsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hostGroupName: Schema.String.pipe(T.PathParam()),
@@ -1487,7 +1462,7 @@ export type DedicatedHostGroupsGetInput =
 
 // Output Schema
 export const DedicatedHostGroupsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1519,15 +1494,13 @@ export type DedicatedHostGroupsGetOutput =
  * @param hostGroupName - The name of the dedicated host group.
  * @param $expand - The expand expression to apply on the operation. 'InstanceView' will retrieve the list of instance views of the dedicated hosts under the dedicated host group. 'UserData' is not supported for dedicated host group.
  */
-export const DedicatedHostGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DedicatedHostGroupsGetInput,
-    outputSchema: DedicatedHostGroupsGetOutput,
-  }),
-);
+export const DedicatedHostGroupsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DedicatedHostGroupsGetInput,
+  outputSchema: DedicatedHostGroupsGetOutput,
+}));
 // Input Schema
 export const DedicatedHostGroupsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1542,7 +1515,7 @@ export type DedicatedHostGroupsListByResourceGroupInput =
 
 // Output Schema
 export const DedicatedHostGroupsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1588,13 +1561,13 @@ export type DedicatedHostGroupsListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const DedicatedHostGroupsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DedicatedHostGroupsListByResourceGroupInput,
     outputSchema: DedicatedHostGroupsListByResourceGroupOutput,
   }));
 // Input Schema
 export const DedicatedHostGroupsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -1608,7 +1581,7 @@ export type DedicatedHostGroupsListBySubscriptionInput =
 
 // Output Schema
 export const DedicatedHostGroupsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1653,13 +1626,13 @@ export type DedicatedHostGroupsListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const DedicatedHostGroupsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DedicatedHostGroupsListBySubscriptionInput,
     outputSchema: DedicatedHostGroupsListBySubscriptionOutput,
   }));
 // Input Schema
 export const DedicatedHostGroupsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hostGroupName: Schema.String.pipe(T.PathParam()),
@@ -1675,7 +1648,7 @@ export type DedicatedHostGroupsUpdateInput =
 
 // Output Schema
 export const DedicatedHostGroupsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1706,15 +1679,13 @@ export type DedicatedHostGroupsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param hostGroupName - The name of the dedicated host group.
  */
-export const DedicatedHostGroupsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DedicatedHostGroupsUpdateInput,
-    outputSchema: DedicatedHostGroupsUpdateOutput,
-  }),
-);
+export const DedicatedHostGroupsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DedicatedHostGroupsUpdateInput,
+  outputSchema: DedicatedHostGroupsUpdateOutput,
+}));
 // Input Schema
 export const DedicatedHostsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hostGroupName: Schema.String.pipe(T.PathParam()),
@@ -1731,7 +1702,7 @@ export type DedicatedHostsCreateOrUpdateInput =
 
 // Output Schema
 export const DedicatedHostsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1764,13 +1735,13 @@ export type DedicatedHostsCreateOrUpdateOutput =
  * @param hostName - The name of the dedicated host.
  */
 export const DedicatedHostsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DedicatedHostsCreateOrUpdateInput,
     outputSchema: DedicatedHostsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const DedicatedHostsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hostGroupName: Schema.String.pipe(T.PathParam()),
@@ -1785,8 +1756,7 @@ export const DedicatedHostsDeleteInput =
 export type DedicatedHostsDeleteInput = typeof DedicatedHostsDeleteInput.Type;
 
 // Output Schema
-export const DedicatedHostsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DedicatedHostsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type DedicatedHostsDeleteOutput = typeof DedicatedHostsDeleteOutput.Type;
 
 // The operation
@@ -1799,25 +1769,21 @@ export type DedicatedHostsDeleteOutput = typeof DedicatedHostsDeleteOutput.Type;
  * @param hostGroupName - The name of the dedicated host group.
  * @param hostName - The name of the dedicated host.
  */
-export const DedicatedHostsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DedicatedHostsDeleteInput,
-    outputSchema: DedicatedHostsDeleteOutput,
-  }),
-);
+export const DedicatedHostsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DedicatedHostsDeleteInput,
+  outputSchema: DedicatedHostsDeleteOutput,
+}));
 // Input Schema
-export const DedicatedHostsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    hostGroupName: Schema.String.pipe(T.PathParam()),
-    hostName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    $expand: Schema.optional(
-      Schema.Literals(["instanceView", "userData", "resiliencyView"]),
-    ),
-  },
-).pipe(
+export const DedicatedHostsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  hostGroupName: Schema.String.pipe(T.PathParam()),
+  hostName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $expand: Schema.optional(
+    Schema.Literals(["instanceView", "userData", "resiliencyView"]),
+  ),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}",
@@ -1827,7 +1793,7 @@ export type DedicatedHostsGetInput = typeof DedicatedHostsGetInput.Type;
 
 // Output Schema
 export const DedicatedHostsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1859,13 +1825,13 @@ export type DedicatedHostsGetOutput = typeof DedicatedHostsGetOutput.Type;
  * @param hostName - The name of the dedicated host.
  * @param $expand - The expand expression to apply on the operation. 'InstanceView' will retrieve the list of instance views of the dedicated host. 'UserData' is not supported for dedicated host.
  */
-export const DedicatedHostsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DedicatedHostsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DedicatedHostsGetInput,
   outputSchema: DedicatedHostsGetOutput,
 }));
 // Input Schema
 export const DedicatedHostsListAvailableSizesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hostGroupName: Schema.String.pipe(T.PathParam()),
@@ -1882,7 +1848,7 @@ export type DedicatedHostsListAvailableSizesInput =
 
 // Output Schema
 export const DedicatedHostsListAvailableSizesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Array(Schema.String)),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1900,13 +1866,13 @@ export type DedicatedHostsListAvailableSizesOutput =
  * @param hostName - The name of the dedicated host.
  */
 export const DedicatedHostsListAvailableSizes =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DedicatedHostsListAvailableSizesInput,
     outputSchema: DedicatedHostsListAvailableSizesOutput,
   }));
 // Input Schema
 export const DedicatedHostsListByHostGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hostGroupName: Schema.String.pipe(T.PathParam()),
@@ -1922,7 +1888,7 @@ export type DedicatedHostsListByHostGroupInput =
 
 // Output Schema
 export const DedicatedHostsListByHostGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1969,13 +1935,13 @@ export type DedicatedHostsListByHostGroupOutput =
  * @param hostGroupName - The name of the dedicated host group.
  */
 export const DedicatedHostsListByHostGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DedicatedHostsListByHostGroupInput,
     outputSchema: DedicatedHostsListByHostGroupOutput,
   }));
 // Input Schema
 export const DedicatedHostsRedeployInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hostGroupName: Schema.String.pipe(T.PathParam()),
@@ -1991,8 +1957,7 @@ export type DedicatedHostsRedeployInput =
   typeof DedicatedHostsRedeployInput.Type;
 
 // Output Schema
-export const DedicatedHostsRedeployOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DedicatedHostsRedeployOutput = /*@__PURE__*/ Schema.Void;
 export type DedicatedHostsRedeployOutput =
   typeof DedicatedHostsRedeployOutput.Type;
 
@@ -2006,15 +1971,13 @@ export type DedicatedHostsRedeployOutput =
  * @param hostGroupName - The name of the dedicated host group.
  * @param hostName - The name of the dedicated host.
  */
-export const DedicatedHostsRedeploy = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DedicatedHostsRedeployInput,
-    outputSchema: DedicatedHostsRedeployOutput,
-  }),
-);
+export const DedicatedHostsRedeploy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DedicatedHostsRedeployInput,
+  outputSchema: DedicatedHostsRedeployOutput,
+}));
 // Input Schema
 export const DedicatedHostsRestartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hostGroupName: Schema.String.pipe(T.PathParam()),
@@ -2029,8 +1992,7 @@ export const DedicatedHostsRestartInput =
 export type DedicatedHostsRestartInput = typeof DedicatedHostsRestartInput.Type;
 
 // Output Schema
-export const DedicatedHostsRestartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DedicatedHostsRestartOutput = /*@__PURE__*/ Schema.Void;
 export type DedicatedHostsRestartOutput =
   typeof DedicatedHostsRestartOutput.Type;
 
@@ -2044,15 +2006,13 @@ export type DedicatedHostsRestartOutput =
  * @param hostGroupName - The name of the dedicated host group.
  * @param hostName - The name of the dedicated host.
  */
-export const DedicatedHostsRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DedicatedHostsRestartInput,
-    outputSchema: DedicatedHostsRestartOutput,
-  }),
-);
+export const DedicatedHostsRestart = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DedicatedHostsRestartInput,
+  outputSchema: DedicatedHostsRestartOutput,
+}));
 // Input Schema
 export const DedicatedHostsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hostGroupName: Schema.String.pipe(T.PathParam()),
@@ -2068,7 +2028,7 @@ export type DedicatedHostsUpdateInput = typeof DedicatedHostsUpdateInput.Type;
 
 // Output Schema
 export const DedicatedHostsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2099,15 +2059,13 @@ export type DedicatedHostsUpdateOutput = typeof DedicatedHostsUpdateOutput.Type;
  * @param hostGroupName - The name of the dedicated host group.
  * @param hostName - The name of the dedicated host.
  */
-export const DedicatedHostsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DedicatedHostsUpdateInput,
-    outputSchema: DedicatedHostsUpdateOutput,
-  }),
-);
+export const DedicatedHostsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DedicatedHostsUpdateInput,
+  outputSchema: DedicatedHostsUpdateOutput,
+}));
 // Input Schema
 export const ImagesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     imageName: Schema.String.pipe(T.PathParam()),
@@ -2122,7 +2080,7 @@ export type ImagesCreateOrUpdateInput = typeof ImagesCreateOrUpdateInput.Type;
 
 // Output Schema
 export const ImagesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2152,14 +2110,12 @@ export type ImagesCreateOrUpdateOutput = typeof ImagesCreateOrUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param imageName - The name of the image.
  */
-export const ImagesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ImagesCreateOrUpdateInput,
-    outputSchema: ImagesCreateOrUpdateOutput,
-  }),
-);
+export const ImagesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ImagesCreateOrUpdateInput,
+  outputSchema: ImagesCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ImagesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ImagesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   imageName: Schema.String.pipe(T.PathParam()),
@@ -2173,7 +2129,7 @@ export const ImagesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ImagesDeleteInput = typeof ImagesDeleteInput.Type;
 
 // Output Schema
-export const ImagesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ImagesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ImagesDeleteOutput = typeof ImagesDeleteOutput.Type;
 
 // The operation
@@ -2185,12 +2141,12 @@ export type ImagesDeleteOutput = typeof ImagesDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param imageName - The name of the image.
  */
-export const ImagesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ImagesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ImagesDeleteInput,
   outputSchema: ImagesDeleteOutput,
 }));
 // Input Schema
-export const ImagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ImagesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   imageName: Schema.String.pipe(T.PathParam()),
@@ -2205,7 +2161,7 @@ export const ImagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ImagesGetInput = typeof ImagesGetInput.Type;
 
 // Output Schema
-export const ImagesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ImagesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2236,12 +2192,12 @@ export type ImagesGetOutput = typeof ImagesGetOutput.Type;
  * @param imageName - The name of the image.
  * @param $expand - The expand expression to apply on the operation.
  */
-export const ImagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ImagesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ImagesGetInput,
   outputSchema: ImagesGetOutput,
 }));
 // Input Schema
-export const ImagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ImagesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -2253,7 +2209,7 @@ export const ImagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ImagesListInput = typeof ImagesListInput.Type;
 
 // Output Schema
-export const ImagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ImagesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -2286,13 +2242,13 @@ export type ImagesListOutput = typeof ImagesListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const ImagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ImagesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ImagesListInput,
   outputSchema: ImagesListOutput,
 }));
 // Input Schema
 export const ImagesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -2307,7 +2263,7 @@ export type ImagesListByResourceGroupInput =
 
 // Output Schema
 export const ImagesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2352,14 +2308,12 @@ export type ImagesListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ImagesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ImagesListByResourceGroupInput,
-    outputSchema: ImagesListByResourceGroupOutput,
-  }),
-);
+export const ImagesListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ImagesListByResourceGroupInput,
+  outputSchema: ImagesListByResourceGroupOutput,
+}));
 // Input Schema
-export const ImagesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ImagesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   imageName: Schema.String.pipe(T.PathParam()),
@@ -2373,7 +2327,7 @@ export const ImagesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ImagesUpdateInput = typeof ImagesUpdateInput.Type;
 
 // Output Schema
-export const ImagesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ImagesUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2403,13 +2357,13 @@ export type ImagesUpdateOutput = typeof ImagesUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param imageName - The name of the image.
  */
-export const ImagesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ImagesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ImagesUpdateInput,
   outputSchema: ImagesUpdateOutput,
 }));
 // Input Schema
 export const LogAnalyticsExportRequestRateByIntervalInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -2424,7 +2378,7 @@ export type LogAnalyticsExportRequestRateByIntervalInput =
 
 // Output Schema
 export const LogAnalyticsExportRequestRateByIntervalOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         output: Schema.optional(Schema.String),
@@ -2443,13 +2397,13 @@ export type LogAnalyticsExportRequestRateByIntervalOutput =
  * @param location - The name of Azure region.
  */
 export const LogAnalyticsExportRequestRateByInterval =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LogAnalyticsExportRequestRateByIntervalInput,
     outputSchema: LogAnalyticsExportRequestRateByIntervalOutput,
   }));
 // Input Schema
 export const LogAnalyticsExportThrottledRequestsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -2464,7 +2418,7 @@ export type LogAnalyticsExportThrottledRequestsInput =
 
 // Output Schema
 export const LogAnalyticsExportThrottledRequestsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         output: Schema.optional(Schema.String),
@@ -2483,12 +2437,12 @@ export type LogAnalyticsExportThrottledRequestsOutput =
  * @param location - The name of Azure region.
  */
 export const LogAnalyticsExportThrottledRequests =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LogAnalyticsExportThrottledRequestsInput,
     outputSchema: LogAnalyticsExportThrottledRequestsOutput,
   }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({ method: "GET", path: "/providers/Microsoft.Compute/operations" }),
@@ -2496,7 +2450,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -2527,13 +2481,13 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
 export const ProximityPlacementGroupsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     proximityPlacementGroupName: Schema.String.pipe(T.PathParam()),
@@ -2549,7 +2503,7 @@ export type ProximityPlacementGroupsCreateOrUpdateInput =
 
 // Output Schema
 export const ProximityPlacementGroupsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2581,13 +2535,13 @@ export type ProximityPlacementGroupsCreateOrUpdateOutput =
  * @param proximityPlacementGroupName - The name of the proximity placement group.
  */
 export const ProximityPlacementGroupsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProximityPlacementGroupsCreateOrUpdateInput,
     outputSchema: ProximityPlacementGroupsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const ProximityPlacementGroupsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     proximityPlacementGroupName: Schema.String.pipe(T.PathParam()),
@@ -2602,8 +2556,7 @@ export type ProximityPlacementGroupsDeleteInput =
   typeof ProximityPlacementGroupsDeleteInput.Type;
 
 // Output Schema
-export const ProximityPlacementGroupsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ProximityPlacementGroupsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ProximityPlacementGroupsDeleteOutput =
   typeof ProximityPlacementGroupsDeleteOutput.Type;
 
@@ -2617,13 +2570,13 @@ export type ProximityPlacementGroupsDeleteOutput =
  * @param proximityPlacementGroupName - The name of the proximity placement group.
  */
 export const ProximityPlacementGroupsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProximityPlacementGroupsDeleteInput,
     outputSchema: ProximityPlacementGroupsDeleteOutput,
   }));
 // Input Schema
 export const ProximityPlacementGroupsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     proximityPlacementGroupName: Schema.String.pipe(T.PathParam()),
@@ -2640,7 +2593,7 @@ export type ProximityPlacementGroupsGetInput =
 
 // Output Schema
 export const ProximityPlacementGroupsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2672,15 +2625,13 @@ export type ProximityPlacementGroupsGetOutput =
  * @param proximityPlacementGroupName - The name of the proximity placement group.
  * @param includeColocationStatus - includeColocationStatus=true enables fetching the colocation status of all the resources in the proximity placement group.
  */
-export const ProximityPlacementGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProximityPlacementGroupsGetInput,
-    outputSchema: ProximityPlacementGroupsGetOutput,
-  }),
-);
+export const ProximityPlacementGroupsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProximityPlacementGroupsGetInput,
+  outputSchema: ProximityPlacementGroupsGetOutput,
+}));
 // Input Schema
 export const ProximityPlacementGroupsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -2695,7 +2646,7 @@ export type ProximityPlacementGroupsListByResourceGroupInput =
 
 // Output Schema
 export const ProximityPlacementGroupsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2741,13 +2692,13 @@ export type ProximityPlacementGroupsListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const ProximityPlacementGroupsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProximityPlacementGroupsListByResourceGroupInput,
     outputSchema: ProximityPlacementGroupsListByResourceGroupOutput,
   }));
 // Input Schema
 export const ProximityPlacementGroupsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -2761,7 +2712,7 @@ export type ProximityPlacementGroupsListBySubscriptionInput =
 
 // Output Schema
 export const ProximityPlacementGroupsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2806,13 +2757,13 @@ export type ProximityPlacementGroupsListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const ProximityPlacementGroupsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProximityPlacementGroupsListBySubscriptionInput,
     outputSchema: ProximityPlacementGroupsListBySubscriptionOutput,
   }));
 // Input Schema
 export const ProximityPlacementGroupsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     proximityPlacementGroupName: Schema.String.pipe(T.PathParam()),
@@ -2828,7 +2779,7 @@ export type ProximityPlacementGroupsUpdateInput =
 
 // Output Schema
 export const ProximityPlacementGroupsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2860,13 +2811,13 @@ export type ProximityPlacementGroupsUpdateOutput =
  * @param proximityPlacementGroupName - The name of the proximity placement group.
  */
 export const ProximityPlacementGroupsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProximityPlacementGroupsUpdateInput,
     outputSchema: ProximityPlacementGroupsUpdateOutput,
   }));
 // Input Schema
 export const RestorePointCollectionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     restorePointCollectionName: Schema.String.pipe(T.PathParam()),
@@ -2882,7 +2833,7 @@ export type RestorePointCollectionsCreateOrUpdateInput =
 
 // Output Schema
 export const RestorePointCollectionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2914,13 +2865,13 @@ export type RestorePointCollectionsCreateOrUpdateOutput =
  * @param restorePointCollectionName - The name of the restore point collection.
  */
 export const RestorePointCollectionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RestorePointCollectionsCreateOrUpdateInput,
     outputSchema: RestorePointCollectionsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const RestorePointCollectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     restorePointCollectionName: Schema.String.pipe(T.PathParam()),
@@ -2935,8 +2886,7 @@ export type RestorePointCollectionsDeleteInput =
   typeof RestorePointCollectionsDeleteInput.Type;
 
 // Output Schema
-export const RestorePointCollectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const RestorePointCollectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type RestorePointCollectionsDeleteOutput =
   typeof RestorePointCollectionsDeleteOutput.Type;
 
@@ -2950,13 +2900,13 @@ export type RestorePointCollectionsDeleteOutput =
  * @param restorePointCollectionName - The name of the restore point collection.
  */
 export const RestorePointCollectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RestorePointCollectionsDeleteInput,
     outputSchema: RestorePointCollectionsDeleteOutput,
   }));
 // Input Schema
 export const RestorePointCollectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     restorePointCollectionName: Schema.String.pipe(T.PathParam()),
@@ -2973,7 +2923,7 @@ export type RestorePointCollectionsGetInput =
 
 // Output Schema
 export const RestorePointCollectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3005,15 +2955,13 @@ export type RestorePointCollectionsGetOutput =
  * @param restorePointCollectionName - The name of the restore point collection.
  * @param $expand - The expand expression to apply on the operation. If expand=restorePoints, server will return all contained restore points in the restorePointCollection.
  */
-export const RestorePointCollectionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RestorePointCollectionsGetInput,
-    outputSchema: RestorePointCollectionsGetOutput,
-  }),
-);
+export const RestorePointCollectionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RestorePointCollectionsGetInput,
+  outputSchema: RestorePointCollectionsGetOutput,
+}));
 // Input Schema
 export const RestorePointCollectionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -3028,7 +2976,7 @@ export type RestorePointCollectionsListInput =
 
 // Output Schema
 export const RestorePointCollectionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3073,15 +3021,13 @@ export type RestorePointCollectionsListOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const RestorePointCollectionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RestorePointCollectionsListInput,
-    outputSchema: RestorePointCollectionsListOutput,
-  }),
-);
+export const RestorePointCollectionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RestorePointCollectionsListInput,
+  outputSchema: RestorePointCollectionsListOutput,
+}));
 // Input Schema
 export const RestorePointCollectionsListAllInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -3095,7 +3041,7 @@ export type RestorePointCollectionsListAllInput =
 
 // Output Schema
 export const RestorePointCollectionsListAllOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3140,13 +3086,13 @@ export type RestorePointCollectionsListAllOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const RestorePointCollectionsListAll =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RestorePointCollectionsListAllInput,
     outputSchema: RestorePointCollectionsListAllOutput,
   }));
 // Input Schema
 export const RestorePointCollectionsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     restorePointCollectionName: Schema.String.pipe(T.PathParam()),
@@ -3162,7 +3108,7 @@ export type RestorePointCollectionsUpdateInput =
 
 // Output Schema
 export const RestorePointCollectionsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3194,13 +3140,13 @@ export type RestorePointCollectionsUpdateOutput =
  * @param restorePointCollectionName - The name of the restore point collection.
  */
 export const RestorePointCollectionsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RestorePointCollectionsUpdateInput,
     outputSchema: RestorePointCollectionsUpdateOutput,
   }));
 // Input Schema
 export const RestorePointsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     restorePointCollectionName: Schema.String.pipe(T.PathParam()),
@@ -3216,7 +3162,7 @@ export type RestorePointsCreateInput = typeof RestorePointsCreateInput.Type;
 
 // Output Schema
 export const RestorePointsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3247,13 +3193,13 @@ export type RestorePointsCreateOutput = typeof RestorePointsCreateOutput.Type;
  * @param restorePointCollectionName - The name of the restore point collection.
  * @param restorePointName - The name of the restore point.
  */
-export const RestorePointsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RestorePointsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: RestorePointsCreateInput,
   outputSchema: RestorePointsCreateOutput,
 }));
 // Input Schema
 export const RestorePointsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     restorePointCollectionName: Schema.String.pipe(T.PathParam()),
@@ -3268,8 +3214,7 @@ export const RestorePointsDeleteInput =
 export type RestorePointsDeleteInput = typeof RestorePointsDeleteInput.Type;
 
 // Output Schema
-export const RestorePointsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const RestorePointsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type RestorePointsDeleteOutput = typeof RestorePointsDeleteOutput.Type;
 
 // The operation
@@ -3282,12 +3227,12 @@ export type RestorePointsDeleteOutput = typeof RestorePointsDeleteOutput.Type;
  * @param restorePointCollectionName - The name of the restore point collection.
  * @param restorePointName - The name of the restore point.
  */
-export const RestorePointsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RestorePointsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: RestorePointsDeleteInput,
   outputSchema: RestorePointsDeleteOutput,
 }));
 // Input Schema
-export const RestorePointsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RestorePointsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   restorePointCollectionName: Schema.String.pipe(T.PathParam()),
@@ -3303,27 +3248,25 @@ export const RestorePointsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RestorePointsGetInput = typeof RestorePointsGetInput.Type;
 
 // Output Schema
-export const RestorePointsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const RestorePointsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type RestorePointsGetOutput = typeof RestorePointsGetOutput.Type;
 
 // The operation
@@ -3337,13 +3280,13 @@ export type RestorePointsGetOutput = typeof RestorePointsGetOutput.Type;
  * @param restorePointName - The name of the restore point.
  * @param $expand - The expand expression to apply on the operation. 'InstanceView' retrieves information about the run-time state of a restore point.
  */
-export const RestorePointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RestorePointsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RestorePointsGetInput,
   outputSchema: RestorePointsGetOutput,
 }));
 // Input Schema
 export const SpotPlacementScoresGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -3358,7 +3301,7 @@ export type SpotPlacementScoresGetInput =
 
 // Output Schema
 export const SpotPlacementScoresGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3388,15 +3331,13 @@ export type SpotPlacementScoresGetOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param location - The name of the Azure region.
  */
-export const SpotPlacementScoresGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SpotPlacementScoresGetInput,
-    outputSchema: SpotPlacementScoresGetOutput,
-  }),
-);
+export const SpotPlacementScoresGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SpotPlacementScoresGetInput,
+  outputSchema: SpotPlacementScoresGetOutput,
+}));
 // Input Schema
 export const SpotPlacementScoresPostInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -3411,7 +3352,7 @@ export type SpotPlacementScoresPostInput =
 
 // Output Schema
 export const SpotPlacementScoresPostOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     desiredLocations: Schema.optional(Schema.Array(Schema.String)),
     desiredSizes: Schema.optional(
       Schema.Array(
@@ -3445,15 +3386,13 @@ export type SpotPlacementScoresPostOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param location - The name of the Azure region.
  */
-export const SpotPlacementScoresPost = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SpotPlacementScoresPostInput,
-    outputSchema: SpotPlacementScoresPostOutput,
-  }),
-);
+export const SpotPlacementScoresPost = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SpotPlacementScoresPostInput,
+  outputSchema: SpotPlacementScoresPostOutput,
+}));
 // Input Schema
 export const SshPublicKeysCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sshPublicKeyName: Schema.String.pipe(T.PathParam()),
@@ -3468,7 +3407,7 @@ export type SshPublicKeysCreateInput = typeof SshPublicKeysCreateInput.Type;
 
 // Output Schema
 export const SshPublicKeysCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3498,13 +3437,13 @@ export type SshPublicKeysCreateOutput = typeof SshPublicKeysCreateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param sshPublicKeyName - The name of the SSH public key.
  */
-export const SshPublicKeysCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SshPublicKeysCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SshPublicKeysCreateInput,
   outputSchema: SshPublicKeysCreateOutput,
 }));
 // Input Schema
 export const SshPublicKeysDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sshPublicKeyName: Schema.String.pipe(T.PathParam()),
@@ -3518,8 +3457,7 @@ export const SshPublicKeysDeleteInput =
 export type SshPublicKeysDeleteInput = typeof SshPublicKeysDeleteInput.Type;
 
 // Output Schema
-export const SshPublicKeysDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const SshPublicKeysDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type SshPublicKeysDeleteOutput = typeof SshPublicKeysDeleteOutput.Type;
 
 // The operation
@@ -3531,13 +3469,13 @@ export type SshPublicKeysDeleteOutput = typeof SshPublicKeysDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param sshPublicKeyName - The name of the SSH public key.
  */
-export const SshPublicKeysDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SshPublicKeysDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: SshPublicKeysDeleteInput,
   outputSchema: SshPublicKeysDeleteOutput,
 }));
 // Input Schema
 export const SshPublicKeysGenerateKeyPairInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sshPublicKeyName: Schema.String.pipe(T.PathParam()),
@@ -3553,7 +3491,7 @@ export type SshPublicKeysGenerateKeyPairInput =
 
 // Output Schema
 export const SshPublicKeysGenerateKeyPairOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateKey: SensitiveString,
     publicKey: Schema.String,
     id: Schema.String,
@@ -3571,12 +3509,12 @@ export type SshPublicKeysGenerateKeyPairOutput =
  * @param sshPublicKeyName - The name of the SSH public key.
  */
 export const SshPublicKeysGenerateKeyPair =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SshPublicKeysGenerateKeyPairInput,
     outputSchema: SshPublicKeysGenerateKeyPairOutput,
   }));
 // Input Schema
-export const SshPublicKeysGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SshPublicKeysGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   sshPublicKeyName: Schema.String.pipe(T.PathParam()),
@@ -3590,27 +3528,25 @@ export const SshPublicKeysGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SshPublicKeysGetInput = typeof SshPublicKeysGetInput.Type;
 
 // Output Schema
-export const SshPublicKeysGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-);
+export const SshPublicKeysGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type SshPublicKeysGetOutput = typeof SshPublicKeysGetOutput.Type;
 
 // The operation
@@ -3622,13 +3558,13 @@ export type SshPublicKeysGetOutput = typeof SshPublicKeysGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param sshPublicKeyName - The name of the SSH public key.
  */
-export const SshPublicKeysGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SshPublicKeysGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SshPublicKeysGetInput,
   outputSchema: SshPublicKeysGetOutput,
 }));
 // Input Schema
 export const SshPublicKeysListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -3643,7 +3579,7 @@ export type SshPublicKeysListByResourceGroupInput =
 
 // Output Schema
 export const SshPublicKeysListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3689,13 +3625,13 @@ export type SshPublicKeysListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const SshPublicKeysListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SshPublicKeysListByResourceGroupInput,
     outputSchema: SshPublicKeysListByResourceGroupOutput,
   }));
 // Input Schema
 export const SshPublicKeysListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -3709,7 +3645,7 @@ export type SshPublicKeysListBySubscriptionInput =
 
 // Output Schema
 export const SshPublicKeysListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3754,13 +3690,13 @@ export type SshPublicKeysListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const SshPublicKeysListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SshPublicKeysListBySubscriptionInput,
     outputSchema: SshPublicKeysListBySubscriptionOutput,
   }));
 // Input Schema
 export const SshPublicKeysUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sshPublicKeyName: Schema.String.pipe(T.PathParam()),
@@ -3775,7 +3711,7 @@ export type SshPublicKeysUpdateInput = typeof SshPublicKeysUpdateInput.Type;
 
 // Output Schema
 export const SshPublicKeysUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3805,12 +3741,12 @@ export type SshPublicKeysUpdateOutput = typeof SshPublicKeysUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param sshPublicKeyName - The name of the SSH public key.
  */
-export const SshPublicKeysUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SshPublicKeysUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SshPublicKeysUpdateInput,
   outputSchema: SshPublicKeysUpdateOutput,
 }));
 // Input Schema
-export const UsageListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsageListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -3823,7 +3759,7 @@ export const UsageListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UsageListInput = typeof UsageListInput.Type;
 
 // Output Schema
-export const UsageListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsageListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       unit: Schema.Literals(["Count"]),
@@ -3847,13 +3783,13 @@ export type UsageListOutput = typeof UsageListOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param location - The name of Azure region.
  */
-export const UsageList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UsageList = /*@__PURE__*/ API.make(() => ({
   inputSchema: UsageListInput,
   outputSchema: UsageListOutput,
 }));
 // Input Schema
 export const VirtualMachineExtensionImagesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
@@ -3871,7 +3807,7 @@ export type VirtualMachineExtensionImagesGetInput =
 
 // Output Schema
 export const VirtualMachineExtensionImagesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3902,13 +3838,13 @@ export type VirtualMachineExtensionImagesGetOutput =
  * @param location - The name of Azure region.
  */
 export const VirtualMachineExtensionImagesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineExtensionImagesGetInput,
     outputSchema: VirtualMachineExtensionImagesGetOutput,
   }));
 // Input Schema
 export const VirtualMachineExtensionImagesListTypesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
@@ -3924,7 +3860,7 @@ export type VirtualMachineExtensionImagesListTypesInput =
 
 // Output Schema
 export const VirtualMachineExtensionImagesListTypesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
       name: Schema.optional(Schema.String),
@@ -3957,13 +3893,13 @@ export type VirtualMachineExtensionImagesListTypesOutput =
  * @param location - The name of Azure region.
  */
 export const VirtualMachineExtensionImagesListTypes =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineExtensionImagesListTypesInput,
     outputSchema: VirtualMachineExtensionImagesListTypesOutput,
   }));
 // Input Schema
 export const VirtualMachineExtensionImagesListVersionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
@@ -3983,7 +3919,7 @@ export type VirtualMachineExtensionImagesListVersionsInput =
 
 // Output Schema
 export const VirtualMachineExtensionImagesListVersionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
       name: Schema.optional(Schema.String),
@@ -4017,13 +3953,13 @@ export type VirtualMachineExtensionImagesListVersionsOutput =
  * @param $filter - The filter to apply on the operation.
  */
 export const VirtualMachineExtensionImagesListVersions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineExtensionImagesListVersionsInput,
     outputSchema: VirtualMachineExtensionImagesListVersionsOutput,
   }));
 // Input Schema
 export const VirtualMachineExtensionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -4040,7 +3976,7 @@ export type VirtualMachineExtensionsCreateOrUpdateInput =
 
 // Output Schema
 export const VirtualMachineExtensionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4073,13 +4009,13 @@ export type VirtualMachineExtensionsCreateOrUpdateOutput =
  * @param vmExtensionName - The name of the virtual machine extension.
  */
 export const VirtualMachineExtensionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineExtensionsCreateOrUpdateInput,
     outputSchema: VirtualMachineExtensionsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const VirtualMachineExtensionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -4095,8 +4031,7 @@ export type VirtualMachineExtensionsDeleteInput =
   typeof VirtualMachineExtensionsDeleteInput.Type;
 
 // Output Schema
-export const VirtualMachineExtensionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualMachineExtensionsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualMachineExtensionsDeleteOutput =
   typeof VirtualMachineExtensionsDeleteOutput.Type;
 
@@ -4111,13 +4046,13 @@ export type VirtualMachineExtensionsDeleteOutput =
  * @param vmExtensionName - The name of the virtual machine extension.
  */
 export const VirtualMachineExtensionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineExtensionsDeleteInput,
     outputSchema: VirtualMachineExtensionsDeleteOutput,
   }));
 // Input Schema
 export const VirtualMachineExtensionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -4135,7 +4070,7 @@ export type VirtualMachineExtensionsGetInput =
 
 // Output Schema
 export const VirtualMachineExtensionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4168,15 +4103,13 @@ export type VirtualMachineExtensionsGetOutput =
  * @param vmExtensionName - The name of the virtual machine extension.
  * @param $expand - The expand expression to apply on the operation.
  */
-export const VirtualMachineExtensionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachineExtensionsGetInput,
-    outputSchema: VirtualMachineExtensionsGetOutput,
-  }),
-);
+export const VirtualMachineExtensionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineExtensionsGetInput,
+  outputSchema: VirtualMachineExtensionsGetOutput,
+}));
 // Input Schema
 export const VirtualMachineExtensionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -4193,7 +4126,7 @@ export type VirtualMachineExtensionsListInput =
 
 // Output Schema
 export const VirtualMachineExtensionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4242,13 +4175,13 @@ export type VirtualMachineExtensionsListOutput =
  * @param $expand - The expand expression to apply on the operation.
  */
 export const VirtualMachineExtensionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineExtensionsListInput,
     outputSchema: VirtualMachineExtensionsListOutput,
   }));
 // Input Schema
 export const VirtualMachineExtensionsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -4265,7 +4198,7 @@ export type VirtualMachineExtensionsUpdateInput =
 
 // Output Schema
 export const VirtualMachineExtensionsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4298,13 +4231,13 @@ export type VirtualMachineExtensionsUpdateOutput =
  * @param vmExtensionName - The name of the virtual machine extension.
  */
 export const VirtualMachineExtensionsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineExtensionsUpdateInput,
     outputSchema: VirtualMachineExtensionsUpdateOutput,
   }));
 // Input Schema
 export const VirtualMachineImagesEdgeZoneGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
     edgeZone: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
@@ -4324,7 +4257,7 @@ export type VirtualMachineImagesEdgeZoneGetInput =
 
 // Output Schema
 export const VirtualMachineImagesEdgeZoneGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
   });
 export type VirtualMachineImagesEdgeZoneGetOutput =
@@ -4344,13 +4277,13 @@ export type VirtualMachineImagesEdgeZoneGetOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const VirtualMachineImagesEdgeZoneGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineImagesEdgeZoneGetInput,
     outputSchema: VirtualMachineImagesEdgeZoneGetOutput,
   }));
 // Input Schema
 export const VirtualMachineImagesEdgeZoneListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     edgeZone: Schema.String.pipe(T.PathParam()),
@@ -4372,7 +4305,7 @@ export type VirtualMachineImagesEdgeZoneListInput =
 
 // Output Schema
 export const VirtualMachineImagesEdgeZoneListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
     }),
@@ -4396,13 +4329,13 @@ export type VirtualMachineImagesEdgeZoneListOutput =
  * @param $orderby - Specifies the order of the results returned. Formatted as an OData query.
  */
 export const VirtualMachineImagesEdgeZoneList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineImagesEdgeZoneListInput,
     outputSchema: VirtualMachineImagesEdgeZoneListOutput,
   }));
 // Input Schema
 export const VirtualMachineImagesEdgeZoneListOffersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     edgeZone: Schema.String.pipe(T.PathParam()),
@@ -4419,7 +4352,7 @@ export type VirtualMachineImagesEdgeZoneListOffersInput =
 
 // Output Schema
 export const VirtualMachineImagesEdgeZoneListOffersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
     }),
@@ -4438,13 +4371,13 @@ export type VirtualMachineImagesEdgeZoneListOffersOutput =
  * @param publisherName - A valid image publisher.
  */
 export const VirtualMachineImagesEdgeZoneListOffers =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineImagesEdgeZoneListOffersInput,
     outputSchema: VirtualMachineImagesEdgeZoneListOffersOutput,
   }));
 // Input Schema
 export const VirtualMachineImagesEdgeZoneListPublishersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     edgeZone: Schema.String.pipe(T.PathParam()),
@@ -4460,7 +4393,7 @@ export type VirtualMachineImagesEdgeZoneListPublishersInput =
 
 // Output Schema
 export const VirtualMachineImagesEdgeZoneListPublishersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
     }),
@@ -4478,13 +4411,13 @@ export type VirtualMachineImagesEdgeZoneListPublishersOutput =
  * @param edgeZone - The name of the edge zone.
  */
 export const VirtualMachineImagesEdgeZoneListPublishers =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineImagesEdgeZoneListPublishersInput,
     outputSchema: VirtualMachineImagesEdgeZoneListPublishersOutput,
   }));
 // Input Schema
 export const VirtualMachineImagesEdgeZoneListSkusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     edgeZone: Schema.String.pipe(T.PathParam()),
@@ -4502,7 +4435,7 @@ export type VirtualMachineImagesEdgeZoneListSkusInput =
 
 // Output Schema
 export const VirtualMachineImagesEdgeZoneListSkusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
     }),
@@ -4522,13 +4455,13 @@ export type VirtualMachineImagesEdgeZoneListSkusOutput =
  * @param offer - A valid image publisher offer.
  */
 export const VirtualMachineImagesEdgeZoneListSkus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineImagesEdgeZoneListSkusInput,
     outputSchema: VirtualMachineImagesEdgeZoneListSkusOutput,
   }));
 // Input Schema
 export const VirtualMachineImagesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     offer: Schema.String.pipe(T.PathParam()),
@@ -4547,7 +4480,7 @@ export type VirtualMachineImagesGetInput =
 
 // Output Schema
 export const VirtualMachineImagesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
   });
 export type VirtualMachineImagesGetOutput =
@@ -4565,15 +4498,13 @@ export type VirtualMachineImagesGetOutput =
  * @param version - A valid image SKU version.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const VirtualMachineImagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachineImagesGetInput,
-    outputSchema: VirtualMachineImagesGetOutput,
-  }),
-);
+export const VirtualMachineImagesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineImagesGetInput,
+  outputSchema: VirtualMachineImagesGetOutput,
+}));
 // Input Schema
 export const VirtualMachineImagesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
@@ -4594,7 +4525,7 @@ export type VirtualMachineImagesListInput =
 
 // Output Schema
 export const VirtualMachineImagesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
     }),
@@ -4614,15 +4545,13 @@ export type VirtualMachineImagesListOutput =
  * @param skus - A valid image SKU.
  * @param $expand - The expand expression to apply on the operation.
  */
-export const VirtualMachineImagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachineImagesListInput,
-    outputSchema: VirtualMachineImagesListOutput,
-  }),
-);
+export const VirtualMachineImagesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineImagesListInput,
+  outputSchema: VirtualMachineImagesListOutput,
+}));
 // Input Schema
 export const VirtualMachineImagesListByEdgeZoneInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     edgeZone: Schema.String.pipe(T.PathParam()),
@@ -4638,7 +4567,7 @@ export type VirtualMachineImagesListByEdgeZoneInput =
 
 // Output Schema
 export const VirtualMachineImagesListByEdgeZoneOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4661,13 +4590,13 @@ export type VirtualMachineImagesListByEdgeZoneOutput =
  * @param edgeZone - The name of the edge zone.
  */
 export const VirtualMachineImagesListByEdgeZone =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineImagesListByEdgeZoneInput,
     outputSchema: VirtualMachineImagesListByEdgeZoneOutput,
   }));
 // Input Schema
 export const VirtualMachineImagesListOffersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
@@ -4683,7 +4612,7 @@ export type VirtualMachineImagesListOffersInput =
 
 // Output Schema
 export const VirtualMachineImagesListOffersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
     }),
@@ -4701,13 +4630,13 @@ export type VirtualMachineImagesListOffersOutput =
  * @param publisherName - A valid image publisher.
  */
 export const VirtualMachineImagesListOffers =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineImagesListOffersInput,
     outputSchema: VirtualMachineImagesListOffersOutput,
   }));
 // Input Schema
 export const VirtualMachineImagesListPublishersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -4722,7 +4651,7 @@ export type VirtualMachineImagesListPublishersInput =
 
 // Output Schema
 export const VirtualMachineImagesListPublishersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
     }),
@@ -4739,13 +4668,13 @@ export type VirtualMachineImagesListPublishersOutput =
  * @param location - The name of Azure region.
  */
 export const VirtualMachineImagesListPublishers =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineImagesListPublishersInput,
     outputSchema: VirtualMachineImagesListPublishersOutput,
   }));
 // Input Schema
 export const VirtualMachineImagesListSkusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
@@ -4762,7 +4691,7 @@ export type VirtualMachineImagesListSkusInput =
 
 // Output Schema
 export const VirtualMachineImagesListSkusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
     }),
@@ -4781,13 +4710,13 @@ export type VirtualMachineImagesListSkusOutput =
  * @param offer - A valid image publisher offer.
  */
 export const VirtualMachineImagesListSkus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineImagesListSkusInput,
     outputSchema: VirtualMachineImagesListSkusOutput,
   }));
 // Input Schema
 export const VirtualMachineRunCommandsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -4804,7 +4733,7 @@ export type VirtualMachineRunCommandsCreateOrUpdateInput =
 
 // Output Schema
 export const VirtualMachineRunCommandsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4837,13 +4766,13 @@ export type VirtualMachineRunCommandsCreateOrUpdateOutput =
  * @param runCommandName - The name of the VirtualMachineRunCommand
  */
 export const VirtualMachineRunCommandsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineRunCommandsCreateOrUpdateInput,
     outputSchema: VirtualMachineRunCommandsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const VirtualMachineRunCommandsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -4859,8 +4788,7 @@ export type VirtualMachineRunCommandsDeleteInput =
   typeof VirtualMachineRunCommandsDeleteInput.Type;
 
 // Output Schema
-export const VirtualMachineRunCommandsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualMachineRunCommandsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualMachineRunCommandsDeleteOutput =
   typeof VirtualMachineRunCommandsDeleteOutput.Type;
 
@@ -4875,13 +4803,13 @@ export type VirtualMachineRunCommandsDeleteOutput =
  * @param runCommandName - The name of the VirtualMachineRunCommand
  */
 export const VirtualMachineRunCommandsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineRunCommandsDeleteInput,
     outputSchema: VirtualMachineRunCommandsDeleteOutput,
   }));
 // Input Schema
 export const VirtualMachineRunCommandsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
     commandId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4897,7 +4825,7 @@ export type VirtualMachineRunCommandsGetInput =
 
 // Output Schema
 export const VirtualMachineRunCommandsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     $schema: Schema.String,
     id: Schema.String,
     osType: Schema.Literals(["Windows", "Linux"]),
@@ -4917,13 +4845,13 @@ export type VirtualMachineRunCommandsGetOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const VirtualMachineRunCommandsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineRunCommandsGetInput,
     outputSchema: VirtualMachineRunCommandsGetOutput,
   }));
 // Input Schema
 export const VirtualMachineRunCommandsGetByVirtualMachineInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -4941,7 +4869,7 @@ export type VirtualMachineRunCommandsGetByVirtualMachineInput =
 
 // Output Schema
 export const VirtualMachineRunCommandsGetByVirtualMachineOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4975,13 +4903,13 @@ export type VirtualMachineRunCommandsGetByVirtualMachineOutput =
  * @param $expand - The expand expression to apply on the operation.
  */
 export const VirtualMachineRunCommandsGetByVirtualMachine =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineRunCommandsGetByVirtualMachineInput,
     outputSchema: VirtualMachineRunCommandsGetByVirtualMachineOutput,
   }));
 // Input Schema
 export const VirtualMachineRunCommandsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -4996,7 +4924,7 @@ export type VirtualMachineRunCommandsListInput =
 
 // Output Schema
 export const VirtualMachineRunCommandsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         $schema: Schema.String,
@@ -5020,13 +4948,13 @@ export type VirtualMachineRunCommandsListOutput =
  * @param location - The name of Azure region.
  */
 export const VirtualMachineRunCommandsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineRunCommandsListInput,
     outputSchema: VirtualMachineRunCommandsListOutput,
   }));
 // Input Schema
 export const VirtualMachineRunCommandsListByVirtualMachineInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -5043,7 +4971,7 @@ export type VirtualMachineRunCommandsListByVirtualMachineInput =
 
 // Output Schema
 export const VirtualMachineRunCommandsListByVirtualMachineOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5091,13 +5019,13 @@ export type VirtualMachineRunCommandsListByVirtualMachineOutput =
  * @param $expand - The expand expression to apply on the operation.
  */
 export const VirtualMachineRunCommandsListByVirtualMachine =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineRunCommandsListByVirtualMachineInput,
     outputSchema: VirtualMachineRunCommandsListByVirtualMachineOutput,
   }));
 // Input Schema
 export const VirtualMachineRunCommandsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -5114,7 +5042,7 @@ export type VirtualMachineRunCommandsUpdateInput =
 
 // Output Schema
 export const VirtualMachineRunCommandsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5147,13 +5075,13 @@ export type VirtualMachineRunCommandsUpdateOutput =
  * @param runCommandName - The name of the VirtualMachineRunCommand
  */
 export const VirtualMachineRunCommandsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineRunCommandsUpdateInput,
     outputSchema: VirtualMachineRunCommandsUpdateOutput,
   }));
 // Input Schema
 export const VirtualMachinesAssessPatchesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -5169,7 +5097,7 @@ export type VirtualMachinesAssessPatchesInput =
 
 // Output Schema
 export const VirtualMachinesAssessPatchesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(
       Schema.Literals([
         "Unknown",
@@ -5245,13 +5173,13 @@ export type VirtualMachinesAssessPatchesOutput =
  * @param vmName - The name of the virtual machine.
  */
 export const VirtualMachinesAssessPatches =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachinesAssessPatchesInput,
     outputSchema: VirtualMachinesAssessPatchesOutput,
   }));
 // Input Schema
 export const VirtualMachinesAttachDetachDataDisksInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -5267,7 +5195,7 @@ export type VirtualMachinesAttachDetachDataDisksInput =
 
 // Output Schema
 export const VirtualMachinesAttachDetachDataDisksOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     imageReference: Schema.optional(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5397,13 +5325,13 @@ export type VirtualMachinesAttachDetachDataDisksOutput =
  * @param vmName - The name of the virtual machine.
  */
 export const VirtualMachinesAttachDetachDataDisks =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachinesAttachDetachDataDisksInput,
     outputSchema: VirtualMachinesAttachDetachDataDisksOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetExtensionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -5420,7 +5348,7 @@ export type VirtualMachineScaleSetExtensionsCreateOrUpdateInput =
 
 // Output Schema
 export const VirtualMachineScaleSetExtensionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
   });
 export type VirtualMachineScaleSetExtensionsCreateOrUpdateOutput =
@@ -5437,13 +5365,13 @@ export type VirtualMachineScaleSetExtensionsCreateOrUpdateOutput =
  * @param vmssExtensionName - The name of the VM scale set extension.
  */
 export const VirtualMachineScaleSetExtensionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetExtensionsCreateOrUpdateInput,
     outputSchema: VirtualMachineScaleSetExtensionsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetExtensionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -5460,7 +5388,7 @@ export type VirtualMachineScaleSetExtensionsDeleteInput =
 
 // Output Schema
 export const VirtualMachineScaleSetExtensionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type VirtualMachineScaleSetExtensionsDeleteOutput =
   typeof VirtualMachineScaleSetExtensionsDeleteOutput.Type;
 
@@ -5475,13 +5403,13 @@ export type VirtualMachineScaleSetExtensionsDeleteOutput =
  * @param vmssExtensionName - The name of the VM scale set extension.
  */
 export const VirtualMachineScaleSetExtensionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetExtensionsDeleteInput,
     outputSchema: VirtualMachineScaleSetExtensionsDeleteOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetExtensionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -5499,7 +5427,7 @@ export type VirtualMachineScaleSetExtensionsGetInput =
 
 // Output Schema
 export const VirtualMachineScaleSetExtensionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
   });
 export type VirtualMachineScaleSetExtensionsGetOutput =
@@ -5517,13 +5445,13 @@ export type VirtualMachineScaleSetExtensionsGetOutput =
  * @param $expand - The expand expression to apply on the operation.
  */
 export const VirtualMachineScaleSetExtensionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetExtensionsGetInput,
     outputSchema: VirtualMachineScaleSetExtensionsGetOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetExtensionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -5539,7 +5467,7 @@ export type VirtualMachineScaleSetExtensionsListInput =
 
 // Output Schema
 export const VirtualMachineScaleSetExtensionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5560,13 +5488,13 @@ export type VirtualMachineScaleSetExtensionsListOutput =
  * @param vmScaleSetName - The name of the VM scale set.
  */
 export const VirtualMachineScaleSetExtensionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetExtensionsListInput,
     outputSchema: VirtualMachineScaleSetExtensionsListOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetExtensionsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -5583,7 +5511,7 @@ export type VirtualMachineScaleSetExtensionsUpdateInput =
 
 // Output Schema
 export const VirtualMachineScaleSetExtensionsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
   });
 export type VirtualMachineScaleSetExtensionsUpdateOutput =
@@ -5600,13 +5528,13 @@ export type VirtualMachineScaleSetExtensionsUpdateOutput =
  * @param vmssExtensionName - The name of the VM scale set extension.
  */
 export const VirtualMachineScaleSetExtensionsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetExtensionsUpdateInput,
     outputSchema: VirtualMachineScaleSetExtensionsUpdateOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetRollingUpgradesCancelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -5622,7 +5550,7 @@ export type VirtualMachineScaleSetRollingUpgradesCancelInput =
 
 // Output Schema
 export const VirtualMachineScaleSetRollingUpgradesCancelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type VirtualMachineScaleSetRollingUpgradesCancelOutput =
   typeof VirtualMachineScaleSetRollingUpgradesCancelOutput.Type;
 
@@ -5636,13 +5564,13 @@ export type VirtualMachineScaleSetRollingUpgradesCancelOutput =
  * @param vmScaleSetName - The name of the VM scale set.
  */
 export const VirtualMachineScaleSetRollingUpgradesCancel =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetRollingUpgradesCancelInput,
     outputSchema: VirtualMachineScaleSetRollingUpgradesCancelOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetRollingUpgradesGetLatestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -5658,7 +5586,7 @@ export type VirtualMachineScaleSetRollingUpgradesGetLatestInput =
 
 // Output Schema
 export const VirtualMachineScaleSetRollingUpgradesGetLatestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5690,13 +5618,13 @@ export type VirtualMachineScaleSetRollingUpgradesGetLatestOutput =
  * @param vmScaleSetName - The name of the VM scale set.
  */
 export const VirtualMachineScaleSetRollingUpgradesGetLatest =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetRollingUpgradesGetLatestInput,
     outputSchema: VirtualMachineScaleSetRollingUpgradesGetLatestOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetRollingUpgradesStartExtensionUpgradeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -5712,7 +5640,7 @@ export type VirtualMachineScaleSetRollingUpgradesStartExtensionUpgradeInput =
 
 // Output Schema
 export const VirtualMachineScaleSetRollingUpgradesStartExtensionUpgradeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type VirtualMachineScaleSetRollingUpgradesStartExtensionUpgradeOutput =
   typeof VirtualMachineScaleSetRollingUpgradesStartExtensionUpgradeOutput.Type;
 
@@ -5726,7 +5654,7 @@ export type VirtualMachineScaleSetRollingUpgradesStartExtensionUpgradeOutput =
  * @param vmScaleSetName - The name of the VM scale set.
  */
 export const VirtualMachineScaleSetRollingUpgradesStartExtensionUpgrade =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       VirtualMachineScaleSetRollingUpgradesStartExtensionUpgradeInput,
     outputSchema:
@@ -5734,7 +5662,7 @@ export const VirtualMachineScaleSetRollingUpgradesStartExtensionUpgrade =
   }));
 // Input Schema
 export const VirtualMachineScaleSetRollingUpgradesStartOSUpgradeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -5750,7 +5678,7 @@ export type VirtualMachineScaleSetRollingUpgradesStartOSUpgradeInput =
 
 // Output Schema
 export const VirtualMachineScaleSetRollingUpgradesStartOSUpgradeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type VirtualMachineScaleSetRollingUpgradesStartOSUpgradeOutput =
   typeof VirtualMachineScaleSetRollingUpgradesStartOSUpgradeOutput.Type;
 
@@ -5764,13 +5692,13 @@ export type VirtualMachineScaleSetRollingUpgradesStartOSUpgradeOutput =
  * @param vmScaleSetName - The name of the VM scale set.
  */
 export const VirtualMachineScaleSetRollingUpgradesStartOSUpgrade =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetRollingUpgradesStartOSUpgradeInput,
     outputSchema: VirtualMachineScaleSetRollingUpgradesStartOSUpgradeOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetsApproveRollingUpgradeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -5786,7 +5714,7 @@ export type VirtualMachineScaleSetsApproveRollingUpgradeInput =
 
 // Output Schema
 export const VirtualMachineScaleSetsApproveRollingUpgradeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type VirtualMachineScaleSetsApproveRollingUpgradeOutput =
   typeof VirtualMachineScaleSetsApproveRollingUpgradeOutput.Type;
 
@@ -5800,13 +5728,13 @@ export type VirtualMachineScaleSetsApproveRollingUpgradeOutput =
  * @param vmScaleSetName - The name of the VM scale set.
  */
 export const VirtualMachineScaleSetsApproveRollingUpgrade =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetsApproveRollingUpgradeInput,
     outputSchema: VirtualMachineScaleSetsApproveRollingUpgradeOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetsConvertToSinglePlacementGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -5822,7 +5750,7 @@ export type VirtualMachineScaleSetsConvertToSinglePlacementGroupInput =
 
 // Output Schema
 export const VirtualMachineScaleSetsConvertToSinglePlacementGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type VirtualMachineScaleSetsConvertToSinglePlacementGroupOutput =
   typeof VirtualMachineScaleSetsConvertToSinglePlacementGroupOutput.Type;
 
@@ -5836,13 +5764,13 @@ export type VirtualMachineScaleSetsConvertToSinglePlacementGroupOutput =
  * @param vmScaleSetName - The name of the VM scale set.
  */
 export const VirtualMachineScaleSetsConvertToSinglePlacementGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetsConvertToSinglePlacementGroupInput,
     outputSchema: VirtualMachineScaleSetsConvertToSinglePlacementGroupOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -5858,7 +5786,7 @@ export type VirtualMachineScaleSetsCreateOrUpdateInput =
 
 // Output Schema
 export const VirtualMachineScaleSetsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5892,13 +5820,13 @@ export type VirtualMachineScaleSetsCreateOrUpdateOutput =
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing record set. Other values will result in error from server as they are not supported.
  */
 export const VirtualMachineScaleSetsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetsCreateOrUpdateInput,
     outputSchema: VirtualMachineScaleSetsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetsDeallocateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -5915,7 +5843,7 @@ export type VirtualMachineScaleSetsDeallocateInput =
 
 // Output Schema
 export const VirtualMachineScaleSetsDeallocateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type VirtualMachineScaleSetsDeallocateOutput =
   typeof VirtualMachineScaleSetsDeallocateOutput.Type;
 
@@ -5930,13 +5858,13 @@ export type VirtualMachineScaleSetsDeallocateOutput =
  * @param hibernate - Optional parameter to hibernate a virtual machine from the VM scale set. (This feature is available for VMSS with Flexible OrchestrationMode only)
  */
 export const VirtualMachineScaleSetsDeallocate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetsDeallocateInput,
     outputSchema: VirtualMachineScaleSetsDeallocateOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -5952,8 +5880,7 @@ export type VirtualMachineScaleSetsDeleteInput =
   typeof VirtualMachineScaleSetsDeleteInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualMachineScaleSetsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualMachineScaleSetsDeleteOutput =
   typeof VirtualMachineScaleSetsDeleteOutput.Type;
 
@@ -5968,13 +5895,13 @@ export type VirtualMachineScaleSetsDeleteOutput =
  * @param forceDeletion - Optional parameter to force delete a VM scale set. (Feature in Preview)
  */
 export const VirtualMachineScaleSetsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetsDeleteInput,
     outputSchema: VirtualMachineScaleSetsDeleteOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetsDeleteInstancesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -5991,7 +5918,7 @@ export type VirtualMachineScaleSetsDeleteInstancesInput =
 
 // Output Schema
 export const VirtualMachineScaleSetsDeleteInstancesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type VirtualMachineScaleSetsDeleteInstancesOutput =
   typeof VirtualMachineScaleSetsDeleteInstancesOutput.Type;
 
@@ -6006,13 +5933,13 @@ export type VirtualMachineScaleSetsDeleteInstancesOutput =
  * @param forceDeletion - Optional parameter to force delete virtual machines from the VM scale set. (Feature in Preview)
  */
 export const VirtualMachineScaleSetsDeleteInstances =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetsDeleteInstancesInput,
     outputSchema: VirtualMachineScaleSetsDeleteInstancesOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetsForceRecoveryServiceFabricPlatformUpdateDomainWalkInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -6031,7 +5958,7 @@ export type VirtualMachineScaleSetsForceRecoveryServiceFabricPlatformUpdateDomai
 
 // Output Schema
 export const VirtualMachineScaleSetsForceRecoveryServiceFabricPlatformUpdateDomainWalkOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     walkPerformed: Schema.optional(Schema.Boolean),
     nextPlatformUpdateDomain: Schema.optional(Schema.Number),
   });
@@ -6051,7 +5978,7 @@ export type VirtualMachineScaleSetsForceRecoveryServiceFabricPlatformUpdateDomai
  * @param placementGroupId - The placement group id for which the manual recovery walk is requested.
  */
 export const VirtualMachineScaleSetsForceRecoveryServiceFabricPlatformUpdateDomainWalk =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       VirtualMachineScaleSetsForceRecoveryServiceFabricPlatformUpdateDomainWalkInput,
     outputSchema:
@@ -6059,7 +5986,7 @@ export const VirtualMachineScaleSetsForceRecoveryServiceFabricPlatformUpdateDoma
   }));
 // Input Schema
 export const VirtualMachineScaleSetsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -6076,7 +6003,7 @@ export type VirtualMachineScaleSetsGetInput =
 
 // Output Schema
 export const VirtualMachineScaleSetsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6108,15 +6035,13 @@ export type VirtualMachineScaleSetsGetOutput =
  * @param vmScaleSetName - The name of the VM scale set.
  * @param $expand - The expand expression to apply on the operation. 'UserData' retrieves the UserData property of the VM scale set that was provided by the user during the VM scale set Create/Update operation
  */
-export const VirtualMachineScaleSetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachineScaleSetsGetInput,
-    outputSchema: VirtualMachineScaleSetsGetOutput,
-  }),
-);
+export const VirtualMachineScaleSetsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineScaleSetsGetInput,
+  outputSchema: VirtualMachineScaleSetsGetOutput,
+}));
 // Input Schema
 export const VirtualMachineScaleSetsGetInstanceViewInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -6132,7 +6057,7 @@ export type VirtualMachineScaleSetsGetInstanceViewInput =
 
 // Output Schema
 export const VirtualMachineScaleSetsGetInstanceViewOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     virtualMachine: Schema.optional(
       Schema.Struct({
         statusesSummary: Schema.optional(
@@ -6201,13 +6126,13 @@ export type VirtualMachineScaleSetsGetInstanceViewOutput =
  * @param vmScaleSetName - The name of the VM scale set.
  */
 export const VirtualMachineScaleSetsGetInstanceView =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetsGetInstanceViewInput,
     outputSchema: VirtualMachineScaleSetsGetInstanceViewOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetsGetOSUpgradeHistoryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -6223,7 +6148,7 @@ export type VirtualMachineScaleSetsGetOSUpgradeHistoryInput =
 
 // Output Schema
 export const VirtualMachineScaleSetsGetOSUpgradeHistoryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         properties: Schema.optional(
@@ -6331,13 +6256,13 @@ export type VirtualMachineScaleSetsGetOSUpgradeHistoryOutput =
  * @param vmScaleSetName - The name of the VM scale set.
  */
 export const VirtualMachineScaleSetsGetOSUpgradeHistory =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetsGetOSUpgradeHistoryInput,
     outputSchema: VirtualMachineScaleSetsGetOSUpgradeHistoryOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -6352,7 +6277,7 @@ export type VirtualMachineScaleSetsListInput =
 
 // Output Schema
 export const VirtualMachineScaleSetsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6397,15 +6322,13 @@ export type VirtualMachineScaleSetsListOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const VirtualMachineScaleSetsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachineScaleSetsListInput,
-    outputSchema: VirtualMachineScaleSetsListOutput,
-  }),
-);
+export const VirtualMachineScaleSetsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineScaleSetsListInput,
+  outputSchema: VirtualMachineScaleSetsListOutput,
+}));
 // Input Schema
 export const VirtualMachineScaleSetsListAllInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -6419,7 +6342,7 @@ export type VirtualMachineScaleSetsListAllInput =
 
 // Output Schema
 export const VirtualMachineScaleSetsListAllOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6464,13 +6387,13 @@ export type VirtualMachineScaleSetsListAllOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const VirtualMachineScaleSetsListAll =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetsListAllInput,
     outputSchema: VirtualMachineScaleSetsListAllOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetsListByLocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -6485,7 +6408,7 @@ export type VirtualMachineScaleSetsListByLocationInput =
 
 // Output Schema
 export const VirtualMachineScaleSetsListByLocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6531,13 +6454,13 @@ export type VirtualMachineScaleSetsListByLocationOutput =
  * @param location - The name of Azure region.
  */
 export const VirtualMachineScaleSetsListByLocation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetsListByLocationInput,
     outputSchema: VirtualMachineScaleSetsListByLocationOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetsListSkusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -6553,7 +6476,7 @@ export type VirtualMachineScaleSetsListSkusInput =
 
 // Output Schema
 export const VirtualMachineScaleSetsListSkusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         resourceType: Schema.optional(Schema.String),
@@ -6589,13 +6512,13 @@ export type VirtualMachineScaleSetsListSkusOutput =
  * @param vmScaleSetName - The name of the VM scale set.
  */
 export const VirtualMachineScaleSetsListSkus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetsListSkusInput,
     outputSchema: VirtualMachineScaleSetsListSkusOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetsPerformMaintenanceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -6611,7 +6534,7 @@ export type VirtualMachineScaleSetsPerformMaintenanceInput =
 
 // Output Schema
 export const VirtualMachineScaleSetsPerformMaintenanceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type VirtualMachineScaleSetsPerformMaintenanceOutput =
   typeof VirtualMachineScaleSetsPerformMaintenanceOutput.Type;
 
@@ -6625,13 +6548,13 @@ export type VirtualMachineScaleSetsPerformMaintenanceOutput =
  * @param vmScaleSetName - The name of the VM scale set.
  */
 export const VirtualMachineScaleSetsPerformMaintenance =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetsPerformMaintenanceInput,
     outputSchema: VirtualMachineScaleSetsPerformMaintenanceOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetsPowerOffInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -6647,8 +6570,7 @@ export type VirtualMachineScaleSetsPowerOffInput =
   typeof VirtualMachineScaleSetsPowerOffInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetsPowerOffOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualMachineScaleSetsPowerOffOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualMachineScaleSetsPowerOffOutput =
   typeof VirtualMachineScaleSetsPowerOffOutput.Type;
 
@@ -6663,13 +6585,13 @@ export type VirtualMachineScaleSetsPowerOffOutput =
  * @param skipShutdown - The parameter to request non-graceful VM shutdown. True value for this flag indicates non-graceful shutdown whereas false indicates otherwise. Default value for this flag is false if not specified
  */
 export const VirtualMachineScaleSetsPowerOff =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetsPowerOffInput,
     outputSchema: VirtualMachineScaleSetsPowerOffOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetsReapplyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -6684,8 +6606,7 @@ export type VirtualMachineScaleSetsReapplyInput =
   typeof VirtualMachineScaleSetsReapplyInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetsReapplyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualMachineScaleSetsReapplyOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualMachineScaleSetsReapplyOutput =
   typeof VirtualMachineScaleSetsReapplyOutput.Type;
 
@@ -6699,13 +6620,13 @@ export type VirtualMachineScaleSetsReapplyOutput =
  * @param vmScaleSetName - The name of the VM scale set.
  */
 export const VirtualMachineScaleSetsReapply =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetsReapplyInput,
     outputSchema: VirtualMachineScaleSetsReapplyOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetsRedeployInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -6720,8 +6641,7 @@ export type VirtualMachineScaleSetsRedeployInput =
   typeof VirtualMachineScaleSetsRedeployInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetsRedeployOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualMachineScaleSetsRedeployOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualMachineScaleSetsRedeployOutput =
   typeof VirtualMachineScaleSetsRedeployOutput.Type;
 
@@ -6735,13 +6655,13 @@ export type VirtualMachineScaleSetsRedeployOutput =
  * @param vmScaleSetName - The name of the VM scale set.
  */
 export const VirtualMachineScaleSetsRedeploy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetsRedeployInput,
     outputSchema: VirtualMachineScaleSetsRedeployOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetsReimageInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -6756,8 +6676,7 @@ export type VirtualMachineScaleSetsReimageInput =
   typeof VirtualMachineScaleSetsReimageInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetsReimageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualMachineScaleSetsReimageOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualMachineScaleSetsReimageOutput =
   typeof VirtualMachineScaleSetsReimageOutput.Type;
 
@@ -6771,13 +6690,13 @@ export type VirtualMachineScaleSetsReimageOutput =
  * @param vmScaleSetName - The name of the VM scale set.
  */
 export const VirtualMachineScaleSetsReimage =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetsReimageInput,
     outputSchema: VirtualMachineScaleSetsReimageOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetsReimageAllInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -6793,7 +6712,7 @@ export type VirtualMachineScaleSetsReimageAllInput =
 
 // Output Schema
 export const VirtualMachineScaleSetsReimageAllOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type VirtualMachineScaleSetsReimageAllOutput =
   typeof VirtualMachineScaleSetsReimageAllOutput.Type;
 
@@ -6807,13 +6726,13 @@ export type VirtualMachineScaleSetsReimageAllOutput =
  * @param vmScaleSetName - The name of the VM scale set.
  */
 export const VirtualMachineScaleSetsReimageAll =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetsReimageAllInput,
     outputSchema: VirtualMachineScaleSetsReimageAllOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetsRestartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -6828,8 +6747,7 @@ export type VirtualMachineScaleSetsRestartInput =
   typeof VirtualMachineScaleSetsRestartInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetsRestartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualMachineScaleSetsRestartOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualMachineScaleSetsRestartOutput =
   typeof VirtualMachineScaleSetsRestartOutput.Type;
 
@@ -6843,13 +6761,13 @@ export type VirtualMachineScaleSetsRestartOutput =
  * @param vmScaleSetName - The name of the VM scale set.
  */
 export const VirtualMachineScaleSetsRestart =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetsRestartInput,
     outputSchema: VirtualMachineScaleSetsRestartOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetsScaleOutInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -6864,8 +6782,7 @@ export type VirtualMachineScaleSetsScaleOutInput =
   typeof VirtualMachineScaleSetsScaleOutInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetsScaleOutOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualMachineScaleSetsScaleOutOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualMachineScaleSetsScaleOutOutput =
   typeof VirtualMachineScaleSetsScaleOutOutput.Type;
 
@@ -6879,13 +6796,13 @@ export type VirtualMachineScaleSetsScaleOutOutput =
  * @param vmScaleSetName - The name of the VM scale set.
  */
 export const VirtualMachineScaleSetsScaleOut =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetsScaleOutInput,
     outputSchema: VirtualMachineScaleSetsScaleOutOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetsSetOrchestrationServiceStateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -6901,7 +6818,7 @@ export type VirtualMachineScaleSetsSetOrchestrationServiceStateInput =
 
 // Output Schema
 export const VirtualMachineScaleSetsSetOrchestrationServiceStateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type VirtualMachineScaleSetsSetOrchestrationServiceStateOutput =
   typeof VirtualMachineScaleSetsSetOrchestrationServiceStateOutput.Type;
 
@@ -6915,13 +6832,13 @@ export type VirtualMachineScaleSetsSetOrchestrationServiceStateOutput =
  * @param vmScaleSetName - The name of the VM scale set.
  */
 export const VirtualMachineScaleSetsSetOrchestrationServiceState =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetsSetOrchestrationServiceStateInput,
     outputSchema: VirtualMachineScaleSetsSetOrchestrationServiceStateOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetsStartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -6936,8 +6853,7 @@ export type VirtualMachineScaleSetsStartInput =
   typeof VirtualMachineScaleSetsStartInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetsStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualMachineScaleSetsStartOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualMachineScaleSetsStartOutput =
   typeof VirtualMachineScaleSetsStartOutput.Type;
 
@@ -6951,13 +6867,13 @@ export type VirtualMachineScaleSetsStartOutput =
  * @param vmScaleSetName - The name of the VM scale set.
  */
 export const VirtualMachineScaleSetsStart =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetsStartInput,
     outputSchema: VirtualMachineScaleSetsStartOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -6973,7 +6889,7 @@ export type VirtualMachineScaleSetsUpdateInput =
 
 // Output Schema
 export const VirtualMachineScaleSetsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7007,13 +6923,13 @@ export type VirtualMachineScaleSetsUpdateOutput =
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing record set. Other values will result in error from server as they are not supported.
  */
 export const VirtualMachineScaleSetsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetsUpdateInput,
     outputSchema: VirtualMachineScaleSetsUpdateOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetsUpdateInstancesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -7029,7 +6945,7 @@ export type VirtualMachineScaleSetsUpdateInstancesInput =
 
 // Output Schema
 export const VirtualMachineScaleSetsUpdateInstancesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type VirtualMachineScaleSetsUpdateInstancesOutput =
   typeof VirtualMachineScaleSetsUpdateInstancesOutput.Type;
 
@@ -7043,13 +6959,13 @@ export type VirtualMachineScaleSetsUpdateInstancesOutput =
  * @param vmScaleSetName - The name of the VM scale set.
  */
 export const VirtualMachineScaleSetsUpdateInstances =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetsUpdateInstancesInput,
     outputSchema: VirtualMachineScaleSetsUpdateInstancesOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetVMExtensionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -7067,7 +6983,7 @@ export type VirtualMachineScaleSetVMExtensionsCreateOrUpdateInput =
 
 // Output Schema
 export const VirtualMachineScaleSetVMExtensionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
   });
 export type VirtualMachineScaleSetVMExtensionsCreateOrUpdateOutput =
@@ -7085,13 +7001,13 @@ export type VirtualMachineScaleSetVMExtensionsCreateOrUpdateOutput =
  * @param vmExtensionName - The name of the virtual machine extension.
  */
 export const VirtualMachineScaleSetVMExtensionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetVMExtensionsCreateOrUpdateInput,
     outputSchema: VirtualMachineScaleSetVMExtensionsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetVMExtensionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -7109,7 +7025,7 @@ export type VirtualMachineScaleSetVMExtensionsDeleteInput =
 
 // Output Schema
 export const VirtualMachineScaleSetVMExtensionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type VirtualMachineScaleSetVMExtensionsDeleteOutput =
   typeof VirtualMachineScaleSetVMExtensionsDeleteOutput.Type;
 
@@ -7125,13 +7041,13 @@ export type VirtualMachineScaleSetVMExtensionsDeleteOutput =
  * @param vmExtensionName - The name of the virtual machine extension.
  */
 export const VirtualMachineScaleSetVMExtensionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetVMExtensionsDeleteInput,
     outputSchema: VirtualMachineScaleSetVMExtensionsDeleteOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetVMExtensionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -7150,7 +7066,7 @@ export type VirtualMachineScaleSetVMExtensionsGetInput =
 
 // Output Schema
 export const VirtualMachineScaleSetVMExtensionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
   });
 export type VirtualMachineScaleSetVMExtensionsGetOutput =
@@ -7169,13 +7085,13 @@ export type VirtualMachineScaleSetVMExtensionsGetOutput =
  * @param $expand - The expand expression to apply on the operation.
  */
 export const VirtualMachineScaleSetVMExtensionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetVMExtensionsGetInput,
     outputSchema: VirtualMachineScaleSetVMExtensionsGetOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetVMExtensionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -7193,7 +7109,7 @@ export type VirtualMachineScaleSetVMExtensionsListInput =
 
 // Output Schema
 export const VirtualMachineScaleSetVMExtensionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -7217,13 +7133,13 @@ export type VirtualMachineScaleSetVMExtensionsListOutput =
  * @param $expand - The expand expression to apply on the operation.
  */
 export const VirtualMachineScaleSetVMExtensionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetVMExtensionsListInput,
     outputSchema: VirtualMachineScaleSetVMExtensionsListOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetVMExtensionsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -7241,7 +7157,7 @@ export type VirtualMachineScaleSetVMExtensionsUpdateInput =
 
 // Output Schema
 export const VirtualMachineScaleSetVMExtensionsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
   });
 export type VirtualMachineScaleSetVMExtensionsUpdateOutput =
@@ -7259,13 +7175,13 @@ export type VirtualMachineScaleSetVMExtensionsUpdateOutput =
  * @param vmExtensionName - The name of the virtual machine extension.
  */
 export const VirtualMachineScaleSetVMExtensionsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetVMExtensionsUpdateInput,
     outputSchema: VirtualMachineScaleSetVMExtensionsUpdateOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetVMRunCommandsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -7283,7 +7199,7 @@ export type VirtualMachineScaleSetVMRunCommandsCreateOrUpdateInput =
 
 // Output Schema
 export const VirtualMachineScaleSetVMRunCommandsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7317,13 +7233,13 @@ export type VirtualMachineScaleSetVMRunCommandsCreateOrUpdateOutput =
  * @param runCommandName - The name of the VirtualMachineRunCommand
  */
 export const VirtualMachineScaleSetVMRunCommandsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetVMRunCommandsCreateOrUpdateInput,
     outputSchema: VirtualMachineScaleSetVMRunCommandsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetVMRunCommandsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -7341,7 +7257,7 @@ export type VirtualMachineScaleSetVMRunCommandsDeleteInput =
 
 // Output Schema
 export const VirtualMachineScaleSetVMRunCommandsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type VirtualMachineScaleSetVMRunCommandsDeleteOutput =
   typeof VirtualMachineScaleSetVMRunCommandsDeleteOutput.Type;
 
@@ -7357,13 +7273,13 @@ export type VirtualMachineScaleSetVMRunCommandsDeleteOutput =
  * @param runCommandName - The name of the VirtualMachineRunCommand
  */
 export const VirtualMachineScaleSetVMRunCommandsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetVMRunCommandsDeleteInput,
     outputSchema: VirtualMachineScaleSetVMRunCommandsDeleteOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetVMRunCommandsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -7382,7 +7298,7 @@ export type VirtualMachineScaleSetVMRunCommandsGetInput =
 
 // Output Schema
 export const VirtualMachineScaleSetVMRunCommandsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7417,13 +7333,13 @@ export type VirtualMachineScaleSetVMRunCommandsGetOutput =
  * @param $expand - The expand expression to apply on the operation.
  */
 export const VirtualMachineScaleSetVMRunCommandsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetVMRunCommandsGetInput,
     outputSchema: VirtualMachineScaleSetVMRunCommandsGetOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetVMRunCommandsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -7441,7 +7357,7 @@ export type VirtualMachineScaleSetVMRunCommandsListInput =
 
 // Output Schema
 export const VirtualMachineScaleSetVMRunCommandsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7490,13 +7406,13 @@ export type VirtualMachineScaleSetVMRunCommandsListOutput =
  * @param $expand - The expand expression to apply on the operation.
  */
 export const VirtualMachineScaleSetVMRunCommandsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetVMRunCommandsListInput,
     outputSchema: VirtualMachineScaleSetVMRunCommandsListOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetVMRunCommandsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -7514,7 +7430,7 @@ export type VirtualMachineScaleSetVMRunCommandsUpdateInput =
 
 // Output Schema
 export const VirtualMachineScaleSetVMRunCommandsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7548,13 +7464,13 @@ export type VirtualMachineScaleSetVMRunCommandsUpdateOutput =
  * @param runCommandName - The name of the VirtualMachineRunCommand
  */
 export const VirtualMachineScaleSetVMRunCommandsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetVMRunCommandsUpdateInput,
     outputSchema: VirtualMachineScaleSetVMRunCommandsUpdateOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetVMsApproveRollingUpgradeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -7571,7 +7487,7 @@ export type VirtualMachineScaleSetVMsApproveRollingUpgradeInput =
 
 // Output Schema
 export const VirtualMachineScaleSetVMsApproveRollingUpgradeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type VirtualMachineScaleSetVMsApproveRollingUpgradeOutput =
   typeof VirtualMachineScaleSetVMsApproveRollingUpgradeOutput.Type;
 
@@ -7586,13 +7502,13 @@ export type VirtualMachineScaleSetVMsApproveRollingUpgradeOutput =
  * @param instanceId - The instance ID of the virtual machine.
  */
 export const VirtualMachineScaleSetVMsApproveRollingUpgrade =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetVMsApproveRollingUpgradeInput,
     outputSchema: VirtualMachineScaleSetVMsApproveRollingUpgradeOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetVMsAttachDetachDataDisksInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -7609,7 +7525,7 @@ export type VirtualMachineScaleSetVMsAttachDetachDataDisksInput =
 
 // Output Schema
 export const VirtualMachineScaleSetVMsAttachDetachDataDisksOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     imageReference: Schema.optional(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7740,13 +7656,13 @@ export type VirtualMachineScaleSetVMsAttachDetachDataDisksOutput =
  * @param instanceId - The instance ID of the virtual machine.
  */
 export const VirtualMachineScaleSetVMsAttachDetachDataDisks =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetVMsAttachDetachDataDisksInput,
     outputSchema: VirtualMachineScaleSetVMsAttachDetachDataDisksOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetVMsDeallocateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -7763,7 +7679,7 @@ export type VirtualMachineScaleSetVMsDeallocateInput =
 
 // Output Schema
 export const VirtualMachineScaleSetVMsDeallocateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type VirtualMachineScaleSetVMsDeallocateOutput =
   typeof VirtualMachineScaleSetVMsDeallocateOutput.Type;
 
@@ -7778,13 +7694,13 @@ export type VirtualMachineScaleSetVMsDeallocateOutput =
  * @param instanceId - The instance ID of the virtual machine.
  */
 export const VirtualMachineScaleSetVMsDeallocate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetVMsDeallocateInput,
     outputSchema: VirtualMachineScaleSetVMsDeallocateOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetVMsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -7801,8 +7717,7 @@ export type VirtualMachineScaleSetVMsDeleteInput =
   typeof VirtualMachineScaleSetVMsDeleteInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetVMsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualMachineScaleSetVMsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualMachineScaleSetVMsDeleteOutput =
   typeof VirtualMachineScaleSetVMsDeleteOutput.Type;
 
@@ -7818,13 +7733,13 @@ export type VirtualMachineScaleSetVMsDeleteOutput =
  * @param forceDeletion - Optional parameter to force delete a virtual machine from a VM scale set. (Feature in Preview)
  */
 export const VirtualMachineScaleSetVMsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetVMsDeleteInput,
     outputSchema: VirtualMachineScaleSetVMsDeleteOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetVMsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -7844,7 +7759,7 @@ export type VirtualMachineScaleSetVMsGetInput =
 
 // Output Schema
 export const VirtualMachineScaleSetVMsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7878,13 +7793,13 @@ export type VirtualMachineScaleSetVMsGetOutput =
  * @param $expand - The expand expression to apply on the operation. 'InstanceView' will retrieve the instance view of the virtual machine. 'UserData' will retrieve the UserData of the virtual machine.
  */
 export const VirtualMachineScaleSetVMsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetVMsGetInput,
     outputSchema: VirtualMachineScaleSetVMsGetOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetVMsGetInstanceViewInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -7901,7 +7816,7 @@ export type VirtualMachineScaleSetVMsGetInstanceViewInput =
 
 // Output Schema
 export const VirtualMachineScaleSetVMsGetInstanceViewOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     platformUpdateDomain: Schema.optional(Schema.Number),
     platformFaultDomain: Schema.optional(Schema.Number),
     rdpThumbPrint: Schema.optional(Schema.String),
@@ -8102,13 +8017,13 @@ export type VirtualMachineScaleSetVMsGetInstanceViewOutput =
  * @param instanceId - The instance ID of the virtual machine.
  */
 export const VirtualMachineScaleSetVMsGetInstanceView =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetVMsGetInstanceViewInput,
     outputSchema: VirtualMachineScaleSetVMsGetInstanceViewOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetVMsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualMachineScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -8127,7 +8042,7 @@ export type VirtualMachineScaleSetVMsListInput =
 
 // Output Schema
 export const VirtualMachineScaleSetVMsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8177,13 +8092,13 @@ export type VirtualMachineScaleSetVMsListOutput =
  * @param $expand - The expand expression to apply to the operation. Allowed values are 'instanceView'.
  */
 export const VirtualMachineScaleSetVMsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetVMsListInput,
     outputSchema: VirtualMachineScaleSetVMsListOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetVMsPerformMaintenanceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -8200,7 +8115,7 @@ export type VirtualMachineScaleSetVMsPerformMaintenanceInput =
 
 // Output Schema
 export const VirtualMachineScaleSetVMsPerformMaintenanceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type VirtualMachineScaleSetVMsPerformMaintenanceOutput =
   typeof VirtualMachineScaleSetVMsPerformMaintenanceOutput.Type;
 
@@ -8215,13 +8130,13 @@ export type VirtualMachineScaleSetVMsPerformMaintenanceOutput =
  * @param instanceId - The instance ID of the virtual machine.
  */
 export const VirtualMachineScaleSetVMsPerformMaintenance =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetVMsPerformMaintenanceInput,
     outputSchema: VirtualMachineScaleSetVMsPerformMaintenanceOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetVMsPowerOffInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -8239,7 +8154,7 @@ export type VirtualMachineScaleSetVMsPowerOffInput =
 
 // Output Schema
 export const VirtualMachineScaleSetVMsPowerOffOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type VirtualMachineScaleSetVMsPowerOffOutput =
   typeof VirtualMachineScaleSetVMsPowerOffOutput.Type;
 
@@ -8255,13 +8170,13 @@ export type VirtualMachineScaleSetVMsPowerOffOutput =
  * @param skipShutdown - The parameter to request non-graceful VM shutdown. True value for this flag indicates non-graceful shutdown whereas false indicates otherwise. Default value for this flag is false if not specified
  */
 export const VirtualMachineScaleSetVMsPowerOff =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetVMsPowerOffInput,
     outputSchema: VirtualMachineScaleSetVMsPowerOffOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetVMsRedeployInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -8278,7 +8193,7 @@ export type VirtualMachineScaleSetVMsRedeployInput =
 
 // Output Schema
 export const VirtualMachineScaleSetVMsRedeployOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type VirtualMachineScaleSetVMsRedeployOutput =
   typeof VirtualMachineScaleSetVMsRedeployOutput.Type;
 
@@ -8293,13 +8208,13 @@ export type VirtualMachineScaleSetVMsRedeployOutput =
  * @param instanceId - The instance ID of the virtual machine.
  */
 export const VirtualMachineScaleSetVMsRedeploy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetVMsRedeployInput,
     outputSchema: VirtualMachineScaleSetVMsRedeployOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetVMsReimageInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -8315,8 +8230,7 @@ export type VirtualMachineScaleSetVMsReimageInput =
   typeof VirtualMachineScaleSetVMsReimageInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetVMsReimageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualMachineScaleSetVMsReimageOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualMachineScaleSetVMsReimageOutput =
   typeof VirtualMachineScaleSetVMsReimageOutput.Type;
 
@@ -8331,13 +8245,13 @@ export type VirtualMachineScaleSetVMsReimageOutput =
  * @param instanceId - The instance ID of the virtual machine.
  */
 export const VirtualMachineScaleSetVMsReimage =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetVMsReimageInput,
     outputSchema: VirtualMachineScaleSetVMsReimageOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetVMsReimageAllInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -8354,7 +8268,7 @@ export type VirtualMachineScaleSetVMsReimageAllInput =
 
 // Output Schema
 export const VirtualMachineScaleSetVMsReimageAllOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type VirtualMachineScaleSetVMsReimageAllOutput =
   typeof VirtualMachineScaleSetVMsReimageAllOutput.Type;
 
@@ -8369,13 +8283,13 @@ export type VirtualMachineScaleSetVMsReimageAllOutput =
  * @param instanceId - The instance ID of the virtual machine.
  */
 export const VirtualMachineScaleSetVMsReimageAll =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetVMsReimageAllInput,
     outputSchema: VirtualMachineScaleSetVMsReimageAllOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetVMsRestartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -8391,8 +8305,7 @@ export type VirtualMachineScaleSetVMsRestartInput =
   typeof VirtualMachineScaleSetVMsRestartInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetVMsRestartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualMachineScaleSetVMsRestartOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualMachineScaleSetVMsRestartOutput =
   typeof VirtualMachineScaleSetVMsRestartOutput.Type;
 
@@ -8407,13 +8320,13 @@ export type VirtualMachineScaleSetVMsRestartOutput =
  * @param instanceId - The instance ID of the virtual machine.
  */
 export const VirtualMachineScaleSetVMsRestart =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetVMsRestartInput,
     outputSchema: VirtualMachineScaleSetVMsRestartOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetVMsRetrieveBootDiagnosticsDataInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -8431,7 +8344,7 @@ export type VirtualMachineScaleSetVMsRetrieveBootDiagnosticsDataInput =
 
 // Output Schema
 export const VirtualMachineScaleSetVMsRetrieveBootDiagnosticsDataOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     consoleScreenshotBlobUri: Schema.optional(Schema.String),
     serialConsoleLogBlobUri: Schema.optional(Schema.String),
   });
@@ -8450,13 +8363,13 @@ export type VirtualMachineScaleSetVMsRetrieveBootDiagnosticsDataOutput =
  * @param sasUriExpirationTimeInMinutes - Expiration duration in minutes for the SAS URIs with a value between 1 to 1440 minutes. **Note:** If not specified, SAS URIs will be generated with a default expiration duration of 120 minutes.
  */
 export const VirtualMachineScaleSetVMsRetrieveBootDiagnosticsData =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetVMsRetrieveBootDiagnosticsDataInput,
     outputSchema: VirtualMachineScaleSetVMsRetrieveBootDiagnosticsDataOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetVMsRunCommandInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -8473,7 +8386,7 @@ export type VirtualMachineScaleSetVMsRunCommandInput =
 
 // Output Schema
 export const VirtualMachineScaleSetVMsRunCommandOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -8500,13 +8413,13 @@ export type VirtualMachineScaleSetVMsRunCommandOutput =
  * @param instanceId - The instance ID of the virtual machine.
  */
 export const VirtualMachineScaleSetVMsRunCommand =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetVMsRunCommandInput,
     outputSchema: VirtualMachineScaleSetVMsRunCommandOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetVMsSimulateEvictionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -8523,7 +8436,7 @@ export type VirtualMachineScaleSetVMsSimulateEvictionInput =
 
 // Output Schema
 export const VirtualMachineScaleSetVMsSimulateEvictionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type VirtualMachineScaleSetVMsSimulateEvictionOutput =
   typeof VirtualMachineScaleSetVMsSimulateEvictionOutput.Type;
 
@@ -8538,13 +8451,13 @@ export type VirtualMachineScaleSetVMsSimulateEvictionOutput =
  * @param instanceId - The instance ID of the virtual machine.
  */
 export const VirtualMachineScaleSetVMsSimulateEviction =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetVMsSimulateEvictionInput,
     outputSchema: VirtualMachineScaleSetVMsSimulateEvictionOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetVMsStartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -8560,8 +8473,7 @@ export type VirtualMachineScaleSetVMsStartInput =
   typeof VirtualMachineScaleSetVMsStartInput.Type;
 
 // Output Schema
-export const VirtualMachineScaleSetVMsStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualMachineScaleSetVMsStartOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualMachineScaleSetVMsStartOutput =
   typeof VirtualMachineScaleSetVMsStartOutput.Type;
 
@@ -8576,13 +8488,13 @@ export type VirtualMachineScaleSetVMsStartOutput =
  * @param instanceId - The instance ID of the virtual machine.
  */
 export const VirtualMachineScaleSetVMsStart =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetVMsStartInput,
     outputSchema: VirtualMachineScaleSetVMsStartOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetVMsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
@@ -8599,7 +8511,7 @@ export type VirtualMachineScaleSetVMsUpdateInput =
 
 // Output Schema
 export const VirtualMachineScaleSetVMsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8634,13 +8546,13 @@ export type VirtualMachineScaleSetVMsUpdateOutput =
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing record set. Other values will result in error from server as they are not supported.
  */
 export const VirtualMachineScaleSetVMsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetVMsUpdateInput,
     outputSchema: VirtualMachineScaleSetVMsUpdateOutput,
   }));
 // Input Schema
 export const VirtualMachinesCaptureInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -8656,7 +8568,7 @@ export type VirtualMachinesCaptureInput =
 
 // Output Schema
 export const VirtualMachinesCaptureOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
   });
 export type VirtualMachinesCaptureOutput =
@@ -8671,15 +8583,13 @@ export type VirtualMachinesCaptureOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vmName - The name of the virtual machine.
  */
-export const VirtualMachinesCapture = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachinesCaptureInput,
-    outputSchema: VirtualMachinesCaptureOutput,
-  }),
-);
+export const VirtualMachinesCapture = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesCaptureInput,
+  outputSchema: VirtualMachinesCaptureOutput,
+}));
 // Input Schema
 export const VirtualMachinesConvertToManagedDisksInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -8695,7 +8605,7 @@ export type VirtualMachinesConvertToManagedDisksInput =
 
 // Output Schema
 export const VirtualMachinesConvertToManagedDisksOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type VirtualMachinesConvertToManagedDisksOutput =
   typeof VirtualMachinesConvertToManagedDisksOutput.Type;
 
@@ -8709,13 +8619,13 @@ export type VirtualMachinesConvertToManagedDisksOutput =
  * @param vmName - The name of the virtual machine.
  */
 export const VirtualMachinesConvertToManagedDisks =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachinesConvertToManagedDisksInput,
     outputSchema: VirtualMachinesConvertToManagedDisksOutput,
   }));
 // Input Schema
 export const VirtualMachinesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -8731,7 +8641,7 @@ export type VirtualMachinesCreateOrUpdateInput =
 
 // Output Schema
 export const VirtualMachinesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8765,13 +8675,13 @@ export type VirtualMachinesCreateOrUpdateOutput =
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing record set. Other values will result in error from server as they are not supported.
  */
 export const VirtualMachinesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachinesCreateOrUpdateInput,
     outputSchema: VirtualMachinesCreateOrUpdateOutput,
   }));
 // Input Schema
 export const VirtualMachinesDeallocateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -8787,8 +8697,7 @@ export type VirtualMachinesDeallocateInput =
   typeof VirtualMachinesDeallocateInput.Type;
 
 // Output Schema
-export const VirtualMachinesDeallocateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualMachinesDeallocateOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualMachinesDeallocateOutput =
   typeof VirtualMachinesDeallocateOutput.Type;
 
@@ -8802,15 +8711,13 @@ export type VirtualMachinesDeallocateOutput =
  * @param vmName - The name of the virtual machine.
  * @param hibernate - Optional parameter to hibernate a virtual machine.
  */
-export const VirtualMachinesDeallocate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachinesDeallocateInput,
-    outputSchema: VirtualMachinesDeallocateOutput,
-  }),
-);
+export const VirtualMachinesDeallocate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesDeallocateInput,
+  outputSchema: VirtualMachinesDeallocateOutput,
+}));
 // Input Schema
 export const VirtualMachinesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -8825,8 +8732,7 @@ export const VirtualMachinesDeleteInput =
 export type VirtualMachinesDeleteInput = typeof VirtualMachinesDeleteInput.Type;
 
 // Output Schema
-export const VirtualMachinesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualMachinesDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualMachinesDeleteOutput =
   typeof VirtualMachinesDeleteOutput.Type;
 
@@ -8840,15 +8746,13 @@ export type VirtualMachinesDeleteOutput =
  * @param vmName - The name of the virtual machine.
  * @param forceDeletion - Optional parameter to force delete virtual machines.
  */
-export const VirtualMachinesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachinesDeleteInput,
-    outputSchema: VirtualMachinesDeleteOutput,
-  }),
-);
+export const VirtualMachinesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesDeleteInput,
+  outputSchema: VirtualMachinesDeleteOutput,
+}));
 // Input Schema
 export const VirtualMachinesGeneralizeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -8863,8 +8767,7 @@ export type VirtualMachinesGeneralizeInput =
   typeof VirtualMachinesGeneralizeInput.Type;
 
 // Output Schema
-export const VirtualMachinesGeneralizeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualMachinesGeneralizeOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualMachinesGeneralizeOutput =
   typeof VirtualMachinesGeneralizeOutput.Type;
 
@@ -8877,15 +8780,13 @@ export type VirtualMachinesGeneralizeOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vmName - The name of the virtual machine.
  */
-export const VirtualMachinesGeneralize = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachinesGeneralizeInput,
-    outputSchema: VirtualMachinesGeneralizeOutput,
-  }),
-);
+export const VirtualMachinesGeneralize = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesGeneralizeInput,
+  outputSchema: VirtualMachinesGeneralizeOutput,
+}));
 // Input Schema
 export const VirtualMachinesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -8903,7 +8804,7 @@ export type VirtualMachinesGetInput = typeof VirtualMachinesGetInput.Type;
 
 // Output Schema
 export const VirtualMachinesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8934,13 +8835,13 @@ export type VirtualMachinesGetOutput = typeof VirtualMachinesGetOutput.Type;
  * @param vmName - The name of the virtual machine.
  * @param $expand - The expand expression to apply on the operation. 'InstanceView' retrieves a snapshot of the runtime properties of the virtual machine that is managed by the platform and can change outside of control plane operations. 'UserData' retrieves the UserData property as part of the VM model view that was provided by the user during the VM Create/Update operation.
  */
-export const VirtualMachinesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VirtualMachinesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: VirtualMachinesGetInput,
   outputSchema: VirtualMachinesGetOutput,
 }));
 // Input Schema
 export const VirtualMachinesInstallPatchesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -8956,7 +8857,7 @@ export type VirtualMachinesInstallPatchesInput =
 
 // Output Schema
 export const VirtualMachinesInstallPatchesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(
       Schema.Literals([
         "Unknown",
@@ -9041,13 +8942,13 @@ export type VirtualMachinesInstallPatchesOutput =
  * @param vmName - The name of the virtual machine.
  */
 export const VirtualMachinesInstallPatches =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachinesInstallPatchesInput,
     outputSchema: VirtualMachinesInstallPatchesOutput,
   }));
 // Input Schema
 export const VirtualMachinesInstanceViewInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -9063,7 +8964,7 @@ export type VirtualMachinesInstanceViewInput =
 
 // Output Schema
 export const VirtualMachinesInstanceViewOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     platformUpdateDomain: Schema.optional(Schema.Number),
     platformFaultDomain: Schema.optional(Schema.Number),
     computerName: Schema.optional(Schema.String),
@@ -9364,15 +9265,13 @@ export type VirtualMachinesInstanceViewOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vmName - The name of the virtual machine.
  */
-export const VirtualMachinesInstanceView = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachinesInstanceViewInput,
-    outputSchema: VirtualMachinesInstanceViewOutput,
-  }),
-);
+export const VirtualMachinesInstanceView = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesInstanceViewInput,
+  outputSchema: VirtualMachinesInstanceViewOutput,
+}));
 // Input Schema
 export const VirtualMachineSizesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -9387,7 +9286,7 @@ export type VirtualMachineSizesListInput =
 
 // Output Schema
 export const VirtualMachineSizesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -9413,15 +9312,13 @@ export type VirtualMachineSizesListOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param location - The name of Azure region.
  */
-export const VirtualMachineSizesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachineSizesListInput,
-    outputSchema: VirtualMachineSizesListOutput,
-  }),
-);
+export const VirtualMachineSizesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineSizesListInput,
+  outputSchema: VirtualMachineSizesListOutput,
+}));
 // Input Schema
 export const VirtualMachinesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -9437,7 +9334,7 @@ export type VirtualMachinesListInput = typeof VirtualMachinesListInput.Type;
 
 // Output Schema
 export const VirtualMachinesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -9483,13 +9380,13 @@ export type VirtualMachinesListOutput = typeof VirtualMachinesListOutput.Type;
  * @param $filter - The system query option to filter VMs returned in the response. Allowed value is 'virtualMachineScaleSet/id' eq /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}'
  * @param $expand - The expand expression to apply on operation. 'instanceView' enables fetching run time status of all Virtual Machines, this can only be specified if a valid $filter option is specified
  */
-export const VirtualMachinesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VirtualMachinesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: VirtualMachinesListInput,
   outputSchema: VirtualMachinesListOutput,
 }));
 // Input Schema
 export const VirtualMachinesListAllInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
     statusOnly: Schema.optional(Schema.String),
@@ -9506,7 +9403,7 @@ export type VirtualMachinesListAllInput =
 
 // Output Schema
 export const VirtualMachinesListAllOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -9553,15 +9450,13 @@ export type VirtualMachinesListAllOutput =
  * @param $filter - The system query option to filter VMs returned in the response. Allowed value is 'virtualMachineScaleSet/id' eq /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}'
  * @param $expand - The expand expression to apply on operation. 'instanceView' enables fetching run time status of all Virtual Machines, this can only be specified if a valid $filter option is specified
  */
-export const VirtualMachinesListAll = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachinesListAllInput,
-    outputSchema: VirtualMachinesListAllOutput,
-  }),
-);
+export const VirtualMachinesListAll = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesListAllInput,
+  outputSchema: VirtualMachinesListAllOutput,
+}));
 // Input Schema
 export const VirtualMachinesListAvailableSizesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -9577,7 +9472,7 @@ export type VirtualMachinesListAvailableSizesInput =
 
 // Output Schema
 export const VirtualMachinesListAvailableSizesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -9605,13 +9500,13 @@ export type VirtualMachinesListAvailableSizesOutput =
  * @param vmName - The name of the virtual machine.
  */
 export const VirtualMachinesListAvailableSizes =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachinesListAvailableSizesInput,
     outputSchema: VirtualMachinesListAvailableSizesOutput,
   }));
 // Input Schema
 export const VirtualMachinesListByLocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -9626,7 +9521,7 @@ export type VirtualMachinesListByLocationInput =
 
 // Output Schema
 export const VirtualMachinesListByLocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -9672,13 +9567,13 @@ export type VirtualMachinesListByLocationOutput =
  * @param location - The name of Azure region.
  */
 export const VirtualMachinesListByLocation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachinesListByLocationInput,
     outputSchema: VirtualMachinesListByLocationOutput,
   }));
 // Input Schema
 export const VirtualMachinesMigrateToVMScaleSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -9694,7 +9589,7 @@ export type VirtualMachinesMigrateToVMScaleSetInput =
 
 // Output Schema
 export const VirtualMachinesMigrateToVMScaleSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type VirtualMachinesMigrateToVMScaleSetOutput =
   typeof VirtualMachinesMigrateToVMScaleSetOutput.Type;
 
@@ -9708,13 +9603,13 @@ export type VirtualMachinesMigrateToVMScaleSetOutput =
  * @param vmName - The name of the virtual machine.
  */
 export const VirtualMachinesMigrateToVMScaleSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachinesMigrateToVMScaleSetInput,
     outputSchema: VirtualMachinesMigrateToVMScaleSetOutput,
   }));
 // Input Schema
 export const VirtualMachinesPerformMaintenanceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -9730,7 +9625,7 @@ export type VirtualMachinesPerformMaintenanceInput =
 
 // Output Schema
 export const VirtualMachinesPerformMaintenanceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type VirtualMachinesPerformMaintenanceOutput =
   typeof VirtualMachinesPerformMaintenanceOutput.Type;
 
@@ -9744,13 +9639,13 @@ export type VirtualMachinesPerformMaintenanceOutput =
  * @param vmName - The name of the virtual machine.
  */
 export const VirtualMachinesPerformMaintenance =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachinesPerformMaintenanceInput,
     outputSchema: VirtualMachinesPerformMaintenanceOutput,
   }));
 // Input Schema
 export const VirtualMachinesPowerOffInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -9766,8 +9661,7 @@ export type VirtualMachinesPowerOffInput =
   typeof VirtualMachinesPowerOffInput.Type;
 
 // Output Schema
-export const VirtualMachinesPowerOffOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualMachinesPowerOffOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualMachinesPowerOffOutput =
   typeof VirtualMachinesPowerOffOutput.Type;
 
@@ -9781,15 +9675,13 @@ export type VirtualMachinesPowerOffOutput =
  * @param vmName - The name of the virtual machine.
  * @param skipShutdown - The parameter to request non-graceful VM shutdown. True value for this flag indicates non-graceful shutdown whereas false indicates otherwise. Default value for this flag is false if not specified
  */
-export const VirtualMachinesPowerOff = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachinesPowerOffInput,
-    outputSchema: VirtualMachinesPowerOffOutput,
-  }),
-);
+export const VirtualMachinesPowerOff = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesPowerOffInput,
+  outputSchema: VirtualMachinesPowerOffOutput,
+}));
 // Input Schema
 export const VirtualMachinesReapplyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -9804,8 +9696,7 @@ export type VirtualMachinesReapplyInput =
   typeof VirtualMachinesReapplyInput.Type;
 
 // Output Schema
-export const VirtualMachinesReapplyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualMachinesReapplyOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualMachinesReapplyOutput =
   typeof VirtualMachinesReapplyOutput.Type;
 
@@ -9818,15 +9709,13 @@ export type VirtualMachinesReapplyOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vmName - The name of the virtual machine.
  */
-export const VirtualMachinesReapply = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachinesReapplyInput,
-    outputSchema: VirtualMachinesReapplyOutput,
-  }),
-);
+export const VirtualMachinesReapply = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesReapplyInput,
+  outputSchema: VirtualMachinesReapplyOutput,
+}));
 // Input Schema
 export const VirtualMachinesRedeployInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -9841,8 +9730,7 @@ export type VirtualMachinesRedeployInput =
   typeof VirtualMachinesRedeployInput.Type;
 
 // Output Schema
-export const VirtualMachinesRedeployOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualMachinesRedeployOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualMachinesRedeployOutput =
   typeof VirtualMachinesRedeployOutput.Type;
 
@@ -9855,15 +9743,13 @@ export type VirtualMachinesRedeployOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vmName - The name of the virtual machine.
  */
-export const VirtualMachinesRedeploy = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachinesRedeployInput,
-    outputSchema: VirtualMachinesRedeployOutput,
-  }),
-);
+export const VirtualMachinesRedeploy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesRedeployInput,
+  outputSchema: VirtualMachinesRedeployOutput,
+}));
 // Input Schema
 export const VirtualMachinesReimageInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -9878,8 +9764,7 @@ export type VirtualMachinesReimageInput =
   typeof VirtualMachinesReimageInput.Type;
 
 // Output Schema
-export const VirtualMachinesReimageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualMachinesReimageOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualMachinesReimageOutput =
   typeof VirtualMachinesReimageOutput.Type;
 
@@ -9892,15 +9777,13 @@ export type VirtualMachinesReimageOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vmName - The name of the virtual machine.
  */
-export const VirtualMachinesReimage = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachinesReimageInput,
-    outputSchema: VirtualMachinesReimageOutput,
-  }),
-);
+export const VirtualMachinesReimage = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesReimageInput,
+  outputSchema: VirtualMachinesReimageOutput,
+}));
 // Input Schema
 export const VirtualMachinesRestartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -9915,8 +9798,7 @@ export type VirtualMachinesRestartInput =
   typeof VirtualMachinesRestartInput.Type;
 
 // Output Schema
-export const VirtualMachinesRestartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualMachinesRestartOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualMachinesRestartOutput =
   typeof VirtualMachinesRestartOutput.Type;
 
@@ -9929,15 +9811,13 @@ export type VirtualMachinesRestartOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vmName - The name of the virtual machine.
  */
-export const VirtualMachinesRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachinesRestartInput,
-    outputSchema: VirtualMachinesRestartOutput,
-  }),
-);
+export const VirtualMachinesRestart = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesRestartInput,
+  outputSchema: VirtualMachinesRestartOutput,
+}));
 // Input Schema
 export const VirtualMachinesRetrieveBootDiagnosticsDataInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -9954,7 +9834,7 @@ export type VirtualMachinesRetrieveBootDiagnosticsDataInput =
 
 // Output Schema
 export const VirtualMachinesRetrieveBootDiagnosticsDataOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     consoleScreenshotBlobUri: Schema.optional(Schema.String),
     serialConsoleLogBlobUri: Schema.optional(Schema.String),
   });
@@ -9972,13 +9852,13 @@ export type VirtualMachinesRetrieveBootDiagnosticsDataOutput =
  * @param sasUriExpirationTimeInMinutes - Expiration duration in minutes for the SAS URIs with a value between 1 to 1440 minutes. **Note:** If not specified, SAS URIs will be generated with a default expiration duration of 120 minutes.
  */
 export const VirtualMachinesRetrieveBootDiagnosticsData =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachinesRetrieveBootDiagnosticsDataInput,
     outputSchema: VirtualMachinesRetrieveBootDiagnosticsDataOutput,
   }));
 // Input Schema
 export const VirtualMachinesRunCommandInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -9994,7 +9874,7 @@ export type VirtualMachinesRunCommandInput =
 
 // Output Schema
 export const VirtualMachinesRunCommandOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -10019,15 +9899,13 @@ export type VirtualMachinesRunCommandOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vmName - The name of the virtual machine.
  */
-export const VirtualMachinesRunCommand = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachinesRunCommandInput,
-    outputSchema: VirtualMachinesRunCommandOutput,
-  }),
-);
+export const VirtualMachinesRunCommand = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesRunCommandInput,
+  outputSchema: VirtualMachinesRunCommandOutput,
+}));
 // Input Schema
 export const VirtualMachinesSimulateEvictionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -10042,8 +9920,7 @@ export type VirtualMachinesSimulateEvictionInput =
   typeof VirtualMachinesSimulateEvictionInput.Type;
 
 // Output Schema
-export const VirtualMachinesSimulateEvictionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualMachinesSimulateEvictionOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualMachinesSimulateEvictionOutput =
   typeof VirtualMachinesSimulateEvictionOutput.Type;
 
@@ -10057,13 +9934,13 @@ export type VirtualMachinesSimulateEvictionOutput =
  * @param vmName - The name of the virtual machine.
  */
 export const VirtualMachinesSimulateEviction =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachinesSimulateEvictionInput,
     outputSchema: VirtualMachinesSimulateEvictionOutput,
   }));
 // Input Schema
 export const VirtualMachinesStartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -10077,8 +9954,7 @@ export const VirtualMachinesStartInput =
 export type VirtualMachinesStartInput = typeof VirtualMachinesStartInput.Type;
 
 // Output Schema
-export const VirtualMachinesStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const VirtualMachinesStartOutput = /*@__PURE__*/ Schema.Void;
 export type VirtualMachinesStartOutput = typeof VirtualMachinesStartOutput.Type;
 
 // The operation
@@ -10090,15 +9966,13 @@ export type VirtualMachinesStartOutput = typeof VirtualMachinesStartOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vmName - The name of the virtual machine.
  */
-export const VirtualMachinesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachinesStartInput,
-    outputSchema: VirtualMachinesStartOutput,
-  }),
-);
+export const VirtualMachinesStart = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesStartInput,
+  outputSchema: VirtualMachinesStartOutput,
+}));
 // Input Schema
 export const VirtualMachinesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -10113,7 +9987,7 @@ export type VirtualMachinesUpdateInput = typeof VirtualMachinesUpdateInput.Type;
 
 // Output Schema
 export const VirtualMachinesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10146,9 +10020,7 @@ export type VirtualMachinesUpdateOutput =
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing record set. Other values will result in error from server as they are not supported.
  */
-export const VirtualMachinesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachinesUpdateInput,
-    outputSchema: VirtualMachinesUpdateOutput,
-  }),
-);
+export const VirtualMachinesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesUpdateInput,
+  outputSchema: VirtualMachinesUpdateOutput,
+}));

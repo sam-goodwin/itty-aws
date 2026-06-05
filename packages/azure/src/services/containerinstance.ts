@@ -6,12 +6,12 @@
  */
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
-import * as T from "../traits.ts";
 import { SensitiveString } from "../sensitive.ts";
+import * as T from "../traits.ts";
 
 // Input Schema
 export const CGProfileCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     containerGroupProfileName: Schema.String.pipe(T.PathParam()),
@@ -27,7 +27,7 @@ export type CGProfileCreateOrUpdateInput =
 
 // Output Schema
 export const CGProfileCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -60,14 +60,12 @@ export type CGProfileCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param containerGroupProfileName - ContainerGroupProfile name.
  */
-export const CGProfileCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CGProfileCreateOrUpdateInput,
-    outputSchema: CGProfileCreateOrUpdateOutput,
-  }),
-);
+export const CGProfileCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CGProfileCreateOrUpdateInput,
+  outputSchema: CGProfileCreateOrUpdateOutput,
+}));
 // Input Schema
-export const CGProfileDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CGProfileDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   containerGroupProfileName: Schema.String.pipe(T.PathParam()),
@@ -81,7 +79,7 @@ export const CGProfileDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CGProfileDeleteInput = typeof CGProfileDeleteInput.Type;
 
 // Output Schema
-export const CGProfileDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CGProfileDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type CGProfileDeleteOutput = typeof CGProfileDeleteOutput.Type;
 
 // The operation
@@ -95,12 +93,12 @@ export type CGProfileDeleteOutput = typeof CGProfileDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param containerGroupProfileName - ContainerGroupProfile name.
  */
-export const CGProfileDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CGProfileDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: CGProfileDeleteInput,
   outputSchema: CGProfileDeleteOutput,
 }));
 // Input Schema
-export const CGProfileGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CGProfileGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   containerGroupProfileName: Schema.String.pipe(T.PathParam()),
@@ -114,7 +112,7 @@ export const CGProfileGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CGProfileGetInput = typeof CGProfileGetInput.Type;
 
 // Output Schema
-export const CGProfileGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CGProfileGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -146,13 +144,13 @@ export type CGProfileGetOutput = typeof CGProfileGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param containerGroupProfileName - ContainerGroupProfile name.
  */
-export const CGProfileGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CGProfileGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: CGProfileGetInput,
   outputSchema: CGProfileGetOutput,
 }));
 // Input Schema
 export const CGProfileGetByRevisionNumberInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     containerGroupProfileName: Schema.String.pipe(T.PathParam()),
@@ -169,7 +167,7 @@ export type CGProfileGetByRevisionNumberInput =
 
 // Output Schema
 export const CGProfileGetByRevisionNumberOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -204,13 +202,13 @@ export type CGProfileGetByRevisionNumberOutput =
  * @param revisionNumber - The revision number of the container group profile.
  */
 export const CGProfileGetByRevisionNumber =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CGProfileGetByRevisionNumberInput,
     outputSchema: CGProfileGetByRevisionNumberOutput,
   }));
 // Input Schema
 export const CGProfileListAllRevisionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     containerGroupProfileName: Schema.String.pipe(T.PathParam()),
@@ -226,7 +224,7 @@ export type CGProfileListAllRevisionsInput =
 
 // Output Schema
 export const CGProfileListAllRevisionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -274,15 +272,13 @@ export type CGProfileListAllRevisionsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param containerGroupProfileName - ContainerGroupProfile name.
  */
-export const CGProfileListAllRevisions = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CGProfileListAllRevisionsInput,
-    outputSchema: CGProfileListAllRevisionsOutput,
-  }),
-);
+export const CGProfileListAllRevisions = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CGProfileListAllRevisionsInput,
+  outputSchema: CGProfileListAllRevisionsOutput,
+}));
 // Input Schema
 export const CGProfilesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -297,7 +293,7 @@ export type CGProfilesListByResourceGroupInput =
 
 // Output Schema
 export const CGProfilesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -345,13 +341,13 @@ export type CGProfilesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const CGProfilesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CGProfilesListByResourceGroupInput,
     outputSchema: CGProfilesListByResourceGroupOutput,
   }));
 // Input Schema
 export const CGProfilesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -365,7 +361,7 @@ export type CGProfilesListBySubscriptionInput =
 
 // Output Schema
 export const CGProfilesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -412,12 +408,12 @@ export type CGProfilesListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const CGProfilesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CGProfilesListBySubscriptionInput,
     outputSchema: CGProfilesListBySubscriptionOutput,
   }));
 // Input Schema
-export const CGProfileUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CGProfileUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   containerGroupProfileName: Schema.String.pipe(T.PathParam()),
@@ -431,7 +427,7 @@ export const CGProfileUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CGProfileUpdateInput = typeof CGProfileUpdateInput.Type;
 
 // Output Schema
-export const CGProfileUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CGProfileUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -463,13 +459,13 @@ export type CGProfileUpdateOutput = typeof CGProfileUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param containerGroupProfileName - ContainerGroupProfile name.
  */
-export const CGProfileUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CGProfileUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: CGProfileUpdateInput,
   outputSchema: CGProfileUpdateOutput,
 }));
 // Input Schema
 export const ContainerGroupsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     containerGroupName: Schema.String.pipe(T.PathParam()),
@@ -485,7 +481,7 @@ export type ContainerGroupsCreateOrUpdateInput =
 
 // Output Schema
 export const ContainerGroupsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -508,13 +504,13 @@ export type ContainerGroupsCreateOrUpdateOutput =
  * @param containerGroupName - The name of the container group.
  */
 export const ContainerGroupsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ContainerGroupsCreateOrUpdateInput,
     outputSchema: ContainerGroupsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const ContainerGroupsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     containerGroupName: Schema.String.pipe(T.PathParam()),
@@ -529,7 +525,7 @@ export type ContainerGroupsDeleteInput = typeof ContainerGroupsDeleteInput.Type;
 
 // Output Schema
 export const ContainerGroupsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -551,15 +547,13 @@ export type ContainerGroupsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param containerGroupName - The name of the container group.
  */
-export const ContainerGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ContainerGroupsDeleteInput,
-    outputSchema: ContainerGroupsDeleteOutput,
-  }),
-);
+export const ContainerGroupsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ContainerGroupsDeleteInput,
+  outputSchema: ContainerGroupsDeleteOutput,
+}));
 // Input Schema
 export const ContainerGroupsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     containerGroupName: Schema.String.pipe(T.PathParam()),
@@ -574,7 +568,7 @@ export type ContainerGroupsGetInput = typeof ContainerGroupsGetInput.Type;
 
 // Output Schema
 export const ContainerGroupsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -595,13 +589,13 @@ export type ContainerGroupsGetOutput = typeof ContainerGroupsGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param containerGroupName - The name of the container group.
  */
-export const ContainerGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ContainerGroupsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ContainerGroupsGetInput,
   outputSchema: ContainerGroupsGetOutput,
 }));
 // Input Schema
 export const ContainerGroupsGetOutboundNetworkDependenciesEndpointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     containerGroupName: Schema.String.pipe(T.PathParam()),
@@ -617,7 +611,7 @@ export type ContainerGroupsGetOutboundNetworkDependenciesEndpointsInput =
 
 // Output Schema
 export const ContainerGroupsGetOutboundNetworkDependenciesEndpointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(Schema.String);
+  /*@__PURE__*/ Schema.Array(Schema.String);
 export type ContainerGroupsGetOutboundNetworkDependenciesEndpointsOutput =
   typeof ContainerGroupsGetOutboundNetworkDependenciesEndpointsOutput.Type;
 
@@ -633,13 +627,13 @@ export type ContainerGroupsGetOutboundNetworkDependenciesEndpointsOutput =
  * @param containerGroupName - The name of the container group.
  */
 export const ContainerGroupsGetOutboundNetworkDependenciesEndpoints =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ContainerGroupsGetOutboundNetworkDependenciesEndpointsInput,
     outputSchema: ContainerGroupsGetOutboundNetworkDependenciesEndpointsOutput,
   }));
 // Input Schema
 export const ContainerGroupsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -652,7 +646,7 @@ export type ContainerGroupsListInput = typeof ContainerGroupsListInput.Type;
 
 // Output Schema
 export const ContainerGroupsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1163,13 +1157,13 @@ export type ContainerGroupsListOutput = typeof ContainerGroupsListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ContainerGroupsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ContainerGroupsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ContainerGroupsListInput,
   outputSchema: ContainerGroupsListOutput,
 }));
 // Input Schema
 export const ContainerGroupsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1184,7 +1178,7 @@ export type ContainerGroupsListByResourceGroupInput =
 
 // Output Schema
 export const ContainerGroupsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1698,13 +1692,13 @@ export type ContainerGroupsListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const ContainerGroupsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ContainerGroupsListByResourceGroupInput,
     outputSchema: ContainerGroupsListByResourceGroupOutput,
   }));
 // Input Schema
 export const ContainerGroupsRestartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     containerGroupName: Schema.String.pipe(T.PathParam()),
@@ -1719,8 +1713,7 @@ export type ContainerGroupsRestartInput =
   typeof ContainerGroupsRestartInput.Type;
 
 // Output Schema
-export const ContainerGroupsRestartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ContainerGroupsRestartOutput = /*@__PURE__*/ Schema.Void;
 export type ContainerGroupsRestartOutput =
   typeof ContainerGroupsRestartOutput.Type;
 
@@ -1735,15 +1728,13 @@ export type ContainerGroupsRestartOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param containerGroupName - The name of the container group.
  */
-export const ContainerGroupsRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ContainerGroupsRestartInput,
-    outputSchema: ContainerGroupsRestartOutput,
-  }),
-);
+export const ContainerGroupsRestart = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ContainerGroupsRestartInput,
+  outputSchema: ContainerGroupsRestartOutput,
+}));
 // Input Schema
 export const ContainerGroupsStartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     containerGroupName: Schema.String.pipe(T.PathParam()),
@@ -1757,8 +1748,7 @@ export const ContainerGroupsStartInput =
 export type ContainerGroupsStartInput = typeof ContainerGroupsStartInput.Type;
 
 // Output Schema
-export const ContainerGroupsStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ContainerGroupsStartOutput = /*@__PURE__*/ Schema.Void;
 export type ContainerGroupsStartOutput = typeof ContainerGroupsStartOutput.Type;
 
 // The operation
@@ -1772,15 +1762,13 @@ export type ContainerGroupsStartOutput = typeof ContainerGroupsStartOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param containerGroupName - The name of the container group.
  */
-export const ContainerGroupsStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ContainerGroupsStartInput,
-    outputSchema: ContainerGroupsStartOutput,
-  }),
-);
+export const ContainerGroupsStart = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ContainerGroupsStartInput,
+  outputSchema: ContainerGroupsStartOutput,
+}));
 // Input Schema
 export const ContainerGroupsStopInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     containerGroupName: Schema.String.pipe(T.PathParam()),
@@ -1794,8 +1782,7 @@ export const ContainerGroupsStopInput =
 export type ContainerGroupsStopInput = typeof ContainerGroupsStopInput.Type;
 
 // Output Schema
-export const ContainerGroupsStopOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ContainerGroupsStopOutput = /*@__PURE__*/ Schema.Void;
 export type ContainerGroupsStopOutput = typeof ContainerGroupsStopOutput.Type;
 
 // The operation
@@ -1809,13 +1796,13 @@ export type ContainerGroupsStopOutput = typeof ContainerGroupsStopOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param containerGroupName - The name of the container group.
  */
-export const ContainerGroupsStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ContainerGroupsStop = /*@__PURE__*/ API.make(() => ({
   inputSchema: ContainerGroupsStopInput,
   outputSchema: ContainerGroupsStopOutput,
 }));
 // Input Schema
 export const ContainerGroupsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     containerGroupName: Schema.String.pipe(T.PathParam()),
@@ -1830,7 +1817,7 @@ export type ContainerGroupsUpdateInput = typeof ContainerGroupsUpdateInput.Type;
 
 // Output Schema
 export const ContainerGroupsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1852,14 +1839,12 @@ export type ContainerGroupsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param containerGroupName - The name of the container group.
  */
-export const ContainerGroupsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ContainerGroupsUpdateInput,
-    outputSchema: ContainerGroupsUpdateOutput,
-  }),
-);
+export const ContainerGroupsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ContainerGroupsUpdateInput,
+  outputSchema: ContainerGroupsUpdateOutput,
+}));
 // Input Schema
-export const ContainersAttachInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ContainersAttachInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   containerGroupName: Schema.String.pipe(T.PathParam()),
@@ -1874,12 +1859,10 @@ export const ContainersAttachInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ContainersAttachInput = typeof ContainersAttachInput.Type;
 
 // Output Schema
-export const ContainersAttachOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    webSocketUri: Schema.optional(Schema.String),
-    password: Schema.optional(SensitiveString),
-  },
-);
+export const ContainersAttachOutput = /*@__PURE__*/ Schema.Struct({
+  webSocketUri: Schema.optional(Schema.String),
+  password: Schema.optional(SensitiveString),
+});
 export type ContainersAttachOutput = typeof ContainersAttachOutput.Type;
 
 // The operation
@@ -1894,13 +1877,13 @@ export type ContainersAttachOutput = typeof ContainersAttachOutput.Type;
  * @param containerGroupName - The name of the container group.
  * @param containerName - The name of the container instance.
  */
-export const ContainersAttach = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ContainersAttach = /*@__PURE__*/ API.make(() => ({
   inputSchema: ContainersAttachInput,
   outputSchema: ContainersAttachOutput,
 }));
 // Input Schema
 export const ContainersExecuteCommandInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     containerGroupName: Schema.String.pipe(T.PathParam()),
@@ -1917,7 +1900,7 @@ export type ContainersExecuteCommandInput =
 
 // Output Schema
 export const ContainersExecuteCommandOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     webSocketUri: Schema.optional(Schema.String),
     password: Schema.optional(SensitiveString),
   });
@@ -1936,15 +1919,13 @@ export type ContainersExecuteCommandOutput =
  * @param containerGroupName - The name of the container group.
  * @param containerName - The name of the container instance.
  */
-export const ContainersExecuteCommand = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ContainersExecuteCommandInput,
-    outputSchema: ContainersExecuteCommandOutput,
-  }),
-);
+export const ContainersExecuteCommand = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ContainersExecuteCommandInput,
+  outputSchema: ContainersExecuteCommandOutput,
+}));
 // Input Schema
 export const ContainersListLogsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     containerGroupName: Schema.String.pipe(T.PathParam()),
@@ -1962,7 +1943,7 @@ export type ContainersListLogsInput = typeof ContainersListLogsInput.Type;
 
 // Output Schema
 export const ContainersListLogsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.String),
   });
 export type ContainersListLogsOutput = typeof ContainersListLogsOutput.Type;
@@ -1981,13 +1962,13 @@ export type ContainersListLogsOutput = typeof ContainersListLogsOutput.Type;
  * @param tail - The number of lines to show from the tail of the container instance log. If not provided, all available logs are shown up to 4mb.
  * @param timestamps - If true, adds a timestamp at the beginning of every line of log output. If not provided, defaults to false.
  */
-export const ContainersListLogs = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ContainersListLogs = /*@__PURE__*/ API.make(() => ({
   inputSchema: ContainersListLogsInput,
   outputSchema: ContainersListLogsOutput,
 }));
 // Input Schema
 export const LocationListCachedImagesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -2002,7 +1983,7 @@ export type LocationListCachedImagesInput =
 
 // Output Schema
 export const LocationListCachedImagesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2026,15 +2007,13 @@ export type LocationListCachedImagesOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param location - The name of the Azure region.
  */
-export const LocationListCachedImages = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LocationListCachedImagesInput,
-    outputSchema: LocationListCachedImagesOutput,
-  }),
-);
+export const LocationListCachedImages = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LocationListCachedImagesInput,
+  outputSchema: LocationListCachedImagesOutput,
+}));
 // Input Schema
 export const LocationListCapabilitiesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -2049,7 +2028,7 @@ export type LocationListCapabilitiesInput =
 
 // Output Schema
 export const LocationListCapabilitiesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2083,20 +2062,16 @@ export type LocationListCapabilitiesOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param location - The name of the Azure region.
  */
-export const LocationListCapabilities = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LocationListCapabilitiesInput,
-    outputSchema: LocationListCapabilitiesOutput,
-  }),
-);
+export const LocationListCapabilities = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LocationListCapabilitiesInput,
+  outputSchema: LocationListCapabilitiesOutput,
+}));
 // Input Schema
-export const LocationListUsageInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const LocationListUsageInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerInstance/locations/{location}/usages",
@@ -2106,7 +2081,7 @@ export type LocationListUsageInput = typeof LocationListUsageInput.Type;
 
 // Output Schema
 export const LocationListUsageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2135,13 +2110,13 @@ export type LocationListUsageOutput = typeof LocationListUsageOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param location - The name of the Azure region.
  */
-export const LocationListUsage = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LocationListUsage = /*@__PURE__*/ API.make(() => ({
   inputSchema: LocationListUsageInput,
   outputSchema: LocationListUsageOutput,
 }));
 // Input Schema
 export const NGroupsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     ngroupsName: Schema.String.pipe(T.PathParam()),
@@ -2156,7 +2131,7 @@ export type NGroupsCreateOrUpdateInput = typeof NGroupsCreateOrUpdateInput.Type;
 
 // Output Schema
 export const NGroupsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2189,14 +2164,12 @@ export type NGroupsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param ngroupsName - The NGroups name.
  */
-export const NGroupsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NGroupsCreateOrUpdateInput,
-    outputSchema: NGroupsCreateOrUpdateOutput,
-  }),
-);
+export const NGroupsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NGroupsCreateOrUpdateInput,
+  outputSchema: NGroupsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const NGroupsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NGroupsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   ngroupsName: Schema.String.pipe(T.PathParam()),
@@ -2210,7 +2183,7 @@ export const NGroupsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type NGroupsDeleteInput = typeof NGroupsDeleteInput.Type;
 
 // Output Schema
-export const NGroupsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const NGroupsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type NGroupsDeleteOutput = typeof NGroupsDeleteOutput.Type;
 
 // The operation
@@ -2224,12 +2197,12 @@ export type NGroupsDeleteOutput = typeof NGroupsDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param ngroupsName - The NGroups name.
  */
-export const NGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NGroupsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: NGroupsDeleteInput,
   outputSchema: NGroupsDeleteOutput,
 }));
 // Input Schema
-export const NGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NGroupsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   ngroupsName: Schema.String.pipe(T.PathParam()),
@@ -2243,7 +2216,7 @@ export const NGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type NGroupsGetInput = typeof NGroupsGetInput.Type;
 
 // Output Schema
-export const NGroupsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NGroupsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2275,12 +2248,12 @@ export type NGroupsGetOutput = typeof NGroupsGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param ngroupsName - The NGroups name.
  */
-export const NGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NGroupsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: NGroupsGetInput,
   outputSchema: NGroupsGetOutput,
 }));
 // Input Schema
-export const NGroupsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NGroupsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -2292,7 +2265,7 @@ export const NGroupsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type NGroupsListInput = typeof NGroupsListInput.Type;
 
 // Output Schema
-export const NGroupsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NGroupsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -2327,13 +2300,13 @@ export type NGroupsListOutput = typeof NGroupsListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const NGroupsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NGroupsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: NGroupsListInput,
   outputSchema: NGroupsListOutput,
 }));
 // Input Schema
 export const NGroupsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -2348,7 +2321,7 @@ export type NGroupsListByResourceGroupInput =
 
 // Output Schema
 export const NGroupsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2395,14 +2368,12 @@ export type NGroupsListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const NGroupsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NGroupsListByResourceGroupInput,
-    outputSchema: NGroupsListByResourceGroupOutput,
-  }),
-);
+export const NGroupsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NGroupsListByResourceGroupInput,
+  outputSchema: NGroupsListByResourceGroupOutput,
+}));
 // Input Schema
-export const NGroupsRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NGroupsRestartInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   ngroupsName: Schema.String.pipe(T.PathParam()),
@@ -2416,7 +2387,7 @@ export const NGroupsRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type NGroupsRestartInput = typeof NGroupsRestartInput.Type;
 
 // Output Schema
-export const NGroupsRestartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const NGroupsRestartOutput = /*@__PURE__*/ Schema.Void;
 export type NGroupsRestartOutput = typeof NGroupsRestartOutput.Type;
 
 // The operation
@@ -2430,12 +2401,12 @@ export type NGroupsRestartOutput = typeof NGroupsRestartOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param ngroupsName - The NGroups name.
  */
-export const NGroupsRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NGroupsRestart = /*@__PURE__*/ API.make(() => ({
   inputSchema: NGroupsRestartInput,
   outputSchema: NGroupsRestartOutput,
 }));
 // Input Schema
-export const NGroupsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NGroupsStartInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   ngroupsName: Schema.String.pipe(T.PathParam()),
@@ -2449,7 +2420,7 @@ export const NGroupsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type NGroupsStartInput = typeof NGroupsStartInput.Type;
 
 // Output Schema
-export const NGroupsStartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const NGroupsStartOutput = /*@__PURE__*/ Schema.Void;
 export type NGroupsStartOutput = typeof NGroupsStartOutput.Type;
 
 // The operation
@@ -2463,12 +2434,12 @@ export type NGroupsStartOutput = typeof NGroupsStartOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param ngroupsName - The NGroups name.
  */
-export const NGroupsStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NGroupsStart = /*@__PURE__*/ API.make(() => ({
   inputSchema: NGroupsStartInput,
   outputSchema: NGroupsStartOutput,
 }));
 // Input Schema
-export const NGroupsStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NGroupsStopInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   ngroupsName: Schema.String.pipe(T.PathParam()),
@@ -2482,7 +2453,7 @@ export const NGroupsStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type NGroupsStopInput = typeof NGroupsStopInput.Type;
 
 // Output Schema
-export const NGroupsStopOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const NGroupsStopOutput = /*@__PURE__*/ Schema.Void;
 export type NGroupsStopOutput = typeof NGroupsStopOutput.Type;
 
 // The operation
@@ -2496,12 +2467,12 @@ export type NGroupsStopOutput = typeof NGroupsStopOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param ngroupsName - The NGroups name.
  */
-export const NGroupsStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NGroupsStop = /*@__PURE__*/ API.make(() => ({
   inputSchema: NGroupsStopInput,
   outputSchema: NGroupsStopOutput,
 }));
 // Input Schema
-export const NGroupsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NGroupsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   ngroupsName: Schema.String.pipe(T.PathParam()),
@@ -2515,7 +2486,7 @@ export const NGroupsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type NGroupsUpdateInput = typeof NGroupsUpdateInput.Type;
 
 // Output Schema
-export const NGroupsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NGroupsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2547,12 +2518,12 @@ export type NGroupsUpdateOutput = typeof NGroupsUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param ngroupsName - The NGroups name.
  */
-export const NGroupsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NGroupsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: NGroupsUpdateInput,
   outputSchema: NGroupsUpdateOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -2563,7 +2534,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       name: Schema.String,
@@ -2587,13 +2558,13 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
 export const SubnetServiceAssociationLinkDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualNetworkName: Schema.String.pipe(T.PathParam()),
@@ -2610,7 +2581,7 @@ export type SubnetServiceAssociationLinkDeleteInput =
 
 // Output Schema
 export const SubnetServiceAssociationLinkDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type SubnetServiceAssociationLinkDeleteOutput =
   typeof SubnetServiceAssociationLinkDeleteOutput.Type;
 
@@ -2627,7 +2598,7 @@ export type SubnetServiceAssociationLinkDeleteOutput =
  * @param subnetName - The name of the subnet.
  */
 export const SubnetServiceAssociationLinkDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SubnetServiceAssociationLinkDeleteInput,
     outputSchema: SubnetServiceAssociationLinkDeleteOutput,
   }));

@@ -4,11 +4,11 @@
 // ==========================================================================
 
 import * as Schema from "effect/Schema";
+import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
-import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { DefaultErrors } from "../errors.ts";
-import type * as HttpClient from "effect/unstable/http/HttpClient";
+import * as T from "../traits.ts";
 
 // Service metadata
 const svc = T.Service({
@@ -73,7 +73,7 @@ export interface JsonSchema {
 }
 
 export const JsonSchema: Schema.Schema<JsonSchema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       minimum: Schema.optional(Schema.String),
       deprecated: Schema.optional(Schema.Boolean),
@@ -139,7 +139,7 @@ export interface DirectoryList {
 }
 
 export const DirectoryList: Schema.Schema<DirectoryList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     items: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -214,7 +214,7 @@ export interface RestMethod {
 }
 
 export const RestMethod: Schema.Schema<RestMethod> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     path: Schema.optional(Schema.String),
     scopes: Schema.optional(Schema.Array(Schema.String)),
@@ -273,7 +273,7 @@ export interface RestResource {
 }
 
 export const RestResource: Schema.Schema<RestResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       deprecated: Schema.optional(Schema.Boolean),
       methods: Schema.optional(Schema.Record(Schema.String, RestMethod)),
@@ -353,7 +353,7 @@ export interface RestDescription {
 }
 
 export const RestDescription: Schema.Schema<RestDescription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     baseUrl: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Array(Schema.String)),
     title: Schema.optional(Schema.String),
@@ -452,7 +452,7 @@ export interface GetRestApisRequest {
   version: string;
 }
 
-export const GetRestApisRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetRestApisRequest = /*@__PURE__*/ Schema.Struct({
   api: Schema.String.pipe(T.HttpPath("api")),
   version: Schema.String.pipe(T.HttpPath("version")),
 }).pipe(
@@ -461,7 +461,7 @@ export const GetRestApisRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<GetRestApisRequest>;
 
 export type GetRestApisResponse = RestDescription;
-export const GetRestApisResponse = /*@__PURE__*/ /*#__PURE__*/ RestDescription;
+export const GetRestApisResponse = /*@__PURE__*/ RestDescription;
 
 export type GetRestApisError = DefaultErrors | NotFound | Forbidden;
 
@@ -471,7 +471,7 @@ export const getRestApis: API.OperationMethod<
   GetRestApisResponse,
   GetRestApisError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRestApisRequest,
   output: GetRestApisResponse,
   errors: [NotFound, Forbidden],
@@ -484,7 +484,7 @@ export interface ListApisRequest {
   preferred?: boolean;
 }
 
-export const ListApisRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListApisRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
   preferred: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("preferred")),
 }).pipe(
@@ -493,7 +493,7 @@ export const ListApisRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<ListApisRequest>;
 
 export type ListApisResponse = DirectoryList;
-export const ListApisResponse = /*@__PURE__*/ /*#__PURE__*/ DirectoryList;
+export const ListApisResponse = /*@__PURE__*/ DirectoryList;
 
 export type ListApisError = DefaultErrors | NotFound | Forbidden;
 
@@ -503,7 +503,7 @@ export const listApis: API.OperationMethod<
   ListApisResponse,
   ListApisError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListApisRequest,
   output: ListApisResponse,
   errors: [NotFound, Forbidden],

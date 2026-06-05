@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const GetIssuingPhysicalBundlesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ending_before: Schema.optional(Schema.String),
     expand: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
@@ -23,7 +23,7 @@ export type GetIssuingPhysicalBundlesInput =
 
 // Output Schema
 export const GetIssuingPhysicalBundlesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         features: Schema.Struct({
@@ -63,9 +63,7 @@ export type GetIssuingPhysicalBundlesOutput =
  * @param status - Only return physical bundles with the given status.
  * @param type - Only return physical bundles with the given type.
  */
-export const GetIssuingPhysicalBundles = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetIssuingPhysicalBundlesInput,
-    outputSchema: GetIssuingPhysicalBundlesOutput,
-  }),
-);
+export const GetIssuingPhysicalBundles = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetIssuingPhysicalBundlesInput,
+  outputSchema: GetIssuingPhysicalBundlesOutput,
+}));

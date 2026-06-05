@@ -9,9 +9,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.BillingBenefits/operations",
@@ -20,7 +18,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -51,13 +49,13 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * List all the operations.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
 export const ReservationOrderAliasCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.BillingBenefits/reservationOrderAliases/{reservationOrderAliasName}",
@@ -68,7 +66,7 @@ export type ReservationOrderAliasCreateInput =
 
 // Output Schema
 export const ReservationOrderAliasCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -94,15 +92,13 @@ export type ReservationOrderAliasCreateOutput =
 /**
  * Create a reservation order alias.
  */
-export const ReservationOrderAliasCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReservationOrderAliasCreateInput,
-    outputSchema: ReservationOrderAliasCreateOutput,
-  }),
-);
+export const ReservationOrderAliasCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReservationOrderAliasCreateInput,
+  outputSchema: ReservationOrderAliasCreateOutput,
+}));
 // Input Schema
 export const ReservationOrderAliasGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.BillingBenefits/reservationOrderAliases/{reservationOrderAliasName}",
@@ -113,7 +109,7 @@ export type ReservationOrderAliasGetInput =
 
 // Output Schema
 export const ReservationOrderAliasGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -139,16 +135,12 @@ export type ReservationOrderAliasGetOutput =
 /**
  * Get a reservation order alias.
  */
-export const ReservationOrderAliasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReservationOrderAliasGetInput,
-    outputSchema: ReservationOrderAliasGetOutput,
-  }),
-);
+export const ReservationOrderAliasGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReservationOrderAliasGetInput,
+  outputSchema: ReservationOrderAliasGetOutput,
+}));
 // Input Schema
-export const SavingsPlanGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const SavingsPlanGetInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/savingsPlans/{savingsPlanId}",
@@ -157,7 +149,7 @@ export const SavingsPlanGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type SavingsPlanGetInput = typeof SavingsPlanGetInput.Type;
 
 // Output Schema
-export const SavingsPlanGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SavingsPlanGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -182,14 +174,12 @@ export type SavingsPlanGetOutput = typeof SavingsPlanGetOutput.Type;
 /**
  * Get savings plan.
  */
-export const SavingsPlanGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SavingsPlanGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SavingsPlanGetInput,
   outputSchema: SavingsPlanGetOutput,
 }));
 // Input Schema
-export const SavingsPlanListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const SavingsPlanListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/savingsPlans",
@@ -198,7 +188,7 @@ export const SavingsPlanListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type SavingsPlanListInput = typeof SavingsPlanListInput.Type;
 
 // Output Schema
-export const SavingsPlanListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SavingsPlanListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -240,13 +230,13 @@ export type SavingsPlanListOutput = typeof SavingsPlanListOutput.Type;
 /**
  * List savings plans in an order.
  */
-export const SavingsPlanList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SavingsPlanList = /*@__PURE__*/ API.make(() => ({
   inputSchema: SavingsPlanListInput,
   outputSchema: SavingsPlanListOutput,
 }));
 // Input Schema
 export const SavingsPlanListAllInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     $filter: Schema.optional(Schema.String),
     $orderby: Schema.optional(Schema.String),
     refreshSummary: Schema.optional(Schema.String),
@@ -263,7 +253,7 @@ export type SavingsPlanListAllInput = typeof SavingsPlanListAllInput.Type;
 
 // Output Schema
 export const SavingsPlanListAllOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -332,13 +322,13 @@ export type SavingsPlanListAllOutput = typeof SavingsPlanListAllOutput.Type;
  * @param selectedState - The selected provisioning state
  * @param take - To number of savings plans to return
  */
-export const SavingsPlanListAll = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SavingsPlanListAll = /*@__PURE__*/ API.make(() => ({
   inputSchema: SavingsPlanListAllInput,
   outputSchema: SavingsPlanListAllOutput,
 }));
 // Input Schema
 export const SavingsPlanOrderAliasCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.BillingBenefits/savingsPlanOrderAliases/{savingsPlanOrderAliasName}",
@@ -349,7 +339,7 @@ export type SavingsPlanOrderAliasCreateInput =
 
 // Output Schema
 export const SavingsPlanOrderAliasCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -375,15 +365,13 @@ export type SavingsPlanOrderAliasCreateOutput =
 /**
  * Create a savings plan. Learn more about permissions needed at https://go.microsoft.com/fwlink/?linkid=2215851
  */
-export const SavingsPlanOrderAliasCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SavingsPlanOrderAliasCreateInput,
-    outputSchema: SavingsPlanOrderAliasCreateOutput,
-  }),
-);
+export const SavingsPlanOrderAliasCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SavingsPlanOrderAliasCreateInput,
+  outputSchema: SavingsPlanOrderAliasCreateOutput,
+}));
 // Input Schema
 export const SavingsPlanOrderAliasGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.BillingBenefits/savingsPlanOrderAliases/{savingsPlanOrderAliasName}",
@@ -394,7 +382,7 @@ export type SavingsPlanOrderAliasGetInput =
 
 // Output Schema
 export const SavingsPlanOrderAliasGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -420,15 +408,13 @@ export type SavingsPlanOrderAliasGetOutput =
 /**
  * Get a savings plan.
  */
-export const SavingsPlanOrderAliasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SavingsPlanOrderAliasGetInput,
-    outputSchema: SavingsPlanOrderAliasGetOutput,
-  }),
-);
+export const SavingsPlanOrderAliasGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SavingsPlanOrderAliasGetInput,
+  outputSchema: SavingsPlanOrderAliasGetOutput,
+}));
 // Input Schema
 export const SavingsPlanOrderElevateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/elevate",
@@ -439,7 +425,7 @@ export type SavingsPlanOrderElevateInput =
 
 // Output Schema
 export const SavingsPlanOrderElevateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     properties: Schema.optional(
@@ -457,15 +443,13 @@ export type SavingsPlanOrderElevateOutput =
 /**
  * Elevate as owner on savings plan order based on billing permissions.
  */
-export const SavingsPlanOrderElevate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SavingsPlanOrderElevateInput,
-    outputSchema: SavingsPlanOrderElevateOutput,
-  }),
-);
+export const SavingsPlanOrderElevate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SavingsPlanOrderElevateInput,
+  outputSchema: SavingsPlanOrderElevateOutput,
+}));
 // Input Schema
 export const SavingsPlanOrderGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}",
@@ -475,7 +459,7 @@ export type SavingsPlanOrderGetInput = typeof SavingsPlanOrderGetInput.Type;
 
 // Output Schema
 export const SavingsPlanOrderGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -500,13 +484,13 @@ export type SavingsPlanOrderGetOutput = typeof SavingsPlanOrderGetOutput.Type;
 /**
  * Get a savings plan order.
  */
-export const SavingsPlanOrderGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SavingsPlanOrderGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SavingsPlanOrderGetInput,
   outputSchema: SavingsPlanOrderGetOutput,
 }));
 // Input Schema
 export const SavingsPlanOrderListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.BillingBenefits/savingsPlanOrders",
@@ -516,7 +500,7 @@ export type SavingsPlanOrderListInput = typeof SavingsPlanOrderListInput.Type;
 
 // Output Schema
 export const SavingsPlanOrderListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -558,16 +542,12 @@ export type SavingsPlanOrderListOutput = typeof SavingsPlanOrderListOutput.Type;
 /**
  * List all Savings plan orders.
  */
-export const SavingsPlanOrderList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SavingsPlanOrderListInput,
-    outputSchema: SavingsPlanOrderListOutput,
-  }),
-);
+export const SavingsPlanOrderList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SavingsPlanOrderListInput,
+  outputSchema: SavingsPlanOrderListOutput,
+}));
 // Input Schema
-export const SavingsPlanUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const SavingsPlanUpdateInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "PATCH",
     path: "/providers/Microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/savingsPlans/{savingsPlanId}",
@@ -577,7 +557,7 @@ export type SavingsPlanUpdateInput = typeof SavingsPlanUpdateInput.Type;
 
 // Output Schema
 export const SavingsPlanUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -602,13 +582,13 @@ export type SavingsPlanUpdateOutput = typeof SavingsPlanUpdateOutput.Type;
 /**
  * Update savings plan.
  */
-export const SavingsPlanUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SavingsPlanUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SavingsPlanUpdateInput,
   outputSchema: SavingsPlanUpdateOutput,
 }));
 // Input Schema
 export const SavingsPlanValidateUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/savingsPlans/{savingsPlanId}/validate",
@@ -619,7 +599,7 @@ export type SavingsPlanValidateUpdateInput =
 
 // Output Schema
 export const SavingsPlanValidateUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     benefits: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -638,16 +618,12 @@ export type SavingsPlanValidateUpdateOutput =
 /**
  * Validate savings plan patch.
  */
-export const SavingsPlanValidateUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SavingsPlanValidateUpdateInput,
-    outputSchema: SavingsPlanValidateUpdateOutput,
-  }),
-);
+export const SavingsPlanValidateUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SavingsPlanValidateUpdateInput,
+  outputSchema: SavingsPlanValidateUpdateOutput,
+}));
 // Input Schema
-export const ValidatePurchaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ValidatePurchaseInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "POST",
     path: "/providers/Microsoft.BillingBenefits/validate",
@@ -656,27 +632,25 @@ export const ValidatePurchaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ValidatePurchaseInput = typeof ValidatePurchaseInput.Type;
 
 // Output Schema
-export const ValidatePurchaseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    benefits: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          valid: Schema.optional(Schema.Boolean),
-          reasonCode: Schema.optional(Schema.String),
-          reason: Schema.optional(Schema.String),
-        }),
-      ),
+export const ValidatePurchaseOutput = /*@__PURE__*/ Schema.Struct({
+  benefits: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        valid: Schema.optional(Schema.Boolean),
+        reasonCode: Schema.optional(Schema.String),
+        reason: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  },
-);
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ValidatePurchaseOutput = typeof ValidatePurchaseOutput.Type;
 
 // The operation
 /**
  * Validate savings plan purchase.
  */
-export const ValidatePurchase = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ValidatePurchase = /*@__PURE__*/ API.make(() => ({
   inputSchema: ValidatePurchaseInput,
   outputSchema: ValidatePurchaseOutput,
 }));

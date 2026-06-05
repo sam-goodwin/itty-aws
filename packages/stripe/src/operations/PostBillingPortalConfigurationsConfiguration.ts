@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostBillingPortalConfigurationsConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configuration: Schema.String.pipe(T.PathParam()),
     active: Schema.optional(Schema.Boolean),
     business_profile: Schema.optional(
@@ -94,7 +94,7 @@ export type PostBillingPortalConfigurationsConfigurationInput =
 
 // Output Schema
 export const PostBillingPortalConfigurationsConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     active: Schema.Boolean,
     application: Schema.Unknown,
     business_profile: Schema.Struct({
@@ -212,7 +212,7 @@ export type PostBillingPortalConfigurationsConfigurationOutput =
  * <p>Updates a configuration that describes the functionality of the customer portal.</p>
  */
 export const PostBillingPortalConfigurationsConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostBillingPortalConfigurationsConfigurationInput,
     outputSchema: PostBillingPortalConfigurationsConfigurationOutput,
   }));

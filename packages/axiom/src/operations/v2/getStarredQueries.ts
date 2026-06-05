@@ -3,19 +3,17 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
-export const GetStarredQueriesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    limit: Schema.optional(Schema.Number),
-    offset: Schema.optional(Schema.Number),
-    dataset: Schema.optional(Schema.String),
-    who: Schema.optional(Schema.String),
-    qs: Schema.optional(Schema.String),
-  },
-).pipe(T.Http({ method: "GET", path: "/v2/apl-starred-queries" }));
+export const GetStarredQueriesInput = /*@__PURE__*/ Schema.Struct({
+  limit: Schema.optional(Schema.Number),
+  offset: Schema.optional(Schema.Number),
+  dataset: Schema.optional(Schema.String),
+  who: Schema.optional(Schema.String),
+  qs: Schema.optional(Schema.String),
+}).pipe(T.Http({ method: "GET", path: "/v2/apl-starred-queries" }));
 export type GetStarredQueriesInput = typeof GetStarredQueriesInput.Type;
 
 // Output Schema
-export const GetStarredQueriesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const GetStarredQueriesOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     dataset: Schema.optional(Schema.String),
     kind: Schema.Literals(["apl"]),
@@ -86,7 +84,7 @@ export type GetStarredQueriesOutput = typeof GetStarredQueriesOutput.Type;
 - If the value of `who` is `team`, the request returns queries starred by the team apart from the authenticated user.For example, `&who=team`.
 - If the value of `who` is `all`, the request returns queries starred by all users in the team, including the authenticated user. For example, `&who=all`.
  */
-export const getStarredQueries = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getStarredQueries = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetStarredQueriesInput,
   outputSchema: GetStarredQueriesOutput,
 }));

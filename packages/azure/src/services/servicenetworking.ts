@@ -10,7 +10,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const AssociationsInterfaceCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trafficControllerName: Schema.String.pipe(T.PathParam()),
@@ -27,7 +27,7 @@ export type AssociationsInterfaceCreateOrUpdateInput =
 
 // Output Schema
 export const AssociationsInterfaceCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -60,13 +60,13 @@ export type AssociationsInterfaceCreateOrUpdateOutput =
  * @param associationName - Name of Association
  */
 export const AssociationsInterfaceCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AssociationsInterfaceCreateOrUpdateInput,
     outputSchema: AssociationsInterfaceCreateOrUpdateOutput,
   }));
 // Input Schema
 export const AssociationsInterfaceDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trafficControllerName: Schema.String.pipe(T.PathParam()),
@@ -82,8 +82,7 @@ export type AssociationsInterfaceDeleteInput =
   typeof AssociationsInterfaceDeleteInput.Type;
 
 // Output Schema
-export const AssociationsInterfaceDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AssociationsInterfaceDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type AssociationsInterfaceDeleteOutput =
   typeof AssociationsInterfaceDeleteOutput.Type;
 
@@ -97,15 +96,13 @@ export type AssociationsInterfaceDeleteOutput =
  * @param trafficControllerName - traffic controller name for path
  * @param associationName - Name of Association
  */
-export const AssociationsInterfaceDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AssociationsInterfaceDeleteInput,
-    outputSchema: AssociationsInterfaceDeleteOutput,
-  }),
-);
+export const AssociationsInterfaceDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AssociationsInterfaceDeleteInput,
+  outputSchema: AssociationsInterfaceDeleteOutput,
+}));
 // Input Schema
 export const AssociationsInterfaceGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trafficControllerName: Schema.String.pipe(T.PathParam()),
@@ -122,7 +119,7 @@ export type AssociationsInterfaceGetInput =
 
 // Output Schema
 export const AssociationsInterfaceGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -154,15 +151,13 @@ export type AssociationsInterfaceGetOutput =
  * @param trafficControllerName - traffic controller name for path
  * @param associationName - Name of Association
  */
-export const AssociationsInterfaceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AssociationsInterfaceGetInput,
-    outputSchema: AssociationsInterfaceGetOutput,
-  }),
-);
+export const AssociationsInterfaceGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AssociationsInterfaceGetInput,
+  outputSchema: AssociationsInterfaceGetOutput,
+}));
 // Input Schema
 export const AssociationsInterfaceListByTrafficControllerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trafficControllerName: Schema.String.pipe(T.PathParam()),
@@ -178,7 +173,7 @@ export type AssociationsInterfaceListByTrafficControllerInput =
 
 // Output Schema
 export const AssociationsInterfaceListByTrafficControllerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -225,13 +220,13 @@ export type AssociationsInterfaceListByTrafficControllerOutput =
  * @param trafficControllerName - traffic controller name for path
  */
 export const AssociationsInterfaceListByTrafficController =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AssociationsInterfaceListByTrafficControllerInput,
     outputSchema: AssociationsInterfaceListByTrafficControllerOutput,
   }));
 // Input Schema
 export const AssociationsInterfaceUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trafficControllerName: Schema.String.pipe(T.PathParam()),
@@ -248,7 +243,7 @@ export type AssociationsInterfaceUpdateInput =
 
 // Output Schema
 export const AssociationsInterfaceUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -280,15 +275,13 @@ export type AssociationsInterfaceUpdateOutput =
  * @param trafficControllerName - traffic controller name for path
  * @param associationName - Name of Association
  */
-export const AssociationsInterfaceUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AssociationsInterfaceUpdateInput,
-    outputSchema: AssociationsInterfaceUpdateOutput,
-  }),
-);
+export const AssociationsInterfaceUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AssociationsInterfaceUpdateInput,
+  outputSchema: AssociationsInterfaceUpdateOutput,
+}));
 // Input Schema
 export const FrontendsInterfaceCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trafficControllerName: Schema.String.pipe(T.PathParam()),
@@ -305,7 +298,7 @@ export type FrontendsInterfaceCreateOrUpdateInput =
 
 // Output Schema
 export const FrontendsInterfaceCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -338,13 +331,13 @@ export type FrontendsInterfaceCreateOrUpdateOutput =
  * @param frontendName - Frontends
  */
 export const FrontendsInterfaceCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FrontendsInterfaceCreateOrUpdateInput,
     outputSchema: FrontendsInterfaceCreateOrUpdateOutput,
   }));
 // Input Schema
 export const FrontendsInterfaceDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trafficControllerName: Schema.String.pipe(T.PathParam()),
@@ -360,8 +353,7 @@ export type FrontendsInterfaceDeleteInput =
   typeof FrontendsInterfaceDeleteInput.Type;
 
 // Output Schema
-export const FrontendsInterfaceDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const FrontendsInterfaceDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type FrontendsInterfaceDeleteOutput =
   typeof FrontendsInterfaceDeleteOutput.Type;
 
@@ -375,15 +367,13 @@ export type FrontendsInterfaceDeleteOutput =
  * @param trafficControllerName - traffic controller name for path
  * @param frontendName - Frontends
  */
-export const FrontendsInterfaceDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FrontendsInterfaceDeleteInput,
-    outputSchema: FrontendsInterfaceDeleteOutput,
-  }),
-);
+export const FrontendsInterfaceDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FrontendsInterfaceDeleteInput,
+  outputSchema: FrontendsInterfaceDeleteOutput,
+}));
 // Input Schema
 export const FrontendsInterfaceGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trafficControllerName: Schema.String.pipe(T.PathParam()),
@@ -399,7 +389,7 @@ export type FrontendsInterfaceGetInput = typeof FrontendsInterfaceGetInput.Type;
 
 // Output Schema
 export const FrontendsInterfaceGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -431,15 +421,13 @@ export type FrontendsInterfaceGetOutput =
  * @param trafficControllerName - traffic controller name for path
  * @param frontendName - Frontends
  */
-export const FrontendsInterfaceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FrontendsInterfaceGetInput,
-    outputSchema: FrontendsInterfaceGetOutput,
-  }),
-);
+export const FrontendsInterfaceGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FrontendsInterfaceGetInput,
+  outputSchema: FrontendsInterfaceGetOutput,
+}));
 // Input Schema
 export const FrontendsInterfaceListByTrafficControllerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trafficControllerName: Schema.String.pipe(T.PathParam()),
@@ -455,7 +443,7 @@ export type FrontendsInterfaceListByTrafficControllerInput =
 
 // Output Schema
 export const FrontendsInterfaceListByTrafficControllerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -502,13 +490,13 @@ export type FrontendsInterfaceListByTrafficControllerOutput =
  * @param trafficControllerName - traffic controller name for path
  */
 export const FrontendsInterfaceListByTrafficController =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FrontendsInterfaceListByTrafficControllerInput,
     outputSchema: FrontendsInterfaceListByTrafficControllerOutput,
   }));
 // Input Schema
 export const FrontendsInterfaceUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trafficControllerName: Schema.String.pipe(T.PathParam()),
@@ -525,7 +513,7 @@ export type FrontendsInterfaceUpdateInput =
 
 // Output Schema
 export const FrontendsInterfaceUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -557,14 +545,12 @@ export type FrontendsInterfaceUpdateOutput =
  * @param trafficControllerName - traffic controller name for path
  * @param frontendName - Frontends
  */
-export const FrontendsInterfaceUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FrontendsInterfaceUpdateInput,
-    outputSchema: FrontendsInterfaceUpdateOutput,
-  }),
-);
+export const FrontendsInterfaceUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FrontendsInterfaceUpdateInput,
+  outputSchema: FrontendsInterfaceUpdateOutput,
+}));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -575,7 +561,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -606,13 +592,13 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
 export const SecurityPoliciesInterfaceCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trafficControllerName: Schema.String.pipe(T.PathParam()),
@@ -629,7 +615,7 @@ export type SecurityPoliciesInterfaceCreateOrUpdateInput =
 
 // Output Schema
 export const SecurityPoliciesInterfaceCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -662,13 +648,13 @@ export type SecurityPoliciesInterfaceCreateOrUpdateOutput =
  * @param securityPolicyName - SecurityPolicy
  */
 export const SecurityPoliciesInterfaceCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SecurityPoliciesInterfaceCreateOrUpdateInput,
     outputSchema: SecurityPoliciesInterfaceCreateOrUpdateOutput,
   }));
 // Input Schema
 export const SecurityPoliciesInterfaceDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trafficControllerName: Schema.String.pipe(T.PathParam()),
@@ -684,8 +670,7 @@ export type SecurityPoliciesInterfaceDeleteInput =
   typeof SecurityPoliciesInterfaceDeleteInput.Type;
 
 // Output Schema
-export const SecurityPoliciesInterfaceDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const SecurityPoliciesInterfaceDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type SecurityPoliciesInterfaceDeleteOutput =
   typeof SecurityPoliciesInterfaceDeleteOutput.Type;
 
@@ -700,13 +685,13 @@ export type SecurityPoliciesInterfaceDeleteOutput =
  * @param securityPolicyName - SecurityPolicy
  */
 export const SecurityPoliciesInterfaceDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SecurityPoliciesInterfaceDeleteInput,
     outputSchema: SecurityPoliciesInterfaceDeleteOutput,
   }));
 // Input Schema
 export const SecurityPoliciesInterfaceGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trafficControllerName: Schema.String.pipe(T.PathParam()),
@@ -723,7 +708,7 @@ export type SecurityPoliciesInterfaceGetInput =
 
 // Output Schema
 export const SecurityPoliciesInterfaceGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -756,13 +741,13 @@ export type SecurityPoliciesInterfaceGetOutput =
  * @param securityPolicyName - SecurityPolicy
  */
 export const SecurityPoliciesInterfaceGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SecurityPoliciesInterfaceGetInput,
     outputSchema: SecurityPoliciesInterfaceGetOutput,
   }));
 // Input Schema
 export const SecurityPoliciesInterfaceListByTrafficControllerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trafficControllerName: Schema.String.pipe(T.PathParam()),
@@ -778,7 +763,7 @@ export type SecurityPoliciesInterfaceListByTrafficControllerInput =
 
 // Output Schema
 export const SecurityPoliciesInterfaceListByTrafficControllerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -825,13 +810,13 @@ export type SecurityPoliciesInterfaceListByTrafficControllerOutput =
  * @param trafficControllerName - traffic controller name for path
  */
 export const SecurityPoliciesInterfaceListByTrafficController =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SecurityPoliciesInterfaceListByTrafficControllerInput,
     outputSchema: SecurityPoliciesInterfaceListByTrafficControllerOutput,
   }));
 // Input Schema
 export const SecurityPoliciesInterfaceUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trafficControllerName: Schema.String.pipe(T.PathParam()),
@@ -848,7 +833,7 @@ export type SecurityPoliciesInterfaceUpdateInput =
 
 // Output Schema
 export const SecurityPoliciesInterfaceUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -881,13 +866,13 @@ export type SecurityPoliciesInterfaceUpdateOutput =
  * @param securityPolicyName - SecurityPolicy
  */
 export const SecurityPoliciesInterfaceUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SecurityPoliciesInterfaceUpdateInput,
     outputSchema: SecurityPoliciesInterfaceUpdateOutput,
   }));
 // Input Schema
 export const TrafficControllerInterfaceCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trafficControllerName: Schema.String.pipe(T.PathParam()),
@@ -903,7 +888,7 @@ export type TrafficControllerInterfaceCreateOrUpdateInput =
 
 // Output Schema
 export const TrafficControllerInterfaceCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -935,13 +920,13 @@ export type TrafficControllerInterfaceCreateOrUpdateOutput =
  * @param trafficControllerName - traffic controller name for path
  */
 export const TrafficControllerInterfaceCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TrafficControllerInterfaceCreateOrUpdateInput,
     outputSchema: TrafficControllerInterfaceCreateOrUpdateOutput,
   }));
 // Input Schema
 export const TrafficControllerInterfaceDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trafficControllerName: Schema.String.pipe(T.PathParam()),
@@ -956,8 +941,7 @@ export type TrafficControllerInterfaceDeleteInput =
   typeof TrafficControllerInterfaceDeleteInput.Type;
 
 // Output Schema
-export const TrafficControllerInterfaceDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const TrafficControllerInterfaceDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type TrafficControllerInterfaceDeleteOutput =
   typeof TrafficControllerInterfaceDeleteOutput.Type;
 
@@ -971,13 +955,13 @@ export type TrafficControllerInterfaceDeleteOutput =
  * @param trafficControllerName - traffic controller name for path
  */
 export const TrafficControllerInterfaceDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TrafficControllerInterfaceDeleteInput,
     outputSchema: TrafficControllerInterfaceDeleteOutput,
   }));
 // Input Schema
 export const TrafficControllerInterfaceGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trafficControllerName: Schema.String.pipe(T.PathParam()),
@@ -993,7 +977,7 @@ export type TrafficControllerInterfaceGetInput =
 
 // Output Schema
 export const TrafficControllerInterfaceGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1025,13 +1009,13 @@ export type TrafficControllerInterfaceGetOutput =
  * @param trafficControllerName - traffic controller name for path
  */
 export const TrafficControllerInterfaceGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TrafficControllerInterfaceGetInput,
     outputSchema: TrafficControllerInterfaceGetOutput,
   }));
 // Input Schema
 export const TrafficControllerInterfaceListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1046,7 +1030,7 @@ export type TrafficControllerInterfaceListByResourceGroupInput =
 
 // Output Schema
 export const TrafficControllerInterfaceListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1092,13 +1076,13 @@ export type TrafficControllerInterfaceListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const TrafficControllerInterfaceListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TrafficControllerInterfaceListByResourceGroupInput,
     outputSchema: TrafficControllerInterfaceListByResourceGroupOutput,
   }));
 // Input Schema
 export const TrafficControllerInterfaceListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -1112,7 +1096,7 @@ export type TrafficControllerInterfaceListBySubscriptionInput =
 
 // Output Schema
 export const TrafficControllerInterfaceListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1157,13 +1141,13 @@ export type TrafficControllerInterfaceListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const TrafficControllerInterfaceListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TrafficControllerInterfaceListBySubscriptionInput,
     outputSchema: TrafficControllerInterfaceListBySubscriptionOutput,
   }));
 // Input Schema
 export const TrafficControllerInterfaceUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trafficControllerName: Schema.String.pipe(T.PathParam()),
@@ -1179,7 +1163,7 @@ export type TrafficControllerInterfaceUpdateInput =
 
 // Output Schema
 export const TrafficControllerInterfaceUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1211,7 +1195,7 @@ export type TrafficControllerInterfaceUpdateOutput =
  * @param trafficControllerName - traffic controller name for path
  */
 export const TrafficControllerInterfaceUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TrafficControllerInterfaceUpdateInput,
     outputSchema: TrafficControllerInterfaceUpdateOutput,
   }));

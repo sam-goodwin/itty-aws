@@ -1,10 +1,10 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
-import * as T from "../../traits.ts";
 import { UnprocessableEntity } from "../../errors.ts";
+import * as T from "../../traits.ts";
 
 // Input Schema
-export const CreateStarredInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateStarredInput = /*@__PURE__*/ Schema.Struct({
   dataset: Schema.optional(Schema.String),
   kind: Schema.Literals(["apl"]),
   metadata: Schema.Record(Schema.String, Schema.String),
@@ -63,7 +63,7 @@ export const CreateStarredInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateStarredInput = typeof CreateStarredInput.Type;
 
 // Output Schema
-export const CreateStarredOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateStarredOutput = /*@__PURE__*/ Schema.Struct({
   dataset: Schema.optional(Schema.String),
   kind: Schema.Literals(["apl"]),
   metadata: Schema.Record(Schema.String, Schema.String),
@@ -123,7 +123,7 @@ export const CreateStarredOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateStarredOutput = typeof CreateStarredOutput.Type;
 
 // The operation
-export const createStarred = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createStarred = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateStarredInput,
   outputSchema: CreateStarredOutput,
   errors: [UnprocessableEntity] as const,

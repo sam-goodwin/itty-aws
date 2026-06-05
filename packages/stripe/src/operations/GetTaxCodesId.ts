@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const GetTaxCodesIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetTaxCodesIdInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   expand: Schema.optional(Schema.String),
 }).pipe(
@@ -16,7 +16,7 @@ export const GetTaxCodesIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetTaxCodesIdInput = typeof GetTaxCodesIdInput.Type;
 
 // Output Schema
-export const GetTaxCodesIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetTaxCodesIdOutput = /*@__PURE__*/ Schema.Struct({
   description: Schema.String,
   id: Schema.String,
   name: Schema.String,
@@ -32,7 +32,7 @@ export type GetTaxCodesIdOutput = typeof GetTaxCodesIdOutput.Type;
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetTaxCodesId = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetTaxCodesId = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetTaxCodesIdInput,
   outputSchema: GetTaxCodesIdOutput,
 }));

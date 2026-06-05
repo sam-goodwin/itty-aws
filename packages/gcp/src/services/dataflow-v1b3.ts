@@ -4,11 +4,11 @@
 // ==========================================================================
 
 import * as Schema from "effect/Schema";
+import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
-import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { DefaultErrors } from "../errors.ts";
-import type * as HttpClient from "effect/unstable/http/HttpClient";
+import * as T from "../traits.ts";
 
 // Service metadata
 const svc = T.Service({
@@ -32,7 +32,7 @@ export interface HotKeyInfo {
 }
 
 export const HotKeyInfo: Schema.Schema<HotKeyInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     hotKeyAge: Schema.optional(Schema.String),
     keyTruncated: Schema.optional(Schema.Boolean),
@@ -44,7 +44,7 @@ export interface HotKeyDebuggingInfo {
 }
 
 export const HotKeyDebuggingInfo: Schema.Schema<HotKeyDebuggingInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     detectedHotKeys: Schema.optional(Schema.Record(Schema.String, HotKeyInfo)),
   }).annotate({ identifier: "HotKeyDebuggingInfo" });
 
@@ -54,7 +54,7 @@ export interface StragglerDebuggingInfo {
 }
 
 export const StragglerDebuggingInfo: Schema.Schema<StragglerDebuggingInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     hotKey: Schema.optional(HotKeyDebuggingInfo),
   }).annotate({ identifier: "StragglerDebuggingInfo" });
 
@@ -66,7 +66,7 @@ export interface Histogram {
 }
 
 export const Histogram: Schema.Schema<Histogram> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     firstBucketOffset: Schema.optional(Schema.Number),
     bucketCounts: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "Histogram" });
@@ -79,7 +79,7 @@ export interface Base2Exponent {
 }
 
 export const Base2Exponent: Schema.Schema<Base2Exponent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     numberOfBuckets: Schema.optional(Schema.Number),
     scale: Schema.optional(Schema.Number),
   }).annotate({ identifier: "Base2Exponent" });
@@ -110,7 +110,7 @@ export interface ExecutionStageState {
 }
 
 export const ExecutionStageState: Schema.Schema<ExecutionStageState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     executionStageName: Schema.optional(Schema.String),
     currentStateTime: Schema.optional(Schema.String),
     executionStageState: Schema.optional(Schema.String),
@@ -126,7 +126,7 @@ export interface Package {
 }
 
 export const Package: Schema.Schema<Package> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     sha256: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
@@ -144,7 +144,7 @@ export interface AutoscalingSettings {
 }
 
 export const AutoscalingSettings: Schema.Schema<AutoscalingSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxNumWorkers: Schema.optional(Schema.Number),
     algorithm: Schema.optional(Schema.String),
   }).annotate({ identifier: "AutoscalingSettings" });
@@ -165,7 +165,7 @@ export interface WorkerSettings {
 }
 
 export const WorkerSettings: Schema.Schema<WorkerSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     workerId: Schema.optional(Schema.String),
     reportingEnabled: Schema.optional(Schema.Boolean),
     shuffleServicePath: Schema.optional(Schema.String),
@@ -216,7 +216,7 @@ export interface TaskRunnerSettings {
 }
 
 export const TaskRunnerSettings: Schema.Schema<TaskRunnerSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     commandlinesFileName: Schema.optional(Schema.String),
     harnessCommand: Schema.optional(Schema.String),
     workflowFileName: Schema.optional(Schema.String),
@@ -250,7 +250,7 @@ export interface SdkHarnessContainerImage {
 }
 
 export const SdkHarnessContainerImage: Schema.Schema<SdkHarnessContainerImage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     useSingleCorePerContainer: Schema.optional(Schema.Boolean),
     containerImage: Schema.optional(Schema.String),
     environmentId: Schema.optional(Schema.String),
@@ -267,7 +267,7 @@ export interface Disk {
 }
 
 export const Disk: Schema.Schema<Disk> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sizeGb: Schema.optional(Schema.Number),
     mountPoint: Schema.optional(Schema.String),
     diskType: Schema.optional(Schema.String),
@@ -339,7 +339,7 @@ export interface WorkerPool {
 }
 
 export const WorkerPool: Schema.Schema<WorkerPool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     machineType: Schema.optional(Schema.String),
     diskProvisionedIops: Schema.optional(Schema.String),
     packages: Schema.optional(Schema.Array(Package)),
@@ -380,7 +380,7 @@ export interface DataSamplingConfig {
 }
 
 export const DataSamplingConfig: Schema.Schema<DataSamplingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     behaviors: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "DataSamplingConfig" });
 
@@ -392,7 +392,7 @@ export interface DebugOptions {
 }
 
 export const DebugOptions: Schema.Schema<DebugOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enableHotKeyLogging: Schema.optional(Schema.Boolean),
     dataSampling: Schema.optional(DataSamplingConfig),
   }).annotate({ identifier: "DebugOptions" });
@@ -453,7 +453,7 @@ export interface Environment {
 }
 
 export const Environment: Schema.Schema<Environment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     clusterManagerApiService: Schema.optional(Schema.String),
     workerPools: Schema.optional(Schema.Array(WorkerPool)),
     debugOptions: Schema.optional(DebugOptions),
@@ -486,7 +486,7 @@ export interface JobExecutionStageInfo {
 }
 
 export const JobExecutionStageInfo: Schema.Schema<JobExecutionStageInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     stepName: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "JobExecutionStageInfo" });
 
@@ -496,7 +496,7 @@ export interface JobExecutionInfo {
 }
 
 export const JobExecutionInfo: Schema.Schema<JobExecutionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     stages: Schema.optional(
       Schema.Record(Schema.String, JobExecutionStageInfo),
     ),
@@ -508,7 +508,7 @@ export interface ServiceResources {
 }
 
 export const ServiceResources: Schema.Schema<ServiceResources> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     zones: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ServiceResources" });
 
@@ -522,7 +522,7 @@ export interface ComponentTransform {
 }
 
 export const ComponentTransform: Schema.Schema<ComponentTransform> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     originalTransform: Schema.optional(Schema.String),
     userName: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -540,7 +540,7 @@ export interface StageSource {
 }
 
 export const StageSource: Schema.Schema<StageSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     originalTransformOrCollection: Schema.optional(Schema.String),
     userName: Schema.optional(Schema.String),
@@ -557,7 +557,7 @@ export interface ComponentSource {
 }
 
 export const ComponentSource: Schema.Schema<ComponentSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userName: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     originalTransformOrCollection: Schema.optional(Schema.String),
@@ -593,7 +593,7 @@ export interface ExecutionStageSummary {
 }
 
 export const ExecutionStageSummary: Schema.Schema<ExecutionStageSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -632,7 +632,7 @@ export interface DisplayData {
 }
 
 export const DisplayData: Schema.Schema<DisplayData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     javaClassValue: Schema.optional(Schema.String),
     label: Schema.optional(Schema.String),
     durationValue: Schema.optional(Schema.String),
@@ -673,7 +673,7 @@ export interface TransformSummary {
 }
 
 export const TransformSummary: Schema.Schema<TransformSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayData: Schema.optional(Schema.Array(DisplayData)),
     inputCollectionName: Schema.optional(Schema.Array(Schema.String)),
     id: Schema.optional(Schema.String),
@@ -694,7 +694,7 @@ export interface PipelineDescription {
 }
 
 export const PipelineDescription: Schema.Schema<PipelineDescription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     executionPipelineStage: Schema.optional(
       Schema.Array(ExecutionStageSummary),
     ),
@@ -713,7 +713,7 @@ export interface Step {
 }
 
 export const Step: Schema.Schema<Step> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     properties: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -731,7 +731,7 @@ export interface BigQueryIODetails {
 }
 
 export const BigQueryIODetails: Schema.Schema<BigQueryIODetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.optional(Schema.String),
     table: Schema.optional(Schema.String),
     dataset: Schema.optional(Schema.String),
@@ -744,7 +744,7 @@ export interface FileIODetails {
 }
 
 export const FileIODetails: Schema.Schema<FileIODetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filePattern: Schema.optional(Schema.String),
   }).annotate({ identifier: "FileIODetails" });
 
@@ -756,7 +756,7 @@ export interface PubSubIODetails {
 }
 
 export const PubSubIODetails: Schema.Schema<PubSubIODetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     topic: Schema.optional(Schema.String),
     subscription: Schema.optional(Schema.String),
   }).annotate({ identifier: "PubSubIODetails" });
@@ -771,7 +771,7 @@ export interface SpannerIODetails {
 }
 
 export const SpannerIODetails: Schema.Schema<SpannerIODetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     instanceId: Schema.optional(Schema.String),
     databaseId: Schema.optional(Schema.String),
     projectId: Schema.optional(Schema.String),
@@ -785,7 +785,7 @@ export interface DatastoreIODetails {
 }
 
 export const DatastoreIODetails: Schema.Schema<DatastoreIODetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.optional(Schema.String),
     projectId: Schema.optional(Schema.String),
   }).annotate({ identifier: "DatastoreIODetails" });
@@ -810,7 +810,7 @@ export interface SdkBug {
 }
 
 export const SdkBug: Schema.Schema<SdkBug> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     severity: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
@@ -834,7 +834,7 @@ export interface SdkVersion {
 }
 
 export const SdkVersion: Schema.Schema<SdkVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
     sdkSupportStatus: Schema.optional(Schema.String),
     versionDisplayName: Schema.optional(Schema.String),
@@ -851,7 +851,7 @@ export interface BigTableIODetails {
 }
 
 export const BigTableIODetails: Schema.Schema<BigTableIODetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     instanceId: Schema.optional(Schema.String),
     projectId: Schema.optional(Schema.String),
     tableId: Schema.optional(Schema.String),
@@ -877,7 +877,7 @@ export interface JobMetadata {
 }
 
 export const JobMetadata: Schema.Schema<JobMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bigqueryDetails: Schema.optional(Schema.Array(BigQueryIODetails)),
     fileDetails: Schema.optional(Schema.Array(FileIODetails)),
     userDisplayProperties: Schema.optional(
@@ -906,7 +906,7 @@ export interface RuntimeUpdatableParams {
 }
 
 export const RuntimeUpdatableParams: Schema.Schema<RuntimeUpdatableParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxNumWorkers: Schema.optional(Schema.Number),
     minNumWorkers: Schema.optional(Schema.Number),
     acceptableBacklogDuration: Schema.optional(Schema.String),
@@ -1013,7 +1013,7 @@ export interface Job {
 }
 
 export const Job: Schema.Schema<Job> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
@@ -1053,7 +1053,7 @@ export interface FailedLocation {
 }
 
 export const FailedLocation: Schema.Schema<FailedLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "FailedLocation" });
 
@@ -1067,7 +1067,7 @@ export interface ListJobsResponse {
 }
 
 export const ListJobsResponse: Schema.Schema<ListJobsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     jobs: Schema.optional(Schema.Array(Job)),
     failedLocation: Schema.optional(Schema.Array(FailedLocation)),
@@ -1081,7 +1081,7 @@ export interface InstructionInput {
 }
 
 export const InstructionInput: Schema.Schema<InstructionInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     producerInstructionIndex: Schema.optional(Schema.Number),
     outputNum: Schema.optional(Schema.Number),
   }).annotate({ identifier: "InstructionInput" });
@@ -1096,7 +1096,7 @@ export interface SourceMetadata {
 }
 
 export const SourceMetadata: Schema.Schema<SourceMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     infinite: Schema.optional(Schema.Boolean),
     estimatedSizeBytes: Schema.optional(Schema.String),
     producesSortedKeys: Schema.optional(Schema.Boolean),
@@ -1116,7 +1116,7 @@ export interface Source {
 }
 
 export const Source: Schema.Schema<Source> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     codec: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     baseSpecs: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -1136,7 +1136,7 @@ export interface SideInputInfo {
 }
 
 export const SideInputInfo: Schema.Schema<SideInputInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sources: Schema.optional(Schema.Array(Source)),
     tag: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -1158,7 +1158,7 @@ export interface PartialGroupByKeyInstruction {
 }
 
 export const PartialGroupByKeyInstruction: Schema.Schema<PartialGroupByKeyInstruction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     input: Schema.optional(InstructionInput),
     originalCombineValuesInputStoreName: Schema.optional(Schema.String),
     inputElementCodec: Schema.optional(
@@ -1195,7 +1195,7 @@ export interface CounterStructuredName {
 }
 
 export const CounterStructuredName: Schema.Schema<CounterStructuredName> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     workerId: Schema.optional(Schema.String),
     inputIndex: Schema.optional(Schema.Number),
     executionStepName: Schema.optional(Schema.String),
@@ -1240,7 +1240,7 @@ export interface CounterMetadata {
 }
 
 export const CounterMetadata: Schema.Schema<CounterMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     standardUnits: Schema.optional(Schema.String),
     otherUnits: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -1255,7 +1255,7 @@ export interface CounterStructuredNameAndMetadata {
 }
 
 export const CounterStructuredNameAndMetadata: Schema.Schema<CounterStructuredNameAndMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(CounterStructuredName),
     metadata: Schema.optional(CounterMetadata),
   }).annotate({ identifier: "CounterStructuredNameAndMetadata" });
@@ -1276,7 +1276,7 @@ export interface InstructionOutput {
 }
 
 export const InstructionOutput: Schema.Schema<InstructionOutput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     originalName: Schema.optional(Schema.String),
     onlyCountKeyBytes: Schema.optional(Schema.Boolean),
@@ -1291,7 +1291,7 @@ export interface MultiOutputInfo {
 }
 
 export const MultiOutputInfo: Schema.Schema<MultiOutputInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tag: Schema.optional(Schema.String),
   }).annotate({ identifier: "MultiOutputInfo" });
 
@@ -1309,7 +1309,7 @@ export interface ParDoInstruction {
 }
 
 export const ParDoInstruction: Schema.Schema<ParDoInstruction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sideInputs: Schema.optional(Schema.Array(SideInputInfo)),
     numOutputs: Schema.optional(Schema.Number),
     input: Schema.optional(InstructionInput),
@@ -1325,7 +1325,7 @@ export interface Sink {
 }
 
 export const Sink: Schema.Schema<Sink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     spec: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     codec: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }).annotate({ identifier: "Sink" });
@@ -1338,7 +1338,7 @@ export interface WriteInstruction {
 }
 
 export const WriteInstruction: Schema.Schema<WriteInstruction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sink: Schema.optional(Sink),
     input: Schema.optional(InstructionInput),
   }).annotate({ identifier: "WriteInstruction" });
@@ -1349,7 +1349,7 @@ export interface FlattenInstruction {
 }
 
 export const FlattenInstruction: Schema.Schema<FlattenInstruction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     inputs: Schema.optional(Schema.Array(InstructionInput)),
   }).annotate({ identifier: "FlattenInstruction" });
 
@@ -1359,7 +1359,7 @@ export interface ReadInstruction {
 }
 
 export const ReadInstruction: Schema.Schema<ReadInstruction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     source: Schema.optional(Source),
   }).annotate({ identifier: "ReadInstruction" });
 
@@ -1385,7 +1385,7 @@ export interface ParallelInstruction {
 }
 
 export const ParallelInstruction: Schema.Schema<ParallelInstruction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialGroupByKey: Schema.optional(PartialGroupByKeyInstruction),
     outputs: Schema.optional(Schema.Array(InstructionOutput)),
     parDo: Schema.optional(ParDoInstruction),
@@ -1409,7 +1409,7 @@ export interface MapTask {
 }
 
 export const MapTask: Schema.Schema<MapTask> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     systemName: Schema.optional(Schema.String),
     stageName: Schema.optional(Schema.String),
     instructions: Schema.optional(Schema.Array(ParallelInstruction)),
@@ -1424,7 +1424,7 @@ export interface StateFamilyConfig {
 }
 
 export const StateFamilyConfig: Schema.Schema<StateFamilyConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     stateFamily: Schema.optional(Schema.String),
     isRead: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "StateFamilyConfig" });
@@ -1437,7 +1437,7 @@ export interface StreamingSideInputLocation {
 }
 
 export const StreamingSideInputLocation: Schema.Schema<StreamingSideInputLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     stateFamily: Schema.optional(Schema.String),
     tag: Schema.optional(Schema.String),
   }).annotate({ identifier: "StreamingSideInputLocation" });
@@ -1448,7 +1448,7 @@ export interface CustomSourceLocation {
 }
 
 export const CustomSourceLocation: Schema.Schema<CustomSourceLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     stateful: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "CustomSourceLocation" });
 
@@ -1472,7 +1472,7 @@ export interface PubsubLocation {
 }
 
 export const PubsubLocation: Schema.Schema<PubsubLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     withAttributes: Schema.optional(Schema.Boolean),
     trackingSubscription: Schema.optional(Schema.String),
     dynamicDestinations: Schema.optional(Schema.Boolean),
@@ -1489,7 +1489,7 @@ export interface StreamingStageLocation {
 }
 
 export const StreamingStageLocation: Schema.Schema<StreamingStageLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     streamId: Schema.optional(Schema.String),
   }).annotate({ identifier: "StreamingStageLocation" });
 
@@ -1505,7 +1505,7 @@ export interface StreamLocation {
 }
 
 export const StreamLocation: Schema.Schema<StreamLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sideInputLocation: Schema.optional(StreamingSideInputLocation),
     customSourceLocation: Schema.optional(CustomSourceLocation),
     pubsubLocation: Schema.optional(PubsubLocation),
@@ -1526,7 +1526,7 @@ export interface KeyRangeLocation {
 }
 
 export const KeyRangeLocation: Schema.Schema<KeyRangeLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deprecatedPersistentDirectory: Schema.optional(Schema.String),
     end: Schema.optional(Schema.String),
     deliveryEndpoint: Schema.optional(Schema.String),
@@ -1550,7 +1550,7 @@ export interface ComputationTopology {
 }
 
 export const ComputationTopology: Schema.Schema<ComputationTopology> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     stateFamilies: Schema.optional(Schema.Array(StateFamilyConfig)),
     inputs: Schema.optional(Schema.Array(StreamLocation)),
     keyRanges: Schema.optional(Schema.Array(KeyRangeLocation)),
@@ -1567,7 +1567,7 @@ export interface DataDiskAssignment {
 }
 
 export const DataDiskAssignment: Schema.Schema<DataDiskAssignment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     vmInstance: Schema.optional(Schema.String),
     dataDisks: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "DataDiskAssignment" });
@@ -1586,7 +1586,7 @@ export interface TopologyConfig {
 }
 
 export const TopologyConfig: Schema.Schema<TopologyConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     computations: Schema.optional(Schema.Array(ComputationTopology)),
     dataDiskAssignments: Schema.optional(Schema.Array(DataDiskAssignment)),
     userStageToComputationNameMap: Schema.optional(
@@ -1646,7 +1646,7 @@ export interface RuntimeEnvironment {
 }
 
 export const RuntimeEnvironment: Schema.Schema<RuntimeEnvironment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enableStreamingEngine: Schema.optional(Schema.Boolean),
     network: Schema.optional(Schema.String),
     numWorkers: Schema.optional(Schema.Number),
@@ -1676,7 +1676,7 @@ export interface StreamingScalingReportResponse {
 }
 
 export const StreamingScalingReportResponse: Schema.Schema<StreamingScalingReportResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maximumThreadCount: Schema.optional(Schema.Number),
   }).annotate({ identifier: "StreamingScalingReportResponse" });
 
@@ -1688,7 +1688,7 @@ export interface Parameter {
 }
 
 export const Parameter: Schema.Schema<Parameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(Schema.Unknown),
   }).annotate({ identifier: "Parameter" });
@@ -1703,7 +1703,7 @@ export interface StructuredMessage {
 }
 
 export const StructuredMessage: Schema.Schema<StructuredMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     messageText: Schema.optional(Schema.String),
     messageKey: Schema.optional(Schema.String),
     parameters: Schema.optional(Schema.Array(Parameter)),
@@ -1723,7 +1723,7 @@ export interface Stack {
 }
 
 export const Stack: Schema.Schema<Stack> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     timestamp: Schema.optional(Schema.String),
     threadName: Schema.optional(Schema.String),
     threadState: Schema.optional(Schema.String),
@@ -1739,7 +1739,7 @@ export interface Sdk {
 }
 
 export const Sdk: Schema.Schema<Sdk> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sdkId: Schema.optional(Schema.String),
     stacks: Schema.optional(Schema.Array(Stack)),
   }).annotate({ identifier: "Sdk" });
@@ -1754,7 +1754,7 @@ export interface Status {
 }
 
 export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     ),
@@ -1775,7 +1775,7 @@ export interface DerivedSource {
 }
 
 export const DerivedSource: Schema.Schema<DerivedSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     source: Schema.optional(Source),
     derivationMode: Schema.optional(Schema.String),
   }).annotate({ identifier: "DerivedSource" });
@@ -1793,7 +1793,7 @@ export interface SourceSplitShard {
 }
 
 export const SourceSplitShard: Schema.Schema<SourceSplitShard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     source: Schema.optional(Source),
     derivationMode: Schema.optional(Schema.String),
   }).annotate({ identifier: "SourceSplitShard" });
@@ -1812,7 +1812,7 @@ export interface SourceSplitResponse {
 }
 
 export const SourceSplitResponse: Schema.Schema<SourceSplitResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bundles: Schema.optional(Schema.Array(DerivedSource)),
     shards: Schema.optional(Schema.Array(SourceSplitShard)),
     outcome: Schema.optional(Schema.String),
@@ -1824,7 +1824,7 @@ export interface SourceGetMetadataResponse {
 }
 
 export const SourceGetMetadataResponse: Schema.Schema<SourceGetMetadataResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metadata: Schema.optional(SourceMetadata),
   }).annotate({ identifier: "SourceGetMetadataResponse" });
 
@@ -1836,7 +1836,7 @@ export interface SourceOperationResponse {
 }
 
 export const SourceOperationResponse: Schema.Schema<SourceOperationResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     split: Schema.optional(SourceSplitResponse),
     getMetadata: Schema.optional(SourceGetMetadataResponse),
   }).annotate({ identifier: "SourceOperationResponse" });
@@ -1849,7 +1849,7 @@ export interface DynamicSourceSplit {
 }
 
 export const DynamicSourceSplit: Schema.Schema<DynamicSourceSplit> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     residual: Schema.optional(DerivedSource),
     primary: Schema.optional(DerivedSource),
   }).annotate({ identifier: "DynamicSourceSplit" });
@@ -1862,7 +1862,7 @@ export interface SplitInt64 {
 }
 
 export const SplitInt64: Schema.Schema<SplitInt64> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lowBits: Schema.optional(Schema.Number),
     highBits: Schema.optional(Schema.Number),
   }).annotate({ identifier: "SplitInt64" });
@@ -1875,7 +1875,7 @@ export interface IntegerGauge {
 }
 
 export const IntegerGauge: Schema.Schema<IntegerGauge> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     timestamp: Schema.optional(Schema.String),
     value: Schema.optional(SplitInt64),
   }).annotate({ identifier: "IntegerGauge" });
@@ -1899,7 +1899,7 @@ export interface NameAndKind {
 }
 
 export const NameAndKind: Schema.Schema<NameAndKind> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
   }).annotate({ identifier: "NameAndKind" });
@@ -1912,7 +1912,7 @@ export interface FloatingPointMean {
 }
 
 export const FloatingPointMean: Schema.Schema<FloatingPointMean> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(SplitInt64),
     sum: Schema.optional(Schema.Number),
   }).annotate({ identifier: "FloatingPointMean" });
@@ -1923,7 +1923,7 @@ export interface IntegerList {
 }
 
 export const IntegerList: Schema.Schema<IntegerList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     elements: Schema.optional(Schema.Array(SplitInt64)),
   }).annotate({ identifier: "IntegerList" });
 
@@ -1935,7 +1935,7 @@ export interface BoundedTrieNode {
 }
 
 export const BoundedTrieNode: Schema.Schema<BoundedTrieNode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       truncated: Schema.optional(Schema.Boolean),
       children: Schema.optional(Schema.Record(Schema.String, BoundedTrieNode)),
@@ -1954,7 +1954,7 @@ export interface BoundedTrie {
 }
 
 export const BoundedTrie: Schema.Schema<BoundedTrie> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     root: Schema.optional(BoundedTrieNode),
     bound: Schema.optional(Schema.Number),
     singleton: Schema.optional(Schema.Array(Schema.String)),
@@ -1976,7 +1976,7 @@ export interface DistributionUpdate {
 }
 
 export const DistributionUpdate: Schema.Schema<DistributionUpdate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sum: Schema.optional(SplitInt64),
     sumOfSquares: Schema.optional(Schema.Number),
     min: Schema.optional(SplitInt64),
@@ -1993,7 +1993,7 @@ export interface IntegerMean {
 }
 
 export const IntegerMean: Schema.Schema<IntegerMean> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(SplitInt64),
     sum: Schema.optional(SplitInt64),
   }).annotate({ identifier: "IntegerMean" });
@@ -2004,7 +2004,7 @@ export interface FloatingPointList {
 }
 
 export const FloatingPointList: Schema.Schema<FloatingPointList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     elements: Schema.optional(Schema.Array(Schema.Number)),
   }).annotate({ identifier: "FloatingPointList" });
 
@@ -2014,7 +2014,7 @@ export interface StringList {
 }
 
 export const StringList: Schema.Schema<StringList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     elements: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "StringList" });
 
@@ -2054,7 +2054,7 @@ export interface CounterUpdate {
 }
 
 export const CounterUpdate: Schema.Schema<CounterUpdate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     integerGauge: Schema.optional(IntegerGauge),
     nameAndKind: Schema.optional(NameAndKind),
     structuredNameAndMetadata: Schema.optional(
@@ -2087,7 +2087,7 @@ export interface SourceFork {
 }
 
 export const SourceFork: Schema.Schema<SourceFork> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     primary: Schema.optional(SourceSplitShard),
     residualSource: Schema.optional(DerivedSource),
     residual: Schema.optional(SourceSplitShard),
@@ -2102,7 +2102,7 @@ export interface ConcatPosition {
 }
 
 export const ConcatPosition: Schema.Schema<ConcatPosition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       index: Schema.optional(Schema.Number),
       position: Schema.optional(Position),
@@ -2127,7 +2127,7 @@ export interface Position {
 }
 
 export const Position: Schema.Schema<Position> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       recordIndex: Schema.optional(Schema.String),
       key: Schema.optional(Schema.String),
@@ -2146,7 +2146,7 @@ export interface ReportedParallelism {
 }
 
 export const ReportedParallelism: Schema.Schema<ReportedParallelism> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     isInfinite: Schema.optional(Schema.Boolean),
     value: Schema.optional(Schema.Number),
   }).annotate({ identifier: "ReportedParallelism" });
@@ -2163,7 +2163,7 @@ export interface ApproximateReportedProgress {
 }
 
 export const ApproximateReportedProgress: Schema.Schema<ApproximateReportedProgress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     position: Schema.optional(Position),
     remainingParallelism: Schema.optional(ReportedParallelism),
     consumedParallelism: Schema.optional(ReportedParallelism),
@@ -2180,7 +2180,7 @@ export interface MetricStructuredName {
 }
 
 export const MetricStructuredName: Schema.Schema<MetricStructuredName> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     origin: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     context: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -2216,7 +2216,7 @@ export interface MetricUpdate {
 }
 
 export const MetricUpdate: Schema.Schema<MetricUpdate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     distribution: Schema.optional(Schema.Unknown),
     boundedTrie: Schema.optional(Schema.Unknown),
     trie: Schema.optional(Schema.Unknown),
@@ -2242,7 +2242,7 @@ export interface ApproximateProgress {
 }
 
 export const ApproximateProgress: Schema.Schema<ApproximateProgress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     position: Schema.optional(Position),
     percentComplete: Schema.optional(Schema.Number),
     remainingTime: Schema.optional(Schema.String),
@@ -2280,7 +2280,7 @@ export interface WorkItemStatus {
 }
 
 export const WorkItemStatus: Schema.Schema<WorkItemStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportIndex: Schema.optional(Schema.String),
     requestedLeaseDuration: Schema.optional(Schema.String),
     errors: Schema.optional(Schema.Array(Status)),
@@ -2303,7 +2303,7 @@ export interface WorkerShutdownNotice {
 }
 
 export const WorkerShutdownNotice: Schema.Schema<WorkerShutdownNotice> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reason: Schema.optional(Schema.String),
   }).annotate({ identifier: "WorkerShutdownNotice" });
 
@@ -2317,7 +2317,7 @@ export interface KeyRangeDataDiskAssignment {
 }
 
 export const KeyRangeDataDiskAssignment: Schema.Schema<KeyRangeDataDiskAssignment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     start: Schema.optional(Schema.String),
     end: Schema.optional(Schema.String),
     dataDisk: Schema.optional(Schema.String),
@@ -2329,7 +2329,7 @@ export interface GPUUtilization {
 }
 
 export const GPUUtilization: Schema.Schema<GPUUtilization> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rate: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GPUUtilization" });
 
@@ -2341,7 +2341,7 @@ export interface GPUUsage {
 }
 
 export const GPUUsage: Schema.Schema<GPUUsage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     timestamp: Schema.optional(Schema.String),
     utilization: Schema.optional(GPUUtilization),
   }).annotate({ identifier: "GPUUsage" });
@@ -2356,7 +2356,7 @@ export interface CPUTime {
 }
 
 export const CPUTime: Schema.Schema<CPUTime> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     totalMs: Schema.optional(Schema.String),
     rate: Schema.optional(Schema.Number),
     timestamp: Schema.optional(Schema.String),
@@ -2376,7 +2376,7 @@ export interface MemInfo {
 }
 
 export const MemInfo: Schema.Schema<MemInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     totalGbMs: Schema.optional(Schema.String),
     timestamp: Schema.optional(Schema.String),
     currentRssBytes: Schema.optional(Schema.String),
@@ -2396,7 +2396,7 @@ export interface ResourceUtilizationReport {
 }
 
 export const ResourceUtilizationReport: Schema.Schema<ResourceUtilizationReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       gpuUsage: Schema.optional(Schema.Array(GPUUsage)),
       cpuTime: Schema.optional(Schema.Array(CPUTime)),
@@ -2415,7 +2415,7 @@ export interface WorkerThreadScalingReport {
 }
 
 export const WorkerThreadScalingReport: Schema.Schema<WorkerThreadScalingReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     currentThreadCount: Schema.optional(Schema.Number),
   }).annotate({ identifier: "WorkerThreadScalingReport" });
 
@@ -2427,7 +2427,7 @@ export interface WorkerMessageCode {
 }
 
 export const WorkerMessageCode: Schema.Schema<WorkerMessageCode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }).annotate({ identifier: "WorkerMessageCode" });
@@ -2450,7 +2450,7 @@ export interface WorkerHealthReport {
 }
 
 export const WorkerHealthReport: Schema.Schema<WorkerHealthReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     vmBrokenCode: Schema.optional(Schema.String),
     reportInterval: Schema.optional(Schema.String),
     msg: Schema.optional(Schema.String),
@@ -2481,7 +2481,7 @@ export interface StreamingScalingReport {
 }
 
 export const StreamingScalingReport: Schema.Schema<StreamingScalingReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     activeThreadCount: Schema.optional(Schema.Number),
     outstandingBytesCount: Schema.optional(Schema.Number),
     maximumBundleCount: Schema.optional(Schema.Number),
@@ -2511,7 +2511,7 @@ export interface DataSamplingReport {
 }
 
 export const DataSamplingReport: Schema.Schema<DataSamplingReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     elementsSampledBytes: Schema.optional(Schema.String),
     pcollectionsSampledCount: Schema.optional(Schema.String),
     persistenceErrorsCount: Schema.optional(Schema.String),
@@ -2533,7 +2533,7 @@ export interface OutlierStats {
 }
 
 export const OutlierStats: Schema.Schema<OutlierStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     underflowMean: Schema.optional(Schema.Number),
     overflowMean: Schema.optional(Schema.Number),
     overflowCount: Schema.optional(Schema.String),
@@ -2550,7 +2550,7 @@ export interface Linear {
 }
 
 export const Linear: Schema.Schema<Linear> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     start: Schema.optional(Schema.Number),
     numberOfBuckets: Schema.optional(Schema.Number),
     width: Schema.optional(Schema.Number),
@@ -2564,7 +2564,7 @@ export interface BucketOptions {
 }
 
 export const BucketOptions: Schema.Schema<BucketOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     exponential: Schema.optional(Base2Exponent),
     linear: Schema.optional(Linear),
   }).annotate({ identifier: "BucketOptions" });
@@ -2581,7 +2581,7 @@ export interface DataflowHistogramValue {
 }
 
 export const DataflowHistogramValue: Schema.Schema<DataflowHistogramValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.String),
     outlierStats: Schema.optional(OutlierStats),
     bucketOptions: Schema.optional(BucketOptions),
@@ -2596,7 +2596,7 @@ export interface DataflowGaugeValue {
 }
 
 export const DataflowGaugeValue: Schema.Schema<DataflowGaugeValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     measuredTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "DataflowGaugeValue" });
@@ -2615,7 +2615,7 @@ export interface MetricValue {
 }
 
 export const MetricValue: Schema.Schema<MetricValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     valueInt64: Schema.optional(Schema.String),
     metric: Schema.optional(Schema.String),
     valueHistogram: Schema.optional(DataflowHistogramValue),
@@ -2633,7 +2633,7 @@ export interface PerStepNamespaceMetrics {
 }
 
 export const PerStepNamespaceMetrics: Schema.Schema<PerStepNamespaceMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metricValues: Schema.optional(Schema.Array(MetricValue)),
     originalStep: Schema.optional(Schema.String),
     metricsNamespace: Schema.optional(Schema.String),
@@ -2645,7 +2645,7 @@ export interface PerWorkerMetrics {
 }
 
 export const PerWorkerMetrics: Schema.Schema<PerWorkerMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     perStepNamespaceMetrics: Schema.optional(
       Schema.Array(PerStepNamespaceMetrics),
     ),
@@ -2670,7 +2670,7 @@ export interface WorkerLifecycleEvent {
 }
 
 export const WorkerLifecycleEvent: Schema.Schema<WorkerLifecycleEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     containerStartTime: Schema.optional(Schema.String),
     event: Schema.optional(Schema.String),
@@ -2702,7 +2702,7 @@ export interface WorkerMessage {
 }
 
 export const WorkerMessage: Schema.Schema<WorkerMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     workerMetrics: Schema.optional(ResourceUtilizationReport),
     workerThreadScalingReport: Schema.optional(WorkerThreadScalingReport),
     workerMessageCode: Schema.optional(WorkerMessageCode),
@@ -2719,7 +2719,7 @@ export const WorkerMessage: Schema.Schema<WorkerMessage> =
 export interface SendDebugCaptureResponse {}
 
 export const SendDebugCaptureResponse: Schema.Schema<SendDebugCaptureResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "SendDebugCaptureResponse",
   });
 
@@ -2745,7 +2745,7 @@ export interface AutoscalingEvent {
 }
 
 export const AutoscalingEvent: Schema.Schema<AutoscalingEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     time: Schema.optional(Schema.String),
     eventType: Schema.optional(Schema.String),
     description: Schema.optional(StructuredMessage),
@@ -2773,7 +2773,7 @@ export interface JobMessage {
 }
 
 export const JobMessage: Schema.Schema<JobMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     messageText: Schema.optional(Schema.String),
     time: Schema.optional(Schema.String),
@@ -2790,7 +2790,7 @@ export interface ListJobMessagesResponse {
 }
 
 export const ListJobMessagesResponse: Schema.Schema<ListJobMessagesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     autoscalingEvents: Schema.optional(Schema.Array(AutoscalingEvent)),
     jobMessages: Schema.optional(Schema.Array(JobMessage)),
@@ -2806,7 +2806,7 @@ export interface PubsubSnapshotMetadata {
 }
 
 export const PubsubSnapshotMetadata: Schema.Schema<PubsubSnapshotMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     snapshotName: Schema.optional(Schema.String),
     expireTime: Schema.optional(Schema.String),
     topicName: Schema.optional(Schema.String),
@@ -2843,7 +2843,7 @@ export interface Snapshot {
 }
 
 export const Snapshot: Schema.Schema<Snapshot> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     region: Schema.optional(Schema.String),
@@ -2862,7 +2862,7 @@ export interface ListSnapshotsResponse {
 }
 
 export const ListSnapshotsResponse: Schema.Schema<ListSnapshotsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     snapshots: Schema.optional(Schema.Array(Snapshot)),
   }).annotate({ identifier: "ListSnapshotsResponse" });
 
@@ -2876,7 +2876,7 @@ export interface ParameterMetadataEnumOption {
 }
 
 export const ParameterMetadataEnumOption: Schema.Schema<ParameterMetadataEnumOption> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
     label: Schema.optional(Schema.String),
@@ -2890,7 +2890,7 @@ export interface MetricShortId {
 }
 
 export const MetricShortId: Schema.Schema<MetricShortId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     shortId: Schema.optional(Schema.String),
     metricIndex: Schema.optional(Schema.Number),
   }).annotate({ identifier: "MetricShortId" });
@@ -2905,7 +2905,7 @@ export interface HotKeyDetection {
 }
 
 export const HotKeyDetection: Schema.Schema<HotKeyDetection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     systemName: Schema.optional(Schema.String),
     hotKeyAge: Schema.optional(Schema.String),
     userStepName: Schema.optional(Schema.String),
@@ -2921,7 +2921,7 @@ export interface ApproximateSplitRequest {
 }
 
 export const ApproximateSplitRequest: Schema.Schema<ApproximateSplitRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fractionConsumed: Schema.optional(Schema.Number),
     position: Schema.optional(Position),
     fractionOfRemainder: Schema.optional(Schema.Number),
@@ -2951,7 +2951,7 @@ export interface WorkItemServiceState {
 }
 
 export const WorkItemServiceState: Schema.Schema<WorkItemServiceState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metricShortId: Schema.optional(Schema.Array(MetricShortId)),
     suggestedStopPosition: Schema.optional(Position),
     leaseExpireTime: Schema.optional(Schema.String),
@@ -2972,7 +2972,7 @@ export interface ReportWorkItemStatusResponse {
 }
 
 export const ReportWorkItemStatusResponse: Schema.Schema<ReportWorkItemStatusResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     unifiedWorkerResponse: Schema.optional(
       Schema.Record(Schema.String, Schema.Unknown),
     ),
@@ -2987,7 +2987,7 @@ export interface SeqMapTaskOutputInfo {
 }
 
 export const SeqMapTaskOutputInfo: Schema.Schema<SeqMapTaskOutputInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tag: Schema.optional(Schema.String),
     sink: Schema.optional(Sink),
   }).annotate({ identifier: "SeqMapTaskOutputInfo" });
@@ -2998,14 +2998,14 @@ export interface MountedDataDisk {
 }
 
 export const MountedDataDisk: Schema.Schema<MountedDataDisk> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataDisk: Schema.optional(Schema.String),
   }).annotate({ identifier: "MountedDataDisk" });
 
 export interface WorkerShutdownNoticeResponse {}
 
 export const WorkerShutdownNoticeResponse: Schema.Schema<WorkerShutdownNoticeResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "WorkerShutdownNoticeResponse",
   });
 
@@ -3017,7 +3017,7 @@ export interface StragglerInfo {
 }
 
 export const StragglerInfo: Schema.Schema<StragglerInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     causes: Schema.optional(
       Schema.Record(Schema.String, StragglerDebuggingInfo),
@@ -3040,7 +3040,7 @@ export interface SeqMapTask {
 }
 
 export const SeqMapTask: Schema.Schema<SeqMapTask> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     systemName: Schema.optional(Schema.String),
     stageName: Schema.optional(Schema.String),
     outputInfos: Schema.optional(Schema.Array(SeqMapTaskOutputInfo)),
@@ -3057,7 +3057,7 @@ export interface StreamingComputationRanges {
 }
 
 export const StreamingComputationRanges: Schema.Schema<StreamingComputationRanges> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     computationId: Schema.optional(Schema.String),
     rangeAssignments: Schema.optional(Schema.Array(KeyRangeDataDiskAssignment)),
   }).annotate({ identifier: "StreamingComputationRanges" });
@@ -3076,7 +3076,7 @@ export interface StreamingComputationTask {
 }
 
 export const StreamingComputationTask: Schema.Schema<StreamingComputationTask> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     taskType: Schema.optional(Schema.String),
     dataDisks: Schema.optional(Schema.Array(MountedDataDisk)),
     computationRanges: Schema.optional(
@@ -3104,7 +3104,7 @@ export interface StreamingOperationalLimits {
 }
 
 export const StreamingOperationalLimits: Schema.Schema<StreamingOperationalLimits> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxTagBytes: Schema.optional(Schema.String),
     maxBagElementBytes: Schema.optional(Schema.String),
     maxSortedListElementBytes: Schema.optional(Schema.String),
@@ -3129,7 +3129,7 @@ export interface StreamingComputationConfig {
 }
 
 export const StreamingComputationConfig: Schema.Schema<StreamingComputationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     instructions: Schema.optional(Schema.Array(ParallelInstruction)),
     systemName: Schema.optional(Schema.String),
     stageName: Schema.optional(Schema.String),
@@ -3165,7 +3165,7 @@ export interface StreamingConfigTask {
 }
 
 export const StreamingConfigTask: Schema.Schema<StreamingConfigTask> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxWorkItemCommitBytes: Schema.optional(Schema.String),
     userWorkerRunnerV1Settings: Schema.optional(Schema.String),
     userWorkerRunnerV2Settings: Schema.optional(Schema.String),
@@ -3189,7 +3189,7 @@ export interface SourceGetMetadataRequest {
 }
 
 export const SourceGetMetadataRequest: Schema.Schema<SourceGetMetadataRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     source: Schema.optional(Source),
   }).annotate({ identifier: "SourceGetMetadataRequest" });
 
@@ -3201,7 +3201,7 @@ export interface SourceSplitOptions {
 }
 
 export const SourceSplitOptions: Schema.Schema<SourceSplitOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     desiredBundleSizeBytes: Schema.optional(Schema.String),
     desiredShardSizeBytes: Schema.optional(Schema.String),
   }).annotate({ identifier: "SourceSplitOptions" });
@@ -3214,7 +3214,7 @@ export interface SourceSplitRequest {
 }
 
 export const SourceSplitRequest: Schema.Schema<SourceSplitRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     source: Schema.optional(Source),
     options: Schema.optional(SourceSplitOptions),
   }).annotate({ identifier: "SourceSplitRequest" });
@@ -3235,7 +3235,7 @@ export interface SourceOperationRequest {
 }
 
 export const SourceOperationRequest: Schema.Schema<SourceOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     systemName: Schema.optional(Schema.String),
     stageName: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -3252,7 +3252,7 @@ export interface StreamingApplianceSnapshotConfig {
 }
 
 export const StreamingApplianceSnapshotConfig: Schema.Schema<StreamingApplianceSnapshotConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     importStateEndpoint: Schema.optional(Schema.String),
     snapshotId: Schema.optional(Schema.String),
   }).annotate({ identifier: "StreamingApplianceSnapshotConfig" });
@@ -3271,7 +3271,7 @@ export interface StreamingSetupTask {
 }
 
 export const StreamingSetupTask: Schema.Schema<StreamingSetupTask> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     receiveWorkPort: Schema.optional(Schema.Number),
     workerHarnessPort: Schema.optional(Schema.Number),
     drain: Schema.optional(Schema.Boolean),
@@ -3287,7 +3287,7 @@ export interface ShellTask {
 }
 
 export const ShellTask: Schema.Schema<ShellTask> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     command: Schema.optional(Schema.String),
     exitCode: Schema.optional(Schema.Number),
   }).annotate({ identifier: "ShellTask" });
@@ -3326,7 +3326,7 @@ export interface WorkItem {
 }
 
 export const WorkItem: Schema.Schema<WorkItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     seqMapTask: Schema.optional(SeqMapTask),
     streamingComputationTask: Schema.optional(StreamingComputationTask),
     configuration: Schema.optional(Schema.String),
@@ -3352,7 +3352,7 @@ export interface Point {
 }
 
 export const Point: Schema.Schema<Point> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     time: Schema.optional(Schema.String),
     value: Schema.optional(Schema.Number),
   }).annotate({ identifier: "Point" });
@@ -3365,7 +3365,7 @@ export interface ProgressTimeseries {
 }
 
 export const ProgressTimeseries: Schema.Schema<ProgressTimeseries> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     currentProgress: Schema.optional(Schema.Number),
     dataPoints: Schema.optional(Schema.Array(Point)),
   }).annotate({ identifier: "ProgressTimeseries" });
@@ -3384,7 +3384,7 @@ export interface StreamingStragglerInfo {
 }
 
 export const StreamingStragglerInfo: Schema.Schema<StreamingStragglerInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataWatermarkLag: Schema.optional(Schema.String),
     workerName: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -3400,7 +3400,7 @@ export interface Straggler {
 }
 
 export const Straggler: Schema.Schema<Straggler> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     streamingStraggler: Schema.optional(StreamingStragglerInfo),
     batchStraggler: Schema.optional(StragglerInfo),
   }).annotate({ identifier: "Straggler" });
@@ -3413,7 +3413,7 @@ export interface SDKInfo {
 }
 
 export const SDKInfo: Schema.Schema<SDKInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     language: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
   }).annotate({ identifier: "SDKInfo" });
@@ -3472,7 +3472,7 @@ export interface ParameterMetadata {
 }
 
 export const ParameterMetadata: Schema.Schema<ParameterMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     regexes: Schema.optional(Schema.Array(Schema.String)),
     parentName: Schema.optional(Schema.String),
     paramType: Schema.optional(Schema.String),
@@ -3498,7 +3498,7 @@ export interface RuntimeMetadata {
 }
 
 export const RuntimeMetadata: Schema.Schema<RuntimeMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sdkInfo: Schema.optional(SDKInfo),
     parameters: Schema.optional(Schema.Array(ParameterMetadata)),
   }).annotate({ identifier: "RuntimeMetadata" });
@@ -3530,7 +3530,7 @@ export interface WorkItemDetails {
 }
 
 export const WorkItemDetails: Schema.Schema<WorkItemDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     progress: Schema.optional(ProgressTimeseries),
     stragglerInfo: Schema.optional(StragglerInfo),
     state: Schema.optional(Schema.String),
@@ -3549,7 +3549,7 @@ export interface WorkerDetails {
 }
 
 export const WorkerDetails: Schema.Schema<WorkerDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     workerName: Schema.optional(Schema.String),
     workItems: Schema.optional(Schema.Array(WorkItemDetails)),
   }).annotate({ identifier: "WorkerDetails" });
@@ -3562,7 +3562,7 @@ export interface StageExecutionDetails {
 }
 
 export const StageExecutionDetails: Schema.Schema<StageExecutionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     workers: Schema.optional(Schema.Array(WorkerDetails)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "StageExecutionDetails" });
@@ -3577,7 +3577,7 @@ export interface StragglerSummary {
 }
 
 export const StragglerSummary: Schema.Schema<StragglerSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     totalStragglerCount: Schema.optional(Schema.String),
     recentStragglers: Schema.optional(Schema.Array(Straggler)),
     stragglerCauseCount: Schema.optional(
@@ -3610,7 +3610,7 @@ export interface StageSummary {
 }
 
 export const StageSummary: Schema.Schema<StageSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metrics: Schema.optional(Schema.Array(MetricUpdate)),
     stageId: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -3628,7 +3628,7 @@ export interface JobExecutionDetails {
 }
 
 export const JobExecutionDetails: Schema.Schema<JobExecutionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     stages: Schema.optional(Schema.Array(StageSummary)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "JobExecutionDetails" });
@@ -3639,7 +3639,7 @@ export interface GetDebugConfigResponse {
 }
 
 export const GetDebugConfigResponse: Schema.Schema<GetDebugConfigResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     config: Schema.optional(Schema.String),
   }).annotate({ identifier: "GetDebugConfigResponse" });
 
@@ -3663,7 +3663,7 @@ export interface LeaseWorkItemRequest {
 }
 
 export const LeaseWorkItemRequest: Schema.Schema<LeaseWorkItemRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     unifiedWorkerRequest: Schema.optional(
       Schema.Record(Schema.String, Schema.Unknown),
     ),
@@ -3684,7 +3684,7 @@ export interface JobMetrics {
 }
 
 export const JobMetrics: Schema.Schema<JobMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metricTime: Schema.optional(Schema.String),
     metrics: Schema.optional(Schema.Array(MetricUpdate)),
   }).annotate({ identifier: "JobMetrics" });
@@ -3709,7 +3709,7 @@ export interface TemplateMetadata {
 }
 
 export const TemplateMetadata: Schema.Schema<TemplateMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     defaultStreamingMode: Schema.optional(Schema.String),
     parameters: Schema.optional(Schema.Array(ParameterMetadata)),
     streaming: Schema.optional(Schema.Boolean),
@@ -3792,7 +3792,7 @@ export interface FlexTemplateRuntimeEnvironment {
 }
 
 export const FlexTemplateRuntimeEnvironment: Schema.Schema<FlexTemplateRuntimeEnvironment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxWorkers: Schema.optional(Schema.Number),
     saveHeapDumpsToGcsPath: Schema.optional(Schema.String),
     flexrsGoal: Schema.optional(Schema.String),
@@ -3829,7 +3829,7 @@ export interface WorkerThreadScalingReportResponse {
 }
 
 export const WorkerThreadScalingReportResponse: Schema.Schema<WorkerThreadScalingReportResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     recommendedThreadCount: Schema.optional(Schema.Number),
   }).annotate({ identifier: "WorkerThreadScalingReportResponse" });
 
@@ -3843,7 +3843,7 @@ export interface GetDebugConfigRequest {
 }
 
 export const GetDebugConfigRequest: Schema.Schema<GetDebugConfigRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     workerId: Schema.optional(Schema.String),
     componentId: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
@@ -3869,7 +3869,7 @@ export interface SendDebugCaptureRequest {
 }
 
 export const SendDebugCaptureRequest: Schema.Schema<SendDebugCaptureRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.optional(Schema.String),
     dataFormat: Schema.optional(Schema.String),
     componentId: Schema.optional(Schema.String),
@@ -3895,7 +3895,7 @@ export interface ContainerSpec {
 }
 
 export const ContainerSpec: Schema.Schema<ContainerSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     imageRepositoryUsernameSecretId: Schema.optional(Schema.String),
     metadata: Schema.optional(TemplateMetadata),
     image: Schema.optional(Schema.String),
@@ -3908,7 +3908,7 @@ export const ContainerSpec: Schema.Schema<ContainerSpec> =
 export interface ResourceUtilizationReportResponse {}
 
 export const ResourceUtilizationReportResponse: Schema.Schema<ResourceUtilizationReportResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ResourceUtilizationReportResponse",
   });
 
@@ -3918,7 +3918,7 @@ export interface WorkerHealthReportResponse {
 }
 
 export const WorkerHealthReportResponse: Schema.Schema<WorkerHealthReportResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportInterval: Schema.optional(Schema.String),
   }).annotate({ identifier: "WorkerHealthReportResponse" });
 
@@ -3936,7 +3936,7 @@ export interface WorkerMessageResponse {
 }
 
 export const WorkerMessageResponse: Schema.Schema<WorkerMessageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     workerThreadScalingReportResponse: Schema.optional(
       WorkerThreadScalingReportResponse,
     ),
@@ -3954,7 +3954,7 @@ export interface SendWorkerMessagesResponse {
 }
 
 export const SendWorkerMessagesResponse: Schema.Schema<SendWorkerMessagesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     workerMessageResponses: Schema.optional(
       Schema.Array(WorkerMessageResponse),
     ),
@@ -3966,7 +3966,7 @@ export interface LaunchTemplateResponse {
 }
 
 export const LaunchTemplateResponse: Schema.Schema<LaunchTemplateResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     job: Schema.optional(Job),
   }).annotate({ identifier: "LaunchTemplateResponse" });
 
@@ -3978,7 +3978,7 @@ export interface SendWorkerMessagesRequest {
 }
 
 export const SendWorkerMessagesRequest: Schema.Schema<SendWorkerMessagesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.optional(Schema.String),
     workerMessages: Schema.optional(Schema.Array(WorkerMessage)),
   }).annotate({ identifier: "SendWorkerMessagesRequest" });
@@ -3995,7 +3995,7 @@ export interface GetTemplateResponse {
 }
 
 export const GetTemplateResponse: Schema.Schema<GetTemplateResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(Status),
     metadata: Schema.optional(TemplateMetadata),
     templateType: Schema.optional(Schema.String),
@@ -4008,7 +4008,7 @@ export interface LaunchFlexTemplateResponse {
 }
 
 export const LaunchFlexTemplateResponse: Schema.Schema<LaunchFlexTemplateResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     job: Schema.optional(Job),
   }).annotate({ identifier: "LaunchFlexTemplateResponse" });
 
@@ -4020,7 +4020,7 @@ export interface GetWorkerStacktracesRequest {
 }
 
 export const GetWorkerStacktracesRequest: Schema.Schema<GetWorkerStacktracesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     workerId: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "GetWorkerStacktracesRequest" });
@@ -4039,7 +4039,7 @@ export interface LaunchTemplateParameters {
 }
 
 export const LaunchTemplateParameters: Schema.Schema<LaunchTemplateParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     update: Schema.optional(Schema.Boolean),
     environment: Schema.optional(RuntimeEnvironment),
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -4069,7 +4069,7 @@ export interface LaunchFlexTemplateParameter {
 }
 
 export const LaunchFlexTemplateParameter: Schema.Schema<LaunchFlexTemplateParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     environment: Schema.optional(FlexTemplateRuntimeEnvironment),
     update: Schema.optional(Schema.Boolean),
@@ -4090,7 +4090,7 @@ export interface LaunchFlexTemplateRequest {
 }
 
 export const LaunchFlexTemplateRequest: Schema.Schema<LaunchFlexTemplateRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean),
     launchParameter: Schema.optional(LaunchFlexTemplateParameter),
   }).annotate({ identifier: "LaunchFlexTemplateRequest" });
@@ -4107,7 +4107,7 @@ export interface SnapshotJobRequest {
 }
 
 export const SnapshotJobRequest: Schema.Schema<SnapshotJobRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.optional(Schema.String),
     ttl: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -4128,7 +4128,7 @@ export interface CreateJobFromTemplateRequest {
 }
 
 export const CreateJobFromTemplateRequest: Schema.Schema<CreateJobFromTemplateRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     environment: Schema.optional(RuntimeEnvironment),
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.optional(Schema.String),
@@ -4144,7 +4144,7 @@ export interface LeaseWorkItemResponse {
 }
 
 export const LeaseWorkItemResponse: Schema.Schema<LeaseWorkItemResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     unifiedWorkerResponse: Schema.optional(
       Schema.Record(Schema.String, Schema.Unknown),
     ),
@@ -4167,7 +4167,7 @@ export interface ReportWorkItemStatusRequest {
 }
 
 export const ReportWorkItemStatusRequest: Schema.Schema<ReportWorkItemStatusRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     workItemStatuses: Schema.optional(Schema.Array(WorkItemStatus)),
     currentWorkerTime: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
@@ -4181,7 +4181,7 @@ export const ReportWorkItemStatusRequest: Schema.Schema<ReportWorkItemStatusRequ
 export interface DeleteSnapshotResponse {}
 
 export const DeleteSnapshotResponse: Schema.Schema<DeleteSnapshotResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeleteSnapshotResponse",
   });
 
@@ -4191,7 +4191,7 @@ export interface GetWorkerStacktracesResponse {
 }
 
 export const GetWorkerStacktracesResponse: Schema.Schema<GetWorkerStacktracesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sdks: Schema.optional(Schema.Array(Sdk)),
   }).annotate({ identifier: "GetWorkerStacktracesResponse" });
 
@@ -4257,7 +4257,7 @@ export interface WorkerMessagesProjectsRequest {
 }
 
 export const WorkerMessagesProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
     body: Schema.optional(SendWorkerMessagesRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -4271,7 +4271,7 @@ export const WorkerMessagesProjectsRequest =
 
 export type WorkerMessagesProjectsResponse = SendWorkerMessagesResponse;
 export const WorkerMessagesProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SendWorkerMessagesResponse;
+  /*@__PURE__*/ SendWorkerMessagesResponse;
 
 export type WorkerMessagesProjectsError =
   | DefaultErrors
@@ -4286,7 +4286,7 @@ export const workerMessagesProjects: API.OperationMethod<
   WorkerMessagesProjectsResponse,
   WorkerMessagesProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: WorkerMessagesProjectsRequest,
   output: WorkerMessagesProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4302,7 +4302,7 @@ export interface DeleteSnapshotsProjectsRequest {
 }
 
 export const DeleteSnapshotsProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.optional(Schema.String).pipe(T.HttpQuery("location")),
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
     snapshotId: Schema.optional(Schema.String).pipe(T.HttpQuery("snapshotId")),
@@ -4313,7 +4313,7 @@ export const DeleteSnapshotsProjectsRequest =
 
 export type DeleteSnapshotsProjectsResponse = DeleteSnapshotResponse;
 export const DeleteSnapshotsProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DeleteSnapshotResponse;
+  /*@__PURE__*/ DeleteSnapshotResponse;
 
 export type DeleteSnapshotsProjectsError =
   | DefaultErrors
@@ -4328,7 +4328,7 @@ export const deleteSnapshotsProjects: API.OperationMethod<
   DeleteSnapshotsProjectsResponse,
   DeleteSnapshotsProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSnapshotsProjectsRequest,
   output: DeleteSnapshotsProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4344,7 +4344,7 @@ export interface GetProjectsSnapshotsRequest {
 }
 
 export const GetProjectsSnapshotsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.optional(Schema.String).pipe(T.HttpQuery("location")),
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
     snapshotId: Schema.String.pipe(T.HttpPath("snapshotId")),
@@ -4357,8 +4357,7 @@ export const GetProjectsSnapshotsRequest =
   ) as unknown as Schema.Schema<GetProjectsSnapshotsRequest>;
 
 export type GetProjectsSnapshotsResponse = Snapshot;
-export const GetProjectsSnapshotsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Snapshot;
+export const GetProjectsSnapshotsResponse = /*@__PURE__*/ Snapshot;
 
 export type GetProjectsSnapshotsError = DefaultErrors | NotFound | Forbidden;
 
@@ -4368,7 +4367,7 @@ export const getProjectsSnapshots: API.OperationMethod<
   GetProjectsSnapshotsResponse,
   GetProjectsSnapshotsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsSnapshotsRequest,
   output: GetProjectsSnapshotsResponse,
   errors: [NotFound, Forbidden],
@@ -4384,7 +4383,7 @@ export interface ListProjectsSnapshotsRequest {
 }
 
 export const ListProjectsSnapshotsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
     jobId: Schema.optional(Schema.String).pipe(T.HttpQuery("jobId")),
     location: Schema.optional(Schema.String).pipe(T.HttpQuery("location")),
@@ -4395,7 +4394,7 @@ export const ListProjectsSnapshotsRequest =
 
 export type ListProjectsSnapshotsResponse = ListSnapshotsResponse;
 export const ListProjectsSnapshotsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListSnapshotsResponse;
+  /*@__PURE__*/ ListSnapshotsResponse;
 
 export type ListProjectsSnapshotsError = DefaultErrors | NotFound | Forbidden;
 
@@ -4405,7 +4404,7 @@ export const listProjectsSnapshots: API.OperationMethod<
   ListProjectsSnapshotsResponse,
   ListProjectsSnapshotsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListProjectsSnapshotsRequest,
   output: ListProjectsSnapshotsResponse,
   errors: [NotFound, Forbidden],
@@ -4421,7 +4420,7 @@ export interface SnapshotProjectsJobsRequest {
 }
 
 export const SnapshotProjectsJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     jobId: Schema.String.pipe(T.HttpPath("jobId")),
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
     body: Schema.optional(SnapshotJobRequest).pipe(T.HttpBody()),
@@ -4435,8 +4434,7 @@ export const SnapshotProjectsJobsRequest =
   ) as unknown as Schema.Schema<SnapshotProjectsJobsRequest>;
 
 export type SnapshotProjectsJobsResponse = Snapshot;
-export const SnapshotProjectsJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Snapshot;
+export const SnapshotProjectsJobsResponse = /*@__PURE__*/ Snapshot;
 
 export type SnapshotProjectsJobsError =
   | DefaultErrors
@@ -4451,7 +4449,7 @@ export const snapshotProjectsJobs: API.OperationMethod<
   SnapshotProjectsJobsResponse,
   SnapshotProjectsJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SnapshotProjectsJobsRequest,
   output: SnapshotProjectsJobsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4471,7 +4469,7 @@ export interface UpdateProjectsJobsRequest {
 }
 
 export const UpdateProjectsJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
     jobId: Schema.String.pipe(T.HttpPath("jobId")),
     location: Schema.optional(Schema.String).pipe(T.HttpQuery("location")),
@@ -4487,7 +4485,7 @@ export const UpdateProjectsJobsRequest =
   ) as unknown as Schema.Schema<UpdateProjectsJobsRequest>;
 
 export type UpdateProjectsJobsResponse = Job;
-export const UpdateProjectsJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Job;
+export const UpdateProjectsJobsResponse = /*@__PURE__*/ Job;
 
 export type UpdateProjectsJobsError =
   | DefaultErrors
@@ -4502,7 +4500,7 @@ export const updateProjectsJobs: API.OperationMethod<
   UpdateProjectsJobsResponse,
   UpdateProjectsJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateProjectsJobsRequest,
   output: UpdateProjectsJobsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4531,7 +4529,7 @@ export interface AggregatedProjectsJobsRequest {
 }
 
 export const AggregatedProjectsJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     location: Schema.optional(Schema.String).pipe(T.HttpQuery("location")),
@@ -4548,8 +4546,7 @@ export const AggregatedProjectsJobsRequest =
   ) as unknown as Schema.Schema<AggregatedProjectsJobsRequest>;
 
 export type AggregatedProjectsJobsResponse = ListJobsResponse;
-export const AggregatedProjectsJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListJobsResponse;
+export const AggregatedProjectsJobsResponse = /*@__PURE__*/ ListJobsResponse;
 
 export type AggregatedProjectsJobsError = DefaultErrors | NotFound | Forbidden;
 
@@ -4559,7 +4556,7 @@ export const aggregatedProjectsJobs: API.PaginatedOperationMethod<
   AggregatedProjectsJobsResponse,
   AggregatedProjectsJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: AggregatedProjectsJobsRequest,
   output: AggregatedProjectsJobsResponse,
   errors: [NotFound, Forbidden],
@@ -4581,7 +4578,7 @@ export interface GetMetricsProjectsJobsRequest {
 }
 
 export const GetMetricsProjectsJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String).pipe(T.HttpQuery("startTime")),
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
     jobId: Schema.String.pipe(T.HttpPath("jobId")),
@@ -4595,8 +4592,7 @@ export const GetMetricsProjectsJobsRequest =
   ) as unknown as Schema.Schema<GetMetricsProjectsJobsRequest>;
 
 export type GetMetricsProjectsJobsResponse = JobMetrics;
-export const GetMetricsProjectsJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ JobMetrics;
+export const GetMetricsProjectsJobsResponse = /*@__PURE__*/ JobMetrics;
 
 export type GetMetricsProjectsJobsError = DefaultErrors | NotFound | Forbidden;
 
@@ -4606,7 +4602,7 @@ export const getMetricsProjectsJobs: API.OperationMethod<
   GetMetricsProjectsJobsResponse,
   GetMetricsProjectsJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMetricsProjectsJobsRequest,
   output: GetMetricsProjectsJobsResponse,
   errors: [NotFound, Forbidden],
@@ -4631,7 +4627,7 @@ export interface CreateProjectsJobsRequest {
 }
 
 export const CreateProjectsJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     location: Schema.optional(Schema.String).pipe(T.HttpQuery("location")),
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
@@ -4649,7 +4645,7 @@ export const CreateProjectsJobsRequest =
   ) as unknown as Schema.Schema<CreateProjectsJobsRequest>;
 
 export type CreateProjectsJobsResponse = Job;
-export const CreateProjectsJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Job;
+export const CreateProjectsJobsResponse = /*@__PURE__*/ Job;
 
 export type CreateProjectsJobsError =
   | DefaultErrors
@@ -4664,7 +4660,7 @@ export const createProjectsJobs: API.OperationMethod<
   CreateProjectsJobsResponse,
   CreateProjectsJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsJobsRequest,
   output: CreateProjectsJobsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4686,20 +4682,18 @@ export interface GetProjectsJobsRequest {
   location?: string;
 }
 
-export const GetProjectsJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    projectId: Schema.String.pipe(T.HttpPath("projectId")),
-    jobId: Schema.String.pipe(T.HttpPath("jobId")),
-    view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
-    location: Schema.optional(Schema.String).pipe(T.HttpQuery("location")),
-  },
-).pipe(
+export const GetProjectsJobsRequest = /*@__PURE__*/ Schema.Struct({
+  projectId: Schema.String.pipe(T.HttpPath("projectId")),
+  jobId: Schema.String.pipe(T.HttpPath("jobId")),
+  view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
+  location: Schema.optional(Schema.String).pipe(T.HttpQuery("location")),
+}).pipe(
   T.Http({ method: "GET", path: "v1b3/projects/{projectId}/jobs/{jobId}" }),
   svc,
 ) as unknown as Schema.Schema<GetProjectsJobsRequest>;
 
 export type GetProjectsJobsResponse = Job;
-export const GetProjectsJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Job;
+export const GetProjectsJobsResponse = /*@__PURE__*/ Job;
 
 export type GetProjectsJobsError = DefaultErrors | NotFound | Forbidden;
 
@@ -4709,7 +4703,7 @@ export const getProjectsJobs: API.OperationMethod<
   GetProjectsJobsResponse,
   GetProjectsJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsJobsRequest,
   output: GetProjectsJobsResponse,
   errors: [NotFound, Forbidden],
@@ -4738,7 +4732,7 @@ export interface ListProjectsJobsRequest {
 }
 
 export const ListProjectsJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.optional(Schema.String).pipe(T.HttpQuery("location")),
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -4752,8 +4746,7 @@ export const ListProjectsJobsRequest =
   ) as unknown as Schema.Schema<ListProjectsJobsRequest>;
 
 export type ListProjectsJobsResponse = ListJobsResponse;
-export const ListProjectsJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListJobsResponse;
+export const ListProjectsJobsResponse = /*@__PURE__*/ ListJobsResponse;
 
 export type ListProjectsJobsError = DefaultErrors | NotFound | Forbidden;
 
@@ -4763,7 +4756,7 @@ export const listProjectsJobs: API.PaginatedOperationMethod<
   ListProjectsJobsResponse,
   ListProjectsJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsJobsRequest,
   output: ListProjectsJobsResponse,
   errors: [NotFound, Forbidden],
@@ -4783,7 +4776,7 @@ export interface GetConfigProjectsJobsDebugRequest {
 }
 
 export const GetConfigProjectsJobsDebugRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     jobId: Schema.String.pipe(T.HttpPath("jobId")),
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
     body: Schema.optional(GetDebugConfigRequest).pipe(T.HttpBody()),
@@ -4798,7 +4791,7 @@ export const GetConfigProjectsJobsDebugRequest =
 
 export type GetConfigProjectsJobsDebugResponse = GetDebugConfigResponse;
 export const GetConfigProjectsJobsDebugResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GetDebugConfigResponse;
+  /*@__PURE__*/ GetDebugConfigResponse;
 
 export type GetConfigProjectsJobsDebugError =
   | DefaultErrors
@@ -4813,7 +4806,7 @@ export const getConfigProjectsJobsDebug: API.OperationMethod<
   GetConfigProjectsJobsDebugResponse,
   GetConfigProjectsJobsDebugError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConfigProjectsJobsDebugRequest,
   output: GetConfigProjectsJobsDebugResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4829,7 +4822,7 @@ export interface SendCaptureProjectsJobsDebugRequest {
 }
 
 export const SendCaptureProjectsJobsDebugRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     jobId: Schema.String.pipe(T.HttpPath("jobId")),
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
     body: Schema.optional(SendDebugCaptureRequest).pipe(T.HttpBody()),
@@ -4844,7 +4837,7 @@ export const SendCaptureProjectsJobsDebugRequest =
 
 export type SendCaptureProjectsJobsDebugResponse = SendDebugCaptureResponse;
 export const SendCaptureProjectsJobsDebugResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SendDebugCaptureResponse;
+  /*@__PURE__*/ SendDebugCaptureResponse;
 
 export type SendCaptureProjectsJobsDebugError =
   | DefaultErrors
@@ -4859,7 +4852,7 @@ export const sendCaptureProjectsJobsDebug: API.OperationMethod<
   SendCaptureProjectsJobsDebugResponse,
   SendCaptureProjectsJobsDebugError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendCaptureProjectsJobsDebugRequest,
   output: SendCaptureProjectsJobsDebugResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4875,7 +4868,7 @@ export interface LeaseProjectsJobsWorkItemsRequest {
 }
 
 export const LeaseProjectsJobsWorkItemsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     jobId: Schema.String.pipe(T.HttpPath("jobId")),
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
     body: Schema.optional(LeaseWorkItemRequest).pipe(T.HttpBody()),
@@ -4890,7 +4883,7 @@ export const LeaseProjectsJobsWorkItemsRequest =
 
 export type LeaseProjectsJobsWorkItemsResponse = LeaseWorkItemResponse;
 export const LeaseProjectsJobsWorkItemsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LeaseWorkItemResponse;
+  /*@__PURE__*/ LeaseWorkItemResponse;
 
 export type LeaseProjectsJobsWorkItemsError =
   | DefaultErrors
@@ -4905,7 +4898,7 @@ export const leaseProjectsJobsWorkItems: API.OperationMethod<
   LeaseProjectsJobsWorkItemsResponse,
   LeaseProjectsJobsWorkItemsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: LeaseProjectsJobsWorkItemsRequest,
   output: LeaseProjectsJobsWorkItemsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4921,7 +4914,7 @@ export interface ReportStatusProjectsJobsWorkItemsRequest {
 }
 
 export const ReportStatusProjectsJobsWorkItemsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     jobId: Schema.String.pipe(T.HttpPath("jobId")),
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
     body: Schema.optional(ReportWorkItemStatusRequest).pipe(T.HttpBody()),
@@ -4937,7 +4930,7 @@ export const ReportStatusProjectsJobsWorkItemsRequest =
 export type ReportStatusProjectsJobsWorkItemsResponse =
   ReportWorkItemStatusResponse;
 export const ReportStatusProjectsJobsWorkItemsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ReportWorkItemStatusResponse;
+  /*@__PURE__*/ ReportWorkItemStatusResponse;
 
 export type ReportStatusProjectsJobsWorkItemsError =
   | DefaultErrors
@@ -4952,7 +4945,7 @@ export const reportStatusProjectsJobsWorkItems: API.OperationMethod<
   ReportStatusProjectsJobsWorkItemsResponse,
   ReportStatusProjectsJobsWorkItemsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReportStatusProjectsJobsWorkItemsRequest,
   output: ReportStatusProjectsJobsWorkItemsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4985,7 +4978,7 @@ export interface ListProjectsJobsMessagesRequest {
 }
 
 export const ListProjectsJobsMessagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     startTime: Schema.optional(Schema.String).pipe(T.HttpQuery("startTime")),
@@ -5006,7 +4999,7 @@ export const ListProjectsJobsMessagesRequest =
 
 export type ListProjectsJobsMessagesResponse = ListJobMessagesResponse;
 export const ListProjectsJobsMessagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListJobMessagesResponse;
+  /*@__PURE__*/ ListJobMessagesResponse;
 
 export type ListProjectsJobsMessagesError =
   | DefaultErrors
@@ -5019,7 +5012,7 @@ export const listProjectsJobsMessages: API.PaginatedOperationMethod<
   ListProjectsJobsMessagesResponse,
   ListProjectsJobsMessagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsJobsMessagesRequest,
   output: ListProjectsJobsMessagesResponse,
   errors: [NotFound, Forbidden],
@@ -5041,7 +5034,7 @@ export interface GetProjectsTemplatesRequest {
 }
 
 export const GetProjectsTemplatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
     gcsPath: Schema.optional(Schema.String).pipe(T.HttpQuery("gcsPath")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
@@ -5052,8 +5045,7 @@ export const GetProjectsTemplatesRequest =
   ) as unknown as Schema.Schema<GetProjectsTemplatesRequest>;
 
 export type GetProjectsTemplatesResponse = GetTemplateResponse;
-export const GetProjectsTemplatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GetTemplateResponse;
+export const GetProjectsTemplatesResponse = /*@__PURE__*/ GetTemplateResponse;
 
 export type GetProjectsTemplatesError = DefaultErrors | NotFound | Forbidden;
 
@@ -5063,7 +5055,7 @@ export const getProjectsTemplates: API.OperationMethod<
   GetProjectsTemplatesResponse,
   GetProjectsTemplatesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsTemplatesRequest,
   output: GetProjectsTemplatesResponse,
   errors: [NotFound, Forbidden],
@@ -5077,7 +5069,7 @@ export interface CreateProjectsTemplatesRequest {
 }
 
 export const CreateProjectsTemplatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
     body: Schema.optional(CreateJobFromTemplateRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -5090,7 +5082,7 @@ export const CreateProjectsTemplatesRequest =
   ) as unknown as Schema.Schema<CreateProjectsTemplatesRequest>;
 
 export type CreateProjectsTemplatesResponse = Job;
-export const CreateProjectsTemplatesResponse = /*@__PURE__*/ /*#__PURE__*/ Job;
+export const CreateProjectsTemplatesResponse = /*@__PURE__*/ Job;
 
 export type CreateProjectsTemplatesError =
   | DefaultErrors
@@ -5105,7 +5097,7 @@ export const createProjectsTemplates: API.OperationMethod<
   CreateProjectsTemplatesResponse,
   CreateProjectsTemplatesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsTemplatesRequest,
   output: CreateProjectsTemplatesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5129,7 +5121,7 @@ export interface LaunchProjectsTemplatesRequest {
 }
 
 export const LaunchProjectsTemplatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.optional(Schema.String).pipe(T.HttpQuery("location")),
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
     "dynamicTemplate.gcsPath": Schema.optional(Schema.String).pipe(
@@ -5154,7 +5146,7 @@ export const LaunchProjectsTemplatesRequest =
 
 export type LaunchProjectsTemplatesResponse = LaunchTemplateResponse;
 export const LaunchProjectsTemplatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LaunchTemplateResponse;
+  /*@__PURE__*/ LaunchTemplateResponse;
 
 export type LaunchProjectsTemplatesError =
   | DefaultErrors
@@ -5169,7 +5161,7 @@ export const launchProjectsTemplates: API.OperationMethod<
   LaunchProjectsTemplatesResponse,
   LaunchProjectsTemplatesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: LaunchProjectsTemplatesRequest,
   output: LaunchProjectsTemplatesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5185,7 +5177,7 @@ export interface WorkerMessagesProjectsLocationsRequest {
 }
 
 export const WorkerMessagesProjectsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
     location: Schema.String.pipe(T.HttpPath("location")),
     body: Schema.optional(SendWorkerMessagesRequest).pipe(T.HttpBody()),
@@ -5201,7 +5193,7 @@ export const WorkerMessagesProjectsLocationsRequest =
 export type WorkerMessagesProjectsLocationsResponse =
   SendWorkerMessagesResponse;
 export const WorkerMessagesProjectsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SendWorkerMessagesResponse;
+  /*@__PURE__*/ SendWorkerMessagesResponse;
 
 export type WorkerMessagesProjectsLocationsError =
   | DefaultErrors
@@ -5216,7 +5208,7 @@ export const workerMessagesProjectsLocations: API.OperationMethod<
   WorkerMessagesProjectsLocationsResponse,
   WorkerMessagesProjectsLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: WorkerMessagesProjectsLocationsRequest,
   output: WorkerMessagesProjectsLocationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5232,7 +5224,7 @@ export interface DeleteProjectsLocationsSnapshotsRequest {
 }
 
 export const DeleteProjectsLocationsSnapshotsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.HttpPath("location")),
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
     snapshotId: Schema.String.pipe(T.HttpPath("snapshotId")),
@@ -5246,7 +5238,7 @@ export const DeleteProjectsLocationsSnapshotsRequest =
 
 export type DeleteProjectsLocationsSnapshotsResponse = DeleteSnapshotResponse;
 export const DeleteProjectsLocationsSnapshotsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DeleteSnapshotResponse;
+  /*@__PURE__*/ DeleteSnapshotResponse;
 
 export type DeleteProjectsLocationsSnapshotsError =
   | DefaultErrors
@@ -5261,7 +5253,7 @@ export const deleteProjectsLocationsSnapshots: API.OperationMethod<
   DeleteProjectsLocationsSnapshotsResponse,
   DeleteProjectsLocationsSnapshotsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsSnapshotsRequest,
   output: DeleteProjectsLocationsSnapshotsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5277,7 +5269,7 @@ export interface GetProjectsLocationsSnapshotsRequest {
 }
 
 export const GetProjectsLocationsSnapshotsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
     snapshotId: Schema.String.pipe(T.HttpPath("snapshotId")),
     location: Schema.String.pipe(T.HttpPath("location")),
@@ -5290,8 +5282,7 @@ export const GetProjectsLocationsSnapshotsRequest =
   ) as unknown as Schema.Schema<GetProjectsLocationsSnapshotsRequest>;
 
 export type GetProjectsLocationsSnapshotsResponse = Snapshot;
-export const GetProjectsLocationsSnapshotsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Snapshot;
+export const GetProjectsLocationsSnapshotsResponse = /*@__PURE__*/ Snapshot;
 
 export type GetProjectsLocationsSnapshotsError =
   | DefaultErrors
@@ -5304,7 +5295,7 @@ export const getProjectsLocationsSnapshots: API.OperationMethod<
   GetProjectsLocationsSnapshotsResponse,
   GetProjectsLocationsSnapshotsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsSnapshotsRequest,
   output: GetProjectsLocationsSnapshotsResponse,
   errors: [NotFound, Forbidden],
@@ -5320,7 +5311,7 @@ export interface ListProjectsLocationsSnapshotsRequest {
 }
 
 export const ListProjectsLocationsSnapshotsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
     location: Schema.String.pipe(T.HttpPath("location")),
     jobId: Schema.optional(Schema.String).pipe(T.HttpQuery("jobId")),
@@ -5334,7 +5325,7 @@ export const ListProjectsLocationsSnapshotsRequest =
 
 export type ListProjectsLocationsSnapshotsResponse = ListSnapshotsResponse;
 export const ListProjectsLocationsSnapshotsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListSnapshotsResponse;
+  /*@__PURE__*/ ListSnapshotsResponse;
 
 export type ListProjectsLocationsSnapshotsError =
   | DefaultErrors
@@ -5347,7 +5338,7 @@ export const listProjectsLocationsSnapshots: API.OperationMethod<
   ListProjectsLocationsSnapshotsResponse,
   ListProjectsLocationsSnapshotsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListProjectsLocationsSnapshotsRequest,
   output: ListProjectsLocationsSnapshotsResponse,
   errors: [NotFound, Forbidden],
@@ -5372,7 +5363,7 @@ export interface CreateProjectsLocationsJobsRequest {
 }
 
 export const CreateProjectsLocationsJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
     replaceJobId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("replaceJobId"),
@@ -5390,8 +5381,7 @@ export const CreateProjectsLocationsJobsRequest =
   ) as unknown as Schema.Schema<CreateProjectsLocationsJobsRequest>;
 
 export type CreateProjectsLocationsJobsResponse = Job;
-export const CreateProjectsLocationsJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Job;
+export const CreateProjectsLocationsJobsResponse = /*@__PURE__*/ Job;
 
 export type CreateProjectsLocationsJobsError =
   | DefaultErrors
@@ -5406,7 +5396,7 @@ export const createProjectsLocationsJobs: API.OperationMethod<
   CreateProjectsLocationsJobsResponse,
   CreateProjectsLocationsJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsJobsRequest,
   output: CreateProjectsLocationsJobsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5429,7 +5419,7 @@ export interface GetProjectsLocationsJobsRequest {
 }
 
 export const GetProjectsLocationsJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
     location: Schema.String.pipe(T.HttpPath("location")),
     jobId: Schema.String.pipe(T.HttpPath("jobId")),
@@ -5443,7 +5433,7 @@ export const GetProjectsLocationsJobsRequest =
   ) as unknown as Schema.Schema<GetProjectsLocationsJobsRequest>;
 
 export type GetProjectsLocationsJobsResponse = Job;
-export const GetProjectsLocationsJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Job;
+export const GetProjectsLocationsJobsResponse = /*@__PURE__*/ Job;
 
 export type GetProjectsLocationsJobsError =
   | DefaultErrors
@@ -5456,7 +5446,7 @@ export const getProjectsLocationsJobs: API.OperationMethod<
   GetProjectsLocationsJobsResponse,
   GetProjectsLocationsJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsJobsRequest,
   output: GetProjectsLocationsJobsResponse,
   errors: [NotFound, Forbidden],
@@ -5485,7 +5475,7 @@ export interface ListProjectsLocationsJobsRequest {
 }
 
 export const ListProjectsLocationsJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -5502,8 +5492,7 @@ export const ListProjectsLocationsJobsRequest =
   ) as unknown as Schema.Schema<ListProjectsLocationsJobsRequest>;
 
 export type ListProjectsLocationsJobsResponse = ListJobsResponse;
-export const ListProjectsLocationsJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListJobsResponse;
+export const ListProjectsLocationsJobsResponse = /*@__PURE__*/ ListJobsResponse;
 
 export type ListProjectsLocationsJobsError =
   | DefaultErrors
@@ -5516,7 +5505,7 @@ export const listProjectsLocationsJobs: API.PaginatedOperationMethod<
   ListProjectsLocationsJobsResponse,
   ListProjectsLocationsJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsJobsRequest,
   output: ListProjectsLocationsJobsResponse,
   errors: [NotFound, Forbidden],
@@ -5538,7 +5527,7 @@ export interface GetMetricsProjectsLocationsJobsRequest {
 }
 
 export const GetMetricsProjectsLocationsJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
     location: Schema.String.pipe(T.HttpPath("location")),
     jobId: Schema.String.pipe(T.HttpPath("jobId")),
@@ -5552,8 +5541,7 @@ export const GetMetricsProjectsLocationsJobsRequest =
   ) as unknown as Schema.Schema<GetMetricsProjectsLocationsJobsRequest>;
 
 export type GetMetricsProjectsLocationsJobsResponse = JobMetrics;
-export const GetMetricsProjectsLocationsJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ JobMetrics;
+export const GetMetricsProjectsLocationsJobsResponse = /*@__PURE__*/ JobMetrics;
 
 export type GetMetricsProjectsLocationsJobsError =
   | DefaultErrors
@@ -5566,7 +5554,7 @@ export const getMetricsProjectsLocationsJobs: API.OperationMethod<
   GetMetricsProjectsLocationsJobsResponse,
   GetMetricsProjectsLocationsJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMetricsProjectsLocationsJobsRequest,
   output: GetMetricsProjectsLocationsJobsResponse,
   errors: [NotFound, Forbidden],
@@ -5584,7 +5572,7 @@ export interface SnapshotProjectsLocationsJobsRequest {
 }
 
 export const SnapshotProjectsLocationsJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
     location: Schema.String.pipe(T.HttpPath("location")),
     jobId: Schema.String.pipe(T.HttpPath("jobId")),
@@ -5599,8 +5587,7 @@ export const SnapshotProjectsLocationsJobsRequest =
   ) as unknown as Schema.Schema<SnapshotProjectsLocationsJobsRequest>;
 
 export type SnapshotProjectsLocationsJobsResponse = Snapshot;
-export const SnapshotProjectsLocationsJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Snapshot;
+export const SnapshotProjectsLocationsJobsResponse = /*@__PURE__*/ Snapshot;
 
 export type SnapshotProjectsLocationsJobsError =
   | DefaultErrors
@@ -5615,7 +5602,7 @@ export const snapshotProjectsLocationsJobs: API.OperationMethod<
   SnapshotProjectsLocationsJobsResponse,
   SnapshotProjectsLocationsJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SnapshotProjectsLocationsJobsRequest,
   output: SnapshotProjectsLocationsJobsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5635,7 +5622,7 @@ export interface GetExecutionDetailsProjectsLocationsJobsRequest {
 }
 
 export const GetExecutionDetailsProjectsLocationsJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
     location: Schema.String.pipe(T.HttpPath("location")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -5652,7 +5639,7 @@ export const GetExecutionDetailsProjectsLocationsJobsRequest =
 export type GetExecutionDetailsProjectsLocationsJobsResponse =
   JobExecutionDetails;
 export const GetExecutionDetailsProjectsLocationsJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ JobExecutionDetails;
+  /*@__PURE__*/ JobExecutionDetails;
 
 export type GetExecutionDetailsProjectsLocationsJobsError =
   | DefaultErrors
@@ -5665,7 +5652,7 @@ export const getExecutionDetailsProjectsLocationsJobs: API.PaginatedOperationMet
   GetExecutionDetailsProjectsLocationsJobsResponse,
   GetExecutionDetailsProjectsLocationsJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetExecutionDetailsProjectsLocationsJobsRequest,
   output: GetExecutionDetailsProjectsLocationsJobsResponse,
   errors: [NotFound, Forbidden],
@@ -5689,7 +5676,7 @@ export interface UpdateProjectsLocationsJobsRequest {
 }
 
 export const UpdateProjectsLocationsJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.HttpPath("location")),
     jobId: Schema.String.pipe(T.HttpPath("jobId")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
@@ -5705,8 +5692,7 @@ export const UpdateProjectsLocationsJobsRequest =
   ) as unknown as Schema.Schema<UpdateProjectsLocationsJobsRequest>;
 
 export type UpdateProjectsLocationsJobsResponse = Job;
-export const UpdateProjectsLocationsJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Job;
+export const UpdateProjectsLocationsJobsResponse = /*@__PURE__*/ Job;
 
 export type UpdateProjectsLocationsJobsError =
   | DefaultErrors
@@ -5721,7 +5707,7 @@ export const updateProjectsLocationsJobs: API.OperationMethod<
   UpdateProjectsLocationsJobsResponse,
   UpdateProjectsLocationsJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateProjectsLocationsJobsRequest,
   output: UpdateProjectsLocationsJobsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5739,7 +5725,7 @@ export interface GetWorkerStacktracesProjectsLocationsJobsDebugRequest {
 }
 
 export const GetWorkerStacktracesProjectsLocationsJobsDebugRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
     location: Schema.String.pipe(T.HttpPath("location")),
     jobId: Schema.String.pipe(T.HttpPath("jobId")),
@@ -5756,7 +5742,7 @@ export const GetWorkerStacktracesProjectsLocationsJobsDebugRequest =
 export type GetWorkerStacktracesProjectsLocationsJobsDebugResponse =
   GetWorkerStacktracesResponse;
 export const GetWorkerStacktracesProjectsLocationsJobsDebugResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GetWorkerStacktracesResponse;
+  /*@__PURE__*/ GetWorkerStacktracesResponse;
 
 export type GetWorkerStacktracesProjectsLocationsJobsDebugError =
   | DefaultErrors
@@ -5771,7 +5757,7 @@ export const getWorkerStacktracesProjectsLocationsJobsDebug: API.OperationMethod
   GetWorkerStacktracesProjectsLocationsJobsDebugResponse,
   GetWorkerStacktracesProjectsLocationsJobsDebugError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWorkerStacktracesProjectsLocationsJobsDebugRequest,
   output: GetWorkerStacktracesProjectsLocationsJobsDebugResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5789,7 +5775,7 @@ export interface GetConfigProjectsLocationsJobsDebugRequest {
 }
 
 export const GetConfigProjectsLocationsJobsDebugRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
     location: Schema.String.pipe(T.HttpPath("location")),
     jobId: Schema.String.pipe(T.HttpPath("jobId")),
@@ -5806,7 +5792,7 @@ export const GetConfigProjectsLocationsJobsDebugRequest =
 export type GetConfigProjectsLocationsJobsDebugResponse =
   GetDebugConfigResponse;
 export const GetConfigProjectsLocationsJobsDebugResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GetDebugConfigResponse;
+  /*@__PURE__*/ GetDebugConfigResponse;
 
 export type GetConfigProjectsLocationsJobsDebugError =
   | DefaultErrors
@@ -5821,7 +5807,7 @@ export const getConfigProjectsLocationsJobsDebug: API.OperationMethod<
   GetConfigProjectsLocationsJobsDebugResponse,
   GetConfigProjectsLocationsJobsDebugError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConfigProjectsLocationsJobsDebugRequest,
   output: GetConfigProjectsLocationsJobsDebugResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5839,7 +5825,7 @@ export interface SendCaptureProjectsLocationsJobsDebugRequest {
 }
 
 export const SendCaptureProjectsLocationsJobsDebugRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
     location: Schema.String.pipe(T.HttpPath("location")),
     jobId: Schema.String.pipe(T.HttpPath("jobId")),
@@ -5856,7 +5842,7 @@ export const SendCaptureProjectsLocationsJobsDebugRequest =
 export type SendCaptureProjectsLocationsJobsDebugResponse =
   SendDebugCaptureResponse;
 export const SendCaptureProjectsLocationsJobsDebugResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SendDebugCaptureResponse;
+  /*@__PURE__*/ SendDebugCaptureResponse;
 
 export type SendCaptureProjectsLocationsJobsDebugError =
   | DefaultErrors
@@ -5871,7 +5857,7 @@ export const sendCaptureProjectsLocationsJobsDebug: API.OperationMethod<
   SendCaptureProjectsLocationsJobsDebugResponse,
   SendCaptureProjectsLocationsJobsDebugError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendCaptureProjectsLocationsJobsDebugRequest,
   output: SendCaptureProjectsLocationsJobsDebugResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5889,7 +5875,7 @@ export interface ReportStatusProjectsLocationsJobsWorkItemsRequest {
 }
 
 export const ReportStatusProjectsLocationsJobsWorkItemsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
     location: Schema.String.pipe(T.HttpPath("location")),
     jobId: Schema.String.pipe(T.HttpPath("jobId")),
@@ -5906,7 +5892,7 @@ export const ReportStatusProjectsLocationsJobsWorkItemsRequest =
 export type ReportStatusProjectsLocationsJobsWorkItemsResponse =
   ReportWorkItemStatusResponse;
 export const ReportStatusProjectsLocationsJobsWorkItemsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ReportWorkItemStatusResponse;
+  /*@__PURE__*/ ReportWorkItemStatusResponse;
 
 export type ReportStatusProjectsLocationsJobsWorkItemsError =
   | DefaultErrors
@@ -5921,7 +5907,7 @@ export const reportStatusProjectsLocationsJobsWorkItems: API.OperationMethod<
   ReportStatusProjectsLocationsJobsWorkItemsResponse,
   ReportStatusProjectsLocationsJobsWorkItemsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReportStatusProjectsLocationsJobsWorkItemsRequest,
   output: ReportStatusProjectsLocationsJobsWorkItemsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5939,7 +5925,7 @@ export interface LeaseProjectsLocationsJobsWorkItemsRequest {
 }
 
 export const LeaseProjectsLocationsJobsWorkItemsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.HttpPath("location")),
     jobId: Schema.String.pipe(T.HttpPath("jobId")),
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
@@ -5955,7 +5941,7 @@ export const LeaseProjectsLocationsJobsWorkItemsRequest =
 
 export type LeaseProjectsLocationsJobsWorkItemsResponse = LeaseWorkItemResponse;
 export const LeaseProjectsLocationsJobsWorkItemsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LeaseWorkItemResponse;
+  /*@__PURE__*/ LeaseWorkItemResponse;
 
 export type LeaseProjectsLocationsJobsWorkItemsError =
   | DefaultErrors
@@ -5970,7 +5956,7 @@ export const leaseProjectsLocationsJobsWorkItems: API.OperationMethod<
   LeaseProjectsLocationsJobsWorkItemsResponse,
   LeaseProjectsLocationsJobsWorkItemsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: LeaseProjectsLocationsJobsWorkItemsRequest,
   output: LeaseProjectsLocationsJobsWorkItemsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5996,7 +5982,7 @@ export interface GetExecutionDetailsProjectsLocationsJobsStagesRequest {
 }
 
 export const GetExecutionDetailsProjectsLocationsJobsStagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     jobId: Schema.String.pipe(T.HttpPath("jobId")),
     stageId: Schema.String.pipe(T.HttpPath("stageId")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -6016,7 +6002,7 @@ export const GetExecutionDetailsProjectsLocationsJobsStagesRequest =
 export type GetExecutionDetailsProjectsLocationsJobsStagesResponse =
   StageExecutionDetails;
 export const GetExecutionDetailsProjectsLocationsJobsStagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ StageExecutionDetails;
+  /*@__PURE__*/ StageExecutionDetails;
 
 export type GetExecutionDetailsProjectsLocationsJobsStagesError =
   | DefaultErrors
@@ -6029,7 +6015,7 @@ export const getExecutionDetailsProjectsLocationsJobsStages: API.PaginatedOperat
   GetExecutionDetailsProjectsLocationsJobsStagesResponse,
   GetExecutionDetailsProjectsLocationsJobsStagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetExecutionDetailsProjectsLocationsJobsStagesRequest,
   output: GetExecutionDetailsProjectsLocationsJobsStagesResponse,
   errors: [NotFound, Forbidden],
@@ -6049,7 +6035,7 @@ export interface ListProjectsLocationsJobsSnapshotsRequest {
 }
 
 export const ListProjectsLocationsJobsSnapshotsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.HttpPath("location")),
     jobId: Schema.String.pipe(T.HttpPath("jobId")),
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
@@ -6063,7 +6049,7 @@ export const ListProjectsLocationsJobsSnapshotsRequest =
 
 export type ListProjectsLocationsJobsSnapshotsResponse = ListSnapshotsResponse;
 export const ListProjectsLocationsJobsSnapshotsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListSnapshotsResponse;
+  /*@__PURE__*/ ListSnapshotsResponse;
 
 export type ListProjectsLocationsJobsSnapshotsError =
   | DefaultErrors
@@ -6076,7 +6062,7 @@ export const listProjectsLocationsJobsSnapshots: API.OperationMethod<
   ListProjectsLocationsJobsSnapshotsResponse,
   ListProjectsLocationsJobsSnapshotsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListProjectsLocationsJobsSnapshotsRequest,
   output: ListProjectsLocationsJobsSnapshotsResponse,
   errors: [NotFound, Forbidden],
@@ -6109,7 +6095,7 @@ export interface ListProjectsLocationsJobsMessagesRequest {
 }
 
 export const ListProjectsLocationsJobsMessagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     minimumImportance: Schema.optional(Schema.String).pipe(
       T.HttpQuery("minimumImportance"),
     ),
@@ -6130,7 +6116,7 @@ export const ListProjectsLocationsJobsMessagesRequest =
 
 export type ListProjectsLocationsJobsMessagesResponse = ListJobMessagesResponse;
 export const ListProjectsLocationsJobsMessagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListJobMessagesResponse;
+  /*@__PURE__*/ ListJobMessagesResponse;
 
 export type ListProjectsLocationsJobsMessagesError =
   | DefaultErrors
@@ -6143,7 +6129,7 @@ export const listProjectsLocationsJobsMessages: API.PaginatedOperationMethod<
   ListProjectsLocationsJobsMessagesResponse,
   ListProjectsLocationsJobsMessagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsJobsMessagesRequest,
   output: ListProjectsLocationsJobsMessagesResponse,
   errors: [NotFound, Forbidden],
@@ -6171,7 +6157,7 @@ export interface LaunchProjectsLocationsTemplatesRequest {
 }
 
 export const LaunchProjectsLocationsTemplatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "dynamicTemplate.stagingLocation": Schema.optional(Schema.String).pipe(
       T.HttpQuery("dynamicTemplate.stagingLocation"),
     ),
@@ -6196,7 +6182,7 @@ export const LaunchProjectsLocationsTemplatesRequest =
 
 export type LaunchProjectsLocationsTemplatesResponse = LaunchTemplateResponse;
 export const LaunchProjectsLocationsTemplatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LaunchTemplateResponse;
+  /*@__PURE__*/ LaunchTemplateResponse;
 
 export type LaunchProjectsLocationsTemplatesError =
   | DefaultErrors
@@ -6211,7 +6197,7 @@ export const launchProjectsLocationsTemplates: API.OperationMethod<
   LaunchProjectsLocationsTemplatesResponse,
   LaunchProjectsLocationsTemplatesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: LaunchProjectsLocationsTemplatesRequest,
   output: LaunchProjectsLocationsTemplatesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6227,7 +6213,7 @@ export interface CreateProjectsLocationsTemplatesRequest {
 }
 
 export const CreateProjectsLocationsTemplatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
     location: Schema.String.pipe(T.HttpPath("location")),
     body: Schema.optional(CreateJobFromTemplateRequest).pipe(T.HttpBody()),
@@ -6241,8 +6227,7 @@ export const CreateProjectsLocationsTemplatesRequest =
   ) as unknown as Schema.Schema<CreateProjectsLocationsTemplatesRequest>;
 
 export type CreateProjectsLocationsTemplatesResponse = Job;
-export const CreateProjectsLocationsTemplatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Job;
+export const CreateProjectsLocationsTemplatesResponse = /*@__PURE__*/ Job;
 
 export type CreateProjectsLocationsTemplatesError =
   | DefaultErrors
@@ -6257,7 +6242,7 @@ export const createProjectsLocationsTemplates: API.OperationMethod<
   CreateProjectsLocationsTemplatesResponse,
   CreateProjectsLocationsTemplatesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsTemplatesRequest,
   output: CreateProjectsLocationsTemplatesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6275,7 +6260,7 @@ export interface GetProjectsLocationsTemplatesRequest {
 }
 
 export const GetProjectsLocationsTemplatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.HttpPath("location")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
@@ -6290,7 +6275,7 @@ export const GetProjectsLocationsTemplatesRequest =
 
 export type GetProjectsLocationsTemplatesResponse = GetTemplateResponse;
 export const GetProjectsLocationsTemplatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GetTemplateResponse;
+  /*@__PURE__*/ GetTemplateResponse;
 
 export type GetProjectsLocationsTemplatesError =
   | DefaultErrors
@@ -6303,7 +6288,7 @@ export const getProjectsLocationsTemplates: API.OperationMethod<
   GetProjectsLocationsTemplatesResponse,
   GetProjectsLocationsTemplatesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsTemplatesRequest,
   output: GetProjectsLocationsTemplatesResponse,
   errors: [NotFound, Forbidden],
@@ -6319,7 +6304,7 @@ export interface LaunchProjectsLocationsFlexTemplatesRequest {
 }
 
 export const LaunchProjectsLocationsFlexTemplatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.HttpPath("location")),
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
     body: Schema.optional(LaunchFlexTemplateRequest).pipe(T.HttpBody()),
@@ -6335,7 +6320,7 @@ export const LaunchProjectsLocationsFlexTemplatesRequest =
 export type LaunchProjectsLocationsFlexTemplatesResponse =
   LaunchFlexTemplateResponse;
 export const LaunchProjectsLocationsFlexTemplatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LaunchFlexTemplateResponse;
+  /*@__PURE__*/ LaunchFlexTemplateResponse;
 
 export type LaunchProjectsLocationsFlexTemplatesError =
   | DefaultErrors
@@ -6350,7 +6335,7 @@ export const launchProjectsLocationsFlexTemplates: API.OperationMethod<
   LaunchProjectsLocationsFlexTemplatesResponse,
   LaunchProjectsLocationsFlexTemplatesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: LaunchProjectsLocationsFlexTemplatesRequest,
   output: LaunchProjectsLocationsFlexTemplatesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

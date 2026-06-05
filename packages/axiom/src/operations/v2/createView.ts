@@ -1,10 +1,10 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
-import * as T from "../../traits.ts";
 import { UnprocessableEntity } from "../../errors.ts";
+import * as T from "../../traits.ts";
 
 // Input Schema
-export const CreateViewInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateViewInput = /*@__PURE__*/ Schema.Struct({
   aplQuery: Schema.String,
   datasets: Schema.optional(Schema.Array(Schema.String)),
   description: Schema.optional(Schema.String),
@@ -15,7 +15,7 @@ export const CreateViewInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateViewInput = typeof CreateViewInput.Type;
 
 // Output Schema
-export const CreateViewOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateViewOutput = /*@__PURE__*/ Schema.Struct({
   aplQuery: Schema.String,
   datasets: Schema.optional(Schema.Array(Schema.String)),
   description: Schema.optional(Schema.String),
@@ -26,7 +26,7 @@ export const CreateViewOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateViewOutput = typeof CreateViewOutput.Type;
 
 // The operation
-export const createView = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createView = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateViewInput,
   outputSchema: CreateViewOutput,
   errors: [UnprocessableEntity] as const,

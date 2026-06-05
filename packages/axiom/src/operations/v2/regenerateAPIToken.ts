@@ -1,11 +1,11 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
-import * as T from "../../traits.ts";
 import { NotFound, UnprocessableEntity } from "../../errors.ts";
+import * as T from "../../traits.ts";
 
 // Input Schema
 export const RegenerateAPITokenInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     existingTokenExpiresAt: Schema.String,
     newToken: Schema.optional(
@@ -132,7 +132,7 @@ export type RegenerateAPITokenInput = typeof RegenerateAPITokenInput.Type;
 
 // Output Schema
 export const RegenerateAPITokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     datasetCapabilities: Schema.Record(
       Schema.String,
       Schema.Struct({
@@ -221,7 +221,7 @@ export type RegenerateAPITokenOutput = typeof RegenerateAPITokenOutput.Type;
 /**
  * Regenerate API token
  */
-export const regenerateAPIToken = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const regenerateAPIToken = /*@__PURE__*/ API.make(() => ({
   inputSchema: RegenerateAPITokenInput,
   outputSchema: RegenerateAPITokenOutput,
   errors: [NotFound, UnprocessableEntity] as const,

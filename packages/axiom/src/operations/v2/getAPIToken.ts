@@ -1,16 +1,16 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
-import * as T from "../../traits.ts";
 import { NotFound } from "../../errors.ts";
+import * as T from "../../traits.ts";
 
 // Input Schema
-export const GetAPITokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetAPITokenInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
 }).pipe(T.Http({ method: "GET", path: "/v2/tokens/{id}" }));
 export type GetAPITokenInput = typeof GetAPITokenInput.Type;
 
 // Output Schema
-export const GetAPITokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetAPITokenOutput = /*@__PURE__*/ Schema.Struct({
   datasetCapabilities: Schema.Record(
     Schema.String,
     Schema.Struct({
@@ -96,7 +96,7 @@ export type GetAPITokenOutput = typeof GetAPITokenOutput.Type;
 /**
  * Get API token by ID
  */
-export const getAPIToken = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getAPIToken = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetAPITokenInput,
   outputSchema: GetAPITokenOutput,
   errors: [NotFound] as const,

@@ -10,7 +10,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const CloudManifestFileGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     verificationVersion: Schema.String.pipe(T.PathParam()),
     versionCreationDate: Schema.optional(Schema.String),
   }).pipe(
@@ -23,7 +23,7 @@ export type CloudManifestFileGetInput = typeof CloudManifestFileGetInput.Type;
 
 // Output Schema
 export const CloudManifestFileGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -38,15 +38,13 @@ export type CloudManifestFileGetOutput = typeof CloudManifestFileGetOutput.Type;
  * @param verificationVersion - Signing verification key version.
  * @param versionCreationDate - Signing verification key version creation date.
  */
-export const CloudManifestFileGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CloudManifestFileGetInput,
-    outputSchema: CloudManifestFileGetOutput,
-  }),
-);
+export const CloudManifestFileGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CloudManifestFileGetInput,
+  outputSchema: CloudManifestFileGetOutput,
+}));
 // Input Schema
 export const CloudManifestFileListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.AzureStack/cloudManifestFiles",
@@ -56,7 +54,7 @@ export type CloudManifestFileListInput = typeof CloudManifestFileListInput.Type;
 
 // Output Schema
 export const CloudManifestFileListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -69,15 +67,13 @@ export type CloudManifestFileListOutput =
 /**
  * Returns a cloud specific manifest JSON file with latest version.
  */
-export const CloudManifestFileList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CloudManifestFileListInput,
-    outputSchema: CloudManifestFileListOutput,
-  }),
-);
+export const CloudManifestFileList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CloudManifestFileListInput,
+  outputSchema: CloudManifestFileListOutput,
+}));
 // Input Schema
 export const CustomerSubscriptionsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
@@ -93,7 +89,7 @@ export type CustomerSubscriptionsCreateInput =
 
 // Output Schema
 export const CustomerSubscriptionsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -111,15 +107,13 @@ export type CustomerSubscriptionsCreateOutput =
  * @param registrationName - Name of the Azure Stack registration.
  * @param api-version - Client API Version.
  */
-export const CustomerSubscriptionsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CustomerSubscriptionsCreateInput,
-    outputSchema: CustomerSubscriptionsCreateOutput,
-  }),
-);
+export const CustomerSubscriptionsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CustomerSubscriptionsCreateInput,
+  outputSchema: CustomerSubscriptionsCreateOutput,
+}));
 // Input Schema
 export const CustomerSubscriptionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
@@ -134,8 +128,7 @@ export type CustomerSubscriptionsDeleteInput =
   typeof CustomerSubscriptionsDeleteInput.Type;
 
 // Output Schema
-export const CustomerSubscriptionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CustomerSubscriptionsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type CustomerSubscriptionsDeleteOutput =
   typeof CustomerSubscriptionsDeleteOutput.Type;
 
@@ -148,15 +141,13 @@ export type CustomerSubscriptionsDeleteOutput =
  * @param registrationName - Name of the Azure Stack registration.
  * @param api-version - Client API Version.
  */
-export const CustomerSubscriptionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CustomerSubscriptionsDeleteInput,
-    outputSchema: CustomerSubscriptionsDeleteOutput,
-  }),
-);
+export const CustomerSubscriptionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CustomerSubscriptionsDeleteInput,
+  outputSchema: CustomerSubscriptionsDeleteOutput,
+}));
 // Input Schema
 export const CustomerSubscriptionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
@@ -172,7 +163,7 @@ export type CustomerSubscriptionsGetInput =
 
 // Output Schema
 export const CustomerSubscriptionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -190,15 +181,13 @@ export type CustomerSubscriptionsGetOutput =
  * @param registrationName - Name of the Azure Stack registration.
  * @param api-version - Client API Version.
  */
-export const CustomerSubscriptionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CustomerSubscriptionsGetInput,
-    outputSchema: CustomerSubscriptionsGetOutput,
-  }),
-);
+export const CustomerSubscriptionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CustomerSubscriptionsGetInput,
+  outputSchema: CustomerSubscriptionsGetOutput,
+}));
 // Input Schema
 export const CustomerSubscriptionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
@@ -214,7 +203,7 @@ export type CustomerSubscriptionsListInput =
 
 // Output Schema
 export const CustomerSubscriptionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -239,15 +228,13 @@ export type CustomerSubscriptionsListOutput =
  * @param registrationName - Name of the Azure Stack registration.
  * @param api-version - Client API Version.
  */
-export const CustomerSubscriptionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CustomerSubscriptionsListInput,
-    outputSchema: CustomerSubscriptionsListOutput,
-  }),
-);
+export const CustomerSubscriptionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CustomerSubscriptionsListInput,
+  outputSchema: CustomerSubscriptionsListOutput,
+}));
 // Input Schema
 export const DeploymentLicenseCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureStack/generateDeploymentLicense",
@@ -258,7 +245,7 @@ export type DeploymentLicenseCreateInput =
 
 // Output Schema
 export const DeploymentLicenseCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     temporaryLicenseChain: Schema.optional(Schema.Array(Schema.String)),
     signature: Schema.optional(Schema.String),
   });
@@ -269,22 +256,18 @@ export type DeploymentLicenseCreateOutput =
 /**
  * Creates a license that can be used to deploy an Azure Stack device.
  */
-export const DeploymentLicenseCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeploymentLicenseCreateInput,
-    outputSchema: DeploymentLicenseCreateOutput,
-  }),
-);
+export const DeploymentLicenseCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeploymentLicenseCreateInput,
+  outputSchema: DeploymentLicenseCreateOutput,
+}));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/providers/Microsoft.AzureStack/operations" }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -309,12 +292,12 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 /**
  * Returns the list of supported REST operations.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
-export const ProductsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProductsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroup: Schema.String.pipe(T.PathParam()),
   registrationName: Schema.String.pipe(T.PathParam()),
@@ -328,7 +311,7 @@ export const ProductsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ProductsGetInput = typeof ProductsGetInput.Type;
 
 // Output Schema
-export const ProductsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProductsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -345,13 +328,13 @@ export type ProductsGetOutput = typeof ProductsGetOutput.Type;
  * @param registrationName - Name of the Azure Stack registration.
  * @param api-version - Client API Version.
  */
-export const ProductsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProductsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProductsGetInput,
   outputSchema: ProductsGetOutput,
 }));
 // Input Schema
 export const ProductsGetProductInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
@@ -366,7 +349,7 @@ export type ProductsGetProductInput = typeof ProductsGetProductInput.Type;
 
 // Output Schema
 export const ProductsGetProductOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -383,13 +366,13 @@ export type ProductsGetProductOutput = typeof ProductsGetProductOutput.Type;
  * @param registrationName - Name of the Azure Stack registration.
  * @param api-version - Client API Version.
  */
-export const ProductsGetProduct = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProductsGetProduct = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProductsGetProductInput,
   outputSchema: ProductsGetProductOutput,
 }));
 // Input Schema
 export const ProductsGetProductsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
@@ -404,7 +387,7 @@ export type ProductsGetProductsInput = typeof ProductsGetProductsInput.Type;
 
 // Output Schema
 export const ProductsGetProductsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -428,12 +411,12 @@ export type ProductsGetProductsOutput = typeof ProductsGetProductsOutput.Type;
  * @param registrationName - Name of the Azure Stack registration.
  * @param api-version - Client API Version.
  */
-export const ProductsGetProducts = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProductsGetProducts = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProductsGetProductsInput,
   outputSchema: ProductsGetProductsOutput,
 }));
 // Input Schema
-export const ProductsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProductsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroup: Schema.String.pipe(T.PathParam()),
   registrationName: Schema.String.pipe(T.PathParam()),
@@ -447,7 +430,7 @@ export const ProductsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ProductsListInput = typeof ProductsListInput.Type;
 
 // Output Schema
-export const ProductsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProductsListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
     Schema.Array(
@@ -471,13 +454,13 @@ export type ProductsListOutput = typeof ProductsListOutput.Type;
  * @param registrationName - Name of the Azure Stack registration.
  * @param api-version - Client API Version.
  */
-export const ProductsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProductsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProductsListInput,
   outputSchema: ProductsListOutput,
 }));
 // Input Schema
 export const ProductsListDetailsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
@@ -492,7 +475,7 @@ export type ProductsListDetailsInput = typeof ProductsListDetailsInput.Type;
 
 // Output Schema
 export const ProductsListDetailsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     galleryPackageBlobSasUri: Schema.optional(Schema.String),
     productKind: Schema.optional(Schema.String),
     properties: Schema.optional(
@@ -540,13 +523,13 @@ export type ProductsListDetailsOutput = typeof ProductsListDetailsOutput.Type;
  * @param registrationName - Name of the Azure Stack registration.
  * @param api-version - Client API Version.
  */
-export const ProductsListDetails = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProductsListDetails = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProductsListDetailsInput,
   outputSchema: ProductsListDetailsOutput,
 }));
 // Input Schema
 export const ProductsListProductsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
@@ -561,7 +544,7 @@ export type ProductsListProductsInput = typeof ProductsListProductsInput.Type;
 
 // Output Schema
 export const ProductsListProductsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -585,21 +568,17 @@ export type ProductsListProductsOutput = typeof ProductsListProductsOutput.Type;
  * @param registrationName - Name of the Azure Stack registration.
  * @param api-version - Client API Version.
  */
-export const ProductsListProducts = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProductsListProductsInput,
-    outputSchema: ProductsListProductsOutput,
-  }),
-);
+export const ProductsListProducts = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProductsListProductsInput,
+  outputSchema: ProductsListProductsOutput,
+}));
 // Input Schema
-export const ProductsUploadLogInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroup: Schema.String.pipe(T.PathParam()),
-    registrationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const ProductsUploadLogInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroup: Schema.String.pipe(T.PathParam()),
+  registrationName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/products/{productName}/uploadProductLog",
@@ -609,7 +588,7 @@ export type ProductsUploadLogInput = typeof ProductsUploadLogInput.Type;
 
 // Output Schema
 export const ProductsUploadLogOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     productId: Schema.optional(Schema.String),
     subscriptionId: Schema.optional(Schema.String),
@@ -633,13 +612,13 @@ export type ProductsUploadLogOutput = typeof ProductsUploadLogOutput.Type;
  * @param registrationName - Name of the Azure Stack registration.
  * @param api-version - Client API Version.
  */
-export const ProductsUploadLog = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProductsUploadLog = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProductsUploadLogInput,
   outputSchema: ProductsUploadLogOutput,
 }));
 // Input Schema
 export const RegistrationsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
@@ -655,7 +634,7 @@ export type RegistrationsCreateOrUpdateInput =
 
 // Output Schema
 export const RegistrationsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -675,15 +654,13 @@ export type RegistrationsCreateOrUpdateOutput =
  * @param registrationName - Name of the Azure Stack registration.
  * @param api-version - Client API Version.
  */
-export const RegistrationsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RegistrationsCreateOrUpdateInput,
-    outputSchema: RegistrationsCreateOrUpdateOutput,
-  }),
-);
+export const RegistrationsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RegistrationsCreateOrUpdateInput,
+  outputSchema: RegistrationsCreateOrUpdateOutput,
+}));
 // Input Schema
 export const RegistrationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
@@ -697,8 +674,7 @@ export const RegistrationsDeleteInput =
 export type RegistrationsDeleteInput = typeof RegistrationsDeleteInput.Type;
 
 // Output Schema
-export const RegistrationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const RegistrationsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type RegistrationsDeleteOutput = typeof RegistrationsDeleteOutput.Type;
 
 // The operation
@@ -710,13 +686,13 @@ export type RegistrationsDeleteOutput = typeof RegistrationsDeleteOutput.Type;
  * @param registrationName - Name of the Azure Stack registration.
  * @param api-version - Client API Version.
  */
-export const RegistrationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RegistrationsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: RegistrationsDeleteInput,
   outputSchema: RegistrationsDeleteOutput,
 }));
 // Input Schema
 export const RegistrationsEnableRemoteManagementInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
@@ -731,7 +707,7 @@ export type RegistrationsEnableRemoteManagementInput =
 
 // Output Schema
 export const RegistrationsEnableRemoteManagementOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type RegistrationsEnableRemoteManagementOutput =
   typeof RegistrationsEnableRemoteManagementOutput.Type;
 
@@ -744,12 +720,12 @@ export type RegistrationsEnableRemoteManagementOutput =
  * @param registrationName - Name of the Azure Stack registration.
  */
 export const RegistrationsEnableRemoteManagement =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RegistrationsEnableRemoteManagementInput,
     outputSchema: RegistrationsEnableRemoteManagementOutput,
   }));
 // Input Schema
-export const RegistrationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RegistrationsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroup: Schema.String.pipe(T.PathParam()),
   registrationName: Schema.String.pipe(T.PathParam()),
@@ -763,16 +739,14 @@ export const RegistrationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RegistrationsGetInput = typeof RegistrationsGetInput.Type;
 
 // Output Schema
-export const RegistrationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.Literals(["global"]),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    etag: Schema.optional(Schema.String),
-  },
-);
+export const RegistrationsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.Literals(["global"]),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  etag: Schema.optional(Schema.String),
+});
 export type RegistrationsGetOutput = typeof RegistrationsGetOutput.Type;
 
 // The operation
@@ -784,13 +758,13 @@ export type RegistrationsGetOutput = typeof RegistrationsGetOutput.Type;
  * @param registrationName - Name of the Azure Stack registration.
  * @param api-version - Client API Version.
  */
-export const RegistrationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RegistrationsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RegistrationsGetInput,
   outputSchema: RegistrationsGetOutput,
 }));
 // Input Schema
 export const RegistrationsGetActivationKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
@@ -806,7 +780,7 @@ export type RegistrationsGetActivationKeyInput =
 
 // Output Schema
 export const RegistrationsGetActivationKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     activationKey: Schema.optional(Schema.String),
   });
 export type RegistrationsGetActivationKeyOutput =
@@ -822,18 +796,16 @@ export type RegistrationsGetActivationKeyOutput =
  * @param api-version - Client API Version.
  */
 export const RegistrationsGetActivationKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RegistrationsGetActivationKeyInput,
     outputSchema: RegistrationsGetActivationKeyOutput,
   }));
 // Input Schema
-export const RegistrationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroup: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const RegistrationsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroup: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations",
@@ -843,7 +815,7 @@ export type RegistrationsListInput = typeof RegistrationsListInput.Type;
 
 // Output Schema
 export const RegistrationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -868,13 +840,13 @@ export type RegistrationsListOutput = typeof RegistrationsListOutput.Type;
  * @param resourceGroup - Name of the resource group.
  * @param api-version - Client API Version.
  */
-export const RegistrationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RegistrationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: RegistrationsListInput,
   outputSchema: RegistrationsListOutput,
 }));
 // Input Schema
 export const RegistrationsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -888,7 +860,7 @@ export type RegistrationsListBySubscriptionInput =
 
 // Output Schema
 export const RegistrationsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -914,13 +886,13 @@ export type RegistrationsListBySubscriptionOutput =
  * @param api-version - Client API Version.
  */
 export const RegistrationsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RegistrationsListBySubscriptionInput,
     outputSchema: RegistrationsListBySubscriptionOutput,
   }));
 // Input Schema
 export const RegistrationsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
@@ -935,7 +907,7 @@ export type RegistrationsUpdateInput = typeof RegistrationsUpdateInput.Type;
 
 // Output Schema
 export const RegistrationsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -954,7 +926,7 @@ export type RegistrationsUpdateOutput = typeof RegistrationsUpdateOutput.Type;
  * @param registrationName - Name of the Azure Stack registration.
  * @param api-version - Client API Version.
  */
-export const RegistrationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RegistrationsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: RegistrationsUpdateInput,
   outputSchema: RegistrationsUpdateOutput,
 }));

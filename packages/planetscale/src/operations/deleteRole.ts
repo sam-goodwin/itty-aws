@@ -1,10 +1,10 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
-import * as T from "../traits.ts";
 import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
+import * as T from "../traits.ts";
 
 // Input Schema
-export const DeleteRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteRoleInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -19,7 +19,7 @@ export const DeleteRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteRoleInput = typeof DeleteRoleInput.Type;
 
 // Output Schema
-export const DeleteRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeleteRoleOutput = /*@__PURE__*/ Schema.Void;
 export type DeleteRoleOutput = typeof DeleteRoleOutput.Type;
 
 // The operation
@@ -32,7 +32,7 @@ export type DeleteRoleOutput = typeof DeleteRoleOutput.Type;
  * @param id - The ID of the role
  * @param successor - The optional role to reassign ownership to before dropping
  */
-export const deleteRole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteRole = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteRoleInput,
   outputSchema: DeleteRoleOutput,
   errors: [Forbidden, NotFound, UnprocessableEntity] as const,

@@ -6,12 +6,12 @@
  */
 import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
-import * as T from "../traits.ts";
 import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
+import * as T from "../traits.ts";
 
 // Input Schema
 export const CreateCertificatesV1CertificateSigningRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -25,7 +25,7 @@ export type CreateCertificatesV1CertificateSigningRequestInput =
 
 // Output Schema
 export const CreateCertificatesV1CertificateSigningRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -113,14 +113,14 @@ export type CreateCertificatesV1CertificateSigningRequestOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createCertificatesV1CertificateSigningRequest =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateCertificatesV1CertificateSigningRequestInput,
     outputSchema: CreateCertificatesV1CertificateSigningRequestOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateCertificatesV1alpha1ClusterTrustBundleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -134,7 +134,7 @@ export type CreateCertificatesV1alpha1ClusterTrustBundleInput =
 
 // Output Schema
 export const CreateCertificatesV1alpha1ClusterTrustBundleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -197,14 +197,14 @@ export type CreateCertificatesV1alpha1ClusterTrustBundleOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createCertificatesV1alpha1ClusterTrustBundle =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateCertificatesV1alpha1ClusterTrustBundleInput,
     outputSchema: CreateCertificatesV1alpha1ClusterTrustBundleOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateCertificatesV1beta1ClusterTrustBundleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -218,7 +218,7 @@ export type CreateCertificatesV1beta1ClusterTrustBundleInput =
 
 // Output Schema
 export const CreateCertificatesV1beta1ClusterTrustBundleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -281,14 +281,14 @@ export type CreateCertificatesV1beta1ClusterTrustBundleOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createCertificatesV1beta1ClusterTrustBundle =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateCertificatesV1beta1ClusterTrustBundleInput,
     outputSchema: CreateCertificatesV1beta1ClusterTrustBundleOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateCertificatesV1beta1NamespacedPodCertificateRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -302,7 +302,7 @@ export type CreateCertificatesV1beta1NamespacedPodCertificateRequestInput =
 
 // Output Schema
 export const CreateCertificatesV1beta1NamespacedPodCertificateRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -397,7 +397,7 @@ export type CreateCertificatesV1beta1NamespacedPodCertificateRequestOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createCertificatesV1beta1NamespacedPodCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateCertificatesV1beta1NamespacedPodCertificateRequestInput,
     outputSchema:
       CreateCertificatesV1beta1NamespacedPodCertificateRequestOutput,
@@ -405,7 +405,7 @@ export const createCertificatesV1beta1NamespacedPodCertificateRequest =
   }));
 // Input Schema
 export const DeleteCertificatesV1CertificateSigningRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -418,7 +418,7 @@ export type DeleteCertificatesV1CertificateSigningRequestInput =
 
 // Output Schema
 export const DeleteCertificatesV1CertificateSigningRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -467,14 +467,14 @@ export type DeleteCertificatesV1CertificateSigningRequestOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteCertificatesV1CertificateSigningRequest =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCertificatesV1CertificateSigningRequestInput,
     outputSchema: DeleteCertificatesV1CertificateSigningRequestOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteCertificatesV1CollectionCertificateSigningRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -487,7 +487,7 @@ export type DeleteCertificatesV1CollectionCertificateSigningRequestInput =
 
 // Output Schema
 export const DeleteCertificatesV1CollectionCertificateSigningRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -536,13 +536,13 @@ export type DeleteCertificatesV1CollectionCertificateSigningRequestOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteCertificatesV1CollectionCertificateSigningRequest =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCertificatesV1CollectionCertificateSigningRequestInput,
     outputSchema: DeleteCertificatesV1CollectionCertificateSigningRequestOutput,
   }));
 // Input Schema
 export const DeleteCertificatesV1alpha1ClusterTrustBundleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -555,7 +555,7 @@ export type DeleteCertificatesV1alpha1ClusterTrustBundleInput =
 
 // Output Schema
 export const DeleteCertificatesV1alpha1ClusterTrustBundleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -604,14 +604,14 @@ export type DeleteCertificatesV1alpha1ClusterTrustBundleOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteCertificatesV1alpha1ClusterTrustBundle =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCertificatesV1alpha1ClusterTrustBundleInput,
     outputSchema: DeleteCertificatesV1alpha1ClusterTrustBundleOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteCertificatesV1alpha1CollectionClusterTrustBundleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -624,7 +624,7 @@ export type DeleteCertificatesV1alpha1CollectionClusterTrustBundleInput =
 
 // Output Schema
 export const DeleteCertificatesV1alpha1CollectionClusterTrustBundleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -673,13 +673,13 @@ export type DeleteCertificatesV1alpha1CollectionClusterTrustBundleOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteCertificatesV1alpha1CollectionClusterTrustBundle =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCertificatesV1alpha1CollectionClusterTrustBundleInput,
     outputSchema: DeleteCertificatesV1alpha1CollectionClusterTrustBundleOutput,
   }));
 // Input Schema
 export const DeleteCertificatesV1beta1ClusterTrustBundleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -692,7 +692,7 @@ export type DeleteCertificatesV1beta1ClusterTrustBundleInput =
 
 // Output Schema
 export const DeleteCertificatesV1beta1ClusterTrustBundleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -741,14 +741,14 @@ export type DeleteCertificatesV1beta1ClusterTrustBundleOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteCertificatesV1beta1ClusterTrustBundle =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCertificatesV1beta1ClusterTrustBundleInput,
     outputSchema: DeleteCertificatesV1beta1ClusterTrustBundleOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteCertificatesV1beta1CollectionClusterTrustBundleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -761,7 +761,7 @@ export type DeleteCertificatesV1beta1CollectionClusterTrustBundleInput =
 
 // Output Schema
 export const DeleteCertificatesV1beta1CollectionClusterTrustBundleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -810,13 +810,13 @@ export type DeleteCertificatesV1beta1CollectionClusterTrustBundleOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteCertificatesV1beta1CollectionClusterTrustBundle =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCertificatesV1beta1CollectionClusterTrustBundleInput,
     outputSchema: DeleteCertificatesV1beta1CollectionClusterTrustBundleOutput,
   }));
 // Input Schema
 export const DeleteCertificatesV1beta1CollectionNamespacedPodCertificateRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -829,7 +829,7 @@ export type DeleteCertificatesV1beta1CollectionNamespacedPodCertificateRequestIn
 
 // Output Schema
 export const DeleteCertificatesV1beta1CollectionNamespacedPodCertificateRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -878,7 +878,7 @@ export type DeleteCertificatesV1beta1CollectionNamespacedPodCertificateRequestOu
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteCertificatesV1beta1CollectionNamespacedPodCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteCertificatesV1beta1CollectionNamespacedPodCertificateRequestInput,
     outputSchema:
@@ -886,7 +886,7 @@ export const deleteCertificatesV1beta1CollectionNamespacedPodCertificateRequest 
   }));
 // Input Schema
 export const DeleteCertificatesV1beta1NamespacedPodCertificateRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -899,7 +899,7 @@ export type DeleteCertificatesV1beta1NamespacedPodCertificateRequestInput =
 
 // Output Schema
 export const DeleteCertificatesV1beta1NamespacedPodCertificateRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -948,7 +948,7 @@ export type DeleteCertificatesV1beta1NamespacedPodCertificateRequestOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteCertificatesV1beta1NamespacedPodCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCertificatesV1beta1NamespacedPodCertificateRequestInput,
     outputSchema:
       DeleteCertificatesV1beta1NamespacedPodCertificateRequestOutput,
@@ -956,7 +956,7 @@ export const deleteCertificatesV1beta1NamespacedPodCertificateRequest =
   }));
 // Input Schema
 export const GetCertificatesAPIGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/certificates.k8s.io/" }),
   );
 export type GetCertificatesAPIGroupInput =
@@ -964,7 +964,7 @@ export type GetCertificatesAPIGroupInput =
 
 // Output Schema
 export const GetCertificatesAPIGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     name: Schema.String,
@@ -996,15 +996,13 @@ export type GetCertificatesAPIGroupOutput =
 /**
  * get information of a group
  */
-export const getCertificatesAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetCertificatesAPIGroupInput,
-    outputSchema: GetCertificatesAPIGroupOutput,
-  }),
-);
+export const getCertificatesAPIGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetCertificatesAPIGroupInput,
+  outputSchema: GetCertificatesAPIGroupOutput,
+}));
 // Input Schema
 export const GetCertificatesV1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/certificates.k8s.io/v1/" }),
   );
 export type GetCertificatesV1APIResourcesInput =
@@ -1012,7 +1010,7 @@ export type GetCertificatesV1APIResourcesInput =
 
 // Output Schema
 export const GetCertificatesV1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -1039,13 +1037,13 @@ export type GetCertificatesV1APIResourcesOutput =
  * get available resources
  */
 export const getCertificatesV1APIResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetCertificatesV1APIResourcesInput,
     outputSchema: GetCertificatesV1APIResourcesOutput,
   }));
 // Input Schema
 export const GetCertificatesV1alpha1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/certificates.k8s.io/v1alpha1/" }),
   );
 export type GetCertificatesV1alpha1APIResourcesInput =
@@ -1053,7 +1051,7 @@ export type GetCertificatesV1alpha1APIResourcesInput =
 
 // Output Schema
 export const GetCertificatesV1alpha1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -1080,13 +1078,13 @@ export type GetCertificatesV1alpha1APIResourcesOutput =
  * get available resources
  */
 export const getCertificatesV1alpha1APIResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetCertificatesV1alpha1APIResourcesInput,
     outputSchema: GetCertificatesV1alpha1APIResourcesOutput,
   }));
 // Input Schema
 export const GetCertificatesV1beta1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/certificates.k8s.io/v1beta1/" }),
   );
 export type GetCertificatesV1beta1APIResourcesInput =
@@ -1094,7 +1092,7 @@ export type GetCertificatesV1beta1APIResourcesInput =
 
 // Output Schema
 export const GetCertificatesV1beta1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -1121,13 +1119,13 @@ export type GetCertificatesV1beta1APIResourcesOutput =
  * get available resources
  */
 export const getCertificatesV1beta1APIResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetCertificatesV1beta1APIResourcesInput,
     outputSchema: GetCertificatesV1beta1APIResourcesOutput,
   }));
 // Input Schema
 export const ListCertificatesV1CertificateSigningRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/certificates.k8s.io/v1/certificatesigningrequests",
@@ -1138,7 +1136,7 @@ export type ListCertificatesV1CertificateSigningRequestInput =
 
 // Output Schema
 export const ListCertificatesV1CertificateSigningRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -1244,13 +1242,13 @@ export type ListCertificatesV1CertificateSigningRequestOutput =
  * list or watch objects of kind CertificateSigningRequest
  */
 export const listCertificatesV1CertificateSigningRequest =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCertificatesV1CertificateSigningRequestInput,
     outputSchema: ListCertificatesV1CertificateSigningRequestOutput,
   }));
 // Input Schema
 export const ListCertificatesV1alpha1ClusterTrustBundleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/certificates.k8s.io/v1alpha1/clustertrustbundles",
@@ -1261,7 +1259,7 @@ export type ListCertificatesV1alpha1ClusterTrustBundleInput =
 
 // Output Schema
 export const ListCertificatesV1alpha1ClusterTrustBundleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -1342,13 +1340,13 @@ export type ListCertificatesV1alpha1ClusterTrustBundleOutput =
  * list or watch objects of kind ClusterTrustBundle
  */
 export const listCertificatesV1alpha1ClusterTrustBundle =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCertificatesV1alpha1ClusterTrustBundleInput,
     outputSchema: ListCertificatesV1alpha1ClusterTrustBundleOutput,
   }));
 // Input Schema
 export const ListCertificatesV1beta1ClusterTrustBundleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/certificates.k8s.io/v1beta1/clustertrustbundles",
@@ -1359,7 +1357,7 @@ export type ListCertificatesV1beta1ClusterTrustBundleInput =
 
 // Output Schema
 export const ListCertificatesV1beta1ClusterTrustBundleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -1440,13 +1438,13 @@ export type ListCertificatesV1beta1ClusterTrustBundleOutput =
  * list or watch objects of kind ClusterTrustBundle
  */
 export const listCertificatesV1beta1ClusterTrustBundle =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCertificatesV1beta1ClusterTrustBundleInput,
     outputSchema: ListCertificatesV1beta1ClusterTrustBundleOutput,
   }));
 // Input Schema
 export const ListCertificatesV1beta1NamespacedPodCertificateRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/certificates.k8s.io/v1beta1/namespaces/{namespace}/podcertificaterequests",
@@ -1457,7 +1455,7 @@ export type ListCertificatesV1beta1NamespacedPodCertificateRequestInput =
 
 // Output Schema
 export const ListCertificatesV1beta1NamespacedPodCertificateRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -1570,13 +1568,13 @@ export type ListCertificatesV1beta1NamespacedPodCertificateRequestOutput =
  * list or watch objects of kind PodCertificateRequest
  */
 export const listCertificatesV1beta1NamespacedPodCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCertificatesV1beta1NamespacedPodCertificateRequestInput,
     outputSchema: ListCertificatesV1beta1NamespacedPodCertificateRequestOutput,
   }));
 // Input Schema
 export const ListCertificatesV1beta1PodCertificateRequestForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/certificates.k8s.io/v1beta1/podcertificaterequests",
@@ -1587,7 +1585,7 @@ export type ListCertificatesV1beta1PodCertificateRequestForAllNamespacesInput =
 
 // Output Schema
 export const ListCertificatesV1beta1PodCertificateRequestForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -1700,7 +1698,7 @@ export type ListCertificatesV1beta1PodCertificateRequestForAllNamespacesOutput =
  * list or watch objects of kind PodCertificateRequest
  */
 export const listCertificatesV1beta1PodCertificateRequestForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ListCertificatesV1beta1PodCertificateRequestForAllNamespacesInput,
     outputSchema:
@@ -1708,7 +1706,7 @@ export const listCertificatesV1beta1PodCertificateRequestForAllNamespaces =
   }));
 // Input Schema
 export const PatchCertificatesV1CertificateSigningRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -1722,7 +1720,7 @@ export type PatchCertificatesV1CertificateSigningRequestInput =
 
 // Output Schema
 export const PatchCertificatesV1CertificateSigningRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1810,14 +1808,14 @@ export type PatchCertificatesV1CertificateSigningRequestOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchCertificatesV1CertificateSigningRequest =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCertificatesV1CertificateSigningRequestInput,
     outputSchema: PatchCertificatesV1CertificateSigningRequestOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCertificatesV1CertificateSigningRequestApprovalInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -1831,7 +1829,7 @@ export type PatchCertificatesV1CertificateSigningRequestApprovalInput =
 
 // Output Schema
 export const PatchCertificatesV1CertificateSigningRequestApprovalOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1919,14 +1917,14 @@ export type PatchCertificatesV1CertificateSigningRequestApprovalOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchCertificatesV1CertificateSigningRequestApproval =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCertificatesV1CertificateSigningRequestApprovalInput,
     outputSchema: PatchCertificatesV1CertificateSigningRequestApprovalOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCertificatesV1CertificateSigningRequestStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -1940,7 +1938,7 @@ export type PatchCertificatesV1CertificateSigningRequestStatusInput =
 
 // Output Schema
 export const PatchCertificatesV1CertificateSigningRequestStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -2028,14 +2026,14 @@ export type PatchCertificatesV1CertificateSigningRequestStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchCertificatesV1CertificateSigningRequestStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCertificatesV1CertificateSigningRequestStatusInput,
     outputSchema: PatchCertificatesV1CertificateSigningRequestStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCertificatesV1alpha1ClusterTrustBundleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -2049,7 +2047,7 @@ export type PatchCertificatesV1alpha1ClusterTrustBundleInput =
 
 // Output Schema
 export const PatchCertificatesV1alpha1ClusterTrustBundleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -2112,14 +2110,14 @@ export type PatchCertificatesV1alpha1ClusterTrustBundleOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchCertificatesV1alpha1ClusterTrustBundle =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCertificatesV1alpha1ClusterTrustBundleInput,
     outputSchema: PatchCertificatesV1alpha1ClusterTrustBundleOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCertificatesV1beta1ClusterTrustBundleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -2133,7 +2131,7 @@ export type PatchCertificatesV1beta1ClusterTrustBundleInput =
 
 // Output Schema
 export const PatchCertificatesV1beta1ClusterTrustBundleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -2196,14 +2194,14 @@ export type PatchCertificatesV1beta1ClusterTrustBundleOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchCertificatesV1beta1ClusterTrustBundle =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCertificatesV1beta1ClusterTrustBundleInput,
     outputSchema: PatchCertificatesV1beta1ClusterTrustBundleOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCertificatesV1beta1NamespacedPodCertificateRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -2217,7 +2215,7 @@ export type PatchCertificatesV1beta1NamespacedPodCertificateRequestInput =
 
 // Output Schema
 export const PatchCertificatesV1beta1NamespacedPodCertificateRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -2312,14 +2310,14 @@ export type PatchCertificatesV1beta1NamespacedPodCertificateRequestOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchCertificatesV1beta1NamespacedPodCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCertificatesV1beta1NamespacedPodCertificateRequestInput,
     outputSchema: PatchCertificatesV1beta1NamespacedPodCertificateRequestOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCertificatesV1beta1NamespacedPodCertificateRequestStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -2333,7 +2331,7 @@ export type PatchCertificatesV1beta1NamespacedPodCertificateRequestStatusInput =
 
 // Output Schema
 export const PatchCertificatesV1beta1NamespacedPodCertificateRequestStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -2428,7 +2426,7 @@ export type PatchCertificatesV1beta1NamespacedPodCertificateRequestStatusOutput 
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchCertificatesV1beta1NamespacedPodCertificateRequestStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       PatchCertificatesV1beta1NamespacedPodCertificateRequestStatusInput,
     outputSchema:
@@ -2437,7 +2435,7 @@ export const patchCertificatesV1beta1NamespacedPodCertificateRequestStatus =
   }));
 // Input Schema
 export const ReadCertificatesV1CertificateSigningRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}",
@@ -2448,7 +2446,7 @@ export type ReadCertificatesV1CertificateSigningRequestInput =
 
 // Output Schema
 export const ReadCertificatesV1CertificateSigningRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -2533,14 +2531,14 @@ export type ReadCertificatesV1CertificateSigningRequestOutput =
  * read the specified CertificateSigningRequest
  */
 export const readCertificatesV1CertificateSigningRequest =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCertificatesV1CertificateSigningRequestInput,
     outputSchema: ReadCertificatesV1CertificateSigningRequestOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCertificatesV1CertificateSigningRequestApprovalInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/approval",
@@ -2551,7 +2549,7 @@ export type ReadCertificatesV1CertificateSigningRequestApprovalInput =
 
 // Output Schema
 export const ReadCertificatesV1CertificateSigningRequestApprovalOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -2636,14 +2634,14 @@ export type ReadCertificatesV1CertificateSigningRequestApprovalOutput =
  * read approval of the specified CertificateSigningRequest
  */
 export const readCertificatesV1CertificateSigningRequestApproval =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCertificatesV1CertificateSigningRequestApprovalInput,
     outputSchema: ReadCertificatesV1CertificateSigningRequestApprovalOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCertificatesV1CertificateSigningRequestStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/status",
@@ -2654,7 +2652,7 @@ export type ReadCertificatesV1CertificateSigningRequestStatusInput =
 
 // Output Schema
 export const ReadCertificatesV1CertificateSigningRequestStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -2739,14 +2737,14 @@ export type ReadCertificatesV1CertificateSigningRequestStatusOutput =
  * read status of the specified CertificateSigningRequest
  */
 export const readCertificatesV1CertificateSigningRequestStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCertificatesV1CertificateSigningRequestStatusInput,
     outputSchema: ReadCertificatesV1CertificateSigningRequestStatusOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCertificatesV1alpha1ClusterTrustBundleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/certificates.k8s.io/v1alpha1/clustertrustbundles/{name}",
@@ -2757,7 +2755,7 @@ export type ReadCertificatesV1alpha1ClusterTrustBundleInput =
 
 // Output Schema
 export const ReadCertificatesV1alpha1ClusterTrustBundleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -2817,14 +2815,14 @@ export type ReadCertificatesV1alpha1ClusterTrustBundleOutput =
  * read the specified ClusterTrustBundle
  */
 export const readCertificatesV1alpha1ClusterTrustBundle =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCertificatesV1alpha1ClusterTrustBundleInput,
     outputSchema: ReadCertificatesV1alpha1ClusterTrustBundleOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCertificatesV1beta1ClusterTrustBundleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/certificates.k8s.io/v1beta1/clustertrustbundles/{name}",
@@ -2835,7 +2833,7 @@ export type ReadCertificatesV1beta1ClusterTrustBundleInput =
 
 // Output Schema
 export const ReadCertificatesV1beta1ClusterTrustBundleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -2895,14 +2893,14 @@ export type ReadCertificatesV1beta1ClusterTrustBundleOutput =
  * read the specified ClusterTrustBundle
  */
 export const readCertificatesV1beta1ClusterTrustBundle =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCertificatesV1beta1ClusterTrustBundleInput,
     outputSchema: ReadCertificatesV1beta1ClusterTrustBundleOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCertificatesV1beta1NamespacedPodCertificateRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/certificates.k8s.io/v1beta1/namespaces/{namespace}/podcertificaterequests/{name}",
@@ -2913,7 +2911,7 @@ export type ReadCertificatesV1beta1NamespacedPodCertificateRequestInput =
 
 // Output Schema
 export const ReadCertificatesV1beta1NamespacedPodCertificateRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -3005,14 +3003,14 @@ export type ReadCertificatesV1beta1NamespacedPodCertificateRequestOutput =
  * read the specified PodCertificateRequest
  */
 export const readCertificatesV1beta1NamespacedPodCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCertificatesV1beta1NamespacedPodCertificateRequestInput,
     outputSchema: ReadCertificatesV1beta1NamespacedPodCertificateRequestOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCertificatesV1beta1NamespacedPodCertificateRequestStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/certificates.k8s.io/v1beta1/namespaces/{namespace}/podcertificaterequests/{name}/status",
@@ -3023,7 +3021,7 @@ export type ReadCertificatesV1beta1NamespacedPodCertificateRequestStatusInput =
 
 // Output Schema
 export const ReadCertificatesV1beta1NamespacedPodCertificateRequestStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -3115,7 +3113,7 @@ export type ReadCertificatesV1beta1NamespacedPodCertificateRequestStatusOutput =
  * read status of the specified PodCertificateRequest
  */
 export const readCertificatesV1beta1NamespacedPodCertificateRequestStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReadCertificatesV1beta1NamespacedPodCertificateRequestStatusInput,
     outputSchema:
@@ -3124,7 +3122,7 @@ export const readCertificatesV1beta1NamespacedPodCertificateRequestStatus =
   }));
 // Input Schema
 export const ReplaceCertificatesV1CertificateSigningRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -3138,7 +3136,7 @@ export type ReplaceCertificatesV1CertificateSigningRequestInput =
 
 // Output Schema
 export const ReplaceCertificatesV1CertificateSigningRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -3226,14 +3224,14 @@ export type ReplaceCertificatesV1CertificateSigningRequestOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCertificatesV1CertificateSigningRequest =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCertificatesV1CertificateSigningRequestInput,
     outputSchema: ReplaceCertificatesV1CertificateSigningRequestOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCertificatesV1CertificateSigningRequestApprovalInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -3247,7 +3245,7 @@ export type ReplaceCertificatesV1CertificateSigningRequestApprovalInput =
 
 // Output Schema
 export const ReplaceCertificatesV1CertificateSigningRequestApprovalOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -3335,14 +3333,14 @@ export type ReplaceCertificatesV1CertificateSigningRequestApprovalOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCertificatesV1CertificateSigningRequestApproval =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCertificatesV1CertificateSigningRequestApprovalInput,
     outputSchema: ReplaceCertificatesV1CertificateSigningRequestApprovalOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCertificatesV1CertificateSigningRequestStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -3356,7 +3354,7 @@ export type ReplaceCertificatesV1CertificateSigningRequestStatusInput =
 
 // Output Schema
 export const ReplaceCertificatesV1CertificateSigningRequestStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -3444,14 +3442,14 @@ export type ReplaceCertificatesV1CertificateSigningRequestStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCertificatesV1CertificateSigningRequestStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCertificatesV1CertificateSigningRequestStatusInput,
     outputSchema: ReplaceCertificatesV1CertificateSigningRequestStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCertificatesV1alpha1ClusterTrustBundleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -3465,7 +3463,7 @@ export type ReplaceCertificatesV1alpha1ClusterTrustBundleInput =
 
 // Output Schema
 export const ReplaceCertificatesV1alpha1ClusterTrustBundleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -3528,14 +3526,14 @@ export type ReplaceCertificatesV1alpha1ClusterTrustBundleOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCertificatesV1alpha1ClusterTrustBundle =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCertificatesV1alpha1ClusterTrustBundleInput,
     outputSchema: ReplaceCertificatesV1alpha1ClusterTrustBundleOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCertificatesV1beta1ClusterTrustBundleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -3549,7 +3547,7 @@ export type ReplaceCertificatesV1beta1ClusterTrustBundleInput =
 
 // Output Schema
 export const ReplaceCertificatesV1beta1ClusterTrustBundleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -3612,14 +3610,14 @@ export type ReplaceCertificatesV1beta1ClusterTrustBundleOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCertificatesV1beta1ClusterTrustBundle =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCertificatesV1beta1ClusterTrustBundleInput,
     outputSchema: ReplaceCertificatesV1beta1ClusterTrustBundleOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCertificatesV1beta1NamespacedPodCertificateRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -3633,7 +3631,7 @@ export type ReplaceCertificatesV1beta1NamespacedPodCertificateRequestInput =
 
 // Output Schema
 export const ReplaceCertificatesV1beta1NamespacedPodCertificateRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -3728,7 +3726,7 @@ export type ReplaceCertificatesV1beta1NamespacedPodCertificateRequestOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCertificatesV1beta1NamespacedPodCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCertificatesV1beta1NamespacedPodCertificateRequestInput,
     outputSchema:
       ReplaceCertificatesV1beta1NamespacedPodCertificateRequestOutput,
@@ -3736,7 +3734,7 @@ export const replaceCertificatesV1beta1NamespacedPodCertificateRequest =
   }));
 // Input Schema
 export const ReplaceCertificatesV1beta1NamespacedPodCertificateRequestStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -3750,7 +3748,7 @@ export type ReplaceCertificatesV1beta1NamespacedPodCertificateRequestStatusInput
 
 // Output Schema
 export const ReplaceCertificatesV1beta1NamespacedPodCertificateRequestStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -3845,7 +3843,7 @@ export type ReplaceCertificatesV1beta1NamespacedPodCertificateRequestStatusOutpu
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCertificatesV1beta1NamespacedPodCertificateRequestStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReplaceCertificatesV1beta1NamespacedPodCertificateRequestStatusInput,
     outputSchema:
@@ -3854,7 +3852,7 @@ export const replaceCertificatesV1beta1NamespacedPodCertificateRequestStatus =
   }));
 // Input Schema
 export const WatchCertificatesV1CertificateSigningRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/certificates.k8s.io/v1/watch/certificatesigningrequests/{name}",
@@ -3865,7 +3863,7 @@ export type WatchCertificatesV1CertificateSigningRequestInput =
 
 // Output Schema
 export const WatchCertificatesV1CertificateSigningRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -3877,13 +3875,13 @@ export type WatchCertificatesV1CertificateSigningRequestOutput =
  * watch changes to an object of kind CertificateSigningRequest. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchCertificatesV1CertificateSigningRequest =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCertificatesV1CertificateSigningRequestInput,
     outputSchema: WatchCertificatesV1CertificateSigningRequestOutput,
   }));
 // Input Schema
 export const WatchCertificatesV1CertificateSigningRequestListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/certificates.k8s.io/v1/watch/certificatesigningrequests",
@@ -3894,7 +3892,7 @@ export type WatchCertificatesV1CertificateSigningRequestListInput =
 
 // Output Schema
 export const WatchCertificatesV1CertificateSigningRequestListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -3906,13 +3904,13 @@ export type WatchCertificatesV1CertificateSigningRequestListOutput =
  * watch individual changes to a list of CertificateSigningRequest. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchCertificatesV1CertificateSigningRequestList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCertificatesV1CertificateSigningRequestListInput,
     outputSchema: WatchCertificatesV1CertificateSigningRequestListOutput,
   }));
 // Input Schema
 export const WatchCertificatesV1alpha1ClusterTrustBundleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/certificates.k8s.io/v1alpha1/watch/clustertrustbundles/{name}",
@@ -3923,7 +3921,7 @@ export type WatchCertificatesV1alpha1ClusterTrustBundleInput =
 
 // Output Schema
 export const WatchCertificatesV1alpha1ClusterTrustBundleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -3935,13 +3933,13 @@ export type WatchCertificatesV1alpha1ClusterTrustBundleOutput =
  * watch changes to an object of kind ClusterTrustBundle. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchCertificatesV1alpha1ClusterTrustBundle =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCertificatesV1alpha1ClusterTrustBundleInput,
     outputSchema: WatchCertificatesV1alpha1ClusterTrustBundleOutput,
   }));
 // Input Schema
 export const WatchCertificatesV1alpha1ClusterTrustBundleListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/certificates.k8s.io/v1alpha1/watch/clustertrustbundles",
@@ -3952,7 +3950,7 @@ export type WatchCertificatesV1alpha1ClusterTrustBundleListInput =
 
 // Output Schema
 export const WatchCertificatesV1alpha1ClusterTrustBundleListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -3964,13 +3962,13 @@ export type WatchCertificatesV1alpha1ClusterTrustBundleListOutput =
  * watch individual changes to a list of ClusterTrustBundle. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchCertificatesV1alpha1ClusterTrustBundleList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCertificatesV1alpha1ClusterTrustBundleListInput,
     outputSchema: WatchCertificatesV1alpha1ClusterTrustBundleListOutput,
   }));
 // Input Schema
 export const WatchCertificatesV1beta1ClusterTrustBundleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/certificates.k8s.io/v1beta1/watch/clustertrustbundles/{name}",
@@ -3981,7 +3979,7 @@ export type WatchCertificatesV1beta1ClusterTrustBundleInput =
 
 // Output Schema
 export const WatchCertificatesV1beta1ClusterTrustBundleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -3993,13 +3991,13 @@ export type WatchCertificatesV1beta1ClusterTrustBundleOutput =
  * watch changes to an object of kind ClusterTrustBundle. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchCertificatesV1beta1ClusterTrustBundle =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCertificatesV1beta1ClusterTrustBundleInput,
     outputSchema: WatchCertificatesV1beta1ClusterTrustBundleOutput,
   }));
 // Input Schema
 export const WatchCertificatesV1beta1ClusterTrustBundleListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/certificates.k8s.io/v1beta1/watch/clustertrustbundles",
@@ -4010,7 +4008,7 @@ export type WatchCertificatesV1beta1ClusterTrustBundleListInput =
 
 // Output Schema
 export const WatchCertificatesV1beta1ClusterTrustBundleListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -4022,13 +4020,13 @@ export type WatchCertificatesV1beta1ClusterTrustBundleListOutput =
  * watch individual changes to a list of ClusterTrustBundle. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchCertificatesV1beta1ClusterTrustBundleList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCertificatesV1beta1ClusterTrustBundleListInput,
     outputSchema: WatchCertificatesV1beta1ClusterTrustBundleListOutput,
   }));
 // Input Schema
 export const WatchCertificatesV1beta1NamespacedPodCertificateRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/certificates.k8s.io/v1beta1/watch/namespaces/{namespace}/podcertificaterequests/{name}",
@@ -4039,7 +4037,7 @@ export type WatchCertificatesV1beta1NamespacedPodCertificateRequestInput =
 
 // Output Schema
 export const WatchCertificatesV1beta1NamespacedPodCertificateRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -4051,13 +4049,13 @@ export type WatchCertificatesV1beta1NamespacedPodCertificateRequestOutput =
  * watch changes to an object of kind PodCertificateRequest. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchCertificatesV1beta1NamespacedPodCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCertificatesV1beta1NamespacedPodCertificateRequestInput,
     outputSchema: WatchCertificatesV1beta1NamespacedPodCertificateRequestOutput,
   }));
 // Input Schema
 export const WatchCertificatesV1beta1NamespacedPodCertificateRequestListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/certificates.k8s.io/v1beta1/watch/namespaces/{namespace}/podcertificaterequests",
@@ -4068,7 +4066,7 @@ export type WatchCertificatesV1beta1NamespacedPodCertificateRequestListInput =
 
 // Output Schema
 export const WatchCertificatesV1beta1NamespacedPodCertificateRequestListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -4080,7 +4078,7 @@ export type WatchCertificatesV1beta1NamespacedPodCertificateRequestListOutput =
  * watch individual changes to a list of PodCertificateRequest. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchCertificatesV1beta1NamespacedPodCertificateRequestList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WatchCertificatesV1beta1NamespacedPodCertificateRequestListInput,
     outputSchema:
@@ -4088,7 +4086,7 @@ export const watchCertificatesV1beta1NamespacedPodCertificateRequestList =
   }));
 // Input Schema
 export const WatchCertificatesV1beta1PodCertificateRequestListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/certificates.k8s.io/v1beta1/watch/podcertificaterequests",
@@ -4099,7 +4097,7 @@ export type WatchCertificatesV1beta1PodCertificateRequestListForAllNamespacesInp
 
 // Output Schema
 export const WatchCertificatesV1beta1PodCertificateRequestListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -4111,7 +4109,7 @@ export type WatchCertificatesV1beta1PodCertificateRequestListForAllNamespacesOut
  * watch individual changes to a list of PodCertificateRequest. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchCertificatesV1beta1PodCertificateRequestListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WatchCertificatesV1beta1PodCertificateRequestListForAllNamespacesInput,
     outputSchema:

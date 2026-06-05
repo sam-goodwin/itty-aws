@@ -4,11 +4,11 @@
 // ==========================================================================
 
 import * as Schema from "effect/Schema";
+import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
-import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { DefaultErrors } from "../errors.ts";
-import type * as HttpClient from "effect/unstable/http/HttpClient";
+import * as T from "../traits.ts";
 
 // Service metadata
 const svc = T.Service({
@@ -32,7 +32,7 @@ export interface SavedColumn {
 }
 
 export const SavedColumn: Schema.Schema<SavedColumn> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     savedColumnName: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -46,7 +46,7 @@ export interface SavedColumnList {
 }
 
 export const SavedColumnList: Schema.Schema<SavedColumnList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(SavedColumn)),
     kind: Schema.optional(Schema.String),
   }).annotate({ identifier: "SavedColumnList" });
@@ -59,7 +59,7 @@ export interface CustomMetric {
 }
 
 export const CustomMetric: Schema.Schema<CustomMetric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     value: Schema.optional(Schema.Number),
   }).annotate({ identifier: "CustomMetric" });
@@ -72,7 +72,7 @@ export interface CustomDimension {
 }
 
 export const CustomDimension: Schema.Schema<CustomDimension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "CustomDimension" });
@@ -151,7 +151,7 @@ export interface Conversion {
 }
 
 export const Conversion: Schema.Schema<Conversion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     storeId: Schema.optional(Schema.String),
     dsConversionId: Schema.optional(Schema.String),
     customMetric: Schema.optional(Schema.Array(CustomMetric)),
@@ -197,7 +197,7 @@ export interface ConversionList {
 }
 
 export const ConversionList: Schema.Schema<ConversionList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     conversion: Schema.optional(Schema.Array(Conversion)),
     kind: Schema.optional(Schema.String),
   }).annotate({ identifier: "ConversionList" });
@@ -220,7 +220,7 @@ export interface Availability {
 }
 
 export const Availability: Schema.Schema<Availability> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     segmentationId: Schema.optional(Schema.String),
     segmentationName: Schema.optional(Schema.String),
     agencyId: Schema.optional(Schema.String),
@@ -236,7 +236,7 @@ export interface UpdateAvailabilityRequest {
 }
 
 export const UpdateAvailabilityRequest: Schema.Schema<UpdateAvailabilityRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     availabilities: Schema.optional(Schema.Array(Availability)),
   }).annotate({ identifier: "UpdateAvailabilityRequest" });
 
@@ -264,7 +264,7 @@ export interface ReportApiColumnSpec {
 }
 
 export const ReportApiColumnSpec: Schema.Schema<ReportApiColumnSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startDate: Schema.optional(Schema.String),
     endDate: Schema.optional(Schema.String),
     headerText: Schema.optional(Schema.String),
@@ -326,7 +326,7 @@ export interface ReportRequest {
 }
 
 export const ReportRequest: Schema.Schema<ReportRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     verifySingleTimeZone: Schema.optional(Schema.Boolean),
     maxRowsPerFile: Schema.optional(Schema.Number),
     columns: Schema.optional(Schema.Array(ReportApiColumnSpec)),
@@ -377,7 +377,7 @@ export const ReportRequest: Schema.Schema<ReportRequest> =
 
 export type ReportRow = Record<string, unknown>;
 export const ReportRow: Schema.Schema<ReportRow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
+  /*@__PURE__*/ Schema.Record(
     Schema.String,
     Schema.Unknown,
   ) as any as Schema.Schema<ReportRow>;
@@ -404,7 +404,7 @@ export interface Report {
 }
 
 export const Report: Schema.Schema<Report> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     rows: Schema.optional(Schema.Array(ReportRow)),
     statisticsTimeZone: Schema.optional(Schema.String),
@@ -429,14 +429,14 @@ export interface UpdateAvailabilityResponse {
 }
 
 export const UpdateAvailabilityResponse: Schema.Schema<UpdateAvailabilityResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     availabilities: Schema.optional(Schema.Array(Availability)),
   }).annotate({ identifier: "UpdateAvailabilityResponse" });
 
 export interface IdMappingFile {}
 
 export const IdMappingFile: Schema.Schema<IdMappingFile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "IdMappingFile",
   });
 
@@ -500,7 +500,7 @@ export interface UpdateConversionRequest {
 }
 
 export const UpdateConversionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(ConversionList).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -512,8 +512,7 @@ export const UpdateConversionRequest =
   ) as unknown as Schema.Schema<UpdateConversionRequest>;
 
 export type UpdateConversionResponse = ConversionList;
-export const UpdateConversionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ConversionList;
+export const UpdateConversionResponse = /*@__PURE__*/ ConversionList;
 
 export type UpdateConversionError =
   | DefaultErrors
@@ -528,7 +527,7 @@ export const updateConversion: API.OperationMethod<
   UpdateConversionResponse,
   UpdateConversionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConversionRequest,
   output: UpdateConversionResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -562,7 +561,7 @@ export interface GetByCustomerIdConversionRequest {
 }
 
 export const GetByCustomerIdConversionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adGroupId: Schema.optional(Schema.String).pipe(T.HttpQuery("adGroupId")),
     endDate: Schema.Number.pipe(T.HttpQuery("endDate")),
     startDate: Schema.Number.pipe(T.HttpQuery("startDate")),
@@ -590,8 +589,7 @@ export const GetByCustomerIdConversionRequest =
   ) as unknown as Schema.Schema<GetByCustomerIdConversionRequest>;
 
 export type GetByCustomerIdConversionResponse = ConversionList;
-export const GetByCustomerIdConversionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ConversionList;
+export const GetByCustomerIdConversionResponse = /*@__PURE__*/ ConversionList;
 
 export type GetByCustomerIdConversionError =
   | DefaultErrors
@@ -604,7 +602,7 @@ export const getByCustomerIdConversion: API.OperationMethod<
   GetByCustomerIdConversionResponse,
   GetByCustomerIdConversionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetByCustomerIdConversionRequest,
   output: GetByCustomerIdConversionResponse,
   errors: [NotFound, Forbidden],
@@ -616,7 +614,7 @@ export interface InsertConversionRequest {
 }
 
 export const InsertConversionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(ConversionList).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -628,8 +626,7 @@ export const InsertConversionRequest =
   ) as unknown as Schema.Schema<InsertConversionRequest>;
 
 export type InsertConversionResponse = ConversionList;
-export const InsertConversionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ConversionList;
+export const InsertConversionResponse = /*@__PURE__*/ ConversionList;
 
 export type InsertConversionError =
   | DefaultErrors
@@ -644,7 +641,7 @@ export const insertConversion: API.OperationMethod<
   InsertConversionResponse,
   InsertConversionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertConversionRequest,
   output: InsertConversionResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -677,7 +674,7 @@ export interface GetConversionRequest {
   adId?: string;
 }
 
-export const GetConversionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetConversionRequest = /*@__PURE__*/ Schema.Struct({
   advertiserId: Schema.String.pipe(T.HttpPath("advertiserId")),
   customerId: Schema.optional(Schema.String).pipe(T.HttpQuery("customerId")),
   engineAccountId: Schema.String.pipe(T.HttpPath("engineAccountId")),
@@ -699,7 +696,7 @@ export const GetConversionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<GetConversionRequest>;
 
 export type GetConversionResponse = ConversionList;
-export const GetConversionResponse = /*@__PURE__*/ /*#__PURE__*/ ConversionList;
+export const GetConversionResponse = /*@__PURE__*/ ConversionList;
 
 export type GetConversionError = DefaultErrors | NotFound | Forbidden;
 
@@ -709,7 +706,7 @@ export const getConversion: API.OperationMethod<
   GetConversionResponse,
   GetConversionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConversionRequest,
   output: GetConversionResponse,
   errors: [NotFound, Forbidden],
@@ -721,7 +718,7 @@ export interface UpdateAvailabilityConversionRequest {
 }
 
 export const UpdateAvailabilityConversionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(UpdateAvailabilityRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -734,7 +731,7 @@ export const UpdateAvailabilityConversionRequest =
 
 export type UpdateAvailabilityConversionResponse = UpdateAvailabilityResponse;
 export const UpdateAvailabilityConversionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ UpdateAvailabilityResponse;
+  /*@__PURE__*/ UpdateAvailabilityResponse;
 
 export type UpdateAvailabilityConversionError =
   | DefaultErrors
@@ -749,7 +746,7 @@ export const updateAvailabilityConversion: API.OperationMethod<
   UpdateAvailabilityConversionResponse,
   UpdateAvailabilityConversionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAvailabilityConversionRequest,
   output: UpdateAvailabilityConversionResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -760,11 +757,9 @@ export interface GenerateReportsRequest {
   body?: ReportRequest;
 }
 
-export const GenerateReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    body: Schema.optional(ReportRequest).pipe(T.HttpBody()),
-  },
-).pipe(
+export const GenerateReportsRequest = /*@__PURE__*/ Schema.Struct({
+  body: Schema.optional(ReportRequest).pipe(T.HttpBody()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "doubleclicksearch/v2/reports/generate",
@@ -774,7 +769,7 @@ export const GenerateReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ) as unknown as Schema.Schema<GenerateReportsRequest>;
 
 export type GenerateReportsResponse = Report;
-export const GenerateReportsResponse = /*@__PURE__*/ /*#__PURE__*/ Report;
+export const GenerateReportsResponse = /*@__PURE__*/ Report;
 
 export type GenerateReportsError =
   | DefaultErrors
@@ -789,7 +784,7 @@ export const generateReports: API.OperationMethod<
   GenerateReportsResponse,
   GenerateReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateReportsRequest,
   output: GenerateReportsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -803,7 +798,7 @@ export interface GetIdMappingFileReportsRequest {
 }
 
 export const GetIdMappingFileReportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     advertiserId: Schema.String.pipe(T.HttpPath("advertiserId")),
     agencyId: Schema.String.pipe(T.HttpPath("agencyId")),
   }).pipe(
@@ -815,8 +810,7 @@ export const GetIdMappingFileReportsRequest =
   ) as unknown as Schema.Schema<GetIdMappingFileReportsRequest>;
 
 export type GetIdMappingFileReportsResponse = IdMappingFile;
-export const GetIdMappingFileReportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ IdMappingFile;
+export const GetIdMappingFileReportsResponse = /*@__PURE__*/ IdMappingFile;
 
 export type GetIdMappingFileReportsError = DefaultErrors | NotFound | Forbidden;
 
@@ -826,7 +820,7 @@ export const getIdMappingFileReports: API.OperationMethod<
   GetIdMappingFileReportsResponse,
   GetIdMappingFileReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIdMappingFileReportsRequest,
   output: GetIdMappingFileReportsResponse,
   errors: [NotFound, Forbidden],
@@ -837,7 +831,7 @@ export interface GetReportsRequest {
   reportId: string;
 }
 
-export const GetReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetReportsRequest = /*@__PURE__*/ Schema.Struct({
   reportId: Schema.String.pipe(T.HttpPath("reportId")),
 }).pipe(
   T.Http({ method: "GET", path: "doubleclicksearch/v2/reports/{reportId}" }),
@@ -845,7 +839,7 @@ export const GetReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<GetReportsRequest>;
 
 export type GetReportsResponse = Report;
-export const GetReportsResponse = /*@__PURE__*/ /*#__PURE__*/ Report;
+export const GetReportsResponse = /*@__PURE__*/ Report;
 
 export type GetReportsError = DefaultErrors | NotFound | Forbidden;
 
@@ -855,7 +849,7 @@ export const getReports: API.OperationMethod<
   GetReportsResponse,
   GetReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetReportsRequest,
   output: GetReportsResponse,
   errors: [NotFound, Forbidden],
@@ -868,7 +862,7 @@ export interface GetFileReportsRequest {
   reportFragment: number;
 }
 
-export const GetFileReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetFileReportsRequest = /*@__PURE__*/ Schema.Struct({
   reportId: Schema.String.pipe(T.HttpPath("reportId")),
   reportFragment: Schema.Number.pipe(T.HttpPath("reportFragment")),
 }).pipe(
@@ -881,7 +875,7 @@ export const GetFileReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GetFileReportsResponse {}
 export const GetFileReportsResponse: Schema.Schema<GetFileReportsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Schema<GetFileReportsResponse>;
 
@@ -893,7 +887,7 @@ export const getFileReports: API.OperationMethod<
   GetFileReportsResponse,
   GetFileReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFileReportsRequest,
   output: GetFileReportsResponse,
   errors: [NotFound, Forbidden],
@@ -904,7 +898,7 @@ export interface RequestReportsRequest {
   body?: ReportRequest;
 }
 
-export const RequestReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RequestReportsRequest = /*@__PURE__*/ Schema.Struct({
   body: Schema.optional(ReportRequest).pipe(T.HttpBody()),
 }).pipe(
   T.Http({
@@ -916,7 +910,7 @@ export const RequestReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<RequestReportsRequest>;
 
 export type RequestReportsResponse = Report;
-export const RequestReportsResponse = /*@__PURE__*/ /*#__PURE__*/ Report;
+export const RequestReportsResponse = /*@__PURE__*/ Report;
 
 export type RequestReportsError =
   | DefaultErrors
@@ -931,7 +925,7 @@ export const requestReports: API.OperationMethod<
   RequestReportsResponse,
   RequestReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RequestReportsRequest,
   output: RequestReportsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -945,7 +939,7 @@ export interface ListSavedColumnsRequest {
 }
 
 export const ListSavedColumnsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     advertiserId: Schema.String.pipe(T.HttpPath("advertiserId")),
     agencyId: Schema.String.pipe(T.HttpPath("agencyId")),
   }).pipe(
@@ -957,8 +951,7 @@ export const ListSavedColumnsRequest =
   ) as unknown as Schema.Schema<ListSavedColumnsRequest>;
 
 export type ListSavedColumnsResponse = SavedColumnList;
-export const ListSavedColumnsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SavedColumnList;
+export const ListSavedColumnsResponse = /*@__PURE__*/ SavedColumnList;
 
 export type ListSavedColumnsError = DefaultErrors | NotFound | Forbidden;
 
@@ -968,7 +961,7 @@ export const listSavedColumns: API.OperationMethod<
   ListSavedColumnsResponse,
   ListSavedColumnsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListSavedColumnsRequest,
   output: ListSavedColumnsResponse,
   errors: [NotFound, Forbidden],

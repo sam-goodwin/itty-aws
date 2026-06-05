@@ -8,9 +8,9 @@
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
-import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
+import * as T from "../traits.ts";
 
 // =============================================================================
 // SecretWidget
@@ -25,7 +25,7 @@ export interface RotateSecretWidgetRequest {
 }
 
 export const RotateSecretWidgetRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sitekey: Schema.String.pipe(T.HttpPath("sitekey")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     invalidateImmediately: Schema.optional(Schema.Boolean),
@@ -69,7 +69,7 @@ export interface RotateSecretWidgetResponse {
 }
 
 export const RotateSecretWidgetResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     botFightMode: Schema.Boolean,
     clearanceLevel: Schema.Union([
       Schema.Literals([
@@ -121,7 +121,7 @@ export const rotateSecretWidget: API.OperationMethod<
   RotateSecretWidgetResponse,
   RotateSecretWidgetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RotateSecretWidgetRequest,
   output: RotateSecretWidgetResponse,
   errors: [],
@@ -137,7 +137,7 @@ export interface GetWidgetRequest {
   accountId: string;
 }
 
-export const GetWidgetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetWidgetRequest = /*@__PURE__*/ Schema.Struct({
   sitekey: Schema.String.pipe(T.HttpPath("sitekey")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -178,7 +178,7 @@ export interface GetWidgetResponse {
   sitekey: string;
 }
 
-export const GetWidgetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetWidgetResponse = /*@__PURE__*/ Schema.Struct({
   botFightMode: Schema.Boolean,
   clearanceLevel: Schema.Union([
     Schema.Literals(["no_clearance", "jschallenge", "managed", "interactive"]),
@@ -225,7 +225,7 @@ export const getWidget: API.OperationMethod<
   GetWidgetResponse,
   GetWidgetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWidgetRequest,
   output: GetWidgetResponse,
   errors: [],
@@ -250,7 +250,7 @@ export interface ListWidgetsRequest {
     | (string & {});
 }
 
-export const ListWidgetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListWidgetsRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
   perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
@@ -295,7 +295,7 @@ export interface ListWidgetsResponse {
   } | null;
 }
 
-export const ListWidgetsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListWidgetsResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       botFightMode: Schema.Boolean,
@@ -368,7 +368,7 @@ export const listWidgets: API.PaginatedOperationMethod<
   ListWidgetsResponse,
   ListWidgetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWidgetsRequest,
   output: ListWidgetsResponse,
   errors: [],
@@ -423,7 +423,7 @@ export interface CreateWidgetRequest {
   region?: "world" | "china" | (string & {});
 }
 
-export const CreateWidgetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateWidgetRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   direction: Schema.optional(
     Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
@@ -505,7 +505,7 @@ export interface CreateWidgetResponse {
   sitekey: string;
 }
 
-export const CreateWidgetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateWidgetResponse = /*@__PURE__*/ Schema.Struct({
   botFightMode: Schema.Boolean,
   clearanceLevel: Schema.Union([
     Schema.Literals(["no_clearance", "jschallenge", "managed", "interactive"]),
@@ -552,7 +552,7 @@ export const createWidget: API.OperationMethod<
   CreateWidgetResponse,
   CreateWidgetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateWidgetRequest,
   output: CreateWidgetResponse,
   errors: [],
@@ -585,7 +585,7 @@ export interface UpdateWidgetRequest {
   region?: "world" | "china" | (string & {});
 }
 
-export const UpdateWidgetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateWidgetRequest = /*@__PURE__*/ Schema.Struct({
   sitekey: Schema.String.pipe(T.HttpPath("sitekey")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   domains: Schema.Array(Schema.String),
@@ -659,7 +659,7 @@ export interface UpdateWidgetResponse {
   sitekey: string;
 }
 
-export const UpdateWidgetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateWidgetResponse = /*@__PURE__*/ Schema.Struct({
   botFightMode: Schema.Boolean,
   clearanceLevel: Schema.Union([
     Schema.Literals(["no_clearance", "jschallenge", "managed", "interactive"]),
@@ -706,7 +706,7 @@ export const updateWidget: API.OperationMethod<
   UpdateWidgetResponse,
   UpdateWidgetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateWidgetRequest,
   output: UpdateWidgetResponse,
   errors: [],
@@ -718,7 +718,7 @@ export interface DeleteWidgetRequest {
   accountId: string;
 }
 
-export const DeleteWidgetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteWidgetRequest = /*@__PURE__*/ Schema.Struct({
   sitekey: Schema.String.pipe(T.HttpPath("sitekey")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -759,7 +759,7 @@ export interface DeleteWidgetResponse {
   sitekey: string;
 }
 
-export const DeleteWidgetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteWidgetResponse = /*@__PURE__*/ Schema.Struct({
   botFightMode: Schema.Boolean,
   clearanceLevel: Schema.Union([
     Schema.Literals(["no_clearance", "jschallenge", "managed", "interactive"]),
@@ -806,7 +806,7 @@ export const deleteWidget: API.OperationMethod<
   DeleteWidgetResponse,
   DeleteWidgetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteWidgetRequest,
   output: DeleteWidgetResponse,
   errors: [],

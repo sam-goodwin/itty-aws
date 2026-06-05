@@ -1,11 +1,11 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
-import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 import { SensitiveOutputString } from "../sensitive.ts";
+import * as T from "../traits.ts";
 
 // Input Schema
-export const CreateWebhookInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateWebhookInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   url: Schema.String,
@@ -20,7 +20,7 @@ export const CreateWebhookInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateWebhookInput = typeof CreateWebhookInput.Type;
 
 // Output Schema
-export const CreateWebhookOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateWebhookOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   url: Schema.String,
   secret: SensitiveOutputString,
@@ -66,7 +66,7 @@ export type CreateWebhookOutput = typeof CreateWebhookOutput.Type;
  * @param enabled - Whether the webhook should be enabled
  * @param events - The events this webhook should subscribe to
  */
-export const createWebhook = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createWebhook = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateWebhookInput,
   outputSchema: CreateWebhookOutput,
   errors: [Forbidden, NotFound] as const,

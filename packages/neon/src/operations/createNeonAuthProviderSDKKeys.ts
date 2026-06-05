@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const CreateNeonAuthProviderSDKKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String,
     auth_provider: Schema.Literals([
       "mock",
@@ -18,7 +18,7 @@ export type CreateNeonAuthProviderSDKKeysInput =
 
 // Output Schema
 export const CreateNeonAuthProviderSDKKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     auth_provider: Schema.Literals([
       "mock",
       "stack",
@@ -44,7 +44,7 @@ export type CreateNeonAuthProviderSDKKeysOutput =
  * on the auth provider you're using, but are generally used for setting up the frontend and backend SDKs.
  */
 export const createNeonAuthProviderSDKKeys =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateNeonAuthProviderSDKKeysInput,
     outputSchema: CreateNeonAuthProviderSDKKeysOutput,
   }));

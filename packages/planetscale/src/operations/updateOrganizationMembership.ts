@@ -1,11 +1,11 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
-import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
+import * as T from "../traits.ts";
 
 // Input Schema
 export const UpdateOrganizationMembershipInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     role: Schema.String,
@@ -20,7 +20,7 @@ export type UpdateOrganizationMembershipInput =
 
 // Output Schema
 export const UpdateOrganizationMembershipOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     user: Schema.Struct({
       id: Schema.String,
@@ -63,7 +63,7 @@ export type UpdateOrganizationMembershipOutput =
  * @param role - The role to assign to the member (e.g., 'admin', 'member'). Note: Cannot update your own role. Roles managed by IdP cannot be updated via API.
  */
 export const updateOrganizationMembership =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UpdateOrganizationMembershipInput,
     outputSchema: UpdateOrganizationMembershipOutput,
     errors: [Forbidden, NotFound] as const,

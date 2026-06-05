@@ -1,11 +1,11 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
-import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
+import * as T from "../traits.ts";
 
 // Input Schema
 export const CreateTrafficBudgetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     branch: Schema.String.pipe(T.PathParam()),
@@ -27,7 +27,7 @@ export type CreateTrafficBudgetInput = typeof CreateTrafficBudgetInput.Type;
 
 // Output Schema
 export const CreateTrafficBudgetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     name: Schema.String,
     mode: Schema.Literals(["enforce", "warn", "off"]),
@@ -86,7 +86,7 @@ export type CreateTrafficBudgetOutput = typeof CreateTrafficBudgetOutput.Type;
  * @param warning_threshold - A percentage of capacity, burst, or concurrency thresholds to emit warnings for enforced budgets (0-100).
  * @param rules - Array of traffic rules to apply to the budget
  */
-export const createTrafficBudget = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createTrafficBudget = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateTrafficBudgetInput,
   outputSchema: CreateTrafficBudgetOutput,
   errors: [Forbidden, NotFound] as const,

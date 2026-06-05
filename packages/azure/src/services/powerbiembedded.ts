@@ -10,7 +10,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const GetAvailableOperationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/providers/Microsoft.PowerBI/operations" }),
   );
 export type GetAvailableOperationsInput =
@@ -18,7 +18,7 @@ export type GetAvailableOperationsInput =
 
 // Output Schema
 export const GetAvailableOperationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -43,15 +43,13 @@ export type GetAvailableOperationsOutput =
 /**
  * Indicates which operations can be performed by the Power BI Resource Provider.
  */
-export const getAvailableOperations = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetAvailableOperationsInput,
-    outputSchema: GetAvailableOperationsOutput,
-  }),
-);
+export const getAvailableOperations = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetAvailableOperationsInput,
+  outputSchema: GetAvailableOperationsOutput,
+}));
 // Input Schema
 export const WorkspaceCollectionsCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -64,7 +62,7 @@ export type WorkspaceCollectionsCheckNameAvailabilityInput =
 
 // Output Schema
 export const WorkspaceCollectionsCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Unavailable", "Invalid"])),
     message: Schema.optional(Schema.String),
@@ -79,13 +77,13 @@ export type WorkspaceCollectionsCheckNameAvailabilityOutput =
  * @param location - Azure location
  */
 export const WorkspaceCollectionsCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceCollectionsCheckNameAvailabilityInput,
     outputSchema: WorkspaceCollectionsCheckNameAvailabilityOutput,
   }));
 // Input Schema
 export const WorkspaceCollectionsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceCollectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -99,7 +97,7 @@ export type WorkspaceCollectionsCreateInput =
 
 // Output Schema
 export const WorkspaceCollectionsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -123,15 +121,13 @@ export type WorkspaceCollectionsCreateOutput =
  * @param resourceGroupName - Azure resource group
  * @param workspaceCollectionName - Power BI Embedded Workspace Collection name
  */
-export const WorkspaceCollectionsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceCollectionsCreateInput,
-    outputSchema: WorkspaceCollectionsCreateOutput,
-  }),
-);
+export const WorkspaceCollectionsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceCollectionsCreateInput,
+  outputSchema: WorkspaceCollectionsCreateOutput,
+}));
 // Input Schema
 export const WorkspaceCollectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceCollectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -144,8 +140,7 @@ export type WorkspaceCollectionsDeleteInput =
   typeof WorkspaceCollectionsDeleteInput.Type;
 
 // Output Schema
-export const WorkspaceCollectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkspaceCollectionsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WorkspaceCollectionsDeleteOutput =
   typeof WorkspaceCollectionsDeleteOutput.Type;
 
@@ -156,15 +151,13 @@ export type WorkspaceCollectionsDeleteOutput =
  * @param resourceGroupName - Azure resource group
  * @param workspaceCollectionName - Power BI Embedded Workspace Collection name
  */
-export const WorkspaceCollectionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceCollectionsDeleteInput,
-    outputSchema: WorkspaceCollectionsDeleteOutput,
-  }),
-);
+export const WorkspaceCollectionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceCollectionsDeleteInput,
+  outputSchema: WorkspaceCollectionsDeleteOutput,
+}));
 // Input Schema
 export const WorkspaceCollectionsGetAccessKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceCollectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -178,7 +171,7 @@ export type WorkspaceCollectionsGetAccessKeysInput =
 
 // Output Schema
 export const WorkspaceCollectionsGetAccessKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key1: Schema.optional(Schema.String),
     key2: Schema.optional(Schema.String),
   });
@@ -193,13 +186,13 @@ export type WorkspaceCollectionsGetAccessKeysOutput =
  * @param workspaceCollectionName - Power BI Embedded Workspace Collection name
  */
 export const WorkspaceCollectionsGetAccessKeys =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceCollectionsGetAccessKeysInput,
     outputSchema: WorkspaceCollectionsGetAccessKeysOutput,
   }));
 // Input Schema
 export const WorkspaceCollectionsGetByNameInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceCollectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -213,7 +206,7 @@ export type WorkspaceCollectionsGetByNameInput =
 
 // Output Schema
 export const WorkspaceCollectionsGetByNameOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -238,13 +231,13 @@ export type WorkspaceCollectionsGetByNameOutput =
  * @param workspaceCollectionName - Power BI Embedded Workspace Collection name
  */
 export const WorkspaceCollectionsGetByName =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceCollectionsGetByNameInput,
     outputSchema: WorkspaceCollectionsGetByNameOutput,
   }));
 // Input Schema
 export const WorkspaceCollectionsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -257,7 +250,7 @@ export type WorkspaceCollectionsListByResourceGroupInput =
 
 // Output Schema
 export const WorkspaceCollectionsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -287,13 +280,13 @@ export type WorkspaceCollectionsListByResourceGroupOutput =
  * @param resourceGroupName - Azure resource group
  */
 export const WorkspaceCollectionsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceCollectionsListByResourceGroupInput,
     outputSchema: WorkspaceCollectionsListByResourceGroupOutput,
   }));
 // Input Schema
 export const WorkspaceCollectionsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PowerBI/workspaceCollections",
@@ -304,7 +297,7 @@ export type WorkspaceCollectionsListBySubscriptionInput =
 
 // Output Schema
 export const WorkspaceCollectionsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -332,13 +325,13 @@ export type WorkspaceCollectionsListBySubscriptionOutput =
  * Retrieves all existing Power BI workspace collections in the specified subscription.
  */
 export const WorkspaceCollectionsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceCollectionsListBySubscriptionInput,
     outputSchema: WorkspaceCollectionsListBySubscriptionOutput,
   }));
 // Input Schema
 export const WorkspaceCollectionsMigrateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -350,8 +343,7 @@ export type WorkspaceCollectionsMigrateInput =
   typeof WorkspaceCollectionsMigrateInput.Type;
 
 // Output Schema
-export const WorkspaceCollectionsMigrateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkspaceCollectionsMigrateOutput = /*@__PURE__*/ Schema.Void;
 export type WorkspaceCollectionsMigrateOutput =
   typeof WorkspaceCollectionsMigrateOutput.Type;
 
@@ -361,15 +353,13 @@ export type WorkspaceCollectionsMigrateOutput =
  *
  * @param resourceGroupName - Azure resource group
  */
-export const WorkspaceCollectionsMigrate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceCollectionsMigrateInput,
-    outputSchema: WorkspaceCollectionsMigrateOutput,
-  }),
-);
+export const WorkspaceCollectionsMigrate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceCollectionsMigrateInput,
+  outputSchema: WorkspaceCollectionsMigrateOutput,
+}));
 // Input Schema
 export const WorkspaceCollectionsRegenerateKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceCollectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -383,7 +373,7 @@ export type WorkspaceCollectionsRegenerateKeyInput =
 
 // Output Schema
 export const WorkspaceCollectionsRegenerateKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key1: Schema.optional(Schema.String),
     key2: Schema.optional(Schema.String),
   });
@@ -398,13 +388,13 @@ export type WorkspaceCollectionsRegenerateKeyOutput =
  * @param workspaceCollectionName - Power BI Embedded Workspace Collection name
  */
 export const WorkspaceCollectionsRegenerateKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceCollectionsRegenerateKeyInput,
     outputSchema: WorkspaceCollectionsRegenerateKeyOutput,
   }));
 // Input Schema
 export const WorkspaceCollectionsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceCollectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -418,7 +408,7 @@ export type WorkspaceCollectionsUpdateInput =
 
 // Output Schema
 export const WorkspaceCollectionsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -442,14 +432,12 @@ export type WorkspaceCollectionsUpdateOutput =
  * @param resourceGroupName - Azure resource group
  * @param workspaceCollectionName - Power BI Embedded Workspace Collection name
  */
-export const WorkspaceCollectionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceCollectionsUpdateInput,
-    outputSchema: WorkspaceCollectionsUpdateOutput,
-  }),
-);
+export const WorkspaceCollectionsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceCollectionsUpdateInput,
+  outputSchema: WorkspaceCollectionsUpdateOutput,
+}));
 // Input Schema
-export const WorkspacesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkspacesListInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceCollectionName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -461,7 +449,7 @@ export const WorkspacesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WorkspacesListInput = typeof WorkspacesListInput.Type;
 
 // Output Schema
-export const WorkspacesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkspacesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -482,7 +470,7 @@ export type WorkspacesListOutput = typeof WorkspacesListOutput.Type;
  * @param resourceGroupName - Azure resource group
  * @param workspaceCollectionName - Power BI Embedded Workspace Collection name
  */
-export const WorkspacesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkspacesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesListInput,
   outputSchema: WorkspacesListOutput,
 }));

@@ -10,7 +10,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const CalculateExchangePostInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -22,7 +22,7 @@ export type CalculateExchangePostInput = typeof CalculateExchangePostInput.Type;
 
 // Output Schema
 export const CalculateExchangePostOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.optional(
@@ -261,15 +261,13 @@ export type CalculateExchangePostOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const CalculateExchangePost = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CalculateExchangePostInput,
-    outputSchema: CalculateExchangePostOutput,
-  }),
-);
+export const CalculateExchangePost = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CalculateExchangePostInput,
+  outputSchema: CalculateExchangePostOutput,
+}));
 // Input Schema
 export const CalculateRefundPostInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -282,7 +280,7 @@ export type CalculateRefundPostInput = typeof CalculateRefundPostInput.Type;
 
 // Output Schema
 export const CalculateRefundPostOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     properties: Schema.optional(
       Schema.Struct({
@@ -430,12 +428,12 @@ export type CalculateRefundPostOutput = typeof CalculateRefundPostOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param reservationOrderId - Order Id of the reservation
  */
-export const CalculateRefundPost = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CalculateRefundPost = /*@__PURE__*/ API.make(() => ({
   inputSchema: CalculateRefundPostInput,
   outputSchema: CalculateRefundPostOutput,
 }));
 // Input Schema
-export const ExchangePostInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExchangePostInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({ method: "POST", path: "/providers/Microsoft.Capacity/exchange" }),
@@ -443,7 +441,7 @@ export const ExchangePostInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ExchangePostInput = typeof ExchangePostInput.Type;
 
 // Output Schema
-export const ExchangePostOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExchangePostOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   status: Schema.optional(
@@ -690,13 +688,13 @@ export type ExchangePostOutput = typeof ExchangePostOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const ExchangePost = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ExchangePost = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExchangePostInput,
   outputSchema: ExchangePostOutput,
 }));
 // Input Schema
 export const GetAppliedReservationListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -710,7 +708,7 @@ export type GetAppliedReservationListInput =
 
 // Output Schema
 export const GetAppliedReservationListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -737,14 +735,12 @@ export type GetAppliedReservationListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const GetAppliedReservationList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetAppliedReservationListInput,
-    outputSchema: GetAppliedReservationListOutput,
-  }),
-);
+export const GetAppliedReservationList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetAppliedReservationListInput,
+  outputSchema: GetAppliedReservationListOutput,
+}));
 // Input Schema
-export const GetCatalogInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetCatalogInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
   reservedResourceType: Schema.optional(Schema.String),
@@ -764,7 +760,7 @@ export const GetCatalogInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetCatalogInput = typeof GetCatalogInput.Type;
 
 // Output Schema
-export const GetCatalogOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetCatalogOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       resourceType: Schema.optional(Schema.String),
@@ -850,12 +846,12 @@ export type GetCatalogOutput = typeof GetCatalogOutput.Type;
  * @param $skip - The number of reservations to skip from the list before returning results
  * @param $take - To number of reservations to return
  */
-export const GetCatalog = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetCatalog = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetCatalogInput,
   outputSchema: GetCatalogOutput,
 }));
 // Input Schema
-export const OperationListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationListInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({ method: "GET", path: "/providers/Microsoft.Capacity/operations" }),
@@ -863,7 +859,7 @@ export const OperationListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationListInput = typeof OperationListInput.Type;
 
 // Output Schema
-export const OperationListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -894,13 +890,13 @@ export type OperationListOutput = typeof OperationListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationListInput,
   outputSchema: OperationListOutput,
 }));
 // Input Schema
 export const ReservationArchiveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
     reservationId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -913,7 +909,7 @@ export const ReservationArchiveInput =
 export type ReservationArchiveInput = typeof ReservationArchiveInput.Type;
 
 // Output Schema
-export const ReservationArchiveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ReservationArchiveOutput = /*@__PURE__*/ Schema.Void;
 export type ReservationArchiveOutput = typeof ReservationArchiveOutput.Type;
 
 // The operation
@@ -926,13 +922,13 @@ export type ReservationArchiveOutput = typeof ReservationArchiveOutput.Type;
  * @param reservationOrderId - Order Id of the reservation
  * @param reservationId - Id of the reservation item
  */
-export const ReservationArchive = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReservationArchive = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReservationArchiveInput,
   outputSchema: ReservationArchiveOutput,
 }));
 // Input Schema
 export const ReservationAvailableScopesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
     reservationId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -947,7 +943,7 @@ export type ReservationAvailableScopesInput =
 
 // Output Schema
 export const ReservationAvailableScopesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         scopes: Schema.optional(
@@ -974,14 +970,12 @@ export type ReservationAvailableScopesOutput =
  * @param reservationOrderId - Order Id of the reservation
  * @param reservationId - Id of the reservation item
  */
-export const ReservationAvailableScopes = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReservationAvailableScopesInput,
-    outputSchema: ReservationAvailableScopesOutput,
-  }),
-);
+export const ReservationAvailableScopes = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReservationAvailableScopesInput,
+  outputSchema: ReservationAvailableScopesOutput,
+}));
 // Input Schema
-export const ReservationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReservationGetInput = /*@__PURE__*/ Schema.Struct({
   reservationOrderId: Schema.String.pipe(T.PathParam()),
   reservationId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -995,7 +989,7 @@ export const ReservationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ReservationGetInput = typeof ReservationGetInput.Type;
 
 // Output Schema
-export const ReservationGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReservationGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1027,12 +1021,12 @@ export type ReservationGetOutput = typeof ReservationGetOutput.Type;
  * @param reservationId - Id of the reservation item
  * @param $expand - Supported value of this query is renewProperties
  */
-export const ReservationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReservationGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReservationGetInput,
   outputSchema: ReservationGetOutput,
 }));
 // Input Schema
-export const ReservationListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReservationListInput = /*@__PURE__*/ Schema.Struct({
   reservationOrderId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -1044,7 +1038,7 @@ export const ReservationListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ReservationListInput = typeof ReservationListInput.Type;
 
 // Output Schema
-export const ReservationListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReservationListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -1079,13 +1073,13 @@ export type ReservationListOutput = typeof ReservationListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param reservationOrderId - Order Id of the reservation
  */
-export const ReservationList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReservationList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReservationListInput,
   outputSchema: ReservationListOutput,
 }));
 // Input Schema
 export const ReservationListAllInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     $orderby: Schema.optional(Schema.String),
@@ -1103,7 +1097,7 @@ export type ReservationListAllInput = typeof ReservationListAllInput.Type;
 
 // Output Schema
 export const ReservationListAllOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1166,13 +1160,13 @@ export type ReservationListAllOutput = typeof ReservationListAllOutput.Type;
  * @param selectedState - The selected provisioning state
  * @param take - To number of reservations to return
  */
-export const ReservationListAll = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReservationListAll = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReservationListAllInput,
   outputSchema: ReservationListAllOutput,
 }));
 // Input Schema
 export const ReservationListRevisionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
     reservationId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1187,7 +1181,7 @@ export type ReservationListRevisionsInput =
 
 // Output Schema
 export const ReservationListRevisionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1234,14 +1228,12 @@ export type ReservationListRevisionsOutput =
  * @param reservationOrderId - Order Id of the reservation
  * @param reservationId - Id of the reservation item
  */
-export const ReservationListRevisions = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReservationListRevisionsInput,
-    outputSchema: ReservationListRevisionsOutput,
-  }),
-);
+export const ReservationListRevisions = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReservationListRevisionsInput,
+  outputSchema: ReservationListRevisionsOutput,
+}));
 // Input Schema
-export const ReservationMergeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReservationMergeInput = /*@__PURE__*/ Schema.Struct({
   reservationOrderId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -1253,7 +1245,7 @@ export const ReservationMergeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ReservationMergeInput = typeof ReservationMergeInput.Type;
 
 // Output Schema
-export const ReservationMergeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const ReservationMergeOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1285,13 +1277,13 @@ export type ReservationMergeOutput = typeof ReservationMergeOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param reservationOrderId - Order Id of the reservation
  */
-export const ReservationMerge = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReservationMerge = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReservationMergeInput,
   outputSchema: ReservationMergeOutput,
 }));
 // Input Schema
 export const ReservationOrderCalculateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1304,7 +1296,7 @@ export type ReservationOrderCalculateInput =
 
 // Output Schema
 export const ReservationOrderCalculateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         billingCurrencyTotal: Schema.optional(
@@ -1389,15 +1381,13 @@ export type ReservationOrderCalculateOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const ReservationOrderCalculate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReservationOrderCalculateInput,
-    outputSchema: ReservationOrderCalculateOutput,
-  }),
-);
+export const ReservationOrderCalculate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReservationOrderCalculateInput,
+  outputSchema: ReservationOrderCalculateOutput,
+}));
 // Input Schema
 export const ReservationOrderChangeDirectoryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -1411,7 +1401,7 @@ export type ReservationOrderChangeDirectoryInput =
 
 // Output Schema
 export const ReservationOrderChangeDirectoryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reservationOrder: Schema.optional(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1444,13 +1434,13 @@ export type ReservationOrderChangeDirectoryOutput =
  * @param reservationOrderId - Order Id of the reservation
  */
 export const ReservationOrderChangeDirectory =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReservationOrderChangeDirectoryInput,
     outputSchema: ReservationOrderChangeDirectoryOutput,
   }));
 // Input Schema
 export const ReservationOrderGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
@@ -1464,7 +1454,7 @@ export type ReservationOrderGetInput = typeof ReservationOrderGetInput.Type;
 
 // Output Schema
 export const ReservationOrderGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1495,13 +1485,13 @@ export type ReservationOrderGetOutput = typeof ReservationOrderGetOutput.Type;
  * @param reservationOrderId - Order Id of the reservation
  * @param $expand - May be used to expand the planInformation.
  */
-export const ReservationOrderGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReservationOrderGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReservationOrderGetInput,
   outputSchema: ReservationOrderGetOutput,
 }));
 // Input Schema
 export const ReservationOrderListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1513,7 +1503,7 @@ export type ReservationOrderListInput = typeof ReservationOrderListInput.Type;
 
 // Output Schema
 export const ReservationOrderListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1557,15 +1547,13 @@ export type ReservationOrderListOutput = typeof ReservationOrderListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const ReservationOrderList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReservationOrderListInput,
-    outputSchema: ReservationOrderListOutput,
-  }),
-);
+export const ReservationOrderList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReservationOrderListInput,
+  outputSchema: ReservationOrderListOutput,
+}));
 // Input Schema
 export const ReservationOrderPurchaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -1579,7 +1567,7 @@ export type ReservationOrderPurchaseInput =
 
 // Output Schema
 export const ReservationOrderPurchaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1610,14 +1598,12 @@ export type ReservationOrderPurchaseOutput =
  * @param api-version - The API version to use for this operation.
  * @param reservationOrderId - Order Id of the reservation
  */
-export const ReservationOrderPurchase = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReservationOrderPurchaseInput,
-    outputSchema: ReservationOrderPurchaseOutput,
-  }),
-);
+export const ReservationOrderPurchase = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReservationOrderPurchaseInput,
+  outputSchema: ReservationOrderPurchaseOutput,
+}));
 // Input Schema
-export const ReservationSplitInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReservationSplitInput = /*@__PURE__*/ Schema.Struct({
   reservationOrderId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -1629,7 +1615,7 @@ export const ReservationSplitInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ReservationSplitInput = typeof ReservationSplitInput.Type;
 
 // Output Schema
-export const ReservationSplitOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const ReservationSplitOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1661,13 +1647,13 @@ export type ReservationSplitOutput = typeof ReservationSplitOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param reservationOrderId - Order Id of the reservation
  */
-export const ReservationSplit = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReservationSplit = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReservationSplitInput,
   outputSchema: ReservationSplitOutput,
 }));
 // Input Schema
 export const ReservationUnarchiveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
     reservationId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1680,8 +1666,7 @@ export const ReservationUnarchiveInput =
 export type ReservationUnarchiveInput = typeof ReservationUnarchiveInput.Type;
 
 // Output Schema
-export const ReservationUnarchiveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ReservationUnarchiveOutput = /*@__PURE__*/ Schema.Void;
 export type ReservationUnarchiveOutput = typeof ReservationUnarchiveOutput.Type;
 
 // The operation
@@ -1694,20 +1679,16 @@ export type ReservationUnarchiveOutput = typeof ReservationUnarchiveOutput.Type;
  * @param reservationOrderId - Order Id of the reservation
  * @param reservationId - Id of the reservation item
  */
-export const ReservationUnarchive = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReservationUnarchiveInput,
-    outputSchema: ReservationUnarchiveOutput,
-  }),
-);
+export const ReservationUnarchive = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReservationUnarchiveInput,
+  outputSchema: ReservationUnarchiveOutput,
+}));
 // Input Schema
-export const ReservationUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    reservationOrderId: Schema.String.pipe(T.PathParam()),
-    reservationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const ReservationUpdateInput = /*@__PURE__*/ Schema.Struct({
+  reservationOrderId: Schema.String.pipe(T.PathParam()),
+  reservationId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}",
@@ -1717,7 +1698,7 @@ export type ReservationUpdateInput = typeof ReservationUpdateInput.Type;
 
 // Output Schema
 export const ReservationUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1748,12 +1729,12 @@ export type ReservationUpdateOutput = typeof ReservationUpdateOutput.Type;
  * @param reservationOrderId - Order Id of the reservation
  * @param reservationId - Id of the reservation item
  */
-export const ReservationUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReservationUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReservationUpdateInput,
   outputSchema: ReservationUpdateOutput,
 }));
 // Input Schema
-export const ReturnPostInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReturnPostInput = /*@__PURE__*/ Schema.Struct({
   reservationOrderId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -1765,7 +1746,7 @@ export const ReturnPostInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ReturnPostInput = typeof ReturnPostInput.Type;
 
 // Output Schema
-export const ReturnPostOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReturnPostOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1795,7 +1776,7 @@ export type ReturnPostOutput = typeof ReturnPostOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param reservationOrderId - Order Id of the reservation
  */
-export const ReturnPost = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReturnPost = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReturnPostInput,
   outputSchema: ReturnPostOutput,
 }));

@@ -1,16 +1,16 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
-import * as T from "../../traits.ts";
 import { NotFound } from "../../errors.ts";
+import * as T from "../../traits.ts";
 
 // Input Schema
-export const GetMonitorInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetMonitorInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
 }).pipe(T.Http({ method: "GET", path: "/v2/monitors/{id}" }));
 export type GetMonitorInput = typeof GetMonitorInput.Type;
 
 // Output Schema
-export const GetMonitorOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetMonitorOutput = /*@__PURE__*/ Schema.Struct({
   alertOnNoData: Schema.optional(Schema.Boolean),
   aplQuery: Schema.optional(Schema.String),
   columnName: Schema.optional(Schema.String),
@@ -54,7 +54,7 @@ export type GetMonitorOutput = typeof GetMonitorOutput.Type;
  *
  * @param id - Unique identifier of the monitor (format: mon_*)
  */
-export const getMonitor = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getMonitor = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetMonitorInput,
   outputSchema: GetMonitorOutput,
   errors: [NotFound] as const,

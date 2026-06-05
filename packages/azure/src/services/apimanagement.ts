@@ -6,12 +6,12 @@
  */
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
-import * as T from "../traits.ts";
 import { SensitiveString } from "../sensitive.ts";
+import * as T from "../traits.ts";
 
 // Input Schema
 export const AllPoliciesListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -27,7 +27,7 @@ export type AllPoliciesListByServiceInput =
 
 // Output Schema
 export const AllPoliciesListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -51,32 +51,46 @@ export type AllPoliciesListByServiceOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const AllPoliciesListByService = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AllPoliciesListByServiceInput,
-    outputSchema: AllPoliciesListByServiceOutput,
-  }),
-);
+export const AllPoliciesListByService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AllPoliciesListByServiceInput,
+  outputSchema: AllPoliciesListByServiceOutput,
+}));
 // Input Schema
-export const ApiCreateOrUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    serviceName: Schema.String.pipe(T.PathParam()),
-    apiId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    properties: Schema.optional(
-      Schema.Struct({
-        description: Schema.optional(Schema.String),
-        authenticationSettings: Schema.optional(
-          Schema.Struct({
-            oAuth2: Schema.optional(
+export const ApiCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  apiId: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      description: Schema.optional(Schema.String),
+      authenticationSettings: Schema.optional(
+        Schema.Struct({
+          oAuth2: Schema.optional(
+            Schema.Struct({
+              authorizationServerId: Schema.optional(Schema.String),
+              scope: Schema.optional(Schema.String),
+            }),
+          ),
+          openid: Schema.optional(
+            Schema.Struct({
+              openidProviderId: Schema.optional(Schema.String),
+              bearerTokenSendingMethods: Schema.optional(
+                Schema.Array(Schema.Literals(["authorizationHeader", "query"])),
+              ),
+            }),
+          ),
+          oAuth2AuthenticationSettings: Schema.optional(
+            Schema.Array(
               Schema.Struct({
                 authorizationServerId: Schema.optional(Schema.String),
                 scope: Schema.optional(Schema.String),
               }),
             ),
-            openid: Schema.optional(
+          ),
+          openidAuthenticationSettings: Schema.optional(
+            Schema.Array(
               Schema.Struct({
                 openidProviderId: Schema.optional(Schema.String),
                 bearerTokenSendingMethods: Schema.optional(
@@ -86,70 +100,50 @@ export const ApiCreateOrUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 ),
               }),
             ),
-            oAuth2AuthenticationSettings: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  authorizationServerId: Schema.optional(Schema.String),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            openidAuthenticationSettings: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  openidProviderId: Schema.optional(Schema.String),
-                  bearerTokenSendingMethods: Schema.optional(
-                    Schema.Array(
-                      Schema.Literals(["authorizationHeader", "query"]),
-                    ),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-        subscriptionKeyParameterNames: Schema.optional(
-          Schema.Struct({
-            header: Schema.optional(Schema.String),
-            query: Schema.optional(Schema.String),
-          }),
-        ),
-        type: Schema.optional(
-          Schema.Literals([
-            "http",
-            "soap",
-            "websocket",
-            "graphql",
-            "odata",
-            "grpc",
-          ]),
-        ),
-        apiRevision: Schema.optional(Schema.String),
-        apiVersion: Schema.optional(Schema.String),
-        isCurrent: Schema.optional(Schema.Boolean),
-        isOnline: Schema.optional(Schema.Boolean),
-        apiRevisionDescription: Schema.optional(Schema.String),
-        apiVersionDescription: Schema.optional(Schema.String),
-        apiVersionSetId: Schema.optional(Schema.String),
-        subscriptionRequired: Schema.optional(Schema.Boolean),
-        termsOfServiceUrl: Schema.optional(Schema.String),
-        contact: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            url: Schema.optional(Schema.String),
-            email: Schema.optional(Schema.String),
-          }),
-        ),
-        license: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            url: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  },
-).pipe(
+          ),
+        }),
+      ),
+      subscriptionKeyParameterNames: Schema.optional(
+        Schema.Struct({
+          header: Schema.optional(Schema.String),
+          query: Schema.optional(Schema.String),
+        }),
+      ),
+      type: Schema.optional(
+        Schema.Literals([
+          "http",
+          "soap",
+          "websocket",
+          "graphql",
+          "odata",
+          "grpc",
+        ]),
+      ),
+      apiRevision: Schema.optional(Schema.String),
+      apiVersion: Schema.optional(Schema.String),
+      isCurrent: Schema.optional(Schema.Boolean),
+      isOnline: Schema.optional(Schema.Boolean),
+      apiRevisionDescription: Schema.optional(Schema.String),
+      apiVersionDescription: Schema.optional(Schema.String),
+      apiVersionSetId: Schema.optional(Schema.String),
+      subscriptionRequired: Schema.optional(Schema.Boolean),
+      termsOfServiceUrl: Schema.optional(Schema.String),
+      contact: Schema.optional(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+          url: Schema.optional(Schema.String),
+          email: Schema.optional(Schema.String),
+        }),
+      ),
+      license: Schema.optional(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+          url: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+}).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}",
@@ -159,7 +153,7 @@ export type ApiCreateOrUpdateInput = typeof ApiCreateOrUpdateInput.Type;
 
 // Output Schema
 export const ApiCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -178,12 +172,12 @@ export type ApiCreateOrUpdateOutput = typeof ApiCreateOrUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - API entity create of update properties.
  */
-export const ApiCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApiCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApiCreateOrUpdateInput,
   outputSchema: ApiCreateOrUpdateOutput,
 }));
 // Input Schema
-export const ApiDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   apiId: Schema.String.pipe(T.PathParam()),
@@ -199,7 +193,7 @@ export const ApiDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ApiDeleteInput = typeof ApiDeleteInput.Type;
 
 // Output Schema
-export const ApiDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ApiDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ApiDeleteOutput = typeof ApiDeleteOutput.Type;
 
 // The operation
@@ -214,13 +208,13 @@ export type ApiDeleteOutput = typeof ApiDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApiDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApiDeleteInput,
   outputSchema: ApiDeleteOutput,
 }));
 // Input Schema
 export const ApiDiagnosticCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -403,7 +397,7 @@ export type ApiDiagnosticCreateOrUpdateInput =
 
 // Output Schema
 export const ApiDiagnosticCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -424,15 +418,13 @@ export type ApiDiagnosticCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Diagnostic entity contract properties.
  */
-export const ApiDiagnosticCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApiDiagnosticCreateOrUpdateInput,
-    outputSchema: ApiDiagnosticCreateOrUpdateOutput,
-  }),
-);
+export const ApiDiagnosticCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApiDiagnosticCreateOrUpdateInput,
+  outputSchema: ApiDiagnosticCreateOrUpdateOutput,
+}));
 // Input Schema
 export const ApiDiagnosticDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -448,8 +440,7 @@ export const ApiDiagnosticDeleteInput =
 export type ApiDiagnosticDeleteInput = typeof ApiDiagnosticDeleteInput.Type;
 
 // Output Schema
-export const ApiDiagnosticDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ApiDiagnosticDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ApiDiagnosticDeleteOutput = typeof ApiDiagnosticDeleteOutput.Type;
 
 // The operation
@@ -464,12 +455,12 @@ export type ApiDiagnosticDeleteOutput = typeof ApiDiagnosticDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiDiagnosticDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApiDiagnosticDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApiDiagnosticDeleteInput,
   outputSchema: ApiDiagnosticDeleteOutput,
 }));
 // Input Schema
-export const ApiDiagnosticGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiDiagnosticGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   apiId: Schema.String.pipe(T.PathParam()),
@@ -485,13 +476,11 @@ export const ApiDiagnosticGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ApiDiagnosticGetInput = typeof ApiDiagnosticGetInput.Type;
 
 // Output Schema
-export const ApiDiagnosticGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  },
-);
+export const ApiDiagnosticGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type ApiDiagnosticGetOutput = typeof ApiDiagnosticGetOutput.Type;
 
 // The operation
@@ -505,13 +494,13 @@ export type ApiDiagnosticGetOutput = typeof ApiDiagnosticGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiDiagnosticGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApiDiagnosticGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApiDiagnosticGetInput,
   outputSchema: ApiDiagnosticGetOutput,
 }));
 // Input Schema
 export const ApiDiagnosticListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -531,7 +520,7 @@ export type ApiDiagnosticListByServiceInput =
 
 // Output Schema
 export const ApiDiagnosticListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -560,15 +549,13 @@ export type ApiDiagnosticListByServiceOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiDiagnosticListByService = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApiDiagnosticListByServiceInput,
-    outputSchema: ApiDiagnosticListByServiceOutput,
-  }),
-);
+export const ApiDiagnosticListByService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApiDiagnosticListByServiceInput,
+  outputSchema: ApiDiagnosticListByServiceOutput,
+}));
 // Input Schema
 export const ApiDiagnosticUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -750,7 +737,7 @@ export type ApiDiagnosticUpdateInput = typeof ApiDiagnosticUpdateInput.Type;
 
 // Output Schema
 export const ApiDiagnosticUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -770,13 +757,13 @@ export type ApiDiagnosticUpdateOutput = typeof ApiDiagnosticUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Diagnostic entity contract properties.
  */
-export const ApiDiagnosticUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApiDiagnosticUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApiDiagnosticUpdateInput,
   outputSchema: ApiDiagnosticUpdateOutput,
 }));
 // Input Schema
 export const ApiGatewayConfigConnectionCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     gatewayName: Schema.String.pipe(T.PathParam()),
     configConnectionName: Schema.String.pipe(T.PathParam()),
@@ -793,7 +780,7 @@ export type ApiGatewayConfigConnectionCreateOrUpdateInput =
 
 // Output Schema
 export const ApiGatewayConfigConnectionCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -812,13 +799,13 @@ export type ApiGatewayConfigConnectionCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const ApiGatewayConfigConnectionCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ApiGatewayConfigConnectionCreateOrUpdateInput,
     outputSchema: ApiGatewayConfigConnectionCreateOrUpdateOutput,
   }));
 // Input Schema
 export const ApiGatewayConfigConnectionDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     gatewayName: Schema.String.pipe(T.PathParam()),
     configConnectionName: Schema.String.pipe(T.PathParam()),
@@ -834,8 +821,7 @@ export type ApiGatewayConfigConnectionDeleteInput =
   typeof ApiGatewayConfigConnectionDeleteInput.Type;
 
 // Output Schema
-export const ApiGatewayConfigConnectionDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ApiGatewayConfigConnectionDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ApiGatewayConfigConnectionDeleteOutput =
   typeof ApiGatewayConfigConnectionDeleteOutput.Type;
 
@@ -851,13 +837,13 @@ export type ApiGatewayConfigConnectionDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const ApiGatewayConfigConnectionDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ApiGatewayConfigConnectionDeleteInput,
     outputSchema: ApiGatewayConfigConnectionDeleteOutput,
   }));
 // Input Schema
 export const ApiGatewayConfigConnectionGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     gatewayName: Schema.String.pipe(T.PathParam()),
     configConnectionName: Schema.String.pipe(T.PathParam()),
@@ -874,7 +860,7 @@ export type ApiGatewayConfigConnectionGetInput =
 
 // Output Schema
 export const ApiGatewayConfigConnectionGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -893,13 +879,13 @@ export type ApiGatewayConfigConnectionGetOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const ApiGatewayConfigConnectionGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ApiGatewayConfigConnectionGetInput,
     outputSchema: ApiGatewayConfigConnectionGetOutput,
   }));
 // Input Schema
 export const ApiGatewayConfigConnectionListByGatewayInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     gatewayName: Schema.String.pipe(T.PathParam()),
@@ -915,7 +901,7 @@ export type ApiGatewayConfigConnectionListByGatewayInput =
 
 // Output Schema
 export const ApiGatewayConfigConnectionListByGatewayOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -938,13 +924,13 @@ export type ApiGatewayConfigConnectionListByGatewayOutput =
  * @param gatewayName - The name of the API Management gateway.
  */
 export const ApiGatewayConfigConnectionListByGateway =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ApiGatewayConfigConnectionListByGatewayInput,
     outputSchema: ApiGatewayConfigConnectionListByGatewayOutput,
   }));
 // Input Schema
 export const ApiGatewayCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     gatewayName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -960,7 +946,7 @@ export type ApiGatewayCreateOrUpdateInput =
 
 // Output Schema
 export const ApiGatewayCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -978,14 +964,12 @@ export type ApiGatewayCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiGatewayCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApiGatewayCreateOrUpdateInput,
-    outputSchema: ApiGatewayCreateOrUpdateOutput,
-  }),
-);
+export const ApiGatewayCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApiGatewayCreateOrUpdateInput,
+  outputSchema: ApiGatewayCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ApiGatewayDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiGatewayDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   gatewayName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -999,7 +983,7 @@ export const ApiGatewayDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ApiGatewayDeleteInput = typeof ApiGatewayDeleteInput.Type;
 
 // Output Schema
-export const ApiGatewayDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ApiGatewayDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ApiGatewayDeleteOutput = typeof ApiGatewayDeleteOutput.Type;
 
 // The operation
@@ -1011,12 +995,12 @@ export type ApiGatewayDeleteOutput = typeof ApiGatewayDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiGatewayDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApiGatewayDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApiGatewayDeleteInput,
   outputSchema: ApiGatewayDeleteOutput,
 }));
 // Input Schema
-export const ApiGatewayGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiGatewayGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   gatewayName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1030,7 +1014,7 @@ export const ApiGatewayGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ApiGatewayGetInput = typeof ApiGatewayGetInput.Type;
 
 // Output Schema
-export const ApiGatewayGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiGatewayGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1047,12 +1031,12 @@ export type ApiGatewayGetOutput = typeof ApiGatewayGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiGatewayGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApiGatewayGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApiGatewayGetInput,
   outputSchema: ApiGatewayGetOutput,
 }));
 // Input Schema
-export const ApiGatewayListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiGatewayListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
@@ -1064,7 +1048,7 @@ export const ApiGatewayListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ApiGatewayListInput = typeof ApiGatewayListInput.Type;
 
 // Output Schema
-export const ApiGatewayListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiGatewayListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -1084,13 +1068,13 @@ export type ApiGatewayListOutput = typeof ApiGatewayListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiGatewayList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApiGatewayList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApiGatewayListInput,
   outputSchema: ApiGatewayListOutput,
 }));
 // Input Schema
 export const ApiGatewayListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -1105,7 +1089,7 @@ export type ApiGatewayListByResourceGroupInput =
 
 // Output Schema
 export const ApiGatewayListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1128,12 +1112,12 @@ export type ApiGatewayListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const ApiGatewayListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ApiGatewayListByResourceGroupInput,
     outputSchema: ApiGatewayListByResourceGroupOutput,
   }));
 // Input Schema
-export const ApiGatewayUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiGatewayUpdateInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   gatewayName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1147,14 +1131,12 @@ export const ApiGatewayUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ApiGatewayUpdateInput = typeof ApiGatewayUpdateInput.Type;
 
 // Output Schema
-export const ApiGatewayUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  },
-);
+export const ApiGatewayUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
 export type ApiGatewayUpdateOutput = typeof ApiGatewayUpdateOutput.Type;
 
 // The operation
@@ -1166,12 +1148,12 @@ export type ApiGatewayUpdateOutput = typeof ApiGatewayUpdateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiGatewayUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApiGatewayUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApiGatewayUpdateInput,
   outputSchema: ApiGatewayUpdateOutput,
 }));
 // Input Schema
-export const ApiGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   apiId: Schema.String.pipe(T.PathParam()),
@@ -1186,7 +1168,7 @@ export const ApiGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ApiGetInput = typeof ApiGetInput.Type;
 
 // Output Schema
-export const ApiGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1203,13 +1185,13 @@ export type ApiGetOutput = typeof ApiGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApiGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApiGetInput,
   outputSchema: ApiGetOutput,
 }));
 // Input Schema
 export const ApiIssueAttachmentCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -1235,7 +1217,7 @@ export type ApiIssueAttachmentCreateOrUpdateInput =
 
 // Output Schema
 export const ApiIssueAttachmentCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1258,13 +1240,13 @@ export type ApiIssueAttachmentCreateOrUpdateOutput =
  * @param properties - Properties of the Issue Attachment.
  */
 export const ApiIssueAttachmentCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ApiIssueAttachmentCreateOrUpdateInput,
     outputSchema: ApiIssueAttachmentCreateOrUpdateOutput,
   }));
 // Input Schema
 export const ApiIssueAttachmentDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -1282,8 +1264,7 @@ export type ApiIssueAttachmentDeleteInput =
   typeof ApiIssueAttachmentDeleteInput.Type;
 
 // Output Schema
-export const ApiIssueAttachmentDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ApiIssueAttachmentDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ApiIssueAttachmentDeleteOutput =
   typeof ApiIssueAttachmentDeleteOutput.Type;
 
@@ -1300,15 +1281,13 @@ export type ApiIssueAttachmentDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiIssueAttachmentDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApiIssueAttachmentDeleteInput,
-    outputSchema: ApiIssueAttachmentDeleteOutput,
-  }),
-);
+export const ApiIssueAttachmentDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApiIssueAttachmentDeleteInput,
+  outputSchema: ApiIssueAttachmentDeleteOutput,
+}));
 // Input Schema
 export const ApiIssueAttachmentGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -1326,7 +1305,7 @@ export type ApiIssueAttachmentGetInput = typeof ApiIssueAttachmentGetInput.Type;
 
 // Output Schema
 export const ApiIssueAttachmentGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1346,15 +1325,13 @@ export type ApiIssueAttachmentGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiIssueAttachmentGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApiIssueAttachmentGetInput,
-    outputSchema: ApiIssueAttachmentGetOutput,
-  }),
-);
+export const ApiIssueAttachmentGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApiIssueAttachmentGetInput,
+  outputSchema: ApiIssueAttachmentGetOutput,
+}));
 // Input Schema
 export const ApiIssueAttachmentListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -1375,7 +1352,7 @@ export type ApiIssueAttachmentListByServiceInput =
 
 // Output Schema
 export const ApiIssueAttachmentListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1406,13 +1383,13 @@ export type ApiIssueAttachmentListByServiceOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const ApiIssueAttachmentListByService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ApiIssueAttachmentListByServiceInput,
     outputSchema: ApiIssueAttachmentListByServiceOutput,
   }));
 // Input Schema
 export const ApiIssueCommentCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -1438,7 +1415,7 @@ export type ApiIssueCommentCreateOrUpdateInput =
 
 // Output Schema
 export const ApiIssueCommentCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1461,13 +1438,13 @@ export type ApiIssueCommentCreateOrUpdateOutput =
  * @param properties - Properties of the Issue Comment.
  */
 export const ApiIssueCommentCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ApiIssueCommentCreateOrUpdateInput,
     outputSchema: ApiIssueCommentCreateOrUpdateOutput,
   }));
 // Input Schema
 export const ApiIssueCommentDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -1484,8 +1461,7 @@ export const ApiIssueCommentDeleteInput =
 export type ApiIssueCommentDeleteInput = typeof ApiIssueCommentDeleteInput.Type;
 
 // Output Schema
-export const ApiIssueCommentDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ApiIssueCommentDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ApiIssueCommentDeleteOutput =
   typeof ApiIssueCommentDeleteOutput.Type;
 
@@ -1502,15 +1478,13 @@ export type ApiIssueCommentDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiIssueCommentDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApiIssueCommentDeleteInput,
-    outputSchema: ApiIssueCommentDeleteOutput,
-  }),
-);
+export const ApiIssueCommentDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApiIssueCommentDeleteInput,
+  outputSchema: ApiIssueCommentDeleteOutput,
+}));
 // Input Schema
 export const ApiIssueCommentGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -1528,7 +1502,7 @@ export type ApiIssueCommentGetInput = typeof ApiIssueCommentGetInput.Type;
 
 // Output Schema
 export const ApiIssueCommentGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1547,13 +1521,13 @@ export type ApiIssueCommentGetOutput = typeof ApiIssueCommentGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiIssueCommentGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApiIssueCommentGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApiIssueCommentGetInput,
   outputSchema: ApiIssueCommentGetOutput,
 }));
 // Input Schema
 export const ApiIssueCommentListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -1574,7 +1548,7 @@ export type ApiIssueCommentListByServiceInput =
 
 // Output Schema
 export const ApiIssueCommentListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1605,13 +1579,13 @@ export type ApiIssueCommentListByServiceOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const ApiIssueCommentListByService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ApiIssueCommentListByServiceInput,
     outputSchema: ApiIssueCommentListByServiceOutput,
   }));
 // Input Schema
 export const ApiIssueCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -1644,7 +1618,7 @@ export type ApiIssueCreateOrUpdateInput =
 
 // Output Schema
 export const ApiIssueCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1665,14 +1639,12 @@ export type ApiIssueCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Properties of the Issue.
  */
-export const ApiIssueCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApiIssueCreateOrUpdateInput,
-    outputSchema: ApiIssueCreateOrUpdateOutput,
-  }),
-);
+export const ApiIssueCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApiIssueCreateOrUpdateInput,
+  outputSchema: ApiIssueCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ApiIssueDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiIssueDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   apiId: Schema.String.pipe(T.PathParam()),
@@ -1688,7 +1660,7 @@ export const ApiIssueDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ApiIssueDeleteInput = typeof ApiIssueDeleteInput.Type;
 
 // Output Schema
-export const ApiIssueDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ApiIssueDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ApiIssueDeleteOutput = typeof ApiIssueDeleteOutput.Type;
 
 // The operation
@@ -1703,12 +1675,12 @@ export type ApiIssueDeleteOutput = typeof ApiIssueDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiIssueDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApiIssueDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApiIssueDeleteInput,
   outputSchema: ApiIssueDeleteOutput,
 }));
 // Input Schema
-export const ApiIssueGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiIssueGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   apiId: Schema.String.pipe(T.PathParam()),
@@ -1725,7 +1697,7 @@ export const ApiIssueGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ApiIssueGetInput = typeof ApiIssueGetInput.Type;
 
 // Output Schema
-export const ApiIssueGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiIssueGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1744,13 +1716,13 @@ export type ApiIssueGetOutput = typeof ApiIssueGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiIssueGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApiIssueGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApiIssueGetInput,
   outputSchema: ApiIssueGetOutput,
 }));
 // Input Schema
 export const ApiIssueListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -1770,7 +1742,7 @@ export type ApiIssueListByServiceInput = typeof ApiIssueListByServiceInput.Type;
 
 // Output Schema
 export const ApiIssueListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1800,14 +1772,12 @@ export type ApiIssueListByServiceOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiIssueListByService = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApiIssueListByServiceInput,
-    outputSchema: ApiIssueListByServiceOutput,
-  }),
-);
+export const ApiIssueListByService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApiIssueListByServiceInput,
+  outputSchema: ApiIssueListByServiceOutput,
+}));
 // Input Schema
-export const ApiIssueUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiIssueUpdateInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   apiId: Schema.String.pipe(T.PathParam()),
@@ -1832,7 +1802,7 @@ export const ApiIssueUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ApiIssueUpdateInput = typeof ApiIssueUpdateInput.Type;
 
 // Output Schema
-export const ApiIssueUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiIssueUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1852,12 +1822,12 @@ export type ApiIssueUpdateOutput = typeof ApiIssueUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Issue entity Update contract properties.
  */
-export const ApiIssueUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApiIssueUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApiIssueUpdateInput,
   outputSchema: ApiIssueUpdateOutput,
 }));
 // Input Schema
-export const ApiListByServiceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiListByServiceInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1876,21 +1846,19 @@ export const ApiListByServiceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ApiListByServiceInput = typeof ApiListByServiceInput.Type;
 
 // Output Schema
-export const ApiListByServiceOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const ApiListByServiceOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    count: Schema.optional(Schema.Number),
-    nextLink: Schema.optional(Schema.String),
-  },
-);
+  ),
+  count: Schema.optional(Schema.Number),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ApiListByServiceOutput = typeof ApiListByServiceOutput.Type;
 
 // The operation
@@ -1907,12 +1875,12 @@ export type ApiListByServiceOutput = typeof ApiListByServiceOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiListByService = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApiListByService = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApiListByServiceInput,
   outputSchema: ApiListByServiceOutput,
 }));
 // Input Schema
-export const ApiListByTagsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiListByTagsInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1930,7 +1898,7 @@ export const ApiListByTagsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ApiListByTagsInput = typeof ApiListByTagsInput.Type;
 
 // Output Schema
-export const ApiListByTagsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiListByTagsOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -2066,13 +2034,13 @@ export type ApiListByTagsOutput = typeof ApiListByTagsOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiListByTags = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApiListByTags = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApiListByTagsInput,
   outputSchema: ApiListByTagsOutput,
 }));
 // Input Schema
 export const ApiManagementGatewaySkusListAvailableSkusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     gatewayName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2088,7 +2056,7 @@ export type ApiManagementGatewaySkusListAvailableSkusInput =
 
 // Output Schema
 export const ApiManagementGatewaySkusListAvailableSkusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         resourceType: Schema.optional(Schema.String),
@@ -2132,13 +2100,13 @@ export type ApiManagementGatewaySkusListAvailableSkusOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const ApiManagementGatewaySkusListAvailableSkus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ApiManagementGatewaySkusListAvailableSkusInput,
     outputSchema: ApiManagementGatewaySkusListAvailableSkusOutput,
   }));
 // Input Schema
 export const ApiManagementOperationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2151,7 +2119,7 @@ export type ApiManagementOperationsListInput =
 
 // Output Schema
 export const ApiManagementOperationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2180,15 +2148,13 @@ export type ApiManagementOperationsListOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const ApiManagementOperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApiManagementOperationsListInput,
-    outputSchema: ApiManagementOperationsListOutput,
-  }),
-);
+export const ApiManagementOperationsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApiManagementOperationsListInput,
+  outputSchema: ApiManagementOperationsListOutput,
+}));
 // Input Schema
 export const ApiManagementServiceApplyNetworkConfigurationUpdatesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2204,7 +2170,7 @@ export type ApiManagementServiceApplyNetworkConfigurationUpdatesInput =
 
 // Output Schema
 export const ApiManagementServiceApplyNetworkConfigurationUpdatesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2223,13 +2189,13 @@ export type ApiManagementServiceApplyNetworkConfigurationUpdatesOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const ApiManagementServiceApplyNetworkConfigurationUpdates =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ApiManagementServiceApplyNetworkConfigurationUpdatesInput,
     outputSchema: ApiManagementServiceApplyNetworkConfigurationUpdatesOutput,
   }));
 // Input Schema
 export const ApiManagementServiceBackupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2245,7 +2211,7 @@ export type ApiManagementServiceBackupInput =
 
 // Output Schema
 export const ApiManagementServiceBackupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2263,15 +2229,13 @@ export type ApiManagementServiceBackupOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiManagementServiceBackup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApiManagementServiceBackupInput,
-    outputSchema: ApiManagementServiceBackupOutput,
-  }),
-);
+export const ApiManagementServiceBackup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApiManagementServiceBackupInput,
+  outputSchema: ApiManagementServiceBackupOutput,
+}));
 // Input Schema
 export const ApiManagementServiceCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -2285,7 +2249,7 @@ export type ApiManagementServiceCheckNameAvailabilityInput =
 
 // Output Schema
 export const ApiManagementServiceCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     message: Schema.optional(Schema.String),
     reason: Schema.optional(
@@ -2303,13 +2267,13 @@ export type ApiManagementServiceCheckNameAvailabilityOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const ApiManagementServiceCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ApiManagementServiceCheckNameAvailabilityInput,
     outputSchema: ApiManagementServiceCheckNameAvailabilityOutput,
   }));
 // Input Schema
 export const ApiManagementServiceCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2325,7 +2289,7 @@ export type ApiManagementServiceCreateOrUpdateInput =
 
 // Output Schema
 export const ApiManagementServiceCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2344,13 +2308,13 @@ export type ApiManagementServiceCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const ApiManagementServiceCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ApiManagementServiceCreateOrUpdateInput,
     outputSchema: ApiManagementServiceCreateOrUpdateOutput,
   }));
 // Input Schema
 export const ApiManagementServiceDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2365,8 +2329,7 @@ export type ApiManagementServiceDeleteInput =
   typeof ApiManagementServiceDeleteInput.Type;
 
 // Output Schema
-export const ApiManagementServiceDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ApiManagementServiceDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ApiManagementServiceDeleteOutput =
   typeof ApiManagementServiceDeleteOutput.Type;
 
@@ -2379,15 +2342,13 @@ export type ApiManagementServiceDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiManagementServiceDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApiManagementServiceDeleteInput,
-    outputSchema: ApiManagementServiceDeleteOutput,
-  }),
-);
+export const ApiManagementServiceDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApiManagementServiceDeleteInput,
+  outputSchema: ApiManagementServiceDeleteOutput,
+}));
 // Input Schema
 export const ApiManagementServiceGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2403,7 +2364,7 @@ export type ApiManagementServiceGetInput =
 
 // Output Schema
 export const ApiManagementServiceGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2421,15 +2382,13 @@ export type ApiManagementServiceGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiManagementServiceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApiManagementServiceGetInput,
-    outputSchema: ApiManagementServiceGetOutput,
-  }),
-);
+export const ApiManagementServiceGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApiManagementServiceGetInput,
+  outputSchema: ApiManagementServiceGetOutput,
+}));
 // Input Schema
 export const ApiManagementServiceGetDomainOwnershipIdentifierInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -2443,7 +2402,7 @@ export type ApiManagementServiceGetDomainOwnershipIdentifierInput =
 
 // Output Schema
 export const ApiManagementServiceGetDomainOwnershipIdentifierOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     domainOwnershipIdentifier: Schema.optional(Schema.String),
   });
 export type ApiManagementServiceGetDomainOwnershipIdentifierOutput =
@@ -2457,13 +2416,13 @@ export type ApiManagementServiceGetDomainOwnershipIdentifierOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const ApiManagementServiceGetDomainOwnershipIdentifier =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ApiManagementServiceGetDomainOwnershipIdentifierInput,
     outputSchema: ApiManagementServiceGetDomainOwnershipIdentifierOutput,
   }));
 // Input Schema
 export const ApiManagementServiceGetSsoTokenInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2479,7 +2438,7 @@ export type ApiManagementServiceGetSsoTokenInput =
 
 // Output Schema
 export const ApiManagementServiceGetSsoTokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     redirectUri: Schema.optional(Schema.String),
   });
 export type ApiManagementServiceGetSsoTokenOutput =
@@ -2495,13 +2454,13 @@ export type ApiManagementServiceGetSsoTokenOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const ApiManagementServiceGetSsoToken =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ApiManagementServiceGetSsoTokenInput,
     outputSchema: ApiManagementServiceGetSsoTokenOutput,
   }));
 // Input Schema
 export const ApiManagementServiceListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -2515,7 +2474,7 @@ export type ApiManagementServiceListInput =
 
 // Output Schema
 export const ApiManagementServiceListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2536,15 +2495,13 @@ export type ApiManagementServiceListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiManagementServiceList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApiManagementServiceListInput,
-    outputSchema: ApiManagementServiceListOutput,
-  }),
-);
+export const ApiManagementServiceList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApiManagementServiceListInput,
+  outputSchema: ApiManagementServiceListOutput,
+}));
 // Input Schema
 export const ApiManagementServiceListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -2559,7 +2516,7 @@ export type ApiManagementServiceListByResourceGroupInput =
 
 // Output Schema
 export const ApiManagementServiceListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2582,13 +2539,13 @@ export type ApiManagementServiceListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const ApiManagementServiceListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ApiManagementServiceListByResourceGroupInput,
     outputSchema: ApiManagementServiceListByResourceGroupOutput,
   }));
 // Input Schema
 export const ApiManagementServiceMigrateToStv2Input =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2604,7 +2561,7 @@ export type ApiManagementServiceMigrateToStv2Input =
 
 // Output Schema
 export const ApiManagementServiceMigrateToStv2Output =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2623,13 +2580,13 @@ export type ApiManagementServiceMigrateToStv2Output =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const ApiManagementServiceMigrateToStv2 =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ApiManagementServiceMigrateToStv2Input,
     outputSchema: ApiManagementServiceMigrateToStv2Output,
   }));
 // Input Schema
 export const ApiManagementServiceRestoreInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2645,7 +2602,7 @@ export type ApiManagementServiceRestoreInput =
 
 // Output Schema
 export const ApiManagementServiceRestoreOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2663,15 +2620,13 @@ export type ApiManagementServiceRestoreOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiManagementServiceRestore = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApiManagementServiceRestoreInput,
-    outputSchema: ApiManagementServiceRestoreOutput,
-  }),
-);
+export const ApiManagementServiceRestore = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApiManagementServiceRestoreInput,
+  outputSchema: ApiManagementServiceRestoreOutput,
+}));
 // Input Schema
 export const ApiManagementServiceSkusListAvailableServiceSkusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2687,7 +2642,7 @@ export type ApiManagementServiceSkusListAvailableServiceSkusInput =
 
 // Output Schema
 export const ApiManagementServiceSkusListAvailableServiceSkusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         resourceType: Schema.optional(Schema.String),
@@ -2736,13 +2691,13 @@ export type ApiManagementServiceSkusListAvailableServiceSkusOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const ApiManagementServiceSkusListAvailableServiceSkus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ApiManagementServiceSkusListAvailableServiceSkusInput,
     outputSchema: ApiManagementServiceSkusListAvailableServiceSkusOutput,
   }));
 // Input Schema
 export const ApiManagementServiceUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2758,7 +2713,7 @@ export type ApiManagementServiceUpdateInput =
 
 // Output Schema
 export const ApiManagementServiceUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2776,15 +2731,13 @@ export type ApiManagementServiceUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiManagementServiceUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApiManagementServiceUpdateInput,
-    outputSchema: ApiManagementServiceUpdateOutput,
-  }),
-);
+export const ApiManagementServiceUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApiManagementServiceUpdateInput,
+  outputSchema: ApiManagementServiceUpdateOutput,
+}));
 // Input Schema
 export const ApiManagementSkusListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -2797,7 +2750,7 @@ export type ApiManagementSkusListInput = typeof ApiManagementSkusListInput.Type;
 
 // Output Schema
 export const ApiManagementSkusListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         resourceType: Schema.optional(Schema.String),
@@ -2889,15 +2842,13 @@ export type ApiManagementSkusListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiManagementSkusList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApiManagementSkusListInput,
-    outputSchema: ApiManagementSkusListOutput,
-  }),
-);
+export const ApiManagementSkusList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApiManagementSkusListInput,
+  outputSchema: ApiManagementSkusListOutput,
+}));
 // Input Schema
 export const ApiManagementWorkspaceLinkGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -2914,7 +2865,7 @@ export type ApiManagementWorkspaceLinkGetInput =
 
 // Output Schema
 export const ApiManagementWorkspaceLinkGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2933,13 +2884,13 @@ export type ApiManagementWorkspaceLinkGetOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const ApiManagementWorkspaceLinkGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ApiManagementWorkspaceLinkGetInput,
     outputSchema: ApiManagementWorkspaceLinkGetOutput,
   }));
 // Input Schema
 export const ApiManagementWorkspaceLinksListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -2955,7 +2906,7 @@ export type ApiManagementWorkspaceLinksListByServiceInput =
 
 // Output Schema
 export const ApiManagementWorkspaceLinksListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2978,13 +2929,13 @@ export type ApiManagementWorkspaceLinksListByServiceOutput =
  * @param serviceName - The name of the API Management service.
  */
 export const ApiManagementWorkspaceLinksListByService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ApiManagementWorkspaceLinksListByServiceInput,
     outputSchema: ApiManagementWorkspaceLinksListByServiceOutput,
   }));
 // Input Schema
 export const ApiOperationCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -3211,7 +3162,7 @@ export type ApiOperationCreateOrUpdateInput =
 
 // Output Schema
 export const ApiOperationCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3232,15 +3183,13 @@ export type ApiOperationCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Properties of the Operation Contract.
  */
-export const ApiOperationCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApiOperationCreateOrUpdateInput,
-    outputSchema: ApiOperationCreateOrUpdateOutput,
-  }),
-);
+export const ApiOperationCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApiOperationCreateOrUpdateInput,
+  outputSchema: ApiOperationCreateOrUpdateOutput,
+}));
 // Input Schema
 export const ApiOperationDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -3256,7 +3205,7 @@ export const ApiOperationDeleteInput =
 export type ApiOperationDeleteInput = typeof ApiOperationDeleteInput.Type;
 
 // Output Schema
-export const ApiOperationDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ApiOperationDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ApiOperationDeleteOutput = typeof ApiOperationDeleteOutput.Type;
 
 // The operation
@@ -3271,12 +3220,12 @@ export type ApiOperationDeleteOutput = typeof ApiOperationDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiOperationDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApiOperationDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApiOperationDeleteInput,
   outputSchema: ApiOperationDeleteOutput,
 }));
 // Input Schema
-export const ApiOperationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiOperationGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   apiId: Schema.String.pipe(T.PathParam()),
@@ -3292,7 +3241,7 @@ export const ApiOperationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ApiOperationGetInput = typeof ApiOperationGetInput.Type;
 
 // Output Schema
-export const ApiOperationGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiOperationGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3310,13 +3259,13 @@ export type ApiOperationGetOutput = typeof ApiOperationGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiOperationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApiOperationGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApiOperationGetInput,
   outputSchema: ApiOperationGetOutput,
 }));
 // Input Schema
 export const ApiOperationListByApiInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -3336,7 +3285,7 @@ export type ApiOperationListByApiInput = typeof ApiOperationListByApiInput.Type;
 
 // Output Schema
 export const ApiOperationListByApiOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3366,15 +3315,13 @@ export type ApiOperationListByApiOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiOperationListByApi = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApiOperationListByApiInput,
-    outputSchema: ApiOperationListByApiOutput,
-  }),
-);
+export const ApiOperationListByApi = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApiOperationListByApiInput,
+  outputSchema: ApiOperationListByApiOutput,
+}));
 // Input Schema
 export const ApiOperationPolicyCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -3401,7 +3348,7 @@ export type ApiOperationPolicyCreateOrUpdateInput =
 
 // Output Schema
 export const ApiOperationPolicyCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3424,13 +3371,13 @@ export type ApiOperationPolicyCreateOrUpdateOutput =
  * @param properties - Properties of the Policy.
  */
 export const ApiOperationPolicyCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ApiOperationPolicyCreateOrUpdateInput,
     outputSchema: ApiOperationPolicyCreateOrUpdateOutput,
   }));
 // Input Schema
 export const ApiOperationPolicyDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -3448,8 +3395,7 @@ export type ApiOperationPolicyDeleteInput =
   typeof ApiOperationPolicyDeleteInput.Type;
 
 // Output Schema
-export const ApiOperationPolicyDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ApiOperationPolicyDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ApiOperationPolicyDeleteOutput =
   typeof ApiOperationPolicyDeleteOutput.Type;
 
@@ -3466,15 +3412,13 @@ export type ApiOperationPolicyDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiOperationPolicyDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApiOperationPolicyDeleteInput,
-    outputSchema: ApiOperationPolicyDeleteOutput,
-  }),
-);
+export const ApiOperationPolicyDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApiOperationPolicyDeleteInput,
+  outputSchema: ApiOperationPolicyDeleteOutput,
+}));
 // Input Schema
 export const ApiOperationPolicyGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -3493,7 +3437,7 @@ export type ApiOperationPolicyGetInput = typeof ApiOperationPolicyGetInput.Type;
 
 // Output Schema
 export const ApiOperationPolicyGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3514,15 +3458,13 @@ export type ApiOperationPolicyGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiOperationPolicyGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApiOperationPolicyGetInput,
-    outputSchema: ApiOperationPolicyGetOutput,
-  }),
-);
+export const ApiOperationPolicyGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApiOperationPolicyGetInput,
+  outputSchema: ApiOperationPolicyGetOutput,
+}));
 // Input Schema
 export const ApiOperationPolicyListByOperationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -3540,7 +3482,7 @@ export type ApiOperationPolicyListByOperationInput =
 
 // Output Schema
 export const ApiOperationPolicyListByOperationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3568,13 +3510,13 @@ export type ApiOperationPolicyListByOperationOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const ApiOperationPolicyListByOperation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ApiOperationPolicyListByOperationInput,
     outputSchema: ApiOperationPolicyListByOperationOutput,
   }));
 // Input Schema
 export const ApiOperationUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -3800,7 +3742,7 @@ export type ApiOperationUpdateInput = typeof ApiOperationUpdateInput.Type;
 
 // Output Schema
 export const ApiOperationUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3820,13 +3762,13 @@ export type ApiOperationUpdateOutput = typeof ApiOperationUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Properties of the API Operation entity that can be updated.
  */
-export const ApiOperationUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApiOperationUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApiOperationUpdateInput,
   outputSchema: ApiOperationUpdateOutput,
 }));
 // Input Schema
 export const ApiPolicyCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -3852,7 +3794,7 @@ export type ApiPolicyCreateOrUpdateInput =
 
 // Output Schema
 export const ApiPolicyCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3873,14 +3815,12 @@ export type ApiPolicyCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Properties of the Policy.
  */
-export const ApiPolicyCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApiPolicyCreateOrUpdateInput,
-    outputSchema: ApiPolicyCreateOrUpdateOutput,
-  }),
-);
+export const ApiPolicyCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApiPolicyCreateOrUpdateInput,
+  outputSchema: ApiPolicyCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ApiPolicyDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiPolicyDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   apiId: Schema.String.pipe(T.PathParam()),
@@ -3896,7 +3836,7 @@ export const ApiPolicyDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ApiPolicyDeleteInput = typeof ApiPolicyDeleteInput.Type;
 
 // Output Schema
-export const ApiPolicyDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ApiPolicyDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ApiPolicyDeleteOutput = typeof ApiPolicyDeleteOutput.Type;
 
 // The operation
@@ -3911,12 +3851,12 @@ export type ApiPolicyDeleteOutput = typeof ApiPolicyDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiPolicyDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApiPolicyDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApiPolicyDeleteInput,
   outputSchema: ApiPolicyDeleteOutput,
 }));
 // Input Schema
-export const ApiPolicyGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiPolicyGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   apiId: Schema.String.pipe(T.PathParam()),
@@ -3933,7 +3873,7 @@ export const ApiPolicyGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ApiPolicyGetInput = typeof ApiPolicyGetInput.Type;
 
 // Output Schema
-export const ApiPolicyGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiPolicyGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3952,13 +3892,13 @@ export type ApiPolicyGetOutput = typeof ApiPolicyGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiPolicyGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApiPolicyGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApiPolicyGetInput,
   outputSchema: ApiPolicyGetOutput,
 }));
 // Input Schema
 export const ApiPolicyListByApiInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -3974,7 +3914,7 @@ export type ApiPolicyListByApiInput = typeof ApiPolicyListByApiInput.Type;
 
 // Output Schema
 export const ApiPolicyListByApiOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3999,13 +3939,13 @@ export type ApiPolicyListByApiOutput = typeof ApiPolicyListByApiOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiPolicyListByApi = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApiPolicyListByApi = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApiPolicyListByApiInput,
   outputSchema: ApiPolicyListByApiOutput,
 }));
 // Input Schema
 export const ApiProductListByApisInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -4024,7 +3964,7 @@ export type ApiProductListByApisInput = typeof ApiProductListByApisInput.Type;
 
 // Output Schema
 export const ApiProductListByApisOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4052,15 +3992,13 @@ export type ApiProductListByApisOutput = typeof ApiProductListByApisOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiProductListByApis = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApiProductListByApisInput,
-    outputSchema: ApiProductListByApisOutput,
-  }),
-);
+export const ApiProductListByApis = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApiProductListByApisInput,
+  outputSchema: ApiProductListByApisOutput,
+}));
 // Input Schema
 export const ApiReleaseCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -4086,7 +4024,7 @@ export type ApiReleaseCreateOrUpdateInput =
 
 // Output Schema
 export const ApiReleaseCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4107,14 +4045,12 @@ export type ApiReleaseCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - ApiRelease entity contract properties.
  */
-export const ApiReleaseCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApiReleaseCreateOrUpdateInput,
-    outputSchema: ApiReleaseCreateOrUpdateOutput,
-  }),
-);
+export const ApiReleaseCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApiReleaseCreateOrUpdateInput,
+  outputSchema: ApiReleaseCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ApiReleaseDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiReleaseDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   apiId: Schema.String.pipe(T.PathParam()),
@@ -4130,7 +4066,7 @@ export const ApiReleaseDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ApiReleaseDeleteInput = typeof ApiReleaseDeleteInput.Type;
 
 // Output Schema
-export const ApiReleaseDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ApiReleaseDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ApiReleaseDeleteOutput = typeof ApiReleaseDeleteOutput.Type;
 
 // The operation
@@ -4145,12 +4081,12 @@ export type ApiReleaseDeleteOutput = typeof ApiReleaseDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiReleaseDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApiReleaseDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApiReleaseDeleteInput,
   outputSchema: ApiReleaseDeleteOutput,
 }));
 // Input Schema
-export const ApiReleaseGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiReleaseGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   apiId: Schema.String.pipe(T.PathParam()),
@@ -4166,7 +4102,7 @@ export const ApiReleaseGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ApiReleaseGetInput = typeof ApiReleaseGetInput.Type;
 
 // Output Schema
-export const ApiReleaseGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiReleaseGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4184,13 +4120,13 @@ export type ApiReleaseGetOutput = typeof ApiReleaseGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiReleaseGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApiReleaseGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApiReleaseGetInput,
   outputSchema: ApiReleaseGetOutput,
 }));
 // Input Schema
 export const ApiReleaseListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -4210,7 +4146,7 @@ export type ApiReleaseListByServiceInput =
 
 // Output Schema
 export const ApiReleaseListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4239,14 +4175,12 @@ export type ApiReleaseListByServiceOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiReleaseListByService = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApiReleaseListByServiceInput,
-    outputSchema: ApiReleaseListByServiceOutput,
-  }),
-);
+export const ApiReleaseListByService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApiReleaseListByServiceInput,
+  outputSchema: ApiReleaseListByServiceOutput,
+}));
 // Input Schema
-export const ApiReleaseUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiReleaseUpdateInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   apiId: Schema.String.pipe(T.PathParam()),
@@ -4270,13 +4204,11 @@ export const ApiReleaseUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ApiReleaseUpdateInput = typeof ApiReleaseUpdateInput.Type;
 
 // Output Schema
-export const ApiReleaseUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  },
-);
+export const ApiReleaseUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type ApiReleaseUpdateOutput = typeof ApiReleaseUpdateOutput.Type;
 
 // The operation
@@ -4292,13 +4224,13 @@ export type ApiReleaseUpdateOutput = typeof ApiReleaseUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - ApiRelease entity contract properties.
  */
-export const ApiReleaseUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApiReleaseUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApiReleaseUpdateInput,
   outputSchema: ApiReleaseUpdateOutput,
 }));
 // Input Schema
 export const ApiRevisionListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -4318,7 +4250,7 @@ export type ApiRevisionListByServiceInput =
 
 // Output Schema
 export const ApiRevisionListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4352,15 +4284,13 @@ export type ApiRevisionListByServiceOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiRevisionListByService = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApiRevisionListByServiceInput,
-    outputSchema: ApiRevisionListByServiceOutput,
-  }),
-);
+export const ApiRevisionListByService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApiRevisionListByServiceInput,
+  outputSchema: ApiRevisionListByServiceOutput,
+}));
 // Input Schema
 export const ApiSchemaCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -4389,7 +4319,7 @@ export type ApiSchemaCreateOrUpdateInput =
 
 // Output Schema
 export const ApiSchemaCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4410,14 +4340,12 @@ export type ApiSchemaCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Properties of the API Schema.
  */
-export const ApiSchemaCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApiSchemaCreateOrUpdateInput,
-    outputSchema: ApiSchemaCreateOrUpdateOutput,
-  }),
-);
+export const ApiSchemaCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApiSchemaCreateOrUpdateInput,
+  outputSchema: ApiSchemaCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ApiSchemaDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiSchemaDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   apiId: Schema.String.pipe(T.PathParam()),
@@ -4434,7 +4362,7 @@ export const ApiSchemaDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ApiSchemaDeleteInput = typeof ApiSchemaDeleteInput.Type;
 
 // Output Schema
-export const ApiSchemaDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ApiSchemaDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ApiSchemaDeleteOutput = typeof ApiSchemaDeleteOutput.Type;
 
 // The operation
@@ -4450,12 +4378,12 @@ export type ApiSchemaDeleteOutput = typeof ApiSchemaDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiSchemaDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApiSchemaDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApiSchemaDeleteInput,
   outputSchema: ApiSchemaDeleteOutput,
 }));
 // Input Schema
-export const ApiSchemaGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiSchemaGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   apiId: Schema.String.pipe(T.PathParam()),
@@ -4471,7 +4399,7 @@ export const ApiSchemaGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ApiSchemaGetInput = typeof ApiSchemaGetInput.Type;
 
 // Output Schema
-export const ApiSchemaGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiSchemaGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4489,13 +4417,13 @@ export type ApiSchemaGetOutput = typeof ApiSchemaGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiSchemaGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApiSchemaGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApiSchemaGetInput,
   outputSchema: ApiSchemaGetOutput,
 }));
 // Input Schema
 export const ApiSchemaListByApiInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -4514,7 +4442,7 @@ export type ApiSchemaListByApiInput = typeof ApiSchemaListByApiInput.Type;
 
 // Output Schema
 export const ApiSchemaListByApiOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4542,13 +4470,13 @@ export type ApiSchemaListByApiOutput = typeof ApiSchemaListByApiOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiSchemaListByApi = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApiSchemaListByApi = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApiSchemaListByApiInput,
   outputSchema: ApiSchemaListByApiOutput,
 }));
 // Input Schema
 export const ApiTagDescriptionCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -4573,7 +4501,7 @@ export type ApiTagDescriptionCreateOrUpdateInput =
 
 // Output Schema
 export const ApiTagDescriptionCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4595,13 +4523,13 @@ export type ApiTagDescriptionCreateOrUpdateOutput =
  * @param properties - Properties supplied to Create TagDescription operation.
  */
 export const ApiTagDescriptionCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ApiTagDescriptionCreateOrUpdateInput,
     outputSchema: ApiTagDescriptionCreateOrUpdateOutput,
   }));
 // Input Schema
 export const ApiTagDescriptionDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -4618,8 +4546,7 @@ export type ApiTagDescriptionDeleteInput =
   typeof ApiTagDescriptionDeleteInput.Type;
 
 // Output Schema
-export const ApiTagDescriptionDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ApiTagDescriptionDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ApiTagDescriptionDeleteOutput =
   typeof ApiTagDescriptionDeleteOutput.Type;
 
@@ -4635,15 +4562,13 @@ export type ApiTagDescriptionDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiTagDescriptionDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApiTagDescriptionDeleteInput,
-    outputSchema: ApiTagDescriptionDeleteOutput,
-  }),
-);
+export const ApiTagDescriptionDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApiTagDescriptionDeleteInput,
+  outputSchema: ApiTagDescriptionDeleteOutput,
+}));
 // Input Schema
 export const ApiTagDescriptionGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -4660,7 +4585,7 @@ export type ApiTagDescriptionGetInput = typeof ApiTagDescriptionGetInput.Type;
 
 // Output Schema
 export const ApiTagDescriptionGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4678,15 +4603,13 @@ export type ApiTagDescriptionGetOutput = typeof ApiTagDescriptionGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiTagDescriptionGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApiTagDescriptionGetInput,
-    outputSchema: ApiTagDescriptionGetOutput,
-  }),
-);
+export const ApiTagDescriptionGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApiTagDescriptionGetInput,
+  outputSchema: ApiTagDescriptionGetOutput,
+}));
 // Input Schema
 export const ApiTagDescriptionListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -4706,7 +4629,7 @@ export type ApiTagDescriptionListByServiceInput =
 
 // Output Schema
 export const ApiTagDescriptionListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4736,12 +4659,12 @@ export type ApiTagDescriptionListByServiceOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const ApiTagDescriptionListByService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ApiTagDescriptionListByServiceInput,
     outputSchema: ApiTagDescriptionListByServiceOutput,
   }));
 // Input Schema
-export const ApiUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiUpdateInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   apiId: Schema.String.pipe(T.PathParam()),
@@ -4837,7 +4760,7 @@ export const ApiUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ApiUpdateInput = typeof ApiUpdateInput.Type;
 
 // Output Schema
-export const ApiUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4856,13 +4779,13 @@ export type ApiUpdateOutput = typeof ApiUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Properties of the API entity that can be updated.
  */
-export const ApiUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApiUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApiUpdateInput,
   outputSchema: ApiUpdateOutput,
 }));
 // Input Schema
 export const ApiVersionSetCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     versionSetId: Schema.String.pipe(T.PathParam()),
@@ -4886,7 +4809,7 @@ export type ApiVersionSetCreateOrUpdateInput =
 
 // Output Schema
 export const ApiVersionSetCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4906,15 +4829,13 @@ export type ApiVersionSetCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - API VersionSet contract properties.
  */
-export const ApiVersionSetCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApiVersionSetCreateOrUpdateInput,
-    outputSchema: ApiVersionSetCreateOrUpdateOutput,
-  }),
-);
+export const ApiVersionSetCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApiVersionSetCreateOrUpdateInput,
+  outputSchema: ApiVersionSetCreateOrUpdateOutput,
+}));
 // Input Schema
 export const ApiVersionSetDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     versionSetId: Schema.String.pipe(T.PathParam()),
@@ -4929,8 +4850,7 @@ export const ApiVersionSetDeleteInput =
 export type ApiVersionSetDeleteInput = typeof ApiVersionSetDeleteInput.Type;
 
 // Output Schema
-export const ApiVersionSetDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ApiVersionSetDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ApiVersionSetDeleteOutput = typeof ApiVersionSetDeleteOutput.Type;
 
 // The operation
@@ -4944,12 +4864,12 @@ export type ApiVersionSetDeleteOutput = typeof ApiVersionSetDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiVersionSetDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApiVersionSetDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApiVersionSetDeleteInput,
   outputSchema: ApiVersionSetDeleteOutput,
 }));
 // Input Schema
-export const ApiVersionSetGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiVersionSetGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   versionSetId: Schema.String.pipe(T.PathParam()),
@@ -4964,13 +4884,11 @@ export const ApiVersionSetGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ApiVersionSetGetInput = typeof ApiVersionSetGetInput.Type;
 
 // Output Schema
-export const ApiVersionSetGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  },
-);
+export const ApiVersionSetGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type ApiVersionSetGetOutput = typeof ApiVersionSetGetOutput.Type;
 
 // The operation
@@ -4983,13 +4901,13 @@ export type ApiVersionSetGetOutput = typeof ApiVersionSetGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiVersionSetGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApiVersionSetGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApiVersionSetGetInput,
   outputSchema: ApiVersionSetGetOutput,
 }));
 // Input Schema
 export const ApiVersionSetListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5008,7 +4926,7 @@ export type ApiVersionSetListByServiceInput =
 
 // Output Schema
 export const ApiVersionSetListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5036,15 +4954,13 @@ export type ApiVersionSetListByServiceOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiVersionSetListByService = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApiVersionSetListByServiceInput,
-    outputSchema: ApiVersionSetListByServiceOutput,
-  }),
-);
+export const ApiVersionSetListByService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApiVersionSetListByServiceInput,
+  outputSchema: ApiVersionSetListByServiceOutput,
+}));
 // Input Schema
 export const ApiVersionSetUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     versionSetId: Schema.String.pipe(T.PathParam()),
@@ -5067,7 +4983,7 @@ export type ApiVersionSetUpdateInput = typeof ApiVersionSetUpdateInput.Type;
 
 // Output Schema
 export const ApiVersionSetUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5086,13 +5002,13 @@ export type ApiVersionSetUpdateOutput = typeof ApiVersionSetUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Parameters to update or create an API Version Set Contract.
  */
-export const ApiVersionSetUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApiVersionSetUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApiVersionSetUpdateInput,
   outputSchema: ApiVersionSetUpdateOutput,
 }));
 // Input Schema
 export const ApiWikiCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -5119,7 +5035,7 @@ export type ApiWikiCreateOrUpdateInput = typeof ApiWikiCreateOrUpdateInput.Type;
 
 // Output Schema
 export const ApiWikiCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5139,14 +5055,12 @@ export type ApiWikiCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Wiki details.
  */
-export const ApiWikiCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApiWikiCreateOrUpdateInput,
-    outputSchema: ApiWikiCreateOrUpdateOutput,
-  }),
-);
+export const ApiWikiCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApiWikiCreateOrUpdateInput,
+  outputSchema: ApiWikiCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ApiWikiDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiWikiDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   apiId: Schema.String.pipe(T.PathParam()),
@@ -5161,7 +5075,7 @@ export const ApiWikiDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ApiWikiDeleteInput = typeof ApiWikiDeleteInput.Type;
 
 // Output Schema
-export const ApiWikiDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ApiWikiDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ApiWikiDeleteOutput = typeof ApiWikiDeleteOutput.Type;
 
 // The operation
@@ -5175,12 +5089,12 @@ export type ApiWikiDeleteOutput = typeof ApiWikiDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiWikiDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApiWikiDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApiWikiDeleteInput,
   outputSchema: ApiWikiDeleteOutput,
 }));
 // Input Schema
-export const ApiWikiGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiWikiGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   apiId: Schema.String.pipe(T.PathParam()),
@@ -5195,7 +5109,7 @@ export const ApiWikiGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ApiWikiGetInput = typeof ApiWikiGetInput.Type;
 
 // Output Schema
-export const ApiWikiGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiWikiGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5212,12 +5126,12 @@ export type ApiWikiGetOutput = typeof ApiWikiGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiWikiGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApiWikiGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApiWikiGetInput,
   outputSchema: ApiWikiGetOutput,
 }));
 // Input Schema
-export const ApiWikisListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiWikisListInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   apiId: Schema.String.pipe(T.PathParam()),
@@ -5235,7 +5149,7 @@ export const ApiWikisListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ApiWikisListInput = typeof ApiWikisListInput.Type;
 
 // Output Schema
-export const ApiWikisListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiWikisListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -5262,12 +5176,12 @@ export type ApiWikisListOutput = typeof ApiWikisListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ApiWikisList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApiWikisList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApiWikisListInput,
   outputSchema: ApiWikisListOutput,
 }));
 // Input Schema
-export const ApiWikiUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiWikiUpdateInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   apiId: Schema.String.pipe(T.PathParam()),
@@ -5293,7 +5207,7 @@ export const ApiWikiUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ApiWikiUpdateInput = typeof ApiWikiUpdateInput.Type;
 
 // Output Schema
-export const ApiWikiUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApiWikiUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5312,13 +5226,13 @@ export type ApiWikiUpdateOutput = typeof ApiWikiUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Wiki details.
  */
-export const ApiWikiUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApiWikiUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApiWikiUpdateInput,
   outputSchema: ApiWikiUpdateOutput,
 }));
 // Input Schema
 export const AuthorizationAccessPolicyCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     authorizationProviderId: Schema.String.pipe(T.PathParam()),
@@ -5344,7 +5258,7 @@ export type AuthorizationAccessPolicyCreateOrUpdateInput =
 
 // Output Schema
 export const AuthorizationAccessPolicyCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5367,13 +5281,13 @@ export type AuthorizationAccessPolicyCreateOrUpdateOutput =
  * @param properties - Properties of the Authorization Contract.
  */
 export const AuthorizationAccessPolicyCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthorizationAccessPolicyCreateOrUpdateInput,
     outputSchema: AuthorizationAccessPolicyCreateOrUpdateOutput,
   }));
 // Input Schema
 export const AuthorizationAccessPolicyDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     authorizationProviderId: Schema.String.pipe(T.PathParam()),
@@ -5391,8 +5305,7 @@ export type AuthorizationAccessPolicyDeleteInput =
   typeof AuthorizationAccessPolicyDeleteInput.Type;
 
 // Output Schema
-export const AuthorizationAccessPolicyDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AuthorizationAccessPolicyDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type AuthorizationAccessPolicyDeleteOutput =
   typeof AuthorizationAccessPolicyDeleteOutput.Type;
 
@@ -5410,13 +5323,13 @@ export type AuthorizationAccessPolicyDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const AuthorizationAccessPolicyDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthorizationAccessPolicyDeleteInput,
     outputSchema: AuthorizationAccessPolicyDeleteOutput,
   }));
 // Input Schema
 export const AuthorizationAccessPolicyGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     authorizationProviderId: Schema.String.pipe(T.PathParam()),
@@ -5435,7 +5348,7 @@ export type AuthorizationAccessPolicyGetInput =
 
 // Output Schema
 export const AuthorizationAccessPolicyGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5456,13 +5369,13 @@ export type AuthorizationAccessPolicyGetOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const AuthorizationAccessPolicyGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthorizationAccessPolicyGetInput,
     outputSchema: AuthorizationAccessPolicyGetOutput,
   }));
 // Input Schema
 export const AuthorizationAccessPolicyListByAuthorizationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     authorizationProviderId: Schema.String.pipe(T.PathParam()),
@@ -5483,7 +5396,7 @@ export type AuthorizationAccessPolicyListByAuthorizationInput =
 
 // Output Schema
 export const AuthorizationAccessPolicyListByAuthorizationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5514,13 +5427,13 @@ export type AuthorizationAccessPolicyListByAuthorizationOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const AuthorizationAccessPolicyListByAuthorization =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthorizationAccessPolicyListByAuthorizationInput,
     outputSchema: AuthorizationAccessPolicyListByAuthorizationOutput,
   }));
 // Input Schema
 export const AuthorizationConfirmConsentCodeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     authorizationProviderId: Schema.String.pipe(T.PathParam()),
@@ -5538,8 +5451,7 @@ export type AuthorizationConfirmConsentCodeInput =
   typeof AuthorizationConfirmConsentCodeInput.Type;
 
 // Output Schema
-export const AuthorizationConfirmConsentCodeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AuthorizationConfirmConsentCodeOutput = /*@__PURE__*/ Schema.Void;
 export type AuthorizationConfirmConsentCodeOutput =
   typeof AuthorizationConfirmConsentCodeOutput.Type;
 
@@ -5556,13 +5468,13 @@ export type AuthorizationConfirmConsentCodeOutput =
  * @param consentCode - The consent code from the authorization server after authorizing and consenting.
  */
 export const AuthorizationConfirmConsentCode =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthorizationConfirmConsentCodeInput,
     outputSchema: AuthorizationConfirmConsentCodeOutput,
   }));
 // Input Schema
 export const AuthorizationCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     authorizationProviderId: Schema.String.pipe(T.PathParam()),
@@ -5598,7 +5510,7 @@ export type AuthorizationCreateOrUpdateInput =
 
 // Output Schema
 export const AuthorizationCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5619,15 +5531,13 @@ export type AuthorizationCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Properties of the Authorization Contract.
  */
-export const AuthorizationCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AuthorizationCreateOrUpdateInput,
-    outputSchema: AuthorizationCreateOrUpdateOutput,
-  }),
-);
+export const AuthorizationCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AuthorizationCreateOrUpdateInput,
+  outputSchema: AuthorizationCreateOrUpdateOutput,
+}));
 // Input Schema
 export const AuthorizationDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     authorizationProviderId: Schema.String.pipe(T.PathParam()),
@@ -5643,8 +5553,7 @@ export const AuthorizationDeleteInput =
 export type AuthorizationDeleteInput = typeof AuthorizationDeleteInput.Type;
 
 // Output Schema
-export const AuthorizationDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AuthorizationDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type AuthorizationDeleteOutput = typeof AuthorizationDeleteOutput.Type;
 
 // The operation
@@ -5659,12 +5568,12 @@ export type AuthorizationDeleteOutput = typeof AuthorizationDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const AuthorizationDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AuthorizationDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: AuthorizationDeleteInput,
   outputSchema: AuthorizationDeleteOutput,
 }));
 // Input Schema
-export const AuthorizationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AuthorizationGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   authorizationProviderId: Schema.String.pipe(T.PathParam()),
@@ -5680,13 +5589,11 @@ export const AuthorizationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type AuthorizationGetInput = typeof AuthorizationGetInput.Type;
 
 // Output Schema
-export const AuthorizationGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  },
-);
+export const AuthorizationGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type AuthorizationGetOutput = typeof AuthorizationGetOutput.Type;
 
 // The operation
@@ -5700,13 +5607,13 @@ export type AuthorizationGetOutput = typeof AuthorizationGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const AuthorizationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AuthorizationGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AuthorizationGetInput,
   outputSchema: AuthorizationGetOutput,
 }));
 // Input Schema
 export const AuthorizationListByAuthorizationProviderInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     authorizationProviderId: Schema.String.pipe(T.PathParam()),
@@ -5726,7 +5633,7 @@ export type AuthorizationListByAuthorizationProviderInput =
 
 // Output Schema
 export const AuthorizationListByAuthorizationProviderOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5756,13 +5663,13 @@ export type AuthorizationListByAuthorizationProviderOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const AuthorizationListByAuthorizationProvider =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthorizationListByAuthorizationProviderInput,
     outputSchema: AuthorizationListByAuthorizationProviderOutput,
   }));
 // Input Schema
 export const AuthorizationLoginLinksPostInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     authorizationProviderId: Schema.String.pipe(T.PathParam()),
@@ -5781,7 +5688,7 @@ export type AuthorizationLoginLinksPostInput =
 
 // Output Schema
 export const AuthorizationLoginLinksPostOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     loginLink: Schema.optional(Schema.String),
   });
 export type AuthorizationLoginLinksPostOutput =
@@ -5799,15 +5706,13 @@ export type AuthorizationLoginLinksPostOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param postLoginRedirectUrl - The redirect URL after login has completed.
  */
-export const AuthorizationLoginLinksPost = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AuthorizationLoginLinksPostInput,
-    outputSchema: AuthorizationLoginLinksPostOutput,
-  }),
-);
+export const AuthorizationLoginLinksPost = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AuthorizationLoginLinksPostInput,
+  outputSchema: AuthorizationLoginLinksPostOutput,
+}));
 // Input Schema
 export const AuthorizationProviderCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     authorizationProviderId: Schema.String.pipe(T.PathParam()),
@@ -5845,7 +5750,7 @@ export type AuthorizationProviderCreateOrUpdateInput =
 
 // Output Schema
 export const AuthorizationProviderCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5866,13 +5771,13 @@ export type AuthorizationProviderCreateOrUpdateOutput =
  * @param properties - Properties of the Authorization Provider Contract.
  */
 export const AuthorizationProviderCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthorizationProviderCreateOrUpdateInput,
     outputSchema: AuthorizationProviderCreateOrUpdateOutput,
   }));
 // Input Schema
 export const AuthorizationProviderDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     authorizationProviderId: Schema.String.pipe(T.PathParam()),
@@ -5888,8 +5793,7 @@ export type AuthorizationProviderDeleteInput =
   typeof AuthorizationProviderDeleteInput.Type;
 
 // Output Schema
-export const AuthorizationProviderDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AuthorizationProviderDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type AuthorizationProviderDeleteOutput =
   typeof AuthorizationProviderDeleteOutput.Type;
 
@@ -5904,15 +5808,13 @@ export type AuthorizationProviderDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const AuthorizationProviderDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AuthorizationProviderDeleteInput,
-    outputSchema: AuthorizationProviderDeleteOutput,
-  }),
-);
+export const AuthorizationProviderDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AuthorizationProviderDeleteInput,
+  outputSchema: AuthorizationProviderDeleteOutput,
+}));
 // Input Schema
 export const AuthorizationProviderGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     authorizationProviderId: Schema.String.pipe(T.PathParam()),
@@ -5929,7 +5831,7 @@ export type AuthorizationProviderGetInput =
 
 // Output Schema
 export const AuthorizationProviderGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5947,15 +5849,13 @@ export type AuthorizationProviderGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const AuthorizationProviderGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AuthorizationProviderGetInput,
-    outputSchema: AuthorizationProviderGetOutput,
-  }),
-);
+export const AuthorizationProviderGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AuthorizationProviderGetInput,
+  outputSchema: AuthorizationProviderGetOutput,
+}));
 // Input Schema
 export const AuthorizationProviderListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5974,7 +5874,7 @@ export type AuthorizationProviderListByServiceInput =
 
 // Output Schema
 export const AuthorizationProviderListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6002,13 +5902,13 @@ export type AuthorizationProviderListByServiceOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const AuthorizationProviderListByService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthorizationProviderListByServiceInput,
     outputSchema: AuthorizationProviderListByServiceOutput,
   }));
 // Input Schema
 export const AuthorizationServerCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     authsid: Schema.String.pipe(T.PathParam()),
@@ -6063,7 +5963,7 @@ export type AuthorizationServerCreateOrUpdateInput =
 
 // Output Schema
 export const AuthorizationServerCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6084,13 +5984,13 @@ export type AuthorizationServerCreateOrUpdateOutput =
  * @param properties - Properties of the External OAuth authorization server Contract.
  */
 export const AuthorizationServerCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthorizationServerCreateOrUpdateInput,
     outputSchema: AuthorizationServerCreateOrUpdateOutput,
   }));
 // Input Schema
 export const AuthorizationServerDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     authsid: Schema.String.pipe(T.PathParam()),
@@ -6106,8 +6006,7 @@ export type AuthorizationServerDeleteInput =
   typeof AuthorizationServerDeleteInput.Type;
 
 // Output Schema
-export const AuthorizationServerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const AuthorizationServerDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type AuthorizationServerDeleteOutput =
   typeof AuthorizationServerDeleteOutput.Type;
 
@@ -6122,15 +6021,13 @@ export type AuthorizationServerDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const AuthorizationServerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AuthorizationServerDeleteInput,
-    outputSchema: AuthorizationServerDeleteOutput,
-  }),
-);
+export const AuthorizationServerDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AuthorizationServerDeleteInput,
+  outputSchema: AuthorizationServerDeleteOutput,
+}));
 // Input Schema
 export const AuthorizationServerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     authsid: Schema.String.pipe(T.PathParam()),
@@ -6147,7 +6044,7 @@ export type AuthorizationServerGetInput =
 
 // Output Schema
 export const AuthorizationServerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6165,15 +6062,13 @@ export type AuthorizationServerGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const AuthorizationServerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AuthorizationServerGetInput,
-    outputSchema: AuthorizationServerGetOutput,
-  }),
-);
+export const AuthorizationServerGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AuthorizationServerGetInput,
+  outputSchema: AuthorizationServerGetOutput,
+}));
 // Input Schema
 export const AuthorizationServerListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6192,7 +6087,7 @@ export type AuthorizationServerListByServiceInput =
 
 // Output Schema
 export const AuthorizationServerListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6221,13 +6116,13 @@ export type AuthorizationServerListByServiceOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const AuthorizationServerListByService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthorizationServerListByServiceInput,
     outputSchema: AuthorizationServerListByServiceOutput,
   }));
 // Input Schema
 export const AuthorizationServerListSecretsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     authsid: Schema.String.pipe(T.PathParam()),
@@ -6244,7 +6139,7 @@ export type AuthorizationServerListSecretsInput =
 
 // Output Schema
 export const AuthorizationServerListSecretsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     clientSecret: Schema.optional(SensitiveString),
     resourceOwnerUsername: Schema.optional(Schema.String),
     resourceOwnerPassword: Schema.optional(SensitiveString),
@@ -6263,13 +6158,13 @@ export type AuthorizationServerListSecretsOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const AuthorizationServerListSecrets =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthorizationServerListSecretsInput,
     outputSchema: AuthorizationServerListSecretsOutput,
   }));
 // Input Schema
 export const AuthorizationServerUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     authsid: Schema.String.pipe(T.PathParam()),
@@ -6324,7 +6219,7 @@ export type AuthorizationServerUpdateInput =
 
 // Output Schema
 export const AuthorizationServerUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6344,15 +6239,13 @@ export type AuthorizationServerUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Properties of the External OAuth authorization server update Contract.
  */
-export const AuthorizationServerUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AuthorizationServerUpdateInput,
-    outputSchema: AuthorizationServerUpdateOutput,
-  }),
-);
+export const AuthorizationServerUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AuthorizationServerUpdateInput,
+  outputSchema: AuthorizationServerUpdateOutput,
+}));
 // Input Schema
 export const BackendCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     backendId: Schema.String.pipe(T.PathParam()),
@@ -6476,7 +6369,7 @@ export type BackendCreateOrUpdateInput = typeof BackendCreateOrUpdateInput.Type;
 
 // Output Schema
 export const BackendCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6496,14 +6389,12 @@ export type BackendCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Backend entity contract properties.
  */
-export const BackendCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BackendCreateOrUpdateInput,
-    outputSchema: BackendCreateOrUpdateOutput,
-  }),
-);
+export const BackendCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BackendCreateOrUpdateInput,
+  outputSchema: BackendCreateOrUpdateOutput,
+}));
 // Input Schema
-export const BackendDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BackendDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   backendId: Schema.String.pipe(T.PathParam()),
@@ -6518,7 +6409,7 @@ export const BackendDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type BackendDeleteInput = typeof BackendDeleteInput.Type;
 
 // Output Schema
-export const BackendDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const BackendDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type BackendDeleteOutput = typeof BackendDeleteOutput.Type;
 
 // The operation
@@ -6532,12 +6423,12 @@ export type BackendDeleteOutput = typeof BackendDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const BackendDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BackendDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: BackendDeleteInput,
   outputSchema: BackendDeleteOutput,
 }));
 // Input Schema
-export const BackendGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BackendGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   backendId: Schema.String.pipe(T.PathParam()),
@@ -6552,7 +6443,7 @@ export const BackendGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type BackendGetInput = typeof BackendGetInput.Type;
 
 // Output Schema
-export const BackendGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BackendGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6569,13 +6460,13 @@ export type BackendGetOutput = typeof BackendGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const BackendGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BackendGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: BackendGetInput,
   outputSchema: BackendGetOutput,
 }));
 // Input Schema
 export const BackendListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6593,7 +6484,7 @@ export type BackendListByServiceInput = typeof BackendListByServiceInput.Type;
 
 // Output Schema
 export const BackendListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6620,14 +6511,12 @@ export type BackendListByServiceOutput = typeof BackendListByServiceOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const BackendListByService = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BackendListByServiceInput,
-    outputSchema: BackendListByServiceOutput,
-  }),
-);
+export const BackendListByService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BackendListByServiceInput,
+  outputSchema: BackendListByServiceOutput,
+}));
 // Input Schema
-export const BackendReconnectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BackendReconnectInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   backendId: Schema.String.pipe(T.PathParam()),
@@ -6647,7 +6536,7 @@ export const BackendReconnectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type BackendReconnectInput = typeof BackendReconnectInput.Type;
 
 // Output Schema
-export const BackendReconnectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const BackendReconnectOutput = /*@__PURE__*/ Schema.Void;
 export type BackendReconnectOutput = typeof BackendReconnectOutput.Type;
 
 // The operation
@@ -6661,12 +6550,12 @@ export type BackendReconnectOutput = typeof BackendReconnectOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Reconnect request properties.
  */
-export const BackendReconnect = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BackendReconnect = /*@__PURE__*/ API.make(() => ({
   inputSchema: BackendReconnectInput,
   outputSchema: BackendReconnectOutput,
 }));
 // Input Schema
-export const BackendUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BackendUpdateInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   backendId: Schema.String.pipe(T.PathParam()),
@@ -6785,7 +6674,7 @@ export const BackendUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type BackendUpdateInput = typeof BackendUpdateInput.Type;
 
 // Output Schema
-export const BackendUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BackendUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6804,13 +6693,13 @@ export type BackendUpdateOutput = typeof BackendUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Backend entity update contract properties.
  */
-export const BackendUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BackendUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: BackendUpdateInput,
   outputSchema: BackendUpdateOutput,
 }));
 // Input Schema
 export const CacheCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     cacheId: Schema.String.pipe(T.PathParam()),
@@ -6834,7 +6723,7 @@ export type CacheCreateOrUpdateInput = typeof CacheCreateOrUpdateInput.Type;
 
 // Output Schema
 export const CacheCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6853,12 +6742,12 @@ export type CacheCreateOrUpdateOutput = typeof CacheCreateOrUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Cache properties details.
  */
-export const CacheCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CacheCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: CacheCreateOrUpdateInput,
   outputSchema: CacheCreateOrUpdateOutput,
 }));
 // Input Schema
-export const CacheDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CacheDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   cacheId: Schema.String.pipe(T.PathParam()),
@@ -6873,7 +6762,7 @@ export const CacheDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CacheDeleteInput = typeof CacheDeleteInput.Type;
 
 // Output Schema
-export const CacheDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CacheDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type CacheDeleteOutput = typeof CacheDeleteOutput.Type;
 
 // The operation
@@ -6887,12 +6776,12 @@ export type CacheDeleteOutput = typeof CacheDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const CacheDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CacheDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: CacheDeleteInput,
   outputSchema: CacheDeleteOutput,
 }));
 // Input Schema
-export const CacheGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CacheGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   cacheId: Schema.String.pipe(T.PathParam()),
@@ -6907,7 +6796,7 @@ export const CacheGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CacheGetInput = typeof CacheGetInput.Type;
 
 // Output Schema
-export const CacheGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CacheGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6924,13 +6813,13 @@ export type CacheGetOutput = typeof CacheGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const CacheGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CacheGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: CacheGetInput,
   outputSchema: CacheGetOutput,
 }));
 // Input Schema
 export const CacheListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6947,7 +6836,7 @@ export type CacheListByServiceInput = typeof CacheListByServiceInput.Type;
 
 // Output Schema
 export const CacheListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6973,12 +6862,12 @@ export type CacheListByServiceOutput = typeof CacheListByServiceOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const CacheListByService = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CacheListByService = /*@__PURE__*/ API.make(() => ({
   inputSchema: CacheListByServiceInput,
   outputSchema: CacheListByServiceOutput,
 }));
 // Input Schema
-export const CacheUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CacheUpdateInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   cacheId: Schema.String.pipe(T.PathParam()),
@@ -7001,7 +6890,7 @@ export const CacheUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CacheUpdateInput = typeof CacheUpdateInput.Type;
 
 // Output Schema
-export const CacheUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CacheUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -7020,13 +6909,13 @@ export type CacheUpdateOutput = typeof CacheUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Cache update properties details.
  */
-export const CacheUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CacheUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: CacheUpdateInput,
   outputSchema: CacheUpdateOutput,
 }));
 // Input Schema
 export const CertificateCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     certificateId: Schema.String.pipe(T.PathParam()),
@@ -7055,7 +6944,7 @@ export type CertificateCreateOrUpdateInput =
 
 // Output Schema
 export const CertificateCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7075,22 +6964,18 @@ export type CertificateCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Certificate create or update properties details.
  */
-export const CertificateCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CertificateCreateOrUpdateInput,
-    outputSchema: CertificateCreateOrUpdateOutput,
-  }),
-);
+export const CertificateCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CertificateCreateOrUpdateInput,
+  outputSchema: CertificateCreateOrUpdateOutput,
+}));
 // Input Schema
-export const CertificateDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    serviceName: Schema.String.pipe(T.PathParam()),
-    certificateId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const CertificateDeleteInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  certificateId: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/certificates/{certificateId}",
@@ -7099,7 +6984,7 @@ export const CertificateDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type CertificateDeleteInput = typeof CertificateDeleteInput.Type;
 
 // Output Schema
-export const CertificateDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const CertificateDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type CertificateDeleteOutput = typeof CertificateDeleteOutput.Type;
 
 // The operation
@@ -7113,12 +6998,12 @@ export type CertificateDeleteOutput = typeof CertificateDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const CertificateDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CertificateDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: CertificateDeleteInput,
   outputSchema: CertificateDeleteOutput,
 }));
 // Input Schema
-export const CertificateGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CertificateGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   certificateId: Schema.String.pipe(T.PathParam()),
@@ -7133,7 +7018,7 @@ export const CertificateGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CertificateGetInput = typeof CertificateGetInput.Type;
 
 // Output Schema
-export const CertificateGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CertificateGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -7150,13 +7035,13 @@ export type CertificateGetOutput = typeof CertificateGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const CertificateGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CertificateGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: CertificateGetInput,
   outputSchema: CertificateGetOutput,
 }));
 // Input Schema
 export const CertificateListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7176,7 +7061,7 @@ export type CertificateListByServiceInput =
 
 // Output Schema
 export const CertificateListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -7205,15 +7090,13 @@ export type CertificateListByServiceOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const CertificateListByService = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CertificateListByServiceInput,
-    outputSchema: CertificateListByServiceOutput,
-  }),
-);
+export const CertificateListByService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CertificateListByServiceInput,
+  outputSchema: CertificateListByServiceOutput,
+}));
 // Input Schema
 export const CertificateRefreshSecretInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     certificateId: Schema.String.pipe(T.PathParam()),
@@ -7230,7 +7113,7 @@ export type CertificateRefreshSecretInput =
 
 // Output Schema
 export const CertificateRefreshSecretOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7248,15 +7131,13 @@ export type CertificateRefreshSecretOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const CertificateRefreshSecret = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CertificateRefreshSecretInput,
-    outputSchema: CertificateRefreshSecretOutput,
-  }),
-);
+export const CertificateRefreshSecret = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CertificateRefreshSecretInput,
+  outputSchema: CertificateRefreshSecretOutput,
+}));
 // Input Schema
 export const ContentItemCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     contentTypeId: Schema.String.pipe(T.PathParam()),
@@ -7275,7 +7156,7 @@ export type ContentItemCreateOrUpdateInput =
 
 // Output Schema
 export const ContentItemCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7296,23 +7177,19 @@ export type ContentItemCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Properties of the content item.
  */
-export const ContentItemCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ContentItemCreateOrUpdateInput,
-    outputSchema: ContentItemCreateOrUpdateOutput,
-  }),
-);
+export const ContentItemCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ContentItemCreateOrUpdateInput,
+  outputSchema: ContentItemCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ContentItemDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    serviceName: Schema.String.pipe(T.PathParam()),
-    contentTypeId: Schema.String.pipe(T.PathParam()),
-    contentItemId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const ContentItemDeleteInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  contentTypeId: Schema.String.pipe(T.PathParam()),
+  contentItemId: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/contentTypes/{contentTypeId}/contentItems/{contentItemId}",
@@ -7321,7 +7198,7 @@ export const ContentItemDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ContentItemDeleteInput = typeof ContentItemDeleteInput.Type;
 
 // Output Schema
-export const ContentItemDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ContentItemDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ContentItemDeleteOutput = typeof ContentItemDeleteOutput.Type;
 
 // The operation
@@ -7336,12 +7213,12 @@ export type ContentItemDeleteOutput = typeof ContentItemDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ContentItemDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ContentItemDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ContentItemDeleteInput,
   outputSchema: ContentItemDeleteOutput,
 }));
 // Input Schema
-export const ContentItemGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ContentItemGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   contentTypeId: Schema.String.pipe(T.PathParam()),
@@ -7357,7 +7234,7 @@ export const ContentItemGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ContentItemGetInput = typeof ContentItemGetInput.Type;
 
 // Output Schema
-export const ContentItemGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ContentItemGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -7375,13 +7252,13 @@ export type ContentItemGetOutput = typeof ContentItemGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ContentItemGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ContentItemGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ContentItemGetInput,
   outputSchema: ContentItemGetOutput,
 }));
 // Input Schema
 export const ContentItemListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     contentTypeId: Schema.String.pipe(T.PathParam()),
@@ -7398,7 +7275,7 @@ export type ContentItemListByServiceInput =
 
 // Output Schema
 export const ContentItemListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -7423,15 +7300,13 @@ export type ContentItemListByServiceOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ContentItemListByService = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ContentItemListByServiceInput,
-    outputSchema: ContentItemListByServiceOutput,
-  }),
-);
+export const ContentItemListByService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ContentItemListByServiceInput,
+  outputSchema: ContentItemListByServiceOutput,
+}));
 // Input Schema
 export const ContentTypeCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     contentTypeId: Schema.String.pipe(T.PathParam()),
@@ -7457,7 +7332,7 @@ export type ContentTypeCreateOrUpdateInput =
 
 // Output Schema
 export const ContentTypeCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7477,22 +7352,18 @@ export type ContentTypeCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Properties of the content type.
  */
-export const ContentTypeCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ContentTypeCreateOrUpdateInput,
-    outputSchema: ContentTypeCreateOrUpdateOutput,
-  }),
-);
+export const ContentTypeCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ContentTypeCreateOrUpdateInput,
+  outputSchema: ContentTypeCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ContentTypeDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    serviceName: Schema.String.pipe(T.PathParam()),
-    contentTypeId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const ContentTypeDeleteInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  contentTypeId: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/contentTypes/{contentTypeId}",
@@ -7501,7 +7372,7 @@ export const ContentTypeDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ContentTypeDeleteInput = typeof ContentTypeDeleteInput.Type;
 
 // Output Schema
-export const ContentTypeDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ContentTypeDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ContentTypeDeleteOutput = typeof ContentTypeDeleteOutput.Type;
 
 // The operation
@@ -7515,12 +7386,12 @@ export type ContentTypeDeleteOutput = typeof ContentTypeDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ContentTypeDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ContentTypeDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ContentTypeDeleteInput,
   outputSchema: ContentTypeDeleteOutput,
 }));
 // Input Schema
-export const ContentTypeGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ContentTypeGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   contentTypeId: Schema.String.pipe(T.PathParam()),
@@ -7535,7 +7406,7 @@ export const ContentTypeGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ContentTypeGetInput = typeof ContentTypeGetInput.Type;
 
 // Output Schema
-export const ContentTypeGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ContentTypeGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -7552,13 +7423,13 @@ export type ContentTypeGetOutput = typeof ContentTypeGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ContentTypeGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ContentTypeGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ContentTypeGetInput,
   outputSchema: ContentTypeGetOutput,
 }));
 // Input Schema
 export const ContentTypeListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7574,7 +7445,7 @@ export type ContentTypeListByServiceInput =
 
 // Output Schema
 export const ContentTypeListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -7598,15 +7469,13 @@ export type ContentTypeListByServiceOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ContentTypeListByService = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ContentTypeListByServiceInput,
-    outputSchema: ContentTypeListByServiceOutput,
-  }),
-);
+export const ContentTypeListByService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ContentTypeListByServiceInput,
+  outputSchema: ContentTypeListByServiceOutput,
+}));
 // Input Schema
 export const DeletedServicesGetByNameInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
@@ -7622,7 +7491,7 @@ export type DeletedServicesGetByNameInput =
 
 // Output Schema
 export const DeletedServicesGetByNameOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7639,15 +7508,13 @@ export type DeletedServicesGetByNameOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param location - The location of the deleted API Management service.
  */
-export const DeletedServicesGetByName = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeletedServicesGetByNameInput,
-    outputSchema: DeletedServicesGetByNameOutput,
-  }),
-);
+export const DeletedServicesGetByName = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeletedServicesGetByNameInput,
+  outputSchema: DeletedServicesGetByNameOutput,
+}));
 // Input Schema
 export const DeletedServicesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -7661,7 +7528,7 @@ export type DeletedServicesListBySubscriptionInput =
 
 // Output Schema
 export const DeletedServicesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -7684,13 +7551,13 @@ export type DeletedServicesListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const DeletedServicesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeletedServicesListBySubscriptionInput,
     outputSchema: DeletedServicesListBySubscriptionOutput,
   }));
 // Input Schema
 export const DeletedServicesPurgeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
@@ -7704,8 +7571,7 @@ export const DeletedServicesPurgeInput =
 export type DeletedServicesPurgeInput = typeof DeletedServicesPurgeInput.Type;
 
 // Output Schema
-export const DeletedServicesPurgeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeletedServicesPurgeOutput = /*@__PURE__*/ Schema.Void;
 export type DeletedServicesPurgeOutput = typeof DeletedServicesPurgeOutput.Type;
 
 // The operation
@@ -7717,15 +7583,13 @@ export type DeletedServicesPurgeOutput = typeof DeletedServicesPurgeOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param location - The location of the deleted API Management service.
  */
-export const DeletedServicesPurge = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeletedServicesPurgeInput,
-    outputSchema: DeletedServicesPurgeOutput,
-  }),
-);
+export const DeletedServicesPurge = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeletedServicesPurgeInput,
+  outputSchema: DeletedServicesPurgeOutput,
+}));
 // Input Schema
 export const DiagnosticCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     diagnosticId: Schema.String.pipe(T.PathParam()),
@@ -7907,7 +7771,7 @@ export type DiagnosticCreateOrUpdateInput =
 
 // Output Schema
 export const DiagnosticCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7927,14 +7791,12 @@ export type DiagnosticCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Diagnostic entity contract properties.
  */
-export const DiagnosticCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DiagnosticCreateOrUpdateInput,
-    outputSchema: DiagnosticCreateOrUpdateOutput,
-  }),
-);
+export const DiagnosticCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DiagnosticCreateOrUpdateInput,
+  outputSchema: DiagnosticCreateOrUpdateOutput,
+}));
 // Input Schema
-export const DiagnosticDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DiagnosticDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   diagnosticId: Schema.String.pipe(T.PathParam()),
@@ -7949,7 +7811,7 @@ export const DiagnosticDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DiagnosticDeleteInput = typeof DiagnosticDeleteInput.Type;
 
 // Output Schema
-export const DiagnosticDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DiagnosticDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type DiagnosticDeleteOutput = typeof DiagnosticDeleteOutput.Type;
 
 // The operation
@@ -7963,12 +7825,12 @@ export type DiagnosticDeleteOutput = typeof DiagnosticDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const DiagnosticDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DiagnosticDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DiagnosticDeleteInput,
   outputSchema: DiagnosticDeleteOutput,
 }));
 // Input Schema
-export const DiagnosticGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DiagnosticGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   diagnosticId: Schema.String.pipe(T.PathParam()),
@@ -7983,7 +7845,7 @@ export const DiagnosticGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DiagnosticGetInput = typeof DiagnosticGetInput.Type;
 
 // Output Schema
-export const DiagnosticGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DiagnosticGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -8000,13 +7862,13 @@ export type DiagnosticGetOutput = typeof DiagnosticGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const DiagnosticGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DiagnosticGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DiagnosticGetInput,
   outputSchema: DiagnosticGetOutput,
 }));
 // Input Schema
 export const DiagnosticListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8025,7 +7887,7 @@ export type DiagnosticListByServiceInput =
 
 // Output Schema
 export const DiagnosticListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -8053,14 +7915,12 @@ export type DiagnosticListByServiceOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const DiagnosticListByService = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DiagnosticListByServiceInput,
-    outputSchema: DiagnosticListByServiceOutput,
-  }),
-);
+export const DiagnosticListByService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DiagnosticListByServiceInput,
+  outputSchema: DiagnosticListByServiceOutput,
+}));
 // Input Schema
-export const DiagnosticUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DiagnosticUpdateInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   diagnosticId: Schema.String.pipe(T.PathParam()),
@@ -8240,13 +8100,11 @@ export const DiagnosticUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DiagnosticUpdateInput = typeof DiagnosticUpdateInput.Type;
 
 // Output Schema
-export const DiagnosticUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  },
-);
+export const DiagnosticUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type DiagnosticUpdateOutput = typeof DiagnosticUpdateOutput.Type;
 
 // The operation
@@ -8261,13 +8119,13 @@ export type DiagnosticUpdateOutput = typeof DiagnosticUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Diagnostic entity contract properties.
  */
-export const DiagnosticUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DiagnosticUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DiagnosticUpdateInput,
   outputSchema: DiagnosticUpdateOutput,
 }));
 // Input Schema
 export const DocumentationCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     documentationId: Schema.String.pipe(T.PathParam()),
@@ -8290,7 +8148,7 @@ export type DocumentationCreateOrUpdateInput =
 
 // Output Schema
 export const DocumentationCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8310,15 +8168,13 @@ export type DocumentationCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Markdown Documentation details.
  */
-export const DocumentationCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DocumentationCreateOrUpdateInput,
-    outputSchema: DocumentationCreateOrUpdateOutput,
-  }),
-);
+export const DocumentationCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DocumentationCreateOrUpdateInput,
+  outputSchema: DocumentationCreateOrUpdateOutput,
+}));
 // Input Schema
 export const DocumentationDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     documentationId: Schema.String.pipe(T.PathParam()),
@@ -8333,8 +8189,7 @@ export const DocumentationDeleteInput =
 export type DocumentationDeleteInput = typeof DocumentationDeleteInput.Type;
 
 // Output Schema
-export const DocumentationDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DocumentationDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type DocumentationDeleteOutput = typeof DocumentationDeleteOutput.Type;
 
 // The operation
@@ -8348,12 +8203,12 @@ export type DocumentationDeleteOutput = typeof DocumentationDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const DocumentationDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DocumentationDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DocumentationDeleteInput,
   outputSchema: DocumentationDeleteOutput,
 }));
 // Input Schema
-export const DocumentationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DocumentationGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   documentationId: Schema.String.pipe(T.PathParam()),
@@ -8368,13 +8223,11 @@ export const DocumentationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DocumentationGetInput = typeof DocumentationGetInput.Type;
 
 // Output Schema
-export const DocumentationGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  },
-);
+export const DocumentationGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type DocumentationGetOutput = typeof DocumentationGetOutput.Type;
 
 // The operation
@@ -8387,13 +8240,13 @@ export type DocumentationGetOutput = typeof DocumentationGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const DocumentationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DocumentationGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DocumentationGetInput,
   outputSchema: DocumentationGetOutput,
 }));
 // Input Schema
 export const DocumentationListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8412,7 +8265,7 @@ export type DocumentationListByServiceInput =
 
 // Output Schema
 export const DocumentationListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -8439,15 +8292,13 @@ export type DocumentationListByServiceOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const DocumentationListByService = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DocumentationListByServiceInput,
-    outputSchema: DocumentationListByServiceOutput,
-  }),
-);
+export const DocumentationListByService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DocumentationListByServiceInput,
+  outputSchema: DocumentationListByServiceOutput,
+}));
 // Input Schema
 export const DocumentationUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     documentationId: Schema.String.pipe(T.PathParam()),
@@ -8469,7 +8320,7 @@ export type DocumentationUpdateInput = typeof DocumentationUpdateInput.Type;
 
 // Output Schema
 export const DocumentationUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8488,13 +8339,13 @@ export type DocumentationUpdateOutput = typeof DocumentationUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Markdown Documentation details.
  */
-export const DocumentationUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DocumentationUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DocumentationUpdateInput,
   outputSchema: DocumentationUpdateOutput,
 }));
 // Input Schema
 export const EmailTemplateCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     templateName: Schema.Literals([
@@ -8543,7 +8394,7 @@ export type EmailTemplateCreateOrUpdateInput =
 
 // Output Schema
 export const EmailTemplateCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8563,15 +8414,13 @@ export type EmailTemplateCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Email Template Update contract properties.
  */
-export const EmailTemplateCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EmailTemplateCreateOrUpdateInput,
-    outputSchema: EmailTemplateCreateOrUpdateOutput,
-  }),
-);
+export const EmailTemplateCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EmailTemplateCreateOrUpdateInput,
+  outputSchema: EmailTemplateCreateOrUpdateOutput,
+}));
 // Input Schema
 export const EmailTemplateDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     templateName: Schema.Literals([
@@ -8601,8 +8450,7 @@ export const EmailTemplateDeleteInput =
 export type EmailTemplateDeleteInput = typeof EmailTemplateDeleteInput.Type;
 
 // Output Schema
-export const EmailTemplateDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const EmailTemplateDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type EmailTemplateDeleteOutput = typeof EmailTemplateDeleteOutput.Type;
 
 // The operation
@@ -8616,12 +8464,12 @@ export type EmailTemplateDeleteOutput = typeof EmailTemplateDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const EmailTemplateDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EmailTemplateDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: EmailTemplateDeleteInput,
   outputSchema: EmailTemplateDeleteOutput,
 }));
 // Input Schema
-export const EmailTemplateGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EmailTemplateGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   templateName: Schema.Literals([
@@ -8651,13 +8499,11 @@ export const EmailTemplateGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type EmailTemplateGetInput = typeof EmailTemplateGetInput.Type;
 
 // Output Schema
-export const EmailTemplateGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  },
-);
+export const EmailTemplateGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type EmailTemplateGetOutput = typeof EmailTemplateGetOutput.Type;
 
 // The operation
@@ -8670,13 +8516,13 @@ export type EmailTemplateGetOutput = typeof EmailTemplateGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const EmailTemplateGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EmailTemplateGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: EmailTemplateGetInput,
   outputSchema: EmailTemplateGetOutput,
 }));
 // Input Schema
 export const EmailTemplateListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8695,7 +8541,7 @@ export type EmailTemplateListByServiceInput =
 
 // Output Schema
 export const EmailTemplateListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -8723,15 +8569,13 @@ export type EmailTemplateListByServiceOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const EmailTemplateListByService = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EmailTemplateListByServiceInput,
-    outputSchema: EmailTemplateListByServiceOutput,
-  }),
-);
+export const EmailTemplateListByService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EmailTemplateListByServiceInput,
+  outputSchema: EmailTemplateListByServiceOutput,
+}));
 // Input Schema
 export const EmailTemplateUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     templateName: Schema.Literals([
@@ -8779,7 +8623,7 @@ export type EmailTemplateUpdateInput = typeof EmailTemplateUpdateInput.Type;
 
 // Output Schema
 export const EmailTemplateUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8798,13 +8642,13 @@ export type EmailTemplateUpdateOutput = typeof EmailTemplateUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Email Template Update contract properties.
  */
-export const EmailTemplateUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EmailTemplateUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: EmailTemplateUpdateInput,
   outputSchema: EmailTemplateUpdateOutput,
 }));
 // Input Schema
 export const GatewayApiCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     gatewayId: Schema.String.pipe(T.PathParam()),
@@ -8827,7 +8671,7 @@ export type GatewayApiCreateOrUpdateInput =
 
 // Output Schema
 export const GatewayApiCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8847,14 +8691,12 @@ export type GatewayApiCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Association entity contract properties.
  */
-export const GatewayApiCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GatewayApiCreateOrUpdateInput,
-    outputSchema: GatewayApiCreateOrUpdateOutput,
-  }),
-);
+export const GatewayApiCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GatewayApiCreateOrUpdateInput,
+  outputSchema: GatewayApiCreateOrUpdateOutput,
+}));
 // Input Schema
-export const GatewayApiDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GatewayApiDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   gatewayId: Schema.String.pipe(T.PathParam()),
@@ -8870,7 +8712,7 @@ export const GatewayApiDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GatewayApiDeleteInput = typeof GatewayApiDeleteInput.Type;
 
 // Output Schema
-export const GatewayApiDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GatewayApiDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type GatewayApiDeleteOutput = typeof GatewayApiDeleteOutput.Type;
 
 // The operation
@@ -8884,13 +8726,13 @@ export type GatewayApiDeleteOutput = typeof GatewayApiDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const GatewayApiDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GatewayApiDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: GatewayApiDeleteInput,
   outputSchema: GatewayApiDeleteOutput,
 }));
 // Input Schema
 export const GatewayApiListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     gatewayId: Schema.String.pipe(T.PathParam()),
@@ -8910,7 +8752,7 @@ export type GatewayApiListByServiceInput =
 
 // Output Schema
 export const GatewayApiListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -8939,15 +8781,13 @@ export type GatewayApiListByServiceOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const GatewayApiListByService = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GatewayApiListByServiceInput,
-    outputSchema: GatewayApiListByServiceOutput,
-  }),
-);
+export const GatewayApiListByService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GatewayApiListByServiceInput,
+  outputSchema: GatewayApiListByServiceOutput,
+}));
 // Input Schema
 export const GatewayCertificateAuthorityCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     gatewayId: Schema.String.pipe(T.PathParam()),
@@ -8970,7 +8810,7 @@ export type GatewayCertificateAuthorityCreateOrUpdateInput =
 
 // Output Schema
 export const GatewayCertificateAuthorityCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8992,13 +8832,13 @@ export type GatewayCertificateAuthorityCreateOrUpdateOutput =
  * @param properties - Gateway certificate authority details.
  */
 export const GatewayCertificateAuthorityCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GatewayCertificateAuthorityCreateOrUpdateInput,
     outputSchema: GatewayCertificateAuthorityCreateOrUpdateOutput,
   }));
 // Input Schema
 export const GatewayCertificateAuthorityDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     gatewayId: Schema.String.pipe(T.PathParam()),
@@ -9016,7 +8856,7 @@ export type GatewayCertificateAuthorityDeleteInput =
 
 // Output Schema
 export const GatewayCertificateAuthorityDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type GatewayCertificateAuthorityDeleteOutput =
   typeof GatewayCertificateAuthorityDeleteOutput.Type;
 
@@ -9033,13 +8873,13 @@ export type GatewayCertificateAuthorityDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const GatewayCertificateAuthorityDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GatewayCertificateAuthorityDeleteInput,
     outputSchema: GatewayCertificateAuthorityDeleteOutput,
   }));
 // Input Schema
 export const GatewayCertificateAuthorityGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     gatewayId: Schema.String.pipe(T.PathParam()),
@@ -9057,7 +8897,7 @@ export type GatewayCertificateAuthorityGetInput =
 
 // Output Schema
 export const GatewayCertificateAuthorityGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9077,13 +8917,13 @@ export type GatewayCertificateAuthorityGetOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const GatewayCertificateAuthorityGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GatewayCertificateAuthorityGetInput,
     outputSchema: GatewayCertificateAuthorityGetOutput,
   }));
 // Input Schema
 export const GatewayCertificateAuthorityListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     gatewayId: Schema.String.pipe(T.PathParam()),
@@ -9103,7 +8943,7 @@ export type GatewayCertificateAuthorityListByServiceInput =
 
 // Output Schema
 export const GatewayCertificateAuthorityListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -9132,13 +8972,13 @@ export type GatewayCertificateAuthorityListByServiceOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const GatewayCertificateAuthorityListByService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GatewayCertificateAuthorityListByServiceInput,
     outputSchema: GatewayCertificateAuthorityListByServiceOutput,
   }));
 // Input Schema
 export const GatewayCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     gatewayId: Schema.String.pipe(T.PathParam()),
@@ -9167,7 +9007,7 @@ export type GatewayCreateOrUpdateInput = typeof GatewayCreateOrUpdateInput.Type;
 
 // Output Schema
 export const GatewayCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9187,14 +9027,12 @@ export type GatewayCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Gateway details.
  */
-export const GatewayCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GatewayCreateOrUpdateInput,
-    outputSchema: GatewayCreateOrUpdateOutput,
-  }),
-);
+export const GatewayCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GatewayCreateOrUpdateInput,
+  outputSchema: GatewayCreateOrUpdateOutput,
+}));
 // Input Schema
-export const GatewayDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GatewayDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   gatewayId: Schema.String.pipe(T.PathParam()),
@@ -9209,7 +9047,7 @@ export const GatewayDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GatewayDeleteInput = typeof GatewayDeleteInput.Type;
 
 // Output Schema
-export const GatewayDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GatewayDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type GatewayDeleteOutput = typeof GatewayDeleteOutput.Type;
 
 // The operation
@@ -9223,13 +9061,13 @@ export type GatewayDeleteOutput = typeof GatewayDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const GatewayDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GatewayDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: GatewayDeleteInput,
   outputSchema: GatewayDeleteOutput,
 }));
 // Input Schema
 export const GatewayGenerateTokenInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     gatewayId: Schema.String.pipe(T.PathParam()),
@@ -9247,7 +9085,7 @@ export type GatewayGenerateTokenInput = typeof GatewayGenerateTokenInput.Type;
 
 // Output Schema
 export const GatewayGenerateTokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   });
 export type GatewayGenerateTokenOutput = typeof GatewayGenerateTokenOutput.Type;
@@ -9265,14 +9103,12 @@ export type GatewayGenerateTokenOutput = typeof GatewayGenerateTokenOutput.Type;
  * @param expiry - The Expiry time of the Token. Maximum token expiry time is set to 30 days. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
 
  */
-export const GatewayGenerateToken = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GatewayGenerateTokenInput,
-    outputSchema: GatewayGenerateTokenOutput,
-  }),
-);
+export const GatewayGenerateToken = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GatewayGenerateTokenInput,
+  outputSchema: GatewayGenerateTokenOutput,
+}));
 // Input Schema
-export const GatewayGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GatewayGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   gatewayId: Schema.String.pipe(T.PathParam()),
@@ -9287,7 +9123,7 @@ export const GatewayGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GatewayGetInput = typeof GatewayGetInput.Type;
 
 // Output Schema
-export const GatewayGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GatewayGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -9304,13 +9140,13 @@ export type GatewayGetOutput = typeof GatewayGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const GatewayGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GatewayGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: GatewayGetInput,
   outputSchema: GatewayGetOutput,
 }));
 // Input Schema
 export const GatewayHostnameConfigurationCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     gatewayId: Schema.String.pipe(T.PathParam()),
@@ -9338,7 +9174,7 @@ export type GatewayHostnameConfigurationCreateOrUpdateInput =
 
 // Output Schema
 export const GatewayHostnameConfigurationCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9360,13 +9196,13 @@ export type GatewayHostnameConfigurationCreateOrUpdateOutput =
  * @param properties - Gateway hostname configuration details.
  */
 export const GatewayHostnameConfigurationCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GatewayHostnameConfigurationCreateOrUpdateInput,
     outputSchema: GatewayHostnameConfigurationCreateOrUpdateOutput,
   }));
 // Input Schema
 export const GatewayHostnameConfigurationDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     gatewayId: Schema.String.pipe(T.PathParam()),
@@ -9384,7 +9220,7 @@ export type GatewayHostnameConfigurationDeleteInput =
 
 // Output Schema
 export const GatewayHostnameConfigurationDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type GatewayHostnameConfigurationDeleteOutput =
   typeof GatewayHostnameConfigurationDeleteOutput.Type;
 
@@ -9401,13 +9237,13 @@ export type GatewayHostnameConfigurationDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const GatewayHostnameConfigurationDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GatewayHostnameConfigurationDeleteInput,
     outputSchema: GatewayHostnameConfigurationDeleteOutput,
   }));
 // Input Schema
 export const GatewayHostnameConfigurationGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     gatewayId: Schema.String.pipe(T.PathParam()),
@@ -9425,7 +9261,7 @@ export type GatewayHostnameConfigurationGetInput =
 
 // Output Schema
 export const GatewayHostnameConfigurationGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9445,13 +9281,13 @@ export type GatewayHostnameConfigurationGetOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const GatewayHostnameConfigurationGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GatewayHostnameConfigurationGetInput,
     outputSchema: GatewayHostnameConfigurationGetOutput,
   }));
 // Input Schema
 export const GatewayHostnameConfigurationListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     gatewayId: Schema.String.pipe(T.PathParam()),
@@ -9471,7 +9307,7 @@ export type GatewayHostnameConfigurationListByServiceInput =
 
 // Output Schema
 export const GatewayHostnameConfigurationListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -9500,13 +9336,13 @@ export type GatewayHostnameConfigurationListByServiceOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const GatewayHostnameConfigurationListByService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GatewayHostnameConfigurationListByServiceInput,
     outputSchema: GatewayHostnameConfigurationListByServiceOutput,
   }));
 // Input Schema
 export const GatewayInvalidateDebugCredentialsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -9523,7 +9359,7 @@ export type GatewayInvalidateDebugCredentialsInput =
 
 // Output Schema
 export const GatewayInvalidateDebugCredentialsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type GatewayInvalidateDebugCredentialsOutput =
   typeof GatewayInvalidateDebugCredentialsOutput.Type;
 
@@ -9538,13 +9374,13 @@ export type GatewayInvalidateDebugCredentialsOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const GatewayInvalidateDebugCredentials =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GatewayInvalidateDebugCredentialsInput,
     outputSchema: GatewayInvalidateDebugCredentialsOutput,
   }));
 // Input Schema
 export const GatewayListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9562,7 +9398,7 @@ export type GatewayListByServiceInput = typeof GatewayListByServiceInput.Type;
 
 // Output Schema
 export const GatewayListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -9589,15 +9425,13 @@ export type GatewayListByServiceOutput = typeof GatewayListByServiceOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const GatewayListByService = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GatewayListByServiceInput,
-    outputSchema: GatewayListByServiceOutput,
-  }),
-);
+export const GatewayListByService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GatewayListByServiceInput,
+  outputSchema: GatewayListByServiceOutput,
+}));
 // Input Schema
 export const GatewayListDebugCredentialsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -9617,7 +9451,7 @@ export type GatewayListDebugCredentialsInput =
 
 // Output Schema
 export const GatewayListDebugCredentialsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     token: Schema.optional(Schema.String),
   });
 export type GatewayListDebugCredentialsOutput =
@@ -9636,14 +9470,12 @@ export type GatewayListDebugCredentialsOutput =
  * @param purposes - Purposes of debug credential.
  * @param apiId - Full resource Id of an API.
  */
-export const GatewayListDebugCredentials = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GatewayListDebugCredentialsInput,
-    outputSchema: GatewayListDebugCredentialsOutput,
-  }),
-);
+export const GatewayListDebugCredentials = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GatewayListDebugCredentialsInput,
+  outputSchema: GatewayListDebugCredentialsOutput,
+}));
 // Input Schema
-export const GatewayListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GatewayListKeysInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   gatewayId: Schema.String.pipe(T.PathParam()),
@@ -9658,7 +9490,7 @@ export const GatewayListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GatewayListKeysInput = typeof GatewayListKeysInput.Type;
 
 // Output Schema
-export const GatewayListKeysOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GatewayListKeysOutput = /*@__PURE__*/ Schema.Struct({
   primary: Schema.optional(Schema.String),
   secondary: Schema.optional(Schema.String),
 });
@@ -9674,12 +9506,12 @@ export type GatewayListKeysOutput = typeof GatewayListKeysOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const GatewayListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GatewayListKeys = /*@__PURE__*/ API.make(() => ({
   inputSchema: GatewayListKeysInput,
   outputSchema: GatewayListKeysOutput,
 }));
 // Input Schema
-export const GatewayListTraceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GatewayListTraceInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
@@ -9695,9 +9527,7 @@ export const GatewayListTraceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GatewayListTraceInput = typeof GatewayListTraceInput.Type;
 
 // Output Schema
-export const GatewayListTraceOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-);
+export const GatewayListTraceOutput = /*@__PURE__*/ Schema.Struct({});
 export type GatewayListTraceOutput = typeof GatewayListTraceOutput.Type;
 
 // The operation
@@ -9711,13 +9541,13 @@ export type GatewayListTraceOutput = typeof GatewayListTraceOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param traceId - Trace id.
  */
-export const GatewayListTrace = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GatewayListTrace = /*@__PURE__*/ API.make(() => ({
   inputSchema: GatewayListTraceInput,
   outputSchema: GatewayListTraceOutput,
 }));
 // Input Schema
 export const GatewayRegenerateKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     gatewayId: Schema.String.pipe(T.PathParam()),
@@ -9733,8 +9563,7 @@ export const GatewayRegenerateKeyInput =
 export type GatewayRegenerateKeyInput = typeof GatewayRegenerateKeyInput.Type;
 
 // Output Schema
-export const GatewayRegenerateKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GatewayRegenerateKeyOutput = /*@__PURE__*/ Schema.Void;
 export type GatewayRegenerateKeyOutput = typeof GatewayRegenerateKeyOutput.Type;
 
 // The operation
@@ -9748,14 +9577,12 @@ export type GatewayRegenerateKeyOutput = typeof GatewayRegenerateKeyOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param keyType - The Key being regenerated.
  */
-export const GatewayRegenerateKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GatewayRegenerateKeyInput,
-    outputSchema: GatewayRegenerateKeyOutput,
-  }),
-);
+export const GatewayRegenerateKey = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GatewayRegenerateKeyInput,
+  outputSchema: GatewayRegenerateKeyOutput,
+}));
 // Input Schema
-export const GatewayUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GatewayUpdateInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   gatewayId: Schema.String.pipe(T.PathParam()),
@@ -9783,7 +9610,7 @@ export const GatewayUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GatewayUpdateInput = typeof GatewayUpdateInput.Type;
 
 // Output Schema
-export const GatewayUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GatewayUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -9802,13 +9629,13 @@ export type GatewayUpdateOutput = typeof GatewayUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Gateway details.
  */
-export const GatewayUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GatewayUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: GatewayUpdateInput,
   outputSchema: GatewayUpdateOutput,
 }));
 // Input Schema
 export const GlobalSchemaCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     schemaId: Schema.String.pipe(T.PathParam()),
@@ -9834,7 +9661,7 @@ export type GlobalSchemaCreateOrUpdateInput =
 
 // Output Schema
 export const GlobalSchemaCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9854,15 +9681,13 @@ export type GlobalSchemaCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Properties of the Global Schema.
  */
-export const GlobalSchemaCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GlobalSchemaCreateOrUpdateInput,
-    outputSchema: GlobalSchemaCreateOrUpdateOutput,
-  }),
-);
+export const GlobalSchemaCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GlobalSchemaCreateOrUpdateInput,
+  outputSchema: GlobalSchemaCreateOrUpdateOutput,
+}));
 // Input Schema
 export const GlobalSchemaDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     schemaId: Schema.String.pipe(T.PathParam()),
@@ -9877,7 +9702,7 @@ export const GlobalSchemaDeleteInput =
 export type GlobalSchemaDeleteInput = typeof GlobalSchemaDeleteInput.Type;
 
 // Output Schema
-export const GlobalSchemaDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GlobalSchemaDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type GlobalSchemaDeleteOutput = typeof GlobalSchemaDeleteOutput.Type;
 
 // The operation
@@ -9891,12 +9716,12 @@ export type GlobalSchemaDeleteOutput = typeof GlobalSchemaDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const GlobalSchemaDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GlobalSchemaDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: GlobalSchemaDeleteInput,
   outputSchema: GlobalSchemaDeleteOutput,
 }));
 // Input Schema
-export const GlobalSchemaGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GlobalSchemaGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   schemaId: Schema.String.pipe(T.PathParam()),
@@ -9911,7 +9736,7 @@ export const GlobalSchemaGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GlobalSchemaGetInput = typeof GlobalSchemaGetInput.Type;
 
 // Output Schema
-export const GlobalSchemaGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GlobalSchemaGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -9928,13 +9753,13 @@ export type GlobalSchemaGetOutput = typeof GlobalSchemaGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const GlobalSchemaGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GlobalSchemaGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: GlobalSchemaGetInput,
   outputSchema: GlobalSchemaGetOutput,
 }));
 // Input Schema
 export const GlobalSchemaListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9953,7 +9778,7 @@ export type GlobalSchemaListByServiceInput =
 
 // Output Schema
 export const GlobalSchemaListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -9981,15 +9806,13 @@ export type GlobalSchemaListByServiceOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const GlobalSchemaListByService = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GlobalSchemaListByServiceInput,
-    outputSchema: GlobalSchemaListByServiceOutput,
-  }),
-);
+export const GlobalSchemaListByService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GlobalSchemaListByServiceInput,
+  outputSchema: GlobalSchemaListByServiceOutput,
+}));
 // Input Schema
 export const GraphQLApiResolverCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -10014,7 +9837,7 @@ export type GraphQLApiResolverCreateOrUpdateInput =
 
 // Output Schema
 export const GraphQLApiResolverCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10036,13 +9859,13 @@ export type GraphQLApiResolverCreateOrUpdateOutput =
  * @param properties - Properties of the Resolver Contract.
  */
 export const GraphQLApiResolverCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GraphQLApiResolverCreateOrUpdateInput,
     outputSchema: GraphQLApiResolverCreateOrUpdateOutput,
   }));
 // Input Schema
 export const GraphQLApiResolverDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -10059,8 +9882,7 @@ export type GraphQLApiResolverDeleteInput =
   typeof GraphQLApiResolverDeleteInput.Type;
 
 // Output Schema
-export const GraphQLApiResolverDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GraphQLApiResolverDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type GraphQLApiResolverDeleteOutput =
   typeof GraphQLApiResolverDeleteOutput.Type;
 
@@ -10076,15 +9898,13 @@ export type GraphQLApiResolverDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const GraphQLApiResolverDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GraphQLApiResolverDeleteInput,
-    outputSchema: GraphQLApiResolverDeleteOutput,
-  }),
-);
+export const GraphQLApiResolverDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GraphQLApiResolverDeleteInput,
+  outputSchema: GraphQLApiResolverDeleteOutput,
+}));
 // Input Schema
 export const GraphQLApiResolverGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -10101,7 +9921,7 @@ export type GraphQLApiResolverGetInput = typeof GraphQLApiResolverGetInput.Type;
 
 // Output Schema
 export const GraphQLApiResolverGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10120,15 +9940,13 @@ export type GraphQLApiResolverGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const GraphQLApiResolverGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GraphQLApiResolverGetInput,
-    outputSchema: GraphQLApiResolverGetOutput,
-  }),
-);
+export const GraphQLApiResolverGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GraphQLApiResolverGetInput,
+  outputSchema: GraphQLApiResolverGetOutput,
+}));
 // Input Schema
 export const GraphQLApiResolverListByApiInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -10148,7 +9966,7 @@ export type GraphQLApiResolverListByApiInput =
 
 // Output Schema
 export const GraphQLApiResolverListByApiOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -10177,15 +9995,13 @@ export type GraphQLApiResolverListByApiOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const GraphQLApiResolverListByApi = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GraphQLApiResolverListByApiInput,
-    outputSchema: GraphQLApiResolverListByApiOutput,
-  }),
-);
+export const GraphQLApiResolverListByApi = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GraphQLApiResolverListByApiInput,
+  outputSchema: GraphQLApiResolverListByApiOutput,
+}));
 // Input Schema
 export const GraphQLApiResolverPolicyCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -10212,7 +10028,7 @@ export type GraphQLApiResolverPolicyCreateOrUpdateInput =
 
 // Output Schema
 export const GraphQLApiResolverPolicyCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10235,13 +10051,13 @@ export type GraphQLApiResolverPolicyCreateOrUpdateOutput =
  * @param properties - Properties of the Policy.
  */
 export const GraphQLApiResolverPolicyCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GraphQLApiResolverPolicyCreateOrUpdateInput,
     outputSchema: GraphQLApiResolverPolicyCreateOrUpdateOutput,
   }));
 // Input Schema
 export const GraphQLApiResolverPolicyDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -10259,8 +10075,7 @@ export type GraphQLApiResolverPolicyDeleteInput =
   typeof GraphQLApiResolverPolicyDeleteInput.Type;
 
 // Output Schema
-export const GraphQLApiResolverPolicyDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GraphQLApiResolverPolicyDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type GraphQLApiResolverPolicyDeleteOutput =
   typeof GraphQLApiResolverPolicyDeleteOutput.Type;
 
@@ -10278,13 +10093,13 @@ export type GraphQLApiResolverPolicyDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const GraphQLApiResolverPolicyDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GraphQLApiResolverPolicyDeleteInput,
     outputSchema: GraphQLApiResolverPolicyDeleteOutput,
   }));
 // Input Schema
 export const GraphQLApiResolverPolicyGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -10304,7 +10119,7 @@ export type GraphQLApiResolverPolicyGetInput =
 
 // Output Schema
 export const GraphQLApiResolverPolicyGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10325,15 +10140,13 @@ export type GraphQLApiResolverPolicyGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const GraphQLApiResolverPolicyGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GraphQLApiResolverPolicyGetInput,
-    outputSchema: GraphQLApiResolverPolicyGetOutput,
-  }),
-);
+export const GraphQLApiResolverPolicyGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GraphQLApiResolverPolicyGetInput,
+  outputSchema: GraphQLApiResolverPolicyGetOutput,
+}));
 // Input Schema
 export const GraphQLApiResolverPolicyListByResolverInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -10351,7 +10164,7 @@ export type GraphQLApiResolverPolicyListByResolverInput =
 
 // Output Schema
 export const GraphQLApiResolverPolicyListByResolverOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -10379,13 +10192,13 @@ export type GraphQLApiResolverPolicyListByResolverOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const GraphQLApiResolverPolicyListByResolver =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GraphQLApiResolverPolicyListByResolverInput,
     outputSchema: GraphQLApiResolverPolicyListByResolverOutput,
   }));
 // Input Schema
 export const GraphQLApiResolverUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -10410,7 +10223,7 @@ export type GraphQLApiResolverUpdateInput =
 
 // Output Schema
 export const GraphQLApiResolverUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10431,15 +10244,13 @@ export type GraphQLApiResolverUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Properties of the GraphQL API Resolver entity that can be updated.
  */
-export const GraphQLApiResolverUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GraphQLApiResolverUpdateInput,
-    outputSchema: GraphQLApiResolverUpdateOutput,
-  }),
-);
+export const GraphQLApiResolverUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GraphQLApiResolverUpdateInput,
+  outputSchema: GraphQLApiResolverUpdateOutput,
+}));
 // Input Schema
 export const GroupCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     groupId: Schema.String.pipe(T.PathParam()),
@@ -10465,7 +10276,7 @@ export type GroupCreateOrUpdateInput = typeof GroupCreateOrUpdateInput.Type;
 
 // Output Schema
 export const GroupCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10484,12 +10295,12 @@ export type GroupCreateOrUpdateOutput = typeof GroupCreateOrUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Properties supplied to Create Group operation.
  */
-export const GroupCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GroupCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: GroupCreateOrUpdateInput,
   outputSchema: GroupCreateOrUpdateOutput,
 }));
 // Input Schema
-export const GroupDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GroupDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   groupId: Schema.String.pipe(T.PathParam()),
@@ -10504,7 +10315,7 @@ export const GroupDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GroupDeleteInput = typeof GroupDeleteInput.Type;
 
 // Output Schema
-export const GroupDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GroupDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type GroupDeleteOutput = typeof GroupDeleteOutput.Type;
 
 // The operation
@@ -10518,12 +10329,12 @@ export type GroupDeleteOutput = typeof GroupDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const GroupDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GroupDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: GroupDeleteInput,
   outputSchema: GroupDeleteOutput,
 }));
 // Input Schema
-export const GroupGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GroupGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   groupId: Schema.String.pipe(T.PathParam()),
@@ -10538,7 +10349,7 @@ export const GroupGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GroupGetInput = typeof GroupGetInput.Type;
 
 // Output Schema
-export const GroupGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GroupGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -10555,13 +10366,13 @@ export type GroupGetOutput = typeof GroupGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const GroupGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GroupGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: GroupGetInput,
   outputSchema: GroupGetOutput,
 }));
 // Input Schema
 export const GroupListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10579,7 +10390,7 @@ export type GroupListByServiceInput = typeof GroupListByServiceInput.Type;
 
 // Output Schema
 export const GroupListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -10606,12 +10417,12 @@ export type GroupListByServiceOutput = typeof GroupListByServiceOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const GroupListByService = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GroupListByService = /*@__PURE__*/ API.make(() => ({
   inputSchema: GroupListByServiceInput,
   outputSchema: GroupListByServiceOutput,
 }));
 // Input Schema
-export const GroupUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GroupUpdateInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   groupId: Schema.String.pipe(T.PathParam()),
@@ -10634,7 +10445,7 @@ export const GroupUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GroupUpdateInput = typeof GroupUpdateInput.Type;
 
 // Output Schema
-export const GroupUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GroupUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -10653,12 +10464,12 @@ export type GroupUpdateOutput = typeof GroupUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Group entity update contract properties.
  */
-export const GroupUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GroupUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: GroupUpdateInput,
   outputSchema: GroupUpdateOutput,
 }));
 // Input Schema
-export const GroupUserCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GroupUserCreateInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   groupId: Schema.String.pipe(T.PathParam()),
@@ -10674,7 +10485,7 @@ export const GroupUserCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GroupUserCreateInput = typeof GroupUserCreateInput.Type;
 
 // Output Schema
-export const GroupUserCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GroupUserCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -10692,12 +10503,12 @@ export type GroupUserCreateOutput = typeof GroupUserCreateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const GroupUserCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GroupUserCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: GroupUserCreateInput,
   outputSchema: GroupUserCreateOutput,
 }));
 // Input Schema
-export const GroupUserDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GroupUserDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   groupId: Schema.String.pipe(T.PathParam()),
@@ -10713,7 +10524,7 @@ export const GroupUserDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GroupUserDeleteInput = typeof GroupUserDeleteInput.Type;
 
 // Output Schema
-export const GroupUserDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GroupUserDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type GroupUserDeleteOutput = typeof GroupUserDeleteOutput.Type;
 
 // The operation
@@ -10727,12 +10538,12 @@ export type GroupUserDeleteOutput = typeof GroupUserDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const GroupUserDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GroupUserDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: GroupUserDeleteInput,
   outputSchema: GroupUserDeleteOutput,
 }));
 // Input Schema
-export const GroupUserListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GroupUserListInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   groupId: Schema.String.pipe(T.PathParam()),
@@ -10750,7 +10561,7 @@ export const GroupUserListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GroupUserListInput = typeof GroupUserListInput.Type;
 
 // Output Schema
-export const GroupUserListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GroupUserListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -10778,13 +10589,13 @@ export type GroupUserListOutput = typeof GroupUserListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const GroupUserList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GroupUserList = /*@__PURE__*/ API.make(() => ({
   inputSchema: GroupUserListInput,
   outputSchema: GroupUserListOutput,
 }));
 // Input Schema
 export const IdentityProviderCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     identityProviderName: Schema.Literals([
@@ -10830,7 +10641,7 @@ export type IdentityProviderCreateOrUpdateInput =
 
 // Output Schema
 export const IdentityProviderCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10851,13 +10662,13 @@ export type IdentityProviderCreateOrUpdateOutput =
  * @param properties - Identity Provider contract properties.
  */
 export const IdentityProviderCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IdentityProviderCreateOrUpdateInput,
     outputSchema: IdentityProviderCreateOrUpdateOutput,
   }));
 // Input Schema
 export const IdentityProviderDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     identityProviderName: Schema.Literals([
@@ -10880,8 +10691,7 @@ export type IdentityProviderDeleteInput =
   typeof IdentityProviderDeleteInput.Type;
 
 // Output Schema
-export const IdentityProviderDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const IdentityProviderDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type IdentityProviderDeleteOutput =
   typeof IdentityProviderDeleteOutput.Type;
 
@@ -10896,15 +10706,13 @@ export type IdentityProviderDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const IdentityProviderDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IdentityProviderDeleteInput,
-    outputSchema: IdentityProviderDeleteOutput,
-  }),
-);
+export const IdentityProviderDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IdentityProviderDeleteInput,
+  outputSchema: IdentityProviderDeleteOutput,
+}));
 // Input Schema
 export const IdentityProviderGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     identityProviderName: Schema.Literals([
@@ -10927,7 +10735,7 @@ export type IdentityProviderGetInput = typeof IdentityProviderGetInput.Type;
 
 // Output Schema
 export const IdentityProviderGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10944,13 +10752,13 @@ export type IdentityProviderGetOutput = typeof IdentityProviderGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const IdentityProviderGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IdentityProviderGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: IdentityProviderGetInput,
   outputSchema: IdentityProviderGetOutput,
 }));
 // Input Schema
 export const IdentityProviderListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10966,7 +10774,7 @@ export type IdentityProviderListByServiceInput =
 
 // Output Schema
 export const IdentityProviderListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -10992,13 +10800,13 @@ export type IdentityProviderListByServiceOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const IdentityProviderListByService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IdentityProviderListByServiceInput,
     outputSchema: IdentityProviderListByServiceOutput,
   }));
 // Input Schema
 export const IdentityProviderListSecretsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     identityProviderName: Schema.Literals([
@@ -11022,7 +10830,7 @@ export type IdentityProviderListSecretsInput =
 
 // Output Schema
 export const IdentityProviderListSecretsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     clientSecret: Schema.optional(SensitiveString),
   });
 export type IdentityProviderListSecretsOutput =
@@ -11038,15 +10846,13 @@ export type IdentityProviderListSecretsOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const IdentityProviderListSecrets = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IdentityProviderListSecretsInput,
-    outputSchema: IdentityProviderListSecretsOutput,
-  }),
-);
+export const IdentityProviderListSecrets = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IdentityProviderListSecretsInput,
+  outputSchema: IdentityProviderListSecretsOutput,
+}));
 // Input Schema
 export const IdentityProviderUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     identityProviderName: Schema.Literals([
@@ -11092,7 +10898,7 @@ export type IdentityProviderUpdateInput =
 
 // Output Schema
 export const IdentityProviderUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11112,14 +10918,12 @@ export type IdentityProviderUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Identity Provider update properties.
  */
-export const IdentityProviderUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IdentityProviderUpdateInput,
-    outputSchema: IdentityProviderUpdateOutput,
-  }),
-);
+export const IdentityProviderUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IdentityProviderUpdateInput,
+  outputSchema: IdentityProviderUpdateOutput,
+}));
 // Input Schema
-export const IssueGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IssueGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   issueId: Schema.String.pipe(T.PathParam()),
@@ -11134,7 +10938,7 @@ export const IssueGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type IssueGetInput = typeof IssueGetInput.Type;
 
 // Output Schema
-export const IssueGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IssueGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -11151,13 +10955,13 @@ export type IssueGetOutput = typeof IssueGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const IssueGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IssueGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: IssueGetInput,
   outputSchema: IssueGetOutput,
 }));
 // Input Schema
 export const IssueListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11175,7 +10979,7 @@ export type IssueListByServiceInput = typeof IssueListByServiceInput.Type;
 
 // Output Schema
 export const IssueListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -11202,13 +11006,13 @@ export type IssueListByServiceOutput = typeof IssueListByServiceOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const IssueListByService = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IssueListByService = /*@__PURE__*/ API.make(() => ({
   inputSchema: IssueListByServiceInput,
   outputSchema: IssueListByServiceOutput,
 }));
 // Input Schema
 export const LoggerCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     loggerId: Schema.String.pipe(T.PathParam()),
@@ -11239,7 +11043,7 @@ export type LoggerCreateOrUpdateInput = typeof LoggerCreateOrUpdateInput.Type;
 
 // Output Schema
 export const LoggerCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11258,14 +11062,12 @@ export type LoggerCreateOrUpdateOutput = typeof LoggerCreateOrUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Logger entity contract properties.
  */
-export const LoggerCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LoggerCreateOrUpdateInput,
-    outputSchema: LoggerCreateOrUpdateOutput,
-  }),
-);
+export const LoggerCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LoggerCreateOrUpdateInput,
+  outputSchema: LoggerCreateOrUpdateOutput,
+}));
 // Input Schema
-export const LoggerDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LoggerDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   loggerId: Schema.String.pipe(T.PathParam()),
@@ -11280,7 +11082,7 @@ export const LoggerDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type LoggerDeleteInput = typeof LoggerDeleteInput.Type;
 
 // Output Schema
-export const LoggerDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const LoggerDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type LoggerDeleteOutput = typeof LoggerDeleteOutput.Type;
 
 // The operation
@@ -11294,12 +11096,12 @@ export type LoggerDeleteOutput = typeof LoggerDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const LoggerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LoggerDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: LoggerDeleteInput,
   outputSchema: LoggerDeleteOutput,
 }));
 // Input Schema
-export const LoggerGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LoggerGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   loggerId: Schema.String.pipe(T.PathParam()),
@@ -11314,7 +11116,7 @@ export const LoggerGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type LoggerGetInput = typeof LoggerGetInput.Type;
 
 // Output Schema
-export const LoggerGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LoggerGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -11331,13 +11133,13 @@ export type LoggerGetOutput = typeof LoggerGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const LoggerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LoggerGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: LoggerGetInput,
   outputSchema: LoggerGetOutput,
 }));
 // Input Schema
 export const LoggerListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11355,7 +11157,7 @@ export type LoggerListByServiceInput = typeof LoggerListByServiceInput.Type;
 
 // Output Schema
 export const LoggerListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -11382,12 +11184,12 @@ export type LoggerListByServiceOutput = typeof LoggerListByServiceOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const LoggerListByService = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LoggerListByService = /*@__PURE__*/ API.make(() => ({
   inputSchema: LoggerListByServiceInput,
   outputSchema: LoggerListByServiceOutput,
 }));
 // Input Schema
-export const LoggerUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LoggerUpdateInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   loggerId: Schema.String.pipe(T.PathParam()),
@@ -11416,7 +11218,7 @@ export const LoggerUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type LoggerUpdateInput = typeof LoggerUpdateInput.Type;
 
 // Output Schema
-export const LoggerUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LoggerUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -11435,13 +11237,13 @@ export type LoggerUpdateOutput = typeof LoggerUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Logger entity update contract properties.
  */
-export const LoggerUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LoggerUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: LoggerUpdateInput,
   outputSchema: LoggerUpdateOutput,
 }));
 // Input Schema
 export const NamedValueCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     namedValueId: Schema.String.pipe(T.PathParam()),
@@ -11464,7 +11266,7 @@ export type NamedValueCreateOrUpdateInput =
 
 // Output Schema
 export const NamedValueCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11484,14 +11286,12 @@ export type NamedValueCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - NamedValue entity contract properties for PUT operation.
  */
-export const NamedValueCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NamedValueCreateOrUpdateInput,
-    outputSchema: NamedValueCreateOrUpdateOutput,
-  }),
-);
+export const NamedValueCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NamedValueCreateOrUpdateInput,
+  outputSchema: NamedValueCreateOrUpdateOutput,
+}));
 // Input Schema
-export const NamedValueDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NamedValueDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   namedValueId: Schema.String.pipe(T.PathParam()),
@@ -11506,7 +11306,7 @@ export const NamedValueDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type NamedValueDeleteInput = typeof NamedValueDeleteInput.Type;
 
 // Output Schema
-export const NamedValueDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const NamedValueDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type NamedValueDeleteOutput = typeof NamedValueDeleteOutput.Type;
 
 // The operation
@@ -11520,12 +11320,12 @@ export type NamedValueDeleteOutput = typeof NamedValueDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const NamedValueDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NamedValueDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: NamedValueDeleteInput,
   outputSchema: NamedValueDeleteOutput,
 }));
 // Input Schema
-export const NamedValueGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NamedValueGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   namedValueId: Schema.String.pipe(T.PathParam()),
@@ -11540,7 +11340,7 @@ export const NamedValueGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type NamedValueGetInput = typeof NamedValueGetInput.Type;
 
 // Output Schema
-export const NamedValueGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NamedValueGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -11557,13 +11357,13 @@ export type NamedValueGetOutput = typeof NamedValueGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const NamedValueGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NamedValueGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: NamedValueGetInput,
   outputSchema: NamedValueGetOutput,
 }));
 // Input Schema
 export const NamedValueListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11583,7 +11383,7 @@ export type NamedValueListByServiceInput =
 
 // Output Schema
 export const NamedValueListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -11612,15 +11412,13 @@ export type NamedValueListByServiceOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const NamedValueListByService = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NamedValueListByServiceInput,
-    outputSchema: NamedValueListByServiceOutput,
-  }),
-);
+export const NamedValueListByService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NamedValueListByServiceInput,
+  outputSchema: NamedValueListByServiceOutput,
+}));
 // Input Schema
 export const NamedValueListValueInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     namedValueId: Schema.String.pipe(T.PathParam()),
@@ -11636,7 +11434,7 @@ export type NamedValueListValueInput = typeof NamedValueListValueInput.Type;
 
 // Output Schema
 export const NamedValueListValueOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   });
 export type NamedValueListValueOutput = typeof NamedValueListValueOutput.Type;
@@ -11651,13 +11449,13 @@ export type NamedValueListValueOutput = typeof NamedValueListValueOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const NamedValueListValue = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NamedValueListValue = /*@__PURE__*/ API.make(() => ({
   inputSchema: NamedValueListValueInput,
   outputSchema: NamedValueListValueOutput,
 }));
 // Input Schema
 export const NamedValueRefreshSecretInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     namedValueId: Schema.String.pipe(T.PathParam()),
@@ -11674,7 +11472,7 @@ export type NamedValueRefreshSecretInput =
 
 // Output Schema
 export const NamedValueRefreshSecretOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11692,14 +11490,12 @@ export type NamedValueRefreshSecretOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const NamedValueRefreshSecret = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NamedValueRefreshSecretInput,
-    outputSchema: NamedValueRefreshSecretOutput,
-  }),
-);
+export const NamedValueRefreshSecret = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NamedValueRefreshSecretInput,
+  outputSchema: NamedValueRefreshSecretOutput,
+}));
 // Input Schema
-export const NamedValueUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NamedValueUpdateInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   namedValueId: Schema.String.pipe(T.PathParam()),
@@ -11720,13 +11516,11 @@ export const NamedValueUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type NamedValueUpdateInput = typeof NamedValueUpdateInput.Type;
 
 // Output Schema
-export const NamedValueUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  },
-);
+export const NamedValueUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type NamedValueUpdateOutput = typeof NamedValueUpdateOutput.Type;
 
 // The operation
@@ -11741,13 +11535,13 @@ export type NamedValueUpdateOutput = typeof NamedValueUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - NamedValue entity Update contract properties.
  */
-export const NamedValueUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NamedValueUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: NamedValueUpdateInput,
   outputSchema: NamedValueUpdateOutput,
 }));
 // Input Schema
 export const NetworkStatusListByLocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -11764,7 +11558,7 @@ export type NetworkStatusListByLocationInput =
 
 // Output Schema
 export const NetworkStatusListByLocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dnsServers: Schema.Array(Schema.String),
     connectivityStatus: Schema.Array(
       Schema.Struct({
@@ -11791,15 +11585,13 @@ export type NetworkStatusListByLocationOutput =
  * @param locationName - Location in which the API Management service is deployed. This is one of the Azure Regions like West US, East US, South Central US.
  * @param api-version - The API version to use for this operation.
  */
-export const NetworkStatusListByLocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkStatusListByLocationInput,
-    outputSchema: NetworkStatusListByLocationOutput,
-  }),
-);
+export const NetworkStatusListByLocation = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkStatusListByLocationInput,
+  outputSchema: NetworkStatusListByLocationOutput,
+}));
 // Input Schema
 export const NetworkStatusListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -11815,7 +11607,7 @@ export type NetworkStatusListByServiceInput =
 
 // Output Schema
 export const NetworkStatusListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       location: Schema.optional(Schema.String),
       networkStatus: Schema.optional(
@@ -11848,15 +11640,13 @@ export type NetworkStatusListByServiceOutput =
  * @param serviceName - The name of the API Management service.
  * @param api-version - The API version to use for this operation.
  */
-export const NetworkStatusListByService = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkStatusListByServiceInput,
-    outputSchema: NetworkStatusListByServiceOutput,
-  }),
-);
+export const NetworkStatusListByService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkStatusListByServiceInput,
+  outputSchema: NetworkStatusListByServiceOutput,
+}));
 // Input Schema
 export const NotificationCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     notificationName: Schema.Literals([
@@ -11881,7 +11671,7 @@ export type NotificationCreateOrUpdateInput =
 
 // Output Schema
 export const NotificationCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11900,14 +11690,12 @@ export type NotificationCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const NotificationCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NotificationCreateOrUpdateInput,
-    outputSchema: NotificationCreateOrUpdateOutput,
-  }),
-);
+export const NotificationCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NotificationCreateOrUpdateInput,
+  outputSchema: NotificationCreateOrUpdateOutput,
+}));
 // Input Schema
-export const NotificationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NotificationGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   notificationName: Schema.Literals([
@@ -11930,7 +11718,7 @@ export const NotificationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type NotificationGetInput = typeof NotificationGetInput.Type;
 
 // Output Schema
-export const NotificationGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NotificationGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -11947,13 +11735,13 @@ export type NotificationGetOutput = typeof NotificationGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const NotificationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NotificationGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: NotificationGetInput,
   outputSchema: NotificationGetOutput,
 }));
 // Input Schema
 export const NotificationListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11971,7 +11759,7 @@ export type NotificationListByServiceInput =
 
 // Output Schema
 export const NotificationListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -11998,15 +11786,13 @@ export type NotificationListByServiceOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const NotificationListByService = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NotificationListByServiceInput,
-    outputSchema: NotificationListByServiceOutput,
-  }),
-);
+export const NotificationListByService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NotificationListByServiceInput,
+  outputSchema: NotificationListByServiceOutput,
+}));
 // Input Schema
 export const NotificationRecipientEmailCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     notificationName: Schema.Literals([
@@ -12032,7 +11818,7 @@ export type NotificationRecipientEmailCreateOrUpdateInput =
 
 // Output Schema
 export const NotificationRecipientEmailCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12052,13 +11838,13 @@ export type NotificationRecipientEmailCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const NotificationRecipientEmailCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NotificationRecipientEmailCreateOrUpdateInput,
     outputSchema: NotificationRecipientEmailCreateOrUpdateOutput,
   }));
 // Input Schema
 export const NotificationRecipientEmailDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     notificationName: Schema.Literals([
@@ -12083,8 +11869,7 @@ export type NotificationRecipientEmailDeleteInput =
   typeof NotificationRecipientEmailDeleteInput.Type;
 
 // Output Schema
-export const NotificationRecipientEmailDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const NotificationRecipientEmailDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type NotificationRecipientEmailDeleteOutput =
   typeof NotificationRecipientEmailDeleteOutput.Type;
 
@@ -12100,13 +11885,13 @@ export type NotificationRecipientEmailDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const NotificationRecipientEmailDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NotificationRecipientEmailDeleteInput,
     outputSchema: NotificationRecipientEmailDeleteOutput,
   }));
 // Input Schema
 export const NotificationRecipientEmailListByNotificationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     notificationName: Schema.Literals([
@@ -12131,7 +11916,7 @@ export type NotificationRecipientEmailListByNotificationInput =
 
 // Output Schema
 export const NotificationRecipientEmailListByNotificationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -12158,13 +11943,13 @@ export type NotificationRecipientEmailListByNotificationOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const NotificationRecipientEmailListByNotification =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NotificationRecipientEmailListByNotificationInput,
     outputSchema: NotificationRecipientEmailListByNotificationOutput,
   }));
 // Input Schema
 export const NotificationRecipientUserCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     notificationName: Schema.Literals([
@@ -12190,7 +11975,7 @@ export type NotificationRecipientUserCreateOrUpdateInput =
 
 // Output Schema
 export const NotificationRecipientUserCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12210,13 +11995,13 @@ export type NotificationRecipientUserCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const NotificationRecipientUserCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NotificationRecipientUserCreateOrUpdateInput,
     outputSchema: NotificationRecipientUserCreateOrUpdateOutput,
   }));
 // Input Schema
 export const NotificationRecipientUserDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     notificationName: Schema.Literals([
@@ -12241,8 +12026,7 @@ export type NotificationRecipientUserDeleteInput =
   typeof NotificationRecipientUserDeleteInput.Type;
 
 // Output Schema
-export const NotificationRecipientUserDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const NotificationRecipientUserDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type NotificationRecipientUserDeleteOutput =
   typeof NotificationRecipientUserDeleteOutput.Type;
 
@@ -12258,13 +12042,13 @@ export type NotificationRecipientUserDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const NotificationRecipientUserDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NotificationRecipientUserDeleteInput,
     outputSchema: NotificationRecipientUserDeleteOutput,
   }));
 // Input Schema
 export const NotificationRecipientUserListByNotificationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     notificationName: Schema.Literals([
@@ -12289,7 +12073,7 @@ export type NotificationRecipientUserListByNotificationInput =
 
 // Output Schema
 export const NotificationRecipientUserListByNotificationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -12316,13 +12100,13 @@ export type NotificationRecipientUserListByNotificationOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const NotificationRecipientUserListByNotification =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NotificationRecipientUserListByNotificationInput,
     outputSchema: NotificationRecipientUserListByNotificationOutput,
   }));
 // Input Schema
 export const OpenIdConnectProviderCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     opid: Schema.String.pipe(T.PathParam()),
@@ -12350,7 +12134,7 @@ export type OpenIdConnectProviderCreateOrUpdateInput =
 
 // Output Schema
 export const OpenIdConnectProviderCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12371,13 +12155,13 @@ export type OpenIdConnectProviderCreateOrUpdateOutput =
  * @param properties - OpenId Connect Provider contract properties.
  */
 export const OpenIdConnectProviderCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OpenIdConnectProviderCreateOrUpdateInput,
     outputSchema: OpenIdConnectProviderCreateOrUpdateOutput,
   }));
 // Input Schema
 export const OpenIdConnectProviderDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     opid: Schema.String.pipe(T.PathParam()),
@@ -12393,8 +12177,7 @@ export type OpenIdConnectProviderDeleteInput =
   typeof OpenIdConnectProviderDeleteInput.Type;
 
 // Output Schema
-export const OpenIdConnectProviderDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const OpenIdConnectProviderDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type OpenIdConnectProviderDeleteOutput =
   typeof OpenIdConnectProviderDeleteOutput.Type;
 
@@ -12409,15 +12192,13 @@ export type OpenIdConnectProviderDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const OpenIdConnectProviderDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OpenIdConnectProviderDeleteInput,
-    outputSchema: OpenIdConnectProviderDeleteOutput,
-  }),
-);
+export const OpenIdConnectProviderDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OpenIdConnectProviderDeleteInput,
+  outputSchema: OpenIdConnectProviderDeleteOutput,
+}));
 // Input Schema
 export const OpenIdConnectProviderGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     opid: Schema.String.pipe(T.PathParam()),
@@ -12434,7 +12215,7 @@ export type OpenIdConnectProviderGetInput =
 
 // Output Schema
 export const OpenIdConnectProviderGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12452,15 +12233,13 @@ export type OpenIdConnectProviderGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const OpenIdConnectProviderGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OpenIdConnectProviderGetInput,
-    outputSchema: OpenIdConnectProviderGetOutput,
-  }),
-);
+export const OpenIdConnectProviderGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OpenIdConnectProviderGetInput,
+  outputSchema: OpenIdConnectProviderGetOutput,
+}));
 // Input Schema
 export const OpenIdConnectProviderListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -12479,7 +12258,7 @@ export type OpenIdConnectProviderListByServiceInput =
 
 // Output Schema
 export const OpenIdConnectProviderListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -12508,13 +12287,13 @@ export type OpenIdConnectProviderListByServiceOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const OpenIdConnectProviderListByService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OpenIdConnectProviderListByServiceInput,
     outputSchema: OpenIdConnectProviderListByServiceOutput,
   }));
 // Input Schema
 export const OpenIdConnectProviderListSecretsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     opid: Schema.String.pipe(T.PathParam()),
@@ -12531,7 +12310,7 @@ export type OpenIdConnectProviderListSecretsInput =
 
 // Output Schema
 export const OpenIdConnectProviderListSecretsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     clientSecret: Schema.optional(SensitiveString),
   });
 export type OpenIdConnectProviderListSecretsOutput =
@@ -12548,13 +12327,13 @@ export type OpenIdConnectProviderListSecretsOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const OpenIdConnectProviderListSecrets =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OpenIdConnectProviderListSecretsInput,
     outputSchema: OpenIdConnectProviderListSecretsOutput,
   }));
 // Input Schema
 export const OpenIdConnectProviderUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     opid: Schema.String.pipe(T.PathParam()),
@@ -12582,7 +12361,7 @@ export type OpenIdConnectProviderUpdateInput =
 
 // Output Schema
 export const OpenIdConnectProviderUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12602,15 +12381,13 @@ export type OpenIdConnectProviderUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - OpenId Connect Provider Update contract properties.
  */
-export const OpenIdConnectProviderUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OpenIdConnectProviderUpdateInput,
-    outputSchema: OpenIdConnectProviderUpdateOutput,
-  }),
-);
+export const OpenIdConnectProviderUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OpenIdConnectProviderUpdateInput,
+  outputSchema: OpenIdConnectProviderUpdateOutput,
+}));
 // Input Schema
 export const OperationListByTagsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -12630,7 +12407,7 @@ export type OperationListByTagsInput = typeof OperationListByTagsInput.Type;
 
 // Output Schema
 export const OperationListByTagsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -12767,13 +12544,13 @@ export type OperationListByTagsOutput = typeof OperationListByTagsOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const OperationListByTags = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationListByTags = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationListByTagsInput,
   outputSchema: OperationListByTagsOutput,
 }));
 // Input Schema
 export const OperationsResultsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
@@ -12787,8 +12564,7 @@ export const OperationsResultsGetInput =
 export type OperationsResultsGetInput = typeof OperationsResultsGetInput.Type;
 
 // Output Schema
-export const OperationsResultsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const OperationsResultsGetOutput = /*@__PURE__*/ Schema.Void;
 export type OperationsResultsGetOutput = typeof OperationsResultsGetOutput.Type;
 
 // The operation
@@ -12800,15 +12576,13 @@ export type OperationsResultsGetOutput = typeof OperationsResultsGetOutput.Type;
  * @param location - The name of the Azure region.
  * @param operationId - The ID of an ongoing async operation.
  */
-export const OperationsResultsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OperationsResultsGetInput,
-    outputSchema: OperationsResultsGetOutput,
-  }),
-);
+export const OperationsResultsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OperationsResultsGetInput,
+  outputSchema: OperationsResultsGetOutput,
+}));
 // Input Schema
 export const OperationStatusGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
@@ -12823,7 +12597,7 @@ export type OperationStatusGetInput = typeof OperationStatusGetInput.Type;
 
 // Output Schema
 export const OperationStatusGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     resourceId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -12889,13 +12663,13 @@ export type OperationStatusGetOutput = typeof OperationStatusGetOutput.Type;
  * @param location - The name of the Azure region.
  * @param operationId - The ID of an ongoing async operation.
  */
-export const OperationStatusGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationStatusGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationStatusGetInput,
   outputSchema: OperationStatusGetOutput,
 }));
 // Input Schema
 export const OutboundNetworkDependenciesEndpointsListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -12911,7 +12685,7 @@ export type OutboundNetworkDependenciesEndpointsListByServiceInput =
 
 // Output Schema
 export const OutboundNetworkDependenciesEndpointsListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         category: Schema.optional(Schema.String),
@@ -12947,13 +12721,13 @@ export type OutboundNetworkDependenciesEndpointsListByServiceOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const OutboundNetworkDependenciesEndpointsListByService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OutboundNetworkDependenciesEndpointsListByServiceInput,
     outputSchema: OutboundNetworkDependenciesEndpointsListByServiceOutput,
   }));
 // Input Schema
 export const PerformConnectivityCheckAsyncInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -12997,7 +12771,7 @@ export type PerformConnectivityCheckAsyncInput =
 
 // Output Schema
 export const PerformConnectivityCheckAsyncOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     hops: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -13064,13 +12838,13 @@ export type PerformConnectivityCheckAsyncOutput =
  * @param protocolConfiguration - Protocol-specific configuration.
  */
 export const PerformConnectivityCheckAsync =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PerformConnectivityCheckAsyncInput,
     outputSchema: PerformConnectivityCheckAsyncOutput,
   }));
 // Input Schema
 export const PolicyCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     policyId: Schema.Literals(["policy"]).pipe(T.PathParam()),
@@ -13094,7 +12868,7 @@ export type PolicyCreateOrUpdateInput = typeof PolicyCreateOrUpdateInput.Type;
 
 // Output Schema
 export const PolicyCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -13113,14 +12887,12 @@ export type PolicyCreateOrUpdateOutput = typeof PolicyCreateOrUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Properties of the Policy.
  */
-export const PolicyCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PolicyCreateOrUpdateInput,
-    outputSchema: PolicyCreateOrUpdateOutput,
-  }),
-);
+export const PolicyCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PolicyCreateOrUpdateInput,
+  outputSchema: PolicyCreateOrUpdateOutput,
+}));
 // Input Schema
-export const PolicyDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PolicyDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   policyId: Schema.Literals(["policy"]).pipe(T.PathParam()),
@@ -13135,7 +12907,7 @@ export const PolicyDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PolicyDeleteInput = typeof PolicyDeleteInput.Type;
 
 // Output Schema
-export const PolicyDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PolicyDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type PolicyDeleteOutput = typeof PolicyDeleteOutput.Type;
 
 // The operation
@@ -13149,13 +12921,13 @@ export type PolicyDeleteOutput = typeof PolicyDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const PolicyDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PolicyDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: PolicyDeleteInput,
   outputSchema: PolicyDeleteOutput,
 }));
 // Input Schema
 export const PolicyDescriptionListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13174,7 +12946,7 @@ export type PolicyDescriptionListByServiceInput =
 
 // Output Schema
 export const PolicyDescriptionListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -13200,13 +12972,13 @@ export type PolicyDescriptionListByServiceOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const PolicyDescriptionListByService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PolicyDescriptionListByServiceInput,
     outputSchema: PolicyDescriptionListByServiceOutput,
   }));
 // Input Schema
 export const PolicyFragmentCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
@@ -13231,7 +13003,7 @@ export type PolicyFragmentCreateOrUpdateInput =
 
 // Output Schema
 export const PolicyFragmentCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -13252,13 +13024,13 @@ export type PolicyFragmentCreateOrUpdateOutput =
  * @param properties - Properties of the Policy Fragment.
  */
 export const PolicyFragmentCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PolicyFragmentCreateOrUpdateInput,
     outputSchema: PolicyFragmentCreateOrUpdateOutput,
   }));
 // Input Schema
 export const PolicyFragmentDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
@@ -13273,8 +13045,7 @@ export const PolicyFragmentDeleteInput =
 export type PolicyFragmentDeleteInput = typeof PolicyFragmentDeleteInput.Type;
 
 // Output Schema
-export const PolicyFragmentDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PolicyFragmentDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type PolicyFragmentDeleteOutput = typeof PolicyFragmentDeleteOutput.Type;
 
 // The operation
@@ -13288,23 +13059,19 @@ export type PolicyFragmentDeleteOutput = typeof PolicyFragmentDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const PolicyFragmentDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PolicyFragmentDeleteInput,
-    outputSchema: PolicyFragmentDeleteOutput,
-  }),
-);
+export const PolicyFragmentDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PolicyFragmentDeleteInput,
+  outputSchema: PolicyFragmentDeleteOutput,
+}));
 // Input Schema
-export const PolicyFragmentGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    serviceName: Schema.String.pipe(T.PathParam()),
-    id: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    format: Schema.optional(Schema.Literals(["xml", "rawxml"])),
-  },
-).pipe(
+export const PolicyFragmentGetInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  id: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  format: Schema.optional(Schema.Literals(["xml", "rawxml"])),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/policyFragments/{id}",
@@ -13314,7 +13081,7 @@ export type PolicyFragmentGetInput = typeof PolicyFragmentGetInput.Type;
 
 // Output Schema
 export const PolicyFragmentGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -13332,13 +13099,13 @@ export type PolicyFragmentGetOutput = typeof PolicyFragmentGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param format - Policy fragment content format.
  */
-export const PolicyFragmentGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PolicyFragmentGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: PolicyFragmentGetInput,
   outputSchema: PolicyFragmentGetOutput,
 }));
 // Input Schema
 export const PolicyFragmentListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13358,7 +13125,7 @@ export type PolicyFragmentListByServiceInput =
 
 // Output Schema
 export const PolicyFragmentListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -13387,15 +13154,13 @@ export type PolicyFragmentListByServiceOutput =
  * @param $top - Number of records to return.
  * @param $skip - Number of records to skip.
  */
-export const PolicyFragmentListByService = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PolicyFragmentListByServiceInput,
-    outputSchema: PolicyFragmentListByServiceOutput,
-  }),
-);
+export const PolicyFragmentListByService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PolicyFragmentListByServiceInput,
+  outputSchema: PolicyFragmentListByServiceOutput,
+}));
 // Input Schema
 export const PolicyFragmentListReferencesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
@@ -13414,7 +13179,7 @@ export type PolicyFragmentListReferencesInput =
 
 // Output Schema
 export const PolicyFragmentListReferencesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -13443,12 +13208,12 @@ export type PolicyFragmentListReferencesOutput =
  * @param $skip - Number of records to skip.
  */
 export const PolicyFragmentListReferences =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PolicyFragmentListReferencesInput,
     outputSchema: PolicyFragmentListReferencesOutput,
   }));
 // Input Schema
-export const PolicyGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PolicyGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   policyId: Schema.Literals(["policy"]).pipe(T.PathParam()),
@@ -13464,7 +13229,7 @@ export const PolicyGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PolicyGetInput = typeof PolicyGetInput.Type;
 
 // Output Schema
-export const PolicyGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PolicyGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -13482,13 +13247,13 @@ export type PolicyGetOutput = typeof PolicyGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const PolicyGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PolicyGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: PolicyGetInput,
   outputSchema: PolicyGetOutput,
 }));
 // Input Schema
 export const PolicyListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13503,7 +13268,7 @@ export type PolicyListByServiceInput = typeof PolicyListByServiceInput.Type;
 
 // Output Schema
 export const PolicyListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -13527,13 +13292,13 @@ export type PolicyListByServiceOutput = typeof PolicyListByServiceOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const PolicyListByService = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PolicyListByService = /*@__PURE__*/ API.make(() => ({
   inputSchema: PolicyListByServiceInput,
   outputSchema: PolicyListByServiceOutput,
 }));
 // Input Schema
 export const PolicyRestrictionCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -13556,7 +13321,7 @@ export type PolicyRestrictionCreateOrUpdateInput =
 
 // Output Schema
 export const PolicyRestrictionCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -13577,13 +13342,13 @@ export type PolicyRestrictionCreateOrUpdateOutput =
  * @param properties - Properties of the Policy Restriction.
  */
 export const PolicyRestrictionCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PolicyRestrictionCreateOrUpdateInput,
     outputSchema: PolicyRestrictionCreateOrUpdateOutput,
   }));
 // Input Schema
 export const PolicyRestrictionDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -13599,8 +13364,7 @@ export type PolicyRestrictionDeleteInput =
   typeof PolicyRestrictionDeleteInput.Type;
 
 // Output Schema
-export const PolicyRestrictionDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PolicyRestrictionDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type PolicyRestrictionDeleteOutput =
   typeof PolicyRestrictionDeleteOutput.Type;
 
@@ -13615,15 +13379,13 @@ export type PolicyRestrictionDeleteOutput =
  * @param If-Match - ETag of the Entity. Not required when creating an entity, but required when updating an entity.
  * @param api-version - The API version to use for this operation.
  */
-export const PolicyRestrictionDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PolicyRestrictionDeleteInput,
-    outputSchema: PolicyRestrictionDeleteOutput,
-  }),
-);
+export const PolicyRestrictionDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PolicyRestrictionDeleteInput,
+  outputSchema: PolicyRestrictionDeleteOutput,
+}));
 // Input Schema
 export const PolicyRestrictionGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -13639,7 +13401,7 @@ export type PolicyRestrictionGetInput = typeof PolicyRestrictionGetInput.Type;
 
 // Output Schema
 export const PolicyRestrictionGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -13656,15 +13418,13 @@ export type PolicyRestrictionGetOutput = typeof PolicyRestrictionGetOutput.Type;
  * @param policyRestrictionId - Policy restrictions after an entity level
  * @param api-version - The API version to use for this operation.
  */
-export const PolicyRestrictionGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PolicyRestrictionGetInput,
-    outputSchema: PolicyRestrictionGetOutput,
-  }),
-);
+export const PolicyRestrictionGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PolicyRestrictionGetInput,
+  outputSchema: PolicyRestrictionGetOutput,
+}));
 // Input Schema
 export const PolicyRestrictionListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -13680,7 +13440,7 @@ export type PolicyRestrictionListByServiceInput =
 
 // Output Schema
 export const PolicyRestrictionListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -13705,13 +13465,13 @@ export type PolicyRestrictionListByServiceOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const PolicyRestrictionListByService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PolicyRestrictionListByServiceInput,
     outputSchema: PolicyRestrictionListByServiceOutput,
   }));
 // Input Schema
 export const PolicyRestrictionUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -13734,7 +13494,7 @@ export type PolicyRestrictionUpdateInput =
 
 // Output Schema
 export const PolicyRestrictionUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -13754,15 +13514,13 @@ export type PolicyRestrictionUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param properties - Properties of the Policy Restriction.
  */
-export const PolicyRestrictionUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PolicyRestrictionUpdateInput,
-    outputSchema: PolicyRestrictionUpdateOutput,
-  }),
-);
+export const PolicyRestrictionUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PolicyRestrictionUpdateInput,
+  outputSchema: PolicyRestrictionUpdateOutput,
+}));
 // Input Schema
 export const PolicyRestrictionValidationsByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13778,7 +13536,7 @@ export type PolicyRestrictionValidationsByServiceInput =
 
 // Output Schema
 export const PolicyRestrictionValidationsByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -13796,13 +13554,13 @@ export type PolicyRestrictionValidationsByServiceOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const PolicyRestrictionValidationsByService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PolicyRestrictionValidationsByServiceInput,
     outputSchema: PolicyRestrictionValidationsByServiceOutput,
   }));
 // Input Schema
 export const PortalConfigCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -13861,7 +13619,7 @@ export type PortalConfigCreateOrUpdateInput =
 
 // Output Schema
 export const PortalConfigCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -13881,14 +13639,12 @@ export type PortalConfigCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param properties - The developer portal configuration contract properties.
  */
-export const PortalConfigCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PortalConfigCreateOrUpdateInput,
-    outputSchema: PortalConfigCreateOrUpdateOutput,
-  }),
-);
+export const PortalConfigCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PortalConfigCreateOrUpdateInput,
+  outputSchema: PortalConfigCreateOrUpdateOutput,
+}));
 // Input Schema
-export const PortalConfigGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PortalConfigGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
@@ -13903,7 +13659,7 @@ export const PortalConfigGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PortalConfigGetInput = typeof PortalConfigGetInput.Type;
 
 // Output Schema
-export const PortalConfigGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PortalConfigGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -13920,13 +13676,13 @@ export type PortalConfigGetOutput = typeof PortalConfigGetOutput.Type;
  * @param portalConfigId - Portal configuration identifier.
  * @param api-version - The API version to use for this operation.
  */
-export const PortalConfigGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PortalConfigGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: PortalConfigGetInput,
   outputSchema: PortalConfigGetOutput,
 }));
 // Input Schema
 export const PortalConfigListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13942,7 +13698,7 @@ export type PortalConfigListByServiceInput =
 
 // Output Schema
 export const PortalConfigListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -13966,15 +13722,13 @@ export type PortalConfigListByServiceOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const PortalConfigListByService = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PortalConfigListByServiceInput,
-    outputSchema: PortalConfigListByServiceOutput,
-  }),
-);
+export const PortalConfigListByService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PortalConfigListByServiceInput,
+  outputSchema: PortalConfigListByServiceOutput,
+}));
 // Input Schema
 export const PortalConfigUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -14032,7 +13786,7 @@ export type PortalConfigUpdateInput = typeof PortalConfigUpdateInput.Type;
 
 // Output Schema
 export const PortalConfigUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14051,13 +13805,13 @@ export type PortalConfigUpdateOutput = typeof PortalConfigUpdateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param properties - The developer portal configuration contract properties.
  */
-export const PortalConfigUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PortalConfigUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: PortalConfigUpdateInput,
   outputSchema: PortalConfigUpdateOutput,
 }));
 // Input Schema
 export const PortalRevisionCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     portalRevisionId: Schema.String.pipe(T.PathParam()),
@@ -14087,7 +13841,7 @@ export type PortalRevisionCreateOrUpdateInput =
 
 // Output Schema
 export const PortalRevisionCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14107,20 +13861,18 @@ export type PortalRevisionCreateOrUpdateOutput =
  * @param properties - Properties of the portal revisions.
  */
 export const PortalRevisionCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PortalRevisionCreateOrUpdateInput,
     outputSchema: PortalRevisionCreateOrUpdateOutput,
   }));
 // Input Schema
-export const PortalRevisionGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    serviceName: Schema.String.pipe(T.PathParam()),
-    portalRevisionId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const PortalRevisionGetInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  portalRevisionId: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/portalRevisions/{portalRevisionId}",
@@ -14130,7 +13882,7 @@ export type PortalRevisionGetInput = typeof PortalRevisionGetInput.Type;
 
 // Output Schema
 export const PortalRevisionGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14147,13 +13899,13 @@ export type PortalRevisionGetOutput = typeof PortalRevisionGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const PortalRevisionGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PortalRevisionGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: PortalRevisionGetInput,
   outputSchema: PortalRevisionGetOutput,
 }));
 // Input Schema
 export const PortalRevisionListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14172,7 +13924,7 @@ export type PortalRevisionListByServiceInput =
 
 // Output Schema
 export const PortalRevisionListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -14205,15 +13957,13 @@ export type PortalRevisionListByServiceOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const PortalRevisionListByService = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PortalRevisionListByServiceInput,
-    outputSchema: PortalRevisionListByServiceOutput,
-  }),
-);
+export const PortalRevisionListByService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PortalRevisionListByServiceInput,
+  outputSchema: PortalRevisionListByServiceOutput,
+}));
 // Input Schema
 export const PortalRevisionUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     portalRevisionId: Schema.String.pipe(T.PathParam()),
@@ -14242,7 +13992,7 @@ export type PortalRevisionUpdateInput = typeof PortalRevisionUpdateInput.Type;
 
 // Output Schema
 export const PortalRevisionUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14261,15 +14011,13 @@ export type PortalRevisionUpdateOutput = typeof PortalRevisionUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Properties of the portal revisions.
  */
-export const PortalRevisionUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PortalRevisionUpdateInput,
-    outputSchema: PortalRevisionUpdateOutput,
-  }),
-);
+export const PortalRevisionUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PortalRevisionUpdateInput,
+  outputSchema: PortalRevisionUpdateOutput,
+}));
 // Input Schema
 export const PrivateEndpointConnectionCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
@@ -14300,7 +14048,7 @@ export type PrivateEndpointConnectionCreateOrUpdateInput =
 
 // Output Schema
 export const PrivateEndpointConnectionCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14321,13 +14069,13 @@ export type PrivateEndpointConnectionCreateOrUpdateOutput =
  * @param properties - The connection state of the private endpoint connection.
  */
 export const PrivateEndpointConnectionCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionCreateOrUpdateInput,
     outputSchema: PrivateEndpointConnectionCreateOrUpdateOutput,
   }));
 // Input Schema
 export const PrivateEndpointConnectionDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
@@ -14343,8 +14091,7 @@ export type PrivateEndpointConnectionDeleteInput =
   typeof PrivateEndpointConnectionDeleteInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const PrivateEndpointConnectionDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type PrivateEndpointConnectionDeleteOutput =
   typeof PrivateEndpointConnectionDeleteOutput.Type;
 
@@ -14359,13 +14106,13 @@ export type PrivateEndpointConnectionDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const PrivateEndpointConnectionDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionDeleteInput,
     outputSchema: PrivateEndpointConnectionDeleteOutput,
   }));
 // Input Schema
 export const PrivateEndpointConnectionGetByNameInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
@@ -14382,7 +14129,7 @@ export type PrivateEndpointConnectionGetByNameInput =
 
 // Output Schema
 export const PrivateEndpointConnectionGetByNameOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14401,13 +14148,13 @@ export type PrivateEndpointConnectionGetByNameOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const PrivateEndpointConnectionGetByName =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionGetByNameInput,
     outputSchema: PrivateEndpointConnectionGetByNameOutput,
   }));
 // Input Schema
 export const PrivateEndpointConnectionGetPrivateLinkResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -14424,7 +14171,7 @@ export type PrivateEndpointConnectionGetPrivateLinkResourceInput =
 
 // Output Schema
 export const PrivateEndpointConnectionGetPrivateLinkResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14443,13 +14190,13 @@ export type PrivateEndpointConnectionGetPrivateLinkResourceOutput =
  * @param privateLinkSubResourceName - Name of the private link resource.
  */
 export const PrivateEndpointConnectionGetPrivateLinkResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionGetPrivateLinkResourceInput,
     outputSchema: PrivateEndpointConnectionGetPrivateLinkResourceOutput,
   }));
 // Input Schema
 export const PrivateEndpointConnectionListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -14465,7 +14212,7 @@ export type PrivateEndpointConnectionListByServiceInput =
 
 // Output Schema
 export const PrivateEndpointConnectionListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -14489,13 +14236,13 @@ export type PrivateEndpointConnectionListByServiceOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const PrivateEndpointConnectionListByService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionListByServiceInput,
     outputSchema: PrivateEndpointConnectionListByServiceOutput,
   }));
 // Input Schema
 export const PrivateEndpointConnectionListPrivateLinkResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -14511,7 +14258,7 @@ export type PrivateEndpointConnectionListPrivateLinkResourcesInput =
 
 // Output Schema
 export const PrivateEndpointConnectionListPrivateLinkResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -14535,13 +14282,13 @@ export type PrivateEndpointConnectionListPrivateLinkResourcesOutput =
  * @param serviceName - The name of the API Management service.
  */
 export const PrivateEndpointConnectionListPrivateLinkResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionListPrivateLinkResourcesInput,
     outputSchema: PrivateEndpointConnectionListPrivateLinkResourcesOutput,
   }));
 // Input Schema
 export const ProductApiCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     productId: Schema.String.pipe(T.PathParam()),
@@ -14559,7 +14306,7 @@ export type ProductApiCreateOrUpdateInput =
 
 // Output Schema
 export const ProductApiCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14578,14 +14325,12 @@ export type ProductApiCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ProductApiCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProductApiCreateOrUpdateInput,
-    outputSchema: ProductApiCreateOrUpdateOutput,
-  }),
-);
+export const ProductApiCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProductApiCreateOrUpdateInput,
+  outputSchema: ProductApiCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ProductApiDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProductApiDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   productId: Schema.String.pipe(T.PathParam()),
@@ -14601,7 +14346,7 @@ export const ProductApiDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ProductApiDeleteInput = typeof ProductApiDeleteInput.Type;
 
 // Output Schema
-export const ProductApiDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ProductApiDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ProductApiDeleteOutput = typeof ProductApiDeleteOutput.Type;
 
 // The operation
@@ -14615,13 +14360,13 @@ export type ProductApiDeleteOutput = typeof ProductApiDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ProductApiDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProductApiDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProductApiDeleteInput,
   outputSchema: ProductApiDeleteOutput,
 }));
 // Input Schema
 export const ProductApiLinkCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     productId: Schema.String.pipe(T.PathParam()),
@@ -14644,7 +14389,7 @@ export type ProductApiLinkCreateOrUpdateInput =
 
 // Output Schema
 export const ProductApiLinkCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14665,13 +14410,13 @@ export type ProductApiLinkCreateOrUpdateOutput =
  * @param properties - Product-API link entity contract properties.
  */
 export const ProductApiLinkCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProductApiLinkCreateOrUpdateInput,
     outputSchema: ProductApiLinkCreateOrUpdateOutput,
   }));
 // Input Schema
 export const ProductApiLinkDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     productId: Schema.String.pipe(T.PathParam()),
@@ -14687,8 +14432,7 @@ export const ProductApiLinkDeleteInput =
 export type ProductApiLinkDeleteInput = typeof ProductApiLinkDeleteInput.Type;
 
 // Output Schema
-export const ProductApiLinkDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ProductApiLinkDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ProductApiLinkDeleteOutput = typeof ProductApiLinkDeleteOutput.Type;
 
 // The operation
@@ -14702,23 +14446,19 @@ export type ProductApiLinkDeleteOutput = typeof ProductApiLinkDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ProductApiLinkDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProductApiLinkDeleteInput,
-    outputSchema: ProductApiLinkDeleteOutput,
-  }),
-);
+export const ProductApiLinkDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProductApiLinkDeleteInput,
+  outputSchema: ProductApiLinkDeleteOutput,
+}));
 // Input Schema
-export const ProductApiLinkGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    serviceName: Schema.String.pipe(T.PathParam()),
-    productId: Schema.String.pipe(T.PathParam()),
-    apiLinkId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const ProductApiLinkGetInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  productId: Schema.String.pipe(T.PathParam()),
+  apiLinkId: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/apiLinks/{apiLinkId}",
@@ -14728,7 +14468,7 @@ export type ProductApiLinkGetInput = typeof ProductApiLinkGetInput.Type;
 
 // Output Schema
 export const ProductApiLinkGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14746,13 +14486,13 @@ export type ProductApiLinkGetOutput = typeof ProductApiLinkGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ProductApiLinkGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProductApiLinkGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProductApiLinkGetInput,
   outputSchema: ProductApiLinkGetOutput,
 }));
 // Input Schema
 export const ProductApiLinkListByProductInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     productId: Schema.String.pipe(T.PathParam()),
@@ -14772,7 +14512,7 @@ export type ProductApiLinkListByProductInput =
 
 // Output Schema
 export const ProductApiLinkListByProductOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -14801,15 +14541,13 @@ export type ProductApiLinkListByProductOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ProductApiLinkListByProduct = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProductApiLinkListByProductInput,
-    outputSchema: ProductApiLinkListByProductOutput,
-  }),
-);
+export const ProductApiLinkListByProduct = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProductApiLinkListByProductInput,
+  outputSchema: ProductApiLinkListByProductOutput,
+}));
 // Input Schema
 export const ProductApiListByProductInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     productId: Schema.String.pipe(T.PathParam()),
@@ -14829,7 +14567,7 @@ export type ProductApiListByProductInput =
 
 // Output Schema
 export const ProductApiListByProductOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -14858,15 +14596,13 @@ export type ProductApiListByProductOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ProductApiListByProduct = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProductApiListByProductInput,
-    outputSchema: ProductApiListByProductOutput,
-  }),
-);
+export const ProductApiListByProduct = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProductApiListByProductInput,
+  outputSchema: ProductApiListByProductOutput,
+}));
 // Input Schema
 export const ProductCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     productId: Schema.String.pipe(T.PathParam()),
@@ -14892,7 +14628,7 @@ export type ProductCreateOrUpdateInput = typeof ProductCreateOrUpdateInput.Type;
 
 // Output Schema
 export const ProductCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14912,14 +14648,12 @@ export type ProductCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Product entity contract properties.
  */
-export const ProductCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProductCreateOrUpdateInput,
-    outputSchema: ProductCreateOrUpdateOutput,
-  }),
-);
+export const ProductCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProductCreateOrUpdateInput,
+  outputSchema: ProductCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ProductDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProductDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   productId: Schema.String.pipe(T.PathParam()),
@@ -14935,7 +14669,7 @@ export const ProductDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ProductDeleteInput = typeof ProductDeleteInput.Type;
 
 // Output Schema
-export const ProductDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ProductDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ProductDeleteOutput = typeof ProductDeleteOutput.Type;
 
 // The operation
@@ -14950,12 +14684,12 @@ export type ProductDeleteOutput = typeof ProductDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ProductDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProductDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProductDeleteInput,
   outputSchema: ProductDeleteOutput,
 }));
 // Input Schema
-export const ProductGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProductGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   productId: Schema.String.pipe(T.PathParam()),
@@ -14970,7 +14704,7 @@ export const ProductGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ProductGetInput = typeof ProductGetInput.Type;
 
 // Output Schema
-export const ProductGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProductGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -14987,13 +14721,13 @@ export type ProductGetOutput = typeof ProductGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ProductGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProductGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProductGetInput,
   outputSchema: ProductGetOutput,
 }));
 // Input Schema
 export const ProductGroupCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     productId: Schema.String.pipe(T.PathParam()),
@@ -15011,7 +14745,7 @@ export type ProductGroupCreateOrUpdateInput =
 
 // Output Schema
 export const ProductGroupCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -15030,15 +14764,13 @@ export type ProductGroupCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ProductGroupCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProductGroupCreateOrUpdateInput,
-    outputSchema: ProductGroupCreateOrUpdateOutput,
-  }),
-);
+export const ProductGroupCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProductGroupCreateOrUpdateInput,
+  outputSchema: ProductGroupCreateOrUpdateOutput,
+}));
 // Input Schema
 export const ProductGroupDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     productId: Schema.String.pipe(T.PathParam()),
@@ -15054,7 +14786,7 @@ export const ProductGroupDeleteInput =
 export type ProductGroupDeleteInput = typeof ProductGroupDeleteInput.Type;
 
 // Output Schema
-export const ProductGroupDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ProductGroupDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ProductGroupDeleteOutput = typeof ProductGroupDeleteOutput.Type;
 
 // The operation
@@ -15068,13 +14800,13 @@ export type ProductGroupDeleteOutput = typeof ProductGroupDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ProductGroupDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProductGroupDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProductGroupDeleteInput,
   outputSchema: ProductGroupDeleteOutput,
 }));
 // Input Schema
 export const ProductGroupLinkCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     productId: Schema.String.pipe(T.PathParam()),
@@ -15097,7 +14829,7 @@ export type ProductGroupLinkCreateOrUpdateInput =
 
 // Output Schema
 export const ProductGroupLinkCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -15118,13 +14850,13 @@ export type ProductGroupLinkCreateOrUpdateOutput =
  * @param properties - Product-group link entity contract properties.
  */
 export const ProductGroupLinkCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProductGroupLinkCreateOrUpdateInput,
     outputSchema: ProductGroupLinkCreateOrUpdateOutput,
   }));
 // Input Schema
 export const ProductGroupLinkDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     productId: Schema.String.pipe(T.PathParam()),
@@ -15141,8 +14873,7 @@ export type ProductGroupLinkDeleteInput =
   typeof ProductGroupLinkDeleteInput.Type;
 
 // Output Schema
-export const ProductGroupLinkDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ProductGroupLinkDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ProductGroupLinkDeleteOutput =
   typeof ProductGroupLinkDeleteOutput.Type;
 
@@ -15157,15 +14888,13 @@ export type ProductGroupLinkDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ProductGroupLinkDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProductGroupLinkDeleteInput,
-    outputSchema: ProductGroupLinkDeleteOutput,
-  }),
-);
+export const ProductGroupLinkDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProductGroupLinkDeleteInput,
+  outputSchema: ProductGroupLinkDeleteOutput,
+}));
 // Input Schema
 export const ProductGroupLinkGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     productId: Schema.String.pipe(T.PathParam()),
@@ -15182,7 +14911,7 @@ export type ProductGroupLinkGetInput = typeof ProductGroupLinkGetInput.Type;
 
 // Output Schema
 export const ProductGroupLinkGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -15200,13 +14929,13 @@ export type ProductGroupLinkGetOutput = typeof ProductGroupLinkGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ProductGroupLinkGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProductGroupLinkGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProductGroupLinkGetInput,
   outputSchema: ProductGroupLinkGetOutput,
 }));
 // Input Schema
 export const ProductGroupLinkListByProductInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     productId: Schema.String.pipe(T.PathParam()),
@@ -15226,7 +14955,7 @@ export type ProductGroupLinkListByProductInput =
 
 // Output Schema
 export const ProductGroupLinkListByProductOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -15256,13 +14985,13 @@ export type ProductGroupLinkListByProductOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const ProductGroupLinkListByProduct =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProductGroupLinkListByProductInput,
     outputSchema: ProductGroupLinkListByProductOutput,
   }));
 // Input Schema
 export const ProductGroupListByProductInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     productId: Schema.String.pipe(T.PathParam()),
@@ -15282,7 +15011,7 @@ export type ProductGroupListByProductInput =
 
 // Output Schema
 export const ProductGroupListByProductOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -15311,15 +15040,13 @@ export type ProductGroupListByProductOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ProductGroupListByProduct = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProductGroupListByProductInput,
-    outputSchema: ProductGroupListByProductOutput,
-  }),
-);
+export const ProductGroupListByProduct = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProductGroupListByProductInput,
+  outputSchema: ProductGroupListByProductOutput,
+}));
 // Input Schema
 export const ProductListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15339,7 +15066,7 @@ export type ProductListByServiceInput = typeof ProductListByServiceInput.Type;
 
 // Output Schema
 export const ProductListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -15368,25 +15095,21 @@ export type ProductListByServiceOutput = typeof ProductListByServiceOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ProductListByService = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProductListByServiceInput,
-    outputSchema: ProductListByServiceOutput,
-  }),
-);
+export const ProductListByService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProductListByServiceInput,
+  outputSchema: ProductListByServiceOutput,
+}));
 // Input Schema
-export const ProductListByTagsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    serviceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    $filter: Schema.optional(Schema.String),
-    $top: Schema.optional(Schema.Number),
-    $skip: Schema.optional(Schema.Number),
-    includeNotTaggedProducts: Schema.optional(Schema.Boolean),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const ProductListByTagsInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  $filter: Schema.optional(Schema.String),
+  $top: Schema.optional(Schema.Number),
+  $skip: Schema.optional(Schema.Number),
+  includeNotTaggedProducts: Schema.optional(Schema.Boolean),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/productsByTags",
@@ -15396,7 +15119,7 @@ export type ProductListByTagsInput = typeof ProductListByTagsInput.Type;
 
 // Output Schema
 export const ProductListByTagsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -15532,13 +15255,13 @@ export type ProductListByTagsOutput = typeof ProductListByTagsOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ProductListByTags = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProductListByTags = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProductListByTagsInput,
   outputSchema: ProductListByTagsOutput,
 }));
 // Input Schema
 export const ProductPolicyCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     productId: Schema.String.pipe(T.PathParam()),
@@ -15564,7 +15287,7 @@ export type ProductPolicyCreateOrUpdateInput =
 
 // Output Schema
 export const ProductPolicyCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -15585,15 +15308,13 @@ export type ProductPolicyCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Properties of the Policy.
  */
-export const ProductPolicyCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProductPolicyCreateOrUpdateInput,
-    outputSchema: ProductPolicyCreateOrUpdateOutput,
-  }),
-);
+export const ProductPolicyCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProductPolicyCreateOrUpdateInput,
+  outputSchema: ProductPolicyCreateOrUpdateOutput,
+}));
 // Input Schema
 export const ProductPolicyDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     productId: Schema.String.pipe(T.PathParam()),
@@ -15609,8 +15330,7 @@ export const ProductPolicyDeleteInput =
 export type ProductPolicyDeleteInput = typeof ProductPolicyDeleteInput.Type;
 
 // Output Schema
-export const ProductPolicyDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ProductPolicyDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ProductPolicyDeleteOutput = typeof ProductPolicyDeleteOutput.Type;
 
 // The operation
@@ -15625,12 +15345,12 @@ export type ProductPolicyDeleteOutput = typeof ProductPolicyDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ProductPolicyDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProductPolicyDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProductPolicyDeleteInput,
   outputSchema: ProductPolicyDeleteOutput,
 }));
 // Input Schema
-export const ProductPolicyGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProductPolicyGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   productId: Schema.String.pipe(T.PathParam()),
@@ -15647,13 +15367,11 @@ export const ProductPolicyGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ProductPolicyGetInput = typeof ProductPolicyGetInput.Type;
 
 // Output Schema
-export const ProductPolicyGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  },
-);
+export const ProductPolicyGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type ProductPolicyGetOutput = typeof ProductPolicyGetOutput.Type;
 
 // The operation
@@ -15668,13 +15386,13 @@ export type ProductPolicyGetOutput = typeof ProductPolicyGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ProductPolicyGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProductPolicyGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProductPolicyGetInput,
   outputSchema: ProductPolicyGetOutput,
 }));
 // Input Schema
 export const ProductPolicyListByProductInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     productId: Schema.String.pipe(T.PathParam()),
@@ -15691,7 +15409,7 @@ export type ProductPolicyListByProductInput =
 
 // Output Schema
 export const ProductPolicyListByProductOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -15717,15 +15435,13 @@ export type ProductPolicyListByProductOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ProductPolicyListByProduct = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProductPolicyListByProductInput,
-    outputSchema: ProductPolicyListByProductOutput,
-  }),
-);
+export const ProductPolicyListByProduct = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProductPolicyListByProductInput,
+  outputSchema: ProductPolicyListByProductOutput,
+}));
 // Input Schema
 export const ProductSubscriptionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     productId: Schema.String.pipe(T.PathParam()),
@@ -15745,7 +15461,7 @@ export type ProductSubscriptionsListInput =
 
 // Output Schema
 export const ProductSubscriptionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -15774,14 +15490,12 @@ export type ProductSubscriptionsListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ProductSubscriptionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProductSubscriptionsListInput,
-    outputSchema: ProductSubscriptionsListOutput,
-  }),
-);
+export const ProductSubscriptionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProductSubscriptionsListInput,
+  outputSchema: ProductSubscriptionsListOutput,
+}));
 // Input Schema
-export const ProductUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProductUpdateInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   productId: Schema.String.pipe(T.PathParam()),
@@ -15806,7 +15520,7 @@ export const ProductUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ProductUpdateInput = typeof ProductUpdateInput.Type;
 
 // Output Schema
-export const ProductUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProductUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -15825,13 +15539,13 @@ export type ProductUpdateOutput = typeof ProductUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Product entity Update contract properties.
  */
-export const ProductUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProductUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProductUpdateInput,
   outputSchema: ProductUpdateOutput,
 }));
 // Input Schema
 export const ProductWikiCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     productId: Schema.String.pipe(T.PathParam()),
@@ -15859,7 +15573,7 @@ export type ProductWikiCreateOrUpdateInput =
 
 // Output Schema
 export const ProductWikiCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -15879,22 +15593,18 @@ export type ProductWikiCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Wiki details.
  */
-export const ProductWikiCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProductWikiCreateOrUpdateInput,
-    outputSchema: ProductWikiCreateOrUpdateOutput,
-  }),
-);
+export const ProductWikiCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProductWikiCreateOrUpdateInput,
+  outputSchema: ProductWikiCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ProductWikiDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    serviceName: Schema.String.pipe(T.PathParam()),
-    productId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const ProductWikiDeleteInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  productId: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/wikis/default",
@@ -15903,7 +15613,7 @@ export const ProductWikiDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ProductWikiDeleteInput = typeof ProductWikiDeleteInput.Type;
 
 // Output Schema
-export const ProductWikiDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ProductWikiDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ProductWikiDeleteOutput = typeof ProductWikiDeleteOutput.Type;
 
 // The operation
@@ -15917,12 +15627,12 @@ export type ProductWikiDeleteOutput = typeof ProductWikiDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ProductWikiDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProductWikiDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProductWikiDeleteInput,
   outputSchema: ProductWikiDeleteOutput,
 }));
 // Input Schema
-export const ProductWikiGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProductWikiGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   productId: Schema.String.pipe(T.PathParam()),
@@ -15937,7 +15647,7 @@ export const ProductWikiGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ProductWikiGetInput = typeof ProductWikiGetInput.Type;
 
 // Output Schema
-export const ProductWikiGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProductWikiGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -15954,12 +15664,12 @@ export type ProductWikiGetOutput = typeof ProductWikiGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ProductWikiGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProductWikiGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProductWikiGetInput,
   outputSchema: ProductWikiGetOutput,
 }));
 // Input Schema
-export const ProductWikisListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProductWikisListInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   productId: Schema.String.pipe(T.PathParam()),
@@ -15977,20 +15687,18 @@ export const ProductWikisListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ProductWikisListInput = typeof ProductWikisListInput.Type;
 
 // Output Schema
-export const ProductWikisListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const ProductWikisListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  },
-);
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ProductWikisListOutput = typeof ProductWikisListOutput.Type;
 
 // The operation
@@ -16006,31 +15714,29 @@ export type ProductWikisListOutput = typeof ProductWikisListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ProductWikisList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProductWikisList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProductWikisListInput,
   outputSchema: ProductWikisListOutput,
 }));
 // Input Schema
-export const ProductWikiUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    serviceName: Schema.String.pipe(T.PathParam()),
-    productId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    properties: Schema.optional(
-      Schema.Struct({
-        documents: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              documentationId: Schema.optional(Schema.String),
-            }),
-          ),
+export const ProductWikiUpdateInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  productId: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      documents: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            documentationId: Schema.optional(Schema.String),
+          }),
         ),
-      }),
-    ),
-  },
-).pipe(
+      ),
+    }),
+  ),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/wikis/default",
@@ -16040,7 +15746,7 @@ export type ProductWikiUpdateInput = typeof ProductWikiUpdateInput.Type;
 
 // Output Schema
 export const ProductWikiUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -16059,13 +15765,13 @@ export type ProductWikiUpdateOutput = typeof ProductWikiUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Wiki details.
  */
-export const ProductWikiUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProductWikiUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProductWikiUpdateInput,
   outputSchema: ProductWikiUpdateOutput,
 }));
 // Input Schema
 export const QuotaByCounterKeysListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     quotaCounterKey: Schema.String.pipe(T.PathParam()),
@@ -16082,7 +15788,7 @@ export type QuotaByCounterKeysListByServiceInput =
 
 // Output Schema
 export const QuotaByCounterKeysListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -16116,13 +15822,13 @@ export type QuotaByCounterKeysListByServiceOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const QuotaByCounterKeysListByService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: QuotaByCounterKeysListByServiceInput,
     outputSchema: QuotaByCounterKeysListByServiceOutput,
   }));
 // Input Schema
 export const QuotaByCounterKeysUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     quotaCounterKey: Schema.String.pipe(T.PathParam()),
@@ -16145,7 +15851,7 @@ export type QuotaByCounterKeysUpdateInput =
 
 // Output Schema
 export const QuotaByCounterKeysUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -16179,15 +15885,13 @@ export type QuotaByCounterKeysUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Quota counter value details.
  */
-export const QuotaByCounterKeysUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: QuotaByCounterKeysUpdateInput,
-    outputSchema: QuotaByCounterKeysUpdateOutput,
-  }),
-);
+export const QuotaByCounterKeysUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: QuotaByCounterKeysUpdateInput,
+  outputSchema: QuotaByCounterKeysUpdateOutput,
+}));
 // Input Schema
 export const QuotaByPeriodKeysGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     quotaCounterKey: Schema.String.pipe(T.PathParam()),
@@ -16204,7 +15908,7 @@ export type QuotaByPeriodKeysGetInput = typeof QuotaByPeriodKeysGetInput.Type;
 
 // Output Schema
 export const QuotaByPeriodKeysGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     counterKey: Schema.String,
     periodKey: Schema.String,
     periodStartTime: Schema.String,
@@ -16229,15 +15933,13 @@ export type QuotaByPeriodKeysGetOutput = typeof QuotaByPeriodKeysGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const QuotaByPeriodKeysGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: QuotaByPeriodKeysGetInput,
-    outputSchema: QuotaByPeriodKeysGetOutput,
-  }),
-);
+export const QuotaByPeriodKeysGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: QuotaByPeriodKeysGetInput,
+  outputSchema: QuotaByPeriodKeysGetOutput,
+}));
 // Input Schema
 export const QuotaByPeriodKeysUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     quotaCounterKey: Schema.String.pipe(T.PathParam()),
@@ -16261,7 +15963,7 @@ export type QuotaByPeriodKeysUpdateInput =
 
 // Output Schema
 export const QuotaByPeriodKeysUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     counterKey: Schema.String,
     periodKey: Schema.String,
     periodStartTime: Schema.String,
@@ -16288,15 +15990,13 @@ export type QuotaByPeriodKeysUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Quota counter value details.
  */
-export const QuotaByPeriodKeysUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: QuotaByPeriodKeysUpdateInput,
-    outputSchema: QuotaByPeriodKeysUpdateOutput,
-  }),
-);
+export const QuotaByPeriodKeysUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: QuotaByPeriodKeysUpdateInput,
+  outputSchema: QuotaByPeriodKeysUpdateOutput,
+}));
 // Input Schema
 export const RegionListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -16311,7 +16011,7 @@ export type RegionListByServiceInput = typeof RegionListByServiceInput.Type;
 
 // Output Schema
 export const RegionListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -16335,12 +16035,12 @@ export type RegionListByServiceOutput = typeof RegionListByServiceOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const RegionListByService = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RegionListByService = /*@__PURE__*/ API.make(() => ({
   inputSchema: RegionListByServiceInput,
   outputSchema: RegionListByServiceOutput,
 }));
 // Input Schema
-export const ReportsListByApiInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReportsListByApiInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -16358,44 +16058,42 @@ export const ReportsListByApiInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ReportsListByApiInput = typeof ReportsListByApiInput.Type;
 
 // Output Schema
-export const ReportsListByApiOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          timestamp: Schema.optional(Schema.String),
-          interval: Schema.optional(Schema.String),
-          country: Schema.optional(Schema.String),
-          region: Schema.optional(Schema.String),
-          zip: Schema.optional(Schema.String),
-          userId: Schema.optional(Schema.String),
-          productId: Schema.optional(Schema.String),
-          apiId: Schema.optional(Schema.String),
-          operationId: Schema.optional(Schema.String),
-          apiRegion: Schema.optional(Schema.String),
-          subscriptionId: Schema.optional(Schema.String),
-          callCountSuccess: Schema.optional(Schema.Number),
-          callCountBlocked: Schema.optional(Schema.Number),
-          callCountFailed: Schema.optional(Schema.Number),
-          callCountOther: Schema.optional(Schema.Number),
-          callCountTotal: Schema.optional(Schema.Number),
-          bandwidth: Schema.optional(Schema.Number),
-          cacheHitCount: Schema.optional(Schema.Number),
-          cacheMissCount: Schema.optional(Schema.Number),
-          apiTimeAvg: Schema.optional(Schema.Number),
-          apiTimeMin: Schema.optional(Schema.Number),
-          apiTimeMax: Schema.optional(Schema.Number),
-          serviceTimeAvg: Schema.optional(Schema.Number),
-          serviceTimeMin: Schema.optional(Schema.Number),
-          serviceTimeMax: Schema.optional(Schema.Number),
-        }),
-      ),
+export const ReportsListByApiOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        timestamp: Schema.optional(Schema.String),
+        interval: Schema.optional(Schema.String),
+        country: Schema.optional(Schema.String),
+        region: Schema.optional(Schema.String),
+        zip: Schema.optional(Schema.String),
+        userId: Schema.optional(Schema.String),
+        productId: Schema.optional(Schema.String),
+        apiId: Schema.optional(Schema.String),
+        operationId: Schema.optional(Schema.String),
+        apiRegion: Schema.optional(Schema.String),
+        subscriptionId: Schema.optional(Schema.String),
+        callCountSuccess: Schema.optional(Schema.Number),
+        callCountBlocked: Schema.optional(Schema.Number),
+        callCountFailed: Schema.optional(Schema.Number),
+        callCountOther: Schema.optional(Schema.Number),
+        callCountTotal: Schema.optional(Schema.Number),
+        bandwidth: Schema.optional(Schema.Number),
+        cacheHitCount: Schema.optional(Schema.Number),
+        cacheMissCount: Schema.optional(Schema.Number),
+        apiTimeAvg: Schema.optional(Schema.Number),
+        apiTimeMin: Schema.optional(Schema.Number),
+        apiTimeMax: Schema.optional(Schema.Number),
+        serviceTimeAvg: Schema.optional(Schema.Number),
+        serviceTimeMin: Schema.optional(Schema.Number),
+        serviceTimeMax: Schema.optional(Schema.Number),
+      }),
     ),
-    count: Schema.optional(Schema.Number),
-    nextLink: Schema.optional(Schema.String),
-  },
-);
+  ),
+  count: Schema.optional(Schema.Number),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ReportsListByApiOutput = typeof ReportsListByApiOutput.Type;
 
 // The operation
@@ -16411,12 +16109,12 @@ export type ReportsListByApiOutput = typeof ReportsListByApiOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ReportsListByApi = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReportsListByApi = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReportsListByApiInput,
   outputSchema: ReportsListByApiOutput,
 }));
 // Input Schema
-export const ReportsListByGeoInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReportsListByGeoInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -16433,44 +16131,42 @@ export const ReportsListByGeoInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ReportsListByGeoInput = typeof ReportsListByGeoInput.Type;
 
 // Output Schema
-export const ReportsListByGeoOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          timestamp: Schema.optional(Schema.String),
-          interval: Schema.optional(Schema.String),
-          country: Schema.optional(Schema.String),
-          region: Schema.optional(Schema.String),
-          zip: Schema.optional(Schema.String),
-          userId: Schema.optional(Schema.String),
-          productId: Schema.optional(Schema.String),
-          apiId: Schema.optional(Schema.String),
-          operationId: Schema.optional(Schema.String),
-          apiRegion: Schema.optional(Schema.String),
-          subscriptionId: Schema.optional(Schema.String),
-          callCountSuccess: Schema.optional(Schema.Number),
-          callCountBlocked: Schema.optional(Schema.Number),
-          callCountFailed: Schema.optional(Schema.Number),
-          callCountOther: Schema.optional(Schema.Number),
-          callCountTotal: Schema.optional(Schema.Number),
-          bandwidth: Schema.optional(Schema.Number),
-          cacheHitCount: Schema.optional(Schema.Number),
-          cacheMissCount: Schema.optional(Schema.Number),
-          apiTimeAvg: Schema.optional(Schema.Number),
-          apiTimeMin: Schema.optional(Schema.Number),
-          apiTimeMax: Schema.optional(Schema.Number),
-          serviceTimeAvg: Schema.optional(Schema.Number),
-          serviceTimeMin: Schema.optional(Schema.Number),
-          serviceTimeMax: Schema.optional(Schema.Number),
-        }),
-      ),
+export const ReportsListByGeoOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        timestamp: Schema.optional(Schema.String),
+        interval: Schema.optional(Schema.String),
+        country: Schema.optional(Schema.String),
+        region: Schema.optional(Schema.String),
+        zip: Schema.optional(Schema.String),
+        userId: Schema.optional(Schema.String),
+        productId: Schema.optional(Schema.String),
+        apiId: Schema.optional(Schema.String),
+        operationId: Schema.optional(Schema.String),
+        apiRegion: Schema.optional(Schema.String),
+        subscriptionId: Schema.optional(Schema.String),
+        callCountSuccess: Schema.optional(Schema.Number),
+        callCountBlocked: Schema.optional(Schema.Number),
+        callCountFailed: Schema.optional(Schema.Number),
+        callCountOther: Schema.optional(Schema.Number),
+        callCountTotal: Schema.optional(Schema.Number),
+        bandwidth: Schema.optional(Schema.Number),
+        cacheHitCount: Schema.optional(Schema.Number),
+        cacheMissCount: Schema.optional(Schema.Number),
+        apiTimeAvg: Schema.optional(Schema.Number),
+        apiTimeMin: Schema.optional(Schema.Number),
+        apiTimeMax: Schema.optional(Schema.Number),
+        serviceTimeAvg: Schema.optional(Schema.Number),
+        serviceTimeMin: Schema.optional(Schema.Number),
+        serviceTimeMax: Schema.optional(Schema.Number),
+      }),
     ),
-    count: Schema.optional(Schema.Number),
-    nextLink: Schema.optional(Schema.String),
-  },
-);
+  ),
+  count: Schema.optional(Schema.Number),
+  nextLink: Schema.optional(Schema.String),
+});
 export type ReportsListByGeoOutput = typeof ReportsListByGeoOutput.Type;
 
 // The operation
@@ -16485,13 +16181,13 @@ export type ReportsListByGeoOutput = typeof ReportsListByGeoOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ReportsListByGeo = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReportsListByGeo = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReportsListByGeoInput,
   outputSchema: ReportsListByGeoOutput,
 }));
 // Input Schema
 export const ReportsListByOperationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -16511,7 +16207,7 @@ export type ReportsListByOperationInput =
 
 // Output Schema
 export const ReportsListByOperationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -16563,15 +16259,13 @@ export type ReportsListByOperationOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ReportsListByOperation = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReportsListByOperationInput,
-    outputSchema: ReportsListByOperationOutput,
-  }),
-);
+export const ReportsListByOperation = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReportsListByOperationInput,
+  outputSchema: ReportsListByOperationOutput,
+}));
 // Input Schema
 export const ReportsListByProductInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -16590,7 +16284,7 @@ export type ReportsListByProductInput = typeof ReportsListByProductInput.Type;
 
 // Output Schema
 export const ReportsListByProductOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -16641,15 +16335,13 @@ export type ReportsListByProductOutput = typeof ReportsListByProductOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ReportsListByProduct = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReportsListByProductInput,
-    outputSchema: ReportsListByProductOutput,
-  }),
-);
+export const ReportsListByProduct = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReportsListByProductInput,
+  outputSchema: ReportsListByProductOutput,
+}));
 // Input Schema
 export const ReportsListByRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -16667,7 +16359,7 @@ export type ReportsListByRequestInput = typeof ReportsListByRequestInput.Type;
 
 // Output Schema
 export const ReportsListByRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -16708,15 +16400,13 @@ export type ReportsListByRequestOutput = typeof ReportsListByRequestOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ReportsListByRequest = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReportsListByRequestInput,
-    outputSchema: ReportsListByRequestOutput,
-  }),
-);
+export const ReportsListByRequest = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReportsListByRequestInput,
+  outputSchema: ReportsListByRequestOutput,
+}));
 // Input Schema
 export const ReportsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -16736,7 +16426,7 @@ export type ReportsListBySubscriptionInput =
 
 // Output Schema
 export const ReportsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -16788,26 +16478,22 @@ export type ReportsListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ReportsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReportsListBySubscriptionInput,
-    outputSchema: ReportsListBySubscriptionOutput,
-  }),
-);
+export const ReportsListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReportsListBySubscriptionInput,
+  outputSchema: ReportsListBySubscriptionOutput,
+}));
 // Input Schema
-export const ReportsListByTimeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    serviceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    $filter: Schema.String,
-    $top: Schema.optional(Schema.Number),
-    $skip: Schema.optional(Schema.Number),
-    $orderby: Schema.optional(Schema.String),
-    interval: Schema.String,
-    "api-version": Schema.String,
-  },
-).pipe(
+export const ReportsListByTimeInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  $filter: Schema.String,
+  $top: Schema.optional(Schema.Number),
+  $skip: Schema.optional(Schema.Number),
+  $orderby: Schema.optional(Schema.String),
+  interval: Schema.String,
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/reports/byTime",
@@ -16817,7 +16503,7 @@ export type ReportsListByTimeInput = typeof ReportsListByTimeInput.Type;
 
 // Output Schema
 export const ReportsListByTimeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -16869,23 +16555,21 @@ export type ReportsListByTimeOutput = typeof ReportsListByTimeOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ReportsListByTime = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReportsListByTime = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReportsListByTimeInput,
   outputSchema: ReportsListByTimeOutput,
 }));
 // Input Schema
-export const ReportsListByUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    serviceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    $filter: Schema.String,
-    $top: Schema.optional(Schema.Number),
-    $skip: Schema.optional(Schema.Number),
-    $orderby: Schema.optional(Schema.String),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const ReportsListByUserInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  $filter: Schema.String,
+  $top: Schema.optional(Schema.Number),
+  $skip: Schema.optional(Schema.Number),
+  $orderby: Schema.optional(Schema.String),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/reports/byUser",
@@ -16895,7 +16579,7 @@ export type ReportsListByUserInput = typeof ReportsListByUserInput.Type;
 
 // Output Schema
 export const ReportsListByUserOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -16946,13 +16630,13 @@ export type ReportsListByUserOutput = typeof ReportsListByUserOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ReportsListByUser = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReportsListByUser = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReportsListByUserInput,
   outputSchema: ReportsListByUserOutput,
 }));
 // Input Schema
 export const SubscriptionCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     sid: Schema.String.pipe(T.PathParam()),
@@ -16991,7 +16675,7 @@ export type SubscriptionCreateOrUpdateInput =
 
 // Output Schema
 export const SubscriptionCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -17015,15 +16699,13 @@ export type SubscriptionCreateOrUpdateOutput =
  * @param appType - Determines the type of application which send the create user request. Default is legacy publisher portal.
  * @param properties - Subscription contract properties.
  */
-export const SubscriptionCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SubscriptionCreateOrUpdateInput,
-    outputSchema: SubscriptionCreateOrUpdateOutput,
-  }),
-);
+export const SubscriptionCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SubscriptionCreateOrUpdateInput,
+  outputSchema: SubscriptionCreateOrUpdateOutput,
+}));
 // Input Schema
 export const SubscriptionDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     sid: Schema.String.pipe(T.PathParam()),
@@ -17038,7 +16720,7 @@ export const SubscriptionDeleteInput =
 export type SubscriptionDeleteInput = typeof SubscriptionDeleteInput.Type;
 
 // Output Schema
-export const SubscriptionDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const SubscriptionDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type SubscriptionDeleteOutput = typeof SubscriptionDeleteOutput.Type;
 
 // The operation
@@ -17052,12 +16734,12 @@ export type SubscriptionDeleteOutput = typeof SubscriptionDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const SubscriptionDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SubscriptionDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: SubscriptionDeleteInput,
   outputSchema: SubscriptionDeleteOutput,
 }));
 // Input Schema
-export const SubscriptionGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SubscriptionGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   sid: Schema.String.pipe(T.PathParam()),
@@ -17072,7 +16754,7 @@ export const SubscriptionGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SubscriptionGetInput = typeof SubscriptionGetInput.Type;
 
 // Output Schema
-export const SubscriptionGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SubscriptionGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -17089,12 +16771,12 @@ export type SubscriptionGetOutput = typeof SubscriptionGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const SubscriptionGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SubscriptionGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SubscriptionGetInput,
   outputSchema: SubscriptionGetOutput,
 }));
 // Input Schema
-export const SubscriptionListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SubscriptionListInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -17111,21 +16793,19 @@ export const SubscriptionListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SubscriptionListInput = typeof SubscriptionListInput.Type;
 
 // Output Schema
-export const SubscriptionListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const SubscriptionListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    count: Schema.optional(Schema.Number),
-    nextLink: Schema.optional(Schema.String),
-  },
-);
+  ),
+  count: Schema.optional(Schema.Number),
+  nextLink: Schema.optional(Schema.String),
+});
 export type SubscriptionListOutput = typeof SubscriptionListOutput.Type;
 
 // The operation
@@ -17140,13 +16820,13 @@ export type SubscriptionListOutput = typeof SubscriptionListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const SubscriptionList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SubscriptionList = /*@__PURE__*/ API.make(() => ({
   inputSchema: SubscriptionListInput,
   outputSchema: SubscriptionListOutput,
 }));
 // Input Schema
 export const SubscriptionListSecretsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     sid: Schema.String.pipe(T.PathParam()),
@@ -17163,7 +16843,7 @@ export type SubscriptionListSecretsInput =
 
 // Output Schema
 export const SubscriptionListSecretsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     primaryKey: Schema.optional(Schema.String),
     secondaryKey: Schema.optional(Schema.String),
   });
@@ -17180,15 +16860,13 @@ export type SubscriptionListSecretsOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const SubscriptionListSecrets = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SubscriptionListSecretsInput,
-    outputSchema: SubscriptionListSecretsOutput,
-  }),
-);
+export const SubscriptionListSecrets = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SubscriptionListSecretsInput,
+  outputSchema: SubscriptionListSecretsOutput,
+}));
 // Input Schema
 export const SubscriptionRegeneratePrimaryKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     sid: Schema.String.pipe(T.PathParam()),
@@ -17204,8 +16882,7 @@ export type SubscriptionRegeneratePrimaryKeyInput =
   typeof SubscriptionRegeneratePrimaryKeyInput.Type;
 
 // Output Schema
-export const SubscriptionRegeneratePrimaryKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const SubscriptionRegeneratePrimaryKeyOutput = /*@__PURE__*/ Schema.Void;
 export type SubscriptionRegeneratePrimaryKeyOutput =
   typeof SubscriptionRegeneratePrimaryKeyOutput.Type;
 
@@ -17220,13 +16897,13 @@ export type SubscriptionRegeneratePrimaryKeyOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const SubscriptionRegeneratePrimaryKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SubscriptionRegeneratePrimaryKeyInput,
     outputSchema: SubscriptionRegeneratePrimaryKeyOutput,
   }));
 // Input Schema
 export const SubscriptionRegenerateSecondaryKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     sid: Schema.String.pipe(T.PathParam()),
@@ -17243,7 +16920,7 @@ export type SubscriptionRegenerateSecondaryKeyInput =
 
 // Output Schema
 export const SubscriptionRegenerateSecondaryKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type SubscriptionRegenerateSecondaryKeyOutput =
   typeof SubscriptionRegenerateSecondaryKeyOutput.Type;
 
@@ -17258,13 +16935,13 @@ export type SubscriptionRegenerateSecondaryKeyOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const SubscriptionRegenerateSecondaryKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SubscriptionRegenerateSecondaryKeyInput,
     outputSchema: SubscriptionRegenerateSecondaryKeyOutput,
   }));
 // Input Schema
 export const SubscriptionUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     sid: Schema.String.pipe(T.PathParam()),
@@ -17304,7 +16981,7 @@ export type SubscriptionUpdateInput = typeof SubscriptionUpdateInput.Type;
 
 // Output Schema
 export const SubscriptionUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -17327,13 +17004,13 @@ export type SubscriptionUpdateOutput = typeof SubscriptionUpdateOutput.Type;
  * @param appType - Determines the type of application which send the create user request. Default is legacy publisher portal.
  * @param properties - Subscription Update contract properties.
  */
-export const SubscriptionUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SubscriptionUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SubscriptionUpdateInput,
   outputSchema: SubscriptionUpdateOutput,
 }));
 // Input Schema
 export const TagApiLinkCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     tagId: Schema.String.pipe(T.PathParam()),
@@ -17356,7 +17033,7 @@ export type TagApiLinkCreateOrUpdateInput =
 
 // Output Schema
 export const TagApiLinkCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -17376,14 +17053,12 @@ export type TagApiLinkCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Tag-API link entity contract properties.
  */
-export const TagApiLinkCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TagApiLinkCreateOrUpdateInput,
-    outputSchema: TagApiLinkCreateOrUpdateOutput,
-  }),
-);
+export const TagApiLinkCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TagApiLinkCreateOrUpdateInput,
+  outputSchema: TagApiLinkCreateOrUpdateOutput,
+}));
 // Input Schema
-export const TagApiLinkDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TagApiLinkDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   tagId: Schema.String.pipe(T.PathParam()),
@@ -17399,7 +17074,7 @@ export const TagApiLinkDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TagApiLinkDeleteInput = typeof TagApiLinkDeleteInput.Type;
 
 // Output Schema
-export const TagApiLinkDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const TagApiLinkDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type TagApiLinkDeleteOutput = typeof TagApiLinkDeleteOutput.Type;
 
 // The operation
@@ -17413,12 +17088,12 @@ export type TagApiLinkDeleteOutput = typeof TagApiLinkDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const TagApiLinkDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TagApiLinkDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: TagApiLinkDeleteInput,
   outputSchema: TagApiLinkDeleteOutput,
 }));
 // Input Schema
-export const TagApiLinkGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TagApiLinkGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   tagId: Schema.String.pipe(T.PathParam()),
@@ -17434,7 +17109,7 @@ export const TagApiLinkGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TagApiLinkGetInput = typeof TagApiLinkGetInput.Type;
 
 // Output Schema
-export const TagApiLinkGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TagApiLinkGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -17452,13 +17127,13 @@ export type TagApiLinkGetOutput = typeof TagApiLinkGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const TagApiLinkGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TagApiLinkGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TagApiLinkGetInput,
   outputSchema: TagApiLinkGetOutput,
 }));
 // Input Schema
 export const TagApiLinkListByProductInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     tagId: Schema.String.pipe(T.PathParam()),
@@ -17478,7 +17153,7 @@ export type TagApiLinkListByProductInput =
 
 // Output Schema
 export const TagApiLinkListByProductOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -17507,14 +17182,12 @@ export type TagApiLinkListByProductOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const TagApiLinkListByProduct = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TagApiLinkListByProductInput,
-    outputSchema: TagApiLinkListByProductOutput,
-  }),
-);
+export const TagApiLinkListByProduct = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TagApiLinkListByProductInput,
+  outputSchema: TagApiLinkListByProductOutput,
+}));
 // Input Schema
-export const TagAssignToApiInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TagAssignToApiInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   apiId: Schema.String.pipe(T.PathParam()),
@@ -17530,7 +17203,7 @@ export const TagAssignToApiInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TagAssignToApiInput = typeof TagAssignToApiInput.Type;
 
 // Output Schema
-export const TagAssignToApiOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TagAssignToApiOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -17548,13 +17221,13 @@ export type TagAssignToApiOutput = typeof TagAssignToApiOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const TagAssignToApi = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TagAssignToApi = /*@__PURE__*/ API.make(() => ({
   inputSchema: TagAssignToApiInput,
   outputSchema: TagAssignToApiOutput,
 }));
 // Input Schema
 export const TagAssignToOperationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -17572,7 +17245,7 @@ export type TagAssignToOperationInput = typeof TagAssignToOperationInput.Type;
 
 // Output Schema
 export const TagAssignToOperationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -17591,15 +17264,13 @@ export type TagAssignToOperationOutput = typeof TagAssignToOperationOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const TagAssignToOperation = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TagAssignToOperationInput,
-    outputSchema: TagAssignToOperationOutput,
-  }),
-);
+export const TagAssignToOperation = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TagAssignToOperationInput,
+  outputSchema: TagAssignToOperationOutput,
+}));
 // Input Schema
 export const TagAssignToProductInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     productId: Schema.String.pipe(T.PathParam()),
@@ -17616,7 +17287,7 @@ export type TagAssignToProductInput = typeof TagAssignToProductInput.Type;
 
 // Output Schema
 export const TagAssignToProductOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -17634,25 +17305,23 @@ export type TagAssignToProductOutput = typeof TagAssignToProductOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const TagAssignToProduct = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TagAssignToProduct = /*@__PURE__*/ API.make(() => ({
   inputSchema: TagAssignToProductInput,
   outputSchema: TagAssignToProductOutput,
 }));
 // Input Schema
-export const TagCreateOrUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    serviceName: Schema.String.pipe(T.PathParam()),
-    tagId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-    properties: Schema.optional(
-      Schema.Struct({
-        displayName: Schema.String,
-      }),
-    ),
-  },
-).pipe(
+export const TagCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  tagId: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      displayName: Schema.String,
+    }),
+  ),
+}).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tags/{tagId}",
@@ -17662,7 +17331,7 @@ export type TagCreateOrUpdateInput = typeof TagCreateOrUpdateInput.Type;
 
 // Output Schema
 export const TagCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -17681,12 +17350,12 @@ export type TagCreateOrUpdateOutput = typeof TagCreateOrUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Properties supplied to Create Tag operation.
  */
-export const TagCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TagCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: TagCreateOrUpdateInput,
   outputSchema: TagCreateOrUpdateOutput,
 }));
 // Input Schema
-export const TagDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TagDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   tagId: Schema.String.pipe(T.PathParam()),
@@ -17701,7 +17370,7 @@ export const TagDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TagDeleteInput = typeof TagDeleteInput.Type;
 
 // Output Schema
-export const TagDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const TagDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type TagDeleteOutput = typeof TagDeleteOutput.Type;
 
 // The operation
@@ -17715,12 +17384,12 @@ export type TagDeleteOutput = typeof TagDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const TagDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TagDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: TagDeleteInput,
   outputSchema: TagDeleteOutput,
 }));
 // Input Schema
-export const TagDetachFromApiInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TagDetachFromApiInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   apiId: Schema.String.pipe(T.PathParam()),
@@ -17736,7 +17405,7 @@ export const TagDetachFromApiInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TagDetachFromApiInput = typeof TagDetachFromApiInput.Type;
 
 // Output Schema
-export const TagDetachFromApiOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const TagDetachFromApiOutput = /*@__PURE__*/ Schema.Void;
 export type TagDetachFromApiOutput = typeof TagDetachFromApiOutput.Type;
 
 // The operation
@@ -17750,13 +17419,13 @@ export type TagDetachFromApiOutput = typeof TagDetachFromApiOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const TagDetachFromApi = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TagDetachFromApi = /*@__PURE__*/ API.make(() => ({
   inputSchema: TagDetachFromApiInput,
   outputSchema: TagDetachFromApiOutput,
 }));
 // Input Schema
 export const TagDetachFromOperationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -17774,8 +17443,7 @@ export type TagDetachFromOperationInput =
   typeof TagDetachFromOperationInput.Type;
 
 // Output Schema
-export const TagDetachFromOperationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const TagDetachFromOperationOutput = /*@__PURE__*/ Schema.Void;
 export type TagDetachFromOperationOutput =
   typeof TagDetachFromOperationOutput.Type;
 
@@ -17791,15 +17459,13 @@ export type TagDetachFromOperationOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const TagDetachFromOperation = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TagDetachFromOperationInput,
-    outputSchema: TagDetachFromOperationOutput,
-  }),
-);
+export const TagDetachFromOperation = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TagDetachFromOperationInput,
+  outputSchema: TagDetachFromOperationOutput,
+}));
 // Input Schema
 export const TagDetachFromProductInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     productId: Schema.String.pipe(T.PathParam()),
@@ -17815,8 +17481,7 @@ export const TagDetachFromProductInput =
 export type TagDetachFromProductInput = typeof TagDetachFromProductInput.Type;
 
 // Output Schema
-export const TagDetachFromProductOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const TagDetachFromProductOutput = /*@__PURE__*/ Schema.Void;
 export type TagDetachFromProductOutput = typeof TagDetachFromProductOutput.Type;
 
 // The operation
@@ -17830,14 +17495,12 @@ export type TagDetachFromProductOutput = typeof TagDetachFromProductOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const TagDetachFromProduct = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TagDetachFromProductInput,
-    outputSchema: TagDetachFromProductOutput,
-  }),
-);
+export const TagDetachFromProduct = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TagDetachFromProductInput,
+  outputSchema: TagDetachFromProductOutput,
+}));
 // Input Schema
-export const TagGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TagGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   tagId: Schema.String.pipe(T.PathParam()),
@@ -17852,7 +17515,7 @@ export const TagGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TagGetInput = typeof TagGetInput.Type;
 
 // Output Schema
-export const TagGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TagGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -17869,12 +17532,12 @@ export type TagGetOutput = typeof TagGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const TagGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TagGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TagGetInput,
   outputSchema: TagGetOutput,
 }));
 // Input Schema
-export const TagGetByApiInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TagGetByApiInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   apiId: Schema.String.pipe(T.PathParam()),
@@ -17890,7 +17553,7 @@ export const TagGetByApiInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TagGetByApiInput = typeof TagGetByApiInput.Type;
 
 // Output Schema
-export const TagGetByApiOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TagGetByApiOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -17908,22 +17571,20 @@ export type TagGetByApiOutput = typeof TagGetByApiOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const TagGetByApi = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TagGetByApi = /*@__PURE__*/ API.make(() => ({
   inputSchema: TagGetByApiInput,
   outputSchema: TagGetByApiOutput,
 }));
 // Input Schema
-export const TagGetByOperationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    serviceName: Schema.String.pipe(T.PathParam()),
-    apiId: Schema.String.pipe(T.PathParam()),
-    operationId: Schema.String.pipe(T.PathParam()),
-    tagId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const TagGetByOperationInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  apiId: Schema.String.pipe(T.PathParam()),
+  operationId: Schema.String.pipe(T.PathParam()),
+  tagId: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/operations/{operationId}/tags/{tagId}",
@@ -17933,7 +17594,7 @@ export type TagGetByOperationInput = typeof TagGetByOperationInput.Type;
 
 // Output Schema
 export const TagGetByOperationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -17952,12 +17613,12 @@ export type TagGetByOperationOutput = typeof TagGetByOperationOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const TagGetByOperation = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TagGetByOperation = /*@__PURE__*/ API.make(() => ({
   inputSchema: TagGetByOperationInput,
   outputSchema: TagGetByOperationOutput,
 }));
 // Input Schema
-export const TagGetByProductInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TagGetByProductInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   productId: Schema.String.pipe(T.PathParam()),
@@ -17973,7 +17634,7 @@ export const TagGetByProductInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TagGetByProductInput = typeof TagGetByProductInput.Type;
 
 // Output Schema
-export const TagGetByProductOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TagGetByProductOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -17991,12 +17652,12 @@ export type TagGetByProductOutput = typeof TagGetByProductOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const TagGetByProduct = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TagGetByProduct = /*@__PURE__*/ API.make(() => ({
   inputSchema: TagGetByProductInput,
   outputSchema: TagGetByProductOutput,
 }));
 // Input Schema
-export const TagListByApiInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TagListByApiInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   apiId: Schema.String.pipe(T.PathParam()),
@@ -18014,7 +17675,7 @@ export const TagListByApiInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TagListByApiInput = typeof TagListByApiInput.Type;
 
 // Output Schema
-export const TagListByApiOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TagListByApiOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -18042,13 +17703,13 @@ export type TagListByApiOutput = typeof TagListByApiOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const TagListByApi = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TagListByApi = /*@__PURE__*/ API.make(() => ({
   inputSchema: TagListByApiInput,
   outputSchema: TagListByApiOutput,
 }));
 // Input Schema
 export const TagListByOperationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
@@ -18068,7 +17729,7 @@ export type TagListByOperationInput = typeof TagListByOperationInput.Type;
 
 // Output Schema
 export const TagListByOperationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -18097,12 +17758,12 @@ export type TagListByOperationOutput = typeof TagListByOperationOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const TagListByOperation = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TagListByOperation = /*@__PURE__*/ API.make(() => ({
   inputSchema: TagListByOperationInput,
   outputSchema: TagListByOperationOutput,
 }));
 // Input Schema
-export const TagListByProductInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TagListByProductInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   productId: Schema.String.pipe(T.PathParam()),
@@ -18120,21 +17781,19 @@ export const TagListByProductInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TagListByProductInput = typeof TagListByProductInput.Type;
 
 // Output Schema
-export const TagListByProductOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const TagListByProductOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    count: Schema.optional(Schema.Number),
-    nextLink: Schema.optional(Schema.String),
-  },
-);
+  ),
+  count: Schema.optional(Schema.Number),
+  nextLink: Schema.optional(Schema.String),
+});
 export type TagListByProductOutput = typeof TagListByProductOutput.Type;
 
 // The operation
@@ -18150,12 +17809,12 @@ export type TagListByProductOutput = typeof TagListByProductOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const TagListByProduct = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TagListByProduct = /*@__PURE__*/ API.make(() => ({
   inputSchema: TagListByProductInput,
   outputSchema: TagListByProductOutput,
 }));
 // Input Schema
-export const TagListByServiceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TagListByServiceInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -18173,21 +17832,19 @@ export const TagListByServiceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TagListByServiceInput = typeof TagListByServiceInput.Type;
 
 // Output Schema
-export const TagListByServiceOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const TagListByServiceOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    count: Schema.optional(Schema.Number),
-    nextLink: Schema.optional(Schema.String),
-  },
-);
+  ),
+  count: Schema.optional(Schema.Number),
+  nextLink: Schema.optional(Schema.String),
+});
 export type TagListByServiceOutput = typeof TagListByServiceOutput.Type;
 
 // The operation
@@ -18203,13 +17860,13 @@ export type TagListByServiceOutput = typeof TagListByServiceOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const TagListByService = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TagListByService = /*@__PURE__*/ API.make(() => ({
   inputSchema: TagListByServiceInput,
   outputSchema: TagListByServiceOutput,
 }));
 // Input Schema
 export const TagOperationLinkCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     tagId: Schema.String.pipe(T.PathParam()),
@@ -18232,7 +17889,7 @@ export type TagOperationLinkCreateOrUpdateInput =
 
 // Output Schema
 export const TagOperationLinkCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -18253,13 +17910,13 @@ export type TagOperationLinkCreateOrUpdateOutput =
  * @param properties - Tag-API link entity contract properties.
  */
 export const TagOperationLinkCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TagOperationLinkCreateOrUpdateInput,
     outputSchema: TagOperationLinkCreateOrUpdateOutput,
   }));
 // Input Schema
 export const TagOperationLinkDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     tagId: Schema.String.pipe(T.PathParam()),
@@ -18276,8 +17933,7 @@ export type TagOperationLinkDeleteInput =
   typeof TagOperationLinkDeleteInput.Type;
 
 // Output Schema
-export const TagOperationLinkDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const TagOperationLinkDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type TagOperationLinkDeleteOutput =
   typeof TagOperationLinkDeleteOutput.Type;
 
@@ -18292,15 +17948,13 @@ export type TagOperationLinkDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const TagOperationLinkDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TagOperationLinkDeleteInput,
-    outputSchema: TagOperationLinkDeleteOutput,
-  }),
-);
+export const TagOperationLinkDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TagOperationLinkDeleteInput,
+  outputSchema: TagOperationLinkDeleteOutput,
+}));
 // Input Schema
 export const TagOperationLinkGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     tagId: Schema.String.pipe(T.PathParam()),
@@ -18317,7 +17971,7 @@ export type TagOperationLinkGetInput = typeof TagOperationLinkGetInput.Type;
 
 // Output Schema
 export const TagOperationLinkGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -18335,13 +17989,13 @@ export type TagOperationLinkGetOutput = typeof TagOperationLinkGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const TagOperationLinkGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TagOperationLinkGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TagOperationLinkGetInput,
   outputSchema: TagOperationLinkGetOutput,
 }));
 // Input Schema
 export const TagOperationLinkListByProductInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     tagId: Schema.String.pipe(T.PathParam()),
@@ -18361,7 +18015,7 @@ export type TagOperationLinkListByProductInput =
 
 // Output Schema
 export const TagOperationLinkListByProductOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -18391,13 +18045,13 @@ export type TagOperationLinkListByProductOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const TagOperationLinkListByProduct =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TagOperationLinkListByProductInput,
     outputSchema: TagOperationLinkListByProductOutput,
   }));
 // Input Schema
 export const TagProductLinkCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     tagId: Schema.String.pipe(T.PathParam()),
@@ -18420,7 +18074,7 @@ export type TagProductLinkCreateOrUpdateInput =
 
 // Output Schema
 export const TagProductLinkCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -18441,13 +18095,13 @@ export type TagProductLinkCreateOrUpdateOutput =
  * @param properties - Tag-API link entity contract properties.
  */
 export const TagProductLinkCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TagProductLinkCreateOrUpdateInput,
     outputSchema: TagProductLinkCreateOrUpdateOutput,
   }));
 // Input Schema
 export const TagProductLinkDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     tagId: Schema.String.pipe(T.PathParam()),
@@ -18463,8 +18117,7 @@ export const TagProductLinkDeleteInput =
 export type TagProductLinkDeleteInput = typeof TagProductLinkDeleteInput.Type;
 
 // Output Schema
-export const TagProductLinkDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const TagProductLinkDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type TagProductLinkDeleteOutput = typeof TagProductLinkDeleteOutput.Type;
 
 // The operation
@@ -18478,23 +18131,19 @@ export type TagProductLinkDeleteOutput = typeof TagProductLinkDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const TagProductLinkDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TagProductLinkDeleteInput,
-    outputSchema: TagProductLinkDeleteOutput,
-  }),
-);
+export const TagProductLinkDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TagProductLinkDeleteInput,
+  outputSchema: TagProductLinkDeleteOutput,
+}));
 // Input Schema
-export const TagProductLinkGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    serviceName: Schema.String.pipe(T.PathParam()),
-    tagId: Schema.String.pipe(T.PathParam()),
-    productLinkId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const TagProductLinkGetInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  tagId: Schema.String.pipe(T.PathParam()),
+  productLinkId: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tags/{tagId}/productLinks/{productLinkId}",
@@ -18504,7 +18153,7 @@ export type TagProductLinkGetInput = typeof TagProductLinkGetInput.Type;
 
 // Output Schema
 export const TagProductLinkGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -18522,13 +18171,13 @@ export type TagProductLinkGetOutput = typeof TagProductLinkGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const TagProductLinkGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TagProductLinkGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TagProductLinkGetInput,
   outputSchema: TagProductLinkGetOutput,
 }));
 // Input Schema
 export const TagProductLinkListByProductInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     tagId: Schema.String.pipe(T.PathParam()),
@@ -18548,7 +18197,7 @@ export type TagProductLinkListByProductInput =
 
 // Output Schema
 export const TagProductLinkListByProductOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -18577,15 +18226,13 @@ export type TagProductLinkListByProductOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const TagProductLinkListByProduct = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TagProductLinkListByProductInput,
-    outputSchema: TagProductLinkListByProductOutput,
-  }),
-);
+export const TagProductLinkListByProduct = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TagProductLinkListByProductInput,
+  outputSchema: TagProductLinkListByProductOutput,
+}));
 // Input Schema
 export const TagResourceListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -18604,7 +18251,7 @@ export type TagResourceListByServiceInput =
 
 // Output Schema
 export const TagResourceListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -18740,14 +18387,12 @@ export type TagResourceListByServiceOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const TagResourceListByService = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TagResourceListByServiceInput,
-    outputSchema: TagResourceListByServiceOutput,
-  }),
-);
+export const TagResourceListByService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TagResourceListByServiceInput,
+  outputSchema: TagResourceListByServiceOutput,
+}));
 // Input Schema
-export const TagUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TagUpdateInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   tagId: Schema.String.pipe(T.PathParam()),
@@ -18767,7 +18412,7 @@ export const TagUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TagUpdateInput = typeof TagUpdateInput.Type;
 
 // Output Schema
-export const TagUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TagUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -18786,13 +18431,13 @@ export type TagUpdateOutput = typeof TagUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Properties supplied to Create Tag operation.
  */
-export const TagUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TagUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: TagUpdateInput,
   outputSchema: TagUpdateOutput,
 }));
 // Input Schema
 export const TenantAccessCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     accessName: Schema.Literals(["access", "gitAccess"]).pipe(T.PathParam()),
@@ -18816,7 +18461,7 @@ export type TenantAccessCreateInput = typeof TenantAccessCreateInput.Type;
 
 // Output Schema
 export const TenantAccessCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -18835,12 +18480,12 @@ export type TenantAccessCreateOutput = typeof TenantAccessCreateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Tenant access information update parameter properties.
  */
-export const TenantAccessCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TenantAccessCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: TenantAccessCreateInput,
   outputSchema: TenantAccessCreateOutput,
 }));
 // Input Schema
-export const TenantAccessGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TenantAccessGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -18855,7 +18500,7 @@ export const TenantAccessGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TenantAccessGetInput = typeof TenantAccessGetInput.Type;
 
 // Output Schema
-export const TenantAccessGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TenantAccessGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -18872,13 +18517,13 @@ export type TenantAccessGetOutput = typeof TenantAccessGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param accessName - The identifier of the Access configuration.
  */
-export const TenantAccessGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TenantAccessGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TenantAccessGetInput,
   outputSchema: TenantAccessGetOutput,
 }));
 // Input Schema
 export const TenantAccessGitRegeneratePrimaryKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -18895,7 +18540,7 @@ export type TenantAccessGitRegeneratePrimaryKeyInput =
 
 // Output Schema
 export const TenantAccessGitRegeneratePrimaryKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type TenantAccessGitRegeneratePrimaryKeyOutput =
   typeof TenantAccessGitRegeneratePrimaryKeyOutput.Type;
 
@@ -18910,13 +18555,13 @@ export type TenantAccessGitRegeneratePrimaryKeyOutput =
  * @param accessName - The identifier of the Access configuration.
  */
 export const TenantAccessGitRegeneratePrimaryKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TenantAccessGitRegeneratePrimaryKeyInput,
     outputSchema: TenantAccessGitRegeneratePrimaryKeyOutput,
   }));
 // Input Schema
 export const TenantAccessGitRegenerateSecondaryKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -18933,7 +18578,7 @@ export type TenantAccessGitRegenerateSecondaryKeyInput =
 
 // Output Schema
 export const TenantAccessGitRegenerateSecondaryKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type TenantAccessGitRegenerateSecondaryKeyOutput =
   typeof TenantAccessGitRegenerateSecondaryKeyOutput.Type;
 
@@ -18948,13 +18593,13 @@ export type TenantAccessGitRegenerateSecondaryKeyOutput =
  * @param accessName - The identifier of the Access configuration.
  */
 export const TenantAccessGitRegenerateSecondaryKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TenantAccessGitRegenerateSecondaryKeyInput,
     outputSchema: TenantAccessGitRegenerateSecondaryKeyOutput,
   }));
 // Input Schema
 export const TenantAccessListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -18971,7 +18616,7 @@ export type TenantAccessListByServiceInput =
 
 // Output Schema
 export const TenantAccessListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -18997,15 +18642,13 @@ export type TenantAccessListByServiceOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const TenantAccessListByService = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TenantAccessListByServiceInput,
-    outputSchema: TenantAccessListByServiceOutput,
-  }),
-);
+export const TenantAccessListByService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TenantAccessListByServiceInput,
+  outputSchema: TenantAccessListByServiceOutput,
+}));
 // Input Schema
 export const TenantAccessListSecretsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -19022,7 +18665,7 @@ export type TenantAccessListSecretsInput =
 
 // Output Schema
 export const TenantAccessListSecretsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     principalId: Schema.optional(Schema.String),
     primaryKey: Schema.optional(Schema.String),
@@ -19042,15 +18685,13 @@ export type TenantAccessListSecretsOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param accessName - The identifier of the Access configuration.
  */
-export const TenantAccessListSecrets = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TenantAccessListSecretsInput,
-    outputSchema: TenantAccessListSecretsOutput,
-  }),
-);
+export const TenantAccessListSecrets = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TenantAccessListSecretsInput,
+  outputSchema: TenantAccessListSecretsOutput,
+}));
 // Input Schema
 export const TenantAccessRegeneratePrimaryKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -19066,8 +18707,7 @@ export type TenantAccessRegeneratePrimaryKeyInput =
   typeof TenantAccessRegeneratePrimaryKeyInput.Type;
 
 // Output Schema
-export const TenantAccessRegeneratePrimaryKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const TenantAccessRegeneratePrimaryKeyOutput = /*@__PURE__*/ Schema.Void;
 export type TenantAccessRegeneratePrimaryKeyOutput =
   typeof TenantAccessRegeneratePrimaryKeyOutput.Type;
 
@@ -19082,13 +18722,13 @@ export type TenantAccessRegeneratePrimaryKeyOutput =
  * @param accessName - The identifier of the Access configuration.
  */
 export const TenantAccessRegeneratePrimaryKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TenantAccessRegeneratePrimaryKeyInput,
     outputSchema: TenantAccessRegeneratePrimaryKeyOutput,
   }));
 // Input Schema
 export const TenantAccessRegenerateSecondaryKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -19105,7 +18745,7 @@ export type TenantAccessRegenerateSecondaryKeyInput =
 
 // Output Schema
 export const TenantAccessRegenerateSecondaryKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type TenantAccessRegenerateSecondaryKeyOutput =
   typeof TenantAccessRegenerateSecondaryKeyOutput.Type;
 
@@ -19120,13 +18760,13 @@ export type TenantAccessRegenerateSecondaryKeyOutput =
  * @param accessName - The identifier of the Access configuration.
  */
 export const TenantAccessRegenerateSecondaryKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TenantAccessRegenerateSecondaryKeyInput,
     outputSchema: TenantAccessRegenerateSecondaryKeyOutput,
   }));
 // Input Schema
 export const TenantAccessUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     accessName: Schema.Literals(["access", "gitAccess"]).pipe(T.PathParam()),
@@ -19147,7 +18787,7 @@ export type TenantAccessUpdateInput = typeof TenantAccessUpdateInput.Type;
 
 // Output Schema
 export const TenantAccessUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19166,13 +18806,13 @@ export type TenantAccessUpdateOutput = typeof TenantAccessUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Tenant access information update parameter properties.
  */
-export const TenantAccessUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TenantAccessUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: TenantAccessUpdateInput,
   outputSchema: TenantAccessUpdateOutput,
 }));
 // Input Schema
 export const TenantConfigurationDeployInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -19195,7 +18835,7 @@ export type TenantConfigurationDeployInput =
 
 // Output Schema
 export const TenantConfigurationDeployOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19214,15 +18854,13 @@ export type TenantConfigurationDeployOutput =
  * @param configurationName - The identifier of the Git Configuration Operation.
  * @param properties - Deploy Configuration Parameter contract properties.
  */
-export const TenantConfigurationDeploy = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TenantConfigurationDeployInput,
-    outputSchema: TenantConfigurationDeployOutput,
-  }),
-);
+export const TenantConfigurationDeploy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TenantConfigurationDeployInput,
+  outputSchema: TenantConfigurationDeployOutput,
+}));
 // Input Schema
 export const TenantConfigurationGetSyncStateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -19239,7 +18877,7 @@ export type TenantConfigurationGetSyncStateInput =
 
 // Output Schema
 export const TenantConfigurationGetSyncStateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19258,13 +18896,13 @@ export type TenantConfigurationGetSyncStateOutput =
  * @param configurationName - The identifier of the Git Configuration Operation.
  */
 export const TenantConfigurationGetSyncState =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TenantConfigurationGetSyncStateInput,
     outputSchema: TenantConfigurationGetSyncStateOutput,
   }));
 // Input Schema
 export const TenantConfigurationSaveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -19287,7 +18925,7 @@ export type TenantConfigurationSaveInput =
 
 // Output Schema
 export const TenantConfigurationSaveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19306,15 +18944,13 @@ export type TenantConfigurationSaveOutput =
  * @param configurationName - The identifier of the Git Configuration Operation.
  * @param properties - Properties of the Save Configuration Parameters.
  */
-export const TenantConfigurationSave = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TenantConfigurationSaveInput,
-    outputSchema: TenantConfigurationSaveOutput,
-  }),
-);
+export const TenantConfigurationSave = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TenantConfigurationSaveInput,
+  outputSchema: TenantConfigurationSaveOutput,
+}));
 // Input Schema
 export const TenantConfigurationValidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -19337,7 +18973,7 @@ export type TenantConfigurationValidateInput =
 
 // Output Schema
 export const TenantConfigurationValidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19356,15 +18992,13 @@ export type TenantConfigurationValidateOutput =
  * @param configurationName - The identifier of the Git Configuration Operation.
  * @param properties - Deploy Configuration Parameter contract properties.
  */
-export const TenantConfigurationValidate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TenantConfigurationValidateInput,
-    outputSchema: TenantConfigurationValidateOutput,
-  }),
-);
+export const TenantConfigurationValidate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TenantConfigurationValidateInput,
+  outputSchema: TenantConfigurationValidateOutput,
+}));
 // Input Schema
 export const UserConfirmationPasswordSendInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     userId: Schema.String.pipe(T.PathParam()),
@@ -19381,8 +19015,7 @@ export type UserConfirmationPasswordSendInput =
   typeof UserConfirmationPasswordSendInput.Type;
 
 // Output Schema
-export const UserConfirmationPasswordSendOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const UserConfirmationPasswordSendOutput = /*@__PURE__*/ Schema.Void;
 export type UserConfirmationPasswordSendOutput =
   typeof UserConfirmationPasswordSendOutput.Type;
 
@@ -19398,13 +19031,13 @@ export type UserConfirmationPasswordSendOutput =
  * @param appType - Determines the type of application which send the create user request. Default is legacy publisher portal.
  */
 export const UserConfirmationPasswordSend =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserConfirmationPasswordSendInput,
     outputSchema: UserConfirmationPasswordSendOutput,
   }));
 // Input Schema
 export const UserCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     userId: Schema.String.pipe(T.PathParam()),
@@ -19437,7 +19070,7 @@ export type UserCreateOrUpdateInput = typeof UserCreateOrUpdateInput.Type;
 
 // Output Schema
 export const UserCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19457,12 +19090,12 @@ export type UserCreateOrUpdateOutput = typeof UserCreateOrUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - User entity create contract properties.
  */
-export const UserCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UserCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: UserCreateOrUpdateInput,
   outputSchema: UserCreateOrUpdateOutput,
 }));
 // Input Schema
-export const UserDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UserDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   userId: Schema.String.pipe(T.PathParam()),
@@ -19480,7 +19113,7 @@ export const UserDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UserDeleteInput = typeof UserDeleteInput.Type;
 
 // Output Schema
-export const UserDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const UserDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type UserDeleteOutput = typeof UserDeleteOutput.Type;
 
 // The operation
@@ -19497,13 +19130,13 @@ export type UserDeleteOutput = typeof UserDeleteOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param appType - Determines the type of application which send the create user request. Default is legacy publisher portal.
  */
-export const UserDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UserDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: UserDeleteInput,
   outputSchema: UserDeleteOutput,
 }));
 // Input Schema
 export const UserGenerateSsoUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     userId: Schema.String.pipe(T.PathParam()),
@@ -19519,7 +19152,7 @@ export type UserGenerateSsoUrlInput = typeof UserGenerateSsoUrlInput.Type;
 
 // Output Schema
 export const UserGenerateSsoUrlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   });
 export type UserGenerateSsoUrlOutput = typeof UserGenerateSsoUrlOutput.Type;
@@ -19534,12 +19167,12 @@ export type UserGenerateSsoUrlOutput = typeof UserGenerateSsoUrlOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const UserGenerateSsoUrl = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UserGenerateSsoUrl = /*@__PURE__*/ API.make(() => ({
   inputSchema: UserGenerateSsoUrlInput,
   outputSchema: UserGenerateSsoUrlOutput,
 }));
 // Input Schema
-export const UserGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UserGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   userId: Schema.String.pipe(T.PathParam()),
@@ -19554,7 +19187,7 @@ export const UserGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UserGetInput = typeof UserGetInput.Type;
 
 // Output Schema
-export const UserGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UserGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -19571,13 +19204,13 @@ export type UserGetOutput = typeof UserGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const UserGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UserGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: UserGetInput,
   outputSchema: UserGetOutput,
 }));
 // Input Schema
 export const UserGetSharedAccessTokenInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     userId: Schema.String.pipe(T.PathParam()),
@@ -19600,7 +19233,7 @@ export type UserGetSharedAccessTokenInput =
 
 // Output Schema
 export const UserGetSharedAccessTokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   });
 export type UserGetSharedAccessTokenOutput =
@@ -19617,14 +19250,12 @@ export type UserGetSharedAccessTokenOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - User Token Parameter contract properties.
  */
-export const UserGetSharedAccessToken = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UserGetSharedAccessTokenInput,
-    outputSchema: UserGetSharedAccessTokenOutput,
-  }),
-);
+export const UserGetSharedAccessToken = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UserGetSharedAccessTokenInput,
+  outputSchema: UserGetSharedAccessTokenOutput,
+}));
 // Input Schema
-export const UserGroupListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UserGroupListInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   userId: Schema.String.pipe(T.PathParam()),
@@ -19642,7 +19273,7 @@ export const UserGroupListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UserGroupListInput = typeof UserGroupListInput.Type;
 
 // Output Schema
-export const UserGroupListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UserGroupListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -19670,13 +19301,13 @@ export type UserGroupListOutput = typeof UserGroupListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const UserGroupList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UserGroupList = /*@__PURE__*/ API.make(() => ({
   inputSchema: UserGroupListInput,
   outputSchema: UserGroupListOutput,
 }));
 // Input Schema
 export const UserIdentitiesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     userId: Schema.String.pipe(T.PathParam()),
@@ -19692,7 +19323,7 @@ export type UserIdentitiesListInput = typeof UserIdentitiesListInput.Type;
 
 // Output Schema
 export const UserIdentitiesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -19716,23 +19347,21 @@ export type UserIdentitiesListOutput = typeof UserIdentitiesListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const UserIdentitiesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UserIdentitiesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: UserIdentitiesListInput,
   outputSchema: UserIdentitiesListOutput,
 }));
 // Input Schema
-export const UserListByServiceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    serviceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    $filter: Schema.optional(Schema.String),
-    $top: Schema.optional(Schema.Number),
-    $skip: Schema.optional(Schema.Number),
-    expandGroups: Schema.optional(Schema.Boolean),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const UserListByServiceInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  $filter: Schema.optional(Schema.String),
+  $top: Schema.optional(Schema.Number),
+  $skip: Schema.optional(Schema.Number),
+  expandGroups: Schema.optional(Schema.Boolean),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/users",
@@ -19742,7 +19371,7 @@ export type UserListByServiceInput = typeof UserListByServiceInput.Type;
 
 // Output Schema
 export const UserListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -19770,13 +19399,13 @@ export type UserListByServiceOutput = typeof UserListByServiceOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const UserListByService = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UserListByService = /*@__PURE__*/ API.make(() => ({
   inputSchema: UserListByServiceInput,
   outputSchema: UserListByServiceOutput,
 }));
 // Input Schema
 export const UserSubscriptionGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     userId: Schema.String.pipe(T.PathParam()),
@@ -19793,7 +19422,7 @@ export type UserSubscriptionGetInput = typeof UserSubscriptionGetInput.Type;
 
 // Output Schema
 export const UserSubscriptionGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19811,13 +19440,13 @@ export type UserSubscriptionGetOutput = typeof UserSubscriptionGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const UserSubscriptionGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UserSubscriptionGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: UserSubscriptionGetInput,
   outputSchema: UserSubscriptionGetOutput,
 }));
 // Input Schema
 export const UserSubscriptionListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     userId: Schema.String.pipe(T.PathParam()),
@@ -19836,7 +19465,7 @@ export type UserSubscriptionListInput = typeof UserSubscriptionListInput.Type;
 
 // Output Schema
 export const UserSubscriptionListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -19864,14 +19493,12 @@ export type UserSubscriptionListOutput = typeof UserSubscriptionListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const UserSubscriptionList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UserSubscriptionListInput,
-    outputSchema: UserSubscriptionListOutput,
-  }),
-);
+export const UserSubscriptionList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UserSubscriptionListInput,
+  outputSchema: UserSubscriptionListOutput,
+}));
 // Input Schema
-export const UserUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UserUpdateInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   userId: Schema.String.pipe(T.PathParam()),
@@ -19902,7 +19529,7 @@ export const UserUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UserUpdateInput = typeof UserUpdateInput.Type;
 
 // Output Schema
-export const UserUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UserUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -19921,13 +19548,13 @@ export type UserUpdateOutput = typeof UserUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - User entity update contract properties.
  */
-export const UserUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UserUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: UserUpdateInput,
   outputSchema: UserUpdateOutput,
 }));
 // Input Schema
 export const WorkspaceApiCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -20028,7 +19655,7 @@ export type WorkspaceApiCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceApiCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -20049,15 +19676,13 @@ export type WorkspaceApiCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - API entity create of update properties.
  */
-export const WorkspaceApiCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceApiCreateOrUpdateInput,
-    outputSchema: WorkspaceApiCreateOrUpdateOutput,
-  }),
-);
+export const WorkspaceApiCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceApiCreateOrUpdateInput,
+  outputSchema: WorkspaceApiCreateOrUpdateOutput,
+}));
 // Input Schema
 export const WorkspaceApiDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -20074,7 +19699,7 @@ export const WorkspaceApiDeleteInput =
 export type WorkspaceApiDeleteInput = typeof WorkspaceApiDeleteInput.Type;
 
 // Output Schema
-export const WorkspaceApiDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkspaceApiDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WorkspaceApiDeleteOutput = typeof WorkspaceApiDeleteOutput.Type;
 
 // The operation
@@ -20090,13 +19715,13 @@ export type WorkspaceApiDeleteOutput = typeof WorkspaceApiDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceApiDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkspaceApiDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkspaceApiDeleteInput,
   outputSchema: WorkspaceApiDeleteOutput,
 }));
 // Input Schema
 export const WorkspaceApiDiagnosticCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -20280,7 +19905,7 @@ export type WorkspaceApiDiagnosticCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceApiDiagnosticCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -20303,13 +19928,13 @@ export type WorkspaceApiDiagnosticCreateOrUpdateOutput =
  * @param properties - Diagnostic entity contract properties.
  */
 export const WorkspaceApiDiagnosticCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceApiDiagnosticCreateOrUpdateInput,
     outputSchema: WorkspaceApiDiagnosticCreateOrUpdateOutput,
   }));
 // Input Schema
 export const WorkspaceApiDiagnosticDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -20327,8 +19952,7 @@ export type WorkspaceApiDiagnosticDeleteInput =
   typeof WorkspaceApiDiagnosticDeleteInput.Type;
 
 // Output Schema
-export const WorkspaceApiDiagnosticDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkspaceApiDiagnosticDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WorkspaceApiDiagnosticDeleteOutput =
   typeof WorkspaceApiDiagnosticDeleteOutput.Type;
 
@@ -20346,13 +19970,13 @@ export type WorkspaceApiDiagnosticDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceApiDiagnosticDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceApiDiagnosticDeleteInput,
     outputSchema: WorkspaceApiDiagnosticDeleteOutput,
   }));
 // Input Schema
 export const WorkspaceApiDiagnosticGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -20371,7 +19995,7 @@ export type WorkspaceApiDiagnosticGetInput =
 
 // Output Schema
 export const WorkspaceApiDiagnosticGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -20391,15 +20015,13 @@ export type WorkspaceApiDiagnosticGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceApiDiagnosticGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceApiDiagnosticGetInput,
-    outputSchema: WorkspaceApiDiagnosticGetOutput,
-  }),
-);
+export const WorkspaceApiDiagnosticGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceApiDiagnosticGetInput,
+  outputSchema: WorkspaceApiDiagnosticGetOutput,
+}));
 // Input Schema
 export const WorkspaceApiDiagnosticListByWorkspaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -20420,7 +20042,7 @@ export type WorkspaceApiDiagnosticListByWorkspaceInput =
 
 // Output Schema
 export const WorkspaceApiDiagnosticListByWorkspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -20451,13 +20073,13 @@ export type WorkspaceApiDiagnosticListByWorkspaceOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceApiDiagnosticListByWorkspace =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceApiDiagnosticListByWorkspaceInput,
     outputSchema: WorkspaceApiDiagnosticListByWorkspaceOutput,
   }));
 // Input Schema
 export const WorkspaceApiDiagnosticUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -20641,7 +20263,7 @@ export type WorkspaceApiDiagnosticUpdateInput =
 
 // Output Schema
 export const WorkspaceApiDiagnosticUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -20664,12 +20286,12 @@ export type WorkspaceApiDiagnosticUpdateOutput =
  * @param properties - Diagnostic entity contract properties.
  */
 export const WorkspaceApiDiagnosticUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceApiDiagnosticUpdateInput,
     outputSchema: WorkspaceApiDiagnosticUpdateOutput,
   }));
 // Input Schema
-export const WorkspaceApiGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkspaceApiGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   workspaceId: Schema.String.pipe(T.PathParam()),
@@ -20685,7 +20307,7 @@ export const WorkspaceApiGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WorkspaceApiGetInput = typeof WorkspaceApiGetInput.Type;
 
 // Output Schema
-export const WorkspaceApiGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkspaceApiGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -20703,13 +20325,13 @@ export type WorkspaceApiGetOutput = typeof WorkspaceApiGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceApiGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkspaceApiGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkspaceApiGetInput,
   outputSchema: WorkspaceApiGetOutput,
 }));
 // Input Schema
 export const WorkspaceApiListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -20731,7 +20353,7 @@ export type WorkspaceApiListByServiceInput =
 
 // Output Schema
 export const WorkspaceApiListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -20762,15 +20384,13 @@ export type WorkspaceApiListByServiceOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceApiListByService = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceApiListByServiceInput,
-    outputSchema: WorkspaceApiListByServiceOutput,
-  }),
-);
+export const WorkspaceApiListByService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceApiListByServiceInput,
+  outputSchema: WorkspaceApiListByServiceOutput,
+}));
 // Input Schema
 export const WorkspaceApiOperationCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -20998,7 +20618,7 @@ export type WorkspaceApiOperationCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceApiOperationCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -21021,13 +20641,13 @@ export type WorkspaceApiOperationCreateOrUpdateOutput =
  * @param properties - Properties of the Operation Contract.
  */
 export const WorkspaceApiOperationCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceApiOperationCreateOrUpdateInput,
     outputSchema: WorkspaceApiOperationCreateOrUpdateOutput,
   }));
 // Input Schema
 export const WorkspaceApiOperationDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -21045,8 +20665,7 @@ export type WorkspaceApiOperationDeleteInput =
   typeof WorkspaceApiOperationDeleteInput.Type;
 
 // Output Schema
-export const WorkspaceApiOperationDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkspaceApiOperationDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WorkspaceApiOperationDeleteOutput =
   typeof WorkspaceApiOperationDeleteOutput.Type;
 
@@ -21063,15 +20682,13 @@ export type WorkspaceApiOperationDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceApiOperationDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceApiOperationDeleteInput,
-    outputSchema: WorkspaceApiOperationDeleteOutput,
-  }),
-);
+export const WorkspaceApiOperationDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceApiOperationDeleteInput,
+  outputSchema: WorkspaceApiOperationDeleteOutput,
+}));
 // Input Schema
 export const WorkspaceApiOperationGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -21090,7 +20707,7 @@ export type WorkspaceApiOperationGetInput =
 
 // Output Schema
 export const WorkspaceApiOperationGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -21110,15 +20727,13 @@ export type WorkspaceApiOperationGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceApiOperationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceApiOperationGetInput,
-    outputSchema: WorkspaceApiOperationGetOutput,
-  }),
-);
+export const WorkspaceApiOperationGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceApiOperationGetInput,
+  outputSchema: WorkspaceApiOperationGetOutput,
+}));
 // Input Schema
 export const WorkspaceApiOperationListByApiInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -21140,7 +20755,7 @@ export type WorkspaceApiOperationListByApiInput =
 
 // Output Schema
 export const WorkspaceApiOperationListByApiOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -21172,13 +20787,13 @@ export type WorkspaceApiOperationListByApiOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceApiOperationListByApi =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceApiOperationListByApiInput,
     outputSchema: WorkspaceApiOperationListByApiOutput,
   }));
 // Input Schema
 export const WorkspaceApiOperationPolicyCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -21206,7 +20821,7 @@ export type WorkspaceApiOperationPolicyCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceApiOperationPolicyCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -21230,13 +20845,13 @@ export type WorkspaceApiOperationPolicyCreateOrUpdateOutput =
  * @param properties - Properties of the Policy.
  */
 export const WorkspaceApiOperationPolicyCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceApiOperationPolicyCreateOrUpdateInput,
     outputSchema: WorkspaceApiOperationPolicyCreateOrUpdateOutput,
   }));
 // Input Schema
 export const WorkspaceApiOperationPolicyDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -21256,7 +20871,7 @@ export type WorkspaceApiOperationPolicyDeleteInput =
 
 // Output Schema
 export const WorkspaceApiOperationPolicyDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type WorkspaceApiOperationPolicyDeleteOutput =
   typeof WorkspaceApiOperationPolicyDeleteOutput.Type;
 
@@ -21275,13 +20890,13 @@ export type WorkspaceApiOperationPolicyDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceApiOperationPolicyDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceApiOperationPolicyDeleteInput,
     outputSchema: WorkspaceApiOperationPolicyDeleteOutput,
   }));
 // Input Schema
 export const WorkspaceApiOperationPolicyGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -21302,7 +20917,7 @@ export type WorkspaceApiOperationPolicyGetInput =
 
 // Output Schema
 export const WorkspaceApiOperationPolicyGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -21325,13 +20940,13 @@ export type WorkspaceApiOperationPolicyGetOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceApiOperationPolicyGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceApiOperationPolicyGetInput,
     outputSchema: WorkspaceApiOperationPolicyGetOutput,
   }));
 // Input Schema
 export const WorkspaceApiOperationPolicyListByOperationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -21350,7 +20965,7 @@ export type WorkspaceApiOperationPolicyListByOperationInput =
 
 // Output Schema
 export const WorkspaceApiOperationPolicyListByOperationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -21379,13 +20994,13 @@ export type WorkspaceApiOperationPolicyListByOperationOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceApiOperationPolicyListByOperation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceApiOperationPolicyListByOperationInput,
     outputSchema: WorkspaceApiOperationPolicyListByOperationOutput,
   }));
 // Input Schema
 export const WorkspaceApiOperationUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -21613,7 +21228,7 @@ export type WorkspaceApiOperationUpdateInput =
 
 // Output Schema
 export const WorkspaceApiOperationUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -21635,15 +21250,13 @@ export type WorkspaceApiOperationUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Properties of the API Operation entity that can be updated.
  */
-export const WorkspaceApiOperationUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceApiOperationUpdateInput,
-    outputSchema: WorkspaceApiOperationUpdateOutput,
-  }),
-);
+export const WorkspaceApiOperationUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceApiOperationUpdateInput,
+  outputSchema: WorkspaceApiOperationUpdateOutput,
+}));
 // Input Schema
 export const WorkspaceApiPolicyCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -21670,7 +21283,7 @@ export type WorkspaceApiPolicyCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceApiPolicyCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -21693,13 +21306,13 @@ export type WorkspaceApiPolicyCreateOrUpdateOutput =
  * @param properties - Properties of the Policy.
  */
 export const WorkspaceApiPolicyCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceApiPolicyCreateOrUpdateInput,
     outputSchema: WorkspaceApiPolicyCreateOrUpdateOutput,
   }));
 // Input Schema
 export const WorkspaceApiPolicyDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -21717,8 +21330,7 @@ export type WorkspaceApiPolicyDeleteInput =
   typeof WorkspaceApiPolicyDeleteInput.Type;
 
 // Output Schema
-export const WorkspaceApiPolicyDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkspaceApiPolicyDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WorkspaceApiPolicyDeleteOutput =
   typeof WorkspaceApiPolicyDeleteOutput.Type;
 
@@ -21735,15 +21347,13 @@ export type WorkspaceApiPolicyDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceApiPolicyDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceApiPolicyDeleteInput,
-    outputSchema: WorkspaceApiPolicyDeleteOutput,
-  }),
-);
+export const WorkspaceApiPolicyDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceApiPolicyDeleteInput,
+  outputSchema: WorkspaceApiPolicyDeleteOutput,
+}));
 // Input Schema
 export const WorkspaceApiPolicyGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -21762,7 +21372,7 @@ export type WorkspaceApiPolicyGetInput = typeof WorkspaceApiPolicyGetInput.Type;
 
 // Output Schema
 export const WorkspaceApiPolicyGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -21783,15 +21393,13 @@ export type WorkspaceApiPolicyGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceApiPolicyGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceApiPolicyGetInput,
-    outputSchema: WorkspaceApiPolicyGetOutput,
-  }),
-);
+export const WorkspaceApiPolicyGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceApiPolicyGetInput,
+  outputSchema: WorkspaceApiPolicyGetOutput,
+}));
 // Input Schema
 export const WorkspaceApiPolicyListByApiInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -21809,7 +21417,7 @@ export type WorkspaceApiPolicyListByApiInput =
 
 // Output Schema
 export const WorkspaceApiPolicyListByApiOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -21836,15 +21444,13 @@ export type WorkspaceApiPolicyListByApiOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceApiPolicyListByApi = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceApiPolicyListByApiInput,
-    outputSchema: WorkspaceApiPolicyListByApiOutput,
-  }),
-);
+export const WorkspaceApiPolicyListByApi = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceApiPolicyListByApiInput,
+  outputSchema: WorkspaceApiPolicyListByApiOutput,
+}));
 // Input Schema
 export const WorkspaceApiReleaseCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -21871,7 +21477,7 @@ export type WorkspaceApiReleaseCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceApiReleaseCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -21894,13 +21500,13 @@ export type WorkspaceApiReleaseCreateOrUpdateOutput =
  * @param properties - ApiRelease entity contract properties.
  */
 export const WorkspaceApiReleaseCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceApiReleaseCreateOrUpdateInput,
     outputSchema: WorkspaceApiReleaseCreateOrUpdateOutput,
   }));
 // Input Schema
 export const WorkspaceApiReleaseDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -21918,8 +21524,7 @@ export type WorkspaceApiReleaseDeleteInput =
   typeof WorkspaceApiReleaseDeleteInput.Type;
 
 // Output Schema
-export const WorkspaceApiReleaseDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkspaceApiReleaseDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WorkspaceApiReleaseDeleteOutput =
   typeof WorkspaceApiReleaseDeleteOutput.Type;
 
@@ -21936,15 +21541,13 @@ export type WorkspaceApiReleaseDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceApiReleaseDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceApiReleaseDeleteInput,
-    outputSchema: WorkspaceApiReleaseDeleteOutput,
-  }),
-);
+export const WorkspaceApiReleaseDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceApiReleaseDeleteInput,
+  outputSchema: WorkspaceApiReleaseDeleteOutput,
+}));
 // Input Schema
 export const WorkspaceApiReleaseGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -21963,7 +21566,7 @@ export type WorkspaceApiReleaseGetInput =
 
 // Output Schema
 export const WorkspaceApiReleaseGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -21983,15 +21586,13 @@ export type WorkspaceApiReleaseGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceApiReleaseGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceApiReleaseGetInput,
-    outputSchema: WorkspaceApiReleaseGetOutput,
-  }),
-);
+export const WorkspaceApiReleaseGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceApiReleaseGetInput,
+  outputSchema: WorkspaceApiReleaseGetOutput,
+}));
 // Input Schema
 export const WorkspaceApiReleaseListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -22012,7 +21613,7 @@ export type WorkspaceApiReleaseListByServiceInput =
 
 // Output Schema
 export const WorkspaceApiReleaseListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -22043,13 +21644,13 @@ export type WorkspaceApiReleaseListByServiceOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceApiReleaseListByService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceApiReleaseListByServiceInput,
     outputSchema: WorkspaceApiReleaseListByServiceOutput,
   }));
 // Input Schema
 export const WorkspaceApiReleaseUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -22076,7 +21677,7 @@ export type WorkspaceApiReleaseUpdateInput =
 
 // Output Schema
 export const WorkspaceApiReleaseUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -22098,15 +21699,13 @@ export type WorkspaceApiReleaseUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - ApiRelease entity contract properties.
  */
-export const WorkspaceApiReleaseUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceApiReleaseUpdateInput,
-    outputSchema: WorkspaceApiReleaseUpdateOutput,
-  }),
-);
+export const WorkspaceApiReleaseUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceApiReleaseUpdateInput,
+  outputSchema: WorkspaceApiReleaseUpdateOutput,
+}));
 // Input Schema
 export const WorkspaceApiRevisionListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -22127,7 +21726,7 @@ export type WorkspaceApiRevisionListByServiceInput =
 
 // Output Schema
 export const WorkspaceApiRevisionListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -22163,13 +21762,13 @@ export type WorkspaceApiRevisionListByServiceOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceApiRevisionListByService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceApiRevisionListByServiceInput,
     outputSchema: WorkspaceApiRevisionListByServiceOutput,
   }));
 // Input Schema
 export const WorkspaceApiSchemaCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -22199,7 +21798,7 @@ export type WorkspaceApiSchemaCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceApiSchemaCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -22222,13 +21821,13 @@ export type WorkspaceApiSchemaCreateOrUpdateOutput =
  * @param properties - Properties of the API Schema.
  */
 export const WorkspaceApiSchemaCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceApiSchemaCreateOrUpdateInput,
     outputSchema: WorkspaceApiSchemaCreateOrUpdateOutput,
   }));
 // Input Schema
 export const WorkspaceApiSchemaDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -22247,8 +21846,7 @@ export type WorkspaceApiSchemaDeleteInput =
   typeof WorkspaceApiSchemaDeleteInput.Type;
 
 // Output Schema
-export const WorkspaceApiSchemaDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkspaceApiSchemaDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WorkspaceApiSchemaDeleteOutput =
   typeof WorkspaceApiSchemaDeleteOutput.Type;
 
@@ -22266,15 +21864,13 @@ export type WorkspaceApiSchemaDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceApiSchemaDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceApiSchemaDeleteInput,
-    outputSchema: WorkspaceApiSchemaDeleteOutput,
-  }),
-);
+export const WorkspaceApiSchemaDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceApiSchemaDeleteInput,
+  outputSchema: WorkspaceApiSchemaDeleteOutput,
+}));
 // Input Schema
 export const WorkspaceApiSchemaGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -22292,7 +21888,7 @@ export type WorkspaceApiSchemaGetInput = typeof WorkspaceApiSchemaGetInput.Type;
 
 // Output Schema
 export const WorkspaceApiSchemaGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -22312,15 +21908,13 @@ export type WorkspaceApiSchemaGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceApiSchemaGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceApiSchemaGetInput,
-    outputSchema: WorkspaceApiSchemaGetOutput,
-  }),
-);
+export const WorkspaceApiSchemaGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceApiSchemaGetInput,
+  outputSchema: WorkspaceApiSchemaGetOutput,
+}));
 // Input Schema
 export const WorkspaceApiSchemaListByApiInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -22341,7 +21935,7 @@ export type WorkspaceApiSchemaListByApiInput =
 
 // Output Schema
 export const WorkspaceApiSchemaListByApiOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -22371,15 +21965,13 @@ export type WorkspaceApiSchemaListByApiOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceApiSchemaListByApi = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceApiSchemaListByApiInput,
-    outputSchema: WorkspaceApiSchemaListByApiOutput,
-  }),
-);
+export const WorkspaceApiSchemaListByApi = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceApiSchemaListByApiInput,
+  outputSchema: WorkspaceApiSchemaListByApiOutput,
+}));
 // Input Schema
 export const WorkspaceApiUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -22479,7 +22071,7 @@ export type WorkspaceApiUpdateInput = typeof WorkspaceApiUpdateInput.Type;
 
 // Output Schema
 export const WorkspaceApiUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -22499,13 +22091,13 @@ export type WorkspaceApiUpdateOutput = typeof WorkspaceApiUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Properties of the API entity that can be updated.
  */
-export const WorkspaceApiUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkspaceApiUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkspaceApiUpdateInput,
   outputSchema: WorkspaceApiUpdateOutput,
 }));
 // Input Schema
 export const WorkspaceApiVersionSetCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -22530,7 +22122,7 @@ export type WorkspaceApiVersionSetCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceApiVersionSetCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -22552,13 +22144,13 @@ export type WorkspaceApiVersionSetCreateOrUpdateOutput =
  * @param properties - API VersionSet contract properties.
  */
 export const WorkspaceApiVersionSetCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceApiVersionSetCreateOrUpdateInput,
     outputSchema: WorkspaceApiVersionSetCreateOrUpdateOutput,
   }));
 // Input Schema
 export const WorkspaceApiVersionSetDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -22575,8 +22167,7 @@ export type WorkspaceApiVersionSetDeleteInput =
   typeof WorkspaceApiVersionSetDeleteInput.Type;
 
 // Output Schema
-export const WorkspaceApiVersionSetDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkspaceApiVersionSetDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WorkspaceApiVersionSetDeleteOutput =
   typeof WorkspaceApiVersionSetDeleteOutput.Type;
 
@@ -22593,13 +22184,13 @@ export type WorkspaceApiVersionSetDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceApiVersionSetDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceApiVersionSetDeleteInput,
     outputSchema: WorkspaceApiVersionSetDeleteOutput,
   }));
 // Input Schema
 export const WorkspaceApiVersionSetGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -22617,7 +22208,7 @@ export type WorkspaceApiVersionSetGetInput =
 
 // Output Schema
 export const WorkspaceApiVersionSetGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -22636,15 +22227,13 @@ export type WorkspaceApiVersionSetGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceApiVersionSetGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceApiVersionSetGetInput,
-    outputSchema: WorkspaceApiVersionSetGetOutput,
-  }),
-);
+export const WorkspaceApiVersionSetGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceApiVersionSetGetInput,
+  outputSchema: WorkspaceApiVersionSetGetOutput,
+}));
 // Input Schema
 export const WorkspaceApiVersionSetListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -22664,7 +22253,7 @@ export type WorkspaceApiVersionSetListByServiceInput =
 
 // Output Schema
 export const WorkspaceApiVersionSetListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -22694,13 +22283,13 @@ export type WorkspaceApiVersionSetListByServiceOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceApiVersionSetListByService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceApiVersionSetListByServiceInput,
     outputSchema: WorkspaceApiVersionSetListByServiceOutput,
   }));
 // Input Schema
 export const WorkspaceApiVersionSetUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -22725,7 +22314,7 @@ export type WorkspaceApiVersionSetUpdateInput =
 
 // Output Schema
 export const WorkspaceApiVersionSetUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -22747,13 +22336,13 @@ export type WorkspaceApiVersionSetUpdateOutput =
  * @param properties - Parameters to update or create an API Version Set Contract.
  */
 export const WorkspaceApiVersionSetUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceApiVersionSetUpdateInput,
     outputSchema: WorkspaceApiVersionSetUpdateOutput,
   }));
 // Input Schema
 export const WorkspaceBackendCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -22879,7 +22468,7 @@ export type WorkspaceBackendCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceBackendCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -22901,13 +22490,13 @@ export type WorkspaceBackendCreateOrUpdateOutput =
  * @param properties - Backend entity contract properties.
  */
 export const WorkspaceBackendCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceBackendCreateOrUpdateInput,
     outputSchema: WorkspaceBackendCreateOrUpdateOutput,
   }));
 // Input Schema
 export const WorkspaceBackendDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -22924,8 +22513,7 @@ export type WorkspaceBackendDeleteInput =
   typeof WorkspaceBackendDeleteInput.Type;
 
 // Output Schema
-export const WorkspaceBackendDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkspaceBackendDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WorkspaceBackendDeleteOutput =
   typeof WorkspaceBackendDeleteOutput.Type;
 
@@ -22941,15 +22529,13 @@ export type WorkspaceBackendDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceBackendDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceBackendDeleteInput,
-    outputSchema: WorkspaceBackendDeleteOutput,
-  }),
-);
+export const WorkspaceBackendDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceBackendDeleteInput,
+  outputSchema: WorkspaceBackendDeleteOutput,
+}));
 // Input Schema
 export const WorkspaceBackendGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -22966,7 +22552,7 @@ export type WorkspaceBackendGetInput = typeof WorkspaceBackendGetInput.Type;
 
 // Output Schema
 export const WorkspaceBackendGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -22984,13 +22570,13 @@ export type WorkspaceBackendGetOutput = typeof WorkspaceBackendGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceBackendGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkspaceBackendGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkspaceBackendGetInput,
   outputSchema: WorkspaceBackendGetOutput,
 }));
 // Input Schema
 export const WorkspaceBackendListByWorkspaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -23010,7 +22596,7 @@ export type WorkspaceBackendListByWorkspaceInput =
 
 // Output Schema
 export const WorkspaceBackendListByWorkspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -23040,13 +22626,13 @@ export type WorkspaceBackendListByWorkspaceOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceBackendListByWorkspace =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceBackendListByWorkspaceInput,
     outputSchema: WorkspaceBackendListByWorkspaceOutput,
   }));
 // Input Schema
 export const WorkspaceBackendUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -23172,7 +22758,7 @@ export type WorkspaceBackendUpdateInput =
 
 // Output Schema
 export const WorkspaceBackendUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -23193,15 +22779,13 @@ export type WorkspaceBackendUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Backend entity update contract properties.
  */
-export const WorkspaceBackendUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceBackendUpdateInput,
-    outputSchema: WorkspaceBackendUpdateOutput,
-  }),
-);
+export const WorkspaceBackendUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceBackendUpdateInput,
+  outputSchema: WorkspaceBackendUpdateOutput,
+}));
 // Input Schema
 export const WorkspaceCertificateCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -23231,7 +22815,7 @@ export type WorkspaceCertificateCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceCertificateCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -23253,13 +22837,13 @@ export type WorkspaceCertificateCreateOrUpdateOutput =
  * @param properties - Certificate create or update properties details.
  */
 export const WorkspaceCertificateCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceCertificateCreateOrUpdateInput,
     outputSchema: WorkspaceCertificateCreateOrUpdateOutput,
   }));
 // Input Schema
 export const WorkspaceCertificateDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -23276,8 +22860,7 @@ export type WorkspaceCertificateDeleteInput =
   typeof WorkspaceCertificateDeleteInput.Type;
 
 // Output Schema
-export const WorkspaceCertificateDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkspaceCertificateDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WorkspaceCertificateDeleteOutput =
   typeof WorkspaceCertificateDeleteOutput.Type;
 
@@ -23293,15 +22876,13 @@ export type WorkspaceCertificateDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceCertificateDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceCertificateDeleteInput,
-    outputSchema: WorkspaceCertificateDeleteOutput,
-  }),
-);
+export const WorkspaceCertificateDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceCertificateDeleteInput,
+  outputSchema: WorkspaceCertificateDeleteOutput,
+}));
 // Input Schema
 export const WorkspaceCertificateGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -23319,7 +22900,7 @@ export type WorkspaceCertificateGetInput =
 
 // Output Schema
 export const WorkspaceCertificateGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -23338,15 +22919,13 @@ export type WorkspaceCertificateGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceCertificateGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceCertificateGetInput,
-    outputSchema: WorkspaceCertificateGetOutput,
-  }),
-);
+export const WorkspaceCertificateGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceCertificateGetInput,
+  outputSchema: WorkspaceCertificateGetOutput,
+}));
 // Input Schema
 export const WorkspaceCertificateListByWorkspaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -23367,7 +22946,7 @@ export type WorkspaceCertificateListByWorkspaceInput =
 
 // Output Schema
 export const WorkspaceCertificateListByWorkspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -23398,13 +22977,13 @@ export type WorkspaceCertificateListByWorkspaceOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceCertificateListByWorkspace =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceCertificateListByWorkspaceInput,
     outputSchema: WorkspaceCertificateListByWorkspaceOutput,
   }));
 // Input Schema
 export const WorkspaceCertificateRefreshSecretInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -23422,7 +23001,7 @@ export type WorkspaceCertificateRefreshSecretInput =
 
 // Output Schema
 export const WorkspaceCertificateRefreshSecretOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -23442,13 +23021,13 @@ export type WorkspaceCertificateRefreshSecretOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceCertificateRefreshSecret =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceCertificateRefreshSecretInput,
     outputSchema: WorkspaceCertificateRefreshSecretOutput,
   }));
 // Input Schema
 export const WorkspaceCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -23471,7 +23050,7 @@ export type WorkspaceCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -23491,14 +23070,12 @@ export type WorkspaceCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Workspace entity contract properties.
  */
-export const WorkspaceCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceCreateOrUpdateInput,
-    outputSchema: WorkspaceCreateOrUpdateOutput,
-  }),
-);
+export const WorkspaceCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceCreateOrUpdateInput,
+  outputSchema: WorkspaceCreateOrUpdateOutput,
+}));
 // Input Schema
-export const WorkspaceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkspaceDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   workspaceId: Schema.String.pipe(T.PathParam()),
@@ -23513,7 +23090,7 @@ export const WorkspaceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WorkspaceDeleteInput = typeof WorkspaceDeleteInput.Type;
 
 // Output Schema
-export const WorkspaceDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkspaceDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WorkspaceDeleteOutput = typeof WorkspaceDeleteOutput.Type;
 
 // The operation
@@ -23527,13 +23104,13 @@ export type WorkspaceDeleteOutput = typeof WorkspaceDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkspaceDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkspaceDeleteInput,
   outputSchema: WorkspaceDeleteOutput,
 }));
 // Input Schema
 export const WorkspaceDiagnosticCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -23716,7 +23293,7 @@ export type WorkspaceDiagnosticCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceDiagnosticCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -23738,13 +23315,13 @@ export type WorkspaceDiagnosticCreateOrUpdateOutput =
  * @param properties - Diagnostic entity contract properties.
  */
 export const WorkspaceDiagnosticCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceDiagnosticCreateOrUpdateInput,
     outputSchema: WorkspaceDiagnosticCreateOrUpdateOutput,
   }));
 // Input Schema
 export const WorkspaceDiagnosticDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -23761,8 +23338,7 @@ export type WorkspaceDiagnosticDeleteInput =
   typeof WorkspaceDiagnosticDeleteInput.Type;
 
 // Output Schema
-export const WorkspaceDiagnosticDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkspaceDiagnosticDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WorkspaceDiagnosticDeleteOutput =
   typeof WorkspaceDiagnosticDeleteOutput.Type;
 
@@ -23778,15 +23354,13 @@ export type WorkspaceDiagnosticDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceDiagnosticDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceDiagnosticDeleteInput,
-    outputSchema: WorkspaceDiagnosticDeleteOutput,
-  }),
-);
+export const WorkspaceDiagnosticDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceDiagnosticDeleteInput,
+  outputSchema: WorkspaceDiagnosticDeleteOutput,
+}));
 // Input Schema
 export const WorkspaceDiagnosticGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -23804,7 +23378,7 @@ export type WorkspaceDiagnosticGetInput =
 
 // Output Schema
 export const WorkspaceDiagnosticGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -23823,15 +23397,13 @@ export type WorkspaceDiagnosticGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceDiagnosticGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceDiagnosticGetInput,
-    outputSchema: WorkspaceDiagnosticGetOutput,
-  }),
-);
+export const WorkspaceDiagnosticGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceDiagnosticGetInput,
+  outputSchema: WorkspaceDiagnosticGetOutput,
+}));
 // Input Schema
 export const WorkspaceDiagnosticListByWorkspaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -23851,7 +23423,7 @@ export type WorkspaceDiagnosticListByWorkspaceInput =
 
 // Output Schema
 export const WorkspaceDiagnosticListByWorkspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -23881,13 +23453,13 @@ export type WorkspaceDiagnosticListByWorkspaceOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceDiagnosticListByWorkspace =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceDiagnosticListByWorkspaceInput,
     outputSchema: WorkspaceDiagnosticListByWorkspaceOutput,
   }));
 // Input Schema
 export const WorkspaceDiagnosticUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -24070,7 +23642,7 @@ export type WorkspaceDiagnosticUpdateInput =
 
 // Output Schema
 export const WorkspaceDiagnosticUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -24091,14 +23663,12 @@ export type WorkspaceDiagnosticUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Diagnostic entity contract properties.
  */
-export const WorkspaceDiagnosticUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceDiagnosticUpdateInput,
-    outputSchema: WorkspaceDiagnosticUpdateOutput,
-  }),
-);
+export const WorkspaceDiagnosticUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceDiagnosticUpdateInput,
+  outputSchema: WorkspaceDiagnosticUpdateOutput,
+}));
 // Input Schema
-export const WorkspaceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkspaceGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   workspaceId: Schema.String.pipe(T.PathParam()),
@@ -24113,7 +23683,7 @@ export const WorkspaceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WorkspaceGetInput = typeof WorkspaceGetInput.Type;
 
 // Output Schema
-export const WorkspaceGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkspaceGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -24130,13 +23700,13 @@ export type WorkspaceGetOutput = typeof WorkspaceGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkspaceGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkspaceGetInput,
   outputSchema: WorkspaceGetOutput,
 }));
 // Input Schema
 export const WorkspaceGlobalSchemaCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -24163,7 +23733,7 @@ export type WorkspaceGlobalSchemaCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceGlobalSchemaCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -24185,13 +23755,13 @@ export type WorkspaceGlobalSchemaCreateOrUpdateOutput =
  * @param properties - Properties of the Global Schema.
  */
 export const WorkspaceGlobalSchemaCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceGlobalSchemaCreateOrUpdateInput,
     outputSchema: WorkspaceGlobalSchemaCreateOrUpdateOutput,
   }));
 // Input Schema
 export const WorkspaceGlobalSchemaDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -24208,8 +23778,7 @@ export type WorkspaceGlobalSchemaDeleteInput =
   typeof WorkspaceGlobalSchemaDeleteInput.Type;
 
 // Output Schema
-export const WorkspaceGlobalSchemaDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkspaceGlobalSchemaDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WorkspaceGlobalSchemaDeleteOutput =
   typeof WorkspaceGlobalSchemaDeleteOutput.Type;
 
@@ -24225,15 +23794,13 @@ export type WorkspaceGlobalSchemaDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceGlobalSchemaDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceGlobalSchemaDeleteInput,
-    outputSchema: WorkspaceGlobalSchemaDeleteOutput,
-  }),
-);
+export const WorkspaceGlobalSchemaDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceGlobalSchemaDeleteInput,
+  outputSchema: WorkspaceGlobalSchemaDeleteOutput,
+}));
 // Input Schema
 export const WorkspaceGlobalSchemaGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -24251,7 +23818,7 @@ export type WorkspaceGlobalSchemaGetInput =
 
 // Output Schema
 export const WorkspaceGlobalSchemaGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -24270,15 +23837,13 @@ export type WorkspaceGlobalSchemaGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceGlobalSchemaGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceGlobalSchemaGetInput,
-    outputSchema: WorkspaceGlobalSchemaGetOutput,
-  }),
-);
+export const WorkspaceGlobalSchemaGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceGlobalSchemaGetInput,
+  outputSchema: WorkspaceGlobalSchemaGetOutput,
+}));
 // Input Schema
 export const WorkspaceGlobalSchemaListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -24298,7 +23863,7 @@ export type WorkspaceGlobalSchemaListByServiceInput =
 
 // Output Schema
 export const WorkspaceGlobalSchemaListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -24328,13 +23893,13 @@ export type WorkspaceGlobalSchemaListByServiceOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceGlobalSchemaListByService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceGlobalSchemaListByServiceInput,
     outputSchema: WorkspaceGlobalSchemaListByServiceOutput,
   }));
 // Input Schema
 export const WorkspaceGroupCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -24362,7 +23927,7 @@ export type WorkspaceGroupCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceGroupCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -24384,13 +23949,13 @@ export type WorkspaceGroupCreateOrUpdateOutput =
  * @param properties - Properties supplied to Create Group operation.
  */
 export const WorkspaceGroupCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceGroupCreateOrUpdateInput,
     outputSchema: WorkspaceGroupCreateOrUpdateOutput,
   }));
 // Input Schema
 export const WorkspaceGroupDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -24406,8 +23971,7 @@ export const WorkspaceGroupDeleteInput =
 export type WorkspaceGroupDeleteInput = typeof WorkspaceGroupDeleteInput.Type;
 
 // Output Schema
-export const WorkspaceGroupDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkspaceGroupDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WorkspaceGroupDeleteOutput = typeof WorkspaceGroupDeleteOutput.Type;
 
 // The operation
@@ -24422,23 +23986,19 @@ export type WorkspaceGroupDeleteOutput = typeof WorkspaceGroupDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceGroupDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceGroupDeleteInput,
-    outputSchema: WorkspaceGroupDeleteOutput,
-  }),
-);
+export const WorkspaceGroupDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceGroupDeleteInput,
+  outputSchema: WorkspaceGroupDeleteOutput,
+}));
 // Input Schema
-export const WorkspaceGroupGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    serviceName: Schema.String.pipe(T.PathParam()),
-    workspaceId: Schema.String.pipe(T.PathParam()),
-    groupId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  },
-).pipe(
+export const WorkspaceGroupGetInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  workspaceId: Schema.String.pipe(T.PathParam()),
+  groupId: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/groups/{groupId}",
@@ -24448,7 +24008,7 @@ export type WorkspaceGroupGetInput = typeof WorkspaceGroupGetInput.Type;
 
 // Output Schema
 export const WorkspaceGroupGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -24466,13 +24026,13 @@ export type WorkspaceGroupGetOutput = typeof WorkspaceGroupGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceGroupGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkspaceGroupGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkspaceGroupGetInput,
   outputSchema: WorkspaceGroupGetOutput,
 }));
 // Input Schema
 export const WorkspaceGroupListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -24492,7 +24052,7 @@ export type WorkspaceGroupListByServiceInput =
 
 // Output Schema
 export const WorkspaceGroupListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -24521,15 +24081,13 @@ export type WorkspaceGroupListByServiceOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceGroupListByService = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceGroupListByServiceInput,
-    outputSchema: WorkspaceGroupListByServiceOutput,
-  }),
-);
+export const WorkspaceGroupListByService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceGroupListByServiceInput,
+  outputSchema: WorkspaceGroupListByServiceOutput,
+}));
 // Input Schema
 export const WorkspaceGroupUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -24556,7 +24114,7 @@ export type WorkspaceGroupUpdateInput = typeof WorkspaceGroupUpdateInput.Type;
 
 // Output Schema
 export const WorkspaceGroupUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -24576,15 +24134,13 @@ export type WorkspaceGroupUpdateOutput = typeof WorkspaceGroupUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Group entity update contract properties.
  */
-export const WorkspaceGroupUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceGroupUpdateInput,
-    outputSchema: WorkspaceGroupUpdateOutput,
-  }),
-);
+export const WorkspaceGroupUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceGroupUpdateInput,
+  outputSchema: WorkspaceGroupUpdateOutput,
+}));
 // Input Schema
 export const WorkspaceGroupUserCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -24603,7 +24159,7 @@ export type WorkspaceGroupUserCreateInput =
 
 // Output Schema
 export const WorkspaceGroupUserCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -24623,15 +24179,13 @@ export type WorkspaceGroupUserCreateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceGroupUserCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceGroupUserCreateInput,
-    outputSchema: WorkspaceGroupUserCreateOutput,
-  }),
-);
+export const WorkspaceGroupUserCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceGroupUserCreateInput,
+  outputSchema: WorkspaceGroupUserCreateOutput,
+}));
 // Input Schema
 export const WorkspaceGroupUserDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -24649,8 +24203,7 @@ export type WorkspaceGroupUserDeleteInput =
   typeof WorkspaceGroupUserDeleteInput.Type;
 
 // Output Schema
-export const WorkspaceGroupUserDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkspaceGroupUserDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WorkspaceGroupUserDeleteOutput =
   typeof WorkspaceGroupUserDeleteOutput.Type;
 
@@ -24666,15 +24219,13 @@ export type WorkspaceGroupUserDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceGroupUserDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceGroupUserDeleteInput,
-    outputSchema: WorkspaceGroupUserDeleteOutput,
-  }),
-);
+export const WorkspaceGroupUserDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceGroupUserDeleteInput,
+  outputSchema: WorkspaceGroupUserDeleteOutput,
+}));
 // Input Schema
 export const WorkspaceGroupUserListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -24695,7 +24246,7 @@ export type WorkspaceGroupUserListInput =
 
 // Output Schema
 export const WorkspaceGroupUserListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -24725,15 +24276,13 @@ export type WorkspaceGroupUserListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceGroupUserList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceGroupUserListInput,
-    outputSchema: WorkspaceGroupUserListOutput,
-  }),
-);
+export const WorkspaceGroupUserList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceGroupUserListInput,
+  outputSchema: WorkspaceGroupUserListOutput,
+}));
 // Input Schema
 export const WorkspaceListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -24752,7 +24301,7 @@ export type WorkspaceListByServiceInput =
 
 // Output Schema
 export const WorkspaceListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -24780,15 +24329,13 @@ export type WorkspaceListByServiceOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceListByService = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceListByServiceInput,
-    outputSchema: WorkspaceListByServiceOutput,
-  }),
-);
+export const WorkspaceListByService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceListByServiceInput,
+  outputSchema: WorkspaceListByServiceOutput,
+}));
 // Input Schema
 export const WorkspaceLoggerCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -24821,7 +24368,7 @@ export type WorkspaceLoggerCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceLoggerCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -24843,13 +24390,13 @@ export type WorkspaceLoggerCreateOrUpdateOutput =
  * @param properties - Logger entity contract properties.
  */
 export const WorkspaceLoggerCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceLoggerCreateOrUpdateInput,
     outputSchema: WorkspaceLoggerCreateOrUpdateOutput,
   }));
 // Input Schema
 export const WorkspaceLoggerDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -24865,8 +24412,7 @@ export const WorkspaceLoggerDeleteInput =
 export type WorkspaceLoggerDeleteInput = typeof WorkspaceLoggerDeleteInput.Type;
 
 // Output Schema
-export const WorkspaceLoggerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkspaceLoggerDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WorkspaceLoggerDeleteOutput =
   typeof WorkspaceLoggerDeleteOutput.Type;
 
@@ -24882,15 +24428,13 @@ export type WorkspaceLoggerDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceLoggerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceLoggerDeleteInput,
-    outputSchema: WorkspaceLoggerDeleteOutput,
-  }),
-);
+export const WorkspaceLoggerDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceLoggerDeleteInput,
+  outputSchema: WorkspaceLoggerDeleteOutput,
+}));
 // Input Schema
 export const WorkspaceLoggerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -24907,7 +24451,7 @@ export type WorkspaceLoggerGetInput = typeof WorkspaceLoggerGetInput.Type;
 
 // Output Schema
 export const WorkspaceLoggerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -24925,13 +24469,13 @@ export type WorkspaceLoggerGetOutput = typeof WorkspaceLoggerGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceLoggerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkspaceLoggerGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkspaceLoggerGetInput,
   outputSchema: WorkspaceLoggerGetOutput,
 }));
 // Input Schema
 export const WorkspaceLoggerListByWorkspaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -24951,7 +24495,7 @@ export type WorkspaceLoggerListByWorkspaceInput =
 
 // Output Schema
 export const WorkspaceLoggerListByWorkspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -24981,13 +24525,13 @@ export type WorkspaceLoggerListByWorkspaceOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceLoggerListByWorkspace =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceLoggerListByWorkspaceInput,
     outputSchema: WorkspaceLoggerListByWorkspaceOutput,
   }));
 // Input Schema
 export const WorkspaceLoggerUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -25020,7 +24564,7 @@ export type WorkspaceLoggerUpdateInput = typeof WorkspaceLoggerUpdateInput.Type;
 
 // Output Schema
 export const WorkspaceLoggerUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -25041,15 +24585,13 @@ export type WorkspaceLoggerUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Logger entity update contract properties.
  */
-export const WorkspaceLoggerUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceLoggerUpdateInput,
-    outputSchema: WorkspaceLoggerUpdateOutput,
-  }),
-);
+export const WorkspaceLoggerUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceLoggerUpdateInput,
+  outputSchema: WorkspaceLoggerUpdateOutput,
+}));
 // Input Schema
 export const WorkspaceNamedValueCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -25073,7 +24615,7 @@ export type WorkspaceNamedValueCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceNamedValueCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -25095,13 +24637,13 @@ export type WorkspaceNamedValueCreateOrUpdateOutput =
  * @param properties - NamedValue entity contract properties for PUT operation.
  */
 export const WorkspaceNamedValueCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceNamedValueCreateOrUpdateInput,
     outputSchema: WorkspaceNamedValueCreateOrUpdateOutput,
   }));
 // Input Schema
 export const WorkspaceNamedValueDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -25118,8 +24660,7 @@ export type WorkspaceNamedValueDeleteInput =
   typeof WorkspaceNamedValueDeleteInput.Type;
 
 // Output Schema
-export const WorkspaceNamedValueDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkspaceNamedValueDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WorkspaceNamedValueDeleteOutput =
   typeof WorkspaceNamedValueDeleteOutput.Type;
 
@@ -25135,15 +24676,13 @@ export type WorkspaceNamedValueDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceNamedValueDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceNamedValueDeleteInput,
-    outputSchema: WorkspaceNamedValueDeleteOutput,
-  }),
-);
+export const WorkspaceNamedValueDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceNamedValueDeleteInput,
+  outputSchema: WorkspaceNamedValueDeleteOutput,
+}));
 // Input Schema
 export const WorkspaceNamedValueGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -25161,7 +24700,7 @@ export type WorkspaceNamedValueGetInput =
 
 // Output Schema
 export const WorkspaceNamedValueGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -25180,15 +24719,13 @@ export type WorkspaceNamedValueGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceNamedValueGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceNamedValueGetInput,
-    outputSchema: WorkspaceNamedValueGetOutput,
-  }),
-);
+export const WorkspaceNamedValueGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceNamedValueGetInput,
+  outputSchema: WorkspaceNamedValueGetOutput,
+}));
 // Input Schema
 export const WorkspaceNamedValueListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -25211,7 +24748,7 @@ export type WorkspaceNamedValueListByServiceInput =
 
 // Output Schema
 export const WorkspaceNamedValueListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -25242,13 +24779,13 @@ export type WorkspaceNamedValueListByServiceOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceNamedValueListByService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceNamedValueListByServiceInput,
     outputSchema: WorkspaceNamedValueListByServiceOutput,
   }));
 // Input Schema
 export const WorkspaceNamedValueListValueInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -25266,7 +24803,7 @@ export type WorkspaceNamedValueListValueInput =
 
 // Output Schema
 export const WorkspaceNamedValueListValueOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   });
 export type WorkspaceNamedValueListValueOutput =
@@ -25284,13 +24821,13 @@ export type WorkspaceNamedValueListValueOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceNamedValueListValue =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceNamedValueListValueInput,
     outputSchema: WorkspaceNamedValueListValueOutput,
   }));
 // Input Schema
 export const WorkspaceNamedValueRefreshSecretInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -25308,7 +24845,7 @@ export type WorkspaceNamedValueRefreshSecretInput =
 
 // Output Schema
 export const WorkspaceNamedValueRefreshSecretOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -25328,13 +24865,13 @@ export type WorkspaceNamedValueRefreshSecretOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceNamedValueRefreshSecret =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceNamedValueRefreshSecretInput,
     outputSchema: WorkspaceNamedValueRefreshSecretOutput,
   }));
 // Input Schema
 export const WorkspaceNamedValueUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -25358,7 +24895,7 @@ export type WorkspaceNamedValueUpdateInput =
 
 // Output Schema
 export const WorkspaceNamedValueUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -25379,15 +24916,13 @@ export type WorkspaceNamedValueUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - NamedValue entity Update contract properties.
  */
-export const WorkspaceNamedValueUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceNamedValueUpdateInput,
-    outputSchema: WorkspaceNamedValueUpdateOutput,
-  }),
-);
+export const WorkspaceNamedValueUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceNamedValueUpdateInput,
+  outputSchema: WorkspaceNamedValueUpdateOutput,
+}));
 // Input Schema
 export const WorkspaceNotificationCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -25413,7 +24948,7 @@ export type WorkspaceNotificationCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceNotificationCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -25434,13 +24969,13 @@ export type WorkspaceNotificationCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceNotificationCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceNotificationCreateOrUpdateInput,
     outputSchema: WorkspaceNotificationCreateOrUpdateOutput,
   }));
 // Input Schema
 export const WorkspaceNotificationGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -25466,7 +25001,7 @@ export type WorkspaceNotificationGetInput =
 
 // Output Schema
 export const WorkspaceNotificationGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -25485,15 +25020,13 @@ export type WorkspaceNotificationGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceNotificationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceNotificationGetInput,
-    outputSchema: WorkspaceNotificationGetOutput,
-  }),
-);
+export const WorkspaceNotificationGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceNotificationGetInput,
+  outputSchema: WorkspaceNotificationGetOutput,
+}));
 // Input Schema
 export const WorkspaceNotificationListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -25512,7 +25045,7 @@ export type WorkspaceNotificationListByServiceInput =
 
 // Output Schema
 export const WorkspaceNotificationListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -25541,13 +25074,13 @@ export type WorkspaceNotificationListByServiceOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceNotificationListByService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceNotificationListByServiceInput,
     outputSchema: WorkspaceNotificationListByServiceOutput,
   }));
 // Input Schema
 export const WorkspaceNotificationRecipientEmailCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -25574,7 +25107,7 @@ export type WorkspaceNotificationRecipientEmailCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceNotificationRecipientEmailCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -25595,13 +25128,13 @@ export type WorkspaceNotificationRecipientEmailCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceNotificationRecipientEmailCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceNotificationRecipientEmailCreateOrUpdateInput,
     outputSchema: WorkspaceNotificationRecipientEmailCreateOrUpdateOutput,
   }));
 // Input Schema
 export const WorkspaceNotificationRecipientEmailDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -25628,7 +25161,7 @@ export type WorkspaceNotificationRecipientEmailDeleteInput =
 
 // Output Schema
 export const WorkspaceNotificationRecipientEmailDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type WorkspaceNotificationRecipientEmailDeleteOutput =
   typeof WorkspaceNotificationRecipientEmailDeleteOutput.Type;
 
@@ -25645,13 +25178,13 @@ export type WorkspaceNotificationRecipientEmailDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceNotificationRecipientEmailDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceNotificationRecipientEmailDeleteInput,
     outputSchema: WorkspaceNotificationRecipientEmailDeleteOutput,
   }));
 // Input Schema
 export const WorkspaceNotificationRecipientEmailListByNotificationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -25677,7 +25210,7 @@ export type WorkspaceNotificationRecipientEmailListByNotificationInput =
 
 // Output Schema
 export const WorkspaceNotificationRecipientEmailListByNotificationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -25705,13 +25238,13 @@ export type WorkspaceNotificationRecipientEmailListByNotificationOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceNotificationRecipientEmailListByNotification =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceNotificationRecipientEmailListByNotificationInput,
     outputSchema: WorkspaceNotificationRecipientEmailListByNotificationOutput,
   }));
 // Input Schema
 export const WorkspaceNotificationRecipientUserCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -25738,7 +25271,7 @@ export type WorkspaceNotificationRecipientUserCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceNotificationRecipientUserCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -25759,13 +25292,13 @@ export type WorkspaceNotificationRecipientUserCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceNotificationRecipientUserCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceNotificationRecipientUserCreateOrUpdateInput,
     outputSchema: WorkspaceNotificationRecipientUserCreateOrUpdateOutput,
   }));
 // Input Schema
 export const WorkspaceNotificationRecipientUserDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -25792,7 +25325,7 @@ export type WorkspaceNotificationRecipientUserDeleteInput =
 
 // Output Schema
 export const WorkspaceNotificationRecipientUserDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type WorkspaceNotificationRecipientUserDeleteOutput =
   typeof WorkspaceNotificationRecipientUserDeleteOutput.Type;
 
@@ -25809,13 +25342,13 @@ export type WorkspaceNotificationRecipientUserDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceNotificationRecipientUserDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceNotificationRecipientUserDeleteInput,
     outputSchema: WorkspaceNotificationRecipientUserDeleteOutput,
   }));
 // Input Schema
 export const WorkspaceNotificationRecipientUserListByNotificationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -25841,7 +25374,7 @@ export type WorkspaceNotificationRecipientUserListByNotificationInput =
 
 // Output Schema
 export const WorkspaceNotificationRecipientUserListByNotificationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -25869,13 +25402,13 @@ export type WorkspaceNotificationRecipientUserListByNotificationOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceNotificationRecipientUserListByNotification =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceNotificationRecipientUserListByNotificationInput,
     outputSchema: WorkspaceNotificationRecipientUserListByNotificationOutput,
   }));
 // Input Schema
 export const WorkspacePolicyCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -25901,7 +25434,7 @@ export type WorkspacePolicyCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspacePolicyCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -25923,13 +25456,13 @@ export type WorkspacePolicyCreateOrUpdateOutput =
  * @param properties - Properties of the Policy.
  */
 export const WorkspacePolicyCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspacePolicyCreateOrUpdateInput,
     outputSchema: WorkspacePolicyCreateOrUpdateOutput,
   }));
 // Input Schema
 export const WorkspacePolicyDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -25945,8 +25478,7 @@ export const WorkspacePolicyDeleteInput =
 export type WorkspacePolicyDeleteInput = typeof WorkspacePolicyDeleteInput.Type;
 
 // Output Schema
-export const WorkspacePolicyDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkspacePolicyDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WorkspacePolicyDeleteOutput =
   typeof WorkspacePolicyDeleteOutput.Type;
 
@@ -25962,15 +25494,13 @@ export type WorkspacePolicyDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspacePolicyDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspacePolicyDeleteInput,
-    outputSchema: WorkspacePolicyDeleteOutput,
-  }),
-);
+export const WorkspacePolicyDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspacePolicyDeleteInput,
+  outputSchema: WorkspacePolicyDeleteOutput,
+}));
 // Input Schema
 export const WorkspacePolicyFragmentCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -25996,7 +25526,7 @@ export type WorkspacePolicyFragmentCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspacePolicyFragmentCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -26018,13 +25548,13 @@ export type WorkspacePolicyFragmentCreateOrUpdateOutput =
  * @param properties - Properties of the Policy Fragment.
  */
 export const WorkspacePolicyFragmentCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspacePolicyFragmentCreateOrUpdateInput,
     outputSchema: WorkspacePolicyFragmentCreateOrUpdateOutput,
   }));
 // Input Schema
 export const WorkspacePolicyFragmentDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -26041,8 +25571,7 @@ export type WorkspacePolicyFragmentDeleteInput =
   typeof WorkspacePolicyFragmentDeleteInput.Type;
 
 // Output Schema
-export const WorkspacePolicyFragmentDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkspacePolicyFragmentDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WorkspacePolicyFragmentDeleteOutput =
   typeof WorkspacePolicyFragmentDeleteOutput.Type;
 
@@ -26059,13 +25588,13 @@ export type WorkspacePolicyFragmentDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspacePolicyFragmentDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspacePolicyFragmentDeleteInput,
     outputSchema: WorkspacePolicyFragmentDeleteOutput,
   }));
 // Input Schema
 export const WorkspacePolicyFragmentGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -26084,7 +25613,7 @@ export type WorkspacePolicyFragmentGetInput =
 
 // Output Schema
 export const WorkspacePolicyFragmentGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -26104,15 +25633,13 @@ export type WorkspacePolicyFragmentGetOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param format - Policy fragment content format.
  */
-export const WorkspacePolicyFragmentGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspacePolicyFragmentGetInput,
-    outputSchema: WorkspacePolicyFragmentGetOutput,
-  }),
-);
+export const WorkspacePolicyFragmentGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspacePolicyFragmentGetInput,
+  outputSchema: WorkspacePolicyFragmentGetOutput,
+}));
 // Input Schema
 export const WorkspacePolicyFragmentListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -26133,7 +25660,7 @@ export type WorkspacePolicyFragmentListByServiceInput =
 
 // Output Schema
 export const WorkspacePolicyFragmentListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -26164,13 +25691,13 @@ export type WorkspacePolicyFragmentListByServiceOutput =
  * @param $skip - Number of records to skip.
  */
 export const WorkspacePolicyFragmentListByService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspacePolicyFragmentListByServiceInput,
     outputSchema: WorkspacePolicyFragmentListByServiceOutput,
   }));
 // Input Schema
 export const WorkspacePolicyFragmentListReferencesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -26190,7 +25717,7 @@ export type WorkspacePolicyFragmentListReferencesInput =
 
 // Output Schema
 export const WorkspacePolicyFragmentListReferencesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -26220,13 +25747,13 @@ export type WorkspacePolicyFragmentListReferencesOutput =
  * @param $skip - Number of records to skip.
  */
 export const WorkspacePolicyFragmentListReferences =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspacePolicyFragmentListReferencesInput,
     outputSchema: WorkspacePolicyFragmentListReferencesOutput,
   }));
 // Input Schema
 export const WorkspacePolicyGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -26244,7 +25771,7 @@ export type WorkspacePolicyGetInput = typeof WorkspacePolicyGetInput.Type;
 
 // Output Schema
 export const WorkspacePolicyGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -26263,13 +25790,13 @@ export type WorkspacePolicyGetOutput = typeof WorkspacePolicyGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspacePolicyGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkspacePolicyGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkspacePolicyGetInput,
   outputSchema: WorkspacePolicyGetOutput,
 }));
 // Input Schema
 export const WorkspacePolicyListByApiInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -26286,7 +25813,7 @@ export type WorkspacePolicyListByApiInput =
 
 // Output Schema
 export const WorkspacePolicyListByApiOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -26312,15 +25839,13 @@ export type WorkspacePolicyListByApiOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspacePolicyListByApi = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspacePolicyListByApiInput,
-    outputSchema: WorkspacePolicyListByApiOutput,
-  }),
-);
+export const WorkspacePolicyListByApi = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspacePolicyListByApiInput,
+  outputSchema: WorkspacePolicyListByApiOutput,
+}));
 // Input Schema
 export const WorkspaceProductApiLinkCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -26344,7 +25869,7 @@ export type WorkspaceProductApiLinkCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceProductApiLinkCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -26366,13 +25891,13 @@ export type WorkspaceProductApiLinkCreateOrUpdateOutput =
  * @param properties - Product-API link entity contract properties.
  */
 export const WorkspaceProductApiLinkCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceProductApiLinkCreateOrUpdateInput,
     outputSchema: WorkspaceProductApiLinkCreateOrUpdateOutput,
   }));
 // Input Schema
 export const WorkspaceProductApiLinkDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -26390,8 +25915,7 @@ export type WorkspaceProductApiLinkDeleteInput =
   typeof WorkspaceProductApiLinkDeleteInput.Type;
 
 // Output Schema
-export const WorkspaceProductApiLinkDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkspaceProductApiLinkDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WorkspaceProductApiLinkDeleteOutput =
   typeof WorkspaceProductApiLinkDeleteOutput.Type;
 
@@ -26408,13 +25932,13 @@ export type WorkspaceProductApiLinkDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceProductApiLinkDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceProductApiLinkDeleteInput,
     outputSchema: WorkspaceProductApiLinkDeleteOutput,
   }));
 // Input Schema
 export const WorkspaceProductApiLinkGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -26433,7 +25957,7 @@ export type WorkspaceProductApiLinkGetInput =
 
 // Output Schema
 export const WorkspaceProductApiLinkGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -26453,15 +25977,13 @@ export type WorkspaceProductApiLinkGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceProductApiLinkGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceProductApiLinkGetInput,
-    outputSchema: WorkspaceProductApiLinkGetOutput,
-  }),
-);
+export const WorkspaceProductApiLinkGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceProductApiLinkGetInput,
+  outputSchema: WorkspaceProductApiLinkGetOutput,
+}));
 // Input Schema
 export const WorkspaceProductApiLinkListByProductInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -26482,7 +26004,7 @@ export type WorkspaceProductApiLinkListByProductInput =
 
 // Output Schema
 export const WorkspaceProductApiLinkListByProductOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -26513,13 +26035,13 @@ export type WorkspaceProductApiLinkListByProductOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceProductApiLinkListByProduct =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceProductApiLinkListByProductInput,
     outputSchema: WorkspaceProductApiLinkListByProductOutput,
   }));
 // Input Schema
 export const WorkspaceProductCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -26547,7 +26069,7 @@ export type WorkspaceProductCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceProductCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -26569,13 +26091,13 @@ export type WorkspaceProductCreateOrUpdateOutput =
  * @param properties - Product entity contract properties.
  */
 export const WorkspaceProductCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceProductCreateOrUpdateInput,
     outputSchema: WorkspaceProductCreateOrUpdateOutput,
   }));
 // Input Schema
 export const WorkspaceProductDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -26593,8 +26115,7 @@ export type WorkspaceProductDeleteInput =
   typeof WorkspaceProductDeleteInput.Type;
 
 // Output Schema
-export const WorkspaceProductDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkspaceProductDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WorkspaceProductDeleteOutput =
   typeof WorkspaceProductDeleteOutput.Type;
 
@@ -26611,15 +26132,13 @@ export type WorkspaceProductDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceProductDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceProductDeleteInput,
-    outputSchema: WorkspaceProductDeleteOutput,
-  }),
-);
+export const WorkspaceProductDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceProductDeleteInput,
+  outputSchema: WorkspaceProductDeleteOutput,
+}));
 // Input Schema
 export const WorkspaceProductGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -26636,7 +26155,7 @@ export type WorkspaceProductGetInput = typeof WorkspaceProductGetInput.Type;
 
 // Output Schema
 export const WorkspaceProductGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -26654,13 +26173,13 @@ export type WorkspaceProductGetOutput = typeof WorkspaceProductGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceProductGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkspaceProductGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkspaceProductGetInput,
   outputSchema: WorkspaceProductGetOutput,
 }));
 // Input Schema
 export const WorkspaceProductGroupLinkCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -26684,7 +26203,7 @@ export type WorkspaceProductGroupLinkCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceProductGroupLinkCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -26706,13 +26225,13 @@ export type WorkspaceProductGroupLinkCreateOrUpdateOutput =
  * @param properties - Product-group link entity contract properties.
  */
 export const WorkspaceProductGroupLinkCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceProductGroupLinkCreateOrUpdateInput,
     outputSchema: WorkspaceProductGroupLinkCreateOrUpdateOutput,
   }));
 // Input Schema
 export const WorkspaceProductGroupLinkDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -26730,8 +26249,7 @@ export type WorkspaceProductGroupLinkDeleteInput =
   typeof WorkspaceProductGroupLinkDeleteInput.Type;
 
 // Output Schema
-export const WorkspaceProductGroupLinkDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkspaceProductGroupLinkDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WorkspaceProductGroupLinkDeleteOutput =
   typeof WorkspaceProductGroupLinkDeleteOutput.Type;
 
@@ -26748,13 +26266,13 @@ export type WorkspaceProductGroupLinkDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceProductGroupLinkDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceProductGroupLinkDeleteInput,
     outputSchema: WorkspaceProductGroupLinkDeleteOutput,
   }));
 // Input Schema
 export const WorkspaceProductGroupLinkGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -26773,7 +26291,7 @@ export type WorkspaceProductGroupLinkGetInput =
 
 // Output Schema
 export const WorkspaceProductGroupLinkGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -26794,13 +26312,13 @@ export type WorkspaceProductGroupLinkGetOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceProductGroupLinkGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceProductGroupLinkGetInput,
     outputSchema: WorkspaceProductGroupLinkGetOutput,
   }));
 // Input Schema
 export const WorkspaceProductGroupLinkListByProductInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -26821,7 +26339,7 @@ export type WorkspaceProductGroupLinkListByProductInput =
 
 // Output Schema
 export const WorkspaceProductGroupLinkListByProductOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -26852,13 +26370,13 @@ export type WorkspaceProductGroupLinkListByProductOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceProductGroupLinkListByProduct =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceProductGroupLinkListByProductInput,
     outputSchema: WorkspaceProductGroupLinkListByProductOutput,
   }));
 // Input Schema
 export const WorkspaceProductListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -26880,7 +26398,7 @@ export type WorkspaceProductListByServiceInput =
 
 // Output Schema
 export const WorkspaceProductListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -26912,13 +26430,13 @@ export type WorkspaceProductListByServiceOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceProductListByService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceProductListByServiceInput,
     outputSchema: WorkspaceProductListByServiceOutput,
   }));
 // Input Schema
 export const WorkspaceProductPolicyCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -26945,7 +26463,7 @@ export type WorkspaceProductPolicyCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceProductPolicyCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -26968,13 +26486,13 @@ export type WorkspaceProductPolicyCreateOrUpdateOutput =
  * @param properties - Properties of the Policy.
  */
 export const WorkspaceProductPolicyCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceProductPolicyCreateOrUpdateInput,
     outputSchema: WorkspaceProductPolicyCreateOrUpdateOutput,
   }));
 // Input Schema
 export const WorkspaceProductPolicyDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -26992,8 +26510,7 @@ export type WorkspaceProductPolicyDeleteInput =
   typeof WorkspaceProductPolicyDeleteInput.Type;
 
 // Output Schema
-export const WorkspaceProductPolicyDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkspaceProductPolicyDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WorkspaceProductPolicyDeleteOutput =
   typeof WorkspaceProductPolicyDeleteOutput.Type;
 
@@ -27011,13 +26528,13 @@ export type WorkspaceProductPolicyDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceProductPolicyDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceProductPolicyDeleteInput,
     outputSchema: WorkspaceProductPolicyDeleteOutput,
   }));
 // Input Schema
 export const WorkspaceProductPolicyGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -27037,7 +26554,7 @@ export type WorkspaceProductPolicyGetInput =
 
 // Output Schema
 export const WorkspaceProductPolicyGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -27058,15 +26575,13 @@ export type WorkspaceProductPolicyGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceProductPolicyGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceProductPolicyGetInput,
-    outputSchema: WorkspaceProductPolicyGetOutput,
-  }),
-);
+export const WorkspaceProductPolicyGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceProductPolicyGetInput,
+  outputSchema: WorkspaceProductPolicyGetOutput,
+}));
 // Input Schema
 export const WorkspaceProductPolicyListByProductInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -27084,7 +26599,7 @@ export type WorkspaceProductPolicyListByProductInput =
 
 // Output Schema
 export const WorkspaceProductPolicyListByProductOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -27112,13 +26627,13 @@ export type WorkspaceProductPolicyListByProductOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceProductPolicyListByProduct =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceProductPolicyListByProductInput,
     outputSchema: WorkspaceProductPolicyListByProductOutput,
   }));
 // Input Schema
 export const WorkspaceProductUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -27146,7 +26661,7 @@ export type WorkspaceProductUpdateInput =
 
 // Output Schema
 export const WorkspaceProductUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -27167,15 +26682,13 @@ export type WorkspaceProductUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Product entity Update contract properties.
  */
-export const WorkspaceProductUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceProductUpdateInput,
-    outputSchema: WorkspaceProductUpdateOutput,
-  }),
-);
+export const WorkspaceProductUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceProductUpdateInput,
+  outputSchema: WorkspaceProductUpdateOutput,
+}));
 // Input Schema
 export const WorkspaceSubscriptionCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -27215,7 +26728,7 @@ export type WorkspaceSubscriptionCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceSubscriptionCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -27241,13 +26754,13 @@ export type WorkspaceSubscriptionCreateOrUpdateOutput =
  * @param properties - Subscription contract properties.
  */
 export const WorkspaceSubscriptionCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceSubscriptionCreateOrUpdateInput,
     outputSchema: WorkspaceSubscriptionCreateOrUpdateOutput,
   }));
 // Input Schema
 export const WorkspaceSubscriptionDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -27264,8 +26777,7 @@ export type WorkspaceSubscriptionDeleteInput =
   typeof WorkspaceSubscriptionDeleteInput.Type;
 
 // Output Schema
-export const WorkspaceSubscriptionDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkspaceSubscriptionDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WorkspaceSubscriptionDeleteOutput =
   typeof WorkspaceSubscriptionDeleteOutput.Type;
 
@@ -27281,15 +26793,13 @@ export type WorkspaceSubscriptionDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceSubscriptionDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceSubscriptionDeleteInput,
-    outputSchema: WorkspaceSubscriptionDeleteOutput,
-  }),
-);
+export const WorkspaceSubscriptionDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceSubscriptionDeleteInput,
+  outputSchema: WorkspaceSubscriptionDeleteOutput,
+}));
 // Input Schema
 export const WorkspaceSubscriptionGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -27307,7 +26817,7 @@ export type WorkspaceSubscriptionGetInput =
 
 // Output Schema
 export const WorkspaceSubscriptionGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -27326,15 +26836,13 @@ export type WorkspaceSubscriptionGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceSubscriptionGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceSubscriptionGetInput,
-    outputSchema: WorkspaceSubscriptionGetOutput,
-  }),
-);
+export const WorkspaceSubscriptionGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceSubscriptionGetInput,
+  outputSchema: WorkspaceSubscriptionGetOutput,
+}));
 // Input Schema
 export const WorkspaceSubscriptionListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -27354,7 +26862,7 @@ export type WorkspaceSubscriptionListInput =
 
 // Output Schema
 export const WorkspaceSubscriptionListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -27383,15 +26891,13 @@ export type WorkspaceSubscriptionListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceSubscriptionList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceSubscriptionListInput,
-    outputSchema: WorkspaceSubscriptionListOutput,
-  }),
-);
+export const WorkspaceSubscriptionList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceSubscriptionListInput,
+  outputSchema: WorkspaceSubscriptionListOutput,
+}));
 // Input Schema
 export const WorkspaceSubscriptionListSecretsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -27409,7 +26915,7 @@ export type WorkspaceSubscriptionListSecretsInput =
 
 // Output Schema
 export const WorkspaceSubscriptionListSecretsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     primaryKey: Schema.optional(Schema.String),
     secondaryKey: Schema.optional(Schema.String),
   });
@@ -27428,13 +26934,13 @@ export type WorkspaceSubscriptionListSecretsOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceSubscriptionListSecrets =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceSubscriptionListSecretsInput,
     outputSchema: WorkspaceSubscriptionListSecretsOutput,
   }));
 // Input Schema
 export const WorkspaceSubscriptionRegeneratePrimaryKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -27452,7 +26958,7 @@ export type WorkspaceSubscriptionRegeneratePrimaryKeyInput =
 
 // Output Schema
 export const WorkspaceSubscriptionRegeneratePrimaryKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type WorkspaceSubscriptionRegeneratePrimaryKeyOutput =
   typeof WorkspaceSubscriptionRegeneratePrimaryKeyOutput.Type;
 
@@ -27468,13 +26974,13 @@ export type WorkspaceSubscriptionRegeneratePrimaryKeyOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceSubscriptionRegeneratePrimaryKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceSubscriptionRegeneratePrimaryKeyInput,
     outputSchema: WorkspaceSubscriptionRegeneratePrimaryKeyOutput,
   }));
 // Input Schema
 export const WorkspaceSubscriptionRegenerateSecondaryKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -27492,7 +26998,7 @@ export type WorkspaceSubscriptionRegenerateSecondaryKeyInput =
 
 // Output Schema
 export const WorkspaceSubscriptionRegenerateSecondaryKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type WorkspaceSubscriptionRegenerateSecondaryKeyOutput =
   typeof WorkspaceSubscriptionRegenerateSecondaryKeyOutput.Type;
 
@@ -27508,13 +27014,13 @@ export type WorkspaceSubscriptionRegenerateSecondaryKeyOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceSubscriptionRegenerateSecondaryKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceSubscriptionRegenerateSecondaryKeyInput,
     outputSchema: WorkspaceSubscriptionRegenerateSecondaryKeyOutput,
   }));
 // Input Schema
 export const WorkspaceSubscriptionUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -27556,7 +27062,7 @@ export type WorkspaceSubscriptionUpdateInput =
 
 // Output Schema
 export const WorkspaceSubscriptionUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -27581,15 +27087,13 @@ export type WorkspaceSubscriptionUpdateOutput =
  * @param appType - Determines the type of application which send the create user request. Default is legacy publisher portal.
  * @param properties - Subscription Update contract properties.
  */
-export const WorkspaceSubscriptionUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceSubscriptionUpdateInput,
-    outputSchema: WorkspaceSubscriptionUpdateOutput,
-  }),
-);
+export const WorkspaceSubscriptionUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceSubscriptionUpdateInput,
+  outputSchema: WorkspaceSubscriptionUpdateOutput,
+}));
 // Input Schema
 export const WorkspaceTagApiLinkCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -27613,7 +27117,7 @@ export type WorkspaceTagApiLinkCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceTagApiLinkCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -27635,13 +27139,13 @@ export type WorkspaceTagApiLinkCreateOrUpdateOutput =
  * @param properties - Tag-API link entity contract properties.
  */
 export const WorkspaceTagApiLinkCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceTagApiLinkCreateOrUpdateInput,
     outputSchema: WorkspaceTagApiLinkCreateOrUpdateOutput,
   }));
 // Input Schema
 export const WorkspaceTagApiLinkDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -27659,8 +27163,7 @@ export type WorkspaceTagApiLinkDeleteInput =
   typeof WorkspaceTagApiLinkDeleteInput.Type;
 
 // Output Schema
-export const WorkspaceTagApiLinkDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkspaceTagApiLinkDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WorkspaceTagApiLinkDeleteOutput =
   typeof WorkspaceTagApiLinkDeleteOutput.Type;
 
@@ -27676,15 +27179,13 @@ export type WorkspaceTagApiLinkDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceTagApiLinkDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceTagApiLinkDeleteInput,
-    outputSchema: WorkspaceTagApiLinkDeleteOutput,
-  }),
-);
+export const WorkspaceTagApiLinkDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceTagApiLinkDeleteInput,
+  outputSchema: WorkspaceTagApiLinkDeleteOutput,
+}));
 // Input Schema
 export const WorkspaceTagApiLinkGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -27703,7 +27204,7 @@ export type WorkspaceTagApiLinkGetInput =
 
 // Output Schema
 export const WorkspaceTagApiLinkGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -27723,15 +27224,13 @@ export type WorkspaceTagApiLinkGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceTagApiLinkGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceTagApiLinkGetInput,
-    outputSchema: WorkspaceTagApiLinkGetOutput,
-  }),
-);
+export const WorkspaceTagApiLinkGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceTagApiLinkGetInput,
+  outputSchema: WorkspaceTagApiLinkGetOutput,
+}));
 // Input Schema
 export const WorkspaceTagApiLinkListByProductInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -27752,7 +27251,7 @@ export type WorkspaceTagApiLinkListByProductInput =
 
 // Output Schema
 export const WorkspaceTagApiLinkListByProductOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -27783,13 +27282,13 @@ export type WorkspaceTagApiLinkListByProductOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceTagApiLinkListByProduct =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceTagApiLinkListByProductInput,
     outputSchema: WorkspaceTagApiLinkListByProductOutput,
   }));
 // Input Schema
 export const WorkspaceTagCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -27812,7 +27311,7 @@ export type WorkspaceTagCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceTagCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -27833,15 +27332,13 @@ export type WorkspaceTagCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Properties supplied to Create Tag operation.
  */
-export const WorkspaceTagCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceTagCreateOrUpdateInput,
-    outputSchema: WorkspaceTagCreateOrUpdateOutput,
-  }),
-);
+export const WorkspaceTagCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceTagCreateOrUpdateInput,
+  outputSchema: WorkspaceTagCreateOrUpdateOutput,
+}));
 // Input Schema
 export const WorkspaceTagDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -27857,7 +27354,7 @@ export const WorkspaceTagDeleteInput =
 export type WorkspaceTagDeleteInput = typeof WorkspaceTagDeleteInput.Type;
 
 // Output Schema
-export const WorkspaceTagDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkspaceTagDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WorkspaceTagDeleteOutput = typeof WorkspaceTagDeleteOutput.Type;
 
 // The operation
@@ -27872,12 +27369,12 @@ export type WorkspaceTagDeleteOutput = typeof WorkspaceTagDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceTagDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkspaceTagDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkspaceTagDeleteInput,
   outputSchema: WorkspaceTagDeleteOutput,
 }));
 // Input Schema
-export const WorkspaceTagGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkspaceTagGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   workspaceId: Schema.String.pipe(T.PathParam()),
@@ -27893,7 +27390,7 @@ export const WorkspaceTagGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WorkspaceTagGetInput = typeof WorkspaceTagGetInput.Type;
 
 // Output Schema
-export const WorkspaceTagGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkspaceTagGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -27911,13 +27408,13 @@ export type WorkspaceTagGetOutput = typeof WorkspaceTagGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceTagGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkspaceTagGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkspaceTagGetInput,
   outputSchema: WorkspaceTagGetOutput,
 }));
 // Input Schema
 export const WorkspaceTagListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -27938,7 +27435,7 @@ export type WorkspaceTagListByServiceInput =
 
 // Output Schema
 export const WorkspaceTagListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -27968,15 +27465,13 @@ export type WorkspaceTagListByServiceOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceTagListByService = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceTagListByServiceInput,
-    outputSchema: WorkspaceTagListByServiceOutput,
-  }),
-);
+export const WorkspaceTagListByService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceTagListByServiceInput,
+  outputSchema: WorkspaceTagListByServiceOutput,
+}));
 // Input Schema
 export const WorkspaceTagOperationLinkCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -28000,7 +27495,7 @@ export type WorkspaceTagOperationLinkCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceTagOperationLinkCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -28022,13 +27517,13 @@ export type WorkspaceTagOperationLinkCreateOrUpdateOutput =
  * @param properties - Tag-API link entity contract properties.
  */
 export const WorkspaceTagOperationLinkCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceTagOperationLinkCreateOrUpdateInput,
     outputSchema: WorkspaceTagOperationLinkCreateOrUpdateOutput,
   }));
 // Input Schema
 export const WorkspaceTagOperationLinkDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -28046,8 +27541,7 @@ export type WorkspaceTagOperationLinkDeleteInput =
   typeof WorkspaceTagOperationLinkDeleteInput.Type;
 
 // Output Schema
-export const WorkspaceTagOperationLinkDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkspaceTagOperationLinkDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WorkspaceTagOperationLinkDeleteOutput =
   typeof WorkspaceTagOperationLinkDeleteOutput.Type;
 
@@ -28064,13 +27558,13 @@ export type WorkspaceTagOperationLinkDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceTagOperationLinkDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceTagOperationLinkDeleteInput,
     outputSchema: WorkspaceTagOperationLinkDeleteOutput,
   }));
 // Input Schema
 export const WorkspaceTagOperationLinkGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -28089,7 +27583,7 @@ export type WorkspaceTagOperationLinkGetInput =
 
 // Output Schema
 export const WorkspaceTagOperationLinkGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -28110,13 +27604,13 @@ export type WorkspaceTagOperationLinkGetOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceTagOperationLinkGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceTagOperationLinkGetInput,
     outputSchema: WorkspaceTagOperationLinkGetOutput,
   }));
 // Input Schema
 export const WorkspaceTagOperationLinkListByProductInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -28137,7 +27631,7 @@ export type WorkspaceTagOperationLinkListByProductInput =
 
 // Output Schema
 export const WorkspaceTagOperationLinkListByProductOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -28168,13 +27662,13 @@ export type WorkspaceTagOperationLinkListByProductOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceTagOperationLinkListByProduct =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceTagOperationLinkListByProductInput,
     outputSchema: WorkspaceTagOperationLinkListByProductOutput,
   }));
 // Input Schema
 export const WorkspaceTagProductLinkCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -28198,7 +27692,7 @@ export type WorkspaceTagProductLinkCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceTagProductLinkCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -28220,13 +27714,13 @@ export type WorkspaceTagProductLinkCreateOrUpdateOutput =
  * @param properties - Tag-API link entity contract properties.
  */
 export const WorkspaceTagProductLinkCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceTagProductLinkCreateOrUpdateInput,
     outputSchema: WorkspaceTagProductLinkCreateOrUpdateOutput,
   }));
 // Input Schema
 export const WorkspaceTagProductLinkDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -28244,8 +27738,7 @@ export type WorkspaceTagProductLinkDeleteInput =
   typeof WorkspaceTagProductLinkDeleteInput.Type;
 
 // Output Schema
-export const WorkspaceTagProductLinkDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const WorkspaceTagProductLinkDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type WorkspaceTagProductLinkDeleteOutput =
   typeof WorkspaceTagProductLinkDeleteOutput.Type;
 
@@ -28262,13 +27755,13 @@ export type WorkspaceTagProductLinkDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceTagProductLinkDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceTagProductLinkDeleteInput,
     outputSchema: WorkspaceTagProductLinkDeleteOutput,
   }));
 // Input Schema
 export const WorkspaceTagProductLinkGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -28287,7 +27780,7 @@ export type WorkspaceTagProductLinkGetInput =
 
 // Output Schema
 export const WorkspaceTagProductLinkGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -28307,15 +27800,13 @@ export type WorkspaceTagProductLinkGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspaceTagProductLinkGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceTagProductLinkGetInput,
-    outputSchema: WorkspaceTagProductLinkGetOutput,
-  }),
-);
+export const WorkspaceTagProductLinkGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceTagProductLinkGetInput,
+  outputSchema: WorkspaceTagProductLinkGetOutput,
+}));
 // Input Schema
 export const WorkspaceTagProductLinkListByProductInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -28336,7 +27827,7 @@ export type WorkspaceTagProductLinkListByProductInput =
 
 // Output Schema
 export const WorkspaceTagProductLinkListByProductOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -28367,13 +27858,13 @@ export type WorkspaceTagProductLinkListByProductOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspaceTagProductLinkListByProduct =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceTagProductLinkListByProductInput,
     outputSchema: WorkspaceTagProductLinkListByProductOutput,
   }));
 // Input Schema
 export const WorkspaceTagUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -28395,7 +27886,7 @@ export type WorkspaceTagUpdateInput = typeof WorkspaceTagUpdateInput.Type;
 
 // Output Schema
 export const WorkspaceTagUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -28415,12 +27906,12 @@ export type WorkspaceTagUpdateOutput = typeof WorkspaceTagUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Properties supplied to Create Tag operation.
  */
-export const WorkspaceTagUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkspaceTagUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkspaceTagUpdateInput,
   outputSchema: WorkspaceTagUpdateOutput,
 }));
 // Input Schema
-export const WorkspaceUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkspaceUpdateInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   workspaceId: Schema.String.pipe(T.PathParam()),
@@ -28441,7 +27932,7 @@ export const WorkspaceUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WorkspaceUpdateInput = typeof WorkspaceUpdateInput.Type;
 
 // Output Schema
-export const WorkspaceUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkspaceUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -28460,7 +27951,7 @@ export type WorkspaceUpdateOutput = typeof WorkspaceUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param properties - Workspace entity contract properties.
  */
-export const WorkspaceUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkspaceUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkspaceUpdateInput,
   outputSchema: WorkspaceUpdateOutput,
 }));

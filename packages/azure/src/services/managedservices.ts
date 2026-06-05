@@ -10,7 +10,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const MarketplaceRegistrationDefinitionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.ManagedServices/marketplaceRegistrationDefinitions/{marketplaceIdentifier}",
@@ -21,7 +21,7 @@ export type MarketplaceRegistrationDefinitionsGetInput =
 
 // Output Schema
 export const MarketplaceRegistrationDefinitionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         managedByTenantId: Schema.String,
@@ -83,13 +83,13 @@ export type MarketplaceRegistrationDefinitionsGetOutput =
  * Get the marketplace registration definition for the marketplace identifier.
  */
 export const MarketplaceRegistrationDefinitionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MarketplaceRegistrationDefinitionsGetInput,
     outputSchema: MarketplaceRegistrationDefinitionsGetOutput,
   }));
 // Input Schema
 export const MarketplaceRegistrationDefinitionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.ManagedServices/marketplaceRegistrationDefinitions",
@@ -100,7 +100,7 @@ export type MarketplaceRegistrationDefinitionsListInput =
 
 // Output Schema
 export const MarketplaceRegistrationDefinitionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -176,13 +176,13 @@ export type MarketplaceRegistrationDefinitionsListOutput =
  * Gets a list of the marketplace registration definitions for the marketplace identifier.
  */
 export const MarketplaceRegistrationDefinitionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MarketplaceRegistrationDefinitionsListInput,
     outputSchema: MarketplaceRegistrationDefinitionsListOutput,
   }));
 // Input Schema
 export const MarketplaceRegistrationDefinitionsWithoutScopeGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ManagedServices/marketplaceRegistrationDefinitions/{marketplaceIdentifier}",
@@ -193,7 +193,7 @@ export type MarketplaceRegistrationDefinitionsWithoutScopeGetInput =
 
 // Output Schema
 export const MarketplaceRegistrationDefinitionsWithoutScopeGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         managedByTenantId: Schema.String,
@@ -255,13 +255,13 @@ export type MarketplaceRegistrationDefinitionsWithoutScopeGetOutput =
  * Get the marketplace registration definition for the marketplace identifier.
  */
 export const MarketplaceRegistrationDefinitionsWithoutScopeGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MarketplaceRegistrationDefinitionsWithoutScopeGetInput,
     outputSchema: MarketplaceRegistrationDefinitionsWithoutScopeGetOutput,
   }));
 // Input Schema
 export const MarketplaceRegistrationDefinitionsWithoutScopeListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ManagedServices/marketplaceRegistrationDefinitions",
@@ -272,7 +272,7 @@ export type MarketplaceRegistrationDefinitionsWithoutScopeListInput =
 
 // Output Schema
 export const MarketplaceRegistrationDefinitionsWithoutScopeListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -348,14 +348,12 @@ export type MarketplaceRegistrationDefinitionsWithoutScopeListOutput =
  * Gets a list of the marketplace registration definitions for the marketplace identifier.
  */
 export const MarketplaceRegistrationDefinitionsWithoutScopeList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MarketplaceRegistrationDefinitionsWithoutScopeListInput,
     outputSchema: MarketplaceRegistrationDefinitionsWithoutScopeListOutput,
   }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ManagedServices/operations",
@@ -364,7 +362,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -387,13 +385,13 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 /**
  * Gets a list of the operations.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
 export const OperationsWithScopeListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.ManagedServices/operations",
@@ -404,7 +402,7 @@ export type OperationsWithScopeListInput =
 
 // Output Schema
 export const OperationsWithScopeListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -428,15 +426,13 @@ export type OperationsWithScopeListOutput =
 /**
  * Gets a list of the operations with the scope.
  */
-export const OperationsWithScopeList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OperationsWithScopeListInput,
-    outputSchema: OperationsWithScopeListOutput,
-  }),
-);
+export const OperationsWithScopeList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OperationsWithScopeListInput,
+  outputSchema: OperationsWithScopeListOutput,
+}));
 // Input Schema
 export const RegistrationAssignmentsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PUT",
       path: "/{scope}/providers/Microsoft.ManagedServices/registrationAssignments/{registrationAssignmentId}",
@@ -447,7 +443,7 @@ export type RegistrationAssignmentsCreateOrUpdateInput =
 
 // Output Schema
 export const RegistrationAssignmentsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         registrationDefinitionId: Schema.String,
@@ -602,13 +598,13 @@ export type RegistrationAssignmentsCreateOrUpdateOutput =
  * Creates or updates a registration assignment.
  */
 export const RegistrationAssignmentsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RegistrationAssignmentsCreateOrUpdateInput,
     outputSchema: RegistrationAssignmentsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const RegistrationAssignmentsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "DELETE",
       path: "/{scope}/providers/Microsoft.ManagedServices/registrationAssignments/{registrationAssignmentId}",
@@ -618,8 +614,7 @@ export type RegistrationAssignmentsDeleteInput =
   typeof RegistrationAssignmentsDeleteInput.Type;
 
 // Output Schema
-export const RegistrationAssignmentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const RegistrationAssignmentsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type RegistrationAssignmentsDeleteOutput =
   typeof RegistrationAssignmentsDeleteOutput.Type;
 
@@ -628,13 +623,13 @@ export type RegistrationAssignmentsDeleteOutput =
  * Deletes the specified registration assignment.
  */
 export const RegistrationAssignmentsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RegistrationAssignmentsDeleteInput,
     outputSchema: RegistrationAssignmentsDeleteOutput,
   }));
 // Input Schema
 export const RegistrationAssignmentsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.ManagedServices/registrationAssignments/{registrationAssignmentId}",
@@ -645,7 +640,7 @@ export type RegistrationAssignmentsGetInput =
 
 // Output Schema
 export const RegistrationAssignmentsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         registrationDefinitionId: Schema.String,
@@ -799,15 +794,13 @@ export type RegistrationAssignmentsGetOutput =
 /**
  * Gets the details of the specified registration assignment.
  */
-export const RegistrationAssignmentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RegistrationAssignmentsGetInput,
-    outputSchema: RegistrationAssignmentsGetOutput,
-  }),
-);
+export const RegistrationAssignmentsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RegistrationAssignmentsGetInput,
+  outputSchema: RegistrationAssignmentsGetOutput,
+}));
 // Input Schema
 export const RegistrationAssignmentsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.ManagedServices/registrationAssignments",
@@ -818,7 +811,7 @@ export type RegistrationAssignmentsListInput =
 
 // Output Schema
 export const RegistrationAssignmentsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -995,15 +988,13 @@ export type RegistrationAssignmentsListOutput =
 /**
  * Gets a list of the registration assignments.
  */
-export const RegistrationAssignmentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RegistrationAssignmentsListInput,
-    outputSchema: RegistrationAssignmentsListOutput,
-  }),
-);
+export const RegistrationAssignmentsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RegistrationAssignmentsListInput,
+  outputSchema: RegistrationAssignmentsListOutput,
+}));
 // Input Schema
 export const RegistrationDefinitionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PUT",
       path: "/{scope}/providers/Microsoft.ManagedServices/registrationDefinitions/{registrationDefinitionId}",
@@ -1014,7 +1005,7 @@ export type RegistrationDefinitionsCreateOrUpdateInput =
 
 // Output Schema
 export const RegistrationDefinitionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         description: Schema.optional(Schema.String),
@@ -1108,13 +1099,13 @@ export type RegistrationDefinitionsCreateOrUpdateOutput =
  * Creates or updates a registration definition.
  */
 export const RegistrationDefinitionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RegistrationDefinitionsCreateOrUpdateInput,
     outputSchema: RegistrationDefinitionsCreateOrUpdateOutput,
   }));
 // Input Schema
 export const RegistrationDefinitionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "DELETE",
       path: "/{scope}/providers/Microsoft.ManagedServices/registrationDefinitions/{registrationDefinitionId}",
@@ -1124,8 +1115,7 @@ export type RegistrationDefinitionsDeleteInput =
   typeof RegistrationDefinitionsDeleteInput.Type;
 
 // Output Schema
-export const RegistrationDefinitionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const RegistrationDefinitionsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type RegistrationDefinitionsDeleteOutput =
   typeof RegistrationDefinitionsDeleteOutput.Type;
 
@@ -1134,13 +1124,13 @@ export type RegistrationDefinitionsDeleteOutput =
  * Deletes the registration definition.
  */
 export const RegistrationDefinitionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RegistrationDefinitionsDeleteInput,
     outputSchema: RegistrationDefinitionsDeleteOutput,
   }));
 // Input Schema
 export const RegistrationDefinitionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.ManagedServices/registrationDefinitions/{registrationDefinitionId}",
@@ -1151,7 +1141,7 @@ export type RegistrationDefinitionsGetInput =
 
 // Output Schema
 export const RegistrationDefinitionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         description: Schema.optional(Schema.String),
@@ -1244,15 +1234,13 @@ export type RegistrationDefinitionsGetOutput =
 /**
  * Gets the registration definition details.
  */
-export const RegistrationDefinitionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RegistrationDefinitionsGetInput,
-    outputSchema: RegistrationDefinitionsGetOutput,
-  }),
-);
+export const RegistrationDefinitionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RegistrationDefinitionsGetInput,
+  outputSchema: RegistrationDefinitionsGetOutput,
+}));
 // Input Schema
 export const RegistrationDefinitionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.ManagedServices/registrationDefinitions",
@@ -1263,7 +1251,7 @@ export type RegistrationDefinitionsListInput =
 
 // Output Schema
 export const RegistrationDefinitionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1380,9 +1368,7 @@ export type RegistrationDefinitionsListOutput =
 /**
  * Gets a list of the registration definitions.
  */
-export const RegistrationDefinitionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RegistrationDefinitionsListInput,
-    outputSchema: RegistrationDefinitionsListOutput,
-  }),
-);
+export const RegistrationDefinitionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RegistrationDefinitionsListInput,
+  outputSchema: RegistrationDefinitionsListOutput,
+}));

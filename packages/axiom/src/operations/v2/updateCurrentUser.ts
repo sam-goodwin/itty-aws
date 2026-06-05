@@ -3,16 +3,14 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
-export const UpdateCurrentUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    name: Schema.String,
-  },
-).pipe(T.Http({ method: "PUT", path: "/v2/user" }));
+export const UpdateCurrentUserInput = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String,
+}).pipe(T.Http({ method: "PUT", path: "/v2/user" }));
 export type UpdateCurrentUserInput = typeof UpdateCurrentUserInput.Type;
 
 // Output Schema
 export const UpdateCurrentUserOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     email: Schema.String,
     id: Schema.String,
     name: Schema.String,
@@ -29,7 +27,7 @@ export type UpdateCurrentUserOutput = typeof UpdateCurrentUserOutput.Type;
 /**
  * Update current user
  */
-export const updateCurrentUser = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateCurrentUser = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateCurrentUserInput,
   outputSchema: UpdateCurrentUserOutput,
 }));

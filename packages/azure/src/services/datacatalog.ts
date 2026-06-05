@@ -10,7 +10,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const ADCCatalogsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataCatalog/catalogs/{catalogName}",
@@ -21,7 +21,7 @@ export type ADCCatalogsCreateOrUpdateInput =
 
 // Output Schema
 export const ADCCatalogsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -38,16 +38,12 @@ export type ADCCatalogsCreateOrUpdateOutput =
  *
  * The Create Azure Data Catalog service operation creates a new data catalog service with the specified parameters. If the specific service already exists, then any patchable properties will be updated and any immutable properties will remain unchanged.
  */
-export const ADCCatalogsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ADCCatalogsCreateOrUpdateInput,
-    outputSchema: ADCCatalogsCreateOrUpdateOutput,
-  }),
-);
+export const ADCCatalogsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ADCCatalogsCreateOrUpdateInput,
+  outputSchema: ADCCatalogsCreateOrUpdateOutput,
+}));
 // Input Schema
-export const ADCCatalogsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ADCCatalogsDeleteInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataCatalog/catalogs/{catalogName}",
@@ -56,7 +52,7 @@ export const ADCCatalogsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ADCCatalogsDeleteInput = typeof ADCCatalogsDeleteInput.Type;
 
 // Output Schema
-export const ADCCatalogsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ADCCatalogsDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ADCCatalogsDeleteOutput = typeof ADCCatalogsDeleteOutput.Type;
 
 // The operation
@@ -65,14 +61,12 @@ export type ADCCatalogsDeleteOutput = typeof ADCCatalogsDeleteOutput.Type;
  *
  * The Delete Azure Data Catalog Service operation deletes an existing data catalog.
  */
-export const ADCCatalogsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ADCCatalogsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ADCCatalogsDeleteInput,
   outputSchema: ADCCatalogsDeleteOutput,
 }));
 // Input Schema
-export const ADCCatalogsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ADCCatalogsGetInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataCatalog/catalogs/{catalogName}",
@@ -81,7 +75,7 @@ export const ADCCatalogsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ADCCatalogsGetInput = typeof ADCCatalogsGetInput.Type;
 
 // Output Schema
-export const ADCCatalogsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ADCCatalogsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -97,13 +91,13 @@ export type ADCCatalogsGetOutput = typeof ADCCatalogsGetOutput.Type;
  *
  * The Get Azure Data Catalog Service operation retrieves a json representation of the data catalog.
  */
-export const ADCCatalogsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ADCCatalogsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ADCCatalogsGetInput,
   outputSchema: ADCCatalogsGetOutput,
 }));
 // Input Schema
 export const ADCCatalogsListtByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataCatalog/catalogs",
@@ -114,7 +108,7 @@ export type ADCCatalogsListtByResourceGroupInput =
 
 // Output Schema
 export const ADCCatalogsListtByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -138,14 +132,12 @@ export type ADCCatalogsListtByResourceGroupOutput =
  * The List catalogs in Resource Group operation lists all the Azure Data Catalogs available under the given resource group.
  */
 export const ADCCatalogsListtByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ADCCatalogsListtByResourceGroupInput,
     outputSchema: ADCCatalogsListtByResourceGroupOutput,
   }));
 // Input Schema
-export const ADCCatalogsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ADCCatalogsUpdateInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataCatalog/catalogs/{catalogName}",
@@ -155,7 +147,7 @@ export type ADCCatalogsUpdateInput = typeof ADCCatalogsUpdateInput.Type;
 
 // Output Schema
 export const ADCCatalogsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -171,14 +163,12 @@ export type ADCCatalogsUpdateOutput = typeof ADCCatalogsUpdateOutput.Type;
  *
  * The Update Azure Data Catalog Service operation can be used to update the existing deployment. The update call only supports the properties listed in the PATCH body.
  */
-export const ADCCatalogsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ADCCatalogsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ADCCatalogsUpdateInput,
   outputSchema: ADCCatalogsUpdateOutput,
 }));
 // Input Schema
-export const ADCOperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ADCOperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.DataCatalog/operations",
@@ -188,7 +178,7 @@ export type ADCOperationsListInput = typeof ADCOperationsListInput.Type;
 
 // Output Schema
 export const ADCOperationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -211,7 +201,7 @@ export type ADCOperationsListOutput = typeof ADCOperationsListOutput.Type;
 /**
  * Lists all the available Azure Data Catalog service operations.
  */
-export const ADCOperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ADCOperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ADCOperationsListInput,
   outputSchema: ADCOperationsListOutput,
 }));

@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostBillingPortalConfigurationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     business_profile: Schema.optional(
       Schema.Struct({
         headline: Schema.optional(Schema.Unknown),
@@ -99,7 +99,7 @@ export type PostBillingPortalConfigurationsInput =
 
 // Output Schema
 export const PostBillingPortalConfigurationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     active: Schema.Boolean,
     application: Schema.Unknown,
     business_profile: Schema.Struct({
@@ -217,7 +217,7 @@ export type PostBillingPortalConfigurationsOutput =
  * <p>Creates a configuration that describes the functionality and behavior of a PortalSession</p>
  */
 export const PostBillingPortalConfigurations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostBillingPortalConfigurationsInput,
     outputSchema: PostBillingPortalConfigurationsOutput,
   }));

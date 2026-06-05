@@ -1,17 +1,17 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
-import * as T from "../../traits.ts";
 import { NotFound } from "../../errors.ts";
+import * as T from "../../traits.ts";
 
 // Input Schema
-export const UpdateOrgInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateOrgInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   name: Schema.String,
 }).pipe(T.Http({ method: "PUT", path: "/v2/orgs/{id}" }));
 export type UpdateOrgInput = typeof UpdateOrgInput.Type;
 
 // Output Schema
-export const UpdateOrgOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateOrgOutput = /*@__PURE__*/ Schema.Struct({
   defaultEdgeDeployment: Schema.optional(Schema.String),
   defaultRegion: Schema.optional(Schema.String),
   firstFailedPayment: Schema.optional(Schema.String),
@@ -76,7 +76,7 @@ export const UpdateOrgOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateOrgOutput = typeof UpdateOrgOutput.Type;
 
 // The operation
-export const updateOrg = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateOrg = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateOrgInput,
   outputSchema: UpdateOrgOutput,
   errors: [NotFound] as const,

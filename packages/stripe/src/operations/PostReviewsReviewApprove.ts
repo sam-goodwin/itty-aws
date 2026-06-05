@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostReviewsReviewApproveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     review: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -19,7 +19,7 @@ export type PostReviewsReviewApproveInput =
 
 // Output Schema
 export const PostReviewsReviewApproveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billing_zip: Schema.NullOr(Schema.String),
     charge: Schema.Unknown,
     closed_reason: Schema.NullOr(
@@ -55,9 +55,7 @@ export type PostReviewsReviewApproveOutput =
  *
  * <p>Approves a <code>Review</code> object, closing it and removing it from the list of reviews.</p>
  */
-export const PostReviewsReviewApprove = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostReviewsReviewApproveInput,
-    outputSchema: PostReviewsReviewApproveOutput,
-  }),
-);
+export const PostReviewsReviewApprove = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostReviewsReviewApproveInput,
+  outputSchema: PostReviewsReviewApproveOutput,
+}));

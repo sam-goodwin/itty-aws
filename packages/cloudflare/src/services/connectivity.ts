@@ -8,9 +8,9 @@
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
-import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
+import * as T from "../traits.ts";
 
 // =============================================================================
 // Errors
@@ -48,7 +48,7 @@ export interface GetDirectoryServiceRequest {
 }
 
 export const GetDirectoryServiceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceId: Schema.String.pipe(T.HttpPath("serviceId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
   }).pipe(
@@ -103,7 +103,7 @@ export type GetDirectoryServiceResponse =
     };
 
 export const GetDirectoryServiceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+  /*@__PURE__*/ Schema.Union([
     Schema.Struct({
       host: Schema.Union([
         Schema.Struct({
@@ -267,7 +267,7 @@ export const getDirectoryService: API.OperationMethod<
   GetDirectoryServiceResponse,
   GetDirectoryServiceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDirectoryServiceRequest,
   output: GetDirectoryServiceResponse,
   errors: [VpcServiceNotFound],
@@ -283,7 +283,7 @@ export interface ListDirectoryServicesRequest {
 }
 
 export const ListDirectoryServicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
     perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
@@ -355,7 +355,7 @@ export interface ListDirectoryServicesResponse {
 }
 
 export const ListDirectoryServicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     result: Schema.Array(
       Schema.Union([
         Schema.Struct({
@@ -557,7 +557,7 @@ export const listDirectoryServices: API.PaginatedOperationMethod<
   ListDirectoryServicesResponse,
   ListDirectoryServicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDirectoryServicesRequest,
   output: ListDirectoryServicesResponse,
   errors: [],
@@ -598,7 +598,7 @@ export interface CreateDirectoryServiceRequest {
 }
 
 export const CreateDirectoryServiceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     host: Schema.Struct({
       ipv4: Schema.optional(Schema.String),
@@ -715,7 +715,7 @@ export type CreateDirectoryServiceResponse =
     };
 
 export const CreateDirectoryServiceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+  /*@__PURE__*/ Schema.Union([
     Schema.Struct({
       host: Schema.Union([
         Schema.Struct({
@@ -882,7 +882,7 @@ export const createDirectoryService: API.OperationMethod<
   CreateDirectoryServiceResponse,
   CreateDirectoryServiceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDirectoryServiceRequest,
   output: CreateDirectoryServiceResponse,
   errors: [VpcServiceNameAlreadyExists, VpcTunnelNotFound],
@@ -917,7 +917,7 @@ export interface UpdateDirectoryServiceRequest {
 }
 
 export const UpdateDirectoryServiceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceId: Schema.String.pipe(T.HttpPath("serviceId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     host: Schema.Struct({
@@ -1035,7 +1035,7 @@ export type UpdateDirectoryServiceResponse =
     };
 
 export const UpdateDirectoryServiceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+  /*@__PURE__*/ Schema.Union([
     Schema.Struct({
       host: Schema.Union([
         Schema.Struct({
@@ -1203,7 +1203,7 @@ export const updateDirectoryService: API.OperationMethod<
   UpdateDirectoryServiceResponse,
   UpdateDirectoryServiceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDirectoryServiceRequest,
   output: UpdateDirectoryServiceResponse,
   errors: [VpcServiceNotFound, VpcServiceNameAlreadyExists, VpcTunnelNotFound],
@@ -1215,7 +1215,7 @@ export interface DeleteDirectoryServiceRequest {
 }
 
 export const DeleteDirectoryServiceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceId: Schema.String.pipe(T.HttpPath("serviceId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
   }).pipe(
@@ -1228,7 +1228,7 @@ export const DeleteDirectoryServiceRequest =
 export type DeleteDirectoryServiceResponse = unknown;
 
 export const DeleteDirectoryServiceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteDirectoryServiceResponse>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteDirectoryServiceResponse>;
 
 export type DeleteDirectoryServiceError = DefaultErrors | VpcServiceNotFound;
 
@@ -1237,7 +1237,7 @@ export const deleteDirectoryService: API.OperationMethod<
   DeleteDirectoryServiceResponse,
   DeleteDirectoryServiceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDirectoryServiceRequest,
   output: DeleteDirectoryServiceResponse,
   errors: [VpcServiceNotFound],

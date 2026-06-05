@@ -6,12 +6,12 @@
  */
 import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
-import * as T from "../traits.ts";
 import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
+import * as T from "../traits.ts";
 
 // Input Schema
 export const CreateAppsV1NamespacedControllerRevisionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -25,7 +25,7 @@ export type CreateAppsV1NamespacedControllerRevisionInput =
 
 // Output Schema
 export const CreateAppsV1NamespacedControllerRevisionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     data: Schema.optional(Schema.Unknown),
     kind: Schema.optional(Schema.String),
@@ -86,14 +86,14 @@ export type CreateAppsV1NamespacedControllerRevisionOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createAppsV1NamespacedControllerRevision =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateAppsV1NamespacedControllerRevisionInput,
     outputSchema: CreateAppsV1NamespacedControllerRevisionOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateAppsV1NamespacedDaemonSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -107,7 +107,7 @@ export type CreateAppsV1NamespacedDaemonSetInput =
 
 // Output Schema
 export const CreateAppsV1NamespacedDaemonSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -2626,14 +2626,14 @@ export type CreateAppsV1NamespacedDaemonSetOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createAppsV1NamespacedDaemonSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateAppsV1NamespacedDaemonSetInput,
     outputSchema: CreateAppsV1NamespacedDaemonSetOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateAppsV1NamespacedDeploymentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -2647,7 +2647,7 @@ export type CreateAppsV1NamespacedDeploymentInput =
 
 // Output Schema
 export const CreateAppsV1NamespacedDeploymentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -5169,14 +5169,14 @@ export type CreateAppsV1NamespacedDeploymentOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createAppsV1NamespacedDeployment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateAppsV1NamespacedDeploymentInput,
     outputSchema: CreateAppsV1NamespacedDeploymentOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateAppsV1NamespacedReplicaSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -5190,7 +5190,7 @@ export type CreateAppsV1NamespacedReplicaSetInput =
 
 // Output Schema
 export const CreateAppsV1NamespacedReplicaSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -7755,14 +7755,14 @@ export type CreateAppsV1NamespacedReplicaSetOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createAppsV1NamespacedReplicaSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateAppsV1NamespacedReplicaSetInput,
     outputSchema: CreateAppsV1NamespacedReplicaSetOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateAppsV1NamespacedStatefulSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -7776,7 +7776,7 @@ export type CreateAppsV1NamespacedStatefulSetInput =
 
 // Output Schema
 export const CreateAppsV1NamespacedStatefulSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -10453,14 +10453,14 @@ export type CreateAppsV1NamespacedStatefulSetOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createAppsV1NamespacedStatefulSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateAppsV1NamespacedStatefulSetInput,
     outputSchema: CreateAppsV1NamespacedStatefulSetOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const DeleteAppsV1CollectionNamespacedControllerRevisionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -10473,7 +10473,7 @@ export type DeleteAppsV1CollectionNamespacedControllerRevisionInput =
 
 // Output Schema
 export const DeleteAppsV1CollectionNamespacedControllerRevisionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -10522,13 +10522,13 @@ export type DeleteAppsV1CollectionNamespacedControllerRevisionOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteAppsV1CollectionNamespacedControllerRevision =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteAppsV1CollectionNamespacedControllerRevisionInput,
     outputSchema: DeleteAppsV1CollectionNamespacedControllerRevisionOutput,
   }));
 // Input Schema
 export const DeleteAppsV1CollectionNamespacedDaemonSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -10541,7 +10541,7 @@ export type DeleteAppsV1CollectionNamespacedDaemonSetInput =
 
 // Output Schema
 export const DeleteAppsV1CollectionNamespacedDaemonSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -10590,13 +10590,13 @@ export type DeleteAppsV1CollectionNamespacedDaemonSetOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteAppsV1CollectionNamespacedDaemonSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteAppsV1CollectionNamespacedDaemonSetInput,
     outputSchema: DeleteAppsV1CollectionNamespacedDaemonSetOutput,
   }));
 // Input Schema
 export const DeleteAppsV1CollectionNamespacedDeploymentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -10609,7 +10609,7 @@ export type DeleteAppsV1CollectionNamespacedDeploymentInput =
 
 // Output Schema
 export const DeleteAppsV1CollectionNamespacedDeploymentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -10658,13 +10658,13 @@ export type DeleteAppsV1CollectionNamespacedDeploymentOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteAppsV1CollectionNamespacedDeployment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteAppsV1CollectionNamespacedDeploymentInput,
     outputSchema: DeleteAppsV1CollectionNamespacedDeploymentOutput,
   }));
 // Input Schema
 export const DeleteAppsV1CollectionNamespacedReplicaSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -10677,7 +10677,7 @@ export type DeleteAppsV1CollectionNamespacedReplicaSetInput =
 
 // Output Schema
 export const DeleteAppsV1CollectionNamespacedReplicaSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -10726,13 +10726,13 @@ export type DeleteAppsV1CollectionNamespacedReplicaSetOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteAppsV1CollectionNamespacedReplicaSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteAppsV1CollectionNamespacedReplicaSetInput,
     outputSchema: DeleteAppsV1CollectionNamespacedReplicaSetOutput,
   }));
 // Input Schema
 export const DeleteAppsV1CollectionNamespacedStatefulSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -10745,7 +10745,7 @@ export type DeleteAppsV1CollectionNamespacedStatefulSetInput =
 
 // Output Schema
 export const DeleteAppsV1CollectionNamespacedStatefulSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -10794,13 +10794,13 @@ export type DeleteAppsV1CollectionNamespacedStatefulSetOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteAppsV1CollectionNamespacedStatefulSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteAppsV1CollectionNamespacedStatefulSetInput,
     outputSchema: DeleteAppsV1CollectionNamespacedStatefulSetOutput,
   }));
 // Input Schema
 export const DeleteAppsV1NamespacedControllerRevisionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -10813,7 +10813,7 @@ export type DeleteAppsV1NamespacedControllerRevisionInput =
 
 // Output Schema
 export const DeleteAppsV1NamespacedControllerRevisionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -10862,14 +10862,14 @@ export type DeleteAppsV1NamespacedControllerRevisionOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteAppsV1NamespacedControllerRevision =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteAppsV1NamespacedControllerRevisionInput,
     outputSchema: DeleteAppsV1NamespacedControllerRevisionOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteAppsV1NamespacedDaemonSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -10882,7 +10882,7 @@ export type DeleteAppsV1NamespacedDaemonSetInput =
 
 // Output Schema
 export const DeleteAppsV1NamespacedDaemonSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -10931,14 +10931,14 @@ export type DeleteAppsV1NamespacedDaemonSetOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteAppsV1NamespacedDaemonSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteAppsV1NamespacedDaemonSetInput,
     outputSchema: DeleteAppsV1NamespacedDaemonSetOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteAppsV1NamespacedDeploymentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -10951,7 +10951,7 @@ export type DeleteAppsV1NamespacedDeploymentInput =
 
 // Output Schema
 export const DeleteAppsV1NamespacedDeploymentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -11000,14 +11000,14 @@ export type DeleteAppsV1NamespacedDeploymentOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteAppsV1NamespacedDeployment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteAppsV1NamespacedDeploymentInput,
     outputSchema: DeleteAppsV1NamespacedDeploymentOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteAppsV1NamespacedReplicaSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -11020,7 +11020,7 @@ export type DeleteAppsV1NamespacedReplicaSetInput =
 
 // Output Schema
 export const DeleteAppsV1NamespacedReplicaSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -11069,14 +11069,14 @@ export type DeleteAppsV1NamespacedReplicaSetOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteAppsV1NamespacedReplicaSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteAppsV1NamespacedReplicaSetInput,
     outputSchema: DeleteAppsV1NamespacedReplicaSetOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteAppsV1NamespacedStatefulSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -11089,7 +11089,7 @@ export type DeleteAppsV1NamespacedStatefulSetInput =
 
 // Output Schema
 export const DeleteAppsV1NamespacedStatefulSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -11138,19 +11138,19 @@ export type DeleteAppsV1NamespacedStatefulSetOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteAppsV1NamespacedStatefulSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteAppsV1NamespacedStatefulSetInput,
     outputSchema: DeleteAppsV1NamespacedStatefulSetOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
-export const GetAppsAPIGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(T.Http({ method: "GET", path: "/apis/apps/" }));
+export const GetAppsAPIGroupInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({ method: "GET", path: "/apis/apps/" }),
+);
 export type GetAppsAPIGroupInput = typeof GetAppsAPIGroupInput.Type;
 
 // Output Schema
-export const GetAppsAPIGroupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetAppsAPIGroupOutput = /*@__PURE__*/ Schema.Struct({
   apiVersion: Schema.optional(Schema.String),
   kind: Schema.optional(Schema.String),
   name: Schema.String,
@@ -11181,20 +11181,20 @@ export type GetAppsAPIGroupOutput = typeof GetAppsAPIGroupOutput.Type;
 /**
  * get information of a group
  */
-export const getAppsAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getAppsAPIGroup = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetAppsAPIGroupInput,
   outputSchema: GetAppsAPIGroupOutput,
 }));
 // Input Schema
 export const GetAppsV1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/apps/v1/" }),
   );
 export type GetAppsV1APIResourcesInput = typeof GetAppsV1APIResourcesInput.Type;
 
 // Output Schema
 export const GetAppsV1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -11220,15 +11220,13 @@ export type GetAppsV1APIResourcesOutput =
 /**
  * get available resources
  */
-export const getAppsV1APIResources = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetAppsV1APIResourcesInput,
-    outputSchema: GetAppsV1APIResourcesOutput,
-  }),
-);
+export const getAppsV1APIResources = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetAppsV1APIResourcesInput,
+  outputSchema: GetAppsV1APIResourcesOutput,
+}));
 // Input Schema
 export const ListAppsV1ControllerRevisionForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/apps/v1/controllerrevisions" }),
   );
 export type ListAppsV1ControllerRevisionForAllNamespacesInput =
@@ -11236,7 +11234,7 @@ export type ListAppsV1ControllerRevisionForAllNamespacesInput =
 
 // Output Schema
 export const ListAppsV1ControllerRevisionForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -11315,13 +11313,13 @@ export type ListAppsV1ControllerRevisionForAllNamespacesOutput =
  * list or watch objects of kind ControllerRevision
  */
 export const listAppsV1ControllerRevisionForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListAppsV1ControllerRevisionForAllNamespacesInput,
     outputSchema: ListAppsV1ControllerRevisionForAllNamespacesOutput,
   }));
 // Input Schema
 export const ListAppsV1DaemonSetForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/apps/v1/daemonsets" }),
   );
 export type ListAppsV1DaemonSetForAllNamespacesInput =
@@ -11329,7 +11327,7 @@ export type ListAppsV1DaemonSetForAllNamespacesInput =
 
 // Output Schema
 export const ListAppsV1DaemonSetForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -13978,13 +13976,13 @@ export type ListAppsV1DaemonSetForAllNamespacesOutput =
  * list or watch objects of kind DaemonSet
  */
 export const listAppsV1DaemonSetForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListAppsV1DaemonSetForAllNamespacesInput,
     outputSchema: ListAppsV1DaemonSetForAllNamespacesOutput,
   }));
 // Input Schema
 export const ListAppsV1DeploymentForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/apps/v1/deployments" }),
   );
 export type ListAppsV1DeploymentForAllNamespacesInput =
@@ -13992,7 +13990,7 @@ export type ListAppsV1DeploymentForAllNamespacesInput =
 
 // Output Schema
 export const ListAppsV1DeploymentForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -16644,13 +16642,13 @@ export type ListAppsV1DeploymentForAllNamespacesOutput =
  * list or watch objects of kind Deployment
  */
 export const listAppsV1DeploymentForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListAppsV1DeploymentForAllNamespacesInput,
     outputSchema: ListAppsV1DeploymentForAllNamespacesOutput,
   }));
 // Input Schema
 export const ListAppsV1NamespacedControllerRevisionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/apps/v1/namespaces/{namespace}/controllerrevisions",
@@ -16661,7 +16659,7 @@ export type ListAppsV1NamespacedControllerRevisionInput =
 
 // Output Schema
 export const ListAppsV1NamespacedControllerRevisionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -16740,13 +16738,13 @@ export type ListAppsV1NamespacedControllerRevisionOutput =
  * list or watch objects of kind ControllerRevision
  */
 export const listAppsV1NamespacedControllerRevision =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListAppsV1NamespacedControllerRevisionInput,
     outputSchema: ListAppsV1NamespacedControllerRevisionOutput,
   }));
 // Input Schema
 export const ListAppsV1NamespacedDaemonSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/apps/v1/namespaces/{namespace}/daemonsets",
@@ -16757,7 +16755,7 @@ export type ListAppsV1NamespacedDaemonSetInput =
 
 // Output Schema
 export const ListAppsV1NamespacedDaemonSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -19406,13 +19404,13 @@ export type ListAppsV1NamespacedDaemonSetOutput =
  * list or watch objects of kind DaemonSet
  */
 export const listAppsV1NamespacedDaemonSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListAppsV1NamespacedDaemonSetInput,
     outputSchema: ListAppsV1NamespacedDaemonSetOutput,
   }));
 // Input Schema
 export const ListAppsV1NamespacedDeploymentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/apps/v1/namespaces/{namespace}/deployments",
@@ -19423,7 +19421,7 @@ export type ListAppsV1NamespacedDeploymentInput =
 
 // Output Schema
 export const ListAppsV1NamespacedDeploymentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -22075,13 +22073,13 @@ export type ListAppsV1NamespacedDeploymentOutput =
  * list or watch objects of kind Deployment
  */
 export const listAppsV1NamespacedDeployment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListAppsV1NamespacedDeploymentInput,
     outputSchema: ListAppsV1NamespacedDeploymentOutput,
   }));
 // Input Schema
 export const ListAppsV1NamespacedReplicaSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/apps/v1/namespaces/{namespace}/replicasets",
@@ -22092,7 +22090,7 @@ export type ListAppsV1NamespacedReplicaSetInput =
 
 // Output Schema
 export const ListAppsV1NamespacedReplicaSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -24807,13 +24805,13 @@ export type ListAppsV1NamespacedReplicaSetOutput =
  * list or watch objects of kind ReplicaSet
  */
 export const listAppsV1NamespacedReplicaSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListAppsV1NamespacedReplicaSetInput,
     outputSchema: ListAppsV1NamespacedReplicaSetOutput,
   }));
 // Input Schema
 export const ListAppsV1NamespacedStatefulSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/apps/v1/namespaces/{namespace}/statefulsets",
@@ -24824,7 +24822,7 @@ export type ListAppsV1NamespacedStatefulSetInput =
 
 // Output Schema
 export const ListAppsV1NamespacedStatefulSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -27633,13 +27631,13 @@ export type ListAppsV1NamespacedStatefulSetOutput =
  * list or watch objects of kind StatefulSet
  */
 export const listAppsV1NamespacedStatefulSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListAppsV1NamespacedStatefulSetInput,
     outputSchema: ListAppsV1NamespacedStatefulSetOutput,
   }));
 // Input Schema
 export const ListAppsV1ReplicaSetForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/apps/v1/replicasets" }),
   );
 export type ListAppsV1ReplicaSetForAllNamespacesInput =
@@ -27647,7 +27645,7 @@ export type ListAppsV1ReplicaSetForAllNamespacesInput =
 
 // Output Schema
 export const ListAppsV1ReplicaSetForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -30362,13 +30360,13 @@ export type ListAppsV1ReplicaSetForAllNamespacesOutput =
  * list or watch objects of kind ReplicaSet
  */
 export const listAppsV1ReplicaSetForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListAppsV1ReplicaSetForAllNamespacesInput,
     outputSchema: ListAppsV1ReplicaSetForAllNamespacesOutput,
   }));
 // Input Schema
 export const ListAppsV1StatefulSetForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/apps/v1/statefulsets" }),
   );
 export type ListAppsV1StatefulSetForAllNamespacesInput =
@@ -30376,7 +30374,7 @@ export type ListAppsV1StatefulSetForAllNamespacesInput =
 
 // Output Schema
 export const ListAppsV1StatefulSetForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -33185,13 +33183,13 @@ export type ListAppsV1StatefulSetForAllNamespacesOutput =
  * list or watch objects of kind StatefulSet
  */
 export const listAppsV1StatefulSetForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListAppsV1StatefulSetForAllNamespacesInput,
     outputSchema: ListAppsV1StatefulSetForAllNamespacesOutput,
   }));
 // Input Schema
 export const PatchAppsV1NamespacedControllerRevisionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -33205,7 +33203,7 @@ export type PatchAppsV1NamespacedControllerRevisionInput =
 
 // Output Schema
 export const PatchAppsV1NamespacedControllerRevisionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     data: Schema.optional(Schema.Unknown),
     kind: Schema.optional(Schema.String),
@@ -33266,14 +33264,14 @@ export type PatchAppsV1NamespacedControllerRevisionOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchAppsV1NamespacedControllerRevision =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchAppsV1NamespacedControllerRevisionInput,
     outputSchema: PatchAppsV1NamespacedControllerRevisionOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchAppsV1NamespacedDaemonSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -33287,7 +33285,7 @@ export type PatchAppsV1NamespacedDaemonSetInput =
 
 // Output Schema
 export const PatchAppsV1NamespacedDaemonSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -35806,14 +35804,14 @@ export type PatchAppsV1NamespacedDaemonSetOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchAppsV1NamespacedDaemonSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchAppsV1NamespacedDaemonSetInput,
     outputSchema: PatchAppsV1NamespacedDaemonSetOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchAppsV1NamespacedDaemonSetStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -35827,7 +35825,7 @@ export type PatchAppsV1NamespacedDaemonSetStatusInput =
 
 // Output Schema
 export const PatchAppsV1NamespacedDaemonSetStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -38346,14 +38344,14 @@ export type PatchAppsV1NamespacedDaemonSetStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchAppsV1NamespacedDaemonSetStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchAppsV1NamespacedDaemonSetStatusInput,
     outputSchema: PatchAppsV1NamespacedDaemonSetStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchAppsV1NamespacedDeploymentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -38367,7 +38365,7 @@ export type PatchAppsV1NamespacedDeploymentInput =
 
 // Output Schema
 export const PatchAppsV1NamespacedDeploymentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -40889,14 +40887,14 @@ export type PatchAppsV1NamespacedDeploymentOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchAppsV1NamespacedDeployment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchAppsV1NamespacedDeploymentInput,
     outputSchema: PatchAppsV1NamespacedDeploymentOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchAppsV1NamespacedDeploymentScaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -40910,7 +40908,7 @@ export type PatchAppsV1NamespacedDeploymentScaleInput =
 
 // Output Schema
 export const PatchAppsV1NamespacedDeploymentScaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -40980,14 +40978,14 @@ export type PatchAppsV1NamespacedDeploymentScaleOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchAppsV1NamespacedDeploymentScale =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchAppsV1NamespacedDeploymentScaleInput,
     outputSchema: PatchAppsV1NamespacedDeploymentScaleOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchAppsV1NamespacedDeploymentStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -41001,7 +40999,7 @@ export type PatchAppsV1NamespacedDeploymentStatusInput =
 
 // Output Schema
 export const PatchAppsV1NamespacedDeploymentStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -43523,14 +43521,14 @@ export type PatchAppsV1NamespacedDeploymentStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchAppsV1NamespacedDeploymentStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchAppsV1NamespacedDeploymentStatusInput,
     outputSchema: PatchAppsV1NamespacedDeploymentStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchAppsV1NamespacedReplicaSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -43544,7 +43542,7 @@ export type PatchAppsV1NamespacedReplicaSetInput =
 
 // Output Schema
 export const PatchAppsV1NamespacedReplicaSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -46109,14 +46107,14 @@ export type PatchAppsV1NamespacedReplicaSetOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchAppsV1NamespacedReplicaSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchAppsV1NamespacedReplicaSetInput,
     outputSchema: PatchAppsV1NamespacedReplicaSetOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchAppsV1NamespacedReplicaSetScaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -46130,7 +46128,7 @@ export type PatchAppsV1NamespacedReplicaSetScaleInput =
 
 // Output Schema
 export const PatchAppsV1NamespacedReplicaSetScaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -46200,14 +46198,14 @@ export type PatchAppsV1NamespacedReplicaSetScaleOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchAppsV1NamespacedReplicaSetScale =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchAppsV1NamespacedReplicaSetScaleInput,
     outputSchema: PatchAppsV1NamespacedReplicaSetScaleOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchAppsV1NamespacedReplicaSetStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -46221,7 +46219,7 @@ export type PatchAppsV1NamespacedReplicaSetStatusInput =
 
 // Output Schema
 export const PatchAppsV1NamespacedReplicaSetStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -48786,14 +48784,14 @@ export type PatchAppsV1NamespacedReplicaSetStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchAppsV1NamespacedReplicaSetStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchAppsV1NamespacedReplicaSetStatusInput,
     outputSchema: PatchAppsV1NamespacedReplicaSetStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchAppsV1NamespacedStatefulSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -48807,7 +48805,7 @@ export type PatchAppsV1NamespacedStatefulSetInput =
 
 // Output Schema
 export const PatchAppsV1NamespacedStatefulSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -51484,14 +51482,14 @@ export type PatchAppsV1NamespacedStatefulSetOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchAppsV1NamespacedStatefulSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchAppsV1NamespacedStatefulSetInput,
     outputSchema: PatchAppsV1NamespacedStatefulSetOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchAppsV1NamespacedStatefulSetScaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -51505,7 +51503,7 @@ export type PatchAppsV1NamespacedStatefulSetScaleInput =
 
 // Output Schema
 export const PatchAppsV1NamespacedStatefulSetScaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -51575,14 +51573,14 @@ export type PatchAppsV1NamespacedStatefulSetScaleOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchAppsV1NamespacedStatefulSetScale =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchAppsV1NamespacedStatefulSetScaleInput,
     outputSchema: PatchAppsV1NamespacedStatefulSetScaleOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchAppsV1NamespacedStatefulSetStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -51596,7 +51594,7 @@ export type PatchAppsV1NamespacedStatefulSetStatusInput =
 
 // Output Schema
 export const PatchAppsV1NamespacedStatefulSetStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -54273,14 +54271,14 @@ export type PatchAppsV1NamespacedStatefulSetStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchAppsV1NamespacedStatefulSetStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchAppsV1NamespacedStatefulSetStatusInput,
     outputSchema: PatchAppsV1NamespacedStatefulSetStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReadAppsV1NamespacedControllerRevisionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/apps/v1/namespaces/{namespace}/controllerrevisions/{name}",
@@ -54291,7 +54289,7 @@ export type ReadAppsV1NamespacedControllerRevisionInput =
 
 // Output Schema
 export const ReadAppsV1NamespacedControllerRevisionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     data: Schema.optional(Schema.Unknown),
     kind: Schema.optional(Schema.String),
@@ -54349,14 +54347,14 @@ export type ReadAppsV1NamespacedControllerRevisionOutput =
  * read the specified ControllerRevision
  */
 export const readAppsV1NamespacedControllerRevision =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadAppsV1NamespacedControllerRevisionInput,
     outputSchema: ReadAppsV1NamespacedControllerRevisionOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadAppsV1NamespacedDaemonSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/apps/v1/namespaces/{namespace}/daemonsets/{name}",
@@ -54367,7 +54365,7 @@ export type ReadAppsV1NamespacedDaemonSetInput =
 
 // Output Schema
 export const ReadAppsV1NamespacedDaemonSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -56883,14 +56881,14 @@ export type ReadAppsV1NamespacedDaemonSetOutput =
  * read the specified DaemonSet
  */
 export const readAppsV1NamespacedDaemonSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadAppsV1NamespacedDaemonSetInput,
     outputSchema: ReadAppsV1NamespacedDaemonSetOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadAppsV1NamespacedDaemonSetStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/apps/v1/namespaces/{namespace}/daemonsets/{name}/status",
@@ -56901,7 +56899,7 @@ export type ReadAppsV1NamespacedDaemonSetStatusInput =
 
 // Output Schema
 export const ReadAppsV1NamespacedDaemonSetStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -59417,14 +59415,14 @@ export type ReadAppsV1NamespacedDaemonSetStatusOutput =
  * read status of the specified DaemonSet
  */
 export const readAppsV1NamespacedDaemonSetStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadAppsV1NamespacedDaemonSetStatusInput,
     outputSchema: ReadAppsV1NamespacedDaemonSetStatusOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadAppsV1NamespacedDeploymentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/apps/v1/namespaces/{namespace}/deployments/{name}",
@@ -59435,7 +59433,7 @@ export type ReadAppsV1NamespacedDeploymentInput =
 
 // Output Schema
 export const ReadAppsV1NamespacedDeploymentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -61954,14 +61952,14 @@ export type ReadAppsV1NamespacedDeploymentOutput =
  * read the specified Deployment
  */
 export const readAppsV1NamespacedDeployment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadAppsV1NamespacedDeploymentInput,
     outputSchema: ReadAppsV1NamespacedDeploymentOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadAppsV1NamespacedDeploymentScaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/apps/v1/namespaces/{namespace}/deployments/{name}/scale",
@@ -61972,7 +61970,7 @@ export type ReadAppsV1NamespacedDeploymentScaleInput =
 
 // Output Schema
 export const ReadAppsV1NamespacedDeploymentScaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -62039,14 +62037,14 @@ export type ReadAppsV1NamespacedDeploymentScaleOutput =
  * read scale of the specified Deployment
  */
 export const readAppsV1NamespacedDeploymentScale =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadAppsV1NamespacedDeploymentScaleInput,
     outputSchema: ReadAppsV1NamespacedDeploymentScaleOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadAppsV1NamespacedDeploymentStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/apps/v1/namespaces/{namespace}/deployments/{name}/status",
@@ -62057,7 +62055,7 @@ export type ReadAppsV1NamespacedDeploymentStatusInput =
 
 // Output Schema
 export const ReadAppsV1NamespacedDeploymentStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -64576,14 +64574,14 @@ export type ReadAppsV1NamespacedDeploymentStatusOutput =
  * read status of the specified Deployment
  */
 export const readAppsV1NamespacedDeploymentStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadAppsV1NamespacedDeploymentStatusInput,
     outputSchema: ReadAppsV1NamespacedDeploymentStatusOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadAppsV1NamespacedReplicaSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/apps/v1/namespaces/{namespace}/replicasets/{name}",
@@ -64594,7 +64592,7 @@ export type ReadAppsV1NamespacedReplicaSetInput =
 
 // Output Schema
 export const ReadAppsV1NamespacedReplicaSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -67156,14 +67154,14 @@ export type ReadAppsV1NamespacedReplicaSetOutput =
  * read the specified ReplicaSet
  */
 export const readAppsV1NamespacedReplicaSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadAppsV1NamespacedReplicaSetInput,
     outputSchema: ReadAppsV1NamespacedReplicaSetOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadAppsV1NamespacedReplicaSetScaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/apps/v1/namespaces/{namespace}/replicasets/{name}/scale",
@@ -67174,7 +67172,7 @@ export type ReadAppsV1NamespacedReplicaSetScaleInput =
 
 // Output Schema
 export const ReadAppsV1NamespacedReplicaSetScaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -67241,14 +67239,14 @@ export type ReadAppsV1NamespacedReplicaSetScaleOutput =
  * read scale of the specified ReplicaSet
  */
 export const readAppsV1NamespacedReplicaSetScale =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadAppsV1NamespacedReplicaSetScaleInput,
     outputSchema: ReadAppsV1NamespacedReplicaSetScaleOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadAppsV1NamespacedReplicaSetStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/apps/v1/namespaces/{namespace}/replicasets/{name}/status",
@@ -67259,7 +67257,7 @@ export type ReadAppsV1NamespacedReplicaSetStatusInput =
 
 // Output Schema
 export const ReadAppsV1NamespacedReplicaSetStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -69821,14 +69819,14 @@ export type ReadAppsV1NamespacedReplicaSetStatusOutput =
  * read status of the specified ReplicaSet
  */
 export const readAppsV1NamespacedReplicaSetStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadAppsV1NamespacedReplicaSetStatusInput,
     outputSchema: ReadAppsV1NamespacedReplicaSetStatusOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadAppsV1NamespacedStatefulSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/apps/v1/namespaces/{namespace}/statefulsets/{name}",
@@ -69839,7 +69837,7 @@ export type ReadAppsV1NamespacedStatefulSetInput =
 
 // Output Schema
 export const ReadAppsV1NamespacedStatefulSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -72513,14 +72511,14 @@ export type ReadAppsV1NamespacedStatefulSetOutput =
  * read the specified StatefulSet
  */
 export const readAppsV1NamespacedStatefulSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadAppsV1NamespacedStatefulSetInput,
     outputSchema: ReadAppsV1NamespacedStatefulSetOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadAppsV1NamespacedStatefulSetScaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/scale",
@@ -72531,7 +72529,7 @@ export type ReadAppsV1NamespacedStatefulSetScaleInput =
 
 // Output Schema
 export const ReadAppsV1NamespacedStatefulSetScaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -72598,14 +72596,14 @@ export type ReadAppsV1NamespacedStatefulSetScaleOutput =
  * read scale of the specified StatefulSet
  */
 export const readAppsV1NamespacedStatefulSetScale =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadAppsV1NamespacedStatefulSetScaleInput,
     outputSchema: ReadAppsV1NamespacedStatefulSetScaleOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadAppsV1NamespacedStatefulSetStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/status",
@@ -72616,7 +72614,7 @@ export type ReadAppsV1NamespacedStatefulSetStatusInput =
 
 // Output Schema
 export const ReadAppsV1NamespacedStatefulSetStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -75290,14 +75288,14 @@ export type ReadAppsV1NamespacedStatefulSetStatusOutput =
  * read status of the specified StatefulSet
  */
 export const readAppsV1NamespacedStatefulSetStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadAppsV1NamespacedStatefulSetStatusInput,
     outputSchema: ReadAppsV1NamespacedStatefulSetStatusOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReplaceAppsV1NamespacedControllerRevisionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -75311,7 +75309,7 @@ export type ReplaceAppsV1NamespacedControllerRevisionInput =
 
 // Output Schema
 export const ReplaceAppsV1NamespacedControllerRevisionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     data: Schema.optional(Schema.Unknown),
     kind: Schema.optional(Schema.String),
@@ -75372,14 +75370,14 @@ export type ReplaceAppsV1NamespacedControllerRevisionOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAppsV1NamespacedControllerRevision =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAppsV1NamespacedControllerRevisionInput,
     outputSchema: ReplaceAppsV1NamespacedControllerRevisionOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceAppsV1NamespacedDaemonSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -75393,7 +75391,7 @@ export type ReplaceAppsV1NamespacedDaemonSetInput =
 
 // Output Schema
 export const ReplaceAppsV1NamespacedDaemonSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -77912,14 +77910,14 @@ export type ReplaceAppsV1NamespacedDaemonSetOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAppsV1NamespacedDaemonSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAppsV1NamespacedDaemonSetInput,
     outputSchema: ReplaceAppsV1NamespacedDaemonSetOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceAppsV1NamespacedDaemonSetStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -77933,7 +77931,7 @@ export type ReplaceAppsV1NamespacedDaemonSetStatusInput =
 
 // Output Schema
 export const ReplaceAppsV1NamespacedDaemonSetStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -80452,14 +80450,14 @@ export type ReplaceAppsV1NamespacedDaemonSetStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAppsV1NamespacedDaemonSetStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAppsV1NamespacedDaemonSetStatusInput,
     outputSchema: ReplaceAppsV1NamespacedDaemonSetStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceAppsV1NamespacedDeploymentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -80473,7 +80471,7 @@ export type ReplaceAppsV1NamespacedDeploymentInput =
 
 // Output Schema
 export const ReplaceAppsV1NamespacedDeploymentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -82995,14 +82993,14 @@ export type ReplaceAppsV1NamespacedDeploymentOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAppsV1NamespacedDeployment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAppsV1NamespacedDeploymentInput,
     outputSchema: ReplaceAppsV1NamespacedDeploymentOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceAppsV1NamespacedDeploymentScaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -83016,7 +83014,7 @@ export type ReplaceAppsV1NamespacedDeploymentScaleInput =
 
 // Output Schema
 export const ReplaceAppsV1NamespacedDeploymentScaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -83086,14 +83084,14 @@ export type ReplaceAppsV1NamespacedDeploymentScaleOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAppsV1NamespacedDeploymentScale =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAppsV1NamespacedDeploymentScaleInput,
     outputSchema: ReplaceAppsV1NamespacedDeploymentScaleOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceAppsV1NamespacedDeploymentStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -83107,7 +83105,7 @@ export type ReplaceAppsV1NamespacedDeploymentStatusInput =
 
 // Output Schema
 export const ReplaceAppsV1NamespacedDeploymentStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -85629,14 +85627,14 @@ export type ReplaceAppsV1NamespacedDeploymentStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAppsV1NamespacedDeploymentStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAppsV1NamespacedDeploymentStatusInput,
     outputSchema: ReplaceAppsV1NamespacedDeploymentStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceAppsV1NamespacedReplicaSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -85650,7 +85648,7 @@ export type ReplaceAppsV1NamespacedReplicaSetInput =
 
 // Output Schema
 export const ReplaceAppsV1NamespacedReplicaSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -88215,14 +88213,14 @@ export type ReplaceAppsV1NamespacedReplicaSetOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAppsV1NamespacedReplicaSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAppsV1NamespacedReplicaSetInput,
     outputSchema: ReplaceAppsV1NamespacedReplicaSetOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceAppsV1NamespacedReplicaSetScaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -88236,7 +88234,7 @@ export type ReplaceAppsV1NamespacedReplicaSetScaleInput =
 
 // Output Schema
 export const ReplaceAppsV1NamespacedReplicaSetScaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -88306,14 +88304,14 @@ export type ReplaceAppsV1NamespacedReplicaSetScaleOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAppsV1NamespacedReplicaSetScale =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAppsV1NamespacedReplicaSetScaleInput,
     outputSchema: ReplaceAppsV1NamespacedReplicaSetScaleOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceAppsV1NamespacedReplicaSetStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -88327,7 +88325,7 @@ export type ReplaceAppsV1NamespacedReplicaSetStatusInput =
 
 // Output Schema
 export const ReplaceAppsV1NamespacedReplicaSetStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -90892,14 +90890,14 @@ export type ReplaceAppsV1NamespacedReplicaSetStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAppsV1NamespacedReplicaSetStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAppsV1NamespacedReplicaSetStatusInput,
     outputSchema: ReplaceAppsV1NamespacedReplicaSetStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceAppsV1NamespacedStatefulSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -90913,7 +90911,7 @@ export type ReplaceAppsV1NamespacedStatefulSetInput =
 
 // Output Schema
 export const ReplaceAppsV1NamespacedStatefulSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -93590,14 +93588,14 @@ export type ReplaceAppsV1NamespacedStatefulSetOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAppsV1NamespacedStatefulSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAppsV1NamespacedStatefulSetInput,
     outputSchema: ReplaceAppsV1NamespacedStatefulSetOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceAppsV1NamespacedStatefulSetScaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -93611,7 +93609,7 @@ export type ReplaceAppsV1NamespacedStatefulSetScaleInput =
 
 // Output Schema
 export const ReplaceAppsV1NamespacedStatefulSetScaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -93681,14 +93679,14 @@ export type ReplaceAppsV1NamespacedStatefulSetScaleOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAppsV1NamespacedStatefulSetScale =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAppsV1NamespacedStatefulSetScaleInput,
     outputSchema: ReplaceAppsV1NamespacedStatefulSetScaleOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceAppsV1NamespacedStatefulSetStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -93702,7 +93700,7 @@ export type ReplaceAppsV1NamespacedStatefulSetStatusInput =
 
 // Output Schema
 export const ReplaceAppsV1NamespacedStatefulSetStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -96379,14 +96377,14 @@ export type ReplaceAppsV1NamespacedStatefulSetStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAppsV1NamespacedStatefulSetStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAppsV1NamespacedStatefulSetStatusInput,
     outputSchema: ReplaceAppsV1NamespacedStatefulSetStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const WatchAppsV1ControllerRevisionListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/apps/v1/watch/controllerrevisions" }),
   );
 export type WatchAppsV1ControllerRevisionListForAllNamespacesInput =
@@ -96394,7 +96392,7 @@ export type WatchAppsV1ControllerRevisionListForAllNamespacesInput =
 
 // Output Schema
 export const WatchAppsV1ControllerRevisionListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -96406,13 +96404,13 @@ export type WatchAppsV1ControllerRevisionListForAllNamespacesOutput =
  * watch individual changes to a list of ControllerRevision. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchAppsV1ControllerRevisionListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAppsV1ControllerRevisionListForAllNamespacesInput,
     outputSchema: WatchAppsV1ControllerRevisionListForAllNamespacesOutput,
   }));
 // Input Schema
 export const WatchAppsV1DaemonSetListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/apps/v1/watch/daemonsets" }),
   );
 export type WatchAppsV1DaemonSetListForAllNamespacesInput =
@@ -96420,7 +96418,7 @@ export type WatchAppsV1DaemonSetListForAllNamespacesInput =
 
 // Output Schema
 export const WatchAppsV1DaemonSetListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -96432,13 +96430,13 @@ export type WatchAppsV1DaemonSetListForAllNamespacesOutput =
  * watch individual changes to a list of DaemonSet. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchAppsV1DaemonSetListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAppsV1DaemonSetListForAllNamespacesInput,
     outputSchema: WatchAppsV1DaemonSetListForAllNamespacesOutput,
   }));
 // Input Schema
 export const WatchAppsV1DeploymentListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/apps/v1/watch/deployments" }),
   );
 export type WatchAppsV1DeploymentListForAllNamespacesInput =
@@ -96446,7 +96444,7 @@ export type WatchAppsV1DeploymentListForAllNamespacesInput =
 
 // Output Schema
 export const WatchAppsV1DeploymentListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -96458,13 +96456,13 @@ export type WatchAppsV1DeploymentListForAllNamespacesOutput =
  * watch individual changes to a list of Deployment. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchAppsV1DeploymentListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAppsV1DeploymentListForAllNamespacesInput,
     outputSchema: WatchAppsV1DeploymentListForAllNamespacesOutput,
   }));
 // Input Schema
 export const WatchAppsV1NamespacedControllerRevisionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions/{name}",
@@ -96475,7 +96473,7 @@ export type WatchAppsV1NamespacedControllerRevisionInput =
 
 // Output Schema
 export const WatchAppsV1NamespacedControllerRevisionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -96487,13 +96485,13 @@ export type WatchAppsV1NamespacedControllerRevisionOutput =
  * watch changes to an object of kind ControllerRevision. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchAppsV1NamespacedControllerRevision =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAppsV1NamespacedControllerRevisionInput,
     outputSchema: WatchAppsV1NamespacedControllerRevisionOutput,
   }));
 // Input Schema
 export const WatchAppsV1NamespacedControllerRevisionListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions",
@@ -96504,7 +96502,7 @@ export type WatchAppsV1NamespacedControllerRevisionListInput =
 
 // Output Schema
 export const WatchAppsV1NamespacedControllerRevisionListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -96516,13 +96514,13 @@ export type WatchAppsV1NamespacedControllerRevisionListOutput =
  * watch individual changes to a list of ControllerRevision. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchAppsV1NamespacedControllerRevisionList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAppsV1NamespacedControllerRevisionListInput,
     outputSchema: WatchAppsV1NamespacedControllerRevisionListOutput,
   }));
 // Input Schema
 export const WatchAppsV1NamespacedDaemonSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/apps/v1/watch/namespaces/{namespace}/daemonsets/{name}",
@@ -96533,7 +96531,7 @@ export type WatchAppsV1NamespacedDaemonSetInput =
 
 // Output Schema
 export const WatchAppsV1NamespacedDaemonSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -96545,13 +96543,13 @@ export type WatchAppsV1NamespacedDaemonSetOutput =
  * watch changes to an object of kind DaemonSet. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchAppsV1NamespacedDaemonSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAppsV1NamespacedDaemonSetInput,
     outputSchema: WatchAppsV1NamespacedDaemonSetOutput,
   }));
 // Input Schema
 export const WatchAppsV1NamespacedDaemonSetListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/apps/v1/watch/namespaces/{namespace}/daemonsets",
@@ -96562,7 +96560,7 @@ export type WatchAppsV1NamespacedDaemonSetListInput =
 
 // Output Schema
 export const WatchAppsV1NamespacedDaemonSetListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -96574,13 +96572,13 @@ export type WatchAppsV1NamespacedDaemonSetListOutput =
  * watch individual changes to a list of DaemonSet. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchAppsV1NamespacedDaemonSetList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAppsV1NamespacedDaemonSetListInput,
     outputSchema: WatchAppsV1NamespacedDaemonSetListOutput,
   }));
 // Input Schema
 export const WatchAppsV1NamespacedDeploymentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/apps/v1/watch/namespaces/{namespace}/deployments/{name}",
@@ -96591,7 +96589,7 @@ export type WatchAppsV1NamespacedDeploymentInput =
 
 // Output Schema
 export const WatchAppsV1NamespacedDeploymentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -96603,13 +96601,13 @@ export type WatchAppsV1NamespacedDeploymentOutput =
  * watch changes to an object of kind Deployment. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchAppsV1NamespacedDeployment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAppsV1NamespacedDeploymentInput,
     outputSchema: WatchAppsV1NamespacedDeploymentOutput,
   }));
 // Input Schema
 export const WatchAppsV1NamespacedDeploymentListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/apps/v1/watch/namespaces/{namespace}/deployments",
@@ -96620,7 +96618,7 @@ export type WatchAppsV1NamespacedDeploymentListInput =
 
 // Output Schema
 export const WatchAppsV1NamespacedDeploymentListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -96632,13 +96630,13 @@ export type WatchAppsV1NamespacedDeploymentListOutput =
  * watch individual changes to a list of Deployment. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchAppsV1NamespacedDeploymentList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAppsV1NamespacedDeploymentListInput,
     outputSchema: WatchAppsV1NamespacedDeploymentListOutput,
   }));
 // Input Schema
 export const WatchAppsV1NamespacedReplicaSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/apps/v1/watch/namespaces/{namespace}/replicasets/{name}",
@@ -96649,7 +96647,7 @@ export type WatchAppsV1NamespacedReplicaSetInput =
 
 // Output Schema
 export const WatchAppsV1NamespacedReplicaSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -96661,13 +96659,13 @@ export type WatchAppsV1NamespacedReplicaSetOutput =
  * watch changes to an object of kind ReplicaSet. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchAppsV1NamespacedReplicaSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAppsV1NamespacedReplicaSetInput,
     outputSchema: WatchAppsV1NamespacedReplicaSetOutput,
   }));
 // Input Schema
 export const WatchAppsV1NamespacedReplicaSetListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/apps/v1/watch/namespaces/{namespace}/replicasets",
@@ -96678,7 +96676,7 @@ export type WatchAppsV1NamespacedReplicaSetListInput =
 
 // Output Schema
 export const WatchAppsV1NamespacedReplicaSetListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -96690,13 +96688,13 @@ export type WatchAppsV1NamespacedReplicaSetListOutput =
  * watch individual changes to a list of ReplicaSet. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchAppsV1NamespacedReplicaSetList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAppsV1NamespacedReplicaSetListInput,
     outputSchema: WatchAppsV1NamespacedReplicaSetListOutput,
   }));
 // Input Schema
 export const WatchAppsV1NamespacedStatefulSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/apps/v1/watch/namespaces/{namespace}/statefulsets/{name}",
@@ -96707,7 +96705,7 @@ export type WatchAppsV1NamespacedStatefulSetInput =
 
 // Output Schema
 export const WatchAppsV1NamespacedStatefulSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -96719,13 +96717,13 @@ export type WatchAppsV1NamespacedStatefulSetOutput =
  * watch changes to an object of kind StatefulSet. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchAppsV1NamespacedStatefulSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAppsV1NamespacedStatefulSetInput,
     outputSchema: WatchAppsV1NamespacedStatefulSetOutput,
   }));
 // Input Schema
 export const WatchAppsV1NamespacedStatefulSetListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/apps/v1/watch/namespaces/{namespace}/statefulsets",
@@ -96736,7 +96734,7 @@ export type WatchAppsV1NamespacedStatefulSetListInput =
 
 // Output Schema
 export const WatchAppsV1NamespacedStatefulSetListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -96748,13 +96746,13 @@ export type WatchAppsV1NamespacedStatefulSetListOutput =
  * watch individual changes to a list of StatefulSet. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchAppsV1NamespacedStatefulSetList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAppsV1NamespacedStatefulSetListInput,
     outputSchema: WatchAppsV1NamespacedStatefulSetListOutput,
   }));
 // Input Schema
 export const WatchAppsV1ReplicaSetListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/apps/v1/watch/replicasets" }),
   );
 export type WatchAppsV1ReplicaSetListForAllNamespacesInput =
@@ -96762,7 +96760,7 @@ export type WatchAppsV1ReplicaSetListForAllNamespacesInput =
 
 // Output Schema
 export const WatchAppsV1ReplicaSetListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -96774,13 +96772,13 @@ export type WatchAppsV1ReplicaSetListForAllNamespacesOutput =
  * watch individual changes to a list of ReplicaSet. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchAppsV1ReplicaSetListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAppsV1ReplicaSetListForAllNamespacesInput,
     outputSchema: WatchAppsV1ReplicaSetListForAllNamespacesOutput,
   }));
 // Input Schema
 export const WatchAppsV1StatefulSetListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/apps/v1/watch/statefulsets" }),
   );
 export type WatchAppsV1StatefulSetListForAllNamespacesInput =
@@ -96788,7 +96786,7 @@ export type WatchAppsV1StatefulSetListForAllNamespacesInput =
 
 // Output Schema
 export const WatchAppsV1StatefulSetListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -96800,7 +96798,7 @@ export type WatchAppsV1StatefulSetListForAllNamespacesOutput =
  * watch individual changes to a list of StatefulSet. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchAppsV1StatefulSetListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAppsV1StatefulSetListForAllNamespacesInput,
     outputSchema: WatchAppsV1StatefulSetListForAllNamespacesOutput,
   }));

@@ -1,16 +1,16 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
-import * as T from "../traits.ts";
 import {
   BadRequest,
   Forbidden,
   NotFound,
   UnprocessableEntity,
 } from "../errors.ts";
+import * as T from "../traits.ts";
 
 // Input Schema
 export const GetOrganizationTeamInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     team: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -23,7 +23,7 @@ export type GetOrganizationTeamInput = typeof GetOrganizationTeamInput.Type;
 
 // Output Schema
 export const GetOrganizationTeamOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     display_name: Schema.String,
     creator: Schema.Struct({
@@ -90,7 +90,7 @@ export type GetOrganizationTeamOutput = typeof GetOrganizationTeamOutput.Type;
  * @param organization - The name of the organization
  * @param team - The slug of the team
  */
-export const getOrganizationTeam = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getOrganizationTeam = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetOrganizationTeamInput,
   outputSchema: GetOrganizationTeamOutput,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,

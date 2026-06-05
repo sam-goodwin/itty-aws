@@ -3,14 +3,14 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
-export const ListDashboardsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListDashboardsInput = /*@__PURE__*/ Schema.Struct({
   limit: Schema.optional(Schema.Number),
   offset: Schema.optional(Schema.Number),
 }).pipe(T.Http({ method: "GET", path: "/v2/dashboards" }));
 export type ListDashboardsInput = typeof ListDashboardsInput.Type;
 
 // Output Schema
-export const ListDashboardsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const ListDashboardsOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     createdAt: Schema.String,
     createdBy: Schema.String,
@@ -72,7 +72,7 @@ export type ListDashboardsOutput = typeof ListDashboardsOutput.Type;
  *
  * List dashboards visible to the caller.
  */
-export const listDashboards = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listDashboards = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListDashboardsInput,
   outputSchema: ListDashboardsOutput,
 }));

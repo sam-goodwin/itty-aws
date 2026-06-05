@@ -10,7 +10,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const ConnectedClusterCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -25,7 +25,7 @@ export type ConnectedClusterCreateInput =
 
 // Output Schema
 export const ConnectedClusterCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -43,15 +43,13 @@ export type ConnectedClusterCreateOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ConnectedClusterCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectedClusterCreateInput,
-    outputSchema: ConnectedClusterCreateOutput,
-  }),
-);
+export const ConnectedClusterCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectedClusterCreateInput,
+  outputSchema: ConnectedClusterCreateOutput,
+}));
 // Input Schema
 export const ConnectedClusterDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -65,8 +63,7 @@ export type ConnectedClusterDeleteInput =
   typeof ConnectedClusterDeleteInput.Type;
 
 // Output Schema
-export const ConnectedClusterDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ConnectedClusterDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type ConnectedClusterDeleteOutput =
   typeof ConnectedClusterDeleteOutput.Type;
 
@@ -80,15 +77,13 @@ export type ConnectedClusterDeleteOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ConnectedClusterDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectedClusterDeleteInput,
-    outputSchema: ConnectedClusterDeleteOutput,
-  }),
-);
+export const ConnectedClusterDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectedClusterDeleteInput,
+  outputSchema: ConnectedClusterDeleteOutput,
+}));
 // Input Schema
 export const ConnectedClusterGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -102,7 +97,7 @@ export type ConnectedClusterGetInput = typeof ConnectedClusterGetInput.Type;
 
 // Output Schema
 export const ConnectedClusterGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -119,13 +114,13 @@ export type ConnectedClusterGetOutput = typeof ConnectedClusterGetOutput.Type;
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ConnectedClusterGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectedClusterGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectedClusterGetInput,
   outputSchema: ConnectedClusterGetOutput,
 }));
 // Input Schema
 export const ConnectedClusterListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -140,7 +135,7 @@ export type ConnectedClusterListByResourceGroupInput =
 
 // Output Schema
 export const ConnectedClusterListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -166,13 +161,13 @@ export type ConnectedClusterListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const ConnectedClusterListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectedClusterListByResourceGroupInput,
     outputSchema: ConnectedClusterListByResourceGroupOutput,
   }));
 // Input Schema
 export const ConnectedClusterListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
@@ -186,7 +181,7 @@ export type ConnectedClusterListBySubscriptionInput =
 
 // Output Schema
 export const ConnectedClusterListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -211,13 +206,13 @@ export type ConnectedClusterListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const ConnectedClusterListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectedClusterListBySubscriptionInput,
     outputSchema: ConnectedClusterListBySubscriptionOutput,
   }));
 // Input Schema
 export const ConnectedClusterListClusterUserCredentialInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -232,7 +227,7 @@ export type ConnectedClusterListClusterUserCredentialInput =
 
 // Output Schema
 export const ConnectedClusterListClusterUserCredentialOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     hybridConnectionConfig: Schema.optional(
       Schema.Struct({
         expirationTime: Schema.optional(Schema.Number),
@@ -264,13 +259,13 @@ export type ConnectedClusterListClusterUserCredentialOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const ConnectedClusterListClusterUserCredential =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectedClusterListClusterUserCredentialInput,
     outputSchema: ConnectedClusterListClusterUserCredentialOutput,
   }));
 // Input Schema
 export const ConnectedClusterUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
@@ -285,7 +280,7 @@ export type ConnectedClusterUpdateInput =
 
 // Output Schema
 export const ConnectedClusterUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -303,14 +298,12 @@ export type ConnectedClusterUpdateOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ConnectedClusterUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectedClusterUpdateInput,
-    outputSchema: ConnectedClusterUpdateOutput,
-  }),
-);
+export const ConnectedClusterUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectedClusterUpdateInput,
+  outputSchema: ConnectedClusterUpdateOutput,
+}));
 // Input Schema
-export const OperationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsGetInput = /*@__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
   T.Http({ method: "GET", path: "/providers/Microsoft.Kubernetes/operations" }),
@@ -318,7 +311,7 @@ export const OperationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OperationsGetInput = typeof OperationsGetInput.Type;
 
 // Output Schema
-export const OperationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsGetOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -344,7 +337,7 @@ export type OperationsGetOutput = typeof OperationsGetOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsGetInput,
   outputSchema: OperationsGetOutput,
 }));

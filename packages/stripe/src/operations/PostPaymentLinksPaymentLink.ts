@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PostPaymentLinksPaymentLinkInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     payment_link: Schema.String.pipe(T.PathParam()),
     active: Schema.optional(Schema.Boolean),
     after_completion: Schema.optional(
@@ -148,7 +148,7 @@ export type PostPaymentLinksPaymentLinkInput =
 
 // Output Schema
 export const PostPaymentLinksPaymentLinkOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     active: Schema.Boolean,
     after_completion: Schema.Struct({
       hosted_confirmation: Schema.optional(
@@ -461,9 +461,7 @@ export type PostPaymentLinksPaymentLinkOutput =
  *
  * <p>Updates a payment link.</p>
  */
-export const PostPaymentLinksPaymentLink = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostPaymentLinksPaymentLinkInput,
-    outputSchema: PostPaymentLinksPaymentLinkOutput,
-  }),
-);
+export const PostPaymentLinksPaymentLink = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostPaymentLinksPaymentLinkInput,
+  outputSchema: PostPaymentLinksPaymentLinkOutput,
+}));

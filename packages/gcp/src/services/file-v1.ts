@@ -4,11 +4,11 @@
 // ==========================================================================
 
 import * as Schema from "effect/Schema";
+import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
-import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { DefaultErrors } from "../errors.ts";
-import type * as HttpClient from "effect/unstable/http/HttpClient";
+import * as T from "../traits.ts";
 
 // Service metadata
 const svc = T.Service({
@@ -25,7 +25,7 @@ const svc = T.Service({
 export interface ResumeReplicaRequest {}
 
 export const ResumeReplicaRequest: Schema.Schema<ResumeReplicaRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ResumeReplicaRequest",
   });
 
@@ -47,7 +47,7 @@ export interface OperationMetadata {
 }
 
 export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     verb: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     statusDetail: Schema.optional(Schema.String),
@@ -65,7 +65,7 @@ export interface GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResou
 }
 
 export const GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource: Schema.Schema<GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceType: Schema.optional(Schema.String),
     resourceUrl: Schema.optional(Schema.String),
   }).annotate({
@@ -76,7 +76,7 @@ export const GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource:
 export interface CancelOperationRequest {}
 
 export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
 
@@ -104,7 +104,7 @@ export interface NfsExportOptions {
 }
 
 export const NfsExportOptions: Schema.Schema<NfsExportOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accessMode: Schema.optional(Schema.String),
     anonUid: Schema.optional(Schema.String),
     ipRanges: Schema.optional(Schema.Array(Schema.String)),
@@ -127,7 +127,7 @@ export interface FileShareConfig {
 }
 
 export const FileShareConfig: Schema.Schema<FileShareConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nfsExportOptions: Schema.optional(Schema.Array(NfsExportOptions)),
     sourceBackup: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -149,7 +149,7 @@ export interface Location {
 }
 
 export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locationId: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     name: Schema.optional(Schema.String),
@@ -165,7 +165,7 @@ export interface ListLocationsResponse {
 }
 
 export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(Location)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListLocationsResponse" });
@@ -182,7 +182,7 @@ export interface LdapConfig {
 }
 
 export const LdapConfig: Schema.Schema<LdapConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     usersOu: Schema.optional(Schema.String),
     servers: Schema.optional(Schema.Array(Schema.String)),
     groupsOu: Schema.optional(Schema.String),
@@ -201,7 +201,7 @@ export interface TimeOfDay {
 }
 
 export const TimeOfDay: Schema.Schema<TimeOfDay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     minutes: Schema.optional(Schema.Number),
     seconds: Schema.optional(Schema.Number),
     hours: Schema.optional(Schema.Number),
@@ -227,7 +227,7 @@ export interface Schedule {
 }
 
 export const Schedule: Schema.Schema<Schedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     day: Schema.optional(Schema.String),
     startTime: Schema.optional(TimeOfDay),
     duration: Schema.optional(Schema.String),
@@ -239,7 +239,7 @@ export interface WeeklyCycle {
 }
 
 export const WeeklyCycle: Schema.Schema<WeeklyCycle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     schedule: Schema.optional(Schema.Array(Schedule)),
   }).annotate({ identifier: "WeeklyCycle" });
 
@@ -251,7 +251,7 @@ export interface DailyCycle {
 }
 
 export const DailyCycle: Schema.Schema<DailyCycle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     duration: Schema.optional(Schema.String),
     startTime: Schema.optional(TimeOfDay),
   }).annotate({ identifier: "DailyCycle" });
@@ -264,7 +264,7 @@ export interface MaintenanceWindow {
 }
 
 export const MaintenanceWindow: Schema.Schema<MaintenanceWindow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     weeklyCycle: Schema.optional(WeeklyCycle),
     dailyCycle: Schema.optional(DailyCycle),
   }).annotate({ identifier: "MaintenanceWindow" });
@@ -279,7 +279,7 @@ export interface File_Date {
 }
 
 export const File_Date: Schema.Schema<File_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     month: Schema.optional(Schema.Number),
     day: Schema.optional(Schema.Number),
     year: Schema.optional(Schema.Number),
@@ -295,7 +295,7 @@ export interface DenyMaintenancePeriod {
 }
 
 export const DenyMaintenancePeriod: Schema.Schema<DenyMaintenancePeriod> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startDate: Schema.optional(File_Date),
     endDate: Schema.optional(File_Date),
     time: Schema.optional(TimeOfDay),
@@ -318,7 +318,7 @@ export interface UpdatePolicy {
 }
 
 export const UpdatePolicy: Schema.Schema<UpdatePolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     window: Schema.optional(MaintenanceWindow),
     channel: Schema.optional(Schema.String),
     denyMaintenancePeriods: Schema.optional(
@@ -344,7 +344,7 @@ export interface MaintenancePolicy {
 }
 
 export const MaintenancePolicy: Schema.Schema<MaintenancePolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
     updatePolicy: Schema.optional(UpdatePolicy),
@@ -360,7 +360,7 @@ export interface PscConfig {
 }
 
 export const PscConfig: Schema.Schema<PscConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endpointProject: Schema.optional(Schema.String),
   }).annotate({ identifier: "PscConfig" });
 
@@ -378,7 +378,7 @@ export interface PerformanceLimits {
 }
 
 export const PerformanceLimits: Schema.Schema<PerformanceLimits> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxReadThroughputBps: Schema.optional(Schema.String),
     maxWriteThroughputBps: Schema.optional(Schema.String),
     maxWriteIops: Schema.optional(Schema.String),
@@ -409,7 +409,7 @@ export interface NetworkConfig {
 }
 
 export const NetworkConfig: Schema.Schema<NetworkConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     modes: Schema.optional(Schema.Array(Schema.String)),
     network: Schema.optional(Schema.String),
     ipAddresses: Schema.optional(Schema.Array(Schema.String)),
@@ -421,7 +421,7 @@ export const NetworkConfig: Schema.Schema<NetworkConfig> =
 export interface PauseReplicaRequest {}
 
 export const PauseReplicaRequest: Schema.Schema<PauseReplicaRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "PauseReplicaRequest",
   });
 
@@ -431,7 +431,7 @@ export interface RevertInstanceRequest {
 }
 
 export const RevertInstanceRequest: Schema.Schema<RevertInstanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetSnapshotId: Schema.optional(Schema.String),
   }).annotate({ identifier: "RevertInstanceRequest" });
 
@@ -441,7 +441,7 @@ export interface FixedIOPS {
 }
 
 export const FixedIOPS: Schema.Schema<FixedIOPS> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxIops: Schema.optional(Schema.String),
   }).annotate({ identifier: "FixedIOPS" });
 
@@ -502,7 +502,7 @@ export interface Backup {
 }
 
 export const Backup: Schema.Schema<Backup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     description: Schema.optional(Schema.String),
     storageBytes: Schema.optional(Schema.String),
@@ -531,7 +531,7 @@ export interface Status {
 }
 
 export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
     details: Schema.optional(
@@ -553,7 +553,7 @@ export interface Operation {
 }
 
 export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     done: Schema.optional(Schema.Boolean),
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -571,7 +571,7 @@ export interface ListOperationsResponse {
 }
 
 export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(Operation)),
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -608,7 +608,7 @@ export interface ReplicaConfig {
 }
 
 export const ReplicaConfig: Schema.Schema<ReplicaConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     stateReasons: Schema.optional(Schema.Array(Schema.String)),
     lastActiveSyncTime: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -624,7 +624,7 @@ export interface Replication {
 }
 
 export const Replication: Schema.Schema<Replication> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     role: Schema.optional(Schema.String),
     replicas: Schema.optional(Schema.Array(ReplicaConfig)),
   }).annotate({ identifier: "Replication" });
@@ -643,7 +643,7 @@ export interface GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSched
 }
 
 export const GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule: Schema.Schema<GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     rolloutManagementPolicy: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -662,7 +662,7 @@ export interface GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility {
 }
 
 export const GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility: Schema.Schema<GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     eligible: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.String),
   }).annotate({
@@ -678,7 +678,7 @@ export interface GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibi
 }
 
 export const GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility: Schema.Schema<GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     eligibilities: Schema.optional(
       Schema.Record(
         Schema.String,
@@ -700,7 +700,7 @@ export interface GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata 
 }
 
 export const GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata: Schema.Schema<GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nodeId: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     perSliEligibility: Schema.optional(
@@ -721,7 +721,7 @@ export interface GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
 }
 
 export const GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata: Schema.Schema<GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tier: Schema.optional(Schema.String),
     nodes: Schema.optional(
       Schema.Array(
@@ -741,7 +741,7 @@ export interface GoogleCloudSaasacceleratorManagementProvidersV1NotificationPara
 }
 
 export const GoogleCloudSaasacceleratorManagementProvidersV1NotificationParameter: Schema.Schema<GoogleCloudSaasacceleratorManagementProvidersV1NotificationParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
     identifier:
@@ -758,7 +758,7 @@ export interface GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSetti
 }
 
 export const GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings: Schema.Schema<GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maintenancePolicies: Schema.optional(
       Schema.Record(Schema.String, MaintenancePolicy),
     ),
@@ -823,7 +823,7 @@ export interface GoogleCloudSaasacceleratorManagementProvidersV1Instance {
 }
 
 export const GoogleCloudSaasacceleratorManagementProvidersV1Instance: Schema.Schema<GoogleCloudSaasacceleratorManagementProvidersV1Instance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sloMetadata: Schema.optional(
       GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata,
     ),
@@ -878,7 +878,7 @@ export interface RestoreInstanceRequest {
 }
 
 export const RestoreInstanceRequest: Schema.Schema<RestoreInstanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fileShare: Schema.optional(Schema.String),
     sourceBackup: Schema.optional(Schema.String),
   }).annotate({ identifier: "RestoreInstanceRequest" });
@@ -889,7 +889,7 @@ export interface IOPSPerTB {
 }
 
 export const IOPSPerTB: Schema.Schema<IOPSPerTB> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxIopsPerTb: Schema.optional(Schema.String),
   }).annotate({ identifier: "IOPSPerTB" });
 
@@ -899,7 +899,7 @@ export interface DirectoryServicesConfig {
 }
 
 export const DirectoryServicesConfig: Schema.Schema<DirectoryServicesConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ldap: Schema.optional(LdapConfig),
   }).annotate({ identifier: "DirectoryServicesConfig" });
 
@@ -911,7 +911,7 @@ export interface PerformanceConfig {
 }
 
 export const PerformanceConfig: Schema.Schema<PerformanceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     iopsPerTb: Schema.optional(IOPSPerTB),
     fixedIops: Schema.optional(FixedIOPS),
   }).annotate({ identifier: "PerformanceConfig" });
@@ -1001,7 +1001,7 @@ export interface Instance {
 }
 
 export const Instance: Schema.Schema<Instance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     directoryServices: Schema.optional(DirectoryServicesConfig),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -1033,7 +1033,7 @@ export const Instance: Schema.Schema<Instance> =
 export interface Empty {}
 
 export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -1043,7 +1043,7 @@ export interface PromoteReplicaRequest {
 }
 
 export const PromoteReplicaRequest: Schema.Schema<PromoteReplicaRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     peerInstance: Schema.optional(Schema.String),
   }).annotate({ identifier: "PromoteReplicaRequest" });
 
@@ -1070,7 +1070,7 @@ export interface Snapshot {
 }
 
 export const Snapshot: Schema.Schema<Snapshot> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     filesystemUsedBytes: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -1090,7 +1090,7 @@ export interface ListSnapshotsResponse {
 }
 
 export const ListSnapshotsResponse: Schema.Schema<ListSnapshotsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     snapshots: Schema.optional(Schema.Array(Snapshot)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -1106,7 +1106,7 @@ export interface ListBackupsResponse {
 }
 
 export const ListBackupsResponse: Schema.Schema<ListBackupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
     backups: Schema.optional(Schema.Array(Backup)),
@@ -1122,7 +1122,7 @@ export interface ListInstancesResponse {
 }
 
 export const ListInstancesResponse: Schema.Schema<ListInstancesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
     instances: Schema.optional(Schema.Array(Instance)),
@@ -1196,7 +1196,7 @@ export interface ListProjectsLocationsRequest {
 }
 
 export const ListProjectsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     name: Schema.String.pipe(T.HttpPath("name")),
@@ -1211,7 +1211,7 @@ export const ListProjectsLocationsRequest =
 
 export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
+  /*@__PURE__*/ ListLocationsResponse;
 
 export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1221,7 +1221,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsResponse,
   ListProjectsLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
   errors: [NotFound, Forbidden],
@@ -1237,7 +1237,7 @@ export interface GetProjectsLocationsRequest {
 }
 
 export const GetProjectsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -1245,8 +1245,7 @@ export const GetProjectsLocationsRequest =
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = Location;
-export const GetProjectsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Location;
+export const GetProjectsLocationsResponse = /*@__PURE__*/ Location;
 
 export type GetProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1256,7 +1255,7 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsResponse,
   GetProjectsLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRequest,
   output: GetProjectsLocationsResponse,
   errors: [NotFound, Forbidden],
@@ -1270,7 +1269,7 @@ export interface CancelProjectsLocationsOperationsRequest {
 }
 
 export const CancelProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1279,8 +1278,7 @@ export const CancelProjectsLocationsOperationsRequest =
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
 export type CancelProjectsLocationsOperationsResponse = Empty;
-export const CancelProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const CancelProjectsLocationsOperationsResponse = /*@__PURE__*/ Empty;
 
 export type CancelProjectsLocationsOperationsError =
   | DefaultErrors
@@ -1295,7 +1293,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsResponse,
   CancelProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsOperationsRequest,
   output: CancelProjectsLocationsOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1315,7 +1313,7 @@ export interface ListProjectsLocationsOperationsRequest {
 }
 
 export const ListProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     name: Schema.String.pipe(T.HttpPath("name")),
@@ -1330,7 +1328,7 @@ export const ListProjectsLocationsOperationsRequest =
 
 export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
+  /*@__PURE__*/ ListOperationsResponse;
 
 export type ListProjectsLocationsOperationsError =
   | DefaultErrors
@@ -1343,7 +1341,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsResponse,
   ListProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListProjectsLocationsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -1359,7 +1357,7 @@ export interface GetProjectsLocationsOperationsRequest {
 }
 
 export const GetProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -1367,8 +1365,7 @@ export const GetProjectsLocationsOperationsRequest =
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
 export type GetProjectsLocationsOperationsResponse = Operation;
-export const GetProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const GetProjectsLocationsOperationsResponse = /*@__PURE__*/ Operation;
 
 export type GetProjectsLocationsOperationsError =
   | DefaultErrors
@@ -1381,7 +1378,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsResponse,
   GetProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -1393,7 +1390,7 @@ export interface DeleteProjectsLocationsOperationsRequest {
 }
 
 export const DeleteProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -1401,8 +1398,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 export type DeleteProjectsLocationsOperationsResponse = Empty;
-export const DeleteProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteProjectsLocationsOperationsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsOperationsError =
   | DefaultErrors
@@ -1417,7 +1413,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsResponse,
   DeleteProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsOperationsRequest,
   output: DeleteProjectsLocationsOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1433,7 +1429,7 @@ export interface PatchProjectsLocationsBackupsRequest {
 }
 
 export const PatchProjectsLocationsBackupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Backup).pipe(T.HttpBody()),
@@ -1443,8 +1439,7 @@ export const PatchProjectsLocationsBackupsRequest =
   ) as unknown as Schema.Schema<PatchProjectsLocationsBackupsRequest>;
 
 export type PatchProjectsLocationsBackupsResponse = Operation;
-export const PatchProjectsLocationsBackupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const PatchProjectsLocationsBackupsResponse = /*@__PURE__*/ Operation;
 
 export type PatchProjectsLocationsBackupsError =
   | DefaultErrors
@@ -1459,7 +1454,7 @@ export const patchProjectsLocationsBackups: API.OperationMethod<
   PatchProjectsLocationsBackupsResponse,
   PatchProjectsLocationsBackupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsBackupsRequest,
   output: PatchProjectsLocationsBackupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1479,7 +1474,7 @@ export interface ListProjectsLocationsBackupsRequest {
 }
 
 export const ListProjectsLocationsBackupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
@@ -1492,7 +1487,7 @@ export const ListProjectsLocationsBackupsRequest =
 
 export type ListProjectsLocationsBackupsResponse = ListBackupsResponse;
 export const ListProjectsLocationsBackupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListBackupsResponse;
+  /*@__PURE__*/ ListBackupsResponse;
 
 export type ListProjectsLocationsBackupsError =
   | DefaultErrors
@@ -1505,7 +1500,7 @@ export const listProjectsLocationsBackups: API.PaginatedOperationMethod<
   ListProjectsLocationsBackupsResponse,
   ListProjectsLocationsBackupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsBackupsRequest,
   output: ListProjectsLocationsBackupsResponse,
   errors: [NotFound, Forbidden],
@@ -1525,7 +1520,7 @@ export interface CreateProjectsLocationsBackupsRequest {
 }
 
 export const CreateProjectsLocationsBackupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     backupId: Schema.optional(Schema.String).pipe(T.HttpQuery("backupId")),
     body: Schema.optional(Backup).pipe(T.HttpBody()),
@@ -1535,8 +1530,7 @@ export const CreateProjectsLocationsBackupsRequest =
   ) as unknown as Schema.Schema<CreateProjectsLocationsBackupsRequest>;
 
 export type CreateProjectsLocationsBackupsResponse = Operation;
-export const CreateProjectsLocationsBackupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const CreateProjectsLocationsBackupsResponse = /*@__PURE__*/ Operation;
 
 export type CreateProjectsLocationsBackupsError =
   | DefaultErrors
@@ -1551,7 +1545,7 @@ export const createProjectsLocationsBackups: API.OperationMethod<
   CreateProjectsLocationsBackupsResponse,
   CreateProjectsLocationsBackupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsBackupsRequest,
   output: CreateProjectsLocationsBackupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1563,7 +1557,7 @@ export interface GetProjectsLocationsBackupsRequest {
 }
 
 export const GetProjectsLocationsBackupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -1571,8 +1565,7 @@ export const GetProjectsLocationsBackupsRequest =
   ) as unknown as Schema.Schema<GetProjectsLocationsBackupsRequest>;
 
 export type GetProjectsLocationsBackupsResponse = Backup;
-export const GetProjectsLocationsBackupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Backup;
+export const GetProjectsLocationsBackupsResponse = /*@__PURE__*/ Backup;
 
 export type GetProjectsLocationsBackupsError =
   | DefaultErrors
@@ -1585,7 +1578,7 @@ export const getProjectsLocationsBackups: API.OperationMethod<
   GetProjectsLocationsBackupsResponse,
   GetProjectsLocationsBackupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsBackupsRequest,
   output: GetProjectsLocationsBackupsResponse,
   errors: [NotFound, Forbidden],
@@ -1597,7 +1590,7 @@ export interface DeleteProjectsLocationsBackupsRequest {
 }
 
 export const DeleteProjectsLocationsBackupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -1605,8 +1598,7 @@ export const DeleteProjectsLocationsBackupsRequest =
   ) as unknown as Schema.Schema<DeleteProjectsLocationsBackupsRequest>;
 
 export type DeleteProjectsLocationsBackupsResponse = Operation;
-export const DeleteProjectsLocationsBackupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const DeleteProjectsLocationsBackupsResponse = /*@__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsBackupsError =
   | DefaultErrors
@@ -1621,7 +1613,7 @@ export const deleteProjectsLocationsBackups: API.OperationMethod<
   DeleteProjectsLocationsBackupsResponse,
   DeleteProjectsLocationsBackupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsBackupsRequest,
   output: DeleteProjectsLocationsBackupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1635,7 +1627,7 @@ export interface RestoreProjectsLocationsInstancesRequest {
 }
 
 export const RestoreProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RestoreInstanceRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1645,7 +1637,7 @@ export const RestoreProjectsLocationsInstancesRequest =
 
 export type RestoreProjectsLocationsInstancesResponse = Operation;
 export const RestoreProjectsLocationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type RestoreProjectsLocationsInstancesError =
   | DefaultErrors
@@ -1660,7 +1652,7 @@ export const restoreProjectsLocationsInstances: API.OperationMethod<
   RestoreProjectsLocationsInstancesResponse,
   RestoreProjectsLocationsInstancesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestoreProjectsLocationsInstancesRequest,
   output: RestoreProjectsLocationsInstancesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1674,7 +1666,7 @@ export interface RevertProjectsLocationsInstancesRequest {
 }
 
 export const RevertProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RevertInstanceRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1683,8 +1675,7 @@ export const RevertProjectsLocationsInstancesRequest =
   ) as unknown as Schema.Schema<RevertProjectsLocationsInstancesRequest>;
 
 export type RevertProjectsLocationsInstancesResponse = Operation;
-export const RevertProjectsLocationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const RevertProjectsLocationsInstancesResponse = /*@__PURE__*/ Operation;
 
 export type RevertProjectsLocationsInstancesError =
   | DefaultErrors
@@ -1699,7 +1690,7 @@ export const revertProjectsLocationsInstances: API.OperationMethod<
   RevertProjectsLocationsInstancesResponse,
   RevertProjectsLocationsInstancesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RevertProjectsLocationsInstancesRequest,
   output: RevertProjectsLocationsInstancesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1713,7 +1704,7 @@ export interface PauseReplicaProjectsLocationsInstancesRequest {
 }
 
 export const PauseReplicaProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(PauseReplicaRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1723,7 +1714,7 @@ export const PauseReplicaProjectsLocationsInstancesRequest =
 
 export type PauseReplicaProjectsLocationsInstancesResponse = Operation;
 export const PauseReplicaProjectsLocationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type PauseReplicaProjectsLocationsInstancesError =
   | DefaultErrors
@@ -1738,7 +1729,7 @@ export const pauseReplicaProjectsLocationsInstances: API.OperationMethod<
   PauseReplicaProjectsLocationsInstancesResponse,
   PauseReplicaProjectsLocationsInstancesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PauseReplicaProjectsLocationsInstancesRequest,
   output: PauseReplicaProjectsLocationsInstancesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1758,7 +1749,7 @@ export interface ListProjectsLocationsInstancesRequest {
 }
 
 export const ListProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -1771,7 +1762,7 @@ export const ListProjectsLocationsInstancesRequest =
 
 export type ListProjectsLocationsInstancesResponse = ListInstancesResponse;
 export const ListProjectsLocationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListInstancesResponse;
+  /*@__PURE__*/ ListInstancesResponse;
 
 export type ListProjectsLocationsInstancesError =
   | DefaultErrors
@@ -1784,7 +1775,7 @@ export const listProjectsLocationsInstances: API.PaginatedOperationMethod<
   ListProjectsLocationsInstancesResponse,
   ListProjectsLocationsInstancesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsInstancesRequest,
   output: ListProjectsLocationsInstancesResponse,
   errors: [NotFound, Forbidden],
@@ -1800,7 +1791,7 @@ export interface GetProjectsLocationsInstancesRequest {
 }
 
 export const GetProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -1808,8 +1799,7 @@ export const GetProjectsLocationsInstancesRequest =
   ) as unknown as Schema.Schema<GetProjectsLocationsInstancesRequest>;
 
 export type GetProjectsLocationsInstancesResponse = Instance;
-export const GetProjectsLocationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Instance;
+export const GetProjectsLocationsInstancesResponse = /*@__PURE__*/ Instance;
 
 export type GetProjectsLocationsInstancesError =
   | DefaultErrors
@@ -1822,7 +1812,7 @@ export const getProjectsLocationsInstances: API.OperationMethod<
   GetProjectsLocationsInstancesResponse,
   GetProjectsLocationsInstancesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsInstancesRequest,
   output: GetProjectsLocationsInstancesResponse,
   errors: [NotFound, Forbidden],
@@ -1836,7 +1826,7 @@ export interface DeleteProjectsLocationsInstancesRequest {
 }
 
 export const DeleteProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
@@ -1845,8 +1835,7 @@ export const DeleteProjectsLocationsInstancesRequest =
   ) as unknown as Schema.Schema<DeleteProjectsLocationsInstancesRequest>;
 
 export type DeleteProjectsLocationsInstancesResponse = Operation;
-export const DeleteProjectsLocationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const DeleteProjectsLocationsInstancesResponse = /*@__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsInstancesError =
   | DefaultErrors
@@ -1861,7 +1850,7 @@ export const deleteProjectsLocationsInstances: API.OperationMethod<
   DeleteProjectsLocationsInstancesResponse,
   DeleteProjectsLocationsInstancesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsInstancesRequest,
   output: DeleteProjectsLocationsInstancesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1877,7 +1866,7 @@ export interface PatchProjectsLocationsInstancesRequest {
 }
 
 export const PatchProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Instance).pipe(T.HttpBody()),
@@ -1887,8 +1876,7 @@ export const PatchProjectsLocationsInstancesRequest =
   ) as unknown as Schema.Schema<PatchProjectsLocationsInstancesRequest>;
 
 export type PatchProjectsLocationsInstancesResponse = Operation;
-export const PatchProjectsLocationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const PatchProjectsLocationsInstancesResponse = /*@__PURE__*/ Operation;
 
 export type PatchProjectsLocationsInstancesError =
   | DefaultErrors
@@ -1903,7 +1891,7 @@ export const patchProjectsLocationsInstances: API.OperationMethod<
   PatchProjectsLocationsInstancesResponse,
   PatchProjectsLocationsInstancesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsInstancesRequest,
   output: PatchProjectsLocationsInstancesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1917,7 +1905,7 @@ export interface PromoteReplicaProjectsLocationsInstancesRequest {
 }
 
 export const PromoteReplicaProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(PromoteReplicaRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1931,7 +1919,7 @@ export const PromoteReplicaProjectsLocationsInstancesRequest =
 
 export type PromoteReplicaProjectsLocationsInstancesResponse = Operation;
 export const PromoteReplicaProjectsLocationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type PromoteReplicaProjectsLocationsInstancesError =
   | DefaultErrors
@@ -1946,7 +1934,7 @@ export const promoteReplicaProjectsLocationsInstances: API.OperationMethod<
   PromoteReplicaProjectsLocationsInstancesResponse,
   PromoteReplicaProjectsLocationsInstancesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PromoteReplicaProjectsLocationsInstancesRequest,
   output: PromoteReplicaProjectsLocationsInstancesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1960,7 +1948,7 @@ export interface ResumeReplicaProjectsLocationsInstancesRequest {
 }
 
 export const ResumeReplicaProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ResumeReplicaRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1970,7 +1958,7 @@ export const ResumeReplicaProjectsLocationsInstancesRequest =
 
 export type ResumeReplicaProjectsLocationsInstancesResponse = Operation;
 export const ResumeReplicaProjectsLocationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type ResumeReplicaProjectsLocationsInstancesError =
   | DefaultErrors
@@ -1985,7 +1973,7 @@ export const resumeReplicaProjectsLocationsInstances: API.OperationMethod<
   ResumeReplicaProjectsLocationsInstancesResponse,
   ResumeReplicaProjectsLocationsInstancesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResumeReplicaProjectsLocationsInstancesRequest,
   output: ResumeReplicaProjectsLocationsInstancesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2001,7 +1989,7 @@ export interface CreateProjectsLocationsInstancesRequest {
 }
 
 export const CreateProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     instanceId: Schema.optional(Schema.String).pipe(T.HttpQuery("instanceId")),
     body: Schema.optional(Instance).pipe(T.HttpBody()),
@@ -2011,8 +1999,7 @@ export const CreateProjectsLocationsInstancesRequest =
   ) as unknown as Schema.Schema<CreateProjectsLocationsInstancesRequest>;
 
 export type CreateProjectsLocationsInstancesResponse = Operation;
-export const CreateProjectsLocationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const CreateProjectsLocationsInstancesResponse = /*@__PURE__*/ Operation;
 
 export type CreateProjectsLocationsInstancesError =
   | DefaultErrors
@@ -2027,7 +2014,7 @@ export const createProjectsLocationsInstances: API.OperationMethod<
   CreateProjectsLocationsInstancesResponse,
   CreateProjectsLocationsInstancesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsInstancesRequest,
   output: CreateProjectsLocationsInstancesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2043,7 +2030,7 @@ export interface PatchProjectsLocationsInstancesSnapshotsRequest {
 }
 
 export const PatchProjectsLocationsInstancesSnapshotsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Snapshot).pipe(T.HttpBody()),
@@ -2054,7 +2041,7 @@ export const PatchProjectsLocationsInstancesSnapshotsRequest =
 
 export type PatchProjectsLocationsInstancesSnapshotsResponse = Operation;
 export const PatchProjectsLocationsInstancesSnapshotsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type PatchProjectsLocationsInstancesSnapshotsError =
   | DefaultErrors
@@ -2069,7 +2056,7 @@ export const patchProjectsLocationsInstancesSnapshots: API.OperationMethod<
   PatchProjectsLocationsInstancesSnapshotsResponse,
   PatchProjectsLocationsInstancesSnapshotsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsInstancesSnapshotsRequest,
   output: PatchProjectsLocationsInstancesSnapshotsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2091,7 +2078,7 @@ export interface ListProjectsLocationsInstancesSnapshotsRequest {
 }
 
 export const ListProjectsLocationsInstancesSnapshotsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
@@ -2108,7 +2095,7 @@ export const ListProjectsLocationsInstancesSnapshotsRequest =
 export type ListProjectsLocationsInstancesSnapshotsResponse =
   ListSnapshotsResponse;
 export const ListProjectsLocationsInstancesSnapshotsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListSnapshotsResponse;
+  /*@__PURE__*/ ListSnapshotsResponse;
 
 export type ListProjectsLocationsInstancesSnapshotsError =
   | DefaultErrors
@@ -2121,7 +2108,7 @@ export const listProjectsLocationsInstancesSnapshots: API.PaginatedOperationMeth
   ListProjectsLocationsInstancesSnapshotsResponse,
   ListProjectsLocationsInstancesSnapshotsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsInstancesSnapshotsRequest,
   output: ListProjectsLocationsInstancesSnapshotsResponse,
   errors: [NotFound, Forbidden],
@@ -2141,7 +2128,7 @@ export interface CreateProjectsLocationsInstancesSnapshotsRequest {
 }
 
 export const CreateProjectsLocationsInstancesSnapshotsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     snapshotId: Schema.optional(Schema.String).pipe(T.HttpQuery("snapshotId")),
     body: Schema.optional(Snapshot).pipe(T.HttpBody()),
@@ -2152,7 +2139,7 @@ export const CreateProjectsLocationsInstancesSnapshotsRequest =
 
 export type CreateProjectsLocationsInstancesSnapshotsResponse = Operation;
 export const CreateProjectsLocationsInstancesSnapshotsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type CreateProjectsLocationsInstancesSnapshotsError =
   | DefaultErrors
@@ -2167,7 +2154,7 @@ export const createProjectsLocationsInstancesSnapshots: API.OperationMethod<
   CreateProjectsLocationsInstancesSnapshotsResponse,
   CreateProjectsLocationsInstancesSnapshotsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsInstancesSnapshotsRequest,
   output: CreateProjectsLocationsInstancesSnapshotsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2179,7 +2166,7 @@ export interface GetProjectsLocationsInstancesSnapshotsRequest {
 }
 
 export const GetProjectsLocationsInstancesSnapshotsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -2188,7 +2175,7 @@ export const GetProjectsLocationsInstancesSnapshotsRequest =
 
 export type GetProjectsLocationsInstancesSnapshotsResponse = Snapshot;
 export const GetProjectsLocationsInstancesSnapshotsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Snapshot;
+  /*@__PURE__*/ Snapshot;
 
 export type GetProjectsLocationsInstancesSnapshotsError =
   | DefaultErrors
@@ -2201,7 +2188,7 @@ export const getProjectsLocationsInstancesSnapshots: API.OperationMethod<
   GetProjectsLocationsInstancesSnapshotsResponse,
   GetProjectsLocationsInstancesSnapshotsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsInstancesSnapshotsRequest,
   output: GetProjectsLocationsInstancesSnapshotsResponse,
   errors: [NotFound, Forbidden],
@@ -2213,7 +2200,7 @@ export interface DeleteProjectsLocationsInstancesSnapshotsRequest {
 }
 
 export const DeleteProjectsLocationsInstancesSnapshotsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -2222,7 +2209,7 @@ export const DeleteProjectsLocationsInstancesSnapshotsRequest =
 
 export type DeleteProjectsLocationsInstancesSnapshotsResponse = Operation;
 export const DeleteProjectsLocationsInstancesSnapshotsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsInstancesSnapshotsError =
   | DefaultErrors
@@ -2237,7 +2224,7 @@ export const deleteProjectsLocationsInstancesSnapshots: API.OperationMethod<
   DeleteProjectsLocationsInstancesSnapshotsResponse,
   DeleteProjectsLocationsInstancesSnapshotsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsInstancesSnapshotsRequest,
   output: DeleteProjectsLocationsInstancesSnapshotsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

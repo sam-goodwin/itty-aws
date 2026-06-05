@@ -6,12 +6,12 @@
  */
 import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
-import * as T from "../traits.ts";
 import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
+import * as T from "../traits.ts";
 
 // Input Schema
 export const CreateBatchV1NamespacedCronJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -25,7 +25,7 @@ export type CreateBatchV1NamespacedCronJobInput =
 
 // Output Schema
 export const CreateBatchV1NamespacedCronJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -2743,14 +2743,14 @@ export type CreateBatchV1NamespacedCronJobOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createBatchV1NamespacedCronJob =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateBatchV1NamespacedCronJobInput,
     outputSchema: CreateBatchV1NamespacedCronJobOutput,
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateBatchV1NamespacedJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -2764,7 +2764,7 @@ export type CreateBatchV1NamespacedJobInput =
 
 // Output Schema
 export const CreateBatchV1NamespacedJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -5324,16 +5324,14 @@ export type CreateBatchV1NamespacedJobOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createBatchV1NamespacedJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateBatchV1NamespacedJobInput,
-    outputSchema: CreateBatchV1NamespacedJobOutput,
-    errors: [Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const createBatchV1NamespacedJob = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateBatchV1NamespacedJobInput,
+  outputSchema: CreateBatchV1NamespacedJobOutput,
+  errors: [Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const DeleteBatchV1CollectionNamespacedCronJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -5346,7 +5344,7 @@ export type DeleteBatchV1CollectionNamespacedCronJobInput =
 
 // Output Schema
 export const DeleteBatchV1CollectionNamespacedCronJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -5395,13 +5393,13 @@ export type DeleteBatchV1CollectionNamespacedCronJobOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteBatchV1CollectionNamespacedCronJob =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteBatchV1CollectionNamespacedCronJobInput,
     outputSchema: DeleteBatchV1CollectionNamespacedCronJobOutput,
   }));
 // Input Schema
 export const DeleteBatchV1CollectionNamespacedJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -5414,7 +5412,7 @@ export type DeleteBatchV1CollectionNamespacedJobInput =
 
 // Output Schema
 export const DeleteBatchV1CollectionNamespacedJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -5463,13 +5461,13 @@ export type DeleteBatchV1CollectionNamespacedJobOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteBatchV1CollectionNamespacedJob =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteBatchV1CollectionNamespacedJobInput,
     outputSchema: DeleteBatchV1CollectionNamespacedJobOutput,
   }));
 // Input Schema
 export const DeleteBatchV1NamespacedCronJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -5482,7 +5480,7 @@ export type DeleteBatchV1NamespacedCronJobInput =
 
 // Output Schema
 export const DeleteBatchV1NamespacedCronJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -5531,14 +5529,14 @@ export type DeleteBatchV1NamespacedCronJobOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
 export const deleteBatchV1NamespacedCronJob =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteBatchV1NamespacedCronJobInput,
     outputSchema: DeleteBatchV1NamespacedCronJobOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteBatchV1NamespacedJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -5551,7 +5549,7 @@ export type DeleteBatchV1NamespacedJobInput =
 
 // Output Schema
 export const DeleteBatchV1NamespacedJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -5599,60 +5597,56 @@ export type DeleteBatchV1NamespacedJobOutput =
  *
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  */
-export const deleteBatchV1NamespacedJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteBatchV1NamespacedJobInput,
-    outputSchema: DeleteBatchV1NamespacedJobOutput,
-    errors: [NotFound, Conflict] as const,
-  }),
-);
+export const deleteBatchV1NamespacedJob = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteBatchV1NamespacedJobInput,
+  outputSchema: DeleteBatchV1NamespacedJobOutput,
+  errors: [NotFound, Conflict] as const,
+}));
 // Input Schema
-export const GetBatchAPIGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(T.Http({ method: "GET", path: "/apis/batch/" }));
+export const GetBatchAPIGroupInput = /*@__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({ method: "GET", path: "/apis/batch/" }),
+);
 export type GetBatchAPIGroupInput = typeof GetBatchAPIGroupInput.Type;
 
 // Output Schema
-export const GetBatchAPIGroupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    apiVersion: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    name: Schema.String,
-    preferredVersion: Schema.optional(
+export const GetBatchAPIGroupOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  name: Schema.String,
+  preferredVersion: Schema.optional(
+    Schema.Struct({
+      groupVersion: Schema.String,
+      version: Schema.String,
+    }),
+  ),
+  serverAddressByClientCIDRs: Schema.optional(
+    Schema.Array(
       Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
+        clientCIDR: Schema.String,
+        serverAddress: Schema.String,
       }),
     ),
-    serverAddressByClientCIDRs: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          clientCIDR: Schema.String,
-          serverAddress: Schema.String,
-        }),
-      ),
-    ),
-    versions: Schema.Array(
-      Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
-      }),
-    ),
-  },
-);
+  ),
+  versions: Schema.Array(
+    Schema.Struct({
+      groupVersion: Schema.String,
+      version: Schema.String,
+    }),
+  ),
+});
 export type GetBatchAPIGroupOutput = typeof GetBatchAPIGroupOutput.Type;
 
 // The operation
 /**
  * get information of a group
  */
-export const getBatchAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getBatchAPIGroup = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetBatchAPIGroupInput,
   outputSchema: GetBatchAPIGroupOutput,
 }));
 // Input Schema
 export const GetBatchV1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/batch/v1/" }),
   );
 export type GetBatchV1APIResourcesInput =
@@ -5660,7 +5654,7 @@ export type GetBatchV1APIResourcesInput =
 
 // Output Schema
 export const GetBatchV1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -5686,15 +5680,13 @@ export type GetBatchV1APIResourcesOutput =
 /**
  * get available resources
  */
-export const getBatchV1APIResources = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetBatchV1APIResourcesInput,
-    outputSchema: GetBatchV1APIResourcesOutput,
-  }),
-);
+export const getBatchV1APIResources = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetBatchV1APIResourcesInput,
+  outputSchema: GetBatchV1APIResourcesOutput,
+}));
 // Input Schema
 export const ListBatchV1CronJobForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/batch/v1/cronjobs" }),
   );
 export type ListBatchV1CronJobForAllNamespacesInput =
@@ -5702,7 +5694,7 @@ export type ListBatchV1CronJobForAllNamespacesInput =
 
 // Output Schema
 export const ListBatchV1CronJobForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -8599,13 +8591,13 @@ export type ListBatchV1CronJobForAllNamespacesOutput =
  * list or watch objects of kind CronJob
  */
 export const listBatchV1CronJobForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListBatchV1CronJobForAllNamespacesInput,
     outputSchema: ListBatchV1CronJobForAllNamespacesOutput,
   }));
 // Input Schema
 export const ListBatchV1JobForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/batch/v1/jobs" }),
   );
 export type ListBatchV1JobForAllNamespacesInput =
@@ -8613,7 +8605,7 @@ export type ListBatchV1JobForAllNamespacesInput =
 
 // Output Schema
 export const ListBatchV1JobForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -11304,13 +11296,13 @@ export type ListBatchV1JobForAllNamespacesOutput =
  * list or watch objects of kind Job
  */
 export const listBatchV1JobForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListBatchV1JobForAllNamespacesInput,
     outputSchema: ListBatchV1JobForAllNamespacesOutput,
   }));
 // Input Schema
 export const ListBatchV1NamespacedCronJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/batch/v1/namespaces/{namespace}/cronjobs",
@@ -11321,7 +11313,7 @@ export type ListBatchV1NamespacedCronJobInput =
 
 // Output Schema
 export const ListBatchV1NamespacedCronJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -14218,13 +14210,13 @@ export type ListBatchV1NamespacedCronJobOutput =
  * list or watch objects of kind CronJob
  */
 export const listBatchV1NamespacedCronJob =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListBatchV1NamespacedCronJobInput,
     outputSchema: ListBatchV1NamespacedCronJobOutput,
   }));
 // Input Schema
 export const ListBatchV1NamespacedJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/batch/v1/namespaces/{namespace}/jobs",
@@ -14235,7 +14227,7 @@ export type ListBatchV1NamespacedJobInput =
 
 // Output Schema
 export const ListBatchV1NamespacedJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -16925,15 +16917,13 @@ export type ListBatchV1NamespacedJobOutput =
 /**
  * list or watch objects of kind Job
  */
-export const listBatchV1NamespacedJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListBatchV1NamespacedJobInput,
-    outputSchema: ListBatchV1NamespacedJobOutput,
-  }),
-);
+export const listBatchV1NamespacedJob = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListBatchV1NamespacedJobInput,
+  outputSchema: ListBatchV1NamespacedJobOutput,
+}));
 // Input Schema
 export const PatchBatchV1NamespacedCronJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -16947,7 +16937,7 @@ export type PatchBatchV1NamespacedCronJobInput =
 
 // Output Schema
 export const PatchBatchV1NamespacedCronJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -19665,14 +19655,14 @@ export type PatchBatchV1NamespacedCronJobOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchBatchV1NamespacedCronJob =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchBatchV1NamespacedCronJobInput,
     outputSchema: PatchBatchV1NamespacedCronJobOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchBatchV1NamespacedCronJobStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -19686,7 +19676,7 @@ export type PatchBatchV1NamespacedCronJobStatusInput =
 
 // Output Schema
 export const PatchBatchV1NamespacedCronJobStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -22404,14 +22394,14 @@ export type PatchBatchV1NamespacedCronJobStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchBatchV1NamespacedCronJobStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchBatchV1NamespacedCronJobStatusInput,
     outputSchema: PatchBatchV1NamespacedCronJobStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchBatchV1NamespacedJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -22425,7 +22415,7 @@ export type PatchBatchV1NamespacedJobInput =
 
 // Output Schema
 export const PatchBatchV1NamespacedJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -24985,16 +24975,14 @@ export type PatchBatchV1NamespacedJobOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const patchBatchV1NamespacedJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PatchBatchV1NamespacedJobInput,
-    outputSchema: PatchBatchV1NamespacedJobOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const patchBatchV1NamespacedJob = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchBatchV1NamespacedJobInput,
+  outputSchema: PatchBatchV1NamespacedJobOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const PatchBatchV1NamespacedJobStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -25008,7 +24996,7 @@ export type PatchBatchV1NamespacedJobStatusInput =
 
 // Output Schema
 export const PatchBatchV1NamespacedJobStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -27569,14 +27557,14 @@ export type PatchBatchV1NamespacedJobStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const patchBatchV1NamespacedJobStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchBatchV1NamespacedJobStatusInput,
     outputSchema: PatchBatchV1NamespacedJobStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReadBatchV1NamespacedCronJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/batch/v1/namespaces/{namespace}/cronjobs/{name}",
@@ -27587,7 +27575,7 @@ export type ReadBatchV1NamespacedCronJobInput =
 
 // Output Schema
 export const ReadBatchV1NamespacedCronJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -30302,14 +30290,14 @@ export type ReadBatchV1NamespacedCronJobOutput =
  * read the specified CronJob
  */
 export const readBatchV1NamespacedCronJob =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadBatchV1NamespacedCronJobInput,
     outputSchema: ReadBatchV1NamespacedCronJobOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadBatchV1NamespacedCronJobStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/batch/v1/namespaces/{namespace}/cronjobs/{name}/status",
@@ -30320,7 +30308,7 @@ export type ReadBatchV1NamespacedCronJobStatusInput =
 
 // Output Schema
 export const ReadBatchV1NamespacedCronJobStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -33035,14 +33023,14 @@ export type ReadBatchV1NamespacedCronJobStatusOutput =
  * read status of the specified CronJob
  */
 export const readBatchV1NamespacedCronJobStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadBatchV1NamespacedCronJobStatusInput,
     outputSchema: ReadBatchV1NamespacedCronJobStatusOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadBatchV1NamespacedJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/batch/v1/namespaces/{namespace}/jobs/{name}",
@@ -33053,7 +33041,7 @@ export type ReadBatchV1NamespacedJobInput =
 
 // Output Schema
 export const ReadBatchV1NamespacedJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -35610,16 +35598,14 @@ export type ReadBatchV1NamespacedJobOutput =
 /**
  * read the specified Job
  */
-export const readBatchV1NamespacedJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReadBatchV1NamespacedJobInput,
-    outputSchema: ReadBatchV1NamespacedJobOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const readBatchV1NamespacedJob = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadBatchV1NamespacedJobInput,
+  outputSchema: ReadBatchV1NamespacedJobOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export const ReadBatchV1NamespacedJobStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/batch/v1/namespaces/{namespace}/jobs/{name}/status",
@@ -35630,7 +35616,7 @@ export type ReadBatchV1NamespacedJobStatusInput =
 
 // Output Schema
 export const ReadBatchV1NamespacedJobStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -38188,14 +38174,14 @@ export type ReadBatchV1NamespacedJobStatusOutput =
  * read status of the specified Job
  */
 export const readBatchV1NamespacedJobStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadBatchV1NamespacedJobStatusInput,
     outputSchema: ReadBatchV1NamespacedJobStatusOutput,
     errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReplaceBatchV1NamespacedCronJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -38209,7 +38195,7 @@ export type ReplaceBatchV1NamespacedCronJobInput =
 
 // Output Schema
 export const ReplaceBatchV1NamespacedCronJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -40927,14 +40913,14 @@ export type ReplaceBatchV1NamespacedCronJobOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceBatchV1NamespacedCronJob =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceBatchV1NamespacedCronJobInput,
     outputSchema: ReplaceBatchV1NamespacedCronJobOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceBatchV1NamespacedCronJobStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -40948,7 +40934,7 @@ export type ReplaceBatchV1NamespacedCronJobStatusInput =
 
 // Output Schema
 export const ReplaceBatchV1NamespacedCronJobStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -43666,14 +43652,14 @@ export type ReplaceBatchV1NamespacedCronJobStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceBatchV1NamespacedCronJobStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceBatchV1NamespacedCronJobStatusInput,
     outputSchema: ReplaceBatchV1NamespacedCronJobStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceBatchV1NamespacedJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -43687,7 +43673,7 @@ export type ReplaceBatchV1NamespacedJobInput =
 
 // Output Schema
 export const ReplaceBatchV1NamespacedJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -46247,16 +46233,14 @@ export type ReplaceBatchV1NamespacedJobOutput =
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceBatchV1NamespacedJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplaceBatchV1NamespacedJobInput,
-    outputSchema: ReplaceBatchV1NamespacedJobOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const replaceBatchV1NamespacedJob = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplaceBatchV1NamespacedJobInput,
+  outputSchema: ReplaceBatchV1NamespacedJobOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export const ReplaceBatchV1NamespacedJobStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
   }).pipe(
@@ -46270,7 +46254,7 @@ export type ReplaceBatchV1NamespacedJobStatusInput =
 
 // Output Schema
 export const ReplaceBatchV1NamespacedJobStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -48831,14 +48815,14 @@ export type ReplaceBatchV1NamespacedJobStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceBatchV1NamespacedJobStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceBatchV1NamespacedJobStatusInput,
     outputSchema: ReplaceBatchV1NamespacedJobStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const WatchBatchV1CronJobListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/batch/v1/watch/cronjobs" }),
   );
 export type WatchBatchV1CronJobListForAllNamespacesInput =
@@ -48846,7 +48830,7 @@ export type WatchBatchV1CronJobListForAllNamespacesInput =
 
 // Output Schema
 export const WatchBatchV1CronJobListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -48858,13 +48842,13 @@ export type WatchBatchV1CronJobListForAllNamespacesOutput =
  * watch individual changes to a list of CronJob. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchBatchV1CronJobListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchBatchV1CronJobListForAllNamespacesInput,
     outputSchema: WatchBatchV1CronJobListForAllNamespacesOutput,
   }));
 // Input Schema
 export const WatchBatchV1JobListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/batch/v1/watch/jobs" }),
   );
 export type WatchBatchV1JobListForAllNamespacesInput =
@@ -48872,7 +48856,7 @@ export type WatchBatchV1JobListForAllNamespacesInput =
 
 // Output Schema
 export const WatchBatchV1JobListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -48884,13 +48868,13 @@ export type WatchBatchV1JobListForAllNamespacesOutput =
  * watch individual changes to a list of Job. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchBatchV1JobListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchBatchV1JobListForAllNamespacesInput,
     outputSchema: WatchBatchV1JobListForAllNamespacesOutput,
   }));
 // Input Schema
 export const WatchBatchV1NamespacedCronJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/batch/v1/watch/namespaces/{namespace}/cronjobs/{name}",
@@ -48901,7 +48885,7 @@ export type WatchBatchV1NamespacedCronJobInput =
 
 // Output Schema
 export const WatchBatchV1NamespacedCronJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -48913,13 +48897,13 @@ export type WatchBatchV1NamespacedCronJobOutput =
  * watch changes to an object of kind CronJob. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
 export const watchBatchV1NamespacedCronJob =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchBatchV1NamespacedCronJobInput,
     outputSchema: WatchBatchV1NamespacedCronJobOutput,
   }));
 // Input Schema
 export const WatchBatchV1NamespacedCronJobListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/batch/v1/watch/namespaces/{namespace}/cronjobs",
@@ -48930,7 +48914,7 @@ export type WatchBatchV1NamespacedCronJobListInput =
 
 // Output Schema
 export const WatchBatchV1NamespacedCronJobListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -48942,13 +48926,13 @@ export type WatchBatchV1NamespacedCronJobListOutput =
  * watch individual changes to a list of CronJob. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchBatchV1NamespacedCronJobList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchBatchV1NamespacedCronJobListInput,
     outputSchema: WatchBatchV1NamespacedCronJobListOutput,
   }));
 // Input Schema
 export const WatchBatchV1NamespacedJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/batch/v1/watch/namespaces/{namespace}/jobs/{name}",
@@ -48959,7 +48943,7 @@ export type WatchBatchV1NamespacedJobInput =
 
 // Output Schema
 export const WatchBatchV1NamespacedJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -48970,15 +48954,13 @@ export type WatchBatchV1NamespacedJobOutput =
 /**
  * watch changes to an object of kind Job. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
  */
-export const watchBatchV1NamespacedJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WatchBatchV1NamespacedJobInput,
-    outputSchema: WatchBatchV1NamespacedJobOutput,
-  }),
-);
+export const watchBatchV1NamespacedJob = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchBatchV1NamespacedJobInput,
+  outputSchema: WatchBatchV1NamespacedJobOutput,
+}));
 // Input Schema
 export const WatchBatchV1NamespacedJobListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/batch/v1/watch/namespaces/{namespace}/jobs",
@@ -48989,7 +48971,7 @@ export type WatchBatchV1NamespacedJobListInput =
 
 // Output Schema
 export const WatchBatchV1NamespacedJobListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   });
@@ -49001,7 +48983,7 @@ export type WatchBatchV1NamespacedJobListOutput =
  * watch individual changes to a list of Job. deprecated: use the 'watch' parameter with a list operation instead.
  */
 export const watchBatchV1NamespacedJobList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchBatchV1NamespacedJobListInput,
     outputSchema: WatchBatchV1NamespacedJobListOutput,
   }));

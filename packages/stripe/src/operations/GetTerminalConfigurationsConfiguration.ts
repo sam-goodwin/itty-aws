@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const GetTerminalConfigurationsConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configuration: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -19,7 +19,7 @@ export type GetTerminalConfigurationsConfigurationInput =
 
 // Output Schema
 export const GetTerminalConfigurationsConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+  /*@__PURE__*/ Schema.Unknown;
 export type GetTerminalConfigurationsConfigurationOutput =
   typeof GetTerminalConfigurationsConfigurationOutput.Type;
 
@@ -32,7 +32,7 @@ export type GetTerminalConfigurationsConfigurationOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetTerminalConfigurationsConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetTerminalConfigurationsConfigurationInput,
     outputSchema: GetTerminalConfigurationsConfigurationOutput,
   }));

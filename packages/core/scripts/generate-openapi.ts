@@ -30,7 +30,7 @@ import { applyAllPatches } from "../src/json-patch.ts";
 const annotatePureExportConst = (definition: string) =>
   definition.replace(
     /^export const ([^=]+?)\s*=\s*/m,
-    "export const $1 = /*@__PURE__*/ /*#__PURE__*/ ",
+    "export const $1 = /*@__PURE__*/ ",
   );
 
 /** Quote a property name if it's not a valid JS identifier. */
@@ -391,8 +391,12 @@ function openApiTypeToEffectSchema(
         const mergedProp: SchemaObject = {
           ...resolved,
           ...(prop.nullable !== undefined ? { nullable: prop.nullable } : {}),
-          ...(prop["x-nullable"] !== undefined ? { "x-nullable": prop["x-nullable"] } : {}),
-          ...(prop["x-sensitive"] !== undefined ? { "x-sensitive": prop["x-sensitive"] } : {}),
+          ...(prop["x-nullable"] !== undefined
+            ? { "x-nullable": prop["x-nullable"] }
+            : {}),
+          ...(prop["x-sensitive"] !== undefined
+            ? { "x-sensitive": prop["x-sensitive"] }
+            : {}),
         };
         return openApiTypeToEffectSchema(
           mergedProp,
@@ -470,9 +474,7 @@ function openApiTypeToEffectSchema(
             ? "SensitiveOutputNullableString"
             : "SensitiveOutputString";
         } else {
-          baseSchema = nullable
-            ? "SensitiveNullableString"
-            : "SensitiveString";
+          baseSchema = nullable ? "SensitiveNullableString" : "SensitiveString";
         }
         return baseSchema; // Return early since Sensitive handles null
       }
@@ -746,7 +748,13 @@ function generateInputSchemaSwagger(
           ? { ...value, "x-sensitive": true }
           : value;
 
-        let fieldSchema = openApiTypeToEffectSchema(effectiveValue, spec, "  ", new Set(), ctx);
+        let fieldSchema = openApiTypeToEffectSchema(
+          effectiveValue,
+          spec,
+          "  ",
+          new Set(),
+          ctx,
+        );
         if (!required.has(key)) {
           fieldSchema = `Schema.optional(${fieldSchema})`;
         }
@@ -916,7 +924,13 @@ function generateInputSchema3(
             ? { ...value, "x-sensitive": true }
             : value;
 
-          let fieldSchema = openApiTypeToEffectSchema(effectiveValue, spec, "  ", new Set(), ctx);
+          let fieldSchema = openApiTypeToEffectSchema(
+            effectiveValue,
+            spec,
+            "  ",
+            new Set(),
+            ctx,
+          );
           if (!required.has(key)) {
             fieldSchema = `Schema.optional(${fieldSchema})`;
           }
@@ -926,7 +940,10 @@ function generateInputSchema3(
     }
   }
 
-  const httpTraitParts = [`method: "${method.toUpperCase()}"`, `path: "${pathTemplate}"`];
+  const httpTraitParts = [
+    `method: "${method.toUpperCase()}"`,
+    `path: "${pathTemplate}"`,
+  ];
   if (bodyContentType) {
     httpTraitParts.push(`contentType: "${bodyContentType}"`);
   }
@@ -1012,7 +1029,7 @@ function generateOutputSchema(
 
   if (!responseSchema) {
     return {
-      outputSchemaCode: `export const ${outputSchemaName} = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+      outputSchemaCode: `export const ${outputSchemaName} = /*@__PURE__*/ Schema.Void;
 export type ${outputSchemaName} = typeof ${outputSchemaName}.Type;`,
       outputSchemaName,
       sensitiveImports: {
@@ -1039,7 +1056,7 @@ export type ${outputSchemaName} = typeof ${outputSchemaName}.Type;`,
       ctx,
     );
     return {
-      outputSchemaCode: `export const ${outputSchemaName} = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(${itemSchema});
+      outputSchemaCode: `export const ${outputSchemaName} = /*@__PURE__*/ Schema.Array(${itemSchema});
 export type ${outputSchemaName} = typeof ${outputSchemaName}.Type;`,
       outputSchemaName,
       sensitiveImports: {
@@ -1060,7 +1077,7 @@ export type ${outputSchemaName} = typeof ${outputSchemaName}.Type;`,
     ctx,
   );
   return {
-    outputSchemaCode: `export const ${outputSchemaName} = /*@__PURE__*/ /*#__PURE__*/ ${schemaCode};
+    outputSchemaCode: `export const ${outputSchemaName} = /*@__PURE__*/ ${schemaCode};
 export type ${outputSchemaName} = typeof ${outputSchemaName}.Type;`,
     outputSchemaName,
     sensitiveImports: {
@@ -1104,11 +1121,11 @@ function generateOperationCode(
 
   const operationCode = jsDoc
     ? `${jsDoc}
-export const ${functionName} = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ${functionName} = /*@__PURE__*/ API.make(() => ({
   inputSchema: ${inputSchemaName},
   outputSchema: ${outputSchemaName},${errorsLine}
 }));`
-    : `export const ${functionName} = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    : `export const ${functionName} = /*@__PURE__*/ API.make(() => ({
   inputSchema: ${inputSchemaName},
   outputSchema: ${outputSchemaName},${errorsLine}
 }));`;
@@ -1253,12 +1270,15 @@ export function generateFromOpenAPI(config: GeneratorConfig): void {
             version,
             operation.responses,
           );
-          const { outputSchemaCode, outputSchemaName, sensitiveImports: outputSensitiveImports } =
-            generateOutputSchema(
-              operation.operationId,
-              responseSchema,
-              swagger,
-            );
+          const {
+            outputSchemaCode,
+            outputSchemaName,
+            sensitiveImports: outputSensitiveImports,
+          } = generateOutputSchema(
+            operation.operationId,
+            responseSchema,
+            swagger,
+          );
           const sensitiveImports = {
             usesSensitiveString:
               sensitiveCtx.usesSensitiveString ||
@@ -1369,11 +1389,10 @@ export function generateFromOpenAPI(config: GeneratorConfig): void {
           const has3xxLocation = Object.entries(operation.responses ?? {}).some(
             ([status, resp]) => {
               if (!status.startsWith("3")) return false;
-              const respHeaders = (resp as { headers?: Record<string, unknown> })
-                .headers;
-              return (
-                respHeaders !== undefined && "Location" in respHeaders
-              );
+              const respHeaders = (
+                resp as { headers?: Record<string, unknown> }
+              ).headers;
+              return respHeaders !== undefined && "Location" in respHeaders;
             },
           );
           const noFollowRedirect =
@@ -1395,8 +1414,11 @@ export function generateFromOpenAPI(config: GeneratorConfig): void {
             version,
             operation.responses,
           );
-          const { outputSchemaCode, outputSchemaName, sensitiveImports: outputSensitiveImports } =
-            generateOutputSchema(operation.operationId, responseSchema, oas);
+          const {
+            outputSchemaCode,
+            outputSchemaName,
+            sensitiveImports: outputSensitiveImports,
+          } = generateOutputSchema(operation.operationId, responseSchema, oas);
           const sensitiveImports = {
             usesSensitiveString:
               sensitiveCtx.usesSensitiveString ||
@@ -1467,8 +1489,9 @@ export function generateFromOpenAPI(config: GeneratorConfig): void {
   // Write barrel file
   const barrelPath = path.join(outputDir, "index.ts");
   const barrelContent =
-    operations.map((op) => `export * from "./${op.functionName}.ts";`).join("\n") +
-    "\n";
+    operations
+      .map((op) => `export * from "./${op.functionName}.ts";`)
+      .join("\n") + "\n";
   fs.writeFileSync(barrelPath, barrelContent);
 }
 
@@ -1487,7 +1510,14 @@ function detectPagination(
   parameters: ParameterObject3[] | undefined,
   responseSchema: SchemaObject | null,
   spec: any,
-): { mode: "cursor" | "page" | "token"; inputToken: string; outputToken: string; items: string } | undefined {
+):
+  | {
+      mode: "cursor" | "page" | "token";
+      inputToken: string;
+      outputToken: string;
+      items: string;
+    }
+  | undefined {
   if (!responseSchema) return undefined;
 
   // Resolve the response schema if it's still a $ref (callers usually
@@ -1599,7 +1629,14 @@ function buildOperationFile(
     usesSensitiveString: boolean;
     usesSensitiveNullableString: boolean;
   },
-  pagination: { mode: "cursor" | "page" | "token"; inputToken: string; outputToken: string; items: string } | undefined,
+  pagination:
+    | {
+        mode: "cursor" | "page" | "token";
+        inputToken: string;
+        outputToken: string;
+        items: string;
+      }
+    | undefined,
   config: GeneratorConfig,
 ): string {
   const clientImport = config.clientImport ?? `${config.importPrefix}/client`;
@@ -1621,11 +1658,11 @@ function buildOperationFile(
 
   const operationCode = jsDoc
     ? `${jsDoc}
-export const ${functionName} = /*@__PURE__*/ /*#__PURE__*/ API.${factory}(() => ({
+export const ${functionName} = /*@__PURE__*/ API.${factory}(() => ({
   inputSchema: ${inputSchemaName},
   outputSchema: ${outputSchemaName},${errorsLine}${paginationLine}
 }));`
-    : `export const ${functionName} = /*@__PURE__*/ /*#__PURE__*/ API.${factory}(() => ({
+    : `export const ${functionName} = /*@__PURE__*/ API.${factory}(() => ({
   inputSchema: ${inputSchemaName},
   outputSchema: ${outputSchemaName},${errorsLine}${paginationLine}
 }));`;

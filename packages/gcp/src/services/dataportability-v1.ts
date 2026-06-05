@@ -4,11 +4,11 @@
 // ==========================================================================
 
 import * as Schema from "effect/Schema";
+import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
-import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { DefaultErrors } from "../errors.ts";
-import type * as HttpClient from "effect/unstable/http/HttpClient";
+import * as T from "../traits.ts";
 
 // Service metadata
 const svc = T.Service({
@@ -25,7 +25,7 @@ const svc = T.Service({
 export interface CancelPortabilityArchiveResponse {}
 
 export const CancelPortabilityArchiveResponse: Schema.Schema<CancelPortabilityArchiveResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelPortabilityArchiveResponse",
   });
 
@@ -39,7 +39,7 @@ export interface InitiatePortabilityArchiveRequest {
 }
 
 export const InitiatePortabilityArchiveRequest: Schema.Schema<InitiatePortabilityArchiveRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     resources: Schema.optional(Schema.Array(Schema.String)),
     endTime: Schema.optional(Schema.String),
@@ -48,7 +48,7 @@ export const InitiatePortabilityArchiveRequest: Schema.Schema<InitiatePortabilit
 export interface Empty {}
 
 export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -58,7 +58,7 @@ export interface RetryPortabilityArchiveResponse {
 }
 
 export const RetryPortabilityArchiveResponse: Schema.Schema<RetryPortabilityArchiveResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     archiveJobId: Schema.optional(Schema.String),
   }).annotate({ identifier: "RetryPortabilityArchiveResponse" });
 
@@ -70,7 +70,7 @@ export interface CheckAccessTypeResponse {
 }
 
 export const CheckAccessTypeResponse: Schema.Schema<CheckAccessTypeResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     timeBasedResources: Schema.optional(Schema.Array(Schema.String)),
     oneTimeResources: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "CheckAccessTypeResponse" });
@@ -78,14 +78,14 @@ export const CheckAccessTypeResponse: Schema.Schema<CheckAccessTypeResponse> =
 export interface CancelPortabilityArchiveRequest {}
 
 export const CancelPortabilityArchiveRequest: Schema.Schema<CancelPortabilityArchiveRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelPortabilityArchiveRequest",
   });
 
 export interface RetryPortabilityArchiveRequest {}
 
 export const RetryPortabilityArchiveRequest: Schema.Schema<RetryPortabilityArchiveRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RetryPortabilityArchiveRequest",
   });
 
@@ -101,7 +101,7 @@ export interface InitiatePortabilityArchiveResponse {
 }
 
 export const InitiatePortabilityArchiveResponse: Schema.Schema<InitiatePortabilityArchiveResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     archiveJobId: Schema.optional(Schema.String),
     accessType: Schema.optional(Schema.String),
   }).annotate({ identifier: "InitiatePortabilityArchiveResponse" });
@@ -126,7 +126,7 @@ export interface PortabilityArchiveState {
 }
 
 export const PortabilityArchiveState: Schema.Schema<PortabilityArchiveState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     urls: Schema.optional(Schema.Array(Schema.String)),
     exportTime: Schema.optional(Schema.String),
@@ -137,14 +137,14 @@ export const PortabilityArchiveState: Schema.Schema<PortabilityArchiveState> =
 export interface ResetAuthorizationRequest {}
 
 export const ResetAuthorizationRequest: Schema.Schema<ResetAuthorizationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ResetAuthorizationRequest",
   });
 
 export interface CheckAccessTypeRequest {}
 
 export const CheckAccessTypeRequest: Schema.Schema<CheckAccessTypeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CheckAccessTypeRequest",
   });
 
@@ -208,7 +208,7 @@ export interface CheckAccessTypeRequest_Op {
 }
 
 export const CheckAccessTypeRequest_Op =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(CheckAccessTypeRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({ method: "POST", path: "v1/accessType:check", hasBody: true }),
@@ -216,8 +216,7 @@ export const CheckAccessTypeRequest_Op =
   ) as unknown as Schema.Schema<CheckAccessTypeRequest_Op>;
 
 export type CheckAccessTypeResponse_Op = CheckAccessTypeResponse;
-export const CheckAccessTypeResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ CheckAccessTypeResponse;
+export const CheckAccessTypeResponse_Op = /*@__PURE__*/ CheckAccessTypeResponse;
 
 export type CheckAccessTypeError =
   | DefaultErrors
@@ -232,7 +231,7 @@ export const checkAccessType: API.OperationMethod<
   CheckAccessTypeResponse_Op,
   CheckAccessTypeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CheckAccessTypeRequest_Op,
   output: CheckAccessTypeResponse_Op,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -244,7 +243,7 @@ export interface InitiatePortabilityArchiveRequest_Op {
 }
 
 export const InitiatePortabilityArchiveRequest_Op =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(InitiatePortabilityArchiveRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -258,7 +257,7 @@ export const InitiatePortabilityArchiveRequest_Op =
 export type InitiatePortabilityArchiveResponse_Op =
   InitiatePortabilityArchiveResponse;
 export const InitiatePortabilityArchiveResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ InitiatePortabilityArchiveResponse;
+  /*@__PURE__*/ InitiatePortabilityArchiveResponse;
 
 export type InitiatePortabilityArchiveError =
   | DefaultErrors
@@ -273,7 +272,7 @@ export const initiatePortabilityArchive: API.OperationMethod<
   InitiatePortabilityArchiveResponse_Op,
   InitiatePortabilityArchiveError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InitiatePortabilityArchiveRequest_Op,
   output: InitiatePortabilityArchiveResponse_Op,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -285,7 +284,7 @@ export interface GetPortabilityArchiveStateArchiveJobsRequest {
 }
 
 export const GetPortabilityArchiveStateArchiveJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -295,7 +294,7 @@ export const GetPortabilityArchiveStateArchiveJobsRequest =
 export type GetPortabilityArchiveStateArchiveJobsResponse =
   PortabilityArchiveState;
 export const GetPortabilityArchiveStateArchiveJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ PortabilityArchiveState;
+  /*@__PURE__*/ PortabilityArchiveState;
 
 export type GetPortabilityArchiveStateArchiveJobsError =
   | DefaultErrors
@@ -308,7 +307,7 @@ export const getPortabilityArchiveStateArchiveJobs: API.OperationMethod<
   GetPortabilityArchiveStateArchiveJobsResponse,
   GetPortabilityArchiveStateArchiveJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPortabilityArchiveStateArchiveJobsRequest,
   output: GetPortabilityArchiveStateArchiveJobsResponse,
   errors: [NotFound, Forbidden],
@@ -322,7 +321,7 @@ export interface RetryArchiveJobsRequest {
 }
 
 export const RetryArchiveJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RetryPortabilityArchiveRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -332,7 +331,7 @@ export const RetryArchiveJobsRequest =
 
 export type RetryArchiveJobsResponse = RetryPortabilityArchiveResponse;
 export const RetryArchiveJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RetryPortabilityArchiveResponse;
+  /*@__PURE__*/ RetryPortabilityArchiveResponse;
 
 export type RetryArchiveJobsError =
   | DefaultErrors
@@ -347,7 +346,7 @@ export const retryArchiveJobs: API.OperationMethod<
   RetryArchiveJobsResponse,
   RetryArchiveJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RetryArchiveJobsRequest,
   output: RetryArchiveJobsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -361,7 +360,7 @@ export interface CancelArchiveJobsRequest {
 }
 
 export const CancelArchiveJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelPortabilityArchiveRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -371,7 +370,7 @@ export const CancelArchiveJobsRequest =
 
 export type CancelArchiveJobsResponse = CancelPortabilityArchiveResponse;
 export const CancelArchiveJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CancelPortabilityArchiveResponse;
+  /*@__PURE__*/ CancelPortabilityArchiveResponse;
 
 export type CancelArchiveJobsError =
   | DefaultErrors
@@ -386,7 +385,7 @@ export const cancelArchiveJobs: API.OperationMethod<
   CancelArchiveJobsResponse,
   CancelArchiveJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelArchiveJobsRequest,
   output: CancelArchiveJobsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -398,7 +397,7 @@ export interface ResetAuthorizationRequest_Op {
 }
 
 export const ResetAuthorizationRequest_Op =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(ResetAuthorizationRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({ method: "POST", path: "v1/authorization:reset", hasBody: true }),
@@ -406,7 +405,7 @@ export const ResetAuthorizationRequest_Op =
   ) as unknown as Schema.Schema<ResetAuthorizationRequest_Op>;
 
 export type ResetAuthorizationResponse = Empty;
-export const ResetAuthorizationResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const ResetAuthorizationResponse = /*@__PURE__*/ Empty;
 
 export type ResetAuthorizationError =
   | DefaultErrors
@@ -421,7 +420,7 @@ export const resetAuthorization: API.OperationMethod<
   ResetAuthorizationResponse,
   ResetAuthorizationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetAuthorizationRequest_Op,
   output: ResetAuthorizationResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
