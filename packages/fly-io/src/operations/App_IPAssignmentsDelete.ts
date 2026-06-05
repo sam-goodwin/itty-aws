@@ -11,7 +11,7 @@ export type App_IPAssignmentsDeleteInput =
   typeof App_IPAssignmentsDeleteInput.Type;
 
 // Output Schema
-export const App_IPAssignmentsDeleteOutput = /*@__PURE__*/ Schema.Void;
+export const App_IPAssignmentsDeleteOutput = Schema.Void;
 export type App_IPAssignmentsDeleteOutput =
   typeof App_IPAssignmentsDeleteOutput.Type;
 

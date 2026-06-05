@@ -18,7 +18,7 @@ export type V1RestorePhysicalBackupInput =
   typeof V1RestorePhysicalBackupInput.Type;
 
 // Output Schema
-export const V1RestorePhysicalBackupOutput = /*@__PURE__*/ Schema.Void;
+export const V1RestorePhysicalBackupOutput = Schema.Void;
 export type V1RestorePhysicalBackupOutput =
   typeof V1RestorePhysicalBackupOutput.Type;
 

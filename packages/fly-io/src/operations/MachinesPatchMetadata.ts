@@ -17,7 +17,7 @@ export const MachinesPatchMetadataInput =
 export type MachinesPatchMetadataInput = typeof MachinesPatchMetadataInput.Type;
 
 // Output Schema
-export const MachinesPatchMetadataOutput = /*@__PURE__*/ Schema.Void;
+export const MachinesPatchMetadataOutput = Schema.Void;
 export type MachinesPatchMetadataOutput =
   typeof MachinesPatchMetadataOutput.Type;
 

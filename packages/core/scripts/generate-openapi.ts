@@ -1056,7 +1056,7 @@ export type ${outputSchemaName} = typeof ${outputSchemaName}.Type;`,
       ctx,
     );
     return {
-      outputSchemaCode: `export const ${outputSchemaName} = /*@__PURE__*/ Schema.Array(${itemSchema});
+      outputSchemaCode: `${annotatePureExportConst(`export const ${outputSchemaName} = Schema.Array(${itemSchema});`)}
 export type ${outputSchemaName} = typeof ${outputSchemaName}.Type;`,
       outputSchemaName,
       sensitiveImports: {

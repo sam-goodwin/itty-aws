@@ -17,7 +17,7 @@ export type RevokeDelegationForEndUserInput =
   typeof RevokeDelegationForEndUserInput.Type;
 
 // Output Schema
-export const RevokeDelegationForEndUserOutput = /*@__PURE__*/ Schema.Void;
+export const RevokeDelegationForEndUserOutput = Schema.Void;
 export type RevokeDelegationForEndUserOutput =
   typeof RevokeDelegationForEndUserOutput.Type;
 
