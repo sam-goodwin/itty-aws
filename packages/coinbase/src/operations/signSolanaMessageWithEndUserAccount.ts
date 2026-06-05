@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const SignSolanaMessageWithEndUserAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.PathParam()),
     projectID: Schema.optional(Schema.String),
     address: Schema.String,
@@ -21,7 +21,7 @@ export type SignSolanaMessageWithEndUserAccountInput =
 
 // Output Schema
 export const SignSolanaMessageWithEndUserAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     signature: Schema.String,
   });
 export type SignSolanaMessageWithEndUserAccountOutput =
@@ -50,7 +50,7 @@ section of our Authentication docs for more details on how to generate your Wall
  * @param projectID - The ID of the CDP Project. Required for end users authenticated using custom auth (i.e. a non-CDP JWT provider).
  */
 export const signSolanaMessageWithEndUserAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SignSolanaMessageWithEndUserAccountInput,
     outputSchema: SignSolanaMessageWithEndUserAccountOutput,
   }));

@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const App_CertificatesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String),
     cursor: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
@@ -13,7 +13,7 @@ export type App_CertificatesListInput = typeof App_CertificatesListInput.Type;
 
 // Output Schema
 export const App_CertificatesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     certificates: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -46,9 +46,7 @@ export type App_CertificatesListOutput = typeof App_CertificatesListOutput.Type;
  * @param cursor - Pagination cursor from previous response
  * @param limit - Number of results per page (default 25, max 500)
  */
-export const App_CertificatesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: App_CertificatesListInput,
-    outputSchema: App_CertificatesListOutput,
-  }),
-);
+export const App_CertificatesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: App_CertificatesListInput,
+  outputSchema: App_CertificatesListOutput,
+}));

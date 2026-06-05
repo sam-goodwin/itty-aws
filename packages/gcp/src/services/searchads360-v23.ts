@@ -4,11 +4,11 @@
 // ==========================================================================
 
 import * as Schema from "effect/Schema";
+import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
-import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { DefaultErrors } from "../errors.ts";
-import type * as HttpClient from "effect/unstable/http/HttpClient";
+import * as T from "../traits.ts";
 
 // Service metadata
 const svc = T.Service({
@@ -37,7 +37,7 @@ export interface GoogleAdsSearchads360V23Resources__ThirdPartyAppAnalyticsLinkId
 }
 
 export const GoogleAdsSearchads360V23Resources__ThirdPartyAppAnalyticsLinkIdentifier: Schema.Schema<GoogleAdsSearchads360V23Resources__ThirdPartyAppAnalyticsLinkIdentifier> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     appId: Schema.optional(Schema.String),
     appAnalyticsProviderId: Schema.optional(Schema.String),
     appVendor: Schema.optional(Schema.String),
@@ -73,7 +73,7 @@ export interface GoogleAdsSearchads360V23Resources__AccountLink {
 }
 
 export const GoogleAdsSearchads360V23Resources__AccountLink: Schema.Schema<GoogleAdsSearchads360V23Resources__AccountLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     accountLinkId: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -93,7 +93,7 @@ export interface GoogleAdsSearchads360V23Services__AccountLinkOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__AccountLinkOperation: Schema.Schema<GoogleAdsSearchads360V23Services__AccountLinkOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     update: Schema.optional(GoogleAdsSearchads360V23Resources__AccountLink),
     remove: Schema.optional(Schema.String),
@@ -111,7 +111,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAccountLinkRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAccountLinkRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAccountLinkRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailure: Schema.optional(Schema.Boolean),
     validateOnly: Schema.optional(Schema.Boolean),
     operation: Schema.optional(
@@ -127,7 +127,7 @@ export interface GoogleAdsSearchads360V23Common__AdVideoAssetLinkFeatureControl 
 }
 
 export const GoogleAdsSearchads360V23Common__AdVideoAssetLinkFeatureControl: Schema.Schema<GoogleAdsSearchads360V23Common__AdVideoAssetLinkFeatureControl> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowYoutubeComments: Schema.optional(Schema.Boolean),
   }).annotate({
     identifier:
@@ -144,7 +144,7 @@ export interface GoogleAdsSearchads360V23Common__ImageDimension {
 }
 
 export const GoogleAdsSearchads360V23Common__ImageDimension: Schema.Schema<GoogleAdsSearchads360V23Common__ImageDimension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     heightPixels: Schema.optional(Schema.String),
     widthPixels: Schema.optional(Schema.String),
@@ -177,7 +177,7 @@ export interface GoogleAdsSearchads360V23Common__ImageAsset {
 }
 
 export const GoogleAdsSearchads360V23Common__ImageAsset: Schema.Schema<GoogleAdsSearchads360V23Common__ImageAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fileSize: Schema.optional(Schema.String),
     data: Schema.optional(Schema.String),
     fullSize: Schema.optional(GoogleAdsSearchads360V23Common__ImageDimension),
@@ -311,7 +311,7 @@ export interface GoogleAdsSearchads360V23Resources__LeadFormSubmissionField {
 }
 
 export const GoogleAdsSearchads360V23Resources__LeadFormSubmissionField: Schema.Schema<GoogleAdsSearchads360V23Resources__LeadFormSubmissionField> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fieldType: Schema.optional(Schema.String),
     fieldValue: Schema.optional(Schema.String),
   }).annotate({
@@ -326,7 +326,7 @@ export interface GoogleAdsSearchads360V23Resources__CustomLeadFormSubmissionFiel
 }
 
 export const GoogleAdsSearchads360V23Resources__CustomLeadFormSubmissionField: Schema.Schema<GoogleAdsSearchads360V23Resources__CustomLeadFormSubmissionField> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fieldValue: Schema.optional(Schema.String),
     questionText: Schema.optional(Schema.String),
   }).annotate({
@@ -358,7 +358,7 @@ export interface GoogleAdsSearchads360V23Resources__LeadFormSubmissionData {
 }
 
 export const GoogleAdsSearchads360V23Resources__LeadFormSubmissionData: Schema.Schema<GoogleAdsSearchads360V23Resources__LeadFormSubmissionData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     leadFormSubmissionFields: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Resources__LeadFormSubmissionField),
     ),
@@ -396,7 +396,7 @@ export interface GoogleAdsSearchads360V23Services__SurfaceTargeting {
 }
 
 export const GoogleAdsSearchads360V23Services__SurfaceTargeting: Schema.Schema<GoogleAdsSearchads360V23Services__SurfaceTargeting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     surfaces: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__SurfaceTargeting",
@@ -410,7 +410,7 @@ export interface GoogleAdsSearchads360V23Services__SurfaceTargetingCombinations 
 }
 
 export const GoogleAdsSearchads360V23Services__SurfaceTargetingCombinations: Schema.Schema<GoogleAdsSearchads360V23Services__SurfaceTargetingCombinations> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     availableTargetingCombinations: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__SurfaceTargeting),
     ),
@@ -425,7 +425,7 @@ export const GoogleAdsSearchads360V23Services__SurfaceTargetingCombinations: Sch
 export interface GoogleAdsSearchads360V23Common__ManualCpv {}
 
 export const GoogleAdsSearchads360V23Common__ManualCpv: Schema.Schema<GoogleAdsSearchads360V23Common__ManualCpv> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAdsSearchads360V23Common__ManualCpv",
   });
 
@@ -437,7 +437,7 @@ export interface GoogleAdsSearchads360V23Services__Conversation {
 }
 
 export const GoogleAdsSearchads360V23Services__Conversation: Schema.Schema<GoogleAdsSearchads360V23Services__Conversation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     localServicesLead: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Services__Conversation" });
@@ -473,7 +473,7 @@ export interface GoogleAdsSearchads360V23Resources_Invoice_InvalidActivitySummar
 }
 
 export const GoogleAdsSearchads360V23Resources_Invoice_InvalidActivitySummary: Schema.Schema<GoogleAdsSearchads360V23Resources_Invoice_InvalidActivitySummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     originalYearOfService: Schema.optional(Schema.String),
     amountMicros: Schema.optional(Schema.String),
     originalMonthOfService: Schema.optional(Schema.String),
@@ -501,7 +501,7 @@ export interface GoogleAdsSearchads360V23Resources_AdGroupDemandGenAdGroupSettin
 }
 
 export const GoogleAdsSearchads360V23Resources_AdGroupDemandGenAdGroupSettingsDemandGenChannelControls_DemandGenSelectedChannels: Schema.Schema<GoogleAdsSearchads360V23Resources_AdGroupDemandGenAdGroupSettingsDemandGenChannelControls_DemandGenSelectedChannels> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     youtubeInFeed: Schema.optional(Schema.Boolean),
     youtubeInStream: Schema.optional(Schema.Boolean),
     gmail: Schema.optional(Schema.Boolean),
@@ -533,7 +533,7 @@ export interface GoogleAdsSearchads360V23Resources_AdGroupDemandGenAdGroupSettin
 }
 
 export const GoogleAdsSearchads360V23Resources_AdGroupDemandGenAdGroupSettings_DemandGenChannelControls: Schema.Schema<GoogleAdsSearchads360V23Resources_AdGroupDemandGenAdGroupSettings_DemandGenChannelControls> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     channelConfig: Schema.optional(Schema.String),
     selectedChannels: Schema.optional(
       GoogleAdsSearchads360V23Resources_AdGroupDemandGenAdGroupSettingsDemandGenChannelControls_DemandGenSelectedChannels,
@@ -556,7 +556,7 @@ export interface GoogleAdsSearchads360V23Resources__AssetSetAsset {
 }
 
 export const GoogleAdsSearchads360V23Resources__AssetSetAsset: Schema.Schema<GoogleAdsSearchads360V23Resources__AssetSetAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     asset: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -573,7 +573,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAssetSetAssetResult {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAssetSetAssetResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAssetSetAssetResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     assetSetAsset: Schema.optional(
       GoogleAdsSearchads360V23Resources__AssetSetAsset,
     ),
@@ -592,7 +592,7 @@ export interface GoogleRpc__Status {
 }
 
 export const GoogleRpc__Status: Schema.Schema<GoogleRpc__Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
     details: Schema.optional(
@@ -608,7 +608,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAssetSetAssetsResponse 
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAssetSetAssetsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAssetSetAssetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__MutateAssetSetAssetResult),
     ),
@@ -636,7 +636,7 @@ export interface GoogleAdsSearchads360V23Resources_Campaign_ShoppingSetting {
 }
 
 export const GoogleAdsSearchads360V23Resources_Campaign_ShoppingSetting: Schema.Schema<GoogleAdsSearchads360V23Resources_Campaign_ShoppingSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     campaignPriority: Schema.optional(Schema.Number),
     disableProductFeed: Schema.optional(Schema.Boolean),
     feedLabel: Schema.optional(Schema.String),
@@ -675,7 +675,7 @@ export interface GoogleAdsSearchads360V23Resources__AssetSetTypeView {
 }
 
 export const GoogleAdsSearchads360V23Resources__AssetSetTypeView: Schema.Schema<GoogleAdsSearchads360V23Resources__AssetSetTypeView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     assetSetType: Schema.optional(Schema.String),
   }).annotate({
@@ -692,7 +692,7 @@ export interface GoogleAdsSearchads360V23Resources__CustomerSearchTermInsight {
 }
 
 export const GoogleAdsSearchads360V23Resources__CustomerSearchTermInsight: Schema.Schema<GoogleAdsSearchads360V23Resources__CustomerSearchTermInsight> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     categoryLabel: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
@@ -706,7 +706,7 @@ export interface GoogleAdsSearchads360V23Common__UserInterestSegment {
 }
 
 export const GoogleAdsSearchads360V23Common__UserInterestSegment: Schema.Schema<GoogleAdsSearchads360V23Common__UserInterestSegment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userInterestCategory: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__UserInterestSegment",
@@ -718,7 +718,7 @@ export interface GoogleAdsSearchads360V23Common__CustomAudienceSegment {
 }
 
 export const GoogleAdsSearchads360V23Common__CustomAudienceSegment: Schema.Schema<GoogleAdsSearchads360V23Common__CustomAudienceSegment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customAudience: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__CustomAudienceSegment",
@@ -730,7 +730,7 @@ export interface GoogleAdsSearchads360V23Common__UserListSegment {
 }
 
 export const GoogleAdsSearchads360V23Common__UserListSegment: Schema.Schema<GoogleAdsSearchads360V23Common__UserListSegment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userList: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__UserListSegment",
@@ -742,7 +742,7 @@ export interface GoogleAdsSearchads360V23Common__LifeEventSegment {
 }
 
 export const GoogleAdsSearchads360V23Common__LifeEventSegment: Schema.Schema<GoogleAdsSearchads360V23Common__LifeEventSegment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lifeEvent: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__LifeEventSegment",
@@ -754,7 +754,7 @@ export interface GoogleAdsSearchads360V23Common__DetailedDemographicSegment {
 }
 
 export const GoogleAdsSearchads360V23Common__DetailedDemographicSegment: Schema.Schema<GoogleAdsSearchads360V23Common__DetailedDemographicSegment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     detailedDemographic: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__DetailedDemographicSegment",
@@ -774,7 +774,7 @@ export interface GoogleAdsSearchads360V23Common__AudienceSegment {
 }
 
 export const GoogleAdsSearchads360V23Common__AudienceSegment: Schema.Schema<GoogleAdsSearchads360V23Common__AudienceSegment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userInterest: Schema.optional(
       GoogleAdsSearchads360V23Common__UserInterestSegment,
     ),
@@ -798,7 +798,7 @@ export interface GoogleAdsSearchads360V23Common__AudienceSegmentDimension {
 }
 
 export const GoogleAdsSearchads360V23Common__AudienceSegmentDimension: Schema.Schema<GoogleAdsSearchads360V23Common__AudienceSegmentDimension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     segments: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__AudienceSegment),
     ),
@@ -824,7 +824,7 @@ export interface GoogleAdsSearchads360V23Common__PercentCpcBidSimulationPoint {
 }
 
 export const GoogleAdsSearchads360V23Common__PercentCpcBidSimulationPoint: Schema.Schema<GoogleAdsSearchads360V23Common__PercentCpcBidSimulationPoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     biddableConversions: Schema.optional(Schema.Number),
     clicks: Schema.optional(Schema.String),
     percentCpcBidMicros: Schema.optional(Schema.String),
@@ -842,7 +842,7 @@ export interface GoogleAdsSearchads360V23Common__PercentCpcBidSimulationPointLis
 }
 
 export const GoogleAdsSearchads360V23Common__PercentCpcBidSimulationPointList: Schema.Schema<GoogleAdsSearchads360V23Common__PercentCpcBidSimulationPointList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     points: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Common__PercentCpcBidSimulationPoint,
@@ -856,7 +856,7 @@ export const GoogleAdsSearchads360V23Common__PercentCpcBidSimulationPointList: S
 export interface GoogleAdsSearchads360V23Resources_Recommendation_SearchPartnersOptInRecommendation {}
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_SearchPartnersOptInRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_SearchPartnersOptInRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleAdsSearchads360V23Resources_Recommendation_SearchPartnersOptInRecommendation",
   });
@@ -869,7 +869,7 @@ export interface GoogleAdsSearchads360V23Common__PolicyViolationKey {
 }
 
 export const GoogleAdsSearchads360V23Common__PolicyViolationKey: Schema.Schema<GoogleAdsSearchads360V23Common__PolicyViolationKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policyName: Schema.optional(Schema.String),
     violatingText: Schema.optional(Schema.String),
   }).annotate({
@@ -884,7 +884,7 @@ export interface GoogleAdsSearchads360V23Common__PolicyValidationParameter {
 }
 
 export const GoogleAdsSearchads360V23Common__PolicyValidationParameter: Schema.Schema<GoogleAdsSearchads360V23Common__PolicyValidationParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ignorablePolicyTopics: Schema.optional(Schema.Array(Schema.String)),
     exemptPolicyViolationKeys: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__PolicyViolationKey),
@@ -919,7 +919,7 @@ export interface GoogleAdsSearchads360V23Resources__AdGroupAdAssetAutomationSett
 }
 
 export const GoogleAdsSearchads360V23Resources__AdGroupAdAssetAutomationSetting: Schema.Schema<GoogleAdsSearchads360V23Resources__AdGroupAdAssetAutomationSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     assetAutomationType: Schema.optional(Schema.String),
     assetAutomationStatus: Schema.optional(Schema.String),
   }).annotate({
@@ -943,7 +943,7 @@ export interface GoogleAdsSearchads360V23Common__SearchAds360TextAdInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__SearchAds360TextAdInfo: Schema.Schema<GoogleAdsSearchads360V23Common__SearchAds360TextAdInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     headline: Schema.optional(Schema.String),
     displayMobileUrl: Schema.optional(Schema.String),
     displayUrl: Schema.optional(Schema.String),
@@ -960,7 +960,7 @@ export interface GoogleAdsSearchads360V23Common_PolicyTopicEvidence_TextList {
 }
 
 export const GoogleAdsSearchads360V23Common_PolicyTopicEvidence_TextList: Schema.Schema<GoogleAdsSearchads360V23Common_PolicyTopicEvidence_TextList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     texts: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common_PolicyTopicEvidence_TextList",
@@ -972,7 +972,7 @@ export interface GoogleAdsSearchads360V23Common_PolicyTopicEvidence_WebsiteList 
 }
 
 export const GoogleAdsSearchads360V23Common_PolicyTopicEvidence_WebsiteList: Schema.Schema<GoogleAdsSearchads360V23Common_PolicyTopicEvidence_WebsiteList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     websites: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
     identifier:
@@ -985,7 +985,7 @@ export interface GoogleAdsSearchads360V23Common_PolicyTopicEvidence_DestinationT
 }
 
 export const GoogleAdsSearchads360V23Common_PolicyTopicEvidence_DestinationTextList: Schema.Schema<GoogleAdsSearchads360V23Common_PolicyTopicEvidence_DestinationTextList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     destinationTexts: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
     identifier:
@@ -1017,7 +1017,7 @@ export interface GoogleAdsSearchads360V23Common_PolicyTopicEvidence_DestinationN
 }
 
 export const GoogleAdsSearchads360V23Common_PolicyTopicEvidence_DestinationNotWorking: Schema.Schema<GoogleAdsSearchads360V23Common_PolicyTopicEvidence_DestinationNotWorking> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expandedUrl: Schema.optional(Schema.String),
     lastCheckedDateTime: Schema.optional(Schema.String),
     httpErrorCode: Schema.optional(Schema.String),
@@ -1043,7 +1043,7 @@ export interface GoogleAdsSearchads360V23Common_PolicyTopicEvidence_DestinationM
 }
 
 export const GoogleAdsSearchads360V23Common_PolicyTopicEvidence_DestinationMismatch: Schema.Schema<GoogleAdsSearchads360V23Common_PolicyTopicEvidence_DestinationMismatch> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     urlTypes: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
     identifier:
@@ -1066,7 +1066,7 @@ export interface GoogleAdsSearchads360V23Common__PolicyTopicEvidence {
 }
 
 export const GoogleAdsSearchads360V23Common__PolicyTopicEvidence: Schema.Schema<GoogleAdsSearchads360V23Common__PolicyTopicEvidence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     textList: Schema.optional(
       GoogleAdsSearchads360V23Common_PolicyTopicEvidence_TextList,
     ),
@@ -1093,7 +1093,7 @@ export interface GoogleAdsSearchads360V23Common_PolicyTopicConstraint_CountryCon
 }
 
 export const GoogleAdsSearchads360V23Common_PolicyTopicConstraint_CountryConstraint: Schema.Schema<GoogleAdsSearchads360V23Common_PolicyTopicConstraint_CountryConstraint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     countryCriterion: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -1108,7 +1108,7 @@ export interface GoogleAdsSearchads360V23Common_PolicyTopicConstraint_CountryCon
 }
 
 export const GoogleAdsSearchads360V23Common_PolicyTopicConstraint_CountryConstraintList: Schema.Schema<GoogleAdsSearchads360V23Common_PolicyTopicConstraint_CountryConstraintList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     totalTargetedCountries: Schema.optional(Schema.Number),
     countries: Schema.optional(
       Schema.Array(
@@ -1123,7 +1123,7 @@ export const GoogleAdsSearchads360V23Common_PolicyTopicConstraint_CountryConstra
 export interface GoogleAdsSearchads360V23Common_PolicyTopicConstraint_ResellerConstraint {}
 
 export const GoogleAdsSearchads360V23Common_PolicyTopicConstraint_ResellerConstraint: Schema.Schema<GoogleAdsSearchads360V23Common_PolicyTopicConstraint_ResellerConstraint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleAdsSearchads360V23Common_PolicyTopicConstraint_ResellerConstraint",
   });
@@ -1140,7 +1140,7 @@ export interface GoogleAdsSearchads360V23Common__PolicyTopicConstraint {
 }
 
 export const GoogleAdsSearchads360V23Common__PolicyTopicConstraint: Schema.Schema<GoogleAdsSearchads360V23Common__PolicyTopicConstraint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     certificateMissingInCountryList: Schema.optional(
       GoogleAdsSearchads360V23Common_PolicyTopicConstraint_CountryConstraintList,
     ),
@@ -1178,7 +1178,7 @@ export interface GoogleAdsSearchads360V23Common__PolicyTopicEntry {
 }
 
 export const GoogleAdsSearchads360V23Common__PolicyTopicEntry: Schema.Schema<GoogleAdsSearchads360V23Common__PolicyTopicEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     topic: Schema.optional(Schema.String),
     evidences: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__PolicyTopicEvidence),
@@ -1215,7 +1215,7 @@ export interface GoogleAdsSearchads360V23Common__AdAssetPolicySummary {
 }
 
 export const GoogleAdsSearchads360V23Common__AdAssetPolicySummary: Schema.Schema<GoogleAdsSearchads360V23Common__AdAssetPolicySummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policyTopicEntries: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__PolicyTopicEntry),
     ),
@@ -1284,7 +1284,7 @@ export interface GoogleAdsSearchads360V23Common__AdTextAsset {
 }
 
 export const GoogleAdsSearchads360V23Common__AdTextAsset: Schema.Schema<GoogleAdsSearchads360V23Common__AdTextAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     assetPerformanceLabel: Schema.optional(Schema.String),
     pinnedField: Schema.optional(Schema.String),
     text: Schema.optional(Schema.String),
@@ -1307,7 +1307,7 @@ export interface GoogleAdsSearchads360V23Common__SearchAds360ResponsiveSearchAdI
 }
 
 export const GoogleAdsSearchads360V23Common__SearchAds360ResponsiveSearchAdInfo: Schema.Schema<GoogleAdsSearchads360V23Common__SearchAds360ResponsiveSearchAdInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     descriptions: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__AdTextAsset),
     ),
@@ -1325,7 +1325,7 @@ export const GoogleAdsSearchads360V23Common__SearchAds360ResponsiveSearchAdInfo:
 export interface GoogleAdsSearchads360V23Common__ShoppingProductAdInfo {}
 
 export const GoogleAdsSearchads360V23Common__ShoppingProductAdInfo: Schema.Schema<GoogleAdsSearchads360V23Common__ShoppingProductAdInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAdsSearchads360V23Common__ShoppingProductAdInfo",
   });
 
@@ -1337,7 +1337,7 @@ export interface GoogleAdsSearchads360V23Common__ExpandedDynamicSearchAdInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__ExpandedDynamicSearchAdInfo: Schema.Schema<GoogleAdsSearchads360V23Common__ExpandedDynamicSearchAdInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description2: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
   }).annotate({
@@ -1350,7 +1350,7 @@ export interface GoogleAdsSearchads360V23Common__AdImageAsset {
 }
 
 export const GoogleAdsSearchads360V23Common__AdImageAsset: Schema.Schema<GoogleAdsSearchads360V23Common__AdImageAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     asset: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__AdImageAsset" });
 
@@ -1395,7 +1395,7 @@ export interface GoogleAdsSearchads360V23Common__ImageAdInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__ImageAdInfo: Schema.Schema<GoogleAdsSearchads360V23Common__ImageAdInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     data: Schema.optional(Schema.String),
     previewImageUrl: Schema.optional(Schema.String),
@@ -1417,7 +1417,7 @@ export interface GoogleAdsSearchads360V23Common__SmartCampaignAdInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__SmartCampaignAdInfo: Schema.Schema<GoogleAdsSearchads360V23Common__SmartCampaignAdInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     headlines: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__AdTextAsset),
     ),
@@ -1440,7 +1440,7 @@ export interface GoogleAdsSearchads360V23Common__UrlCollection {
 }
 
 export const GoogleAdsSearchads360V23Common__UrlCollection: Schema.Schema<GoogleAdsSearchads360V23Common__UrlCollection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     finalUrls: Schema.optional(Schema.Array(Schema.String)),
     trackingUrlTemplate: Schema.optional(Schema.String),
     urlCollectionId: Schema.optional(Schema.String),
@@ -1469,7 +1469,7 @@ export interface GoogleAdsSearchads360V23Common__LegacyAppInstallAdInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__LegacyAppInstallAdInfo: Schema.Schema<GoogleAdsSearchads360V23Common__LegacyAppInstallAdInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     appId: Schema.optional(Schema.String),
     description2: Schema.optional(Schema.String),
     description1: Schema.optional(Schema.String),
@@ -1487,7 +1487,7 @@ export interface GoogleAdsSearchads360V23Common__ResponsiveDisplayAdControlSpec 
 }
 
 export const GoogleAdsSearchads360V23Common__ResponsiveDisplayAdControlSpec: Schema.Schema<GoogleAdsSearchads360V23Common__ResponsiveDisplayAdControlSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enableAssetEnhancements: Schema.optional(Schema.Boolean),
     enableAutogenVideo: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -1501,7 +1501,7 @@ export interface GoogleAdsSearchads360V23Common__AdVideoAssetInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__AdVideoAssetInfo: Schema.Schema<GoogleAdsSearchads360V23Common__AdVideoAssetInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adVideoAssetFeatureControl: Schema.optional(
       GoogleAdsSearchads360V23Common__AdVideoAssetLinkFeatureControl,
     ),
@@ -1517,7 +1517,7 @@ export interface GoogleAdsSearchads360V23Common__AdVideoAsset {
 }
 
 export const GoogleAdsSearchads360V23Common__AdVideoAsset: Schema.Schema<GoogleAdsSearchads360V23Common__AdVideoAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     asset: Schema.optional(Schema.String),
     adVideoAssetInfo: Schema.optional(
       GoogleAdsSearchads360V23Common__AdVideoAssetInfo,
@@ -1568,7 +1568,7 @@ export interface GoogleAdsSearchads360V23Common__ResponsiveDisplayAdInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__ResponsiveDisplayAdInfo: Schema.Schema<GoogleAdsSearchads360V23Common__ResponsiveDisplayAdInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     squareMarketingImages: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__AdImageAsset),
     ),
@@ -1609,14 +1609,14 @@ export const GoogleAdsSearchads360V23Common__ResponsiveDisplayAdInfo: Schema.Sch
 export interface GoogleAdsSearchads360V23Common__SearchAds360ProductAdInfo {}
 
 export const GoogleAdsSearchads360V23Common__SearchAds360ProductAdInfo: Schema.Schema<GoogleAdsSearchads360V23Common__SearchAds360ProductAdInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAdsSearchads360V23Common__SearchAds360ProductAdInfo",
   });
 
 export interface GoogleAdsSearchads360V23Common__ShoppingSmartAdInfo {}
 
 export const GoogleAdsSearchads360V23Common__ShoppingSmartAdInfo: Schema.Schema<GoogleAdsSearchads360V23Common__ShoppingSmartAdInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAdsSearchads360V23Common__ShoppingSmartAdInfo",
   });
 
@@ -1640,7 +1640,7 @@ export interface GoogleAdsSearchads360V23Common__LocalAdInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__LocalAdInfo: Schema.Schema<GoogleAdsSearchads360V23Common__LocalAdInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     descriptions: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__AdTextAsset),
     ),
@@ -1669,7 +1669,7 @@ export interface GoogleAdsSearchads360V23Common__AdMediaBundleAsset {
 }
 
 export const GoogleAdsSearchads360V23Common__AdMediaBundleAsset: Schema.Schema<GoogleAdsSearchads360V23Common__AdMediaBundleAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     asset: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__AdMediaBundleAsset",
@@ -1696,7 +1696,7 @@ export interface GoogleAdsSearchads360V23Common__DisplayUploadAdInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__DisplayUploadAdInfo: Schema.Schema<GoogleAdsSearchads360V23Common__DisplayUploadAdInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayUploadProductType: Schema.optional(Schema.String),
     mediaBundle: Schema.optional(
       GoogleAdsSearchads360V23Common__AdMediaBundleAsset,
@@ -1713,7 +1713,7 @@ export interface GoogleAdsSearchads360V23Common__FinalAppUrl {
 }
 
 export const GoogleAdsSearchads360V23Common__FinalAppUrl: Schema.Schema<GoogleAdsSearchads360V23Common__FinalAppUrl> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     osType: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__FinalAppUrl" });
@@ -1730,7 +1730,7 @@ export interface GoogleAdsSearchads360V23Common__AppEngagementAdInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__AppEngagementAdInfo: Schema.Schema<GoogleAdsSearchads360V23Common__AppEngagementAdInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     images: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__AdImageAsset),
     ),
@@ -1757,7 +1757,7 @@ export interface GoogleAdsSearchads360V23Common__SearchAds360ExpandedDynamicSear
 }
 
 export const GoogleAdsSearchads360V23Common__SearchAds360ExpandedDynamicSearchAdInfo: Schema.Schema<GoogleAdsSearchads360V23Common__SearchAds360ExpandedDynamicSearchAdInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description1: Schema.optional(Schema.String),
     adTrackingId: Schema.optional(Schema.String),
     description2: Schema.optional(Schema.String),
@@ -1772,7 +1772,7 @@ export interface GoogleAdsSearchads360V23Common__AdCallToActionAsset {
 }
 
 export const GoogleAdsSearchads360V23Common__AdCallToActionAsset: Schema.Schema<GoogleAdsSearchads360V23Common__AdCallToActionAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     asset: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__AdCallToActionAsset",
@@ -1802,7 +1802,7 @@ export interface GoogleAdsSearchads360V23Common__DemandGenVideoResponsiveAdInfo 
 }
 
 export const GoogleAdsSearchads360V23Common__DemandGenVideoResponsiveAdInfo: Schema.Schema<GoogleAdsSearchads360V23Common__DemandGenVideoResponsiveAdInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     headlines: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__AdTextAsset),
     ),
@@ -1844,7 +1844,7 @@ export interface GoogleAdsSearchads360V23Common__ResponsiveSearchAdInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__ResponsiveSearchAdInfo: Schema.Schema<GoogleAdsSearchads360V23Common__ResponsiveSearchAdInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     headlines: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__AdTextAsset),
     ),
@@ -1863,7 +1863,7 @@ export interface GoogleAdsSearchads360V23Common__AdAppDeepLinkAsset {
 }
 
 export const GoogleAdsSearchads360V23Common__AdAppDeepLinkAsset: Schema.Schema<GoogleAdsSearchads360V23Common__AdAppDeepLinkAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     asset: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__AdAppDeepLinkAsset",
@@ -1887,7 +1887,7 @@ export interface GoogleAdsSearchads360V23Common__AppAdInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__AppAdInfo: Schema.Schema<GoogleAdsSearchads360V23Common__AppAdInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     headlines: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__AdTextAsset),
     ),
@@ -1931,7 +1931,7 @@ export interface GoogleAdsSearchads360V23Common__SearchAds360ExpandedTextAdInfo 
 }
 
 export const GoogleAdsSearchads360V23Common__SearchAds360ExpandedTextAdInfo: Schema.Schema<GoogleAdsSearchads360V23Common__SearchAds360ExpandedTextAdInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     headline: Schema.optional(Schema.String),
     headline2: Schema.optional(Schema.String),
     adTrackingId: Schema.optional(Schema.String),
@@ -1951,7 +1951,7 @@ export interface GoogleAdsSearchads360V23Common__ShoppingComparisonListingAdInfo
 }
 
 export const GoogleAdsSearchads360V23Common__ShoppingComparisonListingAdInfo: Schema.Schema<GoogleAdsSearchads360V23Common__ShoppingComparisonListingAdInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     headline: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -1998,7 +1998,7 @@ export interface GoogleAdsSearchads360V23Common__LegacyResponsiveDisplayAdInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__LegacyResponsiveDisplayAdInfo: Schema.Schema<GoogleAdsSearchads360V23Common__LegacyResponsiveDisplayAdInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     shortHeadline: Schema.optional(Schema.String),
     longHeadline: Schema.optional(Schema.String),
     pricePrefix: Schema.optional(Schema.String),
@@ -2036,7 +2036,7 @@ export interface GoogleAdsSearchads360V23Common__ExpandedTextAdInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__ExpandedTextAdInfo: Schema.Schema<GoogleAdsSearchads360V23Common__ExpandedTextAdInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     headlinePart2: Schema.optional(Schema.String),
     headlinePart1: Schema.optional(Schema.String),
     headlinePart3: Schema.optional(Schema.String),
@@ -2070,7 +2070,7 @@ export interface GoogleAdsSearchads360V23Common__DemandGenMultiAssetAdInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__DemandGenMultiAssetAdInfo: Schema.Schema<GoogleAdsSearchads360V23Common__DemandGenMultiAssetAdInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     marketingImages: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__AdImageAsset),
     ),
@@ -2106,7 +2106,7 @@ export interface GoogleAdsSearchads360V23Common__CustomParameter {
 }
 
 export const GoogleAdsSearchads360V23Common__CustomParameter: Schema.Schema<GoogleAdsSearchads360V23Common__CustomParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
   }).annotate({
@@ -2131,7 +2131,7 @@ export interface GoogleAdsSearchads360V23Common__DemandGenProductAdInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__DemandGenProductAdInfo: Schema.Schema<GoogleAdsSearchads360V23Common__DemandGenProductAdInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(GoogleAdsSearchads360V23Common__AdTextAsset),
     logoImage: Schema.optional(GoogleAdsSearchads360V23Common__AdImageAsset),
     breadcrumb2: Schema.optional(Schema.String),
@@ -2151,7 +2151,7 @@ export interface GoogleAdsSearchads360V23Common__AdDemandGenCarouselCardAsset {
 }
 
 export const GoogleAdsSearchads360V23Common__AdDemandGenCarouselCardAsset: Schema.Schema<GoogleAdsSearchads360V23Common__AdDemandGenCarouselCardAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     asset: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__AdDemandGenCarouselCardAsset",
@@ -2173,7 +2173,7 @@ export interface GoogleAdsSearchads360V23Common__DemandGenCarouselAdInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__DemandGenCarouselAdInfo: Schema.Schema<GoogleAdsSearchads360V23Common__DemandGenCarouselAdInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     headline: Schema.optional(GoogleAdsSearchads360V23Common__AdTextAsset),
     callToActionText: Schema.optional(Schema.String),
     businessName: Schema.optional(Schema.String),
@@ -2191,7 +2191,7 @@ export const GoogleAdsSearchads360V23Common__DemandGenCarouselAdInfo: Schema.Sch
 export interface GoogleAdsSearchads360V23Common__HotelAdInfo {}
 
 export const GoogleAdsSearchads360V23Common__HotelAdInfo: Schema.Schema<GoogleAdsSearchads360V23Common__HotelAdInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAdsSearchads360V23Common__HotelAdInfo",
   });
 
@@ -2207,7 +2207,7 @@ export interface GoogleAdsSearchads360V23Common__AppPreRegistrationAdInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__AppPreRegistrationAdInfo: Schema.Schema<GoogleAdsSearchads360V23Common__AppPreRegistrationAdInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     youtubeVideos: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__AdVideoAsset),
     ),
@@ -2227,7 +2227,7 @@ export const GoogleAdsSearchads360V23Common__AppPreRegistrationAdInfo: Schema.Sc
 export interface GoogleAdsSearchads360V23Common__TravelAdInfo {}
 
 export const GoogleAdsSearchads360V23Common__TravelAdInfo: Schema.Schema<GoogleAdsSearchads360V23Common__TravelAdInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAdsSearchads360V23Common__TravelAdInfo",
   });
 
@@ -2241,7 +2241,7 @@ export interface GoogleAdsSearchads360V23Common__TextAdInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__TextAdInfo: Schema.Schema<GoogleAdsSearchads360V23Common__TextAdInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     headline: Schema.optional(Schema.String),
     description2: Schema.optional(Schema.String),
     description1: Schema.optional(Schema.String),
@@ -2383,7 +2383,7 @@ export interface GoogleAdsSearchads360V23Resources__Ad {
 }
 
 export const GoogleAdsSearchads360V23Resources__Ad: Schema.Schema<GoogleAdsSearchads360V23Resources__Ad> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     searchAds360TextAd: Schema.optional(
       GoogleAdsSearchads360V23Common__SearchAds360TextAdInfo,
     ),
@@ -2503,7 +2503,7 @@ export interface GoogleAdsSearchads360V23Resources__AdGroupAdPolicySummary {
 }
 
 export const GoogleAdsSearchads360V23Resources__AdGroupAdPolicySummary: Schema.Schema<GoogleAdsSearchads360V23Resources__AdGroupAdPolicySummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     approvalStatus: Schema.optional(Schema.String),
     policyTopicEntries: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__PolicyTopicEntry),
@@ -2612,7 +2612,7 @@ export interface GoogleAdsSearchads360V23Resources__AdGroupAd {
 }
 
 export const GoogleAdsSearchads360V23Resources__AdGroupAd: Schema.Schema<GoogleAdsSearchads360V23Resources__AdGroupAd> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     actionItems: Schema.optional(Schema.Array(Schema.String)),
     adGroup: Schema.optional(Schema.String),
     lastModifiedTime: Schema.optional(Schema.String),
@@ -2651,7 +2651,7 @@ export interface GoogleAdsSearchads360V23Services__AdGroupAdOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__AdGroupAdOperation: Schema.Schema<GoogleAdsSearchads360V23Services__AdGroupAdOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policyValidationParameter: Schema.optional(
       GoogleAdsSearchads360V23Common__PolicyValidationParameter,
     ),
@@ -2687,7 +2687,7 @@ export interface GoogleAdsSearchads360V23Resources__PerStoreView {
 }
 
 export const GoogleAdsSearchads360V23Resources__PerStoreView: Schema.Schema<GoogleAdsSearchads360V23Resources__PerStoreView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     phoneNumber: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
     placeId: Schema.optional(Schema.String),
@@ -2712,7 +2712,7 @@ export interface GoogleAdsSearchads360V23Resources_Recommendation_MerchantInfo {
 }
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_MerchantInfo: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_MerchantInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     multiClient: Schema.optional(Schema.Boolean),
@@ -2728,7 +2728,7 @@ export interface GoogleAdsSearchads360V23Resources_Recommendation_ShoppingMigrat
 }
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_ShoppingMigrateRegularShoppingCampaignOffersToPerformanceMaxRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_ShoppingMigrateRegularShoppingCampaignOffersToPerformanceMaxRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     feedLabel: Schema.optional(Schema.String),
     merchant: Schema.optional(
       GoogleAdsSearchads360V23Resources_Recommendation_MerchantInfo,
@@ -2746,7 +2746,7 @@ export interface GoogleAdsSearchads360V23Common__CustomerLifecycleOptimizationVa
 }
 
 export const GoogleAdsSearchads360V23Common__CustomerLifecycleOptimizationValueSettings: Schema.Schema<GoogleAdsSearchads360V23Common__CustomerLifecycleOptimizationValueSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     additionalValue: Schema.optional(Schema.Number),
     additionalHighLifetimeValue: Schema.optional(Schema.Number),
   }).annotate({
@@ -2760,7 +2760,7 @@ export interface GoogleAdsSearchads360V23Common_GoalSetting_RetentionGoal {
 }
 
 export const GoogleAdsSearchads360V23Common_GoalSetting_RetentionGoal: Schema.Schema<GoogleAdsSearchads360V23Common_GoalSetting_RetentionGoal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     valueSettings: Schema.optional(
       GoogleAdsSearchads360V23Common__CustomerLifecycleOptimizationValueSettings,
     ),
@@ -2789,7 +2789,7 @@ export interface GoogleAdsSearchads360V23Resources__Goal {
 }
 
 export const GoogleAdsSearchads360V23Resources__Goal: Schema.Schema<GoogleAdsSearchads360V23Resources__Goal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     goalType: Schema.optional(Schema.String),
     optimizationEligibility: Schema.optional(Schema.String),
@@ -2808,7 +2808,7 @@ export interface GoogleAdsSearchads360V23Common__UserListActionInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__UserListActionInfo: Schema.Schema<GoogleAdsSearchads360V23Common__UserListActionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     remarketingAction: Schema.optional(Schema.String),
     conversionAction: Schema.optional(Schema.String),
   }).annotate({
@@ -2821,7 +2821,7 @@ export interface GoogleAdsSearchads360V23Common__BasicUserListInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__BasicUserListInfo: Schema.Schema<GoogleAdsSearchads360V23Common__BasicUserListInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     actions: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__UserListActionInfo),
     ),
@@ -2835,7 +2835,7 @@ export interface GoogleAdsSearchads360V23Common__SimilarUserListInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__SimilarUserListInfo: Schema.Schema<GoogleAdsSearchads360V23Common__SimilarUserListInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     seedUserList: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__SimilarUserListInfo",
@@ -2864,7 +2864,7 @@ export interface GoogleAdsSearchads360V23Common__CrmBasedUserListInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__CrmBasedUserListInfo: Schema.Schema<GoogleAdsSearchads360V23Common__CrmBasedUserListInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataSourceType: Schema.optional(Schema.String),
     appId: Schema.optional(Schema.String),
     uploadKeyType: Schema.optional(Schema.String),
@@ -2888,7 +2888,7 @@ export interface GoogleAdsSearchads360V23Common__LookalikeUserListInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__LookalikeUserListInfo: Schema.Schema<GoogleAdsSearchads360V23Common__LookalikeUserListInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     countryCodes: Schema.optional(Schema.Array(Schema.String)),
     seedUserListIds: Schema.optional(Schema.Array(Schema.String)),
     expansionLevel: Schema.optional(Schema.String),
@@ -2913,7 +2913,7 @@ export interface GoogleAdsSearchads360V23Common__UserListNumberRuleItemInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__UserListNumberRuleItemInfo: Schema.Schema<GoogleAdsSearchads360V23Common__UserListNumberRuleItemInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operator: Schema.optional(Schema.String),
     value: Schema.optional(Schema.Number),
   }).annotate({
@@ -2939,7 +2939,7 @@ export interface GoogleAdsSearchads360V23Common__UserListStringRuleItemInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__UserListStringRuleItemInfo: Schema.Schema<GoogleAdsSearchads360V23Common__UserListStringRuleItemInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     operator: Schema.optional(Schema.String),
   }).annotate({
@@ -2963,7 +2963,7 @@ export interface GoogleAdsSearchads360V23Common__UserListDateRuleItemInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__UserListDateRuleItemInfo: Schema.Schema<GoogleAdsSearchads360V23Common__UserListDateRuleItemInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     offsetInDays: Schema.optional(Schema.String),
     operator: Schema.optional(Schema.String),
@@ -2983,7 +2983,7 @@ export interface GoogleAdsSearchads360V23Common__UserListRuleItemInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__UserListRuleItemInfo: Schema.Schema<GoogleAdsSearchads360V23Common__UserListRuleItemInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     numberRuleItem: Schema.optional(
       GoogleAdsSearchads360V23Common__UserListNumberRuleItemInfo,
     ),
@@ -3004,7 +3004,7 @@ export interface GoogleAdsSearchads360V23Common__UserListRuleItemGroupInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__UserListRuleItemGroupInfo: Schema.Schema<GoogleAdsSearchads360V23Common__UserListRuleItemGroupInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ruleItems: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__UserListRuleItemInfo),
     ),
@@ -3025,7 +3025,7 @@ export interface GoogleAdsSearchads360V23Common__UserListRuleInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__UserListRuleInfo: Schema.Schema<GoogleAdsSearchads360V23Common__UserListRuleInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ruleItemGroups: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__UserListRuleItemGroupInfo),
     ),
@@ -3042,7 +3042,7 @@ export interface GoogleAdsSearchads360V23Common__FlexibleRuleOperandInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__FlexibleRuleOperandInfo: Schema.Schema<GoogleAdsSearchads360V23Common__FlexibleRuleOperandInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lookbackWindowDays: Schema.optional(Schema.String),
     rule: Schema.optional(GoogleAdsSearchads360V23Common__UserListRuleInfo),
   }).annotate({
@@ -3064,7 +3064,7 @@ export interface GoogleAdsSearchads360V23Common__FlexibleRuleUserListInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__FlexibleRuleUserListInfo: Schema.Schema<GoogleAdsSearchads360V23Common__FlexibleRuleUserListInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     inclusiveOperands: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__FlexibleRuleOperandInfo),
     ),
@@ -3090,7 +3090,7 @@ export interface GoogleAdsSearchads360V23Common__RuleBasedUserListInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__RuleBasedUserListInfo: Schema.Schema<GoogleAdsSearchads360V23Common__RuleBasedUserListInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     prepopulationStatus: Schema.optional(Schema.String),
     flexibleRuleUserList: Schema.optional(
       GoogleAdsSearchads360V23Common__FlexibleRuleUserListInfo,
@@ -3105,7 +3105,7 @@ export interface GoogleAdsSearchads360V23Common__LogicalUserListOperandInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__LogicalUserListOperandInfo: Schema.Schema<GoogleAdsSearchads360V23Common__LogicalUserListOperandInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userList: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__LogicalUserListOperandInfo",
@@ -3119,7 +3119,7 @@ export interface GoogleAdsSearchads360V23Common__UserListLogicalRuleInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__UserListLogicalRuleInfo: Schema.Schema<GoogleAdsSearchads360V23Common__UserListLogicalRuleInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ruleOperands: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__LogicalUserListOperandInfo),
     ),
@@ -3134,7 +3134,7 @@ export interface GoogleAdsSearchads360V23Common__LogicalUserListInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__LogicalUserListInfo: Schema.Schema<GoogleAdsSearchads360V23Common__LogicalUserListInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rules: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__UserListLogicalRuleInfo),
     ),
@@ -3262,7 +3262,7 @@ export interface GoogleAdsSearchads360V23Resources__UserList {
 }
 
 export const GoogleAdsSearchads360V23Resources__UserList: Schema.Schema<GoogleAdsSearchads360V23Resources__UserList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sizeRangeForDisplay: Schema.optional(Schema.String),
     closingReason: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -3314,7 +3314,7 @@ export interface GoogleAdsSearchads360V23Services__UserListOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__UserListOperation: Schema.Schema<GoogleAdsSearchads360V23Services__UserListOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     remove: Schema.optional(Schema.String),
     create: Schema.optional(GoogleAdsSearchads360V23Resources__UserList),
     updateMask: Schema.optional(Schema.String),
@@ -3333,7 +3333,7 @@ export interface GoogleAdsSearchads360V23Resources__CallReportingSetting {
 }
 
 export const GoogleAdsSearchads360V23Resources__CallReportingSetting: Schema.Schema<GoogleAdsSearchads360V23Resources__CallReportingSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     callConversionAction: Schema.optional(Schema.String),
     callReportingEnabled: Schema.optional(Schema.Boolean),
     callConversionReportingEnabled: Schema.optional(Schema.Boolean),
@@ -3351,7 +3351,7 @@ export interface GoogleAdsSearchads360V23Resources__MobileAppCategoryConstant {
 }
 
 export const GoogleAdsSearchads360V23Resources__MobileAppCategoryConstant: Schema.Schema<GoogleAdsSearchads360V23Resources__MobileAppCategoryConstant> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     id: Schema.optional(Schema.Number),
     name: Schema.optional(Schema.String),
@@ -3365,7 +3365,7 @@ export interface GoogleAdsSearchads360V23Common__PromotionQrCodeInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__PromotionQrCodeInfo: Schema.Schema<GoogleAdsSearchads360V23Common__PromotionQrCodeInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     qrCodeContent: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__PromotionQrCodeInfo",
@@ -3405,7 +3405,7 @@ export interface GoogleAdsSearchads360V23Services__RateMetrics {
 }
 
 export const GoogleAdsSearchads360V23Services__RateMetrics: Schema.Schema<GoogleAdsSearchads360V23Services__RateMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     trueviewViewRate: Schema.optional(Schema.Number),
     engagementRate: Schema.optional(Schema.Number),
     videoCompletionP50Rate: Schema.optional(Schema.Number),
@@ -3431,7 +3431,7 @@ export interface GoogleAdsSearchads360V23Common__TextLabel {
 }
 
 export const GoogleAdsSearchads360V23Common__TextLabel: Schema.Schema<GoogleAdsSearchads360V23Common__TextLabel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     backgroundColor: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__TextLabel" });
@@ -3450,7 +3450,7 @@ export interface GoogleAdsSearchads360V23Resources__Label {
 }
 
 export const GoogleAdsSearchads360V23Resources__Label: Schema.Schema<GoogleAdsSearchads360V23Resources__Label> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     textLabel: Schema.optional(GoogleAdsSearchads360V23Common__TextLabel),
     name: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
@@ -3466,7 +3466,7 @@ export interface GoogleAdsSearchads360V23Services__MutateLabelResult {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateLabelResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateLabelResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     label: Schema.optional(GoogleAdsSearchads360V23Resources__Label),
   }).annotate({
@@ -3481,7 +3481,7 @@ export interface GoogleAdsSearchads360V23Services__MutateLabelsResponse {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateLabelsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateLabelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__MutateLabelResult),
@@ -3498,7 +3498,7 @@ export interface GoogleAdsSearchads360V23Common__TargetSpend {
 }
 
 export const GoogleAdsSearchads360V23Common__TargetSpend: Schema.Schema<GoogleAdsSearchads360V23Common__TargetSpend> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetSpendMicros: Schema.optional(Schema.String),
     cpcBidCeilingMicros: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__TargetSpend" });
@@ -3517,7 +3517,7 @@ export interface GoogleAdsSearchads360V23Common__ClickLocation {
 }
 
 export const GoogleAdsSearchads360V23Common__ClickLocation: Schema.Schema<GoogleAdsSearchads360V23Common__ClickLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     region: Schema.optional(Schema.String),
     mostSpecific: Schema.optional(Schema.String),
     metro: Schema.optional(Schema.String),
@@ -3533,7 +3533,7 @@ export interface GoogleAdsSearchads360V23Common__DateRange {
 }
 
 export const GoogleAdsSearchads360V23Common__DateRange: Schema.Schema<GoogleAdsSearchads360V23Common__DateRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startDate: Schema.optional(Schema.String),
     endDate: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__DateRange" });
@@ -3546,7 +3546,7 @@ export interface GoogleAdsSearchads360V23Services__CampaignDuration {
 }
 
 export const GoogleAdsSearchads360V23Services__CampaignDuration: Schema.Schema<GoogleAdsSearchads360V23Services__CampaignDuration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dateRange: Schema.optional(GoogleAdsSearchads360V23Common__DateRange),
     durationInDays: Schema.optional(Schema.Number),
   }).annotate({
@@ -3605,7 +3605,7 @@ export interface GoogleAdsSearchads360V23Resources_AdStrengthActionItem_AddAsset
 }
 
 export const GoogleAdsSearchads360V23Resources_AdStrengthActionItem_AddAssetDetails: Schema.Schema<GoogleAdsSearchads360V23Resources_AdStrengthActionItem_AddAssetDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     assetCount: Schema.optional(Schema.Number),
     assetFieldType: Schema.optional(Schema.String),
     videoAspectRatioRequirement: Schema.optional(Schema.String),
@@ -3622,7 +3622,7 @@ export interface GoogleAdsSearchads360V23Resources__AdStrengthActionItem {
 }
 
 export const GoogleAdsSearchads360V23Resources__AdStrengthActionItem: Schema.Schema<GoogleAdsSearchads360V23Resources__AdStrengthActionItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     actionItemType: Schema.optional(Schema.String),
     addAssetDetails: Schema.optional(
       GoogleAdsSearchads360V23Resources_AdStrengthActionItem_AddAssetDetails,
@@ -3637,7 +3637,7 @@ export interface GoogleAdsSearchads360V23Resources__AssetCoverage {
 }
 
 export const GoogleAdsSearchads360V23Resources__AssetCoverage: Schema.Schema<GoogleAdsSearchads360V23Resources__AssetCoverage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adStrengthActionItems: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Resources__AdStrengthActionItem),
     ),
@@ -3712,7 +3712,7 @@ export interface GoogleAdsSearchads360V23Resources__AssetGroup {
 }
 
 export const GoogleAdsSearchads360V23Resources__AssetGroup: Schema.Schema<GoogleAdsSearchads360V23Resources__AssetGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     campaign: Schema.optional(Schema.String),
     primaryStatusReasons: Schema.optional(Schema.Array(Schema.String)),
@@ -3742,7 +3742,7 @@ export interface GoogleAdsSearchads360V23Services__AssetGroupOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__AssetGroupOperation: Schema.Schema<GoogleAdsSearchads360V23Services__AssetGroupOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     create: Schema.optional(GoogleAdsSearchads360V23Resources__AssetGroup),
     remove: Schema.optional(Schema.String),
     updateMask: Schema.optional(Schema.String),
@@ -3772,7 +3772,7 @@ export interface GoogleAdsSearchads360V23Resources__CustomAudienceMember {
 }
 
 export const GoogleAdsSearchads360V23Resources__CustomAudienceMember: Schema.Schema<GoogleAdsSearchads360V23Resources__CustomAudienceMember> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     placeCategory: Schema.optional(Schema.String),
     app: Schema.optional(Schema.String),
     url: Schema.optional(Schema.String),
@@ -3807,7 +3807,7 @@ export interface GoogleAdsSearchads360V23Resources__CustomAudience {
 }
 
 export const GoogleAdsSearchads360V23Resources__CustomAudience: Schema.Schema<GoogleAdsSearchads360V23Resources__CustomAudience> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     members: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Resources__CustomAudienceMember),
@@ -3833,7 +3833,7 @@ export interface GoogleAdsSearchads360V23Services__CustomAudienceOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__CustomAudienceOperation: Schema.Schema<GoogleAdsSearchads360V23Services__CustomAudienceOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     update: Schema.optional(GoogleAdsSearchads360V23Resources__CustomAudience),
     create: Schema.optional(GoogleAdsSearchads360V23Resources__CustomAudience),
@@ -3859,7 +3859,7 @@ export interface GoogleAdsSearchads360V23Common__AssetDisapproved {
 }
 
 export const GoogleAdsSearchads360V23Common__AssetDisapproved: Schema.Schema<GoogleAdsSearchads360V23Common__AssetDisapproved> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     offlineEvaluationErrorReasons: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__AssetDisapproved",
@@ -3892,7 +3892,7 @@ export interface GoogleAdsSearchads360V23Common__AssetLinkPrimaryStatusDetails {
 }
 
 export const GoogleAdsSearchads360V23Common__AssetLinkPrimaryStatusDetails: Schema.Schema<GoogleAdsSearchads360V23Common__AssetLinkPrimaryStatusDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reason: Schema.optional(Schema.String),
     assetDisapproved: Schema.optional(
       GoogleAdsSearchads360V23Common__AssetDisapproved,
@@ -3989,7 +3989,7 @@ export interface GoogleAdsSearchads360V23Resources__CampaignAsset {
 }
 
 export const GoogleAdsSearchads360V23Resources__CampaignAsset: Schema.Schema<GoogleAdsSearchads360V23Resources__CampaignAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     campaign: Schema.optional(Schema.String),
     primaryStatusReasons: Schema.optional(Schema.Array(Schema.String)),
     primaryStatus: Schema.optional(Schema.String),
@@ -4017,7 +4017,7 @@ export interface GoogleAdsSearchads360V23Services__GoalOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__GoalOperation: Schema.Schema<GoogleAdsSearchads360V23Services__GoalOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     update: Schema.optional(GoogleAdsSearchads360V23Resources__Goal),
     create: Schema.optional(GoogleAdsSearchads360V23Resources__Goal),
@@ -4069,7 +4069,7 @@ export interface GoogleAdsSearchads360V23Resources_ExperimentArm_AssetGroupAsset
 }
 
 export const GoogleAdsSearchads360V23Resources_ExperimentArm_AssetGroupAssetInfo: Schema.Schema<GoogleAdsSearchads360V23Resources_ExperimentArm_AssetGroupAssetInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     asset: Schema.optional(Schema.String),
     fieldType: Schema.optional(Schema.String),
   }).annotate({
@@ -4085,7 +4085,7 @@ export interface GoogleAdsSearchads360V23Resources_ExperimentArm_AssetGroupInfo 
 }
 
 export const GoogleAdsSearchads360V23Resources_ExperimentArm_AssetGroupInfo: Schema.Schema<GoogleAdsSearchads360V23Resources_ExperimentArm_AssetGroupInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     assetGroupAssets: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Resources_ExperimentArm_AssetGroupAssetInfo,
@@ -4117,7 +4117,7 @@ export interface GoogleAdsSearchads360V23Resources__ExperimentArm {
 }
 
 export const GoogleAdsSearchads360V23Resources__ExperimentArm: Schema.Schema<GoogleAdsSearchads360V23Resources__ExperimentArm> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     campaigns: Schema.optional(Schema.Array(Schema.String)),
     name: Schema.optional(Schema.String),
     inDesignCampaigns: Schema.optional(Schema.Array(Schema.String)),
@@ -4146,7 +4146,7 @@ export interface GoogleAdsSearchads360V23Services__ExperimentArmOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__ExperimentArmOperation: Schema.Schema<GoogleAdsSearchads360V23Services__ExperimentArmOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     create: Schema.optional(GoogleAdsSearchads360V23Resources__ExperimentArm),
     remove: Schema.optional(Schema.String),
     updateMask: Schema.optional(Schema.String),
@@ -4171,7 +4171,7 @@ export interface GoogleAdsSearchads360V23Services__MutateExperimentArmsRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateExperimentArmsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateExperimentArmsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__ExperimentArmOperation),
     ),
@@ -4198,7 +4198,7 @@ export interface GoogleAdsSearchads360V23Services__SurveySatisfied {
 }
 
 export const GoogleAdsSearchads360V23Services__SurveySatisfied: Schema.Schema<GoogleAdsSearchads360V23Services__SurveySatisfied> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     surveySatisfiedReason: Schema.optional(Schema.String),
     otherReasonComment: Schema.optional(Schema.String),
   }).annotate({
@@ -4217,7 +4217,7 @@ export interface GoogleAdsSearchads360V23Resources_Recommendation_ShoppingOfferA
 }
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_ShoppingOfferAttributeRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_ShoppingOfferAttributeRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     feedLabel: Schema.optional(Schema.String),
     demotedOffersCount: Schema.optional(Schema.String),
     merchant: Schema.optional(
@@ -4235,7 +4235,7 @@ export interface GoogleAdsSearchads360V23Resources__AdScheduleView {
 }
 
 export const GoogleAdsSearchads360V23Resources__AdScheduleView: Schema.Schema<GoogleAdsSearchads360V23Resources__AdScheduleView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Resources__AdScheduleView",
@@ -4249,7 +4249,7 @@ export interface GoogleAdsSearchads360V23Services_SuggestSmartCampaignBudgetOpti
 }
 
 export const GoogleAdsSearchads360V23Services_SuggestSmartCampaignBudgetOptionsResponse_Metrics: Schema.Schema<GoogleAdsSearchads360V23Services_SuggestSmartCampaignBudgetOptionsResponse_Metrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     minDailyClicks: Schema.optional(Schema.String),
     maxDailyClicks: Schema.optional(Schema.String),
   }).annotate({
@@ -4265,7 +4265,7 @@ export interface GoogleAdsSearchads360V23Services_SuggestSmartCampaignBudgetOpti
 }
 
 export const GoogleAdsSearchads360V23Services_SuggestSmartCampaignBudgetOptionsResponse_BudgetOption: Schema.Schema<GoogleAdsSearchads360V23Services_SuggestSmartCampaignBudgetOptionsResponse_BudgetOption> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dailyAmountMicros: Schema.optional(Schema.String),
     metrics: Schema.optional(
       GoogleAdsSearchads360V23Services_SuggestSmartCampaignBudgetOptionsResponse_Metrics,
@@ -4289,7 +4289,7 @@ export interface GoogleAdsSearchads360V23Resources__SearchAds360Campaign {
 }
 
 export const GoogleAdsSearchads360V23Resources__SearchAds360Campaign: Schema.Schema<GoogleAdsSearchads360V23Resources__SearchAds360Campaign> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     productAttributionFilterType: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
   }).annotate({
@@ -4302,7 +4302,7 @@ export interface GoogleAdsSearchads360V23Services__MoveManagerLinkResponse {
 }
 
 export const GoogleAdsSearchads360V23Services__MoveManagerLinkResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MoveManagerLinkResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__MoveManagerLinkResponse",
@@ -4320,7 +4320,7 @@ export interface GoogleAdsSearchads360V23Resources__AdParameter {
 }
 
 export const GoogleAdsSearchads360V23Resources__AdParameter: Schema.Schema<GoogleAdsSearchads360V23Resources__AdParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adGroupCriterion: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
     parameterIndex: Schema.optional(Schema.String),
@@ -4339,7 +4339,7 @@ export interface GoogleAdsSearchads360V23Services__AdParameterOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__AdParameterOperation: Schema.Schema<GoogleAdsSearchads360V23Services__AdParameterOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     update: Schema.optional(GoogleAdsSearchads360V23Resources__AdParameter),
     create: Schema.optional(GoogleAdsSearchads360V23Resources__AdParameter),
@@ -4364,7 +4364,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAdParametersRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAdParametersRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAdParametersRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__AdParameterOperation),
     ),
@@ -4391,7 +4391,7 @@ export interface GoogleAdsSearchads360V23Common__BusinessProfileLocationSet {
 }
 
 export const GoogleAdsSearchads360V23Common__BusinessProfileLocationSet: Schema.Schema<GoogleAdsSearchads360V23Common__BusinessProfileLocationSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     labelFilters: Schema.optional(Schema.Array(Schema.String)),
     httpAuthorizationToken: Schema.optional(Schema.String),
     listingIdFilters: Schema.optional(Schema.Array(Schema.String)),
@@ -4415,7 +4415,7 @@ export interface GoogleAdsSearchads360V23Resources__CreditDetails {
 }
 
 export const GoogleAdsSearchads360V23Resources__CreditDetails: Schema.Schema<GoogleAdsSearchads360V23Resources__CreditDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     creditState: Schema.optional(Schema.String),
     creditStateLastUpdateDateTime: Schema.optional(Schema.String),
   }).annotate({
@@ -4428,7 +4428,7 @@ export interface GoogleAdsSearchads360V23Common__ProductTypeFullInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__ProductTypeFullInfo: Schema.Schema<GoogleAdsSearchads360V23Common__ProductTypeFullInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__ProductTypeFullInfo",
@@ -4463,7 +4463,7 @@ export interface GoogleAdsSearchads360V23Resources__CustomerUserAccessInvitation
 }
 
 export const GoogleAdsSearchads360V23Resources__CustomerUserAccessInvitation: Schema.Schema<GoogleAdsSearchads360V23Resources__CustomerUserAccessInvitation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     emailAddress: Schema.optional(Schema.String),
     creationDateTime: Schema.optional(Schema.String),
     invitationStatus: Schema.optional(Schema.String),
@@ -4487,7 +4487,7 @@ export interface GoogleAdsSearchads360V23Resources__CarrierConstant {
 }
 
 export const GoogleAdsSearchads360V23Resources__CarrierConstant: Schema.Schema<GoogleAdsSearchads360V23Resources__CarrierConstant> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -4502,7 +4502,7 @@ export interface GoogleAdsSearchads360V23Resources__CartDataSalesView {
 }
 
 export const GoogleAdsSearchads360V23Resources__CartDataSalesView: Schema.Schema<GoogleAdsSearchads360V23Resources__CartDataSalesView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Resources__CartDataSalesView",
@@ -4516,7 +4516,7 @@ export interface GoogleAdsSearchads360V23Resources_Invoice_AdjustmentSummary {
 }
 
 export const GoogleAdsSearchads360V23Resources_Invoice_AdjustmentSummary: Schema.Schema<GoogleAdsSearchads360V23Resources_Invoice_AdjustmentSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adjustmentDescription: Schema.optional(Schema.String),
     amountMicros: Schema.optional(Schema.String),
   }).annotate({
@@ -4544,7 +4544,7 @@ export interface GoogleAdsSearchads360V23Resources_Invoice_RegulatoryCostSummary
 }
 
 export const GoogleAdsSearchads360V23Resources_Invoice_RegulatoryCostSummary: Schema.Schema<GoogleAdsSearchads360V23Resources_Invoice_RegulatoryCostSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amountMicros: Schema.optional(Schema.String),
     regulatoryFeeType: Schema.optional(Schema.String),
   }).annotate({
@@ -4598,7 +4598,7 @@ export interface GoogleAdsSearchads360V23Resources_Invoice_AccountSummary {
 }
 
 export const GoogleAdsSearchads360V23Resources_Invoice_AccountSummary: Schema.Schema<GoogleAdsSearchads360V23Resources_Invoice_AccountSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.optional(Schema.String),
     couponAdjustmentTotalAmountMicros: Schema.optional(Schema.String),
     regulatoryCostsSubtotalAmountMicros: Schema.optional(Schema.String),
@@ -4649,7 +4649,7 @@ export interface GoogleAdsSearchads360V23Common__TagSnippet {
 }
 
 export const GoogleAdsSearchads360V23Common__TagSnippet: Schema.Schema<GoogleAdsSearchads360V23Common__TagSnippet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     eventSnippet: Schema.optional(Schema.String),
     pageFormat: Schema.optional(Schema.String),
@@ -4668,7 +4668,7 @@ export interface GoogleAdsSearchads360V23Resources__RemarketingAction {
 }
 
 export const GoogleAdsSearchads360V23Resources__RemarketingAction: Schema.Schema<GoogleAdsSearchads360V23Resources__RemarketingAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tagSnippets: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__TagSnippet),
     ),
@@ -4689,7 +4689,7 @@ export interface GoogleAdsSearchads360V23Services__RemarketingActionOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__RemarketingActionOperation: Schema.Schema<GoogleAdsSearchads360V23Services__RemarketingActionOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     create: Schema.optional(
       GoogleAdsSearchads360V23Resources__RemarketingAction,
     ),
@@ -4786,7 +4786,7 @@ export interface GoogleAdsSearchads360V23Resources__CustomerAsset {
 }
 
 export const GoogleAdsSearchads360V23Resources__CustomerAsset: Schema.Schema<GoogleAdsSearchads360V23Resources__CustomerAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     primaryStatusReasons: Schema.optional(Schema.Array(Schema.String)),
     primaryStatus: Schema.optional(Schema.String),
@@ -4815,7 +4815,7 @@ export interface GoogleAdsSearchads360V23Services__CustomerAssetOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__CustomerAssetOperation: Schema.Schema<GoogleAdsSearchads360V23Services__CustomerAssetOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     update: Schema.optional(GoogleAdsSearchads360V23Resources__CustomerAsset),
     remove: Schema.optional(Schema.String),
@@ -4839,7 +4839,7 @@ export interface GoogleAdsSearchads360V23Common__CustomizerValue {
 }
 
 export const GoogleAdsSearchads360V23Common__CustomizerValue: Schema.Schema<GoogleAdsSearchads360V23Common__CustomizerValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     stringValue: Schema.optional(Schema.String),
   }).annotate({
@@ -4860,7 +4860,7 @@ export interface GoogleAdsSearchads360V23Resources__CampaignCustomizer {
 }
 
 export const GoogleAdsSearchads360V23Resources__CampaignCustomizer: Schema.Schema<GoogleAdsSearchads360V23Resources__CampaignCustomizer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     campaign: Schema.optional(Schema.String),
     customizerAttribute: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -4878,7 +4878,7 @@ export interface GoogleAdsSearchads360V23Services__CampaignCustomizerOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__CampaignCustomizerOperation: Schema.Schema<GoogleAdsSearchads360V23Services__CampaignCustomizerOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     remove: Schema.optional(Schema.String),
     create: Schema.optional(
       GoogleAdsSearchads360V23Resources__CampaignCustomizer,
@@ -4913,7 +4913,7 @@ export interface GoogleAdsSearchads360V23Resources__ConversionGoalCampaignConfig
 }
 
 export const GoogleAdsSearchads360V23Resources__ConversionGoalCampaignConfig: Schema.Schema<GoogleAdsSearchads360V23Resources__ConversionGoalCampaignConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customConversionGoal: Schema.optional(Schema.String),
     searchAds360CustomConversionGoal: Schema.optional(Schema.String),
     goalConfigLevel: Schema.optional(Schema.String),
@@ -4933,7 +4933,7 @@ export interface GoogleAdsSearchads360V23Services__ConversionGoalCampaignConfigO
 }
 
 export const GoogleAdsSearchads360V23Services__ConversionGoalCampaignConfigOperation: Schema.Schema<GoogleAdsSearchads360V23Services__ConversionGoalCampaignConfigOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     update: Schema.optional(
       GoogleAdsSearchads360V23Resources__ConversionGoalCampaignConfig,
@@ -4955,7 +4955,7 @@ export interface GoogleAdsSearchads360V23Resources__CampaignSharedSet {
 }
 
 export const GoogleAdsSearchads360V23Resources__CampaignSharedSet: Schema.Schema<GoogleAdsSearchads360V23Resources__CampaignSharedSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
     sharedSet: Schema.optional(Schema.String),
@@ -4972,7 +4972,7 @@ export interface GoogleAdsSearchads360V23Services__CampaignSharedSetOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__CampaignSharedSetOperation: Schema.Schema<GoogleAdsSearchads360V23Services__CampaignSharedSetOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     create: Schema.optional(
       GoogleAdsSearchads360V23Resources__CampaignSharedSet,
     ),
@@ -4989,7 +4989,7 @@ export interface GoogleAdsSearchads360V23Services__AssetSetAssetOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__AssetSetAssetOperation: Schema.Schema<GoogleAdsSearchads360V23Services__AssetSetAssetOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     create: Schema.optional(GoogleAdsSearchads360V23Resources__AssetSetAsset),
     remove: Schema.optional(Schema.String),
   }).annotate({
@@ -5017,7 +5017,7 @@ export interface GoogleAdsSearchads360V23Resources__CustomizerAttribute {
 }
 
 export const GoogleAdsSearchads360V23Resources__CustomizerAttribute: Schema.Schema<GoogleAdsSearchads360V23Resources__CustomizerAttribute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5037,7 +5037,7 @@ export interface GoogleAdsSearchads360V23Services__CustomizerAttributeOperation 
 }
 
 export const GoogleAdsSearchads360V23Services__CustomizerAttributeOperation: Schema.Schema<GoogleAdsSearchads360V23Services__CustomizerAttributeOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     create: Schema.optional(
       GoogleAdsSearchads360V23Resources__CustomizerAttribute,
     ),
@@ -5070,7 +5070,7 @@ export interface GoogleAdsSearchads360V23Resources__KeywordPlanCampaignKeyword {
 }
 
 export const GoogleAdsSearchads360V23Resources__KeywordPlanCampaignKeyword: Schema.Schema<GoogleAdsSearchads360V23Resources__KeywordPlanCampaignKeyword> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     matchType: Schema.optional(Schema.String),
     text: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
@@ -5093,7 +5093,7 @@ export interface GoogleAdsSearchads360V23Services__KeywordPlanCampaignKeywordOpe
 }
 
 export const GoogleAdsSearchads360V23Services__KeywordPlanCampaignKeywordOperation: Schema.Schema<GoogleAdsSearchads360V23Services__KeywordPlanCampaignKeywordOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     update: Schema.optional(
       GoogleAdsSearchads360V23Resources__KeywordPlanCampaignKeyword,
@@ -5113,7 +5113,7 @@ export interface GoogleAdsSearchads360V23Common__AudienceInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__AudienceInfo: Schema.Schema<GoogleAdsSearchads360V23Common__AudienceInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     audience: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__AudienceInfo" });
 
@@ -5147,7 +5147,7 @@ export interface GoogleAdsSearchads360V23Resources_AdGroupCriterion_QualityInfo 
 }
 
 export const GoogleAdsSearchads360V23Resources_AdGroupCriterion_QualityInfo: Schema.Schema<GoogleAdsSearchads360V23Resources_AdGroupCriterion_QualityInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     creativeQualityScore: Schema.optional(Schema.String),
     postClickQualityScore: Schema.optional(Schema.String),
     qualityScore: Schema.optional(Schema.Number),
@@ -5163,7 +5163,7 @@ export interface GoogleAdsSearchads360V23Common__CustomIntentInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__CustomIntentInfo: Schema.Schema<GoogleAdsSearchads360V23Common__CustomIntentInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customIntent: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__CustomIntentInfo",
@@ -5183,7 +5183,7 @@ export interface GoogleAdsSearchads360V23Resources_AdGroupCriterion_PositionEsti
 }
 
 export const GoogleAdsSearchads360V23Resources_AdGroupCriterion_PositionEstimates: Schema.Schema<GoogleAdsSearchads360V23Resources_AdGroupCriterion_PositionEstimates> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     firstPageCpcMicros: Schema.optional(Schema.String),
     topOfPageCpcMicros: Schema.optional(Schema.String),
     firstPositionCpcMicros: Schema.optional(Schema.String),
@@ -5200,7 +5200,7 @@ export interface GoogleAdsSearchads360V23Common__VideoLineupInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__VideoLineupInfo: Schema.Schema<GoogleAdsSearchads360V23Common__VideoLineupInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     videoLineupId: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__VideoLineupInfo",
@@ -5214,7 +5214,7 @@ export interface GoogleAdsSearchads360V23Common__TopicInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__TopicInfo: Schema.Schema<GoogleAdsSearchads360V23Common__TopicInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     topicConstant: Schema.optional(Schema.String),
     path: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__TopicInfo" });
@@ -5225,7 +5225,7 @@ export interface GoogleAdsSearchads360V23Common__LanguageInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__LanguageInfo: Schema.Schema<GoogleAdsSearchads360V23Common__LanguageInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languageConstant: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__LanguageInfo" });
 
@@ -5235,7 +5235,7 @@ export interface GoogleAdsSearchads360V23Common__YouTubeChannelInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__YouTubeChannelInfo: Schema.Schema<GoogleAdsSearchads360V23Common__YouTubeChannelInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     channelId: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__YouTubeChannelInfo",
@@ -5247,7 +5247,7 @@ export interface GoogleAdsSearchads360V23Common__UserListInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__UserListInfo: Schema.Schema<GoogleAdsSearchads360V23Common__UserListInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userList: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__UserListInfo" });
 
@@ -5257,7 +5257,7 @@ export interface GoogleAdsSearchads360V23Common__AppPaymentModelInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__AppPaymentModelInfo: Schema.Schema<GoogleAdsSearchads360V23Common__AppPaymentModelInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__AppPaymentModelInfo",
@@ -5269,7 +5269,7 @@ export interface GoogleAdsSearchads360V23Common__CombinedAudienceInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__CombinedAudienceInfo: Schema.Schema<GoogleAdsSearchads360V23Common__CombinedAudienceInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     combinedAudience: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__CombinedAudienceInfo",
@@ -5281,7 +5281,7 @@ export interface GoogleAdsSearchads360V23Common__ExtendedDemographicInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__ExtendedDemographicInfo: Schema.Schema<GoogleAdsSearchads360V23Common__ExtendedDemographicInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     extendedDemographicId: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__ExtendedDemographicInfo",
@@ -5293,7 +5293,7 @@ export interface GoogleAdsSearchads360V23Common__UserInterestInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__UserInterestInfo: Schema.Schema<GoogleAdsSearchads360V23Common__UserInterestInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userInterestCategory: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__UserInterestInfo",
@@ -5310,7 +5310,7 @@ export interface GoogleAdsSearchads360V23Common__ProductChannelExclusivityInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__ProductChannelExclusivityInfo: Schema.Schema<GoogleAdsSearchads360V23Common__ProductChannelExclusivityInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     channelExclusivity: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__ProductChannelExclusivityInfo",
@@ -5332,7 +5332,7 @@ export interface GoogleAdsSearchads360V23Common__ProductTypeInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__ProductTypeInfo: Schema.Schema<GoogleAdsSearchads360V23Common__ProductTypeInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     level: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
   }).annotate({
@@ -5345,7 +5345,7 @@ export interface GoogleAdsSearchads360V23Common__ProductLegacyConditionInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__ProductLegacyConditionInfo: Schema.Schema<GoogleAdsSearchads360V23Common__ProductLegacyConditionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__ProductLegacyConditionInfo",
@@ -5357,7 +5357,7 @@ export interface GoogleAdsSearchads360V23Common__ProductBrandInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__ProductBrandInfo: Schema.Schema<GoogleAdsSearchads360V23Common__ProductBrandInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__ProductBrandInfo",
@@ -5369,7 +5369,7 @@ export interface GoogleAdsSearchads360V23Common__HotelIdInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__HotelIdInfo: Schema.Schema<GoogleAdsSearchads360V23Common__HotelIdInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__HotelIdInfo" });
 
@@ -5379,7 +5379,7 @@ export interface GoogleAdsSearchads360V23Common__ActivityRatingInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__ActivityRatingInfo: Schema.Schema<GoogleAdsSearchads360V23Common__ActivityRatingInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__ActivityRatingInfo",
@@ -5391,7 +5391,7 @@ export interface GoogleAdsSearchads360V23Common__ActivityStateInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__ActivityStateInfo: Schema.Schema<GoogleAdsSearchads360V23Common__ActivityStateInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__ActivityStateInfo",
@@ -5403,7 +5403,7 @@ export interface GoogleAdsSearchads360V23Common__ProductGroupingInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__ProductGroupingInfo: Schema.Schema<GoogleAdsSearchads360V23Common__ProductGroupingInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__ProductGroupingInfo",
@@ -5415,7 +5415,7 @@ export interface GoogleAdsSearchads360V23Common__ProductLabelsInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__ProductLabelsInfo: Schema.Schema<GoogleAdsSearchads360V23Common__ProductLabelsInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__ProductLabelsInfo",
@@ -5424,7 +5424,7 @@ export const GoogleAdsSearchads360V23Common__ProductLabelsInfo: Schema.Schema<Go
 export interface GoogleAdsSearchads360V23Common__UnknownListingDimensionInfo {}
 
 export const GoogleAdsSearchads360V23Common__UnknownListingDimensionInfo: Schema.Schema<GoogleAdsSearchads360V23Common__UnknownListingDimensionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAdsSearchads360V23Common__UnknownListingDimensionInfo",
   });
 
@@ -5434,7 +5434,7 @@ export interface GoogleAdsSearchads360V23Common__HotelCountryRegionInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__HotelCountryRegionInfo: Schema.Schema<GoogleAdsSearchads360V23Common__HotelCountryRegionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     countryRegionCriterion: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__HotelCountryRegionInfo",
@@ -5446,7 +5446,7 @@ export interface GoogleAdsSearchads360V23Common__ActivityIdInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__ActivityIdInfo: Schema.Schema<GoogleAdsSearchads360V23Common__ActivityIdInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__ActivityIdInfo" });
 
@@ -5456,7 +5456,7 @@ export interface GoogleAdsSearchads360V23Common__HotelCityInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__HotelCityInfo: Schema.Schema<GoogleAdsSearchads360V23Common__HotelCityInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cityCriterion: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__HotelCityInfo" });
 
@@ -5466,7 +5466,7 @@ export interface GoogleAdsSearchads360V23Common__ActivityCityInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__ActivityCityInfo: Schema.Schema<GoogleAdsSearchads360V23Common__ActivityCityInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__ActivityCityInfo",
@@ -5478,7 +5478,7 @@ export interface GoogleAdsSearchads360V23Common__HotelStateInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__HotelStateInfo: Schema.Schema<GoogleAdsSearchads360V23Common__HotelStateInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     stateCriterion: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__HotelStateInfo" });
 
@@ -5498,7 +5498,7 @@ export interface GoogleAdsSearchads360V23Common__ProductCategoryInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__ProductCategoryInfo: Schema.Schema<GoogleAdsSearchads360V23Common__ProductCategoryInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     level: Schema.optional(Schema.String),
     categoryId: Schema.optional(Schema.String),
   }).annotate({
@@ -5517,7 +5517,7 @@ export interface GoogleAdsSearchads360V23Common__ProductConditionInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__ProductConditionInfo: Schema.Schema<GoogleAdsSearchads360V23Common__ProductConditionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     condition: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__ProductConditionInfo",
@@ -5529,7 +5529,7 @@ export interface GoogleAdsSearchads360V23Common__ProductItemIdInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__ProductItemIdInfo: Schema.Schema<GoogleAdsSearchads360V23Common__ProductItemIdInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__ProductItemIdInfo",
@@ -5541,7 +5541,7 @@ export interface GoogleAdsSearchads360V23Common__HotelClassInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__HotelClassInfo: Schema.Schema<GoogleAdsSearchads360V23Common__HotelClassInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__HotelClassInfo" });
 
@@ -5551,7 +5551,7 @@ export interface GoogleAdsSearchads360V23Common__ProductChannelInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__ProductChannelInfo: Schema.Schema<GoogleAdsSearchads360V23Common__ProductChannelInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     channel: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__ProductChannelInfo",
@@ -5563,7 +5563,7 @@ export interface GoogleAdsSearchads360V23Common__ActivityCountryInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__ActivityCountryInfo: Schema.Schema<GoogleAdsSearchads360V23Common__ActivityCountryInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__ActivityCountryInfo",
@@ -5585,7 +5585,7 @@ export interface GoogleAdsSearchads360V23Common__ProductCustomAttributeInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__ProductCustomAttributeInfo: Schema.Schema<GoogleAdsSearchads360V23Common__ProductCustomAttributeInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     index: Schema.optional(Schema.String),
   }).annotate({
@@ -5642,7 +5642,7 @@ export interface GoogleAdsSearchads360V23Common__ListingDimensionInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__ListingDimensionInfo: Schema.Schema<GoogleAdsSearchads360V23Common__ListingDimensionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     productChannelExclusivity: Schema.optional(
       GoogleAdsSearchads360V23Common__ProductChannelExclusivityInfo,
     ),
@@ -5712,7 +5712,7 @@ export interface GoogleAdsSearchads360V23Common__ListingDimensionPath {
 }
 
 export const GoogleAdsSearchads360V23Common__ListingDimensionPath: Schema.Schema<GoogleAdsSearchads360V23Common__ListingDimensionPath> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dimensions: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__ListingDimensionInfo),
     ),
@@ -5732,7 +5732,7 @@ export interface GoogleAdsSearchads360V23Common__ListingGroupInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__ListingGroupInfo: Schema.Schema<GoogleAdsSearchads360V23Common__ListingGroupInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     path: Schema.optional(GoogleAdsSearchads360V23Common__ListingDimensionPath),
     parentAdGroupCriterion: Schema.optional(Schema.String),
@@ -5755,7 +5755,7 @@ export interface GoogleAdsSearchads360V23Common__GenderInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__GenderInfo: Schema.Schema<GoogleAdsSearchads360V23Common__GenderInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__GenderInfo" });
 
@@ -5767,7 +5767,7 @@ export interface GoogleAdsSearchads360V23Common__MobileApplicationInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__MobileApplicationInfo: Schema.Schema<GoogleAdsSearchads360V23Common__MobileApplicationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     appId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
   }).annotate({
@@ -5780,7 +5780,7 @@ export interface GoogleAdsSearchads360V23Common__LifeEventInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__LifeEventInfo: Schema.Schema<GoogleAdsSearchads360V23Common__LifeEventInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lifeEventId: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__LifeEventInfo" });
 
@@ -5800,7 +5800,7 @@ export interface GoogleAdsSearchads360V23Common__AgeRangeInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__AgeRangeInfo: Schema.Schema<GoogleAdsSearchads360V23Common__AgeRangeInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__AgeRangeInfo" });
 
@@ -5810,7 +5810,7 @@ export interface GoogleAdsSearchads360V23Common__VerticalAdsItemGroupRuleListInf
 }
 
 export const GoogleAdsSearchads360V23Common__VerticalAdsItemGroupRuleListInfo: Schema.Schema<GoogleAdsSearchads360V23Common__VerticalAdsItemGroupRuleListInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sharedSet: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -5833,7 +5833,7 @@ export interface GoogleAdsSearchads360V23Common__IncomeRangeInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__IncomeRangeInfo: Schema.Schema<GoogleAdsSearchads360V23Common__IncomeRangeInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__IncomeRangeInfo",
@@ -5845,7 +5845,7 @@ export interface GoogleAdsSearchads360V23Common__PlacementInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__PlacementInfo: Schema.Schema<GoogleAdsSearchads360V23Common__PlacementInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__PlacementInfo" });
 
@@ -5867,7 +5867,7 @@ export interface GoogleAdsSearchads360V23Common__WebpageConditionInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__WebpageConditionInfo: Schema.Schema<GoogleAdsSearchads360V23Common__WebpageConditionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operand: Schema.optional(Schema.String),
     operator: Schema.optional(Schema.String),
     argument: Schema.optional(Schema.String),
@@ -5881,7 +5881,7 @@ export interface GoogleAdsSearchads360V23Common__WebpageSampleInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__WebpageSampleInfo: Schema.Schema<GoogleAdsSearchads360V23Common__WebpageSampleInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sampleUrls: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__WebpageSampleInfo",
@@ -5899,7 +5899,7 @@ export interface GoogleAdsSearchads360V23Common__WebpageInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__WebpageInfo: Schema.Schema<GoogleAdsSearchads360V23Common__WebpageInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     criterionName: Schema.optional(Schema.String),
     conditions: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__WebpageConditionInfo),
@@ -5914,7 +5914,7 @@ export interface GoogleAdsSearchads360V23Common__CustomAffinityInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__CustomAffinityInfo: Schema.Schema<GoogleAdsSearchads360V23Common__CustomAffinityInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customAffinity: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__CustomAffinityInfo",
@@ -5926,7 +5926,7 @@ export interface GoogleAdsSearchads360V23Common__LocationInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__LocationInfo: Schema.Schema<GoogleAdsSearchads360V23Common__LocationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     geoTargetConstant: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__LocationInfo" });
 
@@ -5936,7 +5936,7 @@ export interface GoogleAdsSearchads360V23Common__YouTubeVideoInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__YouTubeVideoInfo: Schema.Schema<GoogleAdsSearchads360V23Common__YouTubeVideoInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     videoId: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__YouTubeVideoInfo",
@@ -5948,7 +5948,7 @@ export interface GoogleAdsSearchads360V23Common__CustomAudienceInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__CustomAudienceInfo: Schema.Schema<GoogleAdsSearchads360V23Common__CustomAudienceInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customAudience: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__CustomAudienceInfo",
@@ -5966,7 +5966,7 @@ export interface GoogleAdsSearchads360V23Common__ParentalStatusInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__ParentalStatusInfo: Schema.Schema<GoogleAdsSearchads360V23Common__ParentalStatusInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__ParentalStatusInfo",
@@ -5978,7 +5978,7 @@ export interface GoogleAdsSearchads360V23Common__BrandListInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__BrandListInfo: Schema.Schema<GoogleAdsSearchads360V23Common__BrandListInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sharedSet: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__BrandListInfo" });
 
@@ -5996,7 +5996,7 @@ export interface GoogleAdsSearchads360V23Common__KeywordInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__KeywordInfo: Schema.Schema<GoogleAdsSearchads360V23Common__KeywordInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     matchType: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__KeywordInfo" });
@@ -6007,7 +6007,7 @@ export interface GoogleAdsSearchads360V23Common__MobileAppCategoryInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__MobileAppCategoryInfo: Schema.Schema<GoogleAdsSearchads360V23Common__MobileAppCategoryInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mobileAppCategoryConstant: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__MobileAppCategoryInfo",
@@ -6291,7 +6291,7 @@ export interface GoogleAdsSearchads360V23Resources__AdGroupCriterion {
 }
 
 export const GoogleAdsSearchads360V23Resources__AdGroupCriterion: Schema.Schema<GoogleAdsSearchads360V23Resources__AdGroupCriterion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     criterionId: Schema.optional(Schema.String),
     effectiveCpcBidMicros: Schema.optional(Schema.String),
     audience: Schema.optional(GoogleAdsSearchads360V23Common__AudienceInfo),
@@ -6414,7 +6414,7 @@ export interface GoogleAdsSearchads360V23Services__AdGroupCriterionOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__AdGroupCriterionOperation: Schema.Schema<GoogleAdsSearchads360V23Services__AdGroupCriterionOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     remove: Schema.optional(Schema.String),
     updateMask: Schema.optional(Schema.String),
     exemptPolicyViolationKeys: Schema.optional(
@@ -6454,7 +6454,7 @@ export interface GoogleAdsSearchads360V23Common__PolicySummary {
 }
 
 export const GoogleAdsSearchads360V23Common__PolicySummary: Schema.Schema<GoogleAdsSearchads360V23Common__PolicySummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     approvalStatus: Schema.optional(Schema.String),
     policyTopicEntries: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__PolicyTopicEntry),
@@ -6551,7 +6551,7 @@ export interface GoogleAdsSearchads360V23Resources__AssetGroupAsset {
 }
 
 export const GoogleAdsSearchads360V23Resources__AssetGroupAsset: Schema.Schema<GoogleAdsSearchads360V23Resources__AssetGroupAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     source: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
     asset: Schema.optional(Schema.String),
@@ -6584,7 +6584,7 @@ export interface GoogleAdsSearchads360V23Services__AssetGroupAssetOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__AssetGroupAssetOperation: Schema.Schema<GoogleAdsSearchads360V23Services__AssetGroupAssetOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     remove: Schema.optional(Schema.String),
     create: Schema.optional(GoogleAdsSearchads360V23Resources__AssetGroupAsset),
     updateMask: Schema.optional(Schema.String),
@@ -6603,7 +6603,7 @@ export interface GoogleAdsSearchads360V23Resources__DoubleClickCampaignManagerSe
 }
 
 export const GoogleAdsSearchads360V23Resources__DoubleClickCampaignManagerSetting: Schema.Schema<GoogleAdsSearchads360V23Resources__DoubleClickCampaignManagerSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     timeZone: Schema.optional(Schema.String),
     advertiserId: Schema.optional(Schema.String),
     networkId: Schema.optional(Schema.String),
@@ -6632,7 +6632,7 @@ export interface GoogleAdsSearchads360V23Resources__GranularInsuranceStatus {
 }
 
 export const GoogleAdsSearchads360V23Resources__GranularInsuranceStatus: Schema.Schema<GoogleAdsSearchads360V23Resources__GranularInsuranceStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     categoryId: Schema.optional(Schema.String),
     geoCriterionId: Schema.optional(Schema.String),
     verificationStatus: Schema.optional(Schema.String),
@@ -6660,7 +6660,7 @@ export interface GoogleAdsSearchads360V23Resources__GranularLicenseStatus {
 }
 
 export const GoogleAdsSearchads360V23Resources__GranularLicenseStatus: Schema.Schema<GoogleAdsSearchads360V23Resources__GranularLicenseStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     categoryId: Schema.optional(Schema.String),
     geoCriterionId: Schema.optional(Schema.String),
     verificationStatus: Schema.optional(Schema.String),
@@ -6676,7 +6676,7 @@ export interface GoogleAdsSearchads360V23Resources__LocalServicesSettings {
 }
 
 export const GoogleAdsSearchads360V23Resources__LocalServicesSettings: Schema.Schema<GoogleAdsSearchads360V23Resources__LocalServicesSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     granularInsuranceStatuses: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Resources__GranularInsuranceStatus),
     ),
@@ -6693,7 +6693,7 @@ export interface GoogleAdsSearchads360V23Resources__RemarketingSetting {
 }
 
 export const GoogleAdsSearchads360V23Resources__RemarketingSetting: Schema.Schema<GoogleAdsSearchads360V23Resources__RemarketingSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     googleGlobalSiteTag: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Resources__RemarketingSetting",
@@ -6724,7 +6724,7 @@ export interface GoogleAdsSearchads360V23Resources__ConversionTrackingSetting {
 }
 
 export const GoogleAdsSearchads360V23Resources__ConversionTrackingSetting: Schema.Schema<GoogleAdsSearchads360V23Resources__ConversionTrackingSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     googleAdsCrossAccountConversionTrackingId: Schema.optional(Schema.String),
     crossAccountConversionTrackingId: Schema.optional(Schema.String),
     acceptedCustomerDataTerms: Schema.optional(Schema.Boolean),
@@ -6749,7 +6749,7 @@ export interface GoogleAdsSearchads360V23Common__CustomerThirdPartyViewabilityIn
 }
 
 export const GoogleAdsSearchads360V23Common__CustomerThirdPartyViewabilityIntegrationPartner: Schema.Schema<GoogleAdsSearchads360V23Common__CustomerThirdPartyViewabilityIntegrationPartner> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowShareCost: Schema.optional(Schema.Boolean),
     viewabilityIntegrationPartner: Schema.optional(Schema.String),
   }).annotate({
@@ -6777,7 +6777,7 @@ export interface GoogleAdsSearchads360V23Common__CustomerThirdPartyReachIntegrat
 }
 
 export const GoogleAdsSearchads360V23Common__CustomerThirdPartyReachIntegrationPartner: Schema.Schema<GoogleAdsSearchads360V23Common__CustomerThirdPartyReachIntegrationPartner> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reachIntegrationPartner: Schema.optional(Schema.String),
     allowShareCost: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -6800,7 +6800,7 @@ export interface GoogleAdsSearchads360V23Common__CustomerThirdPartyBrandLiftInte
 }
 
 export const GoogleAdsSearchads360V23Common__CustomerThirdPartyBrandLiftIntegrationPartner: Schema.Schema<GoogleAdsSearchads360V23Common__CustomerThirdPartyBrandLiftIntegrationPartner> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowShareCost: Schema.optional(Schema.Boolean),
     brandLiftIntegrationPartner: Schema.optional(Schema.String),
   }).annotate({
@@ -6820,7 +6820,7 @@ export interface GoogleAdsSearchads360V23Common__CustomerThirdPartyBrandSafetyIn
 }
 
 export const GoogleAdsSearchads360V23Common__CustomerThirdPartyBrandSafetyIntegrationPartner: Schema.Schema<GoogleAdsSearchads360V23Common__CustomerThirdPartyBrandSafetyIntegrationPartner> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     brandSafetyIntegrationPartner: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -6839,7 +6839,7 @@ export interface GoogleAdsSearchads360V23Common__CustomerThirdPartyIntegrationPa
 }
 
 export const GoogleAdsSearchads360V23Common__CustomerThirdPartyIntegrationPartners: Schema.Schema<GoogleAdsSearchads360V23Common__CustomerThirdPartyIntegrationPartners> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     viewabilityIntegrationPartners: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Common__CustomerThirdPartyViewabilityIntegrationPartner,
@@ -6871,7 +6871,7 @@ export interface GoogleAdsSearchads360V23Resources__VideoCustomer {
 }
 
 export const GoogleAdsSearchads360V23Resources__VideoCustomer: Schema.Schema<GoogleAdsSearchads360V23Resources__VideoCustomer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     thirdPartyIntegrationPartners: Schema.optional(
       GoogleAdsSearchads360V23Common__CustomerThirdPartyIntegrationPartners,
     ),
@@ -6885,7 +6885,7 @@ export interface GoogleAdsSearchads360V23Resources__CustomerAgreementSetting {
 }
 
 export const GoogleAdsSearchads360V23Resources__CustomerAgreementSetting: Schema.Schema<GoogleAdsSearchads360V23Resources__CustomerAgreementSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     acceptedLeadFormTerms: Schema.optional(Schema.Boolean),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Resources__CustomerAgreementSetting",
@@ -7034,7 +7034,7 @@ export interface GoogleAdsSearchads360V23Resources__Customer {
 }
 
 export const GoogleAdsSearchads360V23Resources__Customer: Schema.Schema<GoogleAdsSearchads360V23Resources__Customer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     videoBrandSafetySuitability: Schema.optional(Schema.String),
     associateManagerId: Schema.optional(Schema.String),
     creationTime: Schema.optional(Schema.String),
@@ -7101,7 +7101,7 @@ export interface GoogleAdsSearchads360V23Services__CustomerOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__CustomerOperation: Schema.Schema<GoogleAdsSearchads360V23Services__CustomerOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     update: Schema.optional(GoogleAdsSearchads360V23Resources__Customer),
     updateMask: Schema.optional(Schema.String),
   }).annotate({
@@ -7122,7 +7122,7 @@ export interface GoogleAdsSearchads360V23Common__VerticalAdsItemGroupRuleInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__VerticalAdsItemGroupRuleInfo: Schema.Schema<GoogleAdsSearchads360V23Common__VerticalAdsItemGroupRuleInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     countryCriterionId: Schema.optional(Schema.String),
     regionCriterionId: Schema.optional(Schema.String),
     cityCriterionId: Schema.optional(Schema.String),
@@ -7162,7 +7162,7 @@ export interface GoogleAdsSearchads360V23Common__BrandInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__BrandInfo: Schema.Schema<GoogleAdsSearchads360V23Common__BrandInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     primaryUrl: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
     entityId: Schema.optional(Schema.String),
@@ -7250,7 +7250,7 @@ export interface GoogleAdsSearchads360V23Resources__SharedCriterion {
 }
 
 export const GoogleAdsSearchads360V23Resources__SharedCriterion: Schema.Schema<GoogleAdsSearchads360V23Resources__SharedCriterion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
     negative: Schema.optional(Schema.Boolean),
@@ -7287,7 +7287,7 @@ export interface GoogleAdsSearchads360V23Services__SharedCriterionOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__SharedCriterionOperation: Schema.Schema<GoogleAdsSearchads360V23Services__SharedCriterionOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     remove: Schema.optional(Schema.String),
     create: Schema.optional(GoogleAdsSearchads360V23Resources__SharedCriterion),
   }).annotate({
@@ -7308,7 +7308,7 @@ export interface GoogleAdsSearchads360V23Common__DeviceInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__DeviceInfo: Schema.Schema<GoogleAdsSearchads360V23Common__DeviceInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__DeviceInfo" });
 
@@ -7320,7 +7320,7 @@ export interface GoogleAdsSearchads360V23Common__HotelAdvanceBookingWindowInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__HotelAdvanceBookingWindowInfo: Schema.Schema<GoogleAdsSearchads360V23Common__HotelAdvanceBookingWindowInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxDays: Schema.optional(Schema.String),
     minDays: Schema.optional(Schema.String),
   }).annotate({
@@ -7338,7 +7338,7 @@ export interface GoogleAdsSearchads360V23Common__HotelDateSelectionTypeInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__HotelDateSelectionTypeInfo: Schema.Schema<GoogleAdsSearchads360V23Common__HotelDateSelectionTypeInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__HotelDateSelectionTypeInfo",
@@ -7360,7 +7360,7 @@ export interface GoogleAdsSearchads360V23Common__HotelCheckInDayInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__HotelCheckInDayInfo: Schema.Schema<GoogleAdsSearchads360V23Common__HotelCheckInDayInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dayOfWeek: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__HotelCheckInDayInfo",
@@ -7374,7 +7374,7 @@ export interface GoogleAdsSearchads360V23Common__HotelCheckInDateRangeInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__HotelCheckInDateRangeInfo: Schema.Schema<GoogleAdsSearchads360V23Common__HotelCheckInDateRangeInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startDate: Schema.optional(Schema.String),
     endDate: Schema.optional(Schema.String),
   }).annotate({
@@ -7389,7 +7389,7 @@ export interface GoogleAdsSearchads360V23Common__HotelLengthOfStayInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__HotelLengthOfStayInfo: Schema.Schema<GoogleAdsSearchads360V23Common__HotelLengthOfStayInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     minNights: Schema.optional(Schema.String),
     maxNights: Schema.optional(Schema.String),
   }).annotate({
@@ -7429,7 +7429,7 @@ export interface GoogleAdsSearchads360V23Resources__AdGroupBidModifier {
 }
 
 export const GoogleAdsSearchads360V23Resources__AdGroupBidModifier: Schema.Schema<GoogleAdsSearchads360V23Resources__AdGroupBidModifier> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     bidModifierSource: Schema.optional(Schema.String),
     device: Schema.optional(GoogleAdsSearchads360V23Common__DeviceInfo),
@@ -7468,7 +7468,7 @@ export interface GoogleAdsSearchads360V23Services__AdGroupBidModifierOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__AdGroupBidModifierOperation: Schema.Schema<GoogleAdsSearchads360V23Services__AdGroupBidModifierOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     create: Schema.optional(
       GoogleAdsSearchads360V23Resources__AdGroupBidModifier,
     ),
@@ -7489,7 +7489,7 @@ export interface GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRule
 }
 
 export const GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRuleDeviceCondition: Schema.Schema<GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRuleDeviceCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deviceTypes: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
     identifier:
@@ -7510,7 +7510,7 @@ export interface GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRule
 }
 
 export const GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRuleAction: Schema.Schema<GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRuleAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operation: Schema.optional(Schema.String),
     value: Schema.optional(Schema.Number),
   }).annotate({
@@ -7526,7 +7526,7 @@ export interface GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRule
 }
 
 export const GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRuleAudienceCondition: Schema.Schema<GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRuleAudienceCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userLists: Schema.optional(Schema.Array(Schema.String)),
     userInterests: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -7556,7 +7556,7 @@ export interface GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRule
 }
 
 export const GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRuleGeoLocationCondition: Schema.Schema<GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRuleGeoLocationCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     excludedGeoTargetConstants: Schema.optional(Schema.Array(Schema.String)),
     geoTargetConstants: Schema.optional(Schema.Array(Schema.String)),
     geoMatchType: Schema.optional(Schema.String),
@@ -7574,7 +7574,7 @@ export interface GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRule
 }
 
 export const GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRuleItineraryAdvanceBookingWindow: Schema.Schema<GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRuleItineraryAdvanceBookingWindow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxDays: Schema.optional(Schema.Number),
     minDays: Schema.optional(Schema.Number),
   }).annotate({
@@ -7600,7 +7600,7 @@ export interface GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRule
 }
 
 export const GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRuleItineraryTravelStartDay: Schema.Schema<GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRuleItineraryTravelStartDay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tuesday: Schema.optional(Schema.Boolean),
     thursday: Schema.optional(Schema.Boolean),
     sunday: Schema.optional(Schema.Boolean),
@@ -7621,7 +7621,7 @@ export interface GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRule
 }
 
 export const GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRuleItineraryTravelLength: Schema.Schema<GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRuleItineraryTravelLength> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxNights: Schema.optional(Schema.Number),
     minNights: Schema.optional(Schema.Number),
   }).annotate({
@@ -7639,7 +7639,7 @@ export interface GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRule
 }
 
 export const GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRuleItineraryCondition: Schema.Schema<GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRuleItineraryCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     advanceBookingWindow: Schema.optional(
       GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRuleItineraryAdvanceBookingWindow,
     ),
@@ -7682,7 +7682,7 @@ export interface GoogleAdsSearchads360V23Resources__ConversionValueRule {
 }
 
 export const GoogleAdsSearchads360V23Resources__ConversionValueRule: Schema.Schema<GoogleAdsSearchads360V23Resources__ConversionValueRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deviceCondition: Schema.optional(
       GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRuleDeviceCondition,
     ),
@@ -7718,7 +7718,7 @@ export interface GoogleAdsSearchads360V23Services__ConversionValueRuleOperation 
 }
 
 export const GoogleAdsSearchads360V23Services__ConversionValueRuleOperation: Schema.Schema<GoogleAdsSearchads360V23Services__ConversionValueRuleOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     update: Schema.optional(
       GoogleAdsSearchads360V23Resources__ConversionValueRule,
@@ -7751,7 +7751,7 @@ export interface GoogleAdsSearchads360V23Resources_ConversionCustomVariable_Floo
 }
 
 export const GoogleAdsSearchads360V23Resources_ConversionCustomVariable_FloodlightConversionCustomVariableInfo: Schema.Schema<GoogleAdsSearchads360V23Resources_ConversionCustomVariable_FloodlightConversionCustomVariableInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     floodlightVariableType: Schema.optional(Schema.String),
     floodlightVariableDataType: Schema.optional(Schema.String),
   }).annotate({
@@ -7801,7 +7801,7 @@ export interface GoogleAdsSearchads360V23Resources__ConversionCustomVariable {
 }
 
 export const GoogleAdsSearchads360V23Resources__ConversionCustomVariable: Schema.Schema<GoogleAdsSearchads360V23Resources__ConversionCustomVariable> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customColumnIds: Schema.optional(Schema.Array(Schema.String)),
     id: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -7828,7 +7828,7 @@ export interface GoogleAdsSearchads360V23Services__ConversionCustomVariableOpera
 }
 
 export const GoogleAdsSearchads360V23Services__ConversionCustomVariableOperation: Schema.Schema<GoogleAdsSearchads360V23Services__ConversionCustomVariableOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     create: Schema.optional(
       GoogleAdsSearchads360V23Resources__ConversionCustomVariable,
     ),
@@ -7847,7 +7847,7 @@ export interface GoogleAdsSearchads360V23Common__IpBlockInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__IpBlockInfo: Schema.Schema<GoogleAdsSearchads360V23Common__IpBlockInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ipAddress: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__IpBlockInfo" });
 
@@ -7857,7 +7857,7 @@ export interface GoogleAdsSearchads360V23Common__NegativeKeywordListInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__NegativeKeywordListInfo: Schema.Schema<GoogleAdsSearchads360V23Common__NegativeKeywordListInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sharedSet: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__NegativeKeywordListInfo",
@@ -7869,7 +7869,7 @@ export interface GoogleAdsSearchads360V23Common__PlacementListInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__PlacementListInfo: Schema.Schema<GoogleAdsSearchads360V23Common__PlacementListInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sharedSet: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__PlacementListInfo",
@@ -7909,7 +7909,7 @@ export interface GoogleAdsSearchads360V23Common__ContentLabelInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__ContentLabelInfo: Schema.Schema<GoogleAdsSearchads360V23Common__ContentLabelInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__ContentLabelInfo",
@@ -7991,7 +7991,7 @@ export interface GoogleAdsSearchads360V23Resources__CustomerNegativeCriterion {
 }
 
 export const GoogleAdsSearchads360V23Resources__CustomerNegativeCriterion: Schema.Schema<GoogleAdsSearchads360V23Resources__CustomerNegativeCriterion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     mobileApplication: Schema.optional(
       GoogleAdsSearchads360V23Common__MobileApplicationInfo,
@@ -8030,7 +8030,7 @@ export interface GoogleAdsSearchads360V23Services__CustomerNegativeCriterionOper
 }
 
 export const GoogleAdsSearchads360V23Services__CustomerNegativeCriterionOperation: Schema.Schema<GoogleAdsSearchads360V23Services__CustomerNegativeCriterionOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     remove: Schema.optional(Schema.String),
     create: Schema.optional(
       GoogleAdsSearchads360V23Resources__CustomerNegativeCriterion,
@@ -8052,7 +8052,7 @@ export interface GoogleAdsSearchads360V23Resources__CustomerCustomizer {
 }
 
 export const GoogleAdsSearchads360V23Resources__CustomerCustomizer: Schema.Schema<GoogleAdsSearchads360V23Resources__CustomerCustomizer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     customizerAttribute: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -8069,7 +8069,7 @@ export interface GoogleAdsSearchads360V23Services__CustomerCustomizerOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__CustomerCustomizerOperation: Schema.Schema<GoogleAdsSearchads360V23Services__CustomerCustomizerOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     remove: Schema.optional(Schema.String),
     create: Schema.optional(
       GoogleAdsSearchads360V23Resources__CustomerCustomizer,
@@ -8165,7 +8165,7 @@ export interface GoogleAdsSearchads360V23Resources__AdGroupAsset {
 }
 
 export const GoogleAdsSearchads360V23Resources__AdGroupAsset: Schema.Schema<GoogleAdsSearchads360V23Resources__AdGroupAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     primaryStatusDetails: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Common__AssetLinkPrimaryStatusDetails,
@@ -8195,7 +8195,7 @@ export interface GoogleAdsSearchads360V23Services__AdGroupAssetOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__AdGroupAssetOperation: Schema.Schema<GoogleAdsSearchads360V23Services__AdGroupAssetOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     update: Schema.optional(GoogleAdsSearchads360V23Resources__AdGroupAsset),
     create: Schema.optional(GoogleAdsSearchads360V23Resources__AdGroupAsset),
@@ -8218,7 +8218,7 @@ export interface GoogleAdsSearchads360V23Resources__AdGroupCustomizer {
 }
 
 export const GoogleAdsSearchads360V23Resources__AdGroupCustomizer: Schema.Schema<GoogleAdsSearchads360V23Resources__AdGroupCustomizer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customizerAttribute: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
@@ -8236,7 +8236,7 @@ export interface GoogleAdsSearchads360V23Services__AdGroupCustomizerOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__AdGroupCustomizerOperation: Schema.Schema<GoogleAdsSearchads360V23Services__AdGroupCustomizerOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     remove: Schema.optional(Schema.String),
     create: Schema.optional(
       GoogleAdsSearchads360V23Resources__AdGroupCustomizer,
@@ -8257,7 +8257,7 @@ export interface GoogleAdsSearchads360V23Resources__CampaignLabel {
 }
 
 export const GoogleAdsSearchads360V23Resources__CampaignLabel: Schema.Schema<GoogleAdsSearchads360V23Resources__CampaignLabel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     label: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
     ownerCustomerId: Schema.optional(Schema.String),
@@ -8274,7 +8274,7 @@ export interface GoogleAdsSearchads360V23Services__CampaignLabelOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__CampaignLabelOperation: Schema.Schema<GoogleAdsSearchads360V23Services__CampaignLabelOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     create: Schema.optional(GoogleAdsSearchads360V23Resources__CampaignLabel),
     remove: Schema.optional(Schema.String),
   }).annotate({
@@ -8291,7 +8291,7 @@ export interface GoogleAdsSearchads360V23Services__AdOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__AdOperation: Schema.Schema<GoogleAdsSearchads360V23Services__AdOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     policyValidationParameter: Schema.optional(
       GoogleAdsSearchads360V23Common__PolicyValidationParameter,
@@ -8305,7 +8305,7 @@ export interface GoogleAdsSearchads360V23Common__ExclusionSegment {
 }
 
 export const GoogleAdsSearchads360V23Common__ExclusionSegment: Schema.Schema<GoogleAdsSearchads360V23Common__ExclusionSegment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userList: Schema.optional(GoogleAdsSearchads360V23Common__UserListSegment),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__ExclusionSegment",
@@ -8317,7 +8317,7 @@ export interface GoogleAdsSearchads360V23Common__AudienceExclusionDimension {
 }
 
 export const GoogleAdsSearchads360V23Common__AudienceExclusionDimension: Schema.Schema<GoogleAdsSearchads360V23Common__AudienceExclusionDimension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     exclusions: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__ExclusionSegment),
     ),
@@ -8333,7 +8333,7 @@ export interface GoogleAdsSearchads360V23Common__AgeSegment {
 }
 
 export const GoogleAdsSearchads360V23Common__AgeSegment: Schema.Schema<GoogleAdsSearchads360V23Common__AgeSegment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     minAge: Schema.optional(Schema.Number),
     maxAge: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__AgeSegment" });
@@ -8346,7 +8346,7 @@ export interface GoogleAdsSearchads360V23Common__AgeDimension {
 }
 
 export const GoogleAdsSearchads360V23Common__AgeDimension: Schema.Schema<GoogleAdsSearchads360V23Common__AgeDimension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ageRanges: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__AgeSegment),
     ),
@@ -8372,7 +8372,7 @@ export interface GoogleAdsSearchads360V23Common__HouseholdIncomeDimension {
 }
 
 export const GoogleAdsSearchads360V23Common__HouseholdIncomeDimension: Schema.Schema<GoogleAdsSearchads360V23Common__HouseholdIncomeDimension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     incomeRanges: Schema.optional(Schema.Array(Schema.String)),
     includeUndetermined: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -8394,7 +8394,7 @@ export interface GoogleAdsSearchads360V23Common__ParentalStatusDimension {
 }
 
 export const GoogleAdsSearchads360V23Common__ParentalStatusDimension: Schema.Schema<GoogleAdsSearchads360V23Common__ParentalStatusDimension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parentalStatuses: Schema.optional(Schema.Array(Schema.String)),
     includeUndetermined: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -8416,7 +8416,7 @@ export interface GoogleAdsSearchads360V23Common__GenderDimension {
 }
 
 export const GoogleAdsSearchads360V23Common__GenderDimension: Schema.Schema<GoogleAdsSearchads360V23Common__GenderDimension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     includeUndetermined: Schema.optional(Schema.Boolean),
     genders: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -8437,7 +8437,7 @@ export interface GoogleAdsSearchads360V23Common__AudienceDimension {
 }
 
 export const GoogleAdsSearchads360V23Common__AudienceDimension: Schema.Schema<GoogleAdsSearchads360V23Common__AudienceDimension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     age: Schema.optional(GoogleAdsSearchads360V23Common__AgeDimension),
     householdIncome: Schema.optional(
       GoogleAdsSearchads360V23Common__HouseholdIncomeDimension,
@@ -8480,7 +8480,7 @@ export interface GoogleAdsSearchads360V23Resources__Audience {
 }
 
 export const GoogleAdsSearchads360V23Resources__Audience: Schema.Schema<GoogleAdsSearchads360V23Resources__Audience> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     exclusionDimension: Schema.optional(
       GoogleAdsSearchads360V23Common__AudienceExclusionDimension,
     ),
@@ -8506,7 +8506,7 @@ export interface GoogleAdsSearchads360V23Services__AudienceOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__AudienceOperation: Schema.Schema<GoogleAdsSearchads360V23Services__AudienceOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     create: Schema.optional(GoogleAdsSearchads360V23Resources__Audience),
     updateMask: Schema.optional(Schema.String),
     update: Schema.optional(GoogleAdsSearchads360V23Resources__Audience),
@@ -8574,7 +8574,7 @@ export interface GoogleAdsSearchads360V23Resources__BiddingSeasonalityAdjustment
 }
 
 export const GoogleAdsSearchads360V23Resources__BiddingSeasonalityAdjustment: Schema.Schema<GoogleAdsSearchads360V23Resources__BiddingSeasonalityAdjustment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.optional(Schema.String),
     startDateTime: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -8604,7 +8604,7 @@ export interface GoogleAdsSearchads360V23Services__BiddingSeasonalityAdjustmentO
 }
 
 export const GoogleAdsSearchads360V23Services__BiddingSeasonalityAdjustmentOperation: Schema.Schema<GoogleAdsSearchads360V23Services__BiddingSeasonalityAdjustmentOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     update: Schema.optional(
       GoogleAdsSearchads360V23Resources__BiddingSeasonalityAdjustment,
@@ -8632,7 +8632,7 @@ export interface GoogleAdsSearchads360V23Resources__AdGroupCriterionCustomizer {
 }
 
 export const GoogleAdsSearchads360V23Resources__AdGroupCriterionCustomizer: Schema.Schema<GoogleAdsSearchads360V23Resources__AdGroupCriterionCustomizer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     value: Schema.optional(GoogleAdsSearchads360V23Common__CustomizerValue),
     adGroupCriterion: Schema.optional(Schema.String),
@@ -8650,7 +8650,7 @@ export interface GoogleAdsSearchads360V23Services__AdGroupCriterionCustomizerOpe
 }
 
 export const GoogleAdsSearchads360V23Services__AdGroupCriterionCustomizerOperation: Schema.Schema<GoogleAdsSearchads360V23Services__AdGroupCriterionCustomizerOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     remove: Schema.optional(Schema.String),
     create: Schema.optional(
       GoogleAdsSearchads360V23Resources__AdGroupCriterionCustomizer,
@@ -8710,7 +8710,7 @@ export interface GoogleAdsSearchads360V23Resources__CampaignConversionGoal {
 }
 
 export const GoogleAdsSearchads360V23Resources__CampaignConversionGoal: Schema.Schema<GoogleAdsSearchads360V23Resources__CampaignConversionGoal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     campaign: Schema.optional(Schema.String),
     category: Schema.optional(Schema.String),
     biddable: Schema.optional(Schema.Boolean),
@@ -8729,7 +8729,7 @@ export interface GoogleAdsSearchads360V23Services__CampaignConversionGoalOperati
 }
 
 export const GoogleAdsSearchads360V23Services__CampaignConversionGoalOperation: Schema.Schema<GoogleAdsSearchads360V23Services__CampaignConversionGoalOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     update: Schema.optional(
       GoogleAdsSearchads360V23Resources__CampaignConversionGoal,
@@ -8763,7 +8763,7 @@ export interface GoogleAdsSearchads360V23Resources__KeywordPlanAdGroupKeyword {
 }
 
 export const GoogleAdsSearchads360V23Resources__KeywordPlanAdGroupKeyword: Schema.Schema<GoogleAdsSearchads360V23Resources__KeywordPlanAdGroupKeyword> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     keywordPlanAdGroup: Schema.optional(Schema.String),
     cpcBidMicros: Schema.optional(Schema.String),
@@ -8787,7 +8787,7 @@ export interface GoogleAdsSearchads360V23Services__KeywordPlanAdGroupKeywordOper
 }
 
 export const GoogleAdsSearchads360V23Services__KeywordPlanAdGroupKeywordOperation: Schema.Schema<GoogleAdsSearchads360V23Services__KeywordPlanAdGroupKeywordOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     create: Schema.optional(
       GoogleAdsSearchads360V23Resources__KeywordPlanAdGroupKeyword,
     ),
@@ -8868,7 +8868,7 @@ export interface GoogleAdsSearchads360V23Resources__ConversionValueRuleSet {
 }
 
 export const GoogleAdsSearchads360V23Resources__ConversionValueRuleSet: Schema.Schema<GoogleAdsSearchads360V23Resources__ConversionValueRuleSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     campaign: Schema.optional(Schema.String),
     ownerCustomer: Schema.optional(Schema.String),
     attachmentType: Schema.optional(Schema.String),
@@ -8894,7 +8894,7 @@ export interface GoogleAdsSearchads360V23Services__ConversionValueRuleSetOperati
 }
 
 export const GoogleAdsSearchads360V23Services__ConversionValueRuleSetOperation: Schema.Schema<GoogleAdsSearchads360V23Services__ConversionValueRuleSetOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     update: Schema.optional(
       GoogleAdsSearchads360V23Resources__ConversionValueRuleSet,
@@ -8918,7 +8918,7 @@ export interface GoogleAdsSearchads360V23Resources__CustomerLabel {
 }
 
 export const GoogleAdsSearchads360V23Resources__CustomerLabel: Schema.Schema<GoogleAdsSearchads360V23Resources__CustomerLabel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.optional(Schema.String),
     label: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
@@ -8934,7 +8934,7 @@ export interface GoogleAdsSearchads360V23Services__CustomerLabelOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__CustomerLabelOperation: Schema.Schema<GoogleAdsSearchads360V23Services__CustomerLabelOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     remove: Schema.optional(Schema.String),
     create: Schema.optional(GoogleAdsSearchads360V23Resources__CustomerLabel),
   }).annotate({
@@ -8955,7 +8955,7 @@ export interface GoogleAdsSearchads360V23Resources__KeywordPlanForecastPeriod {
 }
 
 export const GoogleAdsSearchads360V23Resources__KeywordPlanForecastPeriod: Schema.Schema<GoogleAdsSearchads360V23Resources__KeywordPlanForecastPeriod> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dateInterval: Schema.optional(Schema.String),
     dateRange: Schema.optional(GoogleAdsSearchads360V23Common__DateRange),
   }).annotate({
@@ -8974,7 +8974,7 @@ export interface GoogleAdsSearchads360V23Resources__KeywordPlan {
 }
 
 export const GoogleAdsSearchads360V23Resources__KeywordPlan: Schema.Schema<GoogleAdsSearchads360V23Resources__KeywordPlan> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     forecastPeriod: Schema.optional(
       GoogleAdsSearchads360V23Resources__KeywordPlanForecastPeriod,
     ),
@@ -8995,7 +8995,7 @@ export interface GoogleAdsSearchads360V23Services__KeywordPlanOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__KeywordPlanOperation: Schema.Schema<GoogleAdsSearchads360V23Services__KeywordPlanOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     update: Schema.optional(GoogleAdsSearchads360V23Resources__KeywordPlan),
     create: Schema.optional(GoogleAdsSearchads360V23Resources__KeywordPlan),
@@ -9016,7 +9016,7 @@ export interface GoogleAdsSearchads360V23Resources__AdGroupCriterionLabel {
 }
 
 export const GoogleAdsSearchads360V23Resources__AdGroupCriterionLabel: Schema.Schema<GoogleAdsSearchads360V23Resources__AdGroupCriterionLabel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     ownerCustomerId: Schema.optional(Schema.String),
     adGroupCriterion: Schema.optional(Schema.String),
@@ -9033,7 +9033,7 @@ export interface GoogleAdsSearchads360V23Services__AdGroupCriterionLabelOperatio
 }
 
 export const GoogleAdsSearchads360V23Services__AdGroupCriterionLabelOperation: Schema.Schema<GoogleAdsSearchads360V23Services__AdGroupCriterionLabelOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     create: Schema.optional(
       GoogleAdsSearchads360V23Resources__AdGroupCriterionLabel,
     ),
@@ -9055,7 +9055,7 @@ export interface GoogleAdsSearchads360V23Services__LabelOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__LabelOperation: Schema.Schema<GoogleAdsSearchads360V23Services__LabelOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     update: Schema.optional(GoogleAdsSearchads360V23Resources__Label),
     remove: Schema.optional(Schema.String),
@@ -9102,7 +9102,7 @@ export interface GoogleAdsSearchads360V23Resources__SharedSet {
 }
 
 export const GoogleAdsSearchads360V23Resources__SharedSet: Schema.Schema<GoogleAdsSearchads360V23Resources__SharedSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
@@ -9125,7 +9125,7 @@ export interface GoogleAdsSearchads360V23Services__SharedSetOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__SharedSetOperation: Schema.Schema<GoogleAdsSearchads360V23Services__SharedSetOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     update: Schema.optional(GoogleAdsSearchads360V23Resources__SharedSet),
     remove: Schema.optional(Schema.String),
@@ -9146,7 +9146,7 @@ export interface GoogleAdsSearchads360V23Services__CampaignAssetOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__CampaignAssetOperation: Schema.Schema<GoogleAdsSearchads360V23Services__CampaignAssetOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     remove: Schema.optional(Schema.String),
     create: Schema.optional(GoogleAdsSearchads360V23Resources__CampaignAsset),
     updateMask: Schema.optional(Schema.String),
@@ -9163,7 +9163,7 @@ export interface GoogleAdsSearchads360V23Resources_AssetSet_HotelPropertyData {
 }
 
 export const GoogleAdsSearchads360V23Resources_AssetSet_HotelPropertyData: Schema.Schema<GoogleAdsSearchads360V23Resources_AssetSet_HotelPropertyData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     hotelCenterId: Schema.optional(Schema.String),
     partnerName: Schema.optional(Schema.String),
   }).annotate({
@@ -9178,7 +9178,7 @@ export interface GoogleAdsSearchads360V23Common__ChainFilter {
 }
 
 export const GoogleAdsSearchads360V23Common__ChainFilter: Schema.Schema<GoogleAdsSearchads360V23Common__ChainFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     chainId: Schema.optional(Schema.String),
     locationAttributes: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__ChainFilter" });
@@ -9196,7 +9196,7 @@ export interface GoogleAdsSearchads360V23Common__ChainSet {
 }
 
 export const GoogleAdsSearchads360V23Common__ChainSet: Schema.Schema<GoogleAdsSearchads360V23Common__ChainSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     relationshipType: Schema.optional(Schema.String),
     chains: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__ChainFilter),
@@ -9209,7 +9209,7 @@ export interface GoogleAdsSearchads360V23Common__MapsLocationInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__MapsLocationInfo: Schema.Schema<GoogleAdsSearchads360V23Common__MapsLocationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     placeId: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__MapsLocationInfo",
@@ -9221,7 +9221,7 @@ export interface GoogleAdsSearchads360V23Common__MapsLocationSet {
 }
 
 export const GoogleAdsSearchads360V23Common__MapsLocationSet: Schema.Schema<GoogleAdsSearchads360V23Common__MapsLocationSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mapsLocations: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__MapsLocationInfo),
     ),
@@ -9246,7 +9246,7 @@ export interface GoogleAdsSearchads360V23Common__LocationSet {
 }
 
 export const GoogleAdsSearchads360V23Common__LocationSet: Schema.Schema<GoogleAdsSearchads360V23Common__LocationSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     businessProfileLocationSet: Schema.optional(
       GoogleAdsSearchads360V23Common__BusinessProfileLocationSet,
     ),
@@ -9265,7 +9265,7 @@ export interface GoogleAdsSearchads360V23Common__BusinessProfileBusinessNameFilt
 }
 
 export const GoogleAdsSearchads360V23Common__BusinessProfileBusinessNameFilter: Schema.Schema<GoogleAdsSearchads360V23Common__BusinessProfileBusinessNameFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     businessName: Schema.optional(Schema.String),
     filterType: Schema.optional(Schema.String),
   }).annotate({
@@ -9283,7 +9283,7 @@ export interface GoogleAdsSearchads360V23Common__DynamicBusinessProfileLocationG
 }
 
 export const GoogleAdsSearchads360V23Common__DynamicBusinessProfileLocationGroupFilter: Schema.Schema<GoogleAdsSearchads360V23Common__DynamicBusinessProfileLocationGroupFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     labelFilters: Schema.optional(Schema.Array(Schema.String)),
     listingIdFilters: Schema.optional(Schema.Array(Schema.String)),
     businessNameFilter: Schema.optional(
@@ -9300,7 +9300,7 @@ export interface GoogleAdsSearchads360V23Common__BusinessProfileLocationGroup {
 }
 
 export const GoogleAdsSearchads360V23Common__BusinessProfileLocationGroup: Schema.Schema<GoogleAdsSearchads360V23Common__BusinessProfileLocationGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dynamicBusinessProfileLocationGroupFilter: Schema.optional(
       GoogleAdsSearchads360V23Common__DynamicBusinessProfileLocationGroupFilter,
     ),
@@ -9314,7 +9314,7 @@ export interface GoogleAdsSearchads360V23Common__ChainLocationGroup {
 }
 
 export const GoogleAdsSearchads360V23Common__ChainLocationGroup: Schema.Schema<GoogleAdsSearchads360V23Common__ChainLocationGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dynamicChainLocationGroupFilters: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__ChainFilter),
     ),
@@ -9330,7 +9330,7 @@ export interface GoogleAdsSearchads360V23Resources_AssetSet_MerchantCenterFeed {
 }
 
 export const GoogleAdsSearchads360V23Resources_AssetSet_MerchantCenterFeed: Schema.Schema<GoogleAdsSearchads360V23Resources_AssetSet_MerchantCenterFeed> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     merchantId: Schema.optional(Schema.String),
     feedLabel: Schema.optional(Schema.String),
   }).annotate({
@@ -9382,7 +9382,7 @@ export interface GoogleAdsSearchads360V23Resources__AssetSet {
 }
 
 export const GoogleAdsSearchads360V23Resources__AssetSet: Schema.Schema<GoogleAdsSearchads360V23Resources__AssetSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     hotelPropertyData: Schema.optional(
@@ -9416,7 +9416,7 @@ export interface GoogleAdsSearchads360V23Services__AssetSetOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__AssetSetOperation: Schema.Schema<GoogleAdsSearchads360V23Services__AssetSetOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     update: Schema.optional(GoogleAdsSearchads360V23Resources__AssetSet),
     create: Schema.optional(GoogleAdsSearchads360V23Resources__AssetSet),
@@ -9483,7 +9483,7 @@ export interface GoogleAdsSearchads360V23Resources__BiddingDataExclusion {
 }
 
 export const GoogleAdsSearchads360V23Resources__BiddingDataExclusion: Schema.Schema<GoogleAdsSearchads360V23Resources__BiddingDataExclusion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.optional(Schema.String),
     startDateTime: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -9511,7 +9511,7 @@ export interface GoogleAdsSearchads360V23Services__BiddingDataExclusionOperation
 }
 
 export const GoogleAdsSearchads360V23Services__BiddingDataExclusionOperation: Schema.Schema<GoogleAdsSearchads360V23Services__BiddingDataExclusionOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     remove: Schema.optional(Schema.String),
     create: Schema.optional(
       GoogleAdsSearchads360V23Resources__BiddingDataExclusion,
@@ -9531,7 +9531,7 @@ export interface GoogleAdsSearchads360V23Common__InteractionTypeInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__InteractionTypeInfo: Schema.Schema<GoogleAdsSearchads360V23Common__InteractionTypeInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__InteractionTypeInfo",
@@ -9551,7 +9551,7 @@ export interface GoogleAdsSearchads360V23Resources__CampaignBidModifier {
 }
 
 export const GoogleAdsSearchads360V23Resources__CampaignBidModifier: Schema.Schema<GoogleAdsSearchads360V23Resources__CampaignBidModifier> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     interactionType: Schema.optional(
       GoogleAdsSearchads360V23Common__InteractionTypeInfo,
     ),
@@ -9575,7 +9575,7 @@ export interface GoogleAdsSearchads360V23Services__CampaignBidModifierOperation 
 }
 
 export const GoogleAdsSearchads360V23Services__CampaignBidModifierOperation: Schema.Schema<GoogleAdsSearchads360V23Services__CampaignBidModifierOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     update: Schema.optional(
       GoogleAdsSearchads360V23Resources__CampaignBidModifier,
@@ -9646,7 +9646,7 @@ export interface GoogleAdsSearchads360V23Resources__CampaignBudget {
 }
 
 export const GoogleAdsSearchads360V23Resources__CampaignBudget: Schema.Schema<GoogleAdsSearchads360V23Resources__CampaignBudget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     deliveryMethod: Schema.optional(Schema.String),
     explicitlyShared: Schema.optional(Schema.Boolean),
@@ -9687,7 +9687,7 @@ export interface GoogleAdsSearchads360V23Services__CampaignBudgetOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__CampaignBudgetOperation: Schema.Schema<GoogleAdsSearchads360V23Services__CampaignBudgetOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     create: Schema.optional(GoogleAdsSearchads360V23Resources__CampaignBudget),
     remove: Schema.optional(Schema.String),
     updateMask: Schema.optional(Schema.String),
@@ -9708,7 +9708,7 @@ export interface GoogleAdsSearchads360V23Resources__AdGroupAdLabel {
 }
 
 export const GoogleAdsSearchads360V23Resources__AdGroupAdLabel: Schema.Schema<GoogleAdsSearchads360V23Resources__AdGroupAdLabel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adGroupAd: Schema.optional(Schema.String),
     label: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
@@ -9725,7 +9725,7 @@ export interface GoogleAdsSearchads360V23Services__AdGroupAdLabelOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__AdGroupAdLabelOperation: Schema.Schema<GoogleAdsSearchads360V23Services__AdGroupAdLabelOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     create: Schema.optional(GoogleAdsSearchads360V23Resources__AdGroupAdLabel),
     remove: Schema.optional(Schema.String),
   }).annotate({
@@ -9740,7 +9740,7 @@ export interface GoogleAdsSearchads360V23Common__KeywordThemeInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__KeywordThemeInfo: Schema.Schema<GoogleAdsSearchads360V23Common__KeywordThemeInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keywordThemeConstant: Schema.optional(Schema.String),
     freeFormKeywordTheme: Schema.optional(Schema.String),
   }).annotate({
@@ -9753,7 +9753,7 @@ export interface GoogleAdsSearchads360V23Common__LocalServiceIdInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__LocalServiceIdInfo: Schema.Schema<GoogleAdsSearchads360V23Common__LocalServiceIdInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceId: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__LocalServiceIdInfo",
@@ -9767,7 +9767,7 @@ export interface GoogleAdsSearchads360V23Common__GeoPointInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__GeoPointInfo: Schema.Schema<GoogleAdsSearchads360V23Common__GeoPointInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     longitudeInMicroDegrees: Schema.optional(Schema.Number),
     latitudeInMicroDegrees: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__GeoPointInfo" });
@@ -9790,7 +9790,7 @@ export interface GoogleAdsSearchads360V23Common__AddressInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__AddressInfo: Schema.Schema<GoogleAdsSearchads360V23Common__AddressInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     streetAddress: Schema.optional(Schema.String),
     countryCode: Schema.optional(Schema.String),
     streetAddress2: Schema.optional(Schema.String),
@@ -9817,7 +9817,7 @@ export interface GoogleAdsSearchads360V23Common__ProximityInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__ProximityInfo: Schema.Schema<GoogleAdsSearchads360V23Common__ProximityInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     radius: Schema.optional(Schema.Number),
     geoPoint: Schema.optional(GoogleAdsSearchads360V23Common__GeoPointInfo),
     radiusUnits: Schema.optional(Schema.String),
@@ -9862,7 +9862,7 @@ export interface GoogleAdsSearchads360V23Common__AdScheduleInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__AdScheduleInfo: Schema.Schema<GoogleAdsSearchads360V23Common__AdScheduleInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endMinute: Schema.optional(Schema.String),
     startHour: Schema.optional(Schema.Number),
     endHour: Schema.optional(Schema.Number),
@@ -9876,7 +9876,7 @@ export interface GoogleAdsSearchads360V23Common__ListingScopeInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__ListingScopeInfo: Schema.Schema<GoogleAdsSearchads360V23Common__ListingScopeInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dimensions: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__ListingDimensionInfo),
     ),
@@ -9890,7 +9890,7 @@ export interface GoogleAdsSearchads360V23Common__WebpageListInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__WebpageListInfo: Schema.Schema<GoogleAdsSearchads360V23Common__WebpageListInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sharedSet: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__WebpageListInfo",
@@ -9902,7 +9902,7 @@ export interface GoogleAdsSearchads360V23Common__CarrierInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__CarrierInfo: Schema.Schema<GoogleAdsSearchads360V23Common__CarrierInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     carrierConstant: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__CarrierInfo" });
 
@@ -9912,7 +9912,7 @@ export interface GoogleAdsSearchads360V23Common__MobileDeviceInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__MobileDeviceInfo: Schema.Schema<GoogleAdsSearchads360V23Common__MobileDeviceInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mobileDeviceConstant: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__MobileDeviceInfo",
@@ -9940,7 +9940,7 @@ export interface GoogleAdsSearchads360V23Common__LocationGroupInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__LocationGroupInfo: Schema.Schema<GoogleAdsSearchads360V23Common__LocationGroupInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     radiusUnits: Schema.optional(Schema.String),
     geoTargetConstants: Schema.optional(Schema.Array(Schema.String)),
     radius: Schema.optional(Schema.String),
@@ -9957,7 +9957,7 @@ export interface GoogleAdsSearchads360V23Common__OperatingSystemVersionInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__OperatingSystemVersionInfo: Schema.Schema<GoogleAdsSearchads360V23Common__OperatingSystemVersionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operatingSystemVersionConstant: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__OperatingSystemVersionInfo",
@@ -10107,7 +10107,7 @@ export interface GoogleAdsSearchads360V23Resources__CampaignCriterion {
 }
 
 export const GoogleAdsSearchads360V23Resources__CampaignCriterion: Schema.Schema<GoogleAdsSearchads360V23Resources__CampaignCriterion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     language: Schema.optional(GoogleAdsSearchads360V23Common__LanguageInfo),
     location: Schema.optional(GoogleAdsSearchads360V23Common__LocationInfo),
     youtubeChannel: Schema.optional(
@@ -10203,7 +10203,7 @@ export interface GoogleAdsSearchads360V23Services__CampaignCriterionOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__CampaignCriterionOperation: Schema.Schema<GoogleAdsSearchads360V23Services__CampaignCriterionOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     update: Schema.optional(
       GoogleAdsSearchads360V23Resources__CampaignCriterion,
@@ -10235,7 +10235,7 @@ export interface GoogleAdsSearchads360V23Resources_Campaign_GeoTargetTypeSetting
 }
 
 export const GoogleAdsSearchads360V23Resources_Campaign_GeoTargetTypeSetting: Schema.Schema<GoogleAdsSearchads360V23Resources_Campaign_GeoTargetTypeSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     positiveGeoTargetType: Schema.optional(Schema.String),
     negativeGeoTargetType: Schema.optional(Schema.String),
   }).annotate({
@@ -10269,7 +10269,7 @@ export interface GoogleAdsSearchads360V23Resources_Campaign_AssetAutomationSetti
 }
 
 export const GoogleAdsSearchads360V23Resources_Campaign_AssetAutomationSetting: Schema.Schema<GoogleAdsSearchads360V23Resources_Campaign_AssetAutomationSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     assetAutomationType: Schema.optional(Schema.String),
     assetAutomationStatus: Schema.optional(Schema.String),
   }).annotate({
@@ -10280,7 +10280,7 @@ export const GoogleAdsSearchads360V23Resources_Campaign_AssetAutomationSetting: 
 export interface GoogleAdsSearchads360V23Common__ManualCpa {}
 
 export const GoogleAdsSearchads360V23Common__ManualCpa: Schema.Schema<GoogleAdsSearchads360V23Common__ManualCpa> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAdsSearchads360V23Common__ManualCpa",
   });
 
@@ -10312,7 +10312,7 @@ export interface GoogleAdsSearchads360V23Resources_Campaign_VanityPharma {
 }
 
 export const GoogleAdsSearchads360V23Resources_Campaign_VanityPharma: Schema.Schema<GoogleAdsSearchads360V23Resources_Campaign_VanityPharma> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     vanityPharmaDisplayUrlMode: Schema.optional(Schema.String),
     vanityPharmaText: Schema.optional(Schema.String),
   }).annotate({
@@ -10325,7 +10325,7 @@ export interface GoogleAdsSearchads360V23Common__Commission {
 }
 
 export const GoogleAdsSearchads360V23Common__Commission: Schema.Schema<GoogleAdsSearchads360V23Common__Commission> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     commissionRateMicros: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__Commission" });
 
@@ -10339,7 +10339,7 @@ export interface GoogleAdsSearchads360V23Resources_Campaign_DynamicSearchAdsSett
 }
 
 export const GoogleAdsSearchads360V23Resources_Campaign_DynamicSearchAdsSetting: Schema.Schema<GoogleAdsSearchads360V23Resources_Campaign_DynamicSearchAdsSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     domainName: Schema.optional(Schema.String),
     useSuppliedUrlsOnly: Schema.optional(Schema.Boolean),
     languageCode: Schema.optional(Schema.String),
@@ -10377,7 +10377,7 @@ export interface GoogleAdsSearchads360V23Common__FrequencyCapKey {
 }
 
 export const GoogleAdsSearchads360V23Common__FrequencyCapKey: Schema.Schema<GoogleAdsSearchads360V23Common__FrequencyCapKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     eventType: Schema.optional(Schema.String),
     timeLength: Schema.optional(Schema.Number),
     level: Schema.optional(Schema.String),
@@ -10394,7 +10394,7 @@ export interface GoogleAdsSearchads360V23Common__FrequencyCapEntry {
 }
 
 export const GoogleAdsSearchads360V23Common__FrequencyCapEntry: Schema.Schema<GoogleAdsSearchads360V23Common__FrequencyCapEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key: Schema.optional(GoogleAdsSearchads360V23Common__FrequencyCapKey),
     cap: Schema.optional(Schema.Number),
   }).annotate({
@@ -10409,7 +10409,7 @@ export interface GoogleAdsSearchads360V23Common__PercentCpc {
 }
 
 export const GoogleAdsSearchads360V23Common__PercentCpc: Schema.Schema<GoogleAdsSearchads360V23Common__PercentCpc> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cpcBidCeilingMicros: Schema.optional(Schema.String),
     enhancedCpcEnabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__PercentCpc" });
@@ -10440,7 +10440,7 @@ export interface GoogleAdsSearchads360V23Resources_Campaign_AppCampaignSetting {
 }
 
 export const GoogleAdsSearchads360V23Resources_Campaign_AppCampaignSetting: Schema.Schema<GoogleAdsSearchads360V23Resources_Campaign_AppCampaignSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     appId: Schema.optional(Schema.String),
     appStore: Schema.optional(Schema.String),
     biddingStrategyGoalType: Schema.optional(Schema.String),
@@ -10451,7 +10451,7 @@ export const GoogleAdsSearchads360V23Resources_Campaign_AppCampaignSetting: Sche
 export interface GoogleAdsSearchads360V23Common__ManualCpm {}
 
 export const GoogleAdsSearchads360V23Common__ManualCpm: Schema.Schema<GoogleAdsSearchads360V23Common__ManualCpm> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAdsSearchads360V23Common__ManualCpm",
   });
 
@@ -10471,7 +10471,7 @@ export interface GoogleAdsSearchads360V23Common__TargetImpressionShare {
 }
 
 export const GoogleAdsSearchads360V23Common__TargetImpressionShare: Schema.Schema<GoogleAdsSearchads360V23Common__TargetImpressionShare> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locationFractionMicros: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     cpcBidCeilingMicros: Schema.optional(Schema.String),
@@ -10490,7 +10490,7 @@ export interface GoogleAdsSearchads360V23Resources_Campaign_LocalCampaignSetting
 }
 
 export const GoogleAdsSearchads360V23Resources_Campaign_LocalCampaignSetting: Schema.Schema<GoogleAdsSearchads360V23Resources_Campaign_LocalCampaignSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locationSourceType: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -10503,7 +10503,7 @@ export interface GoogleAdsSearchads360V23Resources_Campaign_SelectiveOptimizatio
 }
 
 export const GoogleAdsSearchads360V23Resources_Campaign_SelectiveOptimization: Schema.Schema<GoogleAdsSearchads360V23Resources_Campaign_SelectiveOptimization> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     conversionActions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
     identifier:
@@ -10520,7 +10520,7 @@ export interface GoogleAdsSearchads360V23Common__TargetCpa {
 }
 
 export const GoogleAdsSearchads360V23Common__TargetCpa: Schema.Schema<GoogleAdsSearchads360V23Common__TargetCpa> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cpcBidCeilingMicros: Schema.optional(Schema.String),
     cpcBidFloorMicros: Schema.optional(Schema.String),
     targetCpaMicros: Schema.optional(Schema.String),
@@ -10532,7 +10532,7 @@ export interface GoogleAdsSearchads360V23Resources_Campaign_AudienceSetting {
 }
 
 export const GoogleAdsSearchads360V23Resources_Campaign_AudienceSetting: Schema.Schema<GoogleAdsSearchads360V23Resources_Campaign_AudienceSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     useAudienceGrouped: Schema.optional(Schema.Boolean),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Resources_Campaign_AudienceSetting",
@@ -10544,7 +10544,7 @@ export interface GoogleAdsSearchads360V23Resources_Campaign_TravelCampaignSettin
 }
 
 export const GoogleAdsSearchads360V23Resources_Campaign_TravelCampaignSettings: Schema.Schema<GoogleAdsSearchads360V23Resources_Campaign_TravelCampaignSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     travelAccountId: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -10557,7 +10557,7 @@ export interface GoogleAdsSearchads360V23Resources_Campaign_TrackingSetting {
 }
 
 export const GoogleAdsSearchads360V23Resources_Campaign_TrackingSetting: Schema.Schema<GoogleAdsSearchads360V23Resources_Campaign_TrackingSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     trackingUrl: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Resources_Campaign_TrackingSetting",
@@ -10569,7 +10569,7 @@ export interface GoogleAdsSearchads360V23Resources_Campaign_DemandGenCampaignSet
 }
 
 export const GoogleAdsSearchads360V23Resources_Campaign_DemandGenCampaignSettings: Schema.Schema<GoogleAdsSearchads360V23Resources_Campaign_DemandGenCampaignSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     upgradedTargeting: Schema.optional(Schema.Boolean),
   }).annotate({
     identifier:
@@ -10592,7 +10592,7 @@ export interface GoogleAdsSearchads360V23Resources_Campaign_NetworkSettings {
 }
 
 export const GoogleAdsSearchads360V23Resources_Campaign_NetworkSettings: Schema.Schema<GoogleAdsSearchads360V23Resources_Campaign_NetworkSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetSearchNetwork: Schema.optional(Schema.Boolean),
     targetPartnerSearchNetwork: Schema.optional(Schema.Boolean),
     targetGoogleTvNetwork: Schema.optional(Schema.Boolean),
@@ -10613,7 +10613,7 @@ export interface GoogleAdsSearchads360V23Common__MaximizeConversions {
 }
 
 export const GoogleAdsSearchads360V23Common__MaximizeConversions: Schema.Schema<GoogleAdsSearchads360V23Common__MaximizeConversions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetCpaMicros: Schema.optional(Schema.String),
     cpcBidCeilingMicros: Schema.optional(Schema.String),
     cpcBidFloorMicros: Schema.optional(Schema.String),
@@ -10634,7 +10634,7 @@ export interface GoogleAdsSearchads360V23Resources_Campaign_AiMaxSetting {
 }
 
 export const GoogleAdsSearchads360V23Resources_Campaign_AiMaxSetting: Schema.Schema<GoogleAdsSearchads360V23Resources_Campaign_AiMaxSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enableAiMax: Schema.optional(Schema.Boolean),
     bundlingRequired: Schema.optional(Schema.String),
   }).annotate({
@@ -10647,7 +10647,7 @@ export interface GoogleAdsSearchads360V23Resources_CampaignPmaxCampaignSettings_
 }
 
 export const GoogleAdsSearchads360V23Resources_CampaignPmaxCampaignSettings_BrandTargetingOverrides: Schema.Schema<GoogleAdsSearchads360V23Resources_CampaignPmaxCampaignSettings_BrandTargetingOverrides> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ignoreExclusionsForShoppingAds: Schema.optional(Schema.Boolean),
   }).annotate({
     identifier:
@@ -10660,7 +10660,7 @@ export interface GoogleAdsSearchads360V23Resources_Campaign_PmaxCampaignSettings
 }
 
 export const GoogleAdsSearchads360V23Resources_Campaign_PmaxCampaignSettings: Schema.Schema<GoogleAdsSearchads360V23Resources_Campaign_PmaxCampaignSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     brandTargetingOverrides: Schema.optional(
       GoogleAdsSearchads360V23Resources_CampaignPmaxCampaignSettings_BrandTargetingOverrides,
     ),
@@ -10686,7 +10686,7 @@ export interface GoogleAdsSearchads360V23Resources_Campaign_PerformanceMaxUpgrad
 }
 
 export const GoogleAdsSearchads360V23Resources_Campaign_PerformanceMaxUpgrade: Schema.Schema<GoogleAdsSearchads360V23Resources_Campaign_PerformanceMaxUpgrade> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     performanceMaxCampaign: Schema.optional(Schema.String),
     preUpgradeCampaign: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -10703,7 +10703,7 @@ export interface GoogleAdsSearchads360V23Common__ThirdPartyIntegrationPartnerDat
 }
 
 export const GoogleAdsSearchads360V23Common__ThirdPartyIntegrationPartnerData: Schema.Schema<GoogleAdsSearchads360V23Common__ThirdPartyIntegrationPartnerData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     clientId: Schema.optional(Schema.String),
     thirdPartyPlacementId: Schema.optional(Schema.String),
   }).annotate({
@@ -10725,7 +10725,7 @@ export interface GoogleAdsSearchads360V23Common__CampaignThirdPartyBrandSafetyIn
 }
 
 export const GoogleAdsSearchads360V23Common__CampaignThirdPartyBrandSafetyIntegrationPartner: Schema.Schema<GoogleAdsSearchads360V23Common__CampaignThirdPartyBrandSafetyIntegrationPartner> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     brandSafetyIntegrationPartner: Schema.optional(Schema.String),
     brandSafetyIntegrationPartnerData: Schema.optional(
       GoogleAdsSearchads360V23Common__ThirdPartyIntegrationPartnerData,
@@ -10752,7 +10752,7 @@ export interface GoogleAdsSearchads360V23Common__CampaignThirdPartyBrandLiftInte
 }
 
 export const GoogleAdsSearchads360V23Common__CampaignThirdPartyBrandLiftIntegrationPartner: Schema.Schema<GoogleAdsSearchads360V23Common__CampaignThirdPartyBrandLiftIntegrationPartner> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     shareCost: Schema.optional(Schema.Boolean),
     brandLiftIntegrationPartner: Schema.optional(Schema.String),
     brandLiftIntegrationPartnerData: Schema.optional(
@@ -10785,7 +10785,7 @@ export interface GoogleAdsSearchads360V23Common__CampaignThirdPartyReachIntegrat
 }
 
 export const GoogleAdsSearchads360V23Common__CampaignThirdPartyReachIntegrationPartner: Schema.Schema<GoogleAdsSearchads360V23Common__CampaignThirdPartyReachIntegrationPartner> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reachIntegrationPartnerData: Schema.optional(
       GoogleAdsSearchads360V23Common__ThirdPartyIntegrationPartnerData,
     ),
@@ -10811,7 +10811,7 @@ export interface GoogleAdsSearchads360V23Common__CampaignThirdPartyViewabilityIn
 }
 
 export const GoogleAdsSearchads360V23Common__CampaignThirdPartyViewabilityIntegrationPartner: Schema.Schema<GoogleAdsSearchads360V23Common__CampaignThirdPartyViewabilityIntegrationPartner> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     viewabilityIntegrationPartner: Schema.optional(Schema.String),
     viewabilityIntegrationPartnerData: Schema.optional(
       GoogleAdsSearchads360V23Common__ThirdPartyIntegrationPartnerData,
@@ -10834,7 +10834,7 @@ export interface GoogleAdsSearchads360V23Common__CampaignThirdPartyIntegrationPa
 }
 
 export const GoogleAdsSearchads360V23Common__CampaignThirdPartyIntegrationPartners: Schema.Schema<GoogleAdsSearchads360V23Common__CampaignThirdPartyIntegrationPartners> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     brandSafetyIntegrationPartners: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Common__CampaignThirdPartyBrandSafetyIntegrationPartner,
@@ -10879,7 +10879,7 @@ export interface GoogleAdsSearchads360V23Common__TargetRestriction {
 }
 
 export const GoogleAdsSearchads360V23Common__TargetRestriction: Schema.Schema<GoogleAdsSearchads360V23Common__TargetRestriction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetingDimension: Schema.optional(Schema.String),
     bidOnly: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -10894,7 +10894,7 @@ export interface GoogleAdsSearchads360V23Common__TargetRestrictionOperation {
 }
 
 export const GoogleAdsSearchads360V23Common__TargetRestrictionOperation: Schema.Schema<GoogleAdsSearchads360V23Common__TargetRestrictionOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(GoogleAdsSearchads360V23Common__TargetRestriction),
     operator: Schema.optional(Schema.String),
   }).annotate({
@@ -10909,7 +10909,7 @@ export interface GoogleAdsSearchads360V23Common__TargetingSetting {
 }
 
 export const GoogleAdsSearchads360V23Common__TargetingSetting: Schema.Schema<GoogleAdsSearchads360V23Common__TargetingSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetRestrictionOperations: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__TargetRestrictionOperation),
     ),
@@ -10926,7 +10926,7 @@ export interface GoogleAdsSearchads360V23Common__TargetCpc {
 }
 
 export const GoogleAdsSearchads360V23Common__TargetCpc: Schema.Schema<GoogleAdsSearchads360V23Common__TargetCpc> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetCpcMicros: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__TargetCpc" });
 
@@ -10936,7 +10936,7 @@ export interface GoogleAdsSearchads360V23Common__RealTimeBiddingSetting {
 }
 
 export const GoogleAdsSearchads360V23Common__RealTimeBiddingSetting: Schema.Schema<GoogleAdsSearchads360V23Common__RealTimeBiddingSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     optIn: Schema.optional(Schema.Boolean),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__RealTimeBiddingSetting",
@@ -10954,7 +10954,7 @@ export interface GoogleAdsSearchads360V23Common__TargetRoas {
 }
 
 export const GoogleAdsSearchads360V23Common__TargetRoas: Schema.Schema<GoogleAdsSearchads360V23Common__TargetRoas> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetRoas: Schema.optional(Schema.Number),
     targetRoasTolerancePercentMillis: Schema.optional(Schema.String),
     cpcBidCeilingMicros: Schema.optional(Schema.String),
@@ -10971,7 +10971,7 @@ export interface GoogleAdsSearchads360V23Resources_Campaign_CategoryBid {
 }
 
 export const GoogleAdsSearchads360V23Resources_Campaign_CategoryBid: Schema.Schema<GoogleAdsSearchads360V23Resources_Campaign_CategoryBid> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     categoryId: Schema.optional(Schema.String),
     manualCpaBidMicros: Schema.optional(Schema.String),
     targetCpaBidMicros: Schema.optional(Schema.String),
@@ -10985,7 +10985,7 @@ export interface GoogleAdsSearchads360V23Resources_Campaign_LocalServicesCampaig
 }
 
 export const GoogleAdsSearchads360V23Resources_Campaign_LocalServicesCampaignSettings: Schema.Schema<GoogleAdsSearchads360V23Resources_Campaign_LocalServicesCampaignSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     categoryBids: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Resources_Campaign_CategoryBid),
     ),
@@ -11000,14 +11000,14 @@ export interface GoogleAdsSearchads360V23Common__ManualCpc {
 }
 
 export const GoogleAdsSearchads360V23Common__ManualCpc: Schema.Schema<GoogleAdsSearchads360V23Common__ManualCpc> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enhancedCpcEnabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__ManualCpc" });
 
 export interface GoogleAdsSearchads360V23Common__TargetCpm {}
 
 export const GoogleAdsSearchads360V23Common__TargetCpm: Schema.Schema<GoogleAdsSearchads360V23Common__TargetCpm> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAdsSearchads360V23Common__TargetCpm",
   });
 
@@ -11017,7 +11017,7 @@ export interface GoogleAdsSearchads360V23Resources_Campaign_HotelSettingInfo {
 }
 
 export const GoogleAdsSearchads360V23Resources_Campaign_HotelSettingInfo: Schema.Schema<GoogleAdsSearchads360V23Resources_Campaign_HotelSettingInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     hotelCenterId: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Resources_Campaign_HotelSettingInfo",
@@ -11033,7 +11033,7 @@ export interface GoogleAdsSearchads360V23Resources_Campaign_BrandGuidelines {
 }
 
 export const GoogleAdsSearchads360V23Resources_Campaign_BrandGuidelines: Schema.Schema<GoogleAdsSearchads360V23Resources_Campaign_BrandGuidelines> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mainColor: Schema.optional(Schema.String),
     accentColor: Schema.optional(Schema.String),
     predefinedFontFamily: Schema.optional(Schema.String),
@@ -11054,7 +11054,7 @@ export interface GoogleAdsSearchads360V23Resources_Campaign_OptimizationGoalSett
 }
 
 export const GoogleAdsSearchads360V23Resources_Campaign_OptimizationGoalSetting: Schema.Schema<GoogleAdsSearchads360V23Resources_Campaign_OptimizationGoalSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     optimizationGoalTypes: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
     identifier:
@@ -11073,7 +11073,7 @@ export interface GoogleAdsSearchads360V23Common__MaximizeConversionValue {
 }
 
 export const GoogleAdsSearchads360V23Common__MaximizeConversionValue: Schema.Schema<GoogleAdsSearchads360V23Common__MaximizeConversionValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cpcBidCeilingMicros: Schema.optional(Schema.String),
     cpcBidFloorMicros: Schema.optional(Schema.String),
     targetRoas: Schema.optional(Schema.Number),
@@ -11510,7 +11510,7 @@ export interface GoogleAdsSearchads360V23Resources__Campaign {
 }
 
 export const GoogleAdsSearchads360V23Resources__Campaign: Schema.Schema<GoogleAdsSearchads360V23Resources__Campaign> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     finalUrlSuffix: Schema.optional(Schema.String),
     missingEuPoliticalAdvertisingDeclaration: Schema.optional(Schema.Boolean),
     lastModifiedTime: Schema.optional(Schema.String),
@@ -11661,7 +11661,7 @@ export interface GoogleAdsSearchads360V23Services__CampaignOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__CampaignOperation: Schema.Schema<GoogleAdsSearchads360V23Services__CampaignOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     update: Schema.optional(GoogleAdsSearchads360V23Resources__Campaign),
     create: Schema.optional(GoogleAdsSearchads360V23Resources__Campaign),
@@ -11680,7 +11680,7 @@ export interface GoogleAdsSearchads360V23Resources_AdGroup_VerticalAdsFormatSett
 }
 
 export const GoogleAdsSearchads360V23Resources_AdGroup_VerticalAdsFormatSetting: Schema.Schema<GoogleAdsSearchads360V23Resources_AdGroup_VerticalAdsFormatSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enableVerticalPromotionAds: Schema.optional(Schema.Boolean),
     disableTextAds: Schema.optional(Schema.Boolean),
     enableBookingLinks: Schema.optional(Schema.Boolean),
@@ -11695,7 +11695,7 @@ export interface GoogleAdsSearchads360V23Resources_AdGroup_AudienceSetting {
 }
 
 export const GoogleAdsSearchads360V23Resources_AdGroup_AudienceSetting: Schema.Schema<GoogleAdsSearchads360V23Resources_AdGroup_AudienceSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     useAudienceGrouped: Schema.optional(Schema.Boolean),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Resources_AdGroup_AudienceSetting",
@@ -11707,7 +11707,7 @@ export interface GoogleAdsSearchads360V23Resources_AdGroup_DemandGenAdGroupSetti
 }
 
 export const GoogleAdsSearchads360V23Resources_AdGroup_DemandGenAdGroupSettings: Schema.Schema<GoogleAdsSearchads360V23Resources_AdGroup_DemandGenAdGroupSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     channelControls: Schema.optional(
       GoogleAdsSearchads360V23Resources_AdGroupDemandGenAdGroupSettings_DemandGenChannelControls,
     ),
@@ -11722,7 +11722,7 @@ export interface GoogleAdsSearchads360V23Resources_AdGroup_AiMaxAdGroupSetting {
 }
 
 export const GoogleAdsSearchads360V23Resources_AdGroup_AiMaxAdGroupSetting: Schema.Schema<GoogleAdsSearchads360V23Resources_AdGroup_AiMaxAdGroupSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     disableSearchTermMatching: Schema.optional(Schema.Boolean),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Resources_AdGroup_AiMaxAdGroupSetting",
@@ -11987,7 +11987,7 @@ export interface GoogleAdsSearchads360V23Resources__AdGroup {
 }
 
 export const GoogleAdsSearchads360V23Resources__AdGroup: Schema.Schema<GoogleAdsSearchads360V23Resources__AdGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endDate: Schema.optional(Schema.String),
     excludedParentAssetSetTypes: Schema.optional(Schema.Array(Schema.String)),
     targetCpvMicros: Schema.optional(Schema.String),
@@ -12063,7 +12063,7 @@ export interface GoogleAdsSearchads360V23Services__AdGroupOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__AdGroupOperation: Schema.Schema<GoogleAdsSearchads360V23Services__AdGroupOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     remove: Schema.optional(Schema.String),
     create: Schema.optional(GoogleAdsSearchads360V23Resources__AdGroup),
     updateMask: Schema.optional(Schema.String),
@@ -12086,7 +12086,7 @@ export interface GoogleAdsSearchads360V23Resources__KeywordPlanAdGroup {
 }
 
 export const GoogleAdsSearchads360V23Resources__KeywordPlanAdGroup: Schema.Schema<GoogleAdsSearchads360V23Resources__KeywordPlanAdGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     cpcBidMicros: Schema.optional(Schema.String),
     keywordPlanCampaign: Schema.optional(Schema.String),
@@ -12108,7 +12108,7 @@ export interface GoogleAdsSearchads360V23Services__KeywordPlanAdGroupOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__KeywordPlanAdGroupOperation: Schema.Schema<GoogleAdsSearchads360V23Services__KeywordPlanAdGroupOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     update: Schema.optional(
       GoogleAdsSearchads360V23Resources__KeywordPlanAdGroup,
@@ -12167,7 +12167,7 @@ export interface GoogleAdsSearchads360V23Resources__CustomerConversionGoal {
 }
 
 export const GoogleAdsSearchads360V23Resources__CustomerConversionGoal: Schema.Schema<GoogleAdsSearchads360V23Resources__CustomerConversionGoal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     origin: Schema.optional(Schema.String),
     category: Schema.optional(Schema.String),
@@ -12184,7 +12184,7 @@ export interface GoogleAdsSearchads360V23Services__CustomerConversionGoalOperati
 }
 
 export const GoogleAdsSearchads360V23Services__CustomerConversionGoalOperation: Schema.Schema<GoogleAdsSearchads360V23Services__CustomerConversionGoalOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     update: Schema.optional(
       GoogleAdsSearchads360V23Resources__CustomerConversionGoal,
@@ -12202,7 +12202,7 @@ export interface GoogleAdsSearchads360V23Services__SearchAds360CampaignOperation
 }
 
 export const GoogleAdsSearchads360V23Services__SearchAds360CampaignOperation: Schema.Schema<GoogleAdsSearchads360V23Services__SearchAds360CampaignOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     update: Schema.optional(
       GoogleAdsSearchads360V23Resources__SearchAds360Campaign,
@@ -12228,7 +12228,7 @@ export interface GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_P
 }
 
 export const GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_ProductCustomAttribute: Schema.Schema<GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_ProductCustomAttribute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     index: Schema.optional(Schema.String),
   }).annotate({
@@ -12242,7 +12242,7 @@ export interface GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_P
 }
 
 export const GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_ProductItemId: Schema.Schema<GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_ProductItemId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -12265,7 +12265,7 @@ export interface GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_P
 }
 
 export const GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_ProductCategory: Schema.Schema<GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_ProductCategory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     categoryId: Schema.optional(Schema.String),
     level: Schema.optional(Schema.String),
   }).annotate({
@@ -12279,7 +12279,7 @@ export interface GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_P
 }
 
 export const GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_ProductChannel: Schema.Schema<GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_ProductChannel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     channel: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -12298,7 +12298,7 @@ export interface GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_P
 }
 
 export const GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_ProductCondition: Schema.Schema<GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_ProductCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     condition: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -12311,7 +12311,7 @@ export interface GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_P
 }
 
 export const GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_ProductBrand: Schema.Schema<GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_ProductBrand> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -12326,7 +12326,7 @@ export interface GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_W
 }
 
 export const GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_WebpageCondition: Schema.Schema<GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_WebpageCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customLabel: Schema.optional(Schema.String),
     urlContains: Schema.optional(Schema.String),
   }).annotate({
@@ -12340,7 +12340,7 @@ export interface GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_W
 }
 
 export const GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_Webpage: Schema.Schema<GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_Webpage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     conditions: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_WebpageCondition,
@@ -12367,7 +12367,7 @@ export interface GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_P
 }
 
 export const GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_ProductType: Schema.Schema<GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_ProductType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     level: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
   }).annotate({
@@ -12395,7 +12395,7 @@ export interface GoogleAdsSearchads360V23Resources__ListingGroupFilterDimension 
 }
 
 export const GoogleAdsSearchads360V23Resources__ListingGroupFilterDimension: Schema.Schema<GoogleAdsSearchads360V23Resources__ListingGroupFilterDimension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     productCustomAttribute: Schema.optional(
       GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_ProductCustomAttribute,
     ),
@@ -12431,7 +12431,7 @@ export interface GoogleAdsSearchads360V23Resources__ListingGroupFilterDimensionP
 }
 
 export const GoogleAdsSearchads360V23Resources__ListingGroupFilterDimensionPath: Schema.Schema<GoogleAdsSearchads360V23Resources__ListingGroupFilterDimensionPath> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dimensions: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Resources__ListingGroupFilterDimension,
@@ -12473,7 +12473,7 @@ export interface GoogleAdsSearchads360V23Resources__AssetGroupListingGroupFilter
 }
 
 export const GoogleAdsSearchads360V23Resources__AssetGroupListingGroupFilter: Schema.Schema<GoogleAdsSearchads360V23Resources__AssetGroupListingGroupFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     listingSource: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12503,7 +12503,7 @@ export interface GoogleAdsSearchads360V23Services__AssetGroupListingGroupFilterO
 }
 
 export const GoogleAdsSearchads360V23Services__AssetGroupListingGroupFilterOperation: Schema.Schema<GoogleAdsSearchads360V23Services__AssetGroupListingGroupFilterOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     update: Schema.optional(
       GoogleAdsSearchads360V23Resources__AssetGroupListingGroupFilter,
@@ -12523,7 +12523,7 @@ export interface GoogleAdsSearchads360V23Common__SearchThemeInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__SearchThemeInfo: Schema.Schema<GoogleAdsSearchads360V23Common__SearchThemeInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__SearchThemeInfo",
@@ -12552,7 +12552,7 @@ export interface GoogleAdsSearchads360V23Resources__AssetGroupSignal {
 }
 
 export const GoogleAdsSearchads360V23Resources__AssetGroupSignal: Schema.Schema<GoogleAdsSearchads360V23Resources__AssetGroupSignal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     approvalStatus: Schema.optional(Schema.String),
     assetGroup: Schema.optional(Schema.String),
     disapprovalReasons: Schema.optional(Schema.Array(Schema.String)),
@@ -12575,7 +12575,7 @@ export interface GoogleAdsSearchads360V23Services__AssetGroupSignalOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__AssetGroupSignalOperation: Schema.Schema<GoogleAdsSearchads360V23Services__AssetGroupSignalOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     exemptPolicyViolationKeys: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__PolicyViolationKey),
     ),
@@ -12593,7 +12593,7 @@ export interface GoogleAdsSearchads360V23Resources_SmartCampaignSetting_AdOptimi
 }
 
 export const GoogleAdsSearchads360V23Resources_SmartCampaignSetting_AdOptimizedBusinessProfileSetting: Schema.Schema<GoogleAdsSearchads360V23Resources_SmartCampaignSetting_AdOptimizedBusinessProfileSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     includeLeadForm: Schema.optional(Schema.Boolean),
   }).annotate({
     identifier:
@@ -12608,7 +12608,7 @@ export interface GoogleAdsSearchads360V23Resources_SmartCampaignSetting_PhoneNum
 }
 
 export const GoogleAdsSearchads360V23Resources_SmartCampaignSetting_PhoneNumber: Schema.Schema<GoogleAdsSearchads360V23Resources_SmartCampaignSetting_PhoneNumber> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     phoneNumber: Schema.optional(Schema.String),
     countryCode: Schema.optional(Schema.String),
   }).annotate({
@@ -12636,7 +12636,7 @@ export interface GoogleAdsSearchads360V23Resources__SmartCampaignSetting {
 }
 
 export const GoogleAdsSearchads360V23Resources__SmartCampaignSetting: Schema.Schema<GoogleAdsSearchads360V23Resources__SmartCampaignSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adOptimizedBusinessProfileSetting: Schema.optional(
       GoogleAdsSearchads360V23Resources_SmartCampaignSetting_AdOptimizedBusinessProfileSetting,
     ),
@@ -12661,7 +12661,7 @@ export interface GoogleAdsSearchads360V23Services__SmartCampaignSettingOperation
 }
 
 export const GoogleAdsSearchads360V23Services__SmartCampaignSettingOperation: Schema.Schema<GoogleAdsSearchads360V23Services__SmartCampaignSettingOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     update: Schema.optional(
       GoogleAdsSearchads360V23Resources__SmartCampaignSetting,
     ),
@@ -12674,7 +12674,7 @@ export const GoogleAdsSearchads360V23Services__SmartCampaignSettingOperation: Sc
 export interface GoogleAdsSearchads360V23Common__EnhancedCpc {}
 
 export const GoogleAdsSearchads360V23Common__EnhancedCpc: Schema.Schema<GoogleAdsSearchads360V23Common__EnhancedCpc> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAdsSearchads360V23Common__EnhancedCpc",
   });
 
@@ -12737,7 +12737,7 @@ export interface GoogleAdsSearchads360V23Resources__BiddingStrategy {
 }
 
 export const GoogleAdsSearchads360V23Resources__BiddingStrategy: Schema.Schema<GoogleAdsSearchads360V23Resources__BiddingStrategy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     maximizeConversionValue: Schema.optional(
       GoogleAdsSearchads360V23Common__MaximizeConversionValue,
@@ -12777,7 +12777,7 @@ export interface GoogleAdsSearchads360V23Services__BiddingStrategyOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__BiddingStrategyOperation: Schema.Schema<GoogleAdsSearchads360V23Services__BiddingStrategyOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     update: Schema.optional(GoogleAdsSearchads360V23Resources__BiddingStrategy),
     remove: Schema.optional(Schema.String),
@@ -12796,7 +12796,7 @@ export interface GoogleAdsSearchads360V23Resources_ConversionAction_GoogleAnalyt
 }
 
 export const GoogleAdsSearchads360V23Resources_ConversionAction_GoogleAnalytics4Settings: Schema.Schema<GoogleAdsSearchads360V23Resources_ConversionAction_GoogleAnalytics4Settings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     eventName: Schema.optional(Schema.String),
     propertyName: Schema.optional(Schema.String),
     propertyId: Schema.optional(Schema.String),
@@ -12813,7 +12813,7 @@ export interface GoogleAdsSearchads360V23Resources_ConversionAction_ThirdPartyAp
 }
 
 export const GoogleAdsSearchads360V23Resources_ConversionAction_ThirdPartyAppAnalyticsSettings: Schema.Schema<GoogleAdsSearchads360V23Resources_ConversionAction_ThirdPartyAppAnalyticsSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     eventName: Schema.optional(Schema.String),
     providerName: Schema.optional(Schema.String),
   }).annotate({
@@ -12846,7 +12846,7 @@ export interface GoogleAdsSearchads360V23Resources_ConversionAction_AttributionM
 }
 
 export const GoogleAdsSearchads360V23Resources_ConversionAction_AttributionModelSettings: Schema.Schema<GoogleAdsSearchads360V23Resources_ConversionAction_AttributionModelSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataDrivenModelStatus: Schema.optional(Schema.String),
     attributionModel: Schema.optional(Schema.String),
   }).annotate({
@@ -12864,7 +12864,7 @@ export interface GoogleAdsSearchads360V23Resources_ConversionAction_FloodlightSe
 }
 
 export const GoogleAdsSearchads360V23Resources_ConversionAction_FloodlightSettings: Schema.Schema<GoogleAdsSearchads360V23Resources_ConversionAction_FloodlightSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     activityGroupTag: Schema.optional(Schema.String),
     activityId: Schema.optional(Schema.String),
     activityTag: Schema.optional(Schema.String),
@@ -12883,7 +12883,7 @@ export interface GoogleAdsSearchads360V23Resources_ConversionAction_ValueSetting
 }
 
 export const GoogleAdsSearchads360V23Resources_ConversionAction_ValueSettings: Schema.Schema<GoogleAdsSearchads360V23Resources_ConversionAction_ValueSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     defaultValue: Schema.optional(Schema.Number),
     defaultCurrencyCode: Schema.optional(Schema.String),
     alwaysUseDefaultValue: Schema.optional(Schema.Boolean),
@@ -12904,7 +12904,7 @@ export interface GoogleAdsSearchads360V23Resources_ConversionAction_FirebaseSett
 }
 
 export const GoogleAdsSearchads360V23Resources_ConversionAction_FirebaseSettings: Schema.Schema<GoogleAdsSearchads360V23Resources_ConversionAction_FirebaseSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     eventName: Schema.optional(Schema.String),
     projectId: Schema.optional(Schema.String),
     propertyId: Schema.optional(Schema.String),
@@ -13061,7 +13061,7 @@ export interface GoogleAdsSearchads360V23Resources__ConversionAction {
 }
 
 export const GoogleAdsSearchads360V23Resources__ConversionAction: Schema.Schema<GoogleAdsSearchads360V23Resources__ConversionAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ownerCustomer: Schema.optional(Schema.String),
     appId: Schema.optional(Schema.String),
     origin: Schema.optional(Schema.String),
@@ -13117,7 +13117,7 @@ export interface GoogleAdsSearchads360V23Services__ConversionActionOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__ConversionActionOperation: Schema.Schema<GoogleAdsSearchads360V23Services__ConversionActionOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     create: Schema.optional(
       GoogleAdsSearchads360V23Resources__ConversionAction,
     ),
@@ -13142,7 +13142,7 @@ export interface GoogleAdsSearchads360V23Resources__CampaignAssetSet {
 }
 
 export const GoogleAdsSearchads360V23Resources__CampaignAssetSet: Schema.Schema<GoogleAdsSearchads360V23Resources__CampaignAssetSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
     campaign: Schema.optional(Schema.String),
@@ -13159,7 +13159,7 @@ export interface GoogleAdsSearchads360V23Services__CampaignAssetSetOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__CampaignAssetSetOperation: Schema.Schema<GoogleAdsSearchads360V23Services__CampaignAssetSetOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     remove: Schema.optional(Schema.String),
     create: Schema.optional(
       GoogleAdsSearchads360V23Resources__CampaignAssetSet,
@@ -13180,7 +13180,7 @@ export interface GoogleAdsSearchads360V23Resources__CampaignGroup {
 }
 
 export const GoogleAdsSearchads360V23Resources__CampaignGroup: Schema.Schema<GoogleAdsSearchads360V23Resources__CampaignGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
@@ -13201,7 +13201,7 @@ export interface GoogleAdsSearchads360V23Services__CampaignGroupOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__CampaignGroupOperation: Schema.Schema<GoogleAdsSearchads360V23Services__CampaignGroupOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     update: Schema.optional(GoogleAdsSearchads360V23Resources__CampaignGroup),
     create: Schema.optional(GoogleAdsSearchads360V23Resources__CampaignGroup),
@@ -13222,7 +13222,7 @@ export interface GoogleAdsSearchads360V23Resources__AdGroupLabel {
 }
 
 export const GoogleAdsSearchads360V23Resources__AdGroupLabel: Schema.Schema<GoogleAdsSearchads360V23Resources__AdGroupLabel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     label: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
     adGroup: Schema.optional(Schema.String),
@@ -13239,7 +13239,7 @@ export interface GoogleAdsSearchads360V23Services__AdGroupLabelOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__AdGroupLabelOperation: Schema.Schema<GoogleAdsSearchads360V23Services__AdGroupLabelOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     create: Schema.optional(GoogleAdsSearchads360V23Resources__AdGroupLabel),
     remove: Schema.optional(Schema.String),
   }).annotate({
@@ -13252,7 +13252,7 @@ export interface GoogleAdsSearchads360V23Resources__KeywordPlanGeoTarget {
 }
 
 export const GoogleAdsSearchads360V23Resources__KeywordPlanGeoTarget: Schema.Schema<GoogleAdsSearchads360V23Resources__KeywordPlanGeoTarget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     geoTargetConstant: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Resources__KeywordPlanGeoTarget",
@@ -13283,7 +13283,7 @@ export interface GoogleAdsSearchads360V23Resources__KeywordPlanCampaign {
 }
 
 export const GoogleAdsSearchads360V23Resources__KeywordPlanCampaign: Schema.Schema<GoogleAdsSearchads360V23Resources__KeywordPlanCampaign> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keywordPlanNetwork: Schema.optional(Schema.String),
     cpcBidMicros: Schema.optional(Schema.String),
     keywordPlan: Schema.optional(Schema.String),
@@ -13310,7 +13310,7 @@ export interface GoogleAdsSearchads360V23Services__KeywordPlanCampaignOperation 
 }
 
 export const GoogleAdsSearchads360V23Services__KeywordPlanCampaignOperation: Schema.Schema<GoogleAdsSearchads360V23Services__KeywordPlanCampaignOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     update: Schema.optional(
       GoogleAdsSearchads360V23Resources__KeywordPlanCampaign,
@@ -13352,7 +13352,7 @@ export interface GoogleAdsSearchads360V23Resources__CampaignDraft {
 }
 
 export const GoogleAdsSearchads360V23Resources__CampaignDraft: Schema.Schema<GoogleAdsSearchads360V23Resources__CampaignDraft> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     longRunningOperation: Schema.optional(Schema.String),
     baseCampaign: Schema.optional(Schema.String),
     draftId: Schema.optional(Schema.String),
@@ -13377,7 +13377,7 @@ export interface GoogleAdsSearchads360V23Services__CampaignDraftOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__CampaignDraftOperation: Schema.Schema<GoogleAdsSearchads360V23Services__CampaignDraftOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     update: Schema.optional(GoogleAdsSearchads360V23Resources__CampaignDraft),
     remove: Schema.optional(Schema.String),
@@ -13394,7 +13394,7 @@ export interface GoogleAdsSearchads360V23Common__HotelCalloutAsset {
 }
 
 export const GoogleAdsSearchads360V23Common__HotelCalloutAsset: Schema.Schema<GoogleAdsSearchads360V23Common__HotelCalloutAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     languageCode: Schema.optional(Schema.String),
   }).annotate({
@@ -13415,7 +13415,7 @@ export interface GoogleAdsSearchads360V23Common__DemandGenCarouselCardAsset {
 }
 
 export const GoogleAdsSearchads360V23Common__DemandGenCarouselCardAsset: Schema.Schema<GoogleAdsSearchads360V23Common__DemandGenCarouselCardAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     callToActionText: Schema.optional(Schema.String),
     portraitMarketingImageAsset: Schema.optional(Schema.String),
     headline: Schema.optional(Schema.String),
@@ -13444,7 +13444,7 @@ export interface GoogleAdsSearchads360V23Common__MobileAppAsset {
 }
 
 export const GoogleAdsSearchads360V23Common__MobileAppAsset: Schema.Schema<GoogleAdsSearchads360V23Common__MobileAppAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endDate: Schema.optional(Schema.String),
     appId: Schema.optional(Schema.String),
     linkText: Schema.optional(Schema.String),
@@ -13490,7 +13490,7 @@ export interface GoogleAdsSearchads360V23Common__DynamicTravelAsset {
 }
 
 export const GoogleAdsSearchads360V23Common__DynamicTravelAsset: Schema.Schema<GoogleAdsSearchads360V23Common__DynamicTravelAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     originId: Schema.optional(Schema.String),
     similarDestinationIds: Schema.optional(Schema.Array(Schema.String)),
     imageUrl: Schema.optional(Schema.String),
@@ -13515,7 +13515,7 @@ export const GoogleAdsSearchads360V23Common__DynamicTravelAsset: Schema.Schema<G
 export interface GoogleAdsSearchads360V23Common__BookOnGoogleAsset {}
 
 export const GoogleAdsSearchads360V23Common__BookOnGoogleAsset: Schema.Schema<GoogleAdsSearchads360V23Common__BookOnGoogleAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAdsSearchads360V23Common__BookOnGoogleAsset",
   });
 
@@ -13551,7 +13551,7 @@ export interface GoogleAdsSearchads360V23Common__DynamicJobsAsset {
 }
 
 export const GoogleAdsSearchads360V23Common__DynamicJobsAsset: Schema.Schema<GoogleAdsSearchads360V23Common__DynamicJobsAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     jobCategory: Schema.optional(Schema.String),
     jobSubtitle: Schema.optional(Schema.String),
     androidAppLink: Schema.optional(Schema.String),
@@ -13580,7 +13580,7 @@ export interface GoogleAdsSearchads360V23Common__BusinessProfileLocation {
 }
 
 export const GoogleAdsSearchads360V23Common__BusinessProfileLocation: Schema.Schema<GoogleAdsSearchads360V23Common__BusinessProfileLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     storeCode: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Array(Schema.String)),
     listingId: Schema.optional(Schema.String),
@@ -13603,7 +13603,7 @@ export interface GoogleAdsSearchads360V23Common__LocationAsset {
 }
 
 export const GoogleAdsSearchads360V23Common__LocationAsset: Schema.Schema<GoogleAdsSearchads360V23Common__LocationAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     businessProfileLocations: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__BusinessProfileLocation),
     ),
@@ -13619,7 +13619,7 @@ export interface GoogleAdsSearchads360V23Common__YoutubeVideoAsset {
 }
 
 export const GoogleAdsSearchads360V23Common__YoutubeVideoAsset: Schema.Schema<GoogleAdsSearchads360V23Common__YoutubeVideoAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     youtubeVideoId: Schema.optional(Schema.String),
     youtubeVideoTitle: Schema.optional(Schema.String),
   }).annotate({
@@ -13658,7 +13658,7 @@ export interface GoogleAdsSearchads360V23Common__DynamicEducationAsset {
 }
 
 export const GoogleAdsSearchads360V23Common__DynamicEducationAsset: Schema.Schema<GoogleAdsSearchads360V23Common__DynamicEducationAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     programName: Schema.optional(Schema.String),
     programDescription: Schema.optional(Schema.String),
     iosAppLink: Schema.optional(Schema.String),
@@ -13713,7 +13713,7 @@ export interface GoogleAdsSearchads360V23Common__DynamicLocalAsset {
 }
 
 export const GoogleAdsSearchads360V23Common__DynamicLocalAsset: Schema.Schema<GoogleAdsSearchads360V23Common__DynamicLocalAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subtitle: Schema.optional(Schema.String),
     category: Schema.optional(Schema.String),
     dealName: Schema.optional(Schema.String),
@@ -13742,7 +13742,7 @@ export interface GoogleAdsSearchads360V23Common__ZaloBusinessMessageInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__ZaloBusinessMessageInfo: Schema.Schema<GoogleAdsSearchads360V23Common__ZaloBusinessMessageInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     oaId: Schema.optional(Schema.String),
     customName: Schema.optional(Schema.String),
   }).annotate({
@@ -13768,7 +13768,7 @@ export interface GoogleAdsSearchads360V23Common__BusinessMessageCallToActionInfo
 }
 
 export const GoogleAdsSearchads360V23Common__BusinessMessageCallToActionInfo: Schema.Schema<GoogleAdsSearchads360V23Common__BusinessMessageCallToActionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     callToActionSelection: Schema.optional(Schema.String),
     callToActionDescription: Schema.optional(Schema.String),
   }).annotate({
@@ -13784,7 +13784,7 @@ export interface GoogleAdsSearchads360V23Common__WhatsappBusinessMessageInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__WhatsappBusinessMessageInfo: Schema.Schema<GoogleAdsSearchads360V23Common__WhatsappBusinessMessageInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     countryCode: Schema.optional(Schema.String),
     phoneNumber: Schema.optional(Schema.String),
   }).annotate({
@@ -13797,7 +13797,7 @@ export interface GoogleAdsSearchads360V23Common__FacebookMessengerBusinessMessag
 }
 
 export const GoogleAdsSearchads360V23Common__FacebookMessengerBusinessMessageInfo: Schema.Schema<GoogleAdsSearchads360V23Common__FacebookMessengerBusinessMessageInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageName: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -13826,7 +13826,7 @@ export interface GoogleAdsSearchads360V23Common__BusinessMessageAsset {
 }
 
 export const GoogleAdsSearchads360V23Common__BusinessMessageAsset: Schema.Schema<GoogleAdsSearchads360V23Common__BusinessMessageAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     messageProvider: Schema.optional(Schema.String),
     zaloInfo: Schema.optional(
       GoogleAdsSearchads360V23Common__ZaloBusinessMessageInfo,
@@ -13865,7 +13865,7 @@ export interface GoogleAdsSearchads360V23Common__CallAsset {
 }
 
 export const GoogleAdsSearchads360V23Common__CallAsset: Schema.Schema<GoogleAdsSearchads360V23Common__CallAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     phoneNumber: Schema.optional(Schema.String),
     countryCode: Schema.optional(Schema.String),
     callConversionReportingState: Schema.optional(Schema.String),
@@ -13881,7 +13881,7 @@ export interface GoogleAdsSearchads360V23Common__LeadFormSingleChoiceAnswers {
 }
 
 export const GoogleAdsSearchads360V23Common__LeadFormSingleChoiceAnswers: Schema.Schema<GoogleAdsSearchads360V23Common__LeadFormSingleChoiceAnswers> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     answers: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__LeadFormSingleChoiceAnswers",
@@ -14016,7 +14016,7 @@ export interface GoogleAdsSearchads360V23Common__LeadFormField {
 }
 
 export const GoogleAdsSearchads360V23Common__LeadFormField: Schema.Schema<GoogleAdsSearchads360V23Common__LeadFormField> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     inputType: Schema.optional(Schema.String),
     singleChoiceAnswers: Schema.optional(
       GoogleAdsSearchads360V23Common__LeadFormSingleChoiceAnswers,
@@ -14034,7 +14034,7 @@ export interface GoogleAdsSearchads360V23Common__LeadFormCustomQuestionField {
 }
 
 export const GoogleAdsSearchads360V23Common__LeadFormCustomQuestionField: Schema.Schema<GoogleAdsSearchads360V23Common__LeadFormCustomQuestionField> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     singleChoiceAnswers: Schema.optional(
       GoogleAdsSearchads360V23Common__LeadFormSingleChoiceAnswers,
     ),
@@ -14054,7 +14054,7 @@ export interface GoogleAdsSearchads360V23Common__WebhookDelivery {
 }
 
 export const GoogleAdsSearchads360V23Common__WebhookDelivery: Schema.Schema<GoogleAdsSearchads360V23Common__WebhookDelivery> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     advertiserWebhookUrl: Schema.optional(Schema.String),
     googleSecret: Schema.optional(Schema.String),
     payloadSchemaVersion: Schema.optional(Schema.String),
@@ -14068,7 +14068,7 @@ export interface GoogleAdsSearchads360V23Common__LeadFormDeliveryMethod {
 }
 
 export const GoogleAdsSearchads360V23Common__LeadFormDeliveryMethod: Schema.Schema<GoogleAdsSearchads360V23Common__LeadFormDeliveryMethod> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     webhook: Schema.optional(GoogleAdsSearchads360V23Common__WebhookDelivery),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__LeadFormDeliveryMethod",
@@ -14137,7 +14137,7 @@ export interface GoogleAdsSearchads360V23Common__LeadFormAsset {
 }
 
 export const GoogleAdsSearchads360V23Common__LeadFormAsset: Schema.Schema<GoogleAdsSearchads360V23Common__LeadFormAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     fields: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__LeadFormField),
@@ -14176,7 +14176,7 @@ export interface GoogleAdsSearchads360V23Common__UnifiedLocationAsset {
 }
 
 export const GoogleAdsSearchads360V23Common__UnifiedLocationAsset: Schema.Schema<GoogleAdsSearchads360V23Common__UnifiedLocationAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     businessProfileLocations: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__BusinessProfileLocation),
     ),
@@ -14194,7 +14194,7 @@ export interface GoogleAdsSearchads360V23Common__Money {
 }
 
 export const GoogleAdsSearchads360V23Common__Money: Schema.Schema<GoogleAdsSearchads360V23Common__Money> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     currencyCode: Schema.optional(Schema.String),
     amountMicros: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__Money" });
@@ -14224,7 +14224,7 @@ export interface GoogleAdsSearchads360V23Common__PriceOffering {
 }
 
 export const GoogleAdsSearchads360V23Common__PriceOffering: Schema.Schema<GoogleAdsSearchads360V23Common__PriceOffering> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     finalMobileUrl: Schema.optional(Schema.String),
     price: Schema.optional(GoogleAdsSearchads360V23Common__Money),
     header: Schema.optional(Schema.String),
@@ -14263,7 +14263,7 @@ export interface GoogleAdsSearchads360V23Common__PriceAsset {
 }
 
 export const GoogleAdsSearchads360V23Common__PriceAsset: Schema.Schema<GoogleAdsSearchads360V23Common__PriceAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     priceQualifier: Schema.optional(Schema.String),
     languageCode: Schema.optional(Schema.String),
@@ -14310,7 +14310,7 @@ export interface GoogleAdsSearchads360V23Common__DynamicCustomAsset {
 }
 
 export const GoogleAdsSearchads360V23Common__DynamicCustomAsset: Schema.Schema<GoogleAdsSearchads360V23Common__DynamicCustomAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     itemAddress: Schema.optional(Schema.String),
     salePrice: Schema.optional(Schema.String),
     contextualKeywords: Schema.optional(Schema.Array(Schema.String)),
@@ -14348,7 +14348,7 @@ export interface GoogleAdsSearchads360V23Common__SitelinkAsset {
 }
 
 export const GoogleAdsSearchads360V23Common__SitelinkAsset: Schema.Schema<GoogleAdsSearchads360V23Common__SitelinkAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     linkText: Schema.optional(Schema.String),
     description1: Schema.optional(Schema.String),
     description2: Schema.optional(Schema.String),
@@ -14383,7 +14383,7 @@ export interface GoogleAdsSearchads360V23Resources__AssetPolicySummary {
 }
 
 export const GoogleAdsSearchads360V23Resources__AssetPolicySummary: Schema.Schema<GoogleAdsSearchads360V23Resources__AssetPolicySummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     approvalStatus: Schema.optional(Schema.String),
     policyTopicEntries: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__PolicyTopicEntry),
@@ -14415,7 +14415,7 @@ export interface GoogleAdsSearchads360V23Common__UnifiedSitelinkAsset {
 }
 
 export const GoogleAdsSearchads360V23Common__UnifiedSitelinkAsset: Schema.Schema<GoogleAdsSearchads360V23Common__UnifiedSitelinkAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description2: Schema.optional(Schema.String),
     description1: Schema.optional(Schema.String),
     startDate: Schema.optional(Schema.String),
@@ -14439,7 +14439,7 @@ export interface GoogleAdsSearchads360V23Common__PageFeedAsset {
 }
 
 export const GoogleAdsSearchads360V23Common__PageFeedAsset: Schema.Schema<GoogleAdsSearchads360V23Common__PageFeedAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageUrl: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__PageFeedAsset" });
@@ -14456,7 +14456,7 @@ export interface GoogleAdsSearchads360V23Common__CalloutAsset {
 }
 
 export const GoogleAdsSearchads360V23Common__CalloutAsset: Schema.Schema<GoogleAdsSearchads360V23Common__CalloutAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     calloutText: Schema.optional(Schema.String),
     adScheduleTargets: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__AdScheduleInfo),
@@ -14499,7 +14499,7 @@ export interface GoogleAdsSearchads360V23Common__DynamicRealEstateAsset {
 }
 
 export const GoogleAdsSearchads360V23Common__DynamicRealEstateAsset: Schema.Schema<GoogleAdsSearchads360V23Common__DynamicRealEstateAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     iosAppStoreId: Schema.optional(Schema.String),
     listingId: Schema.optional(Schema.String),
     address: Schema.optional(Schema.String),
@@ -14525,7 +14525,7 @@ export interface GoogleAdsSearchads360V23Common__AppDeepLinkAsset {
 }
 
 export const GoogleAdsSearchads360V23Common__AppDeepLinkAsset: Schema.Schema<GoogleAdsSearchads360V23Common__AppDeepLinkAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     appDeepLinkUri: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__AppDeepLinkAsset",
@@ -14565,7 +14565,7 @@ export interface GoogleAdsSearchads360V23Common__DynamicFlightsAsset {
 }
 
 export const GoogleAdsSearchads360V23Common__DynamicFlightsAsset: Schema.Schema<GoogleAdsSearchads360V23Common__DynamicFlightsAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     similarDestinationIds: Schema.optional(Schema.Array(Schema.String)),
     originId: Schema.optional(Schema.String),
     iosAppLink: Schema.optional(Schema.String),
@@ -14606,7 +14606,7 @@ export interface GoogleAdsSearchads360V23Common__PromotionBarcodeInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__PromotionBarcodeInfo: Schema.Schema<GoogleAdsSearchads360V23Common__PromotionBarcodeInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     barcodeContent: Schema.optional(Schema.String),
   }).annotate({
@@ -14691,7 +14691,7 @@ export interface GoogleAdsSearchads360V23Common__PromotionAsset {
 }
 
 export const GoogleAdsSearchads360V23Common__PromotionAsset: Schema.Schema<GoogleAdsSearchads360V23Common__PromotionAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endDate: Schema.optional(Schema.String),
     ordersOverAmount: Schema.optional(GoogleAdsSearchads360V23Common__Money),
     languageCode: Schema.optional(Schema.String),
@@ -14725,7 +14725,7 @@ export interface GoogleAdsSearchads360V23Common__StructuredSnippetAsset {
 }
 
 export const GoogleAdsSearchads360V23Common__StructuredSnippetAsset: Schema.Schema<GoogleAdsSearchads360V23Common__StructuredSnippetAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     header: Schema.optional(Schema.String),
     values: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -14758,7 +14758,7 @@ export interface GoogleAdsSearchads360V23Common__CallToActionAsset {
 }
 
 export const GoogleAdsSearchads360V23Common__CallToActionAsset: Schema.Schema<GoogleAdsSearchads360V23Common__CallToActionAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     callToAction: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__CallToActionAsset",
@@ -14774,7 +14774,7 @@ export interface GoogleAdsSearchads360V23Common__HotelPropertyAsset {
 }
 
 export const GoogleAdsSearchads360V23Common__HotelPropertyAsset: Schema.Schema<GoogleAdsSearchads360V23Common__HotelPropertyAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     hotelName: Schema.optional(Schema.String),
     placeId: Schema.optional(Schema.String),
     hotelAddress: Schema.optional(Schema.String),
@@ -14820,7 +14820,7 @@ export interface GoogleAdsSearchads360V23Common__DynamicHotelsAndRentalsAsset {
 }
 
 export const GoogleAdsSearchads360V23Common__DynamicHotelsAndRentalsAsset: Schema.Schema<GoogleAdsSearchads360V23Common__DynamicHotelsAndRentalsAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     androidAppLink: Schema.optional(Schema.String),
     propertyId: Schema.optional(Schema.String),
     formattedPrice: Schema.optional(Schema.String),
@@ -14872,7 +14872,7 @@ export interface GoogleAdsSearchads360V23Common__UnifiedCallAsset {
 }
 
 export const GoogleAdsSearchads360V23Common__UnifiedCallAsset: Schema.Schema<GoogleAdsSearchads360V23Common__UnifiedCallAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     phoneNumber: Schema.optional(Schema.String),
     callConversionReportingState: Schema.optional(Schema.String),
     callOnly: Schema.optional(Schema.Boolean),
@@ -14897,7 +14897,7 @@ export interface GoogleAdsSearchads360V23Common__UnifiedPageFeedAsset {
 }
 
 export const GoogleAdsSearchads360V23Common__UnifiedPageFeedAsset: Schema.Schema<GoogleAdsSearchads360V23Common__UnifiedPageFeedAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageUrl: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -14910,7 +14910,7 @@ export interface GoogleAdsSearchads360V23Common__TextAsset {
 }
 
 export const GoogleAdsSearchads360V23Common__TextAsset: Schema.Schema<GoogleAdsSearchads360V23Common__TextAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__TextAsset" });
 
@@ -14920,7 +14920,7 @@ export interface GoogleAdsSearchads360V23Common__MediaBundleAsset {
 }
 
 export const GoogleAdsSearchads360V23Common__MediaBundleAsset: Schema.Schema<GoogleAdsSearchads360V23Common__MediaBundleAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__MediaBundleAsset",
@@ -14977,7 +14977,7 @@ export interface GoogleAdsSearchads360V23Resources__AssetFieldTypePolicySummary 
 }
 
 export const GoogleAdsSearchads360V23Resources__AssetFieldTypePolicySummary: Schema.Schema<GoogleAdsSearchads360V23Resources__AssetFieldTypePolicySummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     assetFieldType: Schema.optional(Schema.String),
     assetSource: Schema.optional(Schema.String),
     policySummaryInfo: Schema.optional(
@@ -15002,7 +15002,7 @@ export interface GoogleAdsSearchads360V23Common__UnifiedCalloutAsset {
 }
 
 export const GoogleAdsSearchads360V23Common__UnifiedCalloutAsset: Schema.Schema<GoogleAdsSearchads360V23Common__UnifiedCalloutAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endDate: Schema.optional(Schema.String),
     calloutText: Schema.optional(Schema.String),
     adScheduleTargets: Schema.optional(
@@ -15178,7 +15178,7 @@ export interface GoogleAdsSearchads360V23Resources__Asset {
 }
 
 export const GoogleAdsSearchads360V23Resources__Asset: Schema.Schema<GoogleAdsSearchads360V23Resources__Asset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     finalMobileUrls: Schema.optional(Schema.Array(Schema.String)),
     hotelCalloutAsset: Schema.optional(
       GoogleAdsSearchads360V23Common__HotelCalloutAsset,
@@ -15308,7 +15308,7 @@ export interface GoogleAdsSearchads360V23Services__AssetOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__AssetOperation: Schema.Schema<GoogleAdsSearchads360V23Services__AssetOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     create: Schema.optional(GoogleAdsSearchads360V23Resources__Asset),
     updateMask: Schema.optional(Schema.String),
     update: Schema.optional(GoogleAdsSearchads360V23Resources__Asset),
@@ -15330,7 +15330,7 @@ export interface GoogleAdsSearchads360V23Resources__CustomConversionGoal {
 }
 
 export const GoogleAdsSearchads360V23Resources__CustomConversionGoal: Schema.Schema<GoogleAdsSearchads360V23Resources__CustomConversionGoal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -15352,7 +15352,7 @@ export interface GoogleAdsSearchads360V23Services__CustomConversionGoalOperation
 }
 
 export const GoogleAdsSearchads360V23Services__CustomConversionGoalOperation: Schema.Schema<GoogleAdsSearchads360V23Services__CustomConversionGoalOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     create: Schema.optional(
       GoogleAdsSearchads360V23Resources__CustomConversionGoal,
     ),
@@ -15437,7 +15437,7 @@ export interface GoogleAdsSearchads360V23Resources__RecommendationSubscription {
 }
 
 export const GoogleAdsSearchads360V23Resources__RecommendationSubscription: Schema.Schema<GoogleAdsSearchads360V23Resources__RecommendationSubscription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     createDateTime: Schema.optional(Schema.String),
     modifyDateTime: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -15457,7 +15457,7 @@ export interface GoogleAdsSearchads360V23Services__RecommendationSubscriptionOpe
 }
 
 export const GoogleAdsSearchads360V23Services__RecommendationSubscriptionOperation: Schema.Schema<GoogleAdsSearchads360V23Services__RecommendationSubscriptionOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     update: Schema.optional(
       GoogleAdsSearchads360V23Resources__RecommendationSubscription,
@@ -15502,7 +15502,7 @@ export interface GoogleAdsSearchads360V23Common__MetricGoal {
 }
 
 export const GoogleAdsSearchads360V23Common__MetricGoal: Schema.Schema<GoogleAdsSearchads360V23Common__MetricGoal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metric: Schema.optional(Schema.String),
     direction: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__MetricGoal" });
@@ -15568,7 +15568,7 @@ export interface GoogleAdsSearchads360V23Resources__Experiment {
 }
 
 export const GoogleAdsSearchads360V23Resources__Experiment: Schema.Schema<GoogleAdsSearchads360V23Resources__Experiment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     experimentId: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
@@ -15598,7 +15598,7 @@ export interface GoogleAdsSearchads360V23Services__ExperimentOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__ExperimentOperation: Schema.Schema<GoogleAdsSearchads360V23Services__ExperimentOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     create: Schema.optional(GoogleAdsSearchads360V23Resources__Experiment),
     remove: Schema.optional(Schema.String),
     updateMask: Schema.optional(Schema.String),
@@ -15737,7 +15737,7 @@ export interface GoogleAdsSearchads360V23Services__MutateOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateOperation: Schema.Schema<GoogleAdsSearchads360V23Services__MutateOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     remarketingActionOperation: Schema.optional(
       GoogleAdsSearchads360V23Services__RemarketingActionOperation,
     ),
@@ -15937,7 +15937,7 @@ export interface GoogleAdsSearchads360V23Services__AddBatchJobOperationsRequest 
 }
 
 export const GoogleAdsSearchads360V23Services__AddBatchJobOperationsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__AddBatchJobOperationsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mutateOperations: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__MutateOperation),
     ),
@@ -15955,7 +15955,7 @@ export interface GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_T
 }
 
 export const GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_TargetRoasOptInParameters: Schema.Schema<GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_TargetRoasOptInParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetRoas: Schema.optional(Schema.Number),
     newCampaignBudgetAmountMicros: Schema.optional(Schema.String),
   }).annotate({
@@ -15982,7 +15982,7 @@ export interface GoogleAdsSearchads360V23Services__ConversionRateSuggestion {
 }
 
 export const GoogleAdsSearchads360V23Services__ConversionRateSuggestion: Schema.Schema<GoogleAdsSearchads360V23Services__ConversionRateSuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     surfaceTargeting: Schema.optional(
       GoogleAdsSearchads360V23Services__SurfaceTargeting,
     ),
@@ -15999,7 +15999,7 @@ export interface GoogleAdsSearchads360V23Common__YouTubeChannelAttributeMetadata
 }
 
 export const GoogleAdsSearchads360V23Common__YouTubeChannelAttributeMetadata: Schema.Schema<GoogleAdsSearchads360V23Common__YouTubeChannelAttributeMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriberCount: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -16012,7 +16012,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerLabelResult {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomerLabelResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomerLabelResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__MutateCustomerLabelResult",
@@ -16026,7 +16026,7 @@ export interface GoogleAdsSearchads360V23Resources__YoutubeVideoIdentifier {
 }
 
 export const GoogleAdsSearchads360V23Resources__YoutubeVideoIdentifier: Schema.Schema<GoogleAdsSearchads360V23Resources__YoutubeVideoIdentifier> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     channelId: Schema.optional(Schema.String),
     videoId: Schema.optional(Schema.String),
   }).annotate({
@@ -16058,7 +16058,7 @@ export interface GoogleAdsSearchads360V23Resources__DataLink {
 }
 
 export const GoogleAdsSearchads360V23Resources__DataLink: Schema.Schema<GoogleAdsSearchads360V23Resources__DataLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     youtubeVideo: Schema.optional(
       GoogleAdsSearchads360V23Resources__YoutubeVideoIdentifier,
     ),
@@ -16087,7 +16087,7 @@ export interface GoogleAdsSearchads360V23Resources__OfflineUserDataJobMetadata {
 }
 
 export const GoogleAdsSearchads360V23Resources__OfflineUserDataJobMetadata: Schema.Schema<GoogleAdsSearchads360V23Resources__OfflineUserDataJobMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     matchRateRange: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Resources__OfflineUserDataJobMetadata",
@@ -16099,7 +16099,7 @@ export interface GoogleAdsSearchads360V23Common__AudienceInsightsEntity {
 }
 
 export const GoogleAdsSearchads360V23Common__AudienceInsightsEntity: Schema.Schema<GoogleAdsSearchads360V23Common__AudienceInsightsEntity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     knowledgeGraphMachineId: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__AudienceInsightsEntity",
@@ -16111,7 +16111,7 @@ export interface GoogleAdsSearchads360V23Common__AudienceInsightsLineup {
 }
 
 export const GoogleAdsSearchads360V23Common__AudienceInsightsLineup: Schema.Schema<GoogleAdsSearchads360V23Common__AudienceInsightsLineup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lineupId: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__AudienceInsightsLineup",
@@ -16123,7 +16123,7 @@ export interface GoogleAdsSearchads360V23Common__AudienceInsightsCategory {
 }
 
 export const GoogleAdsSearchads360V23Common__AudienceInsightsCategory: Schema.Schema<GoogleAdsSearchads360V23Common__AudienceInsightsCategory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     categoryId: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__AudienceInsightsCategory",
@@ -16159,7 +16159,7 @@ export interface GoogleAdsSearchads360V23Common__AudienceInsightsAttribute {
 }
 
 export const GoogleAdsSearchads360V23Common__AudienceInsightsAttribute: Schema.Schema<GoogleAdsSearchads360V23Common__AudienceInsightsAttribute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entity: Schema.optional(
       GoogleAdsSearchads360V23Common__AudienceInsightsEntity,
     ),
@@ -16199,7 +16199,7 @@ export interface GoogleAdsSearchads360V23Services__InsightsAudienceAttributeGrou
 }
 
 export const GoogleAdsSearchads360V23Services__InsightsAudienceAttributeGroup: Schema.Schema<GoogleAdsSearchads360V23Services__InsightsAudienceAttributeGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     attributes: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__AudienceInsightsAttribute),
     ),
@@ -16230,7 +16230,7 @@ export interface GoogleAdsSearchads360V23Services__InsightsAudience {
 }
 
 export const GoogleAdsSearchads360V23Services__InsightsAudience: Schema.Schema<GoogleAdsSearchads360V23Services__InsightsAudience> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gender: Schema.optional(GoogleAdsSearchads360V23Common__GenderInfo),
     parentalStatus: Schema.optional(
       GoogleAdsSearchads360V23Common__ParentalStatusInfo,
@@ -16268,7 +16268,7 @@ export interface GoogleAdsSearchads360V23Services__ListExperimentAsyncErrorsResp
 }
 
 export const GoogleAdsSearchads360V23Services__ListExperimentAsyncErrorsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__ListExperimentAsyncErrorsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     errors: Schema.optional(Schema.Array(GoogleRpc__Status)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({
@@ -16290,7 +16290,7 @@ export interface GoogleAdsSearchads360V23Resources_Recommendation_KeywordMatchTy
 }
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_KeywordMatchTypeRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_KeywordMatchTypeRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     recommendedMatchType: Schema.optional(Schema.String),
     keyword: Schema.optional(GoogleAdsSearchads360V23Common__KeywordInfo),
   }).annotate({
@@ -16306,7 +16306,7 @@ export interface GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversion
 }
 
 export const GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchemaEvent_EventOccurrenceRange: Schema.Schema<GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchemaEvent_EventOccurrenceRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     minEventCount: Schema.optional(Schema.String),
     maxEventCount: Schema.optional(Schema.String),
   }).annotate({
@@ -16322,7 +16322,7 @@ export interface GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversion
 }
 
 export const GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchemaEvent_RevenueRange: Schema.Schema<GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchemaEvent_RevenueRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     minEventRevenue: Schema.optional(Schema.Number),
     maxEventRevenue: Schema.optional(Schema.Number),
   }).annotate({
@@ -16346,7 +16346,7 @@ export interface GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversion
 }
 
 export const GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_Event: Schema.Schema<GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_Event> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     currencyCode: Schema.optional(Schema.String),
     eventOccurrenceRange: Schema.optional(
       GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchemaEvent_EventOccurrenceRange,
@@ -16372,7 +16372,7 @@ export interface GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversion
 }
 
 export const GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_ConversionValueMapping: Schema.Schema<GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_ConversionValueMapping> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     minTimePostInstallHours: Schema.optional(Schema.String),
     maxTimePostInstallHours: Schema.optional(Schema.String),
     mappedEvents: Schema.optional(
@@ -16393,7 +16393,7 @@ export interface GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversion
 }
 
 export const GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_FineGrainedConversionValueMappings: Schema.Schema<GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_FineGrainedConversionValueMappings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fineGrainedConversionValue: Schema.optional(Schema.Number),
     conversionValueMapping: Schema.optional(
       GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_ConversionValueMapping,
@@ -16411,7 +16411,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAdGroupAssetResult {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAdGroupAssetResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupAssetResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     adGroupAsset: Schema.optional(
       GoogleAdsSearchads360V23Resources__AdGroupAsset,
@@ -16449,7 +16449,7 @@ export interface GoogleAdsSearchads360V23Resources__UserListCustomerType {
 }
 
 export const GoogleAdsSearchads360V23Resources__UserListCustomerType: Schema.Schema<GoogleAdsSearchads360V23Resources__UserListCustomerType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     userList: Schema.optional(Schema.String),
     customerTypeCategory: Schema.optional(Schema.String),
@@ -16465,7 +16465,7 @@ export interface GoogleAdsSearchads360V23Services__UserListCustomerTypeOperation
 }
 
 export const GoogleAdsSearchads360V23Services__UserListCustomerTypeOperation: Schema.Schema<GoogleAdsSearchads360V23Services__UserListCustomerTypeOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     create: Schema.optional(
       GoogleAdsSearchads360V23Resources__UserListCustomerType,
     ),
@@ -16497,7 +16497,7 @@ export interface GoogleAdsSearchads360V23Common__CpcBidSimulationPoint {
 }
 
 export const GoogleAdsSearchads360V23Common__CpcBidSimulationPoint: Schema.Schema<GoogleAdsSearchads360V23Common__CpcBidSimulationPoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requiredBudgetAmountMicros: Schema.optional(Schema.String),
     impressions: Schema.optional(Schema.String),
     topSlotImpressions: Schema.optional(Schema.String),
@@ -16517,7 +16517,7 @@ export interface GoogleAdsSearchads360V23Services__MutateUserListResult {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateUserListResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateUserListResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__MutateUserListResult",
@@ -16531,7 +16531,7 @@ export interface GoogleAdsSearchads360V23Services__MutateUserListsResponse {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateUserListsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateUserListsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__MutateUserListResult),
@@ -16546,7 +16546,7 @@ export interface GoogleAdsSearchads360V23Services__ConfigureCampaignLifecycleGoa
 }
 
 export const GoogleAdsSearchads360V23Services__ConfigureCampaignLifecycleGoalsResult: Schema.Schema<GoogleAdsSearchads360V23Services__ConfigureCampaignLifecycleGoalsResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -16563,7 +16563,7 @@ export interface GoogleAdsSearchads360V23Services__SearchSearchAds360FieldsReque
 }
 
 export const GoogleAdsSearchads360V23Services__SearchSearchAds360FieldsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__SearchSearchAds360FieldsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number),
     query: Schema.optional(Schema.String),
     pageToken: Schema.optional(Schema.String),
@@ -16578,7 +16578,7 @@ export interface GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_R
 }
 
 export const GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_ResponsiveSearchAdAssetParameters: Schema.Schema<GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_ResponsiveSearchAdAssetParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updatedAd: Schema.optional(GoogleAdsSearchads360V23Resources__Ad),
   }).annotate({
     identifier:
@@ -16595,7 +16595,7 @@ export interface GoogleAdsSearchads360V23Resources_Recommendation_TargetAdjustme
 }
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_TargetAdjustmentInfo: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_TargetAdjustmentInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sharedSet: Schema.optional(Schema.String),
     currentAverageTargetMicros: Schema.optional(Schema.String),
     recommendedTargetMultiplier: Schema.optional(Schema.Number),
@@ -16612,7 +16612,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomAudiencesRequest 
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomAudiencesRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomAudiencesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean),
     operations: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__CustomAudienceOperation),
@@ -16630,7 +16630,7 @@ export interface GoogleAdsSearchads360V23Services__MutateSharedCriterionResult {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateSharedCriterionResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateSharedCriterionResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     sharedCriterion: Schema.optional(
       GoogleAdsSearchads360V23Resources__SharedCriterion,
@@ -16657,7 +16657,7 @@ export interface GoogleAdsSearchads360V23Services__SurveyDissatisfied {
 }
 
 export const GoogleAdsSearchads360V23Services__SurveyDissatisfied: Schema.Schema<GoogleAdsSearchads360V23Services__SurveyDissatisfied> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     surveyDissatisfiedReason: Schema.optional(Schema.String),
     otherReasonComment: Schema.optional(Schema.String),
   }).annotate({
@@ -16682,7 +16682,7 @@ export interface GoogleAdsSearchads360V23Services__ProvideLeadFeedbackRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__ProvideLeadFeedbackRequest: Schema.Schema<GoogleAdsSearchads360V23Services__ProvideLeadFeedbackRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     surveyDissatisfied: Schema.optional(
       GoogleAdsSearchads360V23Services__SurveyDissatisfied,
     ),
@@ -16710,7 +16710,7 @@ export interface GoogleAdsSearchads360V23Services__MutateSmartCampaignSettingsRe
 }
 
 export const GoogleAdsSearchads360V23Services__MutateSmartCampaignSettingsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateSmartCampaignSettingsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailure: Schema.optional(Schema.Boolean),
     validateOnly: Schema.optional(Schema.Boolean),
     operations: Schema.optional(
@@ -16740,7 +16740,7 @@ export interface GoogleAdsSearchads360V23Services__BenchmarksProductMetadata {
 }
 
 export const GoogleAdsSearchads360V23Services__BenchmarksProductMetadata: Schema.Schema<GoogleAdsSearchads360V23Services__BenchmarksProductMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     marketingObjective: Schema.optional(Schema.String),
     productName: Schema.optional(Schema.String),
     productCode: Schema.optional(Schema.String),
@@ -16762,7 +16762,7 @@ export interface GoogleAdsSearchads360V23Resources_BillingSetup_PaymentsAccountI
 }
 
 export const GoogleAdsSearchads360V23Resources_BillingSetup_PaymentsAccountInfo: Schema.Schema<GoogleAdsSearchads360V23Resources_BillingSetup_PaymentsAccountInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     paymentsProfileName: Schema.optional(Schema.String),
     paymentsAccountName: Schema.optional(Schema.String),
     secondaryPaymentsProfileId: Schema.optional(Schema.String),
@@ -16802,7 +16802,7 @@ export interface GoogleAdsSearchads360V23Resources__BillingSetup {
 }
 
 export const GoogleAdsSearchads360V23Resources__BillingSetup: Schema.Schema<GoogleAdsSearchads360V23Resources__BillingSetup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     startTimeType: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -16826,7 +16826,7 @@ export interface GoogleAdsSearchads360V23Services__BillingSetupOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__BillingSetupOperation: Schema.Schema<GoogleAdsSearchads360V23Services__BillingSetupOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     create: Schema.optional(GoogleAdsSearchads360V23Resources__BillingSetup),
     remove: Schema.optional(Schema.String),
   }).annotate({
@@ -16867,7 +16867,7 @@ export interface GoogleAdsSearchads360V23Resources_ChangeEvent_ChangedResource {
 }
 
 export const GoogleAdsSearchads360V23Resources_ChangeEvent_ChangedResource: Schema.Schema<GoogleAdsSearchads360V23Resources_ChangeEvent_ChangedResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerAsset: Schema.optional(
       GoogleAdsSearchads360V23Resources__CustomerAsset,
     ),
@@ -16918,7 +16918,7 @@ export interface GoogleAdsSearchads360V23Common_CampaignGoalSettings_CampaignRet
 }
 
 export const GoogleAdsSearchads360V23Common_CampaignGoalSettings_CampaignRetentionGoalSettings: Schema.Schema<GoogleAdsSearchads360V23Common_CampaignGoalSettings_CampaignRetentionGoalSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     valueSettingsOverride: Schema.optional(
       GoogleAdsSearchads360V23Common__CustomerLifecycleOptimizationValueSettings,
     ),
@@ -16942,7 +16942,7 @@ export interface GoogleAdsSearchads360V23Resources__CampaignGoalConfig {
 }
 
 export const GoogleAdsSearchads360V23Resources__CampaignGoalConfig: Schema.Schema<GoogleAdsSearchads360V23Resources__CampaignGoalConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     goal: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
     goalType: Schema.optional(Schema.String),
@@ -16962,7 +16962,7 @@ export interface GoogleAdsSearchads360V23Services__OnTargetAudienceMetrics {
 }
 
 export const GoogleAdsSearchads360V23Services__OnTargetAudienceMetrics: Schema.Schema<GoogleAdsSearchads360V23Services__OnTargetAudienceMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     censusAudienceSize: Schema.optional(Schema.String),
     youtubeAudienceSize: Schema.optional(Schema.String),
   }).annotate({
@@ -16977,7 +16977,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCampaignCustomizerResul
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCampaignCustomizerResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCampaignCustomizerResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     campaignCustomizer: Schema.optional(
       GoogleAdsSearchads360V23Resources__CampaignCustomizer,
     ),
@@ -16995,7 +16995,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCampaignCustomizersResp
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCampaignCustomizersResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCampaignCustomizersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__MutateCampaignCustomizerResult,
@@ -17020,7 +17020,7 @@ export interface GoogleAdsSearchads360V23Common__AdditionalApplicationInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__AdditionalApplicationInfo: Schema.Schema<GoogleAdsSearchads360V23Common__AdditionalApplicationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     applicationId: Schema.optional(Schema.String),
     applicationInstance: Schema.optional(Schema.String),
   }).annotate({
@@ -17050,7 +17050,7 @@ export interface GoogleAdsSearchads360V23Services__ListPlannableUserInterestsReq
 }
 
 export const GoogleAdsSearchads360V23Services__ListPlannableUserInterestsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__ListPlannableUserInterestsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameQuery: Schema.optional(Schema.String),
     customerId: Schema.optional(Schema.String),
     pathQuery: Schema.optional(Schema.String),
@@ -17071,7 +17071,7 @@ export interface GoogleAdsSearchads360V23Services__CreateCustomerClientResponse 
 }
 
 export const GoogleAdsSearchads360V23Services__CreateCustomerClientResponse: Schema.Schema<GoogleAdsSearchads360V23Services__CreateCustomerClientResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     invitationLink: Schema.optional(Schema.String),
   }).annotate({
@@ -17093,7 +17093,7 @@ export interface GoogleAdsSearchads360V0Common__Value {
 }
 
 export const GoogleAdsSearchads360V0Common__Value: Schema.Schema<GoogleAdsSearchads360V0Common__Value> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     booleanValue: Schema.optional(Schema.Boolean),
     stringValue: Schema.optional(Schema.String),
     doubleValue: Schema.optional(Schema.Number),
@@ -17107,7 +17107,7 @@ export interface GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_R
 }
 
 export const GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_ResponsiveSearchAdImproveAdStrengthParameters: Schema.Schema<GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_ResponsiveSearchAdImproveAdStrengthParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updatedAd: Schema.optional(GoogleAdsSearchads360V23Resources__Ad),
   }).annotate({
     identifier:
@@ -17120,7 +17120,7 @@ export interface GoogleAdsSearchads360V23Common__UserInterestAttributeMetadata {
 }
 
 export const GoogleAdsSearchads360V23Common__UserInterestAttributeMetadata: Schema.Schema<GoogleAdsSearchads360V23Common__UserInterestAttributeMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userInterestDescription: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__UserInterestAttributeMetadata",
@@ -17152,7 +17152,7 @@ export interface GoogleAdsSearchads360V23Services__AudienceInsightsDimensions {
 }
 
 export const GoogleAdsSearchads360V23Services__AudienceInsightsDimensions: Schema.Schema<GoogleAdsSearchads360V23Services__AudienceInsightsDimensions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dimensions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__AudienceInsightsDimensions",
@@ -17164,7 +17164,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerConversionGoalR
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomerConversionGoalResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomerConversionGoalResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -17177,7 +17177,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerConversionGoals
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomerConversionGoalsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomerConversionGoalsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__MutateCustomerConversionGoalResult,
@@ -17194,7 +17194,7 @@ export interface GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_M
 }
 
 export const GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_MoveUnusedBudgetParameters: Schema.Schema<GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_MoveUnusedBudgetParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     budgetMicrosToMove: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -17263,7 +17263,7 @@ export interface GoogleAdsSearchads360V23Resources__FinalUrlExpansionAssetView {
 }
 
 export const GoogleAdsSearchads360V23Resources__FinalUrlExpansionAssetView: Schema.Schema<GoogleAdsSearchads360V23Resources__FinalUrlExpansionAssetView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     campaign: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
     assetGroup: Schema.optional(Schema.String),
@@ -17284,7 +17284,7 @@ export interface GoogleAdsSearchads360V23Services__CustomerUserAccessInvitationO
 }
 
 export const GoogleAdsSearchads360V23Services__CustomerUserAccessInvitationOperation: Schema.Schema<GoogleAdsSearchads360V23Services__CustomerUserAccessInvitationOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     create: Schema.optional(
       GoogleAdsSearchads360V23Resources__CustomerUserAccessInvitation,
     ),
@@ -17392,7 +17392,7 @@ export interface GoogleAdsSearchads360V23Resources__Conversion {
 }
 
 export const GoogleAdsSearchads360V23Resources__Conversion: Schema.Schema<GoogleAdsSearchads360V23Resources__Conversion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     floodlightOriginalRevenue: Schema.optional(Schema.String),
     productLanguageCode: Schema.optional(Schema.String),
     conversionLastModifiedDateTime: Schema.optional(Schema.String),
@@ -17425,7 +17425,7 @@ export interface GoogleAdsSearchads360V23Resources__GenderView {
 }
 
 export const GoogleAdsSearchads360V23Resources__GenderView: Schema.Schema<GoogleAdsSearchads360V23Resources__GenderView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Resources__GenderView" });
 
@@ -17451,7 +17451,7 @@ export interface GoogleAdsSearchads360V23Resources__CustomerManagerLink {
 }
 
 export const GoogleAdsSearchads360V23Resources__CustomerManagerLink: Schema.Schema<GoogleAdsSearchads360V23Resources__CustomerManagerLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     managerLinkId: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -17475,7 +17475,7 @@ export interface GoogleAdsSearchads360V23Resources__LanguageConstant {
 }
 
 export const GoogleAdsSearchads360V23Resources__LanguageConstant: Schema.Schema<GoogleAdsSearchads360V23Resources__LanguageConstant> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     code: Schema.optional(Schema.String),
     targetable: Schema.optional(Schema.Boolean),
@@ -17520,7 +17520,7 @@ export interface GoogleAdsSearchads360V23Resources__CustomerClient {
 }
 
 export const GoogleAdsSearchads360V23Resources__CustomerClient: Schema.Schema<GoogleAdsSearchads360V23Resources__CustomerClient> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     currencyCode: Schema.optional(Schema.String),
     appliedLabels: Schema.optional(Schema.Array(Schema.String)),
     level: Schema.optional(Schema.String),
@@ -17547,7 +17547,7 @@ export interface GoogleAdsSearchads360V23Resources__AssetGroupProductGroupView {
 }
 
 export const GoogleAdsSearchads360V23Resources__AssetGroupProductGroupView: Schema.Schema<GoogleAdsSearchads360V23Resources__AssetGroupProductGroupView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     assetGroup: Schema.optional(Schema.String),
     assetGroupListingGroupFilter: Schema.optional(Schema.String),
@@ -17561,7 +17561,7 @@ export interface GoogleAdsSearchads360V23Resources__KeywordView {
 }
 
 export const GoogleAdsSearchads360V23Resources__KeywordView: Schema.Schema<GoogleAdsSearchads360V23Resources__KeywordView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Resources__KeywordView" });
 
@@ -17580,7 +17580,7 @@ export interface GoogleAdsSearchads360V23Resources__GeographicView {
 }
 
 export const GoogleAdsSearchads360V23Resources__GeographicView: Schema.Schema<GoogleAdsSearchads360V23Resources__GeographicView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     locationType: Schema.optional(Schema.String),
     countryCriterionId: Schema.optional(Schema.String),
@@ -17594,7 +17594,7 @@ export interface GoogleAdsSearchads360V23Common__CpcBidSimulationPointList {
 }
 
 export const GoogleAdsSearchads360V23Common__CpcBidSimulationPointList: Schema.Schema<GoogleAdsSearchads360V23Common__CpcBidSimulationPointList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     points: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__CpcBidSimulationPoint),
     ),
@@ -17641,7 +17641,7 @@ export interface GoogleAdsSearchads360V23Resources__AdGroupCriterionSimulation {
 }
 
 export const GoogleAdsSearchads360V23Resources__AdGroupCriterionSimulation: Schema.Schema<GoogleAdsSearchads360V23Resources__AdGroupCriterionSimulation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     adGroupId: Schema.optional(Schema.String),
     modificationMethod: Schema.optional(Schema.String),
@@ -17667,7 +17667,7 @@ export interface GoogleAdsSearchads360V23Resources__PhoneCallDetails {
 }
 
 export const GoogleAdsSearchads360V23Resources__PhoneCallDetails: Schema.Schema<GoogleAdsSearchads360V23Resources__PhoneCallDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     callDurationMillis: Schema.optional(Schema.String),
     callRecordingUrl: Schema.optional(Schema.String),
   }).annotate({
@@ -17682,7 +17682,7 @@ export interface GoogleAdsSearchads360V23Resources__MessageDetails {
 }
 
 export const GoogleAdsSearchads360V23Resources__MessageDetails: Schema.Schema<GoogleAdsSearchads360V23Resources__MessageDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     attachmentUrls: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -17724,7 +17724,7 @@ export interface GoogleAdsSearchads360V23Resources__LocalServicesLeadConversatio
 }
 
 export const GoogleAdsSearchads360V23Resources__LocalServicesLeadConversation: Schema.Schema<GoogleAdsSearchads360V23Resources__LocalServicesLeadConversation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     conversationChannel: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     lead: Schema.optional(Schema.String),
@@ -17756,7 +17756,7 @@ export interface GoogleAdsSearchads360V23Resources__CurrencyConstant {
 }
 
 export const GoogleAdsSearchads360V23Resources__CurrencyConstant: Schema.Schema<GoogleAdsSearchads360V23Resources__CurrencyConstant> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     billableUnitMicros: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
@@ -17774,7 +17774,7 @@ export interface GoogleAdsSearchads360V23Resources__PaidOrganicSearchTermView {
 }
 
 export const GoogleAdsSearchads360V23Resources__PaidOrganicSearchTermView: Schema.Schema<GoogleAdsSearchads360V23Resources__PaidOrganicSearchTermView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     searchTerm: Schema.optional(Schema.String),
   }).annotate({
@@ -17804,7 +17804,7 @@ export interface GoogleAdsSearchads360V23Resources__GroupPlacementView {
 }
 
 export const GoogleAdsSearchads360V23Resources__GroupPlacementView: Schema.Schema<GoogleAdsSearchads360V23Resources__GroupPlacementView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     targetUrl: Schema.optional(Schema.String),
     placementType: Schema.optional(Schema.String),
@@ -17820,7 +17820,7 @@ export interface GoogleAdsSearchads360V23Resources__MatchedLocationInterestView 
 }
 
 export const GoogleAdsSearchads360V23Resources__MatchedLocationInterestView: Schema.Schema<GoogleAdsSearchads360V23Resources__MatchedLocationInterestView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -17833,7 +17833,7 @@ export interface GoogleAdsSearchads360V23Resources__TargetingExpansionView {
 }
 
 export const GoogleAdsSearchads360V23Resources__TargetingExpansionView: Schema.Schema<GoogleAdsSearchads360V23Resources__TargetingExpansionView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Resources__TargetingExpansionView",
@@ -17860,7 +17860,7 @@ export interface GoogleAdsSearchads360V23Resources__OperatingSystemVersionConsta
 }
 
 export const GoogleAdsSearchads360V23Resources__OperatingSystemVersionConstant: Schema.Schema<GoogleAdsSearchads360V23Resources__OperatingSystemVersionConstant> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     osMinorVersion: Schema.optional(Schema.Number),
     id: Schema.optional(Schema.String),
     operatorType: Schema.optional(Schema.String),
@@ -17878,7 +17878,7 @@ export interface GoogleAdsSearchads360V23Resources__AdGroupAudienceView {
 }
 
 export const GoogleAdsSearchads360V23Resources__AdGroupAudienceView: Schema.Schema<GoogleAdsSearchads360V23Resources__AdGroupAudienceView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Resources__AdGroupAudienceView",
@@ -17941,7 +17941,7 @@ export interface GoogleAdsSearchads360V23Common__CriterionCategoryChannelAvailab
 }
 
 export const GoogleAdsSearchads360V23Common__CriterionCategoryChannelAvailability: Schema.Schema<GoogleAdsSearchads360V23Common__CriterionCategoryChannelAvailability> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     advertisingChannelType: Schema.optional(Schema.String),
     availabilityMode: Schema.optional(Schema.String),
     advertisingChannelSubType: Schema.optional(Schema.Array(Schema.String)),
@@ -17968,7 +17968,7 @@ export interface GoogleAdsSearchads360V23Common__CriterionCategoryLocaleAvailabi
 }
 
 export const GoogleAdsSearchads360V23Common__CriterionCategoryLocaleAvailability: Schema.Schema<GoogleAdsSearchads360V23Common__CriterionCategoryLocaleAvailability> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     availabilityMode: Schema.optional(Schema.String),
     countryCode: Schema.optional(Schema.String),
     languageCode: Schema.optional(Schema.String),
@@ -17985,7 +17985,7 @@ export interface GoogleAdsSearchads360V23Common__CriterionCategoryAvailability {
 }
 
 export const GoogleAdsSearchads360V23Common__CriterionCategoryAvailability: Schema.Schema<GoogleAdsSearchads360V23Common__CriterionCategoryAvailability> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     channel: Schema.optional(
       GoogleAdsSearchads360V23Common__CriterionCategoryChannelAvailability,
     ),
@@ -18024,7 +18024,7 @@ export interface GoogleAdsSearchads360V23Resources__UserInterest {
 }
 
 export const GoogleAdsSearchads360V23Resources__UserInterest: Schema.Schema<GoogleAdsSearchads360V23Resources__UserInterest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userInterestParent: Schema.optional(Schema.String),
     availabilities: Schema.optional(
       Schema.Array(
@@ -18054,7 +18054,7 @@ export interface GoogleAdsSearchads360V23Resources__CombinedAudience {
 }
 
 export const GoogleAdsSearchads360V23Resources__CombinedAudience: Schema.Schema<GoogleAdsSearchads360V23Resources__CombinedAudience> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -18086,7 +18086,7 @@ export interface GoogleAdsSearchads360V23Resources__CustomerClientLink {
 }
 
 export const GoogleAdsSearchads360V23Resources__CustomerClientLink: Schema.Schema<GoogleAdsSearchads360V23Resources__CustomerClientLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     clientCustomer: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
     managerLinkId: Schema.optional(Schema.String),
@@ -18124,7 +18124,7 @@ export interface GoogleAdsSearchads360V23Resources__AndroidPrivacySharedKeyGoogl
 }
 
 export const GoogleAdsSearchads360V23Resources__AndroidPrivacySharedKeyGoogleNetworkType: Schema.Schema<GoogleAdsSearchads360V23Resources__AndroidPrivacySharedKeyGoogleNetworkType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     androidPrivacyInteractionType: Schema.optional(Schema.String),
     androidPrivacyInteractionDate: Schema.optional(Schema.String),
     androidPrivacyNetworkType: Schema.optional(Schema.String),
@@ -18161,7 +18161,7 @@ export interface GoogleAdsSearchads360V23Resources__GeoTargetConstant {
 }
 
 export const GoogleAdsSearchads360V23Resources__GeoTargetConstant: Schema.Schema<GoogleAdsSearchads360V23Resources__GeoTargetConstant> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
     parentGeoTarget: Schema.optional(Schema.String),
@@ -18187,7 +18187,7 @@ export interface GoogleAdsSearchads360V23Common__Consent {
 }
 
 export const GoogleAdsSearchads360V23Common__Consent: Schema.Schema<GoogleAdsSearchads360V23Common__Consent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adUserData: Schema.optional(Schema.String),
     adPersonalization: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__Consent" });
@@ -18200,7 +18200,7 @@ export interface GoogleAdsSearchads360V23Common__CustomerMatchUserListMetadata {
 }
 
 export const GoogleAdsSearchads360V23Common__CustomerMatchUserListMetadata: Schema.Schema<GoogleAdsSearchads360V23Common__CustomerMatchUserListMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userList: Schema.optional(Schema.String),
     consent: Schema.optional(GoogleAdsSearchads360V23Common__Consent),
   }).annotate({
@@ -18223,7 +18223,7 @@ export interface GoogleAdsSearchads360V23Common__StoreSalesThirdPartyMetadata {
 }
 
 export const GoogleAdsSearchads360V23Common__StoreSalesThirdPartyMetadata: Schema.Schema<GoogleAdsSearchads360V23Common__StoreSalesThirdPartyMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     validTransactionFraction: Schema.optional(Schema.Number),
     advertiserUploadDateTime: Schema.optional(Schema.String),
     partnerMatchFraction: Schema.optional(Schema.Number),
@@ -18246,7 +18246,7 @@ export interface GoogleAdsSearchads360V23Common__StoreSalesMetadata {
 }
 
 export const GoogleAdsSearchads360V23Common__StoreSalesMetadata: Schema.Schema<GoogleAdsSearchads360V23Common__StoreSalesMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     loyaltyFraction: Schema.optional(Schema.Number),
     transactionUploadFraction: Schema.optional(Schema.Number),
     thirdPartyMetadata: Schema.optional(
@@ -18301,7 +18301,7 @@ export interface GoogleAdsSearchads360V23Resources__OfflineUserDataJob {
 }
 
 export const GoogleAdsSearchads360V23Resources__OfflineUserDataJob: Schema.Schema<GoogleAdsSearchads360V23Resources__OfflineUserDataJob> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     failureReason: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -18345,7 +18345,7 @@ export interface GoogleAdsSearchads360V23Resources__AdGroupAdAssetPolicySummary 
 }
 
 export const GoogleAdsSearchads360V23Resources__AdGroupAdAssetPolicySummary: Schema.Schema<GoogleAdsSearchads360V23Resources__AdGroupAdAssetPolicySummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policyTopicEntries: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__PolicyTopicEntry),
     ),
@@ -18466,7 +18466,7 @@ export interface GoogleAdsSearchads360V23Resources__AdGroupAdAssetView {
 }
 
 export const GoogleAdsSearchads360V23Resources__AdGroupAdAssetView: Schema.Schema<GoogleAdsSearchads360V23Resources__AdGroupAdAssetView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     asset: Schema.optional(Schema.String),
     policySummary: Schema.optional(
@@ -18494,7 +18494,7 @@ export interface GoogleAdsSearchads360V23Resources__CampaignEffectiveLabel {
 }
 
 export const GoogleAdsSearchads360V23Resources__CampaignEffectiveLabel: Schema.Schema<GoogleAdsSearchads360V23Resources__CampaignEffectiveLabel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     campaign: Schema.optional(Schema.String),
     label: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
@@ -18576,7 +18576,7 @@ export interface GoogleAdsSearchads360V23Resources__Visit {
 }
 
 export const GoogleAdsSearchads360V23Resources__Visit: Schema.Schema<GoogleAdsSearchads360V23Resources__Visit> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     assetFieldType: Schema.optional(Schema.String),
     merchantId: Schema.optional(Schema.String),
     visitDateTime: Schema.optional(Schema.String),
@@ -18599,7 +18599,7 @@ export interface GoogleAdsSearchads360V23Resources__ShoppingPerformanceView {
 }
 
 export const GoogleAdsSearchads360V23Resources__ShoppingPerformanceView: Schema.Schema<GoogleAdsSearchads360V23Resources__ShoppingPerformanceView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Resources__ShoppingPerformanceView",
@@ -18611,7 +18611,7 @@ export interface GoogleAdsSearchads360V23Resources__WebpageView {
 }
 
 export const GoogleAdsSearchads360V23Resources__WebpageView: Schema.Schema<GoogleAdsSearchads360V23Resources__WebpageView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Resources__WebpageView" });
 
@@ -18701,7 +18701,7 @@ export interface GoogleAdsSearchads360V23Resources__AccountBudgetProposal {
 }
 
 export const GoogleAdsSearchads360V23Resources__AccountBudgetProposal: Schema.Schema<GoogleAdsSearchads360V23Resources__AccountBudgetProposal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     approvedSpendingLimitMicros: Schema.optional(Schema.String),
     proposedSpendingLimitType: Schema.optional(Schema.String),
     approvedSpendingLimitType: Schema.optional(Schema.String),
@@ -18736,7 +18736,7 @@ export interface GoogleAdsSearchads360V23Resources__ThirdPartyAppAnalyticsLink {
 }
 
 export const GoogleAdsSearchads360V23Resources__ThirdPartyAppAnalyticsLink: Schema.Schema<GoogleAdsSearchads360V23Resources__ThirdPartyAppAnalyticsLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     shareableLinkId: Schema.optional(Schema.String),
   }).annotate({
@@ -18757,7 +18757,7 @@ export interface GoogleAdsSearchads360V23Resources__OfflineConversionSummary {
 }
 
 export const GoogleAdsSearchads360V23Resources__OfflineConversionSummary: Schema.Schema<GoogleAdsSearchads360V23Resources__OfflineConversionSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uploadDate: Schema.optional(Schema.String),
     pendingCount: Schema.optional(Schema.String),
     successfulCount: Schema.optional(Schema.String),
@@ -18930,7 +18930,7 @@ export interface GoogleAdsSearchads360V23Resources__OfflineConversionError {
 }
 
 export const GoogleAdsSearchads360V23Resources__OfflineConversionError: Schema.Schema<GoogleAdsSearchads360V23Resources__OfflineConversionError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fieldError: Schema.optional(Schema.String),
     stringLengthError: Schema.optional(Schema.String),
     collectionSizeError: Schema.optional(Schema.String),
@@ -18953,7 +18953,7 @@ export interface GoogleAdsSearchads360V23Resources__OfflineConversionAlert {
 }
 
 export const GoogleAdsSearchads360V23Resources__OfflineConversionAlert: Schema.Schema<GoogleAdsSearchads360V23Resources__OfflineConversionAlert> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     error: Schema.optional(
       GoogleAdsSearchads360V23Resources__OfflineConversionError,
     ),
@@ -19003,7 +19003,7 @@ export interface GoogleAdsSearchads360V23Resources__OfflineConversionUploadConve
 }
 
 export const GoogleAdsSearchads360V23Resources__OfflineConversionUploadConversionActionSummary: Schema.Schema<GoogleAdsSearchads360V23Resources__OfflineConversionUploadConversionActionSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     totalEventCount: Schema.optional(Schema.String),
     pendingEventCount: Schema.optional(Schema.String),
     dailySummaries: Schema.optional(
@@ -19055,7 +19055,7 @@ export interface GoogleAdsSearchads360V23Common__TargetCpaSimulationPoint {
 }
 
 export const GoogleAdsSearchads360V23Common__TargetCpaSimulationPoint: Schema.Schema<GoogleAdsSearchads360V23Common__TargetCpaSimulationPoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     biddableConversions: Schema.optional(Schema.Number),
     targetCpaMicros: Schema.optional(Schema.String),
     clicks: Schema.optional(Schema.String),
@@ -19078,7 +19078,7 @@ export interface GoogleAdsSearchads360V23Common__TargetCpaSimulationPointList {
 }
 
 export const GoogleAdsSearchads360V23Common__TargetCpaSimulationPointList: Schema.Schema<GoogleAdsSearchads360V23Common__TargetCpaSimulationPointList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     points: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__TargetCpaSimulationPoint),
     ),
@@ -19106,7 +19106,7 @@ export interface GoogleAdsSearchads360V23Common__TargetRoasSimulationPoint {
 }
 
 export const GoogleAdsSearchads360V23Common__TargetRoasSimulationPoint: Schema.Schema<GoogleAdsSearchads360V23Common__TargetRoasSimulationPoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetRoas: Schema.optional(Schema.Number),
     impressions: Schema.optional(Schema.String),
     topSlotImpressions: Schema.optional(Schema.String),
@@ -19125,7 +19125,7 @@ export interface GoogleAdsSearchads360V23Common__TargetRoasSimulationPointList {
 }
 
 export const GoogleAdsSearchads360V23Common__TargetRoasSimulationPointList: Schema.Schema<GoogleAdsSearchads360V23Common__TargetRoasSimulationPointList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     points: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__TargetRoasSimulationPoint),
     ),
@@ -19170,7 +19170,7 @@ export interface GoogleAdsSearchads360V23Resources__BiddingStrategySimulation {
 }
 
 export const GoogleAdsSearchads360V23Resources__BiddingStrategySimulation: Schema.Schema<GoogleAdsSearchads360V23Resources__BiddingStrategySimulation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     biddingStrategyId: Schema.optional(Schema.String),
     targetCpaPointList: Schema.optional(
@@ -19212,7 +19212,7 @@ export interface GoogleAdsSearchads360V23Resources__DetailPlacementView {
 }
 
 export const GoogleAdsSearchads360V23Resources__DetailPlacementView: Schema.Schema<GoogleAdsSearchads360V23Resources__DetailPlacementView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     targetUrl: Schema.optional(Schema.String),
     placementType: Schema.optional(Schema.String),
@@ -19229,7 +19229,7 @@ export interface GoogleAdsSearchads360V23Resources__ContentCriterionView {
 }
 
 export const GoogleAdsSearchads360V23Resources__ContentCriterionView: Schema.Schema<GoogleAdsSearchads360V23Resources__ContentCriterionView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Resources__ContentCriterionView",
@@ -19241,7 +19241,7 @@ export interface GoogleAdsSearchads360V23Resources__ParentalStatusView {
 }
 
 export const GoogleAdsSearchads360V23Resources__ParentalStatusView: Schema.Schema<GoogleAdsSearchads360V23Resources__ParentalStatusView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Resources__ParentalStatusView",
@@ -19253,7 +19253,7 @@ export interface GoogleAdsSearchads360V23Resources__LocationInterestView {
 }
 
 export const GoogleAdsSearchads360V23Resources__LocationInterestView: Schema.Schema<GoogleAdsSearchads360V23Resources__LocationInterestView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Resources__LocationInterestView",
@@ -19265,7 +19265,7 @@ export interface GoogleAdsSearchads360V23Resources__ManagedPlacementView {
 }
 
 export const GoogleAdsSearchads360V23Resources__ManagedPlacementView: Schema.Schema<GoogleAdsSearchads360V23Resources__ManagedPlacementView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Resources__ManagedPlacementView",
@@ -19312,7 +19312,7 @@ export interface GoogleAdsSearchads360V23Resources__OfflineConversionUploadClien
 }
 
 export const GoogleAdsSearchads360V23Resources__OfflineConversionUploadClientSummary: Schema.Schema<GoogleAdsSearchads360V23Resources__OfflineConversionUploadClientSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     client: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
     successRate: Schema.optional(Schema.Number),
@@ -19342,7 +19342,7 @@ export interface GoogleAdsSearchads360V23Resources__TravelActivityPerformanceVie
 }
 
 export const GoogleAdsSearchads360V23Resources__TravelActivityPerformanceView: Schema.Schema<GoogleAdsSearchads360V23Resources__TravelActivityPerformanceView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -19359,7 +19359,7 @@ export interface GoogleAdsSearchads360V23Resources_ProductCategoryConstant_Produ
 }
 
 export const GoogleAdsSearchads360V23Resources_ProductCategoryConstant_ProductCategoryLocalization: Schema.Schema<GoogleAdsSearchads360V23Resources_ProductCategoryConstant_ProductCategoryLocalization> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     regionCode: Schema.optional(Schema.String),
     languageCode: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -19392,7 +19392,7 @@ export interface GoogleAdsSearchads360V23Resources__ProductCategoryConstant {
 }
 
 export const GoogleAdsSearchads360V23Resources__ProductCategoryConstant: Schema.Schema<GoogleAdsSearchads360V23Resources__ProductCategoryConstant> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
     categoryId: Schema.optional(Schema.String),
@@ -19417,7 +19417,7 @@ export interface GoogleAdsSearchads360V23Resources__UserLocationView {
 }
 
 export const GoogleAdsSearchads360V23Resources__UserLocationView: Schema.Schema<GoogleAdsSearchads360V23Resources__UserLocationView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     countryCriterionId: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
     targetingLocation: Schema.optional(Schema.Boolean),
@@ -19433,7 +19433,7 @@ export interface GoogleAdsSearchads360V23Resources__CustomInterestMember {
 }
 
 export const GoogleAdsSearchads360V23Resources__CustomInterestMember: Schema.Schema<GoogleAdsSearchads360V23Resources__CustomInterestMember> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parameter: Schema.optional(Schema.String),
     memberType: Schema.optional(Schema.String),
   }).annotate({
@@ -19463,7 +19463,7 @@ export interface GoogleAdsSearchads360V23Resources__CustomInterest {
 }
 
 export const GoogleAdsSearchads360V23Resources__CustomInterest: Schema.Schema<GoogleAdsSearchads360V23Resources__CustomInterest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     members: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Resources__CustomInterestMember),
@@ -19489,7 +19489,7 @@ export interface GoogleAdsSearchads360V23Resources__CampaignSearchTermInsight {
 }
 
 export const GoogleAdsSearchads360V23Resources__CampaignSearchTermInsight: Schema.Schema<GoogleAdsSearchads360V23Resources__CampaignSearchTermInsight> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     categoryLabel: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
@@ -19508,7 +19508,7 @@ export interface GoogleAdsSearchads360V23Resources__CampaignSearchTermView {
 }
 
 export const GoogleAdsSearchads360V23Resources__CampaignSearchTermView: Schema.Schema<GoogleAdsSearchads360V23Resources__CampaignSearchTermView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     campaign: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
     searchTerm: Schema.optional(Schema.String),
@@ -19522,7 +19522,7 @@ export interface GoogleAdsSearchads360V23Resources__IncomeRangeView {
 }
 
 export const GoogleAdsSearchads360V23Resources__IncomeRangeView: Schema.Schema<GoogleAdsSearchads360V23Resources__IncomeRangeView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Resources__IncomeRangeView",
@@ -19536,7 +19536,7 @@ export interface GoogleAdsSearchads360V23Resources__Residency {
 }
 
 export const GoogleAdsSearchads360V23Resources__Residency: Schema.Schema<GoogleAdsSearchads360V23Resources__Residency> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     institutionName: Schema.optional(Schema.String),
     completionYear: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Resources__Residency" });
@@ -19551,7 +19551,7 @@ export interface GoogleAdsSearchads360V23Resources__UniversityDegree {
 }
 
 export const GoogleAdsSearchads360V23Resources__UniversityDegree: Schema.Schema<GoogleAdsSearchads360V23Resources__UniversityDegree> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     institutionName: Schema.optional(Schema.String),
     graduationYear: Schema.optional(Schema.Number),
     degree: Schema.optional(Schema.String),
@@ -19567,7 +19567,7 @@ export interface GoogleAdsSearchads360V23Resources__Fellowship {
 }
 
 export const GoogleAdsSearchads360V23Resources__Fellowship: Schema.Schema<GoogleAdsSearchads360V23Resources__Fellowship> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     institutionName: Schema.optional(Schema.String),
     completionYear: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Resources__Fellowship" });
@@ -19615,7 +19615,7 @@ export interface GoogleAdsSearchads360V23Resources__LocalServicesEmployee {
 }
 
 export const GoogleAdsSearchads360V23Resources__LocalServicesEmployee: Schema.Schema<GoogleAdsSearchads360V23Resources__LocalServicesEmployee> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     creationDateTime: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19649,7 +19649,7 @@ export interface GoogleAdsSearchads360V23Common__LocalServicesDocumentReadOnly {
 }
 
 export const GoogleAdsSearchads360V23Common__LocalServicesDocumentReadOnly: Schema.Schema<GoogleAdsSearchads360V23Common__LocalServicesDocumentReadOnly> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     documentUrl: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__LocalServicesDocumentReadOnly",
@@ -19683,7 +19683,7 @@ export interface GoogleAdsSearchads360V23Resources__LicenseVerificationArtifact 
 }
 
 export const GoogleAdsSearchads360V23Resources__LicenseVerificationArtifact: Schema.Schema<GoogleAdsSearchads360V23Resources__LicenseVerificationArtifact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     licenseType: Schema.optional(Schema.String),
     licenseeFirstName: Schema.optional(Schema.String),
     expirationDateTime: Schema.optional(Schema.String),
@@ -19727,7 +19727,7 @@ export interface GoogleAdsSearchads360V23Resources__InsuranceVerificationArtifac
 }
 
 export const GoogleAdsSearchads360V23Resources__InsuranceVerificationArtifact: Schema.Schema<GoogleAdsSearchads360V23Resources__InsuranceVerificationArtifact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amountMicros: Schema.optional(Schema.String),
     insuranceDocumentReadonly: Schema.optional(
       GoogleAdsSearchads360V23Common__LocalServicesDocumentReadOnly,
@@ -19747,7 +19747,7 @@ export interface GoogleAdsSearchads360V23Resources__BackgroundCheckVerificationA
 }
 
 export const GoogleAdsSearchads360V23Resources__BackgroundCheckVerificationArtifact: Schema.Schema<GoogleAdsSearchads360V23Resources__BackgroundCheckVerificationArtifact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     finalAdjudicationDateTime: Schema.optional(Schema.String),
     caseUrl: Schema.optional(Schema.String),
   }).annotate({
@@ -19761,7 +19761,7 @@ export interface GoogleAdsSearchads360V23Resources__BusinessRegistrationNumber {
 }
 
 export const GoogleAdsSearchads360V23Resources__BusinessRegistrationNumber: Schema.Schema<GoogleAdsSearchads360V23Resources__BusinessRegistrationNumber> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     number: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Resources__BusinessRegistrationNumber",
@@ -19773,7 +19773,7 @@ export interface GoogleAdsSearchads360V23Resources__BusinessRegistrationDocument
 }
 
 export const GoogleAdsSearchads360V23Resources__BusinessRegistrationDocument: Schema.Schema<GoogleAdsSearchads360V23Resources__BusinessRegistrationDocument> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     documentReadonly: Schema.optional(
       GoogleAdsSearchads360V23Common__LocalServicesDocumentReadOnly,
     ),
@@ -19813,7 +19813,7 @@ export interface GoogleAdsSearchads360V23Resources__BusinessRegistrationCheckVer
 }
 
 export const GoogleAdsSearchads360V23Resources__BusinessRegistrationCheckVerificationArtifact: Schema.Schema<GoogleAdsSearchads360V23Resources__BusinessRegistrationCheckVerificationArtifact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rejectionReason: Schema.optional(Schema.String),
     registrationNumber: Schema.optional(
       GoogleAdsSearchads360V23Resources__BusinessRegistrationNumber,
@@ -19865,7 +19865,7 @@ export interface GoogleAdsSearchads360V23Resources__LocalServicesVerificationArt
 }
 
 export const GoogleAdsSearchads360V23Resources__LocalServicesVerificationArtifact: Schema.Schema<GoogleAdsSearchads360V23Resources__LocalServicesVerificationArtifact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     licenseVerificationArtifact: Schema.optional(
       GoogleAdsSearchads360V23Resources__LicenseVerificationArtifact,
     ),
@@ -19896,7 +19896,7 @@ export interface GoogleAdsSearchads360V23Common__LifecycleGoalValueSettings {
 }
 
 export const GoogleAdsSearchads360V23Common__LifecycleGoalValueSettings: Schema.Schema<GoogleAdsSearchads360V23Common__LifecycleGoalValueSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Number),
     highLifetimeValue: Schema.optional(Schema.Number),
   }).annotate({
@@ -19913,7 +19913,7 @@ export interface GoogleAdsSearchads360V23Resources__CustomerLifecycleGoal {
 }
 
 export const GoogleAdsSearchads360V23Resources__CustomerLifecycleGoal: Schema.Schema<GoogleAdsSearchads360V23Resources__CustomerLifecycleGoal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerAcquisitionGoalValueSettings: Schema.optional(
       GoogleAdsSearchads360V23Common__LifecycleGoalValueSettings,
     ),
@@ -19937,7 +19937,7 @@ export interface GoogleAdsSearchads360V23Common__Value {
 }
 
 export const GoogleAdsSearchads360V23Common__Value: Schema.Schema<GoogleAdsSearchads360V23Common__Value> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     int64Value: Schema.optional(Schema.String),
     floatValue: Schema.optional(Schema.Number),
     doubleValue: Schema.optional(Schema.Number),
@@ -20175,7 +20175,7 @@ export interface GoogleAdsSearchads360V23Common__Metrics {
 }
 
 export const GoogleAdsSearchads360V23Common__Metrics: Schema.Schema<GoogleAdsSearchads360V23Common__Metrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     costPerCurrentModelAttributedConversion: Schema.optional(Schema.Number),
     grossProfitMicros: Schema.optional(Schema.String),
     allConversionsValueByConversionDate: Schema.optional(Schema.Number),
@@ -20308,7 +20308,7 @@ export interface GoogleAdsSearchads360V23Common__BudgetSimulationPoint {
 }
 
 export const GoogleAdsSearchads360V23Common__BudgetSimulationPoint: Schema.Schema<GoogleAdsSearchads360V23Common__BudgetSimulationPoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     costMicros: Schema.optional(Schema.String),
     biddableConversions: Schema.optional(Schema.Number),
     clicks: Schema.optional(Schema.String),
@@ -20328,7 +20328,7 @@ export interface GoogleAdsSearchads360V23Common__BudgetSimulationPointList {
 }
 
 export const GoogleAdsSearchads360V23Common__BudgetSimulationPointList: Schema.Schema<GoogleAdsSearchads360V23Common__BudgetSimulationPointList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     points: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__BudgetSimulationPoint),
     ),
@@ -20360,7 +20360,7 @@ export interface GoogleAdsSearchads360V23Common__TargetImpressionShareSimulation
 }
 
 export const GoogleAdsSearchads360V23Common__TargetImpressionShareSimulationPoint: Schema.Schema<GoogleAdsSearchads360V23Common__TargetImpressionShareSimulationPoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     biddableConversionsValue: Schema.optional(Schema.Number),
     requiredCpcBidCeilingMicros: Schema.optional(Schema.String),
     impressions: Schema.optional(Schema.String),
@@ -20382,7 +20382,7 @@ export interface GoogleAdsSearchads360V23Common__TargetImpressionShareSimulation
 }
 
 export const GoogleAdsSearchads360V23Common__TargetImpressionShareSimulationPointList: Schema.Schema<GoogleAdsSearchads360V23Common__TargetImpressionShareSimulationPointList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     points: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Common__TargetImpressionShareSimulationPoint,
@@ -20436,7 +20436,7 @@ export interface GoogleAdsSearchads360V23Resources__CampaignSimulation {
 }
 
 export const GoogleAdsSearchads360V23Resources__CampaignSimulation: Schema.Schema<GoogleAdsSearchads360V23Resources__CampaignSimulation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     budgetPointList: Schema.optional(
       GoogleAdsSearchads360V23Common__BudgetSimulationPointList,
     ),
@@ -20482,7 +20482,7 @@ export interface GoogleAdsSearchads360V23Resources__DynamicSearchAdsSearchTermVi
 }
 
 export const GoogleAdsSearchads360V23Resources__DynamicSearchAdsSearchTermView: Schema.Schema<GoogleAdsSearchads360V23Resources__DynamicSearchAdsSearchTermView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     searchTerm: Schema.optional(Schema.String),
     hasNegativeKeyword: Schema.optional(Schema.Boolean),
     hasNegativeUrl: Schema.optional(Schema.Boolean),
@@ -20512,7 +20512,7 @@ export interface GoogleAdsSearchads360V23Resources__LifeEvent {
 }
 
 export const GoogleAdsSearchads360V23Resources__LifeEvent: Schema.Schema<GoogleAdsSearchads360V23Resources__LifeEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     availabilities: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Common__CriterionCategoryAvailability,
@@ -20548,7 +20548,7 @@ export interface GoogleAdsSearchads360V23Resources__CustomerUserAccess {
 }
 
 export const GoogleAdsSearchads360V23Resources__CustomerUserAccess: Schema.Schema<GoogleAdsSearchads360V23Resources__CustomerUserAccess> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     inviterUserEmailAddress: Schema.optional(Schema.String),
     emailAddress: Schema.optional(Schema.String),
     accessRole: Schema.optional(Schema.String),
@@ -20567,7 +20567,7 @@ export interface GoogleAdsSearchads360V23Resources__LandingPageView {
 }
 
 export const GoogleAdsSearchads360V23Resources__LandingPageView: Schema.Schema<GoogleAdsSearchads360V23Resources__LandingPageView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     unexpandedFinalUrl: Schema.optional(Schema.String),
   }).annotate({
@@ -20620,7 +20620,7 @@ export interface GoogleAdsSearchads360V23Common__AssetUsage {
 }
 
 export const GoogleAdsSearchads360V23Common__AssetUsage: Schema.Schema<GoogleAdsSearchads360V23Common__AssetUsage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     servedAssetFieldType: Schema.optional(Schema.String),
     asset: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__AssetUsage" });
@@ -20631,7 +20631,7 @@ export interface GoogleAdsSearchads360V23Resources__AssetGroupAssetCombinationDa
 }
 
 export const GoogleAdsSearchads360V23Resources__AssetGroupAssetCombinationData: Schema.Schema<GoogleAdsSearchads360V23Resources__AssetGroupAssetCombinationData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     assetCombinationServedAssets: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__AssetUsage),
     ),
@@ -20648,7 +20648,7 @@ export interface GoogleAdsSearchads360V23Resources__AssetGroupTopCombinationView
 }
 
 export const GoogleAdsSearchads360V23Resources__AssetGroupTopCombinationView: Schema.Schema<GoogleAdsSearchads360V23Resources__AssetGroupTopCombinationView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     assetGroupTopCombinations: Schema.optional(
       Schema.Array(
@@ -20666,7 +20666,7 @@ export interface GoogleAdsSearchads360V23Resources__CampaignAudienceView {
 }
 
 export const GoogleAdsSearchads360V23Resources__CampaignAudienceView: Schema.Schema<GoogleAdsSearchads360V23Resources__CampaignAudienceView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Resources__CampaignAudienceView",
@@ -20678,7 +20678,7 @@ export interface GoogleAdsSearchads360V23Resources__ProductGroupView {
 }
 
 export const GoogleAdsSearchads360V23Resources__ProductGroupView: Schema.Schema<GoogleAdsSearchads360V23Resources__ProductGroupView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Resources__ProductGroupView",
@@ -20721,7 +20721,7 @@ export interface GoogleAdsSearchads360V23Resources__CallView {
 }
 
 export const GoogleAdsSearchads360V23Resources__CallView: Schema.Schema<GoogleAdsSearchads360V23Resources__CallView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     callDurationSeconds: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
     callStatus: Schema.optional(Schema.String),
@@ -20752,7 +20752,7 @@ export interface GoogleAdsSearchads360V23Resources__SearchTermView {
 }
 
 export const GoogleAdsSearchads360V23Resources__SearchTermView: Schema.Schema<GoogleAdsSearchads360V23Resources__SearchTermView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     searchTerm: Schema.optional(Schema.String),
     adGroup: Schema.optional(Schema.String),
@@ -20773,7 +20773,7 @@ export interface GoogleAdsSearchads360V23Resources__AdGroupCriterionEffectiveLab
 }
 
 export const GoogleAdsSearchads360V23Resources__AdGroupCriterionEffectiveLabel: Schema.Schema<GoogleAdsSearchads360V23Resources__AdGroupCriterionEffectiveLabel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adGroupCriterion: Schema.optional(Schema.String),
     label: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
@@ -20813,7 +20813,7 @@ export interface GoogleAdsSearchads360V23Resources__AndroidPrivacySharedKeyGoogl
 }
 
 export const GoogleAdsSearchads360V23Resources__AndroidPrivacySharedKeyGoogleAdGroup: Schema.Schema<GoogleAdsSearchads360V23Resources__AndroidPrivacySharedKeyGoogleAdGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     androidPrivacyInteractionType: Schema.optional(Schema.String),
     androidPrivacyInteractionDate: Schema.optional(Schema.String),
     androidPrivacyNetworkType: Schema.optional(Schema.String),
@@ -20832,7 +20832,7 @@ export interface GoogleAdsSearchads360V23Resources__DisplayKeywordView {
 }
 
 export const GoogleAdsSearchads360V23Resources__DisplayKeywordView: Schema.Schema<GoogleAdsSearchads360V23Resources__DisplayKeywordView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Resources__DisplayKeywordView",
@@ -20848,7 +20848,7 @@ export interface GoogleAdsSearchads360V23Resources__AdGroupAdAssetCombinationVie
 }
 
 export const GoogleAdsSearchads360V23Resources__AdGroupAdAssetCombinationView: Schema.Schema<GoogleAdsSearchads360V23Resources__AdGroupAdAssetCombinationView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
     resourceName: Schema.optional(Schema.String),
     servedAssets: Schema.optional(
@@ -20865,7 +20865,7 @@ export interface GoogleAdsSearchads360V23Resources__AdvertisingPartnerLinkInvita
 }
 
 export const GoogleAdsSearchads360V23Resources__AdvertisingPartnerLinkInvitationIdentifier: Schema.Schema<GoogleAdsSearchads360V23Resources__AdvertisingPartnerLinkInvitationIdentifier> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -20878,7 +20878,7 @@ export interface GoogleAdsSearchads360V23Resources__HotelCenterLinkInvitationIde
 }
 
 export const GoogleAdsSearchads360V23Resources__HotelCenterLinkInvitationIdentifier: Schema.Schema<GoogleAdsSearchads360V23Resources__HotelCenterLinkInvitationIdentifier> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     hotelCenterId: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -20891,7 +20891,7 @@ export interface GoogleAdsSearchads360V23Resources__MerchantCenterLinkInvitation
 }
 
 export const GoogleAdsSearchads360V23Resources__MerchantCenterLinkInvitationIdentifier: Schema.Schema<GoogleAdsSearchads360V23Resources__MerchantCenterLinkInvitationIdentifier> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     merchantCenterId: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -20933,7 +20933,7 @@ export interface GoogleAdsSearchads360V23Resources__ProductLinkInvitation {
 }
 
 export const GoogleAdsSearchads360V23Resources__ProductLinkInvitation: Schema.Schema<GoogleAdsSearchads360V23Resources__ProductLinkInvitation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     advertisingPartner: Schema.optional(
       GoogleAdsSearchads360V23Resources__AdvertisingPartnerLinkInvitationIdentifier,
@@ -20984,7 +20984,7 @@ export interface GoogleAdsSearchads360V23Resources_AccountBudget_PendingAccountB
 }
 
 export const GoogleAdsSearchads360V23Resources_AccountBudget_PendingAccountBudgetProposal: Schema.Schema<GoogleAdsSearchads360V23Resources_AccountBudget_PendingAccountBudgetProposal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startDateTime: Schema.optional(Schema.String),
     accountBudgetProposal: Schema.optional(Schema.String),
     notes: Schema.optional(Schema.String),
@@ -21077,7 +21077,7 @@ export interface GoogleAdsSearchads360V23Resources__AccountBudget {
 }
 
 export const GoogleAdsSearchads360V23Resources__AccountBudget: Schema.Schema<GoogleAdsSearchads360V23Resources__AccountBudget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     notes: Schema.optional(Schema.String),
     proposedEndDateTime: Schema.optional(Schema.String),
     proposedEndTimeType: Schema.optional(Schema.String),
@@ -21112,7 +21112,7 @@ export interface GoogleAdsSearchads360V23Resources__AgeRangeView {
 }
 
 export const GoogleAdsSearchads360V23Resources__AgeRangeView: Schema.Schema<GoogleAdsSearchads360V23Resources__AgeRangeView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Resources__AgeRangeView",
@@ -21132,7 +21132,7 @@ export interface GoogleAdsSearchads360V23Resources__AiMaxSearchTermAdCombination
 }
 
 export const GoogleAdsSearchads360V23Resources__AiMaxSearchTermAdCombinationView: Schema.Schema<GoogleAdsSearchads360V23Resources__AiMaxSearchTermAdCombinationView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     searchTerm: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
     adGroup: Schema.optional(Schema.String),
@@ -21155,7 +21155,7 @@ export interface GoogleAdsSearchads360V23Resources__CustomerAssetSet {
 }
 
 export const GoogleAdsSearchads360V23Resources__CustomerAssetSet: Schema.Schema<GoogleAdsSearchads360V23Resources__CustomerAssetSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     assetSet: Schema.optional(Schema.String),
     customer: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
@@ -21180,7 +21180,7 @@ export interface GoogleAdsSearchads360V23Resources__DetailedDemographic {
 }
 
 export const GoogleAdsSearchads360V23Resources__DetailedDemographic: Schema.Schema<GoogleAdsSearchads360V23Resources__DetailedDemographic> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -21271,7 +21271,7 @@ export interface GoogleAdsSearchads360V23Resources__ChangeStatus {
 }
 
 export const GoogleAdsSearchads360V23Resources__ChangeStatus: Schema.Schema<GoogleAdsSearchads360V23Resources__ChangeStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceStatus: Schema.optional(Schema.String),
     resourceType: Schema.optional(Schema.String),
     assetGroup: Schema.optional(Schema.String),
@@ -21321,7 +21321,7 @@ export interface GoogleAdsSearchads360V23Resources__ClickView {
 }
 
 export const GoogleAdsSearchads360V23Resources__ClickView: Schema.Schema<GoogleAdsSearchads360V23Resources__ClickView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locationOfPresence: Schema.optional(
       GoogleAdsSearchads360V23Common__ClickLocation,
     ),
@@ -21346,7 +21346,7 @@ export interface GoogleAdsSearchads360V23Common__Keyword {
 }
 
 export const GoogleAdsSearchads360V23Common__Keyword: Schema.Schema<GoogleAdsSearchads360V23Common__Keyword> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adGroupCriterion: Schema.optional(Schema.String),
     info: Schema.optional(GoogleAdsSearchads360V23Common__KeywordInfo),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__Keyword" });
@@ -21359,7 +21359,7 @@ export interface GoogleAdsSearchads360V23Common__AssetInteractionTarget {
 }
 
 export const GoogleAdsSearchads360V23Common__AssetInteractionTarget: Schema.Schema<GoogleAdsSearchads360V23Common__AssetInteractionTarget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     asset: Schema.optional(Schema.String),
     interactionOnThisAsset: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -21621,7 +21621,7 @@ export interface GoogleAdsSearchads360V23Common__Segments {
 }
 
 export const GoogleAdsSearchads360V23Common__Segments: Schema.Schema<GoogleAdsSearchads360V23Common__Segments> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     month: Schema.optional(Schema.String),
     productLanguage: Schema.optional(Schema.String),
     verticalAdsPartnerAccount: Schema.optional(Schema.String),
@@ -21716,7 +21716,7 @@ export interface GoogleAdsSearchads360V23Resources__AdGroupAssetSet {
 }
 
 export const GoogleAdsSearchads360V23Resources__AdGroupAssetSet: Schema.Schema<GoogleAdsSearchads360V23Resources__AdGroupAssetSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     assetSet: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
     adGroup: Schema.optional(Schema.String),
@@ -21735,7 +21735,7 @@ export interface GoogleAdsSearchads360V23Resources__SmartCampaignSearchTermView 
 }
 
 export const GoogleAdsSearchads360V23Resources__SmartCampaignSearchTermView: Schema.Schema<GoogleAdsSearchads360V23Resources__SmartCampaignSearchTermView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     searchTerm: Schema.optional(Schema.String),
     campaign: Schema.optional(Schema.String),
@@ -21750,7 +21750,7 @@ export interface GoogleAdsSearchads360V23Resources__TopicView {
 }
 
 export const GoogleAdsSearchads360V23Resources__TopicView: Schema.Schema<GoogleAdsSearchads360V23Resources__TopicView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Resources__TopicView" });
 
@@ -21828,7 +21828,7 @@ export interface GoogleAdsSearchads360V23Resources__ChangeEvent {
 }
 
 export const GoogleAdsSearchads360V23Resources__ChangeEvent: Schema.Schema<GoogleAdsSearchads360V23Resources__ChangeEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     resourceChangeOperation: Schema.optional(Schema.String),
     changeResourceName: Schema.optional(Schema.String),
@@ -21864,7 +21864,7 @@ export interface GoogleAdsSearchads360V23Resources__MobileDeviceConstant {
 }
 
 export const GoogleAdsSearchads360V23Resources__MobileDeviceConstant: Schema.Schema<GoogleAdsSearchads360V23Resources__MobileDeviceConstant> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -21881,7 +21881,7 @@ export interface GoogleAdsSearchads360V23Resources__TravelActivityGroupView {
 }
 
 export const GoogleAdsSearchads360V23Resources__TravelActivityGroupView: Schema.Schema<GoogleAdsSearchads360V23Resources__TravelActivityGroupView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Resources__TravelActivityGroupView",
@@ -21901,7 +21901,7 @@ export interface GoogleAdsSearchads360V23Resources__CustomerAcquisitionGoalSetti
 }
 
 export const GoogleAdsSearchads360V23Resources__CustomerAcquisitionGoalSettings: Schema.Schema<GoogleAdsSearchads360V23Resources__CustomerAcquisitionGoalSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     optimizationMode: Schema.optional(Schema.String),
     valueSettings: Schema.optional(
       GoogleAdsSearchads360V23Common__LifecycleGoalValueSettings,
@@ -21921,7 +21921,7 @@ export interface GoogleAdsSearchads360V23Resources__CampaignLifecycleGoal {
 }
 
 export const GoogleAdsSearchads360V23Resources__CampaignLifecycleGoal: Schema.Schema<GoogleAdsSearchads360V23Resources__CampaignLifecycleGoal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     campaign: Schema.optional(Schema.String),
     customerAcquisitionGoalSettings: Schema.optional(
@@ -21949,7 +21949,7 @@ export interface GoogleAdsSearchads360V23Resources_BatchJob_BatchJobMetadata {
 }
 
 export const GoogleAdsSearchads360V23Resources_BatchJob_BatchJobMetadata: Schema.Schema<GoogleAdsSearchads360V23Resources_BatchJob_BatchJobMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     completionDateTime: Schema.optional(Schema.String),
     operationCount: Schema.optional(Schema.String),
     executedOperationCount: Schema.optional(Schema.String),
@@ -21983,7 +21983,7 @@ export interface GoogleAdsSearchads360V23Resources__BatchJob {
 }
 
 export const GoogleAdsSearchads360V23Resources__BatchJob: Schema.Schema<GoogleAdsSearchads360V23Resources__BatchJob> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     metadata: Schema.optional(
       GoogleAdsSearchads360V23Resources_BatchJob_BatchJobMetadata,
@@ -22006,7 +22006,7 @@ export interface GoogleAdsSearchads360V23Resources__AdGroupEffectiveLabel {
 }
 
 export const GoogleAdsSearchads360V23Resources__AdGroupEffectiveLabel: Schema.Schema<GoogleAdsSearchads360V23Resources__AdGroupEffectiveLabel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     adGroup: Schema.optional(Schema.String),
     ownerCustomerId: Schema.optional(Schema.String),
@@ -22027,7 +22027,7 @@ export interface GoogleAdsSearchads360V23Resources__TopicConstant {
 }
 
 export const GoogleAdsSearchads360V23Resources__TopicConstant: Schema.Schema<GoogleAdsSearchads360V23Resources__TopicConstant> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     topicConstantParent: Schema.optional(Schema.String),
     path: Schema.optional(Schema.Array(Schema.String)),
     resourceName: Schema.optional(Schema.String),
@@ -22080,7 +22080,7 @@ export interface GoogleAdsSearchads360V23Resources__AssetFieldTypeView {
 }
 
 export const GoogleAdsSearchads360V23Resources__AssetFieldTypeView: Schema.Schema<GoogleAdsSearchads360V23Resources__AssetFieldTypeView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     fieldType: Schema.optional(Schema.String),
   }).annotate({
@@ -22110,7 +22110,7 @@ export interface GoogleAdsSearchads360V23Resources__GroupContentSuitabilityPlace
 }
 
 export const GoogleAdsSearchads360V23Resources__GroupContentSuitabilityPlacementView: Schema.Schema<GoogleAdsSearchads360V23Resources__GroupContentSuitabilityPlacementView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     placementType: Schema.optional(Schema.String),
     targetUrl: Schema.optional(Schema.String),
@@ -22141,7 +22141,7 @@ export interface GoogleAdsSearchads360V23Resources__AndroidPrivacySharedKeyGoogl
 }
 
 export const GoogleAdsSearchads360V23Resources__AndroidPrivacySharedKeyGoogleCampaign: Schema.Schema<GoogleAdsSearchads360V23Resources__AndroidPrivacySharedKeyGoogleCampaign> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     androidPrivacyInteractionType: Schema.optional(Schema.String),
     androidPrivacyInteractionDate: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
@@ -22158,7 +22158,7 @@ export interface GoogleAdsSearchads360V23Resources__HotelGroupView {
 }
 
 export const GoogleAdsSearchads360V23Resources__HotelGroupView: Schema.Schema<GoogleAdsSearchads360V23Resources__HotelGroupView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Resources__HotelGroupView",
@@ -22182,7 +22182,7 @@ export interface GoogleAdsSearchads360V23Resources_ShoppingProduct_ProductIssue 
 }
 
 export const GoogleAdsSearchads360V23Resources_ShoppingProduct_ProductIssue: Schema.Schema<GoogleAdsSearchads360V23Resources_ShoppingProduct_ProductIssue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     errorCode: Schema.optional(Schema.String),
     adsSeverity: Schema.optional(Schema.String),
     attributeName: Schema.optional(Schema.String),
@@ -22294,7 +22294,7 @@ export interface GoogleAdsSearchads360V23Resources__ShoppingProduct {
 }
 
 export const GoogleAdsSearchads360V23Resources__ShoppingProduct: Schema.Schema<GoogleAdsSearchads360V23Resources__ShoppingProduct> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customAttribute1: Schema.optional(Schema.String),
     condition: Schema.optional(Schema.String),
     customAttribute2: Schema.optional(Schema.String),
@@ -22345,7 +22345,7 @@ export interface GoogleAdsSearchads360V23Resources__HotelPerformanceView {
 }
 
 export const GoogleAdsSearchads360V23Resources__HotelPerformanceView: Schema.Schema<GoogleAdsSearchads360V23Resources__HotelPerformanceView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Resources__HotelPerformanceView",
@@ -22359,7 +22359,7 @@ export interface GoogleAdsSearchads360V23Resources__ExpandedLandingPageView {
 }
 
 export const GoogleAdsSearchads360V23Resources__ExpandedLandingPageView: Schema.Schema<GoogleAdsSearchads360V23Resources__ExpandedLandingPageView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     expandedFinalUrl: Schema.optional(Schema.String),
   }).annotate({
@@ -22372,7 +22372,7 @@ export interface GoogleAdsSearchads360V23Resources__LocationView {
 }
 
 export const GoogleAdsSearchads360V23Resources__LocationView: Schema.Schema<GoogleAdsSearchads360V23Resources__LocationView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Resources__LocationView",
@@ -22390,7 +22390,7 @@ export interface GoogleAdsSearchads360V23Common__CpvBidSimulationPoint {
 }
 
 export const GoogleAdsSearchads360V23Common__CpvBidSimulationPoint: Schema.Schema<GoogleAdsSearchads360V23Common__CpvBidSimulationPoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     views: Schema.optional(Schema.String),
     cpvBidMicros: Schema.optional(Schema.String),
     costMicros: Schema.optional(Schema.String),
@@ -22405,7 +22405,7 @@ export interface GoogleAdsSearchads360V23Common__CpvBidSimulationPointList {
 }
 
 export const GoogleAdsSearchads360V23Common__CpvBidSimulationPointList: Schema.Schema<GoogleAdsSearchads360V23Common__CpvBidSimulationPointList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     points: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__CpvBidSimulationPoint),
     ),
@@ -22454,7 +22454,7 @@ export interface GoogleAdsSearchads360V23Resources__AdGroupSimulation {
 }
 
 export const GoogleAdsSearchads360V23Resources__AdGroupSimulation: Schema.Schema<GoogleAdsSearchads360V23Resources__AdGroupSimulation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cpcBidPointList: Schema.optional(
       GoogleAdsSearchads360V23Common__CpcBidSimulationPointList,
     ),
@@ -22485,7 +22485,7 @@ export interface GoogleAdsSearchads360V23Resources_RecommendationKeywordRecommen
 }
 
 export const GoogleAdsSearchads360V23Resources_RecommendationKeywordRecommendation_SearchTerm: Schema.Schema<GoogleAdsSearchads360V23Resources_RecommendationKeywordRecommendation_SearchTerm> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     estimatedWeeklySearchCount: Schema.optional(Schema.String),
   }).annotate({
@@ -22503,7 +22503,7 @@ export interface GoogleAdsSearchads360V23Resources_Recommendation_KeywordRecomme
 }
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_KeywordRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_KeywordRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     recommendedCpcBidMicros: Schema.optional(Schema.String),
     keyword: Schema.optional(GoogleAdsSearchads360V23Common__KeywordInfo),
     searchTerms: Schema.optional(
@@ -22519,7 +22519,7 @@ export const GoogleAdsSearchads360V23Resources_Recommendation_KeywordRecommendat
 export interface GoogleAdsSearchads360V23Resources_Recommendation_ImproveGoogleTagCoverageRecommendation {}
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_ImproveGoogleTagCoverageRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_ImproveGoogleTagCoverageRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleAdsSearchads360V23Resources_Recommendation_ImproveGoogleTagCoverageRecommendation",
   });
@@ -22540,7 +22540,7 @@ export interface GoogleAdsSearchads360V23Resources_Recommendation_Recommendation
 }
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_RecommendationMetrics: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_RecommendationMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     impressions: Schema.optional(Schema.Number),
     conversions: Schema.optional(Schema.Number),
     costMicros: Schema.optional(Schema.String),
@@ -22560,7 +22560,7 @@ export interface GoogleAdsSearchads360V23Resources_Recommendation_Recommendation
 }
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_RecommendationImpact: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_RecommendationImpact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     potentialMetrics: Schema.optional(
       GoogleAdsSearchads360V23Resources_Recommendation_RecommendationMetrics,
     ),
@@ -22580,7 +22580,7 @@ export interface GoogleAdsSearchads360V23Resources_RecommendationCampaignBudgetR
 }
 
 export const GoogleAdsSearchads360V23Resources_RecommendationCampaignBudgetRecommendation_CampaignBudgetRecommendationOption: Schema.Schema<GoogleAdsSearchads360V23Resources_RecommendationCampaignBudgetRecommendation_CampaignBudgetRecommendationOption> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     impact: Schema.optional(
       GoogleAdsSearchads360V23Resources_Recommendation_RecommendationImpact,
     ),
@@ -22600,7 +22600,7 @@ export interface GoogleAdsSearchads360V23Resources_Recommendation_CampaignBudget
 }
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_CampaignBudgetRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_CampaignBudgetRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     currentBudgetAmountMicros: Schema.optional(Schema.String),
     budgetOptions: Schema.optional(
       Schema.Array(
@@ -22623,7 +22623,7 @@ export interface GoogleAdsSearchads360V23Resources_Recommendation_TextAdRecommen
 }
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_TextAdRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_TextAdRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ad: Schema.optional(GoogleAdsSearchads360V23Resources__Ad),
     creationDate: Schema.optional(Schema.String),
     autoApplyDate: Schema.optional(Schema.String),
@@ -22638,7 +22638,7 @@ export interface GoogleAdsSearchads360V23Resources_Recommendation_ResponsiveSear
 }
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_ResponsiveSearchAdRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_ResponsiveSearchAdRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ad: Schema.optional(GoogleAdsSearchads360V23Resources__Ad),
   }).annotate({
     identifier:
@@ -22653,7 +22653,7 @@ export interface GoogleAdsSearchads360V23Resources_Recommendation_CalloutAssetRe
 }
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_CalloutAssetRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_CalloutAssetRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     recommendedCampaignCalloutAssets: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Resources__Asset),
     ),
@@ -22668,7 +22668,7 @@ export const GoogleAdsSearchads360V23Resources_Recommendation_CalloutAssetRecomm
 export interface GoogleAdsSearchads360V23Resources_Recommendation_CallAssetRecommendation {}
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_CallAssetRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_CallAssetRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleAdsSearchads360V23Resources_Recommendation_CallAssetRecommendation",
   });
@@ -22692,7 +22692,7 @@ export interface GoogleAdsSearchads360V23Resources_RecommendationTargetCpaOptInR
 }
 
 export const GoogleAdsSearchads360V23Resources_RecommendationTargetCpaOptInRecommendation_TargetCpaOptInRecommendationOption: Schema.Schema<GoogleAdsSearchads360V23Resources_RecommendationTargetCpaOptInRecommendation_TargetCpaOptInRecommendationOption> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     goal: Schema.optional(Schema.String),
     targetCpaMicros: Schema.optional(Schema.String),
     requiredCampaignBudgetAmountMicros: Schema.optional(Schema.String),
@@ -22712,7 +22712,7 @@ export interface GoogleAdsSearchads360V23Resources_Recommendation_TargetCpaOptIn
 }
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_TargetCpaOptInRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_TargetCpaOptInRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     options: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Resources_RecommendationTargetCpaOptInRecommendation_TargetCpaOptInRecommendationOption,
@@ -22732,7 +22732,7 @@ export interface GoogleAdsSearchads360V23Resources_Recommendation_AccountInfo {
 }
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_AccountInfo: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_AccountInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     descriptiveName: Schema.optional(Schema.String),
     customerId: Schema.optional(Schema.String),
   }).annotate({
@@ -22755,7 +22755,7 @@ export interface GoogleAdsSearchads360V23Resources_Recommendation_RefreshCustome
 }
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_RefreshCustomerMatchListRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_RefreshCustomerMatchListRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userListId: Schema.optional(Schema.String),
     userListName: Schema.optional(Schema.String),
     topSpendingAccount: Schema.optional(
@@ -22776,7 +22776,7 @@ export const GoogleAdsSearchads360V23Resources_Recommendation_RefreshCustomerMat
 export interface GoogleAdsSearchads360V23Resources_Recommendation_LeadFormAssetRecommendation {}
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_LeadFormAssetRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_LeadFormAssetRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleAdsSearchads360V23Resources_Recommendation_LeadFormAssetRecommendation",
   });
@@ -22787,7 +22787,7 @@ export interface GoogleAdsSearchads360V23Resources_Recommendation_LowerTargetRoa
 }
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_LowerTargetRoasRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_LowerTargetRoasRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetAdjustment: Schema.optional(
       GoogleAdsSearchads360V23Resources_Recommendation_TargetAdjustmentInfo,
     ),
@@ -22802,7 +22802,7 @@ export interface GoogleAdsSearchads360V23Resources_Recommendation_CustomAudience
 }
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_CustomAudienceOptInRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_CustomAudienceOptInRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keywords: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__KeywordInfo),
     ),
@@ -22814,7 +22814,7 @@ export const GoogleAdsSearchads360V23Resources_Recommendation_CustomAudienceOptI
 export interface GoogleAdsSearchads360V23Resources_Recommendation_DisplayExpansionOptInRecommendation {}
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_DisplayExpansionOptInRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_DisplayExpansionOptInRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleAdsSearchads360V23Resources_Recommendation_DisplayExpansionOptInRecommendation",
   });
@@ -22825,7 +22825,7 @@ export interface GoogleAdsSearchads360V23Resources_Recommendation_MaximizeClicks
 }
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_MaximizeClicksOptInRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_MaximizeClicksOptInRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     recommendedBudgetAmountMicros: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -22842,7 +22842,7 @@ export interface GoogleAdsSearchads360V23Resources_Recommendation_CampaignBudget
 }
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_CampaignBudget: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_CampaignBudget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     recommendedNewAmountMicros: Schema.optional(Schema.String),
     currentAmountMicros: Schema.optional(Schema.String),
     newStartDate: Schema.optional(Schema.String),
@@ -22859,7 +22859,7 @@ export interface GoogleAdsSearchads360V23Resources_Recommendation_ForecastingSet
 }
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_ForecastingSetTargetRoasRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_ForecastingSetTargetRoasRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     recommendedTargetRoas: Schema.optional(Schema.Number),
     campaignBudget: Schema.optional(
       GoogleAdsSearchads360V23Resources_Recommendation_CampaignBudget,
@@ -22877,7 +22877,7 @@ export interface GoogleAdsSearchads360V23Resources_Recommendation_MoveUnusedBudg
 }
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_MoveUnusedBudgetRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_MoveUnusedBudgetRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     excessCampaignBudget: Schema.optional(Schema.String),
     budgetRecommendation: Schema.optional(
       GoogleAdsSearchads360V23Resources_Recommendation_CampaignBudgetRecommendation,
@@ -22890,7 +22890,7 @@ export const GoogleAdsSearchads360V23Resources_Recommendation_MoveUnusedBudgetRe
 export interface GoogleAdsSearchads360V23Resources_Recommendation_OptimizeAdRotationRecommendation {}
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_OptimizeAdRotationRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_OptimizeAdRotationRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleAdsSearchads360V23Resources_Recommendation_OptimizeAdRotationRecommendation",
   });
@@ -22898,7 +22898,7 @@ export const GoogleAdsSearchads360V23Resources_Recommendation_OptimizeAdRotation
 export interface GoogleAdsSearchads360V23Resources_Recommendation_EnhancedCpcOptInRecommendation {}
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_EnhancedCpcOptInRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_EnhancedCpcOptInRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleAdsSearchads360V23Resources_Recommendation_EnhancedCpcOptInRecommendation",
   });
@@ -22911,7 +22911,7 @@ export interface GoogleAdsSearchads360V23Resources_Recommendation_SitelinkAssetR
 }
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_SitelinkAssetRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_SitelinkAssetRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     recommendedCampaignSitelinkAssets: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Resources__Asset),
     ),
@@ -22929,7 +22929,7 @@ export interface GoogleAdsSearchads360V23Resources_Recommendation_MaximizeConver
 }
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_MaximizeConversionsOptInRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_MaximizeConversionsOptInRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     recommendedBudgetAmountMicros: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -22953,7 +22953,7 @@ export interface GoogleAdsSearchads360V23Resources_Recommendation_ShoppingAddPro
 }
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_ShoppingAddProductsToCampaignRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_ShoppingAddProductsToCampaignRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     merchant: Schema.optional(
       GoogleAdsSearchads360V23Resources_Recommendation_MerchantInfo,
     ),
@@ -22972,7 +22972,7 @@ export interface GoogleAdsSearchads360V23Resources_Recommendation_UpgradeSmartSh
 }
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_UpgradeSmartShoppingCampaignToPerformanceMaxRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_UpgradeSmartShoppingCampaignToPerformanceMaxRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     salesCountryCode: Schema.optional(Schema.String),
     merchantId: Schema.optional(Schema.String),
   }).annotate({
@@ -22988,7 +22988,7 @@ export interface GoogleAdsSearchads360V23Resources_Recommendation_RaiseTargetCpa
 }
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_RaiseTargetCpaBidTooLowRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_RaiseTargetCpaBidTooLowRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     recommendedTargetMultiplier: Schema.optional(Schema.Number),
     averageTargetCpaMicros: Schema.optional(Schema.String),
   }).annotate({
@@ -23004,7 +23004,7 @@ export interface GoogleAdsSearchads360V23Resources_Recommendation_ResponsiveSear
 }
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_ResponsiveSearchAdAssetRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_ResponsiveSearchAdAssetRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     currentAd: Schema.optional(GoogleAdsSearchads360V23Resources__Ad),
     recommendedAssets: Schema.optional(GoogleAdsSearchads360V23Resources__Ad),
   }).annotate({
@@ -23026,7 +23026,7 @@ export interface GoogleAdsSearchads360V23Resources_Recommendation_UseBroadMatchK
 }
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_UseBroadMatchKeywordRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_UseBroadMatchKeywordRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keyword: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__KeywordInfo),
     ),
@@ -23057,7 +23057,7 @@ export interface GoogleAdsSearchads360V23Resources_Recommendation_RaiseTargetCpa
 }
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_RaiseTargetCpaRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_RaiseTargetCpaRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetAdjustment: Schema.optional(
       GoogleAdsSearchads360V23Resources_Recommendation_TargetAdjustmentInfo,
     ),
@@ -23073,7 +23073,7 @@ export interface GoogleAdsSearchads360V23Resources_Recommendation_MigrateDynamic
 }
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_MigrateDynamicSearchAdsCampaignToPerformanceMaxRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_MigrateDynamicSearchAdsCampaignToPerformanceMaxRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     applyLink: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -23088,7 +23088,7 @@ export interface GoogleAdsSearchads360V23Resources_Recommendation_ShoppingMercha
 }
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_ShoppingMerchantCenterAccountSuspensionRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_ShoppingMerchantCenterAccountSuspensionRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     feedLabel: Schema.optional(Schema.String),
     merchant: Schema.optional(
       GoogleAdsSearchads360V23Resources_Recommendation_MerchantInfo,
@@ -23106,7 +23106,7 @@ export interface GoogleAdsSearchads360V23Resources_Recommendation_ForecastingSet
 }
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_ForecastingSetTargetCpaRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_ForecastingSetTargetCpaRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     recommendedTargetCpaMicros: Schema.optional(Schema.String),
     campaignBudget: Schema.optional(
       GoogleAdsSearchads360V23Resources_Recommendation_CampaignBudget,
@@ -23119,7 +23119,7 @@ export const GoogleAdsSearchads360V23Resources_Recommendation_ForecastingSetTarg
 export interface GoogleAdsSearchads360V23Resources_Recommendation_MaximizeConversionValueOptInRecommendation {}
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_MaximizeConversionValueOptInRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_MaximizeConversionValueOptInRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleAdsSearchads360V23Resources_Recommendation_MaximizeConversionValueOptInRecommendation",
   });
@@ -23141,7 +23141,7 @@ export interface GoogleAdsSearchads360V23Resources_Recommendation_ImprovePerform
 }
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_ImprovePerformanceMaxAdStrengthRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_ImprovePerformanceMaxAdStrengthRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     assetGroup: Schema.optional(Schema.String),
     adStrength: Schema.optional(Schema.String),
   }).annotate({
@@ -23161,7 +23161,7 @@ export interface GoogleAdsSearchads360V23Resources_Recommendation_ShoppingFixDis
 }
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_ShoppingFixDisapprovedProductsRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_ShoppingFixDisapprovedProductsRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     merchant: Schema.optional(
       GoogleAdsSearchads360V23Resources_Recommendation_MerchantInfo,
     ),
@@ -23176,7 +23176,7 @@ export const GoogleAdsSearchads360V23Resources_Recommendation_ShoppingFixDisappr
 export interface GoogleAdsSearchads360V23Resources_Recommendation_DynamicImageExtensionOptInRecommendation {}
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_DynamicImageExtensionOptInRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_DynamicImageExtensionOptInRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleAdsSearchads360V23Resources_Recommendation_DynamicImageExtensionOptInRecommendation",
   });
@@ -23184,7 +23184,7 @@ export const GoogleAdsSearchads360V23Resources_Recommendation_DynamicImageExtens
 export interface GoogleAdsSearchads360V23Resources_Recommendation_PerformanceMaxFinalUrlOptInRecommendation {}
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_PerformanceMaxFinalUrlOptInRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_PerformanceMaxFinalUrlOptInRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleAdsSearchads360V23Resources_Recommendation_PerformanceMaxFinalUrlOptInRecommendation",
   });
@@ -23197,7 +23197,7 @@ export interface GoogleAdsSearchads360V23Resources_Recommendation_TargetRoasOptI
 }
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_TargetRoasOptInRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_TargetRoasOptInRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     recommendedTargetRoas: Schema.optional(Schema.Number),
     requiredCampaignBudgetAmountMicros: Schema.optional(Schema.String),
   }).annotate({
@@ -23213,7 +23213,7 @@ export interface GoogleAdsSearchads360V23Resources_Recommendation_ResponsiveSear
 }
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_ResponsiveSearchAdImproveAdStrengthRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_ResponsiveSearchAdImproveAdStrengthRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     recommendedAd: Schema.optional(GoogleAdsSearchads360V23Resources__Ad),
     currentAd: Schema.optional(GoogleAdsSearchads360V23Resources__Ad),
   }).annotate({
@@ -23240,7 +23240,7 @@ export interface GoogleAdsSearchads360V23Resources_Recommendation_ImproveDemandG
 }
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_ImproveDemandGenAdStrengthRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_ImproveDemandGenAdStrengthRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ad: Schema.optional(Schema.String),
     adStrength: Schema.optional(Schema.String),
     demandGenAssetActionItems: Schema.optional(Schema.Array(Schema.String)),
@@ -23252,7 +23252,7 @@ export const GoogleAdsSearchads360V23Resources_Recommendation_ImproveDemandGenAd
 export interface GoogleAdsSearchads360V23Resources_Recommendation_PerformanceMaxOptInRecommendation {}
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_PerformanceMaxOptInRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_PerformanceMaxOptInRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleAdsSearchads360V23Resources_Recommendation_PerformanceMaxOptInRecommendation",
   });
@@ -23260,7 +23260,7 @@ export const GoogleAdsSearchads360V23Resources_Recommendation_PerformanceMaxOptI
 export interface GoogleAdsSearchads360V23Resources_Recommendation_UpgradeLocalCampaignToPerformanceMaxRecommendation {}
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_UpgradeLocalCampaignToPerformanceMaxRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_UpgradeLocalCampaignToPerformanceMaxRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleAdsSearchads360V23Resources_Recommendation_UpgradeLocalCampaignToPerformanceMaxRecommendation",
   });
@@ -23275,7 +23275,7 @@ export interface GoogleAdsSearchads360V23Resources_Recommendation_ShoppingTarget
 }
 
 export const GoogleAdsSearchads360V23Resources_Recommendation_ShoppingTargetAllOffersRecommendation: Schema.Schema<GoogleAdsSearchads360V23Resources_Recommendation_ShoppingTargetAllOffersRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     merchant: Schema.optional(
       GoogleAdsSearchads360V23Resources_Recommendation_MerchantInfo,
     ),
@@ -23471,7 +23471,7 @@ export interface GoogleAdsSearchads360V23Resources__Recommendation {
 }
 
 export const GoogleAdsSearchads360V23Resources__Recommendation: Schema.Schema<GoogleAdsSearchads360V23Resources__Recommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keywordRecommendation: Schema.optional(
       GoogleAdsSearchads360V23Resources_Recommendation_KeywordRecommendation,
     ),
@@ -23684,7 +23684,7 @@ export interface GoogleAdsSearchads360V23Resources__HotelReconciliation {
 }
 
 export const GoogleAdsSearchads360V23Resources__HotelReconciliation: Schema.Schema<GoogleAdsSearchads360V23Resources__HotelReconciliation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     campaign: Schema.optional(Schema.String),
     hotelCenterId: Schema.optional(Schema.String),
     orderId: Schema.optional(Schema.String),
@@ -23712,7 +23712,7 @@ export interface GoogleAdsSearchads360V23Resources__KeywordThemeConstant {
 }
 
 export const GoogleAdsSearchads360V23Resources__KeywordThemeConstant: Schema.Schema<GoogleAdsSearchads360V23Resources__KeywordThemeConstant> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     languageCode: Schema.optional(Schema.String),
     countryCode: Schema.optional(Schema.String),
@@ -23729,7 +23729,7 @@ export interface GoogleAdsSearchads360V23Resources__MediaBundle {
 }
 
 export const GoogleAdsSearchads360V23Resources__MediaBundle: Schema.Schema<GoogleAdsSearchads360V23Resources__MediaBundle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     data: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Resources__MediaBundle" });
@@ -23740,7 +23740,7 @@ export interface GoogleAdsSearchads360V23Resources__MediaAudio {
 }
 
 export const GoogleAdsSearchads360V23Resources__MediaAudio: Schema.Schema<GoogleAdsSearchads360V23Resources__MediaAudio> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adDurationMillis: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Resources__MediaAudio" });
 
@@ -23754,7 +23754,7 @@ export interface GoogleAdsSearchads360V23Resources__MediaImage {
 }
 
 export const GoogleAdsSearchads360V23Resources__MediaImage: Schema.Schema<GoogleAdsSearchads360V23Resources__MediaImage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     previewSizeImageUrl: Schema.optional(Schema.String),
     data: Schema.optional(Schema.String),
     fullSizeImageUrl: Schema.optional(Schema.String),
@@ -23772,7 +23772,7 @@ export interface GoogleAdsSearchads360V23Resources__MediaVideo {
 }
 
 export const GoogleAdsSearchads360V23Resources__MediaVideo: Schema.Schema<GoogleAdsSearchads360V23Resources__MediaVideo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     advertisingIdCode: Schema.optional(Schema.String),
     adDurationMillis: Schema.optional(Schema.String),
     youtubeVideoId: Schema.optional(Schema.String),
@@ -23829,7 +23829,7 @@ export interface GoogleAdsSearchads360V23Resources__MediaFile {
 }
 
 export const GoogleAdsSearchads360V23Resources__MediaFile: Schema.Schema<GoogleAdsSearchads360V23Resources__MediaFile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     mediaBundle: Schema.optional(
       GoogleAdsSearchads360V23Resources__MediaBundle,
@@ -23853,7 +23853,7 @@ export interface GoogleAdsSearchads360V23Resources__Note {
 }
 
 export const GoogleAdsSearchads360V23Resources__Note: Schema.Schema<GoogleAdsSearchads360V23Resources__Note> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     editDateTime: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Resources__Note" });
@@ -23868,7 +23868,7 @@ export interface GoogleAdsSearchads360V23Resources__ContactDetails {
 }
 
 export const GoogleAdsSearchads360V23Resources__ContactDetails: Schema.Schema<GoogleAdsSearchads360V23Resources__ContactDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
     phoneNumber: Schema.optional(Schema.String),
     consumerName: Schema.optional(Schema.String),
@@ -23923,7 +23923,7 @@ export interface GoogleAdsSearchads360V23Resources__LocalServicesLead {
 }
 
 export const GoogleAdsSearchads360V23Resources__LocalServicesLead: Schema.Schema<GoogleAdsSearchads360V23Resources__LocalServicesLead> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     creationDateTime: Schema.optional(Schema.String),
     note: Schema.optional(GoogleAdsSearchads360V23Resources__Note),
     leadCharged: Schema.optional(Schema.Boolean),
@@ -23985,7 +23985,7 @@ export interface GoogleAdsSearchads360V23Resources__DistanceView {
 }
 
 export const GoogleAdsSearchads360V23Resources__DistanceView: Schema.Schema<GoogleAdsSearchads360V23Resources__DistanceView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     metricSystem: Schema.optional(Schema.Boolean),
     distanceBucket: Schema.optional(Schema.String),
@@ -24016,7 +24016,7 @@ export interface GoogleAdsSearchads360V23Resources__DetailContentSuitabilityPlac
 }
 
 export const GoogleAdsSearchads360V23Resources__DetailContentSuitabilityPlacementView: Schema.Schema<GoogleAdsSearchads360V23Resources__DetailContentSuitabilityPlacementView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     placement: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -24050,7 +24050,7 @@ export interface GoogleAdsSearchads360V23Resources__PerformanceMaxPlacementView 
 }
 
 export const GoogleAdsSearchads360V23Resources__PerformanceMaxPlacementView: Schema.Schema<GoogleAdsSearchads360V23Resources__PerformanceMaxPlacementView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     placement: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -24073,7 +24073,7 @@ export interface GoogleAdsSearchads360V23Resources__AdGroupAdEffectiveLabel {
 }
 
 export const GoogleAdsSearchads360V23Resources__AdGroupAdEffectiveLabel: Schema.Schema<GoogleAdsSearchads360V23Resources__AdGroupAdEffectiveLabel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     ownerCustomerId: Schema.optional(Schema.String),
     label: Schema.optional(Schema.String),
@@ -24090,7 +24090,7 @@ export interface GoogleAdsSearchads360V23Resources_AccessibleBiddingStrategy_Tar
 }
 
 export const GoogleAdsSearchads360V23Resources_AccessibleBiddingStrategy_TargetSpend: Schema.Schema<GoogleAdsSearchads360V23Resources_AccessibleBiddingStrategy_TargetSpend> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetSpendMicros: Schema.optional(Schema.String),
     cpcBidCeilingMicros: Schema.optional(Schema.String),
   }).annotate({
@@ -24104,7 +24104,7 @@ export interface GoogleAdsSearchads360V23Resources_AccessibleBiddingStrategy_Max
 }
 
 export const GoogleAdsSearchads360V23Resources_AccessibleBiddingStrategy_MaximizeConversionValue: Schema.Schema<GoogleAdsSearchads360V23Resources_AccessibleBiddingStrategy_MaximizeConversionValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetRoas: Schema.optional(Schema.Number),
   }).annotate({
     identifier:
@@ -24117,7 +24117,7 @@ export interface GoogleAdsSearchads360V23Resources_AccessibleBiddingStrategy_Tar
 }
 
 export const GoogleAdsSearchads360V23Resources_AccessibleBiddingStrategy_TargetCpa: Schema.Schema<GoogleAdsSearchads360V23Resources_AccessibleBiddingStrategy_TargetCpa> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetCpaMicros: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -24130,7 +24130,7 @@ export interface GoogleAdsSearchads360V23Resources_AccessibleBiddingStrategy_Tar
 }
 
 export const GoogleAdsSearchads360V23Resources_AccessibleBiddingStrategy_TargetRoas: Schema.Schema<GoogleAdsSearchads360V23Resources_AccessibleBiddingStrategy_TargetRoas> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetRoas: Schema.optional(Schema.Number),
   }).annotate({
     identifier:
@@ -24143,7 +24143,7 @@ export interface GoogleAdsSearchads360V23Resources_AccessibleBiddingStrategy_Max
 }
 
 export const GoogleAdsSearchads360V23Resources_AccessibleBiddingStrategy_MaximizeConversions: Schema.Schema<GoogleAdsSearchads360V23Resources_AccessibleBiddingStrategy_MaximizeConversions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetCpaMicros: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -24166,7 +24166,7 @@ export interface GoogleAdsSearchads360V23Resources_AccessibleBiddingStrategy_Tar
 }
 
 export const GoogleAdsSearchads360V23Resources_AccessibleBiddingStrategy_TargetImpressionShare: Schema.Schema<GoogleAdsSearchads360V23Resources_AccessibleBiddingStrategy_TargetImpressionShare> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cpcBidCeilingMicros: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     locationFractionMicros: Schema.optional(Schema.String),
@@ -24224,7 +24224,7 @@ export interface GoogleAdsSearchads360V23Resources__AccessibleBiddingStrategy {
 }
 
 export const GoogleAdsSearchads360V23Resources__AccessibleBiddingStrategy: Schema.Schema<GoogleAdsSearchads360V23Resources__AccessibleBiddingStrategy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetSpend: Schema.optional(
       GoogleAdsSearchads360V23Resources_AccessibleBiddingStrategy_TargetSpend,
     ),
@@ -24259,7 +24259,7 @@ export interface GoogleAdsSearchads360V23Resources__MerchantCenterIdentifier {
 }
 
 export const GoogleAdsSearchads360V23Resources__MerchantCenterIdentifier: Schema.Schema<GoogleAdsSearchads360V23Resources__MerchantCenterIdentifier> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     merchantCenterId: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Resources__MerchantCenterIdentifier",
@@ -24271,7 +24271,7 @@ export interface GoogleAdsSearchads360V23Resources__GoogleAdsIdentifier {
 }
 
 export const GoogleAdsSearchads360V23Resources__GoogleAdsIdentifier: Schema.Schema<GoogleAdsSearchads360V23Resources__GoogleAdsIdentifier> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Resources__GoogleAdsIdentifier",
@@ -24283,7 +24283,7 @@ export interface GoogleAdsSearchads360V23Resources__DataPartnerIdentifier {
 }
 
 export const GoogleAdsSearchads360V23Resources__DataPartnerIdentifier: Schema.Schema<GoogleAdsSearchads360V23Resources__DataPartnerIdentifier> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataPartnerId: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Resources__DataPartnerIdentifier",
@@ -24295,7 +24295,7 @@ export interface GoogleAdsSearchads360V23Resources__AdvertisingPartnerIdentifier
 }
 
 export const GoogleAdsSearchads360V23Resources__AdvertisingPartnerIdentifier: Schema.Schema<GoogleAdsSearchads360V23Resources__AdvertisingPartnerIdentifier> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -24328,7 +24328,7 @@ export interface GoogleAdsSearchads360V23Resources__ProductLink {
 }
 
 export const GoogleAdsSearchads360V23Resources__ProductLink: Schema.Schema<GoogleAdsSearchads360V23Resources__ProductLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     merchantCenter: Schema.optional(
       GoogleAdsSearchads360V23Resources__MerchantCenterIdentifier,
     ),
@@ -24358,7 +24358,7 @@ export interface GoogleAdsSearchads360V23Resources__QualifyingQuestion {
 }
 
 export const GoogleAdsSearchads360V23Resources__QualifyingQuestion: Schema.Schema<GoogleAdsSearchads360V23Resources__QualifyingQuestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locale: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
     text: Schema.optional(Schema.String),
@@ -24381,7 +24381,7 @@ export interface GoogleAdsSearchads360V23Resources__Video {
 }
 
 export const GoogleAdsSearchads360V23Resources__Video: Schema.Schema<GoogleAdsSearchads360V23Resources__Video> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     channelId: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -24763,7 +24763,7 @@ export interface GoogleAdsSearchads360V23Services__SearchAds360Row {
 }
 
 export const GoogleAdsSearchads360V23Services__SearchAds360Row: Schema.Schema<GoogleAdsSearchads360V23Services__SearchAds360Row> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     conversion: Schema.optional(GoogleAdsSearchads360V23Resources__Conversion),
     genderView: Schema.optional(GoogleAdsSearchads360V23Resources__GenderView),
     customerManagerLink: Schema.optional(
@@ -25279,7 +25279,7 @@ export interface GoogleAdsSearchads360V23Services__CustomColumnHeader {
 }
 
 export const GoogleAdsSearchads360V23Services__CustomColumnHeader: Schema.Schema<GoogleAdsSearchads360V23Services__CustomColumnHeader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     referencesMetrics: Schema.optional(Schema.Boolean),
@@ -25295,7 +25295,7 @@ export interface GoogleAdsSearchads360V23Services__ConversionCustomMetricHeader 
 }
 
 export const GoogleAdsSearchads360V23Services__ConversionCustomMetricHeader: Schema.Schema<GoogleAdsSearchads360V23Services__ConversionCustomMetricHeader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
   }).annotate({
@@ -25311,7 +25311,7 @@ export interface GoogleAdsSearchads360V23Services__ConversionCustomDimensionHead
 }
 
 export const GoogleAdsSearchads360V23Services__ConversionCustomDimensionHeader: Schema.Schema<GoogleAdsSearchads360V23Services__ConversionCustomDimensionHeader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
   }).annotate({
@@ -25327,7 +25327,7 @@ export interface GoogleAdsSearchads360V23Services__RawEventConversionMetricHeade
 }
 
 export const GoogleAdsSearchads360V23Services__RawEventConversionMetricHeader: Schema.Schema<GoogleAdsSearchads360V23Services__RawEventConversionMetricHeader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
   }).annotate({
@@ -25343,7 +25343,7 @@ export interface GoogleAdsSearchads360V23Services__RawEventConversionDimensionHe
 }
 
 export const GoogleAdsSearchads360V23Services__RawEventConversionDimensionHeader: Schema.Schema<GoogleAdsSearchads360V23Services__RawEventConversionDimensionHeader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
   }).annotate({
@@ -25359,7 +25359,7 @@ export interface GoogleAdsSearchads360V23Services_MetricAttributes_Attribute {
 }
 
 export const GoogleAdsSearchads360V23Services_MetricAttributes_Attribute: Schema.Schema<GoogleAdsSearchads360V23Services_MetricAttributes_Attribute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
   }).annotate({
@@ -25374,7 +25374,7 @@ export interface GoogleAdsSearchads360V23Services__MetricAttributes {
 }
 
 export const GoogleAdsSearchads360V23Services__MetricAttributes: Schema.Schema<GoogleAdsSearchads360V23Services__MetricAttributes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     attributes: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services_MetricAttributes_Attribute),
@@ -25411,7 +25411,7 @@ export interface GoogleAdsSearchads360V23Services__SearchSearchAds360Response {
 }
 
 export const GoogleAdsSearchads360V23Services__SearchSearchAds360Response: Schema.Schema<GoogleAdsSearchads360V23Services__SearchSearchAds360Response> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     summaryRow: Schema.optional(
       GoogleAdsSearchads360V23Services__SearchAds360Row,
     ),
@@ -25486,7 +25486,7 @@ export interface GoogleAdsSearchads360V23Services__GenerateAudienceOverlapInsigh
 }
 
 export const GoogleAdsSearchads360V23Services__GenerateAudienceOverlapInsightsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__GenerateAudienceOverlapInsightsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     insightsApplicationInfo: Schema.optional(
       GoogleAdsSearchads360V23Common__AdditionalApplicationInfo,
     ),
@@ -25511,7 +25511,7 @@ export interface GoogleAdsSearchads360V23Services__MutateBiddingSeasonalityAdjus
 }
 
 export const GoogleAdsSearchads360V23Services__MutateBiddingSeasonalityAdjustmentsResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateBiddingSeasonalityAdjustmentsResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     biddingSeasonalityAdjustment: Schema.optional(
       GoogleAdsSearchads360V23Resources__BiddingSeasonalityAdjustment,
@@ -25529,7 +25529,7 @@ export interface GoogleAdsSearchads360V23Services__MutateBiddingSeasonalityAdjus
 }
 
 export const GoogleAdsSearchads360V23Services__MutateBiddingSeasonalityAdjustmentsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateBiddingSeasonalityAdjustmentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(
@@ -25549,7 +25549,7 @@ export interface GoogleAdsSearchads360V23Services__MutateConversionValueRuleSetR
 }
 
 export const GoogleAdsSearchads360V23Services__MutateConversionValueRuleSetResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateConversionValueRuleSetResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     conversionValueRuleSet: Schema.optional(
       GoogleAdsSearchads360V23Resources__ConversionValueRuleSet,
@@ -25567,7 +25567,7 @@ export interface GoogleAdsSearchads360V23Services__MutateConversionValueRuleSets
 }
 
 export const GoogleAdsSearchads360V23Services__MutateConversionValueRuleSetsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateConversionValueRuleSetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__MutateConversionValueRuleSetResult,
@@ -25589,7 +25589,7 @@ export interface GoogleAdsSearchads360V23Services__MutateGoalsRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateGoalsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateGoalsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__GoalOperation),
     ),
@@ -25607,7 +25607,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCampaignSharedSetResult
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCampaignSharedSetResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCampaignSharedSetResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     campaignSharedSet: Schema.optional(
       GoogleAdsSearchads360V23Resources__CampaignSharedSet,
@@ -25625,7 +25625,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCampaignSharedSetsRespo
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCampaignSharedSetsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCampaignSharedSetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(
@@ -25647,7 +25647,7 @@ export interface GoogleAdsSearchads360V23Services_GenerateRecommendationsRequest
 }
 
 export const GoogleAdsSearchads360V23Services_GenerateRecommendationsRequest_AssetGroupInfo: Schema.Schema<GoogleAdsSearchads360V23Services_GenerateRecommendationsRequest_AssetGroupInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     finalUrl: Schema.optional(Schema.String),
     headline: Schema.optional(Schema.Array(Schema.String)),
     description: Schema.optional(Schema.Array(Schema.String)),
@@ -25672,7 +25672,7 @@ export interface GoogleAdsSearchads360V23Services_GenerateRecommendationsRequest
 }
 
 export const GoogleAdsSearchads360V23Services_GenerateRecommendationsRequest_TargetImpressionShareInfo: Schema.Schema<GoogleAdsSearchads360V23Services_GenerateRecommendationsRequest_TargetImpressionShareInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.optional(Schema.String),
     maxCpcBidCeiling: Schema.optional(Schema.String),
     targetImpressionShareMicros: Schema.optional(Schema.String),
@@ -25714,7 +25714,7 @@ export interface GoogleAdsSearchads360V23Services_GenerateRecommendationsRequest
 }
 
 export const GoogleAdsSearchads360V23Services_GenerateRecommendationsRequest_BiddingInfo: Schema.Schema<GoogleAdsSearchads360V23Services_GenerateRecommendationsRequest_BiddingInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetCpaMicros: Schema.optional(Schema.String),
     targetRoas: Schema.optional(Schema.Number),
     targetImpressionShareInfo: Schema.optional(
@@ -25732,7 +25732,7 @@ export interface GoogleAdsSearchads360V23Services_GenerateRecommendationsRequest
 }
 
 export const GoogleAdsSearchads360V23Services_GenerateRecommendationsRequest_BudgetInfo: Schema.Schema<GoogleAdsSearchads360V23Services_GenerateRecommendationsRequest_BudgetInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     currentBudget: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -25766,7 +25766,7 @@ export interface GoogleAdsSearchads360V23Services_GenerateRecommendationsRequest
 }
 
 export const GoogleAdsSearchads360V23Services_GenerateRecommendationsRequest_AdGroupInfo: Schema.Schema<GoogleAdsSearchads360V23Services_GenerateRecommendationsRequest_AdGroupInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keywords: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__KeywordInfo),
     ),
@@ -25784,7 +25784,7 @@ export interface GoogleAdsSearchads360V23Services_GenerateRecommendationsRequest
 }
 
 export const GoogleAdsSearchads360V23Services_GenerateRecommendationsRequest_SeedInfo: Schema.Schema<GoogleAdsSearchads360V23Services_GenerateRecommendationsRequest_SeedInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keywordSeeds: Schema.optional(Schema.Array(Schema.String)),
     urlSeed: Schema.optional(Schema.String),
   }).annotate({
@@ -25915,7 +25915,7 @@ export interface GoogleAdsSearchads360V23Services__GenerateRecommendationsReques
 }
 
 export const GoogleAdsSearchads360V23Services__GenerateRecommendationsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__GenerateRecommendationsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     assetGroupInfo: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services_GenerateRecommendationsRequest_AssetGroupInfo,
@@ -25982,7 +25982,7 @@ export interface GoogleAdsSearchads360V23Services__PlannedProductForecast {
 }
 
 export const GoogleAdsSearchads360V23Services__PlannedProductForecast: Schema.Schema<GoogleAdsSearchads360V23Services__PlannedProductForecast> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     onTargetReach: Schema.optional(Schema.String),
     viewableImpressions: Schema.optional(Schema.String),
     totalCoviewReach: Schema.optional(Schema.String),
@@ -26015,7 +26015,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAdGroupsRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAdGroupsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailure: Schema.optional(Schema.Boolean),
     validateOnly: Schema.optional(Schema.Boolean),
     operations: Schema.optional(
@@ -26032,7 +26032,7 @@ export interface GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupResul
 }
 
 export const GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -26047,7 +26047,7 @@ export interface GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupsResp
 }
 
 export const GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(
@@ -26069,7 +26069,7 @@ export interface GoogleAdsSearchads360V23Services__IndustryVerticalInfo {
 }
 
 export const GoogleAdsSearchads360V23Services__IndustryVerticalInfo: Schema.Schema<GoogleAdsSearchads360V23Services__IndustryVerticalInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     industryVerticalId: Schema.optional(Schema.String),
     parentIndustryVerticalId: Schema.optional(Schema.String),
     industryVerticalName: Schema.optional(Schema.String),
@@ -26089,7 +26089,7 @@ export interface GoogleAdsSearchads360V23Services__BenchmarksSourceMetadata {
 }
 
 export const GoogleAdsSearchads360V23Services__BenchmarksSourceMetadata: Schema.Schema<GoogleAdsSearchads360V23Services__BenchmarksSourceMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     benchmarksSourceType: Schema.optional(Schema.String),
     industryVerticalInfo: Schema.optional(
       GoogleAdsSearchads360V23Services__IndustryVerticalInfo,
@@ -26108,7 +26108,7 @@ export interface GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversion
 }
 
 export const GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_CoarseGrainedConversionValueMappings: Schema.Schema<GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_CoarseGrainedConversionValueMappings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mediumConversionValueMapping: Schema.optional(
       GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_ConversionValueMapping,
     ),
@@ -26145,7 +26145,7 @@ export interface GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversion
 }
 
 export const GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_PostbackMapping: Schema.Schema<GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_PostbackMapping> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     postbackSequenceIndex: Schema.optional(Schema.Number),
     lockWindowEvent: Schema.optional(Schema.String),
     lockWindowCoarseConversionValue: Schema.optional(Schema.String),
@@ -26164,7 +26164,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAdGroupAdLabelResult {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAdGroupAdLabelResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupAdLabelResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__MutateAdGroupAdLabelResult",
@@ -26178,7 +26178,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAdGroupCriterionCustomi
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAdGroupCriterionCustomizerResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupCriterionCustomizerResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     adGroupCriterionCustomizer: Schema.optional(
       GoogleAdsSearchads360V23Resources__AdGroupCriterionCustomizer,
@@ -26196,7 +26196,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAdGroupCriterionCustomi
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAdGroupCriterionCustomizersResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupCriterionCustomizersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__MutateAdGroupCriterionCustomizerResult,
@@ -26216,7 +26216,7 @@ export interface GoogleAdsSearchads360V23Services__EnablementResult {
 }
 
 export const GoogleAdsSearchads360V23Services__EnablementResult: Schema.Schema<GoogleAdsSearchads360V23Services__EnablementResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     campaign: Schema.optional(Schema.String),
     enablementError: Schema.optional(GoogleRpc__Status),
   }).annotate({
@@ -26229,7 +26229,7 @@ export interface GoogleAdsSearchads360V23Services__EnablePMaxBrandGuidelinesResp
 }
 
 export const GoogleAdsSearchads360V23Services__EnablePMaxBrandGuidelinesResponse: Schema.Schema<GoogleAdsSearchads360V23Services__EnablePMaxBrandGuidelinesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__EnablementResult),
     ),
@@ -26244,7 +26244,7 @@ export interface GoogleAdsSearchads360V23Common__EventItemAttribute {
 }
 
 export const GoogleAdsSearchads360V23Common__EventItemAttribute: Schema.Schema<GoogleAdsSearchads360V23Common__EventItemAttribute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     itemId: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__EventItemAttribute",
@@ -26260,7 +26260,7 @@ export interface GoogleAdsSearchads360V23Common__EventAttribute {
 }
 
 export const GoogleAdsSearchads360V23Common__EventAttribute: Schema.Schema<GoogleAdsSearchads360V23Common__EventAttribute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     event: Schema.optional(Schema.String),
     eventDateTime: Schema.optional(Schema.String),
     itemAttribute: Schema.optional(
@@ -26274,7 +26274,7 @@ export interface GoogleAdsSearchads360V23Common__ShoppingLoyalty {
 }
 
 export const GoogleAdsSearchads360V23Common__ShoppingLoyalty: Schema.Schema<GoogleAdsSearchads360V23Common__ShoppingLoyalty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     loyaltyTier: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__ShoppingLoyalty",
@@ -26304,7 +26304,7 @@ export interface GoogleAdsSearchads360V23Common__UserAttribute {
 }
 
 export const GoogleAdsSearchads360V23Common__UserAttribute: Schema.Schema<GoogleAdsSearchads360V23Common__UserAttribute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     averagePurchaseValueMicros: Schema.optional(Schema.String),
     lifecycleStage: Schema.optional(Schema.String),
     lifetimeValueMicros: Schema.optional(Schema.String),
@@ -26339,7 +26339,7 @@ export interface GoogleAdsSearchads360V23Common__OfflineUserAddressInfo {
 }
 
 export const GoogleAdsSearchads360V23Common__OfflineUserAddressInfo: Schema.Schema<GoogleAdsSearchads360V23Common__OfflineUserAddressInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     hashedLastName: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
     postalCode: Schema.optional(Schema.String),
@@ -26372,7 +26372,7 @@ export interface GoogleAdsSearchads360V23Common__UserIdentifier {
 }
 
 export const GoogleAdsSearchads360V23Common__UserIdentifier: Schema.Schema<GoogleAdsSearchads360V23Common__UserIdentifier> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     thirdPartyUserId: Schema.optional(Schema.String),
     hashedPhoneNumber: Schema.optional(Schema.String),
     mobileId: Schema.optional(Schema.String),
@@ -26389,7 +26389,7 @@ export interface GoogleAdsSearchads360V23Common__StoreAttribute {
 }
 
 export const GoogleAdsSearchads360V23Common__StoreAttribute: Schema.Schema<GoogleAdsSearchads360V23Common__StoreAttribute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     storeCode: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__StoreAttribute" });
 
@@ -26407,7 +26407,7 @@ export interface GoogleAdsSearchads360V23Common__ItemAttribute {
 }
 
 export const GoogleAdsSearchads360V23Common__ItemAttribute: Schema.Schema<GoogleAdsSearchads360V23Common__ItemAttribute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     merchantId: Schema.optional(Schema.String),
     quantity: Schema.optional(Schema.String),
     itemId: Schema.optional(Schema.String),
@@ -26435,7 +26435,7 @@ export interface GoogleAdsSearchads360V23Common__TransactionAttribute {
 }
 
 export const GoogleAdsSearchads360V23Common__TransactionAttribute: Schema.Schema<GoogleAdsSearchads360V23Common__TransactionAttribute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     currencyCode: Schema.optional(Schema.String),
     orderId: Schema.optional(Schema.String),
     transactionDateTime: Schema.optional(Schema.String),
@@ -26464,7 +26464,7 @@ export interface GoogleAdsSearchads360V23Common__UserData {
 }
 
 export const GoogleAdsSearchads360V23Common__UserData: Schema.Schema<GoogleAdsSearchads360V23Common__UserData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userAttribute: Schema.optional(
       GoogleAdsSearchads360V23Common__UserAttribute,
     ),
@@ -26485,7 +26485,7 @@ export interface GoogleAdsSearchads360V23Services__UserDataOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__UserDataOperation: Schema.Schema<GoogleAdsSearchads360V23Services__UserDataOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     create: Schema.optional(GoogleAdsSearchads360V23Common__UserData),
     remove: Schema.optional(GoogleAdsSearchads360V23Common__UserData),
   }).annotate({
@@ -26508,7 +26508,7 @@ export interface GoogleAdsSearchads360V23Services__MutateSharedSetsRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateSharedSetsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateSharedSetsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailure: Schema.optional(Schema.Boolean),
     validateOnly: Schema.optional(Schema.Boolean),
     operations: Schema.optional(
@@ -26535,7 +26535,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAdGroupAssetsRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAdGroupAssetsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupAssetsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailure: Schema.optional(Schema.Boolean),
     validateOnly: Schema.optional(Schema.Boolean),
     operations: Schema.optional(
@@ -26590,7 +26590,7 @@ export interface GoogleAdsSearchads360V23Services__HotelImageAsset {
 }
 
 export const GoogleAdsSearchads360V23Services__HotelImageAsset: Schema.Schema<GoogleAdsSearchads360V23Services__HotelImageAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     assetFieldType: Schema.optional(Schema.String),
   }).annotate({
@@ -26641,7 +26641,7 @@ export interface GoogleAdsSearchads360V23Services__HotelTextAsset {
 }
 
 export const GoogleAdsSearchads360V23Services__HotelTextAsset: Schema.Schema<GoogleAdsSearchads360V23Services__HotelTextAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     assetFieldType: Schema.optional(Schema.String),
   }).annotate({
@@ -26692,7 +26692,7 @@ export interface GoogleAdsSearchads360V23Services__HotelAssetSuggestion {
 }
 
 export const GoogleAdsSearchads360V23Services__HotelAssetSuggestion: Schema.Schema<GoogleAdsSearchads360V23Services__HotelAssetSuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     hotelName: Schema.optional(Schema.String),
     callToAction: Schema.optional(Schema.String),
     imageAssets: Schema.optional(
@@ -26716,7 +26716,7 @@ export interface GoogleAdsSearchads360V0Errors_ErrorLocation_FieldPathElement {
 }
 
 export const GoogleAdsSearchads360V0Errors_ErrorLocation_FieldPathElement: Schema.Schema<GoogleAdsSearchads360V0Errors_ErrorLocation_FieldPathElement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fieldName: Schema.optional(Schema.String),
     index: Schema.optional(Schema.Number),
   }).annotate({
@@ -26729,7 +26729,7 @@ export interface GoogleAdsSearchads360V23Services_SmartCampaignSuggestionInfo_Bu
 }
 
 export const GoogleAdsSearchads360V23Services_SmartCampaignSuggestionInfo_BusinessContext: Schema.Schema<GoogleAdsSearchads360V23Services_SmartCampaignSuggestionInfo_BusinessContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     businessName: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -26742,7 +26742,7 @@ export interface GoogleAdsSearchads360V23Services_SmartCampaignSuggestionInfo_Lo
 }
 
 export const GoogleAdsSearchads360V23Services_SmartCampaignSuggestionInfo_LocationList: Schema.Schema<GoogleAdsSearchads360V23Services_SmartCampaignSuggestionInfo_LocationList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locations: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__LocationInfo),
     ),
@@ -26771,7 +26771,7 @@ export interface GoogleAdsSearchads360V23Services__SmartCampaignSuggestionInfo {
 }
 
 export const GoogleAdsSearchads360V23Services__SmartCampaignSuggestionInfo: Schema.Schema<GoogleAdsSearchads360V23Services__SmartCampaignSuggestionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     businessContext: Schema.optional(
       GoogleAdsSearchads360V23Services_SmartCampaignSuggestionInfo_BusinessContext,
     ),
@@ -26798,7 +26798,7 @@ export interface GoogleAdsSearchads360V23Services__SuggestSmartCampaignAdRequest
 }
 
 export const GoogleAdsSearchads360V23Services__SuggestSmartCampaignAdRequest: Schema.Schema<GoogleAdsSearchads360V23Services__SuggestSmartCampaignAdRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     suggestionInfo: Schema.optional(
       GoogleAdsSearchads360V23Services__SmartCampaignSuggestionInfo,
     ),
@@ -26813,7 +26813,7 @@ export interface GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeRes
 }
 
 export const GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -26836,7 +26836,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAdsRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAdsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAdsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__AdOperation),
     ),
@@ -26874,7 +26874,7 @@ export interface GoogleAdsSearchads360V23Resources_Invoice_CampaignSummary {
 }
 
 export const GoogleAdsSearchads360V23Resources_Invoice_CampaignSummary: Schema.Schema<GoogleAdsSearchads360V23Resources_Invoice_CampaignSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     campaignDescription: Schema.optional(Schema.String),
     amountMicros: Schema.optional(Schema.String),
     quantity: Schema.optional(Schema.String),
@@ -26891,7 +26891,7 @@ export interface GoogleAdsSearchads360V23Services__MutateRecommendationSubscript
 }
 
 export const GoogleAdsSearchads360V23Services__MutateRecommendationSubscriptionResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateRecommendationSubscriptionResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     recommendationSubscription: Schema.optional(
       GoogleAdsSearchads360V23Resources__RecommendationSubscription,
@@ -26909,7 +26909,7 @@ export interface GoogleAdsSearchads360V23Services__MutateRecommendationSubscript
 }
 
 export const GoogleAdsSearchads360V23Services__MutateRecommendationSubscriptionResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateRecommendationSubscriptionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__MutateRecommendationSubscriptionResult,
@@ -26931,7 +26931,7 @@ export interface GoogleAdsSearchads360V23Services__SuggestSmartCampaignBudgetOpt
 }
 
 export const GoogleAdsSearchads360V23Services__SuggestSmartCampaignBudgetOptionsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__SuggestSmartCampaignBudgetOptionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     low: Schema.optional(
       GoogleAdsSearchads360V23Services_SuggestSmartCampaignBudgetOptionsResponse_BudgetOption,
     ),
@@ -26952,7 +26952,7 @@ export interface GoogleAdsSearchads360V23Services_DismissRecommendationRequest_D
 }
 
 export const GoogleAdsSearchads360V23Services_DismissRecommendationRequest_DismissRecommendationOperation: Schema.Schema<GoogleAdsSearchads360V23Services_DismissRecommendationRequest_DismissRecommendationOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -26967,7 +26967,7 @@ export interface GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_T
 }
 
 export const GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_TargetCpaOptInParameters: Schema.Schema<GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_TargetCpaOptInParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetCpaMicros: Schema.optional(Schema.String),
     newCampaignBudgetAmountMicros: Schema.optional(Schema.String),
   }).annotate({
@@ -26987,7 +26987,7 @@ export interface GoogleAdsSearchads360V23Services__AudienceCompositionMetrics {
 }
 
 export const GoogleAdsSearchads360V23Services__AudienceCompositionMetrics: Schema.Schema<GoogleAdsSearchads360V23Services__AudienceCompositionMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     baselineAudienceShare: Schema.optional(Schema.Number),
     index: Schema.optional(Schema.Number),
     score: Schema.optional(Schema.Number),
@@ -27016,7 +27016,7 @@ export interface GoogleAdsSearchads360V23Common__YouTubeVideoAttributeMetadata {
 }
 
 export const GoogleAdsSearchads360V23Common__YouTubeVideoAttributeMetadata: Schema.Schema<GoogleAdsSearchads360V23Common__YouTubeVideoAttributeMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     videoProperties: Schema.optional(Schema.Array(Schema.String)),
     publishDate: Schema.optional(Schema.String),
     videoUrl: Schema.optional(Schema.String),
@@ -27042,7 +27042,7 @@ export interface GoogleAdsSearchads360V23Common__KnowledgeGraphAttributeMetadata
 }
 
 export const GoogleAdsSearchads360V23Common__KnowledgeGraphAttributeMetadata: Schema.Schema<GoogleAdsSearchads360V23Common__KnowledgeGraphAttributeMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       relatedCategories: Schema.optional(
         Schema.Array(
@@ -27066,7 +27066,7 @@ export interface GoogleAdsSearchads360V23Common_LineupAttributeMetadata_SampleCh
 }
 
 export const GoogleAdsSearchads360V23Common_LineupAttributeMetadata_SampleChannel: Schema.Schema<GoogleAdsSearchads360V23Common_LineupAttributeMetadata_SampleChannel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     youtubeChannelMetadata: Schema.optional(
       GoogleAdsSearchads360V23Common__YouTubeChannelAttributeMetadata,
@@ -27093,7 +27093,7 @@ export interface GoogleAdsSearchads360V23Common__LineupAttributeMetadata {
 }
 
 export const GoogleAdsSearchads360V23Common__LineupAttributeMetadata: Schema.Schema<GoogleAdsSearchads360V23Common__LineupAttributeMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     inventoryCountry: Schema.optional(
       GoogleAdsSearchads360V23Common__LocationInfo,
     ),
@@ -27115,7 +27115,7 @@ export interface GoogleAdsSearchads360V23Common__LocationAttributeMetadata {
 }
 
 export const GoogleAdsSearchads360V23Common__LocationAttributeMetadata: Schema.Schema<GoogleAdsSearchads360V23Common__LocationAttributeMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     countryLocation: Schema.optional(
       GoogleAdsSearchads360V23Common__LocationInfo,
     ),
@@ -27139,7 +27139,7 @@ export interface GoogleAdsSearchads360V23Common__UserListAttributeMetadata {
 }
 
 export const GoogleAdsSearchads360V23Common__UserListAttributeMetadata: Schema.Schema<GoogleAdsSearchads360V23Common__UserListAttributeMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userListType: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__UserListAttributeMetadata",
@@ -27196,7 +27196,7 @@ export interface GoogleAdsSearchads360V23Common__AudienceInsightsAttributeMetada
 }
 
 export const GoogleAdsSearchads360V23Common__AudienceInsightsAttributeMetadata: Schema.Schema<GoogleAdsSearchads360V23Common__AudienceInsightsAttributeMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       userInterestAttributeMetadata: Schema.optional(
         GoogleAdsSearchads360V23Common__UserInterestAttributeMetadata,
@@ -27242,7 +27242,7 @@ export interface GoogleAdsSearchads360V23Services__AudienceCompositionAttribute 
 }
 
 export const GoogleAdsSearchads360V23Services__AudienceCompositionAttribute: Schema.Schema<GoogleAdsSearchads360V23Services__AudienceCompositionAttribute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metrics: Schema.optional(
       GoogleAdsSearchads360V23Services__AudienceCompositionMetrics,
     ),
@@ -27264,7 +27264,7 @@ export interface GoogleAdsSearchads360V23Services__AudienceCompositionAttributeC
 }
 
 export const GoogleAdsSearchads360V23Services__AudienceCompositionAttributeCluster: Schema.Schema<GoogleAdsSearchads360V23Services__AudienceCompositionAttributeCluster> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     clusterDisplayName: Schema.optional(Schema.String),
     attributes: Schema.optional(
       Schema.Array(
@@ -27308,7 +27308,7 @@ export interface GoogleAdsSearchads360V23Services__AudienceCompositionSection {
 }
 
 export const GoogleAdsSearchads360V23Services__AudienceCompositionSection: Schema.Schema<GoogleAdsSearchads360V23Services__AudienceCompositionSection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dimension: Schema.optional(Schema.String),
     topAttributes: Schema.optional(
       Schema.Array(
@@ -27330,7 +27330,7 @@ export interface GoogleAdsSearchads360V23Services__GenerateAudienceCompositionIn
 }
 
 export const GoogleAdsSearchads360V23Services__GenerateAudienceCompositionInsightsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__GenerateAudienceCompositionInsightsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sections: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__AudienceCompositionSection,
@@ -27349,7 +27349,7 @@ export interface GoogleAdsSearchads360V23Services__BiddableKeyword {
 }
 
 export const GoogleAdsSearchads360V23Services__BiddableKeyword: Schema.Schema<GoogleAdsSearchads360V23Services__BiddableKeyword> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxCpcBidMicros: Schema.optional(Schema.String),
     keyword: Schema.optional(GoogleAdsSearchads360V23Common__KeywordInfo),
   }).annotate({
@@ -27366,7 +27366,7 @@ export interface GoogleAdsSearchads360V23Services__ForecastAdGroup {
 }
 
 export const GoogleAdsSearchads360V23Services__ForecastAdGroup: Schema.Schema<GoogleAdsSearchads360V23Services__ForecastAdGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxCpcBidMicros: Schema.optional(Schema.String),
     biddableKeywords: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__BiddableKeyword),
@@ -27388,7 +27388,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAdGroupAdLabelsRequest 
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAdGroupAdLabelsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupAdLabelsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__AdGroupAdLabelOperation),
     ),
@@ -27407,7 +27407,7 @@ export interface GoogleAdsSearchads360V23Services__CampaignBudgetMapping {
 }
 
 export const GoogleAdsSearchads360V23Services__CampaignBudgetMapping: Schema.Schema<GoogleAdsSearchads360V23Services__CampaignBudgetMapping> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     experimentCampaign: Schema.optional(Schema.String),
     campaignBudget: Schema.optional(Schema.String),
   }).annotate({
@@ -27420,7 +27420,7 @@ export interface GoogleAdsSearchads360V23Services__SuggestKeywordThemeConstantsR
 }
 
 export const GoogleAdsSearchads360V23Services__SuggestKeywordThemeConstantsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__SuggestKeywordThemeConstantsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keywordThemeConstants: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Resources__KeywordThemeConstant),
     ),
@@ -27449,7 +27449,7 @@ export interface GoogleAdsSearchads360V23Services__PlannableUserInterest {
 }
 
 export const GoogleAdsSearchads360V23Services__PlannableUserInterest: Schema.Schema<GoogleAdsSearchads360V23Services__PlannableUserInterest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userInterest: Schema.optional(
       GoogleAdsSearchads360V23Common__UserInterestInfo,
     ),
@@ -27485,7 +27485,7 @@ export interface GoogleAdsSearchads360V23Common__MonthlySearchVolume {
 }
 
 export const GoogleAdsSearchads360V23Common__MonthlySearchVolume: Schema.Schema<GoogleAdsSearchads360V23Common__MonthlySearchVolume> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     year: Schema.optional(Schema.String),
     month: Schema.optional(Schema.String),
     monthlySearches: Schema.optional(Schema.String),
@@ -27517,7 +27517,7 @@ export interface GoogleAdsSearchads360V23Common__KeywordPlanHistoricalMetrics {
 }
 
 export const GoogleAdsSearchads360V23Common__KeywordPlanHistoricalMetrics: Schema.Schema<GoogleAdsSearchads360V23Common__KeywordPlanHistoricalMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     monthlySearchVolumes: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__MonthlySearchVolume),
     ),
@@ -27541,7 +27541,7 @@ export interface GoogleAdsSearchads360V23Services__GenerateKeywordHistoricalMetr
 }
 
 export const GoogleAdsSearchads360V23Services__GenerateKeywordHistoricalMetricsResult: Schema.Schema<GoogleAdsSearchads360V23Services__GenerateKeywordHistoricalMetricsResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     closeVariants: Schema.optional(Schema.Array(Schema.String)),
     keywordMetrics: Schema.optional(
@@ -27568,7 +27568,7 @@ export interface GoogleAdsSearchads360V23Common__KeywordPlanDeviceSearches {
 }
 
 export const GoogleAdsSearchads360V23Common__KeywordPlanDeviceSearches: Schema.Schema<GoogleAdsSearchads360V23Common__KeywordPlanDeviceSearches> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     searchCount: Schema.optional(Schema.String),
     device: Schema.optional(Schema.String),
   }).annotate({
@@ -27581,7 +27581,7 @@ export interface GoogleAdsSearchads360V23Common__KeywordPlanAggregateMetricResul
 }
 
 export const GoogleAdsSearchads360V23Common__KeywordPlanAggregateMetricResults: Schema.Schema<GoogleAdsSearchads360V23Common__KeywordPlanAggregateMetricResults> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deviceSearches: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__KeywordPlanDeviceSearches),
     ),
@@ -27598,7 +27598,7 @@ export interface GoogleAdsSearchads360V23Services__GenerateKeywordHistoricalMetr
 }
 
 export const GoogleAdsSearchads360V23Services__GenerateKeywordHistoricalMetricsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__GenerateKeywordHistoricalMetricsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__GenerateKeywordHistoricalMetricsResult,
@@ -27624,7 +27624,7 @@ export interface GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversion
 }
 
 export const GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversionValueSchema_SkAdNetworkConversionValueSchema: Schema.Schema<GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversionValueSchema_SkAdNetworkConversionValueSchema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     measurementWindowHours: Schema.optional(Schema.Number),
     postbackMappings: Schema.optional(
       Schema.Array(
@@ -27650,7 +27650,7 @@ export interface GoogleAdsSearchads360V23Resources__CustomerSkAdNetworkConversio
 }
 
 export const GoogleAdsSearchads360V23Resources__CustomerSkAdNetworkConversionValueSchema: Schema.Schema<GoogleAdsSearchads360V23Resources__CustomerSkAdNetworkConversionValueSchema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     schema: Schema.optional(
       GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversionValueSchema_SkAdNetworkConversionValueSchema,
     ),
@@ -27666,7 +27666,7 @@ export interface GoogleAdsSearchads360V23Services__CustomerSkAdNetworkConversion
 }
 
 export const GoogleAdsSearchads360V23Services__CustomerSkAdNetworkConversionValueSchemaOperation: Schema.Schema<GoogleAdsSearchads360V23Services__CustomerSkAdNetworkConversionValueSchemaOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     update: Schema.optional(
       GoogleAdsSearchads360V23Resources__CustomerSkAdNetworkConversionValueSchema,
     ),
@@ -27683,7 +27683,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerAssetResult {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomerAssetResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomerAssetResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     customerAsset: Schema.optional(
       GoogleAdsSearchads360V23Resources__CustomerAsset,
@@ -27698,7 +27698,7 @@ export interface GoogleAdsSearchads360V23Services__MutateExperimentResult {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateExperimentResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateExperimentResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__MutateExperimentResult",
@@ -27712,7 +27712,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAdGroupAdLabelsResponse
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAdGroupAdLabelsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupAdLabelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(
@@ -27732,7 +27732,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAdParameterResult {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAdParameterResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAdParameterResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     adParameter: Schema.optional(
       GoogleAdsSearchads360V23Resources__AdParameter,
@@ -27747,7 +27747,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCampaignLabelResult {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCampaignLabelResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCampaignLabelResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__MutateCampaignLabelResult",
@@ -27761,7 +27761,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCampaignLabelsResponse 
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCampaignLabelsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCampaignLabelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__MutateCampaignLabelResult),
@@ -27777,7 +27777,7 @@ export interface GoogleAdsSearchads360V23Services__MutateRemarketingActionResult
 }
 
 export const GoogleAdsSearchads360V23Services__MutateRemarketingActionResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateRemarketingActionResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -27792,7 +27792,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCampaignGroupResult {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCampaignGroupResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCampaignGroupResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     campaignGroup: Schema.optional(
       GoogleAdsSearchads360V23Resources__CampaignGroup,
     ),
@@ -27809,7 +27809,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerCustomizerResul
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomerCustomizerResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomerCustomizerResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     customerCustomizer: Schema.optional(
       GoogleAdsSearchads360V23Resources__CustomerCustomizer,
@@ -27827,7 +27827,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAdGroupAdResult {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAdGroupAdResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupAdResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     adGroupAd: Schema.optional(GoogleAdsSearchads360V23Resources__AdGroupAd),
   }).annotate({
@@ -27842,7 +27842,7 @@ export interface GoogleAdsSearchads360V23Services__MutateSmartCampaignSettingRes
 }
 
 export const GoogleAdsSearchads360V23Services__MutateSmartCampaignSettingResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateSmartCampaignSettingResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     smartCampaignSetting: Schema.optional(
       GoogleAdsSearchads360V23Resources__SmartCampaignSetting,
     ),
@@ -27860,7 +27860,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAdGroupCustomizerResult
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAdGroupCustomizerResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupCustomizerResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     adGroupCustomizer: Schema.optional(
       GoogleAdsSearchads360V23Resources__AdGroupCustomizer,
@@ -27876,7 +27876,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAdGroupCriterionLabelRe
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAdGroupCriterionLabelResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupCriterionLabelResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -27891,7 +27891,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAdGroupBidModifierResul
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAdGroupBidModifierResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupBidModifierResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     adGroupBidModifier: Schema.optional(
       GoogleAdsSearchads360V23Resources__AdGroupBidModifier,
@@ -27909,7 +27909,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCampaignBidModifierResu
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCampaignBidModifierResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCampaignBidModifierResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     campaignBidModifier: Schema.optional(
       GoogleAdsSearchads360V23Resources__CampaignBidModifier,
@@ -27927,7 +27927,7 @@ export interface GoogleAdsSearchads360V23Services__MutateConversionActionResult 
 }
 
 export const GoogleAdsSearchads360V23Services__MutateConversionActionResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateConversionActionResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     conversionAction: Schema.optional(
       GoogleAdsSearchads360V23Resources__ConversionAction,
@@ -27945,7 +27945,7 @@ export interface GoogleAdsSearchads360V23Services__MutateSharedSetResult {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateSharedSetResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateSharedSetResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sharedSet: Schema.optional(GoogleAdsSearchads360V23Resources__SharedSet),
     resourceName: Schema.optional(Schema.String),
   }).annotate({
@@ -27960,7 +27960,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCampaignResult {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCampaignResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCampaignResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     campaign: Schema.optional(GoogleAdsSearchads360V23Resources__Campaign),
   }).annotate({
@@ -27975,7 +27975,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAdResult {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAdResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAdResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     ad: Schema.optional(GoogleAdsSearchads360V23Resources__Ad),
   }).annotate({
@@ -27990,7 +27990,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomConversionGoalRes
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomConversionGoalResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomConversionGoalResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     customConversionGoal: Schema.optional(
       GoogleAdsSearchads360V23Resources__CustomConversionGoal,
@@ -28008,7 +28008,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCampaignAssetResult {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCampaignAssetResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCampaignAssetResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     campaignAsset: Schema.optional(
       GoogleAdsSearchads360V23Resources__CampaignAsset,
@@ -28025,7 +28025,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAssetSetResult {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAssetSetResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAssetSetResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     assetSet: Schema.optional(GoogleAdsSearchads360V23Resources__AssetSet),
   }).annotate({
@@ -28040,7 +28040,7 @@ export interface GoogleAdsSearchads360V23Services__MutateBiddingStrategyResult {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateBiddingStrategyResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateBiddingStrategyResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     biddingStrategy: Schema.optional(
       GoogleAdsSearchads360V23Resources__BiddingStrategy,
@@ -28057,7 +28057,7 @@ export interface GoogleAdsSearchads360V23Services__MutateConversionValueRuleResu
 }
 
 export const GoogleAdsSearchads360V23Services__MutateConversionValueRuleResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateConversionValueRuleResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     conversionValueRule: Schema.optional(
       GoogleAdsSearchads360V23Resources__ConversionValueRule,
@@ -28073,7 +28073,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCampaignConversionGoalR
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCampaignConversionGoalResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCampaignConversionGoalResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -28088,7 +28088,7 @@ export interface GoogleAdsSearchads360V23Services__MutateExperimentArmResult {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateExperimentArmResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateExperimentArmResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     experimentArm: Schema.optional(
       GoogleAdsSearchads360V23Resources__ExperimentArm,
@@ -28105,7 +28105,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCampaignCriterionResult
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCampaignCriterionResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCampaignCriterionResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     campaignCriterion: Schema.optional(
       GoogleAdsSearchads360V23Resources__CampaignCriterion,
     ),
@@ -28123,7 +28123,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAssetResult {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAssetResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAssetResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     asset: Schema.optional(GoogleAdsSearchads360V23Resources__Asset),
   }).annotate({
@@ -28138,7 +28138,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomizerAttributeResu
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomizerAttributeResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomizerAttributeResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     customizerAttribute: Schema.optional(
       GoogleAdsSearchads360V23Resources__CustomizerAttribute,
@@ -28154,7 +28154,7 @@ export interface GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignResu
 }
 
 export const GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -28169,7 +28169,7 @@ export interface GoogleAdsSearchads360V23Services__MutateSearchAds360CampaignRes
 }
 
 export const GoogleAdsSearchads360V23Services__MutateSearchAds360CampaignResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateSearchAds360CampaignResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     searchAds360Campaign: Schema.optional(
       GoogleAdsSearchads360V23Resources__SearchAds360Campaign,
     ),
@@ -28187,7 +28187,7 @@ export interface GoogleAdsSearchads360V23Services__MutateBiddingDataExclusionsRe
 }
 
 export const GoogleAdsSearchads360V23Services__MutateBiddingDataExclusionsResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateBiddingDataExclusionsResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     biddingDataExclusion: Schema.optional(
       GoogleAdsSearchads360V23Resources__BiddingDataExclusion,
@@ -28205,7 +28205,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAdGroupResult {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAdGroupResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     adGroup: Schema.optional(GoogleAdsSearchads360V23Resources__AdGroup),
   }).annotate({
@@ -28220,7 +28220,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCampaignBudgetResult {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCampaignBudgetResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCampaignBudgetResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     campaignBudget: Schema.optional(
       GoogleAdsSearchads360V23Resources__CampaignBudget,
@@ -28235,7 +28235,7 @@ export interface GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupKeywo
 }
 
 export const GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupKeywordResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupKeywordResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -28250,7 +28250,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerResult {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomerResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomerResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     customer: Schema.optional(GoogleAdsSearchads360V23Resources__Customer),
   }).annotate({
@@ -28263,7 +28263,7 @@ export interface GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignKeyw
 }
 
 export const GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignKeywordResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignKeywordResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -28278,7 +28278,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCampaignAssetSetResult 
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCampaignAssetSetResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCampaignAssetSetResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     campaignAssetSet: Schema.optional(
       GoogleAdsSearchads360V23Resources__CampaignAssetSet,
@@ -28296,7 +28296,7 @@ export interface GoogleAdsSearchads360V23Services__MutateConversionCustomVariabl
 }
 
 export const GoogleAdsSearchads360V23Services__MutateConversionCustomVariableResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateConversionCustomVariableResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     conversionCustomVariable: Schema.optional(
       GoogleAdsSearchads360V23Resources__ConversionCustomVariable,
@@ -28314,7 +28314,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAdGroupCriterionResult 
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAdGroupCriterionResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupCriterionResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adGroupCriterion: Schema.optional(
       GoogleAdsSearchads360V23Resources__AdGroupCriterion,
     ),
@@ -28332,7 +28332,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCampaignDraftResult {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCampaignDraftResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCampaignDraftResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     campaignDraft: Schema.optional(
       GoogleAdsSearchads360V23Resources__CampaignDraft,
@@ -28347,7 +28347,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAdGroupLabelResult {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAdGroupLabelResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupLabelResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__MutateAdGroupLabelResult",
@@ -28361,7 +28361,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAssetGroupSignalResult 
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAssetGroupSignalResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAssetGroupSignalResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     assetGroupSignal: Schema.optional(
       GoogleAdsSearchads360V23Resources__AssetGroupSignal,
@@ -28379,7 +28379,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerNegativeCriteri
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomerNegativeCriteriaResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomerNegativeCriteriaResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     customerNegativeCriterion: Schema.optional(
       GoogleAdsSearchads360V23Resources__CustomerNegativeCriterion,
@@ -28397,7 +28397,7 @@ export interface GoogleAdsSearchads360V23Services__MutateConversionGoalCampaignC
 }
 
 export const GoogleAdsSearchads360V23Services__MutateConversionGoalCampaignConfigResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateConversionGoalCampaignConfigResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     conversionGoalCampaignConfig: Schema.optional(
       GoogleAdsSearchads360V23Resources__ConversionGoalCampaignConfig,
     ),
@@ -28415,7 +28415,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAssetGroupListingGroupF
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAssetGroupListingGroupFilterResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAssetGroupListingGroupFilterResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     assetGroupListingGroupFilter: Schema.optional(
       GoogleAdsSearchads360V23Resources__AssetGroupListingGroupFilter,
@@ -28431,7 +28431,7 @@ export interface GoogleAdsSearchads360V23Services__MutateKeywordPlansResult {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateKeywordPlansResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateKeywordPlansResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__MutateKeywordPlansResult",
@@ -28443,7 +28443,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAssetGroupResult {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAssetGroupResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAssetGroupResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__MutateAssetGroupResult",
@@ -28457,7 +28457,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAudienceResult {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAudienceResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAudienceResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     audience: Schema.optional(GoogleAdsSearchads360V23Resources__Audience),
   }).annotate({
@@ -28470,7 +28470,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult",
@@ -28606,7 +28606,7 @@ export interface GoogleAdsSearchads360V23Services__MutateOperationResponse {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateOperationResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateOperationResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sharedCriterionResult: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateSharedCriterionResult,
     ),
@@ -28808,7 +28808,7 @@ export interface GoogleAdsSearchads360V23Services__BatchJobResult {
 }
 
 export const GoogleAdsSearchads360V23Services__BatchJobResult: Schema.Schema<GoogleAdsSearchads360V23Services__BatchJobResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(GoogleRpc__Status),
     operationIndex: Schema.optional(Schema.String),
     mutateOperationResponse: Schema.optional(
@@ -28826,7 +28826,7 @@ export interface GoogleAdsSearchads360V23Services__ListBatchJobResultsResponse {
 }
 
 export const GoogleAdsSearchads360V23Services__ListBatchJobResultsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__ListBatchJobResultsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__BatchJobResult),
     ),
@@ -28841,7 +28841,7 @@ export interface GoogleAdsSearchads360V23Services__ApplyRecommendationResult {
 }
 
 export const GoogleAdsSearchads360V23Services__ApplyRecommendationResult: Schema.Schema<GoogleAdsSearchads360V23Services__ApplyRecommendationResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__ApplyRecommendationResult",
@@ -28853,7 +28853,7 @@ export interface GoogleAdsSearchads360V23Services__SuggestKeywordThemesRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__SuggestKeywordThemesRequest: Schema.Schema<GoogleAdsSearchads360V23Services__SuggestKeywordThemesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     suggestionInfo: Schema.optional(
       GoogleAdsSearchads360V23Services__SmartCampaignSuggestionInfo,
     ),
@@ -28867,7 +28867,7 @@ export interface GoogleAdsSearchads360V23Services__RemoveDataLinkRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__RemoveDataLinkRequest: Schema.Schema<GoogleAdsSearchads360V23Services__RemoveDataLinkRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__RemoveDataLinkRequest",
@@ -28909,7 +28909,7 @@ export interface GoogleAdsSearchads360V23Services__ListAudienceInsightsAttribute
 }
 
 export const GoogleAdsSearchads360V23Services__ListAudienceInsightsAttributesRequest: Schema.Schema<GoogleAdsSearchads360V23Services__ListAudienceInsightsAttributesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerInsightsGroup: Schema.optional(Schema.String),
     insightsApplicationInfo: Schema.optional(
       GoogleAdsSearchads360V23Common__AdditionalApplicationInfo,
@@ -28943,7 +28943,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAssetSetAssetsRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAssetSetAssetsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAssetSetAssetsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailure: Schema.optional(Schema.Boolean),
     validateOnly: Schema.optional(Schema.Boolean),
     operations: Schema.optional(
@@ -28960,7 +28960,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAccountLinkResult {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAccountLinkResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAccountLinkResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__MutateAccountLinkResult",
@@ -28974,7 +28974,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAccountLinkResponse {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAccountLinkResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAccountLinkResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     result: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateAccountLinkResult,
     ),
@@ -29000,7 +29000,7 @@ export interface GoogleAdsSearchads360V23Services__IdentityVerificationProgress 
 }
 
 export const GoogleAdsSearchads360V23Services__IdentityVerificationProgress: Schema.Schema<GoogleAdsSearchads360V23Services__IdentityVerificationProgress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     programStatus: Schema.optional(Schema.String),
     actionUrl: Schema.optional(Schema.String),
     invitationLinkExpirationTime: Schema.optional(Schema.String),
@@ -29017,7 +29017,7 @@ export interface GoogleAdsSearchads360V23Services__YouTubeSelectLineUp {
 }
 
 export const GoogleAdsSearchads360V23Services__YouTubeSelectLineUp: Schema.Schema<GoogleAdsSearchads360V23Services__YouTubeSelectLineUp> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lineupName: Schema.optional(Schema.String),
     lineupId: Schema.optional(Schema.String),
   }).annotate({
@@ -29077,7 +29077,7 @@ export interface GoogleAdsSearchads360V23Services__PlannableTargeting {
 }
 
 export const GoogleAdsSearchads360V23Services__PlannableTargeting: Schema.Schema<GoogleAdsSearchads360V23Services__PlannableTargeting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ageRanges: Schema.optional(Schema.Array(Schema.String)),
     devices: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__DeviceInfo),
@@ -29106,7 +29106,7 @@ export interface GoogleAdsSearchads360V23Services__ProductMetadata {
 }
 
 export const GoogleAdsSearchads360V23Services__ProductMetadata: Schema.Schema<GoogleAdsSearchads360V23Services__ProductMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     plannableProductName: Schema.optional(Schema.String),
     plannableTargeting: Schema.optional(
       GoogleAdsSearchads360V23Services__PlannableTargeting,
@@ -29122,7 +29122,7 @@ export interface GoogleAdsSearchads360V23Services__SuggestTravelAssetsResponse {
 }
 
 export const GoogleAdsSearchads360V23Services__SuggestTravelAssetsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__SuggestTravelAssetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     hotelAssetSuggestions: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__HotelAssetSuggestion),
     ),
@@ -29166,7 +29166,7 @@ export interface GoogleAdsSearchads360V23Services__GenerateAudienceCompositionIn
 }
 
 export const GoogleAdsSearchads360V23Services__GenerateAudienceCompositionInsightsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__GenerateAudienceCompositionInsightsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerInsightsGroup: Schema.optional(Schema.String),
     baselineAudience: Schema.optional(
       GoogleAdsSearchads360V23Services__InsightsAudience,
@@ -29190,7 +29190,7 @@ export interface GoogleAdsSearchads360V23Services__EndExperimentRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__EndExperimentRequest: Schema.Schema<GoogleAdsSearchads360V23Services__EndExperimentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__EndExperimentRequest",
@@ -29202,7 +29202,7 @@ export interface GoogleAdsSearchads360V23Services__MutateBillingSetupResult {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateBillingSetupResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateBillingSetupResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__MutateBillingSetupResult",
@@ -29214,7 +29214,7 @@ export interface GoogleAdsSearchads360V23Services__MutateBillingSetupResponse {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateBillingSetupResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateBillingSetupResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     result: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateBillingSetupResult,
     ),
@@ -29228,7 +29228,7 @@ export interface GoogleAdsSearchads360V23Services__SiteSeed {
 }
 
 export const GoogleAdsSearchads360V23Services__SiteSeed: Schema.Schema<GoogleAdsSearchads360V23Services__SiteSeed> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     site: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Services__SiteSeed" });
 
@@ -29242,7 +29242,7 @@ export interface GoogleType__Money {
 }
 
 export const GoogleType__Money: Schema.Schema<GoogleType__Money> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     currencyCode: Schema.optional(Schema.String),
     nanos: Schema.optional(Schema.Number),
     units: Schema.optional(Schema.String),
@@ -29256,7 +29256,7 @@ export interface GoogleAdsSearchads360V23Services_IncentiveRequirement_Spend {
 }
 
 export const GoogleAdsSearchads360V23Services_IncentiveRequirement_Spend: Schema.Schema<GoogleAdsSearchads360V23Services_IncentiveRequirement_Spend> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     awardAmount: Schema.optional(GoogleType__Money),
     requiredAmount: Schema.optional(GoogleType__Money),
   }).annotate({
@@ -29269,7 +29269,7 @@ export interface GoogleAdsSearchads360V23Services_Incentive_Requirement {
 }
 
 export const GoogleAdsSearchads360V23Services_Incentive_Requirement: Schema.Schema<GoogleAdsSearchads360V23Services_Incentive_Requirement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     spend: Schema.optional(
       GoogleAdsSearchads360V23Services_IncentiveRequirement_Spend,
     ),
@@ -29289,7 +29289,7 @@ export interface GoogleAdsSearchads360V23Services__Incentive {
 }
 
 export const GoogleAdsSearchads360V23Services__Incentive: Schema.Schema<GoogleAdsSearchads360V23Services__Incentive> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requirement: Schema.optional(
       GoogleAdsSearchads360V23Services_Incentive_Requirement,
     ),
@@ -29316,7 +29316,7 @@ export interface GoogleAdsSearchads360V23Resources__PaymentsAccount {
 }
 
 export const GoogleAdsSearchads360V23Resources__PaymentsAccount: Schema.Schema<GoogleAdsSearchads360V23Resources__PaymentsAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     currencyCode: Schema.optional(Schema.String),
     payingManagerCustomer: Schema.optional(Schema.String),
     paymentsAccountId: Schema.optional(Schema.String),
@@ -29334,7 +29334,7 @@ export interface GoogleAdsSearchads360V23Services__ListPaymentsAccountsResponse 
 }
 
 export const GoogleAdsSearchads360V23Services__ListPaymentsAccountsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__ListPaymentsAccountsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     paymentsAccounts: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Resources__PaymentsAccount),
     ),
@@ -29351,7 +29351,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerNegativeCriteri
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomerNegativeCriteriaResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomerNegativeCriteriaResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(
@@ -29373,7 +29373,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerLabelsRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomerLabelsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomerLabelsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailure: Schema.optional(Schema.Boolean),
     validateOnly: Schema.optional(Schema.Boolean),
     operations: Schema.optional(
@@ -29389,7 +29389,7 @@ export interface GoogleAdsSearchads360V23Services__UpdateProductLinkInvitationRe
 }
 
 export const GoogleAdsSearchads360V23Services__UpdateProductLinkInvitationResponse: Schema.Schema<GoogleAdsSearchads360V23Services__UpdateProductLinkInvitationResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -29409,7 +29409,7 @@ export interface GoogleAdsSearchads360V23Services__SmartCampaignNotEligibleDetai
 }
 
 export const GoogleAdsSearchads360V23Services__SmartCampaignNotEligibleDetails: Schema.Schema<GoogleAdsSearchads360V23Services__SmartCampaignNotEligibleDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     notEligibleReason: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -29422,7 +29422,7 @@ export interface GoogleAdsSearchads360V23Services__SmartCampaignEndedDetails {
 }
 
 export const GoogleAdsSearchads360V23Services__SmartCampaignEndedDetails: Schema.Schema<GoogleAdsSearchads360V23Services__SmartCampaignEndedDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endDateTime: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__SmartCampaignEndedDetails",
@@ -29434,7 +29434,7 @@ export interface GoogleAdsSearchads360V23Services__SmartCampaignRemovedDetails {
 }
 
 export const GoogleAdsSearchads360V23Services__SmartCampaignRemovedDetails: Schema.Schema<GoogleAdsSearchads360V23Services__SmartCampaignRemovedDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     removedDateTime: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__SmartCampaignRemovedDetails",
@@ -29448,7 +29448,7 @@ export interface GoogleAdsSearchads360V23Services__SmartCampaignEligibleDetails 
 }
 
 export const GoogleAdsSearchads360V23Services__SmartCampaignEligibleDetails: Schema.Schema<GoogleAdsSearchads360V23Services__SmartCampaignEligibleDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lastImpressionDateTime: Schema.optional(Schema.String),
     endDateTime: Schema.optional(Schema.String),
   }).annotate({
@@ -29462,7 +29462,7 @@ export interface GoogleAdsSearchads360V23Services__SmartCampaignPausedDetails {
 }
 
 export const GoogleAdsSearchads360V23Services__SmartCampaignPausedDetails: Schema.Schema<GoogleAdsSearchads360V23Services__SmartCampaignPausedDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pausedDateTime: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__SmartCampaignPausedDetails",
@@ -29493,7 +29493,7 @@ export interface GoogleAdsSearchads360V23Services__GetSmartCampaignStatusRespons
 }
 
 export const GoogleAdsSearchads360V23Services__GetSmartCampaignStatusResponse: Schema.Schema<GoogleAdsSearchads360V23Services__GetSmartCampaignStatusResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     notEligibleDetails: Schema.optional(
       GoogleAdsSearchads360V23Services__SmartCampaignNotEligibleDetails,
     ),
@@ -29535,7 +29535,7 @@ export interface GoogleAdsSearchads360V23Common__SitelinkFeedItem {
 }
 
 export const GoogleAdsSearchads360V23Common__SitelinkFeedItem: Schema.Schema<GoogleAdsSearchads360V23Common__SitelinkFeedItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     line2: Schema.optional(Schema.String),
     finalMobileUrls: Schema.optional(Schema.Array(Schema.String)),
     line1: Schema.optional(Schema.String),
@@ -29556,7 +29556,7 @@ export interface GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_S
 }
 
 export const GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_SitelinkExtensionParameters: Schema.Schema<GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_SitelinkExtensionParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sitelinkExtensions: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__SitelinkFeedItem),
     ),
@@ -29573,7 +29573,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAudiencesResponse {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAudiencesResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAudiencesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__MutateAudienceResult),
     ),
@@ -29590,7 +29590,7 @@ export interface GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignKeyw
 }
 
 export const GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignKeywordsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignKeywordsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(
@@ -29610,7 +29610,7 @@ export interface GoogleAdsSearchads360V23Services__ApplyIncentiveResponse {
 }
 
 export const GoogleAdsSearchads360V23Services__ApplyIncentiveResponse: Schema.Schema<GoogleAdsSearchads360V23Services__ApplyIncentiveResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     couponCode: Schema.optional(Schema.String),
     creationTime: Schema.optional(Schema.String),
   }).annotate({
@@ -29623,7 +29623,7 @@ export interface GoogleAdsSearchads360V23Services__ListBenchmarksSourcesResponse
 }
 
 export const GoogleAdsSearchads360V23Services__ListBenchmarksSourcesResponse: Schema.Schema<GoogleAdsSearchads360V23Services__ListBenchmarksSourcesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     benchmarksSources: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__BenchmarksSourceMetadata),
     ),
@@ -29642,7 +29642,7 @@ export interface GoogleAdsSearchads360V23Services__BenchmarksLocation {
 }
 
 export const GoogleAdsSearchads360V23Services__BenchmarksLocation: Schema.Schema<GoogleAdsSearchads360V23Services__BenchmarksLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locationName: Schema.optional(Schema.String),
     locationInfo: Schema.optional(GoogleAdsSearchads360V23Common__LocationInfo),
     locationType: Schema.optional(Schema.String),
@@ -29653,14 +29653,14 @@ export const GoogleAdsSearchads360V23Services__BenchmarksLocation: Schema.Schema
 export interface GoogleAdsSearchads360V23Services__RunBatchJobRequest {}
 
 export const GoogleAdsSearchads360V23Services__RunBatchJobRequest: Schema.Schema<GoogleAdsSearchads360V23Services__RunBatchJobRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAdsSearchads360V23Services__RunBatchJobRequest",
   });
 
 export interface GoogleAdsSearchads360V23Services__RegenerateShareableLinkIdRequest {}
 
 export const GoogleAdsSearchads360V23Services__RegenerateShareableLinkIdRequest: Schema.Schema<GoogleAdsSearchads360V23Services__RegenerateShareableLinkIdRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleAdsSearchads360V23Services__RegenerateShareableLinkIdRequest",
   });
@@ -29671,7 +29671,7 @@ export interface GoogleAdsSearchads360V23Services__ListBenchmarksLocationsRespon
 }
 
 export const GoogleAdsSearchads360V23Services__ListBenchmarksLocationsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__ListBenchmarksLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     benchmarksLocations: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__BenchmarksLocation),
     ),
@@ -29690,7 +29690,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAdGroupCriterionLabelsR
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAdGroupCriterionLabelsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupCriterionLabelsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__AdGroupCriterionLabelOperation,
@@ -29719,7 +29719,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomizerAttributesReq
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomizerAttributesRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomizerAttributesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailure: Schema.optional(Schema.Boolean),
     validateOnly: Schema.optional(Schema.Boolean),
     operations: Schema.optional(
@@ -29743,7 +29743,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCampaignLabelsRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCampaignLabelsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCampaignLabelsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__CampaignLabelOperation),
     ),
@@ -29759,7 +29759,7 @@ export interface GoogleAdsSearchads360V23Services__ScheduleExperimentMetadata {
 }
 
 export const GoogleAdsSearchads360V23Services__ScheduleExperimentMetadata: Schema.Schema<GoogleAdsSearchads360V23Services__ScheduleExperimentMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     experiment: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__ScheduleExperimentMetadata",
@@ -29773,7 +29773,7 @@ export interface GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignsRes
 }
 
 export const GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(
@@ -29800,7 +29800,7 @@ export interface GoogleAdsSearchads360V23Errors__QuotaErrorDetails {
 }
 
 export const GoogleAdsSearchads360V23Errors__QuotaErrorDetails: Schema.Schema<GoogleAdsSearchads360V23Errors__QuotaErrorDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rateScope: Schema.optional(Schema.String),
     retryDelay: Schema.optional(Schema.String),
     rateName: Schema.optional(Schema.String),
@@ -29822,7 +29822,7 @@ export interface GoogleAdsSearchads360V23Services__EffectiveFrequencyBreakdown {
 }
 
 export const GoogleAdsSearchads360V23Services__EffectiveFrequencyBreakdown: Schema.Schema<GoogleAdsSearchads360V23Services__EffectiveFrequencyBreakdown> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     onTargetEffectiveCoviewReach: Schema.optional(Schema.String),
     totalReach: Schema.optional(Schema.String),
     effectiveCoviewReach: Schema.optional(Schema.String),
@@ -29850,7 +29850,7 @@ export interface GoogleAdsSearchads360V23Services__InsightsAudienceDescription {
 }
 
 export const GoogleAdsSearchads360V23Services__InsightsAudienceDescription: Schema.Schema<GoogleAdsSearchads360V23Services__InsightsAudienceDescription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     countryLocations: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__LocationInfo),
     ),
@@ -29904,7 +29904,7 @@ export interface GoogleAdsSearchads360V23Resources__CustomColumn {
 }
 
 export const GoogleAdsSearchads360V23Resources__CustomColumn: Schema.Schema<GoogleAdsSearchads360V23Resources__CustomColumn> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     referencesAttributes: Schema.optional(Schema.Boolean),
@@ -29925,7 +29925,7 @@ export interface GoogleAdsSearchads360V23Services__SuggestSmartCampaignAdRespons
 }
 
 export const GoogleAdsSearchads360V23Services__SuggestSmartCampaignAdResponse: Schema.Schema<GoogleAdsSearchads360V23Services__SuggestSmartCampaignAdResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adInfo: Schema.optional(
       GoogleAdsSearchads360V23Common__SmartCampaignAdInfo,
     ),
@@ -29940,7 +29940,7 @@ export interface GoogleAdsSearchads360V23Services__PromoteExperimentMetadata {
 }
 
 export const GoogleAdsSearchads360V23Services__PromoteExperimentMetadata: Schema.Schema<GoogleAdsSearchads360V23Services__PromoteExperimentMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     experiment: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__PromoteExperimentMetadata",
@@ -29952,7 +29952,7 @@ export interface GoogleAdsSearchads360V23Services__CreateAccountLinkRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__CreateAccountLinkRequest: Schema.Schema<GoogleAdsSearchads360V23Services__CreateAccountLinkRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountLink: Schema.optional(
       GoogleAdsSearchads360V23Resources__AccountLink,
     ),
@@ -29966,7 +29966,7 @@ export interface GoogleAdsSearchads360V23Services__PromoteCampaignDraftRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__PromoteCampaignDraftRequest: Schema.Schema<GoogleAdsSearchads360V23Services__PromoteCampaignDraftRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__PromoteCampaignDraftRequest",
@@ -29982,7 +29982,7 @@ export interface GoogleAdsSearchads360V23Services__AccountBudgetProposalOperatio
 }
 
 export const GoogleAdsSearchads360V23Services__AccountBudgetProposalOperation: Schema.Schema<GoogleAdsSearchads360V23Services__AccountBudgetProposalOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     create: Schema.optional(
       GoogleAdsSearchads360V23Resources__AccountBudgetProposal,
     ),
@@ -30001,7 +30001,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAccountBudgetProposalRe
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAccountBudgetProposalRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAccountBudgetProposalRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operation: Schema.optional(
       GoogleAdsSearchads360V23Services__AccountBudgetProposalOperation,
     ),
@@ -30019,7 +30019,7 @@ export interface GoogleAdsSearchads360V23Services__CustomerManagerLinkOperation 
 }
 
 export const GoogleAdsSearchads360V23Services__CustomerManagerLinkOperation: Schema.Schema<GoogleAdsSearchads360V23Services__CustomerManagerLinkOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     update: Schema.optional(
       GoogleAdsSearchads360V23Resources__CustomerManagerLink,
@@ -30037,7 +30037,7 @@ export interface GoogleAdsSearchads360V23Services__MutateConversionActionsRespon
 }
 
 export const GoogleAdsSearchads360V23Services__MutateConversionActionsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateConversionActionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(
@@ -30055,7 +30055,7 @@ export interface GoogleAdsSearchads360V23Services__BenchmarksSource {
 }
 
 export const GoogleAdsSearchads360V23Services__BenchmarksSource: Schema.Schema<GoogleAdsSearchads360V23Services__BenchmarksSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     industryVerticalId: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__BenchmarksSource",
@@ -30075,7 +30075,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomerRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomerRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operation: Schema.optional(
       GoogleAdsSearchads360V23Services__CustomerOperation,
     ),
@@ -30099,7 +30099,7 @@ export interface GoogleAdsSearchads360V23Services__FrequencyCap {
 }
 
 export const GoogleAdsSearchads360V23Services__FrequencyCap: Schema.Schema<GoogleAdsSearchads360V23Services__FrequencyCap> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     timeUnit: Schema.optional(Schema.String),
     impressions: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Services__FrequencyCap" });
@@ -30112,7 +30112,7 @@ export interface GoogleAdsSearchads360V23Services__TargetFrequencySettings {
 }
 
 export const GoogleAdsSearchads360V23Services__TargetFrequencySettings: Schema.Schema<GoogleAdsSearchads360V23Services__TargetFrequencySettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetFrequency: Schema.optional(Schema.Number),
     timeUnit: Schema.optional(Schema.String),
   }).annotate({
@@ -30125,7 +30125,7 @@ export interface GoogleAdsSearchads360V23Services__YouTubeSelectSettings {
 }
 
 export const GoogleAdsSearchads360V23Services__YouTubeSelectSettings: Schema.Schema<GoogleAdsSearchads360V23Services__YouTubeSelectSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lineupId: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__YouTubeSelectSettings",
@@ -30141,7 +30141,7 @@ export interface GoogleAdsSearchads360V23Services__AdvancedProductTargeting {
 }
 
 export const GoogleAdsSearchads360V23Services__AdvancedProductTargeting: Schema.Schema<GoogleAdsSearchads360V23Services__AdvancedProductTargeting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     surfaceTargetingSettings: Schema.optional(
       GoogleAdsSearchads360V23Services__SurfaceTargeting,
     ),
@@ -30167,7 +30167,7 @@ export interface GoogleAdsSearchads360V23Services__PlannedProduct {
 }
 
 export const GoogleAdsSearchads360V23Services__PlannedProduct: Schema.Schema<GoogleAdsSearchads360V23Services__PlannedProduct> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     plannableProductCode: Schema.optional(Schema.String),
     budgetMicros: Schema.optional(Schema.String),
     advancedProductTargeting: Schema.optional(
@@ -30186,7 +30186,7 @@ export interface GoogleAdsSearchads360V23Services__AudienceTargeting {
 }
 
 export const GoogleAdsSearchads360V23Services__AudienceTargeting: Schema.Schema<GoogleAdsSearchads360V23Services__AudienceTargeting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userInterest: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__UserInterestInfo),
     ),
@@ -30250,7 +30250,7 @@ export interface GoogleAdsSearchads360V23Services__Targeting {
 }
 
 export const GoogleAdsSearchads360V23Services__Targeting: Schema.Schema<GoogleAdsSearchads360V23Services__Targeting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     plannableLocationId: Schema.optional(Schema.String),
     devices: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__DeviceInfo),
@@ -30272,7 +30272,7 @@ export interface GoogleAdsSearchads360V23Services__ForecastMetricOptions {
 }
 
 export const GoogleAdsSearchads360V23Services__ForecastMetricOptions: Schema.Schema<GoogleAdsSearchads360V23Services__ForecastMetricOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     includeCoview: Schema.optional(Schema.Boolean),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__ForecastMetricOptions",
@@ -30284,7 +30284,7 @@ export interface GoogleAdsSearchads360V23Services__EffectiveFrequencyLimit {
 }
 
 export const GoogleAdsSearchads360V23Services__EffectiveFrequencyLimit: Schema.Schema<GoogleAdsSearchads360V23Services__EffectiveFrequencyLimit> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     effectiveFrequencyBreakdownLimit: Schema.optional(Schema.Number),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__EffectiveFrequencyLimit",
@@ -30316,7 +30316,7 @@ export interface GoogleAdsSearchads360V23Services__GenerateReachForecastRequest 
 }
 
 export const GoogleAdsSearchads360V23Services__GenerateReachForecastRequest: Schema.Schema<GoogleAdsSearchads360V23Services__GenerateReachForecastRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cookieFrequencyCapSetting: Schema.optional(
       GoogleAdsSearchads360V23Services__FrequencyCap,
     ),
@@ -30361,7 +30361,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerCustomizersRequ
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomerCustomizersRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomerCustomizersRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__CustomerCustomizerOperation,
@@ -30381,7 +30381,7 @@ export interface GoogleAdsSearchads360V23Services__CreateAccountLinkResponse {
 }
 
 export const GoogleAdsSearchads360V23Services__CreateAccountLinkResponse: Schema.Schema<GoogleAdsSearchads360V23Services__CreateAccountLinkResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__CreateAccountLinkResponse",
@@ -30395,7 +30395,7 @@ export interface GoogleAdsSearchads360V23Common__KeywordPlanAggregateMetrics {
 }
 
 export const GoogleAdsSearchads360V23Common__KeywordPlanAggregateMetrics: Schema.Schema<GoogleAdsSearchads360V23Common__KeywordPlanAggregateMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     aggregateMetricTypes: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__KeywordPlanAggregateMetrics",
@@ -30417,7 +30417,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAssetGroupSignalsReques
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAssetGroupSignalsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAssetGroupSignalsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailure: Schema.optional(Schema.Boolean),
     validateOnly: Schema.optional(Schema.Boolean),
     operations: Schema.optional(
@@ -30439,7 +30439,7 @@ export interface GoogleAdsSearchads360V23Services__CreateOfflineUserDataJobReque
 }
 
 export const GoogleAdsSearchads360V23Services__CreateOfflineUserDataJobRequest: Schema.Schema<GoogleAdsSearchads360V23Services__CreateOfflineUserDataJobRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     job: Schema.optional(GoogleAdsSearchads360V23Resources__OfflineUserDataJob),
     enableMatchRateRangePreview: Schema.optional(Schema.Boolean),
     validateOnly: Schema.optional(Schema.Boolean),
@@ -30454,7 +30454,7 @@ export interface GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_R
 }
 
 export const GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_RaiseTargetCpaParameters: Schema.Schema<GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_RaiseTargetCpaParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetCpaMultiplier: Schema.optional(Schema.Number),
   }).annotate({
     identifier:
@@ -30471,7 +30471,7 @@ export interface GoogleAdsSearchads360V23Services__CyoIncentives {
 }
 
 export const GoogleAdsSearchads360V23Services__CyoIncentives: Schema.Schema<GoogleAdsSearchads360V23Services__CyoIncentives> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lowOffer: Schema.optional(GoogleAdsSearchads360V23Services__Incentive),
     mediumOffer: Schema.optional(GoogleAdsSearchads360V23Services__Incentive),
     highOffer: Schema.optional(GoogleAdsSearchads360V23Services__Incentive),
@@ -30494,7 +30494,7 @@ export interface GoogleAdsSearchads360V23Services__IncentiveOffer {
 }
 
 export const GoogleAdsSearchads360V23Services__IncentiveOffer: Schema.Schema<GoogleAdsSearchads360V23Services__IncentiveOffer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     consolidatedTermsAndConditionsUrl: Schema.optional(Schema.String),
     cyoIncentives: Schema.optional(
@@ -30510,7 +30510,7 @@ export interface GoogleAdsSearchads360V23Services__GenerateInsightsFinderReportR
 }
 
 export const GoogleAdsSearchads360V23Services__GenerateInsightsFinderReportResponse: Schema.Schema<GoogleAdsSearchads360V23Services__GenerateInsightsFinderReportResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     savedReportUrl: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -30523,7 +30523,7 @@ export interface GoogleAdsSearchads360V23Services__ListCustomColumnsResponse {
 }
 
 export const GoogleAdsSearchads360V23Services__ListCustomColumnsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__ListCustomColumnsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customColumns: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Resources__CustomColumn),
     ),
@@ -30537,7 +30537,7 @@ export interface GoogleAdsSearchads360V23Services__AppendLeadConversationRequest
 }
 
 export const GoogleAdsSearchads360V23Services__AppendLeadConversationRequest: Schema.Schema<GoogleAdsSearchads360V23Services__AppendLeadConversationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     conversations: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__Conversation),
     ),
@@ -30552,7 +30552,7 @@ export interface GoogleAdsSearchads360V23Common__AudienceInsightsAttributeMetada
 }
 
 export const GoogleAdsSearchads360V23Common__AudienceInsightsAttributeMetadataGroup: Schema.Schema<GoogleAdsSearchads360V23Common__AudienceInsightsAttributeMetadataGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     attributes: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Common__AudienceInsightsAttributeMetadata,
@@ -30583,7 +30583,7 @@ export interface GoogleAdsSearchads360V23Services__TargetingSuggestionMetrics {
 }
 
 export const GoogleAdsSearchads360V23Services__TargetingSuggestionMetrics: Schema.Schema<GoogleAdsSearchads360V23Services__TargetingSuggestionMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locations: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Common__AudienceInsightsAttributeMetadata,
@@ -30628,7 +30628,7 @@ export interface GoogleAdsSearchads360V23Services__KeywordForecastMetrics {
 }
 
 export const GoogleAdsSearchads360V23Services__KeywordForecastMetrics: Schema.Schema<GoogleAdsSearchads360V23Services__KeywordForecastMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     averageCpcMicros: Schema.optional(Schema.String),
     clickThroughRate: Schema.optional(Schema.Number),
     clicks: Schema.optional(Schema.Number),
@@ -30647,7 +30647,7 @@ export interface GoogleAdsSearchads360V23Services__GenerateKeywordForecastMetric
 }
 
 export const GoogleAdsSearchads360V23Services__GenerateKeywordForecastMetricsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__GenerateKeywordForecastMetricsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     campaignForecastMetrics: Schema.optional(
       GoogleAdsSearchads360V23Services__KeywordForecastMetrics,
     ),
@@ -30664,7 +30664,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCampaignBudgetsResponse
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCampaignBudgetsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCampaignBudgetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(
@@ -30682,7 +30682,7 @@ export interface GoogleAdsSearchads360V23Services__CreateOfflineUserDataJobRespo
 }
 
 export const GoogleAdsSearchads360V23Services__CreateOfflineUserDataJobResponse: Schema.Schema<GoogleAdsSearchads360V23Services__CreateOfflineUserDataJobResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -30699,7 +30699,7 @@ export interface GoogleAdsSearchads360V23Services__CustomerUserAccessOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__CustomerUserAccessOperation: Schema.Schema<GoogleAdsSearchads360V23Services__CustomerUserAccessOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     remove: Schema.optional(Schema.String),
     updateMask: Schema.optional(Schema.String),
     update: Schema.optional(
@@ -30724,7 +30724,7 @@ export interface GoogleAdsSearchads360V0Errors__QuotaErrorDetails {
 }
 
 export const GoogleAdsSearchads360V0Errors__QuotaErrorDetails: Schema.Schema<GoogleAdsSearchads360V0Errors__QuotaErrorDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rateName: Schema.optional(Schema.String),
     retryDelay: Schema.optional(Schema.String),
     rateScope: Schema.optional(Schema.String),
@@ -30740,7 +30740,7 @@ export interface GoogleAdsSearchads360V0Errors__ErrorDetails {
 }
 
 export const GoogleAdsSearchads360V0Errors__ErrorDetails: Schema.Schema<GoogleAdsSearchads360V0Errors__ErrorDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     unpublishedErrorCode: Schema.optional(Schema.String),
     quotaErrorDetails: Schema.optional(
       GoogleAdsSearchads360V0Errors__QuotaErrorDetails,
@@ -30753,7 +30753,7 @@ export interface GoogleAdsSearchads360V0Errors__ErrorLocation {
 }
 
 export const GoogleAdsSearchads360V0Errors__ErrorLocation: Schema.Schema<GoogleAdsSearchads360V0Errors__ErrorLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fieldPathElements: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V0Errors_ErrorLocation_FieldPathElement,
@@ -30985,7 +30985,7 @@ export interface GoogleAdsSearchads360V0Errors__ErrorCode {
 }
 
 export const GoogleAdsSearchads360V0Errors__ErrorCode: Schema.Schema<GoogleAdsSearchads360V0Errors__ErrorCode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     headerError: Schema.optional(Schema.String),
     distinctError: Schema.optional(Schema.String),
     internalError: Schema.optional(Schema.String),
@@ -31016,7 +31016,7 @@ export interface GoogleAdsSearchads360V0Errors__SearchAds360Error {
 }
 
 export const GoogleAdsSearchads360V0Errors__SearchAds360Error: Schema.Schema<GoogleAdsSearchads360V0Errors__SearchAds360Error> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     details: Schema.optional(GoogleAdsSearchads360V0Errors__ErrorDetails),
     message: Schema.optional(Schema.String),
     location: Schema.optional(GoogleAdsSearchads360V0Errors__ErrorLocation),
@@ -31034,7 +31034,7 @@ export interface GoogleAdsSearchads360V0Errors__SearchAds360Failure {
 }
 
 export const GoogleAdsSearchads360V0Errors__SearchAds360Failure: Schema.Schema<GoogleAdsSearchads360V0Errors__SearchAds360Failure> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String),
     errors: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V0Errors__SearchAds360Error),
@@ -31053,7 +31053,7 @@ export interface GoogleAdsSearchads360V23Services__BrandCampaignAssets {
 }
 
 export const GoogleAdsSearchads360V23Services__BrandCampaignAssets: Schema.Schema<GoogleAdsSearchads360V23Services__BrandCampaignAssets> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     businessNameAsset: Schema.optional(Schema.String),
     logoAsset: Schema.optional(Schema.Array(Schema.String)),
     landscapeLogoAsset: Schema.optional(Schema.Array(Schema.String)),
@@ -31069,7 +31069,7 @@ export interface GoogleAdsSearchads360V23Services__MutateSearchAds360Response {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateSearchAds360Response: Schema.Schema<GoogleAdsSearchads360V23Services__MutateSearchAds360Response> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     mutateOperationResponses: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__MutateOperationResponse),
@@ -31086,7 +31086,7 @@ export interface GoogleAdsSearchads360V23Services__GenerateAudienceDefinitionRes
 }
 
 export const GoogleAdsSearchads360V23Services__GenerateAudienceDefinitionResponse: Schema.Schema<GoogleAdsSearchads360V23Services__GenerateAudienceDefinitionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     highRelevanceAttributes: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Common__AudienceInsightsAttributeMetadata,
@@ -31110,7 +31110,7 @@ export interface GoogleAdsSearchads360V23Services__MutateBiddingStrategiesRespon
 }
 
 export const GoogleAdsSearchads360V23Services__MutateBiddingStrategiesResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateBiddingStrategiesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(
@@ -31130,7 +31130,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAdGroupCriterionLabelsR
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAdGroupCriterionLabelsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupCriterionLabelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(
@@ -31148,7 +31148,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCampaignGoalConfigResul
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCampaignGoalConfigResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCampaignGoalConfigResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -31165,7 +31165,7 @@ export interface GoogleAdsSearchads360V23Services__StartIdentityVerificationRequ
 }
 
 export const GoogleAdsSearchads360V23Services__StartIdentityVerificationRequest: Schema.Schema<GoogleAdsSearchads360V23Services__StartIdentityVerificationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     verificationProgram: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -31180,7 +31180,7 @@ export interface GoogleAdsSearchads360V23Services_SuggestKeywordThemesResponse_K
 }
 
 export const GoogleAdsSearchads360V23Services_SuggestKeywordThemesResponse_KeywordTheme: Schema.Schema<GoogleAdsSearchads360V23Services_SuggestKeywordThemesResponse_KeywordTheme> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keywordThemeConstant: Schema.optional(
       GoogleAdsSearchads360V23Resources__KeywordThemeConstant,
     ),
@@ -31198,7 +31198,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerAssetsResponse 
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomerAssetsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomerAssetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__MutateCustomerAssetResult),
@@ -31236,7 +31236,7 @@ export interface GoogleAdsSearchads360V23Services__Forecast {
 }
 
 export const GoogleAdsSearchads360V23Services__Forecast: Schema.Schema<GoogleAdsSearchads360V23Services__Forecast> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     onTargetImpressions: Schema.optional(Schema.String),
     onTargetCoviewImpressions: Schema.optional(Schema.String),
     conversions: Schema.optional(Schema.Number),
@@ -31265,7 +31265,7 @@ export interface GoogleAdsSearchads360V23Services__PlannedProductReachForecast {
 }
 
 export const GoogleAdsSearchads360V23Services__PlannedProductReachForecast: Schema.Schema<GoogleAdsSearchads360V23Services__PlannedProductReachForecast> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     costMicros: Schema.optional(Schema.String),
     plannedProductForecast: Schema.optional(
       GoogleAdsSearchads360V23Services__PlannedProductForecast,
@@ -31285,7 +31285,7 @@ export interface GoogleAdsSearchads360V23Services__ReachForecast {
 }
 
 export const GoogleAdsSearchads360V23Services__ReachForecast: Schema.Schema<GoogleAdsSearchads360V23Services__ReachForecast> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     forecast: Schema.optional(GoogleAdsSearchads360V23Services__Forecast),
     plannedProductReachForecasts: Schema.optional(
       Schema.Array(
@@ -31305,7 +31305,7 @@ export interface GoogleAdsSearchads360V23Services__BatchJobOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__BatchJobOperation: Schema.Schema<GoogleAdsSearchads360V23Services__BatchJobOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     create: Schema.optional(GoogleAdsSearchads360V23Resources__BatchJob),
     remove: Schema.optional(Schema.String),
   }).annotate({
@@ -31320,7 +31320,7 @@ export interface GoogleAdsSearchads360V23Services__ApplyRecommendationResponse {
 }
 
 export const GoogleAdsSearchads360V23Services__ApplyRecommendationResponse: Schema.Schema<GoogleAdsSearchads360V23Services__ApplyRecommendationResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__ApplyRecommendationResult),
     ),
@@ -31339,7 +31339,7 @@ export interface GoogleAdsSearchads360V23Services__MutateExperimentsRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateExperimentsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateExperimentsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__ExperimentOperation),
     ),
@@ -31363,7 +31363,7 @@ export interface GoogleAdsSearchads360V23Services__PlannableLocation {
 }
 
 export const GoogleAdsSearchads360V23Services__PlannableLocation: Schema.Schema<GoogleAdsSearchads360V23Services__PlannableLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     countryCode: Schema.optional(Schema.String),
     parentCountryId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -31379,7 +31379,7 @@ export interface GoogleAdsSearchads360V23Services__ListPlannableLocationsRespons
 }
 
 export const GoogleAdsSearchads360V23Services__ListPlannableLocationsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__ListPlannableLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     plannableLocations: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__PlannableLocation),
     ),
@@ -31394,7 +31394,7 @@ export interface GoogleAdsSearchads360V23Errors__PolicyFindingDetails {
 }
 
 export const GoogleAdsSearchads360V23Errors__PolicyFindingDetails: Schema.Schema<GoogleAdsSearchads360V23Errors__PolicyFindingDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policyTopicEntries: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__PolicyTopicEntry),
     ),
@@ -31414,7 +31414,7 @@ export interface GoogleAdsSearchads360V23Errors__PolicyViolationDetails {
 }
 
 export const GoogleAdsSearchads360V23Errors__PolicyViolationDetails: Schema.Schema<GoogleAdsSearchads360V23Errors__PolicyViolationDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     externalPolicyDescription: Schema.optional(Schema.String),
     key: Schema.optional(GoogleAdsSearchads360V23Common__PolicyViolationKey),
     externalPolicyName: Schema.optional(Schema.String),
@@ -31587,7 +31587,7 @@ export interface GoogleAdsSearchads360V23Errors__ResourceCountDetails {
 }
 
 export const GoogleAdsSearchads360V23Errors__ResourceCountDetails: Schema.Schema<GoogleAdsSearchads360V23Errors__ResourceCountDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     limit: Schema.optional(Schema.Number),
     limitType: Schema.optional(Schema.String),
     existingCount: Schema.optional(Schema.Number),
@@ -31613,7 +31613,7 @@ export interface GoogleAdsSearchads360V23Errors__BudgetPerDayMinimumErrorDetails
 }
 
 export const GoogleAdsSearchads360V23Errors__BudgetPerDayMinimumErrorDetails: Schema.Schema<GoogleAdsSearchads360V23Errors__BudgetPerDayMinimumErrorDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     failedBudgetTotalAmountMicros: Schema.optional(Schema.String),
     budgetPerDayMinimumMicros: Schema.optional(Schema.String),
     minimumBudgetAmountMicros: Schema.optional(Schema.String),
@@ -31641,7 +31641,7 @@ export interface GoogleAdsSearchads360V23Errors__ErrorDetails {
 }
 
 export const GoogleAdsSearchads360V23Errors__ErrorDetails: Schema.Schema<GoogleAdsSearchads360V23Errors__ErrorDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policyFindingDetails: Schema.optional(
       GoogleAdsSearchads360V23Errors__PolicyFindingDetails,
     ),
@@ -34602,7 +34602,7 @@ export interface GoogleAdsSearchads360V23Errors__ErrorCode {
 }
 
 export const GoogleAdsSearchads360V23Errors__ErrorCode: Schema.Schema<GoogleAdsSearchads360V23Errors__ErrorCode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     campaignConversionGoalError: Schema.optional(Schema.String),
     listOperationError: Schema.optional(Schema.String),
     policyValidationParameterError: Schema.optional(Schema.String),
@@ -34782,7 +34782,7 @@ export interface GoogleAdsSearchads360V23Errors_ErrorLocation_FieldPathElement {
 }
 
 export const GoogleAdsSearchads360V23Errors_ErrorLocation_FieldPathElement: Schema.Schema<GoogleAdsSearchads360V23Errors_ErrorLocation_FieldPathElement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     index: Schema.optional(Schema.Number),
     fieldName: Schema.optional(Schema.String),
   }).annotate({
@@ -34795,7 +34795,7 @@ export interface GoogleAdsSearchads360V23Errors__ErrorLocation {
 }
 
 export const GoogleAdsSearchads360V23Errors__ErrorLocation: Schema.Schema<GoogleAdsSearchads360V23Errors__ErrorLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fieldPathElements: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Errors_ErrorLocation_FieldPathElement,
@@ -34817,7 +34817,7 @@ export interface GoogleAdsSearchads360V23Errors__SearchAds360Error {
 }
 
 export const GoogleAdsSearchads360V23Errors__SearchAds360Error: Schema.Schema<GoogleAdsSearchads360V23Errors__SearchAds360Error> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     details: Schema.optional(GoogleAdsSearchads360V23Errors__ErrorDetails),
     errorCode: Schema.optional(GoogleAdsSearchads360V23Errors__ErrorCode),
     trigger: Schema.optional(GoogleAdsSearchads360V23Common__Value),
@@ -34833,7 +34833,7 @@ export interface GoogleAdsSearchads360V23Services__FetchIncentiveResponse {
 }
 
 export const GoogleAdsSearchads360V23Services__FetchIncentiveResponse: Schema.Schema<GoogleAdsSearchads360V23Services__FetchIncentiveResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     incentiveOffer: Schema.optional(
       GoogleAdsSearchads360V23Services__IncentiveOffer,
     ),
@@ -34847,7 +34847,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomInterestResult {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomInterestResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomInterestResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__MutateCustomInterestResult",
@@ -34859,7 +34859,7 @@ export interface GoogleAdsSearchads360V23Services__CreateProductLinkRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__CreateProductLinkRequest: Schema.Schema<GoogleAdsSearchads360V23Services__CreateProductLinkRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     productLink: Schema.optional(
       GoogleAdsSearchads360V23Resources__ProductLink,
     ),
@@ -34890,7 +34890,7 @@ export interface GoogleAdsSearchads360V23Common__YearMonth {
 }
 
 export const GoogleAdsSearchads360V23Common__YearMonth: Schema.Schema<GoogleAdsSearchads360V23Common__YearMonth> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     year: Schema.optional(Schema.String),
     month: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__YearMonth" });
@@ -34903,7 +34903,7 @@ export interface GoogleAdsSearchads360V23Common__YearMonthRange {
 }
 
 export const GoogleAdsSearchads360V23Common__YearMonthRange: Schema.Schema<GoogleAdsSearchads360V23Common__YearMonthRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     start: Schema.optional(GoogleAdsSearchads360V23Common__YearMonth),
     end: Schema.optional(GoogleAdsSearchads360V23Common__YearMonth),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__YearMonthRange" });
@@ -34916,7 +34916,7 @@ export interface GoogleAdsSearchads360V23Services__UploadUserDataResponse {
 }
 
 export const GoogleAdsSearchads360V23Services__UploadUserDataResponse: Schema.Schema<GoogleAdsSearchads360V23Services__UploadUserDataResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uploadDateTime: Schema.optional(Schema.String),
     receivedOperationsCount: Schema.optional(Schema.Number),
   }).annotate({
@@ -34929,7 +34929,7 @@ export interface GoogleAdsSearchads360V23Services__ListPlannableLocationsRequest
 }
 
 export const GoogleAdsSearchads360V23Services__ListPlannableLocationsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__ListPlannableLocationsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reachApplicationInfo: Schema.optional(
       GoogleAdsSearchads360V23Common__AdditionalApplicationInfo,
     ),
@@ -34944,7 +34944,7 @@ export interface GoogleAdsSearchads360V23Services__RemoveDataLinkResponse {
 }
 
 export const GoogleAdsSearchads360V23Services__RemoveDataLinkResponse: Schema.Schema<GoogleAdsSearchads360V23Services__RemoveDataLinkResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__RemoveDataLinkResponse",
@@ -34958,7 +34958,7 @@ export interface GoogleAdsSearchads360V23Services__AddOfflineUserDataJobOperatio
 }
 
 export const GoogleAdsSearchads360V23Services__AddOfflineUserDataJobOperationsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__AddOfflineUserDataJobOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     warning: Schema.optional(GoogleRpc__Status),
   }).annotate({
@@ -34974,7 +34974,7 @@ export interface GoogleAdsSearchads360V23Common__HistoricalMetricsOptions {
 }
 
 export const GoogleAdsSearchads360V23Common__HistoricalMetricsOptions: Schema.Schema<GoogleAdsSearchads360V23Common__HistoricalMetricsOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     includeAverageCpc: Schema.optional(Schema.Boolean),
     yearMonthRange: Schema.optional(
       GoogleAdsSearchads360V23Common__YearMonthRange,
@@ -34989,7 +34989,7 @@ export interface GoogleAdsSearchads360V23Services__UpdateDataLinkResponse {
 }
 
 export const GoogleAdsSearchads360V23Services__UpdateDataLinkResponse: Schema.Schema<GoogleAdsSearchads360V23Services__UpdateDataLinkResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__UpdateDataLinkResponse",
@@ -35029,7 +35029,7 @@ export interface GoogleAdsSearchads360V23Resources_Invoice_AccountBudgetSummary 
 }
 
 export const GoogleAdsSearchads360V23Resources_Invoice_AccountBudgetSummary: Schema.Schema<GoogleAdsSearchads360V23Resources_Invoice_AccountBudgetSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountBudgetName: Schema.optional(Schema.String),
     overdeliveryAmountMicros: Schema.optional(Schema.String),
     totalAmountMicros: Schema.optional(Schema.String),
@@ -35072,7 +35072,7 @@ export interface GoogleAdsSearchads360V23Common__ConceptGroup {
 }
 
 export const GoogleAdsSearchads360V23Common__ConceptGroup: Schema.Schema<GoogleAdsSearchads360V23Common__ConceptGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__ConceptGroup" });
@@ -35085,7 +35085,7 @@ export interface GoogleAdsSearchads360V23Common__KeywordConcept {
 }
 
 export const GoogleAdsSearchads360V23Common__KeywordConcept: Schema.Schema<GoogleAdsSearchads360V23Common__KeywordConcept> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     conceptGroup: Schema.optional(GoogleAdsSearchads360V23Common__ConceptGroup),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Common__KeywordConcept" });
@@ -35096,7 +35096,7 @@ export interface GoogleAdsSearchads360V23Common__KeywordAnnotations {
 }
 
 export const GoogleAdsSearchads360V23Common__KeywordAnnotations: Schema.Schema<GoogleAdsSearchads360V23Common__KeywordAnnotations> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     concepts: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__KeywordConcept),
     ),
@@ -35116,7 +35116,7 @@ export interface GoogleAdsSearchads360V23Services__GenerateKeywordIdeaResult {
 }
 
 export const GoogleAdsSearchads360V23Services__GenerateKeywordIdeaResult: Schema.Schema<GoogleAdsSearchads360V23Services__GenerateKeywordIdeaResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     closeVariants: Schema.optional(Schema.Array(Schema.String)),
     keywordIdeaMetrics: Schema.optional(
@@ -35135,7 +35135,7 @@ export interface GoogleAdsSearchads360V23Services__MutateGoalResult {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateGoalResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateGoalResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__MutateGoalResult",
@@ -35149,7 +35149,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCampaignGroupsResponse 
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCampaignGroupsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCampaignGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__MutateCampaignGroupResult),
     ),
@@ -35165,7 +35165,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCampaignConversionGoals
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCampaignConversionGoalsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCampaignConversionGoalsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__MutateCampaignConversionGoalResult,
@@ -35184,7 +35184,7 @@ export interface GoogleAdsSearchads360V23Services__ListPlannableProductsRequest 
 }
 
 export const GoogleAdsSearchads360V23Services__ListPlannableProductsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__ListPlannableProductsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     plannableLocationId: Schema.optional(Schema.String),
     reachApplicationInfo: Schema.optional(
       GoogleAdsSearchads360V23Common__AdditionalApplicationInfo,
@@ -35200,7 +35200,7 @@ export interface GoogleAdsSearchads360V23Services__GenerateRecommendationsRespon
 }
 
 export const GoogleAdsSearchads360V23Services__GenerateRecommendationsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__GenerateRecommendationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     recommendations: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Resources__Recommendation),
     ),
@@ -35225,7 +35225,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCampaignCustomizersRequ
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCampaignCustomizersRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCampaignCustomizersRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__CampaignCustomizerOperation,
@@ -35245,7 +35245,7 @@ export interface GoogleAdsSearchads360V23Services_DismissRecommendationResponse_
 }
 
 export const GoogleAdsSearchads360V23Services_DismissRecommendationResponse_DismissRecommendationResult: Schema.Schema<GoogleAdsSearchads360V23Services_DismissRecommendationResponse_DismissRecommendationResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -35268,7 +35268,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCampaignDraftsRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCampaignDraftsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCampaignDraftsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailure: Schema.optional(Schema.Boolean),
     validateOnly: Schema.optional(Schema.Boolean),
     operations: Schema.optional(
@@ -35287,7 +35287,7 @@ export interface GoogleAdsSearchads360V23Services__ConversationOrError {
 }
 
 export const GoogleAdsSearchads360V23Services__ConversationOrError: Schema.Schema<GoogleAdsSearchads360V23Services__ConversationOrError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     localServicesLeadConversation: Schema.optional(Schema.String),
     partialFailureError: Schema.optional(GoogleRpc__Status),
   }).annotate({
@@ -35300,7 +35300,7 @@ export interface GoogleAdsSearchads360V23Services__AppendLeadConversationRespons
 }
 
 export const GoogleAdsSearchads360V23Services__AppendLeadConversationResponse: Schema.Schema<GoogleAdsSearchads360V23Services__AppendLeadConversationResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     responses: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__ConversationOrError),
     ),
@@ -35317,7 +35317,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAssetGroupsResponse {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAssetGroupsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAssetGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__MutateAssetGroupResult),
     ),
@@ -35334,7 +35334,7 @@ export interface GoogleAdsSearchads360V23Services__GenerateAdGroupThemesRequest 
 }
 
 export const GoogleAdsSearchads360V23Services__GenerateAdGroupThemesRequest: Schema.Schema<GoogleAdsSearchads360V23Services__GenerateAdGroupThemesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adGroups: Schema.optional(Schema.Array(Schema.String)),
     keywords: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -35352,7 +35352,7 @@ export interface GoogleAdsSearchads360V23Services__OfflineUserDataJobOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__OfflineUserDataJobOperation: Schema.Schema<GoogleAdsSearchads360V23Services__OfflineUserDataJobOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     remove: Schema.optional(GoogleAdsSearchads360V23Common__UserData),
     create: Schema.optional(GoogleAdsSearchads360V23Common__UserData),
     removeAll: Schema.optional(Schema.Boolean),
@@ -35372,7 +35372,7 @@ export interface GoogleAdsSearchads360V23Services__AddOfflineUserDataJobOperatio
 }
 
 export const GoogleAdsSearchads360V23Services__AddOfflineUserDataJobOperationsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__AddOfflineUserDataJobOperationsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean),
     enablePartialFailure: Schema.optional(Schema.Boolean),
     enableWarnings: Schema.optional(Schema.Boolean),
@@ -35392,7 +35392,7 @@ export interface GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_R
 }
 
 export const GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_ResponsiveSearchAdParameters: Schema.Schema<GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_ResponsiveSearchAdParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ad: Schema.optional(GoogleAdsSearchads360V23Resources__Ad),
   }).annotate({
     identifier:
@@ -35415,7 +35415,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAdGroupBidModifiersRequ
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAdGroupBidModifiersRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupBidModifiersRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__AdGroupBidModifierOperation,
@@ -35445,7 +35445,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAdGroupCriterionCustomi
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAdGroupCriterionCustomizersRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupCriterionCustomizersRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailure: Schema.optional(Schema.Boolean),
     validateOnly: Schema.optional(Schema.Boolean),
     operations: Schema.optional(
@@ -35469,7 +35469,7 @@ export interface GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_A
 }
 
 export const GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_AdAssetApplyParameters: Schema.Schema<GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_AdAssetApplyParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     newAssets: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Resources__Asset),
     ),
@@ -35486,7 +35486,7 @@ export interface GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_C
 }
 
 export const GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_CallAssetParameters: Schema.Schema<GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_CallAssetParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adAssetApplyParameters: Schema.optional(
       GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_AdAssetApplyParameters,
     ),
@@ -35501,7 +35501,7 @@ export interface GoogleAdsSearchads360V23Services__UrlSeed {
 }
 
 export const GoogleAdsSearchads360V23Services__UrlSeed: Schema.Schema<GoogleAdsSearchads360V23Services__UrlSeed> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Services__UrlSeed" });
 
@@ -35522,7 +35522,7 @@ export interface GoogleAdsSearchads360V23Services__UpdateProductLinkInvitationRe
 }
 
 export const GoogleAdsSearchads360V23Services__UpdateProductLinkInvitationRequest: Schema.Schema<GoogleAdsSearchads360V23Services__UpdateProductLinkInvitationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     productLinkInvitationStatus: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
   }).annotate({
@@ -35538,7 +35538,7 @@ export interface GoogleAdsSearchads360V23Services__ListCampaignDraftAsyncErrorsR
 }
 
 export const GoogleAdsSearchads360V23Services__ListCampaignDraftAsyncErrorsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__ListCampaignDraftAsyncErrorsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     errors: Schema.optional(Schema.Array(GoogleRpc__Status)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({
@@ -35552,7 +35552,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomInterestsResponse
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomInterestsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomInterestsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__MutateCustomInterestResult,
@@ -35579,7 +35579,7 @@ export interface GoogleAdsSearchads360V23Services__MutateConversionCustomVariabl
 }
 
 export const GoogleAdsSearchads360V23Services__MutateConversionCustomVariablesRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateConversionCustomVariablesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailure: Schema.optional(Schema.Boolean),
     validateOnly: Schema.optional(Schema.Boolean),
     operations: Schema.optional(
@@ -35601,7 +35601,7 @@ export interface GoogleAdsSearchads360V23Services__SuggestTravelAssetsRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__SuggestTravelAssetsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__SuggestTravelAssetsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languageOption: Schema.optional(Schema.String),
     placeIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -35616,7 +35616,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAdGroupAssetSetResult {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAdGroupAssetSetResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupAssetSetResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     adGroupAssetSet: Schema.optional(
       GoogleAdsSearchads360V23Resources__AdGroupAssetSet,
@@ -35633,7 +35633,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAdGroupAssetSetsRespons
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAdGroupAssetSetsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupAssetSetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__MutateAdGroupAssetSetResult,
@@ -35651,7 +35651,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomConversionGoalsRe
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomConversionGoalsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomConversionGoalsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__MutateCustomConversionGoalResult,
@@ -35668,7 +35668,7 @@ export interface GoogleAdsSearchads360V23Services__ScheduleExperimentRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__ScheduleExperimentRequest: Schema.Schema<GoogleAdsSearchads360V23Services__ScheduleExperimentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__ScheduleExperimentRequest",
@@ -35680,7 +35680,7 @@ export interface GoogleAdsSearchads360V23Services__ReachCurve {
 }
 
 export const GoogleAdsSearchads360V23Services__ReachCurve: Schema.Schema<GoogleAdsSearchads360V23Services__ReachCurve> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reachForecasts: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__ReachForecast),
     ),
@@ -35744,7 +35744,7 @@ export interface GoogleAdsSearchads360V23Resources__Invoice {
 }
 
 export const GoogleAdsSearchads360V23Resources__Invoice: Schema.Schema<GoogleAdsSearchads360V23Resources__Invoice> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     paymentsProfileId: Schema.optional(Schema.String),
     issueDate: Schema.optional(Schema.String),
     regulatoryCostsTaxAmountMicros: Schema.optional(Schema.String),
@@ -35788,7 +35788,7 @@ export interface GoogleAdsSearchads360V23Services__ListInvoicesResponse {
 }
 
 export const GoogleAdsSearchads360V23Services__ListInvoicesResponse: Schema.Schema<GoogleAdsSearchads360V23Services__ListInvoicesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     invoices: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Resources__Invoice),
     ),
@@ -35811,7 +35811,7 @@ export interface GoogleAdsSearchads360V23Services__MutateSearchAds360Request {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateSearchAds360Request: Schema.Schema<GoogleAdsSearchads360V23Services__MutateSearchAds360Request> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     responseContentType: Schema.optional(Schema.String),
     mutateOperations: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__MutateOperation),
@@ -35832,7 +35832,7 @@ export interface GoogleAdsSearchads360V23Services__ListBenchmarksSourcesRequest 
 }
 
 export const GoogleAdsSearchads360V23Services__ListBenchmarksSourcesRequest: Schema.Schema<GoogleAdsSearchads360V23Services__ListBenchmarksSourcesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     applicationInfo: Schema.optional(
       GoogleAdsSearchads360V23Common__AdditionalApplicationInfo,
     ),
@@ -35848,7 +35848,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerUserAccessInvit
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomerUserAccessInvitationRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomerUserAccessInvitationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operation: Schema.optional(
       GoogleAdsSearchads360V23Services__CustomerUserAccessInvitationOperation,
     ),
@@ -35865,7 +35865,7 @@ export interface GoogleAdsSearchads360V23Services__KeywordAndUrlSeed {
 }
 
 export const GoogleAdsSearchads360V23Services__KeywordAndUrlSeed: Schema.Schema<GoogleAdsSearchads360V23Services__KeywordAndUrlSeed> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keywords: Schema.optional(Schema.Array(Schema.String)),
     url: Schema.optional(Schema.String),
   }).annotate({
@@ -35878,7 +35878,7 @@ export interface GoogleAdsSearchads360V23Services__KeywordSeed {
 }
 
 export const GoogleAdsSearchads360V23Services__KeywordSeed: Schema.Schema<GoogleAdsSearchads360V23Services__KeywordSeed> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keywords: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleAdsSearchads360V23Services__KeywordSeed" });
 
@@ -35919,7 +35919,7 @@ export interface GoogleAdsSearchads360V23Services__GenerateKeywordIdeasRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__GenerateKeywordIdeasRequest: Schema.Schema<GoogleAdsSearchads360V23Services__GenerateKeywordIdeasRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     includeAdultKeywords: Schema.optional(Schema.Boolean),
     aggregateMetrics: Schema.optional(
       GoogleAdsSearchads360V23Common__KeywordPlanAggregateMetrics,
@@ -35949,7 +35949,7 @@ export interface GoogleAdsSearchads360V23Services__GenerateSuggestedTargetingIns
 }
 
 export const GoogleAdsSearchads360V23Services__GenerateSuggestedTargetingInsightsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__GenerateSuggestedTargetingInsightsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     suggestions: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__TargetingSuggestionMetrics,
@@ -35966,7 +35966,7 @@ export interface GoogleAdsSearchads360V23Services__RemoveProductLinkResponse {
 }
 
 export const GoogleAdsSearchads360V23Services__RemoveProductLinkResponse: Schema.Schema<GoogleAdsSearchads360V23Services__RemoveProductLinkResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__RemoveProductLinkResponse",
@@ -35980,7 +35980,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerConversionGoals
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomerConversionGoalsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomerConversionGoalsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean),
     operations: Schema.optional(
       Schema.Array(
@@ -35998,7 +35998,7 @@ export interface GoogleAdsSearchads360V23Services__CreateProductLinkResponse {
 }
 
 export const GoogleAdsSearchads360V23Services__CreateProductLinkResponse: Schema.Schema<GoogleAdsSearchads360V23Services__CreateProductLinkResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__CreateProductLinkResponse",
@@ -36010,7 +36010,7 @@ export interface GoogleAdsSearchads360V23Services__GenerateConversionRatesRespon
 }
 
 export const GoogleAdsSearchads360V23Services__GenerateConversionRatesResponse: Schema.Schema<GoogleAdsSearchads360V23Services__GenerateConversionRatesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     conversionRateSuggestions: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__ConversionRateSuggestion),
     ),
@@ -36025,7 +36025,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomAudienceResult {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomAudienceResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomAudienceResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__MutateCustomAudienceResult",
@@ -36039,7 +36039,7 @@ export interface GoogleAdsSearchads360V23Services__MutateSharedSetsResponse {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateSharedSetsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateSharedSetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__MutateSharedSetResult),
@@ -36056,7 +36056,7 @@ export interface GoogleAdsSearchads360V23Services__SuggestSmartCampaignBudgetOpt
 }
 
 export const GoogleAdsSearchads360V23Services__SuggestSmartCampaignBudgetOptionsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__SuggestSmartCampaignBudgetOptionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     campaign: Schema.optional(Schema.String),
     suggestionInfo: Schema.optional(
       GoogleAdsSearchads360V23Services__SmartCampaignSuggestionInfo,
@@ -36076,7 +36076,7 @@ export interface GoogleAdsSearchads360V23Services__MutateRemarketingActionsReque
 }
 
 export const GoogleAdsSearchads360V23Services__MutateRemarketingActionsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateRemarketingActionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__RemarketingActionOperation,
@@ -36105,7 +36105,7 @@ export interface GoogleAdsSearchads360V23Services__MutateBiddingDataExclusionsRe
 }
 
 export const GoogleAdsSearchads360V23Services__MutateBiddingDataExclusionsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateBiddingDataExclusionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__BiddingDataExclusionOperation,
@@ -36129,7 +36129,7 @@ export interface GoogleAdsSearchads360V23Services__GenerateTargetingSuggestionMe
 }
 
 export const GoogleAdsSearchads360V23Services__GenerateTargetingSuggestionMetricsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__GenerateTargetingSuggestionMetricsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerInsightsGroup: Schema.optional(Schema.String),
     audiences: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__InsightsAudience),
@@ -36150,7 +36150,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCampaignAssetsResponse 
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCampaignAssetsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCampaignAssetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__MutateCampaignAssetResult),
@@ -36166,7 +36166,7 @@ export interface GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_C
 }
 
 export const GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_CampaignBudgetParameters: Schema.Schema<GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_CampaignBudgetParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     newBudgetAmountMicros: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -36179,7 +36179,7 @@ export interface GoogleAdsSearchads360V23Services__ApplyIncentiveRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__ApplyIncentiveRequest: Schema.Schema<GoogleAdsSearchads360V23Services__ApplyIncentiveRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     countryCode: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__ApplyIncentiveRequest",
@@ -36229,7 +36229,7 @@ export interface GoogleAdsSearchads360V23Services__AssetsWithFieldType {
 }
 
 export const GoogleAdsSearchads360V23Services__AssetsWithFieldType: Schema.Schema<GoogleAdsSearchads360V23Services__AssetsWithFieldType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     assetFieldType: Schema.optional(Schema.String),
     asset: Schema.optional(Schema.String),
   }).annotate({
@@ -36242,7 +36242,7 @@ export interface GoogleAdsSearchads360V23Services__RemoveAutomaticallyCreatedAss
 }
 
 export const GoogleAdsSearchads360V23Services__RemoveAutomaticallyCreatedAssetsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__RemoveAutomaticallyCreatedAssetsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     assetsWithFieldType: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__AssetsWithFieldType),
     ),
@@ -36257,7 +36257,7 @@ export interface GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_S
 }
 
 export const GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_SitelinkAssetParameters: Schema.Schema<GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_SitelinkAssetParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adAssetApplyParameters: Schema.optional(
       GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_AdAssetApplyParameters,
     ),
@@ -36274,7 +36274,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAssetGroupAssetsRespons
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAssetGroupAssetsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAssetGroupAssetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
@@ -36292,7 +36292,7 @@ export interface GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_U
 }
 
 export const GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_UseBroadMatchKeywordParameters: Schema.Schema<GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_UseBroadMatchKeywordParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     newBudgetAmountMicros: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -36305,7 +36305,7 @@ export interface GoogleAdsSearchads360V23Services__SuggestKeywordThemesResponse 
 }
 
 export const GoogleAdsSearchads360V23Services__SuggestKeywordThemesResponse: Schema.Schema<GoogleAdsSearchads360V23Services__SuggestKeywordThemesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keywordThemes: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services_SuggestKeywordThemesResponse_KeywordTheme,
@@ -36322,7 +36322,7 @@ export interface GoogleAdsSearchads360V23Services_ProductFilter_ProductList {
 }
 
 export const GoogleAdsSearchads360V23Services_ProductFilter_ProductList: Schema.Schema<GoogleAdsSearchads360V23Services_ProductFilter_ProductList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     productCodes: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services_ProductFilter_ProductList",
@@ -36341,7 +36341,7 @@ export interface GoogleAdsSearchads360V23Services_ProductFilter_MarketingObjecti
 }
 
 export const GoogleAdsSearchads360V23Services_ProductFilter_MarketingObjectiveList: Schema.Schema<GoogleAdsSearchads360V23Services_ProductFilter_MarketingObjectiveList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     marketingObjectives: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
     identifier:
@@ -36356,7 +36356,7 @@ export interface GoogleAdsSearchads360V23Services__ProductFilter {
 }
 
 export const GoogleAdsSearchads360V23Services__ProductFilter: Schema.Schema<GoogleAdsSearchads360V23Services__ProductFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     productList: Schema.optional(
       GoogleAdsSearchads360V23Services_ProductFilter_ProductList,
     ),
@@ -36383,7 +36383,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCampaignBudgetsRequest 
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCampaignBudgetsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCampaignBudgetsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailure: Schema.optional(Schema.Boolean),
     validateOnly: Schema.optional(Schema.Boolean),
     operations: Schema.optional(
@@ -36403,7 +36403,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCampaignsResponse {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCampaignsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCampaignsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__MutateCampaignResult),
@@ -36418,7 +36418,7 @@ export interface GoogleAdsSearchads360V23Services__CreateProductLinkInvitationRe
 }
 
 export const GoogleAdsSearchads360V23Services__CreateProductLinkInvitationResponse: Schema.Schema<GoogleAdsSearchads360V23Services__CreateProductLinkInvitationResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -36441,7 +36441,7 @@ export interface GoogleAdsSearchads360V23Services__MutateRecommendationSubscript
 }
 
 export const GoogleAdsSearchads360V23Services__MutateRecommendationSubscriptionRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateRecommendationSubscriptionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailure: Schema.optional(Schema.Boolean),
     validateOnly: Schema.optional(Schema.Boolean),
     operations: Schema.optional(
@@ -36465,7 +36465,7 @@ export interface GoogleAdsSearchads360V23Services__SearchSettings {
 }
 
 export const GoogleAdsSearchads360V23Services__SearchSettings: Schema.Schema<GoogleAdsSearchads360V23Services__SearchSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     omitResults: Schema.optional(Schema.Boolean),
     returnSummaryRow: Schema.optional(Schema.Boolean),
     returnTotalResultsCount: Schema.optional(Schema.Boolean),
@@ -36487,7 +36487,7 @@ export interface GoogleAdsSearchads360V23Services__SearchSearchAds360Request {
 }
 
 export const GoogleAdsSearchads360V23Services__SearchSearchAds360Request: Schema.Schema<GoogleAdsSearchads360V23Services__SearchSearchAds360Request> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     query: Schema.optional(Schema.String),
     pageToken: Schema.optional(Schema.String),
     searchSettings: Schema.optional(
@@ -36507,7 +36507,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAssetGroupSignalsRespon
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAssetGroupSignalsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAssetGroupSignalsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__MutateAssetGroupSignalResult,
@@ -36525,7 +36525,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAccountBudgetProposalRe
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAccountBudgetProposalResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAccountBudgetProposalResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -36542,7 +36542,7 @@ export interface GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupKeywo
 }
 
 export const GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupKeywordsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupKeywordsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__KeywordPlanAdGroupKeywordOperation,
@@ -36563,7 +36563,7 @@ export interface GoogleAdsSearchads360V23Services__AddBatchJobOperationsResponse
 }
 
 export const GoogleAdsSearchads360V23Services__AddBatchJobOperationsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__AddBatchJobOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     totalOperations: Schema.optional(Schema.String),
     nextSequenceToken: Schema.optional(Schema.String),
   }).annotate({
@@ -36579,7 +36579,7 @@ export interface GoogleAdsSearchads360V23Services__DismissRecommendationRequest 
 }
 
 export const GoogleAdsSearchads360V23Services__DismissRecommendationRequest: Schema.Schema<GoogleAdsSearchads360V23Services__DismissRecommendationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services_DismissRecommendationRequest_DismissRecommendationOperation,
@@ -36597,7 +36597,7 @@ export interface GoogleAdsSearchads360V23Services__MutateBillingSetupRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateBillingSetupRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateBillingSetupRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operation: Schema.optional(
       GoogleAdsSearchads360V23Services__BillingSetupOperation,
     ),
@@ -36611,7 +36611,7 @@ export interface GoogleAdsSearchads360V23Services__GenerateTargetingSuggestionMe
 }
 
 export const GoogleAdsSearchads360V23Services__GenerateTargetingSuggestionMetricsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__GenerateTargetingSuggestionMetricsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     suggestions: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__TargetingSuggestionMetrics,
@@ -36628,7 +36628,7 @@ export interface GoogleAdsSearchads360V23Services__RemoveProductLinkInvitationRe
 }
 
 export const GoogleAdsSearchads360V23Services__RemoveProductLinkInvitationResponse: Schema.Schema<GoogleAdsSearchads360V23Services__RemoveProductLinkInvitationResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -36641,7 +36641,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerUserAccessInvit
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomerUserAccessInvitationResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomerUserAccessInvitationResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -36654,7 +36654,7 @@ export interface GoogleAdsSearchads360V23Services_SuggestGeoTargetConstantsReque
 }
 
 export const GoogleAdsSearchads360V23Services_SuggestGeoTargetConstantsRequest_GeoTargets: Schema.Schema<GoogleAdsSearchads360V23Services_SuggestGeoTargetConstantsRequest_GeoTargets> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     geoTargetConstants: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
     identifier:
@@ -36707,7 +36707,7 @@ export interface GoogleAdsSearchads360V23Services__RemoveCampaignAutomaticallyCr
 }
 
 export const GoogleAdsSearchads360V23Services__RemoveCampaignAutomaticallyCreatedAssetOperation: Schema.Schema<GoogleAdsSearchads360V23Services__RemoveCampaignAutomaticallyCreatedAssetOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     asset: Schema.optional(Schema.String),
     fieldType: Schema.optional(Schema.String),
     campaign: Schema.optional(Schema.String),
@@ -36724,7 +36724,7 @@ export interface GoogleAdsSearchads360V23Services__RemoveCampaignAutomaticallyCr
 }
 
 export const GoogleAdsSearchads360V23Services__RemoveCampaignAutomaticallyCreatedAssetRequest: Schema.Schema<GoogleAdsSearchads360V23Services__RemoveCampaignAutomaticallyCreatedAssetRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailure: Schema.optional(Schema.Boolean),
     operations: Schema.optional(
       Schema.Array(
@@ -36744,7 +36744,7 @@ export interface GoogleAdsSearchads360V23Services__CustomerAssetSetOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__CustomerAssetSetOperation: Schema.Schema<GoogleAdsSearchads360V23Services__CustomerAssetSetOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     create: Schema.optional(
       GoogleAdsSearchads360V23Resources__CustomerAssetSet,
     ),
@@ -36769,7 +36769,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerAssetSetsReques
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomerAssetSetsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomerAssetSetsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__CustomerAssetSetOperation),
     ),
@@ -36787,7 +36787,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerClientLinkResul
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomerClientLinkResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomerClientLinkResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -36802,7 +36802,7 @@ export interface GoogleAdsSearchads360V23Services__IdentityVerificationRequireme
 }
 
 export const GoogleAdsSearchads360V23Services__IdentityVerificationRequirement: Schema.Schema<GoogleAdsSearchads360V23Services__IdentityVerificationRequirement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     verificationCompletionDeadlineTime: Schema.optional(Schema.String),
     verificationStartDeadlineTime: Schema.optional(Schema.String),
   }).annotate({
@@ -36816,7 +36816,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAssetGroupListingGroupF
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAssetGroupListingGroupFiltersResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAssetGroupListingGroupFiltersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__MutateAssetGroupListingGroupFilterResult,
@@ -36835,7 +36835,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAssetSetsResponse {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAssetSetsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAssetSetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__MutateAssetSetResult),
     ),
@@ -36852,7 +36852,7 @@ export interface GoogleAdsSearchads360V23Services__MutateExperimentArmsResponse 
 }
 
 export const GoogleAdsSearchads360V23Services__MutateExperimentArmsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateExperimentArmsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__MutateExperimentArmResult),
@@ -36870,7 +36870,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCampaignCriteriaRespons
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCampaignCriteriaResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCampaignCriteriaResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(
@@ -36898,7 +36898,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAdGroupAdsRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAdGroupAdsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupAdsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__AdGroupAdOperation),
     ),
@@ -36925,7 +36925,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAdGroupCriteriaRequest 
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAdGroupCriteriaRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupCriteriaRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailure: Schema.optional(Schema.Boolean),
     validateOnly: Schema.optional(Schema.Boolean),
     operations: Schema.optional(
@@ -36945,7 +36945,7 @@ export interface GoogleAdsSearchads360V23Services__AudienceOverlapItem {
 }
 
 export const GoogleAdsSearchads360V23Services__AudienceOverlapItem: Schema.Schema<GoogleAdsSearchads360V23Services__AudienceOverlapItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     attributeMetadata: Schema.optional(
       GoogleAdsSearchads360V23Common__AudienceInsightsAttributeMetadata,
     ),
@@ -36981,7 +36981,7 @@ export interface GoogleAdsSearchads360V23Services__DimensionOverlapResult {
 }
 
 export const GoogleAdsSearchads360V23Services__DimensionOverlapResult: Schema.Schema<GoogleAdsSearchads360V23Services__DimensionOverlapResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dimension: Schema.optional(Schema.String),
     items: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__AudienceOverlapItem),
@@ -37002,7 +37002,7 @@ export interface GoogleAdsSearchads360V23Services__CampaignGoalConfigOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__CampaignGoalConfigOperation: Schema.Schema<GoogleAdsSearchads360V23Services__CampaignGoalConfigOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     update: Schema.optional(
       GoogleAdsSearchads360V23Resources__CampaignGoalConfig,
@@ -37029,7 +37029,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAssetGroupListingGroupF
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAssetGroupListingGroupFiltersRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAssetGroupListingGroupFiltersRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__AssetGroupListingGroupFilterOperation,
@@ -37048,7 +37048,7 @@ export interface GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_L
 }
 
 export const GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_LowerTargetRoasParameters: Schema.Schema<GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_LowerTargetRoasParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetRoasMultiplier: Schema.optional(Schema.Number),
   }).annotate({
     identifier:
@@ -37072,7 +37072,7 @@ export interface GoogleAdsSearchads360V23Services__UpdateDataLinkRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__UpdateDataLinkRequest: Schema.Schema<GoogleAdsSearchads360V23Services__UpdateDataLinkRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataLinkStatus: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
   }).annotate({
@@ -37089,7 +37089,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAdGroupLabelsRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAdGroupLabelsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupLabelsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailure: Schema.optional(Schema.Boolean),
     validateOnly: Schema.optional(Schema.Boolean),
     operations: Schema.optional(
@@ -37105,7 +37105,7 @@ export interface GoogleAdsSearchads360V23Services__ListBenchmarksLocationsReques
 }
 
 export const GoogleAdsSearchads360V23Services__ListBenchmarksLocationsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__ListBenchmarksLocationsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     applicationInfo: Schema.optional(
       GoogleAdsSearchads360V23Common__AdditionalApplicationInfo,
     ),
@@ -37120,7 +37120,7 @@ export interface GoogleAdsSearchads360V23Services__Metrics {
 }
 
 export const GoogleAdsSearchads360V23Services__Metrics: Schema.Schema<GoogleAdsSearchads360V23Services__Metrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     averageRateMetrics: Schema.optional(
       GoogleAdsSearchads360V23Services__RateMetrics,
     ),
@@ -37132,7 +37132,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerClientLinkRespo
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomerClientLinkResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomerClientLinkResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     result: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateCustomerClientLinkResult,
     ),
@@ -37149,7 +37149,7 @@ export interface GoogleAdsSearchads360V23Services__ManualCpcBiddingStrategy {
 }
 
 export const GoogleAdsSearchads360V23Services__ManualCpcBiddingStrategy: Schema.Schema<GoogleAdsSearchads360V23Services__ManualCpcBiddingStrategy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dailyBudgetMicros: Schema.optional(Schema.String),
     maxCpcBidMicros: Schema.optional(Schema.String),
   }).annotate({
@@ -37162,7 +37162,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomAudiencesResponse
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomAudiencesResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomAudiencesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__MutateCustomAudienceResult,
@@ -37185,7 +37185,7 @@ export interface GoogleAdsSearchads360V23Services__GenerateInsightsFinderReportR
 }
 
 export const GoogleAdsSearchads360V23Services__GenerateInsightsFinderReportRequest: Schema.Schema<GoogleAdsSearchads360V23Services__GenerateInsightsFinderReportRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     baselineAudience: Schema.optional(
       GoogleAdsSearchads360V23Services__InsightsAudience,
     ),
@@ -37217,7 +37217,7 @@ export interface GoogleAdsSearchads360V23Services__MutateConversionValueRuleSets
 }
 
 export const GoogleAdsSearchads360V23Services__MutateConversionValueRuleSetsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateConversionValueRuleSetsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__ConversionValueRuleSetOperation,
@@ -37247,7 +37247,7 @@ export interface GoogleAdsSearchads360V23Services__MutateSharedCriteriaRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateSharedCriteriaRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateSharedCriteriaRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailure: Schema.optional(Schema.Boolean),
     validateOnly: Schema.optional(Schema.Boolean),
     operations: Schema.optional(
@@ -37264,7 +37264,7 @@ export interface GoogleAdsSearchads360V23Services__RemoveProductLinkInvitationRe
 }
 
 export const GoogleAdsSearchads360V23Services__RemoveProductLinkInvitationRequest: Schema.Schema<GoogleAdsSearchads360V23Services__RemoveProductLinkInvitationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -37285,7 +37285,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomConversionGoalsRe
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomConversionGoalsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomConversionGoalsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean),
     operations: Schema.optional(
       Schema.Array(
@@ -37314,7 +37314,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAssetSetsRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAssetSetsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAssetSetsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailure: Schema.optional(Schema.Boolean),
     validateOnly: Schema.optional(Schema.Boolean),
     operations: Schema.optional(
@@ -37333,7 +37333,7 @@ export interface GoogleAdsSearchads360V23Services__UnusableAdGroup {
 }
 
 export const GoogleAdsSearchads360V23Services__UnusableAdGroup: Schema.Schema<GoogleAdsSearchads360V23Services__UnusableAdGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adGroup: Schema.optional(Schema.String),
     campaign: Schema.optional(Schema.String),
   }).annotate({
@@ -37348,7 +37348,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAssetGroupsRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAssetGroupsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAssetGroupsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__AssetGroupOperation),
     ),
@@ -37367,7 +37367,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerSkAdNetworkConv
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomerSkAdNetworkConversionValueSchemaRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomerSkAdNetworkConversionValueSchemaRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operation: Schema.optional(
       GoogleAdsSearchads360V23Services__CustomerSkAdNetworkConversionValueSchemaOperation,
     ),
@@ -37394,7 +37394,7 @@ export interface GoogleAdsSearchads360V23Services__MutateBiddingStrategiesReques
 }
 
 export const GoogleAdsSearchads360V23Services__MutateBiddingStrategiesRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateBiddingStrategiesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailure: Schema.optional(Schema.Boolean),
     validateOnly: Schema.optional(Schema.Boolean),
     operations: Schema.optional(
@@ -37414,7 +37414,7 @@ export interface GoogleAdsSearchads360V23Services__MutateConversionCustomVariabl
 }
 
 export const GoogleAdsSearchads360V23Services__MutateConversionCustomVariablesResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateConversionCustomVariablesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(
@@ -37436,7 +37436,7 @@ export interface GoogleAdsSearchads360V23Services__MutateKeywordPlansRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateKeywordPlansRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateKeywordPlansRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailure: Schema.optional(Schema.Boolean),
     validateOnly: Schema.optional(Schema.Boolean),
     operations: Schema.optional(
@@ -37449,7 +37449,7 @@ export const GoogleAdsSearchads360V23Services__MutateKeywordPlansRequest: Schema
 export interface GoogleAdsSearchads360V23Services__RegenerateShareableLinkIdResponse {}
 
 export const GoogleAdsSearchads360V23Services__RegenerateShareableLinkIdResponse: Schema.Schema<GoogleAdsSearchads360V23Services__RegenerateShareableLinkIdResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleAdsSearchads360V23Services__RegenerateShareableLinkIdResponse",
   });
@@ -37462,7 +37462,7 @@ export interface GoogleAdsSearchads360V23Services__MutateGoalsResponse {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateGoalsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateGoalsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__MutateGoalResult),
@@ -37477,7 +37477,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerManagerLinkResu
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomerManagerLinkResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomerManagerLinkResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -37490,7 +37490,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerManagerLinkResp
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomerManagerLinkResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomerManagerLinkResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__MutateCustomerManagerLinkResult,
@@ -37515,7 +37515,7 @@ export interface GoogleLongrunning__Operation {
 }
 
 export const GoogleLongrunning__Operation: Schema.Schema<GoogleLongrunning__Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     done: Schema.optional(Schema.Boolean),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     name: Schema.optional(Schema.String),
@@ -37539,7 +37539,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAdGroupCustomizersReque
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAdGroupCustomizersRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupCustomizersRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailure: Schema.optional(Schema.Boolean),
     validateOnly: Schema.optional(Schema.Boolean),
     operations: Schema.optional(
@@ -37561,7 +37561,7 @@ export interface GoogleAdsSearchads360V23Services__MutateSmartCampaignSettingsRe
 }
 
 export const GoogleAdsSearchads360V23Services__MutateSmartCampaignSettingsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateSmartCampaignSettingsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(
@@ -37579,7 +37579,7 @@ export interface GoogleAdsSearchads360V23Services__ListAudienceInsightsAttribute
 }
 
 export const GoogleAdsSearchads360V23Services__ListAudienceInsightsAttributesResponse: Schema.Schema<GoogleAdsSearchads360V23Services__ListAudienceInsightsAttributesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     attributes: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Common__AudienceInsightsAttributeMetadata,
@@ -37596,7 +37596,7 @@ export interface GoogleAdsSearchads360V23Services__ConfigureCampaignLifecycleGoa
 }
 
 export const GoogleAdsSearchads360V23Services__ConfigureCampaignLifecycleGoalsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__ConfigureCampaignLifecycleGoalsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     result: Schema.optional(
       GoogleAdsSearchads360V23Services__ConfigureCampaignLifecycleGoalsResult,
     ),
@@ -37613,7 +37613,7 @@ export interface GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_F
 }
 
 export const GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_ForecastingSetTargetRoasParameters: Schema.Schema<GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_ForecastingSetTargetRoasParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetRoas: Schema.optional(Schema.Number),
     campaignBudgetAmountMicros: Schema.optional(Schema.String),
   }).annotate({
@@ -37629,7 +37629,7 @@ export interface GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_L
 }
 
 export const GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_LeadFormAssetParameters: Schema.Schema<GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_LeadFormAssetParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     setSubmitLeadFormAssetCampaignGoal: Schema.optional(Schema.Boolean),
     adAssetApplyParameters: Schema.optional(
       GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_AdAssetApplyParameters,
@@ -37645,7 +37645,7 @@ export interface GoogleAdsSearchads360V23Common__CalloutFeedItem {
 }
 
 export const GoogleAdsSearchads360V23Common__CalloutFeedItem: Schema.Schema<GoogleAdsSearchads360V23Common__CalloutFeedItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     calloutText: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Common__CalloutFeedItem",
@@ -37657,7 +37657,7 @@ export interface GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_C
 }
 
 export const GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_CalloutExtensionParameters: Schema.Schema<GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_CalloutExtensionParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     calloutExtensions: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__CalloutFeedItem),
     ),
@@ -37672,7 +37672,7 @@ export interface GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_R
 }
 
 export const GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_RaiseTargetCpaBidTooLowParameters: Schema.Schema<GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_RaiseTargetCpaBidTooLowParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetMultiplier: Schema.optional(Schema.Number),
   }).annotate({
     identifier:
@@ -37695,7 +37695,7 @@ export interface GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_K
 }
 
 export const GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_KeywordParameters: Schema.Schema<GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_KeywordParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adGroup: Schema.optional(Schema.String),
     cpcBidMicros: Schema.optional(Schema.String),
     matchType: Schema.optional(Schema.String),
@@ -37712,7 +37712,7 @@ export interface GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_F
 }
 
 export const GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_ForecastingSetTargetCpaParameters: Schema.Schema<GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_ForecastingSetTargetCpaParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetCpaMicros: Schema.optional(Schema.String),
     campaignBudgetAmountMicros: Schema.optional(Schema.String),
   }).annotate({
@@ -37726,7 +37726,7 @@ export interface GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_C
 }
 
 export const GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_CalloutAssetParameters: Schema.Schema<GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_CalloutAssetParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adAssetApplyParameters: Schema.optional(
       GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_AdAssetApplyParameters,
     ),
@@ -37757,7 +37757,7 @@ export interface GoogleAdsSearchads360V23Common__CallFeedItem {
 }
 
 export const GoogleAdsSearchads360V23Common__CallFeedItem: Schema.Schema<GoogleAdsSearchads360V23Common__CallFeedItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     callConversionTrackingDisabled: Schema.optional(Schema.Boolean),
     callConversionAction: Schema.optional(Schema.String),
     callConversionReportingState: Schema.optional(Schema.String),
@@ -37772,7 +37772,7 @@ export interface GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_C
 }
 
 export const GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_CallExtensionParameters: Schema.Schema<GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_CallExtensionParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     callExtensions: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Common__CallFeedItem),
     ),
@@ -37787,7 +37787,7 @@ export interface GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_T
 }
 
 export const GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_TextAdParameters: Schema.Schema<GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_TextAdParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ad: Schema.optional(GoogleAdsSearchads360V23Resources__Ad),
   }).annotate({
     identifier:
@@ -37848,7 +37848,7 @@ export interface GoogleAdsSearchads360V23Services__ApplyRecommendationOperation 
 }
 
 export const GoogleAdsSearchads360V23Services__ApplyRecommendationOperation: Schema.Schema<GoogleAdsSearchads360V23Services__ApplyRecommendationOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     setTargetRoas: Schema.optional(
       GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_ForecastingSetTargetRoasParameters,
     ),
@@ -37935,7 +37935,7 @@ export interface GoogleAdsSearchads360V23Services__ApplyRecommendationRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__ApplyRecommendationRequest: Schema.Schema<GoogleAdsSearchads360V23Services__ApplyRecommendationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__ApplyRecommendationOperation,
@@ -37954,7 +37954,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomizerAttributesRes
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomizerAttributesResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomizerAttributesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__MutateCustomizerAttributeResult,
@@ -37982,7 +37982,7 @@ export interface GoogleAdsSearchads360V23Services__MutateBiddingSeasonalityAdjus
 }
 
 export const GoogleAdsSearchads360V23Services__MutateBiddingSeasonalityAdjustmentsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateBiddingSeasonalityAdjustmentsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__BiddingSeasonalityAdjustmentOperation,
@@ -38002,7 +38002,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerResponse {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomerResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomerResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     result: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateCustomerResult,
     ),
@@ -38020,7 +38020,7 @@ export interface GoogleAdsSearchads360V23Services__ListPlannableUserListsRequest
 }
 
 export const GoogleAdsSearchads360V23Services__ListPlannableUserListsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__ListPlannableUserListsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.optional(Schema.String),
     customerReachGroup: Schema.optional(Schema.String),
     reachApplicationInfo: Schema.optional(
@@ -38047,7 +38047,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCampaignGroupsRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCampaignGroupsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCampaignGroupsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailure: Schema.optional(Schema.Boolean),
     validateOnly: Schema.optional(Schema.Boolean),
     operations: Schema.optional(
@@ -38064,7 +38064,7 @@ export interface GoogleAdsSearchads360V23Services__ListPlannableProductsResponse
 }
 
 export const GoogleAdsSearchads360V23Services__ListPlannableProductsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__ListPlannableProductsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     productMetadata: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__ProductMetadata),
     ),
@@ -38081,7 +38081,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAdGroupAdsResponse {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAdGroupAdsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupAdsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__MutateAdGroupAdResult),
@@ -38096,7 +38096,7 @@ export interface GoogleAdsSearchads360V23Services__MutateBatchJobRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateBatchJobRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateBatchJobRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operation: Schema.optional(
       GoogleAdsSearchads360V23Services__BatchJobOperation,
     ),
@@ -38110,7 +38110,7 @@ export interface GoogleAdsSearchads360V23Services__ListInsightsEligibleDatesRequ
 }
 
 export const GoogleAdsSearchads360V23Services__ListInsightsEligibleDatesRequest: Schema.Schema<GoogleAdsSearchads360V23Services__ListInsightsEligibleDatesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     insightsApplicationInfo: Schema.optional(
       GoogleAdsSearchads360V23Common__AdditionalApplicationInfo,
     ),
@@ -38133,7 +38133,7 @@ export interface GoogleAdsSearchads360V23Services__IdentityVerification {
 }
 
 export const GoogleAdsSearchads360V23Services__IdentityVerification: Schema.Schema<GoogleAdsSearchads360V23Services__IdentityVerification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     identityVerificationRequirement: Schema.optional(
       GoogleAdsSearchads360V23Services__IdentityVerificationRequirement,
     ),
@@ -38151,7 +38151,7 @@ export interface GoogleAdsSearchads360V23Services__GetIdentityVerificationRespon
 }
 
 export const GoogleAdsSearchads360V23Services__GetIdentityVerificationResponse: Schema.Schema<GoogleAdsSearchads360V23Services__GetIdentityVerificationResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     identityVerification: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__IdentityVerification),
     ),
@@ -38168,7 +38168,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerAssetSetResult 
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomerAssetSetResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomerAssetSetResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerAssetSet: Schema.optional(
       GoogleAdsSearchads360V23Resources__CustomerAssetSet,
     ),
@@ -38186,7 +38186,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerAssetSetsRespon
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomerAssetSetsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomerAssetSetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__MutateCustomerAssetSetResult,
@@ -38206,7 +38206,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAdsResponse {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAdsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAdsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__MutateAdResult),
@@ -38221,7 +38221,7 @@ export interface GoogleAdsSearchads360V23Services__ListBenchmarksAvailableDatesR
 }
 
 export const GoogleAdsSearchads360V23Services__ListBenchmarksAvailableDatesRequest: Schema.Schema<GoogleAdsSearchads360V23Services__ListBenchmarksAvailableDatesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     applicationInfo: Schema.optional(
       GoogleAdsSearchads360V23Common__AdditionalApplicationInfo,
     ),
@@ -38243,7 +38243,7 @@ export interface GoogleAdsSearchads360V23Services__PlannableUserListMetadata {
 }
 
 export const GoogleAdsSearchads360V23Services__PlannableUserListMetadata: Schema.Schema<GoogleAdsSearchads360V23Services__PlannableUserListMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userListCrmDataSourceType: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__PlannableUserListMetadata",
@@ -38278,7 +38278,7 @@ export interface GoogleAdsSearchads360V23Services__PlannableUserList {
 }
 
 export const GoogleAdsSearchads360V23Services__PlannableUserList: Schema.Schema<GoogleAdsSearchads360V23Services__PlannableUserList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userListType: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
     plannableStatus: Schema.optional(Schema.String),
@@ -38300,7 +38300,7 @@ export interface GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupsRequ
 }
 
 export const GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailure: Schema.optional(Schema.Boolean),
     validateOnly: Schema.optional(Schema.Boolean),
     operations: Schema.optional(
@@ -38323,7 +38323,7 @@ export interface GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignKeyw
 }
 
 export const GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignKeywordsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignKeywordsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__KeywordPlanCampaignKeywordOperation,
@@ -38344,7 +38344,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerCustomizersResp
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomerCustomizersResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomerCustomizersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__MutateCustomerCustomizerResult,
@@ -38372,7 +38372,7 @@ export interface GoogleAdsSearchads360V23Services__MutateConversionActionsReques
 }
 
 export const GoogleAdsSearchads360V23Services__MutateConversionActionsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateConversionActionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailure: Schema.optional(Schema.Boolean),
     validateOnly: Schema.optional(Schema.Boolean),
     operations: Schema.optional(
@@ -38393,7 +38393,7 @@ export interface GoogleAdsSearchads360V23Services__CampaignLifecycleGoalOperatio
 }
 
 export const GoogleAdsSearchads360V23Services__CampaignLifecycleGoalOperation: Schema.Schema<GoogleAdsSearchads360V23Services__CampaignLifecycleGoalOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     create: Schema.optional(
       GoogleAdsSearchads360V23Resources__CampaignLifecycleGoal,
     ),
@@ -38414,7 +38414,7 @@ export interface GoogleAdsSearchads360V23Services__ConfigureCampaignLifecycleGoa
 }
 
 export const GoogleAdsSearchads360V23Services__ConfigureCampaignLifecycleGoalsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__ConfigureCampaignLifecycleGoalsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean),
     operation: Schema.optional(
       GoogleAdsSearchads360V23Services__CampaignLifecycleGoalOperation,
@@ -38432,7 +38432,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCampaignGoalConfigsResp
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCampaignGoalConfigsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCampaignGoalConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(
@@ -38463,7 +38463,7 @@ export interface GoogleAdsSearchads360V23Services__CreateCustomerClientRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__CreateCustomerClientRequest: Schema.Schema<GoogleAdsSearchads360V23Services__CreateCustomerClientRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerClient: Schema.optional(
       GoogleAdsSearchads360V23Resources__Customer,
     ),
@@ -38484,7 +38484,7 @@ export interface GoogleAdsSearchads360V23Services__MutateUserListsRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateUserListsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateUserListsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailure: Schema.optional(Schema.Boolean),
     validateOnly: Schema.optional(Schema.Boolean),
     operations: Schema.optional(
@@ -38512,7 +38512,7 @@ export interface GoogleAdsSearchads360V23Services__EnableOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__EnableOperation: Schema.Schema<GoogleAdsSearchads360V23Services__EnableOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mainColor: Schema.optional(Schema.String),
     fontFamily: Schema.optional(Schema.String),
     campaign: Schema.optional(Schema.String),
@@ -38534,7 +38534,7 @@ export interface GoogleAdsSearchads360V23Services__AdGroupAssetSetOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__AdGroupAssetSetOperation: Schema.Schema<GoogleAdsSearchads360V23Services__AdGroupAssetSetOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     remove: Schema.optional(Schema.String),
     create: Schema.optional(GoogleAdsSearchads360V23Resources__AdGroupAssetSet),
   }).annotate({
@@ -38557,7 +38557,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAdGroupAssetSetsRequest
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAdGroupAssetSetsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupAssetSetsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailure: Schema.optional(Schema.Boolean),
     validateOnly: Schema.optional(Schema.Boolean),
     operations: Schema.optional(
@@ -38577,7 +38577,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCampaignConversionGoals
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCampaignConversionGoalsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCampaignConversionGoalsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__CampaignConversionGoalOperation,
@@ -38609,7 +38609,7 @@ export interface GoogleAdsSearchads360V23Services__AdGroupKeywordSuggestion {
 }
 
 export const GoogleAdsSearchads360V23Services__AdGroupKeywordSuggestion: Schema.Schema<GoogleAdsSearchads360V23Services__AdGroupKeywordSuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     suggestedCampaign: Schema.optional(Schema.String),
     suggestedKeywordText: Schema.optional(Schema.String),
     suggestedMatchType: Schema.optional(Schema.String),
@@ -38627,7 +38627,7 @@ export interface GoogleAdsSearchads360V23Services__GenerateAdGroupThemesResponse
 }
 
 export const GoogleAdsSearchads360V23Services__GenerateAdGroupThemesResponse: Schema.Schema<GoogleAdsSearchads360V23Services__GenerateAdGroupThemesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     unusableAdGroups: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__UnusableAdGroup),
     ),
@@ -38645,7 +38645,7 @@ export interface GoogleAdsSearchads360V23Services__RemoveCampaignAutomaticallyCr
 }
 
 export const GoogleAdsSearchads360V23Services__RemoveCampaignAutomaticallyCreatedAssetResponse: Schema.Schema<GoogleAdsSearchads360V23Services__RemoveCampaignAutomaticallyCreatedAssetResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
   }).annotate({
     identifier:
@@ -38668,7 +38668,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerAssetsRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomerAssetsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomerAssetsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailure: Schema.optional(Schema.Boolean),
     validateOnly: Schema.optional(Schema.Boolean),
     operations: Schema.optional(
@@ -38688,7 +38688,7 @@ export interface GoogleAdsSearchads360V23Services__CustomerLifecycleGoalOperatio
 }
 
 export const GoogleAdsSearchads360V23Services__CustomerLifecycleGoalOperation: Schema.Schema<GoogleAdsSearchads360V23Services__CustomerLifecycleGoalOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     update: Schema.optional(
       GoogleAdsSearchads360V23Resources__CustomerLifecycleGoal,
@@ -38707,7 +38707,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerUserAccessResul
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomerUserAccessResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomerUserAccessResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -38720,7 +38720,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerUserAccessRespo
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomerUserAccessResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomerUserAccessResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     result: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateCustomerUserAccessResult,
     ),
@@ -38737,7 +38737,7 @@ export interface GoogleAdsSearchads360V23Services__GenerateBenchmarksMetricsResp
 }
 
 export const GoogleAdsSearchads360V23Services__GenerateBenchmarksMetricsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__GenerateBenchmarksMetricsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerMetrics: Schema.optional(GoogleAdsSearchads360V23Services__Metrics),
     averageBenchmarksMetrics: Schema.optional(
       GoogleAdsSearchads360V23Services__Metrics,
@@ -38755,7 +38755,7 @@ export interface GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupKeywo
 }
 
 export const GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupKeywordsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupKeywordsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(
@@ -38775,7 +38775,7 @@ export interface GoogleAdsSearchads360V23Errors__SearchAds360Failure {
 }
 
 export const GoogleAdsSearchads360V23Errors__SearchAds360Failure: Schema.Schema<GoogleAdsSearchads360V23Errors__SearchAds360Failure> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     errors: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Errors__SearchAds360Error),
     ),
@@ -38792,7 +38792,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCampaignDraftsResponse 
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCampaignDraftsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCampaignDraftsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__MutateCampaignDraftResult),
@@ -38815,7 +38815,7 @@ export interface GoogleAdsSearchads360V23Services__ProvideLeadFeedbackResponse {
 }
 
 export const GoogleAdsSearchads360V23Services__ProvideLeadFeedbackResponse: Schema.Schema<GoogleAdsSearchads360V23Services__ProvideLeadFeedbackResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     creditIssuanceDecision: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__ProvideLeadFeedbackResponse",
@@ -38829,7 +38829,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAdGroupAssetsResponse {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAdGroupAssetsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupAssetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__MutateAdGroupAssetResult),
@@ -38846,7 +38846,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCampaignAssetSetsRespon
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCampaignAssetSetsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCampaignAssetSetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__MutateCampaignAssetSetResult,
@@ -38870,7 +38870,7 @@ export interface GoogleAdsSearchads360V23Services__GenerateKeywordIdeaResponse {
 }
 
 export const GoogleAdsSearchads360V23Services__GenerateKeywordIdeaResponse: Schema.Schema<GoogleAdsSearchads360V23Services__GenerateKeywordIdeaResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     totalSize: Schema.optional(Schema.String),
     results: Schema.optional(
@@ -38893,7 +38893,7 @@ export interface GoogleAdsSearchads360V23Services__InsightsAudienceDefinition {
 }
 
 export const GoogleAdsSearchads360V23Services__InsightsAudienceDefinition: Schema.Schema<GoogleAdsSearchads360V23Services__InsightsAudienceDefinition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     baselineAudience: Schema.optional(
       GoogleAdsSearchads360V23Services__InsightsAudience,
     ),
@@ -38913,7 +38913,7 @@ export interface GoogleAdsSearchads360V23Services__MutateConversionValueRulesRes
 }
 
 export const GoogleAdsSearchads360V23Services__MutateConversionValueRulesResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateConversionValueRulesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__MutateConversionValueRuleResult,
@@ -38931,7 +38931,7 @@ export interface GoogleAdsSearchads360V23Services__ListBenchmarksAvailableDatesR
 }
 
 export const GoogleAdsSearchads360V23Services__ListBenchmarksAvailableDatesResponse: Schema.Schema<GoogleAdsSearchads360V23Services__ListBenchmarksAvailableDatesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     supportedDates: Schema.optional(GoogleAdsSearchads360V23Common__DateRange),
   }).annotate({
     identifier:
@@ -38946,7 +38946,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCampaignBidModifiersRes
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCampaignBidModifiersResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCampaignBidModifiersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(
@@ -38966,7 +38966,7 @@ export interface GoogleAdsSearchads360V23Services__MaximizeClicksBiddingStrategy
 }
 
 export const GoogleAdsSearchads360V23Services__MaximizeClicksBiddingStrategy: Schema.Schema<GoogleAdsSearchads360V23Services__MaximizeClicksBiddingStrategy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dailyTargetSpendMicros: Schema.optional(Schema.String),
     maxCpcBidCeilingMicros: Schema.optional(Schema.String),
   }).annotate({
@@ -38980,7 +38980,7 @@ export interface GoogleAdsSearchads360V23Services__MaximizeConversionsBiddingStr
 }
 
 export const GoogleAdsSearchads360V23Services__MaximizeConversionsBiddingStrategy: Schema.Schema<GoogleAdsSearchads360V23Services__MaximizeConversionsBiddingStrategy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dailyTargetSpendMicros: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -38997,7 +38997,7 @@ export interface GoogleAdsSearchads360V23Services_CampaignToForecast_CampaignBid
 }
 
 export const GoogleAdsSearchads360V23Services_CampaignToForecast_CampaignBiddingStrategy: Schema.Schema<GoogleAdsSearchads360V23Services_CampaignToForecast_CampaignBiddingStrategy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     manualCpcBiddingStrategy: Schema.optional(
       GoogleAdsSearchads360V23Services__ManualCpcBiddingStrategy,
     ),
@@ -39022,7 +39022,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAssetGroupAssetsRequest
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAssetGroupAssetsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAssetGroupAssetsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailure: Schema.optional(Schema.Boolean),
     validateOnly: Schema.optional(Schema.Boolean),
     operations: Schema.optional(
@@ -39039,7 +39039,7 @@ export interface GoogleAdsSearchads360V23Services__RunOfflineUserDataJobRequest 
 }
 
 export const GoogleAdsSearchads360V23Services__RunOfflineUserDataJobRequest: Schema.Schema<GoogleAdsSearchads360V23Services__RunOfflineUserDataJobRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean),
   }).annotate({
     identifier:
@@ -39052,7 +39052,7 @@ export interface GoogleAdsSearchads360V23Services__ListPlannableUserListsRespons
 }
 
 export const GoogleAdsSearchads360V23Services__ListPlannableUserListsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__ListPlannableUserListsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     plannableUserLists: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__PlannableUserList),
     ),
@@ -39069,7 +39069,7 @@ export interface GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesRe
 }
 
 export const GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(
@@ -39084,7 +39084,7 @@ export const GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesRespon
 export interface GoogleProtobuf__Empty {}
 
 export const GoogleProtobuf__Empty: Schema.Schema<GoogleProtobuf__Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleProtobuf__Empty",
   });
 
@@ -39104,7 +39104,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCampaignCriteriaRequest
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCampaignCriteriaRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCampaignCriteriaRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__CampaignCriterionOperation,
@@ -39124,7 +39124,7 @@ export interface GoogleAdsSearchads360V23Services__MutateBatchJobResult {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateBatchJobResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateBatchJobResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__MutateBatchJobResult",
@@ -39136,7 +39136,7 @@ export interface GoogleAdsSearchads360V23Services__MutateBatchJobResponse {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateBatchJobResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateBatchJobResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     result: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateBatchJobResult,
     ),
@@ -39152,7 +39152,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerSkAdNetworkConv
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomerSkAdNetworkConversionValueSchemaResult: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomerSkAdNetworkConversionValueSchemaResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     appId: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
   }).annotate({
@@ -39168,7 +39168,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAdGroupLabelsResponse {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAdGroupLabelsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupLabelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__MutateAdGroupLabelResult),
@@ -39187,7 +39187,7 @@ export interface GoogleAdsSearchads360V23Services__SuggestKeywordThemeConstantsR
 }
 
 export const GoogleAdsSearchads360V23Services__SuggestKeywordThemeConstantsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__SuggestKeywordThemeConstantsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     queryText: Schema.optional(Schema.String),
     languageCode: Schema.optional(Schema.String),
     countryCode: Schema.optional(Schema.String),
@@ -39204,7 +39204,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerLabelsResponse 
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomerLabelsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomerLabelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__MutateCustomerLabelResult),
@@ -39224,7 +39224,7 @@ export interface GoogleAdsSearchads360V23Services__MoveManagerLinkRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__MoveManagerLinkRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MoveManagerLinkRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     previousCustomerManagerLink: Schema.optional(Schema.String),
     validateOnly: Schema.optional(Schema.Boolean),
     newManager: Schema.optional(Schema.String),
@@ -39250,7 +39250,7 @@ export interface GoogleAdsSearchads360V23Services__GenerateBenchmarksMetricsRequ
 }
 
 export const GoogleAdsSearchads360V23Services__GenerateBenchmarksMetricsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__GenerateBenchmarksMetricsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.optional(GoogleAdsSearchads360V23Common__LocationInfo),
     productFilter: Schema.optional(
       GoogleAdsSearchads360V23Services__ProductFilter,
@@ -39322,7 +39322,7 @@ export interface GoogleAdsSearchads360V23Resources__SearchAds360Field {
 }
 
 export const GoogleAdsSearchads360V23Resources__SearchAds360Field: Schema.Schema<GoogleAdsSearchads360V23Resources__SearchAds360Field> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enumValues: Schema.optional(Schema.Array(Schema.String)),
     resourceName: Schema.optional(Schema.String),
     selectableWith: Schema.optional(Schema.Array(Schema.String)),
@@ -39347,7 +39347,7 @@ export interface GoogleAdsSearchads360V23Services__ListBenchmarksProductsRequest
 }
 
 export const GoogleAdsSearchads360V23Services__ListBenchmarksProductsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__ListBenchmarksProductsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     applicationInfo: Schema.optional(
       GoogleAdsSearchads360V23Common__AdditionalApplicationInfo,
     ),
@@ -39366,7 +39366,7 @@ export interface GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignsReq
 }
 
 export const GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailure: Schema.optional(Schema.Boolean),
     validateOnly: Schema.optional(Schema.Boolean),
     operations: Schema.optional(
@@ -39387,7 +39387,7 @@ export interface GoogleAdsSearchads360V23Services__MutateSharedCriteriaResponse 
 }
 
 export const GoogleAdsSearchads360V23Services__MutateSharedCriteriaResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateSharedCriteriaResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(
@@ -39407,7 +39407,7 @@ export interface GoogleAdsSearchads360V23Services__MutateBiddingDataExclusionsRe
 }
 
 export const GoogleAdsSearchads360V23Services__MutateBiddingDataExclusionsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateBiddingDataExclusionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(
@@ -39425,7 +39425,7 @@ export interface GoogleAdsSearchads360V23Services__ListBenchmarksProductsRespons
 }
 
 export const GoogleAdsSearchads360V23Services__ListBenchmarksProductsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__ListBenchmarksProductsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     benchmarksProducts: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__BenchmarksProductMetadata),
     ),
@@ -39442,7 +39442,7 @@ export interface GoogleAdsSearchads360V23Services__MutateRemarketingActionsRespo
 }
 
 export const GoogleAdsSearchads360V23Services__MutateRemarketingActionsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateRemarketingActionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(
@@ -39464,7 +39464,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCampaignGoalConfigsRequ
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCampaignGoalConfigsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCampaignGoalConfigsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailure: Schema.optional(Schema.Boolean),
     validateOnly: Schema.optional(Schema.Boolean),
     operations: Schema.optional(
@@ -39491,7 +39491,7 @@ export interface GoogleAdsSearchads360V23Services__GeoTargetConstantSuggestion {
 }
 
 export const GoogleAdsSearchads360V23Services__GeoTargetConstantSuggestion: Schema.Schema<GoogleAdsSearchads360V23Services__GeoTargetConstantSuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     geoTargetConstant: Schema.optional(
       GoogleAdsSearchads360V23Resources__GeoTargetConstant,
     ),
@@ -39511,7 +39511,7 @@ export interface GoogleAdsSearchads360V23Services__SuggestGeoTargetConstantsResp
 }
 
 export const GoogleAdsSearchads360V23Services__SuggestGeoTargetConstantsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__SuggestGeoTargetConstantsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     geoTargetConstantSuggestions: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__GeoTargetConstantSuggestion,
@@ -39532,7 +39532,7 @@ export interface GoogleAdsSearchads360V23Services__CustomerClientLinkOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__CustomerClientLinkOperation: Schema.Schema<GoogleAdsSearchads360V23Services__CustomerClientLinkOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     create: Schema.optional(
       GoogleAdsSearchads360V23Resources__CustomerClientLink,
     ),
@@ -39552,7 +39552,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAdGroupBidModifiersResp
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAdGroupBidModifiersResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupBidModifiersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(
@@ -39572,7 +39572,7 @@ export interface GoogleAdsSearchads360V23Services__GenerateAudienceOverlapInsigh
 }
 
 export const GoogleAdsSearchads360V23Services__GenerateAudienceOverlapInsightsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__GenerateAudienceOverlapInsightsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     primaryAttributeMetadata: Schema.optional(
       GoogleAdsSearchads360V23Common__AudienceInsightsAttributeMetadata,
     ),
@@ -39592,7 +39592,7 @@ export interface GoogleAdsSearchads360V23Services__RemoveProductLinkRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__RemoveProductLinkRequest: Schema.Schema<GoogleAdsSearchads360V23Services__RemoveProductLinkRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean),
     resourceName: Schema.optional(Schema.String),
   }).annotate({
@@ -39605,7 +39605,7 @@ export interface GoogleAdsSearchads360V23Services__CreateProductLinkInvitationRe
 }
 
 export const GoogleAdsSearchads360V23Services__CreateProductLinkInvitationRequest: Schema.Schema<GoogleAdsSearchads360V23Services__CreateProductLinkInvitationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     productLinkInvitation: Schema.optional(
       GoogleAdsSearchads360V23Resources__ProductLinkInvitation,
     ),
@@ -39620,7 +39620,7 @@ export interface GoogleAdsSearchads360V23Services__ConfigureCustomerLifecycleGoa
 }
 
 export const GoogleAdsSearchads360V23Services__ConfigureCustomerLifecycleGoalsResult: Schema.Schema<GoogleAdsSearchads360V23Services__ConfigureCustomerLifecycleGoalsResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -39637,7 +39637,7 @@ export interface GoogleAdsSearchads360V23Services__SearchSearchAds360FieldsRespo
 }
 
 export const GoogleAdsSearchads360V23Services__SearchSearchAds360FieldsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__SearchSearchAds360FieldsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     results: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Resources__SearchAds360Field),
@@ -39656,7 +39656,7 @@ export interface GoogleAdsSearchads360V23Services__CriterionBidModifier {
 }
 
 export const GoogleAdsSearchads360V23Services__CriterionBidModifier: Schema.Schema<GoogleAdsSearchads360V23Services__CriterionBidModifier> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     geoTargetConstant: Schema.optional(Schema.String),
     bidModifier: Schema.optional(Schema.Number),
   }).annotate({
@@ -39686,7 +39686,7 @@ export interface GoogleAdsSearchads360V23Services__CampaignToForecast {
 }
 
 export const GoogleAdsSearchads360V23Services__CampaignToForecast: Schema.Schema<GoogleAdsSearchads360V23Services__CampaignToForecast> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languageConstants: Schema.optional(Schema.Array(Schema.String)),
     adGroups: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__ForecastAdGroup),
@@ -39714,7 +39714,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerClientLinkReque
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomerClientLinkRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomerClientLinkRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean),
     operation: Schema.optional(
       GoogleAdsSearchads360V23Services__CustomerClientLinkOperation,
@@ -39740,7 +39740,7 @@ export interface GoogleAdsSearchads360V23Services__MutateConversionValueRulesReq
 }
 
 export const GoogleAdsSearchads360V23Services__MutateConversionValueRulesRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateConversionValueRulesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailure: Schema.optional(Schema.Boolean),
     validateOnly: Schema.optional(Schema.Boolean),
     operations: Schema.optional(
@@ -39762,7 +39762,7 @@ export interface GoogleAdsSearchads360V23Services__ListInsightsEligibleDatesResp
 }
 
 export const GoogleAdsSearchads360V23Services__ListInsightsEligibleDatesResponse: Schema.Schema<GoogleAdsSearchads360V23Services__ListInsightsEligibleDatesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataMonths: Schema.optional(Schema.Array(Schema.String)),
     lastThirtyDays: Schema.optional(GoogleAdsSearchads360V23Common__DateRange),
   }).annotate({
@@ -39778,7 +39778,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAssetsResponse {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAssetsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAssetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__MutateAssetResult),
@@ -39793,7 +39793,7 @@ export interface GoogleAdsSearchads360V23Services_SuggestGeoTargetConstantsReque
 }
 
 export const GoogleAdsSearchads360V23Services_SuggestGeoTargetConstantsRequest_LocationNames: Schema.Schema<GoogleAdsSearchads360V23Services_SuggestGeoTargetConstantsRequest_LocationNames> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     names: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
     identifier:
@@ -39812,7 +39812,7 @@ export interface GoogleAdsSearchads360V23Services__SuggestGeoTargetConstantsRequ
 }
 
 export const GoogleAdsSearchads360V23Services__SuggestGeoTargetConstantsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__SuggestGeoTargetConstantsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locationNames: Schema.optional(
       GoogleAdsSearchads360V23Services_SuggestGeoTargetConstantsRequest_LocationNames,
     ),
@@ -39832,7 +39832,7 @@ export interface GoogleAdsSearchads360V23Services__CreateDataLinkRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__CreateDataLinkRequest: Schema.Schema<GoogleAdsSearchads360V23Services__CreateDataLinkRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataLink: Schema.optional(GoogleAdsSearchads360V23Resources__DataLink),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__CreateDataLinkRequest",
@@ -39854,7 +39854,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCampaignSharedSetsReque
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCampaignSharedSetsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCampaignSharedSetsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__CampaignSharedSetOperation,
@@ -39874,7 +39874,7 @@ export interface GoogleAdsSearchads360V23Services__ListAccessibleCustomersRespon
 }
 
 export const GoogleAdsSearchads360V23Services__ListAccessibleCustomersResponse: Schema.Schema<GoogleAdsSearchads360V23Services__ListAccessibleCustomersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceNames: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
     identifier:
@@ -39897,7 +39897,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAssetsRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAssetsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAssetsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailure: Schema.optional(Schema.Boolean),
     validateOnly: Schema.optional(Schema.Boolean),
     operations: Schema.optional(
@@ -39918,7 +39918,7 @@ export interface GoogleAdsSearchads360V23Services__GenerateAudienceDefinitionReq
 }
 
 export const GoogleAdsSearchads360V23Services__GenerateAudienceDefinitionRequest: Schema.Schema<GoogleAdsSearchads360V23Services__GenerateAudienceDefinitionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     insightsApplicationInfo: Schema.optional(
       GoogleAdsSearchads360V23Common__AdditionalApplicationInfo,
     ),
@@ -39937,7 +39937,7 @@ export interface GoogleAdsSearchads360V23Services__EnablePMaxBrandGuidelinesRequ
 }
 
 export const GoogleAdsSearchads360V23Services__EnablePMaxBrandGuidelinesRequest: Schema.Schema<GoogleAdsSearchads360V23Services__EnablePMaxBrandGuidelinesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__EnableOperation),
     ),
@@ -39952,7 +39952,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAccountBudgetProposalRe
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAccountBudgetProposalResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAccountBudgetProposalResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     result: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateAccountBudgetProposalResult,
     ),
@@ -39973,7 +39973,7 @@ export interface GoogleAdsSearchads360V23Services__GenerateSuggestedTargetingIns
 }
 
 export const GoogleAdsSearchads360V23Services__GenerateSuggestedTargetingInsightsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__GenerateSuggestedTargetingInsightsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     audienceDescription: Schema.optional(
       GoogleAdsSearchads360V23Services__InsightsAudienceDescription,
     ),
@@ -39997,7 +39997,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAdGroupCriteriaResponse
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAdGroupCriteriaResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupCriteriaResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(
@@ -40015,7 +40015,7 @@ export interface GoogleAdsSearchads360V23Services__ConfigureCustomerLifecycleGoa
 }
 
 export const GoogleAdsSearchads360V23Services__ConfigureCustomerLifecycleGoalsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__ConfigureCustomerLifecycleGoalsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     result: Schema.optional(
       GoogleAdsSearchads360V23Services__ConfigureCustomerLifecycleGoalsResult,
     ),
@@ -40032,7 +40032,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerSkAdNetworkConv
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomerSkAdNetworkConversionValueSchemaResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomerSkAdNetworkConversionValueSchemaResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     result: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateCustomerSkAdNetworkConversionValueSchemaResult,
     ),
@@ -40058,7 +40058,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCampaignAssetsRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCampaignAssetsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCampaignAssetsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__CampaignAssetOperation),
     ),
@@ -40077,7 +40077,7 @@ export interface GoogleAdsSearchads360V23Services__UploadUserDataRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__UploadUserDataRequest: Schema.Schema<GoogleAdsSearchads360V23Services__UploadUserDataRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__UserDataOperation),
     ),
@@ -40096,7 +40096,7 @@ export interface GoogleAdsSearchads360V23Services__DismissRecommendationResponse
 }
 
 export const GoogleAdsSearchads360V23Services__DismissRecommendationResponse: Schema.Schema<GoogleAdsSearchads360V23Services__DismissRecommendationResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services_DismissRecommendationResponse_DismissRecommendationResult,
@@ -40116,7 +40116,7 @@ export interface GoogleAdsSearchads360V23Services__GenerateReachForecastResponse
 }
 
 export const GoogleAdsSearchads360V23Services__GenerateReachForecastResponse: Schema.Schema<GoogleAdsSearchads360V23Services__GenerateReachForecastResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     onTargetAudienceMetrics: Schema.optional(
       GoogleAdsSearchads360V23Services__OnTargetAudienceMetrics,
     ),
@@ -40136,7 +40136,7 @@ export interface GoogleAdsSearchads360V23Services__GenerateConversionRatesReques
 }
 
 export const GoogleAdsSearchads360V23Services__GenerateConversionRatesRequest: Schema.Schema<GoogleAdsSearchads360V23Services__GenerateConversionRatesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerReachGroup: Schema.optional(Schema.String),
     reachApplicationInfo: Schema.optional(
       GoogleAdsSearchads360V23Common__AdditionalApplicationInfo,
@@ -40155,7 +40155,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAdGroupsResponse {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAdGroupsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__MutateAdGroupResult),
@@ -40174,7 +40174,7 @@ export interface GoogleAdsSearchads360V23Services__GenerateKeywordForecastMetric
 }
 
 export const GoogleAdsSearchads360V23Services__GenerateKeywordForecastMetricsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__GenerateKeywordForecastMetricsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     forecastPeriod: Schema.optional(GoogleAdsSearchads360V23Common__DateRange),
     currencyCode: Schema.optional(Schema.String),
     campaign: Schema.optional(
@@ -40191,7 +40191,7 @@ export interface GoogleAdsSearchads360V23Services__CreateDataLinkResponse {
 }
 
 export const GoogleAdsSearchads360V23Services__CreateDataLinkResponse: Schema.Schema<GoogleAdsSearchads360V23Services__CreateDataLinkResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__CreateDataLinkResponse",
@@ -40203,7 +40203,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerUserAccessInvit
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomerUserAccessInvitationResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomerUserAccessInvitationResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     result: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateCustomerUserAccessInvitationResult,
     ),
@@ -40220,7 +40220,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAdParametersResponse {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAdParametersResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAdParametersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__MutateAdParameterResult),
@@ -40239,7 +40239,7 @@ export interface GoogleAdsSearchads360V23Services__CustomInterestOperation {
 }
 
 export const GoogleAdsSearchads360V23Services__CustomInterestOperation: Schema.Schema<GoogleAdsSearchads360V23Services__CustomInterestOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     update: Schema.optional(GoogleAdsSearchads360V23Resources__CustomInterest),
     create: Schema.optional(GoogleAdsSearchads360V23Resources__CustomInterest),
@@ -40255,7 +40255,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomInterestsRequest 
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomInterestsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomInterestsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean),
     operations: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__CustomInterestOperation),
@@ -40273,7 +40273,7 @@ export interface GoogleAdsSearchads360V23Services__MutateKeywordPlansResponse {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateKeywordPlansResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateKeywordPlansResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__MutateKeywordPlansResult),
@@ -40288,7 +40288,7 @@ export interface GoogleAdsSearchads360V23Services__MutateConversionGoalCampaignC
 }
 
 export const GoogleAdsSearchads360V23Services__MutateConversionGoalCampaignConfigsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateConversionGoalCampaignConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__MutateConversionGoalCampaignConfigResult,
@@ -40315,7 +40315,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAudiencesRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAudiencesRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAudiencesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__AudienceOperation),
     ),
@@ -40342,7 +40342,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerNegativeCriteri
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomerNegativeCriteriaRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomerNegativeCriteriaRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailure: Schema.optional(Schema.Boolean),
     validateOnly: Schema.optional(Schema.Boolean),
     operations: Schema.optional(
@@ -40364,7 +40364,7 @@ export interface GoogleAdsSearchads360V23Services__GraduateExperimentRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__GraduateExperimentRequest: Schema.Schema<GoogleAdsSearchads360V23Services__GraduateExperimentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean),
     campaignBudgetMappings: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__CampaignBudgetMapping),
@@ -40389,7 +40389,7 @@ export interface GoogleAdsSearchads360V23Services__MutateLabelsRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateLabelsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateLabelsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__LabelOperation),
     ),
@@ -40423,7 +40423,7 @@ export interface GoogleAdsSearchads360V23Services__GenerateKeywordHistoricalMetr
 }
 
 export const GoogleAdsSearchads360V23Services__GenerateKeywordHistoricalMetricsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__GenerateKeywordHistoricalMetricsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     language: Schema.optional(Schema.String),
     geoTargetConstants: Schema.optional(Schema.Array(Schema.String)),
     keywordPlanNetwork: Schema.optional(Schema.String),
@@ -40450,7 +40450,7 @@ export interface GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesRe
 }
 
 export const GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailure: Schema.optional(Schema.Boolean),
     validateOnly: Schema.optional(Schema.Boolean),
     operations: Schema.optional(
@@ -40471,7 +40471,7 @@ export interface GoogleAdsSearchads360V23Services__ConfigureCustomerLifecycleGoa
 }
 
 export const GoogleAdsSearchads360V23Services__ConfigureCustomerLifecycleGoalsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__ConfigureCustomerLifecycleGoalsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operation: Schema.optional(
       GoogleAdsSearchads360V23Services__CustomerLifecycleGoalOperation,
     ),
@@ -40489,7 +40489,7 @@ export interface GoogleAdsSearchads360V23Services__MutateExperimentsResponse {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateExperimentsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateExperimentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailureError: Schema.optional(GoogleRpc__Status),
     results: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__MutateExperimentResult),
@@ -40504,7 +40504,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerUserAccessReque
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomerUserAccessRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomerUserAccessRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operation: Schema.optional(
       GoogleAdsSearchads360V23Services__CustomerUserAccessOperation,
     ),
@@ -40527,7 +40527,7 @@ export interface GoogleAdsSearchads360V23Services__MutateConversionGoalCampaignC
 }
 
 export const GoogleAdsSearchads360V23Services__MutateConversionGoalCampaignConfigsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateConversionGoalCampaignConfigsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__ConversionGoalCampaignConfigOperation,
@@ -40548,7 +40548,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAdGroupCustomizersRespo
 }
 
 export const GoogleAdsSearchads360V23Services__MutateAdGroupCustomizersResponse: Schema.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupCustomizersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__MutateAdGroupCustomizerResult,
@@ -40566,7 +40566,7 @@ export interface GoogleAdsSearchads360V23Services__ListPlannableUserInterestsRes
 }
 
 export const GoogleAdsSearchads360V23Services__ListPlannableUserInterestsResponse: Schema.Schema<GoogleAdsSearchads360V23Services__ListPlannableUserInterestsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     plannableUserInterests: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__PlannableUserInterest),
     ),
@@ -40583,7 +40583,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerManagerLinkRequ
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCustomerManagerLinkRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCustomerManagerLinkRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean),
     operations: Schema.optional(
       Schema.Array(
@@ -40611,7 +40611,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCampaignBidModifiersReq
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCampaignBidModifiersRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCampaignBidModifiersRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V23Services__CampaignBidModifierOperation,
@@ -40631,7 +40631,7 @@ export interface GoogleAdsSearchads360V23Services__PromoteExperimentRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__PromoteExperimentRequest: Schema.Schema<GoogleAdsSearchads360V23Services__PromoteExperimentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean),
   }).annotate({
     identifier: "GoogleAdsSearchads360V23Services__PromoteExperimentRequest",
@@ -40653,7 +40653,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCampaignsRequest {
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCampaignsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCampaignsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__CampaignOperation),
     ),
@@ -40680,7 +40680,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCampaignAssetSetsReques
 }
 
 export const GoogleAdsSearchads360V23Services__MutateCampaignAssetSetsRequest: Schema.Schema<GoogleAdsSearchads360V23Services__MutateCampaignAssetSetsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V23Services__CampaignAssetSetOperation),
     ),
@@ -40752,7 +40752,7 @@ export interface SuggestGeoTargetConstantsRequest {
 }
 
 export const SuggestGeoTargetConstantsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__SuggestGeoTargetConstantsRequest,
     ).pipe(T.HttpBody()),
@@ -40768,7 +40768,7 @@ export const SuggestGeoTargetConstantsRequest =
 export type SuggestGeoTargetConstantsResponse =
   GoogleAdsSearchads360V23Services__SuggestGeoTargetConstantsResponse;
 export const SuggestGeoTargetConstantsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__SuggestGeoTargetConstantsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__SuggestGeoTargetConstantsResponse;
 
 export type SuggestGeoTargetConstantsError =
   | DefaultErrors
@@ -40783,7 +40783,7 @@ export const suggestGeoTargetConstants: API.OperationMethod<
   SuggestGeoTargetConstantsResponse,
   SuggestGeoTargetConstantsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SuggestGeoTargetConstantsRequest,
   output: SuggestGeoTargetConstantsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -40795,7 +40795,7 @@ export interface GetSearchAds360FieldsRequest {
 }
 
 export const GetSearchAds360FieldsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.String.pipe(T.HttpPath("resourceName")),
   }).pipe(
     T.Http({ method: "GET", path: "v23/{+resourceName}" }),
@@ -40805,7 +40805,7 @@ export const GetSearchAds360FieldsRequest =
 export type GetSearchAds360FieldsResponse =
   GoogleAdsSearchads360V23Resources__SearchAds360Field;
 export const GetSearchAds360FieldsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Resources__SearchAds360Field;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Resources__SearchAds360Field;
 
 export type GetSearchAds360FieldsError = DefaultErrors | NotFound | Forbidden;
 
@@ -40815,7 +40815,7 @@ export const getSearchAds360Fields: API.OperationMethod<
   GetSearchAds360FieldsResponse,
   GetSearchAds360FieldsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSearchAds360FieldsRequest,
   output: GetSearchAds360FieldsResponse,
   errors: [NotFound, Forbidden],
@@ -40827,7 +40827,7 @@ export interface SearchSearchAds360FieldsRequest {
 }
 
 export const SearchSearchAds360FieldsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__SearchSearchAds360FieldsRequest,
     ).pipe(T.HttpBody()),
@@ -40843,7 +40843,7 @@ export const SearchSearchAds360FieldsRequest =
 export type SearchSearchAds360FieldsResponse =
   GoogleAdsSearchads360V23Services__SearchSearchAds360FieldsResponse;
 export const SearchSearchAds360FieldsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__SearchSearchAds360FieldsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__SearchSearchAds360FieldsResponse;
 
 export type SearchSearchAds360FieldsError =
   | DefaultErrors
@@ -40858,7 +40858,7 @@ export const searchSearchAds360Fields: API.OperationMethod<
   SearchSearchAds360FieldsResponse,
   SearchSearchAds360FieldsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SearchSearchAds360FieldsRequest,
   output: SearchSearchAds360FieldsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -40870,7 +40870,7 @@ export interface ListPlannableLocationsV23Request {
 }
 
 export const ListPlannableLocationsV23Request =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__ListPlannableLocationsRequest,
     ).pipe(T.HttpBody()),
@@ -40886,7 +40886,7 @@ export const ListPlannableLocationsV23Request =
 export type ListPlannableLocationsV23Response =
   GoogleAdsSearchads360V23Services__ListPlannableLocationsResponse;
 export const ListPlannableLocationsV23Response =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__ListPlannableLocationsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__ListPlannableLocationsResponse;
 
 export type ListPlannableLocationsV23Error =
   | DefaultErrors
@@ -40901,7 +40901,7 @@ export const listPlannableLocationsV23: API.OperationMethod<
   ListPlannableLocationsV23Response,
   ListPlannableLocationsV23Error,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListPlannableLocationsV23Request,
   output: ListPlannableLocationsV23Response,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -40913,7 +40913,7 @@ export interface ListPlannableProductsV23Request {
 }
 
 export const ListPlannableProductsV23Request =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__ListPlannableProductsRequest,
     ).pipe(T.HttpBody()),
@@ -40929,7 +40929,7 @@ export const ListPlannableProductsV23Request =
 export type ListPlannableProductsV23Response =
   GoogleAdsSearchads360V23Services__ListPlannableProductsResponse;
 export const ListPlannableProductsV23Response =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__ListPlannableProductsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__ListPlannableProductsResponse;
 
 export type ListPlannableProductsV23Error =
   | DefaultErrors
@@ -40944,7 +40944,7 @@ export const listPlannableProductsV23: API.OperationMethod<
   ListPlannableProductsV23Response,
   ListPlannableProductsV23Error,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListPlannableProductsV23Request,
   output: ListPlannableProductsV23Response,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -40956,7 +40956,7 @@ export interface ListBenchmarksLocationsV23Request {
 }
 
 export const ListBenchmarksLocationsV23Request =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__ListBenchmarksLocationsRequest,
     ).pipe(T.HttpBody()),
@@ -40972,7 +40972,7 @@ export const ListBenchmarksLocationsV23Request =
 export type ListBenchmarksLocationsV23Response =
   GoogleAdsSearchads360V23Services__ListBenchmarksLocationsResponse;
 export const ListBenchmarksLocationsV23Response =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__ListBenchmarksLocationsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__ListBenchmarksLocationsResponse;
 
 export type ListBenchmarksLocationsV23Error =
   | DefaultErrors
@@ -40987,7 +40987,7 @@ export const listBenchmarksLocationsV23: API.OperationMethod<
   ListBenchmarksLocationsV23Response,
   ListBenchmarksLocationsV23Error,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListBenchmarksLocationsV23Request,
   output: ListBenchmarksLocationsV23Response,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -40999,7 +40999,7 @@ export interface ListBenchmarksProductsV23Request {
 }
 
 export const ListBenchmarksProductsV23Request =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__ListBenchmarksProductsRequest,
     ).pipe(T.HttpBody()),
@@ -41015,7 +41015,7 @@ export const ListBenchmarksProductsV23Request =
 export type ListBenchmarksProductsV23Response =
   GoogleAdsSearchads360V23Services__ListBenchmarksProductsResponse;
 export const ListBenchmarksProductsV23Response =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__ListBenchmarksProductsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__ListBenchmarksProductsResponse;
 
 export type ListBenchmarksProductsV23Error =
   | DefaultErrors
@@ -41030,7 +41030,7 @@ export const listBenchmarksProductsV23: API.OperationMethod<
   ListBenchmarksProductsV23Response,
   ListBenchmarksProductsV23Error,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListBenchmarksProductsV23Request,
   output: ListBenchmarksProductsV23Response,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -41042,7 +41042,7 @@ export interface GenerateConversionRatesV23Request {
 }
 
 export const GenerateConversionRatesV23Request =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__GenerateConversionRatesRequest,
     ).pipe(T.HttpBody()),
@@ -41058,7 +41058,7 @@ export const GenerateConversionRatesV23Request =
 export type GenerateConversionRatesV23Response =
   GoogleAdsSearchads360V23Services__GenerateConversionRatesResponse;
 export const GenerateConversionRatesV23Response =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__GenerateConversionRatesResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__GenerateConversionRatesResponse;
 
 export type GenerateConversionRatesV23Error =
   | DefaultErrors
@@ -41073,7 +41073,7 @@ export const generateConversionRatesV23: API.OperationMethod<
   GenerateConversionRatesV23Response,
   GenerateConversionRatesV23Error,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateConversionRatesV23Request,
   output: GenerateConversionRatesV23Response,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -41085,7 +41085,7 @@ export interface ListPlannableUserInterestsV23Request {
 }
 
 export const ListPlannableUserInterestsV23Request =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__ListPlannableUserInterestsRequest,
     ).pipe(T.HttpBody()),
@@ -41101,7 +41101,7 @@ export const ListPlannableUserInterestsV23Request =
 export type ListPlannableUserInterestsV23Response =
   GoogleAdsSearchads360V23Services__ListPlannableUserInterestsResponse;
 export const ListPlannableUserInterestsV23Response =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__ListPlannableUserInterestsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__ListPlannableUserInterestsResponse;
 
 export type ListPlannableUserInterestsV23Error =
   | DefaultErrors
@@ -41116,7 +41116,7 @@ export const listPlannableUserInterestsV23: API.OperationMethod<
   ListPlannableUserInterestsV23Response,
   ListPlannableUserInterestsV23Error,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListPlannableUserInterestsV23Request,
   output: ListPlannableUserInterestsV23Response,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -41128,7 +41128,7 @@ export interface ListBenchmarksAvailableDatesV23Request {
 }
 
 export const ListBenchmarksAvailableDatesV23Request =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__ListBenchmarksAvailableDatesRequest,
     ).pipe(T.HttpBody()),
@@ -41144,7 +41144,7 @@ export const ListBenchmarksAvailableDatesV23Request =
 export type ListBenchmarksAvailableDatesV23Response =
   GoogleAdsSearchads360V23Services__ListBenchmarksAvailableDatesResponse;
 export const ListBenchmarksAvailableDatesV23Response =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__ListBenchmarksAvailableDatesResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__ListBenchmarksAvailableDatesResponse;
 
 export type ListBenchmarksAvailableDatesV23Error =
   | DefaultErrors
@@ -41159,7 +41159,7 @@ export const listBenchmarksAvailableDatesV23: API.OperationMethod<
   ListBenchmarksAvailableDatesV23Response,
   ListBenchmarksAvailableDatesV23Error,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListBenchmarksAvailableDatesV23Request,
   output: ListBenchmarksAvailableDatesV23Response,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -41171,7 +41171,7 @@ export interface ListBenchmarksSourcesV23Request {
 }
 
 export const ListBenchmarksSourcesV23Request =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__ListBenchmarksSourcesRequest,
     ).pipe(T.HttpBody()),
@@ -41187,7 +41187,7 @@ export const ListBenchmarksSourcesV23Request =
 export type ListBenchmarksSourcesV23Response =
   GoogleAdsSearchads360V23Services__ListBenchmarksSourcesResponse;
 export const ListBenchmarksSourcesV23Response =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__ListBenchmarksSourcesResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__ListBenchmarksSourcesResponse;
 
 export type ListBenchmarksSourcesV23Error =
   | DefaultErrors
@@ -41202,7 +41202,7 @@ export const listBenchmarksSourcesV23: API.OperationMethod<
   ListBenchmarksSourcesV23Response,
   ListBenchmarksSourcesV23Error,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListBenchmarksSourcesV23Request,
   output: ListBenchmarksSourcesV23Response,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -41214,7 +41214,7 @@ export interface ListPlannableUserListsV23Request {
 }
 
 export const ListPlannableUserListsV23Request =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__ListPlannableUserListsRequest,
     ).pipe(T.HttpBody()),
@@ -41230,7 +41230,7 @@ export const ListPlannableUserListsV23Request =
 export type ListPlannableUserListsV23Response =
   GoogleAdsSearchads360V23Services__ListPlannableUserListsResponse;
 export const ListPlannableUserListsV23Response =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__ListPlannableUserListsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__ListPlannableUserListsResponse;
 
 export type ListPlannableUserListsV23Error =
   | DefaultErrors
@@ -41245,7 +41245,7 @@ export const listPlannableUserListsV23: API.OperationMethod<
   ListPlannableUserListsV23Response,
   ListPlannableUserListsV23Error,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListPlannableUserListsV23Request,
   output: ListPlannableUserListsV23Response,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -41263,7 +41263,7 @@ export interface FetchIncentiveIncentivesRequest {
 }
 
 export const FetchIncentiveIncentivesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String).pipe(T.HttpQuery("email")),
     countryCode: Schema.optional(Schema.String).pipe(
       T.HttpQuery("countryCode"),
@@ -41280,7 +41280,7 @@ export const FetchIncentiveIncentivesRequest =
 export type FetchIncentiveIncentivesResponse =
   GoogleAdsSearchads360V23Services__FetchIncentiveResponse;
 export const FetchIncentiveIncentivesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__FetchIncentiveResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__FetchIncentiveResponse;
 
 export type FetchIncentiveIncentivesError =
   | DefaultErrors
@@ -41293,7 +41293,7 @@ export const fetchIncentiveIncentives: API.OperationMethod<
   FetchIncentiveIncentivesResponse,
   FetchIncentiveIncentivesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: FetchIncentiveIncentivesRequest,
   output: FetchIncentiveIncentivesResponse,
   errors: [NotFound, Forbidden],
@@ -41305,7 +41305,7 @@ export interface ListInsightsEligibleDatesAudienceInsightsRequest {
 }
 
 export const ListInsightsEligibleDatesAudienceInsightsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__ListInsightsEligibleDatesRequest,
     ).pipe(T.HttpBody()),
@@ -41321,7 +41321,7 @@ export const ListInsightsEligibleDatesAudienceInsightsRequest =
 export type ListInsightsEligibleDatesAudienceInsightsResponse =
   GoogleAdsSearchads360V23Services__ListInsightsEligibleDatesResponse;
 export const ListInsightsEligibleDatesAudienceInsightsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__ListInsightsEligibleDatesResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__ListInsightsEligibleDatesResponse;
 
 export type ListInsightsEligibleDatesAudienceInsightsError =
   | DefaultErrors
@@ -41336,7 +41336,7 @@ export const listInsightsEligibleDatesAudienceInsights: API.OperationMethod<
   ListInsightsEligibleDatesAudienceInsightsResponse,
   ListInsightsEligibleDatesAudienceInsightsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListInsightsEligibleDatesAudienceInsightsRequest,
   output: ListInsightsEligibleDatesAudienceInsightsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -41348,7 +41348,7 @@ export interface SuggestKeywordThemeConstantsRequest {
 }
 
 export const SuggestKeywordThemeConstantsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__SuggestKeywordThemeConstantsRequest,
     ).pipe(T.HttpBody()),
@@ -41364,7 +41364,7 @@ export const SuggestKeywordThemeConstantsRequest =
 export type SuggestKeywordThemeConstantsResponse =
   GoogleAdsSearchads360V23Services__SuggestKeywordThemeConstantsResponse;
 export const SuggestKeywordThemeConstantsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__SuggestKeywordThemeConstantsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__SuggestKeywordThemeConstantsResponse;
 
 export type SuggestKeywordThemeConstantsError =
   | DefaultErrors
@@ -41379,7 +41379,7 @@ export const suggestKeywordThemeConstants: API.OperationMethod<
   SuggestKeywordThemeConstantsResponse,
   SuggestKeywordThemeConstantsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SuggestKeywordThemeConstantsRequest,
   output: SuggestKeywordThemeConstantsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -41393,7 +41393,7 @@ export interface SuggestKeywordThemesCustomersRequest {
 }
 
 export const SuggestKeywordThemesCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__SuggestKeywordThemesRequest,
@@ -41410,7 +41410,7 @@ export const SuggestKeywordThemesCustomersRequest =
 export type SuggestKeywordThemesCustomersResponse =
   GoogleAdsSearchads360V23Services__SuggestKeywordThemesResponse;
 export const SuggestKeywordThemesCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__SuggestKeywordThemesResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__SuggestKeywordThemesResponse;
 
 export type SuggestKeywordThemesCustomersError =
   | DefaultErrors
@@ -41425,7 +41425,7 @@ export const suggestKeywordThemesCustomers: API.OperationMethod<
   SuggestKeywordThemesCustomersResponse,
   SuggestKeywordThemesCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SuggestKeywordThemesCustomersRequest,
   output: SuggestKeywordThemesCustomersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -41439,7 +41439,7 @@ export interface UploadUserDataCustomersRequest {
 }
 
 export const UploadUserDataCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__UploadUserDataRequest,
@@ -41456,7 +41456,7 @@ export const UploadUserDataCustomersRequest =
 export type UploadUserDataCustomersResponse =
   GoogleAdsSearchads360V23Services__UploadUserDataResponse;
 export const UploadUserDataCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__UploadUserDataResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__UploadUserDataResponse;
 
 export type UploadUserDataCustomersError =
   | DefaultErrors
@@ -41471,7 +41471,7 @@ export const uploadUserDataCustomers: API.OperationMethod<
   UploadUserDataCustomersResponse,
   UploadUserDataCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UploadUserDataCustomersRequest,
   output: UploadUserDataCustomersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -41485,7 +41485,7 @@ export interface GenerateTargetingSuggestionMetricsCustomersRequest {
 }
 
 export const GenerateTargetingSuggestionMetricsCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__GenerateTargetingSuggestionMetricsRequest,
@@ -41502,7 +41502,7 @@ export const GenerateTargetingSuggestionMetricsCustomersRequest =
 export type GenerateTargetingSuggestionMetricsCustomersResponse =
   GoogleAdsSearchads360V23Services__GenerateTargetingSuggestionMetricsResponse;
 export const GenerateTargetingSuggestionMetricsCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__GenerateTargetingSuggestionMetricsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__GenerateTargetingSuggestionMetricsResponse;
 
 export type GenerateTargetingSuggestionMetricsCustomersError =
   | DefaultErrors
@@ -41517,7 +41517,7 @@ export const generateTargetingSuggestionMetricsCustomers: API.OperationMethod<
   GenerateTargetingSuggestionMetricsCustomersResponse,
   GenerateTargetingSuggestionMetricsCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateTargetingSuggestionMetricsCustomersRequest,
   output: GenerateTargetingSuggestionMetricsCustomersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -41531,7 +41531,7 @@ export interface GenerateAdGroupThemesCustomersRequest {
 }
 
 export const GenerateAdGroupThemesCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__GenerateAdGroupThemesRequest,
@@ -41548,7 +41548,7 @@ export const GenerateAdGroupThemesCustomersRequest =
 export type GenerateAdGroupThemesCustomersResponse =
   GoogleAdsSearchads360V23Services__GenerateAdGroupThemesResponse;
 export const GenerateAdGroupThemesCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__GenerateAdGroupThemesResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__GenerateAdGroupThemesResponse;
 
 export type GenerateAdGroupThemesCustomersError =
   | DefaultErrors
@@ -41563,7 +41563,7 @@ export const generateAdGroupThemesCustomers: API.OperationMethod<
   GenerateAdGroupThemesCustomersResponse,
   GenerateAdGroupThemesCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateAdGroupThemesCustomersRequest,
   output: GenerateAdGroupThemesCustomersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -41576,14 +41576,12 @@ export interface MutateCustomersRequest {
   body?: GoogleAdsSearchads360V23Services__MutateCustomerRequest;
 }
 
-export const MutateCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    customerId: Schema.String.pipe(T.HttpPath("customerId")),
-    body: Schema.optional(
-      GoogleAdsSearchads360V23Services__MutateCustomerRequest,
-    ).pipe(T.HttpBody()),
-  },
-).pipe(
+export const MutateCustomersRequest = /*@__PURE__*/ Schema.Struct({
+  customerId: Schema.String.pipe(T.HttpPath("customerId")),
+  body: Schema.optional(
+    GoogleAdsSearchads360V23Services__MutateCustomerRequest,
+  ).pipe(T.HttpBody()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "v23/customers/{+customerId}:mutate",
@@ -41595,7 +41593,7 @@ export const MutateCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type MutateCustomersResponse =
   GoogleAdsSearchads360V23Services__MutateCustomerResponse;
 export const MutateCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateCustomerResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateCustomerResponse;
 
 export type MutateCustomersError =
   | DefaultErrors
@@ -41610,7 +41608,7 @@ export const mutateCustomers: API.OperationMethod<
   MutateCustomersResponse,
   MutateCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersRequest,
   output: MutateCustomersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -41624,7 +41622,7 @@ export interface GenerateReachForecastCustomersRequest {
 }
 
 export const GenerateReachForecastCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__GenerateReachForecastRequest,
@@ -41641,7 +41639,7 @@ export const GenerateReachForecastCustomersRequest =
 export type GenerateReachForecastCustomersResponse =
   GoogleAdsSearchads360V23Services__GenerateReachForecastResponse;
 export const GenerateReachForecastCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__GenerateReachForecastResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__GenerateReachForecastResponse;
 
 export type GenerateReachForecastCustomersError =
   | DefaultErrors
@@ -41656,7 +41654,7 @@ export const generateReachForecastCustomers: API.OperationMethod<
   GenerateReachForecastCustomersResponse,
   GenerateReachForecastCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateReachForecastCustomersRequest,
   output: GenerateReachForecastCustomersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -41670,7 +41668,7 @@ export interface GenerateAudienceOverlapInsightsCustomersRequest {
 }
 
 export const GenerateAudienceOverlapInsightsCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__GenerateAudienceOverlapInsightsRequest,
@@ -41687,7 +41685,7 @@ export const GenerateAudienceOverlapInsightsCustomersRequest =
 export type GenerateAudienceOverlapInsightsCustomersResponse =
   GoogleAdsSearchads360V23Services__GenerateAudienceOverlapInsightsResponse;
 export const GenerateAudienceOverlapInsightsCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__GenerateAudienceOverlapInsightsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__GenerateAudienceOverlapInsightsResponse;
 
 export type GenerateAudienceOverlapInsightsCustomersError =
   | DefaultErrors
@@ -41702,7 +41700,7 @@ export const generateAudienceOverlapInsightsCustomers: API.OperationMethod<
   GenerateAudienceOverlapInsightsCustomersResponse,
   GenerateAudienceOverlapInsightsCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateAudienceOverlapInsightsCustomersRequest,
   output: GenerateAudienceOverlapInsightsCustomersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -41716,7 +41714,7 @@ export interface GenerateBenchmarksMetricsCustomersRequest {
 }
 
 export const GenerateBenchmarksMetricsCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__GenerateBenchmarksMetricsRequest,
@@ -41733,7 +41731,7 @@ export const GenerateBenchmarksMetricsCustomersRequest =
 export type GenerateBenchmarksMetricsCustomersResponse =
   GoogleAdsSearchads360V23Services__GenerateBenchmarksMetricsResponse;
 export const GenerateBenchmarksMetricsCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__GenerateBenchmarksMetricsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__GenerateBenchmarksMetricsResponse;
 
 export type GenerateBenchmarksMetricsCustomersError =
   | DefaultErrors
@@ -41748,7 +41746,7 @@ export const generateBenchmarksMetricsCustomers: API.OperationMethod<
   GenerateBenchmarksMetricsCustomersResponse,
   GenerateBenchmarksMetricsCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateBenchmarksMetricsCustomersRequest,
   output: GenerateBenchmarksMetricsCustomersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -41762,7 +41760,7 @@ export interface GenerateKeywordHistoricalMetricsCustomersRequest {
 }
 
 export const GenerateKeywordHistoricalMetricsCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__GenerateKeywordHistoricalMetricsRequest,
@@ -41779,7 +41777,7 @@ export const GenerateKeywordHistoricalMetricsCustomersRequest =
 export type GenerateKeywordHistoricalMetricsCustomersResponse =
   GoogleAdsSearchads360V23Services__GenerateKeywordHistoricalMetricsResponse;
 export const GenerateKeywordHistoricalMetricsCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__GenerateKeywordHistoricalMetricsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__GenerateKeywordHistoricalMetricsResponse;
 
 export type GenerateKeywordHistoricalMetricsCustomersError =
   | DefaultErrors
@@ -41794,7 +41792,7 @@ export const generateKeywordHistoricalMetricsCustomers: API.OperationMethod<
   GenerateKeywordHistoricalMetricsCustomersResponse,
   GenerateKeywordHistoricalMetricsCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateKeywordHistoricalMetricsCustomersRequest,
   output: GenerateKeywordHistoricalMetricsCustomersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -41803,7 +41801,7 @@ export const generateKeywordHistoricalMetricsCustomers: API.OperationMethod<
 export interface ListAccessibleCustomersCustomersRequest {}
 
 export const ListAccessibleCustomersCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "v23/customers:listAccessibleCustomers" }),
     svc,
   ) as unknown as Schema.Schema<ListAccessibleCustomersCustomersRequest>;
@@ -41811,7 +41809,7 @@ export const ListAccessibleCustomersCustomersRequest =
 export type ListAccessibleCustomersCustomersResponse =
   GoogleAdsSearchads360V23Services__ListAccessibleCustomersResponse;
 export const ListAccessibleCustomersCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__ListAccessibleCustomersResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__ListAccessibleCustomersResponse;
 
 export type ListAccessibleCustomersCustomersError =
   | DefaultErrors
@@ -41824,7 +41822,7 @@ export const listAccessibleCustomersCustomers: API.OperationMethod<
   ListAccessibleCustomersCustomersResponse,
   ListAccessibleCustomersCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListAccessibleCustomersCustomersRequest,
   output: ListAccessibleCustomersCustomersResponse,
   errors: [NotFound, Forbidden],
@@ -41838,7 +41836,7 @@ export interface GenerateInsightsFinderReportCustomersRequest {
 }
 
 export const GenerateInsightsFinderReportCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__GenerateInsightsFinderReportRequest,
@@ -41855,7 +41853,7 @@ export const GenerateInsightsFinderReportCustomersRequest =
 export type GenerateInsightsFinderReportCustomersResponse =
   GoogleAdsSearchads360V23Services__GenerateInsightsFinderReportResponse;
 export const GenerateInsightsFinderReportCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__GenerateInsightsFinderReportResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__GenerateInsightsFinderReportResponse;
 
 export type GenerateInsightsFinderReportCustomersError =
   | DefaultErrors
@@ -41870,7 +41868,7 @@ export const generateInsightsFinderReportCustomers: API.OperationMethod<
   GenerateInsightsFinderReportCustomersResponse,
   GenerateInsightsFinderReportCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateInsightsFinderReportCustomersRequest,
   output: GenerateInsightsFinderReportCustomersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -41884,7 +41882,7 @@ export interface CreateCustomerClientCustomersRequest {
 }
 
 export const CreateCustomerClientCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__CreateCustomerClientRequest,
@@ -41901,7 +41899,7 @@ export const CreateCustomerClientCustomersRequest =
 export type CreateCustomerClientCustomersResponse =
   GoogleAdsSearchads360V23Services__CreateCustomerClientResponse;
 export const CreateCustomerClientCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__CreateCustomerClientResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__CreateCustomerClientResponse;
 
 export type CreateCustomerClientCustomersError =
   | DefaultErrors
@@ -41916,7 +41914,7 @@ export const createCustomerClientCustomers: API.OperationMethod<
   CreateCustomerClientCustomersResponse,
   CreateCustomerClientCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCustomerClientCustomersRequest,
   output: CreateCustomerClientCustomersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -41930,7 +41928,7 @@ export interface SearchAudienceInsightsAttributesCustomersRequest {
 }
 
 export const SearchAudienceInsightsAttributesCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__ListAudienceInsightsAttributesRequest,
@@ -41947,7 +41945,7 @@ export const SearchAudienceInsightsAttributesCustomersRequest =
 export type SearchAudienceInsightsAttributesCustomersResponse =
   GoogleAdsSearchads360V23Services__ListAudienceInsightsAttributesResponse;
 export const SearchAudienceInsightsAttributesCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__ListAudienceInsightsAttributesResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__ListAudienceInsightsAttributesResponse;
 
 export type SearchAudienceInsightsAttributesCustomersError =
   | DefaultErrors
@@ -41962,7 +41960,7 @@ export const searchAudienceInsightsAttributesCustomers: API.OperationMethod<
   SearchAudienceInsightsAttributesCustomersResponse,
   SearchAudienceInsightsAttributesCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SearchAudienceInsightsAttributesCustomersRequest,
   output: SearchAudienceInsightsAttributesCustomersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -41976,7 +41974,7 @@ export interface SuggestSmartCampaignBudgetOptionsCustomersRequest {
 }
 
 export const SuggestSmartCampaignBudgetOptionsCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__SuggestSmartCampaignBudgetOptionsRequest,
@@ -41993,7 +41991,7 @@ export const SuggestSmartCampaignBudgetOptionsCustomersRequest =
 export type SuggestSmartCampaignBudgetOptionsCustomersResponse =
   GoogleAdsSearchads360V23Services__SuggestSmartCampaignBudgetOptionsResponse;
 export const SuggestSmartCampaignBudgetOptionsCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__SuggestSmartCampaignBudgetOptionsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__SuggestSmartCampaignBudgetOptionsResponse;
 
 export type SuggestSmartCampaignBudgetOptionsCustomersError =
   | DefaultErrors
@@ -42008,7 +42006,7 @@ export const suggestSmartCampaignBudgetOptionsCustomers: API.OperationMethod<
   SuggestSmartCampaignBudgetOptionsCustomersResponse,
   SuggestSmartCampaignBudgetOptionsCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SuggestSmartCampaignBudgetOptionsCustomersRequest,
   output: SuggestSmartCampaignBudgetOptionsCustomersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -42022,7 +42020,7 @@ export interface GenerateSuggestedTargetingInsightsCustomersRequest {
 }
 
 export const GenerateSuggestedTargetingInsightsCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__GenerateSuggestedTargetingInsightsRequest,
@@ -42039,7 +42037,7 @@ export const GenerateSuggestedTargetingInsightsCustomersRequest =
 export type GenerateSuggestedTargetingInsightsCustomersResponse =
   GoogleAdsSearchads360V23Services__GenerateSuggestedTargetingInsightsResponse;
 export const GenerateSuggestedTargetingInsightsCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__GenerateSuggestedTargetingInsightsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__GenerateSuggestedTargetingInsightsResponse;
 
 export type GenerateSuggestedTargetingInsightsCustomersError =
   | DefaultErrors
@@ -42054,7 +42052,7 @@ export const generateSuggestedTargetingInsightsCustomers: API.OperationMethod<
   GenerateSuggestedTargetingInsightsCustomersResponse,
   GenerateSuggestedTargetingInsightsCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateSuggestedTargetingInsightsCustomersRequest,
   output: GenerateSuggestedTargetingInsightsCustomersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -42066,7 +42064,7 @@ export interface GetIdentityVerificationCustomersRequest {
 }
 
 export const GetIdentityVerificationCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
   }).pipe(
     T.Http({
@@ -42079,7 +42077,7 @@ export const GetIdentityVerificationCustomersRequest =
 export type GetIdentityVerificationCustomersResponse =
   GoogleAdsSearchads360V23Services__GetIdentityVerificationResponse;
 export const GetIdentityVerificationCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__GetIdentityVerificationResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__GetIdentityVerificationResponse;
 
 export type GetIdentityVerificationCustomersError =
   | DefaultErrors
@@ -42092,7 +42090,7 @@ export const getIdentityVerificationCustomers: API.OperationMethod<
   GetIdentityVerificationCustomersResponse,
   GetIdentityVerificationCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIdentityVerificationCustomersRequest,
   output: GetIdentityVerificationCustomersResponse,
   errors: [NotFound, Forbidden],
@@ -42106,7 +42104,7 @@ export interface GenerateKeywordIdeasCustomersRequest {
 }
 
 export const GenerateKeywordIdeasCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__GenerateKeywordIdeasRequest,
@@ -42123,7 +42121,7 @@ export const GenerateKeywordIdeasCustomersRequest =
 export type GenerateKeywordIdeasCustomersResponse =
   GoogleAdsSearchads360V23Services__GenerateKeywordIdeaResponse;
 export const GenerateKeywordIdeasCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__GenerateKeywordIdeaResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__GenerateKeywordIdeaResponse;
 
 export type GenerateKeywordIdeasCustomersError =
   | DefaultErrors
@@ -42138,7 +42136,7 @@ export const generateKeywordIdeasCustomers: API.OperationMethod<
   GenerateKeywordIdeasCustomersResponse,
   GenerateKeywordIdeasCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateKeywordIdeasCustomersRequest,
   output: GenerateKeywordIdeasCustomersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -42152,7 +42150,7 @@ export interface SuggestSmartCampaignAdCustomersRequest {
 }
 
 export const SuggestSmartCampaignAdCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__SuggestSmartCampaignAdRequest,
@@ -42169,7 +42167,7 @@ export const SuggestSmartCampaignAdCustomersRequest =
 export type SuggestSmartCampaignAdCustomersResponse =
   GoogleAdsSearchads360V23Services__SuggestSmartCampaignAdResponse;
 export const SuggestSmartCampaignAdCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__SuggestSmartCampaignAdResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__SuggestSmartCampaignAdResponse;
 
 export type SuggestSmartCampaignAdCustomersError =
   | DefaultErrors
@@ -42184,7 +42182,7 @@ export const suggestSmartCampaignAdCustomers: API.OperationMethod<
   SuggestSmartCampaignAdCustomersResponse,
   SuggestSmartCampaignAdCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SuggestSmartCampaignAdCustomersRequest,
   output: SuggestSmartCampaignAdCustomersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -42198,7 +42196,7 @@ export interface GenerateAudienceDefinitionCustomersRequest {
 }
 
 export const GenerateAudienceDefinitionCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__GenerateAudienceDefinitionRequest,
@@ -42215,7 +42213,7 @@ export const GenerateAudienceDefinitionCustomersRequest =
 export type GenerateAudienceDefinitionCustomersResponse =
   GoogleAdsSearchads360V23Services__GenerateAudienceDefinitionResponse;
 export const GenerateAudienceDefinitionCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__GenerateAudienceDefinitionResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__GenerateAudienceDefinitionResponse;
 
 export type GenerateAudienceDefinitionCustomersError =
   | DefaultErrors
@@ -42230,7 +42228,7 @@ export const generateAudienceDefinitionCustomers: API.OperationMethod<
   GenerateAudienceDefinitionCustomersResponse,
   GenerateAudienceDefinitionCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateAudienceDefinitionCustomersRequest,
   output: GenerateAudienceDefinitionCustomersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -42244,7 +42242,7 @@ export interface StartIdentityVerificationCustomersRequest {
 }
 
 export const StartIdentityVerificationCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__StartIdentityVerificationRequest,
@@ -42260,7 +42258,7 @@ export const StartIdentityVerificationCustomersRequest =
 
 export type StartIdentityVerificationCustomersResponse = GoogleProtobuf__Empty;
 export const StartIdentityVerificationCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobuf__Empty;
+  /*@__PURE__*/ GoogleProtobuf__Empty;
 
 export type StartIdentityVerificationCustomersError =
   | DefaultErrors
@@ -42275,7 +42273,7 @@ export const startIdentityVerificationCustomers: API.OperationMethod<
   StartIdentityVerificationCustomersResponse,
   StartIdentityVerificationCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartIdentityVerificationCustomersRequest,
   output: StartIdentityVerificationCustomersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -42289,7 +42287,7 @@ export interface RemoveCampaignAutomaticallyCreatedAssetCustomersRequest {
 }
 
 export const RemoveCampaignAutomaticallyCreatedAssetCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__RemoveCampaignAutomaticallyCreatedAssetRequest,
@@ -42306,7 +42304,7 @@ export const RemoveCampaignAutomaticallyCreatedAssetCustomersRequest =
 export type RemoveCampaignAutomaticallyCreatedAssetCustomersResponse =
   GoogleAdsSearchads360V23Services__RemoveCampaignAutomaticallyCreatedAssetResponse;
 export const RemoveCampaignAutomaticallyCreatedAssetCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__RemoveCampaignAutomaticallyCreatedAssetResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__RemoveCampaignAutomaticallyCreatedAssetResponse;
 
 export type RemoveCampaignAutomaticallyCreatedAssetCustomersError =
   | DefaultErrors
@@ -42321,7 +42319,7 @@ export const removeCampaignAutomaticallyCreatedAssetCustomers: API.OperationMeth
   RemoveCampaignAutomaticallyCreatedAssetCustomersResponse,
   RemoveCampaignAutomaticallyCreatedAssetCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveCampaignAutomaticallyCreatedAssetCustomersRequest,
   output: RemoveCampaignAutomaticallyCreatedAssetCustomersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -42335,7 +42333,7 @@ export interface GenerateKeywordForecastMetricsCustomersRequest {
 }
 
 export const GenerateKeywordForecastMetricsCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__GenerateKeywordForecastMetricsRequest,
@@ -42352,7 +42350,7 @@ export const GenerateKeywordForecastMetricsCustomersRequest =
 export type GenerateKeywordForecastMetricsCustomersResponse =
   GoogleAdsSearchads360V23Services__GenerateKeywordForecastMetricsResponse;
 export const GenerateKeywordForecastMetricsCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__GenerateKeywordForecastMetricsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__GenerateKeywordForecastMetricsResponse;
 
 export type GenerateKeywordForecastMetricsCustomersError =
   | DefaultErrors
@@ -42367,7 +42365,7 @@ export const generateKeywordForecastMetricsCustomers: API.OperationMethod<
   GenerateKeywordForecastMetricsCustomersResponse,
   GenerateKeywordForecastMetricsCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateKeywordForecastMetricsCustomersRequest,
   output: GenerateKeywordForecastMetricsCustomersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -42381,7 +42379,7 @@ export interface GenerateAudienceCompositionInsightsCustomersRequest {
 }
 
 export const GenerateAudienceCompositionInsightsCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__GenerateAudienceCompositionInsightsRequest,
@@ -42398,7 +42396,7 @@ export const GenerateAudienceCompositionInsightsCustomersRequest =
 export type GenerateAudienceCompositionInsightsCustomersResponse =
   GoogleAdsSearchads360V23Services__GenerateAudienceCompositionInsightsResponse;
 export const GenerateAudienceCompositionInsightsCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__GenerateAudienceCompositionInsightsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__GenerateAudienceCompositionInsightsResponse;
 
 export type GenerateAudienceCompositionInsightsCustomersError =
   | DefaultErrors
@@ -42413,7 +42411,7 @@ export const generateAudienceCompositionInsightsCustomers: API.OperationMethod<
   GenerateAudienceCompositionInsightsCustomersResponse,
   GenerateAudienceCompositionInsightsCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateAudienceCompositionInsightsCustomersRequest,
   output: GenerateAudienceCompositionInsightsCustomersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -42427,7 +42425,7 @@ export interface SuggestTravelAssetsCustomersRequest {
 }
 
 export const SuggestTravelAssetsCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__SuggestTravelAssetsRequest,
@@ -42444,7 +42442,7 @@ export const SuggestTravelAssetsCustomersRequest =
 export type SuggestTravelAssetsCustomersResponse =
   GoogleAdsSearchads360V23Services__SuggestTravelAssetsResponse;
 export const SuggestTravelAssetsCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__SuggestTravelAssetsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__SuggestTravelAssetsResponse;
 
 export type SuggestTravelAssetsCustomersError =
   | DefaultErrors
@@ -42459,7 +42457,7 @@ export const suggestTravelAssetsCustomers: API.OperationMethod<
   SuggestTravelAssetsCustomersResponse,
   SuggestTravelAssetsCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SuggestTravelAssetsCustomersRequest,
   output: SuggestTravelAssetsCustomersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -42473,7 +42471,7 @@ export interface ConfigureCampaignLifecycleGoalsCustomersCampaignLifecycleGoalRe
 }
 
 export const ConfigureCampaignLifecycleGoalsCustomersCampaignLifecycleGoalRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__ConfigureCampaignLifecycleGoalsRequest,
@@ -42490,7 +42488,7 @@ export const ConfigureCampaignLifecycleGoalsCustomersCampaignLifecycleGoalReques
 export type ConfigureCampaignLifecycleGoalsCustomersCampaignLifecycleGoalResponse =
   GoogleAdsSearchads360V23Services__ConfigureCampaignLifecycleGoalsResponse;
 export const ConfigureCampaignLifecycleGoalsCustomersCampaignLifecycleGoalResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__ConfigureCampaignLifecycleGoalsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__ConfigureCampaignLifecycleGoalsResponse;
 
 export type ConfigureCampaignLifecycleGoalsCustomersCampaignLifecycleGoalError =
   | DefaultErrors
@@ -42505,7 +42503,7 @@ export const configureCampaignLifecycleGoalsCustomersCampaignLifecycleGoal: API.
   ConfigureCampaignLifecycleGoalsCustomersCampaignLifecycleGoalResponse,
   ConfigureCampaignLifecycleGoalsCustomersCampaignLifecycleGoalError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ConfigureCampaignLifecycleGoalsCustomersCampaignLifecycleGoalRequest,
   output: ConfigureCampaignLifecycleGoalsCustomersCampaignLifecycleGoalResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -42519,7 +42517,7 @@ export interface MutateCustomersAssetGroupSignalsRequest {
 }
 
 export const MutateCustomersAssetGroupSignalsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateAssetGroupSignalsRequest,
@@ -42536,7 +42534,7 @@ export const MutateCustomersAssetGroupSignalsRequest =
 export type MutateCustomersAssetGroupSignalsResponse =
   GoogleAdsSearchads360V23Services__MutateAssetGroupSignalsResponse;
 export const MutateCustomersAssetGroupSignalsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateAssetGroupSignalsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateAssetGroupSignalsResponse;
 
 export type MutateCustomersAssetGroupSignalsError =
   | DefaultErrors
@@ -42551,7 +42549,7 @@ export const mutateCustomersAssetGroupSignals: API.OperationMethod<
   MutateCustomersAssetGroupSignalsResponse,
   MutateCustomersAssetGroupSignalsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersAssetGroupSignalsRequest,
   output: MutateCustomersAssetGroupSignalsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -42565,7 +42563,7 @@ export interface MutateRecommendationSubscriptionCustomersRecommendationSubscrip
 }
 
 export const MutateRecommendationSubscriptionCustomersRecommendationSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateRecommendationSubscriptionRequest,
@@ -42582,7 +42580,7 @@ export const MutateRecommendationSubscriptionCustomersRecommendationSubscription
 export type MutateRecommendationSubscriptionCustomersRecommendationSubscriptionsResponse =
   GoogleAdsSearchads360V23Services__MutateRecommendationSubscriptionResponse;
 export const MutateRecommendationSubscriptionCustomersRecommendationSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateRecommendationSubscriptionResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateRecommendationSubscriptionResponse;
 
 export type MutateRecommendationSubscriptionCustomersRecommendationSubscriptionsError =
   | DefaultErrors
@@ -42597,7 +42595,7 @@ export const mutateRecommendationSubscriptionCustomersRecommendationSubscription
   MutateRecommendationSubscriptionCustomersRecommendationSubscriptionsResponse,
   MutateRecommendationSubscriptionCustomersRecommendationSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input:
     MutateRecommendationSubscriptionCustomersRecommendationSubscriptionsRequest,
   output:
@@ -42613,7 +42611,7 @@ export interface MutateCustomersAccountBudgetProposalsRequest {
 }
 
 export const MutateCustomersAccountBudgetProposalsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateAccountBudgetProposalRequest,
@@ -42630,7 +42628,7 @@ export const MutateCustomersAccountBudgetProposalsRequest =
 export type MutateCustomersAccountBudgetProposalsResponse =
   GoogleAdsSearchads360V23Services__MutateAccountBudgetProposalResponse;
 export const MutateCustomersAccountBudgetProposalsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateAccountBudgetProposalResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateAccountBudgetProposalResponse;
 
 export type MutateCustomersAccountBudgetProposalsError =
   | DefaultErrors
@@ -42645,7 +42643,7 @@ export const mutateCustomersAccountBudgetProposals: API.OperationMethod<
   MutateCustomersAccountBudgetProposalsResponse,
   MutateCustomersAccountBudgetProposalsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersAccountBudgetProposalsRequest,
   output: MutateCustomersAccountBudgetProposalsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -42659,7 +42657,7 @@ export interface MutateCustomersCampaignBudgetsRequest {
 }
 
 export const MutateCustomersCampaignBudgetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateCampaignBudgetsRequest,
@@ -42676,7 +42674,7 @@ export const MutateCustomersCampaignBudgetsRequest =
 export type MutateCustomersCampaignBudgetsResponse =
   GoogleAdsSearchads360V23Services__MutateCampaignBudgetsResponse;
 export const MutateCustomersCampaignBudgetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateCampaignBudgetsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateCampaignBudgetsResponse;
 
 export type MutateCustomersCampaignBudgetsError =
   | DefaultErrors
@@ -42691,7 +42689,7 @@ export const mutateCustomersCampaignBudgets: API.OperationMethod<
   MutateCustomersCampaignBudgetsResponse,
   MutateCustomersCampaignBudgetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersCampaignBudgetsRequest,
   output: MutateCustomersCampaignBudgetsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -42705,7 +42703,7 @@ export interface MutateCustomersBillingSetupsRequest {
 }
 
 export const MutateCustomersBillingSetupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateBillingSetupRequest,
@@ -42722,7 +42720,7 @@ export const MutateCustomersBillingSetupsRequest =
 export type MutateCustomersBillingSetupsResponse =
   GoogleAdsSearchads360V23Services__MutateBillingSetupResponse;
 export const MutateCustomersBillingSetupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateBillingSetupResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateBillingSetupResponse;
 
 export type MutateCustomersBillingSetupsError =
   | DefaultErrors
@@ -42737,7 +42735,7 @@ export const mutateCustomersBillingSetups: API.OperationMethod<
   MutateCustomersBillingSetupsResponse,
   MutateCustomersBillingSetupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersBillingSetupsRequest,
   output: MutateCustomersBillingSetupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -42751,7 +42749,7 @@ export interface MutateCustomersBiddingSeasonalityAdjustmentsRequest {
 }
 
 export const MutateCustomersBiddingSeasonalityAdjustmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateBiddingSeasonalityAdjustmentsRequest,
@@ -42768,7 +42766,7 @@ export const MutateCustomersBiddingSeasonalityAdjustmentsRequest =
 export type MutateCustomersBiddingSeasonalityAdjustmentsResponse =
   GoogleAdsSearchads360V23Services__MutateBiddingSeasonalityAdjustmentsResponse;
 export const MutateCustomersBiddingSeasonalityAdjustmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateBiddingSeasonalityAdjustmentsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateBiddingSeasonalityAdjustmentsResponse;
 
 export type MutateCustomersBiddingSeasonalityAdjustmentsError =
   | DefaultErrors
@@ -42783,7 +42781,7 @@ export const mutateCustomersBiddingSeasonalityAdjustments: API.OperationMethod<
   MutateCustomersBiddingSeasonalityAdjustmentsResponse,
   MutateCustomersBiddingSeasonalityAdjustmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersBiddingSeasonalityAdjustmentsRequest,
   output: MutateCustomersBiddingSeasonalityAdjustmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -42797,7 +42795,7 @@ export interface MutateCustomersAssetGroupListingGroupFiltersRequest {
 }
 
 export const MutateCustomersAssetGroupListingGroupFiltersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateAssetGroupListingGroupFiltersRequest,
@@ -42814,7 +42812,7 @@ export const MutateCustomersAssetGroupListingGroupFiltersRequest =
 export type MutateCustomersAssetGroupListingGroupFiltersResponse =
   GoogleAdsSearchads360V23Services__MutateAssetGroupListingGroupFiltersResponse;
 export const MutateCustomersAssetGroupListingGroupFiltersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateAssetGroupListingGroupFiltersResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateAssetGroupListingGroupFiltersResponse;
 
 export type MutateCustomersAssetGroupListingGroupFiltersError =
   | DefaultErrors
@@ -42829,7 +42827,7 @@ export const mutateCustomersAssetGroupListingGroupFilters: API.OperationMethod<
   MutateCustomersAssetGroupListingGroupFiltersResponse,
   MutateCustomersAssetGroupListingGroupFiltersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersAssetGroupListingGroupFiltersRequest,
   output: MutateCustomersAssetGroupListingGroupFiltersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -42843,7 +42841,7 @@ export interface EnablePMaxBrandGuidelinesCustomersCampaignsRequest {
 }
 
 export const EnablePMaxBrandGuidelinesCustomersCampaignsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__EnablePMaxBrandGuidelinesRequest,
@@ -42860,7 +42858,7 @@ export const EnablePMaxBrandGuidelinesCustomersCampaignsRequest =
 export type EnablePMaxBrandGuidelinesCustomersCampaignsResponse =
   GoogleAdsSearchads360V23Services__EnablePMaxBrandGuidelinesResponse;
 export const EnablePMaxBrandGuidelinesCustomersCampaignsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__EnablePMaxBrandGuidelinesResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__EnablePMaxBrandGuidelinesResponse;
 
 export type EnablePMaxBrandGuidelinesCustomersCampaignsError =
   | DefaultErrors
@@ -42875,7 +42873,7 @@ export const enablePMaxBrandGuidelinesCustomersCampaigns: API.OperationMethod<
   EnablePMaxBrandGuidelinesCustomersCampaignsResponse,
   EnablePMaxBrandGuidelinesCustomersCampaignsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnablePMaxBrandGuidelinesCustomersCampaignsRequest,
   output: EnablePMaxBrandGuidelinesCustomersCampaignsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -42889,7 +42887,7 @@ export interface MutateCustomersCampaignsRequest {
 }
 
 export const MutateCustomersCampaignsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateCampaignsRequest,
@@ -42906,7 +42904,7 @@ export const MutateCustomersCampaignsRequest =
 export type MutateCustomersCampaignsResponse =
   GoogleAdsSearchads360V23Services__MutateCampaignsResponse;
 export const MutateCustomersCampaignsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateCampaignsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateCampaignsResponse;
 
 export type MutateCustomersCampaignsError =
   | DefaultErrors
@@ -42921,7 +42919,7 @@ export const mutateCustomersCampaigns: API.OperationMethod<
   MutateCustomersCampaignsResponse,
   MutateCustomersCampaignsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersCampaignsRequest,
   output: MutateCustomersCampaignsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -42937,7 +42935,7 @@ export interface ApplyIncentiveCustomersIncentivesRequest {
 }
 
 export const ApplyIncentiveCustomersIncentivesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     selectedIncentiveId: Schema.String.pipe(T.HttpPath("selectedIncentiveId")),
     body: Schema.optional(
@@ -42955,7 +42953,7 @@ export const ApplyIncentiveCustomersIncentivesRequest =
 export type ApplyIncentiveCustomersIncentivesResponse =
   GoogleAdsSearchads360V23Services__ApplyIncentiveResponse;
 export const ApplyIncentiveCustomersIncentivesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__ApplyIncentiveResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__ApplyIncentiveResponse;
 
 export type ApplyIncentiveCustomersIncentivesError =
   | DefaultErrors
@@ -42970,7 +42968,7 @@ export const applyIncentiveCustomersIncentives: API.OperationMethod<
   ApplyIncentiveCustomersIncentivesResponse,
   ApplyIncentiveCustomersIncentivesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ApplyIncentiveCustomersIncentivesRequest,
   output: ApplyIncentiveCustomersIncentivesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -42984,7 +42982,7 @@ export interface MutateCustomersCampaignGoalConfigsRequest {
 }
 
 export const MutateCustomersCampaignGoalConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateCampaignGoalConfigsRequest,
@@ -43001,7 +42999,7 @@ export const MutateCustomersCampaignGoalConfigsRequest =
 export type MutateCustomersCampaignGoalConfigsResponse =
   GoogleAdsSearchads360V23Services__MutateCampaignGoalConfigsResponse;
 export const MutateCustomersCampaignGoalConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateCampaignGoalConfigsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateCampaignGoalConfigsResponse;
 
 export type MutateCustomersCampaignGoalConfigsError =
   | DefaultErrors
@@ -43016,7 +43014,7 @@ export const mutateCustomersCampaignGoalConfigs: API.OperationMethod<
   MutateCustomersCampaignGoalConfigsResponse,
   MutateCustomersCampaignGoalConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersCampaignGoalConfigsRequest,
   output: MutateCustomersCampaignGoalConfigsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -43030,7 +43028,7 @@ export interface MutateCustomersCustomerAssetsRequest {
 }
 
 export const MutateCustomersCustomerAssetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateCustomerAssetsRequest,
@@ -43047,7 +43045,7 @@ export const MutateCustomersCustomerAssetsRequest =
 export type MutateCustomersCustomerAssetsResponse =
   GoogleAdsSearchads360V23Services__MutateCustomerAssetsResponse;
 export const MutateCustomersCustomerAssetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateCustomerAssetsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateCustomerAssetsResponse;
 
 export type MutateCustomersCustomerAssetsError =
   | DefaultErrors
@@ -43062,7 +43060,7 @@ export const mutateCustomersCustomerAssets: API.OperationMethod<
   MutateCustomersCustomerAssetsResponse,
   MutateCustomersCustomerAssetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersCustomerAssetsRequest,
   output: MutateCustomersCustomerAssetsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -43076,7 +43074,7 @@ export interface MutateCustomersAssetSetsRequest {
 }
 
 export const MutateCustomersAssetSetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateAssetSetsRequest,
@@ -43093,7 +43091,7 @@ export const MutateCustomersAssetSetsRequest =
 export type MutateCustomersAssetSetsResponse =
   GoogleAdsSearchads360V23Services__MutateAssetSetsResponse;
 export const MutateCustomersAssetSetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateAssetSetsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateAssetSetsResponse;
 
 export type MutateCustomersAssetSetsError =
   | DefaultErrors
@@ -43108,7 +43106,7 @@ export const mutateCustomersAssetSets: API.OperationMethod<
   MutateCustomersAssetSetsResponse,
   MutateCustomersAssetSetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersAssetSetsRequest,
   output: MutateCustomersAssetSetsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -43122,7 +43120,7 @@ export interface MutateCustomersAdGroupAssetsRequest {
 }
 
 export const MutateCustomersAdGroupAssetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateAdGroupAssetsRequest,
@@ -43139,7 +43137,7 @@ export const MutateCustomersAdGroupAssetsRequest =
 export type MutateCustomersAdGroupAssetsResponse =
   GoogleAdsSearchads360V23Services__MutateAdGroupAssetsResponse;
 export const MutateCustomersAdGroupAssetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateAdGroupAssetsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateAdGroupAssetsResponse;
 
 export type MutateCustomersAdGroupAssetsError =
   | DefaultErrors
@@ -43154,7 +43152,7 @@ export const mutateCustomersAdGroupAssets: API.OperationMethod<
   MutateCustomersAdGroupAssetsResponse,
   MutateCustomersAdGroupAssetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersAdGroupAssetsRequest,
   output: MutateCustomersAdGroupAssetsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -43168,7 +43166,7 @@ export interface MutateCustomersCustomerConversionGoalsRequest {
 }
 
 export const MutateCustomersCustomerConversionGoalsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateCustomerConversionGoalsRequest,
@@ -43185,7 +43183,7 @@ export const MutateCustomersCustomerConversionGoalsRequest =
 export type MutateCustomersCustomerConversionGoalsResponse =
   GoogleAdsSearchads360V23Services__MutateCustomerConversionGoalsResponse;
 export const MutateCustomersCustomerConversionGoalsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateCustomerConversionGoalsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateCustomerConversionGoalsResponse;
 
 export type MutateCustomersCustomerConversionGoalsError =
   | DefaultErrors
@@ -43200,7 +43198,7 @@ export const mutateCustomersCustomerConversionGoals: API.OperationMethod<
   MutateCustomersCustomerConversionGoalsResponse,
   MutateCustomersCustomerConversionGoalsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersCustomerConversionGoalsRequest,
   output: MutateCustomersCustomerConversionGoalsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -43214,7 +43212,7 @@ export interface MutateCustomersKeywordPlanCampaignsRequest {
 }
 
 export const MutateCustomersKeywordPlanCampaignsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignsRequest,
@@ -43231,7 +43229,7 @@ export const MutateCustomersKeywordPlanCampaignsRequest =
 export type MutateCustomersKeywordPlanCampaignsResponse =
   GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignsResponse;
 export const MutateCustomersKeywordPlanCampaignsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignsResponse;
 
 export type MutateCustomersKeywordPlanCampaignsError =
   | DefaultErrors
@@ -43246,7 +43244,7 @@ export const mutateCustomersKeywordPlanCampaigns: API.OperationMethod<
   MutateCustomersKeywordPlanCampaignsResponse,
   MutateCustomersKeywordPlanCampaignsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersKeywordPlanCampaignsRequest,
   output: MutateCustomersKeywordPlanCampaignsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -43260,7 +43258,7 @@ export interface MutateCustomersSharedCriteriaRequest {
 }
 
 export const MutateCustomersSharedCriteriaRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateSharedCriteriaRequest,
@@ -43277,7 +43275,7 @@ export const MutateCustomersSharedCriteriaRequest =
 export type MutateCustomersSharedCriteriaResponse =
   GoogleAdsSearchads360V23Services__MutateSharedCriteriaResponse;
 export const MutateCustomersSharedCriteriaResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateSharedCriteriaResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateSharedCriteriaResponse;
 
 export type MutateCustomersSharedCriteriaError =
   | DefaultErrors
@@ -43292,7 +43290,7 @@ export const mutateCustomersSharedCriteria: API.OperationMethod<
   MutateCustomersSharedCriteriaResponse,
   MutateCustomersSharedCriteriaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersSharedCriteriaRequest,
   output: MutateCustomersSharedCriteriaResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -43306,7 +43304,7 @@ export interface MutateCustomersCustomerUserAccessesRequest {
 }
 
 export const MutateCustomersCustomerUserAccessesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateCustomerUserAccessRequest,
@@ -43323,7 +43321,7 @@ export const MutateCustomersCustomerUserAccessesRequest =
 export type MutateCustomersCustomerUserAccessesResponse =
   GoogleAdsSearchads360V23Services__MutateCustomerUserAccessResponse;
 export const MutateCustomersCustomerUserAccessesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateCustomerUserAccessResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateCustomerUserAccessResponse;
 
 export type MutateCustomersCustomerUserAccessesError =
   | DefaultErrors
@@ -43338,7 +43336,7 @@ export const mutateCustomersCustomerUserAccesses: API.OperationMethod<
   MutateCustomersCustomerUserAccessesResponse,
   MutateCustomersCustomerUserAccessesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersCustomerUserAccessesRequest,
   output: MutateCustomersCustomerUserAccessesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -43352,7 +43350,7 @@ export interface MutateCustomersKeywordPlanCampaignKeywordsRequest {
 }
 
 export const MutateCustomersKeywordPlanCampaignKeywordsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignKeywordsRequest,
@@ -43369,7 +43367,7 @@ export const MutateCustomersKeywordPlanCampaignKeywordsRequest =
 export type MutateCustomersKeywordPlanCampaignKeywordsResponse =
   GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignKeywordsResponse;
 export const MutateCustomersKeywordPlanCampaignKeywordsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignKeywordsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignKeywordsResponse;
 
 export type MutateCustomersKeywordPlanCampaignKeywordsError =
   | DefaultErrors
@@ -43384,7 +43382,7 @@ export const mutateCustomersKeywordPlanCampaignKeywords: API.OperationMethod<
   MutateCustomersKeywordPlanCampaignKeywordsResponse,
   MutateCustomersKeywordPlanCampaignKeywordsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersKeywordPlanCampaignKeywordsRequest,
   output: MutateCustomersKeywordPlanCampaignKeywordsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -43398,7 +43396,7 @@ export interface MutateCustomersCustomerLabelsRequest {
 }
 
 export const MutateCustomersCustomerLabelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateCustomerLabelsRequest,
@@ -43415,7 +43413,7 @@ export const MutateCustomersCustomerLabelsRequest =
 export type MutateCustomersCustomerLabelsResponse =
   GoogleAdsSearchads360V23Services__MutateCustomerLabelsResponse;
 export const MutateCustomersCustomerLabelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateCustomerLabelsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateCustomerLabelsResponse;
 
 export type MutateCustomersCustomerLabelsError =
   | DefaultErrors
@@ -43430,7 +43428,7 @@ export const mutateCustomersCustomerLabels: API.OperationMethod<
   MutateCustomersCustomerLabelsResponse,
   MutateCustomersCustomerLabelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersCustomerLabelsRequest,
   output: MutateCustomersCustomerLabelsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -43444,7 +43442,7 @@ export interface MutateCustomersAssetSetAssetsRequest {
 }
 
 export const MutateCustomersAssetSetAssetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateAssetSetAssetsRequest,
@@ -43461,7 +43459,7 @@ export const MutateCustomersAssetSetAssetsRequest =
 export type MutateCustomersAssetSetAssetsResponse =
   GoogleAdsSearchads360V23Services__MutateAssetSetAssetsResponse;
 export const MutateCustomersAssetSetAssetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateAssetSetAssetsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateAssetSetAssetsResponse;
 
 export type MutateCustomersAssetSetAssetsError =
   | DefaultErrors
@@ -43476,7 +43474,7 @@ export const mutateCustomersAssetSetAssets: API.OperationMethod<
   MutateCustomersAssetSetAssetsResponse,
   MutateCustomersAssetSetAssetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersAssetSetAssetsRequest,
   output: MutateCustomersAssetSetAssetsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -43490,7 +43488,7 @@ export interface ProvideLeadFeedbackCustomersLocalServicesLeadsRequest {
 }
 
 export const ProvideLeadFeedbackCustomersLocalServicesLeadsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.String.pipe(T.HttpPath("resourceName")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__ProvideLeadFeedbackRequest,
@@ -43507,7 +43505,7 @@ export const ProvideLeadFeedbackCustomersLocalServicesLeadsRequest =
 export type ProvideLeadFeedbackCustomersLocalServicesLeadsResponse =
   GoogleAdsSearchads360V23Services__ProvideLeadFeedbackResponse;
 export const ProvideLeadFeedbackCustomersLocalServicesLeadsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__ProvideLeadFeedbackResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__ProvideLeadFeedbackResponse;
 
 export type ProvideLeadFeedbackCustomersLocalServicesLeadsError =
   | DefaultErrors
@@ -43522,7 +43520,7 @@ export const provideLeadFeedbackCustomersLocalServicesLeads: API.OperationMethod
   ProvideLeadFeedbackCustomersLocalServicesLeadsResponse,
   ProvideLeadFeedbackCustomersLocalServicesLeadsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ProvideLeadFeedbackCustomersLocalServicesLeadsRequest,
   output: ProvideLeadFeedbackCustomersLocalServicesLeadsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -43536,7 +43534,7 @@ export interface MutateCustomersAdGroupCriteriaRequest {
 }
 
 export const MutateCustomersAdGroupCriteriaRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateAdGroupCriteriaRequest,
@@ -43553,7 +43551,7 @@ export const MutateCustomersAdGroupCriteriaRequest =
 export type MutateCustomersAdGroupCriteriaResponse =
   GoogleAdsSearchads360V23Services__MutateAdGroupCriteriaResponse;
 export const MutateCustomersAdGroupCriteriaResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateAdGroupCriteriaResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateAdGroupCriteriaResponse;
 
 export type MutateCustomersAdGroupCriteriaError =
   | DefaultErrors
@@ -43568,7 +43566,7 @@ export const mutateCustomersAdGroupCriteria: API.OperationMethod<
   MutateCustomersAdGroupCriteriaResponse,
   MutateCustomersAdGroupCriteriaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersAdGroupCriteriaRequest,
   output: MutateCustomersAdGroupCriteriaResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -43582,7 +43580,7 @@ export interface MutateCustomersAssetGroupAssetsRequest {
 }
 
 export const MutateCustomersAssetGroupAssetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateAssetGroupAssetsRequest,
@@ -43599,7 +43597,7 @@ export const MutateCustomersAssetGroupAssetsRequest =
 export type MutateCustomersAssetGroupAssetsResponse =
   GoogleAdsSearchads360V23Services__MutateAssetGroupAssetsResponse;
 export const MutateCustomersAssetGroupAssetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateAssetGroupAssetsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateAssetGroupAssetsResponse;
 
 export type MutateCustomersAssetGroupAssetsError =
   | DefaultErrors
@@ -43614,7 +43612,7 @@ export const mutateCustomersAssetGroupAssets: API.OperationMethod<
   MutateCustomersAssetGroupAssetsResponse,
   MutateCustomersAssetGroupAssetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersAssetGroupAssetsRequest,
   output: MutateCustomersAssetGroupAssetsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -43628,7 +43626,7 @@ export interface MutateCustomersCustomerSkAdNetworkConversionValueSchemasRequest
 }
 
 export const MutateCustomersCustomerSkAdNetworkConversionValueSchemasRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateCustomerSkAdNetworkConversionValueSchemaRequest,
@@ -43645,7 +43643,7 @@ export const MutateCustomersCustomerSkAdNetworkConversionValueSchemasRequest =
 export type MutateCustomersCustomerSkAdNetworkConversionValueSchemasResponse =
   GoogleAdsSearchads360V23Services__MutateCustomerSkAdNetworkConversionValueSchemaResponse;
 export const MutateCustomersCustomerSkAdNetworkConversionValueSchemasResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateCustomerSkAdNetworkConversionValueSchemaResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateCustomerSkAdNetworkConversionValueSchemaResponse;
 
 export type MutateCustomersCustomerSkAdNetworkConversionValueSchemasError =
   | DefaultErrors
@@ -43660,7 +43658,7 @@ export const mutateCustomersCustomerSkAdNetworkConversionValueSchemas: API.Opera
   MutateCustomersCustomerSkAdNetworkConversionValueSchemasResponse,
   MutateCustomersCustomerSkAdNetworkConversionValueSchemasError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersCustomerSkAdNetworkConversionValueSchemasRequest,
   output: MutateCustomersCustomerSkAdNetworkConversionValueSchemasResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -43674,7 +43672,7 @@ export interface CreateCustomersDataLinksRequest {
 }
 
 export const CreateCustomersDataLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__CreateDataLinkRequest,
@@ -43691,7 +43689,7 @@ export const CreateCustomersDataLinksRequest =
 export type CreateCustomersDataLinksResponse =
   GoogleAdsSearchads360V23Services__CreateDataLinkResponse;
 export const CreateCustomersDataLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__CreateDataLinkResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__CreateDataLinkResponse;
 
 export type CreateCustomersDataLinksError =
   | DefaultErrors
@@ -43706,7 +43704,7 @@ export const createCustomersDataLinks: API.OperationMethod<
   CreateCustomersDataLinksResponse,
   CreateCustomersDataLinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCustomersDataLinksRequest,
   output: CreateCustomersDataLinksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -43720,7 +43718,7 @@ export interface RemoveCustomersDataLinksRequest {
 }
 
 export const RemoveCustomersDataLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__RemoveDataLinkRequest,
@@ -43737,7 +43735,7 @@ export const RemoveCustomersDataLinksRequest =
 export type RemoveCustomersDataLinksResponse =
   GoogleAdsSearchads360V23Services__RemoveDataLinkResponse;
 export const RemoveCustomersDataLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__RemoveDataLinkResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__RemoveDataLinkResponse;
 
 export type RemoveCustomersDataLinksError =
   | DefaultErrors
@@ -43752,7 +43750,7 @@ export const removeCustomersDataLinks: API.OperationMethod<
   RemoveCustomersDataLinksResponse,
   RemoveCustomersDataLinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveCustomersDataLinksRequest,
   output: RemoveCustomersDataLinksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -43766,7 +43764,7 @@ export interface UpdateCustomersDataLinksRequest {
 }
 
 export const UpdateCustomersDataLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__UpdateDataLinkRequest,
@@ -43783,7 +43781,7 @@ export const UpdateCustomersDataLinksRequest =
 export type UpdateCustomersDataLinksResponse =
   GoogleAdsSearchads360V23Services__UpdateDataLinkResponse;
 export const UpdateCustomersDataLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__UpdateDataLinkResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__UpdateDataLinkResponse;
 
 export type UpdateCustomersDataLinksError =
   | DefaultErrors
@@ -43798,7 +43796,7 @@ export const updateCustomersDataLinks: API.OperationMethod<
   UpdateCustomersDataLinksResponse,
   UpdateCustomersDataLinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCustomersDataLinksRequest,
   output: UpdateCustomersDataLinksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -43812,7 +43810,7 @@ export interface MutateCustomersCampaignAssetSetsRequest {
 }
 
 export const MutateCustomersCampaignAssetSetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateCampaignAssetSetsRequest,
@@ -43829,7 +43827,7 @@ export const MutateCustomersCampaignAssetSetsRequest =
 export type MutateCustomersCampaignAssetSetsResponse =
   GoogleAdsSearchads360V23Services__MutateCampaignAssetSetsResponse;
 export const MutateCustomersCampaignAssetSetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateCampaignAssetSetsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateCampaignAssetSetsResponse;
 
 export type MutateCustomersCampaignAssetSetsError =
   | DefaultErrors
@@ -43844,7 +43842,7 @@ export const mutateCustomersCampaignAssetSets: API.OperationMethod<
   MutateCustomersCampaignAssetSetsResponse,
   MutateCustomersCampaignAssetSetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersCampaignAssetSetsRequest,
   output: MutateCustomersCampaignAssetSetsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -43858,7 +43856,7 @@ export interface MutateCustomersCustomerCustomizersRequest {
 }
 
 export const MutateCustomersCustomerCustomizersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateCustomerCustomizersRequest,
@@ -43875,7 +43873,7 @@ export const MutateCustomersCustomerCustomizersRequest =
 export type MutateCustomersCustomerCustomizersResponse =
   GoogleAdsSearchads360V23Services__MutateCustomerCustomizersResponse;
 export const MutateCustomersCustomerCustomizersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateCustomerCustomizersResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateCustomerCustomizersResponse;
 
 export type MutateCustomersCustomerCustomizersError =
   | DefaultErrors
@@ -43890,7 +43888,7 @@ export const mutateCustomersCustomerCustomizers: API.OperationMethod<
   MutateCustomersCustomerCustomizersResponse,
   MutateCustomersCustomerCustomizersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersCustomerCustomizersRequest,
   output: MutateCustomersCustomerCustomizersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -43904,7 +43902,7 @@ export interface MutateCustomersConversionCustomVariablesRequest {
 }
 
 export const MutateCustomersConversionCustomVariablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateConversionCustomVariablesRequest,
@@ -43921,7 +43919,7 @@ export const MutateCustomersConversionCustomVariablesRequest =
 export type MutateCustomersConversionCustomVariablesResponse =
   GoogleAdsSearchads360V23Services__MutateConversionCustomVariablesResponse;
 export const MutateCustomersConversionCustomVariablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateConversionCustomVariablesResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateConversionCustomVariablesResponse;
 
 export type MutateCustomersConversionCustomVariablesError =
   | DefaultErrors
@@ -43936,7 +43934,7 @@ export const mutateCustomersConversionCustomVariables: API.OperationMethod<
   MutateCustomersConversionCustomVariablesResponse,
   MutateCustomersConversionCustomVariablesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersConversionCustomVariablesRequest,
   output: MutateCustomersConversionCustomVariablesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -43950,7 +43948,7 @@ export interface MutateCustomersCustomerUserAccessInvitationsRequest {
 }
 
 export const MutateCustomersCustomerUserAccessInvitationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateCustomerUserAccessInvitationRequest,
@@ -43967,7 +43965,7 @@ export const MutateCustomersCustomerUserAccessInvitationsRequest =
 export type MutateCustomersCustomerUserAccessInvitationsResponse =
   GoogleAdsSearchads360V23Services__MutateCustomerUserAccessInvitationResponse;
 export const MutateCustomersCustomerUserAccessInvitationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateCustomerUserAccessInvitationResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateCustomerUserAccessInvitationResponse;
 
 export type MutateCustomersCustomerUserAccessInvitationsError =
   | DefaultErrors
@@ -43982,7 +43980,7 @@ export const mutateCustomersCustomerUserAccessInvitations: API.OperationMethod<
   MutateCustomersCustomerUserAccessInvitationsResponse,
   MutateCustomersCustomerUserAccessInvitationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersCustomerUserAccessInvitationsRequest,
   output: MutateCustomersCustomerUserAccessInvitationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -43996,7 +43994,7 @@ export interface MutateCustomersAudiencesRequest {
 }
 
 export const MutateCustomersAudiencesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateAudiencesRequest,
@@ -44013,7 +44011,7 @@ export const MutateCustomersAudiencesRequest =
 export type MutateCustomersAudiencesResponse =
   GoogleAdsSearchads360V23Services__MutateAudiencesResponse;
 export const MutateCustomersAudiencesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateAudiencesResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateAudiencesResponse;
 
 export type MutateCustomersAudiencesError =
   | DefaultErrors
@@ -44028,7 +44026,7 @@ export const mutateCustomersAudiences: API.OperationMethod<
   MutateCustomersAudiencesResponse,
   MutateCustomersAudiencesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersAudiencesRequest,
   output: MutateCustomersAudiencesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -44042,7 +44040,7 @@ export interface MutateCustomersCustomAudiencesRequest {
 }
 
 export const MutateCustomersCustomAudiencesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateCustomAudiencesRequest,
@@ -44059,7 +44057,7 @@ export const MutateCustomersCustomAudiencesRequest =
 export type MutateCustomersCustomAudiencesResponse =
   GoogleAdsSearchads360V23Services__MutateCustomAudiencesResponse;
 export const MutateCustomersCustomAudiencesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateCustomAudiencesResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateCustomAudiencesResponse;
 
 export type MutateCustomersCustomAudiencesError =
   | DefaultErrors
@@ -44074,7 +44072,7 @@ export const mutateCustomersCustomAudiences: API.OperationMethod<
   MutateCustomersCustomAudiencesResponse,
   MutateCustomersCustomAudiencesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersCustomAudiencesRequest,
   output: MutateCustomersCustomAudiencesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -44088,7 +44086,7 @@ export interface MutateCustomersCampaignSharedSetsRequest {
 }
 
 export const MutateCustomersCampaignSharedSetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateCampaignSharedSetsRequest,
@@ -44105,7 +44103,7 @@ export const MutateCustomersCampaignSharedSetsRequest =
 export type MutateCustomersCampaignSharedSetsResponse =
   GoogleAdsSearchads360V23Services__MutateCampaignSharedSetsResponse;
 export const MutateCustomersCampaignSharedSetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateCampaignSharedSetsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateCampaignSharedSetsResponse;
 
 export type MutateCustomersCampaignSharedSetsError =
   | DefaultErrors
@@ -44120,7 +44118,7 @@ export const mutateCustomersCampaignSharedSets: API.OperationMethod<
   MutateCustomersCampaignSharedSetsResponse,
   MutateCustomersCampaignSharedSetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersCampaignSharedSetsRequest,
   output: MutateCustomersCampaignSharedSetsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -44134,7 +44132,7 @@ export interface MutateCustomersCustomizerAttributesRequest {
 }
 
 export const MutateCustomersCustomizerAttributesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateCustomizerAttributesRequest,
@@ -44151,7 +44149,7 @@ export const MutateCustomersCustomizerAttributesRequest =
 export type MutateCustomersCustomizerAttributesResponse =
   GoogleAdsSearchads360V23Services__MutateCustomizerAttributesResponse;
 export const MutateCustomersCustomizerAttributesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateCustomizerAttributesResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateCustomizerAttributesResponse;
 
 export type MutateCustomersCustomizerAttributesError =
   | DefaultErrors
@@ -44166,7 +44164,7 @@ export const mutateCustomersCustomizerAttributes: API.OperationMethod<
   MutateCustomersCustomizerAttributesResponse,
   MutateCustomersCustomizerAttributesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersCustomizerAttributesRequest,
   output: MutateCustomersCustomizerAttributesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -44180,7 +44178,7 @@ export interface MutateCustomersKeywordPlansRequest {
 }
 
 export const MutateCustomersKeywordPlansRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateKeywordPlansRequest,
@@ -44197,7 +44195,7 @@ export const MutateCustomersKeywordPlansRequest =
 export type MutateCustomersKeywordPlansResponse =
   GoogleAdsSearchads360V23Services__MutateKeywordPlansResponse;
 export const MutateCustomersKeywordPlansResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateKeywordPlansResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateKeywordPlansResponse;
 
 export type MutateCustomersKeywordPlansError =
   | DefaultErrors
@@ -44212,7 +44210,7 @@ export const mutateCustomersKeywordPlans: API.OperationMethod<
   MutateCustomersKeywordPlansResponse,
   MutateCustomersKeywordPlansError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersKeywordPlansRequest,
   output: MutateCustomersKeywordPlansResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -44226,7 +44224,7 @@ export interface AddOperationsCustomersBatchJobsRequest {
 }
 
 export const AddOperationsCustomersBatchJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.String.pipe(T.HttpPath("resourceName")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__AddBatchJobOperationsRequest,
@@ -44243,7 +44241,7 @@ export const AddOperationsCustomersBatchJobsRequest =
 export type AddOperationsCustomersBatchJobsResponse =
   GoogleAdsSearchads360V23Services__AddBatchJobOperationsResponse;
 export const AddOperationsCustomersBatchJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__AddBatchJobOperationsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__AddBatchJobOperationsResponse;
 
 export type AddOperationsCustomersBatchJobsError =
   | DefaultErrors
@@ -44258,7 +44256,7 @@ export const addOperationsCustomersBatchJobs: API.OperationMethod<
   AddOperationsCustomersBatchJobsResponse,
   AddOperationsCustomersBatchJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddOperationsCustomersBatchJobsRequest,
   output: AddOperationsCustomersBatchJobsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -44272,7 +44270,7 @@ export interface RunCustomersBatchJobsRequest {
 }
 
 export const RunCustomersBatchJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.String.pipe(T.HttpPath("resourceName")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__RunBatchJobRequest,
@@ -44284,7 +44282,7 @@ export const RunCustomersBatchJobsRequest =
 
 export type RunCustomersBatchJobsResponse = GoogleLongrunning__Operation;
 export const RunCustomersBatchJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunning__Operation;
+  /*@__PURE__*/ GoogleLongrunning__Operation;
 
 export type RunCustomersBatchJobsError =
   | DefaultErrors
@@ -44299,7 +44297,7 @@ export const runCustomersBatchJobs: API.OperationMethod<
   RunCustomersBatchJobsResponse,
   RunCustomersBatchJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RunCustomersBatchJobsRequest,
   output: RunCustomersBatchJobsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -44320,7 +44318,7 @@ export interface ListResultsCustomersBatchJobsRequest {
 }
 
 export const ListResultsCustomersBatchJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     resourceName: Schema.String.pipe(T.HttpPath("resourceName")),
     responseContentType: Schema.optional(Schema.String).pipe(
@@ -44335,7 +44333,7 @@ export const ListResultsCustomersBatchJobsRequest =
 export type ListResultsCustomersBatchJobsResponse =
   GoogleAdsSearchads360V23Services__ListBatchJobResultsResponse;
 export const ListResultsCustomersBatchJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__ListBatchJobResultsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__ListBatchJobResultsResponse;
 
 export type ListResultsCustomersBatchJobsError =
   | DefaultErrors
@@ -44348,7 +44346,7 @@ export const listResultsCustomersBatchJobs: API.PaginatedOperationMethod<
   ListResultsCustomersBatchJobsResponse,
   ListResultsCustomersBatchJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResultsCustomersBatchJobsRequest,
   output: ListResultsCustomersBatchJobsResponse,
   errors: [NotFound, Forbidden],
@@ -44366,7 +44364,7 @@ export interface MutateCustomersBatchJobsRequest {
 }
 
 export const MutateCustomersBatchJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateBatchJobRequest,
@@ -44383,7 +44381,7 @@ export const MutateCustomersBatchJobsRequest =
 export type MutateCustomersBatchJobsResponse =
   GoogleAdsSearchads360V23Services__MutateBatchJobResponse;
 export const MutateCustomersBatchJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateBatchJobResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateBatchJobResponse;
 
 export type MutateCustomersBatchJobsError =
   | DefaultErrors
@@ -44398,7 +44396,7 @@ export const mutateCustomersBatchJobs: API.OperationMethod<
   MutateCustomersBatchJobsResponse,
   MutateCustomersBatchJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersBatchJobsRequest,
   output: MutateCustomersBatchJobsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -44412,7 +44410,7 @@ export interface MutateCustomersCampaignBidModifiersRequest {
 }
 
 export const MutateCustomersCampaignBidModifiersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateCampaignBidModifiersRequest,
@@ -44429,7 +44427,7 @@ export const MutateCustomersCampaignBidModifiersRequest =
 export type MutateCustomersCampaignBidModifiersResponse =
   GoogleAdsSearchads360V23Services__MutateCampaignBidModifiersResponse;
 export const MutateCustomersCampaignBidModifiersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateCampaignBidModifiersResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateCampaignBidModifiersResponse;
 
 export type MutateCustomersCampaignBidModifiersError =
   | DefaultErrors
@@ -44444,7 +44442,7 @@ export const mutateCustomersCampaignBidModifiers: API.OperationMethod<
   MutateCustomersCampaignBidModifiersResponse,
   MutateCustomersCampaignBidModifiersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersCampaignBidModifiersRequest,
   output: MutateCustomersCampaignBidModifiersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -44458,7 +44456,7 @@ export interface MutateCustomersAdGroupsRequest {
 }
 
 export const MutateCustomersAdGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateAdGroupsRequest,
@@ -44475,7 +44473,7 @@ export const MutateCustomersAdGroupsRequest =
 export type MutateCustomersAdGroupsResponse =
   GoogleAdsSearchads360V23Services__MutateAdGroupsResponse;
 export const MutateCustomersAdGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateAdGroupsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateAdGroupsResponse;
 
 export type MutateCustomersAdGroupsError =
   | DefaultErrors
@@ -44490,7 +44488,7 @@ export const mutateCustomersAdGroups: API.OperationMethod<
   MutateCustomersAdGroupsResponse,
   MutateCustomersAdGroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersAdGroupsRequest,
   output: MutateCustomersAdGroupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -44504,7 +44502,7 @@ export interface MutateCustomersCustomerAssetSetsRequest {
 }
 
 export const MutateCustomersCustomerAssetSetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateCustomerAssetSetsRequest,
@@ -44521,7 +44519,7 @@ export const MutateCustomersCustomerAssetSetsRequest =
 export type MutateCustomersCustomerAssetSetsResponse =
   GoogleAdsSearchads360V23Services__MutateCustomerAssetSetsResponse;
 export const MutateCustomersCustomerAssetSetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateCustomerAssetSetsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateCustomerAssetSetsResponse;
 
 export type MutateCustomersCustomerAssetSetsError =
   | DefaultErrors
@@ -44536,7 +44534,7 @@ export const mutateCustomersCustomerAssetSets: API.OperationMethod<
   MutateCustomersCustomerAssetSetsResponse,
   MutateCustomersCustomerAssetSetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersCustomerAssetSetsRequest,
   output: MutateCustomersCustomerAssetSetsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -44550,7 +44548,7 @@ export interface MutateCustomersSearchAds360Request {
 }
 
 export const MutateCustomersSearchAds360Request =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateSearchAds360Request,
@@ -44567,7 +44565,7 @@ export const MutateCustomersSearchAds360Request =
 export type MutateCustomersSearchAds360Response =
   GoogleAdsSearchads360V23Services__MutateSearchAds360Response;
 export const MutateCustomersSearchAds360Response =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateSearchAds360Response;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateSearchAds360Response;
 
 export type MutateCustomersSearchAds360Error =
   | DefaultErrors
@@ -44582,7 +44580,7 @@ export const mutateCustomersSearchAds360: API.OperationMethod<
   MutateCustomersSearchAds360Response,
   MutateCustomersSearchAds360Error,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersSearchAds360Request,
   output: MutateCustomersSearchAds360Response,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -44596,7 +44594,7 @@ export interface SearchCustomersSearchAds360Request {
 }
 
 export const SearchCustomersSearchAds360Request =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__SearchSearchAds360Request,
@@ -44613,7 +44611,7 @@ export const SearchCustomersSearchAds360Request =
 export type SearchCustomersSearchAds360Response =
   GoogleAdsSearchads360V23Services__SearchSearchAds360Response;
 export const SearchCustomersSearchAds360Response =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__SearchSearchAds360Response;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__SearchSearchAds360Response;
 
 export type SearchCustomersSearchAds360Error =
   | DefaultErrors
@@ -44628,7 +44626,7 @@ export const searchCustomersSearchAds360: API.OperationMethod<
   SearchCustomersSearchAds360Response,
   SearchCustomersSearchAds360Error,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SearchCustomersSearchAds360Request,
   output: SearchCustomersSearchAds360Response,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -44642,7 +44640,7 @@ export interface MutateCustomersConversionValueRulesRequest {
 }
 
 export const MutateCustomersConversionValueRulesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateConversionValueRulesRequest,
@@ -44659,7 +44657,7 @@ export const MutateCustomersConversionValueRulesRequest =
 export type MutateCustomersConversionValueRulesResponse =
   GoogleAdsSearchads360V23Services__MutateConversionValueRulesResponse;
 export const MutateCustomersConversionValueRulesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateConversionValueRulesResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateConversionValueRulesResponse;
 
 export type MutateCustomersConversionValueRulesError =
   | DefaultErrors
@@ -44674,7 +44672,7 @@ export const mutateCustomersConversionValueRules: API.OperationMethod<
   MutateCustomersConversionValueRulesResponse,
   MutateCustomersConversionValueRulesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersConversionValueRulesRequest,
   output: MutateCustomersConversionValueRulesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -44686,7 +44684,7 @@ export interface ListCustomersPaymentsAccountsRequest {
 }
 
 export const ListCustomersPaymentsAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
   }).pipe(
     T.Http({
@@ -44699,7 +44697,7 @@ export const ListCustomersPaymentsAccountsRequest =
 export type ListCustomersPaymentsAccountsResponse =
   GoogleAdsSearchads360V23Services__ListPaymentsAccountsResponse;
 export const ListCustomersPaymentsAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__ListPaymentsAccountsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__ListPaymentsAccountsResponse;
 
 export type ListCustomersPaymentsAccountsError =
   | DefaultErrors
@@ -44712,7 +44710,7 @@ export const listCustomersPaymentsAccounts: API.OperationMethod<
   ListCustomersPaymentsAccountsResponse,
   ListCustomersPaymentsAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListCustomersPaymentsAccountsRequest,
   output: ListCustomersPaymentsAccountsResponse,
   errors: [NotFound, Forbidden],
@@ -44726,7 +44724,7 @@ export interface MutateCustomersCustomerClientLinksRequest {
 }
 
 export const MutateCustomersCustomerClientLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateCustomerClientLinkRequest,
@@ -44743,7 +44741,7 @@ export const MutateCustomersCustomerClientLinksRequest =
 export type MutateCustomersCustomerClientLinksResponse =
   GoogleAdsSearchads360V23Services__MutateCustomerClientLinkResponse;
 export const MutateCustomersCustomerClientLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateCustomerClientLinkResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateCustomerClientLinkResponse;
 
 export type MutateCustomersCustomerClientLinksError =
   | DefaultErrors
@@ -44758,7 +44756,7 @@ export const mutateCustomersCustomerClientLinks: API.OperationMethod<
   MutateCustomersCustomerClientLinksResponse,
   MutateCustomersCustomerClientLinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersCustomerClientLinksRequest,
   output: MutateCustomersCustomerClientLinksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -44772,7 +44770,7 @@ export interface MutateCustomersCampaignGroupsRequest {
 }
 
 export const MutateCustomersCampaignGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateCampaignGroupsRequest,
@@ -44789,7 +44787,7 @@ export const MutateCustomersCampaignGroupsRequest =
 export type MutateCustomersCampaignGroupsResponse =
   GoogleAdsSearchads360V23Services__MutateCampaignGroupsResponse;
 export const MutateCustomersCampaignGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateCampaignGroupsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateCampaignGroupsResponse;
 
 export type MutateCustomersCampaignGroupsError =
   | DefaultErrors
@@ -44804,7 +44802,7 @@ export const mutateCustomersCampaignGroups: API.OperationMethod<
   MutateCustomersCampaignGroupsResponse,
   MutateCustomersCampaignGroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersCampaignGroupsRequest,
   output: MutateCustomersCampaignGroupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -44818,7 +44816,7 @@ export interface EndExperimentCustomersExperimentsRequest {
 }
 
 export const EndExperimentCustomersExperimentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     experiment: Schema.String.pipe(T.HttpPath("experiment")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__EndExperimentRequest,
@@ -44834,7 +44832,7 @@ export const EndExperimentCustomersExperimentsRequest =
 
 export type EndExperimentCustomersExperimentsResponse = GoogleProtobuf__Empty;
 export const EndExperimentCustomersExperimentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobuf__Empty;
+  /*@__PURE__*/ GoogleProtobuf__Empty;
 
 export type EndExperimentCustomersExperimentsError =
   | DefaultErrors
@@ -44849,7 +44847,7 @@ export const endExperimentCustomersExperiments: API.OperationMethod<
   EndExperimentCustomersExperimentsResponse,
   EndExperimentCustomersExperimentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EndExperimentCustomersExperimentsRequest,
   output: EndExperimentCustomersExperimentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -44863,7 +44861,7 @@ export interface GraduateExperimentCustomersExperimentsRequest {
 }
 
 export const GraduateExperimentCustomersExperimentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     experiment: Schema.String.pipe(T.HttpPath("experiment")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__GraduateExperimentRequest,
@@ -44880,7 +44878,7 @@ export const GraduateExperimentCustomersExperimentsRequest =
 export type GraduateExperimentCustomersExperimentsResponse =
   GoogleProtobuf__Empty;
 export const GraduateExperimentCustomersExperimentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobuf__Empty;
+  /*@__PURE__*/ GoogleProtobuf__Empty;
 
 export type GraduateExperimentCustomersExperimentsError =
   | DefaultErrors
@@ -44895,7 +44893,7 @@ export const graduateExperimentCustomersExperiments: API.OperationMethod<
   GraduateExperimentCustomersExperimentsResponse,
   GraduateExperimentCustomersExperimentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GraduateExperimentCustomersExperimentsRequest,
   output: GraduateExperimentCustomersExperimentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -44909,7 +44907,7 @@ export interface ScheduleExperimentCustomersExperimentsRequest {
 }
 
 export const ScheduleExperimentCustomersExperimentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.String.pipe(T.HttpPath("resourceName")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__ScheduleExperimentRequest,
@@ -44926,7 +44924,7 @@ export const ScheduleExperimentCustomersExperimentsRequest =
 export type ScheduleExperimentCustomersExperimentsResponse =
   GoogleLongrunning__Operation;
 export const ScheduleExperimentCustomersExperimentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunning__Operation;
+  /*@__PURE__*/ GoogleLongrunning__Operation;
 
 export type ScheduleExperimentCustomersExperimentsError =
   | DefaultErrors
@@ -44941,7 +44939,7 @@ export const scheduleExperimentCustomersExperiments: API.OperationMethod<
   ScheduleExperimentCustomersExperimentsResponse,
   ScheduleExperimentCustomersExperimentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ScheduleExperimentCustomersExperimentsRequest,
   output: ScheduleExperimentCustomersExperimentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -44955,7 +44953,7 @@ export interface MutateCustomersExperimentsRequest {
 }
 
 export const MutateCustomersExperimentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateExperimentsRequest,
@@ -44972,7 +44970,7 @@ export const MutateCustomersExperimentsRequest =
 export type MutateCustomersExperimentsResponse =
   GoogleAdsSearchads360V23Services__MutateExperimentsResponse;
 export const MutateCustomersExperimentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateExperimentsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateExperimentsResponse;
 
 export type MutateCustomersExperimentsError =
   | DefaultErrors
@@ -44987,7 +44985,7 @@ export const mutateCustomersExperiments: API.OperationMethod<
   MutateCustomersExperimentsResponse,
   MutateCustomersExperimentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersExperimentsRequest,
   output: MutateCustomersExperimentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -45003,7 +45001,7 @@ export interface ListExperimentAsyncErrorsCustomersExperimentsRequest {
 }
 
 export const ListExperimentAsyncErrorsCustomersExperimentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     resourceName: Schema.String.pipe(T.HttpPath("resourceName")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -45018,7 +45016,7 @@ export const ListExperimentAsyncErrorsCustomersExperimentsRequest =
 export type ListExperimentAsyncErrorsCustomersExperimentsResponse =
   GoogleAdsSearchads360V23Services__ListExperimentAsyncErrorsResponse;
 export const ListExperimentAsyncErrorsCustomersExperimentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__ListExperimentAsyncErrorsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__ListExperimentAsyncErrorsResponse;
 
 export type ListExperimentAsyncErrorsCustomersExperimentsError =
   | DefaultErrors
@@ -45031,7 +45029,7 @@ export const listExperimentAsyncErrorsCustomersExperiments: API.PaginatedOperati
   ListExperimentAsyncErrorsCustomersExperimentsResponse,
   ListExperimentAsyncErrorsCustomersExperimentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExperimentAsyncErrorsCustomersExperimentsRequest,
   output: ListExperimentAsyncErrorsCustomersExperimentsResponse,
   errors: [NotFound, Forbidden],
@@ -45049,7 +45047,7 @@ export interface PromoteExperimentCustomersExperimentsRequest {
 }
 
 export const PromoteExperimentCustomersExperimentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.String.pipe(T.HttpPath("resourceName")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__PromoteExperimentRequest,
@@ -45066,7 +45064,7 @@ export const PromoteExperimentCustomersExperimentsRequest =
 export type PromoteExperimentCustomersExperimentsResponse =
   GoogleLongrunning__Operation;
 export const PromoteExperimentCustomersExperimentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunning__Operation;
+  /*@__PURE__*/ GoogleLongrunning__Operation;
 
 export type PromoteExperimentCustomersExperimentsError =
   | DefaultErrors
@@ -45081,7 +45079,7 @@ export const promoteExperimentCustomersExperiments: API.OperationMethod<
   PromoteExperimentCustomersExperimentsResponse,
   PromoteExperimentCustomersExperimentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PromoteExperimentCustomersExperimentsRequest,
   output: PromoteExperimentCustomersExperimentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -45095,7 +45093,7 @@ export interface MutateCustomersAdGroupAdLabelsRequest {
 }
 
 export const MutateCustomersAdGroupAdLabelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateAdGroupAdLabelsRequest,
@@ -45112,7 +45110,7 @@ export const MutateCustomersAdGroupAdLabelsRequest =
 export type MutateCustomersAdGroupAdLabelsResponse =
   GoogleAdsSearchads360V23Services__MutateAdGroupAdLabelsResponse;
 export const MutateCustomersAdGroupAdLabelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateAdGroupAdLabelsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateAdGroupAdLabelsResponse;
 
 export type MutateCustomersAdGroupAdLabelsError =
   | DefaultErrors
@@ -45127,7 +45125,7 @@ export const mutateCustomersAdGroupAdLabels: API.OperationMethod<
   MutateCustomersAdGroupAdLabelsResponse,
   MutateCustomersAdGroupAdLabelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersAdGroupAdLabelsRequest,
   output: MutateCustomersAdGroupAdLabelsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -45141,7 +45139,7 @@ export interface MutateCustomersAssetsRequest {
 }
 
 export const MutateCustomersAssetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateAssetsRequest,
@@ -45158,7 +45156,7 @@ export const MutateCustomersAssetsRequest =
 export type MutateCustomersAssetsResponse =
   GoogleAdsSearchads360V23Services__MutateAssetsResponse;
 export const MutateCustomersAssetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateAssetsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateAssetsResponse;
 
 export type MutateCustomersAssetsError =
   | DefaultErrors
@@ -45173,7 +45171,7 @@ export const mutateCustomersAssets: API.OperationMethod<
   MutateCustomersAssetsResponse,
   MutateCustomersAssetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersAssetsRequest,
   output: MutateCustomersAssetsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -45185,7 +45183,7 @@ export interface ListCustomersCustomColumnsRequest {
 }
 
 export const ListCustomersCustomColumnsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
   }).pipe(
     T.Http({
@@ -45198,7 +45196,7 @@ export const ListCustomersCustomColumnsRequest =
 export type ListCustomersCustomColumnsResponse =
   GoogleAdsSearchads360V23Services__ListCustomColumnsResponse;
 export const ListCustomersCustomColumnsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__ListCustomColumnsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__ListCustomColumnsResponse;
 
 export type ListCustomersCustomColumnsError =
   | DefaultErrors
@@ -45211,7 +45209,7 @@ export const listCustomersCustomColumns: API.OperationMethod<
   ListCustomersCustomColumnsResponse,
   ListCustomersCustomColumnsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListCustomersCustomColumnsRequest,
   output: ListCustomersCustomColumnsResponse,
   errors: [NotFound, Forbidden],
@@ -45223,7 +45221,7 @@ export interface GetCustomersCustomColumnsRequest {
 }
 
 export const GetCustomersCustomColumnsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.String.pipe(T.HttpPath("resourceName")),
   }).pipe(
     T.Http({ method: "GET", path: "v23/{+resourceName}" }),
@@ -45233,7 +45231,7 @@ export const GetCustomersCustomColumnsRequest =
 export type GetCustomersCustomColumnsResponse =
   GoogleAdsSearchads360V23Resources__CustomColumn;
 export const GetCustomersCustomColumnsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Resources__CustomColumn;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Resources__CustomColumn;
 
 export type GetCustomersCustomColumnsError =
   | DefaultErrors
@@ -45246,7 +45244,7 @@ export const getCustomersCustomColumns: API.OperationMethod<
   GetCustomersCustomColumnsResponse,
   GetCustomersCustomColumnsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCustomersCustomColumnsRequest,
   output: GetCustomersCustomColumnsResponse,
   errors: [NotFound, Forbidden],
@@ -45260,7 +45258,7 @@ export interface MutateCustomersCustomerManagerLinksRequest {
 }
 
 export const MutateCustomersCustomerManagerLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateCustomerManagerLinkRequest,
@@ -45277,7 +45275,7 @@ export const MutateCustomersCustomerManagerLinksRequest =
 export type MutateCustomersCustomerManagerLinksResponse =
   GoogleAdsSearchads360V23Services__MutateCustomerManagerLinkResponse;
 export const MutateCustomersCustomerManagerLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateCustomerManagerLinkResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateCustomerManagerLinkResponse;
 
 export type MutateCustomersCustomerManagerLinksError =
   | DefaultErrors
@@ -45292,7 +45290,7 @@ export const mutateCustomersCustomerManagerLinks: API.OperationMethod<
   MutateCustomersCustomerManagerLinksResponse,
   MutateCustomersCustomerManagerLinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersCustomerManagerLinksRequest,
   output: MutateCustomersCustomerManagerLinksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -45306,7 +45304,7 @@ export interface MoveManagerLinkCustomersCustomerManagerLinksRequest {
 }
 
 export const MoveManagerLinkCustomersCustomerManagerLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MoveManagerLinkRequest,
@@ -45323,7 +45321,7 @@ export const MoveManagerLinkCustomersCustomerManagerLinksRequest =
 export type MoveManagerLinkCustomersCustomerManagerLinksResponse =
   GoogleAdsSearchads360V23Services__MoveManagerLinkResponse;
 export const MoveManagerLinkCustomersCustomerManagerLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MoveManagerLinkResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MoveManagerLinkResponse;
 
 export type MoveManagerLinkCustomersCustomerManagerLinksError =
   | DefaultErrors
@@ -45338,7 +45336,7 @@ export const moveManagerLinkCustomersCustomerManagerLinks: API.OperationMethod<
   MoveManagerLinkCustomersCustomerManagerLinksResponse,
   MoveManagerLinkCustomersCustomerManagerLinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MoveManagerLinkCustomersCustomerManagerLinksRequest,
   output: MoveManagerLinkCustomersCustomerManagerLinksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -45352,7 +45350,7 @@ export interface MutateCustomersAdGroupLabelsRequest {
 }
 
 export const MutateCustomersAdGroupLabelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateAdGroupLabelsRequest,
@@ -45369,7 +45367,7 @@ export const MutateCustomersAdGroupLabelsRequest =
 export type MutateCustomersAdGroupLabelsResponse =
   GoogleAdsSearchads360V23Services__MutateAdGroupLabelsResponse;
 export const MutateCustomersAdGroupLabelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateAdGroupLabelsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateAdGroupLabelsResponse;
 
 export type MutateCustomersAdGroupLabelsError =
   | DefaultErrors
@@ -45384,7 +45382,7 @@ export const mutateCustomersAdGroupLabels: API.OperationMethod<
   MutateCustomersAdGroupLabelsResponse,
   MutateCustomersAdGroupLabelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersAdGroupLabelsRequest,
   output: MutateCustomersAdGroupLabelsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -45398,7 +45396,7 @@ export interface ConfigureCustomerLifecycleGoalsCustomersCustomerLifecycleGoalRe
 }
 
 export const ConfigureCustomerLifecycleGoalsCustomersCustomerLifecycleGoalRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__ConfigureCustomerLifecycleGoalsRequest,
@@ -45415,7 +45413,7 @@ export const ConfigureCustomerLifecycleGoalsCustomersCustomerLifecycleGoalReques
 export type ConfigureCustomerLifecycleGoalsCustomersCustomerLifecycleGoalResponse =
   GoogleAdsSearchads360V23Services__ConfigureCustomerLifecycleGoalsResponse;
 export const ConfigureCustomerLifecycleGoalsCustomersCustomerLifecycleGoalResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__ConfigureCustomerLifecycleGoalsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__ConfigureCustomerLifecycleGoalsResponse;
 
 export type ConfigureCustomerLifecycleGoalsCustomersCustomerLifecycleGoalError =
   | DefaultErrors
@@ -45430,7 +45428,7 @@ export const configureCustomerLifecycleGoalsCustomersCustomerLifecycleGoal: API.
   ConfigureCustomerLifecycleGoalsCustomersCustomerLifecycleGoalResponse,
   ConfigureCustomerLifecycleGoalsCustomersCustomerLifecycleGoalError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ConfigureCustomerLifecycleGoalsCustomersCustomerLifecycleGoalRequest,
   output: ConfigureCustomerLifecycleGoalsCustomersCustomerLifecycleGoalResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -45444,7 +45442,7 @@ export interface MutateCustomersConversionGoalCampaignConfigsRequest {
 }
 
 export const MutateCustomersConversionGoalCampaignConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateConversionGoalCampaignConfigsRequest,
@@ -45461,7 +45459,7 @@ export const MutateCustomersConversionGoalCampaignConfigsRequest =
 export type MutateCustomersConversionGoalCampaignConfigsResponse =
   GoogleAdsSearchads360V23Services__MutateConversionGoalCampaignConfigsResponse;
 export const MutateCustomersConversionGoalCampaignConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateConversionGoalCampaignConfigsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateConversionGoalCampaignConfigsResponse;
 
 export type MutateCustomersConversionGoalCampaignConfigsError =
   | DefaultErrors
@@ -45476,7 +45474,7 @@ export const mutateCustomersConversionGoalCampaignConfigs: API.OperationMethod<
   MutateCustomersConversionGoalCampaignConfigsResponse,
   MutateCustomersConversionGoalCampaignConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersConversionGoalCampaignConfigsRequest,
   output: MutateCustomersConversionGoalCampaignConfigsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -45490,7 +45488,7 @@ export interface RemoveCustomersProductLinksRequest {
 }
 
 export const RemoveCustomersProductLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__RemoveProductLinkRequest,
@@ -45507,7 +45505,7 @@ export const RemoveCustomersProductLinksRequest =
 export type RemoveCustomersProductLinksResponse =
   GoogleAdsSearchads360V23Services__RemoveProductLinkResponse;
 export const RemoveCustomersProductLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__RemoveProductLinkResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__RemoveProductLinkResponse;
 
 export type RemoveCustomersProductLinksError =
   | DefaultErrors
@@ -45522,7 +45520,7 @@ export const removeCustomersProductLinks: API.OperationMethod<
   RemoveCustomersProductLinksResponse,
   RemoveCustomersProductLinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveCustomersProductLinksRequest,
   output: RemoveCustomersProductLinksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -45536,7 +45534,7 @@ export interface CreateCustomersProductLinksRequest {
 }
 
 export const CreateCustomersProductLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__CreateProductLinkRequest,
@@ -45553,7 +45551,7 @@ export const CreateCustomersProductLinksRequest =
 export type CreateCustomersProductLinksResponse =
   GoogleAdsSearchads360V23Services__CreateProductLinkResponse;
 export const CreateCustomersProductLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__CreateProductLinkResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__CreateProductLinkResponse;
 
 export type CreateCustomersProductLinksError =
   | DefaultErrors
@@ -45568,7 +45566,7 @@ export const createCustomersProductLinks: API.OperationMethod<
   CreateCustomersProductLinksResponse,
   CreateCustomersProductLinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCustomersProductLinksRequest,
   output: CreateCustomersProductLinksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -45582,7 +45580,7 @@ export interface MutateCustomersAssetGroupsRequest {
 }
 
 export const MutateCustomersAssetGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateAssetGroupsRequest,
@@ -45599,7 +45597,7 @@ export const MutateCustomersAssetGroupsRequest =
 export type MutateCustomersAssetGroupsResponse =
   GoogleAdsSearchads360V23Services__MutateAssetGroupsResponse;
 export const MutateCustomersAssetGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateAssetGroupsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateAssetGroupsResponse;
 
 export type MutateCustomersAssetGroupsError =
   | DefaultErrors
@@ -45614,7 +45612,7 @@ export const mutateCustomersAssetGroups: API.OperationMethod<
   MutateCustomersAssetGroupsResponse,
   MutateCustomersAssetGroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersAssetGroupsRequest,
   output: MutateCustomersAssetGroupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -45628,7 +45626,7 @@ export interface MutateCustomersUserListsRequest {
 }
 
 export const MutateCustomersUserListsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateUserListsRequest,
@@ -45645,7 +45643,7 @@ export const MutateCustomersUserListsRequest =
 export type MutateCustomersUserListsResponse =
   GoogleAdsSearchads360V23Services__MutateUserListsResponse;
 export const MutateCustomersUserListsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateUserListsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateUserListsResponse;
 
 export type MutateCustomersUserListsError =
   | DefaultErrors
@@ -45660,7 +45658,7 @@ export const mutateCustomersUserLists: API.OperationMethod<
   MutateCustomersUserListsResponse,
   MutateCustomersUserListsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersUserListsRequest,
   output: MutateCustomersUserListsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -45674,7 +45672,7 @@ export interface CreateCustomersAccountLinksRequest {
 }
 
 export const CreateCustomersAccountLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__CreateAccountLinkRequest,
@@ -45691,7 +45689,7 @@ export const CreateCustomersAccountLinksRequest =
 export type CreateCustomersAccountLinksResponse =
   GoogleAdsSearchads360V23Services__CreateAccountLinkResponse;
 export const CreateCustomersAccountLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__CreateAccountLinkResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__CreateAccountLinkResponse;
 
 export type CreateCustomersAccountLinksError =
   | DefaultErrors
@@ -45706,7 +45704,7 @@ export const createCustomersAccountLinks: API.OperationMethod<
   CreateCustomersAccountLinksResponse,
   CreateCustomersAccountLinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCustomersAccountLinksRequest,
   output: CreateCustomersAccountLinksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -45720,7 +45718,7 @@ export interface MutateCustomersAccountLinksRequest {
 }
 
 export const MutateCustomersAccountLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateAccountLinkRequest,
@@ -45737,7 +45735,7 @@ export const MutateCustomersAccountLinksRequest =
 export type MutateCustomersAccountLinksResponse =
   GoogleAdsSearchads360V23Services__MutateAccountLinkResponse;
 export const MutateCustomersAccountLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateAccountLinkResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateAccountLinkResponse;
 
 export type MutateCustomersAccountLinksError =
   | DefaultErrors
@@ -45752,7 +45750,7 @@ export const mutateCustomersAccountLinks: API.OperationMethod<
   MutateCustomersAccountLinksResponse,
   MutateCustomersAccountLinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersAccountLinksRequest,
   output: MutateCustomersAccountLinksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -45766,7 +45764,7 @@ export interface MutateCustomersAdGroupCustomizersRequest {
 }
 
 export const MutateCustomersAdGroupCustomizersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateAdGroupCustomizersRequest,
@@ -45783,7 +45781,7 @@ export const MutateCustomersAdGroupCustomizersRequest =
 export type MutateCustomersAdGroupCustomizersResponse =
   GoogleAdsSearchads360V23Services__MutateAdGroupCustomizersResponse;
 export const MutateCustomersAdGroupCustomizersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateAdGroupCustomizersResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateAdGroupCustomizersResponse;
 
 export type MutateCustomersAdGroupCustomizersError =
   | DefaultErrors
@@ -45798,7 +45796,7 @@ export const mutateCustomersAdGroupCustomizers: API.OperationMethod<
   MutateCustomersAdGroupCustomizersResponse,
   MutateCustomersAdGroupCustomizersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersAdGroupCustomizersRequest,
   output: MutateCustomersAdGroupCustomizersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -45812,7 +45810,7 @@ export interface MutateCustomersKeywordPlanAdGroupsRequest {
 }
 
 export const MutateCustomersKeywordPlanAdGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupsRequest,
@@ -45829,7 +45827,7 @@ export const MutateCustomersKeywordPlanAdGroupsRequest =
 export type MutateCustomersKeywordPlanAdGroupsResponse =
   GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupsResponse;
 export const MutateCustomersKeywordPlanAdGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupsResponse;
 
 export type MutateCustomersKeywordPlanAdGroupsError =
   | DefaultErrors
@@ -45844,7 +45842,7 @@ export const mutateCustomersKeywordPlanAdGroups: API.OperationMethod<
   MutateCustomersKeywordPlanAdGroupsResponse,
   MutateCustomersKeywordPlanAdGroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersKeywordPlanAdGroupsRequest,
   output: MutateCustomersKeywordPlanAdGroupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -45858,7 +45856,7 @@ export interface CreateCustomersOfflineUserDataJobsRequest {
 }
 
 export const CreateCustomersOfflineUserDataJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__CreateOfflineUserDataJobRequest,
@@ -45875,7 +45873,7 @@ export const CreateCustomersOfflineUserDataJobsRequest =
 export type CreateCustomersOfflineUserDataJobsResponse =
   GoogleAdsSearchads360V23Services__CreateOfflineUserDataJobResponse;
 export const CreateCustomersOfflineUserDataJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__CreateOfflineUserDataJobResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__CreateOfflineUserDataJobResponse;
 
 export type CreateCustomersOfflineUserDataJobsError =
   | DefaultErrors
@@ -45890,7 +45888,7 @@ export const createCustomersOfflineUserDataJobs: API.OperationMethod<
   CreateCustomersOfflineUserDataJobsResponse,
   CreateCustomersOfflineUserDataJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCustomersOfflineUserDataJobsRequest,
   output: CreateCustomersOfflineUserDataJobsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -45904,7 +45902,7 @@ export interface RunCustomersOfflineUserDataJobsRequest {
 }
 
 export const RunCustomersOfflineUserDataJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.String.pipe(T.HttpPath("resourceName")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__RunOfflineUserDataJobRequest,
@@ -45917,7 +45915,7 @@ export const RunCustomersOfflineUserDataJobsRequest =
 export type RunCustomersOfflineUserDataJobsResponse =
   GoogleLongrunning__Operation;
 export const RunCustomersOfflineUserDataJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunning__Operation;
+  /*@__PURE__*/ GoogleLongrunning__Operation;
 
 export type RunCustomersOfflineUserDataJobsError =
   | DefaultErrors
@@ -45932,7 +45930,7 @@ export const runCustomersOfflineUserDataJobs: API.OperationMethod<
   RunCustomersOfflineUserDataJobsResponse,
   RunCustomersOfflineUserDataJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RunCustomersOfflineUserDataJobsRequest,
   output: RunCustomersOfflineUserDataJobsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -45946,7 +45944,7 @@ export interface AddOperationsCustomersOfflineUserDataJobsRequest {
 }
 
 export const AddOperationsCustomersOfflineUserDataJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.String.pipe(T.HttpPath("resourceName")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__AddOfflineUserDataJobOperationsRequest,
@@ -45963,7 +45961,7 @@ export const AddOperationsCustomersOfflineUserDataJobsRequest =
 export type AddOperationsCustomersOfflineUserDataJobsResponse =
   GoogleAdsSearchads360V23Services__AddOfflineUserDataJobOperationsResponse;
 export const AddOperationsCustomersOfflineUserDataJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__AddOfflineUserDataJobOperationsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__AddOfflineUserDataJobOperationsResponse;
 
 export type AddOperationsCustomersOfflineUserDataJobsError =
   | DefaultErrors
@@ -45978,7 +45976,7 @@ export const addOperationsCustomersOfflineUserDataJobs: API.OperationMethod<
   AddOperationsCustomersOfflineUserDataJobsResponse,
   AddOperationsCustomersOfflineUserDataJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddOperationsCustomersOfflineUserDataJobsRequest,
   output: AddOperationsCustomersOfflineUserDataJobsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -45992,7 +45990,7 @@ export interface MutateCustomersCustomConversionGoalsRequest {
 }
 
 export const MutateCustomersCustomConversionGoalsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateCustomConversionGoalsRequest,
@@ -46009,7 +46007,7 @@ export const MutateCustomersCustomConversionGoalsRequest =
 export type MutateCustomersCustomConversionGoalsResponse =
   GoogleAdsSearchads360V23Services__MutateCustomConversionGoalsResponse;
 export const MutateCustomersCustomConversionGoalsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateCustomConversionGoalsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateCustomConversionGoalsResponse;
 
 export type MutateCustomersCustomConversionGoalsError =
   | DefaultErrors
@@ -46024,7 +46022,7 @@ export const mutateCustomersCustomConversionGoals: API.OperationMethod<
   MutateCustomersCustomConversionGoalsResponse,
   MutateCustomersCustomConversionGoalsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersCustomConversionGoalsRequest,
   output: MutateCustomersCustomConversionGoalsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -46038,7 +46036,7 @@ export interface MutateCustomersCustomInterestsRequest {
 }
 
 export const MutateCustomersCustomInterestsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateCustomInterestsRequest,
@@ -46055,7 +46053,7 @@ export const MutateCustomersCustomInterestsRequest =
 export type MutateCustomersCustomInterestsResponse =
   GoogleAdsSearchads360V23Services__MutateCustomInterestsResponse;
 export const MutateCustomersCustomInterestsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateCustomInterestsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateCustomInterestsResponse;
 
 export type MutateCustomersCustomInterestsError =
   | DefaultErrors
@@ -46070,7 +46068,7 @@ export const mutateCustomersCustomInterests: API.OperationMethod<
   MutateCustomersCustomInterestsResponse,
   MutateCustomersCustomInterestsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersCustomInterestsRequest,
   output: MutateCustomersCustomInterestsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -46084,7 +46082,7 @@ export interface MutateCustomersCampaignCustomizersRequest {
 }
 
 export const MutateCustomersCampaignCustomizersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateCampaignCustomizersRequest,
@@ -46101,7 +46099,7 @@ export const MutateCustomersCampaignCustomizersRequest =
 export type MutateCustomersCampaignCustomizersResponse =
   GoogleAdsSearchads360V23Services__MutateCampaignCustomizersResponse;
 export const MutateCustomersCampaignCustomizersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateCampaignCustomizersResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateCampaignCustomizersResponse;
 
 export type MutateCustomersCampaignCustomizersError =
   | DefaultErrors
@@ -46116,7 +46114,7 @@ export const mutateCustomersCampaignCustomizers: API.OperationMethod<
   MutateCustomersCampaignCustomizersResponse,
   MutateCustomersCampaignCustomizersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersCampaignCustomizersRequest,
   output: MutateCustomersCampaignCustomizersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -46130,7 +46128,7 @@ export interface MutateCustomersAdGroupCriterionLabelsRequest {
 }
 
 export const MutateCustomersAdGroupCriterionLabelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateAdGroupCriterionLabelsRequest,
@@ -46147,7 +46145,7 @@ export const MutateCustomersAdGroupCriterionLabelsRequest =
 export type MutateCustomersAdGroupCriterionLabelsResponse =
   GoogleAdsSearchads360V23Services__MutateAdGroupCriterionLabelsResponse;
 export const MutateCustomersAdGroupCriterionLabelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateAdGroupCriterionLabelsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateAdGroupCriterionLabelsResponse;
 
 export type MutateCustomersAdGroupCriterionLabelsError =
   | DefaultErrors
@@ -46162,7 +46160,7 @@ export const mutateCustomersAdGroupCriterionLabels: API.OperationMethod<
   MutateCustomersAdGroupCriterionLabelsResponse,
   MutateCustomersAdGroupCriterionLabelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersAdGroupCriterionLabelsRequest,
   output: MutateCustomersAdGroupCriterionLabelsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -46176,7 +46174,7 @@ export interface MutateCustomersAdsRequest {
 }
 
 export const MutateCustomersAdsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateAdsRequest,
@@ -46193,7 +46191,7 @@ export const MutateCustomersAdsRequest =
 export type MutateCustomersAdsResponse =
   GoogleAdsSearchads360V23Services__MutateAdsResponse;
 export const MutateCustomersAdsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateAdsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateAdsResponse;
 
 export type MutateCustomersAdsError =
   | DefaultErrors
@@ -46208,7 +46206,7 @@ export const mutateCustomersAds: API.OperationMethod<
   MutateCustomersAdsResponse,
   MutateCustomersAdsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersAdsRequest,
   output: MutateCustomersAdsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -46222,7 +46220,7 @@ export interface MutateCustomersAdGroupAdsRequest {
 }
 
 export const MutateCustomersAdGroupAdsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateAdGroupAdsRequest,
@@ -46239,7 +46237,7 @@ export const MutateCustomersAdGroupAdsRequest =
 export type MutateCustomersAdGroupAdsResponse =
   GoogleAdsSearchads360V23Services__MutateAdGroupAdsResponse;
 export const MutateCustomersAdGroupAdsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateAdGroupAdsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateAdGroupAdsResponse;
 
 export type MutateCustomersAdGroupAdsError =
   | DefaultErrors
@@ -46254,7 +46252,7 @@ export const mutateCustomersAdGroupAds: API.OperationMethod<
   MutateCustomersAdGroupAdsResponse,
   MutateCustomersAdGroupAdsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersAdGroupAdsRequest,
   output: MutateCustomersAdGroupAdsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -46268,7 +46266,7 @@ export interface RemoveAutomaticallyCreatedAssetsCustomersAdGroupAdsRequest {
 }
 
 export const RemoveAutomaticallyCreatedAssetsCustomersAdGroupAdsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adGroupAd: Schema.String.pipe(T.HttpPath("adGroupAd")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__RemoveAutomaticallyCreatedAssetsRequest,
@@ -46285,7 +46283,7 @@ export const RemoveAutomaticallyCreatedAssetsCustomersAdGroupAdsRequest =
 export type RemoveAutomaticallyCreatedAssetsCustomersAdGroupAdsResponse =
   GoogleProtobuf__Empty;
 export const RemoveAutomaticallyCreatedAssetsCustomersAdGroupAdsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobuf__Empty;
+  /*@__PURE__*/ GoogleProtobuf__Empty;
 
 export type RemoveAutomaticallyCreatedAssetsCustomersAdGroupAdsError =
   | DefaultErrors
@@ -46300,7 +46298,7 @@ export const removeAutomaticallyCreatedAssetsCustomersAdGroupAds: API.OperationM
   RemoveAutomaticallyCreatedAssetsCustomersAdGroupAdsResponse,
   RemoveAutomaticallyCreatedAssetsCustomersAdGroupAdsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveAutomaticallyCreatedAssetsCustomersAdGroupAdsRequest,
   output: RemoveAutomaticallyCreatedAssetsCustomersAdGroupAdsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -46314,7 +46312,7 @@ export interface MutateCustomersAdGroupCriterionCustomizersRequest {
 }
 
 export const MutateCustomersAdGroupCriterionCustomizersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateAdGroupCriterionCustomizersRequest,
@@ -46331,7 +46329,7 @@ export const MutateCustomersAdGroupCriterionCustomizersRequest =
 export type MutateCustomersAdGroupCriterionCustomizersResponse =
   GoogleAdsSearchads360V23Services__MutateAdGroupCriterionCustomizersResponse;
 export const MutateCustomersAdGroupCriterionCustomizersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateAdGroupCriterionCustomizersResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateAdGroupCriterionCustomizersResponse;
 
 export type MutateCustomersAdGroupCriterionCustomizersError =
   | DefaultErrors
@@ -46346,7 +46344,7 @@ export const mutateCustomersAdGroupCriterionCustomizers: API.OperationMethod<
   MutateCustomersAdGroupCriterionCustomizersResponse,
   MutateCustomersAdGroupCriterionCustomizersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersAdGroupCriterionCustomizersRequest,
   output: MutateCustomersAdGroupCriterionCustomizersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -46360,7 +46358,7 @@ export interface UpdateCustomersProductLinkInvitationsRequest {
 }
 
 export const UpdateCustomersProductLinkInvitationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__UpdateProductLinkInvitationRequest,
@@ -46377,7 +46375,7 @@ export const UpdateCustomersProductLinkInvitationsRequest =
 export type UpdateCustomersProductLinkInvitationsResponse =
   GoogleAdsSearchads360V23Services__UpdateProductLinkInvitationResponse;
 export const UpdateCustomersProductLinkInvitationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__UpdateProductLinkInvitationResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__UpdateProductLinkInvitationResponse;
 
 export type UpdateCustomersProductLinkInvitationsError =
   | DefaultErrors
@@ -46392,7 +46390,7 @@ export const updateCustomersProductLinkInvitations: API.OperationMethod<
   UpdateCustomersProductLinkInvitationsResponse,
   UpdateCustomersProductLinkInvitationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCustomersProductLinkInvitationsRequest,
   output: UpdateCustomersProductLinkInvitationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -46406,7 +46404,7 @@ export interface CreateCustomersProductLinkInvitationsRequest {
 }
 
 export const CreateCustomersProductLinkInvitationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__CreateProductLinkInvitationRequest,
@@ -46423,7 +46421,7 @@ export const CreateCustomersProductLinkInvitationsRequest =
 export type CreateCustomersProductLinkInvitationsResponse =
   GoogleAdsSearchads360V23Services__CreateProductLinkInvitationResponse;
 export const CreateCustomersProductLinkInvitationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__CreateProductLinkInvitationResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__CreateProductLinkInvitationResponse;
 
 export type CreateCustomersProductLinkInvitationsError =
   | DefaultErrors
@@ -46438,7 +46436,7 @@ export const createCustomersProductLinkInvitations: API.OperationMethod<
   CreateCustomersProductLinkInvitationsResponse,
   CreateCustomersProductLinkInvitationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCustomersProductLinkInvitationsRequest,
   output: CreateCustomersProductLinkInvitationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -46452,7 +46450,7 @@ export interface RemoveCustomersProductLinkInvitationsRequest {
 }
 
 export const RemoveCustomersProductLinkInvitationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__RemoveProductLinkInvitationRequest,
@@ -46469,7 +46467,7 @@ export const RemoveCustomersProductLinkInvitationsRequest =
 export type RemoveCustomersProductLinkInvitationsResponse =
   GoogleAdsSearchads360V23Services__RemoveProductLinkInvitationResponse;
 export const RemoveCustomersProductLinkInvitationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__RemoveProductLinkInvitationResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__RemoveProductLinkInvitationResponse;
 
 export type RemoveCustomersProductLinkInvitationsError =
   | DefaultErrors
@@ -46484,7 +46482,7 @@ export const removeCustomersProductLinkInvitations: API.OperationMethod<
   RemoveCustomersProductLinkInvitationsResponse,
   RemoveCustomersProductLinkInvitationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveCustomersProductLinkInvitationsRequest,
   output: RemoveCustomersProductLinkInvitationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -46498,7 +46496,7 @@ export interface MutateCustomersLabelsRequest {
 }
 
 export const MutateCustomersLabelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateLabelsRequest,
@@ -46515,7 +46513,7 @@ export const MutateCustomersLabelsRequest =
 export type MutateCustomersLabelsResponse =
   GoogleAdsSearchads360V23Services__MutateLabelsResponse;
 export const MutateCustomersLabelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateLabelsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateLabelsResponse;
 
 export type MutateCustomersLabelsError =
   | DefaultErrors
@@ -46530,7 +46528,7 @@ export const mutateCustomersLabels: API.OperationMethod<
   MutateCustomersLabelsResponse,
   MutateCustomersLabelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersLabelsRequest,
   output: MutateCustomersLabelsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -46544,7 +46542,7 @@ export interface MutateCustomersAdParametersRequest {
 }
 
 export const MutateCustomersAdParametersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateAdParametersRequest,
@@ -46561,7 +46559,7 @@ export const MutateCustomersAdParametersRequest =
 export type MutateCustomersAdParametersResponse =
   GoogleAdsSearchads360V23Services__MutateAdParametersResponse;
 export const MutateCustomersAdParametersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateAdParametersResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateAdParametersResponse;
 
 export type MutateCustomersAdParametersError =
   | DefaultErrors
@@ -46576,7 +46574,7 @@ export const mutateCustomersAdParameters: API.OperationMethod<
   MutateCustomersAdParametersResponse,
   MutateCustomersAdParametersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersAdParametersRequest,
   output: MutateCustomersAdParametersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -46590,7 +46588,7 @@ export interface PromoteCustomersCampaignDraftsRequest {
 }
 
 export const PromoteCustomersCampaignDraftsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     campaignDraft: Schema.String.pipe(T.HttpPath("campaignDraft")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__PromoteCampaignDraftRequest,
@@ -46607,7 +46605,7 @@ export const PromoteCustomersCampaignDraftsRequest =
 export type PromoteCustomersCampaignDraftsResponse =
   GoogleLongrunning__Operation;
 export const PromoteCustomersCampaignDraftsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunning__Operation;
+  /*@__PURE__*/ GoogleLongrunning__Operation;
 
 export type PromoteCustomersCampaignDraftsError =
   | DefaultErrors
@@ -46622,7 +46620,7 @@ export const promoteCustomersCampaignDrafts: API.OperationMethod<
   PromoteCustomersCampaignDraftsResponse,
   PromoteCustomersCampaignDraftsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PromoteCustomersCampaignDraftsRequest,
   output: PromoteCustomersCampaignDraftsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -46638,7 +46636,7 @@ export interface ListAsyncErrorsCustomersCampaignDraftsRequest {
 }
 
 export const ListAsyncErrorsCustomersCampaignDraftsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     resourceName: Schema.String.pipe(T.HttpPath("resourceName")),
@@ -46650,7 +46648,7 @@ export const ListAsyncErrorsCustomersCampaignDraftsRequest =
 export type ListAsyncErrorsCustomersCampaignDraftsResponse =
   GoogleAdsSearchads360V23Services__ListCampaignDraftAsyncErrorsResponse;
 export const ListAsyncErrorsCustomersCampaignDraftsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__ListCampaignDraftAsyncErrorsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__ListCampaignDraftAsyncErrorsResponse;
 
 export type ListAsyncErrorsCustomersCampaignDraftsError =
   | DefaultErrors
@@ -46663,7 +46661,7 @@ export const listAsyncErrorsCustomersCampaignDrafts: API.PaginatedOperationMetho
   ListAsyncErrorsCustomersCampaignDraftsResponse,
   ListAsyncErrorsCustomersCampaignDraftsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAsyncErrorsCustomersCampaignDraftsRequest,
   output: ListAsyncErrorsCustomersCampaignDraftsResponse,
   errors: [NotFound, Forbidden],
@@ -46681,7 +46679,7 @@ export interface MutateCustomersCampaignDraftsRequest {
 }
 
 export const MutateCustomersCampaignDraftsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateCampaignDraftsRequest,
@@ -46698,7 +46696,7 @@ export const MutateCustomersCampaignDraftsRequest =
 export type MutateCustomersCampaignDraftsResponse =
   GoogleAdsSearchads360V23Services__MutateCampaignDraftsResponse;
 export const MutateCustomersCampaignDraftsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateCampaignDraftsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateCampaignDraftsResponse;
 
 export type MutateCustomersCampaignDraftsError =
   | DefaultErrors
@@ -46713,7 +46711,7 @@ export const mutateCustomersCampaignDrafts: API.OperationMethod<
   MutateCustomersCampaignDraftsResponse,
   MutateCustomersCampaignDraftsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersCampaignDraftsRequest,
   output: MutateCustomersCampaignDraftsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -46727,7 +46725,7 @@ export interface AppendLeadConversationCustomersLocalServicesRequest {
 }
 
 export const AppendLeadConversationCustomersLocalServicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__AppendLeadConversationRequest,
@@ -46744,7 +46742,7 @@ export const AppendLeadConversationCustomersLocalServicesRequest =
 export type AppendLeadConversationCustomersLocalServicesResponse =
   GoogleAdsSearchads360V23Services__AppendLeadConversationResponse;
 export const AppendLeadConversationCustomersLocalServicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__AppendLeadConversationResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__AppendLeadConversationResponse;
 
 export type AppendLeadConversationCustomersLocalServicesError =
   | DefaultErrors
@@ -46759,7 +46757,7 @@ export const appendLeadConversationCustomersLocalServices: API.OperationMethod<
   AppendLeadConversationCustomersLocalServicesResponse,
   AppendLeadConversationCustomersLocalServicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AppendLeadConversationCustomersLocalServicesRequest,
   output: AppendLeadConversationCustomersLocalServicesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -46773,7 +46771,7 @@ export interface MutateCustomersSharedSetsRequest {
 }
 
 export const MutateCustomersSharedSetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateSharedSetsRequest,
@@ -46790,7 +46788,7 @@ export const MutateCustomersSharedSetsRequest =
 export type MutateCustomersSharedSetsResponse =
   GoogleAdsSearchads360V23Services__MutateSharedSetsResponse;
 export const MutateCustomersSharedSetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateSharedSetsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateSharedSetsResponse;
 
 export type MutateCustomersSharedSetsError =
   | DefaultErrors
@@ -46805,7 +46803,7 @@ export const mutateCustomersSharedSets: API.OperationMethod<
   MutateCustomersSharedSetsResponse,
   MutateCustomersSharedSetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersSharedSetsRequest,
   output: MutateCustomersSharedSetsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -46819,7 +46817,7 @@ export interface MutateCustomersAdGroupBidModifiersRequest {
 }
 
 export const MutateCustomersAdGroupBidModifiersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateAdGroupBidModifiersRequest,
@@ -46836,7 +46834,7 @@ export const MutateCustomersAdGroupBidModifiersRequest =
 export type MutateCustomersAdGroupBidModifiersResponse =
   GoogleAdsSearchads360V23Services__MutateAdGroupBidModifiersResponse;
 export const MutateCustomersAdGroupBidModifiersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateAdGroupBidModifiersResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateAdGroupBidModifiersResponse;
 
 export type MutateCustomersAdGroupBidModifiersError =
   | DefaultErrors
@@ -46851,7 +46849,7 @@ export const mutateCustomersAdGroupBidModifiers: API.OperationMethod<
   MutateCustomersAdGroupBidModifiersResponse,
   MutateCustomersAdGroupBidModifiersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersAdGroupBidModifiersRequest,
   output: MutateCustomersAdGroupBidModifiersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -46865,7 +46863,7 @@ export interface MutateCustomersBiddingStrategiesRequest {
 }
 
 export const MutateCustomersBiddingStrategiesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateBiddingStrategiesRequest,
@@ -46882,7 +46880,7 @@ export const MutateCustomersBiddingStrategiesRequest =
 export type MutateCustomersBiddingStrategiesResponse =
   GoogleAdsSearchads360V23Services__MutateBiddingStrategiesResponse;
 export const MutateCustomersBiddingStrategiesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateBiddingStrategiesResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateBiddingStrategiesResponse;
 
 export type MutateCustomersBiddingStrategiesError =
   | DefaultErrors
@@ -46897,7 +46895,7 @@ export const mutateCustomersBiddingStrategies: API.OperationMethod<
   MutateCustomersBiddingStrategiesResponse,
   MutateCustomersBiddingStrategiesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersBiddingStrategiesRequest,
   output: MutateCustomersBiddingStrategiesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -46911,7 +46909,7 @@ export interface MutateCustomersBiddingDataExclusionsRequest {
 }
 
 export const MutateCustomersBiddingDataExclusionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateBiddingDataExclusionsRequest,
@@ -46928,7 +46926,7 @@ export const MutateCustomersBiddingDataExclusionsRequest =
 export type MutateCustomersBiddingDataExclusionsResponse =
   GoogleAdsSearchads360V23Services__MutateBiddingDataExclusionsResponse;
 export const MutateCustomersBiddingDataExclusionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateBiddingDataExclusionsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateBiddingDataExclusionsResponse;
 
 export type MutateCustomersBiddingDataExclusionsError =
   | DefaultErrors
@@ -46943,7 +46941,7 @@ export const mutateCustomersBiddingDataExclusions: API.OperationMethod<
   MutateCustomersBiddingDataExclusionsResponse,
   MutateCustomersBiddingDataExclusionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersBiddingDataExclusionsRequest,
   output: MutateCustomersBiddingDataExclusionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -46955,7 +46953,7 @@ export interface GetSmartCampaignStatusCustomersSmartCampaignSettingsRequest {
 }
 
 export const GetSmartCampaignStatusCustomersSmartCampaignSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.String.pipe(T.HttpPath("resourceName")),
   }).pipe(
     T.Http({
@@ -46968,7 +46966,7 @@ export const GetSmartCampaignStatusCustomersSmartCampaignSettingsRequest =
 export type GetSmartCampaignStatusCustomersSmartCampaignSettingsResponse =
   GoogleAdsSearchads360V23Services__GetSmartCampaignStatusResponse;
 export const GetSmartCampaignStatusCustomersSmartCampaignSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__GetSmartCampaignStatusResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__GetSmartCampaignStatusResponse;
 
 export type GetSmartCampaignStatusCustomersSmartCampaignSettingsError =
   | DefaultErrors
@@ -46981,7 +46979,7 @@ export const getSmartCampaignStatusCustomersSmartCampaignSettings: API.Operation
   GetSmartCampaignStatusCustomersSmartCampaignSettingsResponse,
   GetSmartCampaignStatusCustomersSmartCampaignSettingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSmartCampaignStatusCustomersSmartCampaignSettingsRequest,
   output: GetSmartCampaignStatusCustomersSmartCampaignSettingsResponse,
   errors: [NotFound, Forbidden],
@@ -46995,7 +46993,7 @@ export interface MutateCustomersSmartCampaignSettingsRequest {
 }
 
 export const MutateCustomersSmartCampaignSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateSmartCampaignSettingsRequest,
@@ -47012,7 +47010,7 @@ export const MutateCustomersSmartCampaignSettingsRequest =
 export type MutateCustomersSmartCampaignSettingsResponse =
   GoogleAdsSearchads360V23Services__MutateSmartCampaignSettingsResponse;
 export const MutateCustomersSmartCampaignSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateSmartCampaignSettingsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateSmartCampaignSettingsResponse;
 
 export type MutateCustomersSmartCampaignSettingsError =
   | DefaultErrors
@@ -47027,7 +47025,7 @@ export const mutateCustomersSmartCampaignSettings: API.OperationMethod<
   MutateCustomersSmartCampaignSettingsResponse,
   MutateCustomersSmartCampaignSettingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersSmartCampaignSettingsRequest,
   output: MutateCustomersSmartCampaignSettingsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -47041,7 +47039,7 @@ export interface MutateCustomersAdGroupAssetSetsRequest {
 }
 
 export const MutateCustomersAdGroupAssetSetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateAdGroupAssetSetsRequest,
@@ -47058,7 +47056,7 @@ export const MutateCustomersAdGroupAssetSetsRequest =
 export type MutateCustomersAdGroupAssetSetsResponse =
   GoogleAdsSearchads360V23Services__MutateAdGroupAssetSetsResponse;
 export const MutateCustomersAdGroupAssetSetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateAdGroupAssetSetsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateAdGroupAssetSetsResponse;
 
 export type MutateCustomersAdGroupAssetSetsError =
   | DefaultErrors
@@ -47073,7 +47071,7 @@ export const mutateCustomersAdGroupAssetSets: API.OperationMethod<
   MutateCustomersAdGroupAssetSetsResponse,
   MutateCustomersAdGroupAssetSetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersAdGroupAssetSetsRequest,
   output: MutateCustomersAdGroupAssetSetsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -47087,7 +47085,7 @@ export interface MutateCustomersGoalsRequest {
 }
 
 export const MutateCustomersGoalsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateGoalsRequest,
@@ -47104,7 +47102,7 @@ export const MutateCustomersGoalsRequest =
 export type MutateCustomersGoalsResponse =
   GoogleAdsSearchads360V23Services__MutateGoalsResponse;
 export const MutateCustomersGoalsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateGoalsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateGoalsResponse;
 
 export type MutateCustomersGoalsError =
   | DefaultErrors
@@ -47119,7 +47117,7 @@ export const mutateCustomersGoals: API.OperationMethod<
   MutateCustomersGoalsResponse,
   MutateCustomersGoalsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersGoalsRequest,
   output: MutateCustomersGoalsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -47133,7 +47131,7 @@ export interface MutateCustomersUserListCustomerTypesRequest {
 }
 
 export const MutateCustomersUserListCustomerTypesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesRequest,
@@ -47150,7 +47148,7 @@ export const MutateCustomersUserListCustomerTypesRequest =
 export type MutateCustomersUserListCustomerTypesResponse =
   GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesResponse;
 export const MutateCustomersUserListCustomerTypesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesResponse;
 
 export type MutateCustomersUserListCustomerTypesError =
   | DefaultErrors
@@ -47165,7 +47163,7 @@ export const mutateCustomersUserListCustomerTypes: API.OperationMethod<
   MutateCustomersUserListCustomerTypesResponse,
   MutateCustomersUserListCustomerTypesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersUserListCustomerTypesRequest,
   output: MutateCustomersUserListCustomerTypesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -47179,7 +47177,7 @@ export interface MutateCustomersRemarketingActionsRequest {
 }
 
 export const MutateCustomersRemarketingActionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateRemarketingActionsRequest,
@@ -47196,7 +47194,7 @@ export const MutateCustomersRemarketingActionsRequest =
 export type MutateCustomersRemarketingActionsResponse =
   GoogleAdsSearchads360V23Services__MutateRemarketingActionsResponse;
 export const MutateCustomersRemarketingActionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateRemarketingActionsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateRemarketingActionsResponse;
 
 export type MutateCustomersRemarketingActionsError =
   | DefaultErrors
@@ -47211,7 +47209,7 @@ export const mutateCustomersRemarketingActions: API.OperationMethod<
   MutateCustomersRemarketingActionsResponse,
   MutateCustomersRemarketingActionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersRemarketingActionsRequest,
   output: MutateCustomersRemarketingActionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -47225,7 +47223,7 @@ export interface MutateCustomersKeywordPlanAdGroupKeywordsRequest {
 }
 
 export const MutateCustomersKeywordPlanAdGroupKeywordsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupKeywordsRequest,
@@ -47242,7 +47240,7 @@ export const MutateCustomersKeywordPlanAdGroupKeywordsRequest =
 export type MutateCustomersKeywordPlanAdGroupKeywordsResponse =
   GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupKeywordsResponse;
 export const MutateCustomersKeywordPlanAdGroupKeywordsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupKeywordsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupKeywordsResponse;
 
 export type MutateCustomersKeywordPlanAdGroupKeywordsError =
   | DefaultErrors
@@ -47257,7 +47255,7 @@ export const mutateCustomersKeywordPlanAdGroupKeywords: API.OperationMethod<
   MutateCustomersKeywordPlanAdGroupKeywordsResponse,
   MutateCustomersKeywordPlanAdGroupKeywordsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersKeywordPlanAdGroupKeywordsRequest,
   output: MutateCustomersKeywordPlanAdGroupKeywordsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -47271,7 +47269,7 @@ export interface RegenerateShareableLinkIdCustomersThirdPartyAppAnalyticsLinksRe
 }
 
 export const RegenerateShareableLinkIdCustomersThirdPartyAppAnalyticsLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.String.pipe(T.HttpPath("resourceName")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__RegenerateShareableLinkIdRequest,
@@ -47288,7 +47286,7 @@ export const RegenerateShareableLinkIdCustomersThirdPartyAppAnalyticsLinksReques
 export type RegenerateShareableLinkIdCustomersThirdPartyAppAnalyticsLinksResponse =
   GoogleAdsSearchads360V23Services__RegenerateShareableLinkIdResponse;
 export const RegenerateShareableLinkIdCustomersThirdPartyAppAnalyticsLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__RegenerateShareableLinkIdResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__RegenerateShareableLinkIdResponse;
 
 export type RegenerateShareableLinkIdCustomersThirdPartyAppAnalyticsLinksError =
   | DefaultErrors
@@ -47303,7 +47301,7 @@ export const regenerateShareableLinkIdCustomersThirdPartyAppAnalyticsLinks: API.
   RegenerateShareableLinkIdCustomersThirdPartyAppAnalyticsLinksResponse,
   RegenerateShareableLinkIdCustomersThirdPartyAppAnalyticsLinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegenerateShareableLinkIdCustomersThirdPartyAppAnalyticsLinksRequest,
   output: RegenerateShareableLinkIdCustomersThirdPartyAppAnalyticsLinksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -47317,7 +47315,7 @@ export interface MutateCustomersCampaignLabelsRequest {
 }
 
 export const MutateCustomersCampaignLabelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateCampaignLabelsRequest,
@@ -47334,7 +47332,7 @@ export const MutateCustomersCampaignLabelsRequest =
 export type MutateCustomersCampaignLabelsResponse =
   GoogleAdsSearchads360V23Services__MutateCampaignLabelsResponse;
 export const MutateCustomersCampaignLabelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateCampaignLabelsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateCampaignLabelsResponse;
 
 export type MutateCustomersCampaignLabelsError =
   | DefaultErrors
@@ -47349,7 +47347,7 @@ export const mutateCustomersCampaignLabels: API.OperationMethod<
   MutateCustomersCampaignLabelsResponse,
   MutateCustomersCampaignLabelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersCampaignLabelsRequest,
   output: MutateCustomersCampaignLabelsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -47363,7 +47361,7 @@ export interface MutateCustomersCampaignCriteriaRequest {
 }
 
 export const MutateCustomersCampaignCriteriaRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateCampaignCriteriaRequest,
@@ -47380,7 +47378,7 @@ export const MutateCustomersCampaignCriteriaRequest =
 export type MutateCustomersCampaignCriteriaResponse =
   GoogleAdsSearchads360V23Services__MutateCampaignCriteriaResponse;
 export const MutateCustomersCampaignCriteriaResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateCampaignCriteriaResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateCampaignCriteriaResponse;
 
 export type MutateCustomersCampaignCriteriaError =
   | DefaultErrors
@@ -47395,7 +47393,7 @@ export const mutateCustomersCampaignCriteria: API.OperationMethod<
   MutateCustomersCampaignCriteriaResponse,
   MutateCustomersCampaignCriteriaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersCampaignCriteriaRequest,
   output: MutateCustomersCampaignCriteriaResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -47409,7 +47407,7 @@ export interface MutateCustomersExperimentArmsRequest {
 }
 
 export const MutateCustomersExperimentArmsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateExperimentArmsRequest,
@@ -47426,7 +47424,7 @@ export const MutateCustomersExperimentArmsRequest =
 export type MutateCustomersExperimentArmsResponse =
   GoogleAdsSearchads360V23Services__MutateExperimentArmsResponse;
 export const MutateCustomersExperimentArmsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateExperimentArmsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateExperimentArmsResponse;
 
 export type MutateCustomersExperimentArmsError =
   | DefaultErrors
@@ -47441,7 +47439,7 @@ export const mutateCustomersExperimentArms: API.OperationMethod<
   MutateCustomersExperimentArmsResponse,
   MutateCustomersExperimentArmsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersExperimentArmsRequest,
   output: MutateCustomersExperimentArmsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -47455,7 +47453,7 @@ export interface GenerateCustomersRecommendationsRequest {
 }
 
 export const GenerateCustomersRecommendationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__GenerateRecommendationsRequest,
@@ -47472,7 +47470,7 @@ export const GenerateCustomersRecommendationsRequest =
 export type GenerateCustomersRecommendationsResponse =
   GoogleAdsSearchads360V23Services__GenerateRecommendationsResponse;
 export const GenerateCustomersRecommendationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__GenerateRecommendationsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__GenerateRecommendationsResponse;
 
 export type GenerateCustomersRecommendationsError =
   | DefaultErrors
@@ -47487,7 +47485,7 @@ export const generateCustomersRecommendations: API.OperationMethod<
   GenerateCustomersRecommendationsResponse,
   GenerateCustomersRecommendationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateCustomersRecommendationsRequest,
   output: GenerateCustomersRecommendationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -47501,7 +47499,7 @@ export interface ApplyCustomersRecommendationsRequest {
 }
 
 export const ApplyCustomersRecommendationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__ApplyRecommendationRequest,
@@ -47518,7 +47516,7 @@ export const ApplyCustomersRecommendationsRequest =
 export type ApplyCustomersRecommendationsResponse =
   GoogleAdsSearchads360V23Services__ApplyRecommendationResponse;
 export const ApplyCustomersRecommendationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__ApplyRecommendationResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__ApplyRecommendationResponse;
 
 export type ApplyCustomersRecommendationsError =
   | DefaultErrors
@@ -47533,7 +47531,7 @@ export const applyCustomersRecommendations: API.OperationMethod<
   ApplyCustomersRecommendationsResponse,
   ApplyCustomersRecommendationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ApplyCustomersRecommendationsRequest,
   output: ApplyCustomersRecommendationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -47547,7 +47545,7 @@ export interface DismissCustomersRecommendationsRequest {
 }
 
 export const DismissCustomersRecommendationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__DismissRecommendationRequest,
@@ -47564,7 +47562,7 @@ export const DismissCustomersRecommendationsRequest =
 export type DismissCustomersRecommendationsResponse =
   GoogleAdsSearchads360V23Services__DismissRecommendationResponse;
 export const DismissCustomersRecommendationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__DismissRecommendationResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__DismissRecommendationResponse;
 
 export type DismissCustomersRecommendationsError =
   | DefaultErrors
@@ -47579,7 +47577,7 @@ export const dismissCustomersRecommendations: API.OperationMethod<
   DismissCustomersRecommendationsResponse,
   DismissCustomersRecommendationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DismissCustomersRecommendationsRequest,
   output: DismissCustomersRecommendationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -47593,7 +47591,7 @@ export interface MutateCustomersConversionActionsRequest {
 }
 
 export const MutateCustomersConversionActionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateConversionActionsRequest,
@@ -47610,7 +47608,7 @@ export const MutateCustomersConversionActionsRequest =
 export type MutateCustomersConversionActionsResponse =
   GoogleAdsSearchads360V23Services__MutateConversionActionsResponse;
 export const MutateCustomersConversionActionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateConversionActionsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateConversionActionsResponse;
 
 export type MutateCustomersConversionActionsError =
   | DefaultErrors
@@ -47625,7 +47623,7 @@ export const mutateCustomersConversionActions: API.OperationMethod<
   MutateCustomersConversionActionsResponse,
   MutateCustomersConversionActionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersConversionActionsRequest,
   output: MutateCustomersConversionActionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -47660,7 +47658,7 @@ export interface ListCustomersInvoicesRequest {
 }
 
 export const ListCustomersInvoicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingSetup: Schema.optional(Schema.String).pipe(
       T.HttpQuery("billingSetup"),
     ),
@@ -47678,7 +47676,7 @@ export const ListCustomersInvoicesRequest =
 export type ListCustomersInvoicesResponse =
   GoogleAdsSearchads360V23Services__ListInvoicesResponse;
 export const ListCustomersInvoicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__ListInvoicesResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__ListInvoicesResponse;
 
 export type ListCustomersInvoicesError = DefaultErrors | NotFound | Forbidden;
 
@@ -47688,7 +47686,7 @@ export const listCustomersInvoices: API.OperationMethod<
   ListCustomersInvoicesResponse,
   ListCustomersInvoicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListCustomersInvoicesRequest,
   output: ListCustomersInvoicesResponse,
   errors: [NotFound, Forbidden],
@@ -47702,7 +47700,7 @@ export interface MutateCustomersCampaignAssetsRequest {
 }
 
 export const MutateCustomersCampaignAssetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateCampaignAssetsRequest,
@@ -47719,7 +47717,7 @@ export const MutateCustomersCampaignAssetsRequest =
 export type MutateCustomersCampaignAssetsResponse =
   GoogleAdsSearchads360V23Services__MutateCampaignAssetsResponse;
 export const MutateCustomersCampaignAssetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateCampaignAssetsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateCampaignAssetsResponse;
 
 export type MutateCustomersCampaignAssetsError =
   | DefaultErrors
@@ -47734,7 +47732,7 @@ export const mutateCustomersCampaignAssets: API.OperationMethod<
   MutateCustomersCampaignAssetsResponse,
   MutateCustomersCampaignAssetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersCampaignAssetsRequest,
   output: MutateCustomersCampaignAssetsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -47748,7 +47746,7 @@ export interface MutateCustomersCampaignConversionGoalsRequest {
 }
 
 export const MutateCustomersCampaignConversionGoalsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateCampaignConversionGoalsRequest,
@@ -47765,7 +47763,7 @@ export const MutateCustomersCampaignConversionGoalsRequest =
 export type MutateCustomersCampaignConversionGoalsResponse =
   GoogleAdsSearchads360V23Services__MutateCampaignConversionGoalsResponse;
 export const MutateCustomersCampaignConversionGoalsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateCampaignConversionGoalsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateCampaignConversionGoalsResponse;
 
 export type MutateCustomersCampaignConversionGoalsError =
   | DefaultErrors
@@ -47780,7 +47778,7 @@ export const mutateCustomersCampaignConversionGoals: API.OperationMethod<
   MutateCustomersCampaignConversionGoalsResponse,
   MutateCustomersCampaignConversionGoalsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersCampaignConversionGoalsRequest,
   output: MutateCustomersCampaignConversionGoalsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -47794,7 +47792,7 @@ export interface MutateCustomersConversionValueRuleSetsRequest {
 }
 
 export const MutateCustomersConversionValueRuleSetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateConversionValueRuleSetsRequest,
@@ -47811,7 +47809,7 @@ export const MutateCustomersConversionValueRuleSetsRequest =
 export type MutateCustomersConversionValueRuleSetsResponse =
   GoogleAdsSearchads360V23Services__MutateConversionValueRuleSetsResponse;
 export const MutateCustomersConversionValueRuleSetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateConversionValueRuleSetsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateConversionValueRuleSetsResponse;
 
 export type MutateCustomersConversionValueRuleSetsError =
   | DefaultErrors
@@ -47826,7 +47824,7 @@ export const mutateCustomersConversionValueRuleSets: API.OperationMethod<
   MutateCustomersConversionValueRuleSetsResponse,
   MutateCustomersConversionValueRuleSetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersConversionValueRuleSetsRequest,
   output: MutateCustomersConversionValueRuleSetsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -47840,7 +47838,7 @@ export interface MutateCustomersCustomerNegativeCriteriaRequest {
 }
 
 export const MutateCustomersCustomerNegativeCriteriaRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V23Services__MutateCustomerNegativeCriteriaRequest,
@@ -47857,7 +47855,7 @@ export const MutateCustomersCustomerNegativeCriteriaRequest =
 export type MutateCustomersCustomerNegativeCriteriaResponse =
   GoogleAdsSearchads360V23Services__MutateCustomerNegativeCriteriaResponse;
 export const MutateCustomersCustomerNegativeCriteriaResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V23Services__MutateCustomerNegativeCriteriaResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V23Services__MutateCustomerNegativeCriteriaResponse;
 
 export type MutateCustomersCustomerNegativeCriteriaError =
   | DefaultErrors
@@ -47872,7 +47870,7 @@ export const mutateCustomersCustomerNegativeCriteria: API.OperationMethod<
   MutateCustomersCustomerNegativeCriteriaResponse,
   MutateCustomersCustomerNegativeCriteriaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MutateCustomersCustomerNegativeCriteriaRequest,
   output: MutateCustomersCustomerNegativeCriteriaResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

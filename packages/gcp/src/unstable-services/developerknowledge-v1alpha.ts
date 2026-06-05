@@ -4,11 +4,11 @@
 // ==========================================================================
 
 import * as Schema from "effect/Schema";
+import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
-import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { DefaultErrors } from "../errors.ts";
-import type * as HttpClient from "effect/unstable/http/HttpClient";
+import * as T from "../traits.ts";
 
 // Service metadata
 const svc = T.Service({
@@ -47,7 +47,7 @@ export interface Document {
 }
 
 export const Document: Schema.Schema<Document> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -70,7 +70,7 @@ export interface DocumentChunk {
 }
 
 export const DocumentChunk: Schema.Schema<DocumentChunk> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     content: Schema.optional(Schema.String),
@@ -83,7 +83,7 @@ export interface BatchGetDocumentsResponse {
 }
 
 export const BatchGetDocumentsResponse: Schema.Schema<BatchGetDocumentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     documents: Schema.optional(Schema.Array(Document)),
   }).annotate({ identifier: "BatchGetDocumentsResponse" });
 
@@ -93,7 +93,7 @@ export interface Answer {
 }
 
 export const Answer: Schema.Schema<Answer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     answerText: Schema.optional(Schema.String),
   }).annotate({ identifier: "Answer" });
 
@@ -103,7 +103,7 @@ export interface AnswerQueryResponse {
 }
 
 export const AnswerQueryResponse: Schema.Schema<AnswerQueryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     answer: Schema.optional(Answer),
   }).annotate({ identifier: "AnswerQueryResponse" });
 
@@ -113,7 +113,7 @@ export interface AnswerQueryRequest {
 }
 
 export const AnswerQueryRequest: Schema.Schema<AnswerQueryRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     query: Schema.optional(Schema.String),
   }).annotate({ identifier: "AnswerQueryRequest" });
 
@@ -125,7 +125,7 @@ export interface SearchDocumentChunksResponse {
 }
 
 export const SearchDocumentChunksResponse: Schema.Schema<SearchDocumentChunksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(Schema.Array(DocumentChunk)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "SearchDocumentChunksResponse" });
@@ -190,7 +190,7 @@ export interface AnswerQueryV1alphaRequest {
 }
 
 export const AnswerQueryV1alphaRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(AnswerQueryRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha:answerQuery", hasBody: true }),
@@ -198,8 +198,7 @@ export const AnswerQueryV1alphaRequest =
   ) as unknown as Schema.Schema<AnswerQueryV1alphaRequest>;
 
 export type AnswerQueryV1alphaResponse = AnswerQueryResponse;
-export const AnswerQueryV1alphaResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AnswerQueryResponse;
+export const AnswerQueryV1alphaResponse = /*@__PURE__*/ AnswerQueryResponse;
 
 export type AnswerQueryV1alphaError =
   | DefaultErrors
@@ -214,7 +213,7 @@ export const answerQueryV1alpha: API.OperationMethod<
   AnswerQueryV1alphaResponse,
   AnswerQueryV1alphaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AnswerQueryV1alphaRequest,
   output: AnswerQueryV1alphaResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -233,7 +232,7 @@ export interface BatchGetDocumentsRequest {
 }
 
 export const BatchGetDocumentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     names: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("names"),
     ),
@@ -245,7 +244,7 @@ export const BatchGetDocumentsRequest =
 
 export type BatchGetDocumentsResponse_Op = BatchGetDocumentsResponse;
 export const BatchGetDocumentsResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ BatchGetDocumentsResponse;
+  /*@__PURE__*/ BatchGetDocumentsResponse;
 
 export type BatchGetDocumentsError = DefaultErrors | NotFound | Forbidden;
 
@@ -255,7 +254,7 @@ export const batchGetDocuments: API.OperationMethod<
   BatchGetDocumentsResponse_Op,
   BatchGetDocumentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetDocumentsRequest,
   output: BatchGetDocumentsResponse_Op,
   errors: [NotFound, Forbidden],
@@ -273,7 +272,7 @@ export interface SearchDocumentChunksDocumentsRequest {
 }
 
 export const SearchDocumentChunksDocumentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     query: Schema.optional(Schema.String).pipe(T.HttpQuery("query")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
@@ -286,7 +285,7 @@ export const SearchDocumentChunksDocumentsRequest =
 export type SearchDocumentChunksDocumentsResponse =
   SearchDocumentChunksResponse;
 export const SearchDocumentChunksDocumentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SearchDocumentChunksResponse;
+  /*@__PURE__*/ SearchDocumentChunksResponse;
 
 export type SearchDocumentChunksDocumentsError =
   | DefaultErrors
@@ -299,7 +298,7 @@ export const searchDocumentChunksDocuments: API.PaginatedOperationMethod<
   SearchDocumentChunksDocumentsResponse,
   SearchDocumentChunksDocumentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchDocumentChunksDocumentsRequest,
   output: SearchDocumentChunksDocumentsResponse,
   errors: [NotFound, Forbidden],
@@ -321,7 +320,7 @@ export interface GetDocumentsRequest {
     | (string & {});
 }
 
-export const GetDocumentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetDocumentsRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
 }).pipe(
@@ -330,7 +329,7 @@ export const GetDocumentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<GetDocumentsRequest>;
 
 export type GetDocumentsResponse = Document;
-export const GetDocumentsResponse = /*@__PURE__*/ /*#__PURE__*/ Document;
+export const GetDocumentsResponse = /*@__PURE__*/ Document;
 
 export type GetDocumentsError = DefaultErrors | NotFound | Forbidden;
 
@@ -340,7 +339,7 @@ export const getDocuments: API.OperationMethod<
   GetDocumentsResponse,
   GetDocumentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDocumentsRequest,
   output: GetDocumentsResponse,
   errors: [NotFound, Forbidden],

@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const RevokeDelegationForEndUserInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.PathParam()),
     walletSecretId: Schema.optional(Schema.String),
   }).pipe(
@@ -17,8 +17,7 @@ export type RevokeDelegationForEndUserInput =
   typeof RevokeDelegationForEndUserInput.Type;
 
 // Output Schema
-export const RevokeDelegationForEndUserOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const RevokeDelegationForEndUserOutput = /*@__PURE__*/ Schema.Void;
 export type RevokeDelegationForEndUserOutput =
   typeof RevokeDelegationForEndUserOutput.Type;
 
@@ -42,9 +41,7 @@ Refer to our [Idempotency docs](https://docs.cdp.coinbase.com/api-reference/v2/i
 
  * @param userId - The ID of the end user.
  */
-export const revokeDelegationForEndUser = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RevokeDelegationForEndUserInput,
-    outputSchema: RevokeDelegationForEndUserOutput,
-  }),
-);
+export const revokeDelegationForEndUser = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RevokeDelegationForEndUserInput,
+  outputSchema: RevokeDelegationForEndUserOutput,
+}));

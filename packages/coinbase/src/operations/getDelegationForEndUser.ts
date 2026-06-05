@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const GetDelegationForEndUserInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.PathParam()),
     projectID: Schema.optional(Schema.String),
   }).pipe(
@@ -18,7 +18,7 @@ export type GetDelegationForEndUserInput =
 
 // Output Schema
 export const GetDelegationForEndUserOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expiresAt: Schema.String,
   });
 export type GetDelegationForEndUserOutput =
@@ -33,9 +33,7 @@ export type GetDelegationForEndUserOutput =
  * @param userId - The ID of the end user.
  * @param projectID - The ID of the CDP Project. Required for end users authenticated using custom auth (i.e. a non-CDP JWT provider).
  */
-export const getDelegationForEndUser = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetDelegationForEndUserInput,
-    outputSchema: GetDelegationForEndUserOutput,
-  }),
-);
+export const getDelegationForEndUser = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetDelegationForEndUserInput,
+  outputSchema: GetDelegationForEndUserOutput,
+}));

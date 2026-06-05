@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const UpdateNeonAuthPhoneNumberPluginInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
     enabled: Schema.Boolean,
@@ -21,7 +21,7 @@ export type UpdateNeonAuthPhoneNumberPluginInput =
 
 // Output Schema
 export const UpdateNeonAuthPhoneNumberPluginOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enabled: Schema.Boolean,
     otp_expires_in: Schema.optional(Schema.Number),
     allowed_attempts: Schema.optional(Schema.Number),
@@ -42,7 +42,7 @@ export type UpdateNeonAuthPhoneNumberPluginOutput =
  * @param branch_id - The Neon branch ID
  */
 export const updateNeonAuthPhoneNumberPlugin =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UpdateNeonAuthPhoneNumberPluginInput,
     outputSchema: UpdateNeonAuthPhoneNumberPluginOutput,
   }));

@@ -1,11 +1,11 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
-import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
+import * as T from "../traits.ts";
 
 // Input Schema
 export const MachinesPatchMetadataInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     app_name: Schema.String.pipe(T.PathParam()),
     machine_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -17,8 +17,7 @@ export const MachinesPatchMetadataInput =
 export type MachinesPatchMetadataInput = typeof MachinesPatchMetadataInput.Type;
 
 // Output Schema
-export const MachinesPatchMetadataOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const MachinesPatchMetadataOutput = /*@__PURE__*/ Schema.Void;
 export type MachinesPatchMetadataOutput =
   typeof MachinesPatchMetadataOutput.Type;
 
@@ -32,10 +31,8 @@ export type MachinesPatchMetadataOutput =
  * @param app_name - Fly App Name
  * @param machine_id - Machine ID
  */
-export const MachinesPatchMetadata = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MachinesPatchMetadataInput,
-    outputSchema: MachinesPatchMetadataOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const MachinesPatchMetadata = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MachinesPatchMetadataInput,
+  outputSchema: MachinesPatchMetadataOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

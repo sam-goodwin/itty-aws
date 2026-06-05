@@ -4,14 +4,14 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const App_CertificatesShowInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apps/{app_name}/certificates/{hostname}" }),
   );
 export type App_CertificatesShowInput = typeof App_CertificatesShowInput.Type;
 
 // Output Schema
 export const App_CertificatesShowOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     acme_requested: Schema.optional(Schema.Boolean),
     certificates: Schema.optional(
       Schema.Array(
@@ -89,9 +89,7 @@ export type App_CertificatesShowOutput = typeof App_CertificatesShowOutput.Type;
 /**
  * Get certificate details
  */
-export const App_CertificatesShow = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: App_CertificatesShowInput,
-    outputSchema: App_CertificatesShowOutput,
-  }),
-);
+export const App_CertificatesShow = /*@__PURE__*/ API.make(() => ({
+  inputSchema: App_CertificatesShowInput,
+  outputSchema: App_CertificatesShowOutput,
+}));

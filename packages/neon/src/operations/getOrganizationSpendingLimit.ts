@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const GetOrganizationSpendingLimitInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     org_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -17,7 +17,7 @@ export type GetOrganizationSpendingLimitInput =
 
 // Output Schema
 export const GetOrganizationSpendingLimitOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     spending_limit_cents: Schema.NullOr(Schema.Number),
   });
 export type GetOrganizationSpendingLimitOutput =
@@ -35,7 +35,7 @@ export type GetOrganizationSpendingLimitOutput =
  * @param org_id - The Neon organization ID
  */
 export const getOrganizationSpendingLimit =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetOrganizationSpendingLimitInput,
     outputSchema: GetOrganizationSpendingLimitOutput,
   }));

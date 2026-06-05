@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const DeleteOrganizationSpendingLimitInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     org_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -17,7 +17,7 @@ export type DeleteOrganizationSpendingLimitInput =
 
 // Output Schema
 export const DeleteOrganizationSpendingLimitOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ Schema.Struct({});
 export type DeleteOrganizationSpendingLimitOutput =
   typeof DeleteOrganizationSpendingLimitOutput.Type;
 
@@ -33,7 +33,7 @@ export type DeleteOrganizationSpendingLimitOutput =
  * @param org_id - The Neon organization ID
  */
 export const deleteOrganizationSpendingLimit =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteOrganizationSpendingLimitInput,
     outputSchema: DeleteOrganizationSpendingLimitOutput,
   }));

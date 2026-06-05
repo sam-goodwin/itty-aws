@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const CreateEvmEip7702DelegationWithEndUserAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.PathParam()),
     projectID: Schema.optional(Schema.String),
     address: Schema.String,
@@ -30,7 +30,7 @@ export type CreateEvmEip7702DelegationWithEndUserAccountInput =
 
 // Output Schema
 export const CreateEvmEip7702DelegationWithEndUserAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     delegationOperationId: Schema.String,
   });
 export type CreateEvmEip7702DelegationWithEndUserAccountOutput =
@@ -64,7 +64,7 @@ section of our Authentication docs for more details on how to generate your Wall
  * @param projectID - The ID of the CDP Project. Required for end users authenticated using custom auth (i.e. a non-CDP JWT provider).
  */
 export const createEvmEip7702DelegationWithEndUserAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateEvmEip7702DelegationWithEndUserAccountInput,
     outputSchema: CreateEvmEip7702DelegationWithEndUserAccountOutput,
   }));

@@ -1,11 +1,11 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
-import * as T from "../traits.ts";
 import { Forbidden } from "../errors.ts";
+import * as T from "../traits.ts";
 
 // Input Schema
 export const V1RestorePhysicalBackupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     id: Schema.Number,
   }).pipe(
@@ -18,8 +18,7 @@ export type V1RestorePhysicalBackupInput =
   typeof V1RestorePhysicalBackupInput.Type;
 
 // Output Schema
-export const V1RestorePhysicalBackupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const V1RestorePhysicalBackupOutput = /*@__PURE__*/ Schema.Void;
 export type V1RestorePhysicalBackupOutput =
   typeof V1RestorePhysicalBackupOutput.Type;
 
@@ -29,10 +28,8 @@ export type V1RestorePhysicalBackupOutput =
  *
  * @param ref - Project ref
  */
-export const v1RestorePhysicalBackup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1RestorePhysicalBackupInput,
-    outputSchema: V1RestorePhysicalBackupOutput,
-    errors: [Forbidden] as const,
-  }),
-);
+export const v1RestorePhysicalBackup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1RestorePhysicalBackupInput,
+  outputSchema: V1RestorePhysicalBackupOutput,
+  errors: [Forbidden] as const,
+}));
