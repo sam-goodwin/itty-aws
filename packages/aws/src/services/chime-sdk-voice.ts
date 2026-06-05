@@ -131,15 +131,14 @@ export type ValidationResult = number;
 
 //# Schemas
 export type E164PhoneNumberList = string | redacted.Redacted<string>[];
-export const E164PhoneNumberList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SensitiveString);
+export const E164PhoneNumberList = /*@__PURE__*/ S.Array(SensitiveString);
 export interface AssociatePhoneNumbersWithVoiceConnectorRequest {
   VoiceConnectorId: string;
   E164PhoneNumbers: string | redacted.Redacted<string>[];
   ForceAssociate?: boolean;
 }
 export const AssociatePhoneNumbersWithVoiceConnectorRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
       E164PhoneNumbers: E164PhoneNumberList,
@@ -178,13 +177,13 @@ export type ErrorCode =
   | "PhoneNumberAssociationsExist"
   | "Gone"
   | (string & {});
-export const ErrorCode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ErrorCode = /*@__PURE__*/ S.String;
 export interface PhoneNumberError {
   PhoneNumberId?: string | redacted.Redacted<string>;
   ErrorCode?: ErrorCode;
   ErrorMessage?: string;
 }
-export const PhoneNumberError = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PhoneNumberError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PhoneNumberId: S.optional(SensitiveString),
     ErrorCode: S.optional(ErrorCode),
@@ -194,13 +193,12 @@ export const PhoneNumberError = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "PhoneNumberError",
 }) as any as S.Schema<PhoneNumberError>;
 export type PhoneNumberErrorList = PhoneNumberError[];
-export const PhoneNumberErrorList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(PhoneNumberError);
+export const PhoneNumberErrorList = /*@__PURE__*/ S.Array(PhoneNumberError);
 export interface AssociatePhoneNumbersWithVoiceConnectorResponse {
   PhoneNumberErrors?: PhoneNumberError[];
 }
 export const AssociatePhoneNumbersWithVoiceConnectorResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ PhoneNumberErrors: S.optional(PhoneNumberErrorList) }),
   ).annotate({
     identifier: "AssociatePhoneNumbersWithVoiceConnectorResponse",
@@ -211,7 +209,7 @@ export interface AssociatePhoneNumbersWithVoiceConnectorGroupRequest {
   ForceAssociate?: boolean;
 }
 export const AssociatePhoneNumbersWithVoiceConnectorGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       VoiceConnectorGroupId: S.String.pipe(
         T.HttpLabel("VoiceConnectorGroupId"),
@@ -238,124 +236,113 @@ export interface AssociatePhoneNumbersWithVoiceConnectorGroupResponse {
   PhoneNumberErrors?: PhoneNumberError[];
 }
 export const AssociatePhoneNumbersWithVoiceConnectorGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ PhoneNumberErrors: S.optional(PhoneNumberErrorList) }),
   ).annotate({
     identifier: "AssociatePhoneNumbersWithVoiceConnectorGroupResponse",
   }) as any as S.Schema<AssociatePhoneNumbersWithVoiceConnectorGroupResponse>;
 export type NonEmptyStringList = string[];
-export const NonEmptyStringList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const NonEmptyStringList = /*@__PURE__*/ S.Array(S.String);
 export interface BatchDeletePhoneNumberRequest {
   PhoneNumberIds: string[];
 }
-export const BatchDeletePhoneNumberRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ PhoneNumberIds: NonEmptyStringList }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/phone-numbers?operation=batch-delete",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const BatchDeletePhoneNumberRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ PhoneNumberIds: NonEmptyStringList }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/phone-numbers?operation=batch-delete" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "BatchDeletePhoneNumberRequest",
-  }) as any as S.Schema<BatchDeletePhoneNumberRequest>;
+  ),
+).annotate({
+  identifier: "BatchDeletePhoneNumberRequest",
+}) as any as S.Schema<BatchDeletePhoneNumberRequest>;
 export interface BatchDeletePhoneNumberResponse {
   PhoneNumberErrors?: PhoneNumberError[];
 }
-export const BatchDeletePhoneNumberResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ PhoneNumberErrors: S.optional(PhoneNumberErrorList) }),
-  ).annotate({
-    identifier: "BatchDeletePhoneNumberResponse",
-  }) as any as S.Schema<BatchDeletePhoneNumberResponse>;
+export const BatchDeletePhoneNumberResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ PhoneNumberErrors: S.optional(PhoneNumberErrorList) }),
+).annotate({
+  identifier: "BatchDeletePhoneNumberResponse",
+}) as any as S.Schema<BatchDeletePhoneNumberResponse>;
 export type PhoneNumberProductType =
   | "VoiceConnector"
   | "SipMediaApplicationDialIn"
   | (string & {});
-export const PhoneNumberProductType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const PhoneNumberProductType = /*@__PURE__*/ S.String;
 export interface UpdatePhoneNumberRequestItem {
   PhoneNumberId: string | redacted.Redacted<string>;
   ProductType?: PhoneNumberProductType;
   CallingName?: string | redacted.Redacted<string>;
   Name?: string | redacted.Redacted<string>;
 }
-export const UpdatePhoneNumberRequestItem =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      PhoneNumberId: SensitiveString,
-      ProductType: S.optional(PhoneNumberProductType),
-      CallingName: S.optional(SensitiveString),
-      Name: S.optional(SensitiveString),
-    }),
-  ).annotate({
-    identifier: "UpdatePhoneNumberRequestItem",
-  }) as any as S.Schema<UpdatePhoneNumberRequestItem>;
+export const UpdatePhoneNumberRequestItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PhoneNumberId: SensitiveString,
+    ProductType: S.optional(PhoneNumberProductType),
+    CallingName: S.optional(SensitiveString),
+    Name: S.optional(SensitiveString),
+  }),
+).annotate({
+  identifier: "UpdatePhoneNumberRequestItem",
+}) as any as S.Schema<UpdatePhoneNumberRequestItem>;
 export type UpdatePhoneNumberRequestItemList = UpdatePhoneNumberRequestItem[];
-export const UpdatePhoneNumberRequestItemList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(UpdatePhoneNumberRequestItem);
+export const UpdatePhoneNumberRequestItemList = /*@__PURE__*/ S.Array(
+  UpdatePhoneNumberRequestItem,
+);
 export interface BatchUpdatePhoneNumberRequest {
   UpdatePhoneNumberRequestItems: UpdatePhoneNumberRequestItem[];
 }
-export const BatchUpdatePhoneNumberRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      UpdatePhoneNumberRequestItems: UpdatePhoneNumberRequestItemList,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/phone-numbers?operation=batch-update",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const BatchUpdatePhoneNumberRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    UpdatePhoneNumberRequestItems: UpdatePhoneNumberRequestItemList,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/phone-numbers?operation=batch-update" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "BatchUpdatePhoneNumberRequest",
-  }) as any as S.Schema<BatchUpdatePhoneNumberRequest>;
+  ),
+).annotate({
+  identifier: "BatchUpdatePhoneNumberRequest",
+}) as any as S.Schema<BatchUpdatePhoneNumberRequest>;
 export interface BatchUpdatePhoneNumberResponse {
   PhoneNumberErrors?: PhoneNumberError[];
 }
-export const BatchUpdatePhoneNumberResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ PhoneNumberErrors: S.optional(PhoneNumberErrorList) }),
-  ).annotate({
-    identifier: "BatchUpdatePhoneNumberResponse",
-  }) as any as S.Schema<BatchUpdatePhoneNumberResponse>;
+export const BatchUpdatePhoneNumberResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ PhoneNumberErrors: S.optional(PhoneNumberErrorList) }),
+).annotate({
+  identifier: "BatchUpdatePhoneNumberResponse",
+}) as any as S.Schema<BatchUpdatePhoneNumberResponse>;
 export interface CreatePhoneNumberOrderRequest {
   ProductType: PhoneNumberProductType;
   E164PhoneNumbers: string | redacted.Redacted<string>[];
   Name?: string | redacted.Redacted<string>;
 }
-export const CreatePhoneNumberOrderRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ProductType: PhoneNumberProductType,
-      E164PhoneNumbers: E164PhoneNumberList,
-      Name: S.optional(SensitiveString),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/phone-number-orders" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreatePhoneNumberOrderRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ProductType: PhoneNumberProductType,
+    E164PhoneNumbers: E164PhoneNumberList,
+    Name: S.optional(SensitiveString),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/phone-number-orders" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreatePhoneNumberOrderRequest",
-  }) as any as S.Schema<CreatePhoneNumberOrderRequest>;
+  ),
+).annotate({
+  identifier: "CreatePhoneNumberOrderRequest",
+}) as any as S.Schema<CreatePhoneNumberOrderRequest>;
 export type PhoneNumberOrderStatus =
   | "Processing"
   | "Successful"
@@ -369,20 +356,20 @@ export type PhoneNumberOrderStatus =
   | "CancelRequested"
   | "Cancelled"
   | (string & {});
-export const PhoneNumberOrderStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const PhoneNumberOrderStatus = /*@__PURE__*/ S.String;
 export type PhoneNumberOrderType = "New" | "Porting" | (string & {});
-export const PhoneNumberOrderType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const PhoneNumberOrderType = /*@__PURE__*/ S.String;
 export type OrderedPhoneNumberStatus =
   | "Processing"
   | "Acquired"
   | "Failed"
   | (string & {});
-export const OrderedPhoneNumberStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const OrderedPhoneNumberStatus = /*@__PURE__*/ S.String;
 export interface OrderedPhoneNumber {
   E164PhoneNumber?: string | redacted.Redacted<string>;
   Status?: OrderedPhoneNumberStatus;
 }
-export const OrderedPhoneNumber = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const OrderedPhoneNumber = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     E164PhoneNumber: S.optional(SensitiveString),
     Status: S.optional(OrderedPhoneNumberStatus),
@@ -391,8 +378,7 @@ export const OrderedPhoneNumber = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "OrderedPhoneNumber",
 }) as any as S.Schema<OrderedPhoneNumber>;
 export type OrderedPhoneNumberList = OrderedPhoneNumber[];
-export const OrderedPhoneNumberList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(OrderedPhoneNumber);
+export const OrderedPhoneNumberList = /*@__PURE__*/ S.Array(OrderedPhoneNumber);
 export interface PhoneNumberOrder {
   PhoneNumberOrderId?: string;
   ProductType?: PhoneNumberProductType;
@@ -403,7 +389,7 @@ export interface PhoneNumberOrder {
   UpdatedTimestamp?: Date;
   FocDate?: Date;
 }
-export const PhoneNumberOrder = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PhoneNumberOrder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PhoneNumberOrderId: S.optional(S.String),
     ProductType: S.optional(PhoneNumberProductType),
@@ -424,31 +410,30 @@ export const PhoneNumberOrder = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreatePhoneNumberOrderResponse {
   PhoneNumberOrder?: PhoneNumberOrder;
 }
-export const CreatePhoneNumberOrderResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ PhoneNumberOrder: S.optional(PhoneNumberOrder) }),
-  ).annotate({
-    identifier: "CreatePhoneNumberOrderResponse",
-  }) as any as S.Schema<CreatePhoneNumberOrderResponse>;
+export const CreatePhoneNumberOrderResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ PhoneNumberOrder: S.optional(PhoneNumberOrder) }),
+).annotate({
+  identifier: "CreatePhoneNumberOrderResponse",
+}) as any as S.Schema<CreatePhoneNumberOrderResponse>;
 export type ParticipantPhoneNumberList = string | redacted.Redacted<string>[];
 export const ParticipantPhoneNumberList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SensitiveString);
+  /*@__PURE__*/ S.Array(SensitiveString);
 export type Capability = "Voice" | "SMS" | (string & {});
-export const Capability = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const Capability = /*@__PURE__*/ S.String;
 export type CapabilityList = Capability[];
-export const CapabilityList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Capability);
+export const CapabilityList = /*@__PURE__*/ S.Array(Capability);
 export type NumberSelectionBehavior =
   | "PreferSticky"
   | "AvoidSticky"
   | (string & {});
-export const NumberSelectionBehavior = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const NumberSelectionBehavior = /*@__PURE__*/ S.String;
 export type GeoMatchLevel = "Country" | "AreaCode" | (string & {});
-export const GeoMatchLevel = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const GeoMatchLevel = /*@__PURE__*/ S.String;
 export interface GeoMatchParams {
   Country: string;
   AreaCode: string;
 }
-export const GeoMatchParams = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GeoMatchParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Country: S.String, AreaCode: S.String }),
 ).annotate({ identifier: "GeoMatchParams" }) as any as S.Schema<GeoMatchParams>;
 export interface CreateProxySessionRequest {
@@ -461,30 +446,29 @@ export interface CreateProxySessionRequest {
   GeoMatchLevel?: GeoMatchLevel;
   GeoMatchParams?: GeoMatchParams;
 }
-export const CreateProxySessionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
-      ParticipantPhoneNumbers: ParticipantPhoneNumberList,
-      Name: S.optional(SensitiveString),
-      ExpiryMinutes: S.optional(S.Number),
-      Capabilities: CapabilityList,
-      NumberSelectionBehavior: S.optional(NumberSelectionBehavior),
-      GeoMatchLevel: S.optional(GeoMatchLevel),
-      GeoMatchParams: S.optional(GeoMatchParams),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/voice-connectors/{VoiceConnectorId}/proxy-sessions",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateProxySessionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
+    ParticipantPhoneNumbers: ParticipantPhoneNumberList,
+    Name: S.optional(SensitiveString),
+    ExpiryMinutes: S.optional(S.Number),
+    Capabilities: CapabilityList,
+    NumberSelectionBehavior: S.optional(NumberSelectionBehavior),
+    GeoMatchLevel: S.optional(GeoMatchLevel),
+    GeoMatchParams: S.optional(GeoMatchParams),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/voice-connectors/{VoiceConnectorId}/proxy-sessions",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "CreateProxySessionRequest",
 }) as any as S.Schema<CreateProxySessionRequest>;
@@ -493,19 +477,19 @@ export type ProxySessionStatus =
   | "InProgress"
   | "Closed"
   | (string & {});
-export const ProxySessionStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ProxySessionStatus = /*@__PURE__*/ S.String;
 export interface Participant {
   PhoneNumber?: string | redacted.Redacted<string>;
   ProxyPhoneNumber?: string | redacted.Redacted<string>;
 }
-export const Participant = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Participant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PhoneNumber: S.optional(SensitiveString),
     ProxyPhoneNumber: S.optional(SensitiveString),
   }),
 ).annotate({ identifier: "Participant" }) as any as S.Schema<Participant>;
 export type Participants = Participant[];
-export const Participants = /*@__PURE__*/ /*#__PURE__*/ S.Array(Participant);
+export const Participants = /*@__PURE__*/ S.Array(Participant);
 export interface ProxySession {
   VoiceConnectorId?: string;
   ProxySessionId?: string;
@@ -521,7 +505,7 @@ export interface ProxySession {
   GeoMatchLevel?: GeoMatchLevel;
   GeoMatchParams?: GeoMatchParams;
 }
-export const ProxySession = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ProxySession = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     VoiceConnectorId: S.optional(S.String),
     ProxySessionId: S.optional(S.String),
@@ -547,58 +531,57 @@ export const ProxySession = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateProxySessionResponse {
   ProxySession?: ProxySession;
 }
-export const CreateProxySessionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ ProxySession: S.optional(ProxySession) }),
+export const CreateProxySessionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ProxySession: S.optional(ProxySession) }),
 ).annotate({
   identifier: "CreateProxySessionResponse",
 }) as any as S.Schema<CreateProxySessionResponse>;
 export interface SipMediaApplicationEndpoint {
   LambdaArn?: string | redacted.Redacted<string>;
 }
-export const SipMediaApplicationEndpoint =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ LambdaArn: S.optional(SensitiveString) }),
-  ).annotate({
-    identifier: "SipMediaApplicationEndpoint",
-  }) as any as S.Schema<SipMediaApplicationEndpoint>;
+export const SipMediaApplicationEndpoint = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ LambdaArn: S.optional(SensitiveString) }),
+).annotate({
+  identifier: "SipMediaApplicationEndpoint",
+}) as any as S.Schema<SipMediaApplicationEndpoint>;
 export type SipMediaApplicationEndpointList = SipMediaApplicationEndpoint[];
-export const SipMediaApplicationEndpointList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SipMediaApplicationEndpoint);
+export const SipMediaApplicationEndpointList = /*@__PURE__*/ S.Array(
+  SipMediaApplicationEndpoint,
+);
 export interface Tag {
   Key: string | redacted.Redacted<string>;
   Value: string | redacted.Redacted<string>;
 }
-export const Tag = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Tag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Key: SensitiveString, Value: SensitiveString }),
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-export const TagList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Tag);
+export const TagList = /*@__PURE__*/ S.Array(Tag);
 export interface CreateSipMediaApplicationRequest {
   AwsRegion: string;
   Name: string;
   Endpoints: SipMediaApplicationEndpoint[];
   Tags?: Tag[];
 }
-export const CreateSipMediaApplicationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AwsRegion: S.String,
-      Name: S.String,
-      Endpoints: SipMediaApplicationEndpointList,
-      Tags: S.optional(TagList),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/sip-media-applications" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateSipMediaApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AwsRegion: S.String,
+    Name: S.String,
+    Endpoints: SipMediaApplicationEndpointList,
+    Tags: S.optional(TagList),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/sip-media-applications" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateSipMediaApplicationRequest",
-  }) as any as S.Schema<CreateSipMediaApplicationRequest>;
+  ),
+).annotate({
+  identifier: "CreateSipMediaApplicationRequest",
+}) as any as S.Schema<CreateSipMediaApplicationRequest>;
 export interface SipMediaApplication {
   SipMediaApplicationId?: string;
   AwsRegion?: string;
@@ -608,7 +591,7 @@ export interface SipMediaApplication {
   UpdatedTimestamp?: Date;
   SipMediaApplicationArn?: string;
 }
-export const SipMediaApplication = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SipMediaApplication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SipMediaApplicationId: S.optional(S.String),
     AwsRegion: S.optional(S.String),
@@ -628,23 +611,22 @@ export const SipMediaApplication = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateSipMediaApplicationResponse {
   SipMediaApplication?: SipMediaApplication;
 }
-export const CreateSipMediaApplicationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ SipMediaApplication: S.optional(SipMediaApplication) }),
-  ).annotate({
-    identifier: "CreateSipMediaApplicationResponse",
-  }) as any as S.Schema<CreateSipMediaApplicationResponse>;
+export const CreateSipMediaApplicationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ SipMediaApplication: S.optional(SipMediaApplication) }),
+).annotate({
+  identifier: "CreateSipMediaApplicationResponse",
+}) as any as S.Schema<CreateSipMediaApplicationResponse>;
 export type SipHeadersMap = {
   [key: string]: string | redacted.Redacted<string> | undefined;
 };
-export const SipHeadersMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const SipHeadersMap = /*@__PURE__*/ S.Record(
   S.String,
   SensitiveString.pipe(S.optional),
 );
 export type SMACreateCallArgumentsMap = {
   [key: string]: string | redacted.Redacted<string> | undefined;
 };
-export const SMACreateCallArgumentsMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const SMACreateCallArgumentsMap = /*@__PURE__*/ S.Record(
   S.String,
   SensitiveString.pipe(S.optional),
 );
@@ -659,8 +641,8 @@ export interface CreateSipMediaApplicationCallRequest {
     [key: string]: string | redacted.Redacted<string> | undefined;
   };
 }
-export const CreateSipMediaApplicationCallRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateSipMediaApplicationCallRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       FromPhoneNumber: SensitiveString,
       ToPhoneNumber: SensitiveString,
@@ -682,48 +664,47 @@ export const CreateSipMediaApplicationCallRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "CreateSipMediaApplicationCallRequest",
-  }) as any as S.Schema<CreateSipMediaApplicationCallRequest>;
+).annotate({
+  identifier: "CreateSipMediaApplicationCallRequest",
+}) as any as S.Schema<CreateSipMediaApplicationCallRequest>;
 export interface SipMediaApplicationCall {
   TransactionId?: string;
 }
-export const SipMediaApplicationCall = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ TransactionId: S.optional(S.String) }),
+export const SipMediaApplicationCall = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ TransactionId: S.optional(S.String) }),
 ).annotate({
   identifier: "SipMediaApplicationCall",
 }) as any as S.Schema<SipMediaApplicationCall>;
 export interface CreateSipMediaApplicationCallResponse {
   SipMediaApplicationCall?: SipMediaApplicationCall;
 }
-export const CreateSipMediaApplicationCallResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateSipMediaApplicationCallResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ SipMediaApplicationCall: S.optional(SipMediaApplicationCall) }),
-  ).annotate({
-    identifier: "CreateSipMediaApplicationCallResponse",
-  }) as any as S.Schema<CreateSipMediaApplicationCallResponse>;
+).annotate({
+  identifier: "CreateSipMediaApplicationCallResponse",
+}) as any as S.Schema<CreateSipMediaApplicationCallResponse>;
 export type SipRuleTriggerType =
   | "ToPhoneNumber"
   | "RequestUriHostname"
   | (string & {});
-export const SipRuleTriggerType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SipRuleTriggerType = /*@__PURE__*/ S.String;
 export interface SipRuleTargetApplication {
   SipMediaApplicationId?: string;
   Priority?: number;
   AwsRegion?: string;
 }
-export const SipRuleTargetApplication = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      SipMediaApplicationId: S.optional(S.String),
-      Priority: S.optional(S.Number),
-      AwsRegion: S.optional(S.String),
-    }),
+export const SipRuleTargetApplication = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SipMediaApplicationId: S.optional(S.String),
+    Priority: S.optional(S.Number),
+    AwsRegion: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "SipRuleTargetApplication",
 }) as any as S.Schema<SipRuleTargetApplication>;
 export type SipRuleTargetApplicationList = SipRuleTargetApplication[];
-export const SipRuleTargetApplicationList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const SipRuleTargetApplicationList = /*@__PURE__*/ S.Array(
   SipRuleTargetApplication,
 );
 export interface CreateSipRuleRequest {
@@ -733,7 +714,7 @@ export interface CreateSipRuleRequest {
   Disabled?: boolean;
   TargetApplications?: SipRuleTargetApplication[];
 }
-export const CreateSipRuleRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateSipRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.String,
     TriggerType: SipRuleTriggerType,
@@ -763,7 +744,7 @@ export interface SipRule {
   CreatedTimestamp?: Date;
   UpdatedTimestamp?: Date;
 }
-export const SipRule = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SipRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SipRuleId: S.optional(S.String),
     Name: S.optional(S.String),
@@ -782,7 +763,7 @@ export const SipRule = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateSipRuleResponse {
   SipRule?: SipRule;
 }
-export const CreateSipRuleResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateSipRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SipRule: S.optional(SipRule) }),
 ).annotate({
   identifier: "CreateSipRuleResponse",
@@ -799,15 +780,14 @@ export type VoiceConnectorAwsRegion =
   | "ap-southeast-1"
   | "ap-southeast-2"
   | (string & {});
-export const VoiceConnectorAwsRegion = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const VoiceConnectorAwsRegion = /*@__PURE__*/ S.String;
 export type VoiceConnectorIntegrationType =
   | "CONNECT_CALL_TRANSFER_CONNECTOR"
   | "CONNECT_ANALYTICS_CONNECTOR"
   | (string & {});
-export const VoiceConnectorIntegrationType =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const VoiceConnectorIntegrationType = /*@__PURE__*/ S.String;
 export type NetworkType = "IPV4_ONLY" | "DUAL_STACK" | (string & {});
-export const NetworkType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const NetworkType = /*@__PURE__*/ S.String;
 export interface CreateVoiceConnectorRequest {
   Name: string;
   AwsRegion?: VoiceConnectorAwsRegion;
@@ -816,28 +796,27 @@ export interface CreateVoiceConnectorRequest {
   IntegrationType?: VoiceConnectorIntegrationType;
   NetworkType?: NetworkType;
 }
-export const CreateVoiceConnectorRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Name: S.String,
-      AwsRegion: S.optional(VoiceConnectorAwsRegion),
-      RequireEncryption: S.Boolean,
-      Tags: S.optional(TagList),
-      IntegrationType: S.optional(VoiceConnectorIntegrationType),
-      NetworkType: S.optional(NetworkType),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/voice-connectors" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateVoiceConnectorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String,
+    AwsRegion: S.optional(VoiceConnectorAwsRegion),
+    RequireEncryption: S.Boolean,
+    Tags: S.optional(TagList),
+    IntegrationType: S.optional(VoiceConnectorIntegrationType),
+    NetworkType: S.optional(NetworkType),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/voice-connectors" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateVoiceConnectorRequest",
-  }) as any as S.Schema<CreateVoiceConnectorRequest>;
+  ),
+).annotate({
+  identifier: "CreateVoiceConnectorRequest",
+}) as any as S.Schema<CreateVoiceConnectorRequest>;
 export interface VoiceConnector {
   VoiceConnectorId?: string;
   AwsRegion?: VoiceConnectorAwsRegion;
@@ -850,7 +829,7 @@ export interface VoiceConnector {
   IntegrationType?: VoiceConnectorIntegrationType;
   NetworkType?: NetworkType;
 }
-export const VoiceConnector = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const VoiceConnector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     VoiceConnectorId: S.optional(S.String),
     AwsRegion: S.optional(VoiceConnectorAwsRegion),
@@ -871,46 +850,43 @@ export const VoiceConnector = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateVoiceConnectorResponse {
   VoiceConnector?: VoiceConnector;
 }
-export const CreateVoiceConnectorResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ VoiceConnector: S.optional(VoiceConnector) }),
-  ).annotate({
-    identifier: "CreateVoiceConnectorResponse",
-  }) as any as S.Schema<CreateVoiceConnectorResponse>;
+export const CreateVoiceConnectorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ VoiceConnector: S.optional(VoiceConnector) }),
+).annotate({
+  identifier: "CreateVoiceConnectorResponse",
+}) as any as S.Schema<CreateVoiceConnectorResponse>;
 export interface VoiceConnectorItem {
   VoiceConnectorId: string;
   Priority: number;
 }
-export const VoiceConnectorItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const VoiceConnectorItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ VoiceConnectorId: S.String, Priority: S.Number }),
 ).annotate({
   identifier: "VoiceConnectorItem",
 }) as any as S.Schema<VoiceConnectorItem>;
 export type VoiceConnectorItemList = VoiceConnectorItem[];
-export const VoiceConnectorItemList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(VoiceConnectorItem);
+export const VoiceConnectorItemList = /*@__PURE__*/ S.Array(VoiceConnectorItem);
 export interface CreateVoiceConnectorGroupRequest {
   Name: string;
   VoiceConnectorItems?: VoiceConnectorItem[];
 }
-export const CreateVoiceConnectorGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Name: S.String,
-      VoiceConnectorItems: S.optional(VoiceConnectorItemList),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/voice-connector-groups" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateVoiceConnectorGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String,
+    VoiceConnectorItems: S.optional(VoiceConnectorItemList),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/voice-connector-groups" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateVoiceConnectorGroupRequest",
-  }) as any as S.Schema<CreateVoiceConnectorGroupRequest>;
+  ),
+).annotate({
+  identifier: "CreateVoiceConnectorGroupRequest",
+}) as any as S.Schema<CreateVoiceConnectorGroupRequest>;
 export interface VoiceConnectorGroup {
   VoiceConnectorGroupId?: string;
   Name?: string;
@@ -919,7 +895,7 @@ export interface VoiceConnectorGroup {
   UpdatedTimestamp?: Date;
   VoiceConnectorGroupArn?: string;
 }
-export const VoiceConnectorGroup = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const VoiceConnectorGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     VoiceConnectorGroupId: S.optional(S.String),
     Name: S.optional(S.String),
@@ -938,27 +914,25 @@ export const VoiceConnectorGroup = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateVoiceConnectorGroupResponse {
   VoiceConnectorGroup?: VoiceConnectorGroup;
 }
-export const CreateVoiceConnectorGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ VoiceConnectorGroup: S.optional(VoiceConnectorGroup) }),
-  ).annotate({
-    identifier: "CreateVoiceConnectorGroupResponse",
-  }) as any as S.Schema<CreateVoiceConnectorGroupResponse>;
+export const CreateVoiceConnectorGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ VoiceConnectorGroup: S.optional(VoiceConnectorGroup) }),
+).annotate({
+  identifier: "CreateVoiceConnectorGroupResponse",
+}) as any as S.Schema<CreateVoiceConnectorGroupResponse>;
 export interface CreateVoiceProfileRequest {
   SpeakerSearchTaskId: string;
 }
-export const CreateVoiceProfileRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ SpeakerSearchTaskId: S.String }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/voice-profiles" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateVoiceProfileRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ SpeakerSearchTaskId: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/voice-profiles" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "CreateVoiceProfileRequest",
 }) as any as S.Schema<CreateVoiceProfileRequest>;
@@ -970,7 +944,7 @@ export interface VoiceProfile {
   UpdatedTimestamp?: Date;
   ExpirationTimestamp?: Date;
 }
-export const VoiceProfile = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const VoiceProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     VoiceProfileId: S.optional(S.String),
     VoiceProfileArn: S.optional(SensitiveString),
@@ -989,20 +963,19 @@ export const VoiceProfile = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateVoiceProfileResponse {
   VoiceProfile?: VoiceProfile;
 }
-export const CreateVoiceProfileResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ VoiceProfile: S.optional(VoiceProfile) }),
+export const CreateVoiceProfileResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ VoiceProfile: S.optional(VoiceProfile) }),
 ).annotate({
   identifier: "CreateVoiceProfileResponse",
 }) as any as S.Schema<CreateVoiceProfileResponse>;
 export interface ServerSideEncryptionConfiguration {
   KmsKeyArn: string | redacted.Redacted<string>;
 }
-export const ServerSideEncryptionConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ KmsKeyArn: SensitiveString }),
-  ).annotate({
-    identifier: "ServerSideEncryptionConfiguration",
-  }) as any as S.Schema<ServerSideEncryptionConfiguration>;
+export const ServerSideEncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ KmsKeyArn: SensitiveString }),
+).annotate({
+  identifier: "ServerSideEncryptionConfiguration",
+}) as any as S.Schema<ServerSideEncryptionConfiguration>;
 export interface CreateVoiceProfileDomainRequest {
   Name: string;
   Description?: string;
@@ -1010,27 +983,26 @@ export interface CreateVoiceProfileDomainRequest {
   ClientRequestToken?: string;
   Tags?: Tag[];
 }
-export const CreateVoiceProfileDomainRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Name: S.String,
-      Description: S.optional(S.String),
-      ServerSideEncryptionConfiguration: ServerSideEncryptionConfiguration,
-      ClientRequestToken: S.optional(S.String),
-      Tags: S.optional(TagList),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/voice-profile-domains" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateVoiceProfileDomainRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String,
+    Description: S.optional(S.String),
+    ServerSideEncryptionConfiguration: ServerSideEncryptionConfiguration,
+    ClientRequestToken: S.optional(S.String),
+    Tags: S.optional(TagList),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/voice-profile-domains" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateVoiceProfileDomainRequest",
-  }) as any as S.Schema<CreateVoiceProfileDomainRequest>;
+  ),
+).annotate({
+  identifier: "CreateVoiceProfileDomainRequest",
+}) as any as S.Schema<CreateVoiceProfileDomainRequest>;
 export interface VoiceProfileDomain {
   VoiceProfileDomainId?: string;
   VoiceProfileDomainArn?: string | redacted.Redacted<string>;
@@ -1040,7 +1012,7 @@ export interface VoiceProfileDomain {
   CreatedTimestamp?: Date;
   UpdatedTimestamp?: Date;
 }
-export const VoiceProfileDomain = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const VoiceProfileDomain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     VoiceProfileDomainId: S.optional(S.String),
     VoiceProfileDomainArn: S.optional(SensitiveString),
@@ -1062,35 +1034,33 @@ export const VoiceProfileDomain = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateVoiceProfileDomainResponse {
   VoiceProfileDomain?: VoiceProfileDomain;
 }
-export const CreateVoiceProfileDomainResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ VoiceProfileDomain: S.optional(VoiceProfileDomain) }),
-  ).annotate({
-    identifier: "CreateVoiceProfileDomainResponse",
-  }) as any as S.Schema<CreateVoiceProfileDomainResponse>;
+export const CreateVoiceProfileDomainResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ VoiceProfileDomain: S.optional(VoiceProfileDomain) }),
+).annotate({
+  identifier: "CreateVoiceProfileDomainResponse",
+}) as any as S.Schema<CreateVoiceProfileDomainResponse>;
 export interface DeletePhoneNumberRequest {
   PhoneNumberId: string | redacted.Redacted<string>;
 }
-export const DeletePhoneNumberRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      PhoneNumberId: SensitiveString.pipe(T.HttpLabel("PhoneNumberId")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "DELETE", uri: "/phone-numbers/{PhoneNumberId}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeletePhoneNumberRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PhoneNumberId: SensitiveString.pipe(T.HttpLabel("PhoneNumberId")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/phone-numbers/{PhoneNumberId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DeletePhoneNumberRequest",
 }) as any as S.Schema<DeletePhoneNumberRequest>;
 export interface DeletePhoneNumberResponse {}
-export const DeletePhoneNumberResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const DeletePhoneNumberResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "DeletePhoneNumberResponse",
 }) as any as S.Schema<DeletePhoneNumberResponse>;
@@ -1098,67 +1068,64 @@ export interface DeleteProxySessionRequest {
   VoiceConnectorId: string;
   ProxySessionId: string;
 }
-export const DeleteProxySessionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
-      ProxySessionId: S.String.pipe(T.HttpLabel("ProxySessionId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/voice-connectors/{VoiceConnectorId}/proxy-sessions/{ProxySessionId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteProxySessionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
+    ProxySessionId: S.String.pipe(T.HttpLabel("ProxySessionId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/voice-connectors/{VoiceConnectorId}/proxy-sessions/{ProxySessionId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DeleteProxySessionRequest",
 }) as any as S.Schema<DeleteProxySessionRequest>;
 export interface DeleteProxySessionResponse {}
-export const DeleteProxySessionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const DeleteProxySessionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "DeleteProxySessionResponse",
 }) as any as S.Schema<DeleteProxySessionResponse>;
 export interface DeleteSipMediaApplicationRequest {
   SipMediaApplicationId: string;
 }
-export const DeleteSipMediaApplicationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SipMediaApplicationId: S.String.pipe(
-        T.HttpLabel("SipMediaApplicationId"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/sip-media-applications/{SipMediaApplicationId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteSipMediaApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SipMediaApplicationId: S.String.pipe(T.HttpLabel("SipMediaApplicationId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/sip-media-applications/{SipMediaApplicationId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteSipMediaApplicationRequest",
-  }) as any as S.Schema<DeleteSipMediaApplicationRequest>;
+  ),
+).annotate({
+  identifier: "DeleteSipMediaApplicationRequest",
+}) as any as S.Schema<DeleteSipMediaApplicationRequest>;
 export interface DeleteSipMediaApplicationResponse {}
-export const DeleteSipMediaApplicationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteSipMediaApplicationResponse",
-  }) as any as S.Schema<DeleteSipMediaApplicationResponse>;
+export const DeleteSipMediaApplicationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteSipMediaApplicationResponse",
+}) as any as S.Schema<DeleteSipMediaApplicationResponse>;
 export interface DeleteSipRuleRequest {
   SipRuleId: string;
 }
-export const DeleteSipRuleRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteSipRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SipRuleId: S.String.pipe(T.HttpLabel("SipRuleId")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/sip-rules/{SipRuleId}" }),
@@ -1173,7 +1140,7 @@ export const DeleteSipRuleRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteSipRuleRequest",
 }) as any as S.Schema<DeleteSipRuleRequest>;
 export interface DeleteSipRuleResponse {}
-export const DeleteSipRuleResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteSipRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteSipRuleResponse",
@@ -1181,36 +1148,33 @@ export const DeleteSipRuleResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteVoiceConnectorRequest {
   VoiceConnectorId: string;
 }
-export const DeleteVoiceConnectorRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/voice-connectors/{VoiceConnectorId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteVoiceConnectorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/voice-connectors/{VoiceConnectorId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteVoiceConnectorRequest",
-  }) as any as S.Schema<DeleteVoiceConnectorRequest>;
+  ),
+).annotate({
+  identifier: "DeleteVoiceConnectorRequest",
+}) as any as S.Schema<DeleteVoiceConnectorRequest>;
 export interface DeleteVoiceConnectorResponse {}
-export const DeleteVoiceConnectorResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteVoiceConnectorResponse",
-  }) as any as S.Schema<DeleteVoiceConnectorResponse>;
+export const DeleteVoiceConnectorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteVoiceConnectorResponse",
+}) as any as S.Schema<DeleteVoiceConnectorResponse>;
 export interface DeleteVoiceConnectorEmergencyCallingConfigurationRequest {
   VoiceConnectorId: string;
 }
 export const DeleteVoiceConnectorEmergencyCallingConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
     }).pipe(
@@ -1231,14 +1195,14 @@ export const DeleteVoiceConnectorEmergencyCallingConfigurationRequest =
   }) as any as S.Schema<DeleteVoiceConnectorEmergencyCallingConfigurationRequest>;
 export interface DeleteVoiceConnectorEmergencyCallingConfigurationResponse {}
 export const DeleteVoiceConnectorEmergencyCallingConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteVoiceConnectorEmergencyCallingConfigurationResponse",
   }) as any as S.Schema<DeleteVoiceConnectorEmergencyCallingConfigurationResponse>;
 export interface DeleteVoiceConnectorExternalSystemsConfigurationRequest {
   VoiceConnectorId: string;
 }
 export const DeleteVoiceConnectorExternalSystemsConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
     }).pipe(
@@ -1259,44 +1223,42 @@ export const DeleteVoiceConnectorExternalSystemsConfigurationRequest =
   }) as any as S.Schema<DeleteVoiceConnectorExternalSystemsConfigurationRequest>;
 export interface DeleteVoiceConnectorExternalSystemsConfigurationResponse {}
 export const DeleteVoiceConnectorExternalSystemsConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteVoiceConnectorExternalSystemsConfigurationResponse",
   }) as any as S.Schema<DeleteVoiceConnectorExternalSystemsConfigurationResponse>;
 export interface DeleteVoiceConnectorGroupRequest {
   VoiceConnectorGroupId: string;
 }
-export const DeleteVoiceConnectorGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      VoiceConnectorGroupId: S.String.pipe(
-        T.HttpLabel("VoiceConnectorGroupId"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/voice-connector-groups/{VoiceConnectorGroupId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteVoiceConnectorGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VoiceConnectorGroupId: S.String.pipe(T.HttpLabel("VoiceConnectorGroupId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/voice-connector-groups/{VoiceConnectorGroupId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteVoiceConnectorGroupRequest",
-  }) as any as S.Schema<DeleteVoiceConnectorGroupRequest>;
+  ),
+).annotate({
+  identifier: "DeleteVoiceConnectorGroupRequest",
+}) as any as S.Schema<DeleteVoiceConnectorGroupRequest>;
 export interface DeleteVoiceConnectorGroupResponse {}
-export const DeleteVoiceConnectorGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteVoiceConnectorGroupResponse",
-  }) as any as S.Schema<DeleteVoiceConnectorGroupResponse>;
+export const DeleteVoiceConnectorGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteVoiceConnectorGroupResponse",
+}) as any as S.Schema<DeleteVoiceConnectorGroupResponse>;
 export interface DeleteVoiceConnectorOriginationRequest {
   VoiceConnectorId: string;
 }
-export const DeleteVoiceConnectorOriginationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteVoiceConnectorOriginationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
     }).pipe(
@@ -1312,47 +1274,48 @@ export const DeleteVoiceConnectorOriginationRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DeleteVoiceConnectorOriginationRequest",
-  }) as any as S.Schema<DeleteVoiceConnectorOriginationRequest>;
+).annotate({
+  identifier: "DeleteVoiceConnectorOriginationRequest",
+}) as any as S.Schema<DeleteVoiceConnectorOriginationRequest>;
 export interface DeleteVoiceConnectorOriginationResponse {}
-export const DeleteVoiceConnectorOriginationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteVoiceConnectorOriginationResponse",
-  }) as any as S.Schema<DeleteVoiceConnectorOriginationResponse>;
+export const DeleteVoiceConnectorOriginationResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeleteVoiceConnectorOriginationResponse",
+}) as any as S.Schema<DeleteVoiceConnectorOriginationResponse>;
 export interface DeleteVoiceConnectorProxyRequest {
   VoiceConnectorId: string;
 }
-export const DeleteVoiceConnectorProxyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/voice-connectors/{VoiceConnectorId}/programmable-numbers/proxy",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteVoiceConnectorProxyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/voice-connectors/{VoiceConnectorId}/programmable-numbers/proxy",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteVoiceConnectorProxyRequest",
-  }) as any as S.Schema<DeleteVoiceConnectorProxyRequest>;
+  ),
+).annotate({
+  identifier: "DeleteVoiceConnectorProxyRequest",
+}) as any as S.Schema<DeleteVoiceConnectorProxyRequest>;
 export interface DeleteVoiceConnectorProxyResponse {}
-export const DeleteVoiceConnectorProxyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteVoiceConnectorProxyResponse",
-  }) as any as S.Schema<DeleteVoiceConnectorProxyResponse>;
+export const DeleteVoiceConnectorProxyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteVoiceConnectorProxyResponse",
+}) as any as S.Schema<DeleteVoiceConnectorProxyResponse>;
 export interface DeleteVoiceConnectorStreamingConfigurationRequest {
   VoiceConnectorId: string;
 }
 export const DeleteVoiceConnectorStreamingConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
     }).pipe(
@@ -1373,14 +1336,14 @@ export const DeleteVoiceConnectorStreamingConfigurationRequest =
   }) as any as S.Schema<DeleteVoiceConnectorStreamingConfigurationRequest>;
 export interface DeleteVoiceConnectorStreamingConfigurationResponse {}
 export const DeleteVoiceConnectorStreamingConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteVoiceConnectorStreamingConfigurationResponse",
   }) as any as S.Schema<DeleteVoiceConnectorStreamingConfigurationResponse>;
 export interface DeleteVoiceConnectorTerminationRequest {
   VoiceConnectorId: string;
 }
-export const DeleteVoiceConnectorTerminationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteVoiceConnectorTerminationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
     }).pipe(
@@ -1396,23 +1359,23 @@ export const DeleteVoiceConnectorTerminationRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DeleteVoiceConnectorTerminationRequest",
-  }) as any as S.Schema<DeleteVoiceConnectorTerminationRequest>;
+).annotate({
+  identifier: "DeleteVoiceConnectorTerminationRequest",
+}) as any as S.Schema<DeleteVoiceConnectorTerminationRequest>;
 export interface DeleteVoiceConnectorTerminationResponse {}
-export const DeleteVoiceConnectorTerminationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteVoiceConnectorTerminationResponse",
-  }) as any as S.Schema<DeleteVoiceConnectorTerminationResponse>;
+export const DeleteVoiceConnectorTerminationResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeleteVoiceConnectorTerminationResponse",
+}) as any as S.Schema<DeleteVoiceConnectorTerminationResponse>;
 export type SensitiveStringList = string | redacted.Redacted<string>[];
-export const SensitiveStringList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SensitiveString);
+export const SensitiveStringList = /*@__PURE__*/ S.Array(SensitiveString);
 export interface DeleteVoiceConnectorTerminationCredentialsRequest {
   VoiceConnectorId: string;
   Usernames: string | redacted.Redacted<string>[];
 }
 export const DeleteVoiceConnectorTerminationCredentialsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
       Usernames: SensitiveStringList,
@@ -1434,69 +1397,68 @@ export const DeleteVoiceConnectorTerminationCredentialsRequest =
   }) as any as S.Schema<DeleteVoiceConnectorTerminationCredentialsRequest>;
 export interface DeleteVoiceConnectorTerminationCredentialsResponse {}
 export const DeleteVoiceConnectorTerminationCredentialsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteVoiceConnectorTerminationCredentialsResponse",
   }) as any as S.Schema<DeleteVoiceConnectorTerminationCredentialsResponse>;
 export interface DeleteVoiceProfileRequest {
   VoiceProfileId: string;
 }
-export const DeleteVoiceProfileRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      VoiceProfileId: S.String.pipe(T.HttpLabel("VoiceProfileId")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "DELETE", uri: "/voice-profiles/{VoiceProfileId}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteVoiceProfileRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VoiceProfileId: S.String.pipe(T.HttpLabel("VoiceProfileId")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/voice-profiles/{VoiceProfileId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DeleteVoiceProfileRequest",
 }) as any as S.Schema<DeleteVoiceProfileRequest>;
 export interface DeleteVoiceProfileResponse {}
-export const DeleteVoiceProfileResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const DeleteVoiceProfileResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "DeleteVoiceProfileResponse",
 }) as any as S.Schema<DeleteVoiceProfileResponse>;
 export interface DeleteVoiceProfileDomainRequest {
   VoiceProfileDomainId: string;
 }
-export const DeleteVoiceProfileDomainRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      VoiceProfileDomainId: S.String.pipe(T.HttpLabel("VoiceProfileDomainId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/voice-profile-domains/{VoiceProfileDomainId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteVoiceProfileDomainRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VoiceProfileDomainId: S.String.pipe(T.HttpLabel("VoiceProfileDomainId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/voice-profile-domains/{VoiceProfileDomainId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteVoiceProfileDomainRequest",
-  }) as any as S.Schema<DeleteVoiceProfileDomainRequest>;
+  ),
+).annotate({
+  identifier: "DeleteVoiceProfileDomainRequest",
+}) as any as S.Schema<DeleteVoiceProfileDomainRequest>;
 export interface DeleteVoiceProfileDomainResponse {}
-export const DeleteVoiceProfileDomainResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteVoiceProfileDomainResponse",
-  }) as any as S.Schema<DeleteVoiceProfileDomainResponse>;
+export const DeleteVoiceProfileDomainResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteVoiceProfileDomainResponse",
+}) as any as S.Schema<DeleteVoiceProfileDomainResponse>;
 export interface DisassociatePhoneNumbersFromVoiceConnectorRequest {
   VoiceConnectorId: string;
   E164PhoneNumbers: string | redacted.Redacted<string>[];
 }
 export const DisassociatePhoneNumbersFromVoiceConnectorRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
       E164PhoneNumbers: E164PhoneNumberList,
@@ -1520,7 +1482,7 @@ export interface DisassociatePhoneNumbersFromVoiceConnectorResponse {
   PhoneNumberErrors?: PhoneNumberError[];
 }
 export const DisassociatePhoneNumbersFromVoiceConnectorResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ PhoneNumberErrors: S.optional(PhoneNumberErrorList) }),
   ).annotate({
     identifier: "DisassociatePhoneNumbersFromVoiceConnectorResponse",
@@ -1530,7 +1492,7 @@ export interface DisassociatePhoneNumbersFromVoiceConnectorGroupRequest {
   E164PhoneNumbers: string | redacted.Redacted<string>[];
 }
 export const DisassociatePhoneNumbersFromVoiceConnectorGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       VoiceConnectorGroupId: S.String.pipe(
         T.HttpLabel("VoiceConnectorGroupId"),
@@ -1556,40 +1518,39 @@ export interface DisassociatePhoneNumbersFromVoiceConnectorGroupResponse {
   PhoneNumberErrors?: PhoneNumberError[];
 }
 export const DisassociatePhoneNumbersFromVoiceConnectorGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ PhoneNumberErrors: S.optional(PhoneNumberErrorList) }),
   ).annotate({
     identifier: "DisassociatePhoneNumbersFromVoiceConnectorGroupResponse",
   }) as any as S.Schema<DisassociatePhoneNumbersFromVoiceConnectorGroupResponse>;
 export interface GetGlobalSettingsRequest {}
-export const GetGlobalSettingsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({}).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const GetGlobalSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "GetGlobalSettingsRequest",
 }) as any as S.Schema<GetGlobalSettingsRequest>;
 export interface VoiceConnectorSettings {
   CdrBucket?: string;
 }
-export const VoiceConnectorSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ CdrBucket: S.optional(S.String) }),
+export const VoiceConnectorSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ CdrBucket: S.optional(S.String) }),
 ).annotate({
   identifier: "VoiceConnectorSettings",
 }) as any as S.Schema<VoiceConnectorSettings>;
 export interface GetGlobalSettingsResponse {
   VoiceConnector?: VoiceConnectorSettings;
 }
-export const GetGlobalSettingsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ VoiceConnector: S.optional(VoiceConnectorSettings) }),
+export const GetGlobalSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ VoiceConnector: S.optional(VoiceConnectorSettings) }),
 ).annotate({
   identifier: "GetGlobalSettingsResponse",
 }) as any as S.Schema<GetGlobalSettingsResponse>;
 export interface GetPhoneNumberRequest {
   PhoneNumberId: string | redacted.Redacted<string>;
 }
-export const GetPhoneNumberRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetPhoneNumberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PhoneNumberId: SensitiveString.pipe(T.HttpLabel("PhoneNumberId")),
   }).pipe(
@@ -1606,7 +1567,7 @@ export const GetPhoneNumberRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "GetPhoneNumberRequest",
 }) as any as S.Schema<GetPhoneNumberRequest>;
 export type PhoneNumberType = "Local" | "TollFree" | (string & {});
-export const PhoneNumberType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const PhoneNumberType = /*@__PURE__*/ S.String;
 export type PhoneNumberStatus =
   | "Cancelled"
   | "PortinCancelRequested"
@@ -1620,7 +1581,7 @@ export type PhoneNumberStatus =
   | "ReleaseFailed"
   | "DeleteFailed"
   | (string & {});
-export const PhoneNumberStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const PhoneNumberStatus = /*@__PURE__*/ S.String;
 export interface PhoneNumberCapabilities {
   InboundCall?: boolean;
   OutboundCall?: boolean;
@@ -1629,16 +1590,15 @@ export interface PhoneNumberCapabilities {
   InboundMMS?: boolean;
   OutboundMMS?: boolean;
 }
-export const PhoneNumberCapabilities = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      InboundCall: S.optional(S.Boolean),
-      OutboundCall: S.optional(S.Boolean),
-      InboundSMS: S.optional(S.Boolean),
-      OutboundSMS: S.optional(S.Boolean),
-      InboundMMS: S.optional(S.Boolean),
-      OutboundMMS: S.optional(S.Boolean),
-    }),
+export const PhoneNumberCapabilities = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    InboundCall: S.optional(S.Boolean),
+    OutboundCall: S.optional(S.Boolean),
+    InboundSMS: S.optional(S.Boolean),
+    OutboundSMS: S.optional(S.Boolean),
+    InboundMMS: S.optional(S.Boolean),
+    OutboundMMS: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "PhoneNumberCapabilities",
 }) as any as S.Schema<PhoneNumberCapabilities>;
@@ -1647,26 +1607,25 @@ export type PhoneNumberAssociationName =
   | "VoiceConnectorGroupId"
   | "SipRuleId"
   | (string & {});
-export const PhoneNumberAssociationName = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const PhoneNumberAssociationName = /*@__PURE__*/ S.String;
 export interface PhoneNumberAssociation {
   Value?: string;
   Name?: PhoneNumberAssociationName;
   AssociatedTimestamp?: Date;
 }
-export const PhoneNumberAssociation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Value: S.optional(S.String),
-      Name: S.optional(PhoneNumberAssociationName),
-      AssociatedTimestamp: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-    }),
+export const PhoneNumberAssociation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Value: S.optional(S.String),
+    Name: S.optional(PhoneNumberAssociationName),
+    AssociatedTimestamp: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
 ).annotate({
   identifier: "PhoneNumberAssociation",
 }) as any as S.Schema<PhoneNumberAssociation>;
 export type PhoneNumberAssociationList = PhoneNumberAssociation[];
-export const PhoneNumberAssociationList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const PhoneNumberAssociationList = /*@__PURE__*/ S.Array(
   PhoneNumberAssociation,
 );
 export type CallingNameStatus =
@@ -1675,7 +1634,7 @@ export type CallingNameStatus =
   | "UpdateSucceeded"
   | "UpdateFailed"
   | (string & {});
-export const CallingNameStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const CallingNameStatus = /*@__PURE__*/ S.String;
 export interface PhoneNumber {
   PhoneNumberId?: string | redacted.Redacted<string>;
   E164PhoneNumber?: string | redacted.Redacted<string>;
@@ -1693,7 +1652,7 @@ export interface PhoneNumber {
   OrderId?: string;
   Name?: string | redacted.Redacted<string>;
 }
-export const PhoneNumber = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PhoneNumber = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PhoneNumberId: S.optional(SensitiveString),
     E164PhoneNumber: S.optional(SensitiveString),
@@ -1721,139 +1680,130 @@ export const PhoneNumber = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetPhoneNumberResponse {
   PhoneNumber?: PhoneNumber;
 }
-export const GetPhoneNumberResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ PhoneNumber: S.optional(PhoneNumber) }),
+export const GetPhoneNumberResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ PhoneNumber: S.optional(PhoneNumber) }),
 ).annotate({
   identifier: "GetPhoneNumberResponse",
 }) as any as S.Schema<GetPhoneNumberResponse>;
 export interface GetPhoneNumberOrderRequest {
   PhoneNumberOrderId: string;
 }
-export const GetPhoneNumberOrderRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      PhoneNumberOrderId: S.String.pipe(T.HttpLabel("PhoneNumberOrderId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/phone-number-orders/{PhoneNumberOrderId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetPhoneNumberOrderRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PhoneNumberOrderId: S.String.pipe(T.HttpLabel("PhoneNumberOrderId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/phone-number-orders/{PhoneNumberOrderId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetPhoneNumberOrderRequest",
 }) as any as S.Schema<GetPhoneNumberOrderRequest>;
 export interface GetPhoneNumberOrderResponse {
   PhoneNumberOrder?: PhoneNumberOrder;
 }
-export const GetPhoneNumberOrderResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ PhoneNumberOrder: S.optional(PhoneNumberOrder) }),
-  ).annotate({
-    identifier: "GetPhoneNumberOrderResponse",
-  }) as any as S.Schema<GetPhoneNumberOrderResponse>;
+export const GetPhoneNumberOrderResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ PhoneNumberOrder: S.optional(PhoneNumberOrder) }),
+).annotate({
+  identifier: "GetPhoneNumberOrderResponse",
+}) as any as S.Schema<GetPhoneNumberOrderResponse>;
 export interface GetPhoneNumberSettingsRequest {}
-export const GetPhoneNumberSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "GetPhoneNumberSettingsRequest",
-  }) as any as S.Schema<GetPhoneNumberSettingsRequest>;
+export const GetPhoneNumberSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "GetPhoneNumberSettingsRequest",
+}) as any as S.Schema<GetPhoneNumberSettingsRequest>;
 export interface GetPhoneNumberSettingsResponse {
   CallingName?: string | redacted.Redacted<string>;
   CallingNameUpdatedTimestamp?: Date;
 }
-export const GetPhoneNumberSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CallingName: S.optional(SensitiveString),
-      CallingNameUpdatedTimestamp: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-    }),
-  ).annotate({
-    identifier: "GetPhoneNumberSettingsResponse",
-  }) as any as S.Schema<GetPhoneNumberSettingsResponse>;
+export const GetPhoneNumberSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CallingName: S.optional(SensitiveString),
+    CallingNameUpdatedTimestamp: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
+).annotate({
+  identifier: "GetPhoneNumberSettingsResponse",
+}) as any as S.Schema<GetPhoneNumberSettingsResponse>;
 export interface GetProxySessionRequest {
   VoiceConnectorId: string;
   ProxySessionId: string;
 }
-export const GetProxySessionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
-      ProxySessionId: S.String.pipe(T.HttpLabel("ProxySessionId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/voice-connectors/{VoiceConnectorId}/proxy-sessions/{ProxySessionId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetProxySessionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
+    ProxySessionId: S.String.pipe(T.HttpLabel("ProxySessionId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/voice-connectors/{VoiceConnectorId}/proxy-sessions/{ProxySessionId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetProxySessionRequest",
 }) as any as S.Schema<GetProxySessionRequest>;
 export interface GetProxySessionResponse {
   ProxySession?: ProxySession;
 }
-export const GetProxySessionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ ProxySession: S.optional(ProxySession) }),
+export const GetProxySessionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ProxySession: S.optional(ProxySession) }),
 ).annotate({
   identifier: "GetProxySessionResponse",
 }) as any as S.Schema<GetProxySessionResponse>;
 export interface GetSipMediaApplicationRequest {
   SipMediaApplicationId: string;
 }
-export const GetSipMediaApplicationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SipMediaApplicationId: S.String.pipe(
-        T.HttpLabel("SipMediaApplicationId"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/sip-media-applications/{SipMediaApplicationId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetSipMediaApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SipMediaApplicationId: S.String.pipe(T.HttpLabel("SipMediaApplicationId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/sip-media-applications/{SipMediaApplicationId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetSipMediaApplicationRequest",
-  }) as any as S.Schema<GetSipMediaApplicationRequest>;
+  ),
+).annotate({
+  identifier: "GetSipMediaApplicationRequest",
+}) as any as S.Schema<GetSipMediaApplicationRequest>;
 export interface GetSipMediaApplicationResponse {
   SipMediaApplication?: SipMediaApplication;
 }
-export const GetSipMediaApplicationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ SipMediaApplication: S.optional(SipMediaApplication) }),
-  ).annotate({
-    identifier: "GetSipMediaApplicationResponse",
-  }) as any as S.Schema<GetSipMediaApplicationResponse>;
+export const GetSipMediaApplicationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ SipMediaApplication: S.optional(SipMediaApplication) }),
+).annotate({
+  identifier: "GetSipMediaApplicationResponse",
+}) as any as S.Schema<GetSipMediaApplicationResponse>;
 export interface GetSipMediaApplicationAlexaSkillConfigurationRequest {
   SipMediaApplicationId: string;
 }
 export const GetSipMediaApplicationAlexaSkillConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       SipMediaApplicationId: S.String.pipe(
         T.HttpLabel("SipMediaApplicationId"),
@@ -1875,16 +1825,15 @@ export const GetSipMediaApplicationAlexaSkillConfigurationRequest =
     identifier: "GetSipMediaApplicationAlexaSkillConfigurationRequest",
   }) as any as S.Schema<GetSipMediaApplicationAlexaSkillConfigurationRequest>;
 export type AlexaSkillStatus = "ACTIVE" | "INACTIVE" | (string & {});
-export const AlexaSkillStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AlexaSkillStatus = /*@__PURE__*/ S.String;
 export type AlexaSkillIdList = string | redacted.Redacted<string>[];
-export const AlexaSkillIdList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SensitiveString);
+export const AlexaSkillIdList = /*@__PURE__*/ S.Array(SensitiveString);
 export interface SipMediaApplicationAlexaSkillConfiguration {
   AlexaSkillStatus: AlexaSkillStatus;
   AlexaSkillIds: string | redacted.Redacted<string>[];
 }
 export const SipMediaApplicationAlexaSkillConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AlexaSkillStatus: AlexaSkillStatus,
       AlexaSkillIds: AlexaSkillIdList,
@@ -1896,7 +1845,7 @@ export interface GetSipMediaApplicationAlexaSkillConfigurationResponse {
   SipMediaApplicationAlexaSkillConfiguration?: SipMediaApplicationAlexaSkillConfiguration;
 }
 export const GetSipMediaApplicationAlexaSkillConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       SipMediaApplicationAlexaSkillConfiguration: S.optional(
         SipMediaApplicationAlexaSkillConfiguration,
@@ -1909,7 +1858,7 @@ export interface GetSipMediaApplicationLoggingConfigurationRequest {
   SipMediaApplicationId: string;
 }
 export const GetSipMediaApplicationLoggingConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       SipMediaApplicationId: S.String.pipe(
         T.HttpLabel("SipMediaApplicationId"),
@@ -1933,17 +1882,17 @@ export const GetSipMediaApplicationLoggingConfigurationRequest =
 export interface SipMediaApplicationLoggingConfiguration {
   EnableSipMediaApplicationMessageLogs?: boolean;
 }
-export const SipMediaApplicationLoggingConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SipMediaApplicationLoggingConfiguration = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ EnableSipMediaApplicationMessageLogs: S.optional(S.Boolean) }),
-  ).annotate({
-    identifier: "SipMediaApplicationLoggingConfiguration",
-  }) as any as S.Schema<SipMediaApplicationLoggingConfiguration>;
+).annotate({
+  identifier: "SipMediaApplicationLoggingConfiguration",
+}) as any as S.Schema<SipMediaApplicationLoggingConfiguration>;
 export interface GetSipMediaApplicationLoggingConfigurationResponse {
   SipMediaApplicationLoggingConfiguration?: SipMediaApplicationLoggingConfiguration;
 }
 export const GetSipMediaApplicationLoggingConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       SipMediaApplicationLoggingConfiguration: S.optional(
         SipMediaApplicationLoggingConfiguration,
@@ -1955,7 +1904,7 @@ export const GetSipMediaApplicationLoggingConfigurationResponse =
 export interface GetSipRuleRequest {
   SipRuleId: string;
 }
-export const GetSipRuleRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetSipRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SipRuleId: S.String.pipe(T.HttpLabel("SipRuleId")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/sip-rules/{SipRuleId}" }),
@@ -1972,7 +1921,7 @@ export const GetSipRuleRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetSipRuleResponse {
   SipRule?: SipRule;
 }
-export const GetSipRuleResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetSipRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SipRule: S.optional(SipRule) }),
 ).annotate({
   identifier: "GetSipRuleResponse",
@@ -1981,33 +1930,32 @@ export interface GetSpeakerSearchTaskRequest {
   VoiceConnectorId: string;
   SpeakerSearchTaskId: string;
 }
-export const GetSpeakerSearchTaskRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
-      SpeakerSearchTaskId: S.String.pipe(T.HttpLabel("SpeakerSearchTaskId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/voice-connectors/{VoiceConnectorId}/speaker-search-tasks/{SpeakerSearchTaskId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetSpeakerSearchTaskRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
+    SpeakerSearchTaskId: S.String.pipe(T.HttpLabel("SpeakerSearchTaskId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/voice-connectors/{VoiceConnectorId}/speaker-search-tasks/{SpeakerSearchTaskId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetSpeakerSearchTaskRequest",
-  }) as any as S.Schema<GetSpeakerSearchTaskRequest>;
+  ),
+).annotate({
+  identifier: "GetSpeakerSearchTaskRequest",
+}) as any as S.Schema<GetSpeakerSearchTaskRequest>;
 export interface CallDetails {
   VoiceConnectorId?: string;
   TransactionId?: string;
   IsCaller?: boolean;
 }
-export const CallDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CallDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     VoiceConnectorId: S.optional(S.String),
     TransactionId: S.optional(S.String),
@@ -2018,7 +1966,7 @@ export interface SpeakerSearchResult {
   ConfidenceScore?: number;
   VoiceProfileId?: string;
 }
-export const SpeakerSearchResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SpeakerSearchResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ConfidenceScore: S.optional(S.Number),
     VoiceProfileId: S.optional(S.String),
@@ -2028,12 +1976,12 @@ export const SpeakerSearchResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SpeakerSearchResult>;
 export type SpeakerSearchResultList = SpeakerSearchResult[];
 export const SpeakerSearchResultList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SpeakerSearchResult);
+  /*@__PURE__*/ S.Array(SpeakerSearchResult);
 export interface SpeakerSearchDetails {
   Results?: SpeakerSearchResult[];
   VoiceprintGenerationStatus?: string;
 }
-export const SpeakerSearchDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SpeakerSearchDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Results: S.optional(SpeakerSearchResultList),
     VoiceprintGenerationStatus: S.optional(S.String),
@@ -2051,7 +1999,7 @@ export interface SpeakerSearchTask {
   StartedTimestamp?: Date;
   StatusMessage?: string;
 }
-export const SpeakerSearchTask = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SpeakerSearchTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SpeakerSearchTaskId: S.optional(S.String),
     SpeakerSearchTaskStatus: S.optional(S.String),
@@ -2074,37 +2022,35 @@ export const SpeakerSearchTask = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetSpeakerSearchTaskResponse {
   SpeakerSearchTask?: SpeakerSearchTask;
 }
-export const GetSpeakerSearchTaskResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ SpeakerSearchTask: S.optional(SpeakerSearchTask) }),
-  ).annotate({
-    identifier: "GetSpeakerSearchTaskResponse",
-  }) as any as S.Schema<GetSpeakerSearchTaskResponse>;
+export const GetSpeakerSearchTaskResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ SpeakerSearchTask: S.optional(SpeakerSearchTask) }),
+).annotate({
+  identifier: "GetSpeakerSearchTaskResponse",
+}) as any as S.Schema<GetSpeakerSearchTaskResponse>;
 export interface GetVoiceConnectorRequest {
   VoiceConnectorId: string;
 }
-export const GetVoiceConnectorRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/voice-connectors/{VoiceConnectorId}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetVoiceConnectorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/voice-connectors/{VoiceConnectorId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetVoiceConnectorRequest",
 }) as any as S.Schema<GetVoiceConnectorRequest>;
 export interface GetVoiceConnectorResponse {
   VoiceConnector?: VoiceConnector;
 }
-export const GetVoiceConnectorResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ VoiceConnector: S.optional(VoiceConnector) }),
+export const GetVoiceConnectorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ VoiceConnector: S.optional(VoiceConnector) }),
 ).annotate({
   identifier: "GetVoiceConnectorResponse",
 }) as any as S.Schema<GetVoiceConnectorResponse>;
@@ -2112,7 +2058,7 @@ export interface GetVoiceConnectorEmergencyCallingConfigurationRequest {
   VoiceConnectorId: string;
 }
 export const GetVoiceConnectorEmergencyCallingConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
     }).pipe(
@@ -2136,34 +2082,33 @@ export interface DNISEmergencyCallingConfiguration {
   TestPhoneNumber?: string | redacted.Redacted<string>;
   CallingCountry: string;
 }
-export const DNISEmergencyCallingConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      EmergencyPhoneNumber: SensitiveString,
-      TestPhoneNumber: S.optional(SensitiveString),
-      CallingCountry: S.String,
-    }),
-  ).annotate({
-    identifier: "DNISEmergencyCallingConfiguration",
-  }) as any as S.Schema<DNISEmergencyCallingConfiguration>;
+export const DNISEmergencyCallingConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    EmergencyPhoneNumber: SensitiveString,
+    TestPhoneNumber: S.optional(SensitiveString),
+    CallingCountry: S.String,
+  }),
+).annotate({
+  identifier: "DNISEmergencyCallingConfiguration",
+}) as any as S.Schema<DNISEmergencyCallingConfiguration>;
 export type DNISEmergencyCallingConfigurationList =
   DNISEmergencyCallingConfiguration[];
-export const DNISEmergencyCallingConfigurationList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(DNISEmergencyCallingConfiguration);
+export const DNISEmergencyCallingConfigurationList = /*@__PURE__*/ S.Array(
+  DNISEmergencyCallingConfiguration,
+);
 export interface EmergencyCallingConfiguration {
   DNIS?: DNISEmergencyCallingConfiguration[];
 }
-export const EmergencyCallingConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ DNIS: S.optional(DNISEmergencyCallingConfigurationList) }),
-  ).annotate({
-    identifier: "EmergencyCallingConfiguration",
-  }) as any as S.Schema<EmergencyCallingConfiguration>;
+export const EmergencyCallingConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DNIS: S.optional(DNISEmergencyCallingConfigurationList) }),
+).annotate({
+  identifier: "EmergencyCallingConfiguration",
+}) as any as S.Schema<EmergencyCallingConfiguration>;
 export interface GetVoiceConnectorEmergencyCallingConfigurationResponse {
   EmergencyCallingConfiguration?: EmergencyCallingConfiguration;
 }
 export const GetVoiceConnectorEmergencyCallingConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       EmergencyCallingConfiguration: S.optional(EmergencyCallingConfiguration),
     }),
@@ -2174,7 +2119,7 @@ export interface GetVoiceConnectorExternalSystemsConfigurationRequest {
   VoiceConnectorId: string;
 }
 export const GetVoiceConnectorExternalSystemsConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
     }).pipe(
@@ -2200,39 +2145,39 @@ export type SessionBorderControllerType =
   | "CISCO_UNIFIED_BORDER_ELEMENT"
   | "AUDIOCODES_MEDIANT_SBC"
   | (string & {});
-export const SessionBorderControllerType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SessionBorderControllerType = /*@__PURE__*/ S.String;
 export type SessionBorderControllerTypeList = SessionBorderControllerType[];
-export const SessionBorderControllerTypeList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SessionBorderControllerType);
+export const SessionBorderControllerTypeList = /*@__PURE__*/ S.Array(
+  SessionBorderControllerType,
+);
 export type ContactCenterSystemType =
   | "GENESYS_ENGAGE_ON_PREMISES"
   | "AVAYA_AURA_CALL_CENTER_ELITE"
   | "AVAYA_AURA_CONTACT_CENTER"
   | "CISCO_UNIFIED_CONTACT_CENTER_ENTERPRISE"
   | (string & {});
-export const ContactCenterSystemType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ContactCenterSystemType = /*@__PURE__*/ S.String;
 export type ContactCenterSystemTypeList = ContactCenterSystemType[];
-export const ContactCenterSystemTypeList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ContactCenterSystemTypeList = /*@__PURE__*/ S.Array(
   ContactCenterSystemType,
 );
 export interface ExternalSystemsConfiguration {
   SessionBorderControllerTypes?: SessionBorderControllerType[];
   ContactCenterSystemTypes?: ContactCenterSystemType[];
 }
-export const ExternalSystemsConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SessionBorderControllerTypes: S.optional(SessionBorderControllerTypeList),
-      ContactCenterSystemTypes: S.optional(ContactCenterSystemTypeList),
-    }),
-  ).annotate({
-    identifier: "ExternalSystemsConfiguration",
-  }) as any as S.Schema<ExternalSystemsConfiguration>;
+export const ExternalSystemsConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SessionBorderControllerTypes: S.optional(SessionBorderControllerTypeList),
+    ContactCenterSystemTypes: S.optional(ContactCenterSystemTypeList),
+  }),
+).annotate({
+  identifier: "ExternalSystemsConfiguration",
+}) as any as S.Schema<ExternalSystemsConfiguration>;
 export interface GetVoiceConnectorExternalSystemsConfigurationResponse {
   ExternalSystemsConfiguration?: ExternalSystemsConfiguration;
 }
 export const GetVoiceConnectorExternalSystemsConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ExternalSystemsConfiguration: S.optional(ExternalSystemsConfiguration),
     }),
@@ -2242,42 +2187,38 @@ export const GetVoiceConnectorExternalSystemsConfigurationResponse =
 export interface GetVoiceConnectorGroupRequest {
   VoiceConnectorGroupId: string;
 }
-export const GetVoiceConnectorGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      VoiceConnectorGroupId: S.String.pipe(
-        T.HttpLabel("VoiceConnectorGroupId"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/voice-connector-groups/{VoiceConnectorGroupId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetVoiceConnectorGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VoiceConnectorGroupId: S.String.pipe(T.HttpLabel("VoiceConnectorGroupId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/voice-connector-groups/{VoiceConnectorGroupId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetVoiceConnectorGroupRequest",
-  }) as any as S.Schema<GetVoiceConnectorGroupRequest>;
+  ),
+).annotate({
+  identifier: "GetVoiceConnectorGroupRequest",
+}) as any as S.Schema<GetVoiceConnectorGroupRequest>;
 export interface GetVoiceConnectorGroupResponse {
   VoiceConnectorGroup?: VoiceConnectorGroup;
 }
-export const GetVoiceConnectorGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ VoiceConnectorGroup: S.optional(VoiceConnectorGroup) }),
-  ).annotate({
-    identifier: "GetVoiceConnectorGroupResponse",
-  }) as any as S.Schema<GetVoiceConnectorGroupResponse>;
+export const GetVoiceConnectorGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ VoiceConnectorGroup: S.optional(VoiceConnectorGroup) }),
+).annotate({
+  identifier: "GetVoiceConnectorGroupResponse",
+}) as any as S.Schema<GetVoiceConnectorGroupResponse>;
 export interface GetVoiceConnectorLoggingConfigurationRequest {
   VoiceConnectorId: string;
 }
 export const GetVoiceConnectorLoggingConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
     }).pipe(
@@ -2300,7 +2241,7 @@ export interface LoggingConfiguration {
   EnableSIPLogs?: boolean;
   EnableMediaMetricLogs?: boolean;
 }
-export const LoggingConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const LoggingConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EnableSIPLogs: S.optional(S.Boolean),
     EnableMediaMetricLogs: S.optional(S.Boolean),
@@ -2312,7 +2253,7 @@ export interface GetVoiceConnectorLoggingConfigurationResponse {
   LoggingConfiguration?: LoggingConfiguration;
 }
 export const GetVoiceConnectorLoggingConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ LoggingConfiguration: S.optional(LoggingConfiguration) }),
   ).annotate({
     identifier: "GetVoiceConnectorLoggingConfigurationResponse",
@@ -2320,28 +2261,27 @@ export const GetVoiceConnectorLoggingConfigurationResponse =
 export interface GetVoiceConnectorOriginationRequest {
   VoiceConnectorId: string;
 }
-export const GetVoiceConnectorOriginationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/voice-connectors/{VoiceConnectorId}/origination",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetVoiceConnectorOriginationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/voice-connectors/{VoiceConnectorId}/origination",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetVoiceConnectorOriginationRequest",
-  }) as any as S.Schema<GetVoiceConnectorOriginationRequest>;
+  ),
+).annotate({
+  identifier: "GetVoiceConnectorOriginationRequest",
+}) as any as S.Schema<GetVoiceConnectorOriginationRequest>;
 export type OriginationRouteProtocol = "TCP" | "UDP" | (string & {});
-export const OriginationRouteProtocol = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const OriginationRouteProtocol = /*@__PURE__*/ S.String;
 export interface OriginationRoute {
   Host?: string;
   Port?: number;
@@ -2349,7 +2289,7 @@ export interface OriginationRoute {
   Priority?: number;
   Weight?: number;
 }
-export const OriginationRoute = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const OriginationRoute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Host: S.optional(S.String),
     Port: S.optional(S.Number),
@@ -2361,13 +2301,12 @@ export const OriginationRoute = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "OriginationRoute",
 }) as any as S.Schema<OriginationRoute>;
 export type OriginationRouteList = OriginationRoute[];
-export const OriginationRouteList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(OriginationRoute);
+export const OriginationRouteList = /*@__PURE__*/ S.Array(OriginationRoute);
 export interface Origination {
   Routes?: OriginationRoute[];
   Disabled?: boolean;
 }
-export const Origination = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Origination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Routes: S.optional(OriginationRouteList),
     Disabled: S.optional(S.Boolean),
@@ -2376,44 +2315,42 @@ export const Origination = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetVoiceConnectorOriginationResponse {
   Origination?: Origination;
 }
-export const GetVoiceConnectorOriginationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ Origination: S.optional(Origination) }),
-  ).annotate({
-    identifier: "GetVoiceConnectorOriginationResponse",
-  }) as any as S.Schema<GetVoiceConnectorOriginationResponse>;
+export const GetVoiceConnectorOriginationResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ Origination: S.optional(Origination) }),
+).annotate({
+  identifier: "GetVoiceConnectorOriginationResponse",
+}) as any as S.Schema<GetVoiceConnectorOriginationResponse>;
 export interface GetVoiceConnectorProxyRequest {
   VoiceConnectorId: string;
 }
-export const GetVoiceConnectorProxyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/voice-connectors/{VoiceConnectorId}/programmable-numbers/proxy",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetVoiceConnectorProxyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/voice-connectors/{VoiceConnectorId}/programmable-numbers/proxy",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetVoiceConnectorProxyRequest",
-  }) as any as S.Schema<GetVoiceConnectorProxyRequest>;
+  ),
+).annotate({
+  identifier: "GetVoiceConnectorProxyRequest",
+}) as any as S.Schema<GetVoiceConnectorProxyRequest>;
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const StringList = /*@__PURE__*/ S.Array(S.String);
 export interface Proxy {
   DefaultSessionExpiryMinutes?: number;
   Disabled?: boolean;
   FallBackPhoneNumber?: string | redacted.Redacted<string>;
   PhoneNumberCountries?: string[];
 }
-export const Proxy = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Proxy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DefaultSessionExpiryMinutes: S.optional(S.Number),
     Disabled: S.optional(S.Boolean),
@@ -2424,17 +2361,16 @@ export const Proxy = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetVoiceConnectorProxyResponse {
   Proxy?: Proxy;
 }
-export const GetVoiceConnectorProxyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ Proxy: S.optional(Proxy) }),
-  ).annotate({
-    identifier: "GetVoiceConnectorProxyResponse",
-  }) as any as S.Schema<GetVoiceConnectorProxyResponse>;
+export const GetVoiceConnectorProxyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Proxy: S.optional(Proxy) }),
+).annotate({
+  identifier: "GetVoiceConnectorProxyResponse",
+}) as any as S.Schema<GetVoiceConnectorProxyResponse>;
 export interface GetVoiceConnectorStreamingConfigurationRequest {
   VoiceConnectorId: string;
 }
 export const GetVoiceConnectorStreamingConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
     }).pipe(
@@ -2454,29 +2390,28 @@ export const GetVoiceConnectorStreamingConfigurationRequest =
     identifier: "GetVoiceConnectorStreamingConfigurationRequest",
   }) as any as S.Schema<GetVoiceConnectorStreamingConfigurationRequest>;
 export type NotificationTarget = "EventBridge" | "SNS" | "SQS" | (string & {});
-export const NotificationTarget = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const NotificationTarget = /*@__PURE__*/ S.String;
 export interface StreamingNotificationTarget {
   NotificationTarget?: NotificationTarget;
 }
-export const StreamingNotificationTarget =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ NotificationTarget: S.optional(NotificationTarget) }),
-  ).annotate({
-    identifier: "StreamingNotificationTarget",
-  }) as any as S.Schema<StreamingNotificationTarget>;
+export const StreamingNotificationTarget = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ NotificationTarget: S.optional(NotificationTarget) }),
+).annotate({
+  identifier: "StreamingNotificationTarget",
+}) as any as S.Schema<StreamingNotificationTarget>;
 export type StreamingNotificationTargetList = StreamingNotificationTarget[];
-export const StreamingNotificationTargetList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(StreamingNotificationTarget);
+export const StreamingNotificationTargetList = /*@__PURE__*/ S.Array(
+  StreamingNotificationTarget,
+);
 export interface MediaInsightsConfiguration {
   Disabled?: boolean;
   ConfigurationArn?: string | redacted.Redacted<string>;
 }
-export const MediaInsightsConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Disabled: S.optional(S.Boolean),
-      ConfigurationArn: S.optional(SensitiveString),
-    }),
+export const MediaInsightsConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Disabled: S.optional(S.Boolean),
+    ConfigurationArn: S.optional(SensitiveString),
+  }),
 ).annotate({
   identifier: "MediaInsightsConfiguration",
 }) as any as S.Schema<MediaInsightsConfiguration>;
@@ -2486,14 +2421,13 @@ export interface StreamingConfiguration {
   StreamingNotificationTargets?: StreamingNotificationTarget[];
   MediaInsightsConfiguration?: MediaInsightsConfiguration;
 }
-export const StreamingConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      DataRetentionInHours: S.Number,
-      Disabled: S.Boolean,
-      StreamingNotificationTargets: S.optional(StreamingNotificationTargetList),
-      MediaInsightsConfiguration: S.optional(MediaInsightsConfiguration),
-    }),
+export const StreamingConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DataRetentionInHours: S.Number,
+    Disabled: S.Boolean,
+    StreamingNotificationTargets: S.optional(StreamingNotificationTargetList),
+    MediaInsightsConfiguration: S.optional(MediaInsightsConfiguration),
+  }),
 ).annotate({
   identifier: "StreamingConfiguration",
 }) as any as S.Schema<StreamingConfiguration>;
@@ -2501,7 +2435,7 @@ export interface GetVoiceConnectorStreamingConfigurationResponse {
   StreamingConfiguration?: StreamingConfiguration;
 }
 export const GetVoiceConnectorStreamingConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ StreamingConfiguration: S.optional(StreamingConfiguration) }),
   ).annotate({
     identifier: "GetVoiceConnectorStreamingConfigurationResponse",
@@ -2509,28 +2443,27 @@ export const GetVoiceConnectorStreamingConfigurationResponse =
 export interface GetVoiceConnectorTerminationRequest {
   VoiceConnectorId: string;
 }
-export const GetVoiceConnectorTerminationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/voice-connectors/{VoiceConnectorId}/termination",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetVoiceConnectorTerminationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/voice-connectors/{VoiceConnectorId}/termination",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetVoiceConnectorTerminationRequest",
-  }) as any as S.Schema<GetVoiceConnectorTerminationRequest>;
+  ),
+).annotate({
+  identifier: "GetVoiceConnectorTerminationRequest",
+}) as any as S.Schema<GetVoiceConnectorTerminationRequest>;
 export type CallingRegionList = string[];
-export const CallingRegionList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const CallingRegionList = /*@__PURE__*/ S.Array(S.String);
 export interface Termination {
   CpsLimit?: number;
   DefaultPhoneNumber?: string | redacted.Redacted<string>;
@@ -2538,7 +2471,7 @@ export interface Termination {
   CidrAllowedList?: string[];
   Disabled?: boolean;
 }
-export const Termination = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Termination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CpsLimit: S.optional(S.Number),
     DefaultPhoneNumber: S.optional(SensitiveString),
@@ -2550,17 +2483,16 @@ export const Termination = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetVoiceConnectorTerminationResponse {
   Termination?: Termination;
 }
-export const GetVoiceConnectorTerminationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ Termination: S.optional(Termination) }),
-  ).annotate({
-    identifier: "GetVoiceConnectorTerminationResponse",
-  }) as any as S.Schema<GetVoiceConnectorTerminationResponse>;
+export const GetVoiceConnectorTerminationResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ Termination: S.optional(Termination) }),
+).annotate({
+  identifier: "GetVoiceConnectorTerminationResponse",
+}) as any as S.Schema<GetVoiceConnectorTerminationResponse>;
 export interface GetVoiceConnectorTerminationHealthRequest {
   VoiceConnectorId: string;
 }
 export const GetVoiceConnectorTerminationHealthRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
     }).pipe(
@@ -2583,7 +2515,7 @@ export interface TerminationHealth {
   Timestamp?: Date;
   Source?: string;
 }
-export const TerminationHealth = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TerminationHealth = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Timestamp: S.optional(
       T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -2597,7 +2529,7 @@ export interface GetVoiceConnectorTerminationHealthResponse {
   TerminationHealth?: TerminationHealth;
 }
 export const GetVoiceConnectorTerminationHealthResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ TerminationHealth: S.optional(TerminationHealth) }),
   ).annotate({
     identifier: "GetVoiceConnectorTerminationHealthResponse",
@@ -2605,92 +2537,88 @@ export const GetVoiceConnectorTerminationHealthResponse =
 export interface GetVoiceProfileRequest {
   VoiceProfileId: string;
 }
-export const GetVoiceProfileRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      VoiceProfileId: S.String.pipe(T.HttpLabel("VoiceProfileId")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/voice-profiles/{VoiceProfileId}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetVoiceProfileRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VoiceProfileId: S.String.pipe(T.HttpLabel("VoiceProfileId")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/voice-profiles/{VoiceProfileId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetVoiceProfileRequest",
 }) as any as S.Schema<GetVoiceProfileRequest>;
 export interface GetVoiceProfileResponse {
   VoiceProfile?: VoiceProfile;
 }
-export const GetVoiceProfileResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ VoiceProfile: S.optional(VoiceProfile) }),
+export const GetVoiceProfileResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ VoiceProfile: S.optional(VoiceProfile) }),
 ).annotate({
   identifier: "GetVoiceProfileResponse",
 }) as any as S.Schema<GetVoiceProfileResponse>;
 export interface GetVoiceProfileDomainRequest {
   VoiceProfileDomainId: string;
 }
-export const GetVoiceProfileDomainRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      VoiceProfileDomainId: S.String.pipe(T.HttpLabel("VoiceProfileDomainId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/voice-profile-domains/{VoiceProfileDomainId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetVoiceProfileDomainRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VoiceProfileDomainId: S.String.pipe(T.HttpLabel("VoiceProfileDomainId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/voice-profile-domains/{VoiceProfileDomainId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetVoiceProfileDomainRequest",
-  }) as any as S.Schema<GetVoiceProfileDomainRequest>;
+  ),
+).annotate({
+  identifier: "GetVoiceProfileDomainRequest",
+}) as any as S.Schema<GetVoiceProfileDomainRequest>;
 export interface GetVoiceProfileDomainResponse {
   VoiceProfileDomain?: VoiceProfileDomain;
 }
-export const GetVoiceProfileDomainResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ VoiceProfileDomain: S.optional(VoiceProfileDomain) }),
-  ).annotate({
-    identifier: "GetVoiceProfileDomainResponse",
-  }) as any as S.Schema<GetVoiceProfileDomainResponse>;
+export const GetVoiceProfileDomainResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ VoiceProfileDomain: S.optional(VoiceProfileDomain) }),
+).annotate({
+  identifier: "GetVoiceProfileDomainResponse",
+}) as any as S.Schema<GetVoiceProfileDomainResponse>;
 export interface GetVoiceToneAnalysisTaskRequest {
   VoiceConnectorId: string;
   VoiceToneAnalysisTaskId: string;
   IsCaller: boolean;
 }
-export const GetVoiceToneAnalysisTaskRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
-      VoiceToneAnalysisTaskId: S.String.pipe(
-        T.HttpLabel("VoiceToneAnalysisTaskId"),
-      ),
-      IsCaller: S.Boolean.pipe(T.HttpQuery("isCaller")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/voice-connectors/{VoiceConnectorId}/voice-tone-analysis-tasks/{VoiceToneAnalysisTaskId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetVoiceToneAnalysisTaskRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
+    VoiceToneAnalysisTaskId: S.String.pipe(
+      T.HttpLabel("VoiceToneAnalysisTaskId"),
     ),
-  ).annotate({
-    identifier: "GetVoiceToneAnalysisTaskRequest",
-  }) as any as S.Schema<GetVoiceToneAnalysisTaskRequest>;
+    IsCaller: S.Boolean.pipe(T.HttpQuery("isCaller")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/voice-connectors/{VoiceConnectorId}/voice-tone-analysis-tasks/{VoiceToneAnalysisTaskId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetVoiceToneAnalysisTaskRequest",
+}) as any as S.Schema<GetVoiceToneAnalysisTaskRequest>;
 export interface VoiceToneAnalysisTask {
   VoiceToneAnalysisTaskId?: string;
   VoiceToneAnalysisTaskStatus?: string;
@@ -2700,7 +2628,7 @@ export interface VoiceToneAnalysisTask {
   StartedTimestamp?: Date;
   StatusMessage?: string;
 }
-export const VoiceToneAnalysisTask = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const VoiceToneAnalysisTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     VoiceToneAnalysisTaskId: S.optional(S.String),
     VoiceToneAnalysisTaskStatus: S.optional(S.String),
@@ -2722,15 +2650,14 @@ export const VoiceToneAnalysisTask = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetVoiceToneAnalysisTaskResponse {
   VoiceToneAnalysisTask?: VoiceToneAnalysisTask;
 }
-export const GetVoiceToneAnalysisTaskResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ VoiceToneAnalysisTask: S.optional(VoiceToneAnalysisTask) }),
-  ).annotate({
-    identifier: "GetVoiceToneAnalysisTaskResponse",
-  }) as any as S.Schema<GetVoiceToneAnalysisTaskResponse>;
+export const GetVoiceToneAnalysisTaskResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ VoiceToneAnalysisTask: S.optional(VoiceToneAnalysisTask) }),
+).annotate({
+  identifier: "GetVoiceToneAnalysisTaskResponse",
+}) as any as S.Schema<GetVoiceToneAnalysisTaskResponse>;
 export interface ListAvailableVoiceConnectorRegionsRequest {}
 export const ListAvailableVoiceConnectorRegionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({}).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -2738,14 +2665,14 @@ export const ListAvailableVoiceConnectorRegionsRequest =
     identifier: "ListAvailableVoiceConnectorRegionsRequest",
   }) as any as S.Schema<ListAvailableVoiceConnectorRegionsRequest>;
 export type VoiceConnectorAwsRegionList = VoiceConnectorAwsRegion[];
-export const VoiceConnectorAwsRegionList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const VoiceConnectorAwsRegionList = /*@__PURE__*/ S.Array(
   VoiceConnectorAwsRegion,
 );
 export interface ListAvailableVoiceConnectorRegionsResponse {
   VoiceConnectorRegions?: VoiceConnectorAwsRegion[];
 }
 export const ListAvailableVoiceConnectorRegionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       VoiceConnectorRegions: S.optional(VoiceConnectorAwsRegionList),
     }),
@@ -2756,40 +2683,37 @@ export interface ListPhoneNumberOrdersRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListPhoneNumberOrdersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
-      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/phone-number-orders" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListPhoneNumberOrdersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/phone-number-orders" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListPhoneNumberOrdersRequest",
-  }) as any as S.Schema<ListPhoneNumberOrdersRequest>;
+  ),
+).annotate({
+  identifier: "ListPhoneNumberOrdersRequest",
+}) as any as S.Schema<ListPhoneNumberOrdersRequest>;
 export type PhoneNumberOrderList = PhoneNumberOrder[];
-export const PhoneNumberOrderList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(PhoneNumberOrder);
+export const PhoneNumberOrderList = /*@__PURE__*/ S.Array(PhoneNumberOrder);
 export interface ListPhoneNumberOrdersResponse {
   PhoneNumberOrders?: PhoneNumberOrder[];
   NextToken?: string;
 }
-export const ListPhoneNumberOrdersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      PhoneNumberOrders: S.optional(PhoneNumberOrderList),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListPhoneNumberOrdersResponse",
-  }) as any as S.Schema<ListPhoneNumberOrdersResponse>;
+export const ListPhoneNumberOrdersResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PhoneNumberOrders: S.optional(PhoneNumberOrderList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListPhoneNumberOrdersResponse",
+}) as any as S.Schema<ListPhoneNumberOrdersResponse>;
 export interface ListPhoneNumbersRequest {
   Status?: string;
   ProductType?: PhoneNumberProductType;
@@ -2798,44 +2722,42 @@ export interface ListPhoneNumbersRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListPhoneNumbersRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Status: S.optional(S.String).pipe(T.HttpQuery("status")),
-      ProductType: S.optional(PhoneNumberProductType).pipe(
-        T.HttpQuery("product-type"),
-      ),
-      FilterName: S.optional(PhoneNumberAssociationName).pipe(
-        T.HttpQuery("filter-name"),
-      ),
-      FilterValue: S.optional(S.String).pipe(T.HttpQuery("filter-value")),
-      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/phone-numbers" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListPhoneNumbersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Status: S.optional(S.String).pipe(T.HttpQuery("status")),
+    ProductType: S.optional(PhoneNumberProductType).pipe(
+      T.HttpQuery("product-type"),
     ),
+    FilterName: S.optional(PhoneNumberAssociationName).pipe(
+      T.HttpQuery("filter-name"),
+    ),
+    FilterValue: S.optional(S.String).pipe(T.HttpQuery("filter-value")),
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/phone-numbers" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
 ).annotate({
   identifier: "ListPhoneNumbersRequest",
 }) as any as S.Schema<ListPhoneNumbersRequest>;
 export type PhoneNumberList = PhoneNumber[];
-export const PhoneNumberList = /*@__PURE__*/ /*#__PURE__*/ S.Array(PhoneNumber);
+export const PhoneNumberList = /*@__PURE__*/ S.Array(PhoneNumber);
 export interface ListPhoneNumbersResponse {
   PhoneNumbers?: PhoneNumber[];
   NextToken?: string;
 }
-export const ListPhoneNumbersResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      PhoneNumbers: S.optional(PhoneNumberList),
-      NextToken: S.optional(S.String),
-    }),
+export const ListPhoneNumbersResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PhoneNumbers: S.optional(PhoneNumberList),
+    NextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListPhoneNumbersResponse",
 }) as any as S.Schema<ListPhoneNumbersResponse>;
@@ -2845,41 +2767,39 @@ export interface ListProxySessionsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListProxySessionsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
-      Status: S.optional(ProxySessionStatus).pipe(T.HttpQuery("status")),
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
-      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/voice-connectors/{VoiceConnectorId}/proxy-sessions",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListProxySessionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
+    Status: S.optional(ProxySessionStatus).pipe(T.HttpQuery("status")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/voice-connectors/{VoiceConnectorId}/proxy-sessions",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListProxySessionsRequest",
 }) as any as S.Schema<ListProxySessionsRequest>;
 export type ProxySessions = ProxySession[];
-export const ProxySessions = /*@__PURE__*/ /*#__PURE__*/ S.Array(ProxySession);
+export const ProxySessions = /*@__PURE__*/ S.Array(ProxySession);
 export interface ListProxySessionsResponse {
   ProxySessions?: ProxySession[];
   NextToken?: string;
 }
-export const ListProxySessionsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ProxySessions: S.optional(ProxySessions),
-      NextToken: S.optional(S.String),
-    }),
+export const ListProxySessionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ProxySessions: S.optional(ProxySessions),
+    NextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListProxySessionsResponse",
 }) as any as S.Schema<ListProxySessionsResponse>;
@@ -2887,46 +2807,44 @@ export interface ListSipMediaApplicationsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListSipMediaApplicationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/sip-media-applications" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListSipMediaApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/sip-media-applications" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListSipMediaApplicationsRequest",
-  }) as any as S.Schema<ListSipMediaApplicationsRequest>;
+  ),
+).annotate({
+  identifier: "ListSipMediaApplicationsRequest",
+}) as any as S.Schema<ListSipMediaApplicationsRequest>;
 export type SipMediaApplicationList = SipMediaApplication[];
 export const SipMediaApplicationList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SipMediaApplication);
+  /*@__PURE__*/ S.Array(SipMediaApplication);
 export interface ListSipMediaApplicationsResponse {
   SipMediaApplications?: SipMediaApplication[];
   NextToken?: string;
 }
-export const ListSipMediaApplicationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SipMediaApplications: S.optional(SipMediaApplicationList),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListSipMediaApplicationsResponse",
-  }) as any as S.Schema<ListSipMediaApplicationsResponse>;
+export const ListSipMediaApplicationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SipMediaApplications: S.optional(SipMediaApplicationList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListSipMediaApplicationsResponse",
+}) as any as S.Schema<ListSipMediaApplicationsResponse>;
 export interface ListSipRulesRequest {
   SipMediaApplicationId?: string;
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListSipRulesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListSipRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SipMediaApplicationId: S.optional(S.String).pipe(
       T.HttpQuery("sip-media-application"),
@@ -2947,12 +2865,12 @@ export const ListSipRulesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ListSipRulesRequest",
 }) as any as S.Schema<ListSipRulesRequest>;
 export type SipRuleList = SipRule[];
-export const SipRuleList = /*@__PURE__*/ /*#__PURE__*/ S.Array(SipRule);
+export const SipRuleList = /*@__PURE__*/ S.Array(SipRule);
 export interface ListSipRulesResponse {
   SipRules?: SipRule[];
   NextToken?: string;
 }
-export const ListSipRulesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListSipRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SipRules: S.optional(SipRuleList),
     NextToken: S.optional(S.String),
@@ -2963,8 +2881,8 @@ export const ListSipRulesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ListSupportedPhoneNumberCountriesRequest {
   ProductType: PhoneNumberProductType;
 }
-export const ListSupportedPhoneNumberCountriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListSupportedPhoneNumberCountriesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ProductType: PhoneNumberProductType.pipe(T.HttpQuery("product-type")),
     }).pipe(
@@ -2977,17 +2895,16 @@ export const ListSupportedPhoneNumberCountriesRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "ListSupportedPhoneNumberCountriesRequest",
-  }) as any as S.Schema<ListSupportedPhoneNumberCountriesRequest>;
+).annotate({
+  identifier: "ListSupportedPhoneNumberCountriesRequest",
+}) as any as S.Schema<ListSupportedPhoneNumberCountriesRequest>;
 export type PhoneNumberTypeList = PhoneNumberType[];
-export const PhoneNumberTypeList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(PhoneNumberType);
+export const PhoneNumberTypeList = /*@__PURE__*/ S.Array(PhoneNumberType);
 export interface PhoneNumberCountry {
   CountryCode?: string;
   SupportedPhoneNumberTypes?: PhoneNumberType[];
 }
-export const PhoneNumberCountry = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PhoneNumberCountry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CountryCode: S.optional(S.String),
     SupportedPhoneNumberTypes: S.optional(PhoneNumberTypeList),
@@ -2997,12 +2914,12 @@ export const PhoneNumberCountry = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PhoneNumberCountry>;
 export type PhoneNumberCountriesList = PhoneNumberCountry[];
 export const PhoneNumberCountriesList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(PhoneNumberCountry);
+  /*@__PURE__*/ S.Array(PhoneNumberCountry);
 export interface ListSupportedPhoneNumberCountriesResponse {
   PhoneNumberCountries?: PhoneNumberCountry[];
 }
 export const ListSupportedPhoneNumberCountriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ PhoneNumberCountries: S.optional(PhoneNumberCountriesList) }),
   ).annotate({
     identifier: "ListSupportedPhoneNumberCountriesResponse",
@@ -3010,111 +2927,104 @@ export const ListSupportedPhoneNumberCountriesResponse =
 export interface ListTagsForResourceRequest {
   ResourceARN: string | redacted.Redacted<string>;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ ResourceARN: SensitiveString.pipe(T.HttpQuery("arn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/tags" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ResourceARN: SensitiveString.pipe(T.HttpQuery("arn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/tags" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   Tags?: Tag[];
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ Tags: S.optional(TagList) }),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Tags: S.optional(TagList) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ListVoiceConnectorGroupsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListVoiceConnectorGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
-      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/voice-connector-groups" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListVoiceConnectorGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/voice-connector-groups" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListVoiceConnectorGroupsRequest",
-  }) as any as S.Schema<ListVoiceConnectorGroupsRequest>;
+  ),
+).annotate({
+  identifier: "ListVoiceConnectorGroupsRequest",
+}) as any as S.Schema<ListVoiceConnectorGroupsRequest>;
 export type VoiceConnectorGroupList = VoiceConnectorGroup[];
 export const VoiceConnectorGroupList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(VoiceConnectorGroup);
+  /*@__PURE__*/ S.Array(VoiceConnectorGroup);
 export interface ListVoiceConnectorGroupsResponse {
   VoiceConnectorGroups?: VoiceConnectorGroup[];
   NextToken?: string;
 }
-export const ListVoiceConnectorGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      VoiceConnectorGroups: S.optional(VoiceConnectorGroupList),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListVoiceConnectorGroupsResponse",
-  }) as any as S.Schema<ListVoiceConnectorGroupsResponse>;
+export const ListVoiceConnectorGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VoiceConnectorGroups: S.optional(VoiceConnectorGroupList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListVoiceConnectorGroupsResponse",
+}) as any as S.Schema<ListVoiceConnectorGroupsResponse>;
 export interface ListVoiceConnectorsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListVoiceConnectorsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
-      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/voice-connectors" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListVoiceConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/voice-connectors" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListVoiceConnectorsRequest",
 }) as any as S.Schema<ListVoiceConnectorsRequest>;
 export type VoiceConnectorList = VoiceConnector[];
-export const VoiceConnectorList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(VoiceConnector);
+export const VoiceConnectorList = /*@__PURE__*/ S.Array(VoiceConnector);
 export interface ListVoiceConnectorsResponse {
   VoiceConnectors?: VoiceConnector[];
   NextToken?: string;
 }
-export const ListVoiceConnectorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      VoiceConnectors: S.optional(VoiceConnectorList),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListVoiceConnectorsResponse",
-  }) as any as S.Schema<ListVoiceConnectorsResponse>;
+export const ListVoiceConnectorsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VoiceConnectors: S.optional(VoiceConnectorList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListVoiceConnectorsResponse",
+}) as any as S.Schema<ListVoiceConnectorsResponse>;
 export interface ListVoiceConnectorTerminationCredentialsRequest {
   VoiceConnectorId: string;
 }
 export const ListVoiceConnectorTerminationCredentialsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
     }).pipe(
@@ -3137,7 +3047,7 @@ export interface ListVoiceConnectorTerminationCredentialsResponse {
   Usernames?: string | redacted.Redacted<string>[];
 }
 export const ListVoiceConnectorTerminationCredentialsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ Usernames: S.optional(SensitiveStringList) }),
   ).annotate({
     identifier: "ListVoiceConnectorTerminationCredentialsResponse",
@@ -3146,24 +3056,23 @@ export interface ListVoiceProfileDomainsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListVoiceProfileDomainsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
-      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/voice-profile-domains" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListVoiceProfileDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/voice-profile-domains" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListVoiceProfileDomainsRequest",
-  }) as any as S.Schema<ListVoiceProfileDomainsRequest>;
+  ),
+).annotate({
+  identifier: "ListVoiceProfileDomainsRequest",
+}) as any as S.Schema<ListVoiceProfileDomainsRequest>;
 export interface VoiceProfileDomainSummary {
   VoiceProfileDomainId?: string;
   VoiceProfileDomainArn?: string | redacted.Redacted<string>;
@@ -3172,62 +3081,58 @@ export interface VoiceProfileDomainSummary {
   CreatedTimestamp?: Date;
   UpdatedTimestamp?: Date;
 }
-export const VoiceProfileDomainSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      VoiceProfileDomainId: S.optional(S.String),
-      VoiceProfileDomainArn: S.optional(SensitiveString),
-      Name: S.optional(S.String),
-      Description: S.optional(S.String),
-      CreatedTimestamp: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      UpdatedTimestamp: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-    }),
+export const VoiceProfileDomainSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VoiceProfileDomainId: S.optional(S.String),
+    VoiceProfileDomainArn: S.optional(SensitiveString),
+    Name: S.optional(S.String),
+    Description: S.optional(S.String),
+    CreatedTimestamp: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    UpdatedTimestamp: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
 ).annotate({
   identifier: "VoiceProfileDomainSummary",
 }) as any as S.Schema<VoiceProfileDomainSummary>;
 export type VoiceProfileDomainSummaryList = VoiceProfileDomainSummary[];
-export const VoiceProfileDomainSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(VoiceProfileDomainSummary);
+export const VoiceProfileDomainSummaryList = /*@__PURE__*/ S.Array(
+  VoiceProfileDomainSummary,
+);
 export interface ListVoiceProfileDomainsResponse {
   VoiceProfileDomains?: VoiceProfileDomainSummary[];
   NextToken?: string;
 }
-export const ListVoiceProfileDomainsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      VoiceProfileDomains: S.optional(VoiceProfileDomainSummaryList),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListVoiceProfileDomainsResponse",
-  }) as any as S.Schema<ListVoiceProfileDomainsResponse>;
+export const ListVoiceProfileDomainsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VoiceProfileDomains: S.optional(VoiceProfileDomainSummaryList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListVoiceProfileDomainsResponse",
+}) as any as S.Schema<ListVoiceProfileDomainsResponse>;
 export interface ListVoiceProfilesRequest {
   VoiceProfileDomainId: string;
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListVoiceProfilesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      VoiceProfileDomainId: S.String.pipe(
-        T.HttpQuery("voice-profile-domain-id"),
-      ),
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
-      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/voice-profiles" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListVoiceProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VoiceProfileDomainId: S.String.pipe(T.HttpQuery("voice-profile-domain-id")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/voice-profiles" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListVoiceProfilesRequest",
 }) as any as S.Schema<ListVoiceProfilesRequest>;
@@ -3239,7 +3144,7 @@ export interface VoiceProfileSummary {
   UpdatedTimestamp?: Date;
   ExpirationTimestamp?: Date;
 }
-export const VoiceProfileSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const VoiceProfileSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     VoiceProfileId: S.optional(S.String),
     VoiceProfileArn: S.optional(SensitiveString),
@@ -3259,17 +3164,16 @@ export const VoiceProfileSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VoiceProfileSummary>;
 export type VoiceProfileSummaryList = VoiceProfileSummary[];
 export const VoiceProfileSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(VoiceProfileSummary);
+  /*@__PURE__*/ S.Array(VoiceProfileSummary);
 export interface ListVoiceProfilesResponse {
   VoiceProfiles?: VoiceProfileSummary[];
   NextToken?: string;
 }
-export const ListVoiceProfilesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      VoiceProfiles: S.optional(VoiceProfileSummaryList),
-      NextToken: S.optional(S.String),
-    }),
+export const ListVoiceProfilesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VoiceProfiles: S.optional(VoiceProfileSummaryList),
+    NextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListVoiceProfilesResponse",
 }) as any as S.Schema<ListVoiceProfilesResponse>;
@@ -3278,7 +3182,7 @@ export interface PutSipMediaApplicationAlexaSkillConfigurationRequest {
   SipMediaApplicationAlexaSkillConfiguration?: SipMediaApplicationAlexaSkillConfiguration;
 }
 export const PutSipMediaApplicationAlexaSkillConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       SipMediaApplicationId: S.String.pipe(
         T.HttpLabel("SipMediaApplicationId"),
@@ -3306,7 +3210,7 @@ export interface PutSipMediaApplicationAlexaSkillConfigurationResponse {
   SipMediaApplicationAlexaSkillConfiguration?: SipMediaApplicationAlexaSkillConfiguration;
 }
 export const PutSipMediaApplicationAlexaSkillConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       SipMediaApplicationAlexaSkillConfiguration: S.optional(
         SipMediaApplicationAlexaSkillConfiguration,
@@ -3320,7 +3224,7 @@ export interface PutSipMediaApplicationLoggingConfigurationRequest {
   SipMediaApplicationLoggingConfiguration?: SipMediaApplicationLoggingConfiguration;
 }
 export const PutSipMediaApplicationLoggingConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       SipMediaApplicationId: S.String.pipe(
         T.HttpLabel("SipMediaApplicationId"),
@@ -3348,7 +3252,7 @@ export interface PutSipMediaApplicationLoggingConfigurationResponse {
   SipMediaApplicationLoggingConfiguration?: SipMediaApplicationLoggingConfiguration;
 }
 export const PutSipMediaApplicationLoggingConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       SipMediaApplicationLoggingConfiguration: S.optional(
         SipMediaApplicationLoggingConfiguration,
@@ -3362,7 +3266,7 @@ export interface PutVoiceConnectorEmergencyCallingConfigurationRequest {
   EmergencyCallingConfiguration: EmergencyCallingConfiguration;
 }
 export const PutVoiceConnectorEmergencyCallingConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
       EmergencyCallingConfiguration: EmergencyCallingConfiguration,
@@ -3386,7 +3290,7 @@ export interface PutVoiceConnectorEmergencyCallingConfigurationResponse {
   EmergencyCallingConfiguration?: EmergencyCallingConfiguration;
 }
 export const PutVoiceConnectorEmergencyCallingConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       EmergencyCallingConfiguration: S.optional(EmergencyCallingConfiguration),
     }),
@@ -3399,7 +3303,7 @@ export interface PutVoiceConnectorExternalSystemsConfigurationRequest {
   ContactCenterSystemTypes?: ContactCenterSystemType[];
 }
 export const PutVoiceConnectorExternalSystemsConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
       SessionBorderControllerTypes: S.optional(SessionBorderControllerTypeList),
@@ -3424,7 +3328,7 @@ export interface PutVoiceConnectorExternalSystemsConfigurationResponse {
   ExternalSystemsConfiguration?: ExternalSystemsConfiguration;
 }
 export const PutVoiceConnectorExternalSystemsConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ExternalSystemsConfiguration: S.optional(ExternalSystemsConfiguration),
     }),
@@ -3436,7 +3340,7 @@ export interface PutVoiceConnectorLoggingConfigurationRequest {
   LoggingConfiguration: LoggingConfiguration;
 }
 export const PutVoiceConnectorLoggingConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
       LoggingConfiguration: LoggingConfiguration,
@@ -3460,7 +3364,7 @@ export interface PutVoiceConnectorLoggingConfigurationResponse {
   LoggingConfiguration?: LoggingConfiguration;
 }
 export const PutVoiceConnectorLoggingConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ LoggingConfiguration: S.optional(LoggingConfiguration) }),
   ).annotate({
     identifier: "PutVoiceConnectorLoggingConfigurationResponse",
@@ -3469,38 +3373,36 @@ export interface PutVoiceConnectorOriginationRequest {
   VoiceConnectorId: string;
   Origination: Origination;
 }
-export const PutVoiceConnectorOriginationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
-      Origination: Origination,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/voice-connectors/{VoiceConnectorId}/origination",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const PutVoiceConnectorOriginationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
+    Origination: Origination,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/voice-connectors/{VoiceConnectorId}/origination",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "PutVoiceConnectorOriginationRequest",
-  }) as any as S.Schema<PutVoiceConnectorOriginationRequest>;
+  ),
+).annotate({
+  identifier: "PutVoiceConnectorOriginationRequest",
+}) as any as S.Schema<PutVoiceConnectorOriginationRequest>;
 export interface PutVoiceConnectorOriginationResponse {
   Origination?: Origination;
 }
-export const PutVoiceConnectorOriginationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ Origination: S.optional(Origination) }),
-  ).annotate({
-    identifier: "PutVoiceConnectorOriginationResponse",
-  }) as any as S.Schema<PutVoiceConnectorOriginationResponse>;
+export const PutVoiceConnectorOriginationResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ Origination: S.optional(Origination) }),
+).annotate({
+  identifier: "PutVoiceConnectorOriginationResponse",
+}) as any as S.Schema<PutVoiceConnectorOriginationResponse>;
 export type CountryList = string[];
-export const CountryList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const CountryList = /*@__PURE__*/ S.Array(S.String);
 export interface PutVoiceConnectorProxyRequest {
   VoiceConnectorId: string;
   DefaultSessionExpiryMinutes: number;
@@ -3508,45 +3410,43 @@ export interface PutVoiceConnectorProxyRequest {
   FallBackPhoneNumber?: string | redacted.Redacted<string>;
   Disabled?: boolean;
 }
-export const PutVoiceConnectorProxyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
-      DefaultSessionExpiryMinutes: S.Number,
-      PhoneNumberPoolCountries: CountryList,
-      FallBackPhoneNumber: S.optional(SensitiveString),
-      Disabled: S.optional(S.Boolean),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/voice-connectors/{VoiceConnectorId}/programmable-numbers/proxy",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const PutVoiceConnectorProxyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
+    DefaultSessionExpiryMinutes: S.Number,
+    PhoneNumberPoolCountries: CountryList,
+    FallBackPhoneNumber: S.optional(SensitiveString),
+    Disabled: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/voice-connectors/{VoiceConnectorId}/programmable-numbers/proxy",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "PutVoiceConnectorProxyRequest",
-  }) as any as S.Schema<PutVoiceConnectorProxyRequest>;
+  ),
+).annotate({
+  identifier: "PutVoiceConnectorProxyRequest",
+}) as any as S.Schema<PutVoiceConnectorProxyRequest>;
 export interface PutVoiceConnectorProxyResponse {
   Proxy?: Proxy;
 }
-export const PutVoiceConnectorProxyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ Proxy: S.optional(Proxy) }),
-  ).annotate({
-    identifier: "PutVoiceConnectorProxyResponse",
-  }) as any as S.Schema<PutVoiceConnectorProxyResponse>;
+export const PutVoiceConnectorProxyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Proxy: S.optional(Proxy) }),
+).annotate({
+  identifier: "PutVoiceConnectorProxyResponse",
+}) as any as S.Schema<PutVoiceConnectorProxyResponse>;
 export interface PutVoiceConnectorStreamingConfigurationRequest {
   VoiceConnectorId: string;
   StreamingConfiguration: StreamingConfiguration;
 }
 export const PutVoiceConnectorStreamingConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
       StreamingConfiguration: StreamingConfiguration,
@@ -3570,7 +3470,7 @@ export interface PutVoiceConnectorStreamingConfigurationResponse {
   StreamingConfiguration?: StreamingConfiguration;
 }
 export const PutVoiceConnectorStreamingConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ StreamingConfiguration: S.optional(StreamingConfiguration) }),
   ).annotate({
     identifier: "PutVoiceConnectorStreamingConfigurationResponse",
@@ -3579,54 +3479,52 @@ export interface PutVoiceConnectorTerminationRequest {
   VoiceConnectorId: string;
   Termination: Termination;
 }
-export const PutVoiceConnectorTerminationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
-      Termination: Termination,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/voice-connectors/{VoiceConnectorId}/termination",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const PutVoiceConnectorTerminationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
+    Termination: Termination,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/voice-connectors/{VoiceConnectorId}/termination",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "PutVoiceConnectorTerminationRequest",
-  }) as any as S.Schema<PutVoiceConnectorTerminationRequest>;
+  ),
+).annotate({
+  identifier: "PutVoiceConnectorTerminationRequest",
+}) as any as S.Schema<PutVoiceConnectorTerminationRequest>;
 export interface PutVoiceConnectorTerminationResponse {
   Termination?: Termination;
 }
-export const PutVoiceConnectorTerminationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ Termination: S.optional(Termination) }),
-  ).annotate({
-    identifier: "PutVoiceConnectorTerminationResponse",
-  }) as any as S.Schema<PutVoiceConnectorTerminationResponse>;
+export const PutVoiceConnectorTerminationResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ Termination: S.optional(Termination) }),
+).annotate({
+  identifier: "PutVoiceConnectorTerminationResponse",
+}) as any as S.Schema<PutVoiceConnectorTerminationResponse>;
 export interface Credential {
   Username?: string | redacted.Redacted<string>;
   Password?: string | redacted.Redacted<string>;
 }
-export const Credential = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Credential = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Username: S.optional(SensitiveString),
     Password: S.optional(SensitiveString),
   }),
 ).annotate({ identifier: "Credential" }) as any as S.Schema<Credential>;
 export type CredentialList = Credential[];
-export const CredentialList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Credential);
+export const CredentialList = /*@__PURE__*/ S.Array(Credential);
 export interface PutVoiceConnectorTerminationCredentialsRequest {
   VoiceConnectorId: string;
   Credentials?: Credential[];
 }
 export const PutVoiceConnectorTerminationCredentialsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
       Credentials: S.optional(CredentialList),
@@ -3648,37 +3546,36 @@ export const PutVoiceConnectorTerminationCredentialsRequest =
   }) as any as S.Schema<PutVoiceConnectorTerminationCredentialsRequest>;
 export interface PutVoiceConnectorTerminationCredentialsResponse {}
 export const PutVoiceConnectorTerminationCredentialsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "PutVoiceConnectorTerminationCredentialsResponse",
   }) as any as S.Schema<PutVoiceConnectorTerminationCredentialsResponse>;
 export interface RestorePhoneNumberRequest {
   PhoneNumberId: string | redacted.Redacted<string>;
 }
-export const RestorePhoneNumberRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      PhoneNumberId: SensitiveString.pipe(T.HttpLabel("PhoneNumberId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/phone-numbers/{PhoneNumberId}?operation=restore",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const RestorePhoneNumberRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PhoneNumberId: SensitiveString.pipe(T.HttpLabel("PhoneNumberId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/phone-numbers/{PhoneNumberId}?operation=restore",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "RestorePhoneNumberRequest",
 }) as any as S.Schema<RestorePhoneNumberRequest>;
 export interface RestorePhoneNumberResponse {
   PhoneNumber?: PhoneNumber;
 }
-export const RestorePhoneNumberResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ PhoneNumber: S.optional(PhoneNumber) }),
+export const RestorePhoneNumberResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ PhoneNumber: S.optional(PhoneNumber) }),
 ).annotate({
   identifier: "RestorePhoneNumberResponse",
 }) as any as S.Schema<RestorePhoneNumberResponse>;
@@ -3692,49 +3589,45 @@ export interface SearchAvailablePhoneNumbersRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const SearchAvailablePhoneNumbersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AreaCode: S.optional(S.String).pipe(T.HttpQuery("area-code")),
-      City: S.optional(S.String).pipe(T.HttpQuery("city")),
-      Country: S.optional(S.String).pipe(T.HttpQuery("country")),
-      State: S.optional(S.String).pipe(T.HttpQuery("state")),
-      TollFreePrefix: S.optional(S.String).pipe(
-        T.HttpQuery("toll-free-prefix"),
-      ),
-      PhoneNumberType: S.optional(PhoneNumberType).pipe(
-        T.HttpQuery("phone-number-type"),
-      ),
-      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/search?type=phone-numbers" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const SearchAvailablePhoneNumbersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AreaCode: S.optional(S.String).pipe(T.HttpQuery("area-code")),
+    City: S.optional(S.String).pipe(T.HttpQuery("city")),
+    Country: S.optional(S.String).pipe(T.HttpQuery("country")),
+    State: S.optional(S.String).pipe(T.HttpQuery("state")),
+    TollFreePrefix: S.optional(S.String).pipe(T.HttpQuery("toll-free-prefix")),
+    PhoneNumberType: S.optional(PhoneNumberType).pipe(
+      T.HttpQuery("phone-number-type"),
     ),
-  ).annotate({
-    identifier: "SearchAvailablePhoneNumbersRequest",
-  }) as any as S.Schema<SearchAvailablePhoneNumbersRequest>;
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/search?type=phone-numbers" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "SearchAvailablePhoneNumbersRequest",
+}) as any as S.Schema<SearchAvailablePhoneNumbersRequest>;
 export interface SearchAvailablePhoneNumbersResponse {
   E164PhoneNumbers?: string | redacted.Redacted<string>[];
   NextToken?: string;
 }
-export const SearchAvailablePhoneNumbersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      E164PhoneNumbers: S.optional(E164PhoneNumberList),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SearchAvailablePhoneNumbersResponse",
-  }) as any as S.Schema<SearchAvailablePhoneNumbersResponse>;
+export const SearchAvailablePhoneNumbersResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    E164PhoneNumbers: S.optional(E164PhoneNumberList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SearchAvailablePhoneNumbersResponse",
+}) as any as S.Schema<SearchAvailablePhoneNumbersResponse>;
 export type CallLegType = "Caller" | "Callee" | (string & {});
-export const CallLegType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const CallLegType = /*@__PURE__*/ S.String;
 export interface StartSpeakerSearchTaskRequest {
   VoiceConnectorId: string;
   TransactionId: string;
@@ -3742,146 +3635,142 @@ export interface StartSpeakerSearchTaskRequest {
   ClientRequestToken?: string;
   CallLeg?: CallLegType;
 }
-export const StartSpeakerSearchTaskRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
-      TransactionId: S.String,
-      VoiceProfileDomainId: S.String,
-      ClientRequestToken: S.optional(S.String),
-      CallLeg: S.optional(CallLegType),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/voice-connectors/{VoiceConnectorId}/speaker-search-tasks",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StartSpeakerSearchTaskRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
+    TransactionId: S.String,
+    VoiceProfileDomainId: S.String,
+    ClientRequestToken: S.optional(S.String),
+    CallLeg: S.optional(CallLegType),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/voice-connectors/{VoiceConnectorId}/speaker-search-tasks",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "StartSpeakerSearchTaskRequest",
-  }) as any as S.Schema<StartSpeakerSearchTaskRequest>;
+  ),
+).annotate({
+  identifier: "StartSpeakerSearchTaskRequest",
+}) as any as S.Schema<StartSpeakerSearchTaskRequest>;
 export interface StartSpeakerSearchTaskResponse {
   SpeakerSearchTask?: SpeakerSearchTask;
 }
-export const StartSpeakerSearchTaskResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ SpeakerSearchTask: S.optional(SpeakerSearchTask) }),
-  ).annotate({
-    identifier: "StartSpeakerSearchTaskResponse",
-  }) as any as S.Schema<StartSpeakerSearchTaskResponse>;
+export const StartSpeakerSearchTaskResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ SpeakerSearchTask: S.optional(SpeakerSearchTask) }),
+).annotate({
+  identifier: "StartSpeakerSearchTaskResponse",
+}) as any as S.Schema<StartSpeakerSearchTaskResponse>;
 export type LanguageCode = "en-US" | (string & {});
-export const LanguageCode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const LanguageCode = /*@__PURE__*/ S.String;
 export interface StartVoiceToneAnalysisTaskRequest {
   VoiceConnectorId: string;
   TransactionId: string;
   LanguageCode: LanguageCode;
   ClientRequestToken?: string;
 }
-export const StartVoiceToneAnalysisTaskRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
-      TransactionId: S.String,
-      LanguageCode: LanguageCode,
-      ClientRequestToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/voice-connectors/{VoiceConnectorId}/voice-tone-analysis-tasks",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StartVoiceToneAnalysisTaskRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
+    TransactionId: S.String,
+    LanguageCode: LanguageCode,
+    ClientRequestToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/voice-connectors/{VoiceConnectorId}/voice-tone-analysis-tasks",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "StartVoiceToneAnalysisTaskRequest",
-  }) as any as S.Schema<StartVoiceToneAnalysisTaskRequest>;
+  ),
+).annotate({
+  identifier: "StartVoiceToneAnalysisTaskRequest",
+}) as any as S.Schema<StartVoiceToneAnalysisTaskRequest>;
 export interface StartVoiceToneAnalysisTaskResponse {
   VoiceToneAnalysisTask?: VoiceToneAnalysisTask;
 }
-export const StartVoiceToneAnalysisTaskResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ VoiceToneAnalysisTask: S.optional(VoiceToneAnalysisTask) }),
-  ).annotate({
-    identifier: "StartVoiceToneAnalysisTaskResponse",
-  }) as any as S.Schema<StartVoiceToneAnalysisTaskResponse>;
+export const StartVoiceToneAnalysisTaskResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ VoiceToneAnalysisTask: S.optional(VoiceToneAnalysisTask) }),
+).annotate({
+  identifier: "StartVoiceToneAnalysisTaskResponse",
+}) as any as S.Schema<StartVoiceToneAnalysisTaskResponse>;
 export interface StopSpeakerSearchTaskRequest {
   VoiceConnectorId: string;
   SpeakerSearchTaskId: string;
 }
-export const StopSpeakerSearchTaskRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
-      SpeakerSearchTaskId: S.String.pipe(T.HttpLabel("SpeakerSearchTaskId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/voice-connectors/{VoiceConnectorId}/speaker-search-tasks/{SpeakerSearchTaskId}?operation=stop",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StopSpeakerSearchTaskRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
+    SpeakerSearchTaskId: S.String.pipe(T.HttpLabel("SpeakerSearchTaskId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/voice-connectors/{VoiceConnectorId}/speaker-search-tasks/{SpeakerSearchTaskId}?operation=stop",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "StopSpeakerSearchTaskRequest",
-  }) as any as S.Schema<StopSpeakerSearchTaskRequest>;
+  ),
+).annotate({
+  identifier: "StopSpeakerSearchTaskRequest",
+}) as any as S.Schema<StopSpeakerSearchTaskRequest>;
 export interface StopSpeakerSearchTaskResponse {}
-export const StopSpeakerSearchTaskResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "StopSpeakerSearchTaskResponse",
-  }) as any as S.Schema<StopSpeakerSearchTaskResponse>;
+export const StopSpeakerSearchTaskResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "StopSpeakerSearchTaskResponse",
+}) as any as S.Schema<StopSpeakerSearchTaskResponse>;
 export interface StopVoiceToneAnalysisTaskRequest {
   VoiceConnectorId: string;
   VoiceToneAnalysisTaskId: string;
 }
-export const StopVoiceToneAnalysisTaskRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
-      VoiceToneAnalysisTaskId: S.String.pipe(
-        T.HttpLabel("VoiceToneAnalysisTaskId"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/voice-connectors/{VoiceConnectorId}/voice-tone-analysis-tasks/{VoiceToneAnalysisTaskId}?operation=stop",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StopVoiceToneAnalysisTaskRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
+    VoiceToneAnalysisTaskId: S.String.pipe(
+      T.HttpLabel("VoiceToneAnalysisTaskId"),
     ),
-  ).annotate({
-    identifier: "StopVoiceToneAnalysisTaskRequest",
-  }) as any as S.Schema<StopVoiceToneAnalysisTaskRequest>;
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/voice-connectors/{VoiceConnectorId}/voice-tone-analysis-tasks/{VoiceToneAnalysisTaskId}?operation=stop",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "StopVoiceToneAnalysisTaskRequest",
+}) as any as S.Schema<StopVoiceToneAnalysisTaskRequest>;
 export interface StopVoiceToneAnalysisTaskResponse {}
-export const StopVoiceToneAnalysisTaskResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "StopVoiceToneAnalysisTaskResponse",
-  }) as any as S.Schema<StopVoiceToneAnalysisTaskResponse>;
+export const StopVoiceToneAnalysisTaskResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "StopVoiceToneAnalysisTaskResponse",
+}) as any as S.Schema<StopVoiceToneAnalysisTaskResponse>;
 export interface TagResourceRequest {
   ResourceARN: string | redacted.Redacted<string>;
   Tags: Tag[];
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceARN: SensitiveString, Tags: TagList }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/tags?operation=tag-resource" }),
@@ -3896,18 +3785,18 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string | redacted.Redacted<string>[];
-export const TagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(SensitiveString);
+export const TagKeyList = /*@__PURE__*/ S.Array(SensitiveString);
 export interface UntagResourceRequest {
   ResourceARN: string | redacted.Redacted<string>;
   TagKeys: string | redacted.Redacted<string>[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceARN: SensitiveString, TagKeys: TagKeyList }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/tags?operation=untag-resource" }),
@@ -3922,7 +3811,7 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
@@ -3930,117 +3819,115 @@ export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface UpdateGlobalSettingsRequest {
   VoiceConnector?: VoiceConnectorSettings;
 }
-export const UpdateGlobalSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ VoiceConnector: S.optional(VoiceConnectorSettings) }).pipe(
-      T.all(
-        T.Http({ method: "PUT", uri: "/settings" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateGlobalSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ VoiceConnector: S.optional(VoiceConnectorSettings) }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/settings" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateGlobalSettingsRequest",
-  }) as any as S.Schema<UpdateGlobalSettingsRequest>;
+  ),
+).annotate({
+  identifier: "UpdateGlobalSettingsRequest",
+}) as any as S.Schema<UpdateGlobalSettingsRequest>;
 export interface UpdateGlobalSettingsResponse {}
-export const UpdateGlobalSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UpdateGlobalSettingsResponse",
-  }) as any as S.Schema<UpdateGlobalSettingsResponse>;
+export const UpdateGlobalSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateGlobalSettingsResponse",
+}) as any as S.Schema<UpdateGlobalSettingsResponse>;
 export interface UpdatePhoneNumberRequest {
   PhoneNumberId: string | redacted.Redacted<string>;
   ProductType?: PhoneNumberProductType;
   CallingName?: string | redacted.Redacted<string>;
   Name?: string | redacted.Redacted<string>;
 }
-export const UpdatePhoneNumberRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      PhoneNumberId: SensitiveString.pipe(T.HttpLabel("PhoneNumberId")),
-      ProductType: S.optional(PhoneNumberProductType),
-      CallingName: S.optional(SensitiveString),
-      Name: S.optional(SensitiveString),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/phone-numbers/{PhoneNumberId}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdatePhoneNumberRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PhoneNumberId: SensitiveString.pipe(T.HttpLabel("PhoneNumberId")),
+    ProductType: S.optional(PhoneNumberProductType),
+    CallingName: S.optional(SensitiveString),
+    Name: S.optional(SensitiveString),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/phone-numbers/{PhoneNumberId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "UpdatePhoneNumberRequest",
 }) as any as S.Schema<UpdatePhoneNumberRequest>;
 export interface UpdatePhoneNumberResponse {
   PhoneNumber?: PhoneNumber;
 }
-export const UpdatePhoneNumberResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ PhoneNumber: S.optional(PhoneNumber) }),
+export const UpdatePhoneNumberResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ PhoneNumber: S.optional(PhoneNumber) }),
 ).annotate({
   identifier: "UpdatePhoneNumberResponse",
 }) as any as S.Schema<UpdatePhoneNumberResponse>;
 export interface UpdatePhoneNumberSettingsRequest {
   CallingName: string | redacted.Redacted<string>;
 }
-export const UpdatePhoneNumberSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ CallingName: SensitiveString }).pipe(
-      T.all(
-        T.Http({ method: "PUT", uri: "/settings/phone-number" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdatePhoneNumberSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ CallingName: SensitiveString }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/settings/phone-number" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdatePhoneNumberSettingsRequest",
-  }) as any as S.Schema<UpdatePhoneNumberSettingsRequest>;
+  ),
+).annotate({
+  identifier: "UpdatePhoneNumberSettingsRequest",
+}) as any as S.Schema<UpdatePhoneNumberSettingsRequest>;
 export interface UpdatePhoneNumberSettingsResponse {}
-export const UpdatePhoneNumberSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UpdatePhoneNumberSettingsResponse",
-  }) as any as S.Schema<UpdatePhoneNumberSettingsResponse>;
+export const UpdatePhoneNumberSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdatePhoneNumberSettingsResponse",
+}) as any as S.Schema<UpdatePhoneNumberSettingsResponse>;
 export interface UpdateProxySessionRequest {
   VoiceConnectorId: string;
   ProxySessionId: string;
   Capabilities: Capability[];
   ExpiryMinutes?: number;
 }
-export const UpdateProxySessionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
-      ProxySessionId: S.String.pipe(T.HttpLabel("ProxySessionId")),
-      Capabilities: CapabilityList,
-      ExpiryMinutes: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/voice-connectors/{VoiceConnectorId}/proxy-sessions/{ProxySessionId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateProxySessionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
+    ProxySessionId: S.String.pipe(T.HttpLabel("ProxySessionId")),
+    Capabilities: CapabilityList,
+    ExpiryMinutes: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/voice-connectors/{VoiceConnectorId}/proxy-sessions/{ProxySessionId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "UpdateProxySessionRequest",
 }) as any as S.Schema<UpdateProxySessionRequest>;
 export interface UpdateProxySessionResponse {
   ProxySession?: ProxySession;
 }
-export const UpdateProxySessionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ ProxySession: S.optional(ProxySession) }),
+export const UpdateProxySessionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ProxySession: S.optional(ProxySession) }),
 ).annotate({
   identifier: "UpdateProxySessionResponse",
 }) as any as S.Schema<UpdateProxySessionResponse>;
@@ -4049,43 +3936,39 @@ export interface UpdateSipMediaApplicationRequest {
   Name?: string;
   Endpoints?: SipMediaApplicationEndpoint[];
 }
-export const UpdateSipMediaApplicationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SipMediaApplicationId: S.String.pipe(
-        T.HttpLabel("SipMediaApplicationId"),
-      ),
-      Name: S.optional(S.String),
-      Endpoints: S.optional(SipMediaApplicationEndpointList),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/sip-media-applications/{SipMediaApplicationId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateSipMediaApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SipMediaApplicationId: S.String.pipe(T.HttpLabel("SipMediaApplicationId")),
+    Name: S.optional(S.String),
+    Endpoints: S.optional(SipMediaApplicationEndpointList),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/sip-media-applications/{SipMediaApplicationId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateSipMediaApplicationRequest",
-  }) as any as S.Schema<UpdateSipMediaApplicationRequest>;
+  ),
+).annotate({
+  identifier: "UpdateSipMediaApplicationRequest",
+}) as any as S.Schema<UpdateSipMediaApplicationRequest>;
 export interface UpdateSipMediaApplicationResponse {
   SipMediaApplication?: SipMediaApplication;
 }
-export const UpdateSipMediaApplicationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ SipMediaApplication: S.optional(SipMediaApplication) }),
-  ).annotate({
-    identifier: "UpdateSipMediaApplicationResponse",
-  }) as any as S.Schema<UpdateSipMediaApplicationResponse>;
+export const UpdateSipMediaApplicationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ SipMediaApplication: S.optional(SipMediaApplication) }),
+).annotate({
+  identifier: "UpdateSipMediaApplicationResponse",
+}) as any as S.Schema<UpdateSipMediaApplicationResponse>;
 export type SMAUpdateCallArgumentsMap = {
   [key: string]: string | redacted.Redacted<string> | undefined;
 };
-export const SMAUpdateCallArgumentsMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const SMAUpdateCallArgumentsMap = /*@__PURE__*/ S.Record(
   S.String,
   SensitiveString.pipe(S.optional),
 );
@@ -4094,8 +3977,8 @@ export interface UpdateSipMediaApplicationCallRequest {
   TransactionId: string;
   Arguments: { [key: string]: string | redacted.Redacted<string> | undefined };
 }
-export const UpdateSipMediaApplicationCallRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateSipMediaApplicationCallRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       SipMediaApplicationId: S.String.pipe(
         T.HttpLabel("SipMediaApplicationId"),
@@ -4115,25 +3998,25 @@ export const UpdateSipMediaApplicationCallRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "UpdateSipMediaApplicationCallRequest",
-  }) as any as S.Schema<UpdateSipMediaApplicationCallRequest>;
+).annotate({
+  identifier: "UpdateSipMediaApplicationCallRequest",
+}) as any as S.Schema<UpdateSipMediaApplicationCallRequest>;
 export interface UpdateSipMediaApplicationCallResponse {
   SipMediaApplicationCall?: SipMediaApplicationCall;
 }
-export const UpdateSipMediaApplicationCallResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateSipMediaApplicationCallResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ SipMediaApplicationCall: S.optional(SipMediaApplicationCall) }),
-  ).annotate({
-    identifier: "UpdateSipMediaApplicationCallResponse",
-  }) as any as S.Schema<UpdateSipMediaApplicationCallResponse>;
+).annotate({
+  identifier: "UpdateSipMediaApplicationCallResponse",
+}) as any as S.Schema<UpdateSipMediaApplicationCallResponse>;
 export interface UpdateSipRuleRequest {
   SipRuleId: string;
   Name: string;
   Disabled?: boolean;
   TargetApplications?: SipRuleTargetApplication[];
 }
-export const UpdateSipRuleRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateSipRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SipRuleId: S.String.pipe(T.HttpLabel("SipRuleId")),
     Name: S.String,
@@ -4155,7 +4038,7 @@ export const UpdateSipRuleRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface UpdateSipRuleResponse {
   SipRule?: SipRule;
 }
-export const UpdateSipRuleResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateSipRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SipRule: S.optional(SipRule) }),
 ).annotate({
   identifier: "UpdateSipRuleResponse",
@@ -4165,99 +4048,92 @@ export interface UpdateVoiceConnectorRequest {
   Name: string;
   RequireEncryption: boolean;
 }
-export const UpdateVoiceConnectorRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
-      Name: S.String,
-      RequireEncryption: S.Boolean,
-    }).pipe(
-      T.all(
-        T.Http({ method: "PUT", uri: "/voice-connectors/{VoiceConnectorId}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateVoiceConnectorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
+    Name: S.String,
+    RequireEncryption: S.Boolean,
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/voice-connectors/{VoiceConnectorId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateVoiceConnectorRequest",
-  }) as any as S.Schema<UpdateVoiceConnectorRequest>;
+  ),
+).annotate({
+  identifier: "UpdateVoiceConnectorRequest",
+}) as any as S.Schema<UpdateVoiceConnectorRequest>;
 export interface UpdateVoiceConnectorResponse {
   VoiceConnector?: VoiceConnector;
 }
-export const UpdateVoiceConnectorResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ VoiceConnector: S.optional(VoiceConnector) }),
-  ).annotate({
-    identifier: "UpdateVoiceConnectorResponse",
-  }) as any as S.Schema<UpdateVoiceConnectorResponse>;
+export const UpdateVoiceConnectorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ VoiceConnector: S.optional(VoiceConnector) }),
+).annotate({
+  identifier: "UpdateVoiceConnectorResponse",
+}) as any as S.Schema<UpdateVoiceConnectorResponse>;
 export interface UpdateVoiceConnectorGroupRequest {
   VoiceConnectorGroupId: string;
   Name: string;
   VoiceConnectorItems: VoiceConnectorItem[];
 }
-export const UpdateVoiceConnectorGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      VoiceConnectorGroupId: S.String.pipe(
-        T.HttpLabel("VoiceConnectorGroupId"),
-      ),
-      Name: S.String,
-      VoiceConnectorItems: VoiceConnectorItemList,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/voice-connector-groups/{VoiceConnectorGroupId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateVoiceConnectorGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VoiceConnectorGroupId: S.String.pipe(T.HttpLabel("VoiceConnectorGroupId")),
+    Name: S.String,
+    VoiceConnectorItems: VoiceConnectorItemList,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/voice-connector-groups/{VoiceConnectorGroupId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateVoiceConnectorGroupRequest",
-  }) as any as S.Schema<UpdateVoiceConnectorGroupRequest>;
+  ),
+).annotate({
+  identifier: "UpdateVoiceConnectorGroupRequest",
+}) as any as S.Schema<UpdateVoiceConnectorGroupRequest>;
 export interface UpdateVoiceConnectorGroupResponse {
   VoiceConnectorGroup?: VoiceConnectorGroup;
 }
-export const UpdateVoiceConnectorGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ VoiceConnectorGroup: S.optional(VoiceConnectorGroup) }),
-  ).annotate({
-    identifier: "UpdateVoiceConnectorGroupResponse",
-  }) as any as S.Schema<UpdateVoiceConnectorGroupResponse>;
+export const UpdateVoiceConnectorGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ VoiceConnectorGroup: S.optional(VoiceConnectorGroup) }),
+).annotate({
+  identifier: "UpdateVoiceConnectorGroupResponse",
+}) as any as S.Schema<UpdateVoiceConnectorGroupResponse>;
 export interface UpdateVoiceProfileRequest {
   VoiceProfileId: string;
   SpeakerSearchTaskId: string;
 }
-export const UpdateVoiceProfileRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      VoiceProfileId: S.String.pipe(T.HttpLabel("VoiceProfileId")),
-      SpeakerSearchTaskId: S.String,
-    }).pipe(
-      T.all(
-        T.Http({ method: "PUT", uri: "/voice-profiles/{VoiceProfileId}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateVoiceProfileRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VoiceProfileId: S.String.pipe(T.HttpLabel("VoiceProfileId")),
+    SpeakerSearchTaskId: S.String,
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/voice-profiles/{VoiceProfileId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "UpdateVoiceProfileRequest",
 }) as any as S.Schema<UpdateVoiceProfileRequest>;
 export interface UpdateVoiceProfileResponse {
   VoiceProfile?: VoiceProfile;
 }
-export const UpdateVoiceProfileResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ VoiceProfile: S.optional(VoiceProfile) }),
+export const UpdateVoiceProfileResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ VoiceProfile: S.optional(VoiceProfile) }),
 ).annotate({
   identifier: "UpdateVoiceProfileResponse",
 }) as any as S.Schema<UpdateVoiceProfileResponse>;
@@ -4266,37 +4142,35 @@ export interface UpdateVoiceProfileDomainRequest {
   Name?: string;
   Description?: string;
 }
-export const UpdateVoiceProfileDomainRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      VoiceProfileDomainId: S.String.pipe(T.HttpLabel("VoiceProfileDomainId")),
-      Name: S.optional(S.String),
-      Description: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/voice-profile-domains/{VoiceProfileDomainId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateVoiceProfileDomainRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VoiceProfileDomainId: S.String.pipe(T.HttpLabel("VoiceProfileDomainId")),
+    Name: S.optional(S.String),
+    Description: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/voice-profile-domains/{VoiceProfileDomainId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateVoiceProfileDomainRequest",
-  }) as any as S.Schema<UpdateVoiceProfileDomainRequest>;
+  ),
+).annotate({
+  identifier: "UpdateVoiceProfileDomainRequest",
+}) as any as S.Schema<UpdateVoiceProfileDomainRequest>;
 export interface UpdateVoiceProfileDomainResponse {
   VoiceProfileDomain?: VoiceProfileDomain;
 }
-export const UpdateVoiceProfileDomainResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ VoiceProfileDomain: S.optional(VoiceProfileDomain) }),
-  ).annotate({
-    identifier: "UpdateVoiceProfileDomainResponse",
-  }) as any as S.Schema<UpdateVoiceProfileDomainResponse>;
+export const UpdateVoiceProfileDomainResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ VoiceProfileDomain: S.optional(VoiceProfileDomain) }),
+).annotate({
+  identifier: "UpdateVoiceProfileDomainResponse",
+}) as any as S.Schema<UpdateVoiceProfileDomainResponse>;
 export interface ValidateE911AddressRequest {
   AwsAccountId: string;
   StreetNumber: string | redacted.Redacted<string>;
@@ -4306,26 +4180,25 @@ export interface ValidateE911AddressRequest {
   Country: string | redacted.Redacted<string>;
   PostalCode: string | redacted.Redacted<string>;
 }
-export const ValidateE911AddressRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      AwsAccountId: S.String,
-      StreetNumber: SensitiveString,
-      StreetInfo: SensitiveString,
-      City: SensitiveString,
-      State: SensitiveString,
-      Country: SensitiveString,
-      PostalCode: SensitiveString,
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/emergency-calling/address" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ValidateE911AddressRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AwsAccountId: S.String,
+    StreetNumber: SensitiveString,
+    StreetInfo: SensitiveString,
+    City: SensitiveString,
+    State: SensitiveString,
+    Country: SensitiveString,
+    PostalCode: SensitiveString,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/emergency-calling/address" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ValidateE911AddressRequest",
 }) as any as S.Schema<ValidateE911AddressRequest>;
@@ -4341,7 +4214,7 @@ export interface Address {
   postalCodePlus4?: string | redacted.Redacted<string>;
   country?: string | redacted.Redacted<string>;
 }
-export const Address = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Address = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     streetName: S.optional(SensitiveString),
     streetSuffix: S.optional(SensitiveString),
@@ -4364,7 +4237,7 @@ export interface CandidateAddress {
   postalCodePlus4?: string | redacted.Redacted<string>;
   country?: string | redacted.Redacted<string>;
 }
-export const CandidateAddress = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CandidateAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     streetInfo: S.optional(SensitiveString),
     streetNumber: S.optional(SensitiveString),
@@ -4378,7 +4251,7 @@ export const CandidateAddress = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "CandidateAddress",
 }) as any as S.Schema<CandidateAddress>;
 export type CandidateAddressList = CandidateAddress[];
-export const CandidateAddressList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const CandidateAddressList = /*@__PURE__*/ S.Array(
   CandidateAddress.pipe(T.XmlName("CandidateAddress")).annotate({
     identifier: "CandidateAddress",
   }),
@@ -4389,17 +4262,16 @@ export interface ValidateE911AddressResponse {
   Address?: Address;
   CandidateAddressList?: CandidateAddress[];
 }
-export const ValidateE911AddressResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ValidationResult: S.optional(S.Number),
-      AddressExternalId: S.optional(S.String),
-      Address: S.optional(Address),
-      CandidateAddressList: S.optional(CandidateAddressList),
-    }),
-  ).annotate({
-    identifier: "ValidateE911AddressResponse",
-  }) as any as S.Schema<ValidateE911AddressResponse>;
+export const ValidateE911AddressResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ValidationResult: S.optional(S.Number),
+    AddressExternalId: S.optional(S.String),
+    Address: S.optional(Address),
+    CandidateAddressList: S.optional(CandidateAddressList),
+  }),
+).annotate({
+  identifier: "ValidateE911AddressResponse",
+}) as any as S.Schema<ValidateE911AddressResponse>;
 
 //# Errors
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(

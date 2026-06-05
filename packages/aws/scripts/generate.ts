@@ -1,29 +1,28 @@
 import { BunRuntime, BunServices } from "@effect/platform-bun";
 import dedent from "dedent";
 import {
-  Console,
-  Data,
-  Deferred,
-  Effect,
-  Match,
-  MutableHashMap,
-  Option,
-  Ref,
-  Schema as S,
-  Context,
+    Console,
+    Context,
+    Data,
+    Deferred,
+    Effect,
+    Match,
+    MutableHashMap,
+    Option,
+    Ref,
+    Schema as S,
 } from "effect";
 import * as FileSystem from "effect/FileSystem";
 import * as Path from "effect/Path";
-import * as ChildProcess from "effect/unstable/process/ChildProcess";
-import { loadServiceSpecPatch, type ServiceSpec } from "./spec-schema.ts";
 import type { RuleSetObject } from "./compile-rules.ts";
 import { generateRuleSetCode } from "./compile-rules.ts";
 import {
-  GenericShape,
-  ServiceShape,
-  SmithyModel,
-  type ShapeTypeMap,
+    GenericShape,
+    ServiceShape,
+    SmithyModel,
+    type ShapeTypeMap,
 } from "./model-schema.ts";
+import { loadServiceSpecPatch, type ServiceSpec } from "./spec-schema.ts";
 //todo(pear): swap out for effect platform path
 import path from "pathe";
 
@@ -128,7 +127,7 @@ class UnableToTransformShapeToSchema extends Data.TaggedError(
 const annotatePureExportConst = (definition: string) =>
   definition.replace(
     /^export const ([^=]+?)\s*=\s*/m,
-    "export const $1 = /*@__PURE__*/ /*#__PURE__*/ ",
+    "export const $1 = /*@__PURE__*/ ",
   );
 
 // =============================================================================

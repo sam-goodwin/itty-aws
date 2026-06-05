@@ -108,22 +108,21 @@ export interface GetRoleCredentialsRequest {
   accountId: string;
   accessToken: string | redacted.Redacted<string>;
 }
-export const GetRoleCredentialsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      roleName: S.String.pipe(T.HttpQuery("role_name")),
-      accountId: S.String.pipe(T.HttpQuery("account_id")),
-      accessToken: SensitiveString.pipe(T.HttpHeader("x-amz-sso_bearer_token")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/federation/credentials" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetRoleCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    roleName: S.String.pipe(T.HttpQuery("role_name")),
+    accountId: S.String.pipe(T.HttpQuery("account_id")),
+    accessToken: SensitiveString.pipe(T.HttpHeader("x-amz-sso_bearer_token")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/federation/credentials" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetRoleCredentialsRequest",
 }) as any as S.Schema<GetRoleCredentialsRequest>;
@@ -133,7 +132,7 @@ export interface RoleCredentials {
   sessionToken?: string | redacted.Redacted<string>;
   expiration?: number;
 }
-export const RoleCredentials = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RoleCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessKeyId: S.optional(S.String),
     secretAccessKey: S.optional(SensitiveString),
@@ -146,8 +145,8 @@ export const RoleCredentials = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetRoleCredentialsResponse {
   roleCredentials?: RoleCredentials;
 }
-export const GetRoleCredentialsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ roleCredentials: S.optional(RoleCredentials) }),
+export const GetRoleCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ roleCredentials: S.optional(RoleCredentials) }),
 ).annotate({
   identifier: "GetRoleCredentialsResponse",
 }) as any as S.Schema<GetRoleCredentialsResponse>;
@@ -157,23 +156,22 @@ export interface ListAccountRolesRequest {
   accessToken: string | redacted.Redacted<string>;
   accountId: string;
 }
-export const ListAccountRolesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("next_token")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("max_result")),
-      accessToken: SensitiveString.pipe(T.HttpHeader("x-amz-sso_bearer_token")),
-      accountId: S.String.pipe(T.HttpQuery("account_id")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/assignment/roles" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListAccountRolesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("next_token")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("max_result")),
+    accessToken: SensitiveString.pipe(T.HttpHeader("x-amz-sso_bearer_token")),
+    accountId: S.String.pipe(T.HttpQuery("account_id")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/assignment/roles" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListAccountRolesRequest",
 }) as any as S.Schema<ListAccountRolesRequest>;
@@ -181,21 +179,20 @@ export interface RoleInfo {
   roleName?: string;
   accountId?: string;
 }
-export const RoleInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RoleInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ roleName: S.optional(S.String), accountId: S.optional(S.String) }),
 ).annotate({ identifier: "RoleInfo" }) as any as S.Schema<RoleInfo>;
 export type RoleListType = RoleInfo[];
-export const RoleListType = /*@__PURE__*/ /*#__PURE__*/ S.Array(RoleInfo);
+export const RoleListType = /*@__PURE__*/ S.Array(RoleInfo);
 export interface ListAccountRolesResponse {
   nextToken?: string;
   roleList?: RoleInfo[];
 }
-export const ListAccountRolesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextToken: S.optional(S.String),
-      roleList: S.optional(RoleListType),
-    }),
+export const ListAccountRolesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String),
+    roleList: S.optional(RoleListType),
+  }),
 ).annotate({
   identifier: "ListAccountRolesResponse",
 }) as any as S.Schema<ListAccountRolesResponse>;
@@ -204,7 +201,7 @@ export interface ListAccountsRequest {
   maxResults?: number;
   accessToken: string | redacted.Redacted<string>;
 }
-export const ListAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("next_token")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("max_result")),
@@ -227,7 +224,7 @@ export interface AccountInfo {
   accountName?: string;
   emailAddress?: string;
 }
-export const AccountInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AccountInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.optional(S.String),
     accountName: S.optional(S.String),
@@ -235,12 +232,12 @@ export const AccountInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AccountInfo" }) as any as S.Schema<AccountInfo>;
 export type AccountListType = AccountInfo[];
-export const AccountListType = /*@__PURE__*/ /*#__PURE__*/ S.Array(AccountInfo);
+export const AccountListType = /*@__PURE__*/ S.Array(AccountInfo);
 export interface ListAccountsResponse {
   nextToken?: string;
   accountList?: AccountInfo[];
 }
-export const ListAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListAccountsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String),
     accountList: S.optional(AccountListType),
@@ -251,7 +248,7 @@ export const ListAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface LogoutRequest {
   accessToken: string | redacted.Redacted<string>;
 }
-export const LogoutRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const LogoutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessToken: SensitiveString.pipe(T.HttpHeader("x-amz-sso_bearer_token")),
   }).pipe(
@@ -266,7 +263,7 @@ export const LogoutRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "LogoutRequest" }) as any as S.Schema<LogoutRequest>;
 export interface LogoutResponse {}
-export const LogoutResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const LogoutResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({ identifier: "LogoutResponse" }) as any as S.Schema<LogoutResponse>;
 

@@ -81,11 +81,11 @@ export interface Amendment {
   FieldPath: string;
   NewValue: string;
 }
-export const Amendment = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Amendment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ FieldPath: S.String, NewValue: S.String }),
 ).annotate({ identifier: "Amendment" }) as any as S.Schema<Amendment>;
 export type AmendmentList = Amendment[];
-export const AmendmentList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Amendment);
+export const AmendmentList = /*@__PURE__*/ S.Array(Amendment);
 export interface AmendBenefitApplicationInput {
   Catalog: string;
   ClientToken: string;
@@ -94,33 +94,33 @@ export interface AmendBenefitApplicationInput {
   AmendmentReason: string;
   Amendments: Amendment[];
 }
-export const AmendBenefitApplicationInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Catalog: S.String,
-      ClientToken: S.String,
-      Revision: S.String,
-      Identifier: S.String,
-      AmendmentReason: S.String,
-      Amendments: AmendmentList,
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/AmendBenefitApplication" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const AmendBenefitApplicationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Catalog: S.String,
+    ClientToken: S.String,
+    Revision: S.String,
+    Identifier: S.String,
+    AmendmentReason: S.String,
+    Amendments: AmendmentList,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/AmendBenefitApplication" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "AmendBenefitApplicationInput",
-  }) as any as S.Schema<AmendBenefitApplicationInput>;
+  ),
+).annotate({
+  identifier: "AmendBenefitApplicationInput",
+}) as any as S.Schema<AmendBenefitApplicationInput>;
 export interface AmendBenefitApplicationOutput {}
-export const AmendBenefitApplicationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AmendBenefitApplicationOutput",
-  }) as any as S.Schema<AmendBenefitApplicationOutput>;
+export const AmendBenefitApplicationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AmendBenefitApplicationOutput",
+}) as any as S.Schema<AmendBenefitApplicationOutput>;
 export type ValidationExceptionReason =
   | "unknownOperation"
   | "cannotParse"
@@ -128,7 +128,7 @@ export type ValidationExceptionReason =
   | "other"
   | "BUSINESS_VALIDATION_FAILED"
   | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 export type ValidationExceptionErrorCode =
   | "REQUIRED_FIELD_MISSING"
   | "INVALID_ENUM_VALUE"
@@ -141,25 +141,23 @@ export type ValidationExceptionErrorCode =
   | "VALUE_OUT_OF_RANGE"
   | "ACTION_NOT_PERMITTED"
   | (string & {});
-export const ValidationExceptionErrorCode =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ValidationExceptionErrorCode = /*@__PURE__*/ S.String;
 export interface ValidationExceptionField {
   Name: string;
   Message: string;
   Code?: ValidationExceptionErrorCode;
 }
-export const ValidationExceptionField = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Name: S.String,
-      Message: S.String,
-      Code: S.optional(ValidationExceptionErrorCode),
-    }),
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String,
+    Message: S.String,
+    Code: S.optional(ValidationExceptionErrorCode),
+  }),
 ).annotate({
   identifier: "ValidationExceptionField",
 }) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
   ValidationExceptionField,
 );
 export interface AssociateBenefitApplicationResourceInput {
@@ -167,8 +165,8 @@ export interface AssociateBenefitApplicationResourceInput {
   BenefitApplicationIdentifier: string;
   ResourceArn: string;
 }
-export const AssociateBenefitApplicationResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AssociateBenefitApplicationResourceInput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Catalog: S.String,
       BenefitApplicationIdentifier: S.String,
@@ -183,16 +181,16 @@ export const AssociateBenefitApplicationResourceInput =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "AssociateBenefitApplicationResourceInput",
-  }) as any as S.Schema<AssociateBenefitApplicationResourceInput>;
+).annotate({
+  identifier: "AssociateBenefitApplicationResourceInput",
+}) as any as S.Schema<AssociateBenefitApplicationResourceInput>;
 export interface AssociateBenefitApplicationResourceOutput {
   Id?: string;
   Arn?: string;
   Revision?: string;
 }
 export const AssociateBenefitApplicationResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Id: S.optional(S.String),
       Arn: S.optional(S.String),
@@ -207,47 +205,46 @@ export interface CancelBenefitApplicationInput {
   Identifier: string;
   Reason?: string;
 }
-export const CancelBenefitApplicationInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Catalog: S.String,
-      ClientToken: S.String,
-      Identifier: S.String,
-      Reason: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/CancelBenefitApplication" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CancelBenefitApplicationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Catalog: S.String,
+    ClientToken: S.String,
+    Identifier: S.String,
+    Reason: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/CancelBenefitApplication" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CancelBenefitApplicationInput",
-  }) as any as S.Schema<CancelBenefitApplicationInput>;
+  ),
+).annotate({
+  identifier: "CancelBenefitApplicationInput",
+}) as any as S.Schema<CancelBenefitApplicationInput>;
 export interface CancelBenefitApplicationOutput {}
-export const CancelBenefitApplicationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "CancelBenefitApplicationOutput",
-  }) as any as S.Schema<CancelBenefitApplicationOutput>;
+export const CancelBenefitApplicationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "CancelBenefitApplicationOutput",
+}) as any as S.Schema<CancelBenefitApplicationOutput>;
 export type FulfillmentType = "CREDITS" | "CASH" | "ACCESS" | (string & {});
-export const FulfillmentType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const FulfillmentType = /*@__PURE__*/ S.String;
 export type FulfillmentTypes = FulfillmentType[];
-export const FulfillmentTypes =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(FulfillmentType);
+export const FulfillmentTypes = /*@__PURE__*/ S.Array(FulfillmentType);
 export interface Tag {
   Key: string;
   Value: string;
 }
-export const Tag = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Tag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Key: S.String, Value: S.String }),
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type Tags = Tag[];
-export const Tags = /*@__PURE__*/ /*#__PURE__*/ S.Array(Tag);
+export const Tags = /*@__PURE__*/ S.Array(Tag);
 export type Arns = string[];
-export const Arns = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const Arns = /*@__PURE__*/ S.Array(S.String);
 export interface Contact {
   Email?: string | redacted.Redacted<string>;
   FirstName?: string | redacted.Redacted<string>;
@@ -255,7 +252,7 @@ export interface Contact {
   BusinessTitle?: string;
   Phone?: string | redacted.Redacted<string>;
 }
-export const Contact = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Contact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Email: S.optional(SensitiveString),
     FirstName: S.optional(SensitiveString),
@@ -265,16 +262,16 @@ export const Contact = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Contact" }) as any as S.Schema<Contact>;
 export type Contacts = Contact[];
-export const Contacts = /*@__PURE__*/ /*#__PURE__*/ S.Array(Contact);
+export const Contacts = /*@__PURE__*/ S.Array(Contact);
 export interface FileInput {
   FileURI: string;
   BusinessUseCase?: string;
 }
-export const FileInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FileInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ FileURI: S.String, BusinessUseCase: S.optional(S.String) }),
 ).annotate({ identifier: "FileInput" }) as any as S.Schema<FileInput>;
 export type FileInputDetails = FileInput[];
-export const FileInputDetails = /*@__PURE__*/ /*#__PURE__*/ S.Array(FileInput);
+export const FileInputDetails = /*@__PURE__*/ S.Array(FileInput);
 export interface CreateBenefitApplicationInput {
   Catalog: string;
   ClientToken: string;
@@ -288,55 +285,53 @@ export interface CreateBenefitApplicationInput {
   PartnerContacts?: Contact[];
   FileDetails?: FileInput[];
 }
-export const CreateBenefitApplicationInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Catalog: S.String,
-      ClientToken: S.String,
-      Name: S.optional(S.String),
-      Description: S.optional(S.String),
-      BenefitIdentifier: S.String,
-      FulfillmentTypes: S.optional(FulfillmentTypes),
-      BenefitApplicationDetails: S.optional(S.Any),
-      Tags: S.optional(Tags),
-      AssociatedResources: S.optional(Arns),
-      PartnerContacts: S.optional(Contacts),
-      FileDetails: S.optional(FileInputDetails),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/CreateBenefitApplication" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateBenefitApplicationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Catalog: S.String,
+    ClientToken: S.String,
+    Name: S.optional(S.String),
+    Description: S.optional(S.String),
+    BenefitIdentifier: S.String,
+    FulfillmentTypes: S.optional(FulfillmentTypes),
+    BenefitApplicationDetails: S.optional(S.Any),
+    Tags: S.optional(Tags),
+    AssociatedResources: S.optional(Arns),
+    PartnerContacts: S.optional(Contacts),
+    FileDetails: S.optional(FileInputDetails),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/CreateBenefitApplication" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateBenefitApplicationInput",
-  }) as any as S.Schema<CreateBenefitApplicationInput>;
+  ),
+).annotate({
+  identifier: "CreateBenefitApplicationInput",
+}) as any as S.Schema<CreateBenefitApplicationInput>;
 export interface CreateBenefitApplicationOutput {
   Id?: string;
   Arn?: string;
   Revision?: string;
 }
-export const CreateBenefitApplicationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Id: S.optional(S.String),
-      Arn: S.optional(S.String),
-      Revision: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CreateBenefitApplicationOutput",
-  }) as any as S.Schema<CreateBenefitApplicationOutput>;
+export const CreateBenefitApplicationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.optional(S.String),
+    Arn: S.optional(S.String),
+    Revision: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateBenefitApplicationOutput",
+}) as any as S.Schema<CreateBenefitApplicationOutput>;
 export interface DisassociateBenefitApplicationResourceInput {
   Catalog: string;
   BenefitApplicationIdentifier: string;
   ResourceArn: string;
 }
 export const DisassociateBenefitApplicationResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Catalog: S.String,
       BenefitApplicationIdentifier: S.String,
@@ -363,7 +358,7 @@ export interface DisassociateBenefitApplicationResourceOutput {
   Revision?: string;
 }
 export const DisassociateBenefitApplicationResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Id: S.optional(S.String),
       Arn: S.optional(S.String),
@@ -376,7 +371,7 @@ export interface GetBenefitInput {
   Catalog: string;
   Identifier: string;
 }
-export const GetBenefitInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetBenefitInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Catalog: S.String, Identifier: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/GetBenefit" }),
@@ -391,9 +386,9 @@ export const GetBenefitInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "GetBenefitInput",
 }) as any as S.Schema<GetBenefitInput>;
 export type Programs = string[];
-export const Programs = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const Programs = /*@__PURE__*/ S.Array(S.String);
 export type BenefitStatus = "ACTIVE" | "INACTIVE" | (string & {});
-export const BenefitStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const BenefitStatus = /*@__PURE__*/ S.String;
 export interface GetBenefitOutput {
   Id?: string;
   Catalog?: string;
@@ -405,7 +400,7 @@ export interface GetBenefitOutput {
   BenefitRequestSchema?: any;
   Status?: BenefitStatus;
 }
-export const GetBenefitOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetBenefitOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.optional(S.String),
     Catalog: S.optional(S.String),
@@ -424,18 +419,17 @@ export interface GetBenefitAllocationInput {
   Catalog: string;
   Identifier: string;
 }
-export const GetBenefitAllocationInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ Catalog: S.String, Identifier: S.String }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/GetBenefitAllocation" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetBenefitAllocationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Catalog: S.String, Identifier: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/GetBenefitAllocation" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetBenefitAllocationInput",
 }) as any as S.Schema<GetBenefitAllocationInput>;
@@ -444,9 +438,9 @@ export type BenefitAllocationStatus =
   | "INACTIVE"
   | "FULFILLED"
   | (string & {});
-export const BenefitAllocationStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const BenefitAllocationStatus = /*@__PURE__*/ S.String;
 export type BenefitIdentifiers = string[];
-export const BenefitIdentifiers = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const BenefitIdentifiers = /*@__PURE__*/ S.Array(S.String);
 export type CurrencyCode =
   | "AED"
   | "AMD"
@@ -544,12 +538,12 @@ export type CurrencyCode =
   | "XPF"
   | "ZAR"
   | (string & {});
-export const CurrencyCode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const CurrencyCode = /*@__PURE__*/ S.String;
 export interface MonetaryValue {
   Amount: string;
   CurrencyCode: CurrencyCode;
 }
-export const MonetaryValue = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MonetaryValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Amount: S.String, CurrencyCode: CurrencyCode }),
 ).annotate({ identifier: "MonetaryValue" }) as any as S.Schema<MonetaryValue>;
 export interface IssuanceDetail {
@@ -557,7 +551,7 @@ export interface IssuanceDetail {
   IssuanceAmount?: MonetaryValue;
   IssuedAt?: Date;
 }
-export const IssuanceDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const IssuanceDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IssuanceId: S.optional(S.String),
     IssuanceAmount: S.optional(MonetaryValue),
@@ -568,7 +562,7 @@ export interface DisbursementDetails {
   DisbursedAmount?: MonetaryValue;
   IssuanceDetails?: IssuanceDetail;
 }
-export const DisbursementDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DisbursementDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DisbursedAmount: S.optional(MonetaryValue),
     IssuanceDetails: S.optional(IssuanceDetail),
@@ -582,7 +576,7 @@ export interface ConsumableDetails {
   UtilizedAmount?: MonetaryValue;
   IssuanceDetails?: IssuanceDetail;
 }
-export const ConsumableDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ConsumableDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AllocatedAmount: S.optional(MonetaryValue),
     RemainingAmount: S.optional(MonetaryValue),
@@ -600,7 +594,7 @@ export interface CreditCode {
   IssuedAt: Date;
   ExpiresAt: Date;
 }
-export const CreditCode = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreditCode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AwsAccountId: S.String,
     Value: MonetaryValue,
@@ -611,13 +605,13 @@ export const CreditCode = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CreditCode" }) as any as S.Schema<CreditCode>;
 export type CreditCodes = CreditCode[];
-export const CreditCodes = /*@__PURE__*/ /*#__PURE__*/ S.Array(CreditCode);
+export const CreditCodes = /*@__PURE__*/ S.Array(CreditCode);
 export interface CreditDetails {
   AllocatedAmount: MonetaryValue;
   IssuedAmount: MonetaryValue;
   Codes: CreditCode[];
 }
-export const CreditDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreditDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AllocatedAmount: MonetaryValue,
     IssuedAmount: MonetaryValue,
@@ -627,7 +621,7 @@ export const CreditDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface AccessDetails {
   Description?: string;
 }
-export const AccessDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AccessDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Description: S.optional(S.String) }),
 ).annotate({ identifier: "AccessDetails" }) as any as S.Schema<AccessDetails>;
 export type FulfillmentDetails =
@@ -655,7 +649,7 @@ export type FulfillmentDetails =
       CreditDetails?: never;
       AccessDetails: AccessDetails;
     };
-export const FulfillmentDetails = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const FulfillmentDetails = /*@__PURE__*/ S.Union([
   S.Struct({ DisbursementDetails: DisbursementDetails }),
   S.Struct({ ConsumableDetails: ConsumableDetails }),
   S.Struct({ CreditDetails: CreditDetails }),
@@ -679,34 +673,31 @@ export interface GetBenefitAllocationOutput {
   StartsAt?: Date;
   ExpiresAt?: Date;
 }
-export const GetBenefitAllocationOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Id: S.optional(S.String),
-      Catalog: S.optional(S.String),
-      Arn: S.optional(S.String),
-      Name: S.optional(S.String),
-      Description: S.optional(S.String),
-      Status: S.optional(BenefitAllocationStatus),
-      StatusReason: S.optional(S.String),
-      BenefitApplicationId: S.optional(S.String),
-      BenefitId: S.optional(S.String),
-      FulfillmentType: S.optional(FulfillmentType),
-      ApplicableBenefitIds: S.optional(BenefitIdentifiers),
-      FulfillmentDetail: S.optional(FulfillmentDetails),
-      CreatedAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      UpdatedAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      StartsAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      ExpiresAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-    }),
+export const GetBenefitAllocationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.optional(S.String),
+    Catalog: S.optional(S.String),
+    Arn: S.optional(S.String),
+    Name: S.optional(S.String),
+    Description: S.optional(S.String),
+    Status: S.optional(BenefitAllocationStatus),
+    StatusReason: S.optional(S.String),
+    BenefitApplicationId: S.optional(S.String),
+    BenefitId: S.optional(S.String),
+    FulfillmentType: S.optional(FulfillmentType),
+    ApplicableBenefitIds: S.optional(BenefitIdentifiers),
+    FulfillmentDetail: S.optional(FulfillmentDetails),
+    CreatedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    UpdatedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    StartsAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+    ExpiresAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
 ).annotate({
   identifier: "GetBenefitAllocationOutput",
 }) as any as S.Schema<GetBenefitAllocationOutput>;
@@ -714,18 +705,17 @@ export interface GetBenefitApplicationInput {
   Catalog: string;
   Identifier: string;
 }
-export const GetBenefitApplicationInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ Catalog: S.String, Identifier: S.String }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/GetBenefitApplication" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetBenefitApplicationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Catalog: S.String, Identifier: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/GetBenefitApplication" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetBenefitApplicationInput",
 }) as any as S.Schema<GetBenefitApplicationInput>;
@@ -737,9 +727,9 @@ export type BenefitApplicationStatus =
   | "REJECTED"
   | "CANCELED"
   | (string & {});
-export const BenefitApplicationStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const BenefitApplicationStatus = /*@__PURE__*/ S.String;
 export type StatusReasonCodes = string[];
-export const StatusReasonCodes = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const StatusReasonCodes = /*@__PURE__*/ S.Array(S.String);
 export type FileType =
   | "application/msword"
   | "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
@@ -751,7 +741,7 @@ export type FileType =
   | "image/svg+xml"
   | "text/csv"
   | (string & {});
-export const FileType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const FileType = /*@__PURE__*/ S.String;
 export interface FileDetail {
   FileURI: string;
   BusinessUseCase?: string;
@@ -762,7 +752,7 @@ export interface FileDetail {
   CreatedBy?: string;
   CreatedAt?: Date;
 }
-export const FileDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FileDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FileURI: S.String,
     BusinessUseCase: S.optional(S.String),
@@ -777,7 +767,7 @@ export const FileDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FileDetail" }) as any as S.Schema<FileDetail>;
 export type FileDetails = FileDetail[];
-export const FileDetails = /*@__PURE__*/ /*#__PURE__*/ S.Array(FileDetail);
+export const FileDetails = /*@__PURE__*/ S.Array(FileDetail);
 export interface GetBenefitApplicationOutput {
   Id?: string;
   Arn?: string;
@@ -800,42 +790,40 @@ export interface GetBenefitApplicationOutput {
   PartnerContacts?: Contact[];
   FileDetails?: FileDetail[];
 }
-export const GetBenefitApplicationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Id: S.optional(S.String),
-      Arn: S.optional(S.String),
-      Catalog: S.optional(S.String),
-      BenefitId: S.optional(S.String),
-      Name: S.optional(S.String),
-      Description: S.optional(S.String),
-      FulfillmentTypes: S.optional(FulfillmentTypes),
-      BenefitApplicationDetails: S.optional(S.Any),
-      Programs: S.optional(Programs),
-      Status: S.optional(BenefitApplicationStatus),
-      Stage: S.optional(S.String),
-      StatusReason: S.optional(S.String),
-      StatusReasonCode: S.optional(S.String),
-      StatusReasonCodes: S.optional(StatusReasonCodes),
-      CreatedAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      UpdatedAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      Revision: S.optional(S.String),
-      AssociatedResources: S.optional(Arns),
-      PartnerContacts: S.optional(Contacts),
-      FileDetails: S.optional(FileDetails),
-    }),
-  ).annotate({
-    identifier: "GetBenefitApplicationOutput",
-  }) as any as S.Schema<GetBenefitApplicationOutput>;
+export const GetBenefitApplicationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.optional(S.String),
+    Arn: S.optional(S.String),
+    Catalog: S.optional(S.String),
+    BenefitId: S.optional(S.String),
+    Name: S.optional(S.String),
+    Description: S.optional(S.String),
+    FulfillmentTypes: S.optional(FulfillmentTypes),
+    BenefitApplicationDetails: S.optional(S.Any),
+    Programs: S.optional(Programs),
+    Status: S.optional(BenefitApplicationStatus),
+    Stage: S.optional(S.String),
+    StatusReason: S.optional(S.String),
+    StatusReasonCode: S.optional(S.String),
+    StatusReasonCodes: S.optional(StatusReasonCodes),
+    CreatedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    UpdatedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    Revision: S.optional(S.String),
+    AssociatedResources: S.optional(Arns),
+    PartnerContacts: S.optional(Contacts),
+    FileDetails: S.optional(FileDetails),
+  }),
+).annotate({
+  identifier: "GetBenefitApplicationOutput",
+}) as any as S.Schema<GetBenefitApplicationOutput>;
 export type BenefitApplicationIdentifierList = string[];
-export const BenefitApplicationIdentifierList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const BenefitApplicationIdentifierList = /*@__PURE__*/ S.Array(S.String);
 export type BenefitAllocationStatusList = BenefitAllocationStatus[];
-export const BenefitAllocationStatusList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const BenefitAllocationStatusList = /*@__PURE__*/ S.Array(
   BenefitAllocationStatus,
 );
 export interface ListBenefitAllocationsInput {
@@ -847,33 +835,30 @@ export interface ListBenefitAllocationsInput {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListBenefitAllocationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Catalog: S.String,
-      FulfillmentTypes: S.optional(FulfillmentTypes),
-      BenefitIdentifiers: S.optional(BenefitIdentifiers),
-      BenefitApplicationIdentifiers: S.optional(
-        BenefitApplicationIdentifierList,
-      ),
-      Status: S.optional(BenefitAllocationStatusList),
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/ListBenefitAllocations" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListBenefitAllocationsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Catalog: S.String,
+    FulfillmentTypes: S.optional(FulfillmentTypes),
+    BenefitIdentifiers: S.optional(BenefitIdentifiers),
+    BenefitApplicationIdentifiers: S.optional(BenefitApplicationIdentifierList),
+    Status: S.optional(BenefitAllocationStatusList),
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/ListBenefitAllocations" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListBenefitAllocationsInput",
-  }) as any as S.Schema<ListBenefitAllocationsInput>;
+  ),
+).annotate({
+  identifier: "ListBenefitAllocationsInput",
+}) as any as S.Schema<ListBenefitAllocationsInput>;
 export type BenefitIds = string[];
-export const BenefitIds = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const BenefitIds = /*@__PURE__*/ S.Array(S.String);
 export interface BenefitAllocationSummary {
   Id?: string;
   Catalog?: string;
@@ -888,60 +873,56 @@ export interface BenefitAllocationSummary {
   ExpiresAt?: Date;
   ApplicableBenefitIds?: string[];
 }
-export const BenefitAllocationSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Id: S.optional(S.String),
-      Catalog: S.optional(S.String),
-      Arn: S.optional(S.String),
-      Status: S.optional(BenefitAllocationStatus),
-      StatusReason: S.optional(S.String),
-      Name: S.optional(S.String),
-      BenefitId: S.optional(S.String),
-      BenefitApplicationId: S.optional(S.String),
-      FulfillmentTypes: S.optional(FulfillmentTypes),
-      CreatedAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      ExpiresAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      ApplicableBenefitIds: S.optional(BenefitIds),
-    }),
+export const BenefitAllocationSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.optional(S.String),
+    Catalog: S.optional(S.String),
+    Arn: S.optional(S.String),
+    Status: S.optional(BenefitAllocationStatus),
+    StatusReason: S.optional(S.String),
+    Name: S.optional(S.String),
+    BenefitId: S.optional(S.String),
+    BenefitApplicationId: S.optional(S.String),
+    FulfillmentTypes: S.optional(FulfillmentTypes),
+    CreatedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    ExpiresAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    ApplicableBenefitIds: S.optional(BenefitIds),
+  }),
 ).annotate({
   identifier: "BenefitAllocationSummary",
 }) as any as S.Schema<BenefitAllocationSummary>;
 export type BenefitAllocationSummaries = BenefitAllocationSummary[];
-export const BenefitAllocationSummaries = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const BenefitAllocationSummaries = /*@__PURE__*/ S.Array(
   BenefitAllocationSummary,
 );
 export interface ListBenefitAllocationsOutput {
   BenefitAllocationSummaries?: BenefitAllocationSummary[];
   NextToken?: string;
 }
-export const ListBenefitAllocationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      BenefitAllocationSummaries: S.optional(BenefitAllocationSummaries),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListBenefitAllocationsOutput",
-  }) as any as S.Schema<ListBenefitAllocationsOutput>;
+export const ListBenefitAllocationsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    BenefitAllocationSummaries: S.optional(BenefitAllocationSummaries),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListBenefitAllocationsOutput",
+}) as any as S.Schema<ListBenefitAllocationsOutput>;
 export type Statuses = BenefitApplicationStatus[];
-export const Statuses = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  BenefitApplicationStatus,
-);
+export const Statuses = /*@__PURE__*/ S.Array(BenefitApplicationStatus);
 export type Stages = string[];
-export const Stages = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const Stages = /*@__PURE__*/ S.Array(S.String);
 export type ResourceType = "OPPORTUNITY" | "BENEFIT_ALLOCATION" | (string & {});
-export const ResourceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ResourceType = /*@__PURE__*/ S.String;
 export interface AssociatedResource {
   ResourceType?: ResourceType;
   ResourceIdentifier?: string;
   ResourceArn?: string;
 }
-export const AssociatedResource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AssociatedResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceType: S.optional(ResourceType),
     ResourceIdentifier: S.optional(S.String),
@@ -951,8 +932,7 @@ export const AssociatedResource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "AssociatedResource",
 }) as any as S.Schema<AssociatedResource>;
 export type AssociatedResources = AssociatedResource[];
-export const AssociatedResources =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(AssociatedResource);
+export const AssociatedResources = /*@__PURE__*/ S.Array(AssociatedResource);
 export interface ListBenefitApplicationsInput {
   Catalog: string;
   Programs?: string[];
@@ -965,34 +945,33 @@ export interface ListBenefitApplicationsInput {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListBenefitApplicationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Catalog: S.String,
-      Programs: S.optional(Programs),
-      FulfillmentTypes: S.optional(FulfillmentTypes),
-      BenefitIdentifiers: S.optional(BenefitIdentifiers),
-      Status: S.optional(Statuses),
-      Stages: S.optional(Stages),
-      AssociatedResources: S.optional(AssociatedResources),
-      AssociatedResourceArns: S.optional(Arns),
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/ListBenefitApplications" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListBenefitApplicationsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Catalog: S.String,
+    Programs: S.optional(Programs),
+    FulfillmentTypes: S.optional(FulfillmentTypes),
+    BenefitIdentifiers: S.optional(BenefitIdentifiers),
+    Status: S.optional(Statuses),
+    Stages: S.optional(Stages),
+    AssociatedResources: S.optional(AssociatedResources),
+    AssociatedResourceArns: S.optional(Arns),
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/ListBenefitApplications" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListBenefitApplicationsInput",
-  }) as any as S.Schema<ListBenefitApplicationsInput>;
+  ),
+).annotate({
+  identifier: "ListBenefitApplicationsInput",
+}) as any as S.Schema<ListBenefitApplicationsInput>;
 export type Attributes = { [key: string]: string | undefined };
-export const Attributes = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const Attributes = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -1011,50 +990,47 @@ export interface BenefitApplicationSummary {
   BenefitApplicationDetails?: { [key: string]: string | undefined };
   AssociatedResources?: string[];
 }
-export const BenefitApplicationSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Catalog: S.optional(S.String),
-      Name: S.optional(S.String),
-      Id: S.optional(S.String),
-      Arn: S.optional(S.String),
-      BenefitId: S.optional(S.String),
-      Programs: S.optional(Programs),
-      FulfillmentTypes: S.optional(FulfillmentTypes),
-      Status: S.optional(BenefitApplicationStatus),
-      Stage: S.optional(S.String),
-      CreatedAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      UpdatedAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      BenefitApplicationDetails: S.optional(Attributes),
-      AssociatedResources: S.optional(Arns),
-    }),
+export const BenefitApplicationSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Catalog: S.optional(S.String),
+    Name: S.optional(S.String),
+    Id: S.optional(S.String),
+    Arn: S.optional(S.String),
+    BenefitId: S.optional(S.String),
+    Programs: S.optional(Programs),
+    FulfillmentTypes: S.optional(FulfillmentTypes),
+    Status: S.optional(BenefitApplicationStatus),
+    Stage: S.optional(S.String),
+    CreatedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    UpdatedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    BenefitApplicationDetails: S.optional(Attributes),
+    AssociatedResources: S.optional(Arns),
+  }),
 ).annotate({
   identifier: "BenefitApplicationSummary",
 }) as any as S.Schema<BenefitApplicationSummary>;
 export type BenefitApplicationSummaries = BenefitApplicationSummary[];
-export const BenefitApplicationSummaries = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const BenefitApplicationSummaries = /*@__PURE__*/ S.Array(
   BenefitApplicationSummary,
 );
 export interface ListBenefitApplicationsOutput {
   BenefitApplicationSummaries?: BenefitApplicationSummary[];
   NextToken?: string;
 }
-export const ListBenefitApplicationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      BenefitApplicationSummaries: S.optional(BenefitApplicationSummaries),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListBenefitApplicationsOutput",
-  }) as any as S.Schema<ListBenefitApplicationsOutput>;
+export const ListBenefitApplicationsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    BenefitApplicationSummaries: S.optional(BenefitApplicationSummaries),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListBenefitApplicationsOutput",
+}) as any as S.Schema<ListBenefitApplicationsOutput>;
 export type BenefitStatuses = BenefitStatus[];
-export const BenefitStatuses =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(BenefitStatus);
+export const BenefitStatuses = /*@__PURE__*/ S.Array(BenefitStatus);
 export interface ListBenefitsInput {
   Catalog: string;
   Programs?: string[];
@@ -1063,7 +1039,7 @@ export interface ListBenefitsInput {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListBenefitsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListBenefitsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Catalog: S.String,
     Programs: S.optional(Programs),
@@ -1094,7 +1070,7 @@ export interface BenefitSummary {
   FulfillmentTypes?: FulfillmentType[];
   Status?: BenefitStatus;
 }
-export const BenefitSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const BenefitSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.optional(S.String),
     Catalog: S.optional(S.String),
@@ -1107,13 +1083,12 @@ export const BenefitSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BenefitSummary" }) as any as S.Schema<BenefitSummary>;
 export type BenefitSummaries = BenefitSummary[];
-export const BenefitSummaries =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(BenefitSummary);
+export const BenefitSummaries = /*@__PURE__*/ S.Array(BenefitSummary);
 export interface ListBenefitsOutput {
   BenefitSummaries?: BenefitSummary[];
   NextToken?: string;
 }
-export const ListBenefitsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListBenefitsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     BenefitSummaries: S.optional(BenefitSummaries),
     NextToken: S.optional(S.String),
@@ -1124,90 +1099,88 @@ export const ListBenefitsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ resourceArn: S.String }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/ListTagsForResource" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceArn: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/ListTagsForResource" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: Tag[];
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ tags: S.optional(Tags) }),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: S.optional(Tags) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface RecallBenefitApplicationInput {
   Catalog: string;
   ClientToken?: string;
   Identifier: string;
   Reason: string;
 }
-export const RecallBenefitApplicationInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Catalog: S.String,
-      ClientToken: S.optional(S.String),
-      Identifier: S.String,
-      Reason: S.String,
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/RecallBenefitApplication" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const RecallBenefitApplicationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Catalog: S.String,
+    ClientToken: S.optional(S.String),
+    Identifier: S.String,
+    Reason: S.String,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/RecallBenefitApplication" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "RecallBenefitApplicationInput",
-  }) as any as S.Schema<RecallBenefitApplicationInput>;
+  ),
+).annotate({
+  identifier: "RecallBenefitApplicationInput",
+}) as any as S.Schema<RecallBenefitApplicationInput>;
 export interface RecallBenefitApplicationOutput {}
-export const RecallBenefitApplicationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "RecallBenefitApplicationOutput",
-  }) as any as S.Schema<RecallBenefitApplicationOutput>;
+export const RecallBenefitApplicationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "RecallBenefitApplicationOutput",
+}) as any as S.Schema<RecallBenefitApplicationOutput>;
 export interface SubmitBenefitApplicationInput {
   Catalog: string;
   Identifier: string;
 }
-export const SubmitBenefitApplicationInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ Catalog: S.String, Identifier: S.String }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/SubmitBenefitApplication" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const SubmitBenefitApplicationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Catalog: S.String, Identifier: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/SubmitBenefitApplication" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "SubmitBenefitApplicationInput",
-  }) as any as S.Schema<SubmitBenefitApplicationInput>;
+  ),
+).annotate({
+  identifier: "SubmitBenefitApplicationInput",
+}) as any as S.Schema<SubmitBenefitApplicationInput>;
 export interface SubmitBenefitApplicationOutput {}
-export const SubmitBenefitApplicationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "SubmitBenefitApplicationOutput",
-  }) as any as S.Schema<SubmitBenefitApplicationOutput>;
+export const SubmitBenefitApplicationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "SubmitBenefitApplicationOutput",
+}) as any as S.Schema<SubmitBenefitApplicationOutput>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: Tag[];
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String, tags: Tags }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/TagResource" }),
@@ -1222,18 +1195,18 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String, tagKeys: TagKeyList }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/UntagResource" }),
@@ -1248,7 +1221,7 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
@@ -1264,46 +1237,44 @@ export interface UpdateBenefitApplicationInput {
   PartnerContacts?: Contact[];
   FileDetails?: FileInput[];
 }
-export const UpdateBenefitApplicationInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Catalog: S.String,
-      ClientToken: S.String,
-      Name: S.optional(S.String),
-      Description: S.optional(S.String),
-      Identifier: S.String,
-      Revision: S.String,
-      BenefitApplicationDetails: S.optional(S.Any),
-      PartnerContacts: S.optional(Contacts),
-      FileDetails: S.optional(FileInputDetails),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/UpdateBenefitApplication" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateBenefitApplicationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Catalog: S.String,
+    ClientToken: S.String,
+    Name: S.optional(S.String),
+    Description: S.optional(S.String),
+    Identifier: S.String,
+    Revision: S.String,
+    BenefitApplicationDetails: S.optional(S.Any),
+    PartnerContacts: S.optional(Contacts),
+    FileDetails: S.optional(FileInputDetails),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/UpdateBenefitApplication" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateBenefitApplicationInput",
-  }) as any as S.Schema<UpdateBenefitApplicationInput>;
+  ),
+).annotate({
+  identifier: "UpdateBenefitApplicationInput",
+}) as any as S.Schema<UpdateBenefitApplicationInput>;
 export interface UpdateBenefitApplicationOutput {
   Id?: string;
   Arn?: string;
   Revision?: string;
 }
-export const UpdateBenefitApplicationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Id: S.optional(S.String),
-      Arn: S.optional(S.String),
-      Revision: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "UpdateBenefitApplicationOutput",
-  }) as any as S.Schema<UpdateBenefitApplicationOutput>;
+export const UpdateBenefitApplicationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.optional(S.String),
+    Arn: S.optional(S.String),
+    Revision: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateBenefitApplicationOutput",
+}) as any as S.Schema<UpdateBenefitApplicationOutput>;
 
 //# Errors
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(

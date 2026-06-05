@@ -97,14 +97,14 @@ export type ArtifactType =
   | "JSON"
   | "YAML"
   | (string & {});
-export const ArtifactType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ArtifactType = /*@__PURE__*/ S.String;
 export interface AddArtifactInput {
   agentSpaceId: string;
   artifactContent: Uint8Array;
   artifactType: ArtifactType;
   fileName: string;
 }
-export const AddArtifactInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AddArtifactInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agentSpaceId: S.String,
     artifactContent: T.Blob,
@@ -126,7 +126,7 @@ export const AddArtifactInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface AddArtifactOutput {
   artifactId: string;
 }
-export const AddArtifactOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AddArtifactOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ artifactId: S.String }),
 ).annotate({
   identifier: "AddArtifactOutput",
@@ -135,58 +135,57 @@ export interface ValidationExceptionField {
   path: string;
   message: string;
 }
-export const ValidationExceptionField = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ path: S.String, message: S.String }),
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ path: S.String, message: S.String }),
 ).annotate({
   identifier: "ValidationExceptionField",
 }) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
   ValidationExceptionField,
 );
 export type PentestIdList = string[];
-export const PentestIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const PentestIdList = /*@__PURE__*/ S.Array(S.String);
 export interface BatchDeletePentestsInput {
   pentestIds: string[];
   agentSpaceId: string;
 }
-export const BatchDeletePentestsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ pentestIds: PentestIdList, agentSpaceId: S.String }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/BatchDeletePentests" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const BatchDeletePentestsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ pentestIds: PentestIdList, agentSpaceId: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/BatchDeletePentests" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "BatchDeletePentestsInput",
 }) as any as S.Schema<BatchDeletePentestsInput>;
 export interface Endpoint {
   uri?: string;
 }
-export const Endpoint = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Endpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ uri: S.optional(S.String) }),
 ).annotate({ identifier: "Endpoint" }) as any as S.Schema<Endpoint>;
 export type EndpointList = Endpoint[];
-export const EndpointList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Endpoint);
+export const EndpointList = /*@__PURE__*/ S.Array(Endpoint);
 export type UriList = string[];
-export const UriList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const UriList = /*@__PURE__*/ S.Array(S.String);
 export type AuthenticationProviderType =
   | "SECRETS_MANAGER"
   | "AWS_LAMBDA"
   | "AWS_IAM_ROLE"
   | "AWS_INTERNAL"
   | (string & {});
-export const AuthenticationProviderType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AuthenticationProviderType = /*@__PURE__*/ S.String;
 export interface Authentication {
   providerType?: AuthenticationProviderType;
   value?: string;
 }
-export const Authentication = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Authentication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     providerType: S.optional(AuthenticationProviderType),
     value: S.optional(S.String),
@@ -198,7 +197,7 @@ export interface Actor {
   authentication?: Authentication;
   description?: string;
 }
-export const Actor = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Actor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identifier: S.optional(S.String),
     uris: S.optional(UriList),
@@ -207,42 +206,42 @@ export const Actor = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Actor" }) as any as S.Schema<Actor>;
 export type ActorList = Actor[];
-export const ActorList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Actor);
+export const ActorList = /*@__PURE__*/ S.Array(Actor);
 export interface DocumentInfo {
   s3Location?: string;
   artifactId?: string;
 }
-export const DocumentInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DocumentInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     s3Location: S.optional(S.String),
     artifactId: S.optional(S.String),
   }),
 ).annotate({ identifier: "DocumentInfo" }) as any as S.Schema<DocumentInfo>;
 export type DocumentList = DocumentInfo[];
-export const DocumentList = /*@__PURE__*/ /*#__PURE__*/ S.Array(DocumentInfo);
+export const DocumentList = /*@__PURE__*/ S.Array(DocumentInfo);
 export interface SourceCodeRepository {
   s3Location?: string;
 }
-export const SourceCodeRepository = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SourceCodeRepository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ s3Location: S.optional(S.String) }),
 ).annotate({
   identifier: "SourceCodeRepository",
 }) as any as S.Schema<SourceCodeRepository>;
 export type SourceCodeRepositoryList = SourceCodeRepository[];
 export const SourceCodeRepositoryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SourceCodeRepository);
+  /*@__PURE__*/ S.Array(SourceCodeRepository);
 export interface IntegratedRepository {
   integrationId: string;
   providerResourceId: string;
 }
-export const IntegratedRepository = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const IntegratedRepository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ integrationId: S.String, providerResourceId: S.String }),
 ).annotate({
   identifier: "IntegratedRepository",
 }) as any as S.Schema<IntegratedRepository>;
 export type IntegratedRepositoryList = IntegratedRepository[];
 export const IntegratedRepositoryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(IntegratedRepository);
+  /*@__PURE__*/ S.Array(IntegratedRepository);
 export interface Assets {
   endpoints?: Endpoint[];
   actors?: Actor[];
@@ -250,7 +249,7 @@ export interface Assets {
   sourceCode?: SourceCodeRepository[];
   integratedRepositories?: IntegratedRepository[];
 }
-export const Assets = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Assets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpoints: S.optional(EndpointList),
     actors: S.optional(ActorList),
@@ -289,26 +288,26 @@ export type RiskType =
   | "OUTBOUND_SERVICE_REQUEST"
   | "UNKNOWN"
   | (string & {});
-export const RiskType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const RiskType = /*@__PURE__*/ S.String;
 export type RiskTypeList = RiskType[];
-export const RiskTypeList = /*@__PURE__*/ /*#__PURE__*/ S.Array(RiskType);
+export const RiskTypeList = /*@__PURE__*/ S.Array(RiskType);
 export interface CloudWatchLog {
   logGroup?: string;
   logStream?: string;
 }
-export const CloudWatchLog = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CloudWatchLog = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ logGroup: S.optional(S.String), logStream: S.optional(S.String) }),
 ).annotate({ identifier: "CloudWatchLog" }) as any as S.Schema<CloudWatchLog>;
 export type SecurityGroupArns = string[];
-export const SecurityGroupArns = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const SecurityGroupArns = /*@__PURE__*/ S.Array(S.String);
 export type SubnetArns = string[];
-export const SubnetArns = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const SubnetArns = /*@__PURE__*/ S.Array(S.String);
 export interface VpcConfig {
   vpcArn?: string;
   securityGroupArns?: string[];
   subnetArns?: string[];
 }
-export const VpcConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const VpcConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vpcArn: S.optional(S.String),
     securityGroupArns: S.optional(SecurityGroupArns),
@@ -316,15 +315,15 @@ export const VpcConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VpcConfig" }) as any as S.Schema<VpcConfig>;
 export type NetworkTrafficRuleEffect = "ALLOW" | "DENY" | (string & {});
-export const NetworkTrafficRuleEffect = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const NetworkTrafficRuleEffect = /*@__PURE__*/ S.String;
 export type NetworkTrafficRuleType = "URL" | (string & {});
-export const NetworkTrafficRuleType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const NetworkTrafficRuleType = /*@__PURE__*/ S.String;
 export interface NetworkTrafficRule {
   effect?: NetworkTrafficRuleEffect;
   pattern?: string;
   networkTrafficRuleType?: NetworkTrafficRuleType;
 }
-export const NetworkTrafficRule = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const NetworkTrafficRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     effect: S.optional(NetworkTrafficRuleEffect),
     pattern: S.optional(S.String),
@@ -334,23 +333,21 @@ export const NetworkTrafficRule = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "NetworkTrafficRule",
 }) as any as S.Schema<NetworkTrafficRule>;
 export type NetworkTrafficRuleList = NetworkTrafficRule[];
-export const NetworkTrafficRuleList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(NetworkTrafficRule);
+export const NetworkTrafficRuleList = /*@__PURE__*/ S.Array(NetworkTrafficRule);
 export interface CustomHeader {
   name?: string;
   value?: string;
 }
-export const CustomHeader = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CustomHeader = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.optional(S.String), value: S.optional(S.String) }),
 ).annotate({ identifier: "CustomHeader" }) as any as S.Schema<CustomHeader>;
 export type CustomHeaderList = CustomHeader[];
-export const CustomHeaderList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(CustomHeader);
+export const CustomHeaderList = /*@__PURE__*/ S.Array(CustomHeader);
 export interface NetworkTrafficConfig {
   rules?: NetworkTrafficRule[];
   customHeaders?: CustomHeader[];
 }
-export const NetworkTrafficConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const NetworkTrafficConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rules: S.optional(NetworkTrafficRuleList),
     customHeaders: S.optional(CustomHeaderList),
@@ -359,7 +356,7 @@ export const NetworkTrafficConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "NetworkTrafficConfig",
 }) as any as S.Schema<NetworkTrafficConfig>;
 export type CodeRemediationStrategy = "AUTOMATIC" | "DISABLED" | (string & {});
-export const CodeRemediationStrategy = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const CodeRemediationStrategy = /*@__PURE__*/ S.String;
 export interface Pentest {
   pentestId: string;
   agentSpaceId: string;
@@ -374,7 +371,7 @@ export interface Pentest {
   createdAt?: Date;
   updatedAt?: Date;
 }
-export const Pentest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Pentest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pentestId: S.String,
     agentSpaceId: S.String,
@@ -395,60 +392,58 @@ export const Pentest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Pentest" }) as any as S.Schema<Pentest>;
 export type PentestList = Pentest[];
-export const PentestList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Pentest);
+export const PentestList = /*@__PURE__*/ S.Array(Pentest);
 export interface DeletePentestFailure {
   pentestId?: string;
   reason?: string;
 }
-export const DeletePentestFailure = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeletePentestFailure = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ pentestId: S.optional(S.String), reason: S.optional(S.String) }),
 ).annotate({
   identifier: "DeletePentestFailure",
 }) as any as S.Schema<DeletePentestFailure>;
 export type DeletePentestFailureList = DeletePentestFailure[];
 export const DeletePentestFailureList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(DeletePentestFailure);
+  /*@__PURE__*/ S.Array(DeletePentestFailure);
 export interface BatchDeletePentestsOutput {
   deleted?: Pentest[];
   failed?: DeletePentestFailure[];
 }
-export const BatchDeletePentestsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      deleted: S.optional(PentestList),
-      failed: S.optional(DeletePentestFailureList),
-    }),
+export const BatchDeletePentestsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deleted: S.optional(PentestList),
+    failed: S.optional(DeletePentestFailureList),
+  }),
 ).annotate({
   identifier: "BatchDeletePentestsOutput",
 }) as any as S.Schema<BatchDeletePentestsOutput>;
 export type ArtifactIds = string[];
-export const ArtifactIds = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const ArtifactIds = /*@__PURE__*/ S.Array(S.String);
 export interface BatchGetArtifactMetadataInput {
   agentSpaceId: string;
   artifactIds: string[];
 }
-export const BatchGetArtifactMetadataInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ agentSpaceId: S.String, artifactIds: ArtifactIds }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/BatchGetArtifactMetadata" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const BatchGetArtifactMetadataInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ agentSpaceId: S.String, artifactIds: ArtifactIds }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/BatchGetArtifactMetadata" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "BatchGetArtifactMetadataInput",
-  }) as any as S.Schema<BatchGetArtifactMetadataInput>;
+  ),
+).annotate({
+  identifier: "BatchGetArtifactMetadataInput",
+}) as any as S.Schema<BatchGetArtifactMetadataInput>;
 export interface ArtifactMetadataItem {
   agentSpaceId: string;
   artifactId: string;
   fileName: string;
   updatedAt: Date;
 }
-export const ArtifactMetadataItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ArtifactMetadataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agentSpaceId: S.String,
     artifactId: S.String,
@@ -459,24 +454,22 @@ export const ArtifactMetadataItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ArtifactMetadataItem",
 }) as any as S.Schema<ArtifactMetadataItem>;
 export type ArtifactMetadataList = ArtifactMetadataItem[];
-export const ArtifactMetadataList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ArtifactMetadataItem);
+export const ArtifactMetadataList = /*@__PURE__*/ S.Array(ArtifactMetadataItem);
 export interface BatchGetArtifactMetadataOutput {
   artifactMetadataList: ArtifactMetadataItem[];
 }
-export const BatchGetArtifactMetadataOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ artifactMetadataList: ArtifactMetadataList }),
-  ).annotate({
-    identifier: "BatchGetArtifactMetadataOutput",
-  }) as any as S.Schema<BatchGetArtifactMetadataOutput>;
+export const BatchGetArtifactMetadataOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ artifactMetadataList: ArtifactMetadataList }),
+).annotate({
+  identifier: "BatchGetArtifactMetadataOutput",
+}) as any as S.Schema<BatchGetArtifactMetadataOutput>;
 export type FindingIdList = string[];
-export const FindingIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const FindingIdList = /*@__PURE__*/ S.Array(S.String);
 export interface BatchGetFindingsInput {
   findingIds: string[];
   agentSpaceId: string;
 }
-export const BatchGetFindingsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const BatchGetFindingsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ findingIds: FindingIdList, agentSpaceId: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/BatchGetFindings" }),
@@ -496,7 +489,7 @@ export type FindingStatus =
   | "ACCEPTED"
   | "FALSE_POSITIVE"
   | (string & {});
-export const FindingStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const FindingStatus = /*@__PURE__*/ S.String;
 export type RiskLevel =
   | "UNKNOWN"
   | "INFORMATIONAL"
@@ -505,7 +498,7 @@ export type RiskLevel =
   | "HIGH"
   | "CRITICAL"
   | (string & {});
-export const RiskLevel = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const RiskLevel = /*@__PURE__*/ S.String;
 export type ConfidenceLevel =
   | "FALSE_POSITIVE"
   | "UNCONFIRMED"
@@ -513,37 +506,37 @@ export type ConfidenceLevel =
   | "MEDIUM"
   | "HIGH"
   | (string & {});
-export const ConfidenceLevel = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ConfidenceLevel = /*@__PURE__*/ S.String;
 export type CodeRemediationTaskStatus =
   | "IN_PROGRESS"
   | "COMPLETED"
   | "FAILED"
   | (string & {});
-export const CodeRemediationTaskStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const CodeRemediationTaskStatus = /*@__PURE__*/ S.String;
 export interface CodeRemediationTaskDetails {
   repoName?: string;
   codeDiffLink?: string;
   pullRequestLink?: string;
 }
-export const CodeRemediationTaskDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      repoName: S.optional(S.String),
-      codeDiffLink: S.optional(S.String),
-      pullRequestLink: S.optional(S.String),
-    }),
+export const CodeRemediationTaskDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    repoName: S.optional(S.String),
+    codeDiffLink: S.optional(S.String),
+    pullRequestLink: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "CodeRemediationTaskDetails",
 }) as any as S.Schema<CodeRemediationTaskDetails>;
 export type CodeRemediationTaskDetailsList = CodeRemediationTaskDetails[];
-export const CodeRemediationTaskDetailsList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(CodeRemediationTaskDetails);
+export const CodeRemediationTaskDetailsList = /*@__PURE__*/ S.Array(
+  CodeRemediationTaskDetails,
+);
 export interface CodeRemediationTask {
   status: CodeRemediationTaskStatus;
   statusReason?: string;
   taskDetails?: CodeRemediationTaskDetails[];
 }
-export const CodeRemediationTask = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CodeRemediationTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: CodeRemediationTaskStatus,
     statusReason: S.optional(S.String),
@@ -572,7 +565,7 @@ export interface Finding {
   createdAt?: Date;
   updatedAt?: Date;
 }
-export const Finding = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Finding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     findingId: S.String,
     agentSpaceId: S.String,
@@ -599,38 +592,36 @@ export const Finding = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Finding" }) as any as S.Schema<Finding>;
 export type FindingList = Finding[];
-export const FindingList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Finding);
+export const FindingList = /*@__PURE__*/ S.Array(Finding);
 export interface BatchGetFindingsOutput {
   findings?: Finding[];
   notFound?: string[];
 }
-export const BatchGetFindingsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      findings: S.optional(FindingList),
-      notFound: S.optional(FindingIdList),
-    }),
+export const BatchGetFindingsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    findings: S.optional(FindingList),
+    notFound: S.optional(FindingIdList),
+  }),
 ).annotate({
   identifier: "BatchGetFindingsOutput",
 }) as any as S.Schema<BatchGetFindingsOutput>;
 export type PentestJobIdList = string[];
-export const PentestJobIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const PentestJobIdList = /*@__PURE__*/ S.Array(S.String);
 export interface BatchGetPentestJobsInput {
   pentestJobIds: string[];
   agentSpaceId: string;
 }
-export const BatchGetPentestJobsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ pentestJobIds: PentestJobIdList, agentSpaceId: S.String }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/BatchGetPentestJobs" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const BatchGetPentestJobsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ pentestJobIds: PentestJobIdList, agentSpaceId: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/BatchGetPentestJobs" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "BatchGetPentestJobsInput",
 }) as any as S.Schema<BatchGetPentestJobsInput>;
@@ -641,14 +632,14 @@ export type JobStatus =
   | "FAILED"
   | "COMPLETED"
   | (string & {});
-export const JobStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const JobStatus = /*@__PURE__*/ S.String;
 export type StepName =
   | "PREFLIGHT"
   | "STATIC_ANALYSIS"
   | "PENTEST"
   | "FINALIZING"
   | (string & {});
-export const StepName = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const StepName = /*@__PURE__*/ S.String;
 export type StepStatus =
   | "NOT_STARTED"
   | "IN_PROGRESS"
@@ -656,14 +647,14 @@ export type StepStatus =
   | "FAILED"
   | "STOPPED"
   | (string & {});
-export const StepStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const StepStatus = /*@__PURE__*/ S.String;
 export interface Step {
   name?: StepName;
   status?: StepStatus;
   createdAt?: Date;
   updatedAt?: Date;
 }
-export const Step = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Step = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(StepName),
     status: S.optional(StepStatus),
@@ -676,20 +667,20 @@ export const Step = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Step" }) as any as S.Schema<Step>;
 export type StepList = Step[];
-export const StepList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Step);
+export const StepList = /*@__PURE__*/ S.Array(Step);
 export type ContextType =
   | "ERROR"
   | "CLIENT_ERROR"
   | "WARNING"
   | "INFO"
   | (string & {});
-export const ContextType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ContextType = /*@__PURE__*/ S.String;
 export interface ExecutionContext {
   contextType?: ContextType;
   context?: string;
   timestamp?: Date;
 }
-export const ExecutionContext = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ExecutionContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contextType: S.optional(ContextType),
     context: S.optional(S.String),
@@ -701,19 +692,18 @@ export const ExecutionContext = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ExecutionContext",
 }) as any as S.Schema<ExecutionContext>;
 export type ExecutionContextList = ExecutionContext[];
-export const ExecutionContextList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ExecutionContext);
+export const ExecutionContextList = /*@__PURE__*/ S.Array(ExecutionContext);
 export type ErrorCode =
   | "CLIENT_ERROR"
   | "INTERNAL_ERROR"
   | "STOPPED_BY_USER"
   | (string & {});
-export const ErrorCode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ErrorCode = /*@__PURE__*/ S.String;
 export interface ErrorInformation {
   code?: ErrorCode;
   message?: string;
 }
-export const ErrorInformation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ErrorInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ code: S.optional(ErrorCode), message: S.optional(S.String) }),
 ).annotate({
   identifier: "ErrorInformation",
@@ -743,7 +733,7 @@ export interface PentestJob {
   createdAt?: Date;
   updatedAt?: Date;
 }
-export const PentestJob = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PentestJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pentestJobId: S.optional(S.String),
     pentestId: S.optional(S.String),
@@ -775,50 +765,48 @@ export const PentestJob = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PentestJob" }) as any as S.Schema<PentestJob>;
 export type PentestJobList = PentestJob[];
-export const PentestJobList = /*@__PURE__*/ /*#__PURE__*/ S.Array(PentestJob);
+export const PentestJobList = /*@__PURE__*/ S.Array(PentestJob);
 export interface BatchGetPentestJobsOutput {
   pentestJobs?: PentestJob[];
   notFound?: string[];
 }
-export const BatchGetPentestJobsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pentestJobs: S.optional(PentestJobList),
-      notFound: S.optional(PentestJobIdList),
-    }),
+export const BatchGetPentestJobsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pentestJobs: S.optional(PentestJobList),
+    notFound: S.optional(PentestJobIdList),
+  }),
 ).annotate({
   identifier: "BatchGetPentestJobsOutput",
 }) as any as S.Schema<BatchGetPentestJobsOutput>;
 export type TaskIdList = string[];
-export const TaskIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TaskIdList = /*@__PURE__*/ S.Array(S.String);
 export interface BatchGetPentestJobTasksInput {
   agentSpaceId: string;
   taskIds: string[];
 }
-export const BatchGetPentestJobTasksInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ agentSpaceId: S.String, taskIds: TaskIdList }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/BatchGetPentestJobTasks" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const BatchGetPentestJobTasksInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ agentSpaceId: S.String, taskIds: TaskIdList }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/BatchGetPentestJobTasks" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "BatchGetPentestJobTasksInput",
-  }) as any as S.Schema<BatchGetPentestJobTasksInput>;
+  ),
+).annotate({
+  identifier: "BatchGetPentestJobTasksInput",
+}) as any as S.Schema<BatchGetPentestJobTasksInput>;
 export interface Category {
   name?: string;
   isPrimary?: boolean;
 }
-export const Category = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Category = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.optional(S.String), isPrimary: S.optional(S.Boolean) }),
 ).annotate({ identifier: "Category" }) as any as S.Schema<Category>;
 export type CategoryList = Category[];
-export const CategoryList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Category);
+export const CategoryList = /*@__PURE__*/ S.Array(Category);
 export type TaskExecutionStatus =
   | "IN_PROGRESS"
   | "ABORTED"
@@ -826,14 +814,14 @@ export type TaskExecutionStatus =
   | "INTERNAL_ERROR"
   | "FAILED"
   | (string & {});
-export const TaskExecutionStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TaskExecutionStatus = /*@__PURE__*/ S.String;
 export type LogType = "CLOUDWATCH" | (string & {});
-export const LogType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const LogType = /*@__PURE__*/ S.String;
 export interface LogLocation {
   logType?: LogType;
   cloudWatchLog?: CloudWatchLog;
 }
-export const LogLocation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const LogLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logType: S.optional(LogType),
     cloudWatchLog: S.optional(CloudWatchLog),
@@ -854,7 +842,7 @@ export interface Task {
   createdAt?: Date;
   updatedAt?: Date;
 }
-export const Task = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Task = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.String,
     pentestId: S.optional(S.String),
@@ -876,22 +864,21 @@ export const Task = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Task" }) as any as S.Schema<Task>;
 export type TaskList = Task[];
-export const TaskList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Task);
+export const TaskList = /*@__PURE__*/ S.Array(Task);
 export interface BatchGetPentestJobTasksOutput {
   tasks?: Task[];
   notFound?: string[];
 }
-export const BatchGetPentestJobTasksOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ tasks: S.optional(TaskList), notFound: S.optional(TaskIdList) }),
-  ).annotate({
-    identifier: "BatchGetPentestJobTasksOutput",
-  }) as any as S.Schema<BatchGetPentestJobTasksOutput>;
+export const BatchGetPentestJobTasksOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tasks: S.optional(TaskList), notFound: S.optional(TaskIdList) }),
+).annotate({
+  identifier: "BatchGetPentestJobTasksOutput",
+}) as any as S.Schema<BatchGetPentestJobTasksOutput>;
 export interface BatchGetPentestsInput {
   pentestIds: string[];
   agentSpaceId: string;
 }
-export const BatchGetPentestsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const BatchGetPentestsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ pentestIds: PentestIdList, agentSpaceId: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/BatchGetPentests" }),
@@ -909,27 +896,26 @@ export interface BatchGetPentestsOutput {
   pentests?: Pentest[];
   notFound?: string[];
 }
-export const BatchGetPentestsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pentests: S.optional(PentestList),
-      notFound: S.optional(PentestIdList),
-    }),
+export const BatchGetPentestsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pentests: S.optional(PentestList),
+    notFound: S.optional(PentestIdList),
+  }),
 ).annotate({
   identifier: "BatchGetPentestsOutput",
 }) as any as S.Schema<BatchGetPentestsOutput>;
 export type MembershipType = "USER" | (string & {});
-export const MembershipType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const MembershipType = /*@__PURE__*/ S.String;
 export type UserRole = "MEMBER" | (string & {});
-export const UserRole = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const UserRole = /*@__PURE__*/ S.String;
 export interface UserConfig {
   role?: UserRole;
 }
-export const UserConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UserConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ role: S.optional(UserRole) }),
 ).annotate({ identifier: "UserConfig" }) as any as S.Schema<UserConfig>;
 export type MembershipConfig = { user: UserConfig };
-export const MembershipConfig = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const MembershipConfig = /*@__PURE__*/ S.Union([
   S.Struct({ user: UserConfig }),
 ]);
 export interface CreateMembershipRequest {
@@ -939,30 +925,29 @@ export interface CreateMembershipRequest {
   memberType: MembershipType;
   config?: MembershipConfig;
 }
-export const CreateMembershipRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      applicationId: S.String,
-      agentSpaceId: S.String,
-      membershipId: S.String,
-      memberType: MembershipType,
-      config: S.optional(MembershipConfig),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/CreateMembership" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateMembershipRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applicationId: S.String,
+    agentSpaceId: S.String,
+    membershipId: S.String,
+    memberType: MembershipType,
+    config: S.optional(MembershipConfig),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/CreateMembership" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "CreateMembershipRequest",
 }) as any as S.Schema<CreateMembershipRequest>;
 export interface CreateMembershipResponse {}
-export const CreateMembershipResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const CreateMembershipResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "CreateMembershipResponse",
 }) as any as S.Schema<CreateMembershipResponse>;
@@ -977,7 +962,7 @@ export interface CreatePentestInput {
   networkTrafficConfig?: NetworkTrafficConfig;
   codeRemediationStrategy?: CodeRemediationStrategy;
 }
-export const CreatePentestInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreatePentestInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.String,
     agentSpaceId: S.String,
@@ -1012,7 +997,7 @@ export interface CreatePentestOutput {
   logConfig?: CloudWatchLog;
   agentSpaceId?: string;
 }
-export const CreatePentestOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreatePentestOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pentestId: S.optional(S.String),
     title: S.optional(S.String),
@@ -1035,7 +1020,7 @@ export interface DeleteArtifactInput {
   agentSpaceId: string;
   artifactId: string;
 }
-export const DeleteArtifactInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteArtifactInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ agentSpaceId: S.String, artifactId: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/DeleteArtifact" }),
@@ -1050,7 +1035,7 @@ export const DeleteArtifactInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteArtifactInput",
 }) as any as S.Schema<DeleteArtifactInput>;
 export interface DeleteArtifactOutput {}
-export const DeleteArtifactOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteArtifactOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteArtifactOutput",
@@ -1061,29 +1046,28 @@ export interface DeleteMembershipRequest {
   membershipId: string;
   memberType?: MembershipType;
 }
-export const DeleteMembershipRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      applicationId: S.String,
-      agentSpaceId: S.String,
-      membershipId: S.String,
-      memberType: S.optional(MembershipType),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/DeleteMembership" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteMembershipRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applicationId: S.String,
+    agentSpaceId: S.String,
+    membershipId: S.String,
+    memberType: S.optional(MembershipType),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/DeleteMembership" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DeleteMembershipRequest",
 }) as any as S.Schema<DeleteMembershipRequest>;
 export interface DeleteMembershipResponse {}
-export const DeleteMembershipResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const DeleteMembershipResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "DeleteMembershipResponse",
 }) as any as S.Schema<DeleteMembershipResponse>;
@@ -1091,7 +1075,7 @@ export interface GetArtifactInput {
   agentSpaceId: string;
   artifactId: string;
 }
-export const GetArtifactInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetArtifactInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ agentSpaceId: S.String, artifactId: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/GetArtifact" }),
@@ -1109,7 +1093,7 @@ export interface Artifact {
   contents: string;
   type: ArtifactType;
 }
-export const Artifact = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Artifact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ contents: S.String, type: ArtifactType }),
 ).annotate({ identifier: "Artifact" }) as any as S.Schema<Artifact>;
 export interface GetArtifactOutput {
@@ -1119,7 +1103,7 @@ export interface GetArtifactOutput {
   fileName: string;
   updatedAt: Date;
 }
-export const GetArtifactOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetArtifactOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agentSpaceId: S.String,
     artifactId: S.String,
@@ -1131,41 +1115,39 @@ export const GetArtifactOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "GetArtifactOutput",
 }) as any as S.Schema<GetArtifactOutput>;
 export type Provider = "GITHUB" | (string & {});
-export const Provider = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const Provider = /*@__PURE__*/ S.String;
 export interface InitiateProviderRegistrationInput {
   provider: Provider;
 }
-export const InitiateProviderRegistrationInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ provider: Provider }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/oauth2/provider/register" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const InitiateProviderRegistrationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ provider: Provider }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/oauth2/provider/register" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "InitiateProviderRegistrationInput",
-  }) as any as S.Schema<InitiateProviderRegistrationInput>;
+  ),
+).annotate({
+  identifier: "InitiateProviderRegistrationInput",
+}) as any as S.Schema<InitiateProviderRegistrationInput>;
 export interface InitiateProviderRegistrationOutput {
   redirectTo: string;
   csrfState: string;
 }
-export const InitiateProviderRegistrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ redirectTo: S.String, csrfState: S.String }),
-  ).annotate({
-    identifier: "InitiateProviderRegistrationOutput",
-  }) as any as S.Schema<InitiateProviderRegistrationOutput>;
+export const InitiateProviderRegistrationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ redirectTo: S.String, csrfState: S.String }),
+).annotate({
+  identifier: "InitiateProviderRegistrationOutput",
+}) as any as S.Schema<InitiateProviderRegistrationOutput>;
 export interface ListArtifactsInput {
   agentSpaceId: string;
   nextToken?: string;
   maxResults?: number;
 }
-export const ListArtifactsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListArtifactsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agentSpaceId: S.String,
     nextToken: S.optional(S.String),
@@ -1188,7 +1170,7 @@ export interface ArtifactSummary {
   fileName: string;
   artifactType: ArtifactType;
 }
-export const ArtifactSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ArtifactSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     artifactId: S.String,
     fileName: S.String,
@@ -1198,13 +1180,12 @@ export const ArtifactSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ArtifactSummary",
 }) as any as S.Schema<ArtifactSummary>;
 export type ArtifactSummaryList = ArtifactSummary[];
-export const ArtifactSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ArtifactSummary);
+export const ArtifactSummaryList = /*@__PURE__*/ S.Array(ArtifactSummary);
 export interface ListArtifactsOutput {
   artifactSummaries: ArtifactSummary[];
   nextToken?: string;
 }
-export const ListArtifactsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListArtifactsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     artifactSummaries: ArtifactSummaryList,
     nextToken: S.optional(S.String),
@@ -1219,27 +1200,26 @@ export interface ListDiscoveredEndpointsInput {
   prefix?: string;
   nextToken?: string;
 }
-export const ListDiscoveredEndpointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      maxResults: S.optional(S.Number),
-      pentestJobId: S.String,
-      agentSpaceId: S.String,
-      prefix: S.optional(S.String),
-      nextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/ListDiscoveredEndpoints" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListDiscoveredEndpointsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxResults: S.optional(S.Number),
+    pentestJobId: S.String,
+    agentSpaceId: S.String,
+    prefix: S.optional(S.String),
+    nextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/ListDiscoveredEndpoints" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListDiscoveredEndpointsInput",
-  }) as any as S.Schema<ListDiscoveredEndpointsInput>;
+  ),
+).annotate({
+  identifier: "ListDiscoveredEndpointsInput",
+}) as any as S.Schema<ListDiscoveredEndpointsInput>;
 export interface DiscoveredEndpoint {
   uri: string;
   pentestJobId: string;
@@ -1249,7 +1229,7 @@ export interface DiscoveredEndpoint {
   operation?: string;
   description?: string;
 }
-export const DiscoveredEndpoint = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DiscoveredEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uri: S.String,
     pentestJobId: S.String,
@@ -1263,21 +1243,19 @@ export const DiscoveredEndpoint = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DiscoveredEndpoint",
 }) as any as S.Schema<DiscoveredEndpoint>;
 export type DiscoveredEndpointList = DiscoveredEndpoint[];
-export const DiscoveredEndpointList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(DiscoveredEndpoint);
+export const DiscoveredEndpointList = /*@__PURE__*/ S.Array(DiscoveredEndpoint);
 export interface ListDiscoveredEndpointsOutput {
   discoveredEndpoints?: DiscoveredEndpoint[];
   nextToken?: string;
 }
-export const ListDiscoveredEndpointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      discoveredEndpoints: S.optional(DiscoveredEndpointList),
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListDiscoveredEndpointsOutput",
-  }) as any as S.Schema<ListDiscoveredEndpointsOutput>;
+export const ListDiscoveredEndpointsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    discoveredEndpoints: S.optional(DiscoveredEndpointList),
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListDiscoveredEndpointsOutput",
+}) as any as S.Schema<ListDiscoveredEndpointsOutput>;
 export interface ListFindingsInput {
   maxResults?: number;
   pentestJobId: string;
@@ -1289,7 +1267,7 @@ export interface ListFindingsInput {
   confidence?: ConfidenceLevel;
   name?: string;
 }
-export const ListFindingsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListFindingsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number),
     pentestJobId: S.String,
@@ -1326,7 +1304,7 @@ export interface FindingSummary {
   createdAt?: Date;
   updatedAt?: Date;
 }
-export const FindingSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FindingSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     findingId: S.String,
     agentSpaceId: S.String,
@@ -1346,13 +1324,12 @@ export const FindingSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FindingSummary" }) as any as S.Schema<FindingSummary>;
 export type FindingSummaryList = FindingSummary[];
-export const FindingSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(FindingSummary);
+export const FindingSummaryList = /*@__PURE__*/ S.Array(FindingSummary);
 export interface ListFindingsOutput {
   findingsSummaries?: FindingSummary[];
   nextToken?: string;
 }
-export const ListFindingsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListFindingsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     findingsSummaries: S.optional(FindingSummaryList),
     nextToken: S.optional(S.String),
@@ -1361,7 +1338,7 @@ export const ListFindingsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ListFindingsOutput",
 }) as any as S.Schema<ListFindingsOutput>;
 export type ResourceType = "CODE_REPOSITORY" | (string & {});
-export const ResourceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ResourceType = /*@__PURE__*/ S.String;
 export interface ListIntegratedResourcesInput {
   agentSpaceId: string;
   integrationId?: string;
@@ -1369,104 +1346,100 @@ export interface ListIntegratedResourcesInput {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListIntegratedResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      agentSpaceId: S.String,
-      integrationId: S.optional(S.String),
-      resourceType: S.optional(ResourceType),
-      nextToken: S.optional(S.String),
-      maxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/ListIntegratedResources" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListIntegratedResourcesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    agentSpaceId: S.String,
+    integrationId: S.optional(S.String),
+    resourceType: S.optional(ResourceType),
+    nextToken: S.optional(S.String),
+    maxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/ListIntegratedResources" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListIntegratedResourcesInput",
-  }) as any as S.Schema<ListIntegratedResourcesInput>;
+  ),
+).annotate({
+  identifier: "ListIntegratedResourcesInput",
+}) as any as S.Schema<ListIntegratedResourcesInput>;
 export type AccessType = "PRIVATE" | "PUBLIC" | (string & {});
-export const AccessType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AccessType = /*@__PURE__*/ S.String;
 export interface GitHubRepositoryMetadata {
   name: string;
   providerResourceId: string;
   owner: string;
   accessType?: AccessType;
 }
-export const GitHubRepositoryMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      providerResourceId: S.String,
-      owner: S.String,
-      accessType: S.optional(AccessType),
-    }),
+export const GitHubRepositoryMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    providerResourceId: S.String,
+    owner: S.String,
+    accessType: S.optional(AccessType),
+  }),
 ).annotate({
   identifier: "GitHubRepositoryMetadata",
 }) as any as S.Schema<GitHubRepositoryMetadata>;
 export type IntegratedResourceMetadata = {
   githubRepository: GitHubRepositoryMetadata;
 };
-export const IntegratedResourceMetadata = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const IntegratedResourceMetadata = /*@__PURE__*/ S.Union([
   S.Struct({ githubRepository: GitHubRepositoryMetadata }),
 ]);
 export interface GitHubResourceCapabilities {
   leaveComments?: boolean;
   remediateCode?: boolean;
 }
-export const GitHubResourceCapabilities = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      leaveComments: S.optional(S.Boolean),
-      remediateCode: S.optional(S.Boolean),
-    }),
+export const GitHubResourceCapabilities = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    leaveComments: S.optional(S.Boolean),
+    remediateCode: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "GitHubResourceCapabilities",
 }) as any as S.Schema<GitHubResourceCapabilities>;
 export type ProviderResourceCapabilities = {
   github: GitHubResourceCapabilities;
 };
-export const ProviderResourceCapabilities = /*@__PURE__*/ /*#__PURE__*/ S.Union(
-  [S.Struct({ github: GitHubResourceCapabilities })],
-);
+export const ProviderResourceCapabilities = /*@__PURE__*/ S.Union([
+  S.Struct({ github: GitHubResourceCapabilities }),
+]);
 export interface IntegratedResourceSummary {
   integrationId: string;
   resource: IntegratedResourceMetadata;
   capabilities?: ProviderResourceCapabilities;
 }
-export const IntegratedResourceSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      integrationId: S.String,
-      resource: IntegratedResourceMetadata,
-      capabilities: S.optional(ProviderResourceCapabilities),
-    }),
+export const IntegratedResourceSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    integrationId: S.String,
+    resource: IntegratedResourceMetadata,
+    capabilities: S.optional(ProviderResourceCapabilities),
+  }),
 ).annotate({
   identifier: "IntegratedResourceSummary",
 }) as any as S.Schema<IntegratedResourceSummary>;
 export type IntegratedResourceSummaryList = IntegratedResourceSummary[];
-export const IntegratedResourceSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(IntegratedResourceSummary);
+export const IntegratedResourceSummaryList = /*@__PURE__*/ S.Array(
+  IntegratedResourceSummary,
+);
 export interface ListIntegratedResourcesOutput {
   integratedResourceSummaries: IntegratedResourceSummary[];
   nextToken?: string;
 }
-export const ListIntegratedResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      integratedResourceSummaries: IntegratedResourceSummaryList,
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListIntegratedResourcesOutput",
-  }) as any as S.Schema<ListIntegratedResourcesOutput>;
+export const ListIntegratedResourcesOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    integratedResourceSummaries: IntegratedResourceSummaryList,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListIntegratedResourcesOutput",
+}) as any as S.Schema<ListIntegratedResourcesOutput>;
 export type MembershipTypeFilter = "USER" | "ALL" | (string & {});
-export const MembershipTypeFilter = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const MembershipTypeFilter = /*@__PURE__*/ S.String;
 export interface ListMembershipsRequest {
   applicationId: string;
   agentSpaceId: string;
@@ -1474,24 +1447,23 @@ export interface ListMembershipsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListMembershipsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      applicationId: S.String,
-      agentSpaceId: S.String,
-      memberType: S.optional(MembershipTypeFilter),
-      maxResults: S.optional(S.Number),
-      nextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/ListMemberships" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applicationId: S.String,
+    agentSpaceId: S.String,
+    memberType: S.optional(MembershipTypeFilter),
+    maxResults: S.optional(S.Number),
+    nextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/ListMemberships" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListMembershipsRequest",
 }) as any as S.Schema<ListMembershipsRequest>;
@@ -1499,11 +1471,11 @@ export interface UserMetadata {
   username: string;
   email: string;
 }
-export const UserMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UserMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ username: S.String, email: S.String }),
 ).annotate({ identifier: "UserMetadata" }) as any as S.Schema<UserMetadata>;
 export type MemberMetadata = { user: UserMetadata };
-export const MemberMetadata = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const MemberMetadata = /*@__PURE__*/ S.Union([
   S.Struct({ user: UserMetadata }),
 ]);
 export interface MembershipSummary {
@@ -1518,7 +1490,7 @@ export interface MembershipSummary {
   createdBy: string;
   updatedBy: string;
 }
-export const MembershipSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MembershipSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     membershipId: S.String,
     applicationId: S.String,
@@ -1535,18 +1507,16 @@ export const MembershipSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "MembershipSummary",
 }) as any as S.Schema<MembershipSummary>;
 export type MembershipSummaryList = MembershipSummary[];
-export const MembershipSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(MembershipSummary);
+export const MembershipSummaryList = /*@__PURE__*/ S.Array(MembershipSummary);
 export interface ListMembershipsResponse {
   membershipSummaries: MembershipSummary[];
   nextToken?: string;
 }
-export const ListMembershipsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      membershipSummaries: MembershipSummaryList,
-      nextToken: S.optional(S.String),
-    }),
+export const ListMembershipsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    membershipSummaries: MembershipSummaryList,
+    nextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListMembershipsResponse",
 }) as any as S.Schema<ListMembershipsResponse>;
@@ -1556,26 +1526,25 @@ export interface ListPentestJobsForPentestInput {
   agentSpaceId: string;
   nextToken?: string;
 }
-export const ListPentestJobsForPentestInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      maxResults: S.optional(S.Number),
-      pentestId: S.String,
-      agentSpaceId: S.String,
-      nextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/ListPentestJobsForPentest" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListPentestJobsForPentestInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxResults: S.optional(S.Number),
+    pentestId: S.String,
+    agentSpaceId: S.String,
+    nextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/ListPentestJobsForPentest" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListPentestJobsForPentestInput",
-  }) as any as S.Schema<ListPentestJobsForPentestInput>;
+  ),
+).annotate({
+  identifier: "ListPentestJobsForPentestInput",
+}) as any as S.Schema<ListPentestJobsForPentestInput>;
 export interface PentestJobSummary {
   pentestJobId: string;
   pentestId: string;
@@ -1584,7 +1553,7 @@ export interface PentestJobSummary {
   createdAt?: Date;
   updatedAt?: Date;
 }
-export const PentestJobSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PentestJobSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pentestJobId: S.String,
     pentestId: S.String,
@@ -1601,21 +1570,19 @@ export const PentestJobSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "PentestJobSummary",
 }) as any as S.Schema<PentestJobSummary>;
 export type PentestJobSummaryList = PentestJobSummary[];
-export const PentestJobSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(PentestJobSummary);
+export const PentestJobSummaryList = /*@__PURE__*/ S.Array(PentestJobSummary);
 export interface ListPentestJobsForPentestOutput {
   pentestJobSummaries?: PentestJobSummary[];
   nextToken?: string;
 }
-export const ListPentestJobsForPentestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pentestJobSummaries: S.optional(PentestJobSummaryList),
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListPentestJobsForPentestOutput",
-  }) as any as S.Schema<ListPentestJobsForPentestOutput>;
+export const ListPentestJobsForPentestOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pentestJobSummaries: S.optional(PentestJobSummaryList),
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListPentestJobsForPentestOutput",
+}) as any as S.Schema<ListPentestJobsForPentestOutput>;
 export interface ListPentestJobTasksInput {
   agentSpaceId: string;
   maxResults?: number;
@@ -1624,25 +1591,24 @@ export interface ListPentestJobTasksInput {
   categoryName?: string;
   nextToken?: string;
 }
-export const ListPentestJobTasksInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      agentSpaceId: S.String,
-      maxResults: S.optional(S.Number),
-      pentestJobId: S.optional(S.String),
-      stepName: S.optional(StepName),
-      categoryName: S.optional(S.String),
-      nextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/ListPentestJobTasks" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListPentestJobTasksInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    agentSpaceId: S.String,
+    maxResults: S.optional(S.Number),
+    pentestJobId: S.optional(S.String),
+    stepName: S.optional(StepName),
+    categoryName: S.optional(S.String),
+    nextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/ListPentestJobTasks" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListPentestJobTasksInput",
 }) as any as S.Schema<ListPentestJobTasksInput>;
@@ -1657,7 +1623,7 @@ export interface TaskSummary {
   createdAt?: Date;
   updatedAt?: Date;
 }
-export const TaskSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TaskSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.String,
     pentestId: S.optional(S.String),
@@ -1675,17 +1641,16 @@ export const TaskSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TaskSummary" }) as any as S.Schema<TaskSummary>;
 export type TaskSummaryList = TaskSummary[];
-export const TaskSummaryList = /*@__PURE__*/ /*#__PURE__*/ S.Array(TaskSummary);
+export const TaskSummaryList = /*@__PURE__*/ S.Array(TaskSummary);
 export interface ListPentestJobTasksOutput {
   taskSummaries?: TaskSummary[];
   nextToken?: string;
 }
-export const ListPentestJobTasksOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      taskSummaries: S.optional(TaskSummaryList),
-      nextToken: S.optional(S.String),
-    }),
+export const ListPentestJobTasksOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    taskSummaries: S.optional(TaskSummaryList),
+    nextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListPentestJobTasksOutput",
 }) as any as S.Schema<ListPentestJobTasksOutput>;
@@ -1694,7 +1659,7 @@ export interface ListPentestsInput {
   nextToken?: string;
   agentSpaceId: string;
 }
-export const ListPentestsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListPentestsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number),
     nextToken: S.optional(S.String),
@@ -1719,7 +1684,7 @@ export interface PentestSummary {
   createdAt?: Date;
   updatedAt?: Date;
 }
-export const PentestSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PentestSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pentestId: S.String,
     agentSpaceId: S.String,
@@ -1733,13 +1698,12 @@ export const PentestSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PentestSummary" }) as any as S.Schema<PentestSummary>;
 export type PentestSummaryList = PentestSummary[];
-export const PentestSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(PentestSummary);
+export const PentestSummaryList = /*@__PURE__*/ S.Array(PentestSummary);
 export interface ListPentestsOutput {
   pentestSummaries?: PentestSummary[];
   nextToken?: string;
 }
-export const ListPentestsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListPentestsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pentestSummaries: S.optional(PentestSummaryList),
     nextToken: S.optional(S.String),
@@ -1750,31 +1714,30 @@ export const ListPentestsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceInput {
   resourceArn: string;
 }
-export const ListTagsForResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTagsForResourceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceInput",
 }) as any as S.Schema<ListTagsForResourceInput>;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
 export interface ListTagsForResourceOutput {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ tags: S.optional(TagMap) }),
+export const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: S.optional(TagMap) }),
 ).annotate({
   identifier: "ListTagsForResourceOutput",
 }) as any as S.Schema<ListTagsForResourceOutput>;
@@ -1783,28 +1746,27 @@ export interface StartCodeRemediationInput {
   pentestJobId: string;
   findingIds: string[];
 }
-export const StartCodeRemediationInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      agentSpaceId: S.String,
-      pentestJobId: S.String,
-      findingIds: FindingIdList,
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/StartCodeRemediation" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StartCodeRemediationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    agentSpaceId: S.String,
+    pentestJobId: S.String,
+    findingIds: FindingIdList,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/StartCodeRemediation" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "StartCodeRemediationInput",
 }) as any as S.Schema<StartCodeRemediationInput>;
 export interface StartCodeRemediationOutput {}
-export const StartCodeRemediationOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const StartCodeRemediationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "StartCodeRemediationOutput",
 }) as any as S.Schema<StartCodeRemediationOutput>;
@@ -1812,7 +1774,7 @@ export interface StartPentestJobInput {
   agentSpaceId: string;
   pentestId: string;
 }
-export const StartPentestJobInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StartPentestJobInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ agentSpaceId: S.String, pentestId: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/StartPentestJob" }),
@@ -1835,7 +1797,7 @@ export interface StartPentestJobOutput {
   pentestJobId?: string;
   agentSpaceId?: string;
 }
-export const StartPentestJobOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StartPentestJobOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     status: S.optional(JobStatus),
@@ -1856,7 +1818,7 @@ export interface StopPentestJobInput {
   agentSpaceId: string;
   pentestJobId: string;
 }
-export const StopPentestJobInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StopPentestJobInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ agentSpaceId: S.String, pentestJobId: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/StopPentestJob" }),
@@ -1871,7 +1833,7 @@ export const StopPentestJobInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "StopPentestJobInput",
 }) as any as S.Schema<StopPentestJobInput>;
 export interface StopPentestJobOutput {}
-export const StopPentestJobOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StopPentestJobOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "StopPentestJobOutput",
@@ -1880,7 +1842,7 @@ export interface TagResourceInput {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tags: TagMap,
@@ -1898,18 +1860,18 @@ export const TagResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceInput",
 }) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
-export const TagResourceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceOutput",
 }) as any as S.Schema<TagResourceOutput>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceInput {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
@@ -1927,7 +1889,7 @@ export const UntagResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceInput",
 }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-export const UntagResourceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceOutput",
@@ -1938,7 +1900,7 @@ export interface UpdateFindingInput {
   riskLevel?: RiskLevel;
   status?: FindingStatus;
 }
-export const UpdateFindingInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateFindingInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     findingId: S.String,
     agentSpaceId: S.String,
@@ -1958,7 +1920,7 @@ export const UpdateFindingInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UpdateFindingInput",
 }) as any as S.Schema<UpdateFindingInput>;
 export interface UpdateFindingOutput {}
-export const UpdateFindingOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateFindingOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UpdateFindingOutput",
@@ -1967,60 +1929,60 @@ export interface GitHubRepositoryResource {
   name: string;
   owner: string;
 }
-export const GitHubRepositoryResource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ name: S.String, owner: S.String }),
+export const GitHubRepositoryResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String, owner: S.String }),
 ).annotate({
   identifier: "GitHubRepositoryResource",
 }) as any as S.Schema<GitHubRepositoryResource>;
 export type IntegratedResource = { githubRepository: GitHubRepositoryResource };
-export const IntegratedResource = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const IntegratedResource = /*@__PURE__*/ S.Union([
   S.Struct({ githubRepository: GitHubRepositoryResource }),
 ]);
 export interface IntegratedResourceInputItem {
   resource: IntegratedResource;
   capabilities?: ProviderResourceCapabilities;
 }
-export const IntegratedResourceInputItem =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: IntegratedResource,
-      capabilities: S.optional(ProviderResourceCapabilities),
-    }),
-  ).annotate({
-    identifier: "IntegratedResourceInputItem",
-  }) as any as S.Schema<IntegratedResourceInputItem>;
+export const IntegratedResourceInputItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: IntegratedResource,
+    capabilities: S.optional(ProviderResourceCapabilities),
+  }),
+).annotate({
+  identifier: "IntegratedResourceInputItem",
+}) as any as S.Schema<IntegratedResourceInputItem>;
 export type IntegratedResourceInputItemList = IntegratedResourceInputItem[];
-export const IntegratedResourceInputItemList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(IntegratedResourceInputItem);
+export const IntegratedResourceInputItemList = /*@__PURE__*/ S.Array(
+  IntegratedResourceInputItem,
+);
 export interface UpdateIntegratedResourcesInput {
   agentSpaceId: string;
   integrationId: string;
   items: IntegratedResourceInputItem[];
 }
-export const UpdateIntegratedResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      agentSpaceId: S.String,
-      integrationId: S.String,
-      items: IntegratedResourceInputItemList,
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/UpdateIntegratedResources" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateIntegratedResourcesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    agentSpaceId: S.String,
+    integrationId: S.String,
+    items: IntegratedResourceInputItemList,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/UpdateIntegratedResources" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateIntegratedResourcesInput",
-  }) as any as S.Schema<UpdateIntegratedResourcesInput>;
+  ),
+).annotate({
+  identifier: "UpdateIntegratedResourcesInput",
+}) as any as S.Schema<UpdateIntegratedResourcesInput>;
 export interface UpdateIntegratedResourcesOutput {}
-export const UpdateIntegratedResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UpdateIntegratedResourcesOutput",
-  }) as any as S.Schema<UpdateIntegratedResourcesOutput>;
+export const UpdateIntegratedResourcesOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateIntegratedResourcesOutput",
+}) as any as S.Schema<UpdateIntegratedResourcesOutput>;
 export interface UpdatePentestInput {
   pentestId: string;
   agentSpaceId: string;
@@ -2033,7 +1995,7 @@ export interface UpdatePentestInput {
   networkTrafficConfig?: NetworkTrafficConfig;
   codeRemediationStrategy?: CodeRemediationStrategy;
 }
-export const UpdatePentestInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdatePentestInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pentestId: S.String,
     agentSpaceId: S.String,
@@ -2069,7 +2031,7 @@ export interface UpdatePentestOutput {
   logConfig?: CloudWatchLog;
   agentSpaceId?: string;
 }
-export const UpdatePentestOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdatePentestOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pentestId: S.optional(S.String),
     title: S.optional(S.String),
@@ -2091,18 +2053,17 @@ export const UpdatePentestOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface VerifyTargetDomainInput {
   targetDomainId: string;
 }
-export const VerifyTargetDomainInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ targetDomainId: S.String }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/VerifyTargetDomain" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const VerifyTargetDomainInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ targetDomainId: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/VerifyTargetDomain" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "VerifyTargetDomainInput",
 }) as any as S.Schema<VerifyTargetDomainInput>;
@@ -2112,7 +2073,7 @@ export type TargetDomainStatus =
   | "FAILED"
   | "UNREACHABLE"
   | (string & {});
-export const TargetDomainStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TargetDomainStatus = /*@__PURE__*/ S.String;
 export interface VerifyTargetDomainOutput {
   targetDomainId?: string;
   domainName?: string;
@@ -2121,37 +2082,36 @@ export interface VerifyTargetDomainOutput {
   verifiedAt?: Date;
   status?: TargetDomainStatus;
 }
-export const VerifyTargetDomainOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      targetDomainId: S.optional(S.String),
-      domainName: S.optional(S.String),
-      createdAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      updatedAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      verifiedAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      status: S.optional(TargetDomainStatus),
-    }),
+export const VerifyTargetDomainOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    targetDomainId: S.optional(S.String),
+    domainName: S.optional(S.String),
+    createdAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    updatedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    verifiedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    status: S.optional(TargetDomainStatus),
+  }),
 ).annotate({
   identifier: "VerifyTargetDomainOutput",
 }) as any as S.Schema<VerifyTargetDomainOutput>;
 export type VpcConfigs = VpcConfig[];
-export const VpcConfigs = /*@__PURE__*/ /*#__PURE__*/ S.Array(VpcConfig);
+export const VpcConfigs = /*@__PURE__*/ S.Array(VpcConfig);
 export type LogGroupArns = string[];
-export const LogGroupArns = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const LogGroupArns = /*@__PURE__*/ S.Array(S.String);
 export type S3BucketArns = string[];
-export const S3BucketArns = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const S3BucketArns = /*@__PURE__*/ S.Array(S.String);
 export type SecretArns = string[];
-export const SecretArns = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const SecretArns = /*@__PURE__*/ S.Array(S.String);
 export type LambdaFunctionArns = string[];
-export const LambdaFunctionArns = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const LambdaFunctionArns = /*@__PURE__*/ S.Array(S.String);
 export type IamRoles = string[];
-export const IamRoles = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const IamRoles = /*@__PURE__*/ S.Array(S.String);
 export interface AWSResources {
   vpcs?: VpcConfig[];
   logGroups?: string[];
@@ -2160,7 +2120,7 @@ export interface AWSResources {
   lambdaFunctionArns?: string[];
   iamRoles?: string[];
 }
-export const AWSResources = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AWSResources = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vpcs: S.optional(VpcConfigs),
     logGroups: S.optional(LogGroupArns),
@@ -2171,12 +2131,12 @@ export const AWSResources = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AWSResources" }) as any as S.Schema<AWSResources>;
 export type TargetDomainIdList = string[];
-export const TargetDomainIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TargetDomainIdList = /*@__PURE__*/ S.Array(S.String);
 export interface CodeReviewSettings {
   controlsScanning: boolean;
   generalPurposeScanning: boolean;
 }
-export const CodeReviewSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CodeReviewSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ controlsScanning: S.Boolean, generalPurposeScanning: S.Boolean }),
 ).annotate({
   identifier: "CodeReviewSettings",
@@ -2190,7 +2150,7 @@ export interface CreateAgentSpaceInput {
   kmsKeyId?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateAgentSpaceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateAgentSpaceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     description: S.optional(S.String),
@@ -2223,23 +2183,22 @@ export interface CreateAgentSpaceOutput {
   createdAt?: Date;
   updatedAt?: Date;
 }
-export const CreateAgentSpaceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      agentSpaceId: S.String,
-      name: S.String,
-      description: S.optional(S.String),
-      awsResources: S.optional(AWSResources),
-      targetDomainIds: S.optional(TargetDomainIdList),
-      codeReviewSettings: S.optional(CodeReviewSettings),
-      kmsKeyId: S.optional(S.String),
-      createdAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      updatedAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-    }),
+export const CreateAgentSpaceOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    agentSpaceId: S.String,
+    name: S.String,
+    description: S.optional(S.String),
+    awsResources: S.optional(AWSResources),
+    targetDomainIds: S.optional(TargetDomainIdList),
+    codeReviewSettings: S.optional(CodeReviewSettings),
+    kmsKeyId: S.optional(S.String),
+    createdAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    updatedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
 ).annotate({
   identifier: "CreateAgentSpaceOutput",
 }) as any as S.Schema<CreateAgentSpaceOutput>;
@@ -2251,7 +2210,7 @@ export interface UpdateAgentSpaceInput {
   targetDomainIds?: string[];
   codeReviewSettings?: CodeReviewSettings;
 }
-export const UpdateAgentSpaceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateAgentSpaceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agentSpaceId: S.String,
     name: S.optional(S.String),
@@ -2282,29 +2241,28 @@ export interface UpdateAgentSpaceOutput {
   createdAt?: Date;
   updatedAt?: Date;
 }
-export const UpdateAgentSpaceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      agentSpaceId: S.String,
-      name: S.String,
-      description: S.optional(S.String),
-      awsResources: S.optional(AWSResources),
-      targetDomainIds: S.optional(TargetDomainIdList),
-      codeReviewSettings: S.optional(CodeReviewSettings),
-      createdAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      updatedAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-    }),
+export const UpdateAgentSpaceOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    agentSpaceId: S.String,
+    name: S.String,
+    description: S.optional(S.String),
+    awsResources: S.optional(AWSResources),
+    targetDomainIds: S.optional(TargetDomainIdList),
+    codeReviewSettings: S.optional(CodeReviewSettings),
+    createdAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    updatedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
 ).annotate({
   identifier: "UpdateAgentSpaceOutput",
 }) as any as S.Schema<UpdateAgentSpaceOutput>;
 export interface DeleteAgentSpaceInput {
   agentSpaceId: string;
 }
-export const DeleteAgentSpaceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteAgentSpaceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ agentSpaceId: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/DeleteAgentSpace" }),
@@ -2321,8 +2279,8 @@ export const DeleteAgentSpaceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteAgentSpaceOutput {
   agentSpaceId?: string;
 }
-export const DeleteAgentSpaceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ agentSpaceId: S.optional(S.String) }),
+export const DeleteAgentSpaceOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ agentSpaceId: S.optional(S.String) }),
 ).annotate({
   identifier: "DeleteAgentSpaceOutput",
 }) as any as S.Schema<DeleteAgentSpaceOutput>;
@@ -2330,7 +2288,7 @@ export interface ListAgentSpacesInput {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListAgentSpacesInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListAgentSpacesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String),
     maxResults: S.optional(S.Number),
@@ -2353,7 +2311,7 @@ export interface AgentSpaceSummary {
   createdAt?: Date;
   updatedAt?: Date;
 }
-export const AgentSpaceSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AgentSpaceSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agentSpaceId: S.String,
     name: S.String,
@@ -2368,13 +2326,12 @@ export const AgentSpaceSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "AgentSpaceSummary",
 }) as any as S.Schema<AgentSpaceSummary>;
 export type AgentSpaceSummaryList = AgentSpaceSummary[];
-export const AgentSpaceSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(AgentSpaceSummary);
+export const AgentSpaceSummaryList = /*@__PURE__*/ S.Array(AgentSpaceSummary);
 export interface ListAgentSpacesOutput {
   agentSpaceSummaries?: AgentSpaceSummary[];
   nextToken?: string;
 }
-export const ListAgentSpacesOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListAgentSpacesOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agentSpaceSummaries: S.optional(AgentSpaceSummaryList),
     nextToken: S.optional(S.String),
@@ -2383,22 +2340,21 @@ export const ListAgentSpacesOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ListAgentSpacesOutput",
 }) as any as S.Schema<ListAgentSpacesOutput>;
 export type AgentSpaceIdList = string[];
-export const AgentSpaceIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const AgentSpaceIdList = /*@__PURE__*/ S.Array(S.String);
 export interface BatchGetAgentSpacesInput {
   agentSpaceIds: string[];
 }
-export const BatchGetAgentSpacesInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ agentSpaceIds: AgentSpaceIdList }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/BatchGetAgentSpaces" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const BatchGetAgentSpacesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ agentSpaceIds: AgentSpaceIdList }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/BatchGetAgentSpaces" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "BatchGetAgentSpacesInput",
 }) as any as S.Schema<BatchGetAgentSpacesInput>;
@@ -2413,7 +2369,7 @@ export interface AgentSpace {
   createdAt?: Date;
   updatedAt?: Date;
 }
-export const AgentSpace = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AgentSpace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agentSpaceId: S.String,
     name: S.String,
@@ -2431,17 +2387,16 @@ export const AgentSpace = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AgentSpace" }) as any as S.Schema<AgentSpace>;
 export type AgentSpaceList = AgentSpace[];
-export const AgentSpaceList = /*@__PURE__*/ /*#__PURE__*/ S.Array(AgentSpace);
+export const AgentSpaceList = /*@__PURE__*/ S.Array(AgentSpace);
 export interface BatchGetAgentSpacesOutput {
   agentSpaces?: AgentSpace[];
   notFound?: string[];
 }
-export const BatchGetAgentSpacesOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      agentSpaces: S.optional(AgentSpaceList),
-      notFound: S.optional(AgentSpaceIdList),
-    }),
+export const BatchGetAgentSpacesOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    agentSpaces: S.optional(AgentSpaceList),
+    notFound: S.optional(AgentSpaceIdList),
+  }),
 ).annotate({
   identifier: "BatchGetAgentSpacesOutput",
 }) as any as S.Schema<BatchGetAgentSpacesOutput>;
@@ -2451,38 +2406,37 @@ export interface CreateApplicationRequest {
   defaultKmsKeyId?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateApplicationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      idcInstanceArn: S.optional(S.String),
-      roleArn: S.optional(S.String),
-      defaultKmsKeyId: S.optional(S.String),
-      tags: S.optional(TagMap),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/CreateApplication" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    idcInstanceArn: S.optional(S.String),
+    roleArn: S.optional(S.String),
+    defaultKmsKeyId: S.optional(S.String),
+    tags: S.optional(TagMap),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/CreateApplication" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "CreateApplicationRequest",
 }) as any as S.Schema<CreateApplicationRequest>;
 export interface CreateApplicationResponse {
   applicationId: string;
 }
-export const CreateApplicationResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ applicationId: S.String }),
+export const CreateApplicationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ applicationId: S.String }),
 ).annotate({
   identifier: "CreateApplicationResponse",
 }) as any as S.Schema<CreateApplicationResponse>;
 export interface GetApplicationRequest {
   applicationId: string;
 }
-export const GetApplicationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ applicationId: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/GetApplication" }),
@@ -2500,7 +2454,7 @@ export interface IdCConfiguration {
   idcApplicationArn?: string;
   idcInstanceArn?: string;
 }
-export const IdCConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const IdCConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idcApplicationArn: S.optional(S.String),
     idcInstanceArn: S.optional(S.String),
@@ -2516,16 +2470,15 @@ export interface GetApplicationResponse {
   roleArn?: string;
   defaultKmsKeyId?: string;
 }
-export const GetApplicationResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      applicationId: S.String,
-      domain: S.String,
-      applicationName: S.optional(S.String),
-      idcConfiguration: S.optional(IdCConfiguration),
-      roleArn: S.optional(S.String),
-      defaultKmsKeyId: S.optional(S.String),
-    }),
+export const GetApplicationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applicationId: S.String,
+    domain: S.String,
+    applicationName: S.optional(S.String),
+    idcConfiguration: S.optional(IdCConfiguration),
+    roleArn: S.optional(S.String),
+    defaultKmsKeyId: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GetApplicationResponse",
 }) as any as S.Schema<GetApplicationResponse>;
@@ -2534,54 +2487,52 @@ export interface UpdateApplicationRequest {
   roleArn?: string;
   defaultKmsKeyId?: string;
 }
-export const UpdateApplicationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      applicationId: S.String,
-      roleArn: S.optional(S.String),
-      defaultKmsKeyId: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/UpdateApplication" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applicationId: S.String,
+    roleArn: S.optional(S.String),
+    defaultKmsKeyId: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/UpdateApplication" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "UpdateApplicationRequest",
 }) as any as S.Schema<UpdateApplicationRequest>;
 export interface UpdateApplicationResponse {
   applicationId: string;
 }
-export const UpdateApplicationResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ applicationId: S.String }),
+export const UpdateApplicationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ applicationId: S.String }),
 ).annotate({
   identifier: "UpdateApplicationResponse",
 }) as any as S.Schema<UpdateApplicationResponse>;
 export interface DeleteApplicationRequest {
   applicationId: string;
 }
-export const DeleteApplicationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ applicationId: S.String }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/DeleteApplication" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ applicationId: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/DeleteApplication" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DeleteApplicationRequest",
 }) as any as S.Schema<DeleteApplicationRequest>;
 export interface DeleteApplicationResponse {}
-export const DeleteApplicationResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const DeleteApplicationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "DeleteApplicationResponse",
 }) as any as S.Schema<DeleteApplicationResponse>;
@@ -2589,21 +2540,20 @@ export interface ListApplicationsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListApplicationsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextToken: S.optional(S.String),
-      maxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/ListApplications" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String),
+    maxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/ListApplications" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListApplicationsRequest",
 }) as any as S.Schema<ListApplicationsRequest>;
@@ -2613,7 +2563,7 @@ export interface ApplicationSummary {
   domain: string;
   defaultKmsKeyId?: string;
 }
-export const ApplicationSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ApplicationSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applicationId: S.String,
     applicationName: S.String,
@@ -2624,18 +2574,16 @@ export const ApplicationSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ApplicationSummary",
 }) as any as S.Schema<ApplicationSummary>;
 export type ApplicationSummaryList = ApplicationSummary[];
-export const ApplicationSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ApplicationSummary);
+export const ApplicationSummaryList = /*@__PURE__*/ S.Array(ApplicationSummary);
 export interface ListApplicationsResponse {
   applicationSummaries: ApplicationSummary[];
   nextToken?: string;
 }
-export const ListApplicationsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      applicationSummaries: ApplicationSummaryList,
-      nextToken: S.optional(S.String),
-    }),
+export const ListApplicationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applicationSummaries: ApplicationSummaryList,
+    nextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListApplicationsResponse",
 }) as any as S.Schema<ListApplicationsResponse>;
@@ -2644,18 +2592,17 @@ export interface GitHubIntegrationInput {
   state: string;
   organizationName?: string;
 }
-export const GitHubIntegrationInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      code: S.String,
-      state: S.String,
-      organizationName: S.optional(S.String),
-    }),
+export const GitHubIntegrationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.String,
+    state: S.String,
+    organizationName: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GitHubIntegrationInput",
 }) as any as S.Schema<GitHubIntegrationInput>;
 export type ProviderInput = { github: GitHubIntegrationInput };
-export const ProviderInput = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const ProviderInput = /*@__PURE__*/ S.Union([
   S.Struct({ github: GitHubIntegrationInput }),
 ]);
 export interface CreateIntegrationInput {
@@ -2665,39 +2612,38 @@ export interface CreateIntegrationInput {
   kmsKeyId?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateIntegrationInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      provider: Provider,
-      input: ProviderInput,
-      integrationDisplayName: S.String,
-      kmsKeyId: S.optional(S.String),
-      tags: S.optional(TagMap),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/CreateIntegration" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateIntegrationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    provider: Provider,
+    input: ProviderInput,
+    integrationDisplayName: S.String,
+    kmsKeyId: S.optional(S.String),
+    tags: S.optional(TagMap),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/CreateIntegration" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "CreateIntegrationInput",
 }) as any as S.Schema<CreateIntegrationInput>;
 export interface CreateIntegrationOutput {
   integrationId: string;
 }
-export const CreateIntegrationOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ integrationId: S.String }),
+export const CreateIntegrationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ integrationId: S.String }),
 ).annotate({
   identifier: "CreateIntegrationOutput",
 }) as any as S.Schema<CreateIntegrationOutput>;
 export interface GetIntegrationInput {
   integrationId: string;
 }
-export const GetIntegrationInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetIntegrationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ integrationId: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/GetIntegration" }),
@@ -2712,7 +2658,7 @@ export const GetIntegrationInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "GetIntegrationInput",
 }) as any as S.Schema<GetIntegrationInput>;
 export type ProviderType = "SOURCE_CODE" | "DOCUMENTATION" | (string & {});
-export const ProviderType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ProviderType = /*@__PURE__*/ S.String;
 export interface GetIntegrationOutput {
   integrationId: string;
   installationId: string;
@@ -2721,7 +2667,7 @@ export interface GetIntegrationOutput {
   displayName?: string;
   kmsKeyId?: string;
 }
-export const GetIntegrationOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetIntegrationOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationId: S.String,
     installationId: S.String,
@@ -2736,31 +2682,30 @@ export const GetIntegrationOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteIntegrationInput {
   integrationId: string;
 }
-export const DeleteIntegrationInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ integrationId: S.String }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/DeleteIntegration" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteIntegrationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ integrationId: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/DeleteIntegration" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DeleteIntegrationInput",
 }) as any as S.Schema<DeleteIntegrationInput>;
 export interface DeleteIntegrationOutput {}
-export const DeleteIntegrationOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const DeleteIntegrationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "DeleteIntegrationOutput",
 }) as any as S.Schema<DeleteIntegrationOutput>;
 export type IntegrationFilter =
   | { provider: Provider; providerType?: never }
   | { provider?: never; providerType: ProviderType };
-export const IntegrationFilter = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const IntegrationFilter = /*@__PURE__*/ S.Union([
   S.Struct({ provider: Provider }),
   S.Struct({ providerType: ProviderType }),
 ]);
@@ -2769,7 +2714,7 @@ export interface ListIntegrationsInput {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListIntegrationsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListIntegrationsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(IntegrationFilter),
     nextToken: S.optional(S.String),
@@ -2794,7 +2739,7 @@ export interface IntegrationSummary {
   providerType: ProviderType;
   displayName: string;
 }
-export const IntegrationSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const IntegrationSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationId: S.String,
     installationId: S.String,
@@ -2806,55 +2751,52 @@ export const IntegrationSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "IntegrationSummary",
 }) as any as S.Schema<IntegrationSummary>;
 export type IntegrationSummaryList = IntegrationSummary[];
-export const IntegrationSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(IntegrationSummary);
+export const IntegrationSummaryList = /*@__PURE__*/ S.Array(IntegrationSummary);
 export interface ListIntegrationsOutput {
   integrationSummaries: IntegrationSummary[];
   nextToken?: string;
 }
-export const ListIntegrationsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      integrationSummaries: IntegrationSummaryList,
-      nextToken: S.optional(S.String),
-    }),
+export const ListIntegrationsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    integrationSummaries: IntegrationSummaryList,
+    nextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListIntegrationsOutput",
 }) as any as S.Schema<ListIntegrationsOutput>;
 export type DomainVerificationMethod = "DNS_TXT" | "HTTP_ROUTE" | (string & {});
-export const DomainVerificationMethod = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DomainVerificationMethod = /*@__PURE__*/ S.String;
 export interface CreateTargetDomainInput {
   targetDomainName: string;
   verificationMethod: DomainVerificationMethod;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateTargetDomainInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      targetDomainName: S.String,
-      verificationMethod: DomainVerificationMethod,
-      tags: S.optional(TagMap),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/CreateTargetDomain" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateTargetDomainInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    targetDomainName: S.String,
+    verificationMethod: DomainVerificationMethod,
+    tags: S.optional(TagMap),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/CreateTargetDomain" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "CreateTargetDomainInput",
 }) as any as S.Schema<CreateTargetDomainInput>;
 export type DNSRecordType = "TXT" | (string & {});
-export const DNSRecordType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DNSRecordType = /*@__PURE__*/ S.String;
 export interface DnsVerification {
   token?: string;
   dnsRecordName?: string;
   dnsRecordType?: DNSRecordType;
 }
-export const DnsVerification = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DnsVerification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.optional(S.String),
     dnsRecordName: S.optional(S.String),
@@ -2867,7 +2809,7 @@ export interface HttpVerification {
   token?: string;
   routePath?: string;
 }
-export const HttpVerification = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const HttpVerification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ token: S.optional(S.String), routePath: S.optional(S.String) }),
 ).annotate({
   identifier: "HttpVerification",
@@ -2877,7 +2819,7 @@ export interface VerificationDetails {
   dnsTxt?: DnsVerification;
   httpRoute?: HttpVerification;
 }
-export const VerificationDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const VerificationDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     method: S.optional(DomainVerificationMethod),
     dnsTxt: S.optional(DnsVerification),
@@ -2894,20 +2836,19 @@ export interface CreateTargetDomainOutput {
   createdAt?: Date;
   verifiedAt?: Date;
 }
-export const CreateTargetDomainOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      targetDomainId: S.String,
-      domainName: S.String,
-      verificationStatus: TargetDomainStatus,
-      verificationDetails: S.optional(VerificationDetails),
-      createdAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      verifiedAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-    }),
+export const CreateTargetDomainOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    targetDomainId: S.String,
+    domainName: S.String,
+    verificationStatus: TargetDomainStatus,
+    verificationDetails: S.optional(VerificationDetails),
+    createdAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    verifiedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
 ).annotate({
   identifier: "CreateTargetDomainOutput",
 }) as any as S.Schema<CreateTargetDomainOutput>;
@@ -2915,21 +2856,20 @@ export interface UpdateTargetDomainInput {
   targetDomainId: string;
   verificationMethod: DomainVerificationMethod;
 }
-export const UpdateTargetDomainInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      targetDomainId: S.String,
-      verificationMethod: DomainVerificationMethod,
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/UpdateTargetDomain" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateTargetDomainInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    targetDomainId: S.String,
+    verificationMethod: DomainVerificationMethod,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/UpdateTargetDomain" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "UpdateTargetDomainInput",
 }) as any as S.Schema<UpdateTargetDomainInput>;
@@ -2941,46 +2881,44 @@ export interface UpdateTargetDomainOutput {
   createdAt?: Date;
   verifiedAt?: Date;
 }
-export const UpdateTargetDomainOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      targetDomainId: S.String,
-      domainName: S.String,
-      verificationStatus: TargetDomainStatus,
-      verificationDetails: S.optional(VerificationDetails),
-      createdAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      verifiedAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-    }),
+export const UpdateTargetDomainOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    targetDomainId: S.String,
+    domainName: S.String,
+    verificationStatus: TargetDomainStatus,
+    verificationDetails: S.optional(VerificationDetails),
+    createdAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    verifiedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
 ).annotate({
   identifier: "UpdateTargetDomainOutput",
 }) as any as S.Schema<UpdateTargetDomainOutput>;
 export interface DeleteTargetDomainInput {
   targetDomainId: string;
 }
-export const DeleteTargetDomainInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ targetDomainId: S.String }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/DeleteTargetDomain" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteTargetDomainInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ targetDomainId: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/DeleteTargetDomain" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DeleteTargetDomainInput",
 }) as any as S.Schema<DeleteTargetDomainInput>;
 export interface DeleteTargetDomainOutput {
   targetDomainId?: string;
 }
-export const DeleteTargetDomainOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ targetDomainId: S.optional(S.String) }),
+export const DeleteTargetDomainOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ targetDomainId: S.optional(S.String) }),
 ).annotate({
   identifier: "DeleteTargetDomainOutput",
 }) as any as S.Schema<DeleteTargetDomainOutput>;
@@ -2988,21 +2926,20 @@ export interface ListTargetDomainsInput {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListTargetDomainsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextToken: S.optional(S.String),
-      maxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/ListTargetDomains" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTargetDomainsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String),
+    maxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/ListTargetDomains" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTargetDomainsInput",
 }) as any as S.Schema<ListTargetDomainsInput>;
@@ -3011,7 +2948,7 @@ export interface TargetDomainSummary {
   domainName: string;
   verificationStatus?: TargetDomainStatus;
 }
-export const TargetDomainSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TargetDomainSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetDomainId: S.String,
     domainName: S.String,
@@ -3022,35 +2959,33 @@ export const TargetDomainSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TargetDomainSummary>;
 export type TargetDomainSummaryList = TargetDomainSummary[];
 export const TargetDomainSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(TargetDomainSummary);
+  /*@__PURE__*/ S.Array(TargetDomainSummary);
 export interface ListTargetDomainsOutput {
   targetDomainSummaries?: TargetDomainSummary[];
   nextToken?: string;
 }
-export const ListTargetDomainsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      targetDomainSummaries: S.optional(TargetDomainSummaryList),
-      nextToken: S.optional(S.String),
-    }),
+export const ListTargetDomainsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    targetDomainSummaries: S.optional(TargetDomainSummaryList),
+    nextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListTargetDomainsOutput",
 }) as any as S.Schema<ListTargetDomainsOutput>;
 export interface BatchGetTargetDomainsInput {
   targetDomainIds: string[];
 }
-export const BatchGetTargetDomainsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ targetDomainIds: TargetDomainIdList }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/BatchGetTargetDomains" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const BatchGetTargetDomainsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ targetDomainIds: TargetDomainIdList }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/BatchGetTargetDomains" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "BatchGetTargetDomainsInput",
 }) as any as S.Schema<BatchGetTargetDomainsInput>;
@@ -3062,7 +2997,7 @@ export interface TargetDomain {
   createdAt?: Date;
   verifiedAt?: Date;
 }
-export const TargetDomain = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TargetDomain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetDomainId: S.String,
     domainName: S.String,
@@ -3077,21 +3012,19 @@ export const TargetDomain = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TargetDomain" }) as any as S.Schema<TargetDomain>;
 export type TargetDomainList = TargetDomain[];
-export const TargetDomainList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(TargetDomain);
+export const TargetDomainList = /*@__PURE__*/ S.Array(TargetDomain);
 export interface BatchGetTargetDomainsOutput {
   targetDomains?: TargetDomain[];
   notFound?: string[];
 }
-export const BatchGetTargetDomainsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      targetDomains: S.optional(TargetDomainList),
-      notFound: S.optional(TargetDomainIdList),
-    }),
-  ).annotate({
-    identifier: "BatchGetTargetDomainsOutput",
-  }) as any as S.Schema<BatchGetTargetDomainsOutput>;
+export const BatchGetTargetDomainsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    targetDomains: S.optional(TargetDomainList),
+    notFound: S.optional(TargetDomainIdList),
+  }),
+).annotate({
+  identifier: "BatchGetTargetDomainsOutput",
+}) as any as S.Schema<BatchGetTargetDomainsOutput>;
 
 //# Errors
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(

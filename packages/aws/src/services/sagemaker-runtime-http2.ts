@@ -347,7 +347,7 @@ export interface RequestPayloadPart {
   CompletionState?: string;
   P?: string;
 }
-export const RequestPayloadPart = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RequestPayloadPart = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Bytes: S.optional(SensitiveBlob).pipe(T.EventPayload()),
     DataType: S.optional(S.String).pipe(T.EventHeader()),
@@ -358,10 +358,9 @@ export const RequestPayloadPart = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "RequestPayloadPart",
 }) as any as S.Schema<RequestPayloadPart>;
 export type RequestStreamEvent = { PayloadPart: RequestPayloadPart };
-export const RequestStreamEvent =
-  /*@__PURE__*/ /*#__PURE__*/ T.InputEventStream(
-    S.Union([S.Struct({ PayloadPart: RequestPayloadPart })]),
-  ) as any as S.Schema<stream.Stream<RequestStreamEvent, Error, never>>;
+export const RequestStreamEvent = /*@__PURE__*/ T.InputEventStream(
+  S.Union([S.Struct({ PayloadPart: RequestPayloadPart })]),
+) as any as S.Schema<stream.Stream<RequestStreamEvent, Error, never>>;
 export interface InvokeEndpointWithBidirectionalStreamInput {
   EndpointName: string;
   Body: stream.Stream<RequestStreamEvent, Error, never>;
@@ -370,7 +369,7 @@ export interface InvokeEndpointWithBidirectionalStreamInput {
   ModelQueryString?: string;
 }
 export const InvokeEndpointWithBidirectionalStreamInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       EndpointName: S.String.pipe(T.HttpLabel("EndpointName")),
       Body: RequestStreamEvent.pipe(T.HttpPayload()),
@@ -405,7 +404,7 @@ export interface ResponsePayloadPart {
   CompletionState?: string;
   P?: string;
 }
-export const ResponsePayloadPart = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ResponsePayloadPart = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Bytes: S.optional(SensitiveBlob).pipe(T.EventPayload()),
     DataType: S.optional(S.String).pipe(T.EventHeader()),
@@ -431,7 +430,7 @@ export type ResponseStreamEvent =
       ModelStreamError?: never;
       InternalStreamFailure: InternalStreamFailure;
     };
-export const ResponseStreamEvent = /*@__PURE__*/ /*#__PURE__*/ T.EventStream(
+export const ResponseStreamEvent = /*@__PURE__*/ T.EventStream(
   S.Union([
     S.Struct({ PayloadPart: ResponsePayloadPart }),
     S.Struct({
@@ -451,7 +450,7 @@ export interface InvokeEndpointWithBidirectionalStreamOutput {
   InvokedProductionVariant?: string;
 }
 export const InvokeEndpointWithBidirectionalStreamOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Body: ResponseStreamEvent.pipe(T.HttpPayload()),
       InvokedProductionVariant: S.optional(S.String).pipe(

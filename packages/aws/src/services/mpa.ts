@@ -83,27 +83,26 @@ export type RequesterComment = string | redacted.Redacted<string>;
 export interface GetPolicyVersionRequest {
   PolicyVersionArn: string;
 }
-export const GetPolicyVersionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      PolicyVersionArn: S.String.pipe(T.HttpLabel("PolicyVersionArn")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/policy-versions/{PolicyVersionArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetPolicyVersionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PolicyVersionArn: S.String.pipe(T.HttpLabel("PolicyVersionArn")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/policy-versions/{PolicyVersionArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetPolicyVersionRequest",
 }) as any as S.Schema<GetPolicyVersionRequest>;
 export type PolicyType = "AWS_MANAGED" | "AWS_RAM" | (string & {});
-export const PolicyType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const PolicyType = /*@__PURE__*/ S.String;
 export type PolicyStatus = "ATTACHABLE" | "DEPRECATED" | (string & {});
-export const PolicyStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const PolicyStatus = /*@__PURE__*/ S.String;
 export interface PolicyVersion {
   Arn: string;
   PolicyArn: string;
@@ -116,7 +115,7 @@ export interface PolicyVersion {
   LastUpdatedTime: Date;
   Document: string | redacted.Redacted<string>;
 }
-export const PolicyVersion = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PolicyVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.String,
     PolicyArn: S.String,
@@ -133,8 +132,8 @@ export const PolicyVersion = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetPolicyVersionResponse {
   PolicyVersion: PolicyVersion;
 }
-export const GetPolicyVersionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ PolicyVersion: PolicyVersion }),
+export const GetPolicyVersionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ PolicyVersion: PolicyVersion }),
 ).annotate({
   identifier: "GetPolicyVersionResponse",
 }) as any as S.Schema<GetPolicyVersionResponse>;
@@ -143,22 +142,21 @@ export interface GetResourcePolicyRequest {
   PolicyName: string;
   PolicyType: PolicyType;
 }
-export const GetResourcePolicyRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ResourceArn: S.String,
-      PolicyName: S.String,
-      PolicyType: PolicyType,
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/GetResourcePolicy" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ResourceArn: S.String,
+    PolicyName: S.String,
+    PolicyType: PolicyType,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/GetResourcePolicy" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetResourcePolicyRequest",
 }) as any as S.Schema<GetResourcePolicyRequest>;
@@ -169,15 +167,14 @@ export interface GetResourcePolicyResponse {
   PolicyName: string;
   PolicyDocument: string | redacted.Redacted<string>;
 }
-export const GetResourcePolicyResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ResourceArn: S.String,
-      PolicyType: PolicyType,
-      PolicyVersionArn: S.optional(S.String),
-      PolicyName: S.String,
-      PolicyDocument: SensitiveString,
-    }),
+export const GetResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ResourceArn: S.String,
+    PolicyType: PolicyType,
+    PolicyVersionArn: S.optional(S.String),
+    PolicyName: S.String,
+    PolicyDocument: SensitiveString,
+  }),
 ).annotate({
   identifier: "GetResourcePolicyResponse",
 }) as any as S.Schema<GetResourcePolicyResponse>;
@@ -185,7 +182,7 @@ export interface ListPoliciesRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
     NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
@@ -208,7 +205,7 @@ export interface Policy {
   PolicyType: PolicyType;
   Name: string;
 }
-export const Policy = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.String,
     DefaultVersion: S.Number,
@@ -217,12 +214,12 @@ export const Policy = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 export type Policies = Policy[];
-export const Policies = /*@__PURE__*/ /*#__PURE__*/ S.Array(Policy);
+export const Policies = /*@__PURE__*/ S.Array(Policy);
 export interface ListPoliciesResponse {
   NextToken?: string;
   Policies?: Policy[];
 }
-export const ListPoliciesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ NextToken: S.optional(S.String), Policies: S.optional(Policies) }),
 ).annotate({
   identifier: "ListPoliciesResponse",
@@ -232,22 +229,21 @@ export interface ListPolicyVersionsRequest {
   NextToken?: string;
   PolicyArn: string;
 }
-export const ListPolicyVersionsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-      PolicyArn: S.String.pipe(T.HttpLabel("PolicyArn")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/policies/{PolicyArn}/?List" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListPolicyVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+    PolicyArn: S.String.pipe(T.HttpLabel("PolicyArn")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/policies/{PolicyArn}/?List" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListPolicyVersionsRequest",
 }) as any as S.Schema<ListPolicyVersionsRequest>;
@@ -262,7 +258,7 @@ export interface PolicyVersionSummary {
   CreationTime: Date;
   LastUpdatedTime: Date;
 }
-export const PolicyVersionSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PolicyVersionSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.String,
     PolicyArn: S.String,
@@ -278,18 +274,16 @@ export const PolicyVersionSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "PolicyVersionSummary",
 }) as any as S.Schema<PolicyVersionSummary>;
 export type PolicyVersions = PolicyVersionSummary[];
-export const PolicyVersions =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(PolicyVersionSummary);
+export const PolicyVersions = /*@__PURE__*/ S.Array(PolicyVersionSummary);
 export interface ListPolicyVersionsResponse {
   NextToken?: string;
   PolicyVersions?: PolicyVersionSummary[];
 }
-export const ListPolicyVersionsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      PolicyVersions: S.optional(PolicyVersions),
-    }),
+export const ListPolicyVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    PolicyVersions: S.optional(PolicyVersions),
+  }),
 ).annotate({
   identifier: "ListPolicyVersionsResponse",
 }) as any as S.Schema<ListPolicyVersionsResponse>;
@@ -298,35 +292,31 @@ export interface ListResourcePoliciesRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListResourcePoliciesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/resource-policies/{ResourceArn}/?List",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListResourcePoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/resource-policies/{ResourceArn}/?List" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListResourcePoliciesRequest",
-  }) as any as S.Schema<ListResourcePoliciesRequest>;
+  ),
+).annotate({
+  identifier: "ListResourcePoliciesRequest",
+}) as any as S.Schema<ListResourcePoliciesRequest>;
 export interface ListResourcePoliciesResponseResourcePolicy {
   PolicyArn?: string;
   PolicyType?: PolicyType;
   PolicyName?: string;
 }
 export const ListResourcePoliciesResponseResourcePolicy =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       PolicyArn: S.optional(S.String),
       PolicyType: S.optional(PolicyType),
@@ -338,63 +328,56 @@ export const ListResourcePoliciesResponseResourcePolicy =
 export type ListResourcePoliciesResponseResourcePolicies =
   ListResourcePoliciesResponseResourcePolicy[];
 export const ListResourcePoliciesResponseResourcePolicies =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(
-    ListResourcePoliciesResponseResourcePolicy,
-  );
+  /*@__PURE__*/ S.Array(ListResourcePoliciesResponseResourcePolicy);
 export interface ListResourcePoliciesResponse {
   NextToken?: string;
   ResourcePolicies?: ListResourcePoliciesResponseResourcePolicy[];
 }
-export const ListResourcePoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      ResourcePolicies: S.optional(
-        ListResourcePoliciesResponseResourcePolicies,
-      ),
-    }),
-  ).annotate({
-    identifier: "ListResourcePoliciesResponse",
-  }) as any as S.Schema<ListResourcePoliciesResponse>;
+export const ListResourcePoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    ResourcePolicies: S.optional(ListResourcePoliciesResponseResourcePolicies),
+  }),
+).annotate({
+  identifier: "ListResourcePoliciesResponse",
+}) as any as S.Schema<ListResourcePoliciesResponse>;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
 export type Tags = {
   [key: string]: string | redacted.Redacted<string> | undefined;
 };
-export const Tags = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const Tags = /*@__PURE__*/ S.Record(
   S.String,
   SensitiveString.pipe(S.optional),
 );
 export interface ListTagsForResourceResponse {
   Tags?: { [key: string]: string | redacted.Redacted<string> | undefined };
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ Tags: S.optional(Tags) }),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Tags: S.optional(Tags) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: { [key: string]: string | redacted.Redacted<string> | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
     Tags: Tags,
@@ -412,18 +395,18 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string | redacted.Redacted<string>[];
-export const TagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(SensitiveString);
+export const TagKeyList = /*@__PURE__*/ S.Array(SensitiveString);
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string | redacted.Redacted<string>[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
     TagKeys: TagKeyList,
@@ -441,7 +424,7 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
@@ -449,43 +432,38 @@ export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface MofNApprovalStrategy {
   MinApprovalsRequired: number;
 }
-export const MofNApprovalStrategy = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MofNApprovalStrategy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ MinApprovalsRequired: S.Number }),
 ).annotate({
   identifier: "MofNApprovalStrategy",
 }) as any as S.Schema<MofNApprovalStrategy>;
 export type ApprovalStrategy = { MofN: MofNApprovalStrategy };
-export const ApprovalStrategy = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const ApprovalStrategy = /*@__PURE__*/ S.Union([
   S.Struct({ MofN: MofNApprovalStrategy }),
 ]);
 export interface ApprovalTeamRequestApprover {
   PrimaryIdentityId: string;
   PrimaryIdentitySourceArn: string;
 }
-export const ApprovalTeamRequestApprover =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      PrimaryIdentityId: S.String,
-      PrimaryIdentitySourceArn: S.String,
-    }),
-  ).annotate({
-    identifier: "ApprovalTeamRequestApprover",
-  }) as any as S.Schema<ApprovalTeamRequestApprover>;
+export const ApprovalTeamRequestApprover = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ PrimaryIdentityId: S.String, PrimaryIdentitySourceArn: S.String }),
+).annotate({
+  identifier: "ApprovalTeamRequestApprover",
+}) as any as S.Schema<ApprovalTeamRequestApprover>;
 export type ApprovalTeamRequestApprovers = ApprovalTeamRequestApprover[];
-export const ApprovalTeamRequestApprovers = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ApprovalTeamRequestApprovers = /*@__PURE__*/ S.Array(
   ApprovalTeamRequestApprover,
 );
 export interface PolicyReference {
   PolicyArn: string;
 }
-export const PolicyReference = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PolicyReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ PolicyArn: S.String }),
 ).annotate({
   identifier: "PolicyReference",
 }) as any as S.Schema<PolicyReference>;
 export type PoliciesReferences = PolicyReference[];
-export const PoliciesReferences =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(PolicyReference);
+export const PoliciesReferences = /*@__PURE__*/ S.Array(PolicyReference);
 export interface CreateApprovalTeamRequest {
   ClientToken?: string;
   ApprovalStrategy: ApprovalStrategy;
@@ -495,26 +473,25 @@ export interface CreateApprovalTeamRequest {
   Name: string;
   Tags?: { [key: string]: string | redacted.Redacted<string> | undefined };
 }
-export const CreateApprovalTeamRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-      ApprovalStrategy: ApprovalStrategy,
-      Approvers: ApprovalTeamRequestApprovers,
-      Description: SensitiveString,
-      Policies: PoliciesReferences,
-      Name: S.String,
-      Tags: S.optional(Tags),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/approval-teams" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateApprovalTeamRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    ApprovalStrategy: ApprovalStrategy,
+    Approvers: ApprovalTeamRequestApprovers,
+    Description: SensitiveString,
+    Policies: PoliciesReferences,
+    Name: S.String,
+    Tags: S.optional(Tags),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/approval-teams" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "CreateApprovalTeamRequest",
 }) as any as S.Schema<CreateApprovalTeamRequest>;
@@ -524,39 +501,37 @@ export interface CreateApprovalTeamResponse {
   Name?: string;
   VersionId?: string;
 }
-export const CreateApprovalTeamResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      CreationTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      Arn: S.optional(S.String),
-      Name: S.optional(S.String),
-      VersionId: S.optional(S.String),
-    }),
+export const CreateApprovalTeamResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CreationTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    Arn: S.optional(S.String),
+    Name: S.optional(S.String),
+    VersionId: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "CreateApprovalTeamResponse",
 }) as any as S.Schema<CreateApprovalTeamResponse>;
 export interface GetApprovalTeamRequest {
   Arn: string;
 }
-export const GetApprovalTeamRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ Arn: S.String.pipe(T.HttpLabel("Arn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/approval-teams/{Arn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetApprovalTeamRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Arn: S.String.pipe(T.HttpLabel("Arn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/approval-teams/{Arn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetApprovalTeamRequest",
 }) as any as S.Schema<GetApprovalTeamRequest>;
 export type ApprovalStrategyResponse = { MofN: MofNApprovalStrategy };
-export const ApprovalStrategyResponse = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const ApprovalStrategyResponse = /*@__PURE__*/ S.Union([
   S.Struct({ MofN: MofNApprovalStrategy }),
 ]);
 export type IdentityStatus =
@@ -565,26 +540,26 @@ export type IdentityStatus =
   | "REJECTED"
   | "INVALID"
   | (string & {});
-export const IdentityStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const IdentityStatus = /*@__PURE__*/ S.String;
 export type ApproverLastActivity =
   | "VOTED"
   | "BASELINED"
   | "RESPONDED_TO_INVITATION"
   | (string & {});
-export const ApproverLastActivity = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ApproverLastActivity = /*@__PURE__*/ S.String;
 export type MfaType = "EMAIL_OTP" | (string & {});
-export const MfaType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const MfaType = /*@__PURE__*/ S.String;
 export type MfaSyncStatus = "IN_SYNC" | "OUT_OF_SYNC" | (string & {});
-export const MfaSyncStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const MfaSyncStatus = /*@__PURE__*/ S.String;
 export interface MfaMethod {
   Type: MfaType;
   SyncStatus: MfaSyncStatus;
 }
-export const MfaMethod = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MfaMethod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Type: MfaType, SyncStatus: MfaSyncStatus }),
 ).annotate({ identifier: "MfaMethod" }) as any as S.Schema<MfaMethod>;
 export type MfaMethods = MfaMethod[];
-export const MfaMethods = /*@__PURE__*/ /*#__PURE__*/ S.Array(MfaMethod);
+export const MfaMethods = /*@__PURE__*/ S.Array(MfaMethod);
 export interface GetApprovalTeamResponseApprover {
   ApproverId?: string;
   ResponseTime?: Date;
@@ -596,37 +571,37 @@ export interface GetApprovalTeamResponseApprover {
   PendingBaselineSessionArn?: string;
   MfaMethods?: MfaMethod[];
 }
-export const GetApprovalTeamResponseApprover =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApproverId: S.optional(S.String),
-      ResponseTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      PrimaryIdentityId: S.optional(S.String),
-      PrimaryIdentitySourceArn: S.optional(S.String),
-      PrimaryIdentityStatus: S.optional(IdentityStatus),
-      LastActivity: S.optional(ApproverLastActivity),
-      LastActivityTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      PendingBaselineSessionArn: S.optional(S.String),
-      MfaMethods: S.optional(MfaMethods),
-    }),
-  ).annotate({
-    identifier: "GetApprovalTeamResponseApprover",
-  }) as any as S.Schema<GetApprovalTeamResponseApprover>;
+export const GetApprovalTeamResponseApprover = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApproverId: S.optional(S.String),
+    ResponseTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    PrimaryIdentityId: S.optional(S.String),
+    PrimaryIdentitySourceArn: S.optional(S.String),
+    PrimaryIdentityStatus: S.optional(IdentityStatus),
+    LastActivity: S.optional(ApproverLastActivity),
+    LastActivityTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    PendingBaselineSessionArn: S.optional(S.String),
+    MfaMethods: S.optional(MfaMethods),
+  }),
+).annotate({
+  identifier: "GetApprovalTeamResponseApprover",
+}) as any as S.Schema<GetApprovalTeamResponseApprover>;
 export type GetApprovalTeamResponseApprovers =
   GetApprovalTeamResponseApprover[];
-export const GetApprovalTeamResponseApprovers =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(GetApprovalTeamResponseApprover);
+export const GetApprovalTeamResponseApprovers = /*@__PURE__*/ S.Array(
+  GetApprovalTeamResponseApprover,
+);
 export type ApprovalTeamStatus =
   | "ACTIVE"
   | "INACTIVE"
   | "DELETING"
   | "PENDING"
   | (string & {});
-export const ApprovalTeamStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ApprovalTeamStatus = /*@__PURE__*/ S.String;
 export type ApprovalTeamStatusCode =
   | "VALIDATING"
   | "PENDING_ACTIVATION"
@@ -641,7 +616,7 @@ export type ApprovalTeamStatusCode =
   | "DELETE_FAILED_APPROVAL"
   | "DELETE_FAILED_VALIDATION"
   | (string & {});
-export const ApprovalTeamStatusCode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ApprovalTeamStatusCode = /*@__PURE__*/ S.String;
 export interface PendingUpdate {
   VersionId?: string;
   Description?: string;
@@ -653,7 +628,7 @@ export interface PendingUpdate {
   Approvers?: GetApprovalTeamResponseApprover[];
   UpdateInitiationTime?: Date;
 }
-export const PendingUpdate = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PendingUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     VersionId: S.optional(S.String),
     Description: S.optional(S.String),
@@ -685,36 +660,35 @@ export interface GetApprovalTeamResponse {
   LastUpdateTime?: Date;
   PendingUpdate?: PendingUpdate;
 }
-export const GetApprovalTeamResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      CreationTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      ApprovalStrategy: S.optional(ApprovalStrategyResponse),
-      NumberOfApprovers: S.optional(S.Number),
-      Approvers: S.optional(GetApprovalTeamResponseApprovers),
-      Arn: S.optional(S.String),
-      Description: S.optional(SensitiveString),
-      Name: S.optional(S.String),
-      Status: S.optional(ApprovalTeamStatus),
-      StatusCode: S.optional(ApprovalTeamStatusCode),
-      StatusMessage: S.optional(S.String),
-      UpdateSessionArn: S.optional(S.String),
-      VersionId: S.optional(S.String),
-      Policies: S.optional(PoliciesReferences),
-      LastUpdateTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      PendingUpdate: S.optional(PendingUpdate),
-    }),
+export const GetApprovalTeamResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CreationTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    ApprovalStrategy: S.optional(ApprovalStrategyResponse),
+    NumberOfApprovers: S.optional(S.Number),
+    Approvers: S.optional(GetApprovalTeamResponseApprovers),
+    Arn: S.optional(S.String),
+    Description: S.optional(SensitiveString),
+    Name: S.optional(S.String),
+    Status: S.optional(ApprovalTeamStatus),
+    StatusCode: S.optional(ApprovalTeamStatusCode),
+    StatusMessage: S.optional(S.String),
+    UpdateSessionArn: S.optional(S.String),
+    VersionId: S.optional(S.String),
+    Policies: S.optional(PoliciesReferences),
+    LastUpdateTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    PendingUpdate: S.optional(PendingUpdate),
+  }),
 ).annotate({
   identifier: "GetApprovalTeamResponse",
 }) as any as S.Schema<GetApprovalTeamResponse>;
 export type UpdateAction = "SYNCHRONIZE_MFA_DEVICES" | (string & {});
-export const UpdateAction = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const UpdateAction = /*@__PURE__*/ S.String;
 export type UpdateActions = UpdateAction[];
-export const UpdateActions = /*@__PURE__*/ /*#__PURE__*/ S.Array(UpdateAction);
+export const UpdateActions = /*@__PURE__*/ S.Array(UpdateAction);
 export interface UpdateApprovalTeamRequest {
   ApprovalStrategy?: ApprovalStrategy;
   Approvers?: ApprovalTeamRequestApprover[];
@@ -722,32 +696,31 @@ export interface UpdateApprovalTeamRequest {
   Arn: string;
   UpdateActions?: UpdateAction[];
 }
-export const UpdateApprovalTeamRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ApprovalStrategy: S.optional(ApprovalStrategy),
-      Approvers: S.optional(ApprovalTeamRequestApprovers),
-      Description: S.optional(SensitiveString),
-      Arn: S.String.pipe(T.HttpLabel("Arn")),
-      UpdateActions: S.optional(UpdateActions),
-    }).pipe(
-      T.all(
-        T.Http({ method: "PATCH", uri: "/approval-teams/{Arn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateApprovalTeamRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApprovalStrategy: S.optional(ApprovalStrategy),
+    Approvers: S.optional(ApprovalTeamRequestApprovers),
+    Description: S.optional(SensitiveString),
+    Arn: S.String.pipe(T.HttpLabel("Arn")),
+    UpdateActions: S.optional(UpdateActions),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PATCH", uri: "/approval-teams/{Arn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "UpdateApprovalTeamRequest",
 }) as any as S.Schema<UpdateApprovalTeamRequest>;
 export interface UpdateApprovalTeamResponse {
   VersionId?: string;
 }
-export const UpdateApprovalTeamResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ VersionId: S.optional(S.String) }),
+export const UpdateApprovalTeamResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ VersionId: S.optional(S.String) }),
 ).annotate({
   identifier: "UpdateApprovalTeamResponse",
 }) as any as S.Schema<UpdateApprovalTeamResponse>;
@@ -755,8 +728,8 @@ export interface DeleteInactiveApprovalTeamVersionRequest {
   Arn: string;
   VersionId: string;
 }
-export const DeleteInactiveApprovalTeamVersionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteInactiveApprovalTeamVersionRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Arn: S.String.pipe(T.HttpLabel("Arn")),
       VersionId: S.String.pipe(T.HttpLabel("VersionId")),
@@ -770,33 +743,32 @@ export const DeleteInactiveApprovalTeamVersionRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DeleteInactiveApprovalTeamVersionRequest",
-  }) as any as S.Schema<DeleteInactiveApprovalTeamVersionRequest>;
+).annotate({
+  identifier: "DeleteInactiveApprovalTeamVersionRequest",
+}) as any as S.Schema<DeleteInactiveApprovalTeamVersionRequest>;
 export interface DeleteInactiveApprovalTeamVersionResponse {}
 export const DeleteInactiveApprovalTeamVersionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteInactiveApprovalTeamVersionResponse",
   }) as any as S.Schema<DeleteInactiveApprovalTeamVersionResponse>;
 export interface ListApprovalTeamsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListApprovalTeamsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/approval-teams/?List" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListApprovalTeamsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/approval-teams/?List" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListApprovalTeamsRequest",
 }) as any as S.Schema<ListApprovalTeamsRequest>;
@@ -811,8 +783,8 @@ export interface ListApprovalTeamsResponseApprovalTeam {
   StatusCode?: ApprovalTeamStatusCode;
   StatusMessage?: string;
 }
-export const ListApprovalTeamsResponseApprovalTeam =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListApprovalTeamsResponseApprovalTeam = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       CreationTime: S.optional(
         T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -826,23 +798,23 @@ export const ListApprovalTeamsResponseApprovalTeam =
       StatusCode: S.optional(ApprovalTeamStatusCode),
       StatusMessage: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "ListApprovalTeamsResponseApprovalTeam",
-  }) as any as S.Schema<ListApprovalTeamsResponseApprovalTeam>;
+).annotate({
+  identifier: "ListApprovalTeamsResponseApprovalTeam",
+}) as any as S.Schema<ListApprovalTeamsResponseApprovalTeam>;
 export type ListApprovalTeamsResponseApprovalTeams =
   ListApprovalTeamsResponseApprovalTeam[];
-export const ListApprovalTeamsResponseApprovalTeams =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ListApprovalTeamsResponseApprovalTeam);
+export const ListApprovalTeamsResponseApprovalTeams = /*@__PURE__*/ S.Array(
+  ListApprovalTeamsResponseApprovalTeam,
+);
 export interface ListApprovalTeamsResponse {
   NextToken?: string;
   ApprovalTeams?: ListApprovalTeamsResponseApprovalTeam[];
 }
-export const ListApprovalTeamsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      ApprovalTeams: S.optional(ListApprovalTeamsResponseApprovalTeams),
-    }),
+export const ListApprovalTeamsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    ApprovalTeams: S.optional(ListApprovalTeamsResponseApprovalTeams),
+  }),
 ).annotate({
   identifier: "ListApprovalTeamsResponse",
 }) as any as S.Schema<ListApprovalTeamsResponse>;
@@ -850,8 +822,8 @@ export interface StartActiveApprovalTeamDeletionRequest {
   PendingWindowDays?: number;
   Arn: string;
 }
-export const StartActiveApprovalTeamDeletionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StartActiveApprovalTeamDeletionRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       PendingWindowDays: S.optional(S.Number),
       Arn: S.String.pipe(T.HttpLabel("Arn")),
@@ -865,15 +837,15 @@ export const StartActiveApprovalTeamDeletionRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "StartActiveApprovalTeamDeletionRequest",
-  }) as any as S.Schema<StartActiveApprovalTeamDeletionRequest>;
+).annotate({
+  identifier: "StartActiveApprovalTeamDeletionRequest",
+}) as any as S.Schema<StartActiveApprovalTeamDeletionRequest>;
 export interface StartActiveApprovalTeamDeletionResponse {
   DeletionCompletionTime?: Date;
   DeletionStartTime?: Date;
 }
-export const StartActiveApprovalTeamDeletionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StartActiveApprovalTeamDeletionResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       DeletionCompletionTime: S.optional(
         T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -882,48 +854,47 @@ export const StartActiveApprovalTeamDeletionResponse =
         T.DateFromString.pipe(T.TimestampFormat("date-time")),
       ),
     }),
-  ).annotate({
-    identifier: "StartActiveApprovalTeamDeletionResponse",
-  }) as any as S.Schema<StartActiveApprovalTeamDeletionResponse>;
+).annotate({
+  identifier: "StartActiveApprovalTeamDeletionResponse",
+}) as any as S.Schema<StartActiveApprovalTeamDeletionResponse>;
 export type StartApprovalTeamBaselineApproverIds = string[];
-export const StartApprovalTeamBaselineApproverIds =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const StartApprovalTeamBaselineApproverIds = /*@__PURE__*/ S.Array(
+  S.String,
+);
 export interface StartApprovalTeamBaselineRequest {
   Arn: string;
   ApproverIds?: string[];
 }
-export const StartApprovalTeamBaselineRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Arn: S.String.pipe(T.HttpLabel("Arn")),
-      ApproverIds: S.optional(StartApprovalTeamBaselineApproverIds),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/approval-teams/{Arn}/baseline" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StartApprovalTeamBaselineRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.String.pipe(T.HttpLabel("Arn")),
+    ApproverIds: S.optional(StartApprovalTeamBaselineApproverIds),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/approval-teams/{Arn}/baseline" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "StartApprovalTeamBaselineRequest",
-  }) as any as S.Schema<StartApprovalTeamBaselineRequest>;
+  ),
+).annotate({
+  identifier: "StartApprovalTeamBaselineRequest",
+}) as any as S.Schema<StartApprovalTeamBaselineRequest>;
 export interface StartApprovalTeamBaselineResponse {
   BaselineSessionArn?: string;
 }
-export const StartApprovalTeamBaselineResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ BaselineSessionArn: S.optional(S.String) }),
-  ).annotate({
-    identifier: "StartApprovalTeamBaselineResponse",
-  }) as any as S.Schema<StartApprovalTeamBaselineResponse>;
+export const StartApprovalTeamBaselineResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ BaselineSessionArn: S.optional(S.String) }),
+).annotate({
+  identifier: "StartApprovalTeamBaselineResponse",
+}) as any as S.Schema<StartApprovalTeamBaselineResponse>;
 export interface IamIdentityCenter {
   InstanceArn: string;
   Region: string;
 }
-export const IamIdentityCenter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const IamIdentityCenter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ InstanceArn: S.String, Region: S.String }),
 ).annotate({
   identifier: "IamIdentityCenter",
@@ -931,8 +902,8 @@ export const IamIdentityCenter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface IdentitySourceParameters {
   IamIdentityCenter?: IamIdentityCenter;
 }
-export const IdentitySourceParameters = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ IamIdentityCenter: S.optional(IamIdentityCenter) }),
+export const IdentitySourceParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ IamIdentityCenter: S.optional(IamIdentityCenter) }),
 ).annotate({
   identifier: "IdentitySourceParameters",
 }) as any as S.Schema<IdentitySourceParameters>;
@@ -941,61 +912,58 @@ export interface CreateIdentitySourceRequest {
   ClientToken?: string;
   Tags?: { [key: string]: string | redacted.Redacted<string> | undefined };
 }
-export const CreateIdentitySourceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      IdentitySourceParameters: IdentitySourceParameters,
-      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-      Tags: S.optional(Tags),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/identity-sources" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateIdentitySourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    IdentitySourceParameters: IdentitySourceParameters,
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    Tags: S.optional(Tags),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/identity-sources" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateIdentitySourceRequest",
-  }) as any as S.Schema<CreateIdentitySourceRequest>;
+  ),
+).annotate({
+  identifier: "CreateIdentitySourceRequest",
+}) as any as S.Schema<CreateIdentitySourceRequest>;
 export type IdentitySourceType = "IAM_IDENTITY_CENTER" | (string & {});
-export const IdentitySourceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const IdentitySourceType = /*@__PURE__*/ S.String;
 export interface CreateIdentitySourceResponse {
   IdentitySourceType?: IdentitySourceType;
   IdentitySourceArn?: string;
   CreationTime?: Date;
 }
-export const CreateIdentitySourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      IdentitySourceType: S.optional(IdentitySourceType),
-      IdentitySourceArn: S.optional(S.String),
-      CreationTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateIdentitySourceResponse",
-  }) as any as S.Schema<CreateIdentitySourceResponse>;
+export const CreateIdentitySourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    IdentitySourceType: S.optional(IdentitySourceType),
+    IdentitySourceArn: S.optional(S.String),
+    CreationTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
+).annotate({
+  identifier: "CreateIdentitySourceResponse",
+}) as any as S.Schema<CreateIdentitySourceResponse>;
 export interface GetIdentitySourceRequest {
   IdentitySourceArn: string;
 }
-export const GetIdentitySourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      IdentitySourceArn: S.String.pipe(T.HttpLabel("IdentitySourceArn")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/identity-sources/{IdentitySourceArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetIdentitySourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    IdentitySourceArn: S.String.pipe(T.HttpLabel("IdentitySourceArn")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/identity-sources/{IdentitySourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetIdentitySourceRequest",
 }) as any as S.Schema<GetIdentitySourceRequest>;
@@ -1004,37 +972,35 @@ export interface IamIdentityCenterForGet {
   ApprovalPortalUrl?: string;
   Region?: string;
 }
-export const IamIdentityCenterForGet = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      InstanceArn: S.optional(S.String),
-      ApprovalPortalUrl: S.optional(S.String),
-      Region: S.optional(S.String),
-    }),
+export const IamIdentityCenterForGet = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    InstanceArn: S.optional(S.String),
+    ApprovalPortalUrl: S.optional(S.String),
+    Region: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "IamIdentityCenterForGet",
 }) as any as S.Schema<IamIdentityCenterForGet>;
 export type IdentitySourceParametersForGet = {
   IamIdentityCenter: IamIdentityCenterForGet;
 };
-export const IdentitySourceParametersForGet =
-  /*@__PURE__*/ /*#__PURE__*/ S.Union([
-    S.Struct({ IamIdentityCenter: IamIdentityCenterForGet }),
-  ]);
+export const IdentitySourceParametersForGet = /*@__PURE__*/ S.Union([
+  S.Struct({ IamIdentityCenter: IamIdentityCenterForGet }),
+]);
 export type IdentitySourceStatus =
   | "CREATING"
   | "ACTIVE"
   | "DELETING"
   | "ERROR"
   | (string & {});
-export const IdentitySourceStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const IdentitySourceStatus = /*@__PURE__*/ S.String;
 export type IdentitySourceStatusCode =
   | "ACCESS_DENIED"
   | "DELETION_FAILED"
   | "IDC_INSTANCE_NOT_FOUND"
   | "IDC_INSTANCE_NOT_VALID"
   | (string & {});
-export const IdentitySourceStatusCode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const IdentitySourceStatusCode = /*@__PURE__*/ S.String;
 export interface GetIdentitySourceResponse {
   IdentitySourceType?: IdentitySourceType;
   IdentitySourceParameters?: IdentitySourceParametersForGet;
@@ -1044,69 +1010,67 @@ export interface GetIdentitySourceResponse {
   StatusCode?: IdentitySourceStatusCode;
   StatusMessage?: string;
 }
-export const GetIdentitySourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      IdentitySourceType: S.optional(IdentitySourceType),
-      IdentitySourceParameters: S.optional(IdentitySourceParametersForGet),
-      IdentitySourceArn: S.optional(S.String),
-      CreationTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      Status: S.optional(IdentitySourceStatus),
-      StatusCode: S.optional(IdentitySourceStatusCode),
-      StatusMessage: S.optional(S.String),
-    }),
+export const GetIdentitySourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    IdentitySourceType: S.optional(IdentitySourceType),
+    IdentitySourceParameters: S.optional(IdentitySourceParametersForGet),
+    IdentitySourceArn: S.optional(S.String),
+    CreationTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    Status: S.optional(IdentitySourceStatus),
+    StatusCode: S.optional(IdentitySourceStatusCode),
+    StatusMessage: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GetIdentitySourceResponse",
 }) as any as S.Schema<GetIdentitySourceResponse>;
 export interface DeleteIdentitySourceRequest {
   IdentitySourceArn: string;
 }
-export const DeleteIdentitySourceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      IdentitySourceArn: S.String.pipe(T.HttpLabel("IdentitySourceArn")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/identity-sources/{IdentitySourceArn}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteIdentitySourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    IdentitySourceArn: S.String.pipe(T.HttpLabel("IdentitySourceArn")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/identity-sources/{IdentitySourceArn}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteIdentitySourceRequest",
-  }) as any as S.Schema<DeleteIdentitySourceRequest>;
+  ),
+).annotate({
+  identifier: "DeleteIdentitySourceRequest",
+}) as any as S.Schema<DeleteIdentitySourceRequest>;
 export interface DeleteIdentitySourceResponse {}
-export const DeleteIdentitySourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteIdentitySourceResponse",
-  }) as any as S.Schema<DeleteIdentitySourceResponse>;
+export const DeleteIdentitySourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteIdentitySourceResponse",
+}) as any as S.Schema<DeleteIdentitySourceResponse>;
 export interface ListIdentitySourcesRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListIdentitySourcesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/identity-sources/?List" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListIdentitySourcesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/identity-sources/?List" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListIdentitySourcesRequest",
 }) as any as S.Schema<ListIdentitySourcesRequest>;
@@ -1115,23 +1079,21 @@ export interface IamIdentityCenterForList {
   ApprovalPortalUrl?: string;
   Region?: string;
 }
-export const IamIdentityCenterForList = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      InstanceArn: S.optional(S.String),
-      ApprovalPortalUrl: S.optional(S.String),
-      Region: S.optional(S.String),
-    }),
+export const IamIdentityCenterForList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    InstanceArn: S.optional(S.String),
+    ApprovalPortalUrl: S.optional(S.String),
+    Region: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "IamIdentityCenterForList",
 }) as any as S.Schema<IamIdentityCenterForList>;
 export type IdentitySourceParametersForList = {
   IamIdentityCenter: IamIdentityCenterForList;
 };
-export const IdentitySourceParametersForList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Union([
-    S.Struct({ IamIdentityCenter: IamIdentityCenterForList }),
-  ]);
+export const IdentitySourceParametersForList = /*@__PURE__*/ S.Union([
+  S.Struct({ IamIdentityCenter: IamIdentityCenterForList }),
+]);
 export interface IdentitySourceForList {
   IdentitySourceType?: IdentitySourceType;
   IdentitySourceParameters?: IdentitySourceParametersForList;
@@ -1141,7 +1103,7 @@ export interface IdentitySourceForList {
   StatusCode?: IdentitySourceStatusCode;
   StatusMessage?: string;
 }
-export const IdentitySourceForList = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const IdentitySourceForList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IdentitySourceType: S.optional(IdentitySourceType),
     IdentitySourceParameters: S.optional(IdentitySourceParametersForList),
@@ -1157,26 +1119,23 @@ export const IdentitySourceForList = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "IdentitySourceForList",
 }) as any as S.Schema<IdentitySourceForList>;
 export type IdentitySources = IdentitySourceForList[];
-export const IdentitySources = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  IdentitySourceForList,
-);
+export const IdentitySources = /*@__PURE__*/ S.Array(IdentitySourceForList);
 export interface ListIdentitySourcesResponse {
   NextToken?: string;
   IdentitySources?: IdentitySourceForList[];
 }
-export const ListIdentitySourcesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      IdentitySources: S.optional(IdentitySources),
-    }),
-  ).annotate({
-    identifier: "ListIdentitySourcesResponse",
-  }) as any as S.Schema<ListIdentitySourcesResponse>;
+export const ListIdentitySourcesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    IdentitySources: S.optional(IdentitySources),
+  }),
+).annotate({
+  identifier: "ListIdentitySourcesResponse",
+}) as any as S.Schema<ListIdentitySourcesResponse>;
 export interface GetSessionRequest {
   SessionArn: string;
 }
-export const GetSessionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SessionArn: S.String.pipe(T.HttpLabel("SessionArn")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/sessions/{SessionArn}" }),
@@ -1193,7 +1152,7 @@ export const GetSessionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type SessionMetadata = {
   [key: string]: string | redacted.Redacted<string> | undefined;
 };
-export const SessionMetadata = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const SessionMetadata = /*@__PURE__*/ S.Record(
   S.String,
   SensitiveString.pipe(S.optional),
 );
@@ -1204,30 +1163,30 @@ export type SessionStatus =
   | "FAILED"
   | "CREATING"
   | (string & {});
-export const SessionStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SessionStatus = /*@__PURE__*/ S.String;
 export type SessionStatusCode =
   | "REJECTED"
   | "EXPIRED"
   | "CONFIGURATION_CHANGED"
   | "ALL_APPROVERS_IN_SESSION"
   | (string & {});
-export const SessionStatusCode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SessionStatusCode = /*@__PURE__*/ S.String;
 export type SessionExecutionStatus =
   | "EXECUTED"
   | "FAILED"
   | "PENDING"
   | (string & {});
-export const SessionExecutionStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SessionExecutionStatus = /*@__PURE__*/ S.String;
 export type ActionCompletionStrategy =
   | "AUTO_COMPLETION_UPON_APPROVAL"
   | (string & {});
-export const ActionCompletionStrategy = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ActionCompletionStrategy = /*@__PURE__*/ S.String;
 export type SessionResponse =
   | "APPROVED"
   | "REJECTED"
   | "NO_RESPONSE"
   | (string & {});
-export const SessionResponse = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SessionResponse = /*@__PURE__*/ S.String;
 export interface GetSessionResponseApproverResponse {
   ApproverId?: string;
   IdentitySourceArn?: string;
@@ -1235,32 +1194,32 @@ export interface GetSessionResponseApproverResponse {
   Response?: SessionResponse;
   ResponseTime?: Date;
 }
-export const GetSessionResponseApproverResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApproverId: S.optional(S.String),
-      IdentitySourceArn: S.optional(S.String),
-      IdentityId: S.optional(S.String),
-      Response: S.optional(SessionResponse),
-      ResponseTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-    }),
-  ).annotate({
-    identifier: "GetSessionResponseApproverResponse",
-  }) as any as S.Schema<GetSessionResponseApproverResponse>;
+export const GetSessionResponseApproverResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApproverId: S.optional(S.String),
+    IdentitySourceArn: S.optional(S.String),
+    IdentityId: S.optional(S.String),
+    Response: S.optional(SessionResponse),
+    ResponseTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
+).annotate({
+  identifier: "GetSessionResponseApproverResponse",
+}) as any as S.Schema<GetSessionResponseApproverResponse>;
 export type GetSessionResponseApproverResponses =
   GetSessionResponseApproverResponse[];
-export const GetSessionResponseApproverResponses =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(GetSessionResponseApproverResponse);
+export const GetSessionResponseApproverResponses = /*@__PURE__*/ S.Array(
+  GetSessionResponseApproverResponse,
+);
 export type AdditionalSecurityRequirement =
   | "APPROVER_VERIFICATION_REQUIRED"
   | (string & {});
-export const AdditionalSecurityRequirement =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AdditionalSecurityRequirement = /*@__PURE__*/ S.String;
 export type AdditionalSecurityRequirements = AdditionalSecurityRequirement[];
-export const AdditionalSecurityRequirements =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(AdditionalSecurityRequirement);
+export const AdditionalSecurityRequirements = /*@__PURE__*/ S.Array(
+  AdditionalSecurityRequirement,
+);
 export interface GetSessionResponse {
   SessionArn?: string;
   ApprovalTeamArn?: string;
@@ -1287,7 +1246,7 @@ export interface GetSessionResponse {
   ApproverResponses?: GetSessionResponseApproverResponse[];
   AdditionalSecurityRequirements?: AdditionalSecurityRequirement[];
 }
-export const GetSessionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetSessionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SessionArn: S.optional(S.String),
     ApprovalTeamArn: S.optional(S.String),
@@ -1326,7 +1285,7 @@ export const GetSessionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CancelSessionRequest {
   SessionArn: string;
 }
-export const CancelSessionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CancelSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SessionArn: S.String.pipe(T.HttpLabel("SessionArn")) }).pipe(
     T.all(
       T.Http({ method: "PUT", uri: "/sessions/{SessionArn}" }),
@@ -1341,7 +1300,7 @@ export const CancelSessionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "CancelSessionRequest",
 }) as any as S.Schema<CancelSessionRequest>;
 export interface CancelSessionResponse {}
-export const CancelSessionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CancelSessionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "CancelSessionResponse",
@@ -1354,7 +1313,7 @@ export type FilterField =
   | "SessionStatus"
   | "InitiationTime"
   | (string & {});
-export const FilterField = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const FilterField = /*@__PURE__*/ S.String;
 export type Operator =
   | "EQ"
   | "NE"
@@ -1366,13 +1325,13 @@ export type Operator =
   | "NOT_CONTAINS"
   | "BETWEEN"
   | (string & {});
-export const Operator = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const Operator = /*@__PURE__*/ S.String;
 export interface Filter {
   FieldName?: FilterField;
   Operator?: Operator;
   Value?: string;
 }
-export const Filter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Filter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FieldName: S.optional(FilterField),
     Operator: S.optional(Operator),
@@ -1380,14 +1339,14 @@ export const Filter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
 export type Filters = Filter[];
-export const Filters = /*@__PURE__*/ /*#__PURE__*/ S.Array(Filter);
+export const Filters = /*@__PURE__*/ S.Array(Filter);
 export interface ListSessionsRequest {
   ApprovalTeamArn: string;
   MaxResults?: number;
   NextToken?: string;
   Filters?: Filter[];
 }
-export const ListSessionsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApprovalTeamArn: S.String.pipe(T.HttpLabel("ApprovalTeamArn")),
     MaxResults: S.optional(S.Number),
@@ -1429,48 +1388,45 @@ export interface ListSessionsResponseSession {
   ActionCompletionStrategy?: ActionCompletionStrategy;
   AdditionalSecurityRequirements?: AdditionalSecurityRequirement[];
 }
-export const ListSessionsResponseSession =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SessionArn: S.optional(S.String),
-      ApprovalTeamName: S.optional(S.String),
-      ApprovalTeamArn: S.optional(S.String),
-      InitiationTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      ExpirationTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      CompletionTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      Description: S.optional(SensitiveString),
-      ActionName: S.optional(S.String),
-      ProtectedResourceArn: S.optional(S.String),
-      RequesterServicePrincipal: S.optional(S.String),
-      RequesterPrincipalArn: S.optional(S.String),
-      RequesterRegion: S.optional(S.String),
-      RequesterAccountId: S.optional(S.String),
-      Status: S.optional(SessionStatus),
-      StatusCode: S.optional(SessionStatusCode),
-      StatusMessage: S.optional(S.String),
-      ActionCompletionStrategy: S.optional(ActionCompletionStrategy),
-      AdditionalSecurityRequirements: S.optional(
-        AdditionalSecurityRequirements,
-      ),
-    }),
-  ).annotate({
-    identifier: "ListSessionsResponseSession",
-  }) as any as S.Schema<ListSessionsResponseSession>;
+export const ListSessionsResponseSession = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SessionArn: S.optional(S.String),
+    ApprovalTeamName: S.optional(S.String),
+    ApprovalTeamArn: S.optional(S.String),
+    InitiationTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    ExpirationTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    CompletionTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    Description: S.optional(SensitiveString),
+    ActionName: S.optional(S.String),
+    ProtectedResourceArn: S.optional(S.String),
+    RequesterServicePrincipal: S.optional(S.String),
+    RequesterPrincipalArn: S.optional(S.String),
+    RequesterRegion: S.optional(S.String),
+    RequesterAccountId: S.optional(S.String),
+    Status: S.optional(SessionStatus),
+    StatusCode: S.optional(SessionStatusCode),
+    StatusMessage: S.optional(S.String),
+    ActionCompletionStrategy: S.optional(ActionCompletionStrategy),
+    AdditionalSecurityRequirements: S.optional(AdditionalSecurityRequirements),
+  }),
+).annotate({
+  identifier: "ListSessionsResponseSession",
+}) as any as S.Schema<ListSessionsResponseSession>;
 export type ListSessionsResponseSessions = ListSessionsResponseSession[];
-export const ListSessionsResponseSessions = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ListSessionsResponseSessions = /*@__PURE__*/ S.Array(
   ListSessionsResponseSession,
 );
 export interface ListSessionsResponse {
   NextToken?: string;
   Sessions?: ListSessionsResponseSession[];
 }
-export const ListSessionsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListSessionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NextToken: S.optional(S.String),
     Sessions: S.optional(ListSessionsResponseSessions),

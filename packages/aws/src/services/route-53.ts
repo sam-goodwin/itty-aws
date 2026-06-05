@@ -366,37 +366,36 @@ export interface ActivateKeySigningKeyRequest {
   HostedZoneId: string;
   Name: string;
 }
-export const ActivateKeySigningKeyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
-      Name: S.String.pipe(T.HttpLabel("Name")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "POST",
-          uri: "/2013-04-01/keysigningkey/{HostedZoneId}/{Name}/activate",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ActivateKeySigningKeyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
+    Name: S.String.pipe(T.HttpLabel("Name")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({
+        method: "POST",
+        uri: "/2013-04-01/keysigningkey/{HostedZoneId}/{Name}/activate",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ActivateKeySigningKeyRequest",
-  }) as any as S.Schema<ActivateKeySigningKeyRequest>;
+  ),
+).annotate({
+  identifier: "ActivateKeySigningKeyRequest",
+}) as any as S.Schema<ActivateKeySigningKeyRequest>;
 export type ChangeStatus = "PENDING" | "INSYNC" | (string & {});
-export const ChangeStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ChangeStatus = /*@__PURE__*/ S.String;
 export interface ChangeInfo {
   Id: string;
   Status: ChangeStatus;
   SubmittedAt: Date;
   Comment?: string;
 }
-export const ChangeInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ChangeInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.String,
     Status: ChangeStatus,
@@ -407,12 +406,11 @@ export const ChangeInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ActivateKeySigningKeyResponse {
   ChangeInfo: ChangeInfo;
 }
-export const ActivateKeySigningKeyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns),
-  ).annotate({
-    identifier: "ActivateKeySigningKeyResponse",
-  }) as any as S.Schema<ActivateKeySigningKeyResponse>;
+export const ActivateKeySigningKeyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns),
+).annotate({
+  identifier: "ActivateKeySigningKeyResponse",
+}) as any as S.Schema<ActivateKeySigningKeyResponse>;
 export type VPCRegion =
   | "us-east-1"
   | "us-east-2"
@@ -461,12 +459,12 @@ export type VPCRegion =
   | "us-isob-west-1"
   | "eusc-de-east-1"
   | (string & {});
-export const VPCRegion = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const VPCRegion = /*@__PURE__*/ S.String;
 export interface VPC {
   VPCRegion?: VPCRegion;
   VPCId?: string;
 }
-export const VPC = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const VPC = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ VPCRegion: S.optional(VPCRegion), VPCId: S.optional(S.String) }),
 ).annotate({ identifier: "VPC" }) as any as S.Schema<VPC>;
 export interface AssociateVPCWithHostedZoneRequest {
@@ -474,53 +472,49 @@ export interface AssociateVPCWithHostedZoneRequest {
   VPC: VPC;
   Comment?: string;
 }
-export const AssociateVPCWithHostedZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
-      VPC: VPC,
-      Comment: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "POST",
-          uri: "/2013-04-01/hostedzone/{HostedZoneId}/associatevpc",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const AssociateVPCWithHostedZoneRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
+    VPC: VPC,
+    Comment: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({
+        method: "POST",
+        uri: "/2013-04-01/hostedzone/{HostedZoneId}/associatevpc",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "AssociateVPCWithHostedZoneRequest",
-  }) as any as S.Schema<AssociateVPCWithHostedZoneRequest>;
+  ),
+).annotate({
+  identifier: "AssociateVPCWithHostedZoneRequest",
+}) as any as S.Schema<AssociateVPCWithHostedZoneRequest>;
 export interface AssociateVPCWithHostedZoneResponse {
   ChangeInfo: ChangeInfo;
 }
-export const AssociateVPCWithHostedZoneResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns),
-  ).annotate({
-    identifier: "AssociateVPCWithHostedZoneResponse",
-  }) as any as S.Schema<AssociateVPCWithHostedZoneResponse>;
+export const AssociateVPCWithHostedZoneResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns),
+).annotate({
+  identifier: "AssociateVPCWithHostedZoneResponse",
+}) as any as S.Schema<AssociateVPCWithHostedZoneResponse>;
 export type CidrCollectionChangeAction =
   | "PUT"
   | "DELETE_IF_EXISTS"
   | (string & {});
-export const CidrCollectionChangeAction = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const CidrCollectionChangeAction = /*@__PURE__*/ S.String;
 export type CidrList = string[];
-export const CidrList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("Cidr")),
-);
+export const CidrList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("Cidr")));
 export interface CidrCollectionChange {
   LocationName: string;
   Action: CidrCollectionChangeAction;
   CidrList: string[];
 }
-export const CidrCollectionChange = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CidrCollectionChange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     LocationName: S.String,
     Action: CidrCollectionChangeAction,
@@ -531,43 +525,41 @@ export const CidrCollectionChange = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CidrCollectionChange>;
 export type CidrCollectionChanges = CidrCollectionChange[];
 export const CidrCollectionChanges =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(CidrCollectionChange);
+  /*@__PURE__*/ S.Array(CidrCollectionChange);
 export interface ChangeCidrCollectionRequest {
   Id: string;
   CollectionVersion?: number;
   Changes: CidrCollectionChange[];
 }
-export const ChangeCidrCollectionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Id: S.String.pipe(T.HttpLabel("Id")),
-      CollectionVersion: S.optional(S.Number),
-      Changes: CidrCollectionChanges,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/2013-04-01/cidrcollection/{Id}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ChangeCidrCollectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.String.pipe(T.HttpLabel("Id")),
+    CollectionVersion: S.optional(S.Number),
+    Changes: CidrCollectionChanges,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/2013-04-01/cidrcollection/{Id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ChangeCidrCollectionRequest",
-  }) as any as S.Schema<ChangeCidrCollectionRequest>;
+  ),
+).annotate({
+  identifier: "ChangeCidrCollectionRequest",
+}) as any as S.Schema<ChangeCidrCollectionRequest>;
 export interface ChangeCidrCollectionResponse {
   Id: string;
 }
-export const ChangeCidrCollectionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ Id: S.String }).pipe(ns),
-  ).annotate({
-    identifier: "ChangeCidrCollectionResponse",
-  }) as any as S.Schema<ChangeCidrCollectionResponse>;
+export const ChangeCidrCollectionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Id: S.String }).pipe(ns),
+).annotate({
+  identifier: "ChangeCidrCollectionResponse",
+}) as any as S.Schema<ChangeCidrCollectionResponse>;
 export type ChangeAction = "CREATE" | "DELETE" | "UPSERT" | (string & {});
-export const ChangeAction = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ChangeAction = /*@__PURE__*/ S.String;
 export type RRType =
   | "SOA"
   | "A"
@@ -587,7 +579,7 @@ export type RRType =
   | "SVCB"
   | "HTTPS"
   | (string & {});
-export const RRType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const RRType = /*@__PURE__*/ S.String;
 export type ResourceRecordSetRegion =
   | "us-east-1"
   | "us-east-2"
@@ -629,13 +621,13 @@ export type ResourceRecordSetRegion =
   | "ap-southeast-6"
   | "eusc-de-east-1"
   | (string & {});
-export const ResourceRecordSetRegion = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ResourceRecordSetRegion = /*@__PURE__*/ S.String;
 export interface GeoLocation {
   ContinentCode?: string;
   CountryCode?: string;
   SubdivisionCode?: string;
 }
-export const GeoLocation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GeoLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ContinentCode: S.optional(S.String),
     CountryCode: S.optional(S.String),
@@ -643,15 +635,15 @@ export const GeoLocation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GeoLocation" }) as any as S.Schema<GeoLocation>;
 export type ResourceRecordSetFailover = "PRIMARY" | "SECONDARY" | (string & {});
-export const ResourceRecordSetFailover = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ResourceRecordSetFailover = /*@__PURE__*/ S.String;
 export interface ResourceRecord {
   Value: string;
 }
-export const ResourceRecord = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ResourceRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Value: S.String }),
 ).annotate({ identifier: "ResourceRecord" }) as any as S.Schema<ResourceRecord>;
 export type ResourceRecords = ResourceRecord[];
-export const ResourceRecords = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ResourceRecords = /*@__PURE__*/ S.Array(
   ResourceRecord.pipe(T.XmlName("ResourceRecord")).annotate({
     identifier: "ResourceRecord",
   }),
@@ -661,7 +653,7 @@ export interface AliasTarget {
   DNSName: string;
   EvaluateTargetHealth: boolean;
 }
-export const AliasTarget = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AliasTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     HostedZoneId: S.String,
     DNSName: S.String,
@@ -672,7 +664,7 @@ export interface CidrRoutingConfig {
   CollectionId: string;
   LocationName: string;
 }
-export const CidrRoutingConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CidrRoutingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CollectionId: S.String, LocationName: S.String }),
 ).annotate({
   identifier: "CidrRoutingConfig",
@@ -681,7 +673,7 @@ export interface Coordinates {
   Latitude: string;
   Longitude: string;
 }
-export const Coordinates = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Coordinates = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Latitude: S.String, Longitude: S.String }),
 ).annotate({ identifier: "Coordinates" }) as any as S.Schema<Coordinates>;
 export interface GeoProximityLocation {
@@ -690,7 +682,7 @@ export interface GeoProximityLocation {
   Coordinates?: Coordinates;
   Bias?: number;
 }
-export const GeoProximityLocation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GeoProximityLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AWSRegion: S.optional(S.String),
     LocalZoneGroup: S.optional(S.String),
@@ -717,7 +709,7 @@ export interface ResourceRecordSet {
   CidrRoutingConfig?: CidrRoutingConfig;
   GeoProximityLocation?: GeoProximityLocation;
 }
-export const ResourceRecordSet = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ResourceRecordSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.String,
     Type: RRType,
@@ -742,74 +734,72 @@ export interface Change {
   Action: ChangeAction;
   ResourceRecordSet: ResourceRecordSet;
 }
-export const Change = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Change = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Action: ChangeAction, ResourceRecordSet: ResourceRecordSet }),
 ).annotate({ identifier: "Change" }) as any as S.Schema<Change>;
 export type Changes = Change[];
-export const Changes = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const Changes = /*@__PURE__*/ S.Array(
   Change.pipe(T.XmlName("Change")).annotate({ identifier: "Change" }),
 );
 export interface ChangeBatch {
   Comment?: string;
   Changes: Change[];
 }
-export const ChangeBatch = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ChangeBatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Comment: S.optional(S.String), Changes: Changes }),
 ).annotate({ identifier: "ChangeBatch" }) as any as S.Schema<ChangeBatch>;
 export interface ChangeResourceRecordSetsRequest {
   HostedZoneId: string;
   ChangeBatch: ChangeBatch;
 }
-export const ChangeResourceRecordSetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
-      ChangeBatch: ChangeBatch,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "POST",
-          uri: "/2013-04-01/hostedzone/{HostedZoneId}/rrset",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ChangeResourceRecordSetsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
+    ChangeBatch: ChangeBatch,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({
+        method: "POST",
+        uri: "/2013-04-01/hostedzone/{HostedZoneId}/rrset",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ChangeResourceRecordSetsRequest",
-  }) as any as S.Schema<ChangeResourceRecordSetsRequest>;
+  ),
+).annotate({
+  identifier: "ChangeResourceRecordSetsRequest",
+}) as any as S.Schema<ChangeResourceRecordSetsRequest>;
 export interface ChangeResourceRecordSetsResponse {
   ChangeInfo: ChangeInfo;
 }
-export const ChangeResourceRecordSetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns),
-  ).annotate({
-    identifier: "ChangeResourceRecordSetsResponse",
-  }) as any as S.Schema<ChangeResourceRecordSetsResponse>;
+export const ChangeResourceRecordSetsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns),
+).annotate({
+  identifier: "ChangeResourceRecordSetsResponse",
+}) as any as S.Schema<ChangeResourceRecordSetsResponse>;
 export type ErrorMessages = string[];
-export const ErrorMessages = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ErrorMessages = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("Message")),
 );
 export type TagResourceType = "healthcheck" | "hostedzone" | (string & {});
-export const TagResourceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TagResourceType = /*@__PURE__*/ S.String;
 export interface Tag {
   Key?: string;
   Value?: string;
 }
-export const Tag = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Tag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-export const TagList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const TagList = /*@__PURE__*/ S.Array(
   Tag.pipe(T.XmlName("Tag")).annotate({ identifier: "Tag" }),
 );
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const TagKeyList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("Key")),
 );
 export interface ChangeTagsForResourceRequest {
@@ -818,62 +808,61 @@ export interface ChangeTagsForResourceRequest {
   AddTags?: Tag[];
   RemoveTagKeys?: string[];
 }
-export const ChangeTagsForResourceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ResourceType: TagResourceType.pipe(T.HttpLabel("ResourceType")),
-      ResourceId: S.String.pipe(T.HttpLabel("ResourceId")),
-      AddTags: S.optional(TagList),
-      RemoveTagKeys: S.optional(TagKeyList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "POST",
-          uri: "/2013-04-01/tags/{ResourceType}/{ResourceId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ChangeTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ResourceType: TagResourceType.pipe(T.HttpLabel("ResourceType")),
+    ResourceId: S.String.pipe(T.HttpLabel("ResourceId")),
+    AddTags: S.optional(TagList),
+    RemoveTagKeys: S.optional(TagKeyList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({
+        method: "POST",
+        uri: "/2013-04-01/tags/{ResourceType}/{ResourceId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ChangeTagsForResourceRequest",
-  }) as any as S.Schema<ChangeTagsForResourceRequest>;
+  ),
+).annotate({
+  identifier: "ChangeTagsForResourceRequest",
+}) as any as S.Schema<ChangeTagsForResourceRequest>;
 export interface ChangeTagsForResourceResponse {}
-export const ChangeTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "ChangeTagsForResourceResponse",
-  }) as any as S.Schema<ChangeTagsForResourceResponse>;
+export const ChangeTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "ChangeTagsForResourceResponse",
+}) as any as S.Schema<ChangeTagsForResourceResponse>;
 export interface CreateCidrCollectionRequest {
   Name: string;
   CallerReference: string;
 }
-export const CreateCidrCollectionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ Name: S.String, CallerReference: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/2013-04-01/cidrcollection" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateCidrCollectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Name: S.String, CallerReference: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/2013-04-01/cidrcollection" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateCidrCollectionRequest",
-  }) as any as S.Schema<CreateCidrCollectionRequest>;
+  ),
+).annotate({
+  identifier: "CreateCidrCollectionRequest",
+}) as any as S.Schema<CreateCidrCollectionRequest>;
 export interface CidrCollection {
   Arn?: string;
   Id?: string;
   Name?: string;
   Version?: number;
 }
-export const CidrCollection = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CidrCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.optional(S.String),
     Id: S.optional(S.String),
@@ -885,15 +874,14 @@ export interface CreateCidrCollectionResponse {
   Collection?: CidrCollection;
   Location?: string;
 }
-export const CreateCidrCollectionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Collection: S.optional(CidrCollection),
-      Location: S.optional(S.String).pipe(T.HttpHeader("Location")),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "CreateCidrCollectionResponse",
-  }) as any as S.Schema<CreateCidrCollectionResponse>;
+export const CreateCidrCollectionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Collection: S.optional(CidrCollection),
+    Location: S.optional(S.String).pipe(T.HttpHeader("Location")),
+  }).pipe(ns),
+).annotate({
+  identifier: "CreateCidrCollectionResponse",
+}) as any as S.Schema<CreateCidrCollectionResponse>;
 export type HealthCheckType =
   | "HTTP"
   | "HTTPS"
@@ -904,9 +892,9 @@ export type HealthCheckType =
   | "CLOUDWATCH_METRIC"
   | "RECOVERY_CONTROL"
   | (string & {});
-export const HealthCheckType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const HealthCheckType = /*@__PURE__*/ S.String;
 export type ChildHealthCheckList = string[];
-export const ChildHealthCheckList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ChildHealthCheckList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("ChildHealthCheck")),
 );
 export type HealthCheckRegion =
@@ -919,9 +907,9 @@ export type HealthCheckRegion =
   | "ap-northeast-1"
   | "sa-east-1"
   | (string & {});
-export const HealthCheckRegion = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const HealthCheckRegion = /*@__PURE__*/ S.String;
 export type HealthCheckRegionList = HealthCheckRegion[];
-export const HealthCheckRegionList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const HealthCheckRegionList = /*@__PURE__*/ S.Array(
   HealthCheckRegion.pipe(T.XmlName("Region")),
 );
 export type CloudWatchRegion =
@@ -972,12 +960,12 @@ export type CloudWatchRegion =
   | "us-isob-west-1"
   | "eusc-de-east-1"
   | (string & {});
-export const CloudWatchRegion = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const CloudWatchRegion = /*@__PURE__*/ S.String;
 export interface AlarmIdentifier {
   Region: CloudWatchRegion;
   Name: string;
 }
-export const AlarmIdentifier = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AlarmIdentifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Region: CloudWatchRegion, Name: S.String }),
 ).annotate({
   identifier: "AlarmIdentifier",
@@ -987,8 +975,7 @@ export type InsufficientDataHealthStatus =
   | "Unhealthy"
   | "LastKnownStatus"
   | (string & {});
-export const InsufficientDataHealthStatus =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const InsufficientDataHealthStatus = /*@__PURE__*/ S.String;
 export interface HealthCheckConfig {
   IPAddress?: string;
   Port?: number;
@@ -1009,7 +996,7 @@ export interface HealthCheckConfig {
   InsufficientDataHealthStatus?: InsufficientDataHealthStatus;
   RoutingControlArn?: string;
 }
-export const HealthCheckConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const HealthCheckConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IPAddress: S.optional(S.String),
     Port: S.optional(S.Number),
@@ -1037,22 +1024,21 @@ export interface CreateHealthCheckRequest {
   CallerReference: string;
   HealthCheckConfig: HealthCheckConfig;
 }
-export const CreateHealthCheckRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      CallerReference: S.String,
-      HealthCheckConfig: HealthCheckConfig,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/2013-04-01/healthcheck" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateHealthCheckRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CallerReference: S.String,
+    HealthCheckConfig: HealthCheckConfig,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/2013-04-01/healthcheck" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "CreateHealthCheckRequest",
 }) as any as S.Schema<CreateHealthCheckRequest>;
@@ -1060,7 +1046,7 @@ export interface LinkedService {
   ServicePrincipal?: string;
   Description?: string;
 }
-export const LinkedService = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const LinkedService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ServicePrincipal: S.optional(S.String),
     Description: S.optional(S.String),
@@ -1072,7 +1058,7 @@ export type ComparisonOperator =
   | "LessThanThreshold"
   | "LessThanOrEqualToThreshold"
   | (string & {});
-export const ComparisonOperator = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ComparisonOperator = /*@__PURE__*/ S.String;
 export type Statistic =
   | "Average"
   | "Sum"
@@ -1080,16 +1066,16 @@ export type Statistic =
   | "Maximum"
   | "Minimum"
   | (string & {});
-export const Statistic = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const Statistic = /*@__PURE__*/ S.String;
 export interface Dimension {
   Name: string;
   Value: string;
 }
-export const Dimension = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Dimension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.String, Value: S.String }),
 ).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
 export type DimensionList = Dimension[];
-export const DimensionList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const DimensionList = /*@__PURE__*/ S.Array(
   Dimension.pipe(T.XmlName("Dimension")).annotate({ identifier: "Dimension" }),
 );
 export interface CloudWatchAlarmConfiguration {
@@ -1102,21 +1088,20 @@ export interface CloudWatchAlarmConfiguration {
   Statistic: Statistic;
   Dimensions?: Dimension[];
 }
-export const CloudWatchAlarmConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      EvaluationPeriods: S.Number,
-      Threshold: S.Number,
-      ComparisonOperator: ComparisonOperator,
-      Period: S.Number,
-      MetricName: S.String,
-      Namespace: S.String,
-      Statistic: Statistic,
-      Dimensions: S.optional(DimensionList),
-    }),
-  ).annotate({
-    identifier: "CloudWatchAlarmConfiguration",
-  }) as any as S.Schema<CloudWatchAlarmConfiguration>;
+export const CloudWatchAlarmConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    EvaluationPeriods: S.Number,
+    Threshold: S.Number,
+    ComparisonOperator: ComparisonOperator,
+    Period: S.Number,
+    MetricName: S.String,
+    Namespace: S.String,
+    Statistic: Statistic,
+    Dimensions: S.optional(DimensionList),
+  }),
+).annotate({
+  identifier: "CloudWatchAlarmConfiguration",
+}) as any as S.Schema<CloudWatchAlarmConfiguration>;
 export interface HealthCheck {
   Id: string;
   CallerReference: string;
@@ -1125,7 +1110,7 @@ export interface HealthCheck {
   HealthCheckVersion: number;
   CloudWatchAlarmConfiguration?: CloudWatchAlarmConfiguration;
 }
-export const HealthCheck = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const HealthCheck = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.String,
     CallerReference: S.String,
@@ -1139,12 +1124,11 @@ export interface CreateHealthCheckResponse {
   HealthCheck: HealthCheck;
   Location: string;
 }
-export const CreateHealthCheckResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      HealthCheck: HealthCheck,
-      Location: S.String.pipe(T.HttpHeader("Location")),
-    }).pipe(ns),
+export const CreateHealthCheckResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    HealthCheck: HealthCheck,
+    Location: S.String.pipe(T.HttpHeader("Location")),
+  }).pipe(ns),
 ).annotate({
   identifier: "CreateHealthCheckResponse",
 }) as any as S.Schema<CreateHealthCheckResponse>;
@@ -1152,7 +1136,7 @@ export interface HostedZoneConfig {
   Comment?: string;
   PrivateZone?: boolean;
 }
-export const HostedZoneConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const HostedZoneConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Comment: S.optional(S.String),
     PrivateZone: S.optional(S.Boolean),
@@ -1167,25 +1151,24 @@ export interface CreateHostedZoneRequest {
   HostedZoneConfig?: HostedZoneConfig;
   DelegationSetId?: string;
 }
-export const CreateHostedZoneRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Name: S.String,
-      VPC: S.optional(VPC),
-      CallerReference: S.String,
-      HostedZoneConfig: S.optional(HostedZoneConfig),
-      DelegationSetId: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/2013-04-01/hostedzone" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateHostedZoneRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String,
+    VPC: S.optional(VPC),
+    CallerReference: S.String,
+    HostedZoneConfig: S.optional(HostedZoneConfig),
+    DelegationSetId: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/2013-04-01/hostedzone" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "CreateHostedZoneRequest",
 }) as any as S.Schema<CreateHostedZoneRequest>;
@@ -1199,12 +1182,12 @@ export type AcceleratedRecoveryStatus =
   | "DISABLED"
   | "DISABLING_HOSTED_ZONE_LOCKED"
   | (string & {});
-export const AcceleratedRecoveryStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AcceleratedRecoveryStatus = /*@__PURE__*/ S.String;
 export interface HostedZoneFailureReasons {
   AcceleratedRecovery?: string;
 }
-export const HostedZoneFailureReasons = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ AcceleratedRecovery: S.optional(S.String) }),
+export const HostedZoneFailureReasons = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ AcceleratedRecovery: S.optional(S.String) }),
 ).annotate({
   identifier: "HostedZoneFailureReasons",
 }) as any as S.Schema<HostedZoneFailureReasons>;
@@ -1212,7 +1195,7 @@ export interface HostedZoneFeatures {
   AcceleratedRecoveryStatus?: AcceleratedRecoveryStatus;
   FailureReasons?: HostedZoneFailureReasons;
 }
-export const HostedZoneFeatures = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const HostedZoneFeatures = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AcceleratedRecoveryStatus: S.optional(AcceleratedRecoveryStatus),
     FailureReasons: S.optional(HostedZoneFailureReasons),
@@ -1229,7 +1212,7 @@ export interface HostedZone {
   LinkedService?: LinkedService;
   Features?: HostedZoneFeatures;
 }
-export const HostedZone = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const HostedZone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.String,
     Name: S.String,
@@ -1241,7 +1224,7 @@ export const HostedZone = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HostedZone" }) as any as S.Schema<HostedZone>;
 export type DelegationSetNameServers = string[];
-export const DelegationSetNameServers = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const DelegationSetNameServers = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("NameServer")),
 );
 export interface DelegationSet {
@@ -1249,7 +1232,7 @@ export interface DelegationSet {
   CallerReference?: string;
   NameServers: string[];
 }
-export const DelegationSet = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DelegationSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.optional(S.String),
     CallerReference: S.optional(S.String),
@@ -1263,15 +1246,14 @@ export interface CreateHostedZoneResponse {
   VPC?: VPC;
   Location: string;
 }
-export const CreateHostedZoneResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      HostedZone: HostedZone,
-      ChangeInfo: ChangeInfo,
-      DelegationSet: DelegationSet,
-      VPC: S.optional(VPC),
-      Location: S.String.pipe(T.HttpHeader("Location")),
-    }).pipe(ns),
+export const CreateHostedZoneResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    HostedZone: HostedZone,
+    ChangeInfo: ChangeInfo,
+    DelegationSet: DelegationSet,
+    VPC: S.optional(VPC),
+    Location: S.String.pipe(T.HttpHeader("Location")),
+  }).pipe(ns),
 ).annotate({
   identifier: "CreateHostedZoneResponse",
 }) as any as S.Schema<CreateHostedZoneResponse>;
@@ -1282,25 +1264,24 @@ export interface CreateKeySigningKeyRequest {
   Name: string;
   Status: string;
 }
-export const CreateKeySigningKeyRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      CallerReference: S.String,
-      HostedZoneId: S.String,
-      KeyManagementServiceArn: S.String,
-      Name: S.String,
-      Status: S.String,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/2013-04-01/keysigningkey" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateKeySigningKeyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CallerReference: S.String,
+    HostedZoneId: S.String,
+    KeyManagementServiceArn: S.String,
+    Name: S.String,
+    Status: S.String,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/2013-04-01/keysigningkey" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "CreateKeySigningKeyRequest",
 }) as any as S.Schema<CreateKeySigningKeyRequest>;
@@ -1322,7 +1303,7 @@ export interface KeySigningKey {
   CreatedDate?: Date;
   LastModifiedDate?: Date;
 }
-export const KeySigningKey = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const KeySigningKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.optional(S.String),
     KmsArn: S.optional(S.String),
@@ -1347,45 +1328,43 @@ export interface CreateKeySigningKeyResponse {
   KeySigningKey: KeySigningKey;
   Location: string;
 }
-export const CreateKeySigningKeyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ChangeInfo: ChangeInfo,
-      KeySigningKey: KeySigningKey,
-      Location: S.String.pipe(T.HttpHeader("Location")),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "CreateKeySigningKeyResponse",
-  }) as any as S.Schema<CreateKeySigningKeyResponse>;
+export const CreateKeySigningKeyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ChangeInfo: ChangeInfo,
+    KeySigningKey: KeySigningKey,
+    Location: S.String.pipe(T.HttpHeader("Location")),
+  }).pipe(ns),
+).annotate({
+  identifier: "CreateKeySigningKeyResponse",
+}) as any as S.Schema<CreateKeySigningKeyResponse>;
 export interface CreateQueryLoggingConfigRequest {
   HostedZoneId: string;
   CloudWatchLogsLogGroupArn: string;
 }
-export const CreateQueryLoggingConfigRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      HostedZoneId: S.String,
-      CloudWatchLogsLogGroupArn: S.String,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/2013-04-01/queryloggingconfig" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateQueryLoggingConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    HostedZoneId: S.String,
+    CloudWatchLogsLogGroupArn: S.String,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/2013-04-01/queryloggingconfig" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateQueryLoggingConfigRequest",
-  }) as any as S.Schema<CreateQueryLoggingConfigRequest>;
+  ),
+).annotate({
+  identifier: "CreateQueryLoggingConfigRequest",
+}) as any as S.Schema<CreateQueryLoggingConfigRequest>;
 export interface QueryLoggingConfig {
   Id: string;
   HostedZoneId: string;
   CloudWatchLogsLogGroupArn: string;
 }
-export const QueryLoggingConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const QueryLoggingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.String,
     HostedZoneId: S.String,
@@ -1398,73 +1377,69 @@ export interface CreateQueryLoggingConfigResponse {
   QueryLoggingConfig: QueryLoggingConfig;
   Location: string;
 }
-export const CreateQueryLoggingConfigResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      QueryLoggingConfig: QueryLoggingConfig,
-      Location: S.String.pipe(T.HttpHeader("Location")),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "CreateQueryLoggingConfigResponse",
-  }) as any as S.Schema<CreateQueryLoggingConfigResponse>;
+export const CreateQueryLoggingConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    QueryLoggingConfig: QueryLoggingConfig,
+    Location: S.String.pipe(T.HttpHeader("Location")),
+  }).pipe(ns),
+).annotate({
+  identifier: "CreateQueryLoggingConfigResponse",
+}) as any as S.Schema<CreateQueryLoggingConfigResponse>;
 export interface CreateReusableDelegationSetRequest {
   CallerReference: string;
   HostedZoneId?: string;
 }
-export const CreateReusableDelegationSetRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CallerReference: S.String,
-      HostedZoneId: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/2013-04-01/delegationset" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateReusableDelegationSetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CallerReference: S.String,
+    HostedZoneId: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/2013-04-01/delegationset" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateReusableDelegationSetRequest",
-  }) as any as S.Schema<CreateReusableDelegationSetRequest>;
+  ),
+).annotate({
+  identifier: "CreateReusableDelegationSetRequest",
+}) as any as S.Schema<CreateReusableDelegationSetRequest>;
 export interface CreateReusableDelegationSetResponse {
   DelegationSet: DelegationSet;
   Location: string;
 }
-export const CreateReusableDelegationSetResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DelegationSet: DelegationSet,
-      Location: S.String.pipe(T.HttpHeader("Location")),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "CreateReusableDelegationSetResponse",
-  }) as any as S.Schema<CreateReusableDelegationSetResponse>;
+export const CreateReusableDelegationSetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DelegationSet: DelegationSet,
+    Location: S.String.pipe(T.HttpHeader("Location")),
+  }).pipe(ns),
+).annotate({
+  identifier: "CreateReusableDelegationSetResponse",
+}) as any as S.Schema<CreateReusableDelegationSetResponse>;
 export interface CreateTrafficPolicyRequest {
   Name: string;
   Document: string;
   Comment?: string;
 }
-export const CreateTrafficPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Name: S.String,
-      Document: S.String,
-      Comment: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/2013-04-01/trafficpolicy" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateTrafficPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String,
+    Document: S.String,
+    Comment: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/2013-04-01/trafficpolicy" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "CreateTrafficPolicyRequest",
 }) as any as S.Schema<CreateTrafficPolicyRequest>;
@@ -1476,7 +1451,7 @@ export interface TrafficPolicy {
   Document: string;
   Comment?: string;
 }
-export const TrafficPolicy = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TrafficPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.String,
     Version: S.Number,
@@ -1490,15 +1465,14 @@ export interface CreateTrafficPolicyResponse {
   TrafficPolicy: TrafficPolicy;
   Location: string;
 }
-export const CreateTrafficPolicyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TrafficPolicy: TrafficPolicy,
-      Location: S.String.pipe(T.HttpHeader("Location")),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "CreateTrafficPolicyResponse",
-  }) as any as S.Schema<CreateTrafficPolicyResponse>;
+export const CreateTrafficPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TrafficPolicy: TrafficPolicy,
+    Location: S.String.pipe(T.HttpHeader("Location")),
+  }).pipe(ns),
+).annotate({
+  identifier: "CreateTrafficPolicyResponse",
+}) as any as S.Schema<CreateTrafficPolicyResponse>;
 export interface CreateTrafficPolicyInstanceRequest {
   HostedZoneId: string;
   Name: string;
@@ -1506,28 +1480,27 @@ export interface CreateTrafficPolicyInstanceRequest {
   TrafficPolicyId: string;
   TrafficPolicyVersion: number;
 }
-export const CreateTrafficPolicyInstanceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      HostedZoneId: S.String,
-      Name: S.String,
-      TTL: S.Number,
-      TrafficPolicyId: S.String,
-      TrafficPolicyVersion: S.Number,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/2013-04-01/trafficpolicyinstance" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateTrafficPolicyInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    HostedZoneId: S.String,
+    Name: S.String,
+    TTL: S.Number,
+    TrafficPolicyId: S.String,
+    TrafficPolicyVersion: S.Number,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/2013-04-01/trafficpolicyinstance" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateTrafficPolicyInstanceRequest",
-  }) as any as S.Schema<CreateTrafficPolicyInstanceRequest>;
+  ),
+).annotate({
+  identifier: "CreateTrafficPolicyInstanceRequest",
+}) as any as S.Schema<CreateTrafficPolicyInstanceRequest>;
 export interface TrafficPolicyInstance {
   Id: string;
   HostedZoneId: string;
@@ -1539,7 +1512,7 @@ export interface TrafficPolicyInstance {
   TrafficPolicyVersion: number;
   TrafficPolicyType: RRType;
 }
-export const TrafficPolicyInstance = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TrafficPolicyInstance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.String,
     HostedZoneId: S.String,
@@ -1558,59 +1531,56 @@ export interface CreateTrafficPolicyInstanceResponse {
   TrafficPolicyInstance: TrafficPolicyInstance;
   Location: string;
 }
-export const CreateTrafficPolicyInstanceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TrafficPolicyInstance: TrafficPolicyInstance,
-      Location: S.String.pipe(T.HttpHeader("Location")),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "CreateTrafficPolicyInstanceResponse",
-  }) as any as S.Schema<CreateTrafficPolicyInstanceResponse>;
+export const CreateTrafficPolicyInstanceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TrafficPolicyInstance: TrafficPolicyInstance,
+    Location: S.String.pipe(T.HttpHeader("Location")),
+  }).pipe(ns),
+).annotate({
+  identifier: "CreateTrafficPolicyInstanceResponse",
+}) as any as S.Schema<CreateTrafficPolicyInstanceResponse>;
 export interface CreateTrafficPolicyVersionRequest {
   Id: string;
   Document: string;
   Comment?: string;
 }
-export const CreateTrafficPolicyVersionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Id: S.String.pipe(T.HttpLabel("Id")),
-      Document: S.String,
-      Comment: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/2013-04-01/trafficpolicy/{Id}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateTrafficPolicyVersionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.String.pipe(T.HttpLabel("Id")),
+    Document: S.String,
+    Comment: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/2013-04-01/trafficpolicy/{Id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateTrafficPolicyVersionRequest",
-  }) as any as S.Schema<CreateTrafficPolicyVersionRequest>;
+  ),
+).annotate({
+  identifier: "CreateTrafficPolicyVersionRequest",
+}) as any as S.Schema<CreateTrafficPolicyVersionRequest>;
 export interface CreateTrafficPolicyVersionResponse {
   TrafficPolicy: TrafficPolicy;
   Location: string;
 }
-export const CreateTrafficPolicyVersionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TrafficPolicy: TrafficPolicy,
-      Location: S.String.pipe(T.HttpHeader("Location")),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "CreateTrafficPolicyVersionResponse",
-  }) as any as S.Schema<CreateTrafficPolicyVersionResponse>;
+export const CreateTrafficPolicyVersionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TrafficPolicy: TrafficPolicy,
+    Location: S.String.pipe(T.HttpHeader("Location")),
+  }).pipe(ns),
+).annotate({
+  identifier: "CreateTrafficPolicyVersionResponse",
+}) as any as S.Schema<CreateTrafficPolicyVersionResponse>;
 export interface CreateVPCAssociationAuthorizationRequest {
   HostedZoneId: string;
   VPC: VPC;
 }
-export const CreateVPCAssociationAuthorizationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateVPCAssociationAuthorizationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
       VPC: VPC,
@@ -1628,15 +1598,15 @@ export const CreateVPCAssociationAuthorizationRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "CreateVPCAssociationAuthorizationRequest",
-  }) as any as S.Schema<CreateVPCAssociationAuthorizationRequest>;
+).annotate({
+  identifier: "CreateVPCAssociationAuthorizationRequest",
+}) as any as S.Schema<CreateVPCAssociationAuthorizationRequest>;
 export interface CreateVPCAssociationAuthorizationResponse {
   HostedZoneId: string;
   VPC: VPC;
 }
 export const CreateVPCAssociationAuthorizationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ HostedZoneId: S.String, VPC: VPC }).pipe(ns),
   ).annotate({
     identifier: "CreateVPCAssociationAuthorizationResponse",
@@ -1645,115 +1615,109 @@ export interface DeactivateKeySigningKeyRequest {
   HostedZoneId: string;
   Name: string;
 }
-export const DeactivateKeySigningKeyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
-      Name: S.String.pipe(T.HttpLabel("Name")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "POST",
-          uri: "/2013-04-01/keysigningkey/{HostedZoneId}/{Name}/deactivate",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeactivateKeySigningKeyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
+    Name: S.String.pipe(T.HttpLabel("Name")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({
+        method: "POST",
+        uri: "/2013-04-01/keysigningkey/{HostedZoneId}/{Name}/deactivate",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeactivateKeySigningKeyRequest",
-  }) as any as S.Schema<DeactivateKeySigningKeyRequest>;
+  ),
+).annotate({
+  identifier: "DeactivateKeySigningKeyRequest",
+}) as any as S.Schema<DeactivateKeySigningKeyRequest>;
 export interface DeactivateKeySigningKeyResponse {
   ChangeInfo: ChangeInfo;
 }
-export const DeactivateKeySigningKeyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns),
-  ).annotate({
-    identifier: "DeactivateKeySigningKeyResponse",
-  }) as any as S.Schema<DeactivateKeySigningKeyResponse>;
+export const DeactivateKeySigningKeyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns),
+).annotate({
+  identifier: "DeactivateKeySigningKeyResponse",
+}) as any as S.Schema<DeactivateKeySigningKeyResponse>;
 export interface DeleteCidrCollectionRequest {
   Id: string;
 }
-export const DeleteCidrCollectionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "DELETE", uri: "/2013-04-01/cidrcollection/{Id}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteCidrCollectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "DELETE", uri: "/2013-04-01/cidrcollection/{Id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteCidrCollectionRequest",
-  }) as any as S.Schema<DeleteCidrCollectionRequest>;
+  ),
+).annotate({
+  identifier: "DeleteCidrCollectionRequest",
+}) as any as S.Schema<DeleteCidrCollectionRequest>;
 export interface DeleteCidrCollectionResponse {}
-export const DeleteCidrCollectionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteCidrCollectionResponse",
-  }) as any as S.Schema<DeleteCidrCollectionResponse>;
+export const DeleteCidrCollectionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteCidrCollectionResponse",
+}) as any as S.Schema<DeleteCidrCollectionResponse>;
 export interface DeleteHealthCheckRequest {
   HealthCheckId: string;
 }
-export const DeleteHealthCheckRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      HealthCheckId: S.String.pipe(T.HttpLabel("HealthCheckId")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "DELETE",
-          uri: "/2013-04-01/healthcheck/{HealthCheckId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteHealthCheckRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ HealthCheckId: S.String.pipe(T.HttpLabel("HealthCheckId")) }).pipe(
+    T.all(
+      ns,
+      T.Http({
+        method: "DELETE",
+        uri: "/2013-04-01/healthcheck/{HealthCheckId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DeleteHealthCheckRequest",
 }) as any as S.Schema<DeleteHealthCheckRequest>;
 export interface DeleteHealthCheckResponse {}
-export const DeleteHealthCheckResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}).pipe(ns),
+export const DeleteHealthCheckResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "DeleteHealthCheckResponse",
 }) as any as S.Schema<DeleteHealthCheckResponse>;
 export interface DeleteHostedZoneRequest {
   Id: string;
 }
-export const DeleteHostedZoneRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "DELETE", uri: "/2013-04-01/hostedzone/{Id}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteHostedZoneRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "DELETE", uri: "/2013-04-01/hostedzone/{Id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DeleteHostedZoneRequest",
 }) as any as S.Schema<DeleteHostedZoneRequest>;
 export interface DeleteHostedZoneResponse {
   ChangeInfo: ChangeInfo;
 }
-export const DeleteHostedZoneResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns),
+export const DeleteHostedZoneResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns),
 ).annotate({
   identifier: "DeleteHostedZoneResponse",
 }) as any as S.Schema<DeleteHostedZoneResponse>;
@@ -1761,152 +1725,147 @@ export interface DeleteKeySigningKeyRequest {
   HostedZoneId: string;
   Name: string;
 }
-export const DeleteKeySigningKeyRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
-      Name: S.String.pipe(T.HttpLabel("Name")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "DELETE",
-          uri: "/2013-04-01/keysigningkey/{HostedZoneId}/{Name}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteKeySigningKeyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
+    Name: S.String.pipe(T.HttpLabel("Name")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({
+        method: "DELETE",
+        uri: "/2013-04-01/keysigningkey/{HostedZoneId}/{Name}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DeleteKeySigningKeyRequest",
 }) as any as S.Schema<DeleteKeySigningKeyRequest>;
 export interface DeleteKeySigningKeyResponse {
   ChangeInfo: ChangeInfo;
 }
-export const DeleteKeySigningKeyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns),
-  ).annotate({
-    identifier: "DeleteKeySigningKeyResponse",
-  }) as any as S.Schema<DeleteKeySigningKeyResponse>;
+export const DeleteKeySigningKeyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns),
+).annotate({
+  identifier: "DeleteKeySigningKeyResponse",
+}) as any as S.Schema<DeleteKeySigningKeyResponse>;
 export interface DeleteQueryLoggingConfigRequest {
   Id: string;
 }
-export const DeleteQueryLoggingConfigRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "DELETE",
-          uri: "/2013-04-01/queryloggingconfig/{Id}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteQueryLoggingConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "DELETE", uri: "/2013-04-01/queryloggingconfig/{Id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteQueryLoggingConfigRequest",
-  }) as any as S.Schema<DeleteQueryLoggingConfigRequest>;
+  ),
+).annotate({
+  identifier: "DeleteQueryLoggingConfigRequest",
+}) as any as S.Schema<DeleteQueryLoggingConfigRequest>;
 export interface DeleteQueryLoggingConfigResponse {}
-export const DeleteQueryLoggingConfigResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteQueryLoggingConfigResponse",
-  }) as any as S.Schema<DeleteQueryLoggingConfigResponse>;
+export const DeleteQueryLoggingConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteQueryLoggingConfigResponse",
+}) as any as S.Schema<DeleteQueryLoggingConfigResponse>;
 export interface DeleteReusableDelegationSetRequest {
   Id: string;
 }
-export const DeleteReusableDelegationSetRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "DELETE", uri: "/2013-04-01/delegationset/{Id}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteReusableDelegationSetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "DELETE", uri: "/2013-04-01/delegationset/{Id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteReusableDelegationSetRequest",
-  }) as any as S.Schema<DeleteReusableDelegationSetRequest>;
+  ),
+).annotate({
+  identifier: "DeleteReusableDelegationSetRequest",
+}) as any as S.Schema<DeleteReusableDelegationSetRequest>;
 export interface DeleteReusableDelegationSetResponse {}
-export const DeleteReusableDelegationSetResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteReusableDelegationSetResponse",
-  }) as any as S.Schema<DeleteReusableDelegationSetResponse>;
+export const DeleteReusableDelegationSetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteReusableDelegationSetResponse",
+}) as any as S.Schema<DeleteReusableDelegationSetResponse>;
 export interface DeleteTrafficPolicyRequest {
   Id: string;
   Version: number;
 }
-export const DeleteTrafficPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Id: S.String.pipe(T.HttpLabel("Id")),
-      Version: S.Number.pipe(T.HttpLabel("Version")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "DELETE",
-          uri: "/2013-04-01/trafficpolicy/{Id}/{Version}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteTrafficPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.String.pipe(T.HttpLabel("Id")),
+    Version: S.Number.pipe(T.HttpLabel("Version")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({
+        method: "DELETE",
+        uri: "/2013-04-01/trafficpolicy/{Id}/{Version}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DeleteTrafficPolicyRequest",
 }) as any as S.Schema<DeleteTrafficPolicyRequest>;
 export interface DeleteTrafficPolicyResponse {}
-export const DeleteTrafficPolicyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteTrafficPolicyResponse",
-  }) as any as S.Schema<DeleteTrafficPolicyResponse>;
+export const DeleteTrafficPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteTrafficPolicyResponse",
+}) as any as S.Schema<DeleteTrafficPolicyResponse>;
 export interface DeleteTrafficPolicyInstanceRequest {
   Id: string;
 }
-export const DeleteTrafficPolicyInstanceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "DELETE",
-          uri: "/2013-04-01/trafficpolicyinstance/{Id}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteTrafficPolicyInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
+    T.all(
+      ns,
+      T.Http({
+        method: "DELETE",
+        uri: "/2013-04-01/trafficpolicyinstance/{Id}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteTrafficPolicyInstanceRequest",
-  }) as any as S.Schema<DeleteTrafficPolicyInstanceRequest>;
+  ),
+).annotate({
+  identifier: "DeleteTrafficPolicyInstanceRequest",
+}) as any as S.Schema<DeleteTrafficPolicyInstanceRequest>;
 export interface DeleteTrafficPolicyInstanceResponse {}
-export const DeleteTrafficPolicyInstanceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteTrafficPolicyInstanceResponse",
-  }) as any as S.Schema<DeleteTrafficPolicyInstanceResponse>;
+export const DeleteTrafficPolicyInstanceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteTrafficPolicyInstanceResponse",
+}) as any as S.Schema<DeleteTrafficPolicyInstanceResponse>;
 export interface DeleteVPCAssociationAuthorizationRequest {
   HostedZoneId: string;
   VPC: VPC;
 }
-export const DeleteVPCAssociationAuthorizationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteVPCAssociationAuthorizationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
       VPC: VPC,
@@ -1924,52 +1883,50 @@ export const DeleteVPCAssociationAuthorizationRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DeleteVPCAssociationAuthorizationRequest",
-  }) as any as S.Schema<DeleteVPCAssociationAuthorizationRequest>;
+).annotate({
+  identifier: "DeleteVPCAssociationAuthorizationRequest",
+}) as any as S.Schema<DeleteVPCAssociationAuthorizationRequest>;
 export interface DeleteVPCAssociationAuthorizationResponse {}
 export const DeleteVPCAssociationAuthorizationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
     identifier: "DeleteVPCAssociationAuthorizationResponse",
   }) as any as S.Schema<DeleteVPCAssociationAuthorizationResponse>;
 export interface DisableHostedZoneDNSSECRequest {
   HostedZoneId: string;
 }
-export const DisableHostedZoneDNSSECRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")) }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "POST",
-          uri: "/2013-04-01/hostedzone/{HostedZoneId}/disable-dnssec",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DisableHostedZoneDNSSECRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")) }).pipe(
+    T.all(
+      ns,
+      T.Http({
+        method: "POST",
+        uri: "/2013-04-01/hostedzone/{HostedZoneId}/disable-dnssec",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DisableHostedZoneDNSSECRequest",
-  }) as any as S.Schema<DisableHostedZoneDNSSECRequest>;
+  ),
+).annotate({
+  identifier: "DisableHostedZoneDNSSECRequest",
+}) as any as S.Schema<DisableHostedZoneDNSSECRequest>;
 export interface DisableHostedZoneDNSSECResponse {
   ChangeInfo: ChangeInfo;
 }
-export const DisableHostedZoneDNSSECResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns),
-  ).annotate({
-    identifier: "DisableHostedZoneDNSSECResponse",
-  }) as any as S.Schema<DisableHostedZoneDNSSECResponse>;
+export const DisableHostedZoneDNSSECResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns),
+).annotate({
+  identifier: "DisableHostedZoneDNSSECResponse",
+}) as any as S.Schema<DisableHostedZoneDNSSECResponse>;
 export interface DisassociateVPCFromHostedZoneRequest {
   HostedZoneId: string;
   VPC: VPC;
   Comment?: string;
 }
-export const DisassociateVPCFromHostedZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DisassociateVPCFromHostedZoneRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
       VPC: VPC,
@@ -1988,49 +1945,46 @@ export const DisassociateVPCFromHostedZoneRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DisassociateVPCFromHostedZoneRequest",
-  }) as any as S.Schema<DisassociateVPCFromHostedZoneRequest>;
+).annotate({
+  identifier: "DisassociateVPCFromHostedZoneRequest",
+}) as any as S.Schema<DisassociateVPCFromHostedZoneRequest>;
 export interface DisassociateVPCFromHostedZoneResponse {
   ChangeInfo: ChangeInfo;
 }
-export const DisassociateVPCFromHostedZoneResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns),
-  ).annotate({
-    identifier: "DisassociateVPCFromHostedZoneResponse",
-  }) as any as S.Schema<DisassociateVPCFromHostedZoneResponse>;
+export const DisassociateVPCFromHostedZoneResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns),
+).annotate({
+  identifier: "DisassociateVPCFromHostedZoneResponse",
+}) as any as S.Schema<DisassociateVPCFromHostedZoneResponse>;
 export interface EnableHostedZoneDNSSECRequest {
   HostedZoneId: string;
 }
-export const EnableHostedZoneDNSSECRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")) }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "POST",
-          uri: "/2013-04-01/hostedzone/{HostedZoneId}/enable-dnssec",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const EnableHostedZoneDNSSECRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")) }).pipe(
+    T.all(
+      ns,
+      T.Http({
+        method: "POST",
+        uri: "/2013-04-01/hostedzone/{HostedZoneId}/enable-dnssec",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "EnableHostedZoneDNSSECRequest",
-  }) as any as S.Schema<EnableHostedZoneDNSSECRequest>;
+  ),
+).annotate({
+  identifier: "EnableHostedZoneDNSSECRequest",
+}) as any as S.Schema<EnableHostedZoneDNSSECRequest>;
 export interface EnableHostedZoneDNSSECResponse {
   ChangeInfo: ChangeInfo;
 }
-export const EnableHostedZoneDNSSECResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns),
-  ).annotate({
-    identifier: "EnableHostedZoneDNSSECResponse",
-  }) as any as S.Schema<EnableHostedZoneDNSSECResponse>;
+export const EnableHostedZoneDNSSECResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns),
+).annotate({
+  identifier: "EnableHostedZoneDNSSECResponse",
+}) as any as S.Schema<EnableHostedZoneDNSSECResponse>;
 export type AccountLimitType =
   | "MAX_HEALTH_CHECKS_BY_OWNER"
   | "MAX_HOSTED_ZONES_BY_OWNER"
@@ -2038,23 +1992,22 @@ export type AccountLimitType =
   | "MAX_REUSABLE_DELEGATION_SETS_BY_OWNER"
   | "MAX_TRAFFIC_POLICIES_BY_OWNER"
   | (string & {});
-export const AccountLimitType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AccountLimitType = /*@__PURE__*/ S.String;
 export interface GetAccountLimitRequest {
   Type: AccountLimitType;
 }
-export const GetAccountLimitRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ Type: AccountLimitType.pipe(T.HttpLabel("Type")) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "GET", uri: "/2013-04-01/accountlimit/{Type}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetAccountLimitRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Type: AccountLimitType.pipe(T.HttpLabel("Type")) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "GET", uri: "/2013-04-01/accountlimit/{Type}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetAccountLimitRequest",
 }) as any as S.Schema<GetAccountLimitRequest>;
@@ -2062,22 +2015,22 @@ export interface AccountLimit {
   Type: AccountLimitType;
   Value: number;
 }
-export const AccountLimit = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AccountLimit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Type: AccountLimitType, Value: S.Number }),
 ).annotate({ identifier: "AccountLimit" }) as any as S.Schema<AccountLimit>;
 export interface GetAccountLimitResponse {
   Limit: AccountLimit;
   Count: number;
 }
-export const GetAccountLimitResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ Limit: AccountLimit, Count: S.Number }).pipe(ns),
+export const GetAccountLimitResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Limit: AccountLimit, Count: S.Number }).pipe(ns),
 ).annotate({
   identifier: "GetAccountLimitResponse",
 }) as any as S.Schema<GetAccountLimitResponse>;
 export interface GetChangeRequest {
   Id: string;
 }
-export const GetChangeRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetChangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
     T.all(
       ns,
@@ -2095,42 +2048,41 @@ export const GetChangeRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetChangeResponse {
   ChangeInfo: ChangeInfo;
 }
-export const GetChangeResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetChangeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns),
 ).annotate({
   identifier: "GetChangeResponse",
 }) as any as S.Schema<GetChangeResponse>;
 export interface GetCheckerIpRangesRequest {}
-export const GetCheckerIpRangesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({}).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "GET", uri: "/2013-04-01/checkeripranges" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetCheckerIpRangesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "GET", uri: "/2013-04-01/checkeripranges" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetCheckerIpRangesRequest",
 }) as any as S.Schema<GetCheckerIpRangesRequest>;
 export type CheckerIpRanges = string[];
-export const CheckerIpRanges = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const CheckerIpRanges = /*@__PURE__*/ S.Array(S.String);
 export interface GetCheckerIpRangesResponse {
   CheckerIpRanges: string[];
 }
-export const GetCheckerIpRangesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ CheckerIpRanges: CheckerIpRanges }).pipe(ns),
+export const GetCheckerIpRangesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ CheckerIpRanges: CheckerIpRanges }).pipe(ns),
 ).annotate({
   identifier: "GetCheckerIpRangesResponse",
 }) as any as S.Schema<GetCheckerIpRangesResponse>;
 export interface GetDNSSECRequest {
   HostedZoneId: string;
 }
-export const GetDNSSECRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetDNSSECRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")) }).pipe(
     T.all(
       ns,
@@ -2152,20 +2104,19 @@ export interface DNSSECStatus {
   ServeSignature?: string;
   StatusMessage?: string;
 }
-export const DNSSECStatus = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DNSSECStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ServeSignature: S.optional(S.String),
     StatusMessage: S.optional(S.String),
   }),
 ).annotate({ identifier: "DNSSECStatus" }) as any as S.Schema<DNSSECStatus>;
 export type KeySigningKeys = KeySigningKey[];
-export const KeySigningKeys =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(KeySigningKey);
+export const KeySigningKeys = /*@__PURE__*/ S.Array(KeySigningKey);
 export interface GetDNSSECResponse {
   Status: DNSSECStatus;
   KeySigningKeys: KeySigningKey[];
 }
-export const GetDNSSECResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetDNSSECResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Status: DNSSECStatus, KeySigningKeys: KeySigningKeys }).pipe(ns),
 ).annotate({
   identifier: "GetDNSSECResponse",
@@ -2175,7 +2126,7 @@ export interface GetGeoLocationRequest {
   CountryCode?: string;
   SubdivisionCode?: string;
 }
-export const GetGeoLocationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetGeoLocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ContinentCode: S.optional(S.String).pipe(T.HttpQuery("continentcode")),
     CountryCode: S.optional(S.String).pipe(T.HttpQuery("countrycode")),
@@ -2202,7 +2153,7 @@ export interface GeoLocationDetails {
   SubdivisionCode?: string;
   SubdivisionName?: string;
 }
-export const GeoLocationDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GeoLocationDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ContinentCode: S.optional(S.String),
     ContinentName: S.optional(S.String),
@@ -2217,15 +2168,15 @@ export const GeoLocationDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetGeoLocationResponse {
   GeoLocationDetails: GeoLocationDetails;
 }
-export const GetGeoLocationResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ GeoLocationDetails: GeoLocationDetails }).pipe(ns),
+export const GetGeoLocationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ GeoLocationDetails: GeoLocationDetails }).pipe(ns),
 ).annotate({
   identifier: "GetGeoLocationResponse",
 }) as any as S.Schema<GetGeoLocationResponse>;
 export interface GetHealthCheckRequest {
   HealthCheckId: string;
 }
-export const GetHealthCheckRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetHealthCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ HealthCheckId: S.String.pipe(T.HttpLabel("HealthCheckId")) }).pipe(
     T.all(
       ns,
@@ -2243,42 +2194,40 @@ export const GetHealthCheckRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetHealthCheckResponse {
   HealthCheck: HealthCheck;
 }
-export const GetHealthCheckResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ HealthCheck: HealthCheck }).pipe(ns),
+export const GetHealthCheckResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ HealthCheck: HealthCheck }).pipe(ns),
 ).annotate({
   identifier: "GetHealthCheckResponse",
 }) as any as S.Schema<GetHealthCheckResponse>;
 export interface GetHealthCheckCountRequest {}
-export const GetHealthCheckCountRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({}).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "GET", uri: "/2013-04-01/healthcheckcount" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetHealthCheckCountRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "GET", uri: "/2013-04-01/healthcheckcount" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetHealthCheckCountRequest",
 }) as any as S.Schema<GetHealthCheckCountRequest>;
 export interface GetHealthCheckCountResponse {
   HealthCheckCount: number;
 }
-export const GetHealthCheckCountResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ HealthCheckCount: S.Number }).pipe(ns),
-  ).annotate({
-    identifier: "GetHealthCheckCountResponse",
-  }) as any as S.Schema<GetHealthCheckCountResponse>;
+export const GetHealthCheckCountResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ HealthCheckCount: S.Number }).pipe(ns),
+).annotate({
+  identifier: "GetHealthCheckCountResponse",
+}) as any as S.Schema<GetHealthCheckCountResponse>;
 export interface GetHealthCheckLastFailureReasonRequest {
   HealthCheckId: string;
 }
-export const GetHealthCheckLastFailureReasonRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetHealthCheckLastFailureReasonRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       HealthCheckId: S.String.pipe(T.HttpLabel("HealthCheckId")),
     }).pipe(
@@ -2295,14 +2244,14 @@ export const GetHealthCheckLastFailureReasonRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "GetHealthCheckLastFailureReasonRequest",
-  }) as any as S.Schema<GetHealthCheckLastFailureReasonRequest>;
+).annotate({
+  identifier: "GetHealthCheckLastFailureReasonRequest",
+}) as any as S.Schema<GetHealthCheckLastFailureReasonRequest>;
 export interface StatusReport {
   Status?: string;
   CheckedTime?: Date;
 }
-export const StatusReport = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StatusReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Status: S.optional(S.String),
     CheckedTime: S.optional(T.DateFromString),
@@ -2313,18 +2262,17 @@ export interface HealthCheckObservation {
   IPAddress?: string;
   StatusReport?: StatusReport;
 }
-export const HealthCheckObservation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Region: S.optional(HealthCheckRegion),
-      IPAddress: S.optional(S.String),
-      StatusReport: S.optional(StatusReport),
-    }),
+export const HealthCheckObservation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Region: S.optional(HealthCheckRegion),
+    IPAddress: S.optional(S.String),
+    StatusReport: S.optional(StatusReport),
+  }),
 ).annotate({
   identifier: "HealthCheckObservation",
 }) as any as S.Schema<HealthCheckObservation>;
 export type HealthCheckObservations = HealthCheckObservation[];
-export const HealthCheckObservations = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const HealthCheckObservations = /*@__PURE__*/ S.Array(
   HealthCheckObservation.pipe(T.XmlName("HealthCheckObservation")).annotate({
     identifier: "HealthCheckObservation",
   }),
@@ -2332,49 +2280,44 @@ export const HealthCheckObservations = /*@__PURE__*/ /*#__PURE__*/ S.Array(
 export interface GetHealthCheckLastFailureReasonResponse {
   HealthCheckObservations: HealthCheckObservation[];
 }
-export const GetHealthCheckLastFailureReasonResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ HealthCheckObservations: HealthCheckObservations }).pipe(ns),
-  ).annotate({
-    identifier: "GetHealthCheckLastFailureReasonResponse",
-  }) as any as S.Schema<GetHealthCheckLastFailureReasonResponse>;
+export const GetHealthCheckLastFailureReasonResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ HealthCheckObservations: HealthCheckObservations }).pipe(ns),
+).annotate({
+  identifier: "GetHealthCheckLastFailureReasonResponse",
+}) as any as S.Schema<GetHealthCheckLastFailureReasonResponse>;
 export interface GetHealthCheckStatusRequest {
   HealthCheckId: string;
 }
-export const GetHealthCheckStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      HealthCheckId: S.String.pipe(T.HttpLabel("HealthCheckId")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "GET",
-          uri: "/2013-04-01/healthcheck/{HealthCheckId}/status",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetHealthCheckStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ HealthCheckId: S.String.pipe(T.HttpLabel("HealthCheckId")) }).pipe(
+    T.all(
+      ns,
+      T.Http({
+        method: "GET",
+        uri: "/2013-04-01/healthcheck/{HealthCheckId}/status",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetHealthCheckStatusRequest",
-  }) as any as S.Schema<GetHealthCheckStatusRequest>;
+  ),
+).annotate({
+  identifier: "GetHealthCheckStatusRequest",
+}) as any as S.Schema<GetHealthCheckStatusRequest>;
 export interface GetHealthCheckStatusResponse {
   HealthCheckObservations: HealthCheckObservation[];
 }
-export const GetHealthCheckStatusResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ HealthCheckObservations: HealthCheckObservations }).pipe(ns),
-  ).annotate({
-    identifier: "GetHealthCheckStatusResponse",
-  }) as any as S.Schema<GetHealthCheckStatusResponse>;
+export const GetHealthCheckStatusResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ HealthCheckObservations: HealthCheckObservations }).pipe(ns),
+).annotate({
+  identifier: "GetHealthCheckStatusResponse",
+}) as any as S.Schema<GetHealthCheckStatusResponse>;
 export interface GetHostedZoneRequest {
   Id: string;
 }
-export const GetHostedZoneRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetHostedZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
     T.all(
       ns,
@@ -2390,7 +2333,7 @@ export const GetHostedZoneRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "GetHostedZoneRequest",
 }) as any as S.Schema<GetHostedZoneRequest>;
 export type VPCs = VPC[];
-export const VPCs = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const VPCs = /*@__PURE__*/ S.Array(
   VPC.pipe(T.XmlName("VPC")).annotate({ identifier: "VPC" }),
 );
 export interface GetHostedZoneResponse {
@@ -2398,7 +2341,7 @@ export interface GetHostedZoneResponse {
   DelegationSet?: DelegationSet;
   VPCs?: VPC[];
 }
-export const GetHostedZoneResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetHostedZoneResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     HostedZone: HostedZone,
     DelegationSet: S.optional(DelegationSet),
@@ -2408,27 +2351,26 @@ export const GetHostedZoneResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "GetHostedZoneResponse",
 }) as any as S.Schema<GetHostedZoneResponse>;
 export interface GetHostedZoneCountRequest {}
-export const GetHostedZoneCountRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({}).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "GET", uri: "/2013-04-01/hostedzonecount" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetHostedZoneCountRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "GET", uri: "/2013-04-01/hostedzonecount" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetHostedZoneCountRequest",
 }) as any as S.Schema<GetHostedZoneCountRequest>;
 export interface GetHostedZoneCountResponse {
   HostedZoneCount: number;
 }
-export const GetHostedZoneCountResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ HostedZoneCount: S.Number }).pipe(ns),
+export const GetHostedZoneCountResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ HostedZoneCount: S.Number }).pipe(ns),
 ).annotate({
   identifier: "GetHostedZoneCountResponse",
 }) as any as S.Schema<GetHostedZoneCountResponse>;
@@ -2436,30 +2378,29 @@ export type HostedZoneLimitType =
   | "MAX_RRSETS_BY_ZONE"
   | "MAX_VPCS_ASSOCIATED_BY_ZONE"
   | (string & {});
-export const HostedZoneLimitType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const HostedZoneLimitType = /*@__PURE__*/ S.String;
 export interface GetHostedZoneLimitRequest {
   Type: HostedZoneLimitType;
   HostedZoneId: string;
 }
-export const GetHostedZoneLimitRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Type: HostedZoneLimitType.pipe(T.HttpLabel("Type")),
-      HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "GET",
-          uri: "/2013-04-01/hostedzonelimit/{HostedZoneId}/{Type}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetHostedZoneLimitRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Type: HostedZoneLimitType.pipe(T.HttpLabel("Type")),
+    HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({
+        method: "GET",
+        uri: "/2013-04-01/hostedzonelimit/{HostedZoneId}/{Type}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetHostedZoneLimitRequest",
 }) as any as S.Schema<GetHostedZoneLimitRequest>;
@@ -2467,7 +2408,7 @@ export interface HostedZoneLimit {
   Type: HostedZoneLimitType;
   Value: number;
 }
-export const HostedZoneLimit = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const HostedZoneLimit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Type: HostedZoneLimitType, Value: S.Number }),
 ).annotate({
   identifier: "HostedZoneLimit",
@@ -2476,78 +2417,73 @@ export interface GetHostedZoneLimitResponse {
   Limit: HostedZoneLimit;
   Count: number;
 }
-export const GetHostedZoneLimitResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ Limit: HostedZoneLimit, Count: S.Number }).pipe(ns),
+export const GetHostedZoneLimitResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Limit: HostedZoneLimit, Count: S.Number }).pipe(ns),
 ).annotate({
   identifier: "GetHostedZoneLimitResponse",
 }) as any as S.Schema<GetHostedZoneLimitResponse>;
 export interface GetQueryLoggingConfigRequest {
   Id: string;
 }
-export const GetQueryLoggingConfigRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "GET", uri: "/2013-04-01/queryloggingconfig/{Id}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetQueryLoggingConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "GET", uri: "/2013-04-01/queryloggingconfig/{Id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetQueryLoggingConfigRequest",
-  }) as any as S.Schema<GetQueryLoggingConfigRequest>;
+  ),
+).annotate({
+  identifier: "GetQueryLoggingConfigRequest",
+}) as any as S.Schema<GetQueryLoggingConfigRequest>;
 export interface GetQueryLoggingConfigResponse {
   QueryLoggingConfig: QueryLoggingConfig;
 }
-export const GetQueryLoggingConfigResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ QueryLoggingConfig: QueryLoggingConfig }).pipe(ns),
-  ).annotate({
-    identifier: "GetQueryLoggingConfigResponse",
-  }) as any as S.Schema<GetQueryLoggingConfigResponse>;
+export const GetQueryLoggingConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ QueryLoggingConfig: QueryLoggingConfig }).pipe(ns),
+).annotate({
+  identifier: "GetQueryLoggingConfigResponse",
+}) as any as S.Schema<GetQueryLoggingConfigResponse>;
 export interface GetReusableDelegationSetRequest {
   Id: string;
 }
-export const GetReusableDelegationSetRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "GET", uri: "/2013-04-01/delegationset/{Id}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetReusableDelegationSetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "GET", uri: "/2013-04-01/delegationset/{Id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetReusableDelegationSetRequest",
-  }) as any as S.Schema<GetReusableDelegationSetRequest>;
+  ),
+).annotate({
+  identifier: "GetReusableDelegationSetRequest",
+}) as any as S.Schema<GetReusableDelegationSetRequest>;
 export interface GetReusableDelegationSetResponse {
   DelegationSet: DelegationSet;
 }
-export const GetReusableDelegationSetResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ DelegationSet: DelegationSet }).pipe(ns),
-  ).annotate({
-    identifier: "GetReusableDelegationSetResponse",
-  }) as any as S.Schema<GetReusableDelegationSetResponse>;
+export const GetReusableDelegationSetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DelegationSet: DelegationSet }).pipe(ns),
+).annotate({
+  identifier: "GetReusableDelegationSetResponse",
+}) as any as S.Schema<GetReusableDelegationSetResponse>;
 export type ReusableDelegationSetLimitType =
   | "MAX_ZONES_BY_REUSABLE_DELEGATION_SET"
   | (string & {});
-export const ReusableDelegationSetLimitType =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ReusableDelegationSetLimitType = /*@__PURE__*/ S.String;
 export interface GetReusableDelegationSetLimitRequest {
   Type: ReusableDelegationSetLimitType;
   DelegationSetId: string;
 }
-export const GetReusableDelegationSetLimitRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetReusableDelegationSetLimitRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Type: ReusableDelegationSetLimitType.pipe(T.HttpLabel("Type")),
       DelegationSetId: S.String.pipe(T.HttpLabel("DelegationSetId")),
@@ -2565,15 +2501,15 @@ export const GetReusableDelegationSetLimitRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "GetReusableDelegationSetLimitRequest",
-  }) as any as S.Schema<GetReusableDelegationSetLimitRequest>;
+).annotate({
+  identifier: "GetReusableDelegationSetLimitRequest",
+}) as any as S.Schema<GetReusableDelegationSetLimitRequest>;
 export interface ReusableDelegationSetLimit {
   Type: ReusableDelegationSetLimitType;
   Value: number;
 }
-export const ReusableDelegationSetLimit = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ Type: ReusableDelegationSetLimitType, Value: S.Number }),
+export const ReusableDelegationSetLimit = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Type: ReusableDelegationSetLimitType, Value: S.Number }),
 ).annotate({
   identifier: "ReusableDelegationSetLimit",
 }) as any as S.Schema<ReusableDelegationSetLimit>;
@@ -2581,80 +2517,74 @@ export interface GetReusableDelegationSetLimitResponse {
   Limit: ReusableDelegationSetLimit;
   Count: number;
 }
-export const GetReusableDelegationSetLimitResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetReusableDelegationSetLimitResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ Limit: ReusableDelegationSetLimit, Count: S.Number }).pipe(ns),
-  ).annotate({
-    identifier: "GetReusableDelegationSetLimitResponse",
-  }) as any as S.Schema<GetReusableDelegationSetLimitResponse>;
+).annotate({
+  identifier: "GetReusableDelegationSetLimitResponse",
+}) as any as S.Schema<GetReusableDelegationSetLimitResponse>;
 export interface GetTrafficPolicyRequest {
   Id: string;
   Version: number;
 }
-export const GetTrafficPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Id: S.String.pipe(T.HttpLabel("Id")),
-      Version: S.Number.pipe(T.HttpLabel("Version")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "GET",
-          uri: "/2013-04-01/trafficpolicy/{Id}/{Version}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetTrafficPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.String.pipe(T.HttpLabel("Id")),
+    Version: S.Number.pipe(T.HttpLabel("Version")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({
+        method: "GET",
+        uri: "/2013-04-01/trafficpolicy/{Id}/{Version}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetTrafficPolicyRequest",
 }) as any as S.Schema<GetTrafficPolicyRequest>;
 export interface GetTrafficPolicyResponse {
   TrafficPolicy: TrafficPolicy;
 }
-export const GetTrafficPolicyResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ TrafficPolicy: TrafficPolicy }).pipe(ns),
+export const GetTrafficPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ TrafficPolicy: TrafficPolicy }).pipe(ns),
 ).annotate({
   identifier: "GetTrafficPolicyResponse",
 }) as any as S.Schema<GetTrafficPolicyResponse>;
 export interface GetTrafficPolicyInstanceRequest {
   Id: string;
 }
-export const GetTrafficPolicyInstanceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "GET",
-          uri: "/2013-04-01/trafficpolicyinstance/{Id}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetTrafficPolicyInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "GET", uri: "/2013-04-01/trafficpolicyinstance/{Id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetTrafficPolicyInstanceRequest",
-  }) as any as S.Schema<GetTrafficPolicyInstanceRequest>;
+  ),
+).annotate({
+  identifier: "GetTrafficPolicyInstanceRequest",
+}) as any as S.Schema<GetTrafficPolicyInstanceRequest>;
 export interface GetTrafficPolicyInstanceResponse {
   TrafficPolicyInstance: TrafficPolicyInstance;
 }
-export const GetTrafficPolicyInstanceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ TrafficPolicyInstance: TrafficPolicyInstance }).pipe(ns),
-  ).annotate({
-    identifier: "GetTrafficPolicyInstanceResponse",
-  }) as any as S.Schema<GetTrafficPolicyInstanceResponse>;
+export const GetTrafficPolicyInstanceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ TrafficPolicyInstance: TrafficPolicyInstance }).pipe(ns),
+).annotate({
+  identifier: "GetTrafficPolicyInstanceResponse",
+}) as any as S.Schema<GetTrafficPolicyInstanceResponse>;
 export interface GetTrafficPolicyInstanceCountRequest {}
-export const GetTrafficPolicyInstanceCountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetTrafficPolicyInstanceCountRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({}).pipe(
       T.all(
         ns,
@@ -2669,25 +2599,24 @@ export const GetTrafficPolicyInstanceCountRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "GetTrafficPolicyInstanceCountRequest",
-  }) as any as S.Schema<GetTrafficPolicyInstanceCountRequest>;
+).annotate({
+  identifier: "GetTrafficPolicyInstanceCountRequest",
+}) as any as S.Schema<GetTrafficPolicyInstanceCountRequest>;
 export interface GetTrafficPolicyInstanceCountResponse {
   TrafficPolicyInstanceCount: number;
 }
-export const GetTrafficPolicyInstanceCountResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ TrafficPolicyInstanceCount: S.Number }).pipe(ns),
-  ).annotate({
-    identifier: "GetTrafficPolicyInstanceCountResponse",
-  }) as any as S.Schema<GetTrafficPolicyInstanceCountResponse>;
+export const GetTrafficPolicyInstanceCountResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ TrafficPolicyInstanceCount: S.Number }).pipe(ns),
+).annotate({
+  identifier: "GetTrafficPolicyInstanceCountResponse",
+}) as any as S.Schema<GetTrafficPolicyInstanceCountResponse>;
 export interface ListCidrBlocksRequest {
   CollectionId: string;
   LocationName?: string;
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListCidrBlocksRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListCidrBlocksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CollectionId: S.String.pipe(T.HttpLabel("CollectionId")),
     LocationName: S.optional(S.String).pipe(T.HttpQuery("location")),
@@ -2714,7 +2643,7 @@ export interface CidrBlockSummary {
   CidrBlock?: string;
   LocationName?: string;
 }
-export const CidrBlockSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CidrBlockSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CidrBlock: S.optional(S.String),
     LocationName: S.optional(S.String),
@@ -2723,18 +2652,16 @@ export const CidrBlockSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "CidrBlockSummary",
 }) as any as S.Schema<CidrBlockSummary>;
 export type CidrBlockSummaries = CidrBlockSummary[];
-export const CidrBlockSummaries =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(CidrBlockSummary);
+export const CidrBlockSummaries = /*@__PURE__*/ S.Array(CidrBlockSummary);
 export interface ListCidrBlocksResponse {
   NextToken?: string;
   CidrBlocks?: CidrBlockSummary[];
 }
-export const ListCidrBlocksResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      CidrBlocks: S.optional(CidrBlockSummaries),
-    }).pipe(ns),
+export const ListCidrBlocksResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    CidrBlocks: S.optional(CidrBlockSummaries),
+  }).pipe(ns),
 ).annotate({
   identifier: "ListCidrBlocksResponse",
 }) as any as S.Schema<ListCidrBlocksResponse>;
@@ -2742,22 +2669,21 @@ export interface ListCidrCollectionsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListCidrCollectionsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("nexttoken")),
-      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxresults")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "GET", uri: "/2013-04-01/cidrcollection" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListCidrCollectionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("nexttoken")),
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxresults")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "GET", uri: "/2013-04-01/cidrcollection" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListCidrCollectionsRequest",
 }) as any as S.Schema<ListCidrCollectionsRequest>;
@@ -2767,7 +2693,7 @@ export interface CollectionSummary {
   Name?: string;
   Version?: number;
 }
-export const CollectionSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CollectionSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.optional(S.String),
     Id: S.optional(S.String),
@@ -2778,70 +2704,65 @@ export const CollectionSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "CollectionSummary",
 }) as any as S.Schema<CollectionSummary>;
 export type CollectionSummaries = CollectionSummary[];
-export const CollectionSummaries =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(CollectionSummary);
+export const CollectionSummaries = /*@__PURE__*/ S.Array(CollectionSummary);
 export interface ListCidrCollectionsResponse {
   NextToken?: string;
   CidrCollections?: CollectionSummary[];
 }
-export const ListCidrCollectionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      CidrCollections: S.optional(CollectionSummaries),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "ListCidrCollectionsResponse",
-  }) as any as S.Schema<ListCidrCollectionsResponse>;
+export const ListCidrCollectionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    CidrCollections: S.optional(CollectionSummaries),
+  }).pipe(ns),
+).annotate({
+  identifier: "ListCidrCollectionsResponse",
+}) as any as S.Schema<ListCidrCollectionsResponse>;
 export interface ListCidrLocationsRequest {
   CollectionId: string;
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListCidrLocationsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      CollectionId: S.String.pipe(T.HttpLabel("CollectionId")),
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("nexttoken")),
-      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxresults")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "GET",
-          uri: "/2013-04-01/cidrcollection/{CollectionId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListCidrLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CollectionId: S.String.pipe(T.HttpLabel("CollectionId")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("nexttoken")),
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxresults")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({
+        method: "GET",
+        uri: "/2013-04-01/cidrcollection/{CollectionId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListCidrLocationsRequest",
 }) as any as S.Schema<ListCidrLocationsRequest>;
 export interface LocationSummary {
   LocationName?: string;
 }
-export const LocationSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const LocationSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ LocationName: S.optional(S.String) }),
 ).annotate({
   identifier: "LocationSummary",
 }) as any as S.Schema<LocationSummary>;
 export type LocationSummaries = LocationSummary[];
-export const LocationSummaries =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(LocationSummary);
+export const LocationSummaries = /*@__PURE__*/ S.Array(LocationSummary);
 export interface ListCidrLocationsResponse {
   NextToken?: string;
   CidrLocations?: LocationSummary[];
 }
-export const ListCidrLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      CidrLocations: S.optional(LocationSummaries),
-    }).pipe(ns),
+export const ListCidrLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    CidrLocations: S.optional(LocationSummaries),
+  }).pipe(ns),
 ).annotate({
   identifier: "ListCidrLocationsResponse",
 }) as any as S.Schema<ListCidrLocationsResponse>;
@@ -2851,35 +2772,34 @@ export interface ListGeoLocationsRequest {
   StartSubdivisionCode?: string;
   MaxItems?: number;
 }
-export const ListGeoLocationsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      StartContinentCode: S.optional(S.String).pipe(
-        T.HttpQuery("startcontinentcode"),
-      ),
-      StartCountryCode: S.optional(S.String).pipe(
-        T.HttpQuery("startcountrycode"),
-      ),
-      StartSubdivisionCode: S.optional(S.String).pipe(
-        T.HttpQuery("startsubdivisioncode"),
-      ),
-      MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "GET", uri: "/2013-04-01/geolocations" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListGeoLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    StartContinentCode: S.optional(S.String).pipe(
+      T.HttpQuery("startcontinentcode"),
     ),
+    StartCountryCode: S.optional(S.String).pipe(
+      T.HttpQuery("startcountrycode"),
+    ),
+    StartSubdivisionCode: S.optional(S.String).pipe(
+      T.HttpQuery("startsubdivisioncode"),
+    ),
+    MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "GET", uri: "/2013-04-01/geolocations" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
 ).annotate({
   identifier: "ListGeoLocationsRequest",
 }) as any as S.Schema<ListGeoLocationsRequest>;
 export type GeoLocationDetailsList = GeoLocationDetails[];
-export const GeoLocationDetailsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const GeoLocationDetailsList = /*@__PURE__*/ S.Array(
   GeoLocationDetails.pipe(T.XmlName("GeoLocationDetails")).annotate({
     identifier: "GeoLocationDetails",
   }),
@@ -2892,16 +2812,15 @@ export interface ListGeoLocationsResponse {
   NextSubdivisionCode?: string;
   MaxItems: number;
 }
-export const ListGeoLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      GeoLocationDetailsList: GeoLocationDetailsList,
-      IsTruncated: S.Boolean,
-      NextContinentCode: S.optional(S.String),
-      NextCountryCode: S.optional(S.String),
-      NextSubdivisionCode: S.optional(S.String),
-      MaxItems: S.Number,
-    }).pipe(ns),
+export const ListGeoLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    GeoLocationDetailsList: GeoLocationDetailsList,
+    IsTruncated: S.Boolean,
+    NextContinentCode: S.optional(S.String),
+    NextCountryCode: S.optional(S.String),
+    NextSubdivisionCode: S.optional(S.String),
+    MaxItems: S.Number,
+  }).pipe(ns),
 ).annotate({
   identifier: "ListGeoLocationsResponse",
 }) as any as S.Schema<ListGeoLocationsResponse>;
@@ -2909,27 +2828,26 @@ export interface ListHealthChecksRequest {
   Marker?: string;
   MaxItems?: number;
 }
-export const ListHealthChecksRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Marker: S.optional(S.String).pipe(T.HttpQuery("marker")),
-      MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "GET", uri: "/2013-04-01/healthcheck" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListHealthChecksRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Marker: S.optional(S.String).pipe(T.HttpQuery("marker")),
+    MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "GET", uri: "/2013-04-01/healthcheck" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListHealthChecksRequest",
 }) as any as S.Schema<ListHealthChecksRequest>;
 export type HealthChecks = HealthCheck[];
-export const HealthChecks = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const HealthChecks = /*@__PURE__*/ S.Array(
   HealthCheck.pipe(T.XmlName("HealthCheck")).annotate({
     identifier: "HealthCheck",
   }),
@@ -2941,53 +2859,49 @@ export interface ListHealthChecksResponse {
   NextMarker?: string;
   MaxItems: number;
 }
-export const ListHealthChecksResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      HealthChecks: HealthChecks,
-      Marker: S.String,
-      IsTruncated: S.Boolean,
-      NextMarker: S.optional(S.String),
-      MaxItems: S.Number,
-    }).pipe(ns),
+export const ListHealthChecksResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    HealthChecks: HealthChecks,
+    Marker: S.String,
+    IsTruncated: S.Boolean,
+    NextMarker: S.optional(S.String),
+    MaxItems: S.Number,
+  }).pipe(ns),
 ).annotate({
   identifier: "ListHealthChecksResponse",
 }) as any as S.Schema<ListHealthChecksResponse>;
 export type HostedZoneType = "PrivateHostedZone" | (string & {});
-export const HostedZoneType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const HostedZoneType = /*@__PURE__*/ S.String;
 export interface ListHostedZonesRequest {
   Marker?: string;
   MaxItems?: number;
   DelegationSetId?: string;
   HostedZoneType?: HostedZoneType;
 }
-export const ListHostedZonesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Marker: S.optional(S.String).pipe(T.HttpQuery("marker")),
-      MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
-      DelegationSetId: S.optional(S.String).pipe(
-        T.HttpQuery("delegationsetid"),
-      ),
-      HostedZoneType: S.optional(HostedZoneType).pipe(
-        T.HttpQuery("hostedzonetype"),
-      ),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "GET", uri: "/2013-04-01/hostedzone" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListHostedZonesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Marker: S.optional(S.String).pipe(T.HttpQuery("marker")),
+    MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
+    DelegationSetId: S.optional(S.String).pipe(T.HttpQuery("delegationsetid")),
+    HostedZoneType: S.optional(HostedZoneType).pipe(
+      T.HttpQuery("hostedzonetype"),
     ),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "GET", uri: "/2013-04-01/hostedzone" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
 ).annotate({
   identifier: "ListHostedZonesRequest",
 }) as any as S.Schema<ListHostedZonesRequest>;
 export type HostedZones = HostedZone[];
-export const HostedZones = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const HostedZones = /*@__PURE__*/ S.Array(
   HostedZone.pipe(T.XmlName("HostedZone")).annotate({
     identifier: "HostedZone",
   }),
@@ -2999,15 +2913,14 @@ export interface ListHostedZonesResponse {
   NextMarker?: string;
   MaxItems: number;
 }
-export const ListHostedZonesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      HostedZones: HostedZones,
-      Marker: S.String,
-      IsTruncated: S.Boolean,
-      NextMarker: S.optional(S.String),
-      MaxItems: S.Number,
-    }).pipe(ns),
+export const ListHostedZonesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    HostedZones: HostedZones,
+    Marker: S.String,
+    IsTruncated: S.Boolean,
+    NextMarker: S.optional(S.String),
+    MaxItems: S.Number,
+  }).pipe(ns),
 ).annotate({
   identifier: "ListHostedZonesResponse",
 }) as any as S.Schema<ListHostedZonesResponse>;
@@ -3016,26 +2929,25 @@ export interface ListHostedZonesByNameRequest {
   HostedZoneId?: string;
   MaxItems?: number;
 }
-export const ListHostedZonesByNameRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DNSName: S.optional(S.String).pipe(T.HttpQuery("dnsname")),
-      HostedZoneId: S.optional(S.String).pipe(T.HttpQuery("hostedzoneid")),
-      MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "GET", uri: "/2013-04-01/hostedzonesbyname" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListHostedZonesByNameRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DNSName: S.optional(S.String).pipe(T.HttpQuery("dnsname")),
+    HostedZoneId: S.optional(S.String).pipe(T.HttpQuery("hostedzoneid")),
+    MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "GET", uri: "/2013-04-01/hostedzonesbyname" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListHostedZonesByNameRequest",
-  }) as any as S.Schema<ListHostedZonesByNameRequest>;
+  ),
+).annotate({
+  identifier: "ListHostedZonesByNameRequest",
+}) as any as S.Schema<ListHostedZonesByNameRequest>;
 export interface ListHostedZonesByNameResponse {
   HostedZones: HostedZone[];
   DNSName?: string;
@@ -3045,52 +2957,50 @@ export interface ListHostedZonesByNameResponse {
   NextHostedZoneId?: string;
   MaxItems: number;
 }
-export const ListHostedZonesByNameResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      HostedZones: HostedZones,
-      DNSName: S.optional(S.String),
-      HostedZoneId: S.optional(S.String),
-      IsTruncated: S.Boolean,
-      NextDNSName: S.optional(S.String),
-      NextHostedZoneId: S.optional(S.String),
-      MaxItems: S.Number,
-    }).pipe(ns),
-  ).annotate({
-    identifier: "ListHostedZonesByNameResponse",
-  }) as any as S.Schema<ListHostedZonesByNameResponse>;
+export const ListHostedZonesByNameResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    HostedZones: HostedZones,
+    DNSName: S.optional(S.String),
+    HostedZoneId: S.optional(S.String),
+    IsTruncated: S.Boolean,
+    NextDNSName: S.optional(S.String),
+    NextHostedZoneId: S.optional(S.String),
+    MaxItems: S.Number,
+  }).pipe(ns),
+).annotate({
+  identifier: "ListHostedZonesByNameResponse",
+}) as any as S.Schema<ListHostedZonesByNameResponse>;
 export interface ListHostedZonesByVPCRequest {
   VPCId: string;
   VPCRegion: VPCRegion;
   MaxItems?: number;
   NextToken?: string;
 }
-export const ListHostedZonesByVPCRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      VPCId: S.String.pipe(T.HttpQuery("vpcid")),
-      VPCRegion: VPCRegion.pipe(T.HttpQuery("vpcregion")),
-      MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("nexttoken")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "GET", uri: "/2013-04-01/hostedzonesbyvpc" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListHostedZonesByVPCRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VPCId: S.String.pipe(T.HttpQuery("vpcid")),
+    VPCRegion: VPCRegion.pipe(T.HttpQuery("vpcregion")),
+    MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("nexttoken")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "GET", uri: "/2013-04-01/hostedzonesbyvpc" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListHostedZonesByVPCRequest",
-  }) as any as S.Schema<ListHostedZonesByVPCRequest>;
+  ),
+).annotate({
+  identifier: "ListHostedZonesByVPCRequest",
+}) as any as S.Schema<ListHostedZonesByVPCRequest>;
 export interface HostedZoneOwner {
   OwningAccount?: string;
   OwningService?: string;
 }
-export const HostedZoneOwner = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const HostedZoneOwner = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     OwningAccount: S.optional(S.String),
     OwningService: S.optional(S.String),
@@ -3103,13 +3013,13 @@ export interface HostedZoneSummary {
   Name: string;
   Owner: HostedZoneOwner;
 }
-export const HostedZoneSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const HostedZoneSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ HostedZoneId: S.String, Name: S.String, Owner: HostedZoneOwner }),
 ).annotate({
   identifier: "HostedZoneSummary",
 }) as any as S.Schema<HostedZoneSummary>;
 export type HostedZoneSummaries = HostedZoneSummary[];
-export const HostedZoneSummaries = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const HostedZoneSummaries = /*@__PURE__*/ S.Array(
   HostedZoneSummary.pipe(T.XmlName("HostedZoneSummary")).annotate({
     identifier: "HostedZoneSummary",
   }),
@@ -3119,43 +3029,41 @@ export interface ListHostedZonesByVPCResponse {
   MaxItems: number;
   NextToken?: string;
 }
-export const ListHostedZonesByVPCResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      HostedZoneSummaries: HostedZoneSummaries,
-      MaxItems: S.Number,
-      NextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "ListHostedZonesByVPCResponse",
-  }) as any as S.Schema<ListHostedZonesByVPCResponse>;
+export const ListHostedZonesByVPCResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    HostedZoneSummaries: HostedZoneSummaries,
+    MaxItems: S.Number,
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "ListHostedZonesByVPCResponse",
+}) as any as S.Schema<ListHostedZonesByVPCResponse>;
 export interface ListQueryLoggingConfigsRequest {
   HostedZoneId?: string;
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListQueryLoggingConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      HostedZoneId: S.optional(S.String).pipe(T.HttpQuery("hostedzoneid")),
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("nexttoken")),
-      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxresults")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "GET", uri: "/2013-04-01/queryloggingconfig" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListQueryLoggingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    HostedZoneId: S.optional(S.String).pipe(T.HttpQuery("hostedzoneid")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("nexttoken")),
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxresults")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "GET", uri: "/2013-04-01/queryloggingconfig" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListQueryLoggingConfigsRequest",
-  }) as any as S.Schema<ListQueryLoggingConfigsRequest>;
+  ),
+).annotate({
+  identifier: "ListQueryLoggingConfigsRequest",
+}) as any as S.Schema<ListQueryLoggingConfigsRequest>;
 export type QueryLoggingConfigs = QueryLoggingConfig[];
-export const QueryLoggingConfigs = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const QueryLoggingConfigs = /*@__PURE__*/ S.Array(
   QueryLoggingConfig.pipe(T.XmlName("QueryLoggingConfig")).annotate({
     identifier: "QueryLoggingConfig",
   }),
@@ -3164,15 +3072,14 @@ export interface ListQueryLoggingConfigsResponse {
   QueryLoggingConfigs: QueryLoggingConfig[];
   NextToken?: string;
 }
-export const ListQueryLoggingConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      QueryLoggingConfigs: QueryLoggingConfigs,
-      NextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "ListQueryLoggingConfigsResponse",
-  }) as any as S.Schema<ListQueryLoggingConfigsResponse>;
+export const ListQueryLoggingConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    QueryLoggingConfigs: QueryLoggingConfigs,
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "ListQueryLoggingConfigsResponse",
+}) as any as S.Schema<ListQueryLoggingConfigsResponse>;
 export interface ListResourceRecordSetsRequest {
   HostedZoneId: string;
   StartRecordName?: string;
@@ -3180,35 +3087,32 @@ export interface ListResourceRecordSetsRequest {
   StartRecordIdentifier?: string;
   MaxItems?: number;
 }
-export const ListResourceRecordSetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
-      StartRecordName: S.optional(S.String).pipe(T.HttpQuery("name")),
-      StartRecordType: S.optional(RRType).pipe(T.HttpQuery("type")),
-      StartRecordIdentifier: S.optional(S.String).pipe(
-        T.HttpQuery("identifier"),
-      ),
-      MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "GET",
-          uri: "/2013-04-01/hostedzone/{HostedZoneId}/rrset",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListResourceRecordSetsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
+    StartRecordName: S.optional(S.String).pipe(T.HttpQuery("name")),
+    StartRecordType: S.optional(RRType).pipe(T.HttpQuery("type")),
+    StartRecordIdentifier: S.optional(S.String).pipe(T.HttpQuery("identifier")),
+    MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({
+        method: "GET",
+        uri: "/2013-04-01/hostedzone/{HostedZoneId}/rrset",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListResourceRecordSetsRequest",
-  }) as any as S.Schema<ListResourceRecordSetsRequest>;
+  ),
+).annotate({
+  identifier: "ListResourceRecordSetsRequest",
+}) as any as S.Schema<ListResourceRecordSetsRequest>;
 export type ResourceRecordSets = ResourceRecordSet[];
-export const ResourceRecordSets = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ResourceRecordSets = /*@__PURE__*/ S.Array(
   ResourceRecordSet.pipe(T.XmlName("ResourceRecordSet")).annotate({
     identifier: "ResourceRecordSet",
   }),
@@ -3221,44 +3125,42 @@ export interface ListResourceRecordSetsResponse {
   NextRecordIdentifier?: string;
   MaxItems: number;
 }
-export const ListResourceRecordSetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ResourceRecordSets: ResourceRecordSets,
-      IsTruncated: S.Boolean,
-      NextRecordName: S.optional(S.String),
-      NextRecordType: S.optional(RRType),
-      NextRecordIdentifier: S.optional(S.String),
-      MaxItems: S.Number,
-    }).pipe(ns),
-  ).annotate({
-    identifier: "ListResourceRecordSetsResponse",
-  }) as any as S.Schema<ListResourceRecordSetsResponse>;
+export const ListResourceRecordSetsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ResourceRecordSets: ResourceRecordSets,
+    IsTruncated: S.Boolean,
+    NextRecordName: S.optional(S.String),
+    NextRecordType: S.optional(RRType),
+    NextRecordIdentifier: S.optional(S.String),
+    MaxItems: S.Number,
+  }).pipe(ns),
+).annotate({
+  identifier: "ListResourceRecordSetsResponse",
+}) as any as S.Schema<ListResourceRecordSetsResponse>;
 export interface ListReusableDelegationSetsRequest {
   Marker?: string;
   MaxItems?: number;
 }
-export const ListReusableDelegationSetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Marker: S.optional(S.String).pipe(T.HttpQuery("marker")),
-      MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "GET", uri: "/2013-04-01/delegationset" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListReusableDelegationSetsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Marker: S.optional(S.String).pipe(T.HttpQuery("marker")),
+    MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "GET", uri: "/2013-04-01/delegationset" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListReusableDelegationSetsRequest",
-  }) as any as S.Schema<ListReusableDelegationSetsRequest>;
+  ),
+).annotate({
+  identifier: "ListReusableDelegationSetsRequest",
+}) as any as S.Schema<ListReusableDelegationSetsRequest>;
 export type DelegationSets = DelegationSet[];
-export const DelegationSets = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const DelegationSets = /*@__PURE__*/ S.Array(
   DelegationSet.pipe(T.XmlName("DelegationSet")).annotate({
     identifier: "DelegationSet",
   }),
@@ -3270,41 +3172,39 @@ export interface ListReusableDelegationSetsResponse {
   NextMarker?: string;
   MaxItems: number;
 }
-export const ListReusableDelegationSetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DelegationSets: DelegationSets,
-      Marker: S.String,
-      IsTruncated: S.Boolean,
-      NextMarker: S.optional(S.String),
-      MaxItems: S.Number,
-    }).pipe(ns),
-  ).annotate({
-    identifier: "ListReusableDelegationSetsResponse",
-  }) as any as S.Schema<ListReusableDelegationSetsResponse>;
+export const ListReusableDelegationSetsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DelegationSets: DelegationSets,
+    Marker: S.String,
+    IsTruncated: S.Boolean,
+    NextMarker: S.optional(S.String),
+    MaxItems: S.Number,
+  }).pipe(ns),
+).annotate({
+  identifier: "ListReusableDelegationSetsResponse",
+}) as any as S.Schema<ListReusableDelegationSetsResponse>;
 export interface ListTagsForResourceRequest {
   ResourceType: TagResourceType;
   ResourceId: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ResourceType: TagResourceType.pipe(T.HttpLabel("ResourceType")),
-      ResourceId: S.String.pipe(T.HttpLabel("ResourceId")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "GET",
-          uri: "/2013-04-01/tags/{ResourceType}/{ResourceId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ResourceType: TagResourceType.pipe(T.HttpLabel("ResourceType")),
+    ResourceId: S.String.pipe(T.HttpLabel("ResourceId")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({
+        method: "GET",
+        uri: "/2013-04-01/tags/{ResourceType}/{ResourceId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
@@ -3313,7 +3213,7 @@ export interface ResourceTagSet {
   ResourceId?: string;
   Tags?: Tag[];
 }
-export const ResourceTagSet = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ResourceTagSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceType: S.optional(TagResourceType),
     ResourceId: S.optional(S.String),
@@ -3323,41 +3223,39 @@ export const ResourceTagSet = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   ResourceTagSet: ResourceTagSet;
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ ResourceTagSet: ResourceTagSet }).pipe(ns),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ResourceTagSet: ResourceTagSet }).pipe(ns),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export type TagResourceIdList = string[];
-export const TagResourceIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const TagResourceIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("ResourceId")),
 );
 export interface ListTagsForResourcesRequest {
   ResourceType: TagResourceType;
   ResourceIds: string[];
 }
-export const ListTagsForResourcesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ResourceType: TagResourceType.pipe(T.HttpLabel("ResourceType")),
-      ResourceIds: TagResourceIdList,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/2013-04-01/tags/{ResourceType}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTagsForResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ResourceType: TagResourceType.pipe(T.HttpLabel("ResourceType")),
+    ResourceIds: TagResourceIdList,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/2013-04-01/tags/{ResourceType}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListTagsForResourcesRequest",
-  }) as any as S.Schema<ListTagsForResourcesRequest>;
+  ),
+).annotate({
+  identifier: "ListTagsForResourcesRequest",
+}) as any as S.Schema<ListTagsForResourcesRequest>;
 export type ResourceTagSetList = ResourceTagSet[];
-export const ResourceTagSetList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ResourceTagSetList = /*@__PURE__*/ S.Array(
   ResourceTagSet.pipe(T.XmlName("ResourceTagSet")).annotate({
     identifier: "ResourceTagSet",
   }),
@@ -3365,34 +3263,32 @@ export const ResourceTagSetList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
 export interface ListTagsForResourcesResponse {
   ResourceTagSets: ResourceTagSet[];
 }
-export const ListTagsForResourcesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ ResourceTagSets: ResourceTagSetList }).pipe(ns),
-  ).annotate({
-    identifier: "ListTagsForResourcesResponse",
-  }) as any as S.Schema<ListTagsForResourcesResponse>;
+export const ListTagsForResourcesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ResourceTagSets: ResourceTagSetList }).pipe(ns),
+).annotate({
+  identifier: "ListTagsForResourcesResponse",
+}) as any as S.Schema<ListTagsForResourcesResponse>;
 export interface ListTrafficPoliciesRequest {
   TrafficPolicyIdMarker?: string;
   MaxItems?: number;
 }
-export const ListTrafficPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      TrafficPolicyIdMarker: S.optional(S.String).pipe(
-        T.HttpQuery("trafficpolicyid"),
-      ),
-      MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "GET", uri: "/2013-04-01/trafficpolicies" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTrafficPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TrafficPolicyIdMarker: S.optional(S.String).pipe(
+      T.HttpQuery("trafficpolicyid"),
     ),
+    MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "GET", uri: "/2013-04-01/trafficpolicies" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
 ).annotate({
   identifier: "ListTrafficPoliciesRequest",
 }) as any as S.Schema<ListTrafficPoliciesRequest>;
@@ -3403,7 +3299,7 @@ export interface TrafficPolicySummary {
   LatestVersion: number;
   TrafficPolicyCount: number;
 }
-export const TrafficPolicySummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TrafficPolicySummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.String,
     Name: S.String,
@@ -3415,7 +3311,7 @@ export const TrafficPolicySummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TrafficPolicySummary",
 }) as any as S.Schema<TrafficPolicySummary>;
 export type TrafficPolicySummaries = TrafficPolicySummary[];
-export const TrafficPolicySummaries = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const TrafficPolicySummaries = /*@__PURE__*/ S.Array(
   TrafficPolicySummary.pipe(T.XmlName("TrafficPolicySummary")).annotate({
     identifier: "TrafficPolicySummary",
   }),
@@ -3426,52 +3322,48 @@ export interface ListTrafficPoliciesResponse {
   TrafficPolicyIdMarker: string;
   MaxItems: number;
 }
-export const ListTrafficPoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TrafficPolicySummaries: TrafficPolicySummaries,
-      IsTruncated: S.Boolean,
-      TrafficPolicyIdMarker: S.String,
-      MaxItems: S.Number,
-    }).pipe(ns),
-  ).annotate({
-    identifier: "ListTrafficPoliciesResponse",
-  }) as any as S.Schema<ListTrafficPoliciesResponse>;
+export const ListTrafficPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TrafficPolicySummaries: TrafficPolicySummaries,
+    IsTruncated: S.Boolean,
+    TrafficPolicyIdMarker: S.String,
+    MaxItems: S.Number,
+  }).pipe(ns),
+).annotate({
+  identifier: "ListTrafficPoliciesResponse",
+}) as any as S.Schema<ListTrafficPoliciesResponse>;
 export interface ListTrafficPolicyInstancesRequest {
   HostedZoneIdMarker?: string;
   TrafficPolicyInstanceNameMarker?: string;
   TrafficPolicyInstanceTypeMarker?: RRType;
   MaxItems?: number;
 }
-export const ListTrafficPolicyInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      HostedZoneIdMarker: S.optional(S.String).pipe(
-        T.HttpQuery("hostedzoneid"),
-      ),
-      TrafficPolicyInstanceNameMarker: S.optional(S.String).pipe(
-        T.HttpQuery("trafficpolicyinstancename"),
-      ),
-      TrafficPolicyInstanceTypeMarker: S.optional(RRType).pipe(
-        T.HttpQuery("trafficpolicyinstancetype"),
-      ),
-      MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "GET", uri: "/2013-04-01/trafficpolicyinstances" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTrafficPolicyInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    HostedZoneIdMarker: S.optional(S.String).pipe(T.HttpQuery("hostedzoneid")),
+    TrafficPolicyInstanceNameMarker: S.optional(S.String).pipe(
+      T.HttpQuery("trafficpolicyinstancename"),
     ),
-  ).annotate({
-    identifier: "ListTrafficPolicyInstancesRequest",
-  }) as any as S.Schema<ListTrafficPolicyInstancesRequest>;
+    TrafficPolicyInstanceTypeMarker: S.optional(RRType).pipe(
+      T.HttpQuery("trafficpolicyinstancetype"),
+    ),
+    MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "GET", uri: "/2013-04-01/trafficpolicyinstances" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListTrafficPolicyInstancesRequest",
+}) as any as S.Schema<ListTrafficPolicyInstancesRequest>;
 export type TrafficPolicyInstances = TrafficPolicyInstance[];
-export const TrafficPolicyInstances = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const TrafficPolicyInstances = /*@__PURE__*/ S.Array(
   TrafficPolicyInstance.pipe(T.XmlName("TrafficPolicyInstance")).annotate({
     identifier: "TrafficPolicyInstance",
   }),
@@ -3484,19 +3376,18 @@ export interface ListTrafficPolicyInstancesResponse {
   IsTruncated: boolean;
   MaxItems: number;
 }
-export const ListTrafficPolicyInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TrafficPolicyInstances: TrafficPolicyInstances,
-      HostedZoneIdMarker: S.optional(S.String),
-      TrafficPolicyInstanceNameMarker: S.optional(S.String),
-      TrafficPolicyInstanceTypeMarker: S.optional(RRType),
-      IsTruncated: S.Boolean,
-      MaxItems: S.Number,
-    }).pipe(ns),
-  ).annotate({
-    identifier: "ListTrafficPolicyInstancesResponse",
-  }) as any as S.Schema<ListTrafficPolicyInstancesResponse>;
+export const ListTrafficPolicyInstancesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TrafficPolicyInstances: TrafficPolicyInstances,
+    HostedZoneIdMarker: S.optional(S.String),
+    TrafficPolicyInstanceNameMarker: S.optional(S.String),
+    TrafficPolicyInstanceTypeMarker: S.optional(RRType),
+    IsTruncated: S.Boolean,
+    MaxItems: S.Number,
+  }).pipe(ns),
+).annotate({
+  identifier: "ListTrafficPolicyInstancesResponse",
+}) as any as S.Schema<ListTrafficPolicyInstancesResponse>;
 export interface ListTrafficPolicyInstancesByHostedZoneRequest {
   HostedZoneId: string;
   TrafficPolicyInstanceNameMarker?: string;
@@ -3504,7 +3395,7 @@ export interface ListTrafficPolicyInstancesByHostedZoneRequest {
   MaxItems?: number;
 }
 export const ListTrafficPolicyInstancesByHostedZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       HostedZoneId: S.String.pipe(T.HttpQuery("id")),
       TrafficPolicyInstanceNameMarker: S.optional(S.String).pipe(
@@ -3539,7 +3430,7 @@ export interface ListTrafficPolicyInstancesByHostedZoneResponse {
   MaxItems: number;
 }
 export const ListTrafficPolicyInstancesByHostedZoneResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       TrafficPolicyInstances: TrafficPolicyInstances,
       TrafficPolicyInstanceNameMarker: S.optional(S.String),
@@ -3559,7 +3450,7 @@ export interface ListTrafficPolicyInstancesByPolicyRequest {
   MaxItems?: number;
 }
 export const ListTrafficPolicyInstancesByPolicyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       TrafficPolicyId: S.String.pipe(T.HttpQuery("id")),
       TrafficPolicyVersion: S.Number.pipe(T.HttpQuery("version")),
@@ -3599,7 +3490,7 @@ export interface ListTrafficPolicyInstancesByPolicyResponse {
   MaxItems: number;
 }
 export const ListTrafficPolicyInstancesByPolicyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       TrafficPolicyInstances: TrafficPolicyInstances,
       HostedZoneIdMarker: S.optional(S.String),
@@ -3616,33 +3507,32 @@ export interface ListTrafficPolicyVersionsRequest {
   TrafficPolicyVersionMarker?: string;
   MaxItems?: number;
 }
-export const ListTrafficPolicyVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Id: S.String.pipe(T.HttpLabel("Id")),
-      TrafficPolicyVersionMarker: S.optional(S.String).pipe(
-        T.HttpQuery("trafficpolicyversion"),
-      ),
-      MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "GET",
-          uri: "/2013-04-01/trafficpolicies/{Id}/versions",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTrafficPolicyVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.String.pipe(T.HttpLabel("Id")),
+    TrafficPolicyVersionMarker: S.optional(S.String).pipe(
+      T.HttpQuery("trafficpolicyversion"),
     ),
-  ).annotate({
-    identifier: "ListTrafficPolicyVersionsRequest",
-  }) as any as S.Schema<ListTrafficPolicyVersionsRequest>;
+    MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({
+        method: "GET",
+        uri: "/2013-04-01/trafficpolicies/{Id}/versions",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListTrafficPolicyVersionsRequest",
+}) as any as S.Schema<ListTrafficPolicyVersionsRequest>;
 export type TrafficPolicies = TrafficPolicy[];
-export const TrafficPolicies = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const TrafficPolicies = /*@__PURE__*/ S.Array(
   TrafficPolicy.pipe(T.XmlName("TrafficPolicy")).annotate({
     identifier: "TrafficPolicy",
   }),
@@ -3653,24 +3543,23 @@ export interface ListTrafficPolicyVersionsResponse {
   TrafficPolicyVersionMarker: string;
   MaxItems: number;
 }
-export const ListTrafficPolicyVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TrafficPolicies: TrafficPolicies,
-      IsTruncated: S.Boolean,
-      TrafficPolicyVersionMarker: S.String,
-      MaxItems: S.Number,
-    }).pipe(ns),
-  ).annotate({
-    identifier: "ListTrafficPolicyVersionsResponse",
-  }) as any as S.Schema<ListTrafficPolicyVersionsResponse>;
+export const ListTrafficPolicyVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TrafficPolicies: TrafficPolicies,
+    IsTruncated: S.Boolean,
+    TrafficPolicyVersionMarker: S.String,
+    MaxItems: S.Number,
+  }).pipe(ns),
+).annotate({
+  identifier: "ListTrafficPolicyVersionsResponse",
+}) as any as S.Schema<ListTrafficPolicyVersionsResponse>;
 export interface ListVPCAssociationAuthorizationsRequest {
   HostedZoneId: string;
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListVPCAssociationAuthorizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListVPCAssociationAuthorizationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
       NextToken: S.optional(S.String).pipe(T.HttpQuery("nexttoken")),
@@ -3689,24 +3578,24 @@ export const ListVPCAssociationAuthorizationsRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "ListVPCAssociationAuthorizationsRequest",
-  }) as any as S.Schema<ListVPCAssociationAuthorizationsRequest>;
+).annotate({
+  identifier: "ListVPCAssociationAuthorizationsRequest",
+}) as any as S.Schema<ListVPCAssociationAuthorizationsRequest>;
 export interface ListVPCAssociationAuthorizationsResponse {
   HostedZoneId: string;
   NextToken?: string;
   VPCs: VPC[];
 }
-export const ListVPCAssociationAuthorizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListVPCAssociationAuthorizationsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       HostedZoneId: S.String,
       NextToken: S.optional(S.String),
       VPCs: VPCs,
     }).pipe(ns),
-  ).annotate({
-    identifier: "ListVPCAssociationAuthorizationsResponse",
-  }) as any as S.Schema<ListVPCAssociationAuthorizationsResponse>;
+).annotate({
+  identifier: "ListVPCAssociationAuthorizationsResponse",
+}) as any as S.Schema<ListVPCAssociationAuthorizationsResponse>;
 export interface TestDNSAnswerRequest {
   HostedZoneId: string;
   RecordName: string;
@@ -3715,7 +3604,7 @@ export interface TestDNSAnswerRequest {
   EDNS0ClientSubnetIP?: string;
   EDNS0ClientSubnetMask?: string;
 }
-export const TestDNSAnswerRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TestDNSAnswerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     HostedZoneId: S.String.pipe(T.HttpQuery("hostedzoneid")),
     RecordName: S.String.pipe(T.HttpQuery("recordname")),
@@ -3742,7 +3631,7 @@ export const TestDNSAnswerRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TestDNSAnswerRequest",
 }) as any as S.Schema<TestDNSAnswerRequest>;
 export type RecordData = string[];
-export const RecordData = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const RecordData = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("RecordDataEntry")),
 );
 export interface TestDNSAnswerResponse {
@@ -3753,7 +3642,7 @@ export interface TestDNSAnswerResponse {
   ResponseCode: string;
   Protocol: string;
 }
-export const TestDNSAnswerResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TestDNSAnswerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Nameserver: S.String,
     RecordName: S.String,
@@ -3771,9 +3660,9 @@ export type ResettableElementName =
   | "ResourcePath"
   | "ChildHealthChecks"
   | (string & {});
-export const ResettableElementName = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ResettableElementName = /*@__PURE__*/ S.String;
 export type ResettableElementNameList = ResettableElementName[];
-export const ResettableElementNameList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ResettableElementNameList = /*@__PURE__*/ S.Array(
   ResettableElementName.pipe(T.XmlName("ResettableElementName")),
 );
 export interface UpdateHealthCheckRequest {
@@ -3795,48 +3684,47 @@ export interface UpdateHealthCheckRequest {
   InsufficientDataHealthStatus?: InsufficientDataHealthStatus;
   ResetElements?: ResettableElementName[];
 }
-export const UpdateHealthCheckRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      HealthCheckId: S.String.pipe(T.HttpLabel("HealthCheckId")),
-      HealthCheckVersion: S.optional(S.Number),
-      IPAddress: S.optional(S.String),
-      Port: S.optional(S.Number),
-      ResourcePath: S.optional(S.String),
-      FullyQualifiedDomainName: S.optional(S.String),
-      SearchString: S.optional(S.String),
-      FailureThreshold: S.optional(S.Number),
-      Inverted: S.optional(S.Boolean),
-      Disabled: S.optional(S.Boolean),
-      HealthThreshold: S.optional(S.Number),
-      ChildHealthChecks: S.optional(ChildHealthCheckList),
-      EnableSNI: S.optional(S.Boolean),
-      Regions: S.optional(HealthCheckRegionList),
-      AlarmIdentifier: S.optional(AlarmIdentifier),
-      InsufficientDataHealthStatus: S.optional(InsufficientDataHealthStatus),
-      ResetElements: S.optional(ResettableElementNameList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "POST",
-          uri: "/2013-04-01/healthcheck/{HealthCheckId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateHealthCheckRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    HealthCheckId: S.String.pipe(T.HttpLabel("HealthCheckId")),
+    HealthCheckVersion: S.optional(S.Number),
+    IPAddress: S.optional(S.String),
+    Port: S.optional(S.Number),
+    ResourcePath: S.optional(S.String),
+    FullyQualifiedDomainName: S.optional(S.String),
+    SearchString: S.optional(S.String),
+    FailureThreshold: S.optional(S.Number),
+    Inverted: S.optional(S.Boolean),
+    Disabled: S.optional(S.Boolean),
+    HealthThreshold: S.optional(S.Number),
+    ChildHealthChecks: S.optional(ChildHealthCheckList),
+    EnableSNI: S.optional(S.Boolean),
+    Regions: S.optional(HealthCheckRegionList),
+    AlarmIdentifier: S.optional(AlarmIdentifier),
+    InsufficientDataHealthStatus: S.optional(InsufficientDataHealthStatus),
+    ResetElements: S.optional(ResettableElementNameList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({
+        method: "POST",
+        uri: "/2013-04-01/healthcheck/{HealthCheckId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "UpdateHealthCheckRequest",
 }) as any as S.Schema<UpdateHealthCheckRequest>;
 export interface UpdateHealthCheckResponse {
   HealthCheck: HealthCheck;
 }
-export const UpdateHealthCheckResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ HealthCheck: HealthCheck }).pipe(ns),
+export const UpdateHealthCheckResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ HealthCheck: HealthCheck }).pipe(ns),
 ).annotate({
   identifier: "UpdateHealthCheckResponse",
 }) as any as S.Schema<UpdateHealthCheckResponse>;
@@ -3844,141 +3732,132 @@ export interface UpdateHostedZoneCommentRequest {
   Id: string;
   Comment?: string;
 }
-export const UpdateHostedZoneCommentRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Id: S.String.pipe(T.HttpLabel("Id")),
-      Comment: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/2013-04-01/hostedzone/{Id}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateHostedZoneCommentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.String.pipe(T.HttpLabel("Id")),
+    Comment: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/2013-04-01/hostedzone/{Id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateHostedZoneCommentRequest",
-  }) as any as S.Schema<UpdateHostedZoneCommentRequest>;
+  ),
+).annotate({
+  identifier: "UpdateHostedZoneCommentRequest",
+}) as any as S.Schema<UpdateHostedZoneCommentRequest>;
 export interface UpdateHostedZoneCommentResponse {
   HostedZone: HostedZone;
 }
-export const UpdateHostedZoneCommentResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ HostedZone: HostedZone }).pipe(ns),
-  ).annotate({
-    identifier: "UpdateHostedZoneCommentResponse",
-  }) as any as S.Schema<UpdateHostedZoneCommentResponse>;
+export const UpdateHostedZoneCommentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ HostedZone: HostedZone }).pipe(ns),
+).annotate({
+  identifier: "UpdateHostedZoneCommentResponse",
+}) as any as S.Schema<UpdateHostedZoneCommentResponse>;
 export interface UpdateHostedZoneFeaturesRequest {
   HostedZoneId: string;
   EnableAcceleratedRecovery?: boolean;
 }
-export const UpdateHostedZoneFeaturesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
-      EnableAcceleratedRecovery: S.optional(S.Boolean),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "POST",
-          uri: "/2013-04-01/hostedzone/{HostedZoneId}/features",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateHostedZoneFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
+    EnableAcceleratedRecovery: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({
+        method: "POST",
+        uri: "/2013-04-01/hostedzone/{HostedZoneId}/features",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateHostedZoneFeaturesRequest",
-  }) as any as S.Schema<UpdateHostedZoneFeaturesRequest>;
+  ),
+).annotate({
+  identifier: "UpdateHostedZoneFeaturesRequest",
+}) as any as S.Schema<UpdateHostedZoneFeaturesRequest>;
 export interface UpdateHostedZoneFeaturesResponse {}
-export const UpdateHostedZoneFeaturesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "UpdateHostedZoneFeaturesResponse",
-  }) as any as S.Schema<UpdateHostedZoneFeaturesResponse>;
+export const UpdateHostedZoneFeaturesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "UpdateHostedZoneFeaturesResponse",
+}) as any as S.Schema<UpdateHostedZoneFeaturesResponse>;
 export interface UpdateTrafficPolicyCommentRequest {
   Id: string;
   Version: number;
   Comment: string;
 }
-export const UpdateTrafficPolicyCommentRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Id: S.String.pipe(T.HttpLabel("Id")),
-      Version: S.Number.pipe(T.HttpLabel("Version")),
-      Comment: S.String,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "POST",
-          uri: "/2013-04-01/trafficpolicy/{Id}/{Version}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateTrafficPolicyCommentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.String.pipe(T.HttpLabel("Id")),
+    Version: S.Number.pipe(T.HttpLabel("Version")),
+    Comment: S.String,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({
+        method: "POST",
+        uri: "/2013-04-01/trafficpolicy/{Id}/{Version}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateTrafficPolicyCommentRequest",
-  }) as any as S.Schema<UpdateTrafficPolicyCommentRequest>;
+  ),
+).annotate({
+  identifier: "UpdateTrafficPolicyCommentRequest",
+}) as any as S.Schema<UpdateTrafficPolicyCommentRequest>;
 export interface UpdateTrafficPolicyCommentResponse {
   TrafficPolicy: TrafficPolicy;
 }
-export const UpdateTrafficPolicyCommentResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ TrafficPolicy: TrafficPolicy }).pipe(ns),
-  ).annotate({
-    identifier: "UpdateTrafficPolicyCommentResponse",
-  }) as any as S.Schema<UpdateTrafficPolicyCommentResponse>;
+export const UpdateTrafficPolicyCommentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ TrafficPolicy: TrafficPolicy }).pipe(ns),
+).annotate({
+  identifier: "UpdateTrafficPolicyCommentResponse",
+}) as any as S.Schema<UpdateTrafficPolicyCommentResponse>;
 export interface UpdateTrafficPolicyInstanceRequest {
   Id: string;
   TTL: number;
   TrafficPolicyId: string;
   TrafficPolicyVersion: number;
 }
-export const UpdateTrafficPolicyInstanceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Id: S.String.pipe(T.HttpLabel("Id")),
-      TTL: S.Number,
-      TrafficPolicyId: S.String,
-      TrafficPolicyVersion: S.Number,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "POST",
-          uri: "/2013-04-01/trafficpolicyinstance/{Id}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateTrafficPolicyInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.String.pipe(T.HttpLabel("Id")),
+    TTL: S.Number,
+    TrafficPolicyId: S.String,
+    TrafficPolicyVersion: S.Number,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/2013-04-01/trafficpolicyinstance/{Id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateTrafficPolicyInstanceRequest",
-  }) as any as S.Schema<UpdateTrafficPolicyInstanceRequest>;
+  ),
+).annotate({
+  identifier: "UpdateTrafficPolicyInstanceRequest",
+}) as any as S.Schema<UpdateTrafficPolicyInstanceRequest>;
 export interface UpdateTrafficPolicyInstanceResponse {
   TrafficPolicyInstance: TrafficPolicyInstance;
 }
-export const UpdateTrafficPolicyInstanceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ TrafficPolicyInstance: TrafficPolicyInstance }).pipe(ns),
-  ).annotate({
-    identifier: "UpdateTrafficPolicyInstanceResponse",
-  }) as any as S.Schema<UpdateTrafficPolicyInstanceResponse>;
+export const UpdateTrafficPolicyInstanceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ TrafficPolicyInstance: TrafficPolicyInstance }).pipe(ns),
+).annotate({
+  identifier: "UpdateTrafficPolicyInstanceResponse",
+}) as any as S.Schema<UpdateTrafficPolicyInstanceResponse>;
 
 //# Errors
 export class ConcurrentModification extends S.TaggedErrorClass<ConcurrentModification>()(

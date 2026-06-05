@@ -99,12 +99,12 @@ export type NextToken = string;
 
 //# Schemas
 export type RetentionPeriodUnit = "DAYS" | (string & {});
-export const RetentionPeriodUnit = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const RetentionPeriodUnit = /*@__PURE__*/ S.String;
 export interface RetentionPeriod {
   RetentionPeriodValue: number;
   RetentionPeriodUnit: RetentionPeriodUnit;
 }
-export const RetentionPeriod = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RetentionPeriod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RetentionPeriodValue: S.Number,
     RetentionPeriodUnit: RetentionPeriodUnit,
@@ -116,49 +116,48 @@ export interface Tag {
   Key: string;
   Value: string;
 }
-export const Tag = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Tag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Key: S.String, Value: S.String }),
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-export const TagList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Tag);
+export const TagList = /*@__PURE__*/ S.Array(Tag);
 export type ResourceType =
   | "EBS_SNAPSHOT"
   | "EC2_IMAGE"
   | "EBS_VOLUME"
   | (string & {});
-export const ResourceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ResourceType = /*@__PURE__*/ S.String;
 export interface ResourceTag {
   ResourceTagKey: string;
   ResourceTagValue?: string;
 }
-export const ResourceTag = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ResourceTag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceTagKey: S.String,
     ResourceTagValue: S.optional(S.String),
   }),
 ).annotate({ identifier: "ResourceTag" }) as any as S.Schema<ResourceTag>;
 export type ResourceTags = ResourceTag[];
-export const ResourceTags = /*@__PURE__*/ /*#__PURE__*/ S.Array(ResourceTag);
+export const ResourceTags = /*@__PURE__*/ S.Array(ResourceTag);
 export type UnlockDelayUnit = "DAYS" | (string & {});
-export const UnlockDelayUnit = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const UnlockDelayUnit = /*@__PURE__*/ S.String;
 export interface UnlockDelay {
   UnlockDelayValue: number;
   UnlockDelayUnit: UnlockDelayUnit;
 }
-export const UnlockDelay = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UnlockDelay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ UnlockDelayValue: S.Number, UnlockDelayUnit: UnlockDelayUnit }),
 ).annotate({ identifier: "UnlockDelay" }) as any as S.Schema<UnlockDelay>;
 export interface LockConfiguration {
   UnlockDelay: UnlockDelay;
 }
-export const LockConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const LockConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ UnlockDelay: UnlockDelay }),
 ).annotate({
   identifier: "LockConfiguration",
 }) as any as S.Schema<LockConfiguration>;
 export type ExcludeResourceTags = ResourceTag[];
-export const ExcludeResourceTags =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ResourceTag);
+export const ExcludeResourceTags = /*@__PURE__*/ S.Array(ResourceTag);
 export interface CreateRuleRequest {
   RetentionPeriod: RetentionPeriod;
   Description?: string;
@@ -168,7 +167,7 @@ export interface CreateRuleRequest {
   LockConfiguration?: LockConfiguration;
   ExcludeResourceTags?: ResourceTag[];
 }
-export const CreateRuleRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RetentionPeriod: RetentionPeriod,
     Description: S.optional(S.String),
@@ -191,13 +190,13 @@ export const CreateRuleRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "CreateRuleRequest",
 }) as any as S.Schema<CreateRuleRequest>;
 export type RuleStatus = "pending" | "available" | (string & {});
-export const RuleStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const RuleStatus = /*@__PURE__*/ S.String;
 export type LockState =
   | "locked"
   | "pending_unlock"
   | "unlocked"
   | (string & {});
-export const LockState = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const LockState = /*@__PURE__*/ S.String;
 export interface CreateRuleResponse {
   Identifier?: string;
   RetentionPeriod?: RetentionPeriod;
@@ -211,7 +210,7 @@ export interface CreateRuleResponse {
   RuleArn?: string;
   ExcludeResourceTags?: ResourceTag[];
 }
-export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Identifier: S.optional(S.String),
     RetentionPeriod: S.optional(RetentionPeriod),
@@ -231,17 +230,16 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type ServiceQuotaExceededExceptionReason =
   | "SERVICE_QUOTA_EXCEEDED"
   | (string & {});
-export const ServiceQuotaExceededExceptionReason =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ServiceQuotaExceededExceptionReason = /*@__PURE__*/ S.String;
 export type ValidationExceptionReason =
   | "INVALID_PAGE_TOKEN"
   | "INVALID_PARAMETER_VALUE"
   | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 export interface DeleteRuleRequest {
   Identifier: string;
 }
-export const DeleteRuleRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/rules/{Identifier}" }),
@@ -256,20 +254,19 @@ export const DeleteRuleRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteRuleRequest",
 }) as any as S.Schema<DeleteRuleRequest>;
 export interface DeleteRuleResponse {}
-export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteRuleResponse",
 }) as any as S.Schema<DeleteRuleResponse>;
 export type ConflictExceptionReason = "INVALID_RULE_STATE" | (string & {});
-export const ConflictExceptionReason = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ConflictExceptionReason = /*@__PURE__*/ S.String;
 export type ResourceNotFoundExceptionReason = "RULE_NOT_FOUND" | (string & {});
-export const ResourceNotFoundExceptionReason =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ResourceNotFoundExceptionReason = /*@__PURE__*/ S.String;
 export interface GetRuleRequest {
   Identifier: string;
 }
-export const GetRuleRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/rules/{Identifier}" }),
@@ -294,7 +291,7 @@ export interface GetRuleResponse {
   RuleArn?: string;
   ExcludeResourceTags?: ResourceTag[];
 }
-export const GetRuleResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Identifier: S.optional(S.String),
     Description: S.optional(S.String),
@@ -319,7 +316,7 @@ export interface ListRulesRequest {
   LockState?: LockState;
   ExcludeResourceTags?: ResourceTag[];
 }
-export const ListRulesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MaxResults: S.optional(S.Number),
     NextToken: S.optional(S.String),
@@ -347,7 +344,7 @@ export interface RuleSummary {
   LockState?: LockState;
   RuleArn?: string;
 }
-export const RuleSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RuleSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Identifier: S.optional(S.String),
     Description: S.optional(S.String),
@@ -357,12 +354,12 @@ export const RuleSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RuleSummary" }) as any as S.Schema<RuleSummary>;
 export type RuleSummaryList = RuleSummary[];
-export const RuleSummaryList = /*@__PURE__*/ /*#__PURE__*/ S.Array(RuleSummary);
+export const RuleSummaryList = /*@__PURE__*/ S.Array(RuleSummary);
 export interface ListRulesResponse {
   Rules?: RuleSummary[];
   NextToken?: string;
 }
-export const ListRulesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Rules: S.optional(RuleSummaryList),
     NextToken: S.optional(S.String),
@@ -373,35 +370,33 @@ export const ListRulesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   Tags?: Tag[];
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ Tags: S.optional(TagList) }),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Tags: S.optional(TagList) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface LockRuleRequest {
   Identifier: string;
   LockConfiguration: LockConfiguration;
 }
-export const LockRuleRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const LockRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Identifier: S.String.pipe(T.HttpLabel("Identifier")),
     LockConfiguration: LockConfiguration,
@@ -430,7 +425,7 @@ export interface LockRuleResponse {
   RuleArn?: string;
   ExcludeResourceTags?: ResourceTag[];
 }
-export const LockRuleResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const LockRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Identifier: S.optional(S.String),
     Description: S.optional(S.String),
@@ -450,7 +445,7 @@ export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Tag[];
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
     Tags: TagList,
@@ -468,7 +463,7 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
@@ -476,7 +471,7 @@ export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface UnlockRuleRequest {
   Identifier: string;
 }
-export const UnlockRuleRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UnlockRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
     T.all(
       T.Http({ method: "PATCH", uri: "/rules/{Identifier}/unlock" }),
@@ -503,7 +498,7 @@ export interface UnlockRuleResponse {
   RuleArn?: string;
   ExcludeResourceTags?: ResourceTag[];
 }
-export const UnlockRuleResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UnlockRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Identifier: S.optional(S.String),
     Description: S.optional(S.String),
@@ -521,12 +516,12 @@ export const UnlockRuleResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UnlockRuleResponse",
 }) as any as S.Schema<UnlockRuleResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
     TagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
@@ -544,7 +539,7 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
@@ -557,7 +552,7 @@ export interface UpdateRuleRequest {
   ResourceTags?: ResourceTag[];
   ExcludeResourceTags?: ResourceTag[];
 }
-export const UpdateRuleRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Identifier: S.String.pipe(T.HttpLabel("Identifier")),
     RetentionPeriod: S.optional(RetentionPeriod),
@@ -590,7 +585,7 @@ export interface UpdateRuleResponse {
   RuleArn?: string;
   ExcludeResourceTags?: ResourceTag[];
 }
-export const UpdateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Identifier: S.optional(S.String),
     RetentionPeriod: S.optional(RetentionPeriod),

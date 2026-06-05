@@ -136,43 +136,43 @@ export interface AbortDocumentVersionUploadRequest {
   DocumentId: string;
   VersionId: string;
 }
-export const AbortDocumentVersionUploadRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AuthenticationToken: S.optional(SensitiveString).pipe(
-        T.HttpHeader("Authentication"),
-      ),
-      DocumentId: S.String.pipe(T.HttpLabel("DocumentId")),
-      VersionId: S.String.pipe(T.HttpLabel("VersionId")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "DELETE",
-          uri: "/api/v1/documents/{DocumentId}/versions/{VersionId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const AbortDocumentVersionUploadRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AuthenticationToken: S.optional(SensitiveString).pipe(
+      T.HttpHeader("Authentication"),
     ),
-  ).annotate({
-    identifier: "AbortDocumentVersionUploadRequest",
-  }) as any as S.Schema<AbortDocumentVersionUploadRequest>;
+    DocumentId: S.String.pipe(T.HttpLabel("DocumentId")),
+    VersionId: S.String.pipe(T.HttpLabel("VersionId")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({
+        method: "DELETE",
+        uri: "/api/v1/documents/{DocumentId}/versions/{VersionId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "AbortDocumentVersionUploadRequest",
+}) as any as S.Schema<AbortDocumentVersionUploadRequest>;
 export interface AbortDocumentVersionUploadResponse {}
-export const AbortDocumentVersionUploadResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "AbortDocumentVersionUploadResponse",
-  }) as any as S.Schema<AbortDocumentVersionUploadResponse>;
+export const AbortDocumentVersionUploadResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "AbortDocumentVersionUploadResponse",
+}) as any as S.Schema<AbortDocumentVersionUploadResponse>;
 export type EntityIdList = string[];
-export const EntityIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const EntityIdList = /*@__PURE__*/ S.Array(S.String);
 export interface ActivateUserRequest {
   UserId: string;
   AuthenticationToken?: string | redacted.Redacted<string>;
 }
-export const ActivateUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ActivateUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     UserId: S.String.pipe(T.HttpLabel("UserId")),
     AuthenticationToken: S.optional(SensitiveString).pipe(
@@ -193,7 +193,7 @@ export const ActivateUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ActivateUserRequest",
 }) as any as S.Schema<ActivateUserRequest>;
 export type UserStatusType = "ACTIVE" | "INACTIVE" | "PENDING" | (string & {});
-export const UserStatusType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const UserStatusType = /*@__PURE__*/ S.String;
 export type UserType =
   | "USER"
   | "ADMIN"
@@ -201,7 +201,7 @@ export type UserType =
   | "MINIMALUSER"
   | "WORKSPACESUSER"
   | (string & {});
-export const UserType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const UserType = /*@__PURE__*/ S.String;
 export type LocaleType =
   | "en"
   | "fr"
@@ -215,14 +215,14 @@ export type LocaleType =
   | "pt_BR"
   | "default"
   | (string & {});
-export const LocaleType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const LocaleType = /*@__PURE__*/ S.String;
 export type StorageType = "UNLIMITED" | "QUOTA" | (string & {});
-export const StorageType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const StorageType = /*@__PURE__*/ S.String;
 export interface StorageRuleType {
   StorageAllocatedInBytes?: number;
   StorageType?: StorageType;
 }
-export const StorageRuleType = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StorageRuleType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StorageAllocatedInBytes: S.optional(S.Number),
     StorageType: S.optional(StorageType),
@@ -234,7 +234,7 @@ export interface UserStorageMetadata {
   StorageUtilizedInBytes?: number;
   StorageRule?: StorageRuleType;
 }
-export const UserStorageMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UserStorageMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StorageUtilizedInBytes: S.optional(S.Number),
     StorageRule: S.optional(StorageRuleType),
@@ -259,7 +259,7 @@ export interface User {
   Locale?: LocaleType;
   Storage?: UserStorageMetadata;
 }
-export const User = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.optional(S.String),
     Username: S.optional(SensitiveString),
@@ -285,7 +285,7 @@ export const User = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ActivateUserResponse {
   User?: User;
 }
-export const ActivateUserResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ActivateUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ User: S.optional(User) }).pipe(ns),
 ).annotate({
   identifier: "ActivateUserResponse",
@@ -297,30 +297,29 @@ export type PrincipalType =
   | "ANONYMOUS"
   | "ORGANIZATION"
   | (string & {});
-export const PrincipalType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const PrincipalType = /*@__PURE__*/ S.String;
 export type RoleType =
   | "VIEWER"
   | "CONTRIBUTOR"
   | "OWNER"
   | "COOWNER"
   | (string & {});
-export const RoleType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const RoleType = /*@__PURE__*/ S.String;
 export interface SharePrincipal {
   Id: string;
   Type: PrincipalType;
   Role: RoleType;
 }
-export const SharePrincipal = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SharePrincipal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Id: S.String, Type: PrincipalType, Role: RoleType }),
 ).annotate({ identifier: "SharePrincipal" }) as any as S.Schema<SharePrincipal>;
 export type SharePrincipalList = SharePrincipal[];
-export const SharePrincipalList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SharePrincipal);
+export const SharePrincipalList = /*@__PURE__*/ S.Array(SharePrincipal);
 export interface NotificationOptions {
   SendEmail?: boolean;
   EmailMessage?: string | redacted.Redacted<string>;
 }
-export const NotificationOptions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const NotificationOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SendEmail: S.optional(S.Boolean),
     EmailMessage: S.optional(SensitiveString),
@@ -334,34 +333,33 @@ export interface AddResourcePermissionsRequest {
   Principals: SharePrincipal[];
   NotificationOptions?: NotificationOptions;
 }
-export const AddResourcePermissionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AuthenticationToken: S.optional(SensitiveString).pipe(
-        T.HttpHeader("Authentication"),
-      ),
-      ResourceId: S.String.pipe(T.HttpLabel("ResourceId")),
-      Principals: SharePrincipalList,
-      NotificationOptions: S.optional(NotificationOptions),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "POST",
-          uri: "/api/v1/resources/{ResourceId}/permissions",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const AddResourcePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AuthenticationToken: S.optional(SensitiveString).pipe(
+      T.HttpHeader("Authentication"),
     ),
-  ).annotate({
-    identifier: "AddResourcePermissionsRequest",
-  }) as any as S.Schema<AddResourcePermissionsRequest>;
+    ResourceId: S.String.pipe(T.HttpLabel("ResourceId")),
+    Principals: SharePrincipalList,
+    NotificationOptions: S.optional(NotificationOptions),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({
+        method: "POST",
+        uri: "/api/v1/resources/{ResourceId}/permissions",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "AddResourcePermissionsRequest",
+}) as any as S.Schema<AddResourcePermissionsRequest>;
 export type ShareStatusType = "SUCCESS" | "FAILURE" | (string & {});
-export const ShareStatusType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ShareStatusType = /*@__PURE__*/ S.String;
 export interface ShareResult {
   PrincipalId?: string;
   InviteePrincipalId?: string;
@@ -370,7 +368,7 @@ export interface ShareResult {
   ShareId?: string;
   StatusMessage?: string | redacted.Redacted<string>;
 }
-export const ShareResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ShareResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PrincipalId: S.optional(S.String),
     InviteePrincipalId: S.optional(S.String),
@@ -381,19 +379,17 @@ export const ShareResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ShareResult" }) as any as S.Schema<ShareResult>;
 export type ShareResultsList = ShareResult[];
-export const ShareResultsList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ShareResult);
+export const ShareResultsList = /*@__PURE__*/ S.Array(ShareResult);
 export interface AddResourcePermissionsResponse {
   ShareResults?: ShareResult[];
 }
-export const AddResourcePermissionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ ShareResults: S.optional(ShareResultsList) }).pipe(ns),
-  ).annotate({
-    identifier: "AddResourcePermissionsResponse",
-  }) as any as S.Schema<AddResourcePermissionsResponse>;
+export const AddResourcePermissionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ShareResults: S.optional(ShareResultsList) }).pipe(ns),
+).annotate({
+  identifier: "AddResourcePermissionsResponse",
+}) as any as S.Schema<AddResourcePermissionsResponse>;
 export type CommentVisibilityType = "PUBLIC" | "PRIVATE" | (string & {});
-export const CommentVisibilityType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const CommentVisibilityType = /*@__PURE__*/ S.String;
 export interface CreateCommentRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   DocumentId: string;
@@ -404,7 +400,7 @@ export interface CreateCommentRequest {
   Visibility?: CommentVisibilityType;
   NotifyCollaborators?: boolean;
 }
-export const CreateCommentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AuthenticationToken: S.optional(SensitiveString).pipe(
       T.HttpHeader("Authentication"),
@@ -438,7 +434,7 @@ export type CommentStatusType =
   | "PUBLISHED"
   | "DELETED"
   | (string & {});
-export const CommentStatusType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const CommentStatusType = /*@__PURE__*/ S.String;
 export interface Comment {
   CommentId: string;
   ParentId?: string;
@@ -450,7 +446,7 @@ export interface Comment {
   Visibility?: CommentVisibilityType;
   RecipientId?: string;
 }
-export const Comment = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Comment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CommentId: S.String,
     ParentId: S.optional(S.String),
@@ -468,13 +464,13 @@ export const Comment = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateCommentResponse {
   Comment?: Comment;
 }
-export const CreateCommentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateCommentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Comment: S.optional(Comment) }).pipe(ns),
 ).annotate({
   identifier: "CreateCommentResponse",
 }) as any as S.Schema<CreateCommentResponse>;
 export type CustomMetadataMap = { [key: string]: string | undefined };
-export const CustomMetadataMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const CustomMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -484,43 +480,43 @@ export interface CreateCustomMetadataRequest {
   VersionId?: string;
   CustomMetadata: { [key: string]: string | undefined };
 }
-export const CreateCustomMetadataRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AuthenticationToken: S.optional(SensitiveString).pipe(
-        T.HttpHeader("Authentication"),
-      ),
-      ResourceId: S.String.pipe(T.HttpLabel("ResourceId")),
-      VersionId: S.optional(S.String).pipe(T.HttpQuery("versionid")),
-      CustomMetadata: CustomMetadataMap,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "PUT",
-          uri: "/api/v1/resources/{ResourceId}/customMetadata",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateCustomMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AuthenticationToken: S.optional(SensitiveString).pipe(
+      T.HttpHeader("Authentication"),
     ),
-  ).annotate({
-    identifier: "CreateCustomMetadataRequest",
-  }) as any as S.Schema<CreateCustomMetadataRequest>;
+    ResourceId: S.String.pipe(T.HttpLabel("ResourceId")),
+    VersionId: S.optional(S.String).pipe(T.HttpQuery("versionid")),
+    CustomMetadata: CustomMetadataMap,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({
+        method: "PUT",
+        uri: "/api/v1/resources/{ResourceId}/customMetadata",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateCustomMetadataRequest",
+}) as any as S.Schema<CreateCustomMetadataRequest>;
 export interface CreateCustomMetadataResponse {}
-export const CreateCustomMetadataResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "CreateCustomMetadataResponse",
-  }) as any as S.Schema<CreateCustomMetadataResponse>;
+export const CreateCustomMetadataResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "CreateCustomMetadataResponse",
+}) as any as S.Schema<CreateCustomMetadataResponse>;
 export interface CreateFolderRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   Name?: string | redacted.Redacted<string>;
   ParentFolderId: string;
 }
-export const CreateFolderRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateFolderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AuthenticationToken: S.optional(SensitiveString).pipe(
       T.HttpHeader("Authentication"),
@@ -547,9 +543,9 @@ export type ResourceStateType =
   | "RECYCLING"
   | "RECYCLED"
   | (string & {});
-export const ResourceStateType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ResourceStateType = /*@__PURE__*/ S.String;
 export type SharedLabels = string[];
-export const SharedLabels = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const SharedLabels = /*@__PURE__*/ S.Array(S.String);
 export interface FolderMetadata {
   Id?: string;
   Name?: string | redacted.Redacted<string>;
@@ -563,7 +559,7 @@ export interface FolderMetadata {
   Size?: number;
   LatestVersionSize?: number;
 }
-export const FolderMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FolderMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.optional(S.String),
     Name: S.optional(SensitiveString),
@@ -585,7 +581,7 @@ export const FolderMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateFolderResponse {
   Metadata?: FolderMetadata;
 }
-export const CreateFolderResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateFolderResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Metadata: S.optional(FolderMetadata) }).pipe(ns),
 ).annotate({
   identifier: "CreateFolderResponse",
@@ -595,7 +591,7 @@ export interface CreateLabelsRequest {
   Labels: string[];
   AuthenticationToken?: string | redacted.Redacted<string>;
 }
-export const CreateLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceId: S.String.pipe(T.HttpLabel("ResourceId")),
     Labels: SharedLabels,
@@ -617,23 +613,23 @@ export const CreateLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "CreateLabelsRequest",
 }) as any as S.Schema<CreateLabelsRequest>;
 export interface CreateLabelsResponse {}
-export const CreateLabelsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateLabelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "CreateLabelsResponse",
 }) as any as S.Schema<CreateLabelsResponse>;
 export type SubscriptionProtocolType = "HTTPS" | "SQS" | (string & {});
-export const SubscriptionProtocolType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SubscriptionProtocolType = /*@__PURE__*/ S.String;
 export type SubscriptionType = "ALL" | (string & {});
-export const SubscriptionType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SubscriptionType = /*@__PURE__*/ S.String;
 export interface CreateNotificationSubscriptionRequest {
   OrganizationId: string;
   Endpoint: string;
   Protocol: SubscriptionProtocolType;
   SubscriptionType: SubscriptionType;
 }
-export const CreateNotificationSubscriptionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateNotificationSubscriptionRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       OrganizationId: S.String.pipe(T.HttpLabel("OrganizationId")),
       Endpoint: S.String,
@@ -653,15 +649,15 @@ export const CreateNotificationSubscriptionRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "CreateNotificationSubscriptionRequest",
-  }) as any as S.Schema<CreateNotificationSubscriptionRequest>;
+).annotate({
+  identifier: "CreateNotificationSubscriptionRequest",
+}) as any as S.Schema<CreateNotificationSubscriptionRequest>;
 export interface Subscription {
   SubscriptionId?: string;
   EndPoint?: string;
   Protocol?: SubscriptionProtocolType;
 }
-export const Subscription = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Subscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SubscriptionId: S.optional(S.String),
     EndPoint: S.optional(S.String),
@@ -671,12 +667,11 @@ export const Subscription = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateNotificationSubscriptionResponse {
   Subscription?: Subscription;
 }
-export const CreateNotificationSubscriptionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ Subscription: S.optional(Subscription) }).pipe(ns),
-  ).annotate({
-    identifier: "CreateNotificationSubscriptionResponse",
-  }) as any as S.Schema<CreateNotificationSubscriptionResponse>;
+export const CreateNotificationSubscriptionResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ Subscription: S.optional(Subscription) }).pipe(ns),
+).annotate({
+  identifier: "CreateNotificationSubscriptionResponse",
+}) as any as S.Schema<CreateNotificationSubscriptionResponse>;
 export interface CreateUserRequest {
   OrganizationId?: string;
   Username: string | redacted.Redacted<string>;
@@ -688,7 +683,7 @@ export interface CreateUserRequest {
   StorageRule?: StorageRuleType;
   AuthenticationToken?: string | redacted.Redacted<string>;
 }
-export const CreateUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     OrganizationId: S.optional(S.String),
     Username: SensitiveString,
@@ -718,7 +713,7 @@ export const CreateUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateUserResponse {
   User?: User;
 }
-export const CreateUserResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ User: S.optional(User) }).pipe(ns),
 ).annotate({
   identifier: "CreateUserResponse",
@@ -727,7 +722,7 @@ export interface DeactivateUserRequest {
   UserId: string;
   AuthenticationToken?: string | redacted.Redacted<string>;
 }
-export const DeactivateUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeactivateUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     UserId: S.String.pipe(T.HttpLabel("UserId")),
     AuthenticationToken: S.optional(SensitiveString).pipe(
@@ -748,8 +743,8 @@ export const DeactivateUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeactivateUserRequest",
 }) as any as S.Schema<DeactivateUserRequest>;
 export interface DeactivateUserResponse {}
-export const DeactivateUserResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}).pipe(ns),
+export const DeactivateUserResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "DeactivateUserResponse",
 }) as any as S.Schema<DeactivateUserResponse>;
@@ -759,7 +754,7 @@ export interface DeleteCommentRequest {
   VersionId: string;
   CommentId: string;
 }
-export const DeleteCommentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AuthenticationToken: S.optional(SensitiveString).pipe(
       T.HttpHeader("Authentication"),
@@ -785,15 +780,13 @@ export const DeleteCommentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteCommentRequest",
 }) as any as S.Schema<DeleteCommentRequest>;
 export interface DeleteCommentResponse {}
-export const DeleteCommentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteCommentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "DeleteCommentResponse",
 }) as any as S.Schema<DeleteCommentResponse>;
 export type CustomMetadataKeyList = string[];
-export const CustomMetadataKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const CustomMetadataKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface DeleteCustomMetadataRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   ResourceId: string;
@@ -801,43 +794,43 @@ export interface DeleteCustomMetadataRequest {
   Keys?: string[];
   DeleteAll?: boolean;
 }
-export const DeleteCustomMetadataRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AuthenticationToken: S.optional(SensitiveString).pipe(
-        T.HttpHeader("Authentication"),
-      ),
-      ResourceId: S.String.pipe(T.HttpLabel("ResourceId")),
-      VersionId: S.optional(S.String).pipe(T.HttpQuery("versionId")),
-      Keys: S.optional(CustomMetadataKeyList).pipe(T.HttpQuery("keys")),
-      DeleteAll: S.optional(S.Boolean).pipe(T.HttpQuery("deleteAll")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "DELETE",
-          uri: "/api/v1/resources/{ResourceId}/customMetadata",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteCustomMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AuthenticationToken: S.optional(SensitiveString).pipe(
+      T.HttpHeader("Authentication"),
     ),
-  ).annotate({
-    identifier: "DeleteCustomMetadataRequest",
-  }) as any as S.Schema<DeleteCustomMetadataRequest>;
+    ResourceId: S.String.pipe(T.HttpLabel("ResourceId")),
+    VersionId: S.optional(S.String).pipe(T.HttpQuery("versionId")),
+    Keys: S.optional(CustomMetadataKeyList).pipe(T.HttpQuery("keys")),
+    DeleteAll: S.optional(S.Boolean).pipe(T.HttpQuery("deleteAll")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({
+        method: "DELETE",
+        uri: "/api/v1/resources/{ResourceId}/customMetadata",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteCustomMetadataRequest",
+}) as any as S.Schema<DeleteCustomMetadataRequest>;
 export interface DeleteCustomMetadataResponse {}
-export const DeleteCustomMetadataResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteCustomMetadataResponse",
-  }) as any as S.Schema<DeleteCustomMetadataResponse>;
+export const DeleteCustomMetadataResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteCustomMetadataResponse",
+}) as any as S.Schema<DeleteCustomMetadataResponse>;
 export interface DeleteDocumentRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   DocumentId: string;
 }
-export const DeleteDocumentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AuthenticationToken: S.optional(SensitiveString).pipe(
       T.HttpHeader("Authentication"),
@@ -858,8 +851,8 @@ export const DeleteDocumentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteDocumentRequest",
 }) as any as S.Schema<DeleteDocumentRequest>;
 export interface DeleteDocumentResponse {}
-export const DeleteDocumentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}).pipe(ns),
+export const DeleteDocumentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "DeleteDocumentResponse",
 }) as any as S.Schema<DeleteDocumentResponse>;
@@ -869,42 +862,42 @@ export interface DeleteDocumentVersionRequest {
   VersionId: string;
   DeletePriorVersions: boolean;
 }
-export const DeleteDocumentVersionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AuthenticationToken: S.optional(SensitiveString).pipe(
-        T.HttpHeader("Authentication"),
-      ),
-      DocumentId: S.String.pipe(T.HttpLabel("DocumentId")),
-      VersionId: S.String.pipe(T.HttpLabel("VersionId")),
-      DeletePriorVersions: S.Boolean.pipe(T.HttpQuery("deletePriorVersions")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "DELETE",
-          uri: "/api/v1/documentVersions/{DocumentId}/versions/{VersionId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteDocumentVersionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AuthenticationToken: S.optional(SensitiveString).pipe(
+      T.HttpHeader("Authentication"),
     ),
-  ).annotate({
-    identifier: "DeleteDocumentVersionRequest",
-  }) as any as S.Schema<DeleteDocumentVersionRequest>;
+    DocumentId: S.String.pipe(T.HttpLabel("DocumentId")),
+    VersionId: S.String.pipe(T.HttpLabel("VersionId")),
+    DeletePriorVersions: S.Boolean.pipe(T.HttpQuery("deletePriorVersions")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({
+        method: "DELETE",
+        uri: "/api/v1/documentVersions/{DocumentId}/versions/{VersionId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteDocumentVersionRequest",
+}) as any as S.Schema<DeleteDocumentVersionRequest>;
 export interface DeleteDocumentVersionResponse {}
-export const DeleteDocumentVersionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteDocumentVersionResponse",
-  }) as any as S.Schema<DeleteDocumentVersionResponse>;
+export const DeleteDocumentVersionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteDocumentVersionResponse",
+}) as any as S.Schema<DeleteDocumentVersionResponse>;
 export interface DeleteFolderRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   FolderId: string;
 }
-export const DeleteFolderRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteFolderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AuthenticationToken: S.optional(SensitiveString).pipe(
       T.HttpHeader("Authentication"),
@@ -925,7 +918,7 @@ export const DeleteFolderRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteFolderRequest",
 }) as any as S.Schema<DeleteFolderRequest>;
 export interface DeleteFolderResponse {}
-export const DeleteFolderResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteFolderResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "DeleteFolderResponse",
@@ -934,42 +927,39 @@ export interface DeleteFolderContentsRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   FolderId: string;
 }
-export const DeleteFolderContentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AuthenticationToken: S.optional(SensitiveString).pipe(
-        T.HttpHeader("Authentication"),
-      ),
-      FolderId: S.String.pipe(T.HttpLabel("FolderId")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "DELETE",
-          uri: "/api/v1/folders/{FolderId}/contents",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteFolderContentsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AuthenticationToken: S.optional(SensitiveString).pipe(
+      T.HttpHeader("Authentication"),
     ),
-  ).annotate({
-    identifier: "DeleteFolderContentsRequest",
-  }) as any as S.Schema<DeleteFolderContentsRequest>;
+    FolderId: S.String.pipe(T.HttpLabel("FolderId")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "DELETE", uri: "/api/v1/folders/{FolderId}/contents" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteFolderContentsRequest",
+}) as any as S.Schema<DeleteFolderContentsRequest>;
 export interface DeleteFolderContentsResponse {}
-export const DeleteFolderContentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteFolderContentsResponse",
-  }) as any as S.Schema<DeleteFolderContentsResponse>;
+export const DeleteFolderContentsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteFolderContentsResponse",
+}) as any as S.Schema<DeleteFolderContentsResponse>;
 export interface DeleteLabelsRequest {
   ResourceId: string;
   AuthenticationToken?: string | redacted.Redacted<string>;
   Labels?: string[];
   DeleteAll?: boolean;
 }
-export const DeleteLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceId: S.String.pipe(T.HttpLabel("ResourceId")),
     AuthenticationToken: S.optional(SensitiveString).pipe(
@@ -995,7 +985,7 @@ export const DeleteLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteLabelsRequest",
 }) as any as S.Schema<DeleteLabelsRequest>;
 export interface DeleteLabelsResponse {}
-export const DeleteLabelsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteLabelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "DeleteLabelsResponse",
@@ -1004,8 +994,8 @@ export interface DeleteNotificationSubscriptionRequest {
   SubscriptionId: string;
   OrganizationId: string;
 }
-export const DeleteNotificationSubscriptionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteNotificationSubscriptionRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       SubscriptionId: S.String.pipe(T.HttpLabel("SubscriptionId")),
       OrganizationId: S.String.pipe(T.HttpLabel("OrganizationId")),
@@ -1023,19 +1013,20 @@ export const DeleteNotificationSubscriptionRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DeleteNotificationSubscriptionRequest",
-  }) as any as S.Schema<DeleteNotificationSubscriptionRequest>;
+).annotate({
+  identifier: "DeleteNotificationSubscriptionRequest",
+}) as any as S.Schema<DeleteNotificationSubscriptionRequest>;
 export interface DeleteNotificationSubscriptionResponse {}
-export const DeleteNotificationSubscriptionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteNotificationSubscriptionResponse",
-  }) as any as S.Schema<DeleteNotificationSubscriptionResponse>;
+export const DeleteNotificationSubscriptionResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteNotificationSubscriptionResponse",
+}) as any as S.Schema<DeleteNotificationSubscriptionResponse>;
 export interface DeleteUserRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   UserId: string;
 }
-export const DeleteUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AuthenticationToken: S.optional(SensitiveString).pipe(
       T.HttpHeader("Authentication"),
@@ -1056,7 +1047,7 @@ export const DeleteUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteUserRequest",
 }) as any as S.Schema<DeleteUserRequest>;
 export interface DeleteUserResponse {}
-export const DeleteUserResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "DeleteUserResponse",
@@ -1073,38 +1064,37 @@ export interface DescribeActivitiesRequest {
   Limit?: number;
   Marker?: string;
 }
-export const DescribeActivitiesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      AuthenticationToken: S.optional(SensitiveString).pipe(
-        T.HttpHeader("Authentication"),
-      ),
-      StartTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ).pipe(T.HttpQuery("startTime")),
-      EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
-        T.HttpQuery("endTime"),
-      ),
-      OrganizationId: S.optional(S.String).pipe(T.HttpQuery("organizationId")),
-      ActivityTypes: S.optional(S.String).pipe(T.HttpQuery("activityTypes")),
-      ResourceId: S.optional(S.String).pipe(T.HttpQuery("resourceId")),
-      UserId: S.optional(S.String).pipe(T.HttpQuery("userId")),
-      IncludeIndirectActivities: S.optional(S.Boolean).pipe(
-        T.HttpQuery("includeIndirectActivities"),
-      ),
-      Limit: S.optional(S.Number).pipe(T.HttpQuery("limit")),
-      Marker: S.optional(S.String).pipe(T.HttpQuery("marker")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "GET", uri: "/api/v1/activities" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AuthenticationToken: S.optional(SensitiveString).pipe(
+      T.HttpHeader("Authentication"),
     ),
+    StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
+      T.HttpQuery("startTime"),
+    ),
+    EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
+      T.HttpQuery("endTime"),
+    ),
+    OrganizationId: S.optional(S.String).pipe(T.HttpQuery("organizationId")),
+    ActivityTypes: S.optional(S.String).pipe(T.HttpQuery("activityTypes")),
+    ResourceId: S.optional(S.String).pipe(T.HttpQuery("resourceId")),
+    UserId: S.optional(S.String).pipe(T.HttpQuery("userId")),
+    IncludeIndirectActivities: S.optional(S.Boolean).pipe(
+      T.HttpQuery("includeIndirectActivities"),
+    ),
+    Limit: S.optional(S.Number).pipe(T.HttpQuery("limit")),
+    Marker: S.optional(S.String).pipe(T.HttpQuery("marker")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "GET", uri: "/api/v1/activities" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
 ).annotate({
   identifier: "DescribeActivitiesRequest",
 }) as any as S.Schema<DescribeActivitiesRequest>;
@@ -1143,7 +1133,7 @@ export type ActivityType =
   | "FOLDER_SHAREABLE_LINK_PERMISSION_CHANGED"
   | "FOLDER_MOVED"
   | (string & {});
-export const ActivityType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ActivityType = /*@__PURE__*/ S.String;
 export interface UserMetadata {
   Id?: string;
   Username?: string | redacted.Redacted<string>;
@@ -1151,7 +1141,7 @@ export interface UserMetadata {
   Surname?: string | redacted.Redacted<string>;
   EmailAddress?: string | redacted.Redacted<string>;
 }
-export const UserMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UserMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.optional(S.String),
     Username: S.optional(SensitiveString),
@@ -1161,30 +1151,28 @@ export const UserMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserMetadata" }) as any as S.Schema<UserMetadata>;
 export type UserMetadataList = UserMetadata[];
-export const UserMetadataList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(UserMetadata);
+export const UserMetadataList = /*@__PURE__*/ S.Array(UserMetadata);
 export interface GroupMetadata {
   Id?: string;
   Name?: string;
 }
-export const GroupMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GroupMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Id: S.optional(S.String), Name: S.optional(S.String) }),
 ).annotate({ identifier: "GroupMetadata" }) as any as S.Schema<GroupMetadata>;
 export type GroupMetadataList = GroupMetadata[];
-export const GroupMetadataList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(GroupMetadata);
+export const GroupMetadataList = /*@__PURE__*/ S.Array(GroupMetadata);
 export interface Participants {
   Users?: UserMetadata[];
   Groups?: GroupMetadata[];
 }
-export const Participants = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Participants = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Users: S.optional(UserMetadataList),
     Groups: S.optional(GroupMetadataList),
   }),
 ).annotate({ identifier: "Participants" }) as any as S.Schema<Participants>;
 export type ResourceType = "FOLDER" | "DOCUMENT" | (string & {});
-export const ResourceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ResourceType = /*@__PURE__*/ S.String;
 export interface ResourceMetadata {
   Type?: ResourceType;
   Name?: string | redacted.Redacted<string>;
@@ -1194,7 +1182,7 @@ export interface ResourceMetadata {
   Owner?: UserMetadata;
   ParentId?: string;
 }
-export const ResourceMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ResourceMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Type: S.optional(ResourceType),
     Name: S.optional(SensitiveString),
@@ -1215,7 +1203,7 @@ export interface CommentMetadata {
   RecipientId?: string;
   ContributorId?: string;
 }
-export const CommentMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CommentMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CommentId: S.optional(S.String),
     Contributor: S.optional(User),
@@ -1240,7 +1228,7 @@ export interface Activity {
   OriginalParent?: ResourceMetadata;
   CommentMetadata?: CommentMetadata;
 }
-export const Activity = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Activity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Type: S.optional(ActivityType),
     TimeStamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -1254,17 +1242,16 @@ export const Activity = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Activity" }) as any as S.Schema<Activity>;
 export type UserActivities = Activity[];
-export const UserActivities = /*@__PURE__*/ /*#__PURE__*/ S.Array(Activity);
+export const UserActivities = /*@__PURE__*/ S.Array(Activity);
 export interface DescribeActivitiesResponse {
   UserActivities?: Activity[];
   Marker?: string;
 }
-export const DescribeActivitiesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      UserActivities: S.optional(UserActivities),
-      Marker: S.optional(S.String),
-    }).pipe(ns),
+export const DescribeActivitiesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    UserActivities: S.optional(UserActivities),
+    Marker: S.optional(S.String),
+  }).pipe(ns),
 ).annotate({
   identifier: "DescribeActivitiesResponse",
 }) as any as S.Schema<DescribeActivitiesResponse>;
@@ -1275,45 +1262,43 @@ export interface DescribeCommentsRequest {
   Limit?: number;
   Marker?: string;
 }
-export const DescribeCommentsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      AuthenticationToken: S.optional(SensitiveString).pipe(
-        T.HttpHeader("Authentication"),
-      ),
-      DocumentId: S.String.pipe(T.HttpLabel("DocumentId")),
-      VersionId: S.String.pipe(T.HttpLabel("VersionId")),
-      Limit: S.optional(S.Number).pipe(T.HttpQuery("limit")),
-      Marker: S.optional(S.String).pipe(T.HttpQuery("marker")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "GET",
-          uri: "/api/v1/documents/{DocumentId}/versions/{VersionId}/comments",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeCommentsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AuthenticationToken: S.optional(SensitiveString).pipe(
+      T.HttpHeader("Authentication"),
     ),
+    DocumentId: S.String.pipe(T.HttpLabel("DocumentId")),
+    VersionId: S.String.pipe(T.HttpLabel("VersionId")),
+    Limit: S.optional(S.Number).pipe(T.HttpQuery("limit")),
+    Marker: S.optional(S.String).pipe(T.HttpQuery("marker")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({
+        method: "GET",
+        uri: "/api/v1/documents/{DocumentId}/versions/{VersionId}/comments",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
 ).annotate({
   identifier: "DescribeCommentsRequest",
 }) as any as S.Schema<DescribeCommentsRequest>;
 export type CommentList = Comment[];
-export const CommentList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Comment);
+export const CommentList = /*@__PURE__*/ S.Array(Comment);
 export interface DescribeCommentsResponse {
   Comments?: Comment[];
   Marker?: string;
 }
-export const DescribeCommentsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Comments: S.optional(CommentList),
-      Marker: S.optional(S.String),
-    }).pipe(ns),
+export const DescribeCommentsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Comments: S.optional(CommentList),
+    Marker: S.optional(S.String),
+  }).pipe(ns),
 ).annotate({
   identifier: "DescribeCommentsResponse",
 }) as any as S.Schema<DescribeCommentsResponse>;
@@ -1325,55 +1310,51 @@ export interface DescribeDocumentVersionsRequest {
   Include?: string;
   Fields?: string;
 }
-export const DescribeDocumentVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AuthenticationToken: S.optional(SensitiveString).pipe(
-        T.HttpHeader("Authentication"),
-      ),
-      DocumentId: S.String.pipe(T.HttpLabel("DocumentId")),
-      Marker: S.optional(S.String).pipe(T.HttpQuery("marker")),
-      Limit: S.optional(S.Number).pipe(T.HttpQuery("limit")),
-      Include: S.optional(S.String).pipe(T.HttpQuery("include")),
-      Fields: S.optional(S.String).pipe(T.HttpQuery("fields")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "GET",
-          uri: "/api/v1/documents/{DocumentId}/versions",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeDocumentVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AuthenticationToken: S.optional(SensitiveString).pipe(
+      T.HttpHeader("Authentication"),
     ),
-  ).annotate({
-    identifier: "DescribeDocumentVersionsRequest",
-  }) as any as S.Schema<DescribeDocumentVersionsRequest>;
+    DocumentId: S.String.pipe(T.HttpLabel("DocumentId")),
+    Marker: S.optional(S.String).pipe(T.HttpQuery("marker")),
+    Limit: S.optional(S.Number).pipe(T.HttpQuery("limit")),
+    Include: S.optional(S.String).pipe(T.HttpQuery("include")),
+    Fields: S.optional(S.String).pipe(T.HttpQuery("fields")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "GET", uri: "/api/v1/documents/{DocumentId}/versions" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DescribeDocumentVersionsRequest",
+}) as any as S.Schema<DescribeDocumentVersionsRequest>;
 export type DocumentStatusType = "INITIALIZED" | "ACTIVE" | (string & {});
-export const DocumentStatusType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DocumentStatusType = /*@__PURE__*/ S.String;
 export type DocumentThumbnailType =
   | "SMALL"
   | "SMALL_HQ"
   | "LARGE"
   | (string & {});
-export const DocumentThumbnailType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DocumentThumbnailType = /*@__PURE__*/ S.String;
 export type DocumentThumbnailUrlMap = {
   [key in DocumentThumbnailType]?: string | redacted.Redacted<string>;
 };
-export const DocumentThumbnailUrlMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const DocumentThumbnailUrlMap = /*@__PURE__*/ S.Record(
   DocumentThumbnailType,
   SensitiveString.pipe(S.optional),
 );
 export type DocumentSourceType = "ORIGINAL" | "WITH_COMMENTS" | (string & {});
-export const DocumentSourceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DocumentSourceType = /*@__PURE__*/ S.String;
 export type DocumentSourceUrlMap = {
   [key in DocumentSourceType]?: string | redacted.Redacted<string>;
 };
-export const DocumentSourceUrlMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const DocumentSourceUrlMap = /*@__PURE__*/ S.Record(
   DocumentSourceType,
   SensitiveString.pipe(S.optional),
 );
@@ -1392,57 +1373,55 @@ export interface DocumentVersionMetadata {
   Thumbnail?: { [key: string]: string | redacted.Redacted<string> | undefined };
   Source?: { [key: string]: string | redacted.Redacted<string> | undefined };
 }
-export const DocumentVersionMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Id: S.optional(S.String),
-      Name: S.optional(SensitiveString),
-      ContentType: S.optional(S.String),
-      Size: S.optional(S.Number),
-      Signature: S.optional(S.String),
-      Status: S.optional(DocumentStatusType),
-      CreatedTimestamp: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      ModifiedTimestamp: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      ContentCreatedTimestamp: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      ContentModifiedTimestamp: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      CreatorId: S.optional(S.String),
-      Thumbnail: S.optional(DocumentThumbnailUrlMap),
-      Source: S.optional(DocumentSourceUrlMap),
-    }),
+export const DocumentVersionMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.optional(S.String),
+    Name: S.optional(SensitiveString),
+    ContentType: S.optional(S.String),
+    Size: S.optional(S.Number),
+    Signature: S.optional(S.String),
+    Status: S.optional(DocumentStatusType),
+    CreatedTimestamp: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    ModifiedTimestamp: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    ContentCreatedTimestamp: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    ContentModifiedTimestamp: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    CreatorId: S.optional(S.String),
+    Thumbnail: S.optional(DocumentThumbnailUrlMap),
+    Source: S.optional(DocumentSourceUrlMap),
+  }),
 ).annotate({
   identifier: "DocumentVersionMetadata",
 }) as any as S.Schema<DocumentVersionMetadata>;
 export type DocumentVersionMetadataList = DocumentVersionMetadata[];
-export const DocumentVersionMetadataList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const DocumentVersionMetadataList = /*@__PURE__*/ S.Array(
   DocumentVersionMetadata,
 );
 export interface DescribeDocumentVersionsResponse {
   DocumentVersions?: DocumentVersionMetadata[];
   Marker?: string;
 }
-export const DescribeDocumentVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DocumentVersions: S.optional(DocumentVersionMetadataList),
-      Marker: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeDocumentVersionsResponse",
-  }) as any as S.Schema<DescribeDocumentVersionsResponse>;
+export const DescribeDocumentVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DocumentVersions: S.optional(DocumentVersionMetadataList),
+    Marker: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeDocumentVersionsResponse",
+}) as any as S.Schema<DescribeDocumentVersionsResponse>;
 export type ResourceSortType = "DATE" | "NAME" | (string & {});
-export const ResourceSortType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ResourceSortType = /*@__PURE__*/ S.String;
 export type OrderType = "ASCENDING" | "DESCENDING" | (string & {});
-export const OrderType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const OrderType = /*@__PURE__*/ S.String;
 export type FolderContentType = "ALL" | "DOCUMENT" | "FOLDER" | (string & {});
-export const FolderContentType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const FolderContentType = /*@__PURE__*/ S.String;
 export interface DescribeFolderContentsRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   FolderId: string;
@@ -1453,36 +1432,34 @@ export interface DescribeFolderContentsRequest {
   Type?: FolderContentType;
   Include?: string;
 }
-export const DescribeFolderContentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AuthenticationToken: S.optional(SensitiveString).pipe(
-        T.HttpHeader("Authentication"),
-      ),
-      FolderId: S.String.pipe(T.HttpLabel("FolderId")),
-      Sort: S.optional(ResourceSortType).pipe(T.HttpQuery("sort")),
-      Order: S.optional(OrderType).pipe(T.HttpQuery("order")),
-      Limit: S.optional(S.Number).pipe(T.HttpQuery("limit")),
-      Marker: S.optional(S.String).pipe(T.HttpQuery("marker")),
-      Type: S.optional(FolderContentType).pipe(T.HttpQuery("type")),
-      Include: S.optional(S.String).pipe(T.HttpQuery("include")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "GET", uri: "/api/v1/folders/{FolderId}/contents" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeFolderContentsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AuthenticationToken: S.optional(SensitiveString).pipe(
+      T.HttpHeader("Authentication"),
     ),
-  ).annotate({
-    identifier: "DescribeFolderContentsRequest",
-  }) as any as S.Schema<DescribeFolderContentsRequest>;
+    FolderId: S.String.pipe(T.HttpLabel("FolderId")),
+    Sort: S.optional(ResourceSortType).pipe(T.HttpQuery("sort")),
+    Order: S.optional(OrderType).pipe(T.HttpQuery("order")),
+    Limit: S.optional(S.Number).pipe(T.HttpQuery("limit")),
+    Marker: S.optional(S.String).pipe(T.HttpQuery("marker")),
+    Type: S.optional(FolderContentType).pipe(T.HttpQuery("type")),
+    Include: S.optional(S.String).pipe(T.HttpQuery("include")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "GET", uri: "/api/v1/folders/{FolderId}/contents" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DescribeFolderContentsRequest",
+}) as any as S.Schema<DescribeFolderContentsRequest>;
 export type FolderMetadataList = FolderMetadata[];
-export const FolderMetadataList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(FolderMetadata);
+export const FolderMetadataList = /*@__PURE__*/ S.Array(FolderMetadata);
 export interface DocumentMetadata {
   Id?: string;
   CreatorId?: string;
@@ -1493,7 +1470,7 @@ export interface DocumentMetadata {
   ResourceState?: ResourceStateType;
   Labels?: string[];
 }
-export const DocumentMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DocumentMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.optional(S.String),
     CreatorId: S.optional(S.String),
@@ -1512,23 +1489,21 @@ export const DocumentMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DocumentMetadata",
 }) as any as S.Schema<DocumentMetadata>;
 export type DocumentMetadataList = DocumentMetadata[];
-export const DocumentMetadataList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(DocumentMetadata);
+export const DocumentMetadataList = /*@__PURE__*/ S.Array(DocumentMetadata);
 export interface DescribeFolderContentsResponse {
   Folders?: FolderMetadata[];
   Documents?: DocumentMetadata[];
   Marker?: string;
 }
-export const DescribeFolderContentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Folders: S.optional(FolderMetadataList),
-      Documents: S.optional(DocumentMetadataList),
-      Marker: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeFolderContentsResponse",
-  }) as any as S.Schema<DescribeFolderContentsResponse>;
+export const DescribeFolderContentsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Folders: S.optional(FolderMetadataList),
+    Documents: S.optional(DocumentMetadataList),
+    Marker: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeFolderContentsResponse",
+}) as any as S.Schema<DescribeFolderContentsResponse>;
 export interface DescribeGroupsRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   SearchQuery: string | redacted.Redacted<string>;
@@ -1536,7 +1511,7 @@ export interface DescribeGroupsRequest {
   Marker?: string;
   Limit?: number;
 }
-export const DescribeGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DescribeGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AuthenticationToken: S.optional(SensitiveString).pipe(
       T.HttpHeader("Authentication"),
@@ -1563,12 +1538,11 @@ export interface DescribeGroupsResponse {
   Groups?: GroupMetadata[];
   Marker?: string;
 }
-export const DescribeGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Groups: S.optional(GroupMetadataList),
-      Marker: S.optional(S.String),
-    }).pipe(ns),
+export const DescribeGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Groups: S.optional(GroupMetadataList),
+    Marker: S.optional(S.String),
+  }).pipe(ns),
 ).annotate({
   identifier: "DescribeGroupsResponse",
 }) as any as S.Schema<DescribeGroupsResponse>;
@@ -1577,8 +1551,8 @@ export interface DescribeNotificationSubscriptionsRequest {
   Marker?: string;
   Limit?: number;
 }
-export const DescribeNotificationSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DescribeNotificationSubscriptionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       OrganizationId: S.String.pipe(T.HttpLabel("OrganizationId")),
       Marker: S.optional(S.String).pipe(T.HttpQuery("marker")),
@@ -1597,18 +1571,17 @@ export const DescribeNotificationSubscriptionsRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DescribeNotificationSubscriptionsRequest",
-  }) as any as S.Schema<DescribeNotificationSubscriptionsRequest>;
+).annotate({
+  identifier: "DescribeNotificationSubscriptionsRequest",
+}) as any as S.Schema<DescribeNotificationSubscriptionsRequest>;
 export type SubscriptionList = Subscription[];
-export const SubscriptionList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(Subscription);
+export const SubscriptionList = /*@__PURE__*/ S.Array(Subscription);
 export interface DescribeNotificationSubscriptionsResponse {
   Subscriptions?: Subscription[];
   Marker?: string;
 }
 export const DescribeNotificationSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Subscriptions: S.optional(SubscriptionList),
       Marker: S.optional(S.String),
@@ -1623,54 +1596,52 @@ export interface DescribeResourcePermissionsRequest {
   Limit?: number;
   Marker?: string;
 }
-export const DescribeResourcePermissionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AuthenticationToken: S.optional(SensitiveString).pipe(
-        T.HttpHeader("Authentication"),
-      ),
-      ResourceId: S.String.pipe(T.HttpLabel("ResourceId")),
-      PrincipalId: S.optional(S.String).pipe(T.HttpQuery("principalId")),
-      Limit: S.optional(S.Number).pipe(T.HttpQuery("limit")),
-      Marker: S.optional(S.String).pipe(T.HttpQuery("marker")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "GET",
-          uri: "/api/v1/resources/{ResourceId}/permissions",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeResourcePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AuthenticationToken: S.optional(SensitiveString).pipe(
+      T.HttpHeader("Authentication"),
     ),
-  ).annotate({
-    identifier: "DescribeResourcePermissionsRequest",
-  }) as any as S.Schema<DescribeResourcePermissionsRequest>;
+    ResourceId: S.String.pipe(T.HttpLabel("ResourceId")),
+    PrincipalId: S.optional(S.String).pipe(T.HttpQuery("principalId")),
+    Limit: S.optional(S.Number).pipe(T.HttpQuery("limit")),
+    Marker: S.optional(S.String).pipe(T.HttpQuery("marker")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({
+        method: "GET",
+        uri: "/api/v1/resources/{ResourceId}/permissions",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DescribeResourcePermissionsRequest",
+}) as any as S.Schema<DescribeResourcePermissionsRequest>;
 export type RolePermissionType = "DIRECT" | "INHERITED" | (string & {});
-export const RolePermissionType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const RolePermissionType = /*@__PURE__*/ S.String;
 export interface PermissionInfo {
   Role?: RoleType;
   Type?: RolePermissionType;
 }
-export const PermissionInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PermissionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Role: S.optional(RoleType),
     Type: S.optional(RolePermissionType),
   }),
 ).annotate({ identifier: "PermissionInfo" }) as any as S.Schema<PermissionInfo>;
 export type PermissionInfoList = PermissionInfo[];
-export const PermissionInfoList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(PermissionInfo);
+export const PermissionInfoList = /*@__PURE__*/ S.Array(PermissionInfo);
 export interface Principal {
   Id?: string;
   Type?: PrincipalType;
   Roles?: PermissionInfo[];
 }
-export const Principal = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Principal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.optional(S.String),
     Type: S.optional(PrincipalType),
@@ -1678,42 +1649,40 @@ export const Principal = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Principal" }) as any as S.Schema<Principal>;
 export type PrincipalList = Principal[];
-export const PrincipalList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Principal);
+export const PrincipalList = /*@__PURE__*/ S.Array(Principal);
 export interface DescribeResourcePermissionsResponse {
   Principals?: Principal[];
   Marker?: string;
 }
-export const DescribeResourcePermissionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Principals: S.optional(PrincipalList),
-      Marker: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeResourcePermissionsResponse",
-  }) as any as S.Schema<DescribeResourcePermissionsResponse>;
+export const DescribeResourcePermissionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Principals: S.optional(PrincipalList),
+    Marker: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeResourcePermissionsResponse",
+}) as any as S.Schema<DescribeResourcePermissionsResponse>;
 export interface DescribeRootFoldersRequest {
   AuthenticationToken: string | redacted.Redacted<string>;
   Limit?: number;
   Marker?: string;
 }
-export const DescribeRootFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      AuthenticationToken: SensitiveString.pipe(T.HttpHeader("Authentication")),
-      Limit: S.optional(S.Number).pipe(T.HttpQuery("limit")),
-      Marker: S.optional(S.String).pipe(T.HttpQuery("marker")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "GET", uri: "/api/v1/me/root" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeRootFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AuthenticationToken: SensitiveString.pipe(T.HttpHeader("Authentication")),
+    Limit: S.optional(S.Number).pipe(T.HttpQuery("limit")),
+    Marker: S.optional(S.String).pipe(T.HttpQuery("marker")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "GET", uri: "/api/v1/me/root" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DescribeRootFoldersRequest",
 }) as any as S.Schema<DescribeRootFoldersRequest>;
@@ -1721,17 +1690,16 @@ export interface DescribeRootFoldersResponse {
   Folders?: FolderMetadata[];
   Marker?: string;
 }
-export const DescribeRootFoldersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Folders: S.optional(FolderMetadataList),
-      Marker: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeRootFoldersResponse",
-  }) as any as S.Schema<DescribeRootFoldersResponse>;
+export const DescribeRootFoldersResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Folders: S.optional(FolderMetadataList),
+    Marker: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeRootFoldersResponse",
+}) as any as S.Schema<DescribeRootFoldersResponse>;
 export type UserFilterType = "ALL" | "ACTIVE_PENDING" | (string & {});
-export const UserFilterType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const UserFilterType = /*@__PURE__*/ S.String;
 export type UserSortType =
   | "USER_NAME"
   | "FULL_NAME"
@@ -1739,7 +1707,7 @@ export type UserSortType =
   | "USER_STATUS"
   | "STORAGE_USED"
   | (string & {});
-export const UserSortType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const UserSortType = /*@__PURE__*/ S.String;
 export interface DescribeUsersRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   OrganizationId?: string;
@@ -1752,7 +1720,7 @@ export interface DescribeUsersRequest {
   Limit?: number;
   Fields?: string;
 }
-export const DescribeUsersRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DescribeUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AuthenticationToken: S.optional(SensitiveString).pipe(
       T.HttpHeader("Authentication"),
@@ -1781,13 +1749,13 @@ export const DescribeUsersRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DescribeUsersRequest",
 }) as any as S.Schema<DescribeUsersRequest>;
 export type OrganizationUserList = User[];
-export const OrganizationUserList = /*@__PURE__*/ /*#__PURE__*/ S.Array(User);
+export const OrganizationUserList = /*@__PURE__*/ S.Array(User);
 export interface DescribeUsersResponse {
   Users?: User[];
   TotalNumberOfUsers?: number;
   Marker?: string;
 }
-export const DescribeUsersResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DescribeUsersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Users: S.optional(OrganizationUserList),
     TotalNumberOfUsers: S.optional(S.Number),
@@ -1799,7 +1767,7 @@ export const DescribeUsersResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetCurrentUserRequest {
   AuthenticationToken: string | redacted.Redacted<string>;
 }
-export const GetCurrentUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetCurrentUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AuthenticationToken: SensitiveString.pipe(T.HttpHeader("Authentication")),
   }).pipe(
@@ -1819,8 +1787,8 @@ export const GetCurrentUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetCurrentUserResponse {
   User?: User;
 }
-export const GetCurrentUserResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ User: S.optional(User) }).pipe(ns),
+export const GetCurrentUserResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ User: S.optional(User) }).pipe(ns),
 ).annotate({
   identifier: "GetCurrentUserResponse",
 }) as any as S.Schema<GetCurrentUserResponse>;
@@ -1829,7 +1797,7 @@ export interface GetDocumentRequest {
   DocumentId: string;
   IncludeCustomMetadata?: boolean;
 }
-export const GetDocumentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AuthenticationToken: S.optional(SensitiveString).pipe(
       T.HttpHeader("Authentication"),
@@ -1856,7 +1824,7 @@ export interface GetDocumentResponse {
   Metadata?: DocumentMetadata;
   CustomMetadata?: { [key: string]: string | undefined };
 }
-export const GetDocumentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetDocumentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Metadata: S.optional(DocumentMetadata),
     CustomMetadata: S.optional(CustomMetadataMap),
@@ -1871,27 +1839,26 @@ export interface GetDocumentPathRequest {
   Fields?: string;
   Marker?: string;
 }
-export const GetDocumentPathRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      AuthenticationToken: S.optional(SensitiveString).pipe(
-        T.HttpHeader("Authentication"),
-      ),
-      DocumentId: S.String.pipe(T.HttpLabel("DocumentId")),
-      Limit: S.optional(S.Number).pipe(T.HttpQuery("limit")),
-      Fields: S.optional(S.String).pipe(T.HttpQuery("fields")),
-      Marker: S.optional(S.String).pipe(T.HttpQuery("marker")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "GET", uri: "/api/v1/documents/{DocumentId}/path" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetDocumentPathRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AuthenticationToken: S.optional(SensitiveString).pipe(
+      T.HttpHeader("Authentication"),
     ),
+    DocumentId: S.String.pipe(T.HttpLabel("DocumentId")),
+    Limit: S.optional(S.Number).pipe(T.HttpQuery("limit")),
+    Fields: S.optional(S.String).pipe(T.HttpQuery("fields")),
+    Marker: S.optional(S.String).pipe(T.HttpQuery("marker")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "GET", uri: "/api/v1/documents/{DocumentId}/path" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
 ).annotate({
   identifier: "GetDocumentPathRequest",
 }) as any as S.Schema<GetDocumentPathRequest>;
@@ -1899,26 +1866,26 @@ export interface ResourcePathComponent {
   Id?: string;
   Name?: string | redacted.Redacted<string>;
 }
-export const ResourcePathComponent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ResourcePathComponent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Id: S.optional(S.String), Name: S.optional(SensitiveString) }),
 ).annotate({
   identifier: "ResourcePathComponent",
 }) as any as S.Schema<ResourcePathComponent>;
 export type ResourcePathComponentList = ResourcePathComponent[];
-export const ResourcePathComponentList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ResourcePathComponentList = /*@__PURE__*/ S.Array(
   ResourcePathComponent,
 );
 export interface ResourcePath {
   Components?: ResourcePathComponent[];
 }
-export const ResourcePath = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ResourcePath = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Components: S.optional(ResourcePathComponentList) }),
 ).annotate({ identifier: "ResourcePath" }) as any as S.Schema<ResourcePath>;
 export interface GetDocumentPathResponse {
   Path?: ResourcePath;
 }
-export const GetDocumentPathResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ Path: S.optional(ResourcePath) }).pipe(ns),
+export const GetDocumentPathResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Path: S.optional(ResourcePath) }).pipe(ns),
 ).annotate({
   identifier: "GetDocumentPathResponse",
 }) as any as S.Schema<GetDocumentPathResponse>;
@@ -1929,32 +1896,31 @@ export interface GetDocumentVersionRequest {
   Fields?: string;
   IncludeCustomMetadata?: boolean;
 }
-export const GetDocumentVersionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      AuthenticationToken: S.optional(SensitiveString).pipe(
-        T.HttpHeader("Authentication"),
-      ),
-      DocumentId: S.String.pipe(T.HttpLabel("DocumentId")),
-      VersionId: S.String.pipe(T.HttpLabel("VersionId")),
-      Fields: S.optional(S.String).pipe(T.HttpQuery("fields")),
-      IncludeCustomMetadata: S.optional(S.Boolean).pipe(
-        T.HttpQuery("includeCustomMetadata"),
-      ),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "GET",
-          uri: "/api/v1/documents/{DocumentId}/versions/{VersionId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetDocumentVersionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AuthenticationToken: S.optional(SensitiveString).pipe(
+      T.HttpHeader("Authentication"),
     ),
+    DocumentId: S.String.pipe(T.HttpLabel("DocumentId")),
+    VersionId: S.String.pipe(T.HttpLabel("VersionId")),
+    Fields: S.optional(S.String).pipe(T.HttpQuery("fields")),
+    IncludeCustomMetadata: S.optional(S.Boolean).pipe(
+      T.HttpQuery("includeCustomMetadata"),
+    ),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({
+        method: "GET",
+        uri: "/api/v1/documents/{DocumentId}/versions/{VersionId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
 ).annotate({
   identifier: "GetDocumentVersionRequest",
 }) as any as S.Schema<GetDocumentVersionRequest>;
@@ -1962,12 +1928,11 @@ export interface GetDocumentVersionResponse {
   Metadata?: DocumentVersionMetadata;
   CustomMetadata?: { [key: string]: string | undefined };
 }
-export const GetDocumentVersionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Metadata: S.optional(DocumentVersionMetadata),
-      CustomMetadata: S.optional(CustomMetadataMap),
-    }).pipe(ns),
+export const GetDocumentVersionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Metadata: S.optional(DocumentVersionMetadata),
+    CustomMetadata: S.optional(CustomMetadataMap),
+  }).pipe(ns),
 ).annotate({
   identifier: "GetDocumentVersionResponse",
 }) as any as S.Schema<GetDocumentVersionResponse>;
@@ -1976,7 +1941,7 @@ export interface GetFolderRequest {
   FolderId: string;
   IncludeCustomMetadata?: boolean;
 }
-export const GetFolderRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetFolderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AuthenticationToken: S.optional(SensitiveString).pipe(
       T.HttpHeader("Authentication"),
@@ -2003,7 +1968,7 @@ export interface GetFolderResponse {
   Metadata?: FolderMetadata;
   CustomMetadata?: { [key: string]: string | undefined };
 }
-export const GetFolderResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetFolderResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Metadata: S.optional(FolderMetadata),
     CustomMetadata: S.optional(CustomMetadataMap),
@@ -2018,7 +1983,7 @@ export interface GetFolderPathRequest {
   Fields?: string;
   Marker?: string;
 }
-export const GetFolderPathRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetFolderPathRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AuthenticationToken: S.optional(SensitiveString).pipe(
       T.HttpHeader("Authentication"),
@@ -2044,13 +2009,13 @@ export const GetFolderPathRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetFolderPathResponse {
   Path?: ResourcePath;
 }
-export const GetFolderPathResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetFolderPathResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Path: S.optional(ResourcePath) }).pipe(ns),
 ).annotate({
   identifier: "GetFolderPathResponse",
 }) as any as S.Schema<GetFolderPathResponse>;
 export type ResourceCollectionType = "SHARED_WITH_ME" | (string & {});
-export const ResourceCollectionType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ResourceCollectionType = /*@__PURE__*/ S.String;
 export interface GetResourcesRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   UserId?: string;
@@ -2058,7 +2023,7 @@ export interface GetResourcesRequest {
   Limit?: number;
   Marker?: string;
 }
-export const GetResourcesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AuthenticationToken: S.optional(SensitiveString).pipe(
       T.HttpHeader("Authentication"),
@@ -2088,7 +2053,7 @@ export interface GetResourcesResponse {
   Documents?: DocumentMetadata[];
   Marker?: string;
 }
-export const GetResourcesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetResourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Folders: S.optional(FolderMetadataList),
     Documents: S.optional(DocumentMetadataList),
@@ -2107,8 +2072,8 @@ export interface InitiateDocumentVersionUploadRequest {
   DocumentSizeInBytes?: number;
   ParentFolderId?: string;
 }
-export const InitiateDocumentVersionUploadRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const InitiateDocumentVersionUploadRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       AuthenticationToken: S.optional(SensitiveString).pipe(
         T.HttpHeader("Authentication"),
@@ -2135,11 +2100,11 @@ export const InitiateDocumentVersionUploadRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "InitiateDocumentVersionUploadRequest",
-  }) as any as S.Schema<InitiateDocumentVersionUploadRequest>;
+).annotate({
+  identifier: "InitiateDocumentVersionUploadRequest",
+}) as any as S.Schema<InitiateDocumentVersionUploadRequest>;
 export type SignedHeaderMap = { [key: string]: string | undefined };
-export const SignedHeaderMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const SignedHeaderMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -2147,7 +2112,7 @@ export interface UploadMetadata {
   UploadUrl?: string | redacted.Redacted<string>;
   SignedHeaders?: { [key: string]: string | undefined };
 }
-export const UploadMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UploadMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     UploadUrl: S.optional(SensitiveString),
     SignedHeaders: S.optional(SignedHeaderMap),
@@ -2157,127 +2122,127 @@ export interface InitiateDocumentVersionUploadResponse {
   Metadata?: DocumentMetadata;
   UploadMetadata?: UploadMetadata;
 }
-export const InitiateDocumentVersionUploadResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const InitiateDocumentVersionUploadResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Metadata: S.optional(DocumentMetadata),
       UploadMetadata: S.optional(UploadMetadata),
     }).pipe(ns),
-  ).annotate({
-    identifier: "InitiateDocumentVersionUploadResponse",
-  }) as any as S.Schema<InitiateDocumentVersionUploadResponse>;
+).annotate({
+  identifier: "InitiateDocumentVersionUploadResponse",
+}) as any as S.Schema<InitiateDocumentVersionUploadResponse>;
 export interface RemoveAllResourcePermissionsRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   ResourceId: string;
 }
-export const RemoveAllResourcePermissionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AuthenticationToken: S.optional(SensitiveString).pipe(
-        T.HttpHeader("Authentication"),
-      ),
-      ResourceId: S.String.pipe(T.HttpLabel("ResourceId")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "DELETE",
-          uri: "/api/v1/resources/{ResourceId}/permissions",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const RemoveAllResourcePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AuthenticationToken: S.optional(SensitiveString).pipe(
+      T.HttpHeader("Authentication"),
     ),
-  ).annotate({
-    identifier: "RemoveAllResourcePermissionsRequest",
-  }) as any as S.Schema<RemoveAllResourcePermissionsRequest>;
+    ResourceId: S.String.pipe(T.HttpLabel("ResourceId")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({
+        method: "DELETE",
+        uri: "/api/v1/resources/{ResourceId}/permissions",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "RemoveAllResourcePermissionsRequest",
+}) as any as S.Schema<RemoveAllResourcePermissionsRequest>;
 export interface RemoveAllResourcePermissionsResponse {}
-export const RemoveAllResourcePermissionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "RemoveAllResourcePermissionsResponse",
-  }) as any as S.Schema<RemoveAllResourcePermissionsResponse>;
+export const RemoveAllResourcePermissionsResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "RemoveAllResourcePermissionsResponse",
+}) as any as S.Schema<RemoveAllResourcePermissionsResponse>;
 export interface RemoveResourcePermissionRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   ResourceId: string;
   PrincipalId: string;
   PrincipalType?: PrincipalType;
 }
-export const RemoveResourcePermissionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AuthenticationToken: S.optional(SensitiveString).pipe(
-        T.HttpHeader("Authentication"),
-      ),
-      ResourceId: S.String.pipe(T.HttpLabel("ResourceId")),
-      PrincipalId: S.String.pipe(T.HttpLabel("PrincipalId")),
-      PrincipalType: S.optional(PrincipalType).pipe(T.HttpQuery("type")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "DELETE",
-          uri: "/api/v1/resources/{ResourceId}/permissions/{PrincipalId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const RemoveResourcePermissionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AuthenticationToken: S.optional(SensitiveString).pipe(
+      T.HttpHeader("Authentication"),
     ),
-  ).annotate({
-    identifier: "RemoveResourcePermissionRequest",
-  }) as any as S.Schema<RemoveResourcePermissionRequest>;
+    ResourceId: S.String.pipe(T.HttpLabel("ResourceId")),
+    PrincipalId: S.String.pipe(T.HttpLabel("PrincipalId")),
+    PrincipalType: S.optional(PrincipalType).pipe(T.HttpQuery("type")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({
+        method: "DELETE",
+        uri: "/api/v1/resources/{ResourceId}/permissions/{PrincipalId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "RemoveResourcePermissionRequest",
+}) as any as S.Schema<RemoveResourcePermissionRequest>;
 export interface RemoveResourcePermissionResponse {}
-export const RemoveResourcePermissionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "RemoveResourcePermissionResponse",
-  }) as any as S.Schema<RemoveResourcePermissionResponse>;
+export const RemoveResourcePermissionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "RemoveResourcePermissionResponse",
+}) as any as S.Schema<RemoveResourcePermissionResponse>;
 export interface RestoreDocumentVersionsRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   DocumentId: string;
 }
-export const RestoreDocumentVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AuthenticationToken: S.optional(SensitiveString).pipe(
-        T.HttpHeader("Authentication"),
-      ),
-      DocumentId: S.String.pipe(T.HttpLabel("DocumentId")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "POST",
-          uri: "/api/v1/documentVersions/restore/{DocumentId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const RestoreDocumentVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AuthenticationToken: S.optional(SensitiveString).pipe(
+      T.HttpHeader("Authentication"),
     ),
-  ).annotate({
-    identifier: "RestoreDocumentVersionsRequest",
-  }) as any as S.Schema<RestoreDocumentVersionsRequest>;
+    DocumentId: S.String.pipe(T.HttpLabel("DocumentId")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({
+        method: "POST",
+        uri: "/api/v1/documentVersions/restore/{DocumentId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "RestoreDocumentVersionsRequest",
+}) as any as S.Schema<RestoreDocumentVersionsRequest>;
 export interface RestoreDocumentVersionsResponse {}
-export const RestoreDocumentVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "RestoreDocumentVersionsResponse",
-  }) as any as S.Schema<RestoreDocumentVersionsResponse>;
+export const RestoreDocumentVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "RestoreDocumentVersionsResponse",
+}) as any as S.Schema<RestoreDocumentVersionsResponse>;
 export type SearchQueryScopeType = "NAME" | "CONTENT" | (string & {});
-export const SearchQueryScopeType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SearchQueryScopeType = /*@__PURE__*/ S.String;
 export type SearchQueryScopeTypeList = SearchQueryScopeType[];
 export const SearchQueryScopeTypeList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SearchQueryScopeType);
+  /*@__PURE__*/ S.Array(SearchQueryScopeType);
 export type AdditionalResponseFieldType = "WEBURL" | (string & {});
-export const AdditionalResponseFieldType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AdditionalResponseFieldType = /*@__PURE__*/ S.String;
 export type AdditionalResponseFieldsList = AdditionalResponseFieldType[];
-export const AdditionalResponseFieldsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const AdditionalResponseFieldsList = /*@__PURE__*/ S.Array(
   AdditionalResponseFieldType,
 );
 export type LanguageCodeType =
@@ -2313,10 +2278,9 @@ export type LanguageCodeType =
   | "ZH"
   | "DEFAULT"
   | (string & {});
-export const LanguageCodeType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const LanguageCodeType = /*@__PURE__*/ S.String;
 export type TextLocaleTypeList = LanguageCodeType[];
-export const TextLocaleTypeList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(LanguageCodeType);
+export const TextLocaleTypeList = /*@__PURE__*/ S.Array(LanguageCodeType);
 export type ContentCategoryType =
   | "IMAGE"
   | "DOCUMENT"
@@ -2328,58 +2292,54 @@ export type ContentCategoryType =
   | "SOURCE_CODE"
   | "OTHER"
   | (string & {});
-export const ContentCategoryType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ContentCategoryType = /*@__PURE__*/ S.String;
 export type SearchContentCategoryTypeList = ContentCategoryType[];
 export const SearchContentCategoryTypeList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ContentCategoryType);
+  /*@__PURE__*/ S.Array(ContentCategoryType);
 export type SearchResourceType =
   | "FOLDER"
   | "DOCUMENT"
   | "COMMENT"
   | "DOCUMENT_VERSION"
   | (string & {});
-export const SearchResourceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SearchResourceType = /*@__PURE__*/ S.String;
 export type SearchResourceTypeList = SearchResourceType[];
-export const SearchResourceTypeList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SearchResourceType);
+export const SearchResourceTypeList = /*@__PURE__*/ S.Array(SearchResourceType);
 export type SearchLabelList = string[];
-export const SearchLabelList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const SearchLabelList = /*@__PURE__*/ S.Array(S.String);
 export type PrincipalRoleType =
   | "VIEWER"
   | "CONTRIBUTOR"
   | "OWNER"
   | "COOWNER"
   | (string & {});
-export const PrincipalRoleType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const PrincipalRoleType = /*@__PURE__*/ S.String;
 export type SearchPrincipalRoleList = PrincipalRoleType[];
-export const SearchPrincipalRoleList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(PrincipalRoleType);
+export const SearchPrincipalRoleList = /*@__PURE__*/ S.Array(PrincipalRoleType);
 export interface SearchPrincipalType {
   Id: string;
   Roles?: PrincipalRoleType[];
 }
-export const SearchPrincipalType = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SearchPrincipalType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Id: S.String, Roles: S.optional(SearchPrincipalRoleList) }),
 ).annotate({
   identifier: "SearchPrincipalType",
 }) as any as S.Schema<SearchPrincipalType>;
 export type SearchPrincipalTypeList = SearchPrincipalType[];
 export const SearchPrincipalTypeList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SearchPrincipalType);
+  /*@__PURE__*/ S.Array(SearchPrincipalType);
 export type SearchAncestorIdList = string[];
-export const SearchAncestorIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const SearchAncestorIdList = /*@__PURE__*/ S.Array(S.String);
 export type SearchCollectionType = "OWNED" | "SHARED_WITH_ME" | (string & {});
-export const SearchCollectionType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SearchCollectionType = /*@__PURE__*/ S.String;
 export type SearchCollectionTypeList = SearchCollectionType[];
 export const SearchCollectionTypeList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SearchCollectionType);
+  /*@__PURE__*/ S.Array(SearchCollectionType);
 export interface LongRangeType {
   StartValue?: number;
   EndValue?: number;
 }
-export const LongRangeType = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const LongRangeType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StartValue: S.optional(S.Number),
     EndValue: S.optional(S.Number),
@@ -2389,7 +2349,7 @@ export interface DateRangeType {
   StartValue?: Date;
   EndValue?: Date;
 }
-export const DateRangeType = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DateRangeType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StartValue: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     EndValue: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -2407,7 +2367,7 @@ export interface Filters {
   CreatedRange?: DateRangeType;
   ModifiedRange?: DateRangeType;
 }
-export const Filters = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Filters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     TextLocales: S.optional(TextLocaleTypeList),
     ContentCategories: S.optional(SearchContentCategoryTypeList),
@@ -2428,14 +2388,14 @@ export type OrderByFieldType =
   | "CREATED_TIMESTAMP"
   | "MODIFIED_TIMESTAMP"
   | (string & {});
-export const OrderByFieldType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const OrderByFieldType = /*@__PURE__*/ S.String;
 export type SortOrder = "ASC" | "DESC" | (string & {});
-export const SortOrder = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SortOrder = /*@__PURE__*/ S.String;
 export interface SearchSortResult {
   Field?: OrderByFieldType;
   Order?: SortOrder;
 }
-export const SearchSortResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SearchSortResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Field: S.optional(OrderByFieldType),
     Order: S.optional(SortOrder),
@@ -2444,8 +2404,7 @@ export const SearchSortResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "SearchSortResult",
 }) as any as S.Schema<SearchSortResult>;
 export type SearchResultSortList = SearchSortResult[];
-export const SearchResultSortList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SearchSortResult);
+export const SearchResultSortList = /*@__PURE__*/ S.Array(SearchSortResult);
 export interface SearchResourcesRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   QueryText?: string | redacted.Redacted<string>;
@@ -2457,31 +2416,30 @@ export interface SearchResourcesRequest {
   Limit?: number;
   Marker?: string;
 }
-export const SearchResourcesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      AuthenticationToken: S.optional(SensitiveString).pipe(
-        T.HttpHeader("Authentication"),
-      ),
-      QueryText: S.optional(SensitiveString),
-      QueryScopes: S.optional(SearchQueryScopeTypeList),
-      OrganizationId: S.optional(S.String),
-      AdditionalResponseFields: S.optional(AdditionalResponseFieldsList),
-      Filters: S.optional(Filters),
-      OrderBy: S.optional(SearchResultSortList),
-      Limit: S.optional(S.Number),
-      Marker: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/api/v1/search" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const SearchResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AuthenticationToken: S.optional(SensitiveString).pipe(
+      T.HttpHeader("Authentication"),
     ),
+    QueryText: S.optional(SensitiveString),
+    QueryScopes: S.optional(SearchQueryScopeTypeList),
+    OrganizationId: S.optional(S.String),
+    AdditionalResponseFields: S.optional(AdditionalResponseFieldsList),
+    Filters: S.optional(Filters),
+    OrderBy: S.optional(SearchResultSortList),
+    Limit: S.optional(S.Number),
+    Marker: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/api/v1/search" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
 ).annotate({
   identifier: "SearchResourcesRequest",
 }) as any as S.Schema<SearchResourcesRequest>;
@@ -2491,7 +2449,7 @@ export type ResponseItemType =
   | "COMMENT"
   | "DOCUMENT_VERSION"
   | (string & {});
-export const ResponseItemType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ResponseItemType = /*@__PURE__*/ S.String;
 export interface ResponseItem {
   ResourceType?: ResponseItemType;
   WebUrl?: string | redacted.Redacted<string>;
@@ -2500,7 +2458,7 @@ export interface ResponseItem {
   CommentMetadata?: CommentMetadata;
   DocumentVersionMetadata?: DocumentVersionMetadata;
 }
-export const ResponseItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ResponseItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceType: S.optional(ResponseItemType),
     WebUrl: S.optional(SensitiveString),
@@ -2511,18 +2469,16 @@ export const ResponseItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ResponseItem" }) as any as S.Schema<ResponseItem>;
 export type ResponseItemsList = ResponseItem[];
-export const ResponseItemsList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ResponseItem);
+export const ResponseItemsList = /*@__PURE__*/ S.Array(ResponseItem);
 export interface SearchResourcesResponse {
   Items?: ResponseItem[];
   Marker?: string;
 }
-export const SearchResourcesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Items: S.optional(ResponseItemsList),
-      Marker: S.optional(S.String),
-    }).pipe(ns),
+export const SearchResourcesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Items: S.optional(ResponseItemsList),
+    Marker: S.optional(S.String),
+  }).pipe(ns),
 ).annotate({
   identifier: "SearchResourcesResponse",
 }) as any as S.Schema<SearchResourcesResponse>;
@@ -2533,7 +2489,7 @@ export interface UpdateDocumentRequest {
   ParentFolderId?: string;
   ResourceState?: ResourceStateType;
 }
-export const UpdateDocumentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AuthenticationToken: S.optional(SensitiveString).pipe(
       T.HttpHeader("Authentication"),
@@ -2557,50 +2513,50 @@ export const UpdateDocumentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UpdateDocumentRequest",
 }) as any as S.Schema<UpdateDocumentRequest>;
 export interface UpdateDocumentResponse {}
-export const UpdateDocumentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}).pipe(ns),
+export const UpdateDocumentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "UpdateDocumentResponse",
 }) as any as S.Schema<UpdateDocumentResponse>;
 export type DocumentVersionStatus = "ACTIVE" | (string & {});
-export const DocumentVersionStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DocumentVersionStatus = /*@__PURE__*/ S.String;
 export interface UpdateDocumentVersionRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   DocumentId: string;
   VersionId: string;
   VersionStatus?: DocumentVersionStatus;
 }
-export const UpdateDocumentVersionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AuthenticationToken: S.optional(SensitiveString).pipe(
-        T.HttpHeader("Authentication"),
-      ),
-      DocumentId: S.String.pipe(T.HttpLabel("DocumentId")),
-      VersionId: S.String.pipe(T.HttpLabel("VersionId")),
-      VersionStatus: S.optional(DocumentVersionStatus),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "PATCH",
-          uri: "/api/v1/documents/{DocumentId}/versions/{VersionId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateDocumentVersionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AuthenticationToken: S.optional(SensitiveString).pipe(
+      T.HttpHeader("Authentication"),
     ),
-  ).annotate({
-    identifier: "UpdateDocumentVersionRequest",
-  }) as any as S.Schema<UpdateDocumentVersionRequest>;
+    DocumentId: S.String.pipe(T.HttpLabel("DocumentId")),
+    VersionId: S.String.pipe(T.HttpLabel("VersionId")),
+    VersionStatus: S.optional(DocumentVersionStatus),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({
+        method: "PATCH",
+        uri: "/api/v1/documents/{DocumentId}/versions/{VersionId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateDocumentVersionRequest",
+}) as any as S.Schema<UpdateDocumentVersionRequest>;
 export interface UpdateDocumentVersionResponse {}
-export const UpdateDocumentVersionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "UpdateDocumentVersionResponse",
-  }) as any as S.Schema<UpdateDocumentVersionResponse>;
+export const UpdateDocumentVersionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "UpdateDocumentVersionResponse",
+}) as any as S.Schema<UpdateDocumentVersionResponse>;
 export interface UpdateFolderRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   FolderId: string;
@@ -2608,7 +2564,7 @@ export interface UpdateFolderRequest {
   ParentFolderId?: string;
   ResourceState?: ResourceStateType;
 }
-export const UpdateFolderRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateFolderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AuthenticationToken: S.optional(SensitiveString).pipe(
       T.HttpHeader("Authentication"),
@@ -2632,13 +2588,13 @@ export const UpdateFolderRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UpdateFolderRequest",
 }) as any as S.Schema<UpdateFolderRequest>;
 export interface UpdateFolderResponse {}
-export const UpdateFolderResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateFolderResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "UpdateFolderResponse",
 }) as any as S.Schema<UpdateFolderResponse>;
 export type BooleanEnumType = "TRUE" | "FALSE" | (string & {});
-export const BooleanEnumType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const BooleanEnumType = /*@__PURE__*/ S.String;
 export interface UpdateUserRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   UserId: string;
@@ -2650,7 +2606,7 @@ export interface UpdateUserRequest {
   Locale?: LocaleType;
   GrantPoweruserPrivileges?: BooleanEnumType;
 }
-export const UpdateUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AuthenticationToken: S.optional(SensitiveString).pipe(
       T.HttpHeader("Authentication"),
@@ -2680,7 +2636,7 @@ export const UpdateUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface UpdateUserResponse {
   User?: User;
 }
-export const UpdateUserResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ User: S.optional(User) }).pipe(ns),
 ).annotate({
   identifier: "UpdateUserResponse",

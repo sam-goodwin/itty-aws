@@ -208,7 +208,7 @@ export type TargetStatus = string;
 export type PathMatchType =
   | { exact: string; prefix?: never }
   | { exact?: never; prefix: string };
-export const PathMatchType = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const PathMatchType = /*@__PURE__*/ S.Union([
   S.Struct({ exact: S.String }),
   S.Struct({ prefix: S.String }),
 ]);
@@ -216,14 +216,14 @@ export interface PathMatch {
   match: PathMatchType;
   caseSensitive?: boolean;
 }
-export const PathMatch = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PathMatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ match: PathMatchType, caseSensitive: S.optional(S.Boolean) }),
 ).annotate({ identifier: "PathMatch" }) as any as S.Schema<PathMatch>;
 export type HeaderMatchType =
   | { exact: string; prefix?: never; contains?: never }
   | { exact?: never; prefix: string; contains?: never }
   | { exact?: never; prefix?: never; contains: string };
-export const HeaderMatchType = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const HeaderMatchType = /*@__PURE__*/ S.Union([
   S.Struct({ exact: S.String }),
   S.Struct({ prefix: S.String }),
   S.Struct({ contains: S.String }),
@@ -233,7 +233,7 @@ export interface HeaderMatch {
   match: HeaderMatchType;
   caseSensitive?: boolean;
 }
-export const HeaderMatch = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const HeaderMatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     match: HeaderMatchType,
@@ -241,13 +241,13 @@ export const HeaderMatch = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HeaderMatch" }) as any as S.Schema<HeaderMatch>;
 export type HeaderMatchList = HeaderMatch[];
-export const HeaderMatchList = /*@__PURE__*/ /*#__PURE__*/ S.Array(HeaderMatch);
+export const HeaderMatchList = /*@__PURE__*/ S.Array(HeaderMatch);
 export interface HttpMatch {
   method?: string;
   pathMatch?: PathMatch;
   headerMatches?: HeaderMatch[];
 }
-export const HttpMatch = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const HttpMatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     method: S.optional(S.String),
     pathMatch: S.optional(PathMatch),
@@ -255,31 +255,31 @@ export const HttpMatch = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HttpMatch" }) as any as S.Schema<HttpMatch>;
 export type RuleMatch = { httpMatch: HttpMatch };
-export const RuleMatch = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const RuleMatch = /*@__PURE__*/ S.Union([
   S.Struct({ httpMatch: HttpMatch }),
 ]);
 export interface WeightedTargetGroup {
   targetGroupIdentifier: string;
   weight?: number;
 }
-export const WeightedTargetGroup = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const WeightedTargetGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ targetGroupIdentifier: S.String, weight: S.optional(S.Number) }),
 ).annotate({
   identifier: "WeightedTargetGroup",
 }) as any as S.Schema<WeightedTargetGroup>;
 export type WeightedTargetGroupList = WeightedTargetGroup[];
 export const WeightedTargetGroupList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(WeightedTargetGroup);
+  /*@__PURE__*/ S.Array(WeightedTargetGroup);
 export interface ForwardAction {
   targetGroups: WeightedTargetGroup[];
 }
-export const ForwardAction = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ForwardAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ targetGroups: WeightedTargetGroupList }),
 ).annotate({ identifier: "ForwardAction" }) as any as S.Schema<ForwardAction>;
 export interface FixedResponseAction {
   statusCode: number;
 }
-export const FixedResponseAction = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FixedResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ statusCode: S.Number }),
 ).annotate({
   identifier: "FixedResponseAction",
@@ -287,7 +287,7 @@ export const FixedResponseAction = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type RuleAction =
   | { forward: ForwardAction; fixedResponse?: never }
   | { forward?: never; fixedResponse: FixedResponseAction };
-export const RuleAction = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const RuleAction = /*@__PURE__*/ S.Union([
   S.Struct({ forward: ForwardAction }),
   S.Struct({ fixedResponse: FixedResponseAction }),
 ]);
@@ -297,7 +297,7 @@ export interface RuleUpdate {
   priority?: number;
   action?: RuleAction;
 }
-export const RuleUpdate = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RuleUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ruleIdentifier: S.String,
     match: S.optional(RuleMatch),
@@ -306,31 +306,30 @@ export const RuleUpdate = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RuleUpdate" }) as any as S.Schema<RuleUpdate>;
 export type RuleUpdateList = RuleUpdate[];
-export const RuleUpdateList = /*@__PURE__*/ /*#__PURE__*/ S.Array(RuleUpdate);
+export const RuleUpdateList = /*@__PURE__*/ S.Array(RuleUpdate);
 export interface BatchUpdateRuleRequest {
   serviceIdentifier: string;
   listenerIdentifier: string;
   rules: RuleUpdate[];
 }
-export const BatchUpdateRuleRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      serviceIdentifier: S.String.pipe(T.HttpLabel("serviceIdentifier")),
-      listenerIdentifier: S.String.pipe(T.HttpLabel("listenerIdentifier")),
-      rules: RuleUpdateList,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PATCH",
-          uri: "/services/{serviceIdentifier}/listeners/{listenerIdentifier}/rules",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const BatchUpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceIdentifier: S.String.pipe(T.HttpLabel("serviceIdentifier")),
+    listenerIdentifier: S.String.pipe(T.HttpLabel("listenerIdentifier")),
+    rules: RuleUpdateList,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PATCH",
+        uri: "/services/{serviceIdentifier}/listeners/{listenerIdentifier}/rules",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "BatchUpdateRuleRequest",
 }) as any as S.Schema<BatchUpdateRuleRequest>;
@@ -343,7 +342,7 @@ export interface RuleUpdateSuccess {
   priority?: number;
   action?: RuleAction;
 }
-export const RuleUpdateSuccess = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RuleUpdateSuccess = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.optional(S.String),
     id: S.optional(S.String),
@@ -357,14 +356,13 @@ export const RuleUpdateSuccess = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "RuleUpdateSuccess",
 }) as any as S.Schema<RuleUpdateSuccess>;
 export type RuleUpdateSuccessList = RuleUpdateSuccess[];
-export const RuleUpdateSuccessList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(RuleUpdateSuccess);
+export const RuleUpdateSuccessList = /*@__PURE__*/ S.Array(RuleUpdateSuccess);
 export interface RuleUpdateFailure {
   ruleIdentifier?: string;
   failureCode?: string;
   failureMessage?: string;
 }
-export const RuleUpdateFailure = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RuleUpdateFailure = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ruleIdentifier: S.optional(S.String),
     failureCode: S.optional(S.String),
@@ -374,18 +372,16 @@ export const RuleUpdateFailure = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "RuleUpdateFailure",
 }) as any as S.Schema<RuleUpdateFailure>;
 export type RuleUpdateFailureList = RuleUpdateFailure[];
-export const RuleUpdateFailureList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(RuleUpdateFailure);
+export const RuleUpdateFailureList = /*@__PURE__*/ S.Array(RuleUpdateFailure);
 export interface BatchUpdateRuleResponse {
   successful?: RuleUpdateSuccess[];
   unsuccessful?: RuleUpdateFailure[];
 }
-export const BatchUpdateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      successful: S.optional(RuleUpdateSuccessList),
-      unsuccessful: S.optional(RuleUpdateFailureList),
-    }),
+export const BatchUpdateRuleResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    successful: S.optional(RuleUpdateSuccessList),
+    unsuccessful: S.optional(RuleUpdateFailureList),
+  }),
 ).annotate({
   identifier: "BatchUpdateRuleResponse",
 }) as any as S.Schema<BatchUpdateRuleResponse>;
@@ -393,68 +389,67 @@ export interface ValidationExceptionField {
   name: string;
   message: string;
 }
-export const ValidationExceptionField = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ name: S.String, message: S.String }),
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String, message: S.String }),
 ).annotate({
   identifier: "ValidationExceptionField",
 }) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
   ValidationExceptionField,
 );
 export interface DeleteAuthPolicyRequest {
   resourceIdentifier: string;
 }
-export const DeleteAuthPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resourceIdentifier: S.String.pipe(T.HttpLabel("resourceIdentifier")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "DELETE", uri: "/authpolicy/{resourceIdentifier}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteAuthPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceIdentifier: S.String.pipe(T.HttpLabel("resourceIdentifier")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/authpolicy/{resourceIdentifier}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DeleteAuthPolicyRequest",
 }) as any as S.Schema<DeleteAuthPolicyRequest>;
 export interface DeleteAuthPolicyResponse {}
-export const DeleteAuthPolicyResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const DeleteAuthPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "DeleteAuthPolicyResponse",
 }) as any as S.Schema<DeleteAuthPolicyResponse>;
 export interface DeleteResourcePolicyRequest {
   resourceArn: string;
 }
-export const DeleteResourcePolicyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-      T.all(
-        T.Http({ method: "DELETE", uri: "/resourcepolicy/{resourceArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/resourcepolicy/{resourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteResourcePolicyRequest",
-  }) as any as S.Schema<DeleteResourcePolicyRequest>;
+  ),
+).annotate({
+  identifier: "DeleteResourcePolicyRequest",
+}) as any as S.Schema<DeleteResourcePolicyRequest>;
 export interface DeleteResourcePolicyResponse {}
-export const DeleteResourcePolicyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteResourcePolicyResponse",
-  }) as any as S.Schema<DeleteResourcePolicyResponse>;
+export const DeleteResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteResourcePolicyResponse",
+}) as any as S.Schema<DeleteResourcePolicyResponse>;
 export interface GetAuthPolicyRequest {
   resourceIdentifier: string;
 }
-export const GetAuthPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetAuthPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceIdentifier: S.String.pipe(T.HttpLabel("resourceIdentifier")),
   }).pipe(
@@ -476,7 +471,7 @@ export interface GetAuthPolicyResponse {
   createdAt?: Date;
   lastUpdatedAt?: Date;
 }
-export const GetAuthPolicyResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetAuthPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(S.String),
     state: S.optional(S.String),
@@ -493,26 +488,25 @@ export const GetAuthPolicyResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetResourcePolicyRequest {
   resourceArn: string;
 }
-export const GetResourcePolicyRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/resourcepolicy/{resourceArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/resourcepolicy/{resourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetResourcePolicyRequest",
 }) as any as S.Schema<GetResourcePolicyRequest>;
 export interface GetResourcePolicyResponse {
   policy?: string;
 }
-export const GetResourcePolicyResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ policy: S.optional(S.String) }),
+export const GetResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ policy: S.optional(S.String) }),
 ).annotate({
   identifier: "GetResourcePolicyResponse",
 }) as any as S.Schema<GetResourcePolicyResponse>;
@@ -522,7 +516,7 @@ export interface ListServiceNetworkVpcEndpointAssociationsRequest {
   nextToken?: string;
 }
 export const ListServiceNetworkVpcEndpointAssociationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       serviceNetworkIdentifier: S.String.pipe(
         T.HttpQuery("serviceNetworkIdentifier"),
@@ -554,32 +548,32 @@ export interface ServiceNetworkEndpointAssociation {
   serviceNetworkArn?: string;
   createdAt?: Date;
 }
-export const ServiceNetworkEndpointAssociation =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      vpcEndpointId: S.optional(S.String),
-      vpcId: S.optional(S.String),
-      vpcEndpointOwnerId: S.optional(S.String),
-      id: S.optional(S.String),
-      state: S.optional(S.String),
-      serviceNetworkArn: S.optional(S.String),
-      createdAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-    }),
-  ).annotate({
-    identifier: "ServiceNetworkEndpointAssociation",
-  }) as any as S.Schema<ServiceNetworkEndpointAssociation>;
+export const ServiceNetworkEndpointAssociation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    vpcEndpointId: S.optional(S.String),
+    vpcId: S.optional(S.String),
+    vpcEndpointOwnerId: S.optional(S.String),
+    id: S.optional(S.String),
+    state: S.optional(S.String),
+    serviceNetworkArn: S.optional(S.String),
+    createdAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
+).annotate({
+  identifier: "ServiceNetworkEndpointAssociation",
+}) as any as S.Schema<ServiceNetworkEndpointAssociation>;
 export type ServiceNetworkVpcEndpointAssociationList =
   ServiceNetworkEndpointAssociation[];
-export const ServiceNetworkVpcEndpointAssociationList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ServiceNetworkEndpointAssociation);
+export const ServiceNetworkVpcEndpointAssociationList = /*@__PURE__*/ S.Array(
+  ServiceNetworkEndpointAssociation,
+);
 export interface ListServiceNetworkVpcEndpointAssociationsResponse {
   items: ServiceNetworkEndpointAssociation[];
   nextToken?: string;
 }
 export const ListServiceNetworkVpcEndpointAssociationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       items: ServiceNetworkVpcEndpointAssociationList,
       nextToken: S.optional(S.String),
@@ -590,40 +584,38 @@ export const ListServiceNetworkVpcEndpointAssociationsResponse =
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ tags: S.optional(TagMap) }),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: S.optional(TagMap) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface PutAuthPolicyRequest {
   resourceIdentifier: string;
   policy: string;
 }
-export const PutAuthPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PutAuthPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceIdentifier: S.String.pipe(T.HttpLabel("resourceIdentifier")),
     policy: S.String,
@@ -644,7 +636,7 @@ export interface PutAuthPolicyResponse {
   policy?: string;
   state?: string;
 }
-export const PutAuthPolicyResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PutAuthPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ policy: S.optional(S.String), state: S.optional(S.String) }),
 ).annotate({
   identifier: "PutAuthPolicyResponse",
@@ -653,27 +645,26 @@ export interface PutResourcePolicyRequest {
   resourceArn: string;
   policy: string;
 }
-export const PutResourcePolicyRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-      policy: S.String,
-    }).pipe(
-      T.all(
-        T.Http({ method: "PUT", uri: "/resourcepolicy/{resourceArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const PutResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+    policy: S.String,
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/resourcepolicy/{resourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "PutResourcePolicyRequest",
 }) as any as S.Schema<PutResourcePolicyRequest>;
 export interface PutResourcePolicyResponse {}
-export const PutResourcePolicyResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const PutResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "PutResourcePolicyResponse",
 }) as any as S.Schema<PutResourcePolicyResponse>;
@@ -681,7 +672,7 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tags: TagMap,
@@ -699,18 +690,18 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeys = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
@@ -728,7 +719,7 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
@@ -740,27 +731,26 @@ export interface CreateAccessLogSubscriptionRequest {
   serviceNetworkLogType?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateAccessLogSubscriptionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-      resourceIdentifier: S.String,
-      destinationArn: S.String,
-      serviceNetworkLogType: S.optional(S.String),
-      tags: S.optional(TagMap),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/accesslogsubscriptions" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateAccessLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    resourceIdentifier: S.String,
+    destinationArn: S.String,
+    serviceNetworkLogType: S.optional(S.String),
+    tags: S.optional(TagMap),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/accesslogsubscriptions" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateAccessLogSubscriptionRequest",
-  }) as any as S.Schema<CreateAccessLogSubscriptionRequest>;
+  ),
+).annotate({
+  identifier: "CreateAccessLogSubscriptionRequest",
+}) as any as S.Schema<CreateAccessLogSubscriptionRequest>;
 export interface CreateAccessLogSubscriptionResponse {
   id: string;
   arn: string;
@@ -769,44 +759,42 @@ export interface CreateAccessLogSubscriptionResponse {
   serviceNetworkLogType?: string;
   destinationArn: string;
 }
-export const CreateAccessLogSubscriptionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      arn: S.String,
-      resourceId: S.String,
-      resourceArn: S.String,
-      serviceNetworkLogType: S.optional(S.String),
-      destinationArn: S.String,
-    }),
-  ).annotate({
-    identifier: "CreateAccessLogSubscriptionResponse",
-  }) as any as S.Schema<CreateAccessLogSubscriptionResponse>;
+export const CreateAccessLogSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    arn: S.String,
+    resourceId: S.String,
+    resourceArn: S.String,
+    serviceNetworkLogType: S.optional(S.String),
+    destinationArn: S.String,
+  }),
+).annotate({
+  identifier: "CreateAccessLogSubscriptionResponse",
+}) as any as S.Schema<CreateAccessLogSubscriptionResponse>;
 export interface GetAccessLogSubscriptionRequest {
   accessLogSubscriptionIdentifier: string;
 }
-export const GetAccessLogSubscriptionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accessLogSubscriptionIdentifier: S.String.pipe(
-        T.HttpLabel("accessLogSubscriptionIdentifier"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/accesslogsubscriptions/{accessLogSubscriptionIdentifier}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetAccessLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accessLogSubscriptionIdentifier: S.String.pipe(
+      T.HttpLabel("accessLogSubscriptionIdentifier"),
     ),
-  ).annotate({
-    identifier: "GetAccessLogSubscriptionRequest",
-  }) as any as S.Schema<GetAccessLogSubscriptionRequest>;
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/accesslogsubscriptions/{accessLogSubscriptionIdentifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetAccessLogSubscriptionRequest",
+}) as any as S.Schema<GetAccessLogSubscriptionRequest>;
 export interface GetAccessLogSubscriptionResponse {
   id: string;
   arn: string;
@@ -817,48 +805,46 @@ export interface GetAccessLogSubscriptionResponse {
   createdAt: Date;
   lastUpdatedAt: Date;
 }
-export const GetAccessLogSubscriptionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      arn: S.String,
-      resourceId: S.String,
-      resourceArn: S.String,
-      destinationArn: S.String,
-      serviceNetworkLogType: S.optional(S.String),
-      createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    }),
-  ).annotate({
-    identifier: "GetAccessLogSubscriptionResponse",
-  }) as any as S.Schema<GetAccessLogSubscriptionResponse>;
+export const GetAccessLogSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    arn: S.String,
+    resourceId: S.String,
+    resourceArn: S.String,
+    destinationArn: S.String,
+    serviceNetworkLogType: S.optional(S.String),
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+  }),
+).annotate({
+  identifier: "GetAccessLogSubscriptionResponse",
+}) as any as S.Schema<GetAccessLogSubscriptionResponse>;
 export interface UpdateAccessLogSubscriptionRequest {
   accessLogSubscriptionIdentifier: string;
   destinationArn: string;
 }
-export const UpdateAccessLogSubscriptionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accessLogSubscriptionIdentifier: S.String.pipe(
-        T.HttpLabel("accessLogSubscriptionIdentifier"),
-      ),
-      destinationArn: S.String,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PATCH",
-          uri: "/accesslogsubscriptions/{accessLogSubscriptionIdentifier}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateAccessLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accessLogSubscriptionIdentifier: S.String.pipe(
+      T.HttpLabel("accessLogSubscriptionIdentifier"),
     ),
-  ).annotate({
-    identifier: "UpdateAccessLogSubscriptionRequest",
-  }) as any as S.Schema<UpdateAccessLogSubscriptionRequest>;
+    destinationArn: S.String,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PATCH",
+        uri: "/accesslogsubscriptions/{accessLogSubscriptionIdentifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateAccessLogSubscriptionRequest",
+}) as any as S.Schema<UpdateAccessLogSubscriptionRequest>;
 export interface UpdateAccessLogSubscriptionResponse {
   id: string;
   arn: string;
@@ -866,72 +852,70 @@ export interface UpdateAccessLogSubscriptionResponse {
   resourceArn: string;
   destinationArn: string;
 }
-export const UpdateAccessLogSubscriptionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      arn: S.String,
-      resourceId: S.String,
-      resourceArn: S.String,
-      destinationArn: S.String,
-    }),
-  ).annotate({
-    identifier: "UpdateAccessLogSubscriptionResponse",
-  }) as any as S.Schema<UpdateAccessLogSubscriptionResponse>;
+export const UpdateAccessLogSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    arn: S.String,
+    resourceId: S.String,
+    resourceArn: S.String,
+    destinationArn: S.String,
+  }),
+).annotate({
+  identifier: "UpdateAccessLogSubscriptionResponse",
+}) as any as S.Schema<UpdateAccessLogSubscriptionResponse>;
 export interface DeleteAccessLogSubscriptionRequest {
   accessLogSubscriptionIdentifier: string;
 }
-export const DeleteAccessLogSubscriptionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accessLogSubscriptionIdentifier: S.String.pipe(
-        T.HttpLabel("accessLogSubscriptionIdentifier"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/accesslogsubscriptions/{accessLogSubscriptionIdentifier}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteAccessLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accessLogSubscriptionIdentifier: S.String.pipe(
+      T.HttpLabel("accessLogSubscriptionIdentifier"),
     ),
-  ).annotate({
-    identifier: "DeleteAccessLogSubscriptionRequest",
-  }) as any as S.Schema<DeleteAccessLogSubscriptionRequest>;
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/accesslogsubscriptions/{accessLogSubscriptionIdentifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteAccessLogSubscriptionRequest",
+}) as any as S.Schema<DeleteAccessLogSubscriptionRequest>;
 export interface DeleteAccessLogSubscriptionResponse {}
-export const DeleteAccessLogSubscriptionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteAccessLogSubscriptionResponse",
-  }) as any as S.Schema<DeleteAccessLogSubscriptionResponse>;
+export const DeleteAccessLogSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteAccessLogSubscriptionResponse",
+}) as any as S.Schema<DeleteAccessLogSubscriptionResponse>;
 export interface ListAccessLogSubscriptionsRequest {
   resourceIdentifier: string;
   maxResults?: number;
   nextToken?: string;
 }
-export const ListAccessLogSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceIdentifier: S.String.pipe(T.HttpQuery("resourceIdentifier")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/accesslogsubscriptions" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListAccessLogSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceIdentifier: S.String.pipe(T.HttpQuery("resourceIdentifier")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/accesslogsubscriptions" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListAccessLogSubscriptionsRequest",
-  }) as any as S.Schema<ListAccessLogSubscriptionsRequest>;
+  ),
+).annotate({
+  identifier: "ListAccessLogSubscriptionsRequest",
+}) as any as S.Schema<ListAccessLogSubscriptionsRequest>;
 export interface AccessLogSubscriptionSummary {
   id: string;
   arn: string;
@@ -942,67 +926,64 @@ export interface AccessLogSubscriptionSummary {
   createdAt: Date;
   lastUpdatedAt: Date;
 }
-export const AccessLogSubscriptionSummary =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      arn: S.String,
-      resourceId: S.String,
-      resourceArn: S.String,
-      destinationArn: S.String,
-      serviceNetworkLogType: S.optional(S.String),
-      createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    }),
-  ).annotate({
-    identifier: "AccessLogSubscriptionSummary",
-  }) as any as S.Schema<AccessLogSubscriptionSummary>;
+export const AccessLogSubscriptionSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    arn: S.String,
+    resourceId: S.String,
+    resourceArn: S.String,
+    destinationArn: S.String,
+    serviceNetworkLogType: S.optional(S.String),
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+  }),
+).annotate({
+  identifier: "AccessLogSubscriptionSummary",
+}) as any as S.Schema<AccessLogSubscriptionSummary>;
 export type AccessLogSubscriptionList = AccessLogSubscriptionSummary[];
-export const AccessLogSubscriptionList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const AccessLogSubscriptionList = /*@__PURE__*/ S.Array(
   AccessLogSubscriptionSummary,
 );
 export interface ListAccessLogSubscriptionsResponse {
   items: AccessLogSubscriptionSummary[];
   nextToken?: string;
 }
-export const ListAccessLogSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      items: AccessLogSubscriptionList,
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListAccessLogSubscriptionsResponse",
-  }) as any as S.Schema<ListAccessLogSubscriptionsResponse>;
+export const ListAccessLogSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    items: AccessLogSubscriptionList,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListAccessLogSubscriptionsResponse",
+}) as any as S.Schema<ListAccessLogSubscriptionsResponse>;
 export interface StartDomainVerificationRequest {
   clientToken?: string;
   domainName: string;
   tags?: { [key: string]: string | undefined };
 }
-export const StartDomainVerificationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-      domainName: S.String,
-      tags: S.optional(TagMap),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/domainverifications" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StartDomainVerificationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    domainName: S.String,
+    tags: S.optional(TagMap),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/domainverifications" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "StartDomainVerificationRequest",
-  }) as any as S.Schema<StartDomainVerificationRequest>;
+  ),
+).annotate({
+  identifier: "StartDomainVerificationRequest",
+}) as any as S.Schema<StartDomainVerificationRequest>;
 export interface TxtMethodConfig {
   value: string;
   name: string;
 }
-export const TxtMethodConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TxtMethodConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ value: S.String, name: S.String }),
 ).annotate({
   identifier: "TxtMethodConfig",
@@ -1014,43 +995,41 @@ export interface StartDomainVerificationResponse {
   status: string;
   txtMethodConfig?: TxtMethodConfig;
 }
-export const StartDomainVerificationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      arn: S.String,
-      domainName: S.String,
-      status: S.String,
-      txtMethodConfig: S.optional(TxtMethodConfig),
-    }),
-  ).annotate({
-    identifier: "StartDomainVerificationResponse",
-  }) as any as S.Schema<StartDomainVerificationResponse>;
+export const StartDomainVerificationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    arn: S.String,
+    domainName: S.String,
+    status: S.String,
+    txtMethodConfig: S.optional(TxtMethodConfig),
+  }),
+).annotate({
+  identifier: "StartDomainVerificationResponse",
+}) as any as S.Schema<StartDomainVerificationResponse>;
 export interface GetDomainVerificationRequest {
   domainVerificationIdentifier: string;
 }
-export const GetDomainVerificationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainVerificationIdentifier: S.String.pipe(
-        T.HttpLabel("domainVerificationIdentifier"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/domainverifications/{domainVerificationIdentifier}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetDomainVerificationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainVerificationIdentifier: S.String.pipe(
+      T.HttpLabel("domainVerificationIdentifier"),
     ),
-  ).annotate({
-    identifier: "GetDomainVerificationRequest",
-  }) as any as S.Schema<GetDomainVerificationRequest>;
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/domainverifications/{domainVerificationIdentifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetDomainVerificationRequest",
+}) as any as S.Schema<GetDomainVerificationRequest>;
 export interface GetDomainVerificationResponse {
   id: string;
   arn: string;
@@ -1061,75 +1040,73 @@ export interface GetDomainVerificationResponse {
   lastVerifiedTime?: Date;
   tags?: { [key: string]: string | undefined };
 }
-export const GetDomainVerificationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      arn: S.String,
-      domainName: S.String,
-      status: S.String,
-      txtMethodConfig: S.optional(TxtMethodConfig),
-      createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      lastVerifiedTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      tags: S.optional(TagMap),
-    }),
-  ).annotate({
-    identifier: "GetDomainVerificationResponse",
-  }) as any as S.Schema<GetDomainVerificationResponse>;
+export const GetDomainVerificationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    arn: S.String,
+    domainName: S.String,
+    status: S.String,
+    txtMethodConfig: S.optional(TxtMethodConfig),
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    lastVerifiedTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    tags: S.optional(TagMap),
+  }),
+).annotate({
+  identifier: "GetDomainVerificationResponse",
+}) as any as S.Schema<GetDomainVerificationResponse>;
 export interface DeleteDomainVerificationRequest {
   domainVerificationIdentifier: string;
 }
-export const DeleteDomainVerificationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainVerificationIdentifier: S.String.pipe(
-        T.HttpLabel("domainVerificationIdentifier"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/domainverifications/{domainVerificationIdentifier}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteDomainVerificationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainVerificationIdentifier: S.String.pipe(
+      T.HttpLabel("domainVerificationIdentifier"),
     ),
-  ).annotate({
-    identifier: "DeleteDomainVerificationRequest",
-  }) as any as S.Schema<DeleteDomainVerificationRequest>;
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/domainverifications/{domainVerificationIdentifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteDomainVerificationRequest",
+}) as any as S.Schema<DeleteDomainVerificationRequest>;
 export interface DeleteDomainVerificationResponse {}
-export const DeleteDomainVerificationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteDomainVerificationResponse",
-  }) as any as S.Schema<DeleteDomainVerificationResponse>;
+export const DeleteDomainVerificationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteDomainVerificationResponse",
+}) as any as S.Schema<DeleteDomainVerificationResponse>;
 export interface ListDomainVerificationsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListDomainVerificationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/domainverifications" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListDomainVerificationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/domainverifications" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListDomainVerificationsRequest",
-  }) as any as S.Schema<ListDomainVerificationsRequest>;
+  ),
+).annotate({
+  identifier: "ListDomainVerificationsRequest",
+}) as any as S.Schema<ListDomainVerificationsRequest>;
 export interface DomainVerificationSummary {
   id: string;
   arn: string;
@@ -1140,40 +1117,35 @@ export interface DomainVerificationSummary {
   lastVerifiedTime?: Date;
   tags?: { [key: string]: string | undefined };
 }
-export const DomainVerificationSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      arn: S.String,
-      domainName: S.String,
-      status: S.String,
-      txtMethodConfig: S.optional(TxtMethodConfig),
-      createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      lastVerifiedTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      tags: S.optional(TagMap),
-    }),
+export const DomainVerificationSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    arn: S.String,
+    domainName: S.String,
+    status: S.String,
+    txtMethodConfig: S.optional(TxtMethodConfig),
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    lastVerifiedTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    tags: S.optional(TagMap),
+  }),
 ).annotate({
   identifier: "DomainVerificationSummary",
 }) as any as S.Schema<DomainVerificationSummary>;
 export type DomainVerificationList = DomainVerificationSummary[];
-export const DomainVerificationList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const DomainVerificationList = /*@__PURE__*/ S.Array(
   DomainVerificationSummary,
 );
 export interface ListDomainVerificationsResponse {
   items: DomainVerificationSummary[];
   nextToken?: string;
 }
-export const ListDomainVerificationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      items: DomainVerificationList,
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListDomainVerificationsResponse",
-  }) as any as S.Schema<ListDomainVerificationsResponse>;
+export const ListDomainVerificationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ items: DomainVerificationList, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListDomainVerificationsResponse",
+}) as any as S.Schema<ListDomainVerificationsResponse>;
 export interface CreateListenerRequest {
   serviceIdentifier: string;
   name: string;
@@ -1183,7 +1155,7 @@ export interface CreateListenerRequest {
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateListenerRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateListenerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceIdentifier: S.String.pipe(T.HttpLabel("serviceIdentifier")),
     name: S.String,
@@ -1218,18 +1190,17 @@ export interface CreateListenerResponse {
   serviceId?: string;
   defaultAction?: RuleAction;
 }
-export const CreateListenerResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      arn: S.optional(S.String),
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      protocol: S.optional(S.String),
-      port: S.optional(S.Number),
-      serviceArn: S.optional(S.String),
-      serviceId: S.optional(S.String),
-      defaultAction: S.optional(RuleAction),
-    }),
+export const CreateListenerResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    arn: S.optional(S.String),
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    protocol: S.optional(S.String),
+    port: S.optional(S.Number),
+    serviceArn: S.optional(S.String),
+    serviceId: S.optional(S.String),
+    defaultAction: S.optional(RuleAction),
+  }),
 ).annotate({
   identifier: "CreateListenerResponse",
 }) as any as S.Schema<CreateListenerResponse>;
@@ -1237,7 +1208,7 @@ export interface GetListenerRequest {
   serviceIdentifier: string;
   listenerIdentifier: string;
 }
-export const GetListenerRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetListenerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceIdentifier: S.String.pipe(T.HttpLabel("serviceIdentifier")),
     listenerIdentifier: S.String.pipe(T.HttpLabel("listenerIdentifier")),
@@ -1269,7 +1240,7 @@ export interface GetListenerResponse {
   createdAt?: Date;
   lastUpdatedAt?: Date;
 }
-export const GetListenerResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetListenerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.optional(S.String),
     id: S.optional(S.String),
@@ -1294,7 +1265,7 @@ export interface UpdateListenerRequest {
   listenerIdentifier: string;
   defaultAction: RuleAction;
 }
-export const UpdateListenerRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateListenerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceIdentifier: S.String.pipe(T.HttpLabel("serviceIdentifier")),
     listenerIdentifier: S.String.pipe(T.HttpLabel("listenerIdentifier")),
@@ -1325,18 +1296,17 @@ export interface UpdateListenerResponse {
   serviceId?: string;
   defaultAction?: RuleAction;
 }
-export const UpdateListenerResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      arn: S.optional(S.String),
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      protocol: S.optional(S.String),
-      port: S.optional(S.Number),
-      serviceArn: S.optional(S.String),
-      serviceId: S.optional(S.String),
-      defaultAction: S.optional(RuleAction),
-    }),
+export const UpdateListenerResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    arn: S.optional(S.String),
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    protocol: S.optional(S.String),
+    port: S.optional(S.Number),
+    serviceArn: S.optional(S.String),
+    serviceId: S.optional(S.String),
+    defaultAction: S.optional(RuleAction),
+  }),
 ).annotate({
   identifier: "UpdateListenerResponse",
 }) as any as S.Schema<UpdateListenerResponse>;
@@ -1344,7 +1314,7 @@ export interface DeleteListenerRequest {
   serviceIdentifier: string;
   listenerIdentifier: string;
 }
-export const DeleteListenerRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteListenerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceIdentifier: S.String.pipe(T.HttpLabel("serviceIdentifier")),
     listenerIdentifier: S.String.pipe(T.HttpLabel("listenerIdentifier")),
@@ -1365,8 +1335,8 @@ export const DeleteListenerRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteListenerRequest",
 }) as any as S.Schema<DeleteListenerRequest>;
 export interface DeleteListenerResponse {}
-export const DeleteListenerResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const DeleteListenerResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "DeleteListenerResponse",
 }) as any as S.Schema<DeleteListenerResponse>;
@@ -1375,7 +1345,7 @@ export interface ListListenersRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListListenersRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListListenersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceIdentifier: S.String.pipe(T.HttpLabel("serviceIdentifier")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -1402,7 +1372,7 @@ export interface ListenerSummary {
   createdAt?: Date;
   lastUpdatedAt?: Date;
 }
-export const ListenerSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListenerSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.optional(S.String),
     id: S.optional(S.String),
@@ -1420,24 +1390,23 @@ export const ListenerSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ListenerSummary",
 }) as any as S.Schema<ListenerSummary>;
 export type ListenerSummaryList = ListenerSummary[];
-export const ListenerSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ListenerSummary);
+export const ListenerSummaryList = /*@__PURE__*/ S.Array(ListenerSummary);
 export interface ListListenersResponse {
   items: ListenerSummary[];
   nextToken?: string;
 }
-export const ListListenersResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListListenersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ items: ListenerSummaryList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListListenersResponse",
 }) as any as S.Schema<ListListenersResponse>;
 export type PortRangeList = string[];
-export const PortRangeList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const PortRangeList = /*@__PURE__*/ S.Array(S.String);
 export interface DnsResource {
   domainName?: string;
   ipAddressType?: string;
 }
-export const DnsResource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DnsResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domainName: S.optional(S.String),
     ipAddressType: S.optional(S.String),
@@ -1446,25 +1415,24 @@ export const DnsResource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface IpResource {
   ipAddress?: string;
 }
-export const IpResource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const IpResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ipAddress: S.optional(S.String) }),
 ).annotate({ identifier: "IpResource" }) as any as S.Schema<IpResource>;
 export interface ArnResource {
   arn?: string;
 }
-export const ArnResource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ArnResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ arn: S.optional(S.String) }),
 ).annotate({ identifier: "ArnResource" }) as any as S.Schema<ArnResource>;
 export type ResourceConfigurationDefinition =
   | { dnsResource: DnsResource; ipResource?: never; arnResource?: never }
   | { dnsResource?: never; ipResource: IpResource; arnResource?: never }
   | { dnsResource?: never; ipResource?: never; arnResource: ArnResource };
-export const ResourceConfigurationDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ S.Union([
-    S.Struct({ dnsResource: DnsResource }),
-    S.Struct({ ipResource: IpResource }),
-    S.Struct({ arnResource: ArnResource }),
-  ]);
+export const ResourceConfigurationDefinition = /*@__PURE__*/ S.Union([
+  S.Struct({ dnsResource: DnsResource }),
+  S.Struct({ ipResource: IpResource }),
+  S.Struct({ arnResource: ArnResource }),
+]);
 export interface CreateResourceConfigurationRequest {
   name: string;
   type: string;
@@ -1480,37 +1448,36 @@ export interface CreateResourceConfigurationRequest {
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateResourceConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: S.String,
-      portRanges: S.optional(PortRangeList),
-      protocol: S.optional(S.String),
-      resourceGatewayIdentifier: S.optional(S.String),
-      resourceConfigurationGroupIdentifier: S.optional(S.String),
-      resourceConfigurationDefinition: S.optional(
-        ResourceConfigurationDefinition,
-      ),
-      allowAssociationToShareableServiceNetwork: S.optional(S.Boolean),
-      customDomainName: S.optional(S.String),
-      groupDomain: S.optional(S.String),
-      domainVerificationIdentifier: S.optional(S.String),
-      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-      tags: S.optional(TagMap),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/resourceconfigurations" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateResourceConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    type: S.String,
+    portRanges: S.optional(PortRangeList),
+    protocol: S.optional(S.String),
+    resourceGatewayIdentifier: S.optional(S.String),
+    resourceConfigurationGroupIdentifier: S.optional(S.String),
+    resourceConfigurationDefinition: S.optional(
+      ResourceConfigurationDefinition,
     ),
-  ).annotate({
-    identifier: "CreateResourceConfigurationRequest",
-  }) as any as S.Schema<CreateResourceConfigurationRequest>;
+    allowAssociationToShareableServiceNetwork: S.optional(S.Boolean),
+    customDomainName: S.optional(S.String),
+    groupDomain: S.optional(S.String),
+    domainVerificationIdentifier: S.optional(S.String),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    tags: S.optional(TagMap),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/resourceconfigurations" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateResourceConfigurationRequest",
+}) as any as S.Schema<CreateResourceConfigurationRequest>;
 export interface CreateResourceConfigurationResponse {
   id?: string;
   name?: string;
@@ -1530,59 +1497,57 @@ export interface CreateResourceConfigurationResponse {
   groupDomain?: string;
   domainVerificationArn?: string;
 }
-export const CreateResourceConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      arn: S.optional(S.String),
-      resourceGatewayId: S.optional(S.String),
-      resourceConfigurationGroupId: S.optional(S.String),
-      type: S.optional(S.String),
-      portRanges: S.optional(PortRangeList),
-      protocol: S.optional(S.String),
-      status: S.optional(S.String),
-      resourceConfigurationDefinition: S.optional(
-        ResourceConfigurationDefinition,
-      ),
-      allowAssociationToShareableServiceNetwork: S.optional(S.Boolean),
-      createdAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      failureReason: S.optional(S.String),
-      customDomainName: S.optional(S.String),
-      domainVerificationId: S.optional(S.String),
-      groupDomain: S.optional(S.String),
-      domainVerificationArn: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CreateResourceConfigurationResponse",
-  }) as any as S.Schema<CreateResourceConfigurationResponse>;
+export const CreateResourceConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    arn: S.optional(S.String),
+    resourceGatewayId: S.optional(S.String),
+    resourceConfigurationGroupId: S.optional(S.String),
+    type: S.optional(S.String),
+    portRanges: S.optional(PortRangeList),
+    protocol: S.optional(S.String),
+    status: S.optional(S.String),
+    resourceConfigurationDefinition: S.optional(
+      ResourceConfigurationDefinition,
+    ),
+    allowAssociationToShareableServiceNetwork: S.optional(S.Boolean),
+    createdAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    failureReason: S.optional(S.String),
+    customDomainName: S.optional(S.String),
+    domainVerificationId: S.optional(S.String),
+    groupDomain: S.optional(S.String),
+    domainVerificationArn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateResourceConfigurationResponse",
+}) as any as S.Schema<CreateResourceConfigurationResponse>;
 export interface GetResourceConfigurationRequest {
   resourceConfigurationIdentifier: string;
 }
-export const GetResourceConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceConfigurationIdentifier: S.String.pipe(
-        T.HttpLabel("resourceConfigurationIdentifier"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/resourceconfigurations/{resourceConfigurationIdentifier}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetResourceConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceConfigurationIdentifier: S.String.pipe(
+      T.HttpLabel("resourceConfigurationIdentifier"),
     ),
-  ).annotate({
-    identifier: "GetResourceConfigurationRequest",
-  }) as any as S.Schema<GetResourceConfigurationRequest>;
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/resourceconfigurations/{resourceConfigurationIdentifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetResourceConfigurationRequest",
+}) as any as S.Schema<GetResourceConfigurationRequest>;
 export interface GetResourceConfigurationResponse {
   id?: string;
   name?: string;
@@ -1605,72 +1570,70 @@ export interface GetResourceConfigurationResponse {
   domainVerificationStatus?: string;
   groupDomain?: string;
 }
-export const GetResourceConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      arn: S.optional(S.String),
-      resourceGatewayId: S.optional(S.String),
-      resourceConfigurationGroupId: S.optional(S.String),
-      type: S.optional(S.String),
-      allowAssociationToShareableServiceNetwork: S.optional(S.Boolean),
-      portRanges: S.optional(PortRangeList),
-      protocol: S.optional(S.String),
-      customDomainName: S.optional(S.String),
-      status: S.optional(S.String),
-      resourceConfigurationDefinition: S.optional(
-        ResourceConfigurationDefinition,
-      ),
-      createdAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      amazonManaged: S.optional(S.Boolean),
-      failureReason: S.optional(S.String),
-      lastUpdatedAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      domainVerificationId: S.optional(S.String),
-      domainVerificationArn: S.optional(S.String),
-      domainVerificationStatus: S.optional(S.String),
-      groupDomain: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetResourceConfigurationResponse",
-  }) as any as S.Schema<GetResourceConfigurationResponse>;
+export const GetResourceConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    arn: S.optional(S.String),
+    resourceGatewayId: S.optional(S.String),
+    resourceConfigurationGroupId: S.optional(S.String),
+    type: S.optional(S.String),
+    allowAssociationToShareableServiceNetwork: S.optional(S.Boolean),
+    portRanges: S.optional(PortRangeList),
+    protocol: S.optional(S.String),
+    customDomainName: S.optional(S.String),
+    status: S.optional(S.String),
+    resourceConfigurationDefinition: S.optional(
+      ResourceConfigurationDefinition,
+    ),
+    createdAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    amazonManaged: S.optional(S.Boolean),
+    failureReason: S.optional(S.String),
+    lastUpdatedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    domainVerificationId: S.optional(S.String),
+    domainVerificationArn: S.optional(S.String),
+    domainVerificationStatus: S.optional(S.String),
+    groupDomain: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetResourceConfigurationResponse",
+}) as any as S.Schema<GetResourceConfigurationResponse>;
 export interface UpdateResourceConfigurationRequest {
   resourceConfigurationIdentifier: string;
   resourceConfigurationDefinition?: ResourceConfigurationDefinition;
   allowAssociationToShareableServiceNetwork?: boolean;
   portRanges?: string[];
 }
-export const UpdateResourceConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceConfigurationIdentifier: S.String.pipe(
-        T.HttpLabel("resourceConfigurationIdentifier"),
-      ),
-      resourceConfigurationDefinition: S.optional(
-        ResourceConfigurationDefinition,
-      ),
-      allowAssociationToShareableServiceNetwork: S.optional(S.Boolean),
-      portRanges: S.optional(PortRangeList),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PATCH",
-          uri: "/resourceconfigurations/{resourceConfigurationIdentifier}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateResourceConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceConfigurationIdentifier: S.String.pipe(
+      T.HttpLabel("resourceConfigurationIdentifier"),
     ),
-  ).annotate({
-    identifier: "UpdateResourceConfigurationRequest",
-  }) as any as S.Schema<UpdateResourceConfigurationRequest>;
+    resourceConfigurationDefinition: S.optional(
+      ResourceConfigurationDefinition,
+    ),
+    allowAssociationToShareableServiceNetwork: S.optional(S.Boolean),
+    portRanges: S.optional(PortRangeList),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PATCH",
+        uri: "/resourceconfigurations/{resourceConfigurationIdentifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateResourceConfigurationRequest",
+}) as any as S.Schema<UpdateResourceConfigurationRequest>;
 export interface UpdateResourceConfigurationResponse {
   id?: string;
   name?: string;
@@ -1684,56 +1647,55 @@ export interface UpdateResourceConfigurationResponse {
   status?: string;
   resourceConfigurationDefinition?: ResourceConfigurationDefinition;
 }
-export const UpdateResourceConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      arn: S.optional(S.String),
-      resourceGatewayId: S.optional(S.String),
-      resourceConfigurationGroupId: S.optional(S.String),
-      type: S.optional(S.String),
-      portRanges: S.optional(PortRangeList),
-      allowAssociationToShareableServiceNetwork: S.optional(S.Boolean),
-      protocol: S.optional(S.String),
-      status: S.optional(S.String),
-      resourceConfigurationDefinition: S.optional(
-        ResourceConfigurationDefinition,
-      ),
-    }),
-  ).annotate({
-    identifier: "UpdateResourceConfigurationResponse",
-  }) as any as S.Schema<UpdateResourceConfigurationResponse>;
+export const UpdateResourceConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    arn: S.optional(S.String),
+    resourceGatewayId: S.optional(S.String),
+    resourceConfigurationGroupId: S.optional(S.String),
+    type: S.optional(S.String),
+    portRanges: S.optional(PortRangeList),
+    allowAssociationToShareableServiceNetwork: S.optional(S.Boolean),
+    protocol: S.optional(S.String),
+    status: S.optional(S.String),
+    resourceConfigurationDefinition: S.optional(
+      ResourceConfigurationDefinition,
+    ),
+  }),
+).annotate({
+  identifier: "UpdateResourceConfigurationResponse",
+}) as any as S.Schema<UpdateResourceConfigurationResponse>;
 export interface DeleteResourceConfigurationRequest {
   resourceConfigurationIdentifier: string;
 }
-export const DeleteResourceConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceConfigurationIdentifier: S.String.pipe(
-        T.HttpLabel("resourceConfigurationIdentifier"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/resourceconfigurations/{resourceConfigurationIdentifier}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteResourceConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceConfigurationIdentifier: S.String.pipe(
+      T.HttpLabel("resourceConfigurationIdentifier"),
     ),
-  ).annotate({
-    identifier: "DeleteResourceConfigurationRequest",
-  }) as any as S.Schema<DeleteResourceConfigurationRequest>;
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/resourceconfigurations/{resourceConfigurationIdentifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteResourceConfigurationRequest",
+}) as any as S.Schema<DeleteResourceConfigurationRequest>;
 export interface DeleteResourceConfigurationResponse {}
-export const DeleteResourceConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteResourceConfigurationResponse",
-  }) as any as S.Schema<DeleteResourceConfigurationResponse>;
+export const DeleteResourceConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteResourceConfigurationResponse",
+}) as any as S.Schema<DeleteResourceConfigurationResponse>;
 export interface ListResourceConfigurationsRequest {
   resourceGatewayIdentifier?: string;
   resourceConfigurationGroupIdentifier?: string;
@@ -1741,33 +1703,32 @@ export interface ListResourceConfigurationsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListResourceConfigurationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceGatewayIdentifier: S.optional(S.String).pipe(
-        T.HttpQuery("resourceGatewayIdentifier"),
-      ),
-      resourceConfigurationGroupIdentifier: S.optional(S.String).pipe(
-        T.HttpQuery("resourceConfigurationGroupIdentifier"),
-      ),
-      domainVerificationIdentifier: S.optional(S.String).pipe(
-        T.HttpQuery("domainVerificationIdentifier"),
-      ),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/resourceconfigurations" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListResourceConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceGatewayIdentifier: S.optional(S.String).pipe(
+      T.HttpQuery("resourceGatewayIdentifier"),
     ),
-  ).annotate({
-    identifier: "ListResourceConfigurationsRequest",
-  }) as any as S.Schema<ListResourceConfigurationsRequest>;
+    resourceConfigurationGroupIdentifier: S.optional(S.String).pipe(
+      T.HttpQuery("resourceConfigurationGroupIdentifier"),
+    ),
+    domainVerificationIdentifier: S.optional(S.String).pipe(
+      T.HttpQuery("domainVerificationIdentifier"),
+    ),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/resourceconfigurations" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListResourceConfigurationsRequest",
+}) as any as S.Schema<ListResourceConfigurationsRequest>;
 export interface ResourceConfigurationSummary {
   id?: string;
   name?: string;
@@ -1783,51 +1744,50 @@ export interface ResourceConfigurationSummary {
   domainVerificationId?: string;
   groupDomain?: string;
 }
-export const ResourceConfigurationSummary =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      arn: S.optional(S.String),
-      resourceGatewayId: S.optional(S.String),
-      resourceConfigurationGroupId: S.optional(S.String),
-      type: S.optional(S.String),
-      status: S.optional(S.String),
-      amazonManaged: S.optional(S.Boolean),
-      createdAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      lastUpdatedAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      customDomainName: S.optional(S.String),
-      domainVerificationId: S.optional(S.String),
-      groupDomain: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ResourceConfigurationSummary",
-  }) as any as S.Schema<ResourceConfigurationSummary>;
+export const ResourceConfigurationSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    arn: S.optional(S.String),
+    resourceGatewayId: S.optional(S.String),
+    resourceConfigurationGroupId: S.optional(S.String),
+    type: S.optional(S.String),
+    status: S.optional(S.String),
+    amazonManaged: S.optional(S.Boolean),
+    createdAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    lastUpdatedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    customDomainName: S.optional(S.String),
+    domainVerificationId: S.optional(S.String),
+    groupDomain: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ResourceConfigurationSummary",
+}) as any as S.Schema<ResourceConfigurationSummary>;
 export type ResourceConfigurationSummaryList = ResourceConfigurationSummary[];
-export const ResourceConfigurationSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ResourceConfigurationSummary);
+export const ResourceConfigurationSummaryList = /*@__PURE__*/ S.Array(
+  ResourceConfigurationSummary,
+);
 export interface ListResourceConfigurationsResponse {
   items?: ResourceConfigurationSummary[];
   nextToken?: string;
 }
-export const ListResourceConfigurationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      items: S.optional(ResourceConfigurationSummaryList),
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListResourceConfigurationsResponse",
-  }) as any as S.Schema<ListResourceConfigurationsResponse>;
+export const ListResourceConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    items: S.optional(ResourceConfigurationSummaryList),
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListResourceConfigurationsResponse",
+}) as any as S.Schema<ListResourceConfigurationsResponse>;
 export interface DeleteResourceEndpointAssociationRequest {
   resourceEndpointAssociationIdentifier: string;
 }
-export const DeleteResourceEndpointAssociationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteResourceEndpointAssociationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       resourceEndpointAssociationIdentifier: S.String.pipe(
         T.HttpLabel("resourceEndpointAssociationIdentifier"),
@@ -1845,9 +1805,9 @@ export const DeleteResourceEndpointAssociationRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DeleteResourceEndpointAssociationRequest",
-  }) as any as S.Schema<DeleteResourceEndpointAssociationRequest>;
+).annotate({
+  identifier: "DeleteResourceEndpointAssociationRequest",
+}) as any as S.Schema<DeleteResourceEndpointAssociationRequest>;
 export interface DeleteResourceEndpointAssociationResponse {
   id?: string;
   arn?: string;
@@ -1856,7 +1816,7 @@ export interface DeleteResourceEndpointAssociationResponse {
   vpcEndpointId?: string;
 }
 export const DeleteResourceEndpointAssociationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
       arn: S.optional(S.String),
@@ -1875,8 +1835,8 @@ export interface ListResourceEndpointAssociationsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListResourceEndpointAssociationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListResourceEndpointAssociationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       resourceConfigurationIdentifier: S.String.pipe(
         T.HttpQuery("resourceConfigurationIdentifier"),
@@ -1900,9 +1860,9 @@ export const ListResourceEndpointAssociationsRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "ListResourceEndpointAssociationsRequest",
-  }) as any as S.Schema<ListResourceEndpointAssociationsRequest>;
+).annotate({
+  identifier: "ListResourceEndpointAssociationsRequest",
+}) as any as S.Schema<ListResourceEndpointAssociationsRequest>;
 export interface ResourceEndpointAssociationSummary {
   id?: string;
   arn?: string;
@@ -1914,45 +1874,45 @@ export interface ResourceEndpointAssociationSummary {
   createdBy?: string;
   createdAt?: Date;
 }
-export const ResourceEndpointAssociationSummary =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      arn: S.optional(S.String),
-      resourceConfigurationId: S.optional(S.String),
-      resourceConfigurationArn: S.optional(S.String),
-      resourceConfigurationName: S.optional(S.String),
-      vpcEndpointId: S.optional(S.String),
-      vpcEndpointOwner: S.optional(S.String),
-      createdBy: S.optional(S.String),
-      createdAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-    }),
-  ).annotate({
-    identifier: "ResourceEndpointAssociationSummary",
-  }) as any as S.Schema<ResourceEndpointAssociationSummary>;
+export const ResourceEndpointAssociationSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    arn: S.optional(S.String),
+    resourceConfigurationId: S.optional(S.String),
+    resourceConfigurationArn: S.optional(S.String),
+    resourceConfigurationName: S.optional(S.String),
+    vpcEndpointId: S.optional(S.String),
+    vpcEndpointOwner: S.optional(S.String),
+    createdBy: S.optional(S.String),
+    createdAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
+).annotate({
+  identifier: "ResourceEndpointAssociationSummary",
+}) as any as S.Schema<ResourceEndpointAssociationSummary>;
 export type ResourceEndpointAssociationList =
   ResourceEndpointAssociationSummary[];
-export const ResourceEndpointAssociationList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ResourceEndpointAssociationSummary);
+export const ResourceEndpointAssociationList = /*@__PURE__*/ S.Array(
+  ResourceEndpointAssociationSummary,
+);
 export interface ListResourceEndpointAssociationsResponse {
   items: ResourceEndpointAssociationSummary[];
   nextToken?: string;
 }
-export const ListResourceEndpointAssociationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListResourceEndpointAssociationsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       items: ResourceEndpointAssociationList,
       nextToken: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "ListResourceEndpointAssociationsResponse",
-  }) as any as S.Schema<ListResourceEndpointAssociationsResponse>;
+).annotate({
+  identifier: "ListResourceEndpointAssociationsResponse",
+}) as any as S.Schema<ListResourceEndpointAssociationsResponse>;
 export type SubnetList = string[];
-export const SubnetList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const SubnetList = /*@__PURE__*/ S.Array(S.String);
 export type SecurityGroupList = string[];
-export const SecurityGroupList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const SecurityGroupList = /*@__PURE__*/ S.Array(S.String);
 export interface CreateResourceGatewayRequest {
   clientToken?: string;
   name: string;
@@ -1963,30 +1923,29 @@ export interface CreateResourceGatewayRequest {
   ipv4AddressesPerEni?: number;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateResourceGatewayRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-      name: S.String,
-      vpcIdentifier: S.optional(S.String),
-      subnetIds: S.optional(SubnetList),
-      securityGroupIds: S.optional(SecurityGroupList),
-      ipAddressType: S.optional(S.String),
-      ipv4AddressesPerEni: S.optional(S.Number),
-      tags: S.optional(TagMap),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/resourcegateways" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateResourceGatewayRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    name: S.String,
+    vpcIdentifier: S.optional(S.String),
+    subnetIds: S.optional(SubnetList),
+    securityGroupIds: S.optional(SecurityGroupList),
+    ipAddressType: S.optional(S.String),
+    ipv4AddressesPerEni: S.optional(S.Number),
+    tags: S.optional(TagMap),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/resourcegateways" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateResourceGatewayRequest",
-  }) as any as S.Schema<CreateResourceGatewayRequest>;
+  ),
+).annotate({
+  identifier: "CreateResourceGatewayRequest",
+}) as any as S.Schema<CreateResourceGatewayRequest>;
 export interface CreateResourceGatewayResponse {
   name?: string;
   id?: string;
@@ -1998,44 +1957,42 @@ export interface CreateResourceGatewayResponse {
   ipAddressType?: string;
   ipv4AddressesPerEni?: number;
 }
-export const CreateResourceGatewayResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      id: S.optional(S.String),
-      arn: S.optional(S.String),
-      status: S.optional(S.String),
-      vpcIdentifier: S.optional(S.String),
-      subnetIds: S.optional(SubnetList),
-      securityGroupIds: S.optional(SecurityGroupList),
-      ipAddressType: S.optional(S.String),
-      ipv4AddressesPerEni: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "CreateResourceGatewayResponse",
-  }) as any as S.Schema<CreateResourceGatewayResponse>;
+export const CreateResourceGatewayResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    id: S.optional(S.String),
+    arn: S.optional(S.String),
+    status: S.optional(S.String),
+    vpcIdentifier: S.optional(S.String),
+    subnetIds: S.optional(SubnetList),
+    securityGroupIds: S.optional(SecurityGroupList),
+    ipAddressType: S.optional(S.String),
+    ipv4AddressesPerEni: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "CreateResourceGatewayResponse",
+}) as any as S.Schema<CreateResourceGatewayResponse>;
 export interface GetResourceGatewayRequest {
   resourceGatewayIdentifier: string;
 }
-export const GetResourceGatewayRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resourceGatewayIdentifier: S.String.pipe(
-        T.HttpLabel("resourceGatewayIdentifier"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/resourcegateways/{resourceGatewayIdentifier}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetResourceGatewayRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceGatewayIdentifier: S.String.pipe(
+      T.HttpLabel("resourceGatewayIdentifier"),
     ),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/resourcegateways/{resourceGatewayIdentifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
 ).annotate({
   identifier: "GetResourceGatewayRequest",
 }) as any as S.Schema<GetResourceGatewayRequest>;
@@ -2052,25 +2009,24 @@ export interface GetResourceGatewayResponse {
   createdAt?: Date;
   lastUpdatedAt?: Date;
 }
-export const GetResourceGatewayResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.optional(S.String),
-      id: S.optional(S.String),
-      arn: S.optional(S.String),
-      status: S.optional(S.String),
-      vpcId: S.optional(S.String),
-      subnetIds: S.optional(SubnetList),
-      securityGroupIds: S.optional(SecurityGroupList),
-      ipAddressType: S.optional(S.String),
-      ipv4AddressesPerEni: S.optional(S.Number),
-      createdAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      lastUpdatedAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-    }),
+export const GetResourceGatewayResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    id: S.optional(S.String),
+    arn: S.optional(S.String),
+    status: S.optional(S.String),
+    vpcId: S.optional(S.String),
+    subnetIds: S.optional(SubnetList),
+    securityGroupIds: S.optional(SecurityGroupList),
+    ipAddressType: S.optional(S.String),
+    ipv4AddressesPerEni: S.optional(S.Number),
+    createdAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    lastUpdatedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
 ).annotate({
   identifier: "GetResourceGatewayResponse",
 }) as any as S.Schema<GetResourceGatewayResponse>;
@@ -2078,29 +2034,28 @@ export interface UpdateResourceGatewayRequest {
   resourceGatewayIdentifier: string;
   securityGroupIds?: string[];
 }
-export const UpdateResourceGatewayRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceGatewayIdentifier: S.String.pipe(
-        T.HttpLabel("resourceGatewayIdentifier"),
-      ),
-      securityGroupIds: S.optional(SecurityGroupList),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PATCH",
-          uri: "/resourcegateways/{resourceGatewayIdentifier}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateResourceGatewayRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceGatewayIdentifier: S.String.pipe(
+      T.HttpLabel("resourceGatewayIdentifier"),
     ),
-  ).annotate({
-    identifier: "UpdateResourceGatewayRequest",
-  }) as any as S.Schema<UpdateResourceGatewayRequest>;
+    securityGroupIds: S.optional(SecurityGroupList),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PATCH",
+        uri: "/resourcegateways/{resourceGatewayIdentifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateResourceGatewayRequest",
+}) as any as S.Schema<UpdateResourceGatewayRequest>;
 export interface UpdateResourceGatewayResponse {
   name?: string;
   id?: string;
@@ -2111,85 +2066,81 @@ export interface UpdateResourceGatewayResponse {
   securityGroupIds?: string[];
   ipAddressType?: string;
 }
-export const UpdateResourceGatewayResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      id: S.optional(S.String),
-      arn: S.optional(S.String),
-      status: S.optional(S.String),
-      vpcId: S.optional(S.String),
-      subnetIds: S.optional(SubnetList),
-      securityGroupIds: S.optional(SecurityGroupList),
-      ipAddressType: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "UpdateResourceGatewayResponse",
-  }) as any as S.Schema<UpdateResourceGatewayResponse>;
+export const UpdateResourceGatewayResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    id: S.optional(S.String),
+    arn: S.optional(S.String),
+    status: S.optional(S.String),
+    vpcId: S.optional(S.String),
+    subnetIds: S.optional(SubnetList),
+    securityGroupIds: S.optional(SecurityGroupList),
+    ipAddressType: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateResourceGatewayResponse",
+}) as any as S.Schema<UpdateResourceGatewayResponse>;
 export interface DeleteResourceGatewayRequest {
   resourceGatewayIdentifier: string;
 }
-export const DeleteResourceGatewayRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceGatewayIdentifier: S.String.pipe(
-        T.HttpLabel("resourceGatewayIdentifier"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/resourcegateways/{resourceGatewayIdentifier}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteResourceGatewayRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceGatewayIdentifier: S.String.pipe(
+      T.HttpLabel("resourceGatewayIdentifier"),
     ),
-  ).annotate({
-    identifier: "DeleteResourceGatewayRequest",
-  }) as any as S.Schema<DeleteResourceGatewayRequest>;
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/resourcegateways/{resourceGatewayIdentifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteResourceGatewayRequest",
+}) as any as S.Schema<DeleteResourceGatewayRequest>;
 export interface DeleteResourceGatewayResponse {
   id?: string;
   arn?: string;
   name?: string;
   status?: string;
 }
-export const DeleteResourceGatewayResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      arn: S.optional(S.String),
-      name: S.optional(S.String),
-      status: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DeleteResourceGatewayResponse",
-  }) as any as S.Schema<DeleteResourceGatewayResponse>;
+export const DeleteResourceGatewayResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    arn: S.optional(S.String),
+    name: S.optional(S.String),
+    status: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeleteResourceGatewayResponse",
+}) as any as S.Schema<DeleteResourceGatewayResponse>;
 export interface ListResourceGatewaysRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListResourceGatewaysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/resourcegateways" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListResourceGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/resourcegateways" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListResourceGatewaysRequest",
-  }) as any as S.Schema<ListResourceGatewaysRequest>;
+  ),
+).annotate({
+  identifier: "ListResourceGatewaysRequest",
+}) as any as S.Schema<ListResourceGatewaysRequest>;
 export interface ResourceGatewaySummary {
   name?: string;
   id?: string;
@@ -2203,45 +2154,43 @@ export interface ResourceGatewaySummary {
   createdAt?: Date;
   lastUpdatedAt?: Date;
 }
-export const ResourceGatewaySummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.optional(S.String),
-      id: S.optional(S.String),
-      arn: S.optional(S.String),
-      status: S.optional(S.String),
-      vpcIdentifier: S.optional(S.String),
-      subnetIds: S.optional(SubnetList),
-      securityGroupIds: S.optional(SecurityGroupList),
-      ipAddressType: S.optional(S.String),
-      ipv4AddressesPerEni: S.optional(S.Number),
-      createdAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      lastUpdatedAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-    }),
+export const ResourceGatewaySummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    id: S.optional(S.String),
+    arn: S.optional(S.String),
+    status: S.optional(S.String),
+    vpcIdentifier: S.optional(S.String),
+    subnetIds: S.optional(SubnetList),
+    securityGroupIds: S.optional(SecurityGroupList),
+    ipAddressType: S.optional(S.String),
+    ipv4AddressesPerEni: S.optional(S.Number),
+    createdAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    lastUpdatedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
 ).annotate({
   identifier: "ResourceGatewaySummary",
 }) as any as S.Schema<ResourceGatewaySummary>;
 export type ResourceGatewayList = ResourceGatewaySummary[];
-export const ResourceGatewayList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ResourceGatewayList = /*@__PURE__*/ S.Array(
   ResourceGatewaySummary,
 );
 export interface ListResourceGatewaysResponse {
   items?: ResourceGatewaySummary[];
   nextToken?: string;
 }
-export const ListResourceGatewaysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      items: S.optional(ResourceGatewayList),
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListResourceGatewaysResponse",
-  }) as any as S.Schema<ListResourceGatewaysResponse>;
+export const ListResourceGatewaysResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    items: S.optional(ResourceGatewayList),
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListResourceGatewaysResponse",
+}) as any as S.Schema<ListResourceGatewaysResponse>;
 export interface CreateRuleRequest {
   serviceIdentifier: string;
   listenerIdentifier: string;
@@ -2252,7 +2201,7 @@ export interface CreateRuleRequest {
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateRuleRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceIdentifier: S.String.pipe(T.HttpLabel("serviceIdentifier")),
     listenerIdentifier: S.String.pipe(T.HttpLabel("listenerIdentifier")),
@@ -2286,7 +2235,7 @@ export interface CreateRuleResponse {
   priority?: number;
   action?: RuleAction;
 }
-export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.optional(S.String),
     id: S.optional(S.String),
@@ -2303,7 +2252,7 @@ export interface GetRuleRequest {
   listenerIdentifier: string;
   ruleIdentifier: string;
 }
-export const GetRuleRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceIdentifier: S.String.pipe(T.HttpLabel("serviceIdentifier")),
     listenerIdentifier: S.String.pipe(T.HttpLabel("listenerIdentifier")),
@@ -2333,7 +2282,7 @@ export interface GetRuleResponse {
   createdAt?: Date;
   lastUpdatedAt?: Date;
 }
-export const GetRuleResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.optional(S.String),
     id: S.optional(S.String),
@@ -2360,7 +2309,7 @@ export interface UpdateRuleRequest {
   priority?: number;
   action?: RuleAction;
 }
-export const UpdateRuleRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceIdentifier: S.String.pipe(T.HttpLabel("serviceIdentifier")),
     listenerIdentifier: S.String.pipe(T.HttpLabel("listenerIdentifier")),
@@ -2393,7 +2342,7 @@ export interface UpdateRuleResponse {
   priority?: number;
   action?: RuleAction;
 }
-export const UpdateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.optional(S.String),
     id: S.optional(S.String),
@@ -2411,7 +2360,7 @@ export interface DeleteRuleRequest {
   listenerIdentifier: string;
   ruleIdentifier: string;
 }
-export const DeleteRuleRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceIdentifier: S.String.pipe(T.HttpLabel("serviceIdentifier")),
     listenerIdentifier: S.String.pipe(T.HttpLabel("listenerIdentifier")),
@@ -2433,7 +2382,7 @@ export const DeleteRuleRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteRuleRequest",
 }) as any as S.Schema<DeleteRuleRequest>;
 export interface DeleteRuleResponse {}
-export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteRuleResponse",
@@ -2444,7 +2393,7 @@ export interface ListRulesRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListRulesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceIdentifier: S.String.pipe(T.HttpLabel("serviceIdentifier")),
     listenerIdentifier: S.String.pipe(T.HttpLabel("listenerIdentifier")),
@@ -2475,7 +2424,7 @@ export interface RuleSummary {
   createdAt?: Date;
   lastUpdatedAt?: Date;
 }
-export const RuleSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RuleSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.optional(S.String),
     id: S.optional(S.String),
@@ -2491,12 +2440,12 @@ export const RuleSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RuleSummary" }) as any as S.Schema<RuleSummary>;
 export type RuleSummaryList = RuleSummary[];
-export const RuleSummaryList = /*@__PURE__*/ /*#__PURE__*/ S.Array(RuleSummary);
+export const RuleSummaryList = /*@__PURE__*/ S.Array(RuleSummary);
 export interface ListRulesResponse {
   items: RuleSummary[];
   nextToken?: string;
 }
-export const ListRulesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ items: RuleSummaryList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListRulesResponse",
@@ -2509,7 +2458,7 @@ export interface CreateServiceRequest {
   certificateArn?: string;
   authType?: string;
 }
-export const CreateServiceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     name: S.String,
@@ -2534,7 +2483,7 @@ export interface DnsEntry {
   domainName?: string;
   hostedZoneId?: string;
 }
-export const DnsEntry = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DnsEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domainName: S.optional(S.String),
     hostedZoneId: S.optional(S.String),
@@ -2550,7 +2499,7 @@ export interface CreateServiceResponse {
   authType?: string;
   dnsEntry?: DnsEntry;
 }
-export const CreateServiceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateServiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     arn: S.optional(S.String),
@@ -2567,7 +2516,7 @@ export const CreateServiceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetServiceRequest {
   serviceIdentifier: string;
 }
-export const GetServiceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceIdentifier: S.String.pipe(T.HttpLabel("serviceIdentifier")),
   }).pipe(
@@ -2597,7 +2546,7 @@ export interface GetServiceResponse {
   failureCode?: string;
   failureMessage?: string;
 }
-export const GetServiceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetServiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2624,7 +2573,7 @@ export interface UpdateServiceRequest {
   certificateArn?: string;
   authType?: string;
 }
-export const UpdateServiceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceIdentifier: S.String.pipe(T.HttpLabel("serviceIdentifier")),
     certificateArn: S.optional(S.String),
@@ -2650,7 +2599,7 @@ export interface UpdateServiceResponse {
   certificateArn?: string;
   authType?: string;
 }
-export const UpdateServiceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateServiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     arn: S.optional(S.String),
@@ -2665,7 +2614,7 @@ export const UpdateServiceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteServiceRequest {
   serviceIdentifier: string;
 }
-export const DeleteServiceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceIdentifier: S.String.pipe(T.HttpLabel("serviceIdentifier")),
   }).pipe(
@@ -2687,7 +2636,7 @@ export interface DeleteServiceResponse {
   name?: string;
   status?: string;
 }
-export const DeleteServiceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteServiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     arn: S.optional(S.String),
@@ -2701,7 +2650,7 @@ export interface ListServicesRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListServicesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -2728,7 +2677,7 @@ export interface ServiceSummary {
   customDomainName?: string;
   status?: string;
 }
-export const ServiceSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ServiceSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2745,12 +2694,12 @@ export const ServiceSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ServiceSummary" }) as any as S.Schema<ServiceSummary>;
 export type ServiceList = ServiceSummary[];
-export const ServiceList = /*@__PURE__*/ /*#__PURE__*/ S.Array(ServiceSummary);
+export const ServiceList = /*@__PURE__*/ S.Array(ServiceSummary);
 export interface ListServicesResponse {
   items?: ServiceSummary[];
   nextToken?: string;
 }
-export const ListServicesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListServicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ items: S.optional(ServiceList), nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListServicesResponse",
@@ -2758,7 +2707,7 @@ export const ListServicesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface SharingConfig {
   enabled?: boolean;
 }
-export const SharingConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SharingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ enabled: S.optional(S.Boolean) }),
 ).annotate({ identifier: "SharingConfig" }) as any as S.Schema<SharingConfig>;
 export interface CreateServiceNetworkRequest {
@@ -2768,27 +2717,26 @@ export interface CreateServiceNetworkRequest {
   tags?: { [key: string]: string | undefined };
   sharingConfig?: SharingConfig;
 }
-export const CreateServiceNetworkRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-      name: S.String,
-      authType: S.optional(S.String),
-      tags: S.optional(TagMap),
-      sharingConfig: S.optional(SharingConfig),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/servicenetworks" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateServiceNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    name: S.String,
+    authType: S.optional(S.String),
+    tags: S.optional(TagMap),
+    sharingConfig: S.optional(SharingConfig),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/servicenetworks" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateServiceNetworkRequest",
-  }) as any as S.Schema<CreateServiceNetworkRequest>;
+  ),
+).annotate({
+  identifier: "CreateServiceNetworkRequest",
+}) as any as S.Schema<CreateServiceNetworkRequest>;
 export interface CreateServiceNetworkResponse {
   id?: string;
   name?: string;
@@ -2796,40 +2744,38 @@ export interface CreateServiceNetworkResponse {
   sharingConfig?: SharingConfig;
   authType?: string;
 }
-export const CreateServiceNetworkResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      arn: S.optional(S.String),
-      sharingConfig: S.optional(SharingConfig),
-      authType: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CreateServiceNetworkResponse",
-  }) as any as S.Schema<CreateServiceNetworkResponse>;
+export const CreateServiceNetworkResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    arn: S.optional(S.String),
+    sharingConfig: S.optional(SharingConfig),
+    authType: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateServiceNetworkResponse",
+}) as any as S.Schema<CreateServiceNetworkResponse>;
 export interface GetServiceNetworkRequest {
   serviceNetworkIdentifier: string;
 }
-export const GetServiceNetworkRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      serviceNetworkIdentifier: S.String.pipe(
-        T.HttpLabel("serviceNetworkIdentifier"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/servicenetworks/{serviceNetworkIdentifier}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetServiceNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceNetworkIdentifier: S.String.pipe(
+      T.HttpLabel("serviceNetworkIdentifier"),
     ),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/servicenetworks/{serviceNetworkIdentifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
 ).annotate({
   identifier: "GetServiceNetworkRequest",
 }) as any as S.Schema<GetServiceNetworkRequest>;
@@ -2844,23 +2790,22 @@ export interface GetServiceNetworkResponse {
   numberOfAssociatedVPCs?: number;
   numberOfAssociatedServices?: number;
 }
-export const GetServiceNetworkResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      createdAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      lastUpdatedAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      arn: S.optional(S.String),
-      authType: S.optional(S.String),
-      sharingConfig: S.optional(SharingConfig),
-      numberOfAssociatedVPCs: S.optional(S.Number),
-      numberOfAssociatedServices: S.optional(S.Number),
-    }),
+export const GetServiceNetworkResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    createdAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    lastUpdatedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    arn: S.optional(S.String),
+    authType: S.optional(S.String),
+    sharingConfig: S.optional(SharingConfig),
+    numberOfAssociatedVPCs: S.optional(S.Number),
+    numberOfAssociatedServices: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "GetServiceNetworkResponse",
 }) as any as S.Schema<GetServiceNetworkResponse>;
@@ -2868,95 +2813,92 @@ export interface UpdateServiceNetworkRequest {
   serviceNetworkIdentifier: string;
   authType: string;
 }
-export const UpdateServiceNetworkRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serviceNetworkIdentifier: S.String.pipe(
-        T.HttpLabel("serviceNetworkIdentifier"),
-      ),
-      authType: S.String,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PATCH",
-          uri: "/servicenetworks/{serviceNetworkIdentifier}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateServiceNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceNetworkIdentifier: S.String.pipe(
+      T.HttpLabel("serviceNetworkIdentifier"),
     ),
-  ).annotate({
-    identifier: "UpdateServiceNetworkRequest",
-  }) as any as S.Schema<UpdateServiceNetworkRequest>;
+    authType: S.String,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PATCH",
+        uri: "/servicenetworks/{serviceNetworkIdentifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateServiceNetworkRequest",
+}) as any as S.Schema<UpdateServiceNetworkRequest>;
 export interface UpdateServiceNetworkResponse {
   id?: string;
   name?: string;
   arn?: string;
   authType?: string;
 }
-export const UpdateServiceNetworkResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      arn: S.optional(S.String),
-      authType: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "UpdateServiceNetworkResponse",
-  }) as any as S.Schema<UpdateServiceNetworkResponse>;
+export const UpdateServiceNetworkResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    arn: S.optional(S.String),
+    authType: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateServiceNetworkResponse",
+}) as any as S.Schema<UpdateServiceNetworkResponse>;
 export interface DeleteServiceNetworkRequest {
   serviceNetworkIdentifier: string;
 }
-export const DeleteServiceNetworkRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serviceNetworkIdentifier: S.String.pipe(
-        T.HttpLabel("serviceNetworkIdentifier"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/servicenetworks/{serviceNetworkIdentifier}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteServiceNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceNetworkIdentifier: S.String.pipe(
+      T.HttpLabel("serviceNetworkIdentifier"),
     ),
-  ).annotate({
-    identifier: "DeleteServiceNetworkRequest",
-  }) as any as S.Schema<DeleteServiceNetworkRequest>;
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/servicenetworks/{serviceNetworkIdentifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteServiceNetworkRequest",
+}) as any as S.Schema<DeleteServiceNetworkRequest>;
 export interface DeleteServiceNetworkResponse {}
-export const DeleteServiceNetworkResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteServiceNetworkResponse",
-  }) as any as S.Schema<DeleteServiceNetworkResponse>;
+export const DeleteServiceNetworkResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteServiceNetworkResponse",
+}) as any as S.Schema<DeleteServiceNetworkResponse>;
 export interface ListServiceNetworksRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListServiceNetworksRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/servicenetworks" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListServiceNetworksRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/servicenetworks" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListServiceNetworksRequest",
 }) as any as S.Schema<ListServiceNetworksRequest>;
@@ -2970,7 +2912,7 @@ export interface ServiceNetworkSummary {
   numberOfAssociatedServices?: number;
   numberOfAssociatedResourceConfigurations?: number;
 }
-export const ServiceNetworkSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ServiceNetworkSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2989,19 +2931,16 @@ export const ServiceNetworkSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ServiceNetworkSummary",
 }) as any as S.Schema<ServiceNetworkSummary>;
 export type ServiceNetworkList = ServiceNetworkSummary[];
-export const ServiceNetworkList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  ServiceNetworkSummary,
-);
+export const ServiceNetworkList = /*@__PURE__*/ S.Array(ServiceNetworkSummary);
 export interface ListServiceNetworksResponse {
   items: ServiceNetworkSummary[];
   nextToken?: string;
 }
-export const ListServiceNetworksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ items: ServiceNetworkList, nextToken: S.optional(S.String) }),
-  ).annotate({
-    identifier: "ListServiceNetworksResponse",
-  }) as any as S.Schema<ListServiceNetworksResponse>;
+export const ListServiceNetworksResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ items: ServiceNetworkList, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListServiceNetworksResponse",
+}) as any as S.Schema<ListServiceNetworksResponse>;
 export interface CreateServiceNetworkResourceAssociationRequest {
   clientToken?: string;
   resourceConfigurationIdentifier: string;
@@ -3010,7 +2949,7 @@ export interface CreateServiceNetworkResourceAssociationRequest {
   tags?: { [key: string]: string | undefined };
 }
 export const CreateServiceNetworkResourceAssociationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
       resourceConfigurationIdentifier: S.String,
@@ -3038,7 +2977,7 @@ export interface CreateServiceNetworkResourceAssociationResponse {
   privateDnsEnabled?: boolean;
 }
 export const CreateServiceNetworkResourceAssociationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
       arn: S.optional(S.String),
@@ -3053,7 +2992,7 @@ export interface GetServiceNetworkResourceAssociationRequest {
   serviceNetworkResourceAssociationIdentifier: string;
 }
 export const GetServiceNetworkResourceAssociationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       serviceNetworkResourceAssociationIdentifier: S.String.pipe(
         T.HttpLabel("serviceNetworkResourceAssociationIdentifier"),
@@ -3096,7 +3035,7 @@ export interface GetServiceNetworkResourceAssociationResponse {
   domainVerificationStatus?: string;
 }
 export const GetServiceNetworkResourceAssociationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
       arn: S.optional(S.String),
@@ -3129,7 +3068,7 @@ export interface DeleteServiceNetworkResourceAssociationRequest {
   serviceNetworkResourceAssociationIdentifier: string;
 }
 export const DeleteServiceNetworkResourceAssociationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       serviceNetworkResourceAssociationIdentifier: S.String.pipe(
         T.HttpLabel("serviceNetworkResourceAssociationIdentifier"),
@@ -3156,7 +3095,7 @@ export interface DeleteServiceNetworkResourceAssociationResponse {
   status?: string;
 }
 export const DeleteServiceNetworkResourceAssociationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
       arn: S.optional(S.String),
@@ -3173,7 +3112,7 @@ export interface ListServiceNetworkResourceAssociationsRequest {
   includeChildren?: boolean;
 }
 export const ListServiceNetworkResourceAssociationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       serviceNetworkIdentifier: S.optional(S.String).pipe(
         T.HttpQuery("serviceNetworkIdentifier"),
@@ -3217,8 +3156,8 @@ export interface ServiceNetworkResourceAssociationSummary {
   failureCode?: string;
   privateDnsEnabled?: boolean;
 }
-export const ServiceNetworkResourceAssociationSummary =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ServiceNetworkResourceAssociationSummary = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       id: S.optional(S.String),
       arn: S.optional(S.String),
@@ -3239,19 +3178,20 @@ export const ServiceNetworkResourceAssociationSummary =
       failureCode: S.optional(S.String),
       privateDnsEnabled: S.optional(S.Boolean),
     }),
-  ).annotate({
-    identifier: "ServiceNetworkResourceAssociationSummary",
-  }) as any as S.Schema<ServiceNetworkResourceAssociationSummary>;
+).annotate({
+  identifier: "ServiceNetworkResourceAssociationSummary",
+}) as any as S.Schema<ServiceNetworkResourceAssociationSummary>;
 export type ServiceNetworkResourceAssociationList =
   ServiceNetworkResourceAssociationSummary[];
-export const ServiceNetworkResourceAssociationList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ServiceNetworkResourceAssociationSummary);
+export const ServiceNetworkResourceAssociationList = /*@__PURE__*/ S.Array(
+  ServiceNetworkResourceAssociationSummary,
+);
 export interface ListServiceNetworkResourceAssociationsResponse {
   items: ServiceNetworkResourceAssociationSummary[];
   nextToken?: string;
 }
 export const ListServiceNetworkResourceAssociationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       items: ServiceNetworkResourceAssociationList,
       nextToken: S.optional(S.String),
@@ -3266,7 +3206,7 @@ export interface CreateServiceNetworkServiceAssociationRequest {
   tags?: { [key: string]: string | undefined };
 }
 export const CreateServiceNetworkServiceAssociationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
       serviceIdentifier: S.String,
@@ -3294,7 +3234,7 @@ export interface CreateServiceNetworkServiceAssociationResponse {
   dnsEntry?: DnsEntry;
 }
 export const CreateServiceNetworkServiceAssociationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
       status: S.optional(S.String),
@@ -3310,7 +3250,7 @@ export interface GetServiceNetworkServiceAssociationRequest {
   serviceNetworkServiceAssociationIdentifier: string;
 }
 export const GetServiceNetworkServiceAssociationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       serviceNetworkServiceAssociationIdentifier: S.String.pipe(
         T.HttpLabel("serviceNetworkServiceAssociationIdentifier"),
@@ -3349,7 +3289,7 @@ export interface GetServiceNetworkServiceAssociationResponse {
   failureCode?: string;
 }
 export const GetServiceNetworkServiceAssociationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
       status: S.optional(S.String),
@@ -3376,7 +3316,7 @@ export interface DeleteServiceNetworkServiceAssociationRequest {
   serviceNetworkServiceAssociationIdentifier: string;
 }
 export const DeleteServiceNetworkServiceAssociationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       serviceNetworkServiceAssociationIdentifier: S.String.pipe(
         T.HttpLabel("serviceNetworkServiceAssociationIdentifier"),
@@ -3403,7 +3343,7 @@ export interface DeleteServiceNetworkServiceAssociationResponse {
   arn?: string;
 }
 export const DeleteServiceNetworkServiceAssociationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
       status: S.optional(S.String),
@@ -3419,7 +3359,7 @@ export interface ListServiceNetworkServiceAssociationsRequest {
   nextToken?: string;
 }
 export const ListServiceNetworkServiceAssociationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       serviceNetworkIdentifier: S.optional(S.String).pipe(
         T.HttpQuery("serviceNetworkIdentifier"),
@@ -3457,8 +3397,8 @@ export interface ServiceNetworkServiceAssociationSummary {
   dnsEntry?: DnsEntry;
   customDomainName?: string;
 }
-export const ServiceNetworkServiceAssociationSummary =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ServiceNetworkServiceAssociationSummary = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       id: S.optional(S.String),
       status: S.optional(S.String),
@@ -3476,19 +3416,20 @@ export const ServiceNetworkServiceAssociationSummary =
       dnsEntry: S.optional(DnsEntry),
       customDomainName: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "ServiceNetworkServiceAssociationSummary",
-  }) as any as S.Schema<ServiceNetworkServiceAssociationSummary>;
+).annotate({
+  identifier: "ServiceNetworkServiceAssociationSummary",
+}) as any as S.Schema<ServiceNetworkServiceAssociationSummary>;
 export type ServiceNetworkServiceAssociationList =
   ServiceNetworkServiceAssociationSummary[];
-export const ServiceNetworkServiceAssociationList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ServiceNetworkServiceAssociationSummary);
+export const ServiceNetworkServiceAssociationList = /*@__PURE__*/ S.Array(
+  ServiceNetworkServiceAssociationSummary,
+);
 export interface ListServiceNetworkServiceAssociationsResponse {
   items: ServiceNetworkServiceAssociationSummary[];
   nextToken?: string;
 }
 export const ListServiceNetworkServiceAssociationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       items: ServiceNetworkServiceAssociationList,
       nextToken: S.optional(S.String),
@@ -3497,13 +3438,12 @@ export const ListServiceNetworkServiceAssociationsResponse =
     identifier: "ListServiceNetworkServiceAssociationsResponse",
   }) as any as S.Schema<ListServiceNetworkServiceAssociationsResponse>;
 export type PrivateDnsSpecifiedDomainsList = string[];
-export const PrivateDnsSpecifiedDomainsList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const PrivateDnsSpecifiedDomainsList = /*@__PURE__*/ S.Array(S.String);
 export interface DnsOptions {
   privateDnsPreference?: string;
   privateDnsSpecifiedDomains?: string[];
 }
-export const DnsOptions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DnsOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateDnsPreference: S.optional(S.String),
     privateDnsSpecifiedDomains: S.optional(PrivateDnsSpecifiedDomainsList),
@@ -3519,7 +3459,7 @@ export interface CreateServiceNetworkVpcAssociationRequest {
   dnsOptions?: DnsOptions;
 }
 export const CreateServiceNetworkVpcAssociationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
       serviceNetworkIdentifier: S.String,
@@ -3551,7 +3491,7 @@ export interface CreateServiceNetworkVpcAssociationResponse {
   dnsOptions?: DnsOptions;
 }
 export const CreateServiceNetworkVpcAssociationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
       status: S.optional(S.String),
@@ -3567,8 +3507,8 @@ export const CreateServiceNetworkVpcAssociationResponse =
 export interface GetServiceNetworkVpcAssociationRequest {
   serviceNetworkVpcAssociationIdentifier: string;
 }
-export const GetServiceNetworkVpcAssociationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetServiceNetworkVpcAssociationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       serviceNetworkVpcAssociationIdentifier: S.String.pipe(
         T.HttpLabel("serviceNetworkVpcAssociationIdentifier"),
@@ -3586,9 +3526,9 @@ export const GetServiceNetworkVpcAssociationRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "GetServiceNetworkVpcAssociationRequest",
-  }) as any as S.Schema<GetServiceNetworkVpcAssociationRequest>;
+).annotate({
+  identifier: "GetServiceNetworkVpcAssociationRequest",
+}) as any as S.Schema<GetServiceNetworkVpcAssociationRequest>;
 export interface GetServiceNetworkVpcAssociationResponse {
   id?: string;
   status?: string;
@@ -3606,8 +3546,8 @@ export interface GetServiceNetworkVpcAssociationResponse {
   lastUpdatedAt?: Date;
   dnsOptions?: DnsOptions;
 }
-export const GetServiceNetworkVpcAssociationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetServiceNetworkVpcAssociationResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       id: S.optional(S.String),
       status: S.optional(S.String),
@@ -3629,15 +3569,15 @@ export const GetServiceNetworkVpcAssociationResponse =
       ),
       dnsOptions: S.optional(DnsOptions),
     }),
-  ).annotate({
-    identifier: "GetServiceNetworkVpcAssociationResponse",
-  }) as any as S.Schema<GetServiceNetworkVpcAssociationResponse>;
+).annotate({
+  identifier: "GetServiceNetworkVpcAssociationResponse",
+}) as any as S.Schema<GetServiceNetworkVpcAssociationResponse>;
 export interface UpdateServiceNetworkVpcAssociationRequest {
   serviceNetworkVpcAssociationIdentifier: string;
   securityGroupIds: string[];
 }
 export const UpdateServiceNetworkVpcAssociationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       serviceNetworkVpcAssociationIdentifier: S.String.pipe(
         T.HttpLabel("serviceNetworkVpcAssociationIdentifier"),
@@ -3667,7 +3607,7 @@ export interface UpdateServiceNetworkVpcAssociationResponse {
   securityGroupIds?: string[];
 }
 export const UpdateServiceNetworkVpcAssociationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
       arn: S.optional(S.String),
@@ -3682,7 +3622,7 @@ export interface DeleteServiceNetworkVpcAssociationRequest {
   serviceNetworkVpcAssociationIdentifier: string;
 }
 export const DeleteServiceNetworkVpcAssociationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       serviceNetworkVpcAssociationIdentifier: S.String.pipe(
         T.HttpLabel("serviceNetworkVpcAssociationIdentifier"),
@@ -3709,7 +3649,7 @@ export interface DeleteServiceNetworkVpcAssociationResponse {
   arn?: string;
 }
 export const DeleteServiceNetworkVpcAssociationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
       status: S.optional(S.String),
@@ -3724,8 +3664,8 @@ export interface ListServiceNetworkVpcAssociationsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListServiceNetworkVpcAssociationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListServiceNetworkVpcAssociationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       serviceNetworkIdentifier: S.optional(S.String).pipe(
         T.HttpQuery("serviceNetworkIdentifier"),
@@ -3743,9 +3683,9 @@ export const ListServiceNetworkVpcAssociationsRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "ListServiceNetworkVpcAssociationsRequest",
-  }) as any as S.Schema<ListServiceNetworkVpcAssociationsRequest>;
+).annotate({
+  identifier: "ListServiceNetworkVpcAssociationsRequest",
+}) as any as S.Schema<ListServiceNetworkVpcAssociationsRequest>;
 export interface ServiceNetworkVpcAssociationSummary {
   id?: string;
   arn?: string;
@@ -3760,39 +3700,39 @@ export interface ServiceNetworkVpcAssociationSummary {
   vpcId?: string;
   lastUpdatedAt?: Date;
 }
-export const ServiceNetworkVpcAssociationSummary =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      arn: S.optional(S.String),
-      status: S.optional(S.String),
-      createdBy: S.optional(S.String),
-      createdAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      serviceNetworkId: S.optional(S.String),
-      serviceNetworkName: S.optional(S.String),
-      serviceNetworkArn: S.optional(S.String),
-      privateDnsEnabled: S.optional(S.Boolean),
-      dnsOptions: S.optional(DnsOptions),
-      vpcId: S.optional(S.String),
-      lastUpdatedAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-    }),
-  ).annotate({
-    identifier: "ServiceNetworkVpcAssociationSummary",
-  }) as any as S.Schema<ServiceNetworkVpcAssociationSummary>;
+export const ServiceNetworkVpcAssociationSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    arn: S.optional(S.String),
+    status: S.optional(S.String),
+    createdBy: S.optional(S.String),
+    createdAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    serviceNetworkId: S.optional(S.String),
+    serviceNetworkName: S.optional(S.String),
+    serviceNetworkArn: S.optional(S.String),
+    privateDnsEnabled: S.optional(S.Boolean),
+    dnsOptions: S.optional(DnsOptions),
+    vpcId: S.optional(S.String),
+    lastUpdatedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
+).annotate({
+  identifier: "ServiceNetworkVpcAssociationSummary",
+}) as any as S.Schema<ServiceNetworkVpcAssociationSummary>;
 export type ServiceNetworkVpcAssociationList =
   ServiceNetworkVpcAssociationSummary[];
-export const ServiceNetworkVpcAssociationList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ServiceNetworkVpcAssociationSummary);
+export const ServiceNetworkVpcAssociationList = /*@__PURE__*/ S.Array(
+  ServiceNetworkVpcAssociationSummary,
+);
 export interface ListServiceNetworkVpcAssociationsResponse {
   items: ServiceNetworkVpcAssociationSummary[];
   nextToken?: string;
 }
 export const ListServiceNetworkVpcAssociationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       items: ServiceNetworkVpcAssociationList,
       nextToken: S.optional(S.String),
@@ -3801,7 +3741,7 @@ export const ListServiceNetworkVpcAssociationsResponse =
     identifier: "ListServiceNetworkVpcAssociationsResponse",
   }) as any as S.Schema<ListServiceNetworkVpcAssociationsResponse>;
 export type Matcher = { httpCode: string };
-export const Matcher = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const Matcher = /*@__PURE__*/ S.Union([
   S.Struct({ httpCode: S.String }),
 ]);
 export interface HealthCheckConfig {
@@ -3816,7 +3756,7 @@ export interface HealthCheckConfig {
   unhealthyThresholdCount?: number;
   matcher?: Matcher;
 }
-export const HealthCheckConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const HealthCheckConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     protocol: S.optional(S.String),
@@ -3841,7 +3781,7 @@ export interface TargetGroupConfig {
   healthCheck?: HealthCheckConfig;
   lambdaEventStructureVersion?: string;
 }
-export const TargetGroupConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TargetGroupConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     port: S.optional(S.Number),
     protocol: S.optional(S.String),
@@ -3861,24 +3801,23 @@ export interface CreateTargetGroupRequest {
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateTargetGroupRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      type: S.String,
-      config: S.optional(TargetGroupConfig),
-      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-      tags: S.optional(TagMap),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/targetgroups" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateTargetGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    type: S.String,
+    config: S.optional(TargetGroupConfig),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    tags: S.optional(TagMap),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/targetgroups" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "CreateTargetGroupRequest",
 }) as any as S.Schema<CreateTargetGroupRequest>;
@@ -3890,23 +3829,22 @@ export interface CreateTargetGroupResponse {
   config?: TargetGroupConfig;
   status?: string;
 }
-export const CreateTargetGroupResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      arn: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      config: S.optional(TargetGroupConfig),
-      status: S.optional(S.String),
-    }),
+export const CreateTargetGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    arn: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    config: S.optional(TargetGroupConfig),
+    status: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "CreateTargetGroupResponse",
 }) as any as S.Schema<CreateTargetGroupResponse>;
 export interface GetTargetGroupRequest {
   targetGroupIdentifier: string;
 }
-export const GetTargetGroupRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetTargetGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetGroupIdentifier: S.String.pipe(T.HttpLabel("targetGroupIdentifier")),
   }).pipe(
@@ -3923,7 +3861,7 @@ export const GetTargetGroupRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "GetTargetGroupRequest",
 }) as any as S.Schema<GetTargetGroupRequest>;
 export type ServiceArnList = string[];
-export const ServiceArnList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const ServiceArnList = /*@__PURE__*/ S.Array(S.String);
 export interface GetTargetGroupResponse {
   id?: string;
   arn?: string;
@@ -3937,25 +3875,24 @@ export interface GetTargetGroupResponse {
   failureMessage?: string;
   failureCode?: string;
 }
-export const GetTargetGroupResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      arn: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      config: S.optional(TargetGroupConfig),
-      createdAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      lastUpdatedAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      status: S.optional(S.String),
-      serviceArns: S.optional(ServiceArnList),
-      failureMessage: S.optional(S.String),
-      failureCode: S.optional(S.String),
-    }),
+export const GetTargetGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    arn: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    config: S.optional(TargetGroupConfig),
+    createdAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    lastUpdatedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    status: S.optional(S.String),
+    serviceArns: S.optional(ServiceArnList),
+    failureMessage: S.optional(S.String),
+    failureCode: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GetTargetGroupResponse",
 }) as any as S.Schema<GetTargetGroupResponse>;
@@ -3963,26 +3900,20 @@ export interface UpdateTargetGroupRequest {
   targetGroupIdentifier: string;
   healthCheck: HealthCheckConfig;
 }
-export const UpdateTargetGroupRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      targetGroupIdentifier: S.String.pipe(
-        T.HttpLabel("targetGroupIdentifier"),
-      ),
-      healthCheck: HealthCheckConfig,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PATCH",
-          uri: "/targetgroups/{targetGroupIdentifier}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateTargetGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    targetGroupIdentifier: S.String.pipe(T.HttpLabel("targetGroupIdentifier")),
+    healthCheck: HealthCheckConfig,
+  }).pipe(
+    T.all(
+      T.Http({ method: "PATCH", uri: "/targetgroups/{targetGroupIdentifier}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "UpdateTargetGroupRequest",
 }) as any as S.Schema<UpdateTargetGroupRequest>;
@@ -3994,41 +3925,37 @@ export interface UpdateTargetGroupResponse {
   config?: TargetGroupConfig;
   status?: string;
 }
-export const UpdateTargetGroupResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      arn: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      config: S.optional(TargetGroupConfig),
-      status: S.optional(S.String),
-    }),
+export const UpdateTargetGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    arn: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    config: S.optional(TargetGroupConfig),
+    status: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "UpdateTargetGroupResponse",
 }) as any as S.Schema<UpdateTargetGroupResponse>;
 export interface DeleteTargetGroupRequest {
   targetGroupIdentifier: string;
 }
-export const DeleteTargetGroupRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      targetGroupIdentifier: S.String.pipe(
-        T.HttpLabel("targetGroupIdentifier"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/targetgroups/{targetGroupIdentifier}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteTargetGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    targetGroupIdentifier: S.String.pipe(T.HttpLabel("targetGroupIdentifier")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/targetgroups/{targetGroupIdentifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DeleteTargetGroupRequest",
 }) as any as S.Schema<DeleteTargetGroupRequest>;
@@ -4037,13 +3964,12 @@ export interface DeleteTargetGroupResponse {
   arn?: string;
   status?: string;
 }
-export const DeleteTargetGroupResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      arn: S.optional(S.String),
-      status: S.optional(S.String),
-    }),
+export const DeleteTargetGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    arn: S.optional(S.String),
+    status: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "DeleteTargetGroupResponse",
 }) as any as S.Schema<DeleteTargetGroupResponse>;
@@ -4053,25 +3979,22 @@ export interface ListTargetGroupsRequest {
   vpcIdentifier?: string;
   targetGroupType?: string;
 }
-export const ListTargetGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      vpcIdentifier: S.optional(S.String).pipe(T.HttpQuery("vpcIdentifier")),
-      targetGroupType: S.optional(S.String).pipe(
-        T.HttpQuery("targetGroupType"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/targetgroups" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTargetGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    vpcIdentifier: S.optional(S.String).pipe(T.HttpQuery("vpcIdentifier")),
+    targetGroupType: S.optional(S.String).pipe(T.HttpQuery("targetGroupType")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/targetgroups" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTargetGroupsRequest",
 }) as any as S.Schema<ListTargetGroupsRequest>;
@@ -4090,7 +4013,7 @@ export interface TargetGroupSummary {
   serviceArns?: string[];
   lambdaEventStructureVersion?: string;
 }
-export const TargetGroupSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TargetGroupSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     arn: S.optional(S.String),
@@ -4114,18 +4037,16 @@ export const TargetGroupSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TargetGroupSummary",
 }) as any as S.Schema<TargetGroupSummary>;
 export type TargetGroupList = TargetGroupSummary[];
-export const TargetGroupList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(TargetGroupSummary);
+export const TargetGroupList = /*@__PURE__*/ S.Array(TargetGroupSummary);
 export interface ListTargetGroupsResponse {
   items?: TargetGroupSummary[];
   nextToken?: string;
 }
-export const ListTargetGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      items: S.optional(TargetGroupList),
-      nextToken: S.optional(S.String),
-    }),
+export const ListTargetGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    items: S.optional(TargetGroupList),
+    nextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListTargetGroupsResponse",
 }) as any as S.Schema<ListTargetGroupsResponse>;
@@ -4133,35 +4054,32 @@ export interface Target {
   id: string;
   port?: number;
 }
-export const Target = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Target = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ id: S.String, port: S.optional(S.Number) }),
 ).annotate({ identifier: "Target" }) as any as S.Schema<Target>;
 export type TargetList = Target[];
-export const TargetList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Target);
+export const TargetList = /*@__PURE__*/ S.Array(Target);
 export interface DeregisterTargetsRequest {
   targetGroupIdentifier: string;
   targets: Target[];
 }
-export const DeregisterTargetsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      targetGroupIdentifier: S.String.pipe(
-        T.HttpLabel("targetGroupIdentifier"),
-      ),
-      targets: TargetList,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/targetgroups/{targetGroupIdentifier}/deregistertargets",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeregisterTargetsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    targetGroupIdentifier: S.String.pipe(T.HttpLabel("targetGroupIdentifier")),
+    targets: TargetList,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/targetgroups/{targetGroupIdentifier}/deregistertargets",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DeregisterTargetsRequest",
 }) as any as S.Schema<DeregisterTargetsRequest>;
@@ -4171,7 +4089,7 @@ export interface TargetFailure {
   failureCode?: string;
   failureMessage?: string;
 }
-export const TargetFailure = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TargetFailure = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     port: S.optional(S.Number),
@@ -4180,18 +4098,16 @@ export const TargetFailure = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TargetFailure" }) as any as S.Schema<TargetFailure>;
 export type TargetFailureList = TargetFailure[];
-export const TargetFailureList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(TargetFailure);
+export const TargetFailureList = /*@__PURE__*/ S.Array(TargetFailure);
 export interface DeregisterTargetsResponse {
   successful?: Target[];
   unsuccessful?: TargetFailure[];
 }
-export const DeregisterTargetsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      successful: S.optional(TargetList),
-      unsuccessful: S.optional(TargetFailureList),
-    }),
+export const DeregisterTargetsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    successful: S.optional(TargetList),
+    unsuccessful: S.optional(TargetFailureList),
+  }),
 ).annotate({
   identifier: "DeregisterTargetsResponse",
 }) as any as S.Schema<DeregisterTargetsResponse>;
@@ -4201,7 +4117,7 @@ export interface ListTargetsRequest {
   nextToken?: string;
   targets?: Target[];
 }
-export const ListTargetsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListTargetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetGroupIdentifier: S.String.pipe(T.HttpLabel("targetGroupIdentifier")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -4229,7 +4145,7 @@ export interface TargetSummary {
   status?: string;
   reasonCode?: string;
 }
-export const TargetSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TargetSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     port: S.optional(S.Number),
@@ -4238,13 +4154,12 @@ export const TargetSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TargetSummary" }) as any as S.Schema<TargetSummary>;
 export type TargetSummaryList = TargetSummary[];
-export const TargetSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(TargetSummary);
+export const TargetSummaryList = /*@__PURE__*/ S.Array(TargetSummary);
 export interface ListTargetsResponse {
   items: TargetSummary[];
   nextToken?: string;
 }
-export const ListTargetsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListTargetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ items: TargetSummaryList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListTargetsResponse",
@@ -4253,26 +4168,23 @@ export interface RegisterTargetsRequest {
   targetGroupIdentifier: string;
   targets: Target[];
 }
-export const RegisterTargetsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      targetGroupIdentifier: S.String.pipe(
-        T.HttpLabel("targetGroupIdentifier"),
-      ),
-      targets: TargetList,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/targetgroups/{targetGroupIdentifier}/registertargets",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const RegisterTargetsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    targetGroupIdentifier: S.String.pipe(T.HttpLabel("targetGroupIdentifier")),
+    targets: TargetList,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/targetgroups/{targetGroupIdentifier}/registertargets",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "RegisterTargetsRequest",
 }) as any as S.Schema<RegisterTargetsRequest>;
@@ -4280,12 +4192,11 @@ export interface RegisterTargetsResponse {
   successful?: Target[];
   unsuccessful?: TargetFailure[];
 }
-export const RegisterTargetsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      successful: S.optional(TargetList),
-      unsuccessful: S.optional(TargetFailureList),
-    }),
+export const RegisterTargetsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    successful: S.optional(TargetList),
+    unsuccessful: S.optional(TargetFailureList),
+  }),
 ).annotate({
   identifier: "RegisterTargetsResponse",
 }) as any as S.Schema<RegisterTargetsResponse>;

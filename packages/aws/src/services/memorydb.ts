@@ -112,11 +112,11 @@ export type FilterValue = string;
 
 //# Schemas
 export type ClusterNameList = string[];
-export const ClusterNameList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const ClusterNameList = /*@__PURE__*/ S.Array(S.String);
 export interface ServiceUpdateRequest {
   ServiceUpdateNameToApply?: string;
 }
-export const ServiceUpdateRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ServiceUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ServiceUpdateNameToApply: S.optional(S.String) }),
 ).annotate({
   identifier: "ServiceUpdateRequest",
@@ -125,35 +125,34 @@ export interface BatchUpdateClusterRequest {
   ClusterNames: string[];
   ServiceUpdate?: ServiceUpdateRequest;
 }
-export const BatchUpdateClusterRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ClusterNames: ClusterNameList,
-      ServiceUpdate: S.optional(ServiceUpdateRequest),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const BatchUpdateClusterRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ClusterNames: ClusterNameList,
+    ServiceUpdate: S.optional(ServiceUpdateRequest),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "BatchUpdateClusterRequest",
 }) as any as S.Schema<BatchUpdateClusterRequest>;
 export interface SlotMigration {
   ProgressPercentage?: number;
 }
-export const SlotMigration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SlotMigration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ProgressPercentage: S.optional(S.Number) }),
 ).annotate({ identifier: "SlotMigration" }) as any as S.Schema<SlotMigration>;
 export interface ReshardingStatus {
   SlotMigration?: SlotMigration;
 }
-export const ReshardingStatus = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ReshardingStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SlotMigration: S.optional(SlotMigration) }),
 ).annotate({
   identifier: "ReshardingStatus",
@@ -161,7 +160,7 @@ export const ReshardingStatus = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ACLsUpdateStatus {
   ACLToApply?: string;
 }
-export const ACLsUpdateStatus = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ACLsUpdateStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ACLToApply: S.optional(S.String) }),
 ).annotate({
   identifier: "ACLsUpdateStatus",
@@ -172,33 +171,31 @@ export type ServiceUpdateStatus =
   | "complete"
   | "scheduled"
   | (string & {});
-export const ServiceUpdateStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ServiceUpdateStatus = /*@__PURE__*/ S.String;
 export interface PendingModifiedServiceUpdate {
   ServiceUpdateName?: string;
   Status?: ServiceUpdateStatus;
 }
-export const PendingModifiedServiceUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ServiceUpdateName: S.optional(S.String),
-      Status: S.optional(ServiceUpdateStatus),
-    }),
-  ).annotate({
-    identifier: "PendingModifiedServiceUpdate",
-  }) as any as S.Schema<PendingModifiedServiceUpdate>;
+export const PendingModifiedServiceUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ServiceUpdateName: S.optional(S.String),
+    Status: S.optional(ServiceUpdateStatus),
+  }),
+).annotate({
+  identifier: "PendingModifiedServiceUpdate",
+}) as any as S.Schema<PendingModifiedServiceUpdate>;
 export type PendingModifiedServiceUpdateList = PendingModifiedServiceUpdate[];
-export const PendingModifiedServiceUpdateList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(
-    PendingModifiedServiceUpdate.pipe(
-      T.XmlName("PendingModifiedServiceUpdate"),
-    ).annotate({ identifier: "PendingModifiedServiceUpdate" }),
-  );
+export const PendingModifiedServiceUpdateList = /*@__PURE__*/ S.Array(
+  PendingModifiedServiceUpdate.pipe(
+    T.XmlName("PendingModifiedServiceUpdate"),
+  ).annotate({ identifier: "PendingModifiedServiceUpdate" }),
+);
 export interface ClusterPendingUpdates {
   Resharding?: ReshardingStatus;
   ACLs?: ACLsUpdateStatus;
   ServiceUpdates?: PendingModifiedServiceUpdate[];
 }
-export const ClusterPendingUpdates = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ClusterPendingUpdates = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Resharding: S.optional(ReshardingStatus),
     ACLs: S.optional(ACLsUpdateStatus),
@@ -211,7 +208,7 @@ export interface Endpoint {
   Address?: string;
   Port?: number;
 }
-export const Endpoint = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Endpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Address: S.optional(S.String), Port: S.optional(S.Number) }),
 ).annotate({ identifier: "Endpoint" }) as any as S.Schema<Endpoint>;
 export interface Node {
@@ -221,7 +218,7 @@ export interface Node {
   CreateTime?: Date;
   Endpoint?: Endpoint;
 }
-export const Node = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Node = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.optional(S.String),
     Status: S.optional(S.String),
@@ -231,7 +228,7 @@ export const Node = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Node" }) as any as S.Schema<Node>;
 export type NodeList = Node[];
-export const NodeList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const NodeList = /*@__PURE__*/ S.Array(
   Node.pipe(T.XmlName("Node")).annotate({ identifier: "Node" }),
 );
 export interface Shard {
@@ -241,7 +238,7 @@ export interface Shard {
   Nodes?: Node[];
   NumberOfNodes?: number;
 }
-export const Shard = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Shard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.optional(S.String),
     Status: S.optional(S.String),
@@ -251,34 +248,33 @@ export const Shard = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Shard" }) as any as S.Schema<Shard>;
 export type ShardList = Shard[];
-export const ShardList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ShardList = /*@__PURE__*/ S.Array(
   Shard.pipe(T.XmlName("Shard")).annotate({ identifier: "Shard" }),
 );
 export type AZStatus = "singleaz" | "multiaz" | (string & {});
-export const AZStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AZStatus = /*@__PURE__*/ S.String;
 export interface SecurityGroupMembership {
   SecurityGroupId?: string;
   Status?: string;
 }
-export const SecurityGroupMembership = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      SecurityGroupId: S.optional(S.String),
-      Status: S.optional(S.String),
-    }),
+export const SecurityGroupMembership = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SecurityGroupId: S.optional(S.String),
+    Status: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "SecurityGroupMembership",
 }) as any as S.Schema<SecurityGroupMembership>;
 export type SecurityGroupMembershipList = SecurityGroupMembership[];
-export const SecurityGroupMembershipList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const SecurityGroupMembershipList = /*@__PURE__*/ S.Array(
   SecurityGroupMembership,
 );
 export type DataTieringStatus = "true" | "false" | (string & {});
-export const DataTieringStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DataTieringStatus = /*@__PURE__*/ S.String;
 export type NetworkType = "ipv4" | "ipv6" | "dual_stack" | (string & {});
-export const NetworkType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const NetworkType = /*@__PURE__*/ S.String;
 export type IpDiscovery = "ipv4" | "ipv6" | (string & {});
-export const IpDiscovery = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const IpDiscovery = /*@__PURE__*/ S.String;
 export interface Cluster {
   Name?: string;
   Description?: string;
@@ -311,7 +307,7 @@ export interface Cluster {
   NetworkType?: NetworkType;
   IpDiscovery?: IpDiscovery;
 }
-export const Cluster = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Cluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.optional(S.String),
     Description: S.optional(S.String),
@@ -346,7 +342,7 @@ export const Cluster = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Cluster" }) as any as S.Schema<Cluster>;
 export type ClusterList = Cluster[];
-export const ClusterList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ClusterList = /*@__PURE__*/ S.Array(
   Cluster.pipe(T.XmlName("Cluster")).annotate({ identifier: "Cluster" }),
 );
 export interface UnprocessedCluster {
@@ -354,7 +350,7 @@ export interface UnprocessedCluster {
   ErrorType?: string;
   ErrorMessage?: string;
 }
-export const UnprocessedCluster = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UnprocessedCluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ClusterName: S.optional(S.String),
     ErrorType: S.optional(S.String),
@@ -364,7 +360,7 @@ export const UnprocessedCluster = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UnprocessedCluster",
 }) as any as S.Schema<UnprocessedCluster>;
 export type UnprocessedClusterList = UnprocessedCluster[];
-export const UnprocessedClusterList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const UnprocessedClusterList = /*@__PURE__*/ S.Array(
   UnprocessedCluster.pipe(T.XmlName("UnprocessedCluster")).annotate({
     identifier: "UnprocessedCluster",
   }),
@@ -373,12 +369,11 @@ export interface BatchUpdateClusterResponse {
   ProcessedClusters?: Cluster[];
   UnprocessedClusters?: UnprocessedCluster[];
 }
-export const BatchUpdateClusterResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ProcessedClusters: S.optional(ClusterList),
-      UnprocessedClusters: S.optional(UnprocessedClusterList),
-    }).pipe(ns),
+export const BatchUpdateClusterResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ProcessedClusters: S.optional(ClusterList),
+    UnprocessedClusters: S.optional(UnprocessedClusterList),
+  }).pipe(ns),
 ).annotate({
   identifier: "BatchUpdateClusterResponse",
 }) as any as S.Schema<BatchUpdateClusterResponse>;
@@ -386,11 +381,11 @@ export interface Tag {
   Key?: string;
   Value?: string;
 }
-export const Tag = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Tag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-export const TagList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const TagList = /*@__PURE__*/ S.Array(
   Tag.pipe(T.XmlName("Tag")).annotate({ identifier: "Tag" }),
 );
 export interface CopySnapshotRequest {
@@ -400,7 +395,7 @@ export interface CopySnapshotRequest {
   KmsKeyId?: string;
   Tags?: Tag[];
 }
-export const CopySnapshotRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CopySnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SourceSnapshotName: S.String,
     TargetSnapshotName: S.String,
@@ -425,7 +420,7 @@ export interface ShardConfiguration {
   Slots?: string;
   ReplicaCount?: number;
 }
-export const ShardConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ShardConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Slots: S.optional(S.String), ReplicaCount: S.optional(S.Number) }),
 ).annotate({
   identifier: "ShardConfiguration",
@@ -436,7 +431,7 @@ export interface ShardDetail {
   Size?: string;
   SnapshotCreationTime?: Date;
 }
-export const ShardDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ShardDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.optional(S.String),
     Configuration: S.optional(ShardConfiguration),
@@ -447,7 +442,7 @@ export const ShardDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ShardDetail" }) as any as S.Schema<ShardDetail>;
 export type ShardDetails = ShardDetail[];
-export const ShardDetails = /*@__PURE__*/ /*#__PURE__*/ S.Array(ShardDetail);
+export const ShardDetails = /*@__PURE__*/ S.Array(ShardDetail);
 export interface ClusterConfiguration {
   Name?: string;
   Description?: string;
@@ -467,7 +462,7 @@ export interface ClusterConfiguration {
   MultiRegionParameterGroupName?: string;
   MultiRegionClusterName?: string;
 }
-export const ClusterConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ClusterConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.optional(S.String),
     Description: S.optional(S.String),
@@ -499,7 +494,7 @@ export interface Snapshot {
   ClusterConfiguration?: ClusterConfiguration;
   DataTiering?: DataTieringStatus;
 }
-export const Snapshot = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Snapshot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.optional(S.String),
     Status: S.optional(S.String),
@@ -513,19 +508,19 @@ export const Snapshot = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CopySnapshotResponse {
   Snapshot?: Snapshot;
 }
-export const CopySnapshotResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CopySnapshotResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Snapshot: S.optional(Snapshot) }).pipe(ns),
 ).annotate({
   identifier: "CopySnapshotResponse",
 }) as any as S.Schema<CopySnapshotResponse>;
 export type UserNameListInput = string[];
-export const UserNameListInput = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const UserNameListInput = /*@__PURE__*/ S.Array(S.String);
 export interface CreateACLRequest {
   ACLName: string;
   UserNames?: string[];
   Tags?: Tag[];
 }
-export const CreateACLRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateACLRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ACLName: S.String,
     UserNames: S.optional(UserNameListInput),
@@ -545,12 +540,12 @@ export const CreateACLRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "CreateACLRequest",
 }) as any as S.Schema<CreateACLRequest>;
 export type UserNameList = string[];
-export const UserNameList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const UserNameList = /*@__PURE__*/ S.Array(S.String);
 export interface ACLPendingChanges {
   UserNamesToRemove?: string[];
   UserNamesToAdd?: string[];
 }
-export const ACLPendingChanges = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ACLPendingChanges = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     UserNamesToRemove: S.optional(UserNameList),
     UserNamesToAdd: S.optional(UserNameList),
@@ -559,7 +554,7 @@ export const ACLPendingChanges = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ACLPendingChanges",
 }) as any as S.Schema<ACLPendingChanges>;
 export type ACLClusterNameList = string[];
-export const ACLClusterNameList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const ACLClusterNameList = /*@__PURE__*/ S.Array(S.String);
 export interface ACL {
   Name?: string;
   Status?: string;
@@ -569,7 +564,7 @@ export interface ACL {
   Clusters?: string[];
   ARN?: string;
 }
-export const ACL = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ACL = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.optional(S.String),
     Status: S.optional(S.String),
@@ -583,17 +578,17 @@ export const ACL = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateACLResponse {
   ACL?: ACL;
 }
-export const CreateACLResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateACLResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ACL: S.optional(ACL) }).pipe(ns),
 ).annotate({
   identifier: "CreateACLResponse",
 }) as any as S.Schema<CreateACLResponse>;
 export type SecurityGroupIdsList = string[];
-export const SecurityGroupIdsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const SecurityGroupIdsList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("SecurityGroupId")),
 );
 export type SnapshotArnsList = string[];
-export const SnapshotArnsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const SnapshotArnsList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("SnapshotArn")),
 );
 export interface CreateClusterRequest {
@@ -624,7 +619,7 @@ export interface CreateClusterRequest {
   NetworkType?: NetworkType;
   IpDiscovery?: IpDiscovery;
 }
-export const CreateClusterRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ClusterName: S.String,
     NodeType: S.String,
@@ -669,7 +664,7 @@ export const CreateClusterRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateClusterResponse {
   Cluster?: Cluster;
 }
-export const CreateClusterResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateClusterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns),
 ).annotate({
   identifier: "CreateClusterResponse",
@@ -685,39 +680,38 @@ export interface CreateMultiRegionClusterRequest {
   TLSEnabled?: boolean;
   Tags?: Tag[];
 }
-export const CreateMultiRegionClusterRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MultiRegionClusterNameSuffix: S.String,
-      Description: S.optional(S.String),
-      Engine: S.optional(S.String),
-      EngineVersion: S.optional(S.String),
-      NodeType: S.String,
-      MultiRegionParameterGroupName: S.optional(S.String),
-      NumShards: S.optional(S.Number),
-      TLSEnabled: S.optional(S.Boolean),
-      Tags: S.optional(TagList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateMultiRegionClusterRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MultiRegionClusterNameSuffix: S.String,
+    Description: S.optional(S.String),
+    Engine: S.optional(S.String),
+    EngineVersion: S.optional(S.String),
+    NodeType: S.String,
+    MultiRegionParameterGroupName: S.optional(S.String),
+    NumShards: S.optional(S.Number),
+    TLSEnabled: S.optional(S.Boolean),
+    Tags: S.optional(TagList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateMultiRegionClusterRequest",
-  }) as any as S.Schema<CreateMultiRegionClusterRequest>;
+  ),
+).annotate({
+  identifier: "CreateMultiRegionClusterRequest",
+}) as any as S.Schema<CreateMultiRegionClusterRequest>;
 export interface RegionalCluster {
   ClusterName?: string;
   Region?: string;
   Status?: string;
   ARN?: string;
 }
-export const RegionalCluster = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RegionalCluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ClusterName: S.optional(S.String),
     Region: S.optional(S.String),
@@ -728,7 +722,7 @@ export const RegionalCluster = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "RegionalCluster",
 }) as any as S.Schema<RegionalCluster>;
 export type RegionalClusterList = RegionalCluster[];
-export const RegionalClusterList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const RegionalClusterList = /*@__PURE__*/ S.Array(
   RegionalCluster.pipe(T.XmlName("RegionalCluster")).annotate({
     identifier: "RegionalCluster",
   }),
@@ -746,7 +740,7 @@ export interface MultiRegionCluster {
   TLSEnabled?: boolean;
   ARN?: string;
 }
-export const MultiRegionCluster = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MultiRegionCluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MultiRegionClusterName: S.optional(S.String),
     Description: S.optional(S.String),
@@ -766,46 +760,44 @@ export const MultiRegionCluster = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateMultiRegionClusterResponse {
   MultiRegionCluster?: MultiRegionCluster;
 }
-export const CreateMultiRegionClusterResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ MultiRegionCluster: S.optional(MultiRegionCluster) }).pipe(ns),
-  ).annotate({
-    identifier: "CreateMultiRegionClusterResponse",
-  }) as any as S.Schema<CreateMultiRegionClusterResponse>;
+export const CreateMultiRegionClusterResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ MultiRegionCluster: S.optional(MultiRegionCluster) }).pipe(ns),
+).annotate({
+  identifier: "CreateMultiRegionClusterResponse",
+}) as any as S.Schema<CreateMultiRegionClusterResponse>;
 export interface CreateParameterGroupRequest {
   ParameterGroupName: string;
   Family: string;
   Description?: string;
   Tags?: Tag[];
 }
-export const CreateParameterGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ParameterGroupName: S.String,
-      Family: S.String,
-      Description: S.optional(S.String),
-      Tags: S.optional(TagList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateParameterGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ParameterGroupName: S.String,
+    Family: S.String,
+    Description: S.optional(S.String),
+    Tags: S.optional(TagList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateParameterGroupRequest",
-  }) as any as S.Schema<CreateParameterGroupRequest>;
+  ),
+).annotate({
+  identifier: "CreateParameterGroupRequest",
+}) as any as S.Schema<CreateParameterGroupRequest>;
 export interface ParameterGroup {
   Name?: string;
   Family?: string;
   Description?: string;
   ARN?: string;
 }
-export const ParameterGroup = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ParameterGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.optional(S.String),
     Family: S.optional(S.String),
@@ -816,19 +808,18 @@ export const ParameterGroup = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateParameterGroupResponse {
   ParameterGroup?: ParameterGroup;
 }
-export const CreateParameterGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ ParameterGroup: S.optional(ParameterGroup) }).pipe(ns),
-  ).annotate({
-    identifier: "CreateParameterGroupResponse",
-  }) as any as S.Schema<CreateParameterGroupResponse>;
+export const CreateParameterGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ParameterGroup: S.optional(ParameterGroup) }).pipe(ns),
+).annotate({
+  identifier: "CreateParameterGroupResponse",
+}) as any as S.Schema<CreateParameterGroupResponse>;
 export interface CreateSnapshotRequest {
   ClusterName: string;
   SnapshotName: string;
   KmsKeyId?: string;
   Tags?: Tag[];
 }
-export const CreateSnapshotRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ClusterName: S.String,
     SnapshotName: S.String,
@@ -851,13 +842,13 @@ export const CreateSnapshotRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateSnapshotResponse {
   Snapshot?: Snapshot;
 }
-export const CreateSnapshotResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ Snapshot: S.optional(Snapshot) }).pipe(ns),
+export const CreateSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Snapshot: S.optional(Snapshot) }).pipe(ns),
 ).annotate({
   identifier: "CreateSnapshotResponse",
 }) as any as S.Schema<CreateSnapshotResponse>;
 export type SubnetIdentifierList = string[];
-export const SubnetIdentifierList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const SubnetIdentifierList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("SubnetIdentifier")),
 );
 export interface CreateSubnetGroupRequest {
@@ -866,43 +857,42 @@ export interface CreateSubnetGroupRequest {
   SubnetIds: string[];
   Tags?: Tag[];
 }
-export const CreateSubnetGroupRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      SubnetGroupName: S.String,
-      Description: S.optional(S.String),
-      SubnetIds: SubnetIdentifierList,
-      Tags: S.optional(TagList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateSubnetGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SubnetGroupName: S.String,
+    Description: S.optional(S.String),
+    SubnetIds: SubnetIdentifierList,
+    Tags: S.optional(TagList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "CreateSubnetGroupRequest",
 }) as any as S.Schema<CreateSubnetGroupRequest>;
 export interface AvailabilityZone {
   Name?: string;
 }
-export const AvailabilityZone = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AvailabilityZone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.optional(S.String) }),
 ).annotate({
   identifier: "AvailabilityZone",
 }) as any as S.Schema<AvailabilityZone>;
 export type NetworkTypeList = NetworkType[];
-export const NetworkTypeList = /*@__PURE__*/ /*#__PURE__*/ S.Array(NetworkType);
+export const NetworkTypeList = /*@__PURE__*/ S.Array(NetworkType);
 export interface Subnet {
   Identifier?: string;
   AvailabilityZone?: AvailabilityZone;
   SupportedNetworkTypes?: NetworkType[];
 }
-export const Subnet = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Subnet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Identifier: S.optional(S.String),
     AvailabilityZone: S.optional(AvailabilityZone),
@@ -910,7 +900,7 @@ export const Subnet = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Subnet" }) as any as S.Schema<Subnet>;
 export type SubnetList = Subnet[];
-export const SubnetList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const SubnetList = /*@__PURE__*/ S.Array(
   Subnet.pipe(T.XmlName("Subnet")).annotate({ identifier: "Subnet" }),
 );
 export interface SubnetGroup {
@@ -921,7 +911,7 @@ export interface SubnetGroup {
   ARN?: string;
   SupportedNetworkTypes?: NetworkType[];
 }
-export const SubnetGroup = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SubnetGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.optional(S.String),
     Description: S.optional(S.String),
@@ -934,20 +924,20 @@ export const SubnetGroup = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateSubnetGroupResponse {
   SubnetGroup?: SubnetGroup;
 }
-export const CreateSubnetGroupResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ SubnetGroup: S.optional(SubnetGroup) }).pipe(ns),
+export const CreateSubnetGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ SubnetGroup: S.optional(SubnetGroup) }).pipe(ns),
 ).annotate({
   identifier: "CreateSubnetGroupResponse",
 }) as any as S.Schema<CreateSubnetGroupResponse>;
 export type InputAuthenticationType = "password" | "iam" | (string & {});
-export const InputAuthenticationType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const InputAuthenticationType = /*@__PURE__*/ S.String;
 export type PasswordListInput = string[];
-export const PasswordListInput = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const PasswordListInput = /*@__PURE__*/ S.Array(S.String);
 export interface AuthenticationMode {
   Type?: InputAuthenticationType;
   Passwords?: string[];
 }
-export const AuthenticationMode = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AuthenticationMode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Type: S.optional(InputAuthenticationType),
     Passwords: S.optional(PasswordListInput),
@@ -961,7 +951,7 @@ export interface CreateUserRequest {
   AccessString: string;
   Tags?: Tag[];
 }
-export const CreateUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     UserName: S.String,
     AuthenticationMode: AuthenticationMode,
@@ -982,18 +972,18 @@ export const CreateUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "CreateUserRequest",
 }) as any as S.Schema<CreateUserRequest>;
 export type ACLNameList = string[];
-export const ACLNameList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const ACLNameList = /*@__PURE__*/ S.Array(S.String);
 export type AuthenticationType =
   | "password"
   | "no-password"
   | "iam"
   | (string & {});
-export const AuthenticationType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AuthenticationType = /*@__PURE__*/ S.String;
 export interface Authentication {
   Type?: AuthenticationType;
   PasswordCount?: number;
 }
-export const Authentication = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Authentication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Type: S.optional(AuthenticationType),
     PasswordCount: S.optional(S.Number),
@@ -1008,7 +998,7 @@ export interface User {
   Authentication?: Authentication;
   ARN?: string;
 }
-export const User = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.optional(S.String),
     Status: S.optional(S.String),
@@ -1022,7 +1012,7 @@ export const User = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateUserResponse {
   User?: User;
 }
-export const CreateUserResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ User: S.optional(User) }).pipe(ns),
 ).annotate({
   identifier: "CreateUserResponse",
@@ -1030,7 +1020,7 @@ export const CreateUserResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteACLRequest {
   ACLName: string;
 }
-export const DeleteACLRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteACLRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ACLName: S.String }).pipe(
     T.all(
       ns,
@@ -1048,7 +1038,7 @@ export const DeleteACLRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteACLResponse {
   ACL?: ACL;
 }
-export const DeleteACLResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteACLResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ACL: S.optional(ACL) }).pipe(ns),
 ).annotate({
   identifier: "DeleteACLResponse",
@@ -1058,7 +1048,7 @@ export interface DeleteClusterRequest {
   MultiRegionClusterName?: string;
   FinalSnapshotName?: string;
 }
-export const DeleteClusterRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ClusterName: S.String,
     MultiRegionClusterName: S.optional(S.String),
@@ -1080,7 +1070,7 @@ export const DeleteClusterRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteClusterResponse {
   Cluster?: Cluster;
 }
-export const DeleteClusterResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteClusterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns),
 ).annotate({
   identifier: "DeleteClusterResponse",
@@ -1088,63 +1078,59 @@ export const DeleteClusterResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteMultiRegionClusterRequest {
   MultiRegionClusterName: string;
 }
-export const DeleteMultiRegionClusterRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ MultiRegionClusterName: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteMultiRegionClusterRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ MultiRegionClusterName: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteMultiRegionClusterRequest",
-  }) as any as S.Schema<DeleteMultiRegionClusterRequest>;
+  ),
+).annotate({
+  identifier: "DeleteMultiRegionClusterRequest",
+}) as any as S.Schema<DeleteMultiRegionClusterRequest>;
 export interface DeleteMultiRegionClusterResponse {
   MultiRegionCluster?: MultiRegionCluster;
 }
-export const DeleteMultiRegionClusterResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ MultiRegionCluster: S.optional(MultiRegionCluster) }).pipe(ns),
-  ).annotate({
-    identifier: "DeleteMultiRegionClusterResponse",
-  }) as any as S.Schema<DeleteMultiRegionClusterResponse>;
+export const DeleteMultiRegionClusterResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ MultiRegionCluster: S.optional(MultiRegionCluster) }).pipe(ns),
+).annotate({
+  identifier: "DeleteMultiRegionClusterResponse",
+}) as any as S.Schema<DeleteMultiRegionClusterResponse>;
 export interface DeleteParameterGroupRequest {
   ParameterGroupName: string;
 }
-export const DeleteParameterGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ ParameterGroupName: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteParameterGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ParameterGroupName: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteParameterGroupRequest",
-  }) as any as S.Schema<DeleteParameterGroupRequest>;
+  ),
+).annotate({
+  identifier: "DeleteParameterGroupRequest",
+}) as any as S.Schema<DeleteParameterGroupRequest>;
 export interface DeleteParameterGroupResponse {
   ParameterGroup?: ParameterGroup;
 }
-export const DeleteParameterGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ ParameterGroup: S.optional(ParameterGroup) }).pipe(ns),
-  ).annotate({
-    identifier: "DeleteParameterGroupResponse",
-  }) as any as S.Schema<DeleteParameterGroupResponse>;
+export const DeleteParameterGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ParameterGroup: S.optional(ParameterGroup) }).pipe(ns),
+).annotate({
+  identifier: "DeleteParameterGroupResponse",
+}) as any as S.Schema<DeleteParameterGroupResponse>;
 export interface DeleteSnapshotRequest {
   SnapshotName: string;
 }
-export const DeleteSnapshotRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SnapshotName: S.String }).pipe(
     T.all(
       ns,
@@ -1162,42 +1148,41 @@ export const DeleteSnapshotRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteSnapshotResponse {
   Snapshot?: Snapshot;
 }
-export const DeleteSnapshotResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ Snapshot: S.optional(Snapshot) }).pipe(ns),
+export const DeleteSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Snapshot: S.optional(Snapshot) }).pipe(ns),
 ).annotate({
   identifier: "DeleteSnapshotResponse",
 }) as any as S.Schema<DeleteSnapshotResponse>;
 export interface DeleteSubnetGroupRequest {
   SubnetGroupName: string;
 }
-export const DeleteSubnetGroupRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ SubnetGroupName: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteSubnetGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ SubnetGroupName: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DeleteSubnetGroupRequest",
 }) as any as S.Schema<DeleteSubnetGroupRequest>;
 export interface DeleteSubnetGroupResponse {
   SubnetGroup?: SubnetGroup;
 }
-export const DeleteSubnetGroupResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ SubnetGroup: S.optional(SubnetGroup) }).pipe(ns),
+export const DeleteSubnetGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ SubnetGroup: S.optional(SubnetGroup) }).pipe(ns),
 ).annotate({
   identifier: "DeleteSubnetGroupResponse",
 }) as any as S.Schema<DeleteSubnetGroupResponse>;
 export interface DeleteUserRequest {
   UserName: string;
 }
-export const DeleteUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ UserName: S.String }).pipe(
     T.all(
       ns,
@@ -1215,7 +1200,7 @@ export const DeleteUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteUserResponse {
   User?: User;
 }
-export const DeleteUserResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ User: S.optional(User) }).pipe(ns),
 ).annotate({
   identifier: "DeleteUserResponse",
@@ -1225,7 +1210,7 @@ export interface DescribeACLsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const DescribeACLsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DescribeACLsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ACLName: S.optional(S.String),
     MaxResults: S.optional(S.Number),
@@ -1245,12 +1230,12 @@ export const DescribeACLsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DescribeACLsRequest",
 }) as any as S.Schema<DescribeACLsRequest>;
 export type ACLList = ACL[];
-export const ACLList = /*@__PURE__*/ /*#__PURE__*/ S.Array(ACL);
+export const ACLList = /*@__PURE__*/ S.Array(ACL);
 export interface DescribeACLsResponse {
   ACLs?: ACL[];
   NextToken?: string;
 }
-export const DescribeACLsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DescribeACLsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ACLs: S.optional(ACLList), NextToken: S.optional(S.String) }).pipe(
     ns,
   ),
@@ -1263,24 +1248,23 @@ export interface DescribeClustersRequest {
   NextToken?: string;
   ShowShardDetails?: boolean;
 }
-export const DescribeClustersRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ClusterName: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-      ShowShardDetails: S.optional(S.Boolean),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeClustersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ClusterName: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+    ShowShardDetails: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DescribeClustersRequest",
 }) as any as S.Schema<DescribeClustersRequest>;
@@ -1288,12 +1272,11 @@ export interface DescribeClustersResponse {
   NextToken?: string;
   Clusters?: Cluster[];
 }
-export const DescribeClustersResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      Clusters: S.optional(ClusterList),
-    }).pipe(ns),
+export const DescribeClustersResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    Clusters: S.optional(ClusterList),
+  }).pipe(ns),
 ).annotate({
   identifier: "DescribeClustersResponse",
 }) as any as S.Schema<DescribeClustersResponse>;
@@ -1305,36 +1288,35 @@ export interface DescribeEngineVersionsRequest {
   NextToken?: string;
   DefaultOnly?: boolean;
 }
-export const DescribeEngineVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Engine: S.optional(S.String),
-      EngineVersion: S.optional(S.String),
-      ParameterGroupFamily: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-      DefaultOnly: S.optional(S.Boolean),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeEngineVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Engine: S.optional(S.String),
+    EngineVersion: S.optional(S.String),
+    ParameterGroupFamily: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+    DefaultOnly: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeEngineVersionsRequest",
-  }) as any as S.Schema<DescribeEngineVersionsRequest>;
+  ),
+).annotate({
+  identifier: "DescribeEngineVersionsRequest",
+}) as any as S.Schema<DescribeEngineVersionsRequest>;
 export interface EngineVersionInfo {
   Engine?: string;
   EngineVersion?: string;
   EnginePatchVersion?: string;
   ParameterGroupFamily?: string;
 }
-export const EngineVersionInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EngineVersionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Engine: S.optional(S.String),
     EngineVersion: S.optional(S.String),
@@ -1345,21 +1327,19 @@ export const EngineVersionInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "EngineVersionInfo",
 }) as any as S.Schema<EngineVersionInfo>;
 export type EngineVersionInfoList = EngineVersionInfo[];
-export const EngineVersionInfoList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(EngineVersionInfo);
+export const EngineVersionInfoList = /*@__PURE__*/ S.Array(EngineVersionInfo);
 export interface DescribeEngineVersionsResponse {
   NextToken?: string;
   EngineVersions?: EngineVersionInfo[];
 }
-export const DescribeEngineVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      EngineVersions: S.optional(EngineVersionInfoList),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeEngineVersionsResponse",
-  }) as any as S.Schema<DescribeEngineVersionsResponse>;
+export const DescribeEngineVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    EngineVersions: S.optional(EngineVersionInfoList),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeEngineVersionsResponse",
+}) as any as S.Schema<DescribeEngineVersionsResponse>;
 export type SourceType =
   | "node"
   | "parameter-group"
@@ -1368,7 +1348,7 @@ export type SourceType =
   | "user"
   | "acl"
   | (string & {});
-export const SourceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SourceType = /*@__PURE__*/ S.String;
 export interface DescribeEventsRequest {
   SourceName?: string;
   SourceType?: SourceType;
@@ -1378,7 +1358,7 @@ export interface DescribeEventsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const DescribeEventsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DescribeEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SourceName: S.optional(S.String),
     SourceType: S.optional(SourceType),
@@ -1407,7 +1387,7 @@ export interface Event {
   Message?: string;
   Date?: Date;
 }
-export const Event = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Event = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SourceName: S.optional(S.String),
     SourceType: S.optional(SourceType),
@@ -1416,19 +1396,18 @@ export const Event = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Event" }) as any as S.Schema<Event>;
 export type EventList = Event[];
-export const EventList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const EventList = /*@__PURE__*/ S.Array(
   Event.pipe(T.XmlName("Event")).annotate({ identifier: "Event" }),
 );
 export interface DescribeEventsResponse {
   NextToken?: string;
   Events?: Event[];
 }
-export const DescribeEventsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      Events: S.optional(EventList),
-    }).pipe(ns),
+export const DescribeEventsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    Events: S.optional(EventList),
+  }).pipe(ns),
 ).annotate({
   identifier: "DescribeEventsResponse",
 }) as any as S.Schema<DescribeEventsResponse>;
@@ -1438,50 +1417,47 @@ export interface DescribeMultiRegionClustersRequest {
   NextToken?: string;
   ShowClusterDetails?: boolean;
 }
-export const DescribeMultiRegionClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MultiRegionClusterName: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-      ShowClusterDetails: S.optional(S.Boolean),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeMultiRegionClustersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MultiRegionClusterName: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+    ShowClusterDetails: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeMultiRegionClustersRequest",
-  }) as any as S.Schema<DescribeMultiRegionClustersRequest>;
+  ),
+).annotate({
+  identifier: "DescribeMultiRegionClustersRequest",
+}) as any as S.Schema<DescribeMultiRegionClustersRequest>;
 export type MultiRegionClusterList = MultiRegionCluster[];
-export const MultiRegionClusterList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(MultiRegionCluster);
+export const MultiRegionClusterList = /*@__PURE__*/ S.Array(MultiRegionCluster);
 export interface DescribeMultiRegionClustersResponse {
   NextToken?: string;
   MultiRegionClusters?: MultiRegionCluster[];
 }
-export const DescribeMultiRegionClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      MultiRegionClusters: S.optional(MultiRegionClusterList),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeMultiRegionClustersResponse",
-  }) as any as S.Schema<DescribeMultiRegionClustersResponse>;
+export const DescribeMultiRegionClustersResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    MultiRegionClusters: S.optional(MultiRegionClusterList),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeMultiRegionClustersResponse",
+}) as any as S.Schema<DescribeMultiRegionClustersResponse>;
 export interface DescribeMultiRegionParameterGroupsRequest {
   MultiRegionParameterGroupName?: string;
   MaxResults?: number;
   NextToken?: string;
 }
 export const DescribeMultiRegionParameterGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       MultiRegionParameterGroupName: S.optional(S.String),
       MaxResults: S.optional(S.Number),
@@ -1506,30 +1482,28 @@ export interface MultiRegionParameterGroup {
   Description?: string;
   ARN?: string;
 }
-export const MultiRegionParameterGroup = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Name: S.optional(S.String),
-      Family: S.optional(S.String),
-      Description: S.optional(S.String),
-      ARN: S.optional(S.String),
-    }),
+export const MultiRegionParameterGroup = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.optional(S.String),
+    Family: S.optional(S.String),
+    Description: S.optional(S.String),
+    ARN: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "MultiRegionParameterGroup",
 }) as any as S.Schema<MultiRegionParameterGroup>;
 export type MultiRegionParameterGroupList = MultiRegionParameterGroup[];
-export const MultiRegionParameterGroupList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(
-    MultiRegionParameterGroup.pipe(
-      T.XmlName("MultiRegionParameterGroup"),
-    ).annotate({ identifier: "MultiRegionParameterGroup" }),
-  );
+export const MultiRegionParameterGroupList = /*@__PURE__*/ S.Array(
+  MultiRegionParameterGroup.pipe(
+    T.XmlName("MultiRegionParameterGroup"),
+  ).annotate({ identifier: "MultiRegionParameterGroup" }),
+);
 export interface DescribeMultiRegionParameterGroupsResponse {
   NextToken?: string;
   MultiRegionParameterGroups?: MultiRegionParameterGroup[];
 }
 export const DescribeMultiRegionParameterGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       NextToken: S.optional(S.String),
       MultiRegionParameterGroups: S.optional(MultiRegionParameterGroupList),
@@ -1543,8 +1517,8 @@ export interface DescribeMultiRegionParametersRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const DescribeMultiRegionParametersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DescribeMultiRegionParametersRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       MultiRegionParameterGroupName: S.String,
       Source: S.optional(S.String),
@@ -1561,9 +1535,9 @@ export const DescribeMultiRegionParametersRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DescribeMultiRegionParametersRequest",
-  }) as any as S.Schema<DescribeMultiRegionParametersRequest>;
+).annotate({
+  identifier: "DescribeMultiRegionParametersRequest",
+}) as any as S.Schema<DescribeMultiRegionParametersRequest>;
 export interface MultiRegionParameter {
   Name?: string;
   Value?: string;
@@ -1573,7 +1547,7 @@ export interface MultiRegionParameter {
   AllowedValues?: string;
   MinimumEngineVersion?: string;
 }
-export const MultiRegionParameter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MultiRegionParameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.optional(S.String),
     Value: S.optional(S.String),
@@ -1587,7 +1561,7 @@ export const MultiRegionParameter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "MultiRegionParameter",
 }) as any as S.Schema<MultiRegionParameter>;
 export type MultiRegionParametersList = MultiRegionParameter[];
-export const MultiRegionParametersList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const MultiRegionParametersList = /*@__PURE__*/ S.Array(
   MultiRegionParameter.pipe(T.XmlName("MultiRegionParameter")).annotate({
     identifier: "MultiRegionParameter",
   }),
@@ -1596,42 +1570,41 @@ export interface DescribeMultiRegionParametersResponse {
   NextToken?: string;
   MultiRegionParameters?: MultiRegionParameter[];
 }
-export const DescribeMultiRegionParametersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DescribeMultiRegionParametersResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       NextToken: S.optional(S.String),
       MultiRegionParameters: S.optional(MultiRegionParametersList),
     }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeMultiRegionParametersResponse",
-  }) as any as S.Schema<DescribeMultiRegionParametersResponse>;
+).annotate({
+  identifier: "DescribeMultiRegionParametersResponse",
+}) as any as S.Schema<DescribeMultiRegionParametersResponse>;
 export interface DescribeParameterGroupsRequest {
   ParameterGroupName?: string;
   MaxResults?: number;
   NextToken?: string;
 }
-export const DescribeParameterGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ParameterGroupName: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeParameterGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ParameterGroupName: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeParameterGroupsRequest",
-  }) as any as S.Schema<DescribeParameterGroupsRequest>;
+  ),
+).annotate({
+  identifier: "DescribeParameterGroupsRequest",
+}) as any as S.Schema<DescribeParameterGroupsRequest>;
 export type ParameterGroupList = ParameterGroup[];
-export const ParameterGroupList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ParameterGroupList = /*@__PURE__*/ S.Array(
   ParameterGroup.pipe(T.XmlName("ParameterGroup")).annotate({
     identifier: "ParameterGroup",
   }),
@@ -1640,37 +1613,35 @@ export interface DescribeParameterGroupsResponse {
   NextToken?: string;
   ParameterGroups?: ParameterGroup[];
 }
-export const DescribeParameterGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      ParameterGroups: S.optional(ParameterGroupList),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeParameterGroupsResponse",
-  }) as any as S.Schema<DescribeParameterGroupsResponse>;
+export const DescribeParameterGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    ParameterGroups: S.optional(ParameterGroupList),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeParameterGroupsResponse",
+}) as any as S.Schema<DescribeParameterGroupsResponse>;
 export interface DescribeParametersRequest {
   ParameterGroupName: string;
   MaxResults?: number;
   NextToken?: string;
 }
-export const DescribeParametersRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ParameterGroupName: S.String,
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeParametersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ParameterGroupName: S.String,
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DescribeParametersRequest",
 }) as any as S.Schema<DescribeParametersRequest>;
@@ -1682,7 +1653,7 @@ export interface Parameter {
   AllowedValues?: string;
   MinimumEngineVersion?: string;
 }
-export const Parameter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Parameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.optional(S.String),
     Value: S.optional(S.String),
@@ -1693,19 +1664,18 @@ export const Parameter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Parameter" }) as any as S.Schema<Parameter>;
 export type ParametersList = Parameter[];
-export const ParametersList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ParametersList = /*@__PURE__*/ S.Array(
   Parameter.pipe(T.XmlName("Parameter")).annotate({ identifier: "Parameter" }),
 );
 export interface DescribeParametersResponse {
   NextToken?: string;
   Parameters?: Parameter[];
 }
-export const DescribeParametersResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      Parameters: S.optional(ParametersList),
-    }).pipe(ns),
+export const DescribeParametersResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    Parameters: S.optional(ParametersList),
+  }).pipe(ns),
 ).annotate({
   identifier: "DescribeParametersResponse",
 }) as any as S.Schema<DescribeParametersResponse>;
@@ -1718,35 +1688,34 @@ export interface DescribeReservedNodesRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const DescribeReservedNodesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ReservationId: S.optional(S.String),
-      ReservedNodesOfferingId: S.optional(S.String),
-      NodeType: S.optional(S.String),
-      Duration: S.optional(S.String),
-      OfferingType: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeReservedNodesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ReservationId: S.optional(S.String),
+    ReservedNodesOfferingId: S.optional(S.String),
+    NodeType: S.optional(S.String),
+    Duration: S.optional(S.String),
+    OfferingType: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeReservedNodesRequest",
-  }) as any as S.Schema<DescribeReservedNodesRequest>;
+  ),
+).annotate({
+  identifier: "DescribeReservedNodesRequest",
+}) as any as S.Schema<DescribeReservedNodesRequest>;
 export interface RecurringCharge {
   RecurringChargeAmount?: number;
   RecurringChargeFrequency?: string;
 }
-export const RecurringCharge = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RecurringCharge = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RecurringChargeAmount: S.optional(S.Number),
     RecurringChargeFrequency: S.optional(S.String),
@@ -1755,7 +1724,7 @@ export const RecurringCharge = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "RecurringCharge",
 }) as any as S.Schema<RecurringCharge>;
 export type RecurringChargeList = RecurringCharge[];
-export const RecurringChargeList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const RecurringChargeList = /*@__PURE__*/ S.Array(
   RecurringCharge.pipe(T.XmlName("RecurringCharge")).annotate({
     identifier: "RecurringCharge",
   }),
@@ -1773,7 +1742,7 @@ export interface ReservedNode {
   RecurringCharges?: RecurringCharge[];
   ARN?: string;
 }
-export const ReservedNode = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ReservedNode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ReservationId: S.optional(S.String),
     ReservedNodesOfferingId: S.optional(S.String),
@@ -1789,7 +1758,7 @@ export const ReservedNode = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ReservedNode" }) as any as S.Schema<ReservedNode>;
 export type ReservedNodeList = ReservedNode[];
-export const ReservedNodeList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ReservedNodeList = /*@__PURE__*/ S.Array(
   ReservedNode.pipe(T.XmlName("ReservedNode")).annotate({
     identifier: "ReservedNode",
   }),
@@ -1798,15 +1767,14 @@ export interface DescribeReservedNodesResponse {
   NextToken?: string;
   ReservedNodes?: ReservedNode[];
 }
-export const DescribeReservedNodesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      ReservedNodes: S.optional(ReservedNodeList),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeReservedNodesResponse",
-  }) as any as S.Schema<DescribeReservedNodesResponse>;
+export const DescribeReservedNodesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    ReservedNodes: S.optional(ReservedNodeList),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeReservedNodesResponse",
+}) as any as S.Schema<DescribeReservedNodesResponse>;
 export interface DescribeReservedNodesOfferingsRequest {
   ReservedNodesOfferingId?: string;
   NodeType?: string;
@@ -1815,8 +1783,8 @@ export interface DescribeReservedNodesOfferingsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const DescribeReservedNodesOfferingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DescribeReservedNodesOfferingsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ReservedNodesOfferingId: S.optional(S.String),
       NodeType: S.optional(S.String),
@@ -1835,9 +1803,9 @@ export const DescribeReservedNodesOfferingsRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DescribeReservedNodesOfferingsRequest",
-  }) as any as S.Schema<DescribeReservedNodesOfferingsRequest>;
+).annotate({
+  identifier: "DescribeReservedNodesOfferingsRequest",
+}) as any as S.Schema<DescribeReservedNodesOfferingsRequest>;
 export interface ReservedNodesOffering {
   ReservedNodesOfferingId?: string;
   NodeType?: string;
@@ -1846,7 +1814,7 @@ export interface ReservedNodesOffering {
   OfferingType?: string;
   RecurringCharges?: RecurringCharge[];
 }
-export const ReservedNodesOffering = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ReservedNodesOffering = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ReservedNodesOfferingId: S.optional(S.String),
     NodeType: S.optional(S.String),
@@ -1859,7 +1827,7 @@ export const ReservedNodesOffering = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ReservedNodesOffering",
 }) as any as S.Schema<ReservedNodesOffering>;
 export type ReservedNodesOfferingList = ReservedNodesOffering[];
-export const ReservedNodesOfferingList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ReservedNodesOfferingList = /*@__PURE__*/ S.Array(
   ReservedNodesOffering.pipe(T.XmlName("ReservedNodesOffering")).annotate({
     identifier: "ReservedNodesOffering",
   }),
@@ -1868,18 +1836,18 @@ export interface DescribeReservedNodesOfferingsResponse {
   NextToken?: string;
   ReservedNodesOfferings?: ReservedNodesOffering[];
 }
-export const DescribeReservedNodesOfferingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DescribeReservedNodesOfferingsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       NextToken: S.optional(S.String),
       ReservedNodesOfferings: S.optional(ReservedNodesOfferingList),
     }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeReservedNodesOfferingsResponse",
-  }) as any as S.Schema<DescribeReservedNodesOfferingsResponse>;
+).annotate({
+  identifier: "DescribeReservedNodesOfferingsResponse",
+}) as any as S.Schema<DescribeReservedNodesOfferingsResponse>;
 export type ServiceUpdateStatusList = ServiceUpdateStatus[];
 export const ServiceUpdateStatusList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ServiceUpdateStatus);
+  /*@__PURE__*/ S.Array(ServiceUpdateStatus);
 export interface DescribeServiceUpdatesRequest {
   ServiceUpdateName?: string;
   ClusterNames?: string[];
@@ -1887,30 +1855,29 @@ export interface DescribeServiceUpdatesRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const DescribeServiceUpdatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ServiceUpdateName: S.optional(S.String),
-      ClusterNames: S.optional(ClusterNameList),
-      Status: S.optional(ServiceUpdateStatusList),
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeServiceUpdatesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ServiceUpdateName: S.optional(S.String),
+    ClusterNames: S.optional(ClusterNameList),
+    Status: S.optional(ServiceUpdateStatusList),
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeServiceUpdatesRequest",
-  }) as any as S.Schema<DescribeServiceUpdatesRequest>;
+  ),
+).annotate({
+  identifier: "DescribeServiceUpdatesRequest",
+}) as any as S.Schema<DescribeServiceUpdatesRequest>;
 export type ServiceUpdateType = "security-update" | (string & {});
-export const ServiceUpdateType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ServiceUpdateType = /*@__PURE__*/ S.String;
 export interface ServiceUpdate {
   ClusterName?: string;
   ServiceUpdateName?: string;
@@ -1922,7 +1889,7 @@ export interface ServiceUpdate {
   NodesUpdated?: string;
   AutoUpdateStartDate?: Date;
 }
-export const ServiceUpdate = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ServiceUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ClusterName: S.optional(S.String),
     ServiceUpdateName: S.optional(S.String),
@@ -1938,7 +1905,7 @@ export const ServiceUpdate = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ServiceUpdate" }) as any as S.Schema<ServiceUpdate>;
 export type ServiceUpdateList = ServiceUpdate[];
-export const ServiceUpdateList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ServiceUpdateList = /*@__PURE__*/ S.Array(
   ServiceUpdate.pipe(T.XmlName("ServiceUpdate")).annotate({
     identifier: "ServiceUpdate",
   }),
@@ -1947,15 +1914,14 @@ export interface DescribeServiceUpdatesResponse {
   NextToken?: string;
   ServiceUpdates?: ServiceUpdate[];
 }
-export const DescribeServiceUpdatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      ServiceUpdates: S.optional(ServiceUpdateList),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeServiceUpdatesResponse",
-  }) as any as S.Schema<DescribeServiceUpdatesResponse>;
+export const DescribeServiceUpdatesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    ServiceUpdates: S.optional(ServiceUpdateList),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeServiceUpdatesResponse",
+}) as any as S.Schema<DescribeServiceUpdatesResponse>;
 export interface DescribeSnapshotsRequest {
   ClusterName?: string;
   SnapshotName?: string;
@@ -1964,41 +1930,39 @@ export interface DescribeSnapshotsRequest {
   MaxResults?: number;
   ShowDetail?: boolean;
 }
-export const DescribeSnapshotsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ClusterName: S.optional(S.String),
-      SnapshotName: S.optional(S.String),
-      Source: S.optional(S.String),
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-      ShowDetail: S.optional(S.Boolean),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ClusterName: S.optional(S.String),
+    SnapshotName: S.optional(S.String),
+    Source: S.optional(S.String),
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+    ShowDetail: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DescribeSnapshotsRequest",
 }) as any as S.Schema<DescribeSnapshotsRequest>;
 export type SnapshotList = Snapshot[];
-export const SnapshotList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Snapshot);
+export const SnapshotList = /*@__PURE__*/ S.Array(Snapshot);
 export interface DescribeSnapshotsResponse {
   NextToken?: string;
   Snapshots?: Snapshot[];
 }
-export const DescribeSnapshotsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      Snapshots: S.optional(SnapshotList),
-    }).pipe(ns),
+export const DescribeSnapshotsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    Snapshots: S.optional(SnapshotList),
+  }).pipe(ns),
 ).annotate({
   identifier: "DescribeSnapshotsResponse",
 }) as any as S.Schema<DescribeSnapshotsResponse>;
@@ -2007,59 +1971,57 @@ export interface DescribeSubnetGroupsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const DescribeSubnetGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SubnetGroupName: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeSubnetGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SubnetGroupName: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeSubnetGroupsRequest",
-  }) as any as S.Schema<DescribeSubnetGroupsRequest>;
+  ),
+).annotate({
+  identifier: "DescribeSubnetGroupsRequest",
+}) as any as S.Schema<DescribeSubnetGroupsRequest>;
 export type SubnetGroupList = SubnetGroup[];
-export const SubnetGroupList = /*@__PURE__*/ /*#__PURE__*/ S.Array(SubnetGroup);
+export const SubnetGroupList = /*@__PURE__*/ S.Array(SubnetGroup);
 export interface DescribeSubnetGroupsResponse {
   NextToken?: string;
   SubnetGroups?: SubnetGroup[];
 }
-export const DescribeSubnetGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      SubnetGroups: S.optional(SubnetGroupList),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeSubnetGroupsResponse",
-  }) as any as S.Schema<DescribeSubnetGroupsResponse>;
+export const DescribeSubnetGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    SubnetGroups: S.optional(SubnetGroupList),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeSubnetGroupsResponse",
+}) as any as S.Schema<DescribeSubnetGroupsResponse>;
 export type FilterValueList = string[];
-export const FilterValueList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const FilterValueList = /*@__PURE__*/ S.Array(S.String);
 export interface Filter {
   Name: string;
   Values: string[];
 }
-export const Filter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Filter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.String, Values: FilterValueList }),
 ).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
 export type FilterList = Filter[];
-export const FilterList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Filter);
+export const FilterList = /*@__PURE__*/ S.Array(Filter);
 export interface DescribeUsersRequest {
   UserName?: string;
   Filters?: Filter[];
   MaxResults?: number;
   NextToken?: string;
 }
-export const DescribeUsersRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DescribeUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     UserName: S.optional(S.String),
     Filters: S.optional(FilterList),
@@ -2080,12 +2042,12 @@ export const DescribeUsersRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DescribeUsersRequest",
 }) as any as S.Schema<DescribeUsersRequest>;
 export type UserList = User[];
-export const UserList = /*@__PURE__*/ /*#__PURE__*/ S.Array(User);
+export const UserList = /*@__PURE__*/ S.Array(User);
 export interface DescribeUsersResponse {
   Users?: User[];
   NextToken?: string;
 }
-export const DescribeUsersResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DescribeUsersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Users: S.optional(UserList),
     NextToken: S.optional(S.String),
@@ -2097,7 +2059,7 @@ export interface FailoverShardRequest {
   ClusterName: string;
   ShardName: string;
 }
-export const FailoverShardRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FailoverShardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ClusterName: S.String, ShardName: S.String }).pipe(
     T.all(
       ns,
@@ -2115,7 +2077,7 @@ export const FailoverShardRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface FailoverShardResponse {
   Cluster?: Cluster;
 }
-export const FailoverShardResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FailoverShardResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns),
 ).annotate({
   identifier: "FailoverShardResponse",
@@ -2124,7 +2086,7 @@ export interface ListAllowedMultiRegionClusterUpdatesRequest {
   MultiRegionClusterName: string;
 }
 export const ListAllowedMultiRegionClusterUpdatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ MultiRegionClusterName: S.String }).pipe(
       T.all(
         ns,
@@ -2140,13 +2102,13 @@ export const ListAllowedMultiRegionClusterUpdatesRequest =
     identifier: "ListAllowedMultiRegionClusterUpdatesRequest",
   }) as any as S.Schema<ListAllowedMultiRegionClusterUpdatesRequest>;
 export type NodeTypeList = string[];
-export const NodeTypeList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const NodeTypeList = /*@__PURE__*/ S.Array(S.String);
 export interface ListAllowedMultiRegionClusterUpdatesResponse {
   ScaleUpNodeTypes?: string[];
   ScaleDownNodeTypes?: string[];
 }
 export const ListAllowedMultiRegionClusterUpdatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ScaleUpNodeTypes: S.optional(NodeTypeList),
       ScaleDownNodeTypes: S.optional(NodeTypeList),
@@ -2157,39 +2119,37 @@ export const ListAllowedMultiRegionClusterUpdatesResponse =
 export interface ListAllowedNodeTypeUpdatesRequest {
   ClusterName: string;
 }
-export const ListAllowedNodeTypeUpdatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ ClusterName: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListAllowedNodeTypeUpdatesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ClusterName: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListAllowedNodeTypeUpdatesRequest",
-  }) as any as S.Schema<ListAllowedNodeTypeUpdatesRequest>;
+  ),
+).annotate({
+  identifier: "ListAllowedNodeTypeUpdatesRequest",
+}) as any as S.Schema<ListAllowedNodeTypeUpdatesRequest>;
 export interface ListAllowedNodeTypeUpdatesResponse {
   ScaleUpNodeTypes?: string[];
   ScaleDownNodeTypes?: string[];
 }
-export const ListAllowedNodeTypeUpdatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ScaleUpNodeTypes: S.optional(NodeTypeList),
-      ScaleDownNodeTypes: S.optional(NodeTypeList),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "ListAllowedNodeTypeUpdatesResponse",
-  }) as any as S.Schema<ListAllowedNodeTypeUpdatesResponse>;
+export const ListAllowedNodeTypeUpdatesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ScaleUpNodeTypes: S.optional(NodeTypeList),
+    ScaleDownNodeTypes: S.optional(NodeTypeList),
+  }).pipe(ns),
+).annotate({
+  identifier: "ListAllowedNodeTypeUpdatesResponse",
+}) as any as S.Schema<ListAllowedNodeTypeUpdatesResponse>;
 export interface ListTagsRequest {
   ResourceArn: string;
 }
-export const ListTagsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceArn: S.String }).pipe(
     T.all(
       ns,
@@ -2207,7 +2167,7 @@ export const ListTagsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ListTagsResponse {
   TagList?: Tag[];
 }
-export const ListTagsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListTagsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TagList: S.optional(TagList) }).pipe(ns),
 ).annotate({
   identifier: "ListTagsResponse",
@@ -2218,8 +2178,8 @@ export interface PurchaseReservedNodesOfferingRequest {
   NodeCount?: number;
   Tags?: Tag[];
 }
-export const PurchaseReservedNodesOfferingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PurchaseReservedNodesOfferingRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ReservedNodesOfferingId: S.String,
       ReservationId: S.optional(S.String),
@@ -2236,59 +2196,56 @@ export const PurchaseReservedNodesOfferingRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "PurchaseReservedNodesOfferingRequest",
-  }) as any as S.Schema<PurchaseReservedNodesOfferingRequest>;
+).annotate({
+  identifier: "PurchaseReservedNodesOfferingRequest",
+}) as any as S.Schema<PurchaseReservedNodesOfferingRequest>;
 export interface PurchaseReservedNodesOfferingResponse {
   ReservedNode?: ReservedNode;
 }
-export const PurchaseReservedNodesOfferingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ ReservedNode: S.optional(ReservedNode) }).pipe(ns),
-  ).annotate({
-    identifier: "PurchaseReservedNodesOfferingResponse",
-  }) as any as S.Schema<PurchaseReservedNodesOfferingResponse>;
+export const PurchaseReservedNodesOfferingResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ ReservedNode: S.optional(ReservedNode) }).pipe(ns),
+).annotate({
+  identifier: "PurchaseReservedNodesOfferingResponse",
+}) as any as S.Schema<PurchaseReservedNodesOfferingResponse>;
 export type ParameterNameList = string[];
-export const ParameterNameList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const ParameterNameList = /*@__PURE__*/ S.Array(S.String);
 export interface ResetParameterGroupRequest {
   ParameterGroupName: string;
   AllParameters?: boolean;
   ParameterNames?: string[];
 }
-export const ResetParameterGroupRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ParameterGroupName: S.String,
-      AllParameters: S.optional(S.Boolean),
-      ParameterNames: S.optional(ParameterNameList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ResetParameterGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ParameterGroupName: S.String,
+    AllParameters: S.optional(S.Boolean),
+    ParameterNames: S.optional(ParameterNameList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ResetParameterGroupRequest",
 }) as any as S.Schema<ResetParameterGroupRequest>;
 export interface ResetParameterGroupResponse {
   ParameterGroup?: ParameterGroup;
 }
-export const ResetParameterGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ ParameterGroup: S.optional(ParameterGroup) }).pipe(ns),
-  ).annotate({
-    identifier: "ResetParameterGroupResponse",
-  }) as any as S.Schema<ResetParameterGroupResponse>;
+export const ResetParameterGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ParameterGroup: S.optional(ParameterGroup) }).pipe(ns),
+).annotate({
+  identifier: "ResetParameterGroupResponse",
+}) as any as S.Schema<ResetParameterGroupResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Tag[];
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceArn: S.String, Tags: TagList }).pipe(
     T.all(
       ns,
@@ -2306,18 +2263,18 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface TagResourceResponse {
   TagList?: Tag[];
 }
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TagList: S.optional(TagList) }).pipe(ns),
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type KeyList = string[];
-export const KeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const KeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceArn: S.String, TagKeys: KeyList }).pipe(
     T.all(
       ns,
@@ -2335,7 +2292,7 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface UntagResourceResponse {
   TagList?: Tag[];
 }
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TagList: S.optional(TagList) }).pipe(ns),
 ).annotate({
   identifier: "UntagResourceResponse",
@@ -2345,7 +2302,7 @@ export interface UpdateACLRequest {
   UserNamesToAdd?: string[];
   UserNamesToRemove?: string[];
 }
-export const UpdateACLRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateACLRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ACLName: S.String,
     UserNamesToAdd: S.optional(UserNameListInput),
@@ -2367,7 +2324,7 @@ export const UpdateACLRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface UpdateACLResponse {
   ACL?: ACL;
 }
-export const UpdateACLResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateACLResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ACL: S.optional(ACL) }).pipe(ns),
 ).annotate({
   identifier: "UpdateACLResponse",
@@ -2375,17 +2332,16 @@ export const UpdateACLResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ReplicaConfigurationRequest {
   ReplicaCount?: number;
 }
-export const ReplicaConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ ReplicaCount: S.optional(S.Number) }),
-  ).annotate({
-    identifier: "ReplicaConfigurationRequest",
-  }) as any as S.Schema<ReplicaConfigurationRequest>;
+export const ReplicaConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ReplicaCount: S.optional(S.Number) }),
+).annotate({
+  identifier: "ReplicaConfigurationRequest",
+}) as any as S.Schema<ReplicaConfigurationRequest>;
 export interface ShardConfigurationRequest {
   ShardCount?: number;
 }
-export const ShardConfigurationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ ShardCount: S.optional(S.Number) }),
+export const ShardConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ShardCount: S.optional(S.Number) }),
 ).annotate({
   identifier: "ShardConfigurationRequest",
 }) as any as S.Schema<ShardConfigurationRequest>;
@@ -2407,7 +2363,7 @@ export interface UpdateClusterRequest {
   ACLName?: string;
   IpDiscovery?: IpDiscovery;
 }
-export const UpdateClusterRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ClusterName: S.String,
     Description: S.optional(S.String),
@@ -2442,13 +2398,13 @@ export const UpdateClusterRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface UpdateClusterResponse {
   Cluster?: Cluster;
 }
-export const UpdateClusterResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateClusterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns),
 ).annotate({
   identifier: "UpdateClusterResponse",
 }) as any as S.Schema<UpdateClusterResponse>;
 export type UpdateStrategy = "coordinated" | "uncoordinated" | (string & {});
-export const UpdateStrategy = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const UpdateStrategy = /*@__PURE__*/ S.String;
 export interface UpdateMultiRegionClusterRequest {
   MultiRegionClusterName: string;
   NodeType?: string;
@@ -2458,44 +2414,42 @@ export interface UpdateMultiRegionClusterRequest {
   MultiRegionParameterGroupName?: string;
   UpdateStrategy?: UpdateStrategy;
 }
-export const UpdateMultiRegionClusterRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MultiRegionClusterName: S.String,
-      NodeType: S.optional(S.String),
-      Description: S.optional(S.String),
-      EngineVersion: S.optional(S.String),
-      ShardConfiguration: S.optional(ShardConfigurationRequest),
-      MultiRegionParameterGroupName: S.optional(S.String),
-      UpdateStrategy: S.optional(UpdateStrategy),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateMultiRegionClusterRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MultiRegionClusterName: S.String,
+    NodeType: S.optional(S.String),
+    Description: S.optional(S.String),
+    EngineVersion: S.optional(S.String),
+    ShardConfiguration: S.optional(ShardConfigurationRequest),
+    MultiRegionParameterGroupName: S.optional(S.String),
+    UpdateStrategy: S.optional(UpdateStrategy),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateMultiRegionClusterRequest",
-  }) as any as S.Schema<UpdateMultiRegionClusterRequest>;
+  ),
+).annotate({
+  identifier: "UpdateMultiRegionClusterRequest",
+}) as any as S.Schema<UpdateMultiRegionClusterRequest>;
 export interface UpdateMultiRegionClusterResponse {
   MultiRegionCluster?: MultiRegionCluster;
 }
-export const UpdateMultiRegionClusterResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ MultiRegionCluster: S.optional(MultiRegionCluster) }).pipe(ns),
-  ).annotate({
-    identifier: "UpdateMultiRegionClusterResponse",
-  }) as any as S.Schema<UpdateMultiRegionClusterResponse>;
+export const UpdateMultiRegionClusterResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ MultiRegionCluster: S.optional(MultiRegionCluster) }).pipe(ns),
+).annotate({
+  identifier: "UpdateMultiRegionClusterResponse",
+}) as any as S.Schema<UpdateMultiRegionClusterResponse>;
 export interface ParameterNameValue {
   ParameterName?: string;
   ParameterValue?: string;
 }
-export const ParameterNameValue = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ParameterNameValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ParameterName: S.optional(S.String),
     ParameterValue: S.optional(S.String),
@@ -2504,7 +2458,7 @@ export const ParameterNameValue = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ParameterNameValue",
 }) as any as S.Schema<ParameterNameValue>;
 export type ParameterNameValueList = ParameterNameValue[];
-export const ParameterNameValueList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ParameterNameValueList = /*@__PURE__*/ S.Array(
   ParameterNameValue.pipe(T.XmlName("ParameterNameValue")).annotate({
     identifier: "ParameterNameValue",
   }),
@@ -2513,64 +2467,61 @@ export interface UpdateParameterGroupRequest {
   ParameterGroupName: string;
   ParameterNameValues: ParameterNameValue[];
 }
-export const UpdateParameterGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ParameterGroupName: S.String,
-      ParameterNameValues: ParameterNameValueList,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateParameterGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ParameterGroupName: S.String,
+    ParameterNameValues: ParameterNameValueList,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateParameterGroupRequest",
-  }) as any as S.Schema<UpdateParameterGroupRequest>;
+  ),
+).annotate({
+  identifier: "UpdateParameterGroupRequest",
+}) as any as S.Schema<UpdateParameterGroupRequest>;
 export interface UpdateParameterGroupResponse {
   ParameterGroup?: ParameterGroup;
 }
-export const UpdateParameterGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ ParameterGroup: S.optional(ParameterGroup) }).pipe(ns),
-  ).annotate({
-    identifier: "UpdateParameterGroupResponse",
-  }) as any as S.Schema<UpdateParameterGroupResponse>;
+export const UpdateParameterGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ParameterGroup: S.optional(ParameterGroup) }).pipe(ns),
+).annotate({
+  identifier: "UpdateParameterGroupResponse",
+}) as any as S.Schema<UpdateParameterGroupResponse>;
 export interface UpdateSubnetGroupRequest {
   SubnetGroupName: string;
   Description?: string;
   SubnetIds?: string[];
 }
-export const UpdateSubnetGroupRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      SubnetGroupName: S.String,
-      Description: S.optional(S.String),
-      SubnetIds: S.optional(SubnetIdentifierList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateSubnetGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SubnetGroupName: S.String,
+    Description: S.optional(S.String),
+    SubnetIds: S.optional(SubnetIdentifierList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "UpdateSubnetGroupRequest",
 }) as any as S.Schema<UpdateSubnetGroupRequest>;
 export interface UpdateSubnetGroupResponse {
   SubnetGroup?: SubnetGroup;
 }
-export const UpdateSubnetGroupResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ SubnetGroup: S.optional(SubnetGroup) }).pipe(ns),
+export const UpdateSubnetGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ SubnetGroup: S.optional(SubnetGroup) }).pipe(ns),
 ).annotate({
   identifier: "UpdateSubnetGroupResponse",
 }) as any as S.Schema<UpdateSubnetGroupResponse>;
@@ -2579,7 +2530,7 @@ export interface UpdateUserRequest {
   AuthenticationMode?: AuthenticationMode;
   AccessString?: string;
 }
-export const UpdateUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     UserName: S.String,
     AuthenticationMode: S.optional(AuthenticationMode),
@@ -2601,7 +2552,7 @@ export const UpdateUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface UpdateUserResponse {
   User?: User;
 }
-export const UpdateUserResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ User: S.optional(User) }).pipe(ns),
 ).annotate({
   identifier: "UpdateUserResponse",

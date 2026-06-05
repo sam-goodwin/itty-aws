@@ -72,60 +72,55 @@ export type IsLatestVersion = boolean;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ /*#__PURE__*/ S.Record(
-  S.String,
-  S.String.pipe(S.optional),
-);
+export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
 export interface ListTagsForResourceResponse {
   Tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ Tags: S.optional(Tags) }),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Tags: S.optional(Tags) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export type ValidationExceptionReason =
   | "unknownOperation"
   | "cannotParse"
   | "fieldValidationFailed"
   | "other"
   | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 export interface ValidationExceptionField {
   Name: string;
   Message: string;
 }
-export const ValidationExceptionField = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ Name: S.String, Message: S.String }),
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Name: S.String, Message: S.String }),
 ).annotate({
   identifier: "ValidationExceptionField",
 }) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFields = ValidationExceptionField[];
-export const ValidationExceptionFields = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ValidationExceptionFields = /*@__PURE__*/ S.Array(
   ValidationExceptionField,
 );
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
     Tags: Tags,
@@ -143,18 +138,18 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeys = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
     TagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
@@ -172,7 +167,7 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
@@ -182,25 +177,24 @@ export interface GetTaskInstanceRequest {
   TaskInstanceId: string;
   RunId: string;
 }
-export const GetTaskInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      WorkflowArn: S.String.pipe(T.HttpLabel("WorkflowArn")),
-      TaskInstanceId: S.String.pipe(T.HttpLabel("TaskInstanceId")),
-      RunId: S.String.pipe(T.HttpLabel("RunId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/workflows/{WorkflowArn}/runs/{RunId}/tasks/{TaskInstanceId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetTaskInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WorkflowArn: S.String.pipe(T.HttpLabel("WorkflowArn")),
+    TaskInstanceId: S.String.pipe(T.HttpLabel("TaskInstanceId")),
+    RunId: S.String.pipe(T.HttpLabel("RunId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/workflows/{WorkflowArn}/runs/{RunId}/tasks/{TaskInstanceId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetTaskInstanceRequest",
 }) as any as S.Schema<GetTaskInstanceRequest>;
@@ -220,9 +214,9 @@ export type TaskInstanceStatus =
   | "CANCELLED"
   | "TIMEOUT"
   | (string & {});
-export const TaskInstanceStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TaskInstanceStatus = /*@__PURE__*/ S.String;
 export type GenericMap = { [key: string]: string | undefined };
-export const GenericMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const GenericMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -243,31 +237,28 @@ export interface GetTaskInstanceResponse {
   LogStream?: string;
   Xcom?: { [key: string]: string | undefined };
 }
-export const GetTaskInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      WorkflowArn: S.String,
-      RunId: S.String,
-      TaskInstanceId: S.String,
-      WorkflowVersion: S.optional(S.String),
-      Status: S.optional(TaskInstanceStatus),
-      DurationInSeconds: S.optional(S.Number),
-      OperatorName: S.optional(S.String),
-      ModifiedAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      EndedAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      StartedAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      AttemptNumber: S.optional(S.Number),
-      ErrorMessage: S.optional(S.String),
-      TaskId: S.optional(S.String),
-      LogStream: S.optional(S.String),
-      Xcom: S.optional(GenericMap),
-    }),
+export const GetTaskInstanceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WorkflowArn: S.String,
+    RunId: S.String,
+    TaskInstanceId: S.String,
+    WorkflowVersion: S.optional(S.String),
+    Status: S.optional(TaskInstanceStatus),
+    DurationInSeconds: S.optional(S.Number),
+    OperatorName: S.optional(S.String),
+    ModifiedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    EndedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+    StartedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    AttemptNumber: S.optional(S.Number),
+    ErrorMessage: S.optional(S.String),
+    TaskId: S.optional(S.String),
+    LogStream: S.optional(S.String),
+    Xcom: S.optional(GenericMap),
+  }),
 ).annotate({
   identifier: "GetTaskInstanceResponse",
 }) as any as S.Schema<GetTaskInstanceResponse>;
@@ -277,26 +268,25 @@ export interface ListTaskInstancesRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListTaskInstancesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      WorkflowArn: S.String.pipe(T.HttpLabel("WorkflowArn")),
-      RunId: S.String.pipe(T.HttpLabel("RunId")),
-      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/workflows/{WorkflowArn}/runs/{RunId}/tasks",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTaskInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WorkflowArn: S.String.pipe(T.HttpLabel("WorkflowArn")),
+    RunId: S.String.pipe(T.HttpLabel("RunId")),
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/workflows/{WorkflowArn}/runs/{RunId}/tasks",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTaskInstancesRequest",
 }) as any as S.Schema<ListTaskInstancesRequest>;
@@ -309,7 +299,7 @@ export interface TaskInstanceSummary {
   DurationInSeconds?: number;
   OperatorName?: string;
 }
-export const TaskInstanceSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TaskInstanceSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     WorkflowArn: S.optional(S.String),
     WorkflowVersion: S.optional(S.String),
@@ -323,18 +313,16 @@ export const TaskInstanceSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TaskInstanceSummary",
 }) as any as S.Schema<TaskInstanceSummary>;
 export type TaskInstanceSummaries = TaskInstanceSummary[];
-export const TaskInstanceSummaries =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(TaskInstanceSummary);
+export const TaskInstanceSummaries = /*@__PURE__*/ S.Array(TaskInstanceSummary);
 export interface ListTaskInstancesResponse {
   TaskInstances?: TaskInstanceSummary[];
   NextToken?: string;
 }
-export const ListTaskInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      TaskInstances: S.optional(TaskInstanceSummaries),
-      NextToken: S.optional(S.String),
-    }),
+export const ListTaskInstancesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TaskInstances: S.optional(TaskInstanceSummaries),
+    NextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListTaskInstancesResponse",
 }) as any as S.Schema<ListTaskInstancesResponse>;
@@ -343,7 +331,7 @@ export interface DefinitionS3Location {
   ObjectKey: string;
   VersionId?: string;
 }
-export const DefinitionS3Location = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DefinitionS3Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Bucket: S.String,
     ObjectKey: S.String,
@@ -356,35 +344,35 @@ export type EncryptionType =
   | "AWS_MANAGED_KEY"
   | "CUSTOMER_MANAGED_KEY"
   | (string & {});
-export const EncryptionType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const EncryptionType = /*@__PURE__*/ S.String;
 export interface EncryptionConfiguration {
   Type: EncryptionType;
   KmsKeyId?: string;
 }
-export const EncryptionConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ Type: EncryptionType, KmsKeyId: S.optional(S.String) }),
+export const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Type: EncryptionType, KmsKeyId: S.optional(S.String) }),
 ).annotate({
   identifier: "EncryptionConfiguration",
 }) as any as S.Schema<EncryptionConfiguration>;
 export interface LoggingConfiguration {
   LogGroupName: string;
 }
-export const LoggingConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const LoggingConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ LogGroupName: S.String }),
 ).annotate({
   identifier: "LoggingConfiguration",
 }) as any as S.Schema<LoggingConfiguration>;
 export type EngineVersion = 1;
-export const EngineVersion = /*@__PURE__*/ /*#__PURE__*/ S.Literals([1]);
+export const EngineVersion = /*@__PURE__*/ S.Literals([1]);
 export type SecurityGroupIds = string[];
-export const SecurityGroupIds = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const SecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
 export type SubnetIds = string[];
-export const SubnetIds = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const SubnetIds = /*@__PURE__*/ S.Array(S.String);
 export interface NetworkConfiguration {
   SecurityGroupIds?: string[];
   SubnetIds?: string[];
 }
-export const NetworkConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const NetworkConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SecurityGroupIds: S.optional(SecurityGroupIds),
     SubnetIds: S.optional(SubnetIds),
@@ -405,7 +393,7 @@ export interface CreateWorkflowRequest {
   Tags?: { [key: string]: string | undefined };
   TriggerMode?: string;
 }
-export const CreateWorkflowRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.String,
     ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -432,9 +420,9 @@ export const CreateWorkflowRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "CreateWorkflowRequest",
 }) as any as S.Schema<CreateWorkflowRequest>;
 export type WorkflowStatus = "READY" | "DELETING" | (string & {});
-export const WorkflowStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const WorkflowStatus = /*@__PURE__*/ S.String;
 export type WarningMessages = string[];
-export const WarningMessages = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const WarningMessages = /*@__PURE__*/ S.Array(S.String);
 export interface CreateWorkflowResponse {
   WorkflowArn: string;
   CreatedAt?: Date;
@@ -444,19 +432,18 @@ export interface CreateWorkflowResponse {
   IsLatestVersion?: boolean;
   Warnings?: string[];
 }
-export const CreateWorkflowResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      WorkflowArn: S.String,
-      CreatedAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      RevisionId: S.optional(S.String),
-      WorkflowStatus: S.optional(WorkflowStatus),
-      WorkflowVersion: S.optional(S.String),
-      IsLatestVersion: S.optional(S.Boolean),
-      Warnings: S.optional(WarningMessages),
-    }),
+export const CreateWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WorkflowArn: S.String,
+    CreatedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    RevisionId: S.optional(S.String),
+    WorkflowStatus: S.optional(WorkflowStatus),
+    WorkflowVersion: S.optional(S.String),
+    IsLatestVersion: S.optional(S.Boolean),
+    Warnings: S.optional(WarningMessages),
+  }),
 ).annotate({
   identifier: "CreateWorkflowResponse",
 }) as any as S.Schema<CreateWorkflowResponse>;
@@ -464,7 +451,7 @@ export interface GetWorkflowRequest {
   WorkflowArn: string;
   WorkflowVersion?: string;
 }
-export const GetWorkflowRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     WorkflowArn: S.String.pipe(T.HttpLabel("WorkflowArn")),
     WorkflowVersion: S.optional(S.String).pipe(T.HttpQuery("workflowVersion")),
@@ -484,7 +471,7 @@ export const GetWorkflowRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ScheduleConfiguration {
   CronExpression?: string;
 }
-export const ScheduleConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ScheduleConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CronExpression: S.optional(S.String) }),
 ).annotate({
   identifier: "ScheduleConfiguration",
@@ -507,7 +494,7 @@ export interface GetWorkflowResponse {
   TriggerMode?: string;
   WorkflowDefinition?: string;
 }
-export const GetWorkflowResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     WorkflowArn: S.String,
     WorkflowVersion: S.optional(S.String),
@@ -543,7 +530,7 @@ export interface UpdateWorkflowRequest {
   NetworkConfiguration?: NetworkConfiguration;
   TriggerMode?: string;
 }
-export const UpdateWorkflowRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     WorkflowArn: S.String.pipe(T.HttpLabel("WorkflowArn")),
     DefinitionS3Location: DefinitionS3Location,
@@ -572,16 +559,15 @@ export interface UpdateWorkflowResponse {
   WorkflowVersion?: string;
   Warnings?: string[];
 }
-export const UpdateWorkflowResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      WorkflowArn: S.String,
-      ModifiedAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      WorkflowVersion: S.optional(S.String),
-      Warnings: S.optional(WarningMessages),
-    }),
+export const UpdateWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WorkflowArn: S.String,
+    ModifiedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    WorkflowVersion: S.optional(S.String),
+    Warnings: S.optional(WarningMessages),
+  }),
 ).annotate({
   identifier: "UpdateWorkflowResponse",
 }) as any as S.Schema<UpdateWorkflowResponse>;
@@ -589,7 +575,7 @@ export interface DeleteWorkflowRequest {
   WorkflowArn: string;
   WorkflowVersion?: string;
 }
-export const DeleteWorkflowRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     WorkflowArn: S.String.pipe(T.HttpLabel("WorkflowArn")),
     WorkflowVersion: S.optional(S.String).pipe(T.HttpQuery("workflowVersion")),
@@ -610,9 +596,8 @@ export interface DeleteWorkflowResponse {
   WorkflowArn: string;
   WorkflowVersion?: string;
 }
-export const DeleteWorkflowResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ WorkflowArn: S.String, WorkflowVersion: S.optional(S.String) }),
+export const DeleteWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ WorkflowArn: S.String, WorkflowVersion: S.optional(S.String) }),
 ).annotate({
   identifier: "DeleteWorkflowResponse",
 }) as any as S.Schema<DeleteWorkflowResponse>;
@@ -620,7 +605,7 @@ export interface ListWorkflowsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListWorkflowsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListWorkflowsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
     NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -647,7 +632,7 @@ export interface WorkflowSummary {
   WorkflowStatus?: WorkflowStatus;
   TriggerMode?: string;
 }
-export const WorkflowSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const WorkflowSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     WorkflowArn: S.String,
     WorkflowVersion: S.optional(S.String),
@@ -666,19 +651,18 @@ export const WorkflowSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "WorkflowSummary",
 }) as any as S.Schema<WorkflowSummary>;
 export type WorkflowSummaries = WorkflowSummary[];
-export const WorkflowSummaries =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(WorkflowSummary);
+export const WorkflowSummaries = /*@__PURE__*/ S.Array(WorkflowSummary);
 export interface ListWorkflowsResponse {
   Workflows: WorkflowSummary[];
   NextToken?: string;
 }
-export const ListWorkflowsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListWorkflowsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Workflows: WorkflowSummaries, NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListWorkflowsResponse",
 }) as any as S.Schema<ListWorkflowsResponse>;
 export type ObjectMap = { [key: string]: any | undefined };
-export const ObjectMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const ObjectMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Any.pipe(S.optional),
 );
@@ -688,23 +672,22 @@ export interface StartWorkflowRunRequest {
   OverrideParameters?: { [key: string]: any | undefined };
   WorkflowVersion?: string;
 }
-export const StartWorkflowRunRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      WorkflowArn: S.String.pipe(T.HttpLabel("WorkflowArn")),
-      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-      OverrideParameters: S.optional(ObjectMap),
-      WorkflowVersion: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/workflows/{WorkflowArn}/runs" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StartWorkflowRunRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WorkflowArn: S.String.pipe(T.HttpLabel("WorkflowArn")),
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    OverrideParameters: S.optional(ObjectMap),
+    WorkflowVersion: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/workflows/{WorkflowArn}/runs" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "StartWorkflowRunRequest",
 }) as any as S.Schema<StartWorkflowRunRequest>;
@@ -718,21 +701,20 @@ export type WorkflowRunStatus =
   | "STOPPING"
   | "STOPPED"
   | (string & {});
-export const WorkflowRunStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const WorkflowRunStatus = /*@__PURE__*/ S.String;
 export interface StartWorkflowRunResponse {
   RunId?: string;
   Status?: WorkflowRunStatus;
   StartedAt?: Date;
 }
-export const StartWorkflowRunResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      RunId: S.optional(S.String),
-      Status: S.optional(WorkflowRunStatus),
-      StartedAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-    }),
+export const StartWorkflowRunResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RunId: S.optional(S.String),
+    Status: S.optional(WorkflowRunStatus),
+    StartedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
 ).annotate({
   identifier: "StartWorkflowRunResponse",
 }) as any as S.Schema<StartWorkflowRunResponse>;
@@ -740,7 +722,7 @@ export interface GetWorkflowRunRequest {
   WorkflowArn: string;
   RunId: string;
 }
-export const GetWorkflowRunRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetWorkflowRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     WorkflowArn: S.String.pipe(T.HttpLabel("WorkflowArn")),
     RunId: S.String.pipe(T.HttpLabel("RunId")),
@@ -758,9 +740,9 @@ export const GetWorkflowRunRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "GetWorkflowRunRequest",
 }) as any as S.Schema<GetWorkflowRunRequest>;
 export type RunType = "ON_DEMAND" | "SCHEDULED" | (string & {});
-export const RunType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const RunType = /*@__PURE__*/ S.String;
 export type TaskInstanceIds = string[];
-export const TaskInstanceIds = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TaskInstanceIds = /*@__PURE__*/ S.Array(S.String);
 export interface WorkflowRunDetail {
   WorkflowArn?: string;
   WorkflowVersion?: string;
@@ -775,7 +757,7 @@ export interface WorkflowRunDetail {
   TaskInstances?: string[];
   RunState?: WorkflowRunStatus;
 }
-export const WorkflowRunDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const WorkflowRunDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     WorkflowArn: S.optional(S.String),
     WorkflowVersion: S.optional(S.String),
@@ -809,16 +791,15 @@ export interface GetWorkflowRunResponse {
   OverrideParameters?: { [key: string]: any | undefined };
   RunDetail?: WorkflowRunDetail;
 }
-export const GetWorkflowRunResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      WorkflowArn: S.optional(S.String),
-      WorkflowVersion: S.optional(S.String),
-      RunId: S.optional(S.String),
-      RunType: S.optional(RunType),
-      OverrideParameters: S.optional(ObjectMap),
-      RunDetail: S.optional(WorkflowRunDetail),
-    }),
+export const GetWorkflowRunResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WorkflowArn: S.optional(S.String),
+    WorkflowVersion: S.optional(S.String),
+    RunId: S.optional(S.String),
+    RunType: S.optional(RunType),
+    OverrideParameters: S.optional(ObjectMap),
+    RunDetail: S.optional(WorkflowRunDetail),
+  }),
 ).annotate({
   identifier: "GetWorkflowRunResponse",
 }) as any as S.Schema<GetWorkflowRunResponse>;
@@ -826,24 +807,23 @@ export interface StopWorkflowRunRequest {
   WorkflowArn: string;
   RunId: string;
 }
-export const StopWorkflowRunRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      WorkflowArn: S.String.pipe(T.HttpLabel("WorkflowArn")),
-      RunId: S.String.pipe(T.HttpLabel("RunId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/workflows/{WorkflowArn}/runs/{RunId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StopWorkflowRunRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WorkflowArn: S.String.pipe(T.HttpLabel("WorkflowArn")),
+    RunId: S.String.pipe(T.HttpLabel("RunId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/workflows/{WorkflowArn}/runs/{RunId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "StopWorkflowRunRequest",
 }) as any as S.Schema<StopWorkflowRunRequest>;
@@ -853,14 +833,13 @@ export interface StopWorkflowRunResponse {
   RunId?: string;
   Status?: WorkflowRunStatus;
 }
-export const StopWorkflowRunResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      WorkflowArn: S.optional(S.String),
-      WorkflowVersion: S.optional(S.String),
-      RunId: S.optional(S.String),
-      Status: S.optional(WorkflowRunStatus),
-    }),
+export const StopWorkflowRunResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WorkflowArn: S.optional(S.String),
+    WorkflowVersion: S.optional(S.String),
+    RunId: S.optional(S.String),
+    Status: S.optional(WorkflowRunStatus),
+  }),
 ).annotate({
   identifier: "StopWorkflowRunResponse",
 }) as any as S.Schema<StopWorkflowRunResponse>;
@@ -870,25 +849,22 @@ export interface ListWorkflowRunsRequest {
   WorkflowArn: string;
   WorkflowVersion?: string;
 }
-export const ListWorkflowRunsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      WorkflowArn: S.String.pipe(T.HttpLabel("WorkflowArn")),
-      WorkflowVersion: S.optional(S.String).pipe(
-        T.HttpQuery("workflowVersion"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/workflows/{WorkflowArn}/runs" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListWorkflowRunsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    WorkflowArn: S.String.pipe(T.HttpLabel("WorkflowArn")),
+    WorkflowVersion: S.optional(S.String).pipe(T.HttpQuery("workflowVersion")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/workflows/{WorkflowArn}/runs" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListWorkflowRunsRequest",
 }) as any as S.Schema<ListWorkflowRunsRequest>;
@@ -898,7 +874,7 @@ export interface RunDetailSummary {
   StartedAt?: Date;
   EndedAt?: Date;
 }
-export const RunDetailSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RunDetailSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Status: S.optional(WorkflowRunStatus),
     CreatedOn: S.optional(
@@ -919,7 +895,7 @@ export interface WorkflowRunSummary {
   RunType?: RunType;
   RunDetailSummary?: RunDetailSummary;
 }
-export const WorkflowRunSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const WorkflowRunSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RunId: S.optional(S.String),
     WorkflowArn: S.optional(S.String),
@@ -931,18 +907,16 @@ export const WorkflowRunSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "WorkflowRunSummary",
 }) as any as S.Schema<WorkflowRunSummary>;
 export type WorkflowRunSummaries = WorkflowRunSummary[];
-export const WorkflowRunSummaries =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(WorkflowRunSummary);
+export const WorkflowRunSummaries = /*@__PURE__*/ S.Array(WorkflowRunSummary);
 export interface ListWorkflowRunsResponse {
   WorkflowRuns?: WorkflowRunSummary[];
   NextToken?: string;
 }
-export const ListWorkflowRunsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      WorkflowRuns: S.optional(WorkflowRunSummaries),
-      NextToken: S.optional(S.String),
-    }),
+export const ListWorkflowRunsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WorkflowRuns: S.optional(WorkflowRunSummaries),
+    NextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListWorkflowRunsResponse",
 }) as any as S.Schema<ListWorkflowRunsResponse>;
@@ -951,25 +925,24 @@ export interface ListWorkflowVersionsRequest {
   NextToken?: string;
   WorkflowArn: string;
 }
-export const ListWorkflowVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      WorkflowArn: S.String.pipe(T.HttpLabel("WorkflowArn")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/workflows/{WorkflowArn}/versions" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListWorkflowVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    WorkflowArn: S.String.pipe(T.HttpLabel("WorkflowArn")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/workflows/{WorkflowArn}/versions" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListWorkflowVersionsRequest",
-  }) as any as S.Schema<ListWorkflowVersionsRequest>;
+  ),
+).annotate({
+  identifier: "ListWorkflowVersionsRequest",
+}) as any as S.Schema<ListWorkflowVersionsRequest>;
 export interface WorkflowVersionSummary {
   WorkflowVersion: string;
   WorkflowArn: string;
@@ -980,42 +953,40 @@ export interface WorkflowVersionSummary {
   ScheduleConfiguration?: ScheduleConfiguration;
   TriggerMode?: string;
 }
-export const WorkflowVersionSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      WorkflowVersion: S.String,
-      WorkflowArn: S.String,
-      IsLatestVersion: S.optional(S.Boolean),
-      CreatedAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      ModifiedAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      DefinitionS3Location: S.optional(DefinitionS3Location),
-      ScheduleConfiguration: S.optional(ScheduleConfiguration),
-      TriggerMode: S.optional(S.String),
-    }),
+export const WorkflowVersionSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WorkflowVersion: S.String,
+    WorkflowArn: S.String,
+    IsLatestVersion: S.optional(S.Boolean),
+    CreatedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    ModifiedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    DefinitionS3Location: S.optional(DefinitionS3Location),
+    ScheduleConfiguration: S.optional(ScheduleConfiguration),
+    TriggerMode: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "WorkflowVersionSummary",
 }) as any as S.Schema<WorkflowVersionSummary>;
 export type WorkflowVersionSummaries = WorkflowVersionSummary[];
-export const WorkflowVersionSummaries = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const WorkflowVersionSummaries = /*@__PURE__*/ S.Array(
   WorkflowVersionSummary,
 );
 export interface ListWorkflowVersionsResponse {
   WorkflowVersions?: WorkflowVersionSummary[];
   NextToken?: string;
 }
-export const ListWorkflowVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      WorkflowVersions: S.optional(WorkflowVersionSummaries),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListWorkflowVersionsResponse",
-  }) as any as S.Schema<ListWorkflowVersionsResponse>;
+export const ListWorkflowVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WorkflowVersions: S.optional(WorkflowVersionSummaries),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListWorkflowVersionsResponse",
+}) as any as S.Schema<ListWorkflowVersionsResponse>;
 
 //# Errors
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(

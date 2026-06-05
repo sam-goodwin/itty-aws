@@ -130,40 +130,38 @@ export type StepGroupDescription = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ tags: S.optional(TagMap) }),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: S.optional(TagMap) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tags: TagMap,
@@ -181,18 +179,18 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
@@ -210,15 +208,15 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const StringList = /*@__PURE__*/ S.Array(S.String);
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -247,14 +245,14 @@ export type StepInput =
       listOfStringsValue?: never;
       mapOfStringValue: { [key: string]: string | undefined };
     };
-export const StepInput = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const StepInput = /*@__PURE__*/ S.Union([
   S.Struct({ integerValue: S.Number }),
   S.Struct({ stringValue: S.String }),
   S.Struct({ listOfStringsValue: StringList }),
   S.Struct({ mapOfStringValue: StringMap }),
 ]);
 export type StepInputParameters = { [key: string]: StepInput | undefined };
-export const StepInputParameters = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const StepInputParameters = /*@__PURE__*/ S.Record(
   S.String,
   StepInput.pipe(S.optional),
 );
@@ -267,29 +265,28 @@ export interface CreateMigrationWorkflowRequest {
   stepTargets?: string[];
   tags?: { [key: string]: string | undefined };
 }
-export const CreateMigrationWorkflowRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      description: S.optional(S.String),
-      templateId: S.String,
-      applicationConfigurationId: S.optional(S.String),
-      inputParameters: StepInputParameters,
-      stepTargets: S.optional(StringList),
-      tags: S.optional(StringMap),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/migrationworkflow/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateMigrationWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    description: S.optional(S.String),
+    templateId: S.String,
+    applicationConfigurationId: S.optional(S.String),
+    inputParameters: StepInputParameters,
+    stepTargets: S.optional(StringList),
+    tags: S.optional(StringMap),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/migrationworkflow/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateMigrationWorkflowRequest",
-  }) as any as S.Schema<CreateMigrationWorkflowRequest>;
+  ),
+).annotate({
+  identifier: "CreateMigrationWorkflowRequest",
+}) as any as S.Schema<CreateMigrationWorkflowRequest>;
 export interface CreateMigrationWorkflowResponse {
   id?: string;
   arn?: string;
@@ -303,51 +300,49 @@ export interface CreateMigrationWorkflowResponse {
   creationTime?: Date;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateMigrationWorkflowResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      arn: S.optional(S.String),
-      name: S.optional(S.String),
-      description: S.optional(S.String),
-      templateId: S.optional(S.String),
-      adsApplicationConfigurationId: S.optional(S.String),
-      workflowInputs: S.optional(StepInputParameters),
-      stepTargets: S.optional(StringList),
-      status: S.optional(S.String),
-      creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      tags: S.optional(StringMap),
-    }),
-  ).annotate({
-    identifier: "CreateMigrationWorkflowResponse",
-  }) as any as S.Schema<CreateMigrationWorkflowResponse>;
+export const CreateMigrationWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    arn: S.optional(S.String),
+    name: S.optional(S.String),
+    description: S.optional(S.String),
+    templateId: S.optional(S.String),
+    adsApplicationConfigurationId: S.optional(S.String),
+    workflowInputs: S.optional(StepInputParameters),
+    stepTargets: S.optional(StringList),
+    status: S.optional(S.String),
+    creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    tags: S.optional(StringMap),
+  }),
+).annotate({
+  identifier: "CreateMigrationWorkflowResponse",
+}) as any as S.Schema<CreateMigrationWorkflowResponse>;
 export interface GetMigrationWorkflowRequest {
   id: string;
 }
-export const GetMigrationWorkflowRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/migrationworkflow/{id}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetMigrationWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/migrationworkflow/{id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetMigrationWorkflowRequest",
-  }) as any as S.Schema<GetMigrationWorkflowRequest>;
+  ),
+).annotate({
+  identifier: "GetMigrationWorkflowRequest",
+}) as any as S.Schema<GetMigrationWorkflowRequest>;
 export interface Tool {
   name?: string;
   url?: string;
 }
-export const Tool = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Tool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.optional(S.String), url: S.optional(S.String) }),
 ).annotate({ identifier: "Tool" }) as any as S.Schema<Tool>;
 export type ToolsList = Tool[];
-export const ToolsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Tool);
+export const ToolsList = /*@__PURE__*/ S.Array(Tool);
 export interface GetMigrationWorkflowResponse {
   id?: string;
   arn?: string;
@@ -370,37 +365,34 @@ export interface GetMigrationWorkflowResponse {
   tags?: { [key: string]: string | undefined };
   workflowBucket?: string;
 }
-export const GetMigrationWorkflowResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      arn: S.optional(S.String),
-      name: S.optional(S.String),
-      description: S.optional(S.String),
-      templateId: S.optional(S.String),
-      adsApplicationConfigurationId: S.optional(S.String),
-      adsApplicationName: S.optional(S.String),
-      status: S.optional(S.String),
-      statusMessage: S.optional(S.String),
-      creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      lastStartTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      lastStopTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      lastModifiedTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      tools: S.optional(ToolsList),
-      totalSteps: S.optional(S.Number),
-      completedSteps: S.optional(S.Number),
-      workflowInputs: S.optional(StepInputParameters),
-      tags: S.optional(StringMap),
-      workflowBucket: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetMigrationWorkflowResponse",
-  }) as any as S.Schema<GetMigrationWorkflowResponse>;
+export const GetMigrationWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    arn: S.optional(S.String),
+    name: S.optional(S.String),
+    description: S.optional(S.String),
+    templateId: S.optional(S.String),
+    adsApplicationConfigurationId: S.optional(S.String),
+    adsApplicationName: S.optional(S.String),
+    status: S.optional(S.String),
+    statusMessage: S.optional(S.String),
+    creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    lastStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    lastStopTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    lastModifiedTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    tools: S.optional(ToolsList),
+    totalSteps: S.optional(S.Number),
+    completedSteps: S.optional(S.Number),
+    workflowInputs: S.optional(StepInputParameters),
+    tags: S.optional(StringMap),
+    workflowBucket: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetMigrationWorkflowResponse",
+}) as any as S.Schema<GetMigrationWorkflowResponse>;
 export interface UpdateMigrationWorkflowRequest {
   id: string;
   name?: string;
@@ -408,27 +400,26 @@ export interface UpdateMigrationWorkflowRequest {
   inputParameters?: { [key: string]: StepInput | undefined };
   stepTargets?: string[];
 }
-export const UpdateMigrationWorkflowRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String.pipe(T.HttpLabel("id")),
-      name: S.optional(S.String),
-      description: S.optional(S.String),
-      inputParameters: S.optional(StepInputParameters),
-      stepTargets: S.optional(StringList),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/migrationworkflow/{id}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateMigrationWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String.pipe(T.HttpLabel("id")),
+    name: S.optional(S.String),
+    description: S.optional(S.String),
+    inputParameters: S.optional(StepInputParameters),
+    stepTargets: S.optional(StringList),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/migrationworkflow/{id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateMigrationWorkflowRequest",
-  }) as any as S.Schema<UpdateMigrationWorkflowRequest>;
+  ),
+).annotate({
+  identifier: "UpdateMigrationWorkflowRequest",
+}) as any as S.Schema<UpdateMigrationWorkflowRequest>;
 export interface UpdateMigrationWorkflowResponse {
   id?: string;
   arn?: string;
@@ -443,60 +434,57 @@ export interface UpdateMigrationWorkflowResponse {
   lastModifiedTime?: Date;
   tags?: { [key: string]: string | undefined };
 }
-export const UpdateMigrationWorkflowResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      arn: S.optional(S.String),
-      name: S.optional(S.String),
-      description: S.optional(S.String),
-      templateId: S.optional(S.String),
-      adsApplicationConfigurationId: S.optional(S.String),
-      workflowInputs: S.optional(StepInputParameters),
-      stepTargets: S.optional(StringList),
-      status: S.optional(S.String),
-      creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      lastModifiedTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      tags: S.optional(StringMap),
-    }),
-  ).annotate({
-    identifier: "UpdateMigrationWorkflowResponse",
-  }) as any as S.Schema<UpdateMigrationWorkflowResponse>;
+export const UpdateMigrationWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    arn: S.optional(S.String),
+    name: S.optional(S.String),
+    description: S.optional(S.String),
+    templateId: S.optional(S.String),
+    adsApplicationConfigurationId: S.optional(S.String),
+    workflowInputs: S.optional(StepInputParameters),
+    stepTargets: S.optional(StringList),
+    status: S.optional(S.String),
+    creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    lastModifiedTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    tags: S.optional(StringMap),
+  }),
+).annotate({
+  identifier: "UpdateMigrationWorkflowResponse",
+}) as any as S.Schema<UpdateMigrationWorkflowResponse>;
 export interface DeleteMigrationWorkflowRequest {
   id: string;
 }
-export const DeleteMigrationWorkflowRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
-      T.all(
-        T.Http({ method: "DELETE", uri: "/migrationworkflow/{id}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteMigrationWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/migrationworkflow/{id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteMigrationWorkflowRequest",
-  }) as any as S.Schema<DeleteMigrationWorkflowRequest>;
+  ),
+).annotate({
+  identifier: "DeleteMigrationWorkflowRequest",
+}) as any as S.Schema<DeleteMigrationWorkflowRequest>;
 export interface DeleteMigrationWorkflowResponse {
   id?: string;
   arn?: string;
   status?: string;
 }
-export const DeleteMigrationWorkflowResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      arn: S.optional(S.String),
-      status: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DeleteMigrationWorkflowResponse",
-  }) as any as S.Schema<DeleteMigrationWorkflowResponse>;
+export const DeleteMigrationWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    arn: S.optional(S.String),
+    status: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeleteMigrationWorkflowResponse",
+}) as any as S.Schema<DeleteMigrationWorkflowResponse>;
 export interface ListMigrationWorkflowsRequest {
   maxResults?: number;
   nextToken?: string;
@@ -505,30 +493,29 @@ export interface ListMigrationWorkflowsRequest {
   status?: string;
   name?: string;
 }
-export const ListMigrationWorkflowsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      templateId: S.optional(S.String).pipe(T.HttpQuery("templateId")),
-      adsApplicationConfigurationName: S.optional(S.String).pipe(
-        T.HttpQuery("adsApplicationConfigurationName"),
-      ),
-      status: S.optional(S.String).pipe(T.HttpQuery("status")),
-      name: S.optional(S.String).pipe(T.HttpQuery("name")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/migrationworkflows" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListMigrationWorkflowsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    templateId: S.optional(S.String).pipe(T.HttpQuery("templateId")),
+    adsApplicationConfigurationName: S.optional(S.String).pipe(
+      T.HttpQuery("adsApplicationConfigurationName"),
     ),
-  ).annotate({
-    identifier: "ListMigrationWorkflowsRequest",
-  }) as any as S.Schema<ListMigrationWorkflowsRequest>;
+    status: S.optional(S.String).pipe(T.HttpQuery("status")),
+    name: S.optional(S.String).pipe(T.HttpQuery("name")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/migrationworkflows" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListMigrationWorkflowsRequest",
+}) as any as S.Schema<ListMigrationWorkflowsRequest>;
 export interface MigrationWorkflowSummary {
   id?: string;
   name?: string;
@@ -541,58 +528,55 @@ export interface MigrationWorkflowSummary {
   completedSteps?: number;
   totalSteps?: number;
 }
-export const MigrationWorkflowSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      templateId: S.optional(S.String),
-      adsApplicationConfigurationName: S.optional(S.String),
-      status: S.optional(S.String),
-      creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      statusMessage: S.optional(S.String),
-      completedSteps: S.optional(S.Number),
-      totalSteps: S.optional(S.Number),
-    }),
+export const MigrationWorkflowSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    templateId: S.optional(S.String),
+    adsApplicationConfigurationName: S.optional(S.String),
+    status: S.optional(S.String),
+    creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    statusMessage: S.optional(S.String),
+    completedSteps: S.optional(S.Number),
+    totalSteps: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "MigrationWorkflowSummary",
 }) as any as S.Schema<MigrationWorkflowSummary>;
 export type MigrationWorkflowSummaryList = MigrationWorkflowSummary[];
-export const MigrationWorkflowSummaryList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const MigrationWorkflowSummaryList = /*@__PURE__*/ S.Array(
   MigrationWorkflowSummary,
 );
 export interface ListMigrationWorkflowsResponse {
   nextToken?: string;
   migrationWorkflowSummary: MigrationWorkflowSummary[];
 }
-export const ListMigrationWorkflowsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nextToken: S.optional(S.String),
-      migrationWorkflowSummary: MigrationWorkflowSummaryList,
-    }),
-  ).annotate({
-    identifier: "ListMigrationWorkflowsResponse",
-  }) as any as S.Schema<ListMigrationWorkflowsResponse>;
+export const ListMigrationWorkflowsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String),
+    migrationWorkflowSummary: MigrationWorkflowSummaryList,
+  }),
+).annotate({
+  identifier: "ListMigrationWorkflowsResponse",
+}) as any as S.Schema<ListMigrationWorkflowsResponse>;
 export interface StartMigrationWorkflowRequest {
   id: string;
 }
-export const StartMigrationWorkflowRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/migrationworkflow/{id}/start" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StartMigrationWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/migrationworkflow/{id}/start" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "StartMigrationWorkflowRequest",
-  }) as any as S.Schema<StartMigrationWorkflowRequest>;
+  ),
+).annotate({
+  identifier: "StartMigrationWorkflowRequest",
+}) as any as S.Schema<StartMigrationWorkflowRequest>;
 export interface StartMigrationWorkflowResponse {
   id?: string;
   arn?: string;
@@ -600,38 +584,34 @@ export interface StartMigrationWorkflowResponse {
   statusMessage?: string;
   lastStartTime?: Date;
 }
-export const StartMigrationWorkflowResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      arn: S.optional(S.String),
-      status: S.optional(S.String),
-      statusMessage: S.optional(S.String),
-      lastStartTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-    }),
-  ).annotate({
-    identifier: "StartMigrationWorkflowResponse",
-  }) as any as S.Schema<StartMigrationWorkflowResponse>;
+export const StartMigrationWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    arn: S.optional(S.String),
+    status: S.optional(S.String),
+    statusMessage: S.optional(S.String),
+    lastStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
+).annotate({
+  identifier: "StartMigrationWorkflowResponse",
+}) as any as S.Schema<StartMigrationWorkflowResponse>;
 export interface StopMigrationWorkflowRequest {
   id: string;
 }
-export const StopMigrationWorkflowRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/migrationworkflow/{id}/stop" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StopMigrationWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/migrationworkflow/{id}/stop" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "StopMigrationWorkflowRequest",
-  }) as any as S.Schema<StopMigrationWorkflowRequest>;
+  ),
+).annotate({
+  identifier: "StopMigrationWorkflowRequest",
+}) as any as S.Schema<StopMigrationWorkflowRequest>;
 export interface StopMigrationWorkflowResponse {
   id?: string;
   arn?: string;
@@ -639,20 +619,19 @@ export interface StopMigrationWorkflowResponse {
   statusMessage?: string;
   lastStopTime?: Date;
 }
-export const StopMigrationWorkflowResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      arn: S.optional(S.String),
-      status: S.optional(S.String),
-      statusMessage: S.optional(S.String),
-      lastStopTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    }),
-  ).annotate({
-    identifier: "StopMigrationWorkflowResponse",
-  }) as any as S.Schema<StopMigrationWorkflowResponse>;
+export const StopMigrationWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    arn: S.optional(S.String),
+    status: S.optional(S.String),
+    statusMessage: S.optional(S.String),
+    lastStopTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
+).annotate({
+  identifier: "StopMigrationWorkflowResponse",
+}) as any as S.Schema<StopMigrationWorkflowResponse>;
 export type TemplateSource = { workflowId: string };
-export const TemplateSource = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const TemplateSource = /*@__PURE__*/ S.Union([
   S.Struct({ workflowId: S.String }),
 ]);
 export interface CreateTemplateRequest {
@@ -662,7 +641,7 @@ export interface CreateTemplateRequest {
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateTemplateRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     templateName: S.String,
     templateDescription: S.optional(S.String),
@@ -687,40 +666,38 @@ export interface CreateTemplateResponse {
   templateArn?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateTemplateResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      templateId: S.optional(S.String),
-      templateArn: S.optional(S.String),
-      tags: S.optional(StringMap),
-    }),
+export const CreateTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    templateId: S.optional(S.String),
+    templateArn: S.optional(S.String),
+    tags: S.optional(StringMap),
+  }),
 ).annotate({
   identifier: "CreateTemplateResponse",
 }) as any as S.Schema<CreateTemplateResponse>;
 export interface GetMigrationWorkflowTemplateRequest {
   id: string;
 }
-export const GetMigrationWorkflowTemplateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/migrationworkflowtemplate/{id}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetMigrationWorkflowTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/migrationworkflowtemplate/{id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetMigrationWorkflowTemplateRequest",
-  }) as any as S.Schema<GetMigrationWorkflowTemplateRequest>;
+  ),
+).annotate({
+  identifier: "GetMigrationWorkflowTemplateRequest",
+}) as any as S.Schema<GetMigrationWorkflowTemplateRequest>;
 export interface TemplateInput {
   inputName?: string;
   dataType?: string;
   required?: boolean;
 }
-export const TemplateInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TemplateInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inputName: S.optional(S.String),
     dataType: S.optional(S.String),
@@ -728,8 +705,7 @@ export const TemplateInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TemplateInput" }) as any as S.Schema<TemplateInput>;
 export type TemplateInputList = TemplateInput[];
-export const TemplateInputList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(TemplateInput);
+export const TemplateInputList = /*@__PURE__*/ S.Array(TemplateInput);
 export interface GetMigrationWorkflowTemplateResponse {
   id?: string;
   templateArn?: string;
@@ -744,8 +720,8 @@ export interface GetMigrationWorkflowTemplateResponse {
   templateClass?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const GetMigrationWorkflowTemplateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetMigrationWorkflowTemplateResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       id: S.optional(S.String),
       templateArn: S.optional(S.String),
@@ -760,16 +736,16 @@ export const GetMigrationWorkflowTemplateResponse =
       templateClass: S.optional(S.String),
       tags: S.optional(StringMap),
     }),
-  ).annotate({
-    identifier: "GetMigrationWorkflowTemplateResponse",
-  }) as any as S.Schema<GetMigrationWorkflowTemplateResponse>;
+).annotate({
+  identifier: "GetMigrationWorkflowTemplateResponse",
+}) as any as S.Schema<GetMigrationWorkflowTemplateResponse>;
 export interface UpdateTemplateRequest {
   id: string;
   templateName?: string;
   templateDescription?: string;
   clientToken?: string;
 }
-export const UpdateTemplateRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.HttpLabel("id")),
     templateName: S.optional(S.String),
@@ -793,20 +769,19 @@ export interface UpdateTemplateResponse {
   templateArn?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const UpdateTemplateResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      templateId: S.optional(S.String),
-      templateArn: S.optional(S.String),
-      tags: S.optional(StringMap),
-    }),
+export const UpdateTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    templateId: S.optional(S.String),
+    templateArn: S.optional(S.String),
+    tags: S.optional(StringMap),
+  }),
 ).annotate({
   identifier: "UpdateTemplateResponse",
 }) as any as S.Schema<UpdateTemplateResponse>;
 export interface DeleteTemplateRequest {
   id: string;
 }
-export const DeleteTemplateRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/template/{id}" }),
@@ -821,8 +796,8 @@ export const DeleteTemplateRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteTemplateRequest",
 }) as any as S.Schema<DeleteTemplateRequest>;
 export interface DeleteTemplateResponse {}
-export const DeleteTemplateResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const DeleteTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "DeleteTemplateResponse",
 }) as any as S.Schema<DeleteTemplateResponse>;
@@ -831,8 +806,8 @@ export interface ListMigrationWorkflowTemplatesRequest {
   nextToken?: string;
   name?: string;
 }
-export const ListMigrationWorkflowTemplatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListMigrationWorkflowTemplatesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
       nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -847,16 +822,16 @@ export const ListMigrationWorkflowTemplatesRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "ListMigrationWorkflowTemplatesRequest",
-  }) as any as S.Schema<ListMigrationWorkflowTemplatesRequest>;
+).annotate({
+  identifier: "ListMigrationWorkflowTemplatesRequest",
+}) as any as S.Schema<ListMigrationWorkflowTemplatesRequest>;
 export interface TemplateSummary {
   id?: string;
   name?: string;
   arn?: string;
   description?: string;
 }
-export const TemplateSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TemplateSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -867,26 +842,25 @@ export const TemplateSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TemplateSummary",
 }) as any as S.Schema<TemplateSummary>;
 export type TemplateSummaryList = TemplateSummary[];
-export const TemplateSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(TemplateSummary);
+export const TemplateSummaryList = /*@__PURE__*/ S.Array(TemplateSummary);
 export interface ListMigrationWorkflowTemplatesResponse {
   nextToken?: string;
   templateSummary: TemplateSummary[];
 }
-export const ListMigrationWorkflowTemplatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListMigrationWorkflowTemplatesResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       nextToken: S.optional(S.String),
       templateSummary: TemplateSummaryList,
     }),
-  ).annotate({
-    identifier: "ListMigrationWorkflowTemplatesResponse",
-  }) as any as S.Schema<ListMigrationWorkflowTemplatesResponse>;
+).annotate({
+  identifier: "ListMigrationWorkflowTemplatesResponse",
+}) as any as S.Schema<ListMigrationWorkflowTemplatesResponse>;
 export interface ListPluginsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListPluginsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListPluginsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -911,7 +885,7 @@ export interface PluginSummary {
   version?: string;
   registeredTime?: string;
 }
-export const PluginSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PluginSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pluginId: S.optional(S.String),
     hostname: S.optional(S.String),
@@ -922,13 +896,12 @@ export const PluginSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PluginSummary" }) as any as S.Schema<PluginSummary>;
 export type PluginSummaries = PluginSummary[];
-export const PluginSummaries =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(PluginSummary);
+export const PluginSummaries = /*@__PURE__*/ S.Array(PluginSummary);
 export interface ListPluginsResponse {
   nextToken?: string;
   plugins?: PluginSummary[];
 }
-export const ListPluginsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListPluginsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String),
     plugins: S.optional(PluginSummaries),
@@ -941,22 +914,21 @@ export interface GetTemplateStepRequest {
   templateId: string;
   stepGroupId: string;
 }
-export const GetTemplateStepRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String.pipe(T.HttpLabel("id")),
-      templateId: S.String.pipe(T.HttpQuery("templateId")),
-      stepGroupId: S.String.pipe(T.HttpQuery("stepGroupId")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/templatestep/{id}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetTemplateStepRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String.pipe(T.HttpLabel("id")),
+    templateId: S.String.pipe(T.HttpQuery("templateId")),
+    stepGroupId: S.String.pipe(T.HttpQuery("stepGroupId")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/templatestep/{id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetTemplateStepRequest",
 }) as any as S.Schema<GetTemplateStepRequest>;
@@ -965,7 +937,7 @@ export interface StepOutput {
   dataType?: string;
   required?: boolean;
 }
-export const StepOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StepOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     dataType: S.optional(S.String),
@@ -973,12 +945,12 @@ export const StepOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StepOutput" }) as any as S.Schema<StepOutput>;
 export type StepOutputList = StepOutput[];
-export const StepOutputList = /*@__PURE__*/ /*#__PURE__*/ S.Array(StepOutput);
+export const StepOutputList = /*@__PURE__*/ S.Array(StepOutput);
 export interface PlatformScriptKey {
   linux?: string;
   windows?: string;
 }
-export const PlatformScriptKey = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PlatformScriptKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ linux: S.optional(S.String), windows: S.optional(S.String) }),
 ).annotate({
   identifier: "PlatformScriptKey",
@@ -987,7 +959,7 @@ export interface PlatformCommand {
   linux?: string;
   windows?: string;
 }
-export const PlatformCommand = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PlatformCommand = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ linux: S.optional(S.String), windows: S.optional(S.String) }),
 ).annotate({
   identifier: "PlatformCommand",
@@ -999,18 +971,17 @@ export interface StepAutomationConfiguration {
   runEnvironment?: string;
   targetType?: string;
 }
-export const StepAutomationConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      scriptLocationS3Bucket: S.optional(S.String),
-      scriptLocationS3Key: S.optional(PlatformScriptKey),
-      command: S.optional(PlatformCommand),
-      runEnvironment: S.optional(S.String),
-      targetType: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "StepAutomationConfiguration",
-  }) as any as S.Schema<StepAutomationConfiguration>;
+export const StepAutomationConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scriptLocationS3Bucket: S.optional(S.String),
+    scriptLocationS3Key: S.optional(PlatformScriptKey),
+    command: S.optional(PlatformCommand),
+    runEnvironment: S.optional(S.String),
+    targetType: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "StepAutomationConfiguration",
+}) as any as S.Schema<StepAutomationConfiguration>;
 export interface GetTemplateStepResponse {
   id?: string;
   stepGroupId?: string;
@@ -1024,21 +995,20 @@ export interface GetTemplateStepResponse {
   outputs?: StepOutput[];
   stepAutomationConfiguration?: StepAutomationConfiguration;
 }
-export const GetTemplateStepResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      stepGroupId: S.optional(S.String),
-      templateId: S.optional(S.String),
-      name: S.optional(S.String),
-      description: S.optional(S.String),
-      stepActionType: S.optional(S.String),
-      creationTime: S.optional(S.String),
-      previous: S.optional(StringList),
-      next: S.optional(StringList),
-      outputs: S.optional(StepOutputList),
-      stepAutomationConfiguration: S.optional(StepAutomationConfiguration),
-    }),
+export const GetTemplateStepResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    stepGroupId: S.optional(S.String),
+    templateId: S.optional(S.String),
+    name: S.optional(S.String),
+    description: S.optional(S.String),
+    stepActionType: S.optional(S.String),
+    creationTime: S.optional(S.String),
+    previous: S.optional(StringList),
+    next: S.optional(StringList),
+    outputs: S.optional(StepOutputList),
+    stepAutomationConfiguration: S.optional(StepAutomationConfiguration),
+  }),
 ).annotate({
   identifier: "GetTemplateStepResponse",
 }) as any as S.Schema<GetTemplateStepResponse>;
@@ -1048,23 +1018,22 @@ export interface ListTemplateStepsRequest {
   templateId: string;
   stepGroupId: string;
 }
-export const ListTemplateStepsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      templateId: S.String.pipe(T.HttpQuery("templateId")),
-      stepGroupId: S.String.pipe(T.HttpQuery("stepGroupId")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/templatesteps" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTemplateStepsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    templateId: S.String.pipe(T.HttpQuery("templateId")),
+    stepGroupId: S.String.pipe(T.HttpQuery("stepGroupId")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/templatesteps" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTemplateStepsRequest",
 }) as any as S.Schema<ListTemplateStepsRequest>;
@@ -1079,7 +1048,7 @@ export interface TemplateStepSummary {
   previous?: string[];
   next?: string[];
 }
-export const TemplateStepSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TemplateStepSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     stepGroupId: S.optional(S.String),
@@ -1096,17 +1065,16 @@ export const TemplateStepSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TemplateStepSummary>;
 export type TemplateStepSummaryList = TemplateStepSummary[];
 export const TemplateStepSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(TemplateStepSummary);
+  /*@__PURE__*/ S.Array(TemplateStepSummary);
 export interface ListTemplateStepsResponse {
   nextToken?: string;
   templateStepSummaryList?: TemplateStepSummary[];
 }
-export const ListTemplateStepsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextToken: S.optional(S.String),
-      templateStepSummaryList: S.optional(TemplateStepSummaryList),
-    }),
+export const ListTemplateStepsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String),
+    templateStepSummaryList: S.optional(TemplateStepSummaryList),
+  }),
 ).annotate({
   identifier: "ListTemplateStepsResponse",
 }) as any as S.Schema<ListTemplateStepsResponse>;
@@ -1114,27 +1082,23 @@ export interface GetTemplateStepGroupRequest {
   templateId: string;
   id: string;
 }
-export const GetTemplateStepGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      templateId: S.String.pipe(T.HttpLabel("templateId")),
-      id: S.String.pipe(T.HttpLabel("id")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/templates/{templateId}/stepgroups/{id}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetTemplateStepGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    templateId: S.String.pipe(T.HttpLabel("templateId")),
+    id: S.String.pipe(T.HttpLabel("id")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/templates/{templateId}/stepgroups/{id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetTemplateStepGroupRequest",
-  }) as any as S.Schema<GetTemplateStepGroupRequest>;
+  ),
+).annotate({
+  identifier: "GetTemplateStepGroupRequest",
+}) as any as S.Schema<GetTemplateStepGroupRequest>;
 export interface GetTemplateStepGroupResponse {
   templateId?: string;
   id?: string;
@@ -1147,83 +1111,79 @@ export interface GetTemplateStepGroupResponse {
   previous?: string[];
   next?: string[];
 }
-export const GetTemplateStepGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      templateId: S.optional(S.String),
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      description: S.optional(S.String),
-      status: S.optional(S.String),
-      creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      lastModifiedTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      tools: S.optional(ToolsList),
-      previous: S.optional(StringList),
-      next: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "GetTemplateStepGroupResponse",
-  }) as any as S.Schema<GetTemplateStepGroupResponse>;
+export const GetTemplateStepGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    templateId: S.optional(S.String),
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    description: S.optional(S.String),
+    status: S.optional(S.String),
+    creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    lastModifiedTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    tools: S.optional(ToolsList),
+    previous: S.optional(StringList),
+    next: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "GetTemplateStepGroupResponse",
+}) as any as S.Schema<GetTemplateStepGroupResponse>;
 export interface ListTemplateStepGroupsRequest {
   maxResults?: number;
   nextToken?: string;
   templateId: string;
 }
-export const ListTemplateStepGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      templateId: S.String.pipe(T.HttpLabel("templateId")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/templatestepgroups/{templateId}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTemplateStepGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    templateId: S.String.pipe(T.HttpLabel("templateId")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/templatestepgroups/{templateId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListTemplateStepGroupsRequest",
-  }) as any as S.Schema<ListTemplateStepGroupsRequest>;
+  ),
+).annotate({
+  identifier: "ListTemplateStepGroupsRequest",
+}) as any as S.Schema<ListTemplateStepGroupsRequest>;
 export interface TemplateStepGroupSummary {
   id?: string;
   name?: string;
   previous?: string[];
   next?: string[];
 }
-export const TemplateStepGroupSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      previous: S.optional(StringList),
-      next: S.optional(StringList),
-    }),
+export const TemplateStepGroupSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    previous: S.optional(StringList),
+    next: S.optional(StringList),
+  }),
 ).annotate({
   identifier: "TemplateStepGroupSummary",
 }) as any as S.Schema<TemplateStepGroupSummary>;
 export type TemplateStepGroupSummaryList = TemplateStepGroupSummary[];
-export const TemplateStepGroupSummaryList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const TemplateStepGroupSummaryList = /*@__PURE__*/ S.Array(
   TemplateStepGroupSummary,
 );
 export interface ListTemplateStepGroupsResponse {
   nextToken?: string;
   templateStepGroupSummary: TemplateStepGroupSummary[];
 }
-export const ListTemplateStepGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nextToken: S.optional(S.String),
-      templateStepGroupSummary: TemplateStepGroupSummaryList,
-    }),
-  ).annotate({
-    identifier: "ListTemplateStepGroupsResponse",
-  }) as any as S.Schema<ListTemplateStepGroupsResponse>;
+export const ListTemplateStepGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String),
+    templateStepGroupSummary: TemplateStepGroupSummaryList,
+  }),
+).annotate({
+  identifier: "ListTemplateStepGroupsResponse",
+}) as any as S.Schema<ListTemplateStepGroupsResponse>;
 export interface WorkflowStepAutomationConfiguration {
   scriptLocationS3Bucket?: string;
   scriptLocationS3Key?: PlatformScriptKey;
@@ -1231,25 +1191,24 @@ export interface WorkflowStepAutomationConfiguration {
   runEnvironment?: string;
   targetType?: string;
 }
-export const WorkflowStepAutomationConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      scriptLocationS3Bucket: S.optional(S.String),
-      scriptLocationS3Key: S.optional(PlatformScriptKey),
-      command: S.optional(PlatformCommand),
-      runEnvironment: S.optional(S.String),
-      targetType: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "WorkflowStepAutomationConfiguration",
-  }) as any as S.Schema<WorkflowStepAutomationConfiguration>;
+export const WorkflowStepAutomationConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scriptLocationS3Bucket: S.optional(S.String),
+    scriptLocationS3Key: S.optional(PlatformScriptKey),
+    command: S.optional(PlatformCommand),
+    runEnvironment: S.optional(S.String),
+    targetType: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "WorkflowStepAutomationConfiguration",
+}) as any as S.Schema<WorkflowStepAutomationConfiguration>;
 export type MaxStringList = string[];
-export const MaxStringList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const MaxStringList = /*@__PURE__*/ S.Array(S.String);
 export type WorkflowStepOutputUnion =
   | { integerValue: number; stringValue?: never; listOfStringValue?: never }
   | { integerValue?: never; stringValue: string; listOfStringValue?: never }
   | { integerValue?: never; stringValue?: never; listOfStringValue: string[] };
-export const WorkflowStepOutputUnion = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const WorkflowStepOutputUnion = /*@__PURE__*/ S.Union([
   S.Struct({ integerValue: S.Number }),
   S.Struct({ stringValue: S.String }),
   S.Struct({ listOfStringValue: MaxStringList }),
@@ -1260,7 +1219,7 @@ export interface WorkflowStepOutput {
   required?: boolean;
   value?: WorkflowStepOutputUnion;
 }
-export const WorkflowStepOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const WorkflowStepOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     dataType: S.optional(S.String),
@@ -1271,8 +1230,7 @@ export const WorkflowStepOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "WorkflowStepOutput",
 }) as any as S.Schema<WorkflowStepOutput>;
 export type WorkflowStepOutputList = WorkflowStepOutput[];
-export const WorkflowStepOutputList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(WorkflowStepOutput);
+export const WorkflowStepOutputList = /*@__PURE__*/ S.Array(WorkflowStepOutput);
 export interface CreateWorkflowStepRequest {
   name: string;
   stepGroupId: string;
@@ -1285,31 +1243,30 @@ export interface CreateWorkflowStepRequest {
   previous?: string[];
   next?: string[];
 }
-export const CreateWorkflowStepRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      stepGroupId: S.String,
-      workflowId: S.String,
-      stepActionType: S.String,
-      description: S.optional(S.String),
-      workflowStepAutomationConfiguration: S.optional(
-        WorkflowStepAutomationConfiguration,
-      ),
-      stepTarget: S.optional(StringList),
-      outputs: S.optional(WorkflowStepOutputList),
-      previous: S.optional(StringList),
-      next: S.optional(StringList),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/workflowstep" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateWorkflowStepRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    stepGroupId: S.String,
+    workflowId: S.String,
+    stepActionType: S.String,
+    description: S.optional(S.String),
+    workflowStepAutomationConfiguration: S.optional(
+      WorkflowStepAutomationConfiguration,
     ),
+    stepTarget: S.optional(StringList),
+    outputs: S.optional(WorkflowStepOutputList),
+    previous: S.optional(StringList),
+    next: S.optional(StringList),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/workflowstep" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
 ).annotate({
   identifier: "CreateWorkflowStepRequest",
 }) as any as S.Schema<CreateWorkflowStepRequest>;
@@ -1319,14 +1276,13 @@ export interface CreateWorkflowStepResponse {
   workflowId?: string;
   name?: string;
 }
-export const CreateWorkflowStepResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      stepGroupId: S.optional(S.String),
-      workflowId: S.optional(S.String),
-      name: S.optional(S.String),
-    }),
+export const CreateWorkflowStepResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    stepGroupId: S.optional(S.String),
+    workflowId: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "CreateWorkflowStepResponse",
 }) as any as S.Schema<CreateWorkflowStepResponse>;
@@ -1335,22 +1291,21 @@ export interface GetWorkflowStepRequest {
   stepGroupId: string;
   id: string;
 }
-export const GetWorkflowStepRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      workflowId: S.String.pipe(T.HttpQuery("workflowId")),
-      stepGroupId: S.String.pipe(T.HttpQuery("stepGroupId")),
-      id: S.String.pipe(T.HttpLabel("id")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/workflowstep/{id}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetWorkflowStepRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workflowId: S.String.pipe(T.HttpQuery("workflowId")),
+    stepGroupId: S.String.pipe(T.HttpQuery("stepGroupId")),
+    id: S.String.pipe(T.HttpLabel("id")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/workflowstep/{id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetWorkflowStepRequest",
 }) as any as S.Schema<GetWorkflowStepRequest>;
@@ -1377,35 +1332,32 @@ export interface GetWorkflowStepResponse {
   noOfSrvFailed?: number;
   totalNoOfSrv?: number;
 }
-export const GetWorkflowStepResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.optional(S.String),
-      stepGroupId: S.optional(S.String),
-      workflowId: S.optional(S.String),
-      stepId: S.optional(S.String),
-      description: S.optional(S.String),
-      stepActionType: S.optional(S.String),
-      owner: S.optional(S.String),
-      workflowStepAutomationConfiguration: S.optional(
-        WorkflowStepAutomationConfiguration,
-      ),
-      stepTarget: S.optional(StringList),
-      outputs: S.optional(WorkflowStepOutputList),
-      previous: S.optional(StringList),
-      next: S.optional(StringList),
-      status: S.optional(S.String),
-      statusMessage: S.optional(S.String),
-      scriptOutputLocation: S.optional(S.String),
-      creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      lastStartTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      noOfSrvCompleted: S.optional(S.Number),
-      noOfSrvFailed: S.optional(S.Number),
-      totalNoOfSrv: S.optional(S.Number),
-    }),
+export const GetWorkflowStepResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    stepGroupId: S.optional(S.String),
+    workflowId: S.optional(S.String),
+    stepId: S.optional(S.String),
+    description: S.optional(S.String),
+    stepActionType: S.optional(S.String),
+    owner: S.optional(S.String),
+    workflowStepAutomationConfiguration: S.optional(
+      WorkflowStepAutomationConfiguration,
+    ),
+    stepTarget: S.optional(StringList),
+    outputs: S.optional(WorkflowStepOutputList),
+    previous: S.optional(StringList),
+    next: S.optional(StringList),
+    status: S.optional(S.String),
+    statusMessage: S.optional(S.String),
+    scriptOutputLocation: S.optional(S.String),
+    creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    lastStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    noOfSrvCompleted: S.optional(S.Number),
+    noOfSrvFailed: S.optional(S.Number),
+    totalNoOfSrv: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "GetWorkflowStepResponse",
 }) as any as S.Schema<GetWorkflowStepResponse>;
@@ -1423,33 +1375,32 @@ export interface UpdateWorkflowStepRequest {
   next?: string[];
   status?: string;
 }
-export const UpdateWorkflowStepRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String.pipe(T.HttpLabel("id")),
-      stepGroupId: S.String,
-      workflowId: S.String,
-      name: S.optional(S.String),
-      description: S.optional(S.String),
-      stepActionType: S.optional(S.String),
-      workflowStepAutomationConfiguration: S.optional(
-        WorkflowStepAutomationConfiguration,
-      ),
-      stepTarget: S.optional(StringList),
-      outputs: S.optional(WorkflowStepOutputList),
-      previous: S.optional(StringList),
-      next: S.optional(StringList),
-      status: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/workflowstep/{id}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateWorkflowStepRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String.pipe(T.HttpLabel("id")),
+    stepGroupId: S.String,
+    workflowId: S.String,
+    name: S.optional(S.String),
+    description: S.optional(S.String),
+    stepActionType: S.optional(S.String),
+    workflowStepAutomationConfiguration: S.optional(
+      WorkflowStepAutomationConfiguration,
     ),
+    stepTarget: S.optional(StringList),
+    outputs: S.optional(WorkflowStepOutputList),
+    previous: S.optional(StringList),
+    next: S.optional(StringList),
+    status: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/workflowstep/{id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
 ).annotate({
   identifier: "UpdateWorkflowStepRequest",
 }) as any as S.Schema<UpdateWorkflowStepRequest>;
@@ -1459,14 +1410,13 @@ export interface UpdateWorkflowStepResponse {
   workflowId?: string;
   name?: string;
 }
-export const UpdateWorkflowStepResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      stepGroupId: S.optional(S.String),
-      workflowId: S.optional(S.String),
-      name: S.optional(S.String),
-    }),
+export const UpdateWorkflowStepResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    stepGroupId: S.optional(S.String),
+    workflowId: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "UpdateWorkflowStepResponse",
 }) as any as S.Schema<UpdateWorkflowStepResponse>;
@@ -1475,28 +1425,27 @@ export interface DeleteWorkflowStepRequest {
   stepGroupId: string;
   workflowId: string;
 }
-export const DeleteWorkflowStepRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String.pipe(T.HttpLabel("id")),
-      stepGroupId: S.String.pipe(T.HttpQuery("stepGroupId")),
-      workflowId: S.String.pipe(T.HttpQuery("workflowId")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "DELETE", uri: "/workflowstep/{id}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteWorkflowStepRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String.pipe(T.HttpLabel("id")),
+    stepGroupId: S.String.pipe(T.HttpQuery("stepGroupId")),
+    workflowId: S.String.pipe(T.HttpQuery("workflowId")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/workflowstep/{id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DeleteWorkflowStepRequest",
 }) as any as S.Schema<DeleteWorkflowStepRequest>;
 export interface DeleteWorkflowStepResponse {}
-export const DeleteWorkflowStepResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const DeleteWorkflowStepResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "DeleteWorkflowStepResponse",
 }) as any as S.Schema<DeleteWorkflowStepResponse>;
@@ -1506,26 +1455,25 @@ export interface ListWorkflowStepsRequest {
   workflowId: string;
   stepGroupId: string;
 }
-export const ListWorkflowStepsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      workflowId: S.String.pipe(T.HttpLabel("workflowId")),
-      stepGroupId: S.String.pipe(T.HttpLabel("stepGroupId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/workflow/{workflowId}/workflowstepgroups/{stepGroupId}/workflowsteps",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListWorkflowStepsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    workflowId: S.String.pipe(T.HttpLabel("workflowId")),
+    stepGroupId: S.String.pipe(T.HttpLabel("stepGroupId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/workflow/{workflowId}/workflowstepgroups/{stepGroupId}/workflowsteps",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListWorkflowStepsRequest",
 }) as any as S.Schema<ListWorkflowStepsRequest>;
@@ -1544,7 +1492,7 @@ export interface WorkflowStepSummary {
   description?: string;
   scriptLocation?: string;
 }
-export const WorkflowStepSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const WorkflowStepSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stepId: S.optional(S.String),
     name: S.optional(S.String),
@@ -1565,17 +1513,16 @@ export const WorkflowStepSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkflowStepSummary>;
 export type WorkflowStepsSummaryList = WorkflowStepSummary[];
 export const WorkflowStepsSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(WorkflowStepSummary);
+  /*@__PURE__*/ S.Array(WorkflowStepSummary);
 export interface ListWorkflowStepsResponse {
   nextToken?: string;
   workflowStepsSummary: WorkflowStepSummary[];
 }
-export const ListWorkflowStepsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextToken: S.optional(S.String),
-      workflowStepsSummary: WorkflowStepsSummaryList,
-    }),
+export const ListWorkflowStepsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String),
+    workflowStepsSummary: WorkflowStepsSummaryList,
+  }),
 ).annotate({
   identifier: "ListWorkflowStepsResponse",
 }) as any as S.Schema<ListWorkflowStepsResponse>;
@@ -1584,22 +1531,21 @@ export interface RetryWorkflowStepRequest {
   stepGroupId: string;
   id: string;
 }
-export const RetryWorkflowStepRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      workflowId: S.String.pipe(T.HttpQuery("workflowId")),
-      stepGroupId: S.String.pipe(T.HttpQuery("stepGroupId")),
-      id: S.String.pipe(T.HttpLabel("id")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/retryworkflowstep/{id}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const RetryWorkflowStepRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workflowId: S.String.pipe(T.HttpQuery("workflowId")),
+    stepGroupId: S.String.pipe(T.HttpQuery("stepGroupId")),
+    id: S.String.pipe(T.HttpLabel("id")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/retryworkflowstep/{id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "RetryWorkflowStepRequest",
 }) as any as S.Schema<RetryWorkflowStepRequest>;
@@ -1609,14 +1555,13 @@ export interface RetryWorkflowStepResponse {
   id?: string;
   status?: string;
 }
-export const RetryWorkflowStepResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      stepGroupId: S.optional(S.String),
-      workflowId: S.optional(S.String),
-      id: S.optional(S.String),
-      status: S.optional(S.String),
-    }),
+export const RetryWorkflowStepResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    stepGroupId: S.optional(S.String),
+    workflowId: S.optional(S.String),
+    id: S.optional(S.String),
+    status: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "RetryWorkflowStepResponse",
 }) as any as S.Schema<RetryWorkflowStepResponse>;
@@ -1627,27 +1572,26 @@ export interface CreateWorkflowStepGroupRequest {
   next?: string[];
   previous?: string[];
 }
-export const CreateWorkflowStepGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      workflowId: S.String,
-      name: S.String,
-      description: S.optional(S.String),
-      next: S.optional(StringList),
-      previous: S.optional(StringList),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/workflowstepgroups" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateWorkflowStepGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workflowId: S.String,
+    name: S.String,
+    description: S.optional(S.String),
+    next: S.optional(StringList),
+    previous: S.optional(StringList),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/workflowstepgroups" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateWorkflowStepGroupRequest",
-  }) as any as S.Schema<CreateWorkflowStepGroupRequest>;
+  ),
+).annotate({
+  identifier: "CreateWorkflowStepGroupRequest",
+}) as any as S.Schema<CreateWorkflowStepGroupRequest>;
 export interface CreateWorkflowStepGroupResponse {
   workflowId?: string;
   name?: string;
@@ -1658,43 +1602,41 @@ export interface CreateWorkflowStepGroupResponse {
   previous?: string[];
   creationTime?: Date;
 }
-export const CreateWorkflowStepGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      workflowId: S.optional(S.String),
-      name: S.optional(S.String),
-      id: S.optional(S.String),
-      description: S.optional(S.String),
-      tools: S.optional(ToolsList),
-      next: S.optional(StringList),
-      previous: S.optional(StringList),
-      creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    }),
-  ).annotate({
-    identifier: "CreateWorkflowStepGroupResponse",
-  }) as any as S.Schema<CreateWorkflowStepGroupResponse>;
+export const CreateWorkflowStepGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workflowId: S.optional(S.String),
+    name: S.optional(S.String),
+    id: S.optional(S.String),
+    description: S.optional(S.String),
+    tools: S.optional(ToolsList),
+    next: S.optional(StringList),
+    previous: S.optional(StringList),
+    creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
+).annotate({
+  identifier: "CreateWorkflowStepGroupResponse",
+}) as any as S.Schema<CreateWorkflowStepGroupResponse>;
 export interface GetWorkflowStepGroupRequest {
   id: string;
   workflowId: string;
 }
-export const GetWorkflowStepGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String.pipe(T.HttpLabel("id")),
-      workflowId: S.String.pipe(T.HttpQuery("workflowId")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/workflowstepgroup/{id}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetWorkflowStepGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String.pipe(T.HttpLabel("id")),
+    workflowId: S.String.pipe(T.HttpQuery("workflowId")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/workflowstepgroup/{id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetWorkflowStepGroupRequest",
-  }) as any as S.Schema<GetWorkflowStepGroupRequest>;
+  ),
+).annotate({
+  identifier: "GetWorkflowStepGroupRequest",
+}) as any as S.Schema<GetWorkflowStepGroupRequest>;
 export interface GetWorkflowStepGroupResponse {
   id?: string;
   workflowId?: string;
@@ -1709,27 +1651,26 @@ export interface GetWorkflowStepGroupResponse {
   previous?: string[];
   next?: string[];
 }
-export const GetWorkflowStepGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      workflowId: S.optional(S.String),
-      name: S.optional(S.String),
-      description: S.optional(S.String),
-      status: S.optional(S.String),
-      owner: S.optional(S.String),
-      creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      lastModifiedTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      tools: S.optional(ToolsList),
-      previous: S.optional(StringList),
-      next: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "GetWorkflowStepGroupResponse",
-  }) as any as S.Schema<GetWorkflowStepGroupResponse>;
+export const GetWorkflowStepGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    workflowId: S.optional(S.String),
+    name: S.optional(S.String),
+    description: S.optional(S.String),
+    status: S.optional(S.String),
+    owner: S.optional(S.String),
+    creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    lastModifiedTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    tools: S.optional(ToolsList),
+    previous: S.optional(StringList),
+    next: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "GetWorkflowStepGroupResponse",
+}) as any as S.Schema<GetWorkflowStepGroupResponse>;
 export interface UpdateWorkflowStepGroupRequest {
   workflowId: string;
   id: string;
@@ -1738,28 +1679,27 @@ export interface UpdateWorkflowStepGroupRequest {
   next?: string[];
   previous?: string[];
 }
-export const UpdateWorkflowStepGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      workflowId: S.String.pipe(T.HttpQuery("workflowId")),
-      id: S.String.pipe(T.HttpLabel("id")),
-      name: S.optional(S.String),
-      description: S.optional(S.String),
-      next: S.optional(StringList),
-      previous: S.optional(StringList),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/workflowstepgroup/{id}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateWorkflowStepGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workflowId: S.String.pipe(T.HttpQuery("workflowId")),
+    id: S.String.pipe(T.HttpLabel("id")),
+    name: S.optional(S.String),
+    description: S.optional(S.String),
+    next: S.optional(StringList),
+    previous: S.optional(StringList),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/workflowstepgroup/{id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateWorkflowStepGroupRequest",
-  }) as any as S.Schema<UpdateWorkflowStepGroupRequest>;
+  ),
+).annotate({
+  identifier: "UpdateWorkflowStepGroupRequest",
+}) as any as S.Schema<UpdateWorkflowStepGroupRequest>;
 export interface UpdateWorkflowStepGroupResponse {
   workflowId?: string;
   name?: string;
@@ -1770,74 +1710,72 @@ export interface UpdateWorkflowStepGroupResponse {
   previous?: string[];
   lastModifiedTime?: Date;
 }
-export const UpdateWorkflowStepGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      workflowId: S.optional(S.String),
-      name: S.optional(S.String),
-      id: S.optional(S.String),
-      description: S.optional(S.String),
-      tools: S.optional(ToolsList),
-      next: S.optional(StringList),
-      previous: S.optional(StringList),
-      lastModifiedTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-    }),
-  ).annotate({
-    identifier: "UpdateWorkflowStepGroupResponse",
-  }) as any as S.Schema<UpdateWorkflowStepGroupResponse>;
+export const UpdateWorkflowStepGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workflowId: S.optional(S.String),
+    name: S.optional(S.String),
+    id: S.optional(S.String),
+    description: S.optional(S.String),
+    tools: S.optional(ToolsList),
+    next: S.optional(StringList),
+    previous: S.optional(StringList),
+    lastModifiedTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+  }),
+).annotate({
+  identifier: "UpdateWorkflowStepGroupResponse",
+}) as any as S.Schema<UpdateWorkflowStepGroupResponse>;
 export interface DeleteWorkflowStepGroupRequest {
   workflowId: string;
   id: string;
 }
-export const DeleteWorkflowStepGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      workflowId: S.String.pipe(T.HttpQuery("workflowId")),
-      id: S.String.pipe(T.HttpLabel("id")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "DELETE", uri: "/workflowstepgroup/{id}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteWorkflowStepGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workflowId: S.String.pipe(T.HttpQuery("workflowId")),
+    id: S.String.pipe(T.HttpLabel("id")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/workflowstepgroup/{id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteWorkflowStepGroupRequest",
-  }) as any as S.Schema<DeleteWorkflowStepGroupRequest>;
+  ),
+).annotate({
+  identifier: "DeleteWorkflowStepGroupRequest",
+}) as any as S.Schema<DeleteWorkflowStepGroupRequest>;
 export interface DeleteWorkflowStepGroupResponse {}
-export const DeleteWorkflowStepGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteWorkflowStepGroupResponse",
-  }) as any as S.Schema<DeleteWorkflowStepGroupResponse>;
+export const DeleteWorkflowStepGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteWorkflowStepGroupResponse",
+}) as any as S.Schema<DeleteWorkflowStepGroupResponse>;
 export interface ListWorkflowStepGroupsRequest {
   nextToken?: string;
   maxResults?: number;
   workflowId: string;
 }
-export const ListWorkflowStepGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      workflowId: S.String.pipe(T.HttpQuery("workflowId")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/workflowstepgroups" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListWorkflowStepGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    workflowId: S.String.pipe(T.HttpQuery("workflowId")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/workflowstepgroups" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListWorkflowStepGroupsRequest",
-  }) as any as S.Schema<ListWorkflowStepGroupsRequest>;
+  ),
+).annotate({
+  identifier: "ListWorkflowStepGroupsRequest",
+}) as any as S.Schema<ListWorkflowStepGroupsRequest>;
 export interface WorkflowStepGroupSummary {
   id?: string;
   name?: string;
@@ -1846,35 +1784,34 @@ export interface WorkflowStepGroupSummary {
   previous?: string[];
   next?: string[];
 }
-export const WorkflowStepGroupSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      owner: S.optional(S.String),
-      status: S.optional(S.String),
-      previous: S.optional(StringList),
-      next: S.optional(StringList),
-    }),
+export const WorkflowStepGroupSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    owner: S.optional(S.String),
+    status: S.optional(S.String),
+    previous: S.optional(StringList),
+    next: S.optional(StringList),
+  }),
 ).annotate({
   identifier: "WorkflowStepGroupSummary",
 }) as any as S.Schema<WorkflowStepGroupSummary>;
 export type WorkflowStepGroupsSummaryList = WorkflowStepGroupSummary[];
-export const WorkflowStepGroupsSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(WorkflowStepGroupSummary);
+export const WorkflowStepGroupsSummaryList = /*@__PURE__*/ S.Array(
+  WorkflowStepGroupSummary,
+);
 export interface ListWorkflowStepGroupsResponse {
   nextToken?: string;
   workflowStepGroupsSummary: WorkflowStepGroupSummary[];
 }
-export const ListWorkflowStepGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nextToken: S.optional(S.String),
-      workflowStepGroupsSummary: WorkflowStepGroupsSummaryList,
-    }),
-  ).annotate({
-    identifier: "ListWorkflowStepGroupsResponse",
-  }) as any as S.Schema<ListWorkflowStepGroupsResponse>;
+export const ListWorkflowStepGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String),
+    workflowStepGroupsSummary: WorkflowStepGroupsSummaryList,
+  }),
+).annotate({
+  identifier: "ListWorkflowStepGroupsResponse",
+}) as any as S.Schema<ListWorkflowStepGroupsResponse>;
 
 //# Errors
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
